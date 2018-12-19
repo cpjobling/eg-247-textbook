@@ -2,6 +2,11 @@
 
 Below is a rough list of new features, broken down by Jupyter Book version.
 
+## v0.3 - Beta 3
+
+- Added the ability to hide code cells and make them collapsible (#59](https://github.com/choldgraf/jupyter-book/pull/59))
+- Added option to hide sidebar (#59](https://github.com/choldgraf/jupyter-book/pull/59))
+
 ## v0.2.1 - Beta 2.1
 
 - Tests added to the Jupyter Book
