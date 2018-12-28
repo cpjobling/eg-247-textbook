@@ -8,6 +8,7 @@ help:
 	@echo "  runall      to run all notebooks in-place, capturing outputs with the notebook"
 	@echo "  serve       to serve the repository locally with Jekyll"
 	@echo "  build       to build the site HTML locally with Jekyll, and move it to `docs/`"
+	@echo "  update 	 to update the JS and CSS of your jupyter book with the latest release"
 
 
 install:

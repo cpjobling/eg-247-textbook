@@ -11,15 +11,21 @@ to modify this site's HTML).
 Be careful not to add YAML with the same key names as the auto-generated YAML, as
 this will create duplicated keys in your page's front-matter.
 
+## Add custom CSS and Javascript
+
+You can add your own CSS and Javascript to the built site by adding them to the files
+in `assets/css/custom.css` and `assets/js/custom.js`, respectively. If you update
+your site, make sure that you don't overwrite these files!
+
 ## Relevant files
 
 There are a few moving parts associated with Jupyter Books, and this
 section tries to cover most of the relevant pieces. The following list contains some
 of the more important files/folders worth knowing about.
 
-### Course materials
+### Book materials
 
-* `content/` contains all course content in Jupyter notebook or markdown form
+* `content/` contains all book content in Jupyter notebook or markdown form
 
 ### Auto-generated folders and files
 * `_build/` contain markdown and assets created when you run `make book`. This is what Jekyll uses to serve your site.
