@@ -6,7 +6,7 @@ It is a collection of Markdown pages and Jupyter Notebooks.
 
 The Jupyter Notebooks can be presented as pages and slides. They use the MATLAB kernel and after some setup the notebooks can be downloaded and they become executable documents.
 
-The published version of the textbook is **[EG-247 Signals and Systems](http://cpjobling.github.io/eg-247-textbook/index.html)**.
+The published version of the textbook is **[EG-247 Signals and Systems](http://cpjobling.github.io/eg-247-textbook)**.
 
 ## Explore this book
 
@@ -18,7 +18,7 @@ backwards by clicking the left/right arrow on your computer.
 
 Notice a typo in the text? Want to add more information
 and make other improvements to this text book? Don't hesitate to [open an issue or a PR on the
-EG-247 Textbook repo](https://github.com/cpjobling/eg-247-textbook). We'd love your
+EGLM03 Textbook repo](https://github.com/cpjobling/eg-247-textbook). We'd love your
 help!
 
 ## About this book

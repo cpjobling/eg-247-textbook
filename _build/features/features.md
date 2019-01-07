@@ -1,8 +1,8 @@
 ---
 title: 'Features'
 prev_page:
-  url: /intro
-  title: 'Home'
+  url: /04/3/Comparison
+  title: 'Comparisons'
 next_page:
   url: /features/markdown
   title: 'Markdown files'

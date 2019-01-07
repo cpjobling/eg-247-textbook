@@ -1,8 +1,8 @@
 ---
 title: 'Data Science'
 prev_page:
-  url: /guide/07_advanced
-  title: 'How-to and advanced topics'
+  url: /intro
+  title: 'Home'
 next_page:
   url: /01/1/intro
   title: 'Introduction'

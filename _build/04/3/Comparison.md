@@ -7,8 +7,8 @@ prev_page:
   url: /04/2/Strings
   title: 'Strings'
 next_page:
-  url: 
-  title: ''
+  url: /features/features
+  title: 'Features'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

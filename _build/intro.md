@@ -6,8 +6,8 @@ prev_page:
   url: 
   title: ''
 next_page:
-  url: /features/features
-  title: 'Features'
+  url: /01/what-is-data-science
+  title: 'Data Science'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 # Books with Jupyter and Jekyll
