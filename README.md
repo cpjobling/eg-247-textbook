@@ -1,4 +1,4 @@
-# Textbook for EGLM03 Modern Control Systems
+# Textbook for EG-247 Signals and Systems
 
 This is the source code for the course notes for EG-247 Signals and Systems.
 
