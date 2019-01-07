@@ -28,7 +28,7 @@ serve:
 	bundle exec guard
 
 build:
-	bundle exec jekyll build --destination ./docs
+	bundle exec jekyll build
 
 test:
 	pytest scripts/tests/test_build.py
