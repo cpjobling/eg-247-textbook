@@ -2,8 +2,8 @@
 interact_link: content/introduction/answers.ipynb
 title: 'Worksheet 1'
 prev_page:
-  url: /elementary_signals/hw1
-  title: 'Homework 1'
+  url: /laplace_transform/4/transfer_functions
+  title: 'Transfer Functions'
 next_page:
   url: /01/what-is-data-science
   title: 'Data Science'
@@ -32,7 +32,7 @@ plot the effect on this signal of applying the following basic signal operations
 
 ## Time scaling
 
-<img src="files/pictures/sigs3.png">
+<img src="pictures/sigs3.png">
 
 ## Mirroring
 

@@ -7,8 +7,8 @@ prev_page:
   url: /elementary_signals/index
   title: 'Elementary Signals'
 next_page:
-  url: /introduction/answers
-  title: 'Worksheet 1'
+  url: /laplace_transform/index
+  title: 'Laplace Transforms and their Applications'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
