@@ -2,8 +2,8 @@
 interact_link: content/introduction/answers.ipynb
 title: 'Worksheet 1'
 prev_page:
-  url: /introduction/worksheet
-  title: 'Worksheet 1'
+  url: /elementary_signals/hw1
+  title: 'Homework 1'
 next_page:
   url: /01/what-is-data-science
   title: 'Data Science'

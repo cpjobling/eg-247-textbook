@@ -5,8 +5,8 @@ prev_page:
   url: /introduction/index
   title: 'Introduction'
 next_page:
-  url: /introduction/answers
-  title: 'Worksheet 1'
+  url: /elementary_signals/index
+  title: 'Elementary Signals'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

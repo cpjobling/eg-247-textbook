@@ -551,6 +551,12 @@ ylabel('Amplitude')
 ```
 
 
+
+{:.output .output_png}
+![png](../images/introduction/index_70_0.png)
+
+
+
 ### Random
 
 A signal is random if one or more signal attributes takes on unpredictable
@@ -572,6 +578,12 @@ title('Random Signal')
 xlabel('Time t (s)')
 ylabel('Amplitude')
 ```
+
+
+
+{:.output .output_png}
+![png](../images/introduction/index_72_0.png)
+
 
 
 ## Domains for Signals and Systems
@@ -641,12 +653,24 @@ ylabel('Frequency Spectrum X(f)'),xlabel('Frequency (Hz)')
 ```
 
 
+{:.output .output_stream}
+```
+Created file '/Users/eechris/dev/eg-247/content/introduction/two_sines.m'.
+
+```
+
 
 
 {:.input_area}
 ```matlab
 two_sines
 ```
+
+
+
+{:.output .output_png}
+![png](../images/introduction/index_83_0.png)
+
 
 
 ### Viewing Signals in the Frequency Domain
