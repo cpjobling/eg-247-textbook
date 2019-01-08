@@ -1,8 +1,8 @@
 ---
 title: 'Data Science'
 prev_page:
-  url: /introduction/index
-  title: 'Introduction'
+  url: /introduction/answers
+  title: 'Worksheet 1'
 next_page:
   url: /01/1/intro
   title: 'Introduction'

@@ -7,8 +7,8 @@ prev_page:
   url: 
   title: ''
 next_page:
-  url: /01/what-is-data-science
-  title: 'Data Science'
+  url: /introduction/worksheet
+  title: 'Worksheet 1'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
@@ -123,7 +123,7 @@ To help us answer these questions, let's use our Mathematical tools to plot a si
 
 $$3\cos(2\pi\cdot 2t - 3\pi/4)$$
 
-### Wolfram|Alpha
+### Wolfram Alpha
 
 Here's the link: <http://www.wolframalpha.com>
 
