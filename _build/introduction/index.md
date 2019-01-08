@@ -142,6 +142,7 @@ In Matlab we would need to tackle this by breaking down the steps.
 ```matlab
 %Make sure that we have a clean workspace
 clear all
+format compact
 ```
 
 
@@ -185,7 +186,51 @@ grid
 
 
 
-See [sinewave.m](matlab/sinewave.m).
+If you want to execute this in MATLAB, you can create a file.
+
+
+
+{:.input_area}
+```matlab
+%%file sinewave.m
+
+% SINEWAVE - plot function $x(t) = 3 \cos(2\pi t - 3 \pi/4)$ for $t = 0\ldots 1$
+
+%% Set up the problem
+% define t
+t = linspace(0, 1, 100);
+% define x
+x = 3 * cos(2*pi*2*t - 3*pi/4);
+%% Plot result and label plot
+plot(t,x)
+title('A Sinusoidal Signal')
+xlabel('Time t (s)')
+ylabel('Amplitude')
+grid
+```
+
+
+{:.output .output_stream}
+```
+Created file '/Users/eechris/dev/eg-247/content/introduction/sinewave.m'.
+
+```
+
+To run this script, just type the filename withount the `.m` extension
+
+
+
+{:.input_area}
+```matlab
+sinewave
+```
+
+
+
+{:.output .output_png}
+![png](../images/introduction/index_33_0.png)
+
+
 
 ### Returning to the Question
 
@@ -247,7 +292,7 @@ In this course, we will model such systems as block diagram models in Simulink.
 
 <img src="pictures/css.png">
 
-The Similink code can be downloaded from this file [gain_level_shift.slx](matlab/gain_level_shift.slx).
+The Similink code can be downloaded from this file [gain_level_shift.slx](gain_level_shift.slx).
 
 ## Demonstration
 
@@ -286,7 +331,30 @@ We can plot this in Matlab as a *stem plot*
 
 ## Procedure
 
-Define function and save as [y.m](files/matlab/y.m).
+Define function and save as [y.m](y.m).
+
+
+
+{:.input_area}
+```matlab
+%%file y.m
+
+% Define the function
+function [ y ] = x( n )
+  if n < 0 | n >= 10 
+      y = 0;
+  else 
+      y = 5;
+  end
+end
+```
+
+
+{:.output .output_stream}
+```
+Created file '/Users/eechris/dev/eg-247/content/introduction/y.m'.
+
+```
 
 
 
@@ -328,11 +396,9 @@ grid
 
 
 {:.output .output_png}
-![png](../images/introduction/index_46_0.png)
+![png](../images/introduction/index_50_0.png)
 
 
-
-See [discete.m](matlab/discrete.m)
 
 ### Exercise
 
@@ -362,7 +428,7 @@ The term *tap* denotes that output at time instant $n$ is formed from two time i
 
 <img src="pictures/ds.png" width="50%" />
 
-This system is available as a Simulink model [discrete_system.slx](matlab/discrete_system.slx)
+This system is available as a Simulink model [discrete_system.slx](discrete_system.slx)
 
 
 
@@ -421,7 +487,7 @@ ylabel('Amplitude')
 
 
 {:.output .output_png}
-![png](../images/introduction/index_60_0.png)
+![png](../images/introduction/index_63_0.png)
 
 
 
@@ -459,8 +525,6 @@ Signals that are *deterministic* (completely determined functions of time) but n
 
 This is how we generate an aperiodic rectangular pulse of duration $\tau$ in Matlab:
 
-See [aperiodic.m](matlab/aperiodic.m)
-
 
 
 
@@ -487,12 +551,6 @@ ylabel('Amplitude')
 ```
 
 
-
-{:.output .output_png}
-![png](../images/introduction/index_67_0.png)
-
-
-
 ### Random
 
 A signal is random if one or more signal attributes takes on unpredictable
@@ -500,8 +558,6 @@ values in a probability sense.
 ￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼
 Engineers working with communication receivers are concerned with random
 signals, especially noise.
-
-See: [random.m](https://github.com/cpjobling/EG-247-Resources/blob/master/introduction/matlab/random.m)
 
 
 
@@ -516,12 +572,6 @@ title('Random Signal')
 xlabel('Time t (s)')
 ylabel('Amplitude')
 ```
-
-
-
-{:.output .output_png}
-![png](../images/introduction/index_69_0.png)
-
 
 
 ## Domains for Signals and Systems
@@ -569,17 +619,35 @@ $$x(t) = \underbrace {A_1\cos(2\pi f_1 t)}_{s_1} + \underbrace {A_2\cos(2\pi f_2
 
 {:.input_area}
 ```matlab
-two_sines
+%%file two_sines.m
+
+%... plot two sinusoids signal
+A1 = 2; f1 = 1;
+A2 = 1.5;f2 = 2.2;
+t = linspace(0, 3*(1/f1), 1000);
+s1 = A1*cos(2*pi*f1*t);
+s2 = A2*cos(2*pi*f2*t);
+subplot(4,1,1)
+plot(t,s1),ylim([-5,5]),xlabel('Time t (s) '),ylabel('s1')
+subplot(4,1,2)
+plot(t,s2),ylim([-5,5]),xlabel('Time t (s) '),ylabel('s2')
+subplot(4,1,3)
+plot(t,s1+s2),ylim([-5,5]),xlabel('Time t (s) '),ylabel('x(t) = s2 + s2')
+subplot(4,1,4)
+axis([0,4,0,2.5])
+arrow([f1,0],[f1,A1]),text(f1,A1+0.2,'A1'),text(f1+0.05,0.2,'f1')
+arrow([f2,0],[f2,A2]),text(f2,A2+0.2,'A2'),text(f2+0.05,0.2,'f2')
+ylabel('Frequency Spectrum X(f)'),xlabel('Frequency (Hz)')
 ```
 
 
 
-{:.output .output_png}
-![png](../images/introduction/index_79_0.png)
 
+{:.input_area}
+```matlab
+two_sines
+```
 
-
-Matlab code: [two_sines.m](matlab/two_sines.m)
 
 ### Viewing Signals in the Frequency Domain
 

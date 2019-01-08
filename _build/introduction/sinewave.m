@@ -1,10 +1,10 @@
-%% Sinusoid Example from Introduction
-%  Here's the code to compute and plot the sinusoidal signal
-% $3 \cos(2\pi \cdot 2t - 3\pi/4)$
 
-%% Define t
+% SINEWAVE - plot function $x(t) = 3 \cos(2\pi t - 3 \pi/4)$ for $t = 0\ldots 1$
+
+%% Set up the problem
+% define t
 t = linspace(0, 1, 100);
-%% Define x
+% define x
 x = 3 * cos(2*pi*2*t - 3*pi/4);
 %% Plot result and label plot
 plot(t,x)

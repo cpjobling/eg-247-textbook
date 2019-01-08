@@ -1,3 +1,4 @@
+
 % Define the function
 function [ y ] = x( n )
   if n < 0 | n >= 10 

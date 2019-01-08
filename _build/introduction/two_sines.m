@@ -1,4 +1,5 @@
-%%... plot two sinusoids signal
+
+%... plot two sinusoids signal
 A1 = 2; f1 = 1;
 A2 = 1.5;f2 = 2.2;
 t = linspace(0, 3*(1/f1), 1000);
