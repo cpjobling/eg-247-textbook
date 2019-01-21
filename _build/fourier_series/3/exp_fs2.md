@@ -7,8 +7,8 @@ prev_page:
   url: /fourier_series/2/exp_fs1
   title: 'Exponential Fourier Series'
 next_page:
-  url: /introduction/answers
-  title: 'Worksheet 1'
+  url: /fourier_transform/index
+  title: 'Fourier Transform'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
