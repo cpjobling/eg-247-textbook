@@ -2,8 +2,8 @@
 interact_link: content/introduction/answers.ipynb
 title: 'Worksheet 1'
 prev_page:
-  url: /laplace_transform/4/transfer_functions
-  title: 'Transfer Functions'
+  url: /fourier_series/3/exp_fs2
+  title: 'Line Spectra and their Applications'
 next_page:
   url: /01/what-is-data-science
   title: 'Data Science'

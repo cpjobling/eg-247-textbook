@@ -7,8 +7,8 @@ prev_page:
   url: /laplace_transform/3/circuit_analysis
   title: 'Using Laplace Transforms for Circuit Analysis'
 next_page:
-  url: /introduction/answers
-  title: 'Worksheet 1'
+  url: /laplace_transform/5/convolution
+  title: 'The Impulse Response and Convolution'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
