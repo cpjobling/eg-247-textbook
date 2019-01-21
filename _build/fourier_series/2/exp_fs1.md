@@ -29,13 +29,13 @@ The result is called the *Exponential Fourier Series*.
 * Symmetry in Exponential Fourier Series
 * Example
 
-## The Exponential Function e<sup>at</sup>
+## The Exponential Function $e^{at}$
 
 * You should already be familiar with $e^{at}$ because it appears in the solution of differential equations. 
 * It is also a function that appears in the definition of the Laplace and Inverse Laplace Transform.
 * It pops up again and again in tables and properies of the Laplace Transform. 
 
-## Case when a is real.
+### Case when a is real.
 
 When $a$ is real the function $e^{at}$ will take one of the two forms illustrated below:
 
@@ -57,7 +57,7 @@ This is the case that helps us simplify the computation of sinusoidal Fourier se
 It was [Leonhard Euler](http://en.wikipedia.org/wiki/Leonhard_Euler) who discovered the [formula](http://en.wikipedia.org/wiki/Euler%27s_formula) visualized above.
 
 
-### Some important values of $\omega t$
+#### Some important values of $\omega t$
 
 These are useful when simplifying expressions that result from integrating functions that involve the imaginary exponential
 
@@ -87,7 +87,7 @@ Give the following:
 
 </pre>
 
-### Case where a is complex
+### Case where $a$ is complex
 
 We shall not say much about this case except to note that the Laplace transform equation includes such a number. The variable $s$ in the Laplace Transform 
 
@@ -109,7 +109,7 @@ $$\sin \omega t = \frac{e^{j\omega t} - e^{-j\omega t}}{j2}$$
 
 We can use this result to convert the *Trigonometric Fourier Series* into an *Exponential Fourier Series* which has only one integral term to solve per harmonic.
 
-### The Exponential Fourier Series
+## The Exponential Fourier Series
 
 As [as stated in the notes on the Trigonometric Fourier Series](../1/trig_fseries) any periodic waveform $f(t)$ can be represented as
 
@@ -227,17 +227,17 @@ From Trigonometric Fourier Series, if there is half-wave symmetry, all even harn
 
 If there is no symmetry the Exponential Fourier Series of $f(t)$ is complex.
 
-### Relation of C<sub>-k</sub> to C<sub>k</sub>
+### Relation of $C_{-k}$ to $C_{k}$
 
 $C_{-k} = C_{k}^*$ **always**
 
-### Example 1
+## Example 1
 
 Compute the Exponential Fourier Series for the square wave shown below assuming that $\omega = 1$
 
 <img src="pictures/sqw.png"> 
 
-### Some questions for you
+#### Some questions for you
 
 * Square wave is an [**odd/even/neither**] function?
 * DC component is [**zero/non-zero**]?
@@ -268,7 +268,7 @@ Hence
 
 </pre>
 
-### Solution
+#### Solution
 
 $$\frac{1}{2\pi}\left[\int_{0}^{\pi} Ae^{-jk(\Omega_0 t)}\, d(\Omega_0 t) + \int_{\pi}^{2\pi} (-A)e^{-jk(\Omega_0 t)}\, d(\Omega_0 t)\right] = \frac{1}{2\pi}\left[\left.\frac{A}{-jk}e^{-jk(\Omega_0 t)}\right|_0^\pi+\left.\frac{-A}{-jk}e^{-jk(\Omega_0 t)}\right|_\pi^{2\pi}\right]$$
 
@@ -286,7 +286,7 @@ $${C_n \atop {n=\mathrm{odd}}} = \frac{A}{2j\pi k}\left(e^{-jk\pi}-1\right)^2 = 
 $${C_n \atop {n=\mathrm{even}}} = 0.$$
 
 
-### Exponential Fourier series for the square wave with odd symmetry
+## Exponential Fourier series for the square wave with odd symmetry
 
 From the definition of the exponential Fourier series
 
@@ -300,7 +300,7 @@ Note sign change in first two terms. This is due to the fact that $C_{-k} = C_k^
 
 E.g. since $C_3 = 2A/j3\pi$, $C_{-3} = C_3^* = -2A/j3\pi$
 
-### Trig. Fourier Series from Exponential Fourier Series
+## Trig. Fourier Series from Exponential Fourier Series
 
 Since
 
@@ -418,9 +418,7 @@ ylabel('\angle c_k [radians]');
 
 
 
-## End of First Hour
-
-*Summary*
+## Summary
 
 * Exponents and Euler's Equation
 * The exponential Fourier series
@@ -429,7 +427,7 @@ ylabel('\angle c_k [radians]');
 
 ## Answers to in-class problems
 
-### Some important values of omega*t - Solution
+### Some important values of $\omega t$ - Solution
 
 * When $\omega t = 0$: $e^{j\omega t} = e^{j0} = 1$
 * When $\omega t = \pi/2$: $e^{j\omega t} = e^{j\pi/2} = j$
