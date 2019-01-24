@@ -27,9 +27,9 @@
   "headline":
     "Elementary Signals",
   "datePublished":
-    "2019-01-24T13:45:47+00:00",
+    "2019-01-24T17:57:24+00:00",
   "dateModified":
-    "2019-01-24T13:45:47+00:00",
+    "2019-01-24T17:57:24+00:00",
   "description":
     "Lecturer: Set up MATLAB",
   "author": {
@@ -807,12 +807,37 @@ document.addEventListener('turbolinks:load', updateInteractLink)
               </li>
               
             
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/elementary_signals/worksheet3"
+                >
+                  
+                  Worksheet 3
+                </a>
+
+                
+                
+
+              </li>
+              
+            
           </ul>
         
       </li>
 
       
     
+      
+      
+        <li><h2 class="c-sidebar__title">Homework</li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
       
       
         <li><h2 class="c-sidebar__title">Lab Exercises</li>
@@ -870,17 +895,9 @@ document.addEventListener('turbolinks:load', updateInteractLink)
     <nav class="onthispage">
       <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
       <ul class="toc__menu">
-  <li><a href="#turningpoint-mobile-polling-setup">TurningPoint Mobile Polling Setup</a>
-    <ul>
-      <li><a href="#1-use-a-web-browser">1. Use a web browser</a></li>
-      <li><a href="#2-install-and-open-the-turningpoint-app">2. Install and open the TurningPoint app</a></li>
-    </ul>
-  </li>
-  <li><a href="#todays-session-id">Today’s Session ID</a></li>
   <li><a href="#the-unit-step-function">The Unit Step Function</a>
     <ul>
       <li><a href="#in-matlab">In Matlab</a></li>
-      <li><a href="#circuit-revisited">Circuit Revisited</a></li>
     </ul>
   </li>
   <li><a href="#simple-signal-operations">Simple Signal Operations</a>
@@ -890,20 +907,8 @@ document.addEventListener('turbolinks:load', updateInteractLink)
       <li><a href="#time-delay-and-advance">Time Delay and Advance</a></li>
     </ul>
   </li>
-  <li><a href="#examples">Examples</a>
-    <ul>
-      <li><a href="#example-1">Example 1</a></li>
-      <li><a href="#example-2">Example 2</a></li>
-    </ul>
-  </li>
-  <li><a href="#synthesis-of-signals-from-unit-step">Synthesis of Signals from Unit Step</a>
-    <ul>
-      <li><a href="#synthesize-rectangular-pulse">Synthesize Rectangular Pulse</a></li>
-      <li><a href="#synthesize-square-wave">Synthesize Square Wave</a></li>
-      <li><a href="#synthesize-symmetric-rectangular-pulse">Synthesize Symmetric Rectangular Pulse</a></li>
-      <li><a href="#synthesize-symmetric-triangular-pulse">Synthesize Symmetric Triangular Pulse</a></li>
-    </ul>
-  </li>
+  <li><a href="#examples">Examples</a></li>
+  <li><a href="#synthesis-of-signals-from-the-unit-step">Synthesis of Signals from the Unit Step</a></li>
   <li><a href="#the-ramp-function">The Ramp Function</a>
     <ul>
       <li><a href="#note">Note</a></li>
@@ -911,9 +916,9 @@ document.addEventListener('turbolinks:load', updateInteractLink)
   </li>
   <li><a href="#the-dirac-delta-function">The Dirac Delta Function</a>
     <ul>
-      <li><a href="#notes">Notes</a></li>
       <li><a href="#the-delta-function">The delta function</a></li>
       <li><a href="#sketch-of-the-delta-function">Sketch of the delta function</a></li>
+      <li><a href="#matlab-confirmation">MATLAB Confirmation</a></li>
     </ul>
   </li>
   <li><a href="#important-properties-of-the-delta-function">Important properties of the delta function</a>
@@ -923,14 +928,13 @@ document.addEventListener('turbolinks:load', updateInteractLink)
       <li><a href="#higher-order-delta-fuctions">Higher Order Delta Fuctions</a></li>
     </ul>
   </li>
-  <li><a href="#examples-1">Examples</a>
+  <li><a href="#summary">Summary</a>
     <ul>
-      <li><a href="#example-3">Example 3</a></li>
-      <li><a href="#example-4">Example 4</a></li>
+      <li><a href="#takeaways">Takeaways</a></li>
+      <li><a href="#examples-1">Examples</a></li>
+      <li><a href="#homework">Homework</a></li>
     </ul>
   </li>
-  <li><a href="#lab-work">Lab Work</a></li>
-  <li><a href="#answers-to-in-class-questions">Answers to in-class questions</a></li>
 </ul>
     </nav>
   </aside>
@@ -970,91 +974,25 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
 <h1 id="elementary-signals">Elementary Signals</h1>
 
-<h2 id="turningpoint-mobile-polling-setup">TurningPoint Mobile Polling Setup</h2>
+<p>An annotatable copy of partial notes and in-class examples for this presentation will be distributed before the first class meeting as <strong>Worksheet 3</strong> the handouts section of the <em>_Content Library</em> of the <strong>OneNote Class Notebook</strong> for this class. You can also view the notes for this presentation as a webpage (<a href="https://cpjobling.github.io/cpjobling/eg-247-textbook/elementary_signals/index">HTML</a>) and as a downloadable <a href="https://cpjobling.github.io/cpjobling/eg-247-textbook/elementary_signals/elementary_signals.pdf">PDF file</a>.</p>
 
-<p>We will be using TurningPoint mobile response system polling in this session.</p>
+<p>Consider the network shown below, where the switch is closed at time $t=T$.</p>
 
-<p>There are two ways to participate:</p>
+<p><img src="pictures/circuit2.png" /></p>
 
-<h3 id="1-use-a-web-browser">1. Use a web browser</h3>
+<p>Express the output voltage $v_{\mathrm{out}}$ as a function of the unit step function, and sketch the appropriate waveform.</p>
 
-<p>Browse to: <a href="https://responseware.turningtechnologies.com">responseware.turningtechnologies.com</a>.</p>
+<p><strong>Solution</strong></p>
 
-<p><img src="https://chart.googleapis.com/chart?cht=qr&amp;chs=300x300&amp;choe=UTF-8&amp;chld=H&amp;chl=https://goo.gl/rPE4Ls" alt="QR Code" /></p>
+<p>Before the switch is closed at $t &lt; T$, <script type="math/tex">V_{\mathrm{out}} = 0.</script></p>
 
-<p>https://goo.gl/rPE4Ls</p>
+<p>After the switch is closed for $t &gt; T$, <script type="math/tex">V_{\mathrm{out}} = V_s.</script></p>
 
-<h3 id="2-install-and-open-the-turningpoint-app">2. Install and open the TurningPoint app</h3>
+<p>We imagine that the voltage jumps instantaneously from 0 to $V_s$ volts at $t = T$ seconds.</p>
 
-<p>Browse to: <a href="https://www.turningtechnologies.com/response-options/mobile">TurningPoint
-Mobile Responding</a></p>
+<p><img src="pictures/step.png" width="30%" alt="step function" /></p>
 
-<p><img src="https://chart.googleapis.com/chart?cht=qr&amp;chs=300x300&amp;choe=UTF-8&amp;chld=H&amp;chl=https://goo.gl/DmGeQv" alt="QR Code" /></p>
-
-<p>https://goo.gl/DmGeQv</p>
-
-<p>Use the links to the App stores at the bottom of that page or follow these links: <a href="https://itunes.apple.com/gb/app/turningpoint/id300028504?mt=8">App Store</a>, <a href="https://play.google.com/store/apps/details?id=com.turningTech.Responseware&amp;feature=search_result#?t=W251bGwsMSwyLDEsImNvbS50dXJuaW5nVGVjaC5SZXNwb25zZXdhcmUiXQ..">Google Play</a>.</p>
-
-<p>When prompted: enter the <strong>session ID</strong></p>
-
-<h2 id="todays-session-id">Today’s Session ID</h2>
-<pre>
-
-
-
-</pre>
-<div style="font-size: 32pt; font-face: bold;">XXXXX</div>
-
-<p>The rest of the session will be anonymous and scored by teams.</p>
-
-<h1 id="elementary-signals-1">Elementary Signals</h1>
-
-<p>Consider this circuit:</p>
-
-<p><img src="pictures/circuit1.png" /></p>
-
-<h4 id="--open-poll">-&gt; Open Poll</h4>
-
-<p>Q1: What happens <strong>before</strong> $t=0$?</p>
-
-<ol>
-  <li>$v_{\mathrm{out}} = \mathrm{undefined}$</li>
-  <li>$v_{\mathrm{out}} = 0$</li>
-  <li>$v_{\mathrm{out}} = V_s$</li>
-  <li>$v_{\mathrm{out}} = 1/2$</li>
-  <li>$v_{\mathrm{out}} = \infty$</li>
-</ol>
-
-<p>Q2: What happens <strong>after</strong> $t=0$?</p>
-
-<ol>
-  <li>$v_{\mathrm{out}} = \mathrm{undefined}$</li>
-  <li>$v_{\mathrm{out}} = 0$</li>
-  <li>$v_{\mathrm{out}} = V_s$</li>
-  <li>$v_{\mathrm{out}} = 1/2$</li>
-  <li>$v_{\mathrm{out}} = \infty$</li>
-</ol>
-
-<p>Q3: What happens <strong>at</strong> $t=0$?</p>
-
-<ol>
-  <li>$v_{\mathrm{out}} = \mathrm{undefined}$</li>
-  <li>$v_{\mathrm{out}} = 0$</li>
-  <li>$v_{\mathrm{out}} = V_s$</li>
-  <li>$v_{\mathrm{out}} = 1/2$</li>
-  <li>$v_{\mathrm{out}} = \infty$</li>
-</ol>
-
-<p>Q4: What does the response of $V_{\mathrm{out}}$ look like? 
-Circle the picture you think is correct on your handout.</p>
-
-<p>1: <img src="pictures/impulse.png" /></p>
-
-<p>2: <img src="pictures/ramp.png" /></p>
-
-<p>3: <img src="pictures/step1.png" /></p>
-
-<p>4: <img src="pictures/curve.png" /></p>
+<p>We call this type of signal a step function.</p>
 
 <h2 id="the-unit-step-function">The Unit Step Function</h2>
 
@@ -1089,9 +1027,9 @@ Circle the picture you think is correct on your handout.</p>
 
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/elementary_signals/index_20_1.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/elementary_signals/index_9_1.png" alt="png" /></p>
 
-<p>Note that, so it can be plotted, Matlab defines the <em>heaviside function</em> slightly differently from the mathematically ideal unit step:</p>
+<p>Note that, so that it can be plotted, Matlab defines the <em>heaviside function</em> slightly differently from the mathematically ideal unit step:</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
 \mathrm{heaviside}(t) = \left\{ {\begin{array}{*{20}{c}}
@@ -1100,200 +1038,66 @@ Circle the picture you think is correct on your handout.</p>
 {1\quad t > 0}
 \end{array}} \right. %]]></script>
 
-<h3 id="circuit-revisited">Circuit Revisited</h3>
-
-<p>Consider the network shown below, where the switch is closed at time $t=T$.</p>
-
-<p><img src="pictures/circuit2.png" /></p>
-
-<p>Express the output voltage $v_{\mathrm{out}}$ as a function of the unit step function, and sketch the appropriate waveform.</p>
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
 <h2 id="simple-signal-operations">Simple Signal Operations</h2>
 
 <h3 id="amplitude-scaling">Amplitude Scaling</h3>
 
 <p>Sketch $Au_0(t)$ and $-Au_0(t)$</p>
 
-<pre style="border: 2px solid blue">
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">syms</span> <span class="n">t</span><span class="p">;</span>
+<span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">);</span> <span class="c1">% rename heaviside function for ease of use</span>
+<span class="n">A</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">% so signal can be plotted</span>
+<span class="n">ezplot</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="nb">grid</span><span class="p">,</span><span class="nb">title</span><span class="p">(</span><span class="s1">'Applitude scaling $$Au_0(t)$$'</span><span class="p">,</span><span class="s1">'interpreter'</span><span class="p">,</span><span class="s1">'latex'</span><span class="p">)</span>
+</code></pre></div></div>
 
+<p class="output output_png"><img src="../images/elementary_signals/index_13_0.png" alt="png" /></p>
 
+<p>Note that the signal is scaled in the $y$ direction.</p>
 
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ezplot</span><span class="p">(</span><span class="o">-</span><span class="n">A</span><span class="o">*</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="nb">grid</span><span class="p">,</span><span class="nb">title</span><span class="p">(</span><span class="s1">'Amplitude scaling and mirroring $$-Au_0(t)$$'</span><span class="p">,</span><span class="s1">'interpreter'</span><span class="p">,</span><span class="s1">'latex'</span><span class="p">)</span>
+</code></pre></div></div>
 
+<p class="output output_png"><img src="../images/elementary_signals/index_15_0.png" alt="png" /></p>
 
-
-
-
-
-
-
-
-
-
-
-</pre>
+<p>Note that, because of the sign, the signal is mirrored about the $x$ axis as well as being scaled by 2.</p>
 
 <h3 id="time-reversal">Time Reversal</h3>
 
 <p>Sketch $u_0(-t)$</p>
 
-<pre style="border: 2px solid blue">
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ezplot</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="n">u0</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="nb">grid</span><span class="p">,</span><span class="nb">title</span><span class="p">(</span><span class="s1">'Time reversal $$Au_0(-t)$$'</span><span class="p">,</span><span class="s1">'interpreter'</span><span class="p">,</span><span class="s1">'latex'</span><span class="p">)</span>
+</code></pre></div></div>
 
+<p class="output output_png"><img src="../images/elementary_signals/index_18_0.png" alt="png" /></p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
+<p>The sign on the function argument $-t$ causes the whole signal to be reversed in time. Note that another way of looking at this is that the signal is mirrored about the $y$ axis.</p>
 
 <h3 id="time-delay-and-advance">Time Delay and Advance</h3>
 
 <p>Sketch $u_0(t-T)$ and $u_0(t+T)$</p>
 
-<pre style="border: 2px solid blue">
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">T</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">% again to make the signal plottable.</span>
+<span class="n">ezplot</span><span class="p">(</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">T</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]),</span><span class="nb">grid</span><span class="p">,</span><span class="nb">title</span><span class="p">(</span><span class="s1">'Time delay $$u_0(t - T)$$'</span><span class="p">,</span><span class="s1">'interpreter'</span><span class="p">,</span><span class="s1">'latex'</span><span class="p">)</span>
+</code></pre></div></div>
 
+<p class="output output_png"><img src="../images/elementary_signals/index_21_0.png" alt="png" /></p>
 
+<p>This is a <em>time delay</em> … note for $u_0(t - T)$ the step change occurs T seconds <strong>later</strong> than it does for $u_o(t)$.</p>
 
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ezplot</span><span class="p">(</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="n">T</span><span class="p">),[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="nb">grid</span><span class="p">,</span><span class="nb">title</span><span class="p">(</span><span class="s1">'Time advance $$u_0(t + T)$$'</span><span class="p">,</span><span class="s1">'interpreter'</span><span class="p">,</span><span class="s1">'latex'</span><span class="p">)</span>
+</code></pre></div></div>
 
+<p class="output output_png"><img src="../images/elementary_signals/index_23_0.png" alt="png" /></p>
 
-
-
-
-
-
-
-
-
-
-
-</pre>
+<p>This is a <em>time advance</em> … note for $u_0(t + T)$ the step change occurs T seconds <strong>earlier</strong> than it does for $u_o(t)$.</p>
 
 <h2 id="examples">Examples</h2>
 
-<h3 id="example-1">Example 1</h3>
+<p>We will work through some examples in class. See <a href="worksheet3">Worksheet 3</a>.</p>
 
-<p>Which of these signals represents $-Au_0(t+T)$?</p>
+<h2 id="synthesis-of-signals-from-the-unit-step">Synthesis of Signals from the Unit Step</h2>
 
-<p><img src="pictures/stepf1.png" width="50%" /></p>
-
-<h4 id="--open-poll-1">-&gt; Open Poll</h4>
-
-<h3 id="example-2">Example 2</h3>
-
-<p>What is represented by</p>
-
-<p><img src="pictures/stepf2.png" width="50%" /></p>
-
-<h4 id="--open-poll-2">-&gt; Open Poll</h4>
-
-<ol>
-  <li>$-Au_0(t + T)$</li>
-  <li>$-Au_0(-t + T)$</li>
-  <li>$-Au_0(-t - T)$</li>
-  <li>$-Au_0(t-T)$</li>
-</ol>
-
-<h2 id="synthesis-of-signals-from-unit-step">Synthesis of Signals from Unit Step</h2>
-
-<p>Unit step functions can be used to represent other time-varying functions such as rectangular pulses, square waves and triangular pulses.</p>
-
-<h3 id="synthesize-rectangular-pulse">Synthesize Rectangular Pulse</h3>
-
-<p><img src="pictures/rect.png" /></p>
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-</pre>
-
-<h3 id="synthesize-square-wave">Synthesize Square Wave</h3>
-
-<p><img src="pictures/square_wave.png" /></p>
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-<h3 id="synthesize-symmetric-rectangular-pulse">Synthesize Symmetric Rectangular Pulse</h3>
-
-<p><img src="pictures/symm_rect.png" /></p>
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-<h3 id="synthesize-symmetric-triangular-pulse">Synthesize Symmetric Triangular Pulse</h3>
-
-<p><img src="pictures/symm_tri.png" /></p>
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
+<p>Unit step functions can be used to represent other time-varying functions such as rectangular pulses, square waves and triangular pulses. See <a href="worksheet3">Worksheet 3</a> for the examples that we will look at in class.</p>
 
 <h2 id="the-ramp-function">The Ramp Function</h2>
 
@@ -1301,39 +1105,20 @@ Circle the picture you think is correct on your handout.</p>
 
 <p>In the circuit shown above $i_s$ is a constant current source and the switch is closed at time $t=0$.</p>
 
-<p>Show that the voltage across the capacitor can be represented as</p>
+<p>The voltage across the capacitor can be represented as</p>
 
 <script type="math/tex; mode=display">v_C(t)=\frac{i_s}{C}t u_0(t)</script>
 
-<p>and sketch the wave form.</p>
+<p>To sketch the wave form, let’s arbitrarily let $C$ and $i_s$ be one and then plot with MATLAB.</p>
 
-<pre style="border: 2px solid blue">
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">C</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nb">is</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">vc</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">=</span><span class="n">t</span><span class="o">*</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+<span class="n">ezplot</span><span class="p">(</span><span class="n">vc</span><span class="p">(</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">]),</span><span class="nb">grid</span><span class="p">,</span><span class="nb">title</span><span class="p">(</span><span class="s1">'A ramp function'</span><span class="p">)</span>
+</code></pre></div></div>
 
+<p class="output output_png"><img src="../images/elementary_signals/index_30_0.png" alt="png" /></p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
+<p>This type of signal is called a <strong>ramp function</strong>. Note that it is the <em>integral</em> of the step function (the resistor-capacitor circuit implements a simple integrator circuit).</p>
 
 <p>The unit ramp function is defined as</p>
 
@@ -1359,7 +1144,7 @@ Circle the picture you think is correct on your handout.</p>
 
 <script type="math/tex; mode=display">u_{n-1} = \frac{1}{n}\frac{d}{dt}u_n(t)</script>
 
-<p>Details are given in equations 1.26—1.29 in the textbook.</p>
+<p>Details are given in equations 1.26—1.29 in Karris.</p>
 
 <h2 id="the-dirac-delta-function">The Dirac Delta Function</h2>
 
@@ -1367,23 +1152,17 @@ Circle the picture you think is correct on your handout.</p>
 
 <p>In the circuit shown above, the switch is closed at time $t=0$ and $i_L(t)=0$ for $t&lt;0$. Express the inductor current $i_L(t)$ in terms of the unit step function and hence derive an expression for $v_L(t)$.</p>
 
-<pre style="border: 2px solid blue">
+<p><strong>Solution</strong></p>
 
+<script type="math/tex; mode=display">v_L(t) = L\frac{di_L}{dt}</script>
 
+<p>Because the switch closes instantaneously at $t=0$</p>
 
+<script type="math/tex; mode=display">i_L(t) = i_s u_0(t)</script>
 
+<p>Thus</p>
 
-
-
-
-
-
-
-
-
-</pre>
-
-<h3 id="notes">Notes</h3>
+<script type="math/tex; mode=display">v_L(t) = i_s L\frac{d}{dt} u_0(t).</script>
 
 <p>To solve this problem we need to invent a function that represents the derivative of the unit step function. This function is called $\delta(t)$ or the <em>dirac delta</em> function (named after <a href="http://en.wikipedia.org/wiki/Paul_Dirac">Paul Dirac</a>).</p>
 
@@ -1397,11 +1176,28 @@ Circle the picture you think is correct on your handout.</p>
 
 <p>and</p>
 
-<p>$\delta(t) = 0$ for all $t\ne 0$.</p>
+<script type="math/tex; mode=display">\delta(t) = 0\;\forall\;
+t\ne 0.</script>
 
 <h3 id="sketch-of-the-delta-function">Sketch of the delta function</h3>
 
 <p><img src="pictures/impulse.png" alt="The delta function" /></p>
+
+<h3 id="matlab-confirmation">MATLAB Confirmation</h3>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">is</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">L</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">vL</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="nb">is</span> <span class="o">*</span> <span class="n">L</span> <span class="o">*</span> <span class="nb">diff</span><span class="p">(</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
+vL(t) =
+ 
+dirac(t)
+ 
+
+</code></pre></div></div>
+
+<p>Note that we can’t plot dirac(t) in MATLAB with <code class="highlighter-rouge">ezplot</code>.</p>
 
 <h2 id="important-properties-of-the-delta-function">Important properties of the delta function</h2>
 
@@ -1447,131 +1243,28 @@ Circle the picture you think is correct on your handout.</p>
 
 <script type="math/tex; mode=display">\int_{-\infty}^{\infty}f(t)\delta^n(t-\alpha)dt = \left. ( - 1)^n\frac{d^n}{dt^n}[f(t)] \right|_{t = \alpha }</script>
 
-<h2 id="examples-1">Examples</h2>
+<h2 id="summary">Summary</h2>
 
-<h3 id="example-3">Example 3</h3>
+<p>In this chapter we have looked at some elementary signals and the theoretical circuits that can be used to generate them.</p>
 
-<p>Evaluate the following expressions</p>
+<h3 id="takeaways">Takeaways</h3>
 
-<script type="math/tex; mode=display">3t^4\delta(t-1)</script>
+<ul>
+  <li>You should note that the unit step is the <em>heaviside function</em> $u_0(t)$.</li>
+  <li>Many useful signals can be synthesized by use of the unit step as a “gating function” in combination with other signals</li>
+  <li>That unit ramp function $u_1(t)$ is the integral of the step function.</li>
+  <li>The <em>Dirac delta</em> function $\delta(t)$ is the derivative of the unit step function. We sometimes refer to it as the <em>unit impulse function</em>.</li>
+  <li>The delta function has sampling and sifting properties that will be useful in the development of <em>time convolution</em> and <em>sampling theory</em>.
+and that</li>
+</ul>
 
-<pre style="border: 2px solid blue">
+<h3 id="examples-1">Examples</h3>
 
+<p>We will do some of these in class. See <a href="worksheet3">worksheet3</a>.</p>
 
+<h3 id="homework">Homework</h3>
 
-
-
-
-
-
-
-
-
-
-
-</pre>
-<p>&lt;/li&gt;</p>
-
-<script type="math/tex; mode=display">\int_{-\infty}^{\infty}t\delta(t-2)dt</script>
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-<p>&lt;/li&gt;</p>
-
-<script type="math/tex; mode=display">t^2\delta'(t-3)</script>
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-<p>&lt;/li&gt;
-&lt;/ol&gt;</p>
-
-<h3 id="example-4">Example 4</h3>
-
-<p><img src="pictures/example2.png" /></p>
-
-<p>(1) Express the voltage waveform $v(t)$ shown above as a sum of unit step functions for the time interval $-1 &lt; t &lt; 7$ s</p>
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-<p>Using the result of part (1), compute the derivative of $v(t)$ and sketch its waveform.</p>
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-<h2 id="lab-work">Lab Work</h2>
-
-<p><strong>TODO</strong> Confirm Lab Dates</p>
-
-<p>In the second lab, a week on Monday, we will solve Example 2 using Matlab/Simulink following the procedure given between pages 1-17 and 1-22 of the textbook. We will also explore the <code class="highlighter-rouge">heaviside</code> and <code class="highlighter-rouge">dirac</code> functions.</p>
-
-<h2 id="answers-to-in-class-questions">Answers to in-class questions</h2>
-
-<p>Mathematically</p>
-
-<p>Q1. $v_{\mathrm{out}} = 0$ when $-\infty &lt; t &lt; 0$ (answer 2)</p>
-
-<p>Q2. $v_{\mathrm{out}} = V_s$ when $0 &lt; t &lt; \infty$ (answer 3)</p>
-
-<p>Q3. $v_{\mathrm{out}} = \mathrm{undefined}$ when $t=0$ (answer 1)</p>
-
-<p>$V_{\mathrm{out}}$ jumps from $0$ to $V_s$ instantanously when the switch is closed. We call this a discontinuous signal!</p>
-
-<p>Q4: The correct image is:</p>
-
-<p><img src="pictures/step2.png" /></p>
+<p>These are for you to do later for further practice. See <a href="hw1">Homework 1</a>.</p>
 
               <nav class="c-page__nav">
   

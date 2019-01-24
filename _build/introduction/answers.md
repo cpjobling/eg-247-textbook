@@ -2,15 +2,15 @@
 interact_link: content/introduction/answers.ipynb
 title: 'Worksheet 2'
 prev_page:
-  url: /introduction/worksheet2
-  title: 'Worksheet 2'
+  url: /elementary_signals/worksheet3
+  title: 'Worksheet 3'
 next_page:
   url: 
   title: ''
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
-# Answers to Worksheet 1
+# Answers to Worksheet 2
 
 Consider a signal 
 

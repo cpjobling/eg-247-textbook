@@ -167,6 +167,12 @@ grid
 ```
 
 
+
+{:.output .output_png}
+![png](../images/introduction/worksheet1_24_0.png)
+
+
+
 If you want to execute this in MATLAB, you can create a file.
 
 
@@ -191,6 +197,12 @@ grid
 ```
 
 
+{:.output .output_stream}
+```
+Created file '/Users/eechris/dev/eg-247-textbook/content/introduction/sinewave.m'.
+
+```
+
 To run this script, just type the filename withount the `.m` extension
 
 
@@ -199,6 +211,12 @@ To run this script, just type the filename withount the `.m` extension
 ```matlab
 sinewave
 ```
+
+
+
+{:.output .output_png}
+![png](../images/introduction/worksheet1_28_0.png)
+
 
 
 ### Returning to the Question
@@ -321,6 +339,12 @@ end
 ```
 
 
+{:.output .output_stream}
+```
+Created file '/Users/eechris/dev/eg-247-textbook/content/introduction/y.m'.
+
+```
+
 
 
 {:.input_area}
@@ -357,6 +381,12 @@ xlabel('Sample n')
 ylabel('Signal x[n]')
 grid
 ```
+
+
+
+{:.output .output_png}
+![png](../images/introduction/worksheet1_46_0.png)
+
 
 
 ### Exercise 1
@@ -463,6 +493,12 @@ ylabel('Amplitude')
 ```
 
 
+
+{:.output .output_png}
+![png](../images/introduction/worksheet1_61_0.png)
+
+
+
 What is the period $T$ in milliseconds?
 
 Write your answer here
@@ -507,6 +543,12 @@ ylabel('Amplitude')
 ```
 
 
+
+{:.output .output_png}
+![png](../images/introduction/worksheet1_67_0.png)
+
+
+
 ### Random
 
 A signal is random if one or more signal attributes takes on unpredictable
@@ -528,6 +570,12 @@ title('Random Signal')
 xlabel('Time t (s)')
 ylabel('Amplitude')
 ```
+
+
+
+{:.output .output_png}
+![png](../images/introduction/worksheet1_69_0.png)
+
 
 
 ## Domains for Signals and Systems
@@ -597,12 +645,24 @@ ylabel('Frequency Spectrum X(f)'),xlabel('Frequency (Hz)')
 ```
 
 
+{:.output .output_stream}
+```
+Created file '/Users/eechris/dev/eg-247-textbook/content/introduction/two_sines.m'.
+
+```
+
 
 
 {:.input_area}
 ```matlab
 two_sines
 ```
+
+
+
+{:.output .output_png}
+![png](../images/introduction/worksheet1_80_0.png)
+
 
 
 ### Polling Question

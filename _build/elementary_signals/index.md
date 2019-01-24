@@ -25,88 +25,26 @@ clear all
 
 # Elementary Signals
 
-## TurningPoint Mobile Polling Setup
-
-We will be using TurningPoint mobile response system polling in this session.
-
-There are two ways to participate:
-    
+An annotatable copy of partial notes and in-class examples for this presentation will be distributed before the first class meeting as **Worksheet 3** the handouts section of the *_Content Library* of the **OneNote Class Notebook** for this class. You can also view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/cpjobling/eg-247-textbook/elementary_signals/index)) and as a downloadable [PDF file](https://cpjobling.github.io/cpjobling/eg-247-textbook/elementary_signals/elementary_signals.pdf).
 
 
-### 1. Use a web browser
+Consider the network shown below, where the switch is closed at time $t=T$. 
 
-Browse to: [responseware.turningtechnologies.com](https://responseware.turningtechnologies.com). 
+<img src="pictures/circuit2.png">
 
-![QR Code](https://chart.googleapis.com/chart?cht=qr&chs=300x300&choe=UTF-8&chld=H&chl=https://goo.gl/rPE4Ls)
+Express the output voltage $v_{\mathrm{out}}$ as a function of the unit step function, and sketch the appropriate waveform.
 
-https://goo.gl/rPE4Ls
+**Solution**
 
+Before the switch is closed at $t < T$, $$V_{\mathrm{out}} = 0.$$
 
-### 2. Install and open the TurningPoint app
+After the switch is closed for $t > T$, $$V_{\mathrm{out}} = V_s.$$
 
-Browse to: [TurningPoint
-Mobile Responding](https://www.turningtechnologies.com/response-options/mobile)
+We imagine that the voltage jumps instantaneously from 0 to $V_s$ volts at $t = T$ seconds.
 
-![QR Code](https://chart.googleapis.com/chart?cht=qr&chs=300x300&choe=UTF-8&chld=H&chl=https://goo.gl/DmGeQv)
+<img src="pictures/step.png" width="30%" alt="step function" />
 
-https://goo.gl/DmGeQv
-
-Use the links to the App stores at the bottom of that page or follow these links: [App Store](https://itunes.apple.com/gb/app/turningpoint/id300028504?mt=8), [Google Play](https://play.google.com/store/apps/details?id=com.turningTech.Responseware&feature=search_result#?t=W251bGwsMSwyLDEsImNvbS50dXJuaW5nVGVjaC5SZXNwb25zZXdhcmUiXQ..).
-
-When prompted: enter the **session ID**
-
-## Today's Session ID
-<pre>
-
-
-
-</pre>
-<div style="font-size: 32pt; font-face: bold;">XXXXX</div>
-
-The rest of the session will be anonymous and scored by teams.
-
-# Elementary Signals
-
-Consider this circuit:
-
-<img src="pictures/circuit1.png">
-
-#### -> Open Poll
-
-Q1: What happens **before** $t=0$?
-
-1. $v_{\mathrm{out}} = \mathrm{undefined}$
-2. $v_{\mathrm{out}} = 0$
-3. $v_{\mathrm{out}} = V_s$
-4. $v_{\mathrm{out}} = 1/2$
-5. $v_{\mathrm{out}} = \infty$
-
-Q2: What happens **after** $t=0$?
-
-1. $v_{\mathrm{out}} = \mathrm{undefined}$
-2. $v_{\mathrm{out}} = 0$
-3. $v_{\mathrm{out}} = V_s$
-4. $v_{\mathrm{out}} = 1/2$
-5. $v_{\mathrm{out}} = \infty$
-
-Q3: What happens **at** $t=0$?
-
-1. $v_{\mathrm{out}} = \mathrm{undefined}$
-2. $v_{\mathrm{out}} = 0$
-3. $v_{\mathrm{out}} = V_s$
-4. $v_{\mathrm{out}} = 1/2$
-5. $v_{\mathrm{out}} = \infty$
-
-Q4: What does the response of $V_{\mathrm{out}}$ look like? 
-Circle the picture you think is correct on your handout.
-
-1: <img src="pictures/impulse.png">
-
-2: <img src="pictures/ramp.png">
-
-3: <img src="pictures/step1.png">
-
-4: <img src="pictures/curve.png">
+We call this type of signal a step function.
 
 ## The Unit Step Function
 
@@ -156,11 +94,11 @@ ans =
 
 
 {:.output .output_png}
-![png](../images/elementary_signals/index_20_1.png)
+![png](../images/elementary_signals/index_9_1.png)
 
 
 
-Note that, so it can be plotted, Matlab defines the *heaviside function* slightly differently from the mathematically ideal unit step:
+Note that, so that it can be plotted, Matlab defines the *heaviside function* slightly differently from the mathematically ideal unit step:
 
 $$\mathrm{heaviside}(t) = \left\{ {\begin{array}{*{20}{c}}
 {0\quad t < 0}\\
@@ -168,198 +106,111 @@ $$\mathrm{heaviside}(t) = \left\{ {\begin{array}{*{20}{c}}
 {1\quad t > 0}
 \end{array}} \right.$$
 
-### Circuit Revisited
-
-Consider the network shown below, where the switch is closed at time $t=T$. 
-
-<img src="pictures/circuit2.png">
-
-Express the output voltage $v_{\mathrm{out}}$ as a function of the unit step function, and sketch the appropriate waveform.
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
 ## Simple Signal Operations
 
 ### Amplitude Scaling
 
 Sketch $Au_0(t)$ and $-Au_0(t)$
 
-<pre style="border: 2px solid blue">
+
+
+{:.input_area}
+```matlab
+syms t;
+u0(t) = heaviside(t); % rename heaviside function for ease of use
+A = 2; % so signal can be plotted
+ezplot(A*u0(t),[-1,1]),grid,title('Applitude scaling $$Au_0(t)$$','interpreter','latex')
+```
 
 
 
+{:.output .output_png}
+![png](../images/elementary_signals/index_13_0.png)
 
 
 
+Note that the signal is scaled in the $y$ direction.
 
 
 
+{:.input_area}
+```matlab
+ezplot(-A*u0(t),[-1,1]),grid,title('Amplitude scaling and mirroring $$-Au_0(t)$$','interpreter','latex')
+```
 
 
 
+{:.output .output_png}
+![png](../images/elementary_signals/index_15_0.png)
 
 
 
-</pre>
+Note that, because of the sign, the signal is mirrored about the $x$ axis as well as being scaled by 2.
 
 ### Time Reversal
 
 Sketch $u_0(-t)$
 
-<pre style="border: 2px solid blue">
+
+
+{:.input_area}
+```matlab
+ezplot(A*u0(-t),[-1,1]),grid,title('Time reversal $$Au_0(-t)$$','interpreter','latex')
+```
 
 
 
+{:.output .output_png}
+![png](../images/elementary_signals/index_18_0.png)
 
 
 
-
-
-
-
-
-
-
-
-
-</pre>
+The sign on the function argument $-t$ causes the whole signal to be reversed in time. Note that another way of looking at this is that the signal is mirrored about the $y$ axis.
 
 ### Time Delay and Advance
 
 Sketch $u_0(t-T)$ and $u_0(t+T)$
 
-<pre style="border: 2px solid blue">
+
+
+{:.input_area}
+```matlab
+T = 1; % again to make the signal plottable.
+ezplot(u0(t - T),[-1,2]),grid,title('Time delay $$u_0(t - T)$$','interpreter','latex')
+```
 
 
 
+{:.output .output_png}
+![png](../images/elementary_signals/index_21_0.png)
 
 
 
+This is a *time delay* ... note for $u_0(t - T)$ the step change occurs T seconds **later** than it does for $u_o(t)$.
 
 
 
+{:.input_area}
+```matlab
+ezplot(u0(t + T),[-2,1]),grid,title('Time advance $$u_0(t + T)$$','interpreter','latex')
+```
 
 
 
+{:.output .output_png}
+![png](../images/elementary_signals/index_23_0.png)
 
 
 
-</pre>
+This is a *time advance* ... note for $u_0(t + T)$ the step change occurs T seconds **earlier** than it does for $u_o(t)$.
 
 ## Examples
 
-### Example 1
+We will work through some examples in class. See [Worksheet 3](worksheet3).
 
-Which of these signals represents $-Au_0(t+T)$?
+## Synthesis of Signals from the Unit Step
 
-<img src="pictures/stepf1.png" width="50%">
-
-#### -> Open Poll
-
-### Example 2
-
-What is represented by
-
-<img src="pictures/stepf2.png" width="50%">
-
-#### -> Open Poll
-
-1. $-Au_0(t + T)$ 
-2. $-Au_0(-t + T)$
-3. $-Au_0(-t - T)$
-4. $-Au_0(t-T)$
-
-## Synthesis of Signals from Unit Step
-
-Unit step functions can be used to represent other time-varying functions such as rectangular pulses, square waves and triangular pulses.
-
-### Synthesize Rectangular Pulse
-
-<img src="pictures/rect.png">
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-</pre>
-
-### Synthesize Square Wave
-
-<img src="pictures/square_wave.png">
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-### Synthesize Symmetric Rectangular Pulse
-
-<img src="pictures/symm_rect.png">
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-### Synthesize Symmetric Triangular Pulse
-
-<img src="pictures/symm_tri.png">
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
+Unit step functions can be used to represent other time-varying functions such as rectangular pulses, square waves and triangular pulses. See [Worksheet 3](worksheet3) for the examples that we will look at in class.
 
 ## The Ramp Function
 
@@ -367,39 +218,29 @@ Unit step functions can be used to represent other time-varying functions such a
 
 In the circuit shown above $i_s$ is a constant current source and the switch is closed at time $t=0$. 
 
-Show that the voltage across the capacitor can be represented as
+The voltage across the capacitor can be represented as
 
 $$v_C(t)=\frac{i_s}{C}t u_0(t)$$ 
 
-and sketch the wave form.
-
-<pre style="border: 2px solid blue">
+To sketch the wave form, let's arbitrarily let $C$ and $i_s$ be one and then plot with MATLAB.
 
 
 
+{:.input_area}
+```matlab
+C = 1; is = 1;
+vc(t)=t*u0(t);
+ezplot(vc(t),[-1,4]),grid,title('A ramp function')
+```
 
 
 
+{:.output .output_png}
+![png](../images/elementary_signals/index_30_0.png)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
+This type of signal is called a **ramp function**. Note that it is the *integral* of the step function (the resistor-capacitor circuit implements a simple integrator circuit).
 
 The unit ramp function is defined as
 
@@ -424,7 +265,7 @@ For future reference, you should determine $u_2(t)$, $u_3(t)$ and $u_n(t)$ for y
 
 $$u_{n-1} = \frac{1}{n}\frac{d}{dt}u_n(t)$$
 
-Details are given in equations 1.26&mdash;1.29 in the textbook.
+Details are given in equations 1.26&mdash;1.29 in Karris.
 
 ## The Dirac Delta Function
 
@@ -432,23 +273,17 @@ Details are given in equations 1.26&mdash;1.29 in the textbook.
 
 In the circuit shown above, the switch is closed at time $t=0$ and $i_L(t)=0$ for $t<0$. Express the inductor current $i_L(t)$ in terms of the unit step function and hence derive an expression for $v_L(t)$.
 
-<pre style="border: 2px solid blue">
+**Solution** 
 
+$$v_L(t) = L\frac{di_L}{dt}$$
 
+Because the switch closes instantaneously at $t=0$
 
+$$i_L(t) = i_s u_0(t)$$
 
+Thus 
 
-
-
-
-
-
-
-
-
-</pre>
-
-### Notes
+$$v_L(t) = i_s L\frac{d}{dt} u_0(t).$$
 
 To solve this problem we need to invent a function that represents the derivative of the unit step function. This function is called $\delta(t)$ or the *dirac delta* function (named after [Paul Dirac](http://en.wikipedia.org/wiki/Paul_Dirac)).
 
@@ -462,11 +297,35 @@ $$\int_{-\infty}^{t}\delta(\tau)d\tau = u_0(t)$$
 
 and
 
-$\delta(t) = 0$ for all $t\ne 0$.
+$$\delta(t) = 0\;\forall\;
+t\ne 0.$$
 
 ### Sketch of the delta function
 
 ![The delta function](pictures/impulse.png)
+
+### MATLAB Confirmation
+
+
+
+{:.input_area}
+```matlab
+is = 1; L = 1;
+vL(t) = is * L * diff(u0(t))
+```
+
+
+{:.output .output_stream}
+```
+ 
+vL(t) =
+ 
+dirac(t)
+ 
+
+```
+
+Note that we can't plot dirac(t) in MATLAB with `ezplot`.
 
 ## Important properties of the delta function
 
@@ -514,128 +373,23 @@ Also, derivation of the sifting property can be extended to show that
 
 $$\int_{-\infty}^{\infty}f(t)\delta^n(t-\alpha)dt = \left. ( - 1)^n\frac{d^n}{dt^n}[f(t)] \right|_{t = \alpha }$$
 
-## Examples
+## Summary
 
-### Example 3
+In this chapter we have looked at some elementary signals and the theoretical circuits that can be used to generate them.
 
-Evaluate the following expressions
+### Takeaways
 
-$$3t^4\delta(t-1) $$
+* You should note that the unit step is the *heaviside function* $u_0(t)$.
+* Many useful signals can be synthesized by use of the unit step as a "gating function" in combination with other signals
+* That unit ramp function $u_1(t)$ is the integral of the step function.
+* The *Dirac delta* function $\delta(t)$ is the derivative of the unit step function. We sometimes refer to it as the *unit impulse function*.
+* The delta function has sampling and sifting properties that will be useful in the development of *time convolution* and *sampling theory*.
+and that 
 
-<pre style="border: 2px solid blue">
+### Examples
 
+We will do some of these in class. See [worksheet3](worksheet3).
 
+### Homework
 
-
-
-
-
-
-
-
-
-
-
-</pre></li>
-
-$$\int_{-\infty}^{\infty}t\delta(t-2)dt$$ 
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre></li>
-
-$$t^2\delta'(t-3)$$ 
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre></li>
-</ol>
-   
-   
-
-### Example 4
-
-<img src="pictures/example2.png">
-
-(1) Express the voltage waveform $v(t)$ shown above as a sum of unit step functions for the time interval $-1 < t < 7$ s
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-Using the result of part (1), compute the derivative of $v(t)$ and sketch its waveform.
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-
-## Lab Work
-
-**TODO** Confirm Lab Dates
-
-In the second lab, a week on Monday, we will solve Example 2 using Matlab/Simulink following the procedure given between pages 1-17 and 1-22 of the textbook. We will also explore the `heaviside` and `dirac` functions.
-
-## Answers to in-class questions
-
-Mathematically
-
-Q1. $v_{\mathrm{out}} = 0$ when $-\infty < t < 0$ (answer 2)
-
-Q2. $v_{\mathrm{out}} = V_s$ when $0 < t < \infty$ (answer 3)
-
-Q3. $v_{\mathrm{out}} = \mathrm{undefined}$ when $t=0$ (answer 1)
-
-$V_{\mathrm{out}}$ jumps from $0$ to $V_s$ instantanously when the switch is closed. We call this a discontinuous signal!
-
-Q4: The correct image is:
-
-<img src="pictures/step2.png">
+These are for you to do later for further practice. See [Homework 1](hw1).
