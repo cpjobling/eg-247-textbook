@@ -1,12 +1,12 @@
 ---
 interact_link: content/introduction/answers.ipynb
-title: 'Worksheet 1'
+title: 'Worksheet 2'
 prev_page:
-  url: /fourier_transform/4/ft4
-  title: 'Introduction to Filters'
+  url: /introduction/worksheet2
+  title: 'Worksheet 2'
 next_page:
-  url: /01/what-is-data-science
-  title: 'Data Science'
+  url: 
+  title: ''
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

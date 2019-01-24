@@ -4,8 +4,8 @@ redirect_from:
 interact_link: content/elementary_signals/index.ipynb
 title: 'Elementary Signals'
 prev_page:
-  url: /introduction/worksheet
-  title: 'Worksheet 1'
+  url: /introduction/index
+  title: 'Introduction'
 next_page:
   url: /elementary_signals/hw1
   title: 'Homework 1'

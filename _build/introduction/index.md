@@ -7,14 +7,14 @@ prev_page:
   url: 
   title: ''
 next_page:
-  url: /introduction/worksheet
-  title: 'Worksheet 1'
+  url: /elementary_signals/index
+  title: 'Elementary Signals'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
 # Introducing Signals and Systems
 
-An annotatable copy of the full notes for this presentation are to be found in the *_Content Library* of the **OneNote Class Notebook** for this class. You can also view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/cpjobling/eg-247-textbook/introduction/index.html)) and as a downloadable [PDF file](https://cpjobling.github.io/cpjobling/eg-247-textbook/introduction/introduction.pdf).
+An annotatable copy of the full notes for this presentation will be distributed befor the first class meeting as **Worksheet 1** the handouts section of the *_Content Library* of the **OneNote Class Notebook** for this class. You can also view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/cpjobling/eg-247-textbook/introduction/index.html)) and as a downloadable [PDF file](https://cpjobling.github.io/cpjobling/eg-247-textbook/introduction/introduction.pdf).
 
 
 ## Signals and Systems for Dummies
@@ -23,7 +23,7 @@ Signals and Systems for Dummies (**SS4D**) provides a useful introduction to the
 
 You should read Chapter 1 of SS4D in conjunction with the notes for this presentation.
 
-Note that Signals and Systems for Dummies is available as an e-book from the [Bay Library](http://whel-primo.hosted.exlibrisgroup.com/44WHELF_SWA_VU1:LSCOP_44WHELF_SWA_ALMA_DS:44WHELF_SWA_ALMA_DS5156109590002417).
+Note that Signals and Systems for Dummies is available as an e-book from the [Bay Library](http://whel-primo.hosted.exlibrisgroup.com/44WHELF_SWA_VU1:LSCOP_44WHELF_SWA_ALMA_DS:44WHELF_SWA_ALMA_DS5177422270002417).
 
 ## Agenda
 
@@ -34,65 +34,6 @@ Note that Signals and Systems for Dummies is available as an e-book from the [Ba
 * Signal Classifications
 * Domains for Signals
 * Systems Thinking and Systems Design
-
-These will be illustrated with computation in *WolframAlpha*, *Matlab*, *Simulink*.
-
-We will use TurningPoint for audience participation.
-
-## Setup
-
-We will be using TurningPoint mobile response system polling in this session.
-
-There are two ways to participate:
-    
-
-
-
-### 1. Use a web browser
-
-Browse to: [responseware.turningtechnologies.com](https://responseware.turningtechnologies.com). 
-
-![QR Code](https://chart.googleapis.com/chart?cht=qr&chs=300x300&choe=UTF-8&chld=H&chl=https://goo.gl/rPE4Ls)
-
-https://goo.gl/rPE4Ls
-
-
-### 2. Install and open the TurningPoint app
-
-Browse to: [TurningPoint
-Mobile Responding](https://www.turningtechnologies.com/response-options/mobile)
-
-![QR Code](https://chart.googleapis.com/chart?cht=qr&chs=300x300&choe=UTF-8&chld=H&chl=https://goo.gl/DmGeQv)
-
-https://goo.gl/DmGeQv
-
-Use the links to the App stores at the bottom of that page or follow these links: [App Store](https://itunes.apple.com/gb/app/turningpoint/id300028504?mt=8), [Google Play](https://play.google.com/store/apps/details?id=com.turningTech.Responseware&feature=search_result#?t=W251bGwsMSwyLDEsImNvbS50dXJuaW5nVGVjaC5SZXNwb25zZXdhcmUiXQ..).
-
-When prompted: enter the **session ID**
-
-## Today's Session ID
-<pre>
-
-
-
-</pre>
-<div style="font-size: 32pt; font-face: bold;">558249</div>
-
-### Assign yourself to a group by table
-
-There should be a card with a **group name** on your table.
-
-Please use your TurningPoint app or web login to assign yourself to your table's group name.
-
-#### -> Launch Poll
-
-The rest of the session will be anonymous and scored by teams.
-
-### Icebreaker Questions
-
-#### -> Launch Poll
-
-### End of setup
 
 ## Continuous-time signals
 
@@ -106,7 +47,7 @@ Sinusoidal signals (e.g. AC) are pretty fundamental in electrical engineering. T
 
 $$x(t) = A \cos (2\pi f_0 t - \phi).$$ 
 
-**Without talking to your anyone**, match each of the symbols to its definition
+Fir this expression, we wish to match each of the symbols to its definition
 
 | Symbol     | Definition         |
 |------------|--------------------|
@@ -114,8 +55,6 @@ $$x(t) = A \cos (2\pi f_0 t - \phi).$$
 | $f_0$      | Frequency in Hz    |
 | $\phi$     | Amplitude          |
 | $2\pi f_0$ | Frequency in rad/s |
-
-#### -> Open Poll
 
 ### Gaining insight using computers
 
@@ -182,7 +121,7 @@ grid
 
 
 {:.output .output_png}
-![png](../images/introduction/index_29_0.png)
+![png](../images/introduction/index_16_0.png)
 
 
 
@@ -228,7 +167,7 @@ sinewave
 
 
 {:.output .output_png}
-![png](../images/introduction/index_33_0.png)
+![png](../images/introduction/index_20_0.png)
 
 
 
@@ -239,8 +178,6 @@ Sinusoidal signals (e.g. AC) are pretty fundamental in electrical engineering. T
 $$x(t) = A \cos (2\pi f_0 t - \phi).$$ 
 
 Using the insight just gained by exploring this function with a computer, try matching each of the symbols to its definition again.
-
-**This time you may confer!**!
 
 | Symbol     | Definition         |
 |------------|--------------------|
@@ -258,8 +195,6 @@ What is the period of the waveform in seconds?
 1. $t$
 1. $1/f_0$
 1. $2\pi/f_0$
-
-#### -> Open poll
 
 ### Notes
 
@@ -293,29 +228,6 @@ In this course, we will model such systems as block diagram models in Simulink.
 <img src="pictures/css.png">
 
 The Similink code can be downloaded from this file [gain_level_shift.slx](gain_level_shift.slx).
-
-## Demonstration
-
-If the input to this system is replaced with a sinewave $x(t)=\sin(t)$ and the output with a scope, what do you think the output will be?
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-</pre>
-
-If you get a chance, try this in youself in Matlab and copy the result into your copy of these notes.
-
-
-
-
-{:.input_area}
-```matlab
-open gain_level_shift
-```
-
 
 ## Discrete-time Signals
 
@@ -396,27 +308,9 @@ grid
 
 
 {:.output .output_png}
-![png](../images/introduction/index_50_0.png)
+![png](../images/introduction/index_35_0.png)
 
 
-
-### Exercise
-
-Draw a digital signal that represents your student number in some way. For example if your number was 765443, then you could generate a signal for which $x[n] = 0$ when $n < 7$, then $x[n] = 7$ for $7$ periods, then $x[n] = 6$ for the next 6 periods, $x[n] = 5$ for 5 periods, and so on. The signal should return to 0 when the last digit has been transmitted. 
-<pre style="border: 2px solid blue;">
-
-
-
-
-
-
-
-
-
-</pre>
-
-
-To plot this on a computer you would need to transcribe $x[n]$ into an array and then use the stem plot to plot the data. You could just create the array by hand, but you could also create a Matlab function if you would like a challenge.
 
 ## Discrete-time Systems
 
@@ -429,14 +323,6 @@ The term *tap* denotes that output at time instant $n$ is formed from two time i
 <img src="pictures/ds.png" width="50%" />
 
 This system is available as a Simulink model [discrete_system.slx](discrete_system.slx)
-
-
-
-{:.input_area}
-```matlab
-open discrete_system
-```
-
 
 In words, this system scales the present input by 3/4 and adds it to the past value of the input scaled by 1/4. The notion of the past input comes about because ￼$x[n - 1]$ is lagging one sample value behind ￼$x[n]$. The term *filter* describes the output as an *averaging* of the present input and the previous input. *Averaging* is a form of filtering.
 
@@ -456,8 +342,6 @@ The sinusoidal signal we saw earlier is periodic because of the $\mod 2\pi$ prop
 #### Square Wave
 
 This code generates a square wave.
-
-See [periodic.b(matlab/periodic.m).
 
 
 
@@ -487,37 +371,11 @@ ylabel('Amplitude')
 
 
 {:.output .output_png}
-![png](../images/introduction/index_63_0.png)
+![png](../images/introduction/index_45_0.png)
 
 
 
-$T = $?
-
-<pre style="border: 2px solid blue">
-
-
-
-
-</pre>
-
-### Question
-
-For the example we started with $x(t) = 2 \cos (2\pi . 2t + 3\pi/4)$. Say we sample the cosine wave at 20 times the frequency of the sinusoid, what would the sampling period be and what would $N$ be for the sampled waveform?
-
-#### Your Answer
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-</pre>
+What is the period $T$ in milliseconds?
 
 ### Aperiodic
 
@@ -553,7 +411,7 @@ ylabel('Amplitude')
 
 
 {:.output .output_png}
-![png](../images/introduction/index_70_0.png)
+![png](../images/introduction/index_49_0.png)
 
 
 
@@ -582,7 +440,7 @@ ylabel('Amplitude')
 
 
 {:.output .output_png}
-![png](../images/introduction/index_72_0.png)
+![png](../images/introduction/index_51_0.png)
 
 
 
@@ -590,31 +448,9 @@ ylabel('Amplitude')
 
 Most of the signals we encounter on a daily basis reside in the time domain. They’re functions of independent variable $t$ or $n$. But sometimes when you’re working with continuous-time signals, you may need to transform away from the time domain ($t$) to another domain.
 
-### Domain Quiz
-
-A domain which is used in the analysis of signals and the design of systems is represented by complex numbers of the form:
-
-$$\sigma + j\omega$$
-
-**Without conferring**, tell me what domain is this?
-
-#### -> Open Poll
-
-### Now discuss your answer with your peers
-
-### Domain Quiz (again)
-
-A domain which is used in the analysis of signals and the design of systems is represented by complex numbers of the form:
-
-$$\sigma + j\omega$$
-
-Tell me what domain is this?
-
-#### -> Open Poll
-
 ### Other Domains you will encounter
 
-The most commnly used domains used when analysing continuous time signals are the frequency domain ($f$ or $\omega$) or the Laplace $s$-domain ($s$). 
+The most commonly used domains used when analysing continuous time signals are the frequency domain ($f$ or $\omega$) or the Laplace $s$-domain ($s$). 
 
 Similarly, for discrete-time signals, you may need to transform from the discrete-time domain ($n$) to the frequency domain ($\hat{\omega}$￼) or the z-domain ($z$).
 
@@ -669,7 +505,7 @@ two_sines
 
 
 {:.output .output_png}
-![png](../images/introduction/index_83_0.png)
+![png](../images/introduction/index_57_0.png)
 
 
 
@@ -701,58 +537,3 @@ See section **Testing Product Concepts with Behavioral Level Modeling** from Cha
 ## Familiar Signals and Systems
 
 See pages 21-23 of the free sample (Chapter 1) of [SS4D](http://www.dummies.com/store/product/Signals-and-Systems-For-Dummies.productCd-111847581X.html) for notes and details.
-
-### Challenge
-
-I used the examples from **Signals and Systems for Dummies** to seed this Padlet collection [Examples of Signals and Systems]().
-![Examples of Signals and Systems QR Code](https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=https%3A%2F%2Fpadlet.com%2Fcpjobling%2F2f62bgl2q8dp)
-
-Can you add to it?
-
-## Concluding Example: Some Basic Signal Operations
-
-Consider a signal 
-
-$$x = f(t) = \left\{ {\begin{array}{*{20}{c}}
-{0\;:\;t <  - 1}\\
-{t + 1\;:\; - 1 \le t \le 1}\\
-{0\;:\;t > 1}
-\end{array}} \right.$$
-
-Sketch this signal.
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-### Problem
-
-Think about the effect on this signal of applying the following basic signal operations:
-
-* $2 f(t)$
-* $0.5 f(t)$
-* $f(2t)$
-* $f(0.5 t)$
-* $-f(t)$
-* $f(-t)$
-* $-f(-t)$
-* $f(t - 1)$
-* $f(t + 1)$
-* $-2f(-t+2)$
-
-We will work through these after the break together then you will do some exercises based on [Chapter 1 of Karris](http://site.ebrary.com/lib/swansea/reader.action?docID=10547416&ppg=17).
-
-## Break
-
-

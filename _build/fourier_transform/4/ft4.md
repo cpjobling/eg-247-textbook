@@ -7,8 +7,8 @@ prev_page:
   url: /fourier_transform/3/ft3
   title: 'Fourier Transforms for Circuit and LTI Systems Analysis'
 next_page:
-  url: /introduction/answers
-  title: 'Worksheet 1'
+  url: /worksheets/index
+  title: 'Worksheets'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
