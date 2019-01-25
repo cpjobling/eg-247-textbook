@@ -1,4 +1,4 @@
 # README
 
-The README for Lab 4 is the Jupyter notebook [README.ipynb](README.ipynb).
+The README for Lab 3 is the Jupyter notebook [README.ipynb](README.ipynb).
 
