@@ -8,7 +8,13 @@ This lab supports the materials covered in [Chapter 2 Elementary Signals](https:
 
 ### Other formats
 
-This document is available in [HTML](https://cpjobling.github.io/eg-247-textbook/labs/lab01) and [PDF](https://cpjobling.github.io/eg-247-textbook/labs/lab01.pdf) formats.
+This document is available in [HTML](https://cpjobling.github.io/eg-247-textbook/labs/lab01/index) format for online viewing and printing.
+
+### Acknowledgement
+
+These examples have been adapted from Chapter 1 of
+[Stephen Karris, Signals and Systems : With MATLAB
+Computing and Simulink Modeling (5th Edition)](http://site.ebrary.com/lib/swansea/docDetail.action?docID=10547416)
 
 ## Aims
 
@@ -20,12 +26,6 @@ The purposes of this laboratory are to
 This will introduce the symbolic toolbox and the `heaviside`, `delta` and `ezplot` functions provided by MATLAB  and the *signal design block*, *multiplexer*, *scope* and *derivative* blocks provided by Simulink for the simulation of continuous time signals and systems.
 
 We will also demonstrate the Live Script feature provided by Matlab that will be useful for recording lab results for this module.
-
-### Acknowledgement
-
-These examples have been adapted from Chapter 1 of
-[Stephen Karris, Signals and Systems : With MATLAB
-Computing and Simulink Modeling (5th Edition)](http://site.ebrary.com/lib/swansea/docDetail.action?docID=10547416)
 
 ## Set up
 
@@ -60,7 +60,7 @@ Connect the signal up a derivative block and scope as shown in Figure 1.24 and s
 1. For the lab exercises, you should attach your completed version of the Live Script file `elem_signals.mlx`.
 1. For the Miniproject the Simulink model of the piecewise linear signal `signal.slx`.
 
-You should attach the files you wish to claim for to the Lab 2 submission page in OneNote, complete the claim form and turn-in your assignment through Teams.
+You should attach the files you wish to claim for to the Lab 1 submission page in OneNote, complete the claim form and turn-in your assignment through Teams.
 
 ## Claim
 
