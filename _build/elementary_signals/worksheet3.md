@@ -7,8 +7,8 @@ prev_page:
   url: /introduction/worksheet2
   title: 'Worksheet 2'
 next_page:
-  url: /introduction/answers
-  title: 'Worksheet 2'
+  url: /labs/index
+  title: 'Laboratory Exercises'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

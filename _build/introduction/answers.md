@@ -2,8 +2,8 @@
 interact_link: content/introduction/answers.ipynb
 title: 'Worksheet 2'
 prev_page:
-  url: /elementary_signals/worksheet3
-  title: 'Worksheet 3'
+  url: /labs/project/index
+  title: 'Project'
 next_page:
   url: 
   title: ''
