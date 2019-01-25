@@ -14,7 +14,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 # Introducing Signals and Systems
 
-An annotatable copy of the full notes for this presentation will be distributed befor the first class meeting as **Worksheet 1** the handouts section of the *_Content Library* of the **OneNote Class Notebook** for this class. You can also view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/cpjobling/eg-247-textbook/introduction/index.html)) and as a downloadable [PDF file](https://cpjobling.github.io/cpjobling/eg-247-textbook/introduction/introduction.pdf).
+An annotatable copy of the full notes for this presentation will be distributed befor the first class meeting as **Worksheet 1** the handouts section of the *_Content Library* of the **OneNote Class Notebook** for this class. You can also view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/introduction/index)) and as a downloadable [PDF file](https://cpjobling.github.io/eg-247-textbook/introduction/introduction.pdf).
 
 
 ## Signals and Systems for Dummies
@@ -47,7 +47,7 @@ Sinusoidal signals (e.g. AC) are pretty fundamental in electrical engineering. T
 
 $$x(t) = A \cos (2\pi f_0 t - \phi).$$ 
 
-Fir this expression, we wish to match each of the symbols to its definition
+For this expression, we wish to match each of the symbols to its definition
 
 | Symbol     | Definition         |
 |------------|--------------------|
@@ -132,7 +132,6 @@ If you want to execute this in MATLAB, you can create a file.
 {:.input_area}
 ```matlab
 %%file sinewave.m
-
 % SINEWAVE - plot function $x(t) = 3 \cos(2\pi t - 3 \pi/4)$ for $t = 0\ldots 1$
 
 %% Set up the problem
@@ -151,7 +150,7 @@ grid
 
 {:.output .output_stream}
 ```
-Created file '/Users/eechris/dev/eg-247/content/introduction/sinewave.m'.
+Created file '/Users/eechris/dev/eg-247-textbook/content/introduction/sinewave.m'.
 
 ```
 
@@ -250,7 +249,6 @@ Define function and save as [y.m](y.m).
 {:.input_area}
 ```matlab
 %%file y.m
-
 % Define the function
 function [ y ] = x( n )
   if n < 0 | n >= 10 
@@ -264,7 +262,7 @@ end
 
 {:.output .output_stream}
 ```
-Created file '/Users/eechris/dev/eg-247/content/introduction/y.m'.
+Created file '/Users/eechris/dev/eg-247-textbook/content/introduction/y.m'.
 
 ```
 
@@ -284,7 +282,13 @@ open y
 n = -15:18;
 %% Make space for the signal
 xn = zeros(size(n));
+```
 
+
+
+
+{:.input_area}
+```matlab
 %% Compute the signal x[n]
 for i = 1:length(xn)
     xn(i) = y(n(i));
@@ -308,7 +312,7 @@ grid
 
 
 {:.output .output_png}
-![png](../images/introduction/index_35_0.png)
+![png](../images/introduction/index_36_0.png)
 
 
 
@@ -371,7 +375,7 @@ ylabel('Amplitude')
 
 
 {:.output .output_png}
-![png](../images/introduction/index_45_0.png)
+![png](../images/introduction/index_46_0.png)
 
 
 
@@ -411,7 +415,7 @@ ylabel('Amplitude')
 
 
 {:.output .output_png}
-![png](../images/introduction/index_49_0.png)
+![png](../images/introduction/index_50_0.png)
 
 
 
@@ -440,7 +444,7 @@ ylabel('Amplitude')
 
 
 {:.output .output_png}
-![png](../images/introduction/index_51_0.png)
+![png](../images/introduction/index_52_0.png)
 
 
 
@@ -450,7 +454,7 @@ Most of the signals we encounter on a daily basis reside in the time domain. The
 
 ### Other Domains you will encounter
 
-The most commonly used domains used when analysing continuous time signals are the frequency domain ($f$ or $\omega$) or the Laplace $s$-domain ($s$). 
+The most commonly used domains used when analysing continuous time signals are the frequency domain ($f$ or $\omega$) and the Laplace $s$-domain ($s$). 
 
 Similarly, for discrete-time signals, you may need to transform from the discrete-time domain ($n$) to the frequency domain ($\hat{\omega}$￼) or the z-domain ($z$).
 
@@ -468,7 +472,6 @@ $$x(t) = \underbrace {A_1\cos(2\pi f_1 t)}_{s_1} + \underbrace {A_2\cos(2\pi f_2
 {:.input_area}
 ```matlab
 %%file two_sines.m
-
 %... plot two sinusoids signal
 A1 = 2; f1 = 1;
 A2 = 1.5;f2 = 2.2;
@@ -491,7 +494,7 @@ ylabel('Frequency Spectrum X(f)'),xlabel('Frequency (Hz)')
 
 {:.output .output_stream}
 ```
-Created file '/Users/eechris/dev/eg-247/content/introduction/two_sines.m'.
+Created file '/Users/eechris/dev/eg-247-textbook/content/introduction/two_sines.m'.
 
 ```
 
@@ -505,7 +508,7 @@ two_sines
 
 
 {:.output .output_png}
-![png](../images/introduction/index_57_0.png)
+![png](../images/introduction/index_58_0.png)
 
 
 
@@ -521,9 +524,9 @@ We use the *Fourier transform* to move away from the time domain and into the fr
 
 ### Laplace and Z-Transform Domains
 
-From the time domain to the frequency domain, only one independent variable, $t \to f$, exists. When a signal is transformed to the *s*-domain, it becomes a function of a complex variable ￼$s=\sigma + j\omega$. The two variables (real and imaginary parts) describe a location in the *s*-plane.
+From the time domain to the frequency domain, only one independent variable, $t \to f$, exists. When a signal is transformed to the s-domain, it becomes a function of a complex variable ￼$s=\sigma + j\omega$. The two variables (real and imaginary parts) describe a location in the s-plane.
 
-In addition to visualization properties, the *s*-domain reduces differential equation solving to algebraic manipulation. For discrete-time signals, the *z*-transform accomplishes the same thing, except differential equations are replaced by difference equations.
+In addition to visualization properties, the s-domain reduces differential equation solving to algebraic manipulation. For discrete-time signals, the z-transform accomplishes the same thing, except differential equations are replaced by difference equations.
 
 ## Systems Thinking and Systems Design
 

@@ -106,7 +106,7 @@ $$x(t) = A \cos (2\pi f_0 t - \phi).$$
 
 ### Gaining insight using computers
 
-To help us answer these questions, let's use our Mathematical tools to plot a signal like this and explore it. The example we will use is from *Signals and Systems for Dummies* (SS4D: page 12): 
+To help us answer these questions, let's use our mathematical tools to plot a signal like this and explore it. The example we will use is from *Signals and Systems for Dummies* (SS4D: page 12): 
 
 $$3\cos(2\pi\cdot 2t - 3\pi/4)$$
 
@@ -167,12 +167,6 @@ grid
 ```
 
 
-
-{:.output .output_png}
-![png](../images/introduction/worksheet1_24_0.png)
-
-
-
 If you want to execute this in MATLAB, you can create a file.
 
 
@@ -180,7 +174,6 @@ If you want to execute this in MATLAB, you can create a file.
 {:.input_area}
 ```matlab
 %%file sinewave.m
-
 % SINEWAVE - plot function $x(t) = 3 \cos(2\pi t - 3 \pi/4)$ for $t = 0\ldots 1$
 
 %% Set up the problem
@@ -197,12 +190,6 @@ grid
 ```
 
 
-{:.output .output_stream}
-```
-Created file '/Users/eechris/dev/eg-247-textbook/content/introduction/sinewave.m'.
-
-```
-
 To run this script, just type the filename withount the `.m` extension
 
 
@@ -211,12 +198,6 @@ To run this script, just type the filename withount the `.m` extension
 ```matlab
 sinewave
 ```
-
-
-
-{:.output .output_png}
-![png](../images/introduction/worksheet1_28_0.png)
-
 
 
 ### Returning to the Question
@@ -327,7 +308,6 @@ Define function and save as [y.m](y.m).
 {:.input_area}
 ```matlab
 %%file y.m
-
 % Define the function
 function [ y ] = x( n )
   if n < 0 | n >= 10 
@@ -338,12 +318,6 @@ function [ y ] = x( n )
 end
 ```
 
-
-{:.output .output_stream}
-```
-Created file '/Users/eechris/dev/eg-247-textbook/content/introduction/y.m'.
-
-```
 
 
 
@@ -381,12 +355,6 @@ xlabel('Sample n')
 ylabel('Signal x[n]')
 grid
 ```
-
-
-
-{:.output .output_png}
-![png](../images/introduction/worksheet1_46_0.png)
-
 
 
 ### Exercise 1
@@ -493,12 +461,6 @@ ylabel('Amplitude')
 ```
 
 
-
-{:.output .output_png}
-![png](../images/introduction/worksheet1_61_0.png)
-
-
-
 What is the period $T$ in milliseconds?
 
 Write your answer here
@@ -543,12 +505,6 @@ ylabel('Amplitude')
 ```
 
 
-
-{:.output .output_png}
-![png](../images/introduction/worksheet1_67_0.png)
-
-
-
 ### Random
 
 A signal is random if one or more signal attributes takes on unpredictable
@@ -570,12 +526,6 @@ title('Random Signal')
 xlabel('Time t (s)')
 ylabel('Amplitude')
 ```
-
-
-
-{:.output .output_png}
-![png](../images/introduction/worksheet1_69_0.png)
-
 
 
 ## Domains for Signals and Systems
@@ -606,7 +556,7 @@ Tell me what domain is this?
 
 ### Other Domains you will encounter
 
-The most commonly used domains used when analysing continuous time signals are the frequency domain ($f$ or $\omega$) or the Laplace $s$-domain ($s$). 
+The most commonly used domains used when analysing continuous time signals are the frequency domain ($f$ or $\omega$) and the Laplace $s$-domain ($s$). 
 
 Similarly, for discrete-time signals, you may need to transform from the discrete-time domain ($n$) to the frequency domain ($\hat{\omega}$￼) or the z-domain ($z$).
 
@@ -624,7 +574,6 @@ $$x(t) = \underbrace {A_1\cos(2\pi f_1 t)}_{s_1} + \underbrace {A_2\cos(2\pi f_2
 {:.input_area}
 ```matlab
 %%file two_sines.m
-
 %... plot two sinusoids signal
 A1 = 2; f1 = 1;
 A2 = 1.5;f2 = 2.2;
@@ -645,24 +594,12 @@ ylabel('Frequency Spectrum X(f)'),xlabel('Frequency (Hz)')
 ```
 
 
-{:.output .output_stream}
-```
-Created file '/Users/eechris/dev/eg-247-textbook/content/introduction/two_sines.m'.
-
-```
-
 
 
 {:.input_area}
 ```matlab
 two_sines
 ```
-
-
-
-{:.output .output_png}
-![png](../images/introduction/worksheet1_80_0.png)
-
 
 
 ### Polling Question

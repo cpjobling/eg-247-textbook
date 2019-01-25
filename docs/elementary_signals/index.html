@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>Elementary Signals</title>
-  <meta name="description" content="Lecturer: Set up MATLAB">
+  <meta name="description" content="Lecturer: Clear all the cells and set up MATLAB">
 
   <link rel="canonical" href="/eg-247-textbook/eg-247-textbook/elementary_signals/">
   <link rel="alternate" type="application/rss+xml" title="EG-247 Signals and Systems" href="/eg-247-textbook/eg-247-textbook/feed.xml">
@@ -14,7 +14,7 @@
   <meta property="og:url"         content="/eg-247-textbook/eg-247-textbook/elementary_signals/" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Elementary Signals" />
-<meta property="og:description" content="Lecturer: Set up MATLAB" />
+<meta property="og:description" content="Lecturer: Clear all the cells and set up MATLAB" />
 <meta property="og:image"       content="" />
 
 
@@ -27,11 +27,11 @@
   "headline":
     "Elementary Signals",
   "datePublished":
-    "2019-01-24T17:57:24+00:00",
+    "2019-01-25T10:32:04+00:00",
   "dateModified":
-    "2019-01-24T17:57:24+00:00",
+    "2019-01-25T10:32:04+00:00",
   "description":
-    "Lecturer: Set up MATLAB",
+    "Lecturer: Clear all the cells and set up MATLAB",
   "author": {
     "@type": "Person",
     "name": "Dr Chris P. Jobling"
@@ -966,7 +966,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
 
             <div class="c-textbook__content">
-              <p>Lecturer: Set up MATLAB</p>
+              <p>Lecturer: Clear all the cells and set up MATLAB</p>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">format</span> <span class="n">compact</span>
 <span class="nb">clear</span> <span class="nb">all</span>
@@ -974,7 +974,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
 <h1 id="elementary-signals">Elementary Signals</h1>
 
-<p>An annotatable copy of partial notes and in-class examples for this presentation will be distributed before the first class meeting as <strong>Worksheet 3</strong> the handouts section of the <em>_Content Library</em> of the <strong>OneNote Class Notebook</strong> for this class. You can also view the notes for this presentation as a webpage (<a href="https://cpjobling.github.io/cpjobling/eg-247-textbook/elementary_signals/index">HTML</a>) and as a downloadable <a href="https://cpjobling.github.io/cpjobling/eg-247-textbook/elementary_signals/elementary_signals.pdf">PDF file</a>.</p>
+<p>An annotatable copy of partial notes and in-class examples for this presentation will be distributed before the first class meeting as <strong>Worksheet 3</strong> the handouts section of the <em>_Content Library</em> of the <strong>OneNote Class Notebook</strong> for this class. You can also view the notes for this presentation as a webpage (<a href="https://cpjobling.github.io/eg-247-textbook/elementary_signals/index">HTML</a>) and as a downloadable <a href="https://cpjobling.github.io/cpjobling/eg-247-textbook/elementary_signals/elementary_signals.pdf">PDF file</a>.</p>
 
 <p>Consider the network shown below, where the switch is closed at time $t=T$.</p>
 
@@ -1009,13 +1009,12 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 <p>In Matlab, we use the <code class="highlighter-rouge">heaviside</code> function (Named after <a href="http://en.wikipedia.org/wiki/Oliver_Heaviside">Oliver Heaviside</a>).</p>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">%%file plot_heaviside.m</span>
-
 <span class="n">syms</span> <span class="n">t</span>
 <span class="n">ezplot</span><span class="p">(</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">heaviside</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Created file '/Users/eechris/dev/eg-247/content/elementary_signals/show_heaviside.m'.
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Created file '/Users/eechris/dev/eg-247-textbook/content/elementary_signals/plot_heaviside.m'.
 
 </code></pre></div></div>
 
@@ -1105,18 +1104,32 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
 <p>In the circuit shown above $i_s$ is a constant current source and the switch is closed at time $t=0$.</p>
 
-<p>The voltage across the capacitor can be represented as</p>
+<p>When the current through the capacitor $i_c(t) = i_s$ is a constant and the voltage across the capacitor is</p>
+
+<script type="math/tex; mode=display">v_c(t) = \frac{1}{C}\int_{-\infty}^{t} i_c(\tau)\;d\tau</script>
+
+<p>where $\tau$ is a dummy variable.</p>
+
+<p>Since the switch closes at $t=0$, we can express the current $i_c(t)$ as</p>
+
+<script type="math/tex; mode=display">i_c(t) = i_s u_0(t)</script>
+
+<p>and if $v_c(t) = 0$ for $t &lt; 0$ we have</p>
+
+<script type="math/tex; mode=display">v_c(t) = \frac{1}{C}\int_{-\infty}^{t} i_s u_0(\tau)\;d\tau = \underbrace { \frac{i_s}{C}\int_{ - \infty }^0 {i_c} (\tau )\;{\kern 1pt} d\tau }_0 + \frac{i_s}{C}\int_{0}^{t} i_c(\tau)\;d\tau</script>
+
+<p>So, the voltage across the capacitor can be represented as</p>
 
 <script type="math/tex; mode=display">v_C(t)=\frac{i_s}{C}t u_0(t)</script>
 
 <p>To sketch the wave form, let’s arbitrarily let $C$ and $i_s$ be one and then plot with MATLAB.</p>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">C</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nb">is</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="n">vc</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">=</span><span class="n">t</span><span class="o">*</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+<span class="n">vc</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">=</span><span class="p">(</span><span class="nb">is</span><span class="p">/</span><span class="n">C</span><span class="p">)</span><span class="o">*</span><span class="n">t</span><span class="o">*</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
 <span class="n">ezplot</span><span class="p">(</span><span class="n">vc</span><span class="p">(</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">]),</span><span class="nb">grid</span><span class="p">,</span><span class="nb">title</span><span class="p">(</span><span class="s1">'A ramp function'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/elementary_signals/index_30_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/elementary_signals/index_32_0.png" alt="png" /></p>
 
 <p>This type of signal is called a <strong>ramp function</strong>. Note that it is the <em>integral</em> of the step function (the resistor-capacitor circuit implements a simple integrator circuit).</p>
 
@@ -1185,15 +1198,12 @@ t\ne 0.</script>
 
 <h3 id="matlab-confirmation">MATLAB Confirmation</h3>
 
-<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">is</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">L</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">syms</span> <span class="nb">is</span> <span class="n">L</span><span class="p">;</span>
 <span class="n">vL</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="nb">is</span> <span class="o">*</span> <span class="n">L</span> <span class="o">*</span> <span class="nb">diff</span><span class="p">(</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
-vL(t) =
- 
-dirac(t)
- 
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vL(t) =
+L*is*dirac(t)
 
 </code></pre></div></div>
 
@@ -1254,8 +1264,7 @@ dirac(t)
   <li>Many useful signals can be synthesized by use of the unit step as a “gating function” in combination with other signals</li>
   <li>That unit ramp function $u_1(t)$ is the integral of the step function.</li>
   <li>The <em>Dirac delta</em> function $\delta(t)$ is the derivative of the unit step function. We sometimes refer to it as the <em>unit impulse function</em>.</li>
-  <li>The delta function has sampling and sifting properties that will be useful in the development of <em>time convolution</em> and <em>sampling theory</em>.
-and that</li>
+  <li>The delta function has sampling and sifting properties that will be useful in the development of <em>time convolution</em> and <em>sampling theory</em>.</li>
 </ul>
 
 <h3 id="examples-1">Examples</h3>

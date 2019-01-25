@@ -12,7 +12,7 @@ next_page:
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
-Lecturer: Set up MATLAB
+Lecturer: Clear all the cells and set up MATLAB 
 
 
 
@@ -25,7 +25,7 @@ clear all
 
 # Elementary Signals
 
-An annotatable copy of partial notes and in-class examples for this presentation will be distributed before the first class meeting as **Worksheet 3** the handouts section of the *_Content Library* of the **OneNote Class Notebook** for this class. You can also view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/cpjobling/eg-247-textbook/elementary_signals/index)) and as a downloadable [PDF file](https://cpjobling.github.io/cpjobling/eg-247-textbook/elementary_signals/elementary_signals.pdf).
+An annotatable copy of partial notes and in-class examples for this presentation will be distributed before the first class meeting as **Worksheet 3** the handouts section of the *_Content Library* of the **OneNote Class Notebook** for this class. You can also view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/elementary_signals/index)) and as a downloadable [PDF file](https://cpjobling.github.io/cpjobling/eg-247-textbook/elementary_signals/elementary_signals.pdf).
 
 
 Consider the network shown below, where the switch is closed at time $t=T$. 
@@ -64,7 +64,6 @@ In Matlab, we use the `heaviside` function (Named after [Oliver Heaviside](http:
 {:.input_area}
 ```matlab
 %%file plot_heaviside.m
-
 syms t
 ezplot(heaviside(t),[-1,1])
 heaviside(0)
@@ -73,7 +72,7 @@ heaviside(0)
 
 {:.output .output_stream}
 ```
-Created file '/Users/eechris/dev/eg-247/content/elementary_signals/show_heaviside.m'.
+Created file '/Users/eechris/dev/eg-247-textbook/content/elementary_signals/plot_heaviside.m'.
 
 ```
 
@@ -218,7 +217,21 @@ Unit step functions can be used to represent other time-varying functions such a
 
 In the circuit shown above $i_s$ is a constant current source and the switch is closed at time $t=0$. 
 
-The voltage across the capacitor can be represented as
+When the current through the capacitor $i_c(t) = i_s$ is a constant and the voltage across the capacitor is
+
+$$v_c(t) = \frac{1}{C}\int_{-\infty}^{t} i_c(\tau)\;d\tau$$ 
+
+where $\tau$ is a dummy variable.
+
+Since the switch closes at $t=0$, we can express the current $i_c(t)$ as
+
+$$i_c(t) = i_s u_0(t)$$
+
+and if $v_c(t) = 0$ for $t < 0$ we have
+
+$$v_c(t) = \frac{1}{C}\int_{-\infty}^{t} i_s u_0(\tau)\;d\tau = \underbrace { \frac{i_s}{C}\int_{ - \infty }^0 {i_c} (\tau )\;{\kern 1pt} d\tau }_0 + \frac{i_s}{C}\int_{0}^{t} i_c(\tau)\;d\tau$$
+
+So, the voltage across the capacitor can be represented as
 
 $$v_C(t)=\frac{i_s}{C}t u_0(t)$$ 
 
@@ -229,14 +242,14 @@ To sketch the wave form, let's arbitrarily let $C$ and $i_s$ be one and then plo
 {:.input_area}
 ```matlab
 C = 1; is = 1;
-vc(t)=t*u0(t);
+vc(t)=(is/C)*t*u0(t);
 ezplot(vc(t),[-1,4]),grid,title('A ramp function')
 ```
 
 
 
 {:.output .output_png}
-![png](../images/elementary_signals/index_30_0.png)
+![png](../images/elementary_signals/index_32_0.png)
 
 
 
@@ -310,18 +323,15 @@ t\ne 0.$$
 
 {:.input_area}
 ```matlab
-is = 1; L = 1;
+syms is L;
 vL(t) = is * L * diff(u0(t))
 ```
 
 
 {:.output .output_stream}
 ```
- 
 vL(t) =
- 
-dirac(t)
- 
+L*is*dirac(t)
 
 ```
 
@@ -384,7 +394,6 @@ In this chapter we have looked at some elementary signals and the theoretical ci
 * That unit ramp function $u_1(t)$ is the integral of the step function.
 * The *Dirac delta* function $\delta(t)$ is the derivative of the unit step function. We sometimes refer to it as the *unit impulse function*.
 * The delta function has sampling and sifting properties that will be useful in the development of *time convolution* and *sampling theory*.
-and that 
 
 ### Examples
 
