@@ -1,4 +1,3 @@
-
 %... plot two sinusoids signal
 A1 = 2; f1 = 1;
 A2 = 1.5;f2 = 2.2;

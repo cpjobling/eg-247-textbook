@@ -1,4 +1,3 @@
-
 % SINEWAVE - plot function $x(t) = 3 \cos(2\pi t - 3 \pi/4)$ for $t = 0\ldots 1$
 
 %% Set up the problem

@@ -52,7 +52,7 @@ Use the links to the App stores at the bottom of that page or follow these links
 
 When prompted: enter the **session ID**
 
-## Today's Session ID
+### Today's Session ID
 <pre>
 
 
@@ -231,7 +231,7 @@ What is the period of the waveform in seconds?
 
 #### -> Open poll
 
-### Notes
+**Notes**
 
 * In communications and electronic signal processing, the frequency of sinusoidal signals us usually given in *cycles per second* or Hz. 
 * In mathematics, the frequency is always expressed in *radians per second*. 
@@ -258,13 +258,13 @@ An example of a continuous-time system is an electronic amplifier with a gain of
 
 In this course, we will model such systems as block diagram models in Simulink.
 
-### Block diagram model in Simulink
+#### Block diagram model in Simulink
 
 <img src="pictures/css.png">
 
 The Similink code can be downloaded from this file [gain_level_shift.slx](gain_level_shift.slx).
 
-## Demonstration
+#### Demonstration
 
 If the input to this system is replaced with a sinewave $x(t)=\sin(t)$ and the output with a scope, what do you think the output will be? Sketch it in your notebook.
 

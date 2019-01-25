@@ -14,7 +14,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 # Introducing Signals and Systems
 
-An annotatable copy of the full notes for this presentation will be distributed befor the first class meeting as **Worksheet 1** the handouts section of the *_Content Library* of the **OneNote Class Notebook** for this class. You can also view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/introduction/index)) and as a downloadable [PDF file](https://cpjobling.github.io/eg-247-textbook/introduction/introduction.pdf).
+An annotatable copy of the full notes for this presentation will be distributed befor the first class meeting as **Worksheet 1** the handouts section of the *_Content Library* of the **OneNote Class Notebook** for this class. You can also view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/introduction/index.html)) and as a downloadable [PDF file](https://cpjobling.github.io/eg-247-textbook/introduction/introduction.pdf).
 
 
 ## Signals and Systems for Dummies
@@ -62,7 +62,7 @@ To help us answer these questions, let's use our Mathematical tools to plot a si
 
 $$3\cos(2\pi\cdot 2t - 3\pi/4)$$
 
-### Wolfram Alpha
+#### Wolfram Alpha
 
 Here's the link: <http://www.wolframalpha.com>
 
@@ -71,7 +71,7 @@ Paste this into the search box
     plot 3 cos(2 pi 2 t - 3 pi/4) 
 
 
-### Matlab
+#### Matlab
 
 In Matlab we would need to tackle this by breaking down the steps.
 
@@ -195,7 +195,7 @@ What is the period of the waveform in seconds?
 1. $1/f_0$
 1. $2\pi/f_0$
 
-### Notes
+**Notes**
 
 * In communications and electronic signal processing, the frequency of sinusoidal signals us usually given in *cycles per second* or Hz. 
 * In mathematics, the frequency is always expressed in *radians per second*. 
@@ -222,7 +222,7 @@ An example of a continuous-time system is an electronic amplifier with a gain of
 
 In this course, we will model such systems as block diagram models in Simulink.
 
-### Block diagram model in Simulink
+#### Block diagram model in Simulink
 
 <img src="pictures/css.png">
 
@@ -240,7 +240,7 @@ Consider the following simple signal, a pulse sequence:$$y[n] = \left\{ {\begin{
 \end{array}} \right.$$
 We can plot this in Matlab as a *stem plot*
 
-## Procedure
+#### Procedure
 
 Define function and save as [y.m](y.m).
 
