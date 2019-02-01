@@ -5,16 +5,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-  <title>Creating course content</title>
-  <meta name="description" content="Notes and example programmes to accompany the module.">
+  <title>Worksheet 5</title>
+  <meta name="description" content="Worksheet 5">
 
-  <link rel="canonical" href="/eg-247-textbook/eg-247-textbook/content/features/markdown.html">
+  <link rel="canonical" href="/eg-247-textbook/eg-247-textbook/laplace_transform/2/worksheet5.html">
   <link rel="alternate" type="application/rss+xml" title="EG-247 Signals and Systems" href="/eg-247-textbook/eg-247-textbook/feed.xml">
 
-  <meta property="og:url"         content="/eg-247-textbook/eg-247-textbook/content/features/markdown.html" />
+  <meta property="og:url"         content="/eg-247-textbook/eg-247-textbook/laplace_transform/2/worksheet5.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Creating course content" />
-<meta property="og:description" content="Notes and example programmes to accompany the module." />
+<meta property="og:title"       content="Worksheet 5" />
+<meta property="og:description" content="Worksheet 5" />
 <meta property="og:image"       content="" />
 
 
@@ -23,15 +23,15 @@
   "@context": "http://schema.org",
   "@type": "NewsArticle",
   "mainEntityOfPage":
-    "/eg-247-textbook/content/features/markdown.html",
+    "/eg-247-textbook/laplace_transform/2/worksheet5.html",
   "headline":
-    "Creating course content",
+    "Worksheet 5",
   "datePublished":
     "2019-02-01T17:00:44+00:00",
   "dateModified":
     "2019-02-01T17:00:44+00:00",
   "description":
-    "Notes and example programmes to accompany the module.",
+    "Worksheet 5",
   "author": {
     "@type": "Person",
     "name": "Dr Chris P. Jobling"
@@ -771,7 +771,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
           
 
-          <ul class="c-sidebar__sections u-hidden-visually">
+          <ul class="c-sidebar__sections ">
             
               
               
@@ -845,7 +845,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
               
 
               <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
+                <a class="c-sidebar__entry c-sidebar__entry--active"
                   href="/eg-247-textbook/laplace_transform/2/worksheet5"
                 >
                   
@@ -1096,15 +1096,27 @@ document.addEventListener('turbolinks:load', updateInteractLink)
     <nav class="onthispage">
       <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
       <ul class="toc__menu">
-  <li><a href="#sidebars-with-jekyll">Sidebars with Jekyll</a>
+  <li><a href="#to-accompany-chapter-32-inverse-laplace-transform">To accompany Chapter 3.2 Inverse Laplace Transform</a></li>
+  <li><a href="#the-case-of-the-distinct-poles">The case of the distinct poles</a>
     <ul>
-      <li><a href="#heres-a-third-level-header">Here’s a third-level header</a></li>
+      <li><a href="#example-1">Example 1</a></li>
+      <li><a href="#matlab-solution---numerical">Matlab Solution - Numerical</a></li>
+      <li><a href="#example-2">Example 2</a></li>
     </ul>
   </li>
-  <li><a href="#embedding-media">Embedding media</a>
+  <li><a href="#the-case-of-the-complex-poles">The case of the complex poles</a>
     <ul>
-      <li><a href="#adding-images">Adding images</a></li>
-      <li><a href="#adding-movies">Adding movies</a></li>
+      <li><a href="#example-3">Example 3</a></li>
+    </ul>
+  </li>
+  <li><a href="#the-case-of-the-repeated-poles">The case of the repeated poles</a>
+    <ul>
+      <li><a href="#example-4">Example 4</a></li>
+    </ul>
+  </li>
+  <li><a href="#the-case-of-the-improper-rational-polynomial">The case of the improper rational polynomial</a>
+    <ul>
+      <li><a href="#example-5">Example 5</a></li>
     </ul>
   </li>
 </ul>
@@ -1129,58 +1141,287 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 </div>
 
             
+<div class="buttons">
+
+
+
+
+</div>
+
 
             <div class="c-textbook__content">
-              <h1 id="creating-course-content">Creating course content</h1>
+              <h1 id="worksheet-5">Worksheet 5</h1>
 
-<p>The two kinds of files that contain course content are:</p>
+<h2 id="to-accompany-chapter-32-inverse-laplace-transform">To accompany Chapter 3.2 Inverse Laplace Transform</h2>
 
-<ul>
-  <li>Jupyter Notebooks</li>
-  <li>Markdown files</li>
-</ul>
+<p>We will step through this worksheet in class.</p>
 
-<p>Each are contained in the <code class="highlighter-rouge">content/</code> folder and referenced from <code class="highlighter-rouge">_data/toc.yml</code>.</p>
+<p>You are expected to have at least watched the video presentation of <a href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/2/inverse_laplace">Chapter 3.2</a> of the <a href="https://cpjobling.github.io/eg-247-textbook">notes</a> before coming to class. If you haven’t watch it afterwards!</p>
 
-<p>If the file is markdown, it will be copied over with front-matter YAML added so
-that Jekyll can parse it</p>
+<h2 id="the-case-of-the-distinct-poles">The case of the distinct poles</h2>
 
-<h2 id="sidebars-with-jekyll">Sidebars with Jekyll</h2>
+<h3 id="example-1">Example 1</h3>
 
-<p>You may notice that there’s a sidebar to the right (if your screen is wide enough).
-These are automatically generated from the headers that are present in your page.
-The sidebar will automatically capture all 2nd and 3rd level section headers.
-The best way to designate these headers is with <code class="highlighter-rouge">#</code> characters at the beginning
-of a line.</p>
+<p>Use the PFE method to simplify $F_1(s)$ below and find the time domain function $f_1(t)$ corresponding to $F_1(s)$</p>
 
-<h3 id="heres-a-third-level-header">Here’s a third-level header</h3>
+<script type="math/tex; mode=display">F_1(s) = \frac{2s+5}{s^2 + 5s + 6}</script>
 
-<p>This section is here purely to demonstrate the third-level header of the
-rendered page!</p>
+<p>(Quick solution: <a href="https://www.wolframalpha.com/input/?i=inverse+laplace+transform+%7B(2s+%2B+5)%2F(s%5E2+%2B+5s+%2B+6)%7D">Wolfram Alpha</a></p>
 
-<h2 id="embedding-media">Embedding media</h2>
+<pre style="border: 2px solid blue">
 
-<h3 id="adding-images">Adding images</h3>
 
-<p>You can reference external media like images from your markdown file. If you use
-relative paths, then they will continue to work when the markdown files are copied over,
-so long as they point to a file that’s inside of the repository.</p>
 
-<p>Here’s an image relative to the site root</p>
 
-<p><img src="../images/C-3PO_droid.png" alt="" /></p>
 
-<h3 id="adding-movies">Adding movies</h3>
 
-<p>You can even embed references to movies on the web! For example, here’s a little gif for you!</p>
 
-<p><img src="https://media.giphy.com/media/yoJC2A59OCZHs1LXvW/giphy.gif" alt="" /></p>
 
-<p>This will be included in your website when it is built.</p>
+
+
+
+
+
+
+
+
+
+
+</pre>
+
+<h3 id="matlab-solution---numerical">Matlab Solution - Numerical</h3>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">format</span> <span class="n">compact</span>
+<span class="nb">clear</span> <span class="nb">all</span>
+</code></pre></div></div>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Ns</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span> <span class="n">Ds</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">];</span>
+<span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">residue</span><span class="p">(</span><span class="n">Ns</span><span class="p">,</span> <span class="n">Ds</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Interpreted as:</p>
+
+<script type="math/tex; mode=display">F_1(s) = \frac{1}{s + 3} + \frac{1}{s + 2}</script>
+
+<p>which because of the linearity property of the Laplace Transform and using tables results in the <em>Inverse Laplace Transform</em></p>
+
+<script type="math/tex; mode=display">f_1(t) = e^{-3t} + e^{-2t}</script>
+
+<h4 id="matlab-solution---symbolic">Matlab solution - symbolic</h4>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">syms</span> <span class="n">s</span> <span class="n">t</span><span class="p">;</span>
+<span class="n">Fs</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">s</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)/(</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">s</span> <span class="o">+</span> <span class="mi">6</span><span class="p">);</span>
+<span class="n">ft</span> <span class="o">=</span> <span class="n">ilaplace</span><span class="p">(</span><span class="n">Fs</span><span class="p">);</span>
+<span class="n">pretty</span><span class="p">(</span><span class="n">ft</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="example-2">Example 2</h3>
+
+<p>Determine the Inverse Laplace Transform of</p>
+
+<script type="math/tex; mode=display">F_2(s) = \frac{3s^2+2s+5}{s^3 + 9s^2 + 23s + 15}</script>
+
+<p>(Quick solution: <a href="http://www.wolframalpha.com/input/?i=inverse+laplace+transform+%283s%5E2+%2B+2s+%2B+5%29%2F%28s%5E3+%2B+9s%5E2+%2B+23s+%2B+15%29">Wolfram Alpha</a>)</p>
+
+<h4 id="solution-2">Solution 2</h4>
+
+<p>Because the denominator of $F_2(s)$ is a cubic, it will be difficult to factorise without computer assistance so we use MATLAB to factorise $D(s)$</p>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">syms</span> <span class="n">s</span><span class="p">;</span>
+<span class="nb">factor</span><span class="p">(</span><span class="n">s</span><span class="o">^</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">9</span><span class="o">*</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">23</span><span class="o">*</span><span class="n">s</span> <span class="o">+</span> <span class="mi">15</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>In an exam you’d be given the factors</p>
+
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+
+<p>We can now use the previous technique to find the solution which according to Matlab should be</p>
+
+<script type="math/tex; mode=display">f_1(t) = \frac{3}{4}e^{-t} - \frac{13}{2}e^{-3t} + \frac{35}{4}e^{-5t}</script>
+
+<h2 id="the-case-of-the-complex-poles">The case of the complex poles</h2>
+
+<p>Quite often the poles of $F(s)$ are complex and because the complex poles occur as complex conjugate pairs, the number of complex poles is even. Thus if $p_k$ is a complex root of $D(s)$ then its complex conjugate $p_k^*$ is also a root of $D(s)$.</p>
+
+<p>You can still use the PFE with complex poles, as demonstrated in Pages 3-5—3-7 in the textbook. However it is easier to use the fact that complex poles will appear as quadratic factors of the form $s^2 + as + b$ and then call on the two transforms in the PFE</p>
+
+<script type="math/tex; mode=display">\frac{\omega}{(s - a)^2 + \omega^2} \Leftrightarrow e^{at}\sin\;\omega t</script>
+
+<script type="math/tex; mode=display">\frac{s + a}{(s - a)^2 + \omega^2} \Leftrightarrow e^{at}\cos\;\omega t</script>
+
+<h3 id="example-3">Example 3</h3>
+
+<p>Rework Example 3-2 from the text book using quadratic factors.</p>
+
+<p>Find the Inverse Laplace Transform of</p>
+
+<script type="math/tex; mode=display">F_3(s) = \frac{s + 3}{(s+1)(s^2 + 4s + 8)}</script>
+
+<p>(Quick solution: <a href="http://www.wolframalpha.com/input/?i=inverse+laplace+transform+%28s%2B3%29%2F%28%28s+%2B+1%29%28s%5E2+%2B+4s+%2B+8%29%29">Wolfram Alpha</a> – Shows that the computer is not always best!)</p>
+
+<ol>
+  <li>
+    <p>We complete the square in the denominator</p>
+  </li>
+  <li>
+    <p>Then compare with the desired form $(s - a)^2 + \omega^2$</p>
+  </li>
+  <li>
+    <p>Solve thisby finding the PFE for the assumed solution: <script type="math/tex">F_3(s) = \frac{r_1}{s+1} + \frac{r_2(s+a)}{(s + a)^2 + \omega^2} \frac{a r_3}{(s - a)^2 + \omega^2}.</script> expecting the solution <script type="math/tex">f_3(t) = r_1 e^{-t} - r_2 e^{-at}\cos \omega t + r_3 e^{-at}\sin \omega t.</script></p>
+  </li>
+</ol>
+
+<p>You can use trig. identities to simplify this further if you wish.</p>
+
+<h4 id="solution-3">Solution 3</h4>
+
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+
+<h2 id="the-case-of-the-repeated-poles">The case of the repeated poles</h2>
+
+<p>When a rational polynomial has repeated poles</p>
+
+<script type="math/tex; mode=display">F(s) = \frac{N(s)}{(s - p_1)^m(s - p_2)\cdots(s - p_{n-1})(s-p_0)}</script>
+
+<p>and the PFE will have the form:</p>
+
+<script type="math/tex; mode=display">\begin{array}{c}
+F(s) = \frac{r_{11}}{(s - {p_1})^m} + \frac{r_{12}}{(s - {p_1})^{m - 1}} + \frac{r_{13}}{(s - {p_1})^{m - 2}} +  \cdots  + \frac{r_{1}}{(s - {p_1})}\\
+ + \frac{r_2}{(s - {p_2})} + \frac{r_3}{(s - {p_3})} +  \cdots  + \frac{r_n}{(s - {p_n})}
+\end{array}</script>
+
+<p>The ordinary residues $r_k$ can be found using the rule used for distinct roots.</p>
+
+<p>To find the residuals for the repeated term $r_{1k}$ we need to multiply both sides of the expression by $(s+p_1)^m$ and take repeated derivatives as described in detail in Pages 3-7—3-9 of the text book. This yields the general formula</p>
+
+<script type="math/tex; mode=display">r_{1k}=\lim_{s\to p_1}\frac{1}{(k-1)!}\frac{d^{k-1}}{ds^{k-1}}\left[(s-p_1)^mF(s)\right]</script>
+
+<p>which in the age of computers is rarely needed.</p>
+
+<h3 id="example-4">Example 4</h3>
+
+<p>Find the inverse Laplace Transform of</p>
+
+<script type="math/tex; mode=display">F_4(s) = \frac{s+3}{(s+2)(s+1)^2}</script>
+
+<p>Note that the transform</p>
+
+<script type="math/tex; mode=display">te^{at} \Leftrightarrow \frac{1}{(s - a)^2}</script>
+
+<p>will be useful.</p>
+
+<p>(Quick solution: <a href="http://www.wolframalpha.com/input/?i=inverse+laplace+transform+%28s%2B3%29%2F%28%28s%2B2%29%28s+%2B+1%29%5E2%29">Wolfram Alpha</a>)</p>
+
+<h4 id="solution">Solution</h4>
+
+<p>We will leave the solution that makes use of the residude of repeated poles formula for you to study from the text book. In class we will illustrate the slightly simpler approach also presented in the text.</p>
+
+<p>For exam preparation, I would recommend that you use whatever method you find most comfortable.</p>
+
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+
+<h2 id="the-case-of-the-improper-rational-polynomial">The case of the improper rational polynomial</h2>
+
+<p>If $F(s)$ is an improper rational polynomial, that is $m \ge n$, we must first divide the numerator $N(s)$ by the denomonator $D(s)$ to derive an expression of the form</p>
+
+<script type="math/tex; mode=display">F(s) = k_0 + k_1s + k_2s^2 + \cdots + k_{m-n}s^{m-n} + \frac{N(s)}{D(s)}</script>
+
+<p>and then $N(s)/D(s)$ will be a proper rational polynomial.</p>
+
+<h3 id="example-5">Example 5</h3>
+
+<script type="math/tex; mode=display">F_6(s)= \frac{s^2 + 2s + 2}{s+1}</script>
+
+<p>(Quick solution: <a href="http://www.wolframalpha.com/input/?i=inverse+laplace+transform+%28s%5E2+%2B+2s+%2B+2%29%2F%28s+%2B+1%29">Wolfram Alpha</a>)</p>
+
+<p>Dividing $s^2 + 2s + 2$ by $s + 1$ gives</p>
+
+<script type="math/tex; mode=display">F_6(s) = s + 1 + \frac{1}{s+1}</script>
+
+<script type="math/tex; mode=display">f_6(t) = e^{-t}+\delta(t)+\delta'(t)</script>
+
+<p>See <a href="inverse_laplace">notes for proof</a></p>
+
+<h4 id="matlab-verification">Matlab verification</h4>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Ns</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">];</span> <span class="n">Ds</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">1</span><span class="p">];</span>
+<span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">residue</span><span class="p">(</span><span class="n">Ns</span><span class="p">,</span> <span class="n">Ds</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">syms</span> <span class="n">s</span><span class="p">;</span>
+<span class="n">F6</span> <span class="o">=</span> <span class="p">(</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">s</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)/(</span><span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">f6</span> <span class="o">=</span> <span class="n">ilaplace</span><span class="p">(</span><span class="n">F6</span><span class="p">)</span>
+</code></pre></div></div>
+
 
               <nav class="c-page__nav">
   
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/eg-247-textbook/laplace_transform/1/worksheet4">
+      〈 <span class="u-margin-right-tiny"></span> Worksheet 4
+    </a>
+  
 
+  
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/eg-247-textbook/labs/index">
+      Laboratory Exercises <span class="u-margin-right-tiny"></span> 〉
+    </a>
   
 </nav>
 
