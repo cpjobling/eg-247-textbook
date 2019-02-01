@@ -99,32 +99,9 @@ Use the PFE method to simplify $F_1(s)$ below and find the time domain function 
 
 $$F_1(s) = \frac{2s+5}{s^2 + 5s + 6}$$
 
-(Quick solution: [Wolfram Alpha](http://www.wolframalpha.com/input/?i=inverse+laplace+transform+%282s+%2B+5%29%2F%28s%5E2+%2B+5s+%2B+6%29))
+(Quick solution: [Wolfram Alpha](https://www.wolframalpha.com/input/?i=inverse+laplace+transform+%7B(2s+%2B+5)%2F(s%5E2+%2B+5s+%2B+6)%7D)
 
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-Worked solution: [example1.pdf](../worked_examples/example1.pdf).
-
-### Matlab Solution - Numerical
+#### Matlab Solution - Numerical
 
 
 
@@ -165,7 +142,7 @@ which because of the linearity property of the Laplace Transform and using table
 
 $$f_1(t) = e^{-3t} + e^{-2t}$$
 
-### Matlab solution - symbolic
+#### Matlab solution - symbolic
 
 
 
@@ -193,7 +170,7 @@ $$F_2(s) = \frac{3s^2+2s+5}{s^3 + 9s^2 + 23s + 15}$$
 
 (Quick solution: [Wolfram Alpha](http://www.wolframalpha.com/input/?i=inverse+laplace+transform+%283s%5E2+%2B+2s+%2B+5%29%2F%28s%5E3+%2B+9s%5E2+%2B+23s+%2B+15%29))
 
-### Solution 2
+#### Solution 2
 
 Because the denominator of $F_2(s)$ is a cubic, it will be difficult to factorise without computer assistance so we use Matlab to factorise $D(s)$
 
@@ -215,30 +192,11 @@ ans =
 
 In an exam you'd be given the factors
 
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
 We can now use the previous technique to find the solution which according to Matlab should be
 
 $$f_1(t) = \frac{3}{4}e^{-t} - \frac{13}{2}e^{-3t} + \frac{35}{4}e^{-5t}$$
+
+We will prove this in class.
 
 ## The case of the complex poles
 
@@ -316,32 +274,11 @@ will be useful.
 
 (Quick solution: [Wolfram Alpha](http://www.wolframalpha.com/input/?i=inverse+laplace+transform+%28s%2B3%29%2F%28%28s%2B2%29%28s+%2B+1%29%5E2%29))
 
-## Solution
+#### Solution
 
 We will leave the solution that makes use of the residude of repeated poles formula for you to study from the text book. In class we will illustrate the slightly simpler approach also presented in the text. 
 
 For exam preparation, I would recommend that you use whatever method you find most comfortable.
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
 
 ## The case of the improper rational polynomial
 
@@ -367,7 +304,7 @@ $$1 \Leftrightarrow \delta(t)$$
 
 $$s \Leftrightarrow ?$$
 
-### What function of t has Laplace transform s?
+#### What function of t has Laplace transform s?
 
 Recall from Session 2:
     
@@ -381,7 +318,7 @@ Also, by the time differentiation property
 
 $$u_0''(t)=\delta'(t)\Leftrightarrow s^2\mathcal{L}u_0(t) - su_0(0) - \left.\frac{d}{dt}u_0(t)\right|_{t=0} =  s^2\frac{1}{s} = s$$
 
-### New Transform Pairs
+#### New Transform Pairs
 
 $$s\Leftrightarrow \delta'(t)$$
 
@@ -389,7 +326,7 @@ $$\frac{d^n}{dt^n}\delta(t)\Leftrightarrow s^n$$
 
 $$f_6(t) = e^{-t}+\delta(t)+\delta'(t)$$
 
-### Matlab verification
+#### Matlab verification
 
 
 
@@ -434,4 +371,4 @@ Do the end of the chapter exercises (Section 3.67) from the textbook. Don't look
 
 ## Lab Work
 
-In the lab, next Monday, we will explore the tools provided by Matlab for taking Laplace transforms, representing polynomials, finding roots and factorizing polynomials and solution of inverse Laplace transform problems.
+In the lab, on Friday, we will explore the tools provided by MATLAB for taking Laplace transforms, representing polynomials, finding roots and factorizing polynomials and solution of inverse Laplace transform problems.

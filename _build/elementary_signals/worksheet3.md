@@ -7,8 +7,8 @@ prev_page:
   url: /introduction/worksheet2
   title: 'Worksheet 2'
 next_page:
-  url: /labs/index
-  title: 'Laboratory Exercises'
+  url: /laplace_transform/1/worksheet4
+  title: 'Worksheet 4'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
@@ -76,6 +76,16 @@ When prompted: enter the **session ID**
 
 
 </pre>
+
+
+
+{:.input_area}
+```matlab
+### Assign yourself to a group by table
+
+There should be a card with a **group name** on your table.
+```
+
 
 The rest of the session will be anonymous and scored by teams.
 
@@ -160,7 +170,7 @@ ans =
 
 
 {:.output .output_png}
-![png](../images/elementary_signals/worksheet3_22_1.png)
+![png](../images/elementary_signals/worksheet3_23_1.png)
 
 
 

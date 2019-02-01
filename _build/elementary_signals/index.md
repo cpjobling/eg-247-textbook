@@ -401,4 +401,4 @@ We will do some of these in class. See [worksheet3](worksheet3).
 
 ### Homework
 
-These are for you to do later for further practice. See [Homework 1](hw1).
+These are for you to do later for further practice. See [Homework 1](../homework/hw1).

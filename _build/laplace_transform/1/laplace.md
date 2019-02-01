@@ -14,7 +14,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 # The Laplace Transformation
 
-The preparatory reading for this section is Chapter 2 of Karris which
+The preparatory reading for this section is [Chapter 2 of Karris](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=75#ppg=43) which
 
 * defines the Laplace transformation 
 * gives the most useful properties of the Laplace transform with proofs 
@@ -208,6 +208,6 @@ The Matlab function `laplace` can be used to find laplace transforms of time fun
 
 ## Homework
 
-Attempt at least one of the end-of-chapter exercises from each question 1-7 of Section 2.7 from the textbook. Don't look at the answers until you have attempted the problems.
+Attempt at least one of the end-of-chapter exercises from each question 1-7 of [Section 2.7 of Karris](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=75#ppg=71). Don't look at the answers until you have attempted the problems.
 
 If we have time, I will work through one or two of these in class.
