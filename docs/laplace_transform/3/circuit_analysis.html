@@ -27,9 +27,9 @@
   "headline":
     "Using Laplace Transforms for Circuit Analysis",
   "datePublished":
-    "2019-02-01T17:00:44+00:00",
+    "2019-02-03T12:59:01+00:00",
   "dateModified":
-    "2019-02-01T17:00:44+00:00",
+    "2019-02-03T12:59:01+00:00",
   "description":
     "Using Laplace Transforms for Circuit Analysis",
   "author": {
@@ -781,7 +781,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
                   href="/eg-247-textbook/introduction/worksheet1"
                 >
                   
-                  Worksheet 1
+                  Worksheet 1 Introduction
                 </a>
 
                 
@@ -815,7 +815,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
                   href="/eg-247-textbook/elementary_signals/worksheet3"
                 >
                   
-                  Worksheet 3
+                  Worksheet 3 Elementary Signals
                 </a>
 
                 
@@ -832,7 +832,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
                   href="/eg-247-textbook/laplace_transform/1/worksheet4"
                 >
                   
-                  Worksheet 4
+                  Worksheet 4 Laplace Transform
                 </a>
 
                 
@@ -849,7 +849,41 @@ document.addEventListener('turbolinks:load', updateInteractLink)
                   href="/eg-247-textbook/laplace_transform/2/worksheet5"
                 >
                   
-                  Worksheet 5
+                  Worksheet 5 Inverse Laplace Transform
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/laplace_transform/3/worksheet6"
+                >
+                  
+                  Worksheet 6 Using Laplace Transforms for Circuit Analysis
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/laplace_transform/4/worksheet7"
+                >
+                  
+                  Worksheet 7 Transfer Functions
                 </a>
 
                 
@@ -1108,18 +1142,8 @@ document.addEventListener('turbolinks:load', updateInteractLink)
       <li><a href="#examples">Examples</a></li>
     </ul>
   </li>
-  <li><a href="#complex-impedance-zs">Complex Impedance Z(s)</a>
-    <ul>
-      <li><a href="#exercise">Exercise</a></li>
-      <li><a href="#example-4">Example 4</a></li>
-    </ul>
-  </li>
-  <li><a href="#complex-admittance-ys">Complex Admittance Y(s)</a>
-    <ul>
-      <li><a href="#example-5---do-it-yourself">Example 5 - Do It Yourself</a></li>
-      <li><a href="#answer-5">Answer 5</a></li>
-    </ul>
-  </li>
+  <li><a href="#complex-impedance-zs">Complex Impedance Z(s)</a></li>
+  <li><a href="#complex-admittance-ys">Complex Admittance Y(s)</a></li>
 </ul>
     </nav>
   </aside>
@@ -1169,11 +1193,6 @@ document.addEventListener('turbolinks:load', updateInteractLink)
   </li>
 </ul>
 
-<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% Matlab setup</span>
-<span class="nb">format</span> <span class="n">compact</span>
-<span class="nb">clear</span> <span class="nb">all</span>
-</code></pre></div></div>
-
 <h2 id="circuit-transformation-from-time-to-complex-frequency">Circuit Transformation from Time to Complex Frequency</h2>
 
 <h3 id="resistive-network---time-domain">Resistive Network - Time Domain</h3>
@@ -1202,270 +1221,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
 <h3 id="examples">Examples</h3>
 
-<h4 id="example-1">Example 1</h4>
-
-<p>Use the Laplace transform method and apply Kirchoff’s Current Law (KCL) to find the voltage $v_c(t)$ across the capacitor for the circuit below given that $v_c(0^-) = 6$ V.</p>
-
-<p><img src="pictures/example1_2.png" alt="Circuit for Example 1" /></p>
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-<h4 id="example-2">Example 2</h4>
-
-<p>Use the Laplace transform method and apply Kirchoff’s Voltage Law (KVL) to find the voltage $v_c(t)$ across the capacitor for the circuit below given that $v_c(0^-) = 6$ V.</p>
-
-<p><img src="pictures/example1_2.png" alt="Circuit for Example 2" /></p>
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-<h4 id="example-3">Example 3</h4>
-
-<p>In the circuit below, switch $S_1$ closes at $t=0$, while at the same time, switch $S_2$ opens. Use the Laplace transform method to find $v_{\mathrm{out}}(t)$ for $t &gt; 0$.</p>
-
-<p><img src="pictures/example3.png" alt="Circuit for Example 3" /></p>
-
-<p>Show with the assistance of MATLAB (See <a href="solution3.m">solution3.m</a>) that the solution is</p>
-
-<script type="math/tex; mode=display">V_{\mathrm{out}}=\left(1.36e^{-6.57t}+0.64e^{-0.715t}\cos 0.316t - 1.84e^{-0.715t}\sin 0.316t\right)u_0(t)</script>
-
-<p>and plot the result.</p>
-
-<h4 id="solution-to-example-3">Solution to Example 3</h4>
-
-<p>We will use a combination of pen-and-paper and MATLAB to solve this.</p>
-
-<h5 id="1-equivalent-circuit">1. Equivalent Circuit</h5>
-
-<p>Draw equivalent circuit at $t=0$</p>
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-<h5 id="2-transform-model">2. Transform model</h5>
-
-<p>Convert to transforms</p>
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-<h5 id="3-determine-equation">3. Determine equation</h5>
-
-<p>Determine equation for $V_{\rm out}(s)$.</p>
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-<h4 id="4-complete-solution-in-matlab">4. Complete solution in MATLAB</h4>
-
-<p>In the lecture we showed that after simplification for Example 3</p>
-
-<script type="math/tex; mode=display">V_{\mathrm{out}}=\frac{2s(s+3)}{s^3 + 8s^2 + 10s + 4}</script>
-
-<p>We will use MATLAB to factorize the denominator $D(s)$ of the equation
-into a linear and a quadratic factor.</p>
-
-<h5 id="find-roots-of-denominator-ds">Find roots of Denominator D(s)</h5>
-
-<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">r</span> <span class="o">=</span> <span class="nb">roots</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
-</code></pre></div></div>
-
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>r =
-  -6.5708 + 0.0000i
-  -0.7146 + 0.3132i
-  -0.7146 - 0.3132i
-
-</code></pre></div></div>
-
-<h5 id="find-quadratic-form">Find quadratic form</h5>
-
-<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">syms</span> <span class="n">s</span> <span class="n">t</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">expand</span><span class="p">((</span><span class="n">s</span> <span class="o">-</span> <span class="n">r</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="n">s</span> <span class="o">-</span> <span class="n">r</span><span class="p">(</span><span class="mi">3</span><span class="p">)))</span>
-</code></pre></div></div>
-
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>y =
-s^2 + (804595903579775*s)/562949953421312 + 3086772113315577969665007046981/5070602400912917605986812821504
-
-</code></pre></div></div>
-
-<h5 id="simplify-coefficients-of-s">Simplify coefficients of s</h5>
-
-<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y</span> <span class="o">=</span> <span class="n">sym2poly</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>y =
-    1.0000    1.4292    0.6088
-
-</code></pre></div></div>
-
-<h5 id="complete-the-square">Complete the Square</h5>
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-<h5 id="plot-result">Plot result</h5>
-
-<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">:</span><span class="mf">0.01</span><span class="p">:</span><span class="mi">10</span><span class="p">;</span>
-<span class="n">Vout</span> <span class="o">=</span> <span class="mf">1.36</span><span class="o">.*</span><span class="nb">exp</span><span class="p">(</span><span class="n">r</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.*</span><span class="n">t</span><span class="p">)</span><span class="o">+</span><span class="mf">0.64</span><span class="o">.*</span><span class="nb">exp</span><span class="p">(</span><span class="nb">real</span><span class="p">(</span><span class="n">r</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">.*</span><span class="n">t</span><span class="p">)</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(</span><span class="nb">imag</span><span class="p">(</span><span class="n">r</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">.*</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="mf">1.84</span><span class="o">.*</span><span class="nb">exp</span><span class="p">(</span><span class="nb">real</span><span class="p">(</span><span class="n">r</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span><span class="o">.*</span><span class="n">t</span><span class="p">)</span><span class="o">.*</span><span class="nb">sin</span><span class="p">(</span><span class="o">-</span><span class="nb">imag</span><span class="p">(</span><span class="n">r</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span><span class="o">.*</span><span class="n">t</span><span class="p">);</span>
-<span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vout</span><span class="p">);</span> <span class="nb">grid</span>
-<span class="nb">title</span><span class="p">(</span><span class="s1">'Plot of Vout(t) for the circuit of Example 3'</span><span class="p">)</span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s1">'Vout(t) V'</span><span class="p">),</span><span class="nb">xlabel</span><span class="p">(</span><span class="s1">'Time t s'</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p class="output output_png"><img src="../../images/laplace_transform/3/circuit_analysis_37_0.png" alt="png" /></p>
-
-<h4 id="worked-solution-example-3">Worked Solution: Example 3</h4>
-
-<p>File Pencast: <a href="../worked_examples/example3.pdf">example3.pdf</a> - Download and open in Adobe Acrobat Reader.</p>
-
-<p>The attached “PenCast” works through the solution to Example 3 by hand. It’s quite a complex, error-prone (as you will see!) calculation that needs careful attention to detail. This in itself gives justification to my belief that you should use computers wherever possible.</p>
-
-<p>Please note, the PenCast takes around 39 minutes (I said it was a complex calculation) but you can fast forward and replay any part of it.</p>
-
-<h5 id="alternative-solution-using-transfer-functions">Alternative solution using transfer functions</h5>
-
-<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Vout</span> <span class="o">=</span> <span class="n">tf</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">conv</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]),[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
-</code></pre></div></div>
-
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-Vout =
- 
-       2 s^2 + 6 s
-  ----------------------
-  s^3 + 8 s^2 + 10 s + 4
- 
-Continuous-time transfer function.
-
-
-</code></pre></div></div>
-
-<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">impulse</span><span class="p">(</span><span class="n">Vout</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p class="output output_png"><img src="../../images/laplace_transform/3/circuit_analysis_41_0.png" alt="png" /></p>
+<p>We will work through these in class. See <a href="worksheet6">worksheet6</a>.</p>
 
 <h2 id="complex-impedance-zs">Complex Impedance Z(s)</h2>
 
@@ -1495,61 +1251,6 @@ Continuous-time transfer function.
 
 <p>Since $s = \sigma + j\omega$ is a complex number, $Z(s)$ is also complex and is known as the <em>complex input impedance</em> of this RLC series circuit.</p>
 
-<h3 id="exercise">Exercise</h3>
-
-<p>Use the previous result to give an expression for $V_c(s)$</p>
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-<h3 id="example-4">Example 4</h3>
-
-<p>For the network shown below, all the complex impedence values are given in $\Omega$ (ohms).</p>
-
-<p><img src="pictures/example4.png" alt="Circuit for example 4" /></p>
-
-<p>Find $Z(s)$ using:</p>
-
-<ol>
-  <li>nodal analysis</li>
-  <li>successive combinations of series and parallel impedances</li>
-</ol>
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-<p><strong>Solutions</strong>: Pencasts <a href="../worked_examples/ex4_1.pdf">ex4_1.pdf</a> and <a href="../worked_examples/ex4_1.pdf">ex4_1.pdf</a> – open in Adobe Acrobat.</p>
-
 <h2 id="complex-admittance-ys">Complex Admittance Y(s)</h2>
 
 <p>Consider the $s$-domain GLC parallel circuit shown below where the initial conditions are zero.</p>
@@ -1575,90 +1276,6 @@ Continuous-time transfer function.
 <script type="math/tex; mode=display">Y(s) = G + \frac{1}{sL} + sC.</script>
 
 <p>$Y(s)$ is complex and is known as the <em>complex input admittance</em> of this GLC parallel circuit.</p>
-
-<h3 id="example-5---do-it-yourself">Example 5 - Do It Yourself</h3>
-
-<p>Compute $Z(s)$ and $Y(s)$ for the circuit shown below. All impedence values are in $\Omega$ (ohms). Verify your answers with MATLAB.</p>
-
-<p><img src="pictures/example5.png" alt="Circuit for Example 5" /></p>
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-<h3 id="answer-5">Answer 5</h3>
-
-<script type="math/tex; mode=display">Z(s) = \frac{65s^4 + 490s^3 + 528s^2 + 400s + 128}{s(5s^2 + 30s + 16)}</script>
-
-<script type="math/tex; mode=display">Y(s) = \frac{1}{Z(s)} = \frac{s(5s^2 + 30s + 16)}{65s^4 + 490s^3 + 528s^2 + 400s + 128}</script>
-
-<p>Matlab verification: <a href="solution5.m">solution5.m</a></p>
-
-<h5 id="example-5-verification-of-solution">Example 5: Verification of Solution</h5>
-
-<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">syms</span> <span class="n">s</span><span class="p">;</span>
-
-<span class="n">z1</span> <span class="o">=</span> <span class="mi">13</span><span class="o">*</span><span class="n">s</span> <span class="o">+</span> <span class="mi">8</span><span class="p">/</span><span class="n">s</span><span class="p">;</span>
-<span class="n">z2</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="n">s</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
-<span class="n">z3</span> <span class="o">=</span> <span class="mi">20</span> <span class="o">+</span> <span class="mi">16</span><span class="p">/</span><span class="n">s</span><span class="p">;</span>
-</code></pre></div></div>
-
-<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">z</span> <span class="o">=</span> <span class="n">z1</span> <span class="o">+</span> <span class="n">z2</span> <span class="o">*</span> <span class="n">z3</span> <span class="p">/(</span><span class="n">z2</span> <span class="o">+</span> <span class="n">z3</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>z =
-13*s + 8/s + ((5*s + 10)*(16/s + 20))/(5*s + 16/s + 30)
-
-</code></pre></div></div>
-
-<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">z10</span> <span class="o">=</span> <span class="n">simplify</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>z10 =
-(65*s^4 + 490*s^3 + 528*s^2 + 400*s + 128)/(s*(5*s^2 + 30*s + 16))
-
-</code></pre></div></div>
-
-<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pretty</span><span class="p">(</span><span class="n">z10</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    4        3        2
-65 s  + 490 s  + 528 s  + 400 s + 128
--------------------------------------
-               2
-         s (5 s  + 30 s + 16)
-
-
-</code></pre></div></div>
-
-<h5 id="admittance">Admittance</h5>
-
-<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y10</span> <span class="o">=</span> <span class="mi">1</span><span class="p">/</span><span class="n">z10</span><span class="p">;</span>
-<span class="n">pretty</span><span class="p">(</span><span class="n">y10</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>               2
-         s (5 s  + 30 s + 16)
--------------------------------------
-    4        3        2
-65 s  + 490 s  + 528 s  + 400 s + 128
-
-
-</code></pre></div></div>
 
               <nav class="c-page__nav">
   

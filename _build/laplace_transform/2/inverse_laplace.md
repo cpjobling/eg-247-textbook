@@ -369,6 +369,35 @@ exp(-t) + dirac(t) + dirac(1, t)
 
 Do the end of the chapter exercises (Section 3.67) from the textbook. Don't look at the answers until you have attempted the problems.
 
+## Matlab Solutions
+
+For convenience, single script MATLAB solutions to the examples are provided and can be downloaded from the accompanying [MATLAB](../matlab) folder.
+
+* Example 1 - Real poles [[ex3_1.m](../matlab/ex3_1.m)]
+* Example 2 - Real poles cubic denominator [[ex3_2.m](../matlab/ex_3_2.m)]
+* Example 3 - Complex poles [[ex3_3.m](../matlab/ex3_3.m)]
+* Example 4 - Repeated real poles [[ex3_4.m](../matlab/ex3_4.m)]
+* Example 5 - Non proper rational polynomial [[ex3_5.m](../matlab/ex3_5.m)]
+
+
+
+{:.input_area}
+```matlab
+cd ../matlab
+ls
+open ex3_1
+```
+
+
+{:.output .output_stream}
+```
+README.md	ex3_3.m		example8.m	solution5.m
+ex3_1.m		ex3_4.m		example_8.slx	solution7.m
+ex3_2.m		ex3_5.m		solution3.m	tf_matlab.m
+
+
+```
+
 ## Lab Work
 
 In the lab, on Friday, we will explore the tools provided by MATLAB for taking Laplace transforms, representing polynomials, finding roots and factorizing polynomials and solution of inverse Laplace transform problems.

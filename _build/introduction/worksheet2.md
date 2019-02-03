@@ -3,10 +3,10 @@ interact_link: content/introduction/worksheet2.ipynb
 title: 'Worksheet 2'
 prev_page:
   url: /introduction/worksheet1
-  title: 'Worksheet 1'
+  title: 'Worksheet 1 Introduction'
 next_page:
   url: /elementary_signals/worksheet3
-  title: 'Worksheet 3'
+  title: 'Worksheet 3 Elementary Signals'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

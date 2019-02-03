@@ -1,8 +1,8 @@
 ---
 title: 'Laboratory Exercises'
 prev_page:
-  url: /laplace_transform/2/worksheet5
-  title: 'Worksheet 5'
+  url: /laplace_transform/4/worksheet7
+  title: 'Worksheet 7 Transfer Functions'
 next_page:
   url: /labs/lab01/index
   title: 'Lab 1 - Elemementary Signals'

@@ -2,13 +2,13 @@
 redirect_from:
   - "/laplace-transform/1/worksheet4"
 interact_link: content/laplace_transform/1/worksheet4.ipynb
-title: 'Worksheet 4'
+title: 'Worksheet 4 Laplace Transform'
 prev_page:
   url: /elementary_signals/worksheet3
-  title: 'Worksheet 3'
+  title: 'Worksheet 3 Elementary Signals'
 next_page:
   url: /laplace_transform/2/worksheet5
-  title: 'Worksheet 5'
+  title: 'Worksheet 5 Inverse Laplace Transform'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

@@ -2,13 +2,13 @@
 redirect_from:
   - "/laplace-transform/2/worksheet5"
 interact_link: content/laplace_transform/2/worksheet5.ipynb
-title: 'Worksheet 5'
+title: 'Worksheet 5 Inverse Laplace Transform'
 prev_page:
   url: /laplace_transform/1/worksheet4
-  title: 'Worksheet 4'
+  title: 'Worksheet 4 Laplace Transform'
 next_page:
-  url: /labs/index
-  title: 'Laboratory Exercises'
+  url: /laplace_transform/3/worksheet6
+  title: 'Worksheet 6 Using Laplace Transforms for Circuit Analysis'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
@@ -294,5 +294,25 @@ Ns = [1, 2, 2]; Ds = [1 1];
 syms s;
 F6 = (s^2 + 2*s + 2)/(s + 1);
 f6 = ilaplace(F6)
+```
+
+
+## Matlab Solutions
+
+For convenience, single script MATLAB solutions to the examples are provided and can be downloaded from the accompanying [MATLAB](../matlab) folder.
+
+* Example 1 - Real poles [[ex3_1.m](../matlab/ex3_1.m)]
+* Example 2 - Real poles cubic denominator [[ex3_2.m](../matlab/ex_3_2.m)]
+* Example 3 - Complex poles [[ex3_3.m](../matlab/ex3_3.m)]
+* Example 4 - Repeated real poles [[ex3_4.m](../matlab/ex3_4.m)]
+* Example 5 - Non proper rational polynomial [[ex3_5.m](../matlab/ex3_5.m)]
+
+
+
+{:.input_area}
+```matlab
+cd ../matlab
+ls
+open ex3_1
 ```
 

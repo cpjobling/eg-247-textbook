@@ -48,29 +48,15 @@ In practice, the current transfer function is rarely used, so we will use the vo
 
 $$G(s) = \frac{V_{\mathrm{out}}(s)}{V_{\mathrm{in}}(s)}$$
 
+## Examples
+
+See [worksheet7](worksheet7) for the worked solutions to the examples. We will work through these in class. Here' I'll demonstrate the MATLAB solutions.
+
 ### Example 6
 
 Derive an expression for the transfer function $G(s)$ for the circuit below. In this circuit $R_g$ represents the internal resistance of the applied (voltage) source $v_s$, and $R_L$ represents the resistance of the load that consists of $R_L$, $L$ and $C$.
 
 <img title="Circuit for Example 6" src="pictures/example6.png" width="50%" />
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
 
 ### Sketch of Solution
 
@@ -96,24 +82,6 @@ versus radian frequency $\omega$ rad/s.
 
 <img alt="Circuit for Example 7" src="pictures/example7.png" height="50%" />
 
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
 ### Sketch of Solution
 
 * Replace the components and voltages in the circuit diagram with their complex frequency equivalents
@@ -138,7 +106,7 @@ $$G(s) = \frac{V_\mathrm{out}(s)}{V_\mathrm{in}(s)} = \frac{-1}{R_1\left(\left(1
 
 ### The Matlab Bit
 
-See attached script: [solution7.m](solution7.m).
+See attached script: [solution7.m](../matlab/solution7.m).
 
 #### Week 3: Solution 7
 
@@ -252,13 +220,13 @@ grid
 
 
 {:.output .output_png}
-![png](../../images/laplace_transform/4/transfer_functions_35_0.png)
+![png](../../images/laplace_transform/4/transfer_functions_34_0.png)
 
 
 
 ## Using Transfer Functions in Matlab for System Analysis
 
-Please use the file [tf_matlab.m](tf_matlab.m) to explore the Transfer Function features provide by Matlab. Use the *publish* option to generate a nicely formatted document.
+Please use the file [tf_matlab.m](../matlab/tf_matlab.m) to explore the Transfer Function features provide by Matlab. Use the *publish* option to generate a nicely formatted document.
 
 ## Using Transfer Functions in Simulink for System Simulation
 
@@ -281,7 +249,7 @@ Calculate the step response using the LTI functions.
 
 Verify the result with Simulink.
 
-The Matlab solution: [example8.m](example8.m)
+The Matlab solution: [example8.m](../matlab/example8.m)
 
 #### MATLAB Solution
 From a previous analysis the transfer function is:
@@ -338,7 +306,7 @@ step(G)
 
 
 {:.output .output_png}
-![png](../../images/laplace_transform/4/transfer_functions_43_0.png)
+![png](../../images/laplace_transform/4/transfer_functions_42_0.png)
 
 
 
@@ -346,7 +314,7 @@ Simples!
 
 #### Simulink model
 
-See [example_8.slx](matlab/example_8.slx)
+See [example_8.slx](../matlab/example_8.slx)
 
 
 
@@ -374,6 +342,6 @@ bode(G)
 
 
 {:.output .output_png}
-![png](../../images/laplace_transform/4/transfer_functions_50_0.png)
+![png](../../images/laplace_transform/4/transfer_functions_49_0.png)
 
 

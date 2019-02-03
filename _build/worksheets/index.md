@@ -5,7 +5,7 @@ prev_page:
   title: 'Introduction to Filters'
 next_page:
   url: /introduction/worksheet1
-  title: 'Worksheet 1'
+  title: 'Worksheet 1 Introduction'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 # Worksheets

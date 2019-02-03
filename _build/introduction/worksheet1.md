@@ -1,6 +1,6 @@
 ---
 interact_link: content/introduction/worksheet1.ipynb
-title: 'Worksheet 1'
+title: 'Worksheet 1 Introduction'
 prev_page:
   url: /worksheets/index
   title: 'Worksheets'
