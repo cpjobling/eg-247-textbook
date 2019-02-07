@@ -15,7 +15,7 @@ install:
 	bundle install
 	
 book:
-	rsync -a --delete portfolio/ content/labs
+	rsync -a --delete content/labs/ portfolio
 	python scripts/license.py --path ./content
 	python scripts/generate_book.py
 
