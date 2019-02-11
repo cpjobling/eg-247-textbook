@@ -89,6 +89,14 @@ Please use your TurningPoint app or the TurningPoint web app to assign yourself 
 
 ### End of setup
 
+## Plan B
+
+If TurningPoint doesn't work, use this Google form instead
+
+### https://goo.gl/forms/EuyH6G7za2knqt862
+
+![qr code](https://chart.googleapis.com/chart?cht=qr&chs=300x300&choe=UTF-8&chld=H&chl=https://goo.gl/forms/EuyH6G7za2knqt862)
+
 ## Laplace transforms of common waveforms
 
 We will work through a few of the following on the board in class
