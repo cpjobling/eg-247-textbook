@@ -21,6 +21,8 @@ The preparatory reading for this section is [Chapter 2 of Karris](https://ebookc
 * presents the Laplace transforms of the elementary signals discussed in the last session
 * presents the transforms of the more common system response types that are found in basic signals and systems.
 
+An annotatable copy of the full notes for this presentation will be distributed before the second class meeting as **Worksheet 4** in the handouts section for week 2 in the *_Content Library* of the **OneNote Class Notebook**. You can also view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/laplace_transform/1/laplace.html)) and as a downloadable [PDF file](https://cpjobling.github.io/eg-247-textbook/laplace_transform/1/laplace.pdf).
+
 There is some intellectual benefit to being aware of the properties of the Laplace transformation and their proofs but being a pragmatic breed, we engineers typically prefer to make use of quick references of these properties and transforms, relying on Mathematics only when facing a problem not before encountered.
 
 In our practice, we want to encourage you to use of the properties and transform tables to solve problems so I will present only the properties and not the proofs.

@@ -27,9 +27,9 @@
   "headline":
     "Transfer Functions",
   "datePublished":
-    "2019-02-12T16:48:01+00:00",
+    "2019-02-12T20:20:04+00:00",
   "dateModified":
-    "2019-02-12T16:48:01+00:00",
+    "2019-02-12T20:20:04+00:00",
   "description":
     "Transfer Functions",
   "author": {
@@ -1130,7 +1130,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
     <nav class="onthispage">
       <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
       <ul class="toc__menu">
-  <li><a href="#second-hours-agenda">Second Hour’s Agenda</a></li>
+  <li><a href="#agenda">Agenda</a></li>
   <li><a href="#transfer-functions-for-circuits">Transfer Functions for Circuits</a></li>
   <li><a href="#examples">Examples</a>
     <ul>
@@ -1184,7 +1184,11 @@ document.addEventListener('turbolinks:load', updateInteractLink)
             <div class="c-textbook__content">
               <h1 id="transfer-functions">Transfer Functions</h1>
 
-<h2 id="second-hours-agenda">Second Hour’s Agenda</h2>
+<p>The preparatory reading for this section is <a href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=75#ppg=113">Chapter 4.4 of Karris</a> which discusses transfer function models of electrical circuits.</p>
+
+<p>An annotatable copy of the full notes for this presentation will be distributed before the third class meeting as <strong>Worksheet 7</strong> in the handouts section for week 3 in the <em>_Content Library</em> of the <strong>OneNote Class Notebook</strong>. You can also view the notes for this presentation as a webpage (<a href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/4/transfer_functions.html">HTML</a>) and as a downloadable <a href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/4/transfer_functions.pdf">PDF file</a>.</p>
+
+<h2 id="agenda">Agenda</h2>
 
 <ul>
   <li>
@@ -1202,13 +1206,22 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 </ul>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% Matlab setup</span>
+<span class="nb">cd</span> <span class="o">..</span><span class="p">/</span><span class="n">matlab</span> 
+<span class="nb">pwd</span>
 <span class="nb">clear</span> <span class="nb">all</span>
 <span class="nb">format</span> <span class="n">compact</span>
 </code></pre></div></div>
 
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ans =
+    '/Users/eechris/dev/eg-247-textbook/content/laplace_transform/matlab'
+
+</code></pre></div></div>
+
 <h2 id="transfer-functions-for-circuits">Transfer Functions for Circuits</h2>
 
-<p>When doing circuit analysis with components defined in the complex frequency domain, the ratio of the output voltage $V_{\mathrm{out}}(s)$ ro the input voltage $V_{\mathrm{in}}(s)$ <em>under zero initial conditions</em> is of great interest. This ratio is known as the <em>voltage transfer function</em> denoted $G_v(s)$:</p>
+<p>When doing circuit analysis with components defined in the complex frequency domain, the ratio of the output voltage $V_{\mathrm{out}}(s)$ ro the input voltage $V_{\mathrm{in}}(s)$ <em>under zero initial conditions</em> is of great interest.</p>
+
+<p>This ratio is known as the <em>voltage transfer function</em> denoted $G_v(s)$:</p>
 
 <script type="math/tex; mode=display">G_v(s) = \frac{V_{\mathrm{out}}(s)}{V_{\mathrm{in}}(s)}</script>
 
@@ -1233,9 +1246,15 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 <h3 id="sketch-of-solution">Sketch of Solution</h3>
 
 <ul>
-  <li>Replace $v_s(t)$, $R_g$, $R_L$, $L$ and $C$ by their transformed (<em>complex frequency</em>) equivalents: $V_s(s)$, $R_g$, $R_L$, $sL$ and $1/(sC)$</li>
-  <li>Use the <em>Voltage Divider Rule</em> to determine $V_\mathrm{out}(s)$ as a function of $V_s(s)$</li>
-  <li>Form $G(s)$ by writing down the ratio $V_\mathrm{out}(s)/V_s(s)$</li>
+  <li>
+    <p>Replace $v_s(t)$, $R_g$, $R_L$, $L$ and $C$ by their transformed (<em>complex frequency</em>) equivalents: $V_s(s)$, $R_g$, $R_L$, $sL$ and $1/(sC)$</p>
+  </li>
+  <li>
+    <p>Use the <em>Voltage Divider Rule</em> to determine $V_\mathrm{out}(s)$ as a function of $V_s(s)$</p>
+  </li>
+  <li>
+    <p>Form $G(s)$ by writing down the ratio $V_\mathrm{out}(s)/V_s(s)$</p>
+  </li>
 </ul>
 
 <h3 id="worked-solution">Worked solution.</h3>
@@ -1248,23 +1267,37 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
 <h3 id="example-7">Example 7</h3>
 
-<p>Compute the transfer function for the op-amp circuit shown below in terms of the circuit constants $R_1$, $R_2$, $R_3$, $C_1$ and $C_2$. Then replace the complex variable $s$ with $j\omega$, and the circuit constants with their numerical values and plot the magnitude</p>
+<p>Compute the transfer function for the op-amp circuit shown below in terms of the circuit constants $R_1$, $R_2$, $R_3$, $C_1$ and $C_2$.</p>
+
+<p><img alt="Circuit for Example 7" src="pictures/example7.png" height="50%" /></p>
+
+<p>Then replace the complex variable $s$ with $j\omega$, and the circuit constants with their numerical values and plot the magnitude</p>
 
 <script type="math/tex; mode=display">\left|G(j\omega)\right| = \frac{\left|V_{\mathrm{out}}(j\omega)\right|}{\left|V_{\mathrm{in}}(j\omega)\right|}</script>
 
 <p>versus radian frequency $\omega$ rad/s.</p>
 
-<p><img alt="Circuit for Example 7" src="pictures/example7.png" height="50%" /></p>
-
 <h3 id="sketch-of-solution-1">Sketch of Solution</h3>
 
 <ul>
-  <li>Replace the components and voltages in the circuit diagram with their complex frequency equivalents</li>
-  <li>Use nodal analysis to determine the voltages at the nodes either side of the 50K resistor $R_3$</li>
-  <li>Note that the voltage at the input to the op-amp is a virtual ground</li>
-  <li>Solve for $V_{\mathrm{out}}(s)$ as a function of $V_{\mathrm{in}}(s)$</li>
-  <li>Form the reciprocal $G(s) = V_{\mathrm{out}}(s)/V_{\mathrm{in}}(s)$</li>
-  <li>Use MATLAB to calculate the component values, then replace $s$ by $j\omega$.</li>
+  <li>
+    <p>Replace the components and voltages in the circuit diagram with their complex frequency equivalents</p>
+  </li>
+  <li>
+    <p>Use nodal analysis to determine the voltages at the nodes either side of the 50K resistor $R_3$</p>
+  </li>
+  <li>
+    <p>Note that the voltage at the input to the op-amp is a virtual ground</p>
+  </li>
+  <li>
+    <p>Solve for $V_{\mathrm{out}}(s)$ as a function of $V_{\mathrm{in}}(s)$</p>
+  </li>
+  <li>
+    <p>Form the reciprocal $G(s) = V_{\mathrm{out}}(s)/V_{\mathrm{in}}(s)$</p>
+  </li>
+  <li>
+    <p>Use MATLAB to calculate the component values, then replace $s$ by $j\omega$.</p>
+  </li>
   <li>
     <p>Plot</p>
 
@@ -1303,12 +1336,13 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 <span class="n">simplify</span><span class="p">(</span><span class="n">den</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ans =
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
+ans =
+ 
 100*s*((7555786372591433*s)/302231454903657293676544 + 1/20000) + 5
+ 
 
 </code></pre></div></div>
-
-<p>Result is: <code class="highlighter-rouge">100*s*((7555786372591433*s)/302231454903657293676544 + 1/20000) + 5</code></p>
 
 <p>Simplify coefficients of s in denominator</p>
 
@@ -1316,8 +1350,11 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 <span class="n">denG</span> <span class="o">=</span> <span class="n">sym2poly</span><span class="p">(</span><span class="nb">ans</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>denG =
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+denG =
+
    0.000002500000000   0.005000000000000   5.000000000000000
+
 
 </code></pre></div></div>
 
@@ -1332,13 +1369,13 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 <span class="n">b</span> <span class="o">=</span> <span class="n">denG</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 </code></pre></div></div>
 
-<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">w</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">10000</span><span class="p">;</span>
-</code></pre></div></div>
-
 <script type="math/tex; mode=display">G(j\omega) = \frac{-1}{a\omega^2 - jb\omega + 5}</script>
 
-<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Gs</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.</span><span class="p">/(</span><span class="n">a</span><span class="o">*</span><span class="n">w</span><span class="o">.^</span><span class="mi">2</span> <span class="o">-</span> <span class="nb">j</span><span class="o">.*</span><span class="n">b</span><span class="o">.*</span><span class="n">w</span> <span class="o">+</span> <span class="n">denG</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">w</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">10000</span><span class="p">;</span>
+<span class="n">Gs</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.</span><span class="p">/(</span><span class="n">a</span><span class="o">*</span><span class="n">w</span><span class="o">.^</span><span class="mi">2</span> <span class="o">-</span> <span class="nb">j</span><span class="o">.*</span><span class="n">b</span><span class="o">.*</span><span class="n">w</span> <span class="o">+</span> <span class="n">denG</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
 </code></pre></div></div>
+
+<p>Plot</p>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">semilogx</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">Gs</span><span class="p">))</span>
 <span class="nb">xlabel</span><span class="p">(</span><span class="s1">'Radian frequency w (rad/s'</span><span class="p">)</span>
@@ -1347,22 +1384,25 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 <span class="nb">grid</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/laplace_transform/4/transfer_functions_34_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../../images/laplace_transform/4/transfer_functions_50_0.png" alt="png" /></p>
 
 <h2 id="using-transfer-functions-in-matlab-for-system-analysis">Using Transfer Functions in Matlab for System Analysis</h2>
 
-<p>Please use the file <a href="../matlab/tf_matlab.m">tf_matlab.m</a> to explore the Transfer Function features provide by Matlab. Use the <em>publish</em> option to generate a nicely formatted document.</p>
+<p>Please use the file <a href="../matlab/tf_matlab.m">tf_matlab.m</a> to explore the Transfer Function features provide by MATLAB. Open the file as a Live Script to see a nicely formatted document.</p>
 
 <h2 id="using-transfer-functions-in-simulink-for-system-simulation">Using Transfer Functions in Simulink for System Simulation</h2>
 
 <p><img src="pictures/sim_tf.png" alt="Using Transfer Functions in Simulink for System Simulation" /></p>
 
-<p>The Simulink transfer function (<strong><code class="highlighter-rouge">Transfer Fcn</code></strong>) block shown above implements a transfer function representing a general
-input output function</p>
+<p>The Simulink transfer function (<strong><code class="highlighter-rouge">Transfer Fcn</code></strong>) block implements a transfer function</p>
+
+<p>The transfer function block represents a general input output function</p>
 
 <script type="math/tex; mode=display">G(s) = \frac{N(s)}{D(s)}</script>
 
-<p>that it is not specific nor restricted to circuit analysis. It can, however be used in modelling and simulation studies.</p>
+<p>and is not specific nor restricted to circuit analysis.</p>
+
+<p>It can, however be used in modelling and simulation studies.</p>
 
 <h3 id="example">Example</h3>
 
@@ -1391,9 +1431,9 @@ $V_{\mathrm{in}}(s)=1/s$ then</p>
 <script type="math/tex; mode=display">V_{\mathrm{out}}(s) = \frac{-1}{s^2 + 3s + 1}.\frac{1}{s}</script>
 
 <p>We can solve this by partial fraction expansion and inverse Laplace transform
-as is done in the text book with the help of Matlab’s <code class="highlighter-rouge">residue</code> function.</p>
+as is done in the text book with the help of MATLAB’s <code class="highlighter-rouge">residue</code> function.</p>
 
-<p>Here, however we’ll use the LTI block that was introduced in the lecture.</p>
+<p>Here, however we’ll use the LTI block.</p>
 
 <p>Define the circuit as a transfer function</p>
 
@@ -1417,7 +1457,7 @@ Continuous-time transfer function.
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">step</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/laplace_transform/4/transfer_functions_42_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../../images/laplace_transform/4/transfer_functions_66_0.png" alt="png" /></p>
 
 <p>Simples!</p>
 
@@ -1439,7 +1479,7 @@ Continuous-time transfer function.
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bode</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/laplace_transform/4/transfer_functions_49_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../../images/laplace_transform/4/transfer_functions_73_0.png" alt="png" /></p>
 
 
               <nav class="c-page__nav">

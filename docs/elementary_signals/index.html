@@ -27,9 +27,9 @@
   "headline":
     "Elementary Signals",
   "datePublished":
-    "2019-02-12T16:48:01+00:00",
+    "2019-02-12T20:20:04+00:00",
   "dateModified":
-    "2019-02-12T16:48:01+00:00",
+    "2019-02-12T20:20:04+00:00",
   "description":
     "Lecturer: Clear all the cells and set up MATLAB",
   "author": {
@@ -1205,7 +1205,16 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
 <h1 id="elementary-signals">Elementary Signals</h1>
 
-<p>An annotatable copy of partial notes and in-class examples for this presentation will be distributed before the first class meeting as <strong>Worksheet 3</strong> the handouts section of the <em>_Content Library</em> of the <strong>OneNote Class Notebook</strong> for this class. You can also view the notes for this presentation as a webpage (<a href="https://cpjobling.github.io/eg-247-textbook/elementary_signals/index.html">HTML</a>) and as a downloadable <a href="https://cpjobling.github.io/cpjobling/eg-247-textbook/elementary_signals/elementary_signals.pdf">PDF file</a>.</p>
+<p>The preparatory reading for this section is <a href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=75#ppg=17">Chapter 1 of Karris</a> which</p>
+
+<ul>
+  <li>begins with a discussion of the elementary signals that may be applied to electrical circuits</li>
+  <li>introduces the unit step, unit ramp and dirac delta functions</li>
+  <li>presents the sampling and sifting properties of the delta function and</li>
+  <li>concludes with examples of how other useful signals can be synthesised from these elementary signals.</li>
+</ul>
+
+<p>An annotatable copy of partial notes and in-class examples for this presentation will be distributed before the first class meeting as <strong>Worksheet 3</strong> the handouts section for week 1 of the <em>_Content Library</em> of the <strong>OneNote Class Notebook</strong>. You can also view the notes for this presentation as a webpage (<a href="https://cpjobling.github.io/eg-247-textbook/elementary_signals/index.html">HTML</a>) and as a downloadable <a href="https://cpjobling.github.io/cpjobling/eg-247-textbook/elementary_signals/elementary_signals.pdf">PDF file</a>.</p>
 
 <p>Consider the network shown below, where the switch is closed at time $t=T$.</p>
 
@@ -1257,7 +1266,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/elementary_signals/index_9_1.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/elementary_signals/index_10_1.png" alt="png" /></p>
 
 <p>Note that, so that it can be plotted, Matlab defines the <em>heaviside function</em> slightly differently from the mathematically ideal unit step:</p>
 
@@ -1280,14 +1289,14 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 <span class="n">ezplot</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="nb">grid</span><span class="p">,</span><span class="nb">title</span><span class="p">(</span><span class="s1">'Applitude scaling $$Au_0(t)$$'</span><span class="p">,</span><span class="s1">'interpreter'</span><span class="p">,</span><span class="s1">'latex'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/elementary_signals/index_13_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/elementary_signals/index_14_0.png" alt="png" /></p>
 
 <p>Note that the signal is scaled in the $y$ direction.</p>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ezplot</span><span class="p">(</span><span class="o">-</span><span class="n">A</span><span class="o">*</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="nb">grid</span><span class="p">,</span><span class="nb">title</span><span class="p">(</span><span class="s1">'Amplitude scaling and mirroring $$-Au_0(t)$$'</span><span class="p">,</span><span class="s1">'interpreter'</span><span class="p">,</span><span class="s1">'latex'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/elementary_signals/index_15_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/elementary_signals/index_16_0.png" alt="png" /></p>
 
 <p>Note that, because of the sign, the signal is mirrored about the $x$ axis as well as being scaled by 2.</p>
 
@@ -1298,7 +1307,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ezplot</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="n">u0</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="nb">grid</span><span class="p">,</span><span class="nb">title</span><span class="p">(</span><span class="s1">'Time reversal $$Au_0(-t)$$'</span><span class="p">,</span><span class="s1">'interpreter'</span><span class="p">,</span><span class="s1">'latex'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/elementary_signals/index_18_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/elementary_signals/index_19_0.png" alt="png" /></p>
 
 <p>The sign on the function argument $-t$ causes the whole signal to be reversed in time. Note that another way of looking at this is that the signal is mirrored about the $y$ axis.</p>
 
@@ -1310,14 +1319,14 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 <span class="n">ezplot</span><span class="p">(</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">T</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]),</span><span class="nb">grid</span><span class="p">,</span><span class="nb">title</span><span class="p">(</span><span class="s1">'Time delay $$u_0(t - T)$$'</span><span class="p">,</span><span class="s1">'interpreter'</span><span class="p">,</span><span class="s1">'latex'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/elementary_signals/index_21_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/elementary_signals/index_22_0.png" alt="png" /></p>
 
 <p>This is a <em>time delay</em> … note for $u_0(t - T)$ the step change occurs T seconds <strong>later</strong> than it does for $u_o(t)$.</p>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ezplot</span><span class="p">(</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="n">T</span><span class="p">),[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="nb">grid</span><span class="p">,</span><span class="nb">title</span><span class="p">(</span><span class="s1">'Time advance $$u_0(t + T)$$'</span><span class="p">,</span><span class="s1">'interpreter'</span><span class="p">,</span><span class="s1">'latex'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/elementary_signals/index_23_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/elementary_signals/index_24_0.png" alt="png" /></p>
 
 <p>This is a <em>time advance</em> … note for $u_0(t + T)$ the step change occurs T seconds <strong>earlier</strong> than it does for $u_o(t)$.</p>
 
@@ -1360,7 +1369,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 <span class="n">ezplot</span><span class="p">(</span><span class="n">vc</span><span class="p">(</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">]),</span><span class="nb">grid</span><span class="p">,</span><span class="nb">title</span><span class="p">(</span><span class="s1">'A ramp function'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/elementary_signals/index_32_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/elementary_signals/index_33_0.png" alt="png" /></p>
 
 <p>This type of signal is called a <strong>ramp function</strong>. Note that it is the <em>integral</em> of the step function (the resistor-capacitor circuit implements a simple integrator circuit).</p>
 

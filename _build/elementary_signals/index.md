@@ -25,8 +25,15 @@ clear all
 
 # Elementary Signals
 
-An annotatable copy of partial notes and in-class examples for this presentation will be distributed before the first class meeting as **Worksheet 3** the handouts section of the *_Content Library* of the **OneNote Class Notebook** for this class. You can also view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/elementary_signals/index.html)) and as a downloadable [PDF file](https://cpjobling.github.io/cpjobling/eg-247-textbook/elementary_signals/elementary_signals.pdf).
+The preparatory reading for this section is [Chapter 1 of Karris](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=75#ppg=17) which
 
+* begins with a discussion of the elementary signals that may be applied to electrical circuits
+* introduces the unit step, unit ramp and dirac delta functions
+* presents the sampling and sifting properties of the delta function and
+* concludes with examples of how other useful signals can be synthesised from these elementary signals.
+
+
+An annotatable copy of partial notes and in-class examples for this presentation will be distributed before the first class meeting as **Worksheet 3** the handouts section for week 1 of the *_Content Library* of the **OneNote Class Notebook**. You can also view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/elementary_signals/index.html)) and as a downloadable [PDF file](https://cpjobling.github.io/cpjobling/eg-247-textbook/elementary_signals/elementary_signals.pdf).
 
 Consider the network shown below, where the switch is closed at time $t=T$. 
 
@@ -93,7 +100,7 @@ ans =
 
 
 {:.output .output_png}
-![png](../images/elementary_signals/index_9_1.png)
+![png](../images/elementary_signals/index_10_1.png)
 
 
 
@@ -124,7 +131,7 @@ ezplot(A*u0(t),[-1,1]),grid,title('Applitude scaling $$Au_0(t)$$','interpreter',
 
 
 {:.output .output_png}
-![png](../images/elementary_signals/index_13_0.png)
+![png](../images/elementary_signals/index_14_0.png)
 
 
 
@@ -140,7 +147,7 @@ ezplot(-A*u0(t),[-1,1]),grid,title('Amplitude scaling and mirroring $$-Au_0(t)$$
 
 
 {:.output .output_png}
-![png](../images/elementary_signals/index_15_0.png)
+![png](../images/elementary_signals/index_16_0.png)
 
 
 
@@ -160,7 +167,7 @@ ezplot(A*u0(-t),[-1,1]),grid,title('Time reversal $$Au_0(-t)$$','interpreter','l
 
 
 {:.output .output_png}
-![png](../images/elementary_signals/index_18_0.png)
+![png](../images/elementary_signals/index_19_0.png)
 
 
 
@@ -181,7 +188,7 @@ ezplot(u0(t - T),[-1,2]),grid,title('Time delay $$u_0(t - T)$$','interpreter','l
 
 
 {:.output .output_png}
-![png](../images/elementary_signals/index_21_0.png)
+![png](../images/elementary_signals/index_22_0.png)
 
 
 
@@ -197,7 +204,7 @@ ezplot(u0(t + T),[-2,1]),grid,title('Time advance $$u_0(t + T)$$','interpreter',
 
 
 {:.output .output_png}
-![png](../images/elementary_signals/index_23_0.png)
+![png](../images/elementary_signals/index_24_0.png)
 
 
 
@@ -249,7 +256,7 @@ ezplot(vc(t),[-1,4]),grid,title('A ramp function')
 
 
 {:.output .output_png}
-![png](../images/elementary_signals/index_32_0.png)
+![png](../images/elementary_signals/index_33_0.png)
 
 
 

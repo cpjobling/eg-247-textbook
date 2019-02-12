@@ -14,6 +14,15 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 # The Inverse Laplace Transform
 
+The preparatory reading for this section is [Chapter 3 of Karris](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=75#ppg=79) which
+
+* defines the Inverse Laplace transformation 
+* gives several examples of how the Inverse Laplace Transform may be obtained
+* thouroughly decribes the Partial Fraction Expansion method of converting complex rational polymial expressions into simple first-order and quadratic terms
+* demonstrates the use of MATLAB for finding the poles and residues of a rational polymial in s and the symbolic inverse laplace transform
+
+An annotatable copy of the full notes for this presentation will be distributed before the second class meeting as **Worksheet 5** in the handouts section for week 2 in the *_Content Library* of the **OneNote Class Notebook**. You can also view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/laplace_transform/2/inverse_laplace.html)) and as a downloadable [PDF file](https://cpjobling.github.io/eg-247-textbook/laplace_transform/2/inverse_laplace.pdf).
+
 ## Definition
 
 The formal definition of the Inverse Laplace Transform is

@@ -12,7 +12,7 @@ next_page:
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
-# Worksheet 7
+# Worksheet 6
 
 ## To accompany Chapter 3.3 Using Laplace Transforms for Circuit Analysis
 

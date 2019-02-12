@@ -14,14 +14,14 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 # Introducing Signals and Systems
 
-An annotatable copy of the full notes for this presentation will be distributed befor the first class meeting as **Worksheet 1** the handouts section of the *_Content Library* of the **OneNote Class Notebook** for this class. You can also view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/introduction/index.html)) and as a downloadable [PDF file](https://cpjobling.github.io/eg-247-textbook/introduction/introduction.pdf).
-
-
 ## Signals and Systems for Dummies
 
 Signals and Systems for Dummies (**SS4D**) provides a useful introduction to the topics that will be covered in this module and it is in the Reading List as a *recommended text*. I have based this presentation on Chapter 1 which is available as a [downloadable PDF](http://eu.dummies.com/store/product/Signals-and-Systems-For-Dummies.productCd-111847581X.html) from the publishers.
 
 You should read Chapter 1 of SS4D in conjunction with the notes for this presentation.
+
+An annotatable copy of the full notes for this presentation will be distributed before the first class meeting as **Worksheet 1** the handouts section for week 1 of the *_Content Library* of the **OneNote Class Notebook**. You can also view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/introduction/index.html)) and as a downloadable [PDF file](https://cpjobling.github.io/eg-247-textbook/introduction/introduction.pdf).
+
 
 Note that Signals and Systems for Dummies is available as an e-book from the [Bay Library](http://whel-primo.hosted.exlibrisgroup.com/44WHELF_SWA_VU1:LSCOP_44WHELF_SWA_ALMA_DS:44WHELF_SWA_ALMA_DS5177422270002417).
 

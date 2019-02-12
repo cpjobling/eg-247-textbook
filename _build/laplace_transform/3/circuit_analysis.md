@@ -14,7 +14,13 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 # Using Laplace Transforms for Circuit Analysis
 
-## First Hour's Agenda
+The preparatory reading for this section is [Chapter 4 of Karris](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=75#ppg=101) which
+
+* presents examples of the applications of the Laplace transform for electrical solving circuit problems.
+
+An annotatable copy of the full notes for this presentation will be distributed before the third class meeting as **Worksheet 6** in the handouts section for week 3 in the *_Content Library* of the **OneNote Class Notebook**. You can also view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/laplace_transform/3/circuit_analysis.html)) and as a downloadable [PDF file](https://cpjobling.github.io/eg-247-textbook/laplace_transform/3/circuit_analysis.pdf).
+
+## Agenda
 
 We look at applications of the Laplace Transform for
 
@@ -59,7 +65,7 @@ We will work through these in class. See [worksheet6](worksheet6).
 
 ## Complex Impedance Z(s)
 
-Consider the $s$-domain RLC series circuit, wehere the initial conditions are assumed to be zero.
+Consider the $s$-domain RLC series circuit, where the initial conditions are assumed to be zero.
 
 ![Complex Impedance $Z(s)$](pictures/impedence.png)
 
