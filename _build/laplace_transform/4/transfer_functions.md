@@ -49,7 +49,7 @@ ans =
 
 ## Transfer Functions for Circuits
 
-When doing circuit analysis with components defined in the complex frequency domain, the ratio of the output voltage $V_{\mathrm{out}}(s)$ ro the input voltage $V_{\mathrm{in}}(s)$ *under zero initial conditions* is of great interest. 
+When doing circuit analysis with components defined in the complex frequency domain, the ratio of the output voltage $V_{\mathrm{out}}(s)$ to the input voltage $V_{\mathrm{in}}(s)$ *under zero initial conditions* is of great interest. 
 
 This ratio is known as the *voltage transfer function* denoted $G_v(s)$:
 
@@ -167,11 +167,8 @@ simplify(den)
 
 {:.output .output_stream}
 ```
- 
 ans =
- 
 100*s*((7555786372591433*s)/302231454903657293676544 + 1/20000) + 5
- 
 
 ```
 
@@ -188,11 +185,8 @@ denG = sym2poly(ans)
 
 {:.output .output_stream}
 ```
-
 denG =
-
    0.000002500000000   0.005000000000000   5.000000000000000
-
 
 ```
 
@@ -248,7 +242,7 @@ grid
 
 
 
-## Using Transfer Functions in Matlab for System Analysis
+## Using Transfer Functions in MATLAB for System Analysis
 
 Please use the file [tf_matlab.m](../matlab/tf_matlab.m) to explore the Transfer Function features provide by MATLAB. Open the file as a Live Script to see a nicely formatted document.
 
