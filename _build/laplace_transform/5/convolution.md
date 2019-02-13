@@ -12,25 +12,6 @@ next_page:
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
-
-
-{:.input_area}
-```matlab
-cd matlab
-pwd
-```
-
-
-{:.output .output_stream}
-```
-
-ans =
-
-    '/Users/eechris/dev/eg-247-textbook/content/laplace_transform/5/matlab'
-
-
-```
-
 # The Impulse Response and Convolution
 
 ## Scope and Background Reading
@@ -67,7 +48,9 @@ $$f(-t) = f(t)$$
 
 that is, if we relace $t$ with $-t$ the function $f(t)$ does not change.
 
-Polynomials with even exponents only, and with or without constants, are even functions. For example:
+Polynomials with even exponents only, and with or without constants, are even functions. 
+
+For example:
 
 $$\cos t = 1 - \frac{t^2}{2!} + \frac{t^4}{4!} - \frac{t^6}{6!} + \ldots$$
 
@@ -85,7 +68,9 @@ $$-f(-t) = f(t)$$
 
 that is, if we relace $t$ with $-t$, we obtain the negative of the function $f(t)$.
 
-Polynomials with odd exponents only, and no constants, are odd functions. For example:
+Polynomials with odd exponents only, and no constants, are odd functions. 
+
+For example:
 
 $$\sin t = t - \frac{t^3}{3!} + \frac{t^5}{5!} - \frac{t^7}{7!} + \ldots$$
 
@@ -102,7 +87,7 @@ is odd.
 * The product of *two even* or *two odd* functions is an even function.
 * The product of an even and an odd function, is an odd function.
 
-In the following $f_e(t)$ will donate an even function and $f_o(t)$ an odd function.
+In the following $f_e(t)$ will denote an even function and $f_o(t)$ an odd function.
 
 ### Time integrals of even and odd functions
 
@@ -132,9 +117,11 @@ That is, any function of time can be expressed as the sum of an even and an odd 
 
 ### Example 1
 
-Is the Dirac delta $\delta(t)$ an even or an odd function of time?
+Is the Dirac delta $\delta(t)$ an *even* or an *odd* function of time?
 
-### Solution
+We'll decide in class.
+
+#### Solution
 
 Let $f(t)$ be an arbitrary function of time that is continous at $t=t_0$. Then by the sifting property of the delta function
 
@@ -152,7 +139,7 @@ and for an odd function $f_o(t)$
 
 $$\int_{-\infty}^{\infty} f_o(t)\delta(t) dt = f_o(0)$$
 
-### Even or odd?
+#### Even or odd?
 
 An odd function $f_o(t)$ evaluated at $t=0$ is zero, that is $f_o(0) = 0$.
 
@@ -168,10 +155,11 @@ Since $f_o(t)$ is odd, $\delta(t)$ must be even because only an *even* function 
 
 ## Time Convolution
 
-Consider a system whose input is the Dirac delta ($\delta(t)$), and its output is the ***impulse response*** $h(t)$. We can represent the inpt-output relationship as a block diagram
+Consider a system whose input is the Dirac delta ($\delta(t)$), and its output is the ***impulse response*** $h(t)$. 
+
+We can represent the input-output relationship as a block diagram
 
 <img src="pictures/conv1.png" width="50%">
-
 
 ### In general
 
@@ -217,7 +205,7 @@ The convolution integral is usually written $u(t)*h(t)$ or $h(t)*u(t)$ where the
 
 ## Graphical Evaluation of the Convolution Integral
 
-The convolution integral is most conveniently evaluated by a graphical evaluation. The text book gives three examples (6.4-6.6) which we will demonstrate using a [graphical visualization tool](http://www.mathworks.co.uk/matlabcentral/fileexchange/25199-graphical-demonstration-of-convolution) developed by Teja Muppirala of the Mathworks.
+The convolution integral is most conveniently evaluated by a graphical evaluation. The text book gives three examples (6.4-6.6) which we will demonstrate in class using a [graphical visualization tool](http://www.mathworks.co.uk/matlabcentral/fileexchange/25199-graphical-demonstration-of-convolution) developed by Teja Muppirala of the Mathworks.
 
 The tool: [convolutiondemo.m](matlab/convolutiondemo.m) (see [license.txt](matlab/license.txt)).
 
@@ -225,58 +213,40 @@ The tool: [convolutiondemo.m](matlab/convolutiondemo.m) (see [license.txt](matla
 
 {:.input_area}
 ```matlab
-convolutiondemo
+clear all
+cd ../matlab/convolution_demo
+pwd
+format compact
 ```
 
 
-{:.output .output_stream}
-```
-Warning: The EraseMode property is no longer supported and will error in a future release.
-> In convolutiondemo>convolutiondemo_LayoutFcn (line 398)
-  In convolutiondemo>gui_mainfcn (line 1188)
-  In convolutiondemo (line 44)
-Warning: The EraseMode property is no longer supported and will error in a future release.
-> In convolutiondemo>convolutiondemo_LayoutFcn (line 449)
-  In convolutiondemo>gui_mainfcn (line 1188)
-  In convolutiondemo (line 44)
-Warning: The EraseMode property is no longer supported and will error in a future release.
-> In convolutiondemo>convolutiondemo_LayoutFcn (line 500)
-  In convolutiondemo>gui_mainfcn (line 1188)
-  In convolutiondemo (line 44)
-Warning: The EraseMode property is no longer supported and will error in a future release.
-> In convolutiondemo>convolutiondemo_LayoutFcn (line 551)
-  In convolutiondemo>gui_mainfcn (line 1188)
-  In convolutiondemo (line 44)
-Warning: The EraseMode property is no longer supported and will error in a future release.
-> In convolutiondemo>convolutiondemo_LayoutFcn (line 621)
-  In convolutiondemo>gui_mainfcn (line 1188)
-  In convolutiondemo (line 44)
-Warning: The EraseMode property is no longer supported and will error in a future release.
-> In convolutiondemo>convolutiondemo_LayoutFcn (line 672)
-  In convolutiondemo>gui_mainfcn (line 1188)
-  In convolutiondemo (line 44)
-Warning: The EraseMode property is no longer supported and will error in a future release.
-> In convolutiondemo>convolutiondemo_LayoutFcn (line 723)
-  In convolutiondemo>gui_mainfcn (line 1188)
-  In convolutiondemo (line 44)
-Warning: The EraseMode property is no longer supported and will error in a future release.
-> In convolutiondemo>convolutiondemo_LayoutFcn (line 774)
-  In convolutiondemo>gui_mainfcn (line 1188)
-  In convolutiondemo (line 44)
 
+
+{:.input_area}
+```matlab
+convolutiondemo % ignore warnings
 ```
+
 
 ### Convolution by Graphical Method - Summary of Steps
 
 For simplicity, we give the rules for $u(t)$, but the procedure is the same if we reflect and slide $h(t)$
 
 1. Substitute $u(t)$ with $u(\tau)$ &ndash; this is a simple change of variable. It doesn't change the definition of $u(t)$.
+
 2. Reflect $u(\tau)$ about the vertical axis to form $u(-\tau)$
+
 3. Slide $u(-\tau)$ to the right a distance $t$ to obtain $u(t-\tau)$
+
 4. Multiply the two signals to obtain the product $u(t-\tau)h(\tau)$
+
 5. Integrate the product over all $\tau$ from $-\infty$ to $\infty$.
 
-### Example 2
+### Examples
+
+We will do these live in class.
+
+#### Example 2
 
 (This is example 6.4 in the textbook)
 
@@ -284,7 +254,7 @@ The signals $h(t)$ and $u(t)$ are shown below. Compute $h(t)*u(t)$ using the gra
 
 <img src="pictures/conv_ex1.png">
 
-### h(t)
+##### h(t)
 
 The signal $h(t)$ is the straight line $f(t)=-t+1$ but this is defined only between $t = 0$ and $t = 1$. We thus need to gate the function by multiplying it by $u_0(t)-u_0(t-1)$ as illustrated below:
 
@@ -300,7 +270,7 @@ $$-t u_0(t) + u_0(t) + (t - 1)u_0(t - 1) \Leftrightarrow - \frac{1}{s^2} + \frac
 
 $$H(s) = \frac{s + e^{-s} - 1}{s^2}$$
 
-### u(t)
+##### u(t)
 
 The input $u(t)$ is the gating function:
 
@@ -311,17 +281,17 @@ so
 $$U(s) = \frac{1}{s}-\frac{e^{-s}}{s} = \frac{1 - e^{-s}}{s}$$
     
 
-### Prepare for convolutiondemo
+##### Prepare for convolutiondemo
 
 To prepare this problem for evaluation in the `convolutiondemo` tool, we need to determine the Laplace Transforms of $h(t)$ and $u(t)$.
 
-### convolutiondemo settings
+##### convolutiondemo settings
 
 * Let `g = (1 - exp(-s))/s`
 * Let `h = (s + exp(-s) - 1)/s^2`
 * Set range $-2 < \tau < -2$
 
-### Summary of result
+##### Summary of result
 
 1. For $t < 0$: $u(t-\tau)h(\tau) = 0$
 2. For $t = 0$: $u(t-\tau) = u(-\tau)$ and $u(-\tau)h(\tau) = 0$
@@ -329,7 +299,7 @@ To prepare this problem for evaluation in the `convolutiondemo` tool, we need to
 4. For $1 < t \le 2$: $h*u = \int_{t-1}^1(-\tau + 1)d\tau = \left.\tau - \tau^2/2\right|_{t-1}^{1} = t^2/2-2t+2$
 5. For $2 \le t$: $u(t-\tau)h(\tau) = 0$
 
-### Example 3
+#### Example 3
 
 This is example 6.5 from the text book.
 
@@ -337,25 +307,7 @@ $$h(t) = e^{-t}$$
 
 $$u(t) = u_0(t)-u_0(t-1)$$
 
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-### Answer 3
+##### Answer 3
 
 $$y(t) = \left\{ {\begin{array}{*{20}{l}}
 {0:t \le 0}\\
@@ -364,7 +316,7 @@ e^{ - t}\left( {e - 1} \right):\;1 < t \le 2\\
 0:\;2 \le t
 \end{array}} \right.$$
 
-#### Check with MATLAB
+##### Check with MATLAB
 
 
 
@@ -377,11 +329,8 @@ x1=int(exp(-tau),tau,0,t)
 
 {:.output .output_stream}
 ```
- 
 x1 =
- 
 1 - exp(-t)
- 
 
 ```
 
@@ -395,15 +344,12 @@ x2=int(exp(-tau),tau,t-1,t)
 
 {:.output .output_stream}
 ```
- 
 x2 =
- 
 exp(-t)*(exp(1) - 1)
- 
 
 ```
 
-### Example 4
+#### Example 4
 
 This is example 6.6 from the text book.
 
@@ -411,25 +357,7 @@ $$h(t) = 2(u_0(t)-u_0(t-1))$$
 
 $$u(t) = u_0(t)-u_0(t-2)$$
 
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-### Answer 4
+##### Answer 4
 
 $$y(t) = \left\{ {\begin{array}{*{20}{l}}
 {0:t \le 0}\\
@@ -481,7 +409,11 @@ $$y(t) = \mathcal{L}^{-1} \left\{ G(s) U(s) \right\}$$
 
 Using tables, solution of a convolution problem by Laplace is usually simpler than using convolution directly.
 
-### Example 5
+### Examples
+
+We will work through these in class
+
+#### Example 5
 
 This is example 6.7 from the textbook.
 
@@ -495,25 +427,7 @@ Hence determine the impulse respone $h(t)$ of the circuit and the response of th
 
 Assume $C=1\; \mathrm{F}$ and $R=1\;\Omega$.
 
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-### Solution 5a - Impulse response
+##### Solution 5a - Impulse response
 
 $$h(t)=\frac{1}{RC}e^{-t/RC}u_0(t)$$
 
@@ -521,7 +435,7 @@ which when $C=1\; \mathrm{F}$ and $R=1\;\Omega$ reduces to
 
 $$h(t)=e^{-t}u_0(t)$$.
 
-### Solution  5b - Step response
+##### Solution  5b - Step response
 
 $$h(t) = e^{−t}u_0(t) \Leftrightarrow H(s) = \frac{1}{s+1}$$
 
@@ -537,7 +451,7 @@ The residues are $r_1=-1$, $r_2=1$, so
 
 $$Y(s) = -\frac{1}{s+1} + \frac{1}{s} \Leftrightarrow y(t) = \left(1-e^{-t}\right)u_0(t)$$
 
-### Homework
+#### Homework
 
 Verify this result using the convolution integral
 

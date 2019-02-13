@@ -18,7 +18,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 We will step through this worksheet in class. 
 
-You are expected to have at least watched the video presentation of [Chapter 3.4](https://cpjobling.github.io/eg-247-textbook/laplace_transform/3/transfer_functions) of the [notes](https://cpjobling.github.io/eg-247-textbook) before coming to class. If you haven't watch it afterwards!
+You are expected to have at least watched the video presentation of [Chapter 3.4](https://cpjobling.github.io/eg-247-textbook/laplace_transform/4/transfer_functions) of the [notes](https://cpjobling.github.io/eg-247-textbook) before coming to class. If you haven't watch it afterwards!
 
 ## Second Hour's Agenda
 
