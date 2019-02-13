@@ -75,7 +75,7 @@ Use the same technique to solve Q4 from Section 4.7 (Exercises) of Karris (p. 4-
 Save your solution to a file with the name `ex6`.
 
 
-## Mini Project 3: Transfer Functions
+## Mini Project 2: Transfer Functions
 
 Download the linked Matlab script which computes the solution to Example 4.7 
 from Karris (2007) (Example 7 from the notes). This script computes the 
