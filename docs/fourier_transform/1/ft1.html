@@ -27,9 +27,9 @@
   "headline":
     "Defining the Fourier Transform",
   "datePublished":
-    "2019-02-13T22:40:34+00:00",
+    "2019-02-13T23:10:13+00:00",
   "dateModified":
-    "2019-02-13T22:40:34+00:00",
+    "2019-02-13T23:10:13+00:00",
   "description":
     "Defining the Fourier Transform",
   "author": {
@@ -1140,6 +1140,49 @@ document.addEventListener('turbolinks:load', updateInteractLink)
   <li><a href="#special-forms-of-the-fourier-transform">Special Forms of the Fourier Transform</a>
     <ul>
       <li><a href="#time-domain-and-frequecy-domain-correspondence">Time Domain and Frequecy Domain Correspondence</a></li>
+      <li><a href="#a-useful-consequence-for-ft-real">A useful consequence for $f(t)$ real</a></li>
+    </ul>
+  </li>
+  <li><a href="#properties-of-the-fourier-transform">Properties of the Fourier Transform</a>
+    <ul>
+      <li><a href="#linearity">Linearity</a></li>
+      <li><a href="#symmetry">Symmetry</a></li>
+      <li><a href="#timefrequency-scaling">Time/Frequency Scaling</a></li>
+      <li><a href="#time-shifting">Time Shifting</a></li>
+      <li><a href="#frequency-shifting">Frequency Shifting</a></li>
+      <li><a href="#time-differentiation">Time Differentiation</a></li>
+      <li><a href="#frequency-differentiation">Frequency Differentiation</a></li>
+      <li><a href="#time-integration">Time Integration</a></li>
+      <li><a href="#conjugate-time-and-frequency-functions">Conjugate Time and Frequency Functions</a></li>
+      <li><a href="#time-convolution">Time Convolution</a></li>
+      <li><a href="#frequency-convolution">Frequency Convolution</a></li>
+      <li><a href="#area-under-ft">Area under $f(t)$</a></li>
+      <li><a href="#area-under-fjomega">Area under $F(j\omega)$</a></li>
+      <li><a href="#energy-density-spectrum">Energy-Density Spectrum</a></li>
+      <li><a href="#parsevals-theorem">Parseval’s Theorem</a></li>
+    </ul>
+  </li>
+  <li><a href="#table-of-properites-of-the-fourier-transform">Table of Properites of the Fourier Transform</a></li>
+  <li><a href="#examples">Examples</a>
+    <ul>
+      <li><a href="#example-1-amplitude-modulation">Example 1: Amplitude Modulation</a></li>
+      <li><a href="#example-2-impulse-response">Example 2: Impulse response</a></li>
+      <li><a href="#example-3-energy-computation">Example 3: Energy computation</a></li>
+    </ul>
+  </li>
+  <li><a href="#computing-fourier-transforms-in-matlab">Computing Fourier Transforms in Matlab</a>
+    <ul>
+      <li><a href="#example">Example</a></li>
+    </ul>
+  </li>
+  <li><a href="#summary">Summary</a></li>
+  <li><a href="#worked-solutions">Worked Solutions</a>
+    <ul>
+      <li><a href="#lets-complete-the-analysis-in-the-notebook">Let’s complete the analysis in the notebook</a></li>
+      <li><a href="#solution-1">Solution 1</a></li>
+      <li><a href="#remarks">Remarks</a></li>
+      <li><a href="#solution-2">Solution 2</a></li>
+      <li><a href="#solution-3">Solution 3</a></li>
     </ul>
   </li>
 </ul>
@@ -1434,8 +1477,6 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 <html>
 <table>
 <thead>
-<tr>
-<thead>
     <tr><td rowspan="2" style="text-align: center;">$f(t)$</td><td colspan="5" style="text-align: center;">$F(j\omega)$</td></tr>
     <tr><td>Real</td><td>Imaginary</td><td>Complex</td><td>Even</td><td>Odd</td></tr>
 </thead>
@@ -1447,167 +1488,170 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 <tr><td>Imaginary and Even</td><td>&nbsp;</td><td>√</td><td>&nbsp;</td><td>√</td><td>&nbsp;</td></tr>
 <tr><td>Imaginary and Odd</td><td>√</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>√</td></tr>
 </tbody>
-&lt;/table&gt;
-&lt;/html&gt;
+</table>
+</html>
 
-### A useful consequence for $f(t)$ real
+<h3 id="a-useful-consequence-for-ft-real">A useful consequence for $f(t)$ real</h3>
 
-If $f(t)$ is real (even or odd), the real part of $F(j\omega)$ is even, and the imaginary part is odd.
+<p>If $f(t)$ is real (even or odd), the real part of $F(j\omega)$ is even, and the imaginary part is odd.</p>
 
-Then, for $f(t)$ real:
+<p>Then, for $f(t)$ real:</p>
 
-$$F_\mathrm{Re}(-j\omega)=F_\mathrm{Re}(j\omega)$$
+<script type="math/tex; mode=display">F_\mathrm{Re}(-j\omega)=F_\mathrm{Re}(j\omega)</script>
 
-and
+<p>and</p>
 
-$$F_\mathrm{Im}(-j\omega)=-F_\mathrm{Im}(j\omega)$$
+<script type="math/tex; mode=display">F_\mathrm{Im}(-j\omega)=-F_\mathrm{Im}(j\omega)</script>
 
-Since
+<p>Since</p>
 
-$$F(j\omega) = F_\mathrm{Re}(j\omega)+jF_\mathrm{Im}(j\omega)$$ 
+<script type="math/tex; mode=display">F(j\omega) = F_\mathrm{Re}(j\omega)+jF_\mathrm{Im}(j\omega)</script>
 
-it follows that
+<p>it follows that</p>
 
-$$F(-j\omega) = F_\mathrm{Re}(-j\omega)+jF_\mathrm{Im}(-j\omega) = F_\mathrm{Re}(j\omega)-jF_\mathrm{Im}(j\omega)$$ 
+<script type="math/tex; mode=display">F(-j\omega) = F_\mathrm{Re}(-j\omega)+jF_\mathrm{Im}(-j\omega) = F_\mathrm{Re}(j\omega)-jF_\mathrm{Im}(j\omega)</script>
 
-or
+<p>or</p>
 
-$$F(-j\omega) = F^*(j\omega)$$
+<script type="math/tex; mode=display">F(-j\omega) = F^*(j\omega)</script>
 
-## Properties of the Fourier Transform
+<h2 id="properties-of-the-fourier-transform">Properties of the Fourier Transform</h2>
 
-Again, we will provide any properties that you might need in the examination.
-    
-You will find a number of these in the accompanying notes.
+<p>Again, we will provide any properties that you might need in the examination.</p>
 
-For fun, you may like to read and even complete the proofs for these properties guided by the text books Karris (Section 8.3) or Boulet pp 180&mdash;185.
+<p>You will find a number of these in the accompanying notes.</p>
 
-We are more interested in your ability to exploit the properties in problem solving.
+<p>For fun, you may like to read and even complete the proofs for these properties guided by the text books Karris (Section 8.3) or Boulet pp 180—185.</p>
 
-A little more detail is given in the notes available on Blackboard.
+<p>We are more interested in your ability to exploit the properties in problem solving.</p>
 
-### Linearity
+<p>A little more detail is given in the notes available on Blackboard.</p>
 
-The Fourier transform is a linear operation:
+<h3 id="linearity">Linearity</h3>
 
-$$a_1f_1(t)+a_2f_2(t)+\cdots+a_nf_n(t)\Leftrightarrow a_1F_1(j\omega)+a_2F_2(j\omega)+\cdots+a_nF_n(j\omega)$$
+<p>The Fourier transform is a linear operation:</p>
 
-### Symmetry
+<script type="math/tex; mode=display">a_1f_1(t)+a_2f_2(t)+\cdots+a_nf_n(t)\Leftrightarrow a_1F_1(j\omega)+a_2F_2(j\omega)+\cdots+a_nF_n(j\omega)</script>
 
-If $F(j\omega)$ is the Fourier transform of $f(t)$, the *symmetry property of the Fourier transform* states that
+<h3 id="symmetry">Symmetry</h3>
 
-$$F(t)\Leftrightarrow2\pi f(-j\omega)$$
+<p>If $F(j\omega)$ is the Fourier transform of $f(t)$, the <em>symmetry property of the Fourier transform</em> states that</p>
 
-That is if in $F(j\omega)$ we replace $j\omega$ with $t$, we obtain this pair.
+<script type="math/tex; mode=display">F(t)\Leftrightarrow2\pi f(-j\omega)</script>
 
-### Time/Frequency Scaling
+<p>That is if in $F(j\omega)$ we replace $j\omega$ with $t$, we obtain this pair.</p>
 
-Scaling the time variable with $\alpha  \in \mathbb{R}$ either expands or compresses the Fourier transform:
+<h3 id="timefrequency-scaling">Time/Frequency Scaling</h3>
 
-$$f(\alpha t)\Leftrightarrow \frac{1}{|\alpha|}F\left(j\frac{\omega}{\alpha}\right)$$
+<p>Scaling the time variable with $\alpha  \in \mathbb{R}$ either expands or compresses the Fourier transform:</p>
 
-* For $\alpha &gt; 0$, the signal $f(\alpha t)$ is sped up (or compressed in time), so its frequency components will be expanded to higher frequencies.
-* For $\alpha &lt; 0$, the signal $f(\alpha t)$ is slowed down (or expanded in time), so its frequency components will be compressed to lower frequencies.
+<script type="math/tex; mode=display">f(\alpha t)\Leftrightarrow \frac{1}{|\alpha|}F\left(j\frac{\omega}{\alpha}\right)</script>
 
-### Time Shifting
+<ul>
+  <li>For $\alpha &gt; 0$, the signal $f(\alpha t)$ is sped up (or compressed in time), so its frequency components will be expanded to higher frequencies.</li>
+  <li>For $\alpha &lt; 0$, the signal $f(\alpha t)$ is slowed down (or expanded in time), so its frequency components will be compressed to lower frequencies.</li>
+</ul>
 
-A time shift results in a phase shift in the Fourier transform
+<h3 id="time-shifting">Time Shifting</h3>
 
-$$f(t-t_0) \Leftrightarrow e^{-j\omega_0}F(j\omega)$$
+<p>A time shift results in a phase shift in the Fourier transform</p>
 
-where $\omega_0 = 2\pi/t_0$
+<script type="math/tex; mode=display">f(t-t_0) \Leftrightarrow e^{-j\omega_0}F(j\omega)</script>
 
-### Frequency Shifting
+<p>where $\omega_0 = 2\pi/t_0$</p>
 
-Multiplying a time function by a complex exponential resuls in a frequency shift
+<h3 id="frequency-shifting">Frequency Shifting</h3>
 
-$$e^{j\omega 0}f(t) \Leftrightarrow X(j\omega-j\omega_0)$$
+<p>Multiplying a time function by a complex exponential resuls in a frequency shift</p>
 
+<script type="math/tex; mode=display">e^{j\omega 0}f(t) \Leftrightarrow X(j\omega-j\omega_0)</script>
 
+<h3 id="time-differentiation">Time Differentiation</h3>
 
-### Time Differentiation
+<p>If $F(j\omega)$ is the Fourier transform of $f(t)$</p>
 
-If $F(j\omega)$ is the Fourier transform of $f(t)$
+<script type="math/tex; mode=display">\frac{d^n}{dt^n}\,f(t)\Leftrightarrow (j\omega)^nF(j\omega)</script>
 
-$$\frac{d^n}{dt^n}\,f(t)\Leftrightarrow (j\omega)^nF(j\omega)$$
+<h3 id="frequency-differentiation">Frequency Differentiation</h3>
 
-### Frequency Differentiation
+<p>If $F(j\omega)$ is the Fourier transform of $f(t)$</p>
 
-If $F(j\omega)$ is the Fourier transform of $f(t)$
+<script type="math/tex; mode=display">(-jt)^n f(t)\Leftrightarrow \frac{d^n}{d\omega^n}F(j\omega)</script>
 
-$$(-jt)^n f(t)\Leftrightarrow \frac{d^n}{d\omega^n}F(j\omega)$$
+<h3 id="time-integration">Time Integration</h3>
 
-### Time Integration
+<p>If $F(j\omega)$ is the Fourier transform of $f(t)$</p>
 
-If $F(j\omega)$ is the Fourier transform of $f(t)$
+<script type="math/tex; mode=display">\int_{-\infty}^{t}f(\tau)d\tau \Leftrightarrow \frac{F(j\omega)}{j\omega}+\pi F(0)\delta(\omega)</script>
 
-$$\int_{-\infty}^{t}f(\tau)d\tau \Leftrightarrow \frac{F(j\omega)}{j\omega}+\pi F(0)\delta(\omega)$$
+<h3 id="conjugate-time-and-frequency-functions">Conjugate Time and Frequency Functions</h3>
 
-### Conjugate Time and Frequency Functions
+<p>If $F(j\omega)$ is the Fourier transform of the complex function $f(t)$</p>
 
-If $F(j\omega)$ is the Fourier transform of the complex function $f(t)$
+<script type="math/tex; mode=display">f^*(t)\Leftrightarrow F^*(-j\omega)</script>
 
-$$f^*(t)\Leftrightarrow F^*(-j\omega)$$
+<h3 id="time-convolution">Time Convolution</h3>
 
-### Time Convolution
+<script type="math/tex; mode=display">f_1(t)*f_2(t) \Leftrightarrow F_1(j\omega) F_2(j\omega)</script>
 
-$$f_1(t)*f_2(t) \Leftrightarrow F_1(j\omega) F_2(j\omega)$$
+<p>That is convolution in the time domain corresponds to multiplication in the frequency domain.</p>
 
-That is convolution in the time domain corresponds to multiplication in the frequency domain.
+<p>(Compare with Laplace Transform)</p>
 
-(Compare with Laplace Transform)
+<h3 id="frequency-convolution">Frequency Convolution</h3>
 
-### Frequency Convolution
+<script type="math/tex; mode=display">f_1(t)f_2(t) \Leftrightarrow \frac{1}{2\pi} F_1(j\omega)*F_2(j\omega)</script>
 
-$$f_1(t)f_2(t) \Leftrightarrow \frac{1}{2\pi} F_1(j\omega)*F_2(j\omega)$$
+<p>That is, multiplication in the time domain corresponds to convolution in the frequency domain.</p>
 
-That is, multiplication in the time domain corresponds to convolution in the frequency domain.
+<p>This also has application to amplitude modulation as shown in Boulet pp 182—183.</p>
 
-This also has application to amplitude modulation as shown in Boulet pp 182&mdash;183.
+<h3 id="area-under-ft">Area under $f(t)$</h3>
 
+<script type="math/tex; mode=display">\int_{-\infty}^{\infty} f(t)\,dt = F(0)</script>
 
-### Area under $f(t)$
+<p>That is, the area under a time function $f(t)$ is equal to the value of the Fourier transform of $f(t)$ evaluated at $\omega = 0$ rad/s.</p>
 
-$$\int_{-\infty}^{\infty} f(t)\,dt = F(0)$$
+<h3 id="area-under-fjomega">Area under $F(j\omega)$</h3>
 
-That is, the area under a time function $f(t)$ is equal to the value of the Fourier transform of $f(t)$ evaluated at $\omega = 0$ rad/s.
+<script type="math/tex; mode=display">f(0) = \frac{1}{2\pi}\int_{-\infty}^{\infty} F(j\omega)\,d\omega</script>
 
-### Area under $F(j\omega)$
+<p>That is, the value of a time function, $f(t)$, evaluated at $t=0$ is equal to the area under its Fourier transform $F(j\omega)$ times $1/2\pi$.</p>
 
-$$f(0) = \frac{1}{2\pi}\int_{-\infty}^{\infty} F(j\omega)\,d\omega$$
+<h3 id="energy-density-spectrum">Energy-Density Spectrum</h3>
 
-That is, the value of a time function, $f(t)$, evaluated at $t=0$ is equal to the area under its Fourier transform $F(j\omega)$ times $1/2\pi$.
+<p>Recalling that the power spectrum of a periodic signal is defined as the squared magnitudes of its Fourier series coefficients. A plot of the power spectrum of a signal gives us an idea of the power at different frequencies (harmonics).</p>
 
-### Energy-Density Spectrum
+<p>By analogy, the <em>energy-density spectrum</em> of an aperiodic signal is defined as the magnitude squared of its spectrum; that is</p>
 
-Recalling that the power spectrum of a periodic signal is defined as the squared magnitudes of its Fourier series coefficients. A plot of the power spectrum of a signal gives us an idea of the power at different frequencies (harmonics).
+<script type="math/tex; mode=display">|F(j\omega)|^2</script>
 
-By analogy, the *energy-density spectrum* of an aperiodic signal is defined as the magnitude squared of its spectrum; that is $|F(j\omega)|^2$ is the energy-density spectrum of $f(t)$.
+<p>is the energy-density spectrum of $f(t)$.</p>
 
-For example
+<p>For example</p>
 
-$$E_{[\omega_1,\omega_2]}:=\frac{1}{2\pi}\int_{\omega_1}^{\omega_2}|F(j\omega)|^2\,d\omega.$$
+<script type="math/tex; mode=display">E_{[\omega_1,\omega_2]}:=\frac{1}{2\pi}\int_{\omega_1}^{\omega_2}|F(j\omega)|^2\,d\omega.</script>
 
-Note that for real signals, it is customary to include the negative frequency band as well.
+<p>Note that for real signals, it is customary to include the negative frequency band as well.</p>
 
-### Parseval's Theorem
+<h3 id="parsevals-theorem">Parseval’s Theorem</h3>
 
-Just like the total average power of a periodic signal is equal to the sume of the powers of all the harmonics, the total energy in an aperidic signal is equal to the total energy in its sepctrum.
+<p>Just like the total average power of a periodic signal is equal to the sume of the powers of all the harmonics, the total energy in an aperidic signal is equal to the total energy in its sepctrum.</p>
 
-This is the Parseval equality for Fourier transforms:
+<p>This is the Parseval equality for Fourier transforms:</p>
 
-$$\int_{-\infty}^{\infty}|f(t)|^2\,dt=\frac{1}{2\pi}\int_{-\infty}^{\infty}|F(j\omega)|^2\,d\omega.$$
+<script type="math/tex; mode=display">\int_{-\infty}^{\infty}|f(t)|^2\,dt=\frac{1}{2\pi}\int_{-\infty}^{\infty}|F(j\omega)|^2\,d\omega.</script>
 
-## Table of Properites of the Fourier Transform
+<h2 id="table-of-properites-of-the-fourier-transform">Table of Properites of the Fourier Transform</h2>
 
-As was the case of the Laplace Transform, properties of Fourier transforms are usually summarized in Tables of Fourier Transform properties. For example this one: [Properties of the Fourier Transform (Wikpedia)](http://en.wikipedia.org/wiki/Fourier_transform#Properties_of_the_Fourier_transform) and Table 8.8 in Karris (page 8-17).
+<p>As was the case of the Laplace Transform, properties of Fourier transforms are usually summarized in Tables of Fourier Transform properties. For example this one: <a href="http://en.wikipedia.org/wiki/Fourier_transform#Properties_of_the_Fourier_transform">Properties of the Fourier Transform (Wikpedia)</a> and Table 8.8 in Karris (page 8-17).</p>
 
-More detail and some commentry is given in the printable version of these notes.
+<p>More detail and some commentry is given in the printable version of these notes.</p>
 
 <table>
 <thead> 
-<tr><td></td><td>**Name**</td><td>$f(t)$</td><td>$F(j\omega)$</td><td>**Remarks**</td></tr>
-<thead>
+    <tr><td></td><td><b>Name</b></td><td>$f(t)$</td><td>$F(j\omega)$</td><td><b>Remarks</b></td></tr>
+</thead>
 <tbody>
 <tr><td>1</td><td>Linearity</td><td>$a_1f_1(t)+a_2f_2(t)+\cdots+a_nf_n(t)$</td><td>$a_1F_1(j\omega)+a_2F_2(j\omega)+\cdots+a_nF_n(j\omega)$</td><td>Fourier transform is a linear operator.</td></tr>
 <tr><td>2</td><td>Symmetry</td><td>$2\pi f(-j\omega)$</td><td>$F(t)$</td><td></td></tr>
@@ -1625,44 +1669,23 @@ More detail and some commentry is given in the printable version of these notes.
 <tr><td>14.</td><td>Energy-Density Spectrum</td><td>$$E_{[\omega_1,\omega_2]}:=\frac{1}{2\pi}\int_{\omega_1}^{\omega_2}|F(j\omega)|^2\,d\omega.$$</td><td></td><td></td></tr>
 <tr><td>15.</td><td>Parseval's theorem</td><td>$$\int_{-\infty}^{\infty}|f(t)|^2\,dt=\frac{1}{2\pi}\int_{-\infty}^{\infty}|F(j\omega)|^2\,d\omega.$$</td><td></td><td>Definition RMS follows from this</td></tr>
 </tbody>
-&lt;/table&gt;
+</table>
 
-See also: [Wikibooks: Engineering Tables/Fourier Transform Properties](http://en.wikibooks.org/wiki/Engineering_Tables/Fourier_Transform_Properties) and [Fourier Transfom&mdash;WolframMathworld](http://mathworld.wolfram.com/FourierTransform.html) for more complete references.
+<p>See also: <a href="http://en.wikibooks.org/wiki/Engineering_Tables/Fourier_Transform_Properties">Wikibooks: Engineering Tables/Fourier Transform Properties</a> and <a href="http://mathworld.wolfram.com/FourierTransform.html">Fourier Transfom—WolframMathworld</a> for more complete references.</p>
 
+<h2 id="examples">Examples</h2>
 
-## Examples
+<ol>
+  <li>Amplitude Modulation</li>
+  <li>Impulse response</li>
+  <li>Energy computation</li>
+</ol>
 
-1. Amplitude Modulation
-2. Impulse response
-3. Energy computation
+<h3 id="example-1-amplitude-modulation">Example 1: Amplitude Modulation</h3>
 
-### Example 1: Amplitude Modulation
+<p>Compute the result of multiplying a signal $f(t)$ by a carrier waveform $\cos \omega_c t$.</p>
 
-Compute the result of multiplying a signal $f(t)$ by a carrier waveform $\cos \omega_c t$.
-
-*Hint* use Euler's identity and the frequency shift property
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-### Example 2: Impulse response
-
-A system has impulse response $f(t) = e^{-t}u_0(t)$. Compute the frequency sprectrum of this system.
+<p><em>Hint</em> use Euler’s identity and the frequency shift property</p>
 
 <pre style="border: 2px solid blue">
 
@@ -1682,9 +1705,9 @@ A system has impulse response $f(t) = e^{-t}u_0(t)$. Compute the frequency sprec
 
 </pre>
 
-### Example 3: Energy computation
+<h3 id="example-2-impulse-response">Example 2: Impulse response</h3>
 
-An aperiodic real signal $f(t)$ has Fourier transform $F(j\omega)$. Compute the energy contained the signal between 5kHz and 10kHz.
+<p>A system has impulse response $f(t) = e^{-t}u_0(t)$. Compute the frequency sprectrum of this system.</p>
 
 <pre style="border: 2px solid blue">
 
@@ -1704,138 +1727,142 @@ An aperiodic real signal $f(t)$ has Fourier transform $F(j\omega)$. Compute the 
 
 </pre>
 
-## Computing Fourier Transforms in Matlab
+<h3 id="example-3-energy-computation">Example 3: Energy computation</h3>
 
-MATLAB has the built-in **fourier** and **ifourier** functions that can be used to compute the Fourier transform and its inverse. We will explore some of thes in the next lab.
+<p>An aperiodic real signal $f(t)$ has Fourier transform $F(j\omega)$. Compute the energy contained the signal between 5kHz and 10kHz.</p>
 
-For now, here's an example:
-
-### Example
-
-Use Matlab to confirm the Fourier transform pair:
-    
-$$e^{-\frac{1}{2}t^2}\Leftrightarrow \sqrt{2\pi}e^{-\frac{1}{2}\omega^2}$$
+<pre style="border: 2px solid blue">
 
 
 
-{:.input_area}
-```matlab
-syms t v omega x;
-ft = exp(-t^2/2);
-Fw = fourier(ft,omega)
-```
 
 
-{:.output .output_stream}
-```
- 
+
+
+
+
+
+
+
+
+
+
+</pre>
+
+<h2 id="computing-fourier-transforms-in-matlab">Computing Fourier Transforms in Matlab</h2>
+
+<p>MATLAB has the built-in <strong>fourier</strong> and <strong>ifourier</strong> functions that can be used to compute the Fourier transform and its inverse. We will explore some of thes in the next lab.</p>
+
+<p>For now, here’s an example:</p>
+
+<h3 id="example">Example</h3>
+
+<p>Use Matlab to confirm the Fourier transform pair:</p>
+
+<script type="math/tex; mode=display">e^{-\frac{1}{2}t^2}\Leftrightarrow \sqrt{2\pi}e^{-\frac{1}{2}\omega^2}</script>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">syms</span> <span class="n">t</span> <span class="n">v</span> <span class="n">omega</span> <span class="n">x</span><span class="p">;</span>
+<span class="n">ft</span> <span class="o">=</span> <span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="o">^</span><span class="mi">2</span><span class="p">/</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">Fw</span> <span class="o">=</span> <span class="n">fourier</span><span class="p">(</span><span class="n">ft</span><span class="p">,</span><span class="n">omega</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
 Fw =
  
 2^(1/2)*pi^(1/2)*exp(-omega^2/2)
  
 
-```
+</code></pre></div></div>
 
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pretty</span><span class="p">(</span><span class="n">Fw</span><span class="p">)</span>
+</code></pre></div></div>
 
-
-{:.input_area}
-```matlab
-pretty(Fw)
-```
-
-
-{:.output .output_stream}
-```
-                    /        2 \
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                    /        2 \
                     |   omega  |
 sqrt(2) sqrt(pi) exp| - ------ |
                     \      2   /
 
 
-```
+</code></pre></div></div>
 
-Check by computing the inverse using ifourier
+<p>Check by computing the inverse using ifourier</p>
 
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ft</span> <span class="o">=</span> <span class="n">ifourier</span><span class="p">(</span><span class="n">Fw</span><span class="p">)</span>
+</code></pre></div></div>
 
-
-{:.input_area}
-```matlab
-ft = ifourier(Fw)
-```
-
-
-{:.output .output_stream}
-```
- 
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
 ft =
  
 exp(-x^2/2)
  
 
-```
+</code></pre></div></div>
 
-See script: [ftex1.m](matlab/ftex1.m).
+<p>See script: <a href="matlab/ftex1.m">ftex1.m</a>.</p>
 
-## Summary
+<h2 id="summary">Summary</h2>
 
-* Fourier Transform as the Limit of a Fourier Series
-* Doing the Maths
-* Special forms of the Fourier Transform
-* Properties of the Fourier Transform
-* Computing Fourier Transforms in Matlab
+<ul>
+  <li>Fourier Transform as the Limit of a Fourier Series</li>
+  <li>Doing the Maths</li>
+  <li>Special forms of the Fourier Transform</li>
+  <li>Properties of the Fourier Transform</li>
+  <li>Computing Fourier Transforms in Matlab</li>
+</ul>
 
-*Next Section*
+<p><em>Next Section</em></p>
 
-* [Fourier transform of commonly occuring signals](../2/ft2.ipynb)
+<ul>
+  <li><a href="../2/ft2.ipynb">Fourier transform of commonly occuring signals</a></li>
+</ul>
 
-## Worked Solutions
+<h2 id="worked-solutions">Worked Solutions</h2>
 
-### Let's complete the analysis in the notebook
+<h3 id="lets-complete-the-analysis-in-the-notebook">Let’s complete the analysis in the notebook</h3>
 
-$$C_k = \frac{1}{T}\int_{-t_0}^{t_0} e^{-jk\omega t}\,dt = -\frac{1}{jk\omega_0 T}\left[e^{-jk\omega_0 t}\right]_{-t_0}^{t_0} = -\frac{1}{jk\omega_0 T}\left(e^{-jk\omega_0 t_0}-e^{jk\omega_0 t_0}\right)$$
+<script type="math/tex; mode=display">C_k = \frac{1}{T}\int_{-t_0}^{t_0} e^{-jk\omega t}\,dt = -\frac{1}{jk\omega_0 T}\left[e^{-jk\omega_0 t}\right]_{-t_0}^{t_0} = -\frac{1}{jk\omega_0 T}\left(e^{-jk\omega_0 t_0}-e^{jk\omega_0 t_0}\right)</script>
 
-$$C_k = \frac{2}{k\omega_0 T}\left(\frac{e^{jk\omega_0 t_0}-e^{-jk\omega_0 t_0}}{2j}\right) = 2\frac{\sin(k\omega_0 t_0)}{k\omega_0 T}$$
+<script type="math/tex; mode=display">C_k = \frac{2}{k\omega_0 T}\left(\frac{e^{jk\omega_0 t_0}-e^{-jk\omega_0 t_0}}{2j}\right) = 2\frac{\sin(k\omega_0 t_0)}{k\omega_0 T}</script>
 
-and since $\omega = 2\pi/T$
+<p>and since $\omega = 2\pi/T$</p>
 
-$$C_k = \frac{\sin\left(\pi k\frac{2t_0}{T}\right)}{k\pi } = \frac{T}{2t_0}{\mathop{\rm sinc}}\left(\pi k\frac{2t_0}{T}\right)$$
+<script type="math/tex; mode=display">C_k = \frac{\sin\left(\pi k\frac{2t_0}{T}\right)}{k\pi } = \frac{T}{2t_0}{\mathop{\rm sinc}}\left(\pi k\frac{2t_0}{T}\right)</script>
 
+<h3 id="solution-1">Solution 1</h3>
 
-### Solution 1
+<script type="math/tex; mode=display">\cos\omega_c t = \frac{e^{j\omega_c t}+e^{-j\omega_c t}}{2}</script>
 
-$$\cos\omega_c t = \frac{e^{j\omega_c t}+e^{-j\omega_c t}}{2}$$
+<p>it follows from the <em>frequency shifting</em> property that</p>
 
-it follows from the *frequency shifting* property that
+<script type="math/tex; mode=display">f(t)\cos\omega_c t \Leftrightarrow \frac{F(j\omega-j\omega_c)+F(j\omega + j\omega_c)}{2}.</script>
 
-$$f(t)\cos\omega_c t \Leftrightarrow \frac{F(j\omega-j\omega_c)+F(j\omega + j\omega_c)}{2}.$$
+<p>Similarly</p>
 
-Similarly
+<script type="math/tex; mode=display">f(t)\sin\omega_c t \Leftrightarrow \frac{F(j\omega-j\omega_c)-F(j\omega + j\omega_c)}{j2}.</script>
 
-$$f(t)\sin\omega_c t \Leftrightarrow \frac{F(j\omega-j\omega_c)-F(j\omega + j\omega_c)}{j2}.$$
+<h3 id="remarks">Remarks</h3>
 
-### Remarks
+<p>We can also tackle this using the Frequency Convolution property. See Boulet pp 182—183.</p>
 
-We can also tackle this using the Frequency Convolution property. See Boulet pp 182&mdash;183.
+<h3 id="solution-2">Solution 2</h3>
 
-### Solution 2
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{gathered}
+  \mathcal{F}\left\{ e^{-t}u_0(t) \right\} &=& \int_0^\infty  e^{-t}u_0(t) e^{ - j\omega t}\;dt \\ 
+   &=& \int_0^\infty  e^{-(1 + j\omega )t} \;dt \\ 
+   &=&  - \frac{1}{j\omega  + 1}\left[ e^{ - (1 + j\omega )t} \right]_0^\infty  =  - \frac{1}{j\omega  + 1}\left[ {0 - 1} \right] \\ 
+  F(j\omega ) &=& \frac{1}{j\omega  + 1} \\ 
+\end{gathered} %]]></script>
 
-$$\begin{gathered}
-  \mathcal{F}\left\{ e^{-t}u_0(t) \right\} &amp;=&amp; \int_0^\infty  e^{-t}u_0(t) e^{ - j\omega t}\;dt \\ 
-   &amp;=&amp; \int_0^\infty  e^{-(1 + j\omega )t} \;dt \\ 
-   &amp;=&amp;  - \frac{1}{j\omega  + 1}\left[ e^{ - (1 + j\omega )t} \right]_0^\infty  =  - \frac{1}{j\omega  + 1}\left[ {0 - 1} \right] \\ 
-  F(j\omega ) &amp;=&amp; \frac{1}{j\omega  + 1} \\ 
-\end{gathered} $$
+<p>Thus</p>
 
-Thus
+<script type="math/tex; mode=display">e^{ - t}{u_0}(t)\Leftrightarrow \frac{1}{j\omega  + 1}</script>
 
-$$e^{ - t}{u_0}(t)\Leftrightarrow \frac{1}{j\omega  + 1}$$
+<h3 id="solution-3">Solution 3</h3>
 
-### Solution 3
+<p>Use the Energy-Density function.</p>
 
-Use the Energy-Density function.
-
-$$E_{[10,000\pi,20,000\pi]}^r=\frac{1}{2\pi}\left[\int_{10,000\pi}^{20,000\pi}|X(j\omega)|^2\,d\omega + \frac{1}{2\pi}\int_{-20,000\pi}^{-10,000\pi}|X(j\omega)|^2\,d\omega\right] = \frac{1}{\pi}\int_{10,000\pi}^{20,000\pi}|X(j\omega)|^2\,d\omega.$$
-</thead></thead></table></tr></thead></table></html>
+<script type="math/tex; mode=display">E_{[10,000\pi,20,000\pi]}^r=\frac{1}{2\pi}\left[\int_{10,000\pi}^{20,000\pi}|X(j\omega)|^2\,d\omega + \frac{1}{2\pi}\int_{-20,000\pi}^{-10,000\pi}|X(j\omega)|^2\,d\omega\right] = \frac{1}{\pi}\int_{10,000\pi}^{20,000\pi}|X(j\omega)|^2\,d\omega.</script>
 
               <nav class="c-page__nav">
   

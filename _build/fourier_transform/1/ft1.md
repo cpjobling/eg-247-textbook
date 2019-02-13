@@ -263,8 +263,6 @@ By consideration of the Real and Imaginary parts of $f(t)$ and $F(j\omega)$ we c
 <html>
 <table>
 <thead>
-<tr>
-<thead>
     <tr><td rowspan="2" style="text-align: center;">$f(t)$</td><td colspan="5" style="text-align: center;">$F(j\omega)$</td></tr>
     <tr><td>Real</td><td>Imaginary</td><td>Complex</td><td>Even</td><td>Odd</td></tr>
 </thead>
@@ -411,7 +409,11 @@ That is, the value of a time function, $f(t)$, evaluated at $t=0$ is equal to th
 
 Recalling that the power spectrum of a periodic signal is defined as the squared magnitudes of its Fourier series coefficients. A plot of the power spectrum of a signal gives us an idea of the power at different frequencies (harmonics).
 
-By analogy, the *energy-density spectrum* of an aperiodic signal is defined as the magnitude squared of its spectrum; that is $|F(j\omega)|^2$ is the energy-density spectrum of $f(t)$.
+By analogy, the *energy-density spectrum* of an aperiodic signal is defined as the magnitude squared of its spectrum; that is 
+
+$$|F(j\omega)|^2$$
+
+is the energy-density spectrum of $f(t)$.
 
 For example
 
@@ -435,8 +437,8 @@ More detail and some commentry is given in the printable version of these notes.
 
 <table>
 <thead> 
-<tr><td></td><td>**Name**</td><td>$f(t)$</td><td>$F(j\omega)$</td><td>**Remarks**</td></tr>
-<thead>
+    <tr><td></td><td><b>Name</b></td><td>$f(t)$</td><td>$F(j\omega)$</td><td><b>Remarks</b></td></tr>
+</thead>
 <tbody>
 <tr><td>1</td><td>Linearity</td><td>$a_1f_1(t)+a_2f_2(t)+\cdots+a_nf_n(t)$</td><td>$a_1F_1(j\omega)+a_2F_2(j\omega)+\cdots+a_nF_n(j\omega)$</td><td>Fourier transform is a linear operator.</td></tr>
 <tr><td>2</td><td>Symmetry</td><td>$2\pi f(-j\omega)$</td><td>$F(t)$</td><td></td></tr>

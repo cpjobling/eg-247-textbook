@@ -123,7 +123,7 @@ using component values based on your student number. Then:
 4. Plot the pole-zero map of `Gs2` using the `pzmap` function.
 5. Plot the step response of `Gs2` using the `step` function.
 6. Compute and plot the response of `Gs2` to the sinusoid using the `lsim` function.
-7. Repeat the simulation of the sinsoudal response in Simulink - save model as `proj2.slx`.
+7. Repeat the simulation of the sinsoidal response in Simulink - save model as `proj2.slx`.
 
 Save your solution as `proj2`.
 
