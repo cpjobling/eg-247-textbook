@@ -1,8 +1,8 @@
 ---
 title: 'Worksheets'
 prev_page:
-  url: /fourier_transform/4/ft4
-  title: 'Introduction to Filters'
+  url: /dt_systems/4/dt_models
+  title: 'Models of Discrete Time Systems'
 next_page:
   url: /introduction/worksheet1
   title: 'Worksheet 1 Introduction'
