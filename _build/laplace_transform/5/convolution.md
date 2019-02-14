@@ -293,11 +293,11 @@ To prepare this problem for evaluation in the `convolutiondemo` tool, we need to
 
 ##### Summary of result
 
-1. For $t < 0$: $u(t-\tau)h(\tau) = 0$
+1. For $t < 0$: $$u(t-\tau)h(\tau) = 0$$
 2. For $t = 0$: $u(t-\tau) = u(-\tau)$ and $u(-\tau)h(\tau) = 0$
-3. For $0 < t \le 1$: $h*u = \int_0^t (1)(-\tau + 1)d\tau = \left.\tau - \tau^2/2\right|_0^t = t-t^2/2$
-4. For $1 < t \le 2$: $h*u = \int_{t-1}^1(-\tau + 1)d\tau = \left.\tau - \tau^2/2\right|_{t-1}^{1} = t^2/2-2t+2$
-5. For $2 \le t$: $u(t-\tau)h(\tau) = 0$
+3. For $0 < t \le 1$: $$h*u = \int_0^t (1)(-\tau + 1)d\tau = \left.\tau - \tau^2/2\right|_0^t = t-t^2/2$$
+4. For $1 < t \le 2$: $$h*u = \int_{t-1}^1(-\tau + 1)d\tau = \left.\tau - \tau^2/2\right|_{t-1}^{1} = t^2/2-2t+2$$
+5. For $2 \le t$: $$u(t-\tau)h(\tau) = 0$$
 
 #### Example 3
 

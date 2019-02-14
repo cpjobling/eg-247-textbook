@@ -27,9 +27,9 @@
   "headline":
     "Fourier transform of commonly occuring signals",
   "datePublished":
-    "2019-02-13T23:10:13+00:00",
+    "2019-02-14T18:38:14+00:00",
   "dateModified":
-    "2019-02-13T23:10:13+00:00",
+    "2019-02-14T18:38:14+00:00",
   "description":
     "Fourier transform of commonly occuring signals",
   "author": {
@@ -1140,6 +1140,29 @@ document.addEventListener('turbolinks:load', updateInteractLink)
     </ul>
   </li>
   <li><a href="#table-of-common-fourier-transform-pairs">Table of Common Fourier Transform Pairs</a></li>
+  <li><a href="#some-selected-fourier-transforms">Some Selected Fourier Transforms</a>
+    <ul>
+      <li><a href="#relationship-between-ft-and-fomega">Relationship between f(t) and F(omega)</a></li>
+      <li><a href="#the-dirac-delta">The Dirac Delta</a></li>
+      <li><a href="#dc">DC</a></li>
+      <li><a href="#cosine-sinewave-with-even-symmetry">Cosine (Sinewave with even symmetry)</a></li>
+      <li><a href="#sinewave">Sinewave</a></li>
+      <li><a href="#signum-sign">Signum (Sign)</a></li>
+      <li><a href="#example-4-unit-step">Example 4: Unit Step</a></li>
+      <li><a href="#example-5">Example 5</a></li>
+      <li><a href="#example-6">Example 6</a></li>
+      <li><a href="#example-7">Example 7</a></li>
+    </ul>
+  </li>
+  <li><a href="#derivation-of-the-fourier-transform-from-the-laplace-transform">Derivation of the Fourier Transform from the Laplace Transform</a>
+    <ul>
+      <li><a href="#example-8-single-pole-filter">Example 8: Single Pole Filter</a></li>
+      <li><a href="#example-9-complex-pole-pair--cos-term">Example 9: Complex Pole Pair  cos term</a></li>
+    </ul>
+  </li>
+  <li><a href="#fourier-transforms-of-common-signals">Fourier Transforms of Common Signals</a></li>
+  <li><a href="#suggestions-for-further-reading">Suggestions for Further Reading</a></li>
+  <li><a href="#summary">Summary</a></li>
 </ul>
     </nav>
   </aside>
@@ -1234,7 +1257,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 <table>
 <thead>
     <tr><td></td><td><b>Name</b></td><td>$f(t)$</td><td>$F(\omega)$</td><td><b>Remarks</b></td></tr>
-<thead>
+</thead>
 <tbody>
 <tr><td>1</td><td>Dirac delta</td><td>$\delta(t)$</td><td>1</td><td>Constant energy at <i>all</i> frequencies.</td></tr>
 <tr><td>2</td><td>Time sample</td><td>$\delta(t-t_0)$</td><td>$e^{j\omega t_0}$</td><td></td></tr>
@@ -1249,185 +1272,132 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 <tr><td>11.</td><td>Complex pole (sine component)</td><td>$e^{-at}\sin \omega_0 t\;u_0(t)$</td><td>$$\frac{\omega}{((j\omega + a)^2+\omega^2}$$</td><td>$a\gt 0$</td></tr>
     <tr><td>12.</td><td>Gating function (<i>aka</i> $\operatorname{rect} (T)$)</td><td>$A\left[u_0(t + T)-u_0(t - T)\right]$</td><td>$$2AT\frac{\sin\omega T}{\omega T}$$</td><td></td></tr>
 </tbody>
-&lt;/table&gt;
+</table>
 
-## Some Selected Fourier Transforms
+<h2 id="some-selected-fourier-transforms">Some Selected Fourier Transforms</h2>
 
-### Relationship between f(t) and F(omega)
+<h3 id="relationship-between-ft-and-fomega">Relationship between f(t) and F(omega)</h3>
 
-In most of the work we will do in this course, and in practice, the *signals* that we use with the Fourier transform will be a real continuous aperiodic functions of time that are zero when $t = 0$.
+<p>In most of the work we will do in this course, and in practice, the <em>signals</em> that we use with the Fourier transform will be a real continuous aperiodic functions of time that are zero when $t = 0$.</p>
 
-The Fourier transforms of such a signals will be complex continous function of frequency which have real and imaginary parts and will exist at both positive and negative values of $\omega$.
+<p>The Fourier transforms of such a signals will be complex continous function of frequency which have real and imaginary parts and will exist at both positive and negative values of $\omega$.</p>
 
-It is often most convenient to deal with the transformed "spectrum" by considering the magnitude and phase and we will therefore often plot $F(\omega)$ on two separate graphs as *magnitude* $|F(\omega)|$ and *phase* $\angle F(\omega)$ (where phase is measured in radians) plotted against frequency $\omega \in [-\infty,\infty]$ (in radians/second).
+<table>
+  <tbody>
+    <tr>
+      <td>It is often most convenient to deal with the transformed “spectrum” by considering the magnitude and phase and we will therefore often plot $F(\omega)$ on two separate graphs as <em>magnitude</em> $</td>
+      <td>F(\omega)</td>
+      <td>$ and <em>phase</em> $\angle F(\omega)$ (where phase is measured in radians) plotted against frequency $\omega \in [-\infty,\infty]$ (in radians/second).</td>
+    </tr>
+  </tbody>
+</table>
 
-We most often represent the *system* by its so-called *frequency response* and we will be interested on what effect the system has on the signal $f(t)$. 
+<p>We most often represent the <em>system</em> by its so-called <em>frequency response</em> and we will be interested on what effect the system has on the signal $f(t)$.</p>
 
-As for the Laplace transform, this is more conveniently determined by exploiting the *time convolution property*. That is by performing a Fourier transform of the signal, multiplying it by the system's frequency response and then inverse Fourier transforming the result.
+<p>As for the Laplace transform, this is more conveniently determined by exploiting the <em>time convolution property</em>. That is by performing a Fourier transform of the signal, multiplying it by the system’s frequency response and then inverse Fourier transforming the result.</p>
 
-Have these ideas in mind as we go through the examples in the rest of this session.
+<p>Have these ideas in mind as we go through the examples in the rest of this session.</p>
 
-### The Dirac Delta
+<h3 id="the-dirac-delta">The Dirac Delta</h3>
 
-$$\delta(t) \Leftrightarrow 1$$
+<script type="math/tex; mode=display">\delta(t) \Leftrightarrow 1</script>
 
-<img src="pictures/ft_delta.png" />
+<p><img src="pictures/ft_delta.png" /></p>
 
-*Proof*: uses sampling and sifting properties of $\delta(t)$.
+<p><em>Proof</em>: uses sampling and sifting properties of $\delta(t)$.</p>
 
-*Matlab*: 
+<p><em>Matlab</em>:</p>
 
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">syms</span> <span class="n">t</span><span class="p">;</span>
+<span class="n">fourier</span><span class="p">(</span><span class="n">dirac</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+</code></pre></div></div>
 
-
-{:.input_area}
-```matlab
-syms t;
-fourier(dirac(t))
-```
-
-
-{:.output .output_stream}
-```
- 
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
 ans =
  
 1
  
 
-```
+</code></pre></div></div>
 
-Related:
+<p>Related:</p>
 
-$$\delta(t-t_0) \Leftrightarrow e^{-j\omega t_0}$$
+<script type="math/tex; mode=display">\delta(t-t_0) \Leftrightarrow e^{-j\omega t_0}</script>
 
-### DC
+<h3 id="dc">DC</h3>
 
-$$1 \Leftrightarrow 2\pi\delta(\omega)$$
+<script type="math/tex; mode=display">1 \Leftrightarrow 2\pi\delta(\omega)</script>
 
-<img src="pictures/ft_dc.png" />
+<p><img src="pictures/ft_dc.png" /></p>
 
-*Matlab*:
+<p><em>Matlab</em>:</p>
 
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">syms</span> <span class="n">t</span> <span class="n">omega</span><span class="p">;</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">sym</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">fourier</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">omega</span><span class="p">)</span>
+</code></pre></div></div>
 
-
-{:.input_area}
-```matlab
-syms t omega;
-A = sym(1);
-fourier(A,omega)
-```
-
-
-{:.output .output_stream}
-```
- 
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
 ans =
  
 2*pi*dirac(omega)
  
 
-```
+</code></pre></div></div>
 
-Related by frequency shifting property:
+<p>Related by frequency shifting property:</p>
 
-$$e^{j\omega_0 t} \Leftrightarrow 2\pi\delta(\omega-\omega_0)$$
+<script type="math/tex; mode=display">e^{j\omega_0 t} \Leftrightarrow 2\pi\delta(\omega-\omega_0)</script>
 
-### Cosine (Sinewave with even symmetry)
+<h3 id="cosine-sinewave-with-even-symmetry">Cosine (Sinewave with even symmetry)</h3>
 
-$$\cos(t) = \frac{1}{2}\left(e^{j\omega_0 t}+e^{-j\omega_0 t}\right) \Leftrightarrow \pi\delta(\omega - \omega_0) + \pi\delta(\omega + \omega_0)$$
+<script type="math/tex; mode=display">\cos(t) = \frac{1}{2}\left(e^{j\omega_0 t}+e^{-j\omega_0 t}\right) \Leftrightarrow \pi\delta(\omega - \omega_0) + \pi\delta(\omega + \omega_0)</script>
 
-<img src="pictures/ft_cos.png" />
+<p><img src="pictures/ft_cos.png" /></p>
 
-Note: $f(t)$ is real and even. $F(\omega)$ is also real and even.
+<p>Note: $f(t)$ is real and even. $F(\omega)$ is also real and even.</p>
 
-### Sinewave
+<h3 id="sinewave">Sinewave</h3>
 
-$$\sin(t) = \frac{1}{j2}\left(e^{j\omega_0 t}-e^{-j\omega_0 t}\right) \Leftrightarrow -j\pi\delta(\omega - \omega_0) + j\pi\delta(\omega + \omega_0)$$
+<script type="math/tex; mode=display">\sin(t) = \frac{1}{j2}\left(e^{j\omega_0 t}-e^{-j\omega_0 t}\right) \Leftrightarrow -j\pi\delta(\omega - \omega_0) + j\pi\delta(\omega + \omega_0)</script>
 
-<img src="pictures/ft_sin.png" />
+<p><img src="pictures/ft_sin.png" /></p>
 
-Note: $f(t)$ is real and odd. $F(\omega)$ is imaginary and odd.
+<p>Note: $f(t)$ is real and odd. $F(\omega)$ is imaginary and odd.</p>
 
-### Signum (Sign)
+<h3 id="signum-sign">Signum (Sign)</h3>
 
-The signum function is a function whose value is equal to
+<p>The signum function is a function whose value is equal to</p>
 
-$$\operatorname{sgn} x = \left\{ {\begin{array}{*{20}{c}}
-  { - 1\;x &lt; 1} \\ 
+<script type="math/tex; mode=display">% <![CDATA[
+\operatorname{sgn} x = \left\{ {\begin{array}{*{20}{c}}
+  { - 1\;x < 1} \\ 
   {0\;x = 0} \\ 
-  { + 1\;x &gt; 0} 
-\end{array}} \right.$$
+  { + 1\;x > 0} 
+\end{array}} \right. %]]></script>
 
-The transform is:
+<p>The transform is:</p>
 
-$$\operatorname{sgn} x = u_0(t) - u_0(-t) = \frac{2}{j\omega}$$
+<script type="math/tex; mode=display">\operatorname{sgn} x = u_0(t) - u_0(-t) = \frac{2}{j\omega}</script>
 
-<img src="pictures/ft_sgn.png" />
+<p><img src="pictures/ft_sgn.png" /></p>
 
-This function is often used to model a *voltage comparitor* in circuits.
+<p>This function is often used to model a <em>voltage comparitor</em> in circuits.</p>
 
-### Example 4: Unit Step
+<h3 id="example-4-unit-step">Example 4: Unit Step</h3>
 
-Use the signum function to show that
-$$\mathcal{F}\left\{u_0(t))\right\} = \pi\delta(\omega)+\frac{1}{j\omega}$$
+<p>Use the signum function to show that
+<script type="math/tex">\mathcal{F}\left\{u_0(t))\right\} = \pi\delta(\omega)+\frac{1}{j\omega}</script></p>
 
-#### Clue
+<h4 id="clue">Clue</h4>
 
-Define
+<p>Define</p>
 
-$$\operatorname{sgn} t = 2 u_0(t) - 1$$
+<script type="math/tex; mode=display">\operatorname{sgn} t = 2 u_0(t) - 1</script>
 
-<img src="pictures/u_as_sign.png" />
+<p><img src="pictures/u_as_sign.png" /></p>
 
-*Does that help?*
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-#### Proof
-
-$$\operatorname{sgn} x = 2u_0(t) - 1$$
-
-so
-
-$$u_0(t) = \frac{1}{2}\left[1 + \operatorname{sgn} x\right]$$
-
-From previous results $1\Leftrightarrow 2\pi\delta(\omega)$ and $\operatorname{sgn} x = 2/(j\omega)$ so by linearity
-
-$$u_0(t) \Leftrightarrow \pi\delta(\omega)+\frac{1}{j\omega}$$
-
-*QED*
-
-#### Graph of unit step
-
-$$u_0(t) \Leftrightarrow \pi\delta(\omega)+\frac{1}{j\omega}$$
-
-<img src="pictures/ft_step.png" />
-
-Unit step is neither even nor odd so the Fourier transform is complex with real part $F_\mathrm{Re}(\omega) = \pi\delta(\omega)$ and imaginary part $F_\mathrm{Im}(\omega) = 1/(j\omega)$. The real part is even, and theimaginary part is odd.
-
-### Example 5
-
-Use the results derived so far to show that 
-
-$$e^{j\omega_0 t}u_0(t)\Leftrightarrow \pi\delta(\omega - \omega_0) + \frac{1}{j(\omega-\omega_0)}$$
-
-Hint: linearity plus frequency shift property.
+<p><em>Does that help?</em></p>
 
 <pre style="border: 2px solid blue">
 
@@ -1447,39 +1417,35 @@ Hint: linearity plus frequency shift property.
 
 </pre>
 
-### Example 6
+<h4 id="proof">Proof</h4>
 
-Use the results derived so far to show that 
+<script type="math/tex; mode=display">\operatorname{sgn} x = 2u_0(t) - 1</script>
 
-$$\sin \omega_0 t\; u_0(t)\Leftrightarrow \frac{\pi}{j2}\left[\delta(\omega-\omega_0)-\delta(\omega+\omega_0)\right] + \frac{\omega_0}{\omega_0^2 - \omega^2}$$
+<p>so</p>
 
-Hint: Euler's formula plus solution to example 2.
+<script type="math/tex; mode=display">u_0(t) = \frac{1}{2}\left[1 + \operatorname{sgn} x\right]</script>
 
-**Important note**: the equivalent example in Karris (Section 8.4.9 Eq. 8.75 pp 8-23&mdash;8-24) is wrong! 
+<p>From previous results $1\Leftrightarrow 2\pi\delta(\omega)$ and $\operatorname{sgn} x = 2/(j\omega)$ so by linearity</p>
 
-See worked solution on Blackboard for the corrected proof.
+<script type="math/tex; mode=display">u_0(t) \Leftrightarrow \pi\delta(\omega)+\frac{1}{j\omega}</script>
 
-<pre style="border: 2px solid blue">
+<p><em>QED</em></p>
 
+<h4 id="graph-of-unit-step">Graph of unit step</h4>
 
+<script type="math/tex; mode=display">u_0(t) \Leftrightarrow \pi\delta(\omega)+\frac{1}{j\omega}</script>
 
+<p><img src="pictures/ft_step.png" /></p>
 
+<p>Unit step is neither even nor odd so the Fourier transform is complex with real part $F_\mathrm{Re}(\omega) = \pi\delta(\omega)$ and imaginary part $F_\mathrm{Im}(\omega) = 1/(j\omega)$. The real part is even, and theimaginary part is odd.</p>
 
+<h3 id="example-5">Example 5</h3>
 
+<p>Use the results derived so far to show that</p>
 
+<script type="math/tex; mode=display">e^{j\omega_0 t}u_0(t)\Leftrightarrow \pi\delta(\omega - \omega_0) + \frac{1}{j(\omega-\omega_0)}</script>
 
-
-
-
-
-
-
-
-</pre>
-
-### Example 7
-
-Use the result of Example 3 to determine the Fourier transform of $\cos\omega_0 t\; u_0(t)$.
+<p>Hint: linearity plus frequency shift property.</p>
 
 <pre style="border: 2px solid blue">
 
@@ -1499,23 +1465,17 @@ Use the result of Example 3 to determine the Fourier transform of $\cos\omega_0 
 
 </pre>
 
-#### Answer
+<h3 id="example-6">Example 6</h3>
 
-$$\cos\omega_0 t\; u_0(t)\Leftrightarrow \frac{\pi}{2}\left[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)\right] + \frac{j\omega}{\omega_0^2 - \omega^2}$$
+<p>Use the results derived so far to show that</p>
 
-## Derivation of the Fourier Transform from the Laplace Transform
+<script type="math/tex; mode=display">\sin \omega_0 t\; u_0(t)\Leftrightarrow \frac{\pi}{j2}\left[\delta(\omega-\omega_0)-\delta(\omega+\omega_0)\right] + \frac{\omega_0}{\omega_0^2 - \omega^2}</script>
 
-If a signal is a function of time $f(t)$ which is zero for $t\le 0$, we can obtain the Fourier transform from the Lpalace transform by substituting $s$ by $j\omega$.
+<p>Hint: Euler’s formula plus solution to example 2.</p>
 
-### Example 8: Single Pole Filter
+<p><strong>Important note</strong>: the equivalent example in Karris (Section 8.4.9 Eq. 8.75 pp 8-23—8-24) is wrong!</p>
 
-Given that 
-
-$$\mathcal{L}\left\{e^{-at}u_0(t)\right\} = \frac{1}{s + a}$$
-
-Compute 
-
-$$\mathcal{F}\left\{e^{-at}u_0(t)\right\}$$
+<p>See worked solution on Blackboard for the corrected proof.</p>
 
 <pre style="border: 2px solid blue">
 
@@ -1535,17 +1495,9 @@ $$\mathcal{F}\left\{e^{-at}u_0(t)\right\}$$
 
 </pre>
 
-Boulet gives the graph of this function.
+<h3 id="example-7">Example 7</h3>
 
-### Example 9: Complex Pole Pair  cos term
-
-Given that 
-
-$$\mathcal{L}\left\{e^{-at}\cos\omega_0 t\;u_0(t)\right\} = \frac{s+a}{(s + a)^2+\omega_0^2}$$
-
-Compute 
-
-$$\mathcal{F}\left\{e^{-at}\cos\omega_0 t\;u_0(t)\right\}$$
+<p>Use the result of Example 3 to determine the Fourier transform of $\cos\omega_0 t\; u_0(t)$.</p>
 
 <pre style="border: 2px solid blue">
 
@@ -1565,43 +1517,114 @@ $$\mathcal{F}\left\{e^{-at}\cos\omega_0 t\;u_0(t)\right\}$$
 
 </pre>
 
-Boulet gives the graph of this function.
+<h4 id="answer">Answer</h4>
 
-## Fourier Transforms of Common Signals
+<script type="math/tex; mode=display">\cos\omega_0 t\; u_0(t)\Leftrightarrow \frac{\pi}{2}\left[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)\right] + \frac{j\omega}{\omega_0^2 - \omega^2}</script>
 
-We shall conclude this session by computing as many of the the Fourier transform of some common signals as we have time for.
+<h2 id="derivation-of-the-fourier-transform-from-the-laplace-transform">Derivation of the Fourier Transform from the Laplace Transform</h2>
 
-* rectangular pulse
-* triangular pulse
-* periodic time function
-* unit impulse train (model of regular sampling)
+<p>If a signal is a function of time $f(t)$ which is zero for $t\le 0$, we can obtain the Fourier transform from the Lpalace transform by substituting $s$ by $j\omega$.</p>
 
-I will not provide notes for these, but you will find more details in Chapter 8 of Karris and Chapter 5 of Boulet and 
+<h3 id="example-8-single-pole-filter">Example 8: Single Pole Filter</h3>
 
-I have created some worked examples (see Blackboard and the OneNote notebook) to help with revision.
+<p>Given that</p>
 
-## Suggestions for Further Reading
+<script type="math/tex; mode=display">\mathcal{L}\left\{e^{-at}u_0(t)\right\} = \frac{1}{s + a}</script>
 
-Boulet has several interesting amplifications of the material presented by Karris. You would be well advised to read these. Particular highlights which we will not have time to cover:
+<p>Compute</p>
 
-* Time multiplication and its relation to amplitude modulation (pp 182&mdash;183).
-* Fourier transform of the complex exponential signal $e^{(\alpha +j\beta)t}$ with graphs (pp 184&mdash;187).
-* Use of inverse Fourier series to determine $f(t)$ from a given $F(j\omega)$ and the "ideal" low-pass filter (pp 188&mdash;191).
-* The Duality of the Fourier transform (pp 191&mdash;192).
+<script type="math/tex; mode=display">\mathcal{F}\left\{e^{-at}u_0(t)\right\}</script>
+
+<pre style="border: 2px solid blue">
 
 
 
-## Summary
 
-* Tables of Transform Pairs
-* Examples of Selected Transforms
-* Relationship between Laplace and Fourier
-* Fourier Transforms of Common Signals
 
-*Next Section*
 
-* [The Fourier Transform for Systems and Circuit Analysis](../3/ft3)
-</thead></thead></table>
+
+
+
+
+
+
+
+
+
+</pre>
+
+<p>Boulet gives the graph of this function.</p>
+
+<h3 id="example-9-complex-pole-pair--cos-term">Example 9: Complex Pole Pair  cos term</h3>
+
+<p>Given that</p>
+
+<script type="math/tex; mode=display">\mathcal{L}\left\{e^{-at}\cos\omega_0 t\;u_0(t)\right\} = \frac{s+a}{(s + a)^2+\omega_0^2}</script>
+
+<p>Compute</p>
+
+<script type="math/tex; mode=display">\mathcal{F}\left\{e^{-at}\cos\omega_0 t\;u_0(t)\right\}</script>
+
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+
+<p>Boulet gives the graph of this function.</p>
+
+<h2 id="fourier-transforms-of-common-signals">Fourier Transforms of Common Signals</h2>
+
+<p>We shall conclude this session by computing as many of the the Fourier transform of some common signals as we have time for.</p>
+
+<ul>
+  <li>rectangular pulse</li>
+  <li>triangular pulse</li>
+  <li>periodic time function</li>
+  <li>unit impulse train (model of regular sampling)</li>
+</ul>
+
+<p>I will not provide notes for these, but you will find more details in Chapter 8 of Karris and Chapter 5 of Boulet and</p>
+
+<p>I have created some worked examples (see Blackboard and the OneNote notebook) to help with revision.</p>
+
+<h2 id="suggestions-for-further-reading">Suggestions for Further Reading</h2>
+
+<p>Boulet has several interesting amplifications of the material presented by Karris. You would be well advised to read these. Particular highlights which we will not have time to cover:</p>
+
+<ul>
+  <li>Time multiplication and its relation to amplitude modulation (pp 182—183).</li>
+  <li>Fourier transform of the complex exponential signal $e^{(\alpha +j\beta)t}$ with graphs (pp 184—187).</li>
+  <li>Use of inverse Fourier series to determine $f(t)$ from a given $F(j\omega)$ and the “ideal” low-pass filter (pp 188—191).</li>
+  <li>The Duality of the Fourier transform (pp 191—192).</li>
+</ul>
+
+<h2 id="summary">Summary</h2>
+
+<ul>
+  <li>Tables of Transform Pairs</li>
+  <li>Examples of Selected Transforms</li>
+  <li>Relationship between Laplace and Fourier</li>
+  <li>Fourier Transforms of Common Signals</li>
+</ul>
+
+<p><em>Next Section</em></p>
+
+<ul>
+  <li><a href="../3/ft3">The Fourier Transform for Systems and Circuit Analysis</a></li>
+</ul>
 
               <nav class="c-page__nav">
   

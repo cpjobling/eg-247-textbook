@@ -16,7 +16,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 ### Associated Class Notes
 
-This lab supports the materials covered in [Chapter 3.5 The Impulse Response and Convolution](https://cpjobling.github.io/eg-247-textbook/laplace_transform/5/convolution) of the course notes. You may wish to refer to [worksheet 8](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet8) and [worksheet 9](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet9) for additional examples to try. 
+This lab supports the materials covered in [Chapter 3.5 The Impulse Response and Convolution](https://cpjobling.github.io/eg-247-textbook/laplace_transform/5/convolution) of the course notes. You may wish to refer to [worksheet 8](https://cpjobling.github.io/eg-247-textbook/laplace_transform/5/worksheet8) for additional examples to try. 
 
 ### Other formats
 

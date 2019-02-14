@@ -336,8 +336,13 @@ as your starting point.
 
 ### Power Spectrum
 
-The *power spectrum* of signal is the sequence of average powers in each complex harmonic: $|C_k|^2$. For real perodic signals
-the power spectrum is a real even sequence as $|C_{-k}|^2 = |C_k^*|^2 = |C_k|^2$.
+The *power spectrum* of signal is the sequence of average powers in each complex harmonic: 
+
+$$|C_k|^2.$$ 
+
+For real perodic signals the power spectrum is a real even sequence as 
+
+$$|C_{-k}|^2 = |C_k^*|^2 = |C_k|^2.$$
 
 This is the power spectrum for a pulse with width $T/8$.
 
@@ -361,7 +366,7 @@ If the signal is real and based on a sine wave (that is *odd*), then $C_k=0$ and
 
 $$f_{\mathrm{RMS}}=\sqrt{\sum_{k=1}^{\infty}2|C_k|^2}$$
 
-and we can define the THD as the ratio of the RMS value for all the harmonics for $K>1$ (the distortion) to the RMS of the fundamental which is $\sqrt{2\left|C_1\right|^2}:$
+and we can define the THD as the ratio of the RMS value for all the harmonics for $K>1$ (the distortion) to the RMS of the fundamental which is $$\sqrt{2\left|C_1\right|^2}:$$
 
 $${\rm{THD}} = 100\sqrt {\frac{\sum\limits_{k = 2}^\infty  {\left| C_k \right|^2}} {\left| C_1 \right|^2}} \% $$
 

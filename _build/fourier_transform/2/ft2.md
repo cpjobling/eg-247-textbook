@@ -75,7 +75,7 @@ This table is adapted from Table 8.9 of Karris. See also: [Wikibooks: Engineerin
 <table>
 <thead>
     <tr><td></td><td><b>Name</b></td><td>$f(t)$</td><td>$F(\omega)$</td><td><b>Remarks</b></td></tr>
-<thead>
+</thead>
 <tbody>
 <tr><td>1</td><td>Dirac delta</td><td>$\delta(t)$</td><td>1</td><td>Constant energy at <i>all</i> frequencies.</td></tr>
 <tr><td>2</td><td>Time sample</td><td>$\delta(t-t_0)$</td><td>$e^{j\omega t_0}$</td><td></td></tr>
