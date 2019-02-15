@@ -16,7 +16,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 ### Associated Class Notes
 
-This lab supports the materials covered in [Chapter 3 Laplace Transforms](https://cpjobling.github.io/eg-247-textbook/laplace_transform/index) of the course notes. You may wish to refer to the Worksheets [worksheet 4](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet4) and [worksheet 5](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet5) for additional examples to try. 
+This lab supports the materials covered in [Chapter 3 Laplace Transforms](https://cpjobling.github.io/eg-247-textbook/laplace_transform/index) of the course notes. You may wish to refer to the Worksheets [worksheet 4](https://cpjobling.github.io/eg-247-textbook/laplace_transform/1/worksheet4) and [worksheet 5](https://cpjobling.github.io/eg-247-textbook/laplace_transform/1/worksheet5) for additional examples to try. 
 
 ### Other formats
 

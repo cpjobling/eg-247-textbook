@@ -24,7 +24,7 @@ If you do not use GitHub as the master repository of your portfolio, please ensu
 
 ### Associated Class Notes
 
-This lab supports the materials covered in [Chapter 2 Elementary Signals](https://cpjobling.github.io/eg-247-textbook/elementary_signals/index) of the course notes. You may wish to refer to the Worksheets [worksheet 2](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet2) and [worksheet 3](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet3) for additional examples to try. 
+This lab supports the materials covered in [Chapter 2 Elementary Signals](https://cpjobling.github.io/eg-247-textbook/elementary_signals/index) of the course notes. You may wish to refer to the Worksheets [worksheet 2](https://cpjobling.github.io/eg-247-textbook/introduction/worksheet2) and [worksheet 3](https://cpjobling.github.io/eg-247-textbook/introduction/worksheet3) for additional examples to try. 
 
 ### Other formats
 

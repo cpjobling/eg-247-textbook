@@ -16,7 +16,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 ### Associated Class Notes
 
-This lab supports the materials covered in [Chapter 4 Fourier Series](https://cpjobling.github.io/eg-247-textbook/fourier_series/index) of the course notes. You may wish to refer to [worksheet 10](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet10) and [worksheet 11](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet11) for additional examples to try. 
+This lab supports the materials covered in [Chapter 4 Fourier Series](https://cpjobling.github.io/eg-247-textbook/fourier_series/index) of the course notes. You may wish to refer to [worksheet 9](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet9) and [worksheet 10](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet10) for additional examples to try. 
 
 ### Other formats
 
