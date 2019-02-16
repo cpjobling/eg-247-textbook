@@ -220,6 +220,16 @@ format compact
 ```
 
 
+{:.output .output_stream}
+```
+
+ans =
+
+    '/Users/eechris/dev/eg-247-textbook/content/laplace_transform/matlab/convolution_demo'
+
+
+```
+
 
 
 {:.input_area}
@@ -227,6 +237,43 @@ format compact
 convolutiondemo % ignore warnings
 ```
 
+
+{:.output .output_stream}
+```
+Warning: The EraseMode property is no longer supported and will error in a future release.
+> In convolutiondemo>convolutiondemo_LayoutFcn (line 398)
+  In convolutiondemo>gui_mainfcn (line 1188)
+  In convolutiondemo (line 44)
+Warning: The EraseMode property is no longer supported and will error in a future release.
+> In convolutiondemo>convolutiondemo_LayoutFcn (line 449)
+  In convolutiondemo>gui_mainfcn (line 1188)
+  In convolutiondemo (line 44)
+Warning: The EraseMode property is no longer supported and will error in a future release.
+> In convolutiondemo>convolutiondemo_LayoutFcn (line 500)
+  In convolutiondemo>gui_mainfcn (line 1188)
+  In convolutiondemo (line 44)
+Warning: The EraseMode property is no longer supported and will error in a future release.
+> In convolutiondemo>convolutiondemo_LayoutFcn (line 551)
+  In convolutiondemo>gui_mainfcn (line 1188)
+  In convolutiondemo (line 44)
+Warning: The EraseMode property is no longer supported and will error in a future release.
+> In convolutiondemo>convolutiondemo_LayoutFcn (line 621)
+  In convolutiondemo>gui_mainfcn (line 1188)
+  In convolutiondemo (line 44)
+Warning: The EraseMode property is no longer supported and will error in a future release.
+> In convolutiondemo>convolutiondemo_LayoutFcn (line 672)
+  In convolutiondemo>gui_mainfcn (line 1188)
+  In convolutiondemo (line 44)
+Warning: The EraseMode property is no longer supported and will error in a future release.
+> In convolutiondemo>convolutiondemo_LayoutFcn (line 723)
+  In convolutiondemo>gui_mainfcn (line 1188)
+  In convolutiondemo (line 44)
+Warning: The EraseMode property is no longer supported and will error in a future release.
+> In convolutiondemo>convolutiondemo_LayoutFcn (line 774)
+  In convolutiondemo>gui_mainfcn (line 1188)
+  In convolutiondemo (line 44)
+
+```
 
 ### Convolution by Graphical Method - Summary of Steps
 

@@ -30,7 +30,7 @@ These examples have been adapted from Chapters 1, 2 and 3 of Stephen Karris, [Si
 
 Use file save as to download the script [laplace_lab.m](laplace_lab.m). Open the script as a Live Script and use the Matlab ``laplace`` and ``ezplot`` functions as appropriate to complete the examples given in the comments in the script.
 
-Save and attach the resulting modified script ``laplace_lab`` as a Live Script file to the Teams assignement page for **Lab 2: Laplace and Inverse Laplace Transforms** of your OneNote portfolio.
+Save and attach the resulting modified script ``laplace_lab`` as a Live Script file to the Teams assignment page for **Lab 2: Laplace and Inverse Laplace Transforms** of your OneNote portfolio.
 
 3 Marks
 
@@ -38,15 +38,15 @@ Save and attach the resulting modified script ``laplace_lab`` as a Live Script f
 
 Use file save as to download the script [ilaplace_lab.m](ilaplace_lab.m). Open the script as a Live Script and use the Matlab ``laplace``, ``ilaplace`` and ``ezplot`` functions as appropriate to complete the examples given in the comments in the script.
 
-Save and attach the resulting modified script ``ilaplace_lab`` as a Live Script file to the Teams assignement page for **Lab 2: Laplace and Inverse Laplace Transforms** of your OneNote portfolio.
+Save and attach the resulting modified script ``ilaplace_lab`` as a Live Script file to the Teams assignment page for **Lab 2: Laplace and Inverse Laplace Transforms** of your OneNote portfolio.
 
 2 marks
 
-## What to Turn In
+## What to Hand In
 
 Marks should be be claimed according to how many of the parts of Exercises 2 and 3 have been completed.
 
-You should attach the files you wish to claim for to the Lab 2 submission page in OneNote, complete the claim form and turn-in your assignment through Teams.
+You should attach the files you wish to claim for to the Lab 2 submission page in OneNote, complete the claim form and hand-in your assignment through Teams.
 
 ## Claim
 

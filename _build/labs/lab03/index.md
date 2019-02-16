@@ -127,11 +127,11 @@ using component values based on your student number. Then:
 
 Save your solution as `proj2`.
 
-## What to turn in
+## What to hand in
 
-You should attach your modified version of the file `proj2` along with the Simulink model plus any additional scripts that you wish to claim for to the Lab 3 submission page in OneNote. Complete the claim form and turn-in your assignment through Teams.
+You should attach your modified version of the file `proj2` along with the Simulink model plus any additional scripts that you wish to claim for to the Lab 3 submission page in OneNote. Complete the claim form and hand-in your assignment through Teams.
 
-You will find it easiest to audit your completion of these exercises by opening the provided `*.m` files as Live Script files and saving them in this format.
+You will find it easiest to audit your completion of these exercises by opening the provided `*.m` files as Live Script (`.mlx`) files and saving them in this format.
 
 ## Claim
 

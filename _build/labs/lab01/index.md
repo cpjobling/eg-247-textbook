@@ -75,12 +75,12 @@ Connect the signal up a derivative block and scope as shown in Figure 1.24 and s
 
 (2 marks)
 
-## What to Turn In
+## What to Hand In
 
 1. For the lab exercises, you should attach your completed version of the Live Script file `elem_signals.mlx`.
 1. For the Miniproject the Simulink model of the piecewise linear signal `signal.slx`.
 
-You should attach the files you wish to claim for to the Lab 1 submission page in OneNote, complete the claim form and turn-in your assignment through Teams.
+You should attach the files you wish to claim for to the Lab 1 submission page in OneNote, complete the claim form and hand-in your assignment through Teams.
 
 ## Claim
 
@@ -95,4 +95,3 @@ See [Assessment and Feedback: Labwork Assessment](https://docs.google.com/spread
 ## Doing More
 
 If you have time remaining, you may wish to confirm some of the results covered in class from [worksheet 2](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet2) and [worksheet 3](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet3). You can also work through Appendix A of the textbook: that chapter introduces Matlab in a way that matches the presentation in the rest of the book. There are also additional tutorial and video introductions to *MATLAB*, *Simulink* and the *Signal Processing Toolbox* in the **Getting Started with Matlab** folder in the Labs section of the Blackboard site for EG-247.
-
