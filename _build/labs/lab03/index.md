@@ -6,7 +6,7 @@ prev_page:
   title: 'Lab 2 - Laplace and Inverse Laplace Transforms'
 next_page:
   url: /labs/lab04/index
-  title: 'Lab 4 - Convolution'
+  title: 'Lab 4 - Time Domain Convolution'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

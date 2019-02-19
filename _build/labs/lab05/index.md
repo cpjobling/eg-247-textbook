@@ -3,7 +3,7 @@ interact_link: content/labs/lab05/index.ipynb
 title: 'Lab 5 - Fourier Series'
 prev_page:
   url: /labs/lab04/index
-  title: 'Lab 4 - Convolution'
+  title: 'Lab 4 - Time Domain Convolution'
 next_page:
   url: /labs/lab06/index
   title: 'Lab 6 - Sounds and Sampling'
@@ -160,7 +160,7 @@ Examine the code for the `FourierSeries` function that is defined in `FourierSer
 
 Examine the code that is defined in `TrigFourierSeries`. Note that it calls `FourierSeries` then computes `ak` and `bk` from the `Ck` coefficients. Why did I do that do you think? 
 
-If you made the suggested change to `FourierSeries`, provide compatible changes to your copy of `TrigFourierSeries`. Test it on a square wave with even symmetry (Lab 13 Part 2). Save the resulting calling script as `ex9_3`.
+If you made the suggested change to `FourierSeries`, provide compatible changes to your copy of `TrigFourierSeries`. Test it on a square wave with even symmetry (Lab 9 Part 2). Save the resulting calling script as `ex9_3`.
 
 Compute the FS of the half-wave rectified cosine function. Save the resulting calling script as `ex11_4`.
 

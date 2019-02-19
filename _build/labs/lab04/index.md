@@ -1,6 +1,6 @@
 ---
 interact_link: content/labs/lab04/index.ipynb
-title: 'Lab 4 - Convolution'
+title: 'Lab 4 - Time Domain Convolution'
 prev_page:
   url: /labs/lab03/index
   title: 'Lab 3 -  Laplace Transforms and Transfer Functions for Circuit Analysis'
@@ -10,7 +10,7 @@ next_page:
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
-# Lab 4: Convolution
+# Lab 4: Time Domain Convolution
 
 ## Preamble
 
@@ -38,9 +38,9 @@ In this lab you will:
 
 ## Preparation
 
-Before we start today's lab you will need to download and install the <a href="https://github.com/cpjobling/eg-247-textbook/blob/master/content/laplace_transform/5/convolutiondemo.m" target="_blank">Graphical demonstration of convolution app</a> from the GitHub respository for this module.
+Before we start today's lab you will need to download and install the <a href="https://github.com/cpjobling/eg-247-textbook/blob/master/content/laplace_transform/matlab/convolution_demo/convolutiondemo.m" target="_blank">Graphical demonstration of convolution app</a> from the GitHub respository for this module.
 
-To install, right-click button of link as appropriate and save as to your `lab04` folder. Double click the downloaded zip files to unpack.
+To install, right-click button of link as appropriate and save as to your `lab04` folder. 
 
 Open and run `convolutiondemo.m`.
 
@@ -87,13 +87,13 @@ In this lab exercise we will demonstrate that time-convolution of a system respo
 * Plot the result using `ezplot`
 * Confirm the result with a Simulink simulation
 
-## What to turn in
+## What to hand in
 
 You should attach your modified versions of the example file as a single Live Script or separate scripts to the Lab 4 submission page in OneNote. Marks will be awarded according to how many of Exercises 7 (Parts 2-4) and 8 have been completed. Name each solution according to the exercise and part number: e.g. Exercise 7 scripts should be named `ex7_2`, `ex7_3`,... , `ex8` etc. Use the same naming scheme for any Simulink models submitted for assessment.
 
 If you wish, you can submit all parts of Exercise 7 in a single Live Script file (suggest `ex7.mlx`) providing that each part is separated by properly titled sections. 
 
-Remember, which ever method you use, you should ensure that you use the Live Script editor's text features to add emplanatory text to your MATLAB code. 
+Remember, whichever method you use, you should ensure that you use the Live Script editor's text features to add explanatory text to your MATLAB code. 
 
 When you have finished attaching your work, complete the claim form and turn-in your assignment through Teams.
 
