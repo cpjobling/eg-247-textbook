@@ -39,13 +39,35 @@ The result is called the *Exponential Fourier Series*.
 
 When $a$ is real the function $e^{at}$ will take one of the two forms illustrated below:
 
-<img src="pictures/expon.png">
+
+
+{:.input_area}
+```matlab
+%% The decaying exponential
+t=linspace(-1,2,1000);
+figure
+plot(t,exp(t),t,exp(0.*t),t,exp(-t))
+axis([-1,2,-1,8])
+title('exp(at) -- a real')
+xlabel('t (s)')
+ylabel('exp(t) and exp(-t)')
+legend('exp(t)','exp(0)','exp(-t)')
+grid
+hold off
+```
+
+
+
+{:.output .output_png}
+![png](../../images/fourier_series/2/exp_fs1_5_0.png)
+
+
+
+You can regenerate this image generated with this Matlab script: [expon.m](expon.m).
 
 * When $a < 0$ the response is a decaying exponential (red line in plot)
 * When $a = 0$ $e^{at} = 1$ -- essentially a model of DC
 * When $a > 0$ the response is an *unbounded* increasing exponential (blue line in plot)
-
-(Image generated with this Matlab script: [expon.m](expon.m))
 
 ### Case when a is imaginary
 
@@ -314,7 +336,7 @@ $$f(t) = \frac{4A}{\pi}\left(\cdots + \left(\frac{e^{j\Omega_0 t} - e^{-j\Omega_
 
 ### Example 2
 
-Verify the result of Example 1 using Matlab.
+Verify the result of Example 1 using MATLAB.
 
 ### Solution
 
@@ -414,7 +436,7 @@ ylabel('\angle c_k [radians]');
 
 
 {:.output .output_png}
-![png](../../images/fourier_series/2/exp_fs1_53_0.png)
+![png](../../images/fourier_series/2/exp_fs1_56_0.png)
 
 
 

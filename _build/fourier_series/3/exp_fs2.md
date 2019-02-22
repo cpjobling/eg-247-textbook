@@ -75,6 +75,8 @@ $$C_k = \frac{1}{2\pi}\int_{-\pi}^{\pi} f(\Omega_0 t)e^{-jk(\Omega_0 t)}\,d(\Ome
 * What are the cosequencies of symmetry on the form of the coefficients $C_k$?
 * What function do we actually need to integrate to compute $C_k$?
 
+Solutions below.
+
 <pre style="border: 2px solid blue">
 
 
@@ -159,27 +161,124 @@ Integrate for $k\ne 0$
 
 ### Effect of pulse width on frequency spectra
 
-* Recall pulse width = $T/w$
+let's see what effect the duty cycle $w$ has on the spectra.
+
+Recall pulse width = $T/w$ and plot the complex line spectra for pulse with width $w$ which repeats every $T$ seconds. We will write a MATLAB function `pulse_fs` to simplify the computation.
+
+
+
+{:.input_area}
+```matlab
+open pulse_fs
+```
+
+
+``
+function [f,omega] = pulse_fs(A,w,range)
+% PULSE_FS compute fourier series spectrum in range
+% -range:range for pulse with 
+% height A, period T and width duty cycle w.
+omega = -range:range;
+for mm = 1:length(omega)
+    x = omega(mm)*pi/w;
+    if omega(mm) == 0
+        f(mm) = A/w;
+    else
+        f(mm) = (A/w)*sin(x)/(x);
+    end
+end
+return
+``
 
 #### w = 2
 
 $\Omega_0 = 1$ rad/s; $w = 2$; $T = 2\pi$ s; $T/w = \pi$ s.
 
-<img src="pictures/sinc2.png">
+Compute Fourier Series
+
+
+
+{:.input_area}
+```matlab
+A = 1; w = 2;
+[f,omega] = pulse_fs(A,w,15);
+```
+
+
+Plot line Spectrum and add add continuous $\mathrm{sinc}(x)/x$ envelope.
+
+
+
+{:.input_area}
+```matlab
+stem(omega,f)
+title('Line Spectra for pulse with w=2')
+hold on
+om = linspace(-15,15,1000);
+xlabel('\Omega_0 [rad/s]')
+xc = om.*pi./w;
+plot(om,(A/w)*sin(xc)./(xc),'r:')
+hold off
+```
+
+
+
+{:.output .output_png}
+![png](../../images/fourier_series/3/exp_fs2_26_0.png)
+
+
 
 #### w = 5
 
+$\Omega_0 = 1$ rad/s; $w = 5$; $T = 2\pi$ s; $T/w = \pi$ s.
 
-$\Omega_0 = 1$ rad/s; $w = 5$; $T = 2\pi$ s; $T/w = 2\pi/5$ s.
 
-<img src="pictures/sinc5.png">
+
+{:.input_area}
+```matlab
+A = 1; w = 5; [f,omega] = pulse_fs(A,w,15);
+stem(omega,f)
+title('Line Spectra for pulse with w=2')
+hold on
+om = linspace(-15,15,1000);
+xlabel('\Omega_0 [rad/s]')
+xc = om.*pi./w;
+plot(om,(A/w)*sin(xc)./(xc),'r:')
+hold off
+```
+
+
+
+{:.output .output_png}
+![png](../../images/fourier_series/3/exp_fs2_28_0.png)
+
+
 
 #### w = 10
 
+$\Omega_0 = 1$ rad/s; $w = 10$; $T = 2\pi$ s; $T/w = \pi$ s.
 
-$\Omega_0 = 1$ rad/s; $w = 10$; $T = 2\pi$ s; $T/w = \pi/5$ s.
 
-<img src="pictures/sinc10.png">
+
+{:.input_area}
+```matlab
+A = 1; w = 10; [f,omega] = pulse_fs(A,w,15);
+stem(omega,f)
+title('Line Spectra for pulse with w=10')
+hold on
+om = linspace(-15,15,1000);
+xlabel('\Omega_0 [rad/s]')
+xc = om.*pi./w;
+plot(om,(A/w)*sin(xc)./(xc),'r:')
+hold off
+```
+
+
+
+{:.output .output_png}
+![png](../../images/fourier_series/3/exp_fs2_30_0.png)
+
+
 
 #### Implications
 
@@ -344,9 +443,33 @@ For real perodic signals the power spectrum is a real even sequence as
 
 $$|C_{-k}|^2 = |C_k^*|^2 = |C_k|^2.$$
 
-This is the power spectrum for a pulse with width $T/8$.
 
-<img src="pictures/power.png">
+
+{:.input_area}
+```matlab
+A = 1; w = 8; [f,omega] = pulse_fs(A,w,15);
+```
+
+
+Power spectrum
+
+
+
+{:.input_area}
+```matlab
+figure
+stem(omega,f.^2)
+title('Power Spectrum for pulse width T/8')
+ylabel('|C_k|^2')
+xlabel('\Omega_0 [rad/s]')
+```
+
+
+
+{:.output .output_png}
+![png](../../images/fourier_series/3/exp_fs2_54_0.png)
+
+
 
 Note that most of the power is concentrated at DC and in the first seven harmonic components. That is in the frequency range $[-14\pi/T,+14\pi/T]$ rad/s. 
 

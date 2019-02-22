@@ -27,9 +27,9 @@
   "headline":
     "Trigonometric Fourier Series",
   "datePublished":
-    "2019-02-21T11:48:52+00:00",
+    "2019-02-22T16:48:48+00:00",
   "dateModified":
-    "2019-02-21T11:48:52+00:00",
+    "2019-02-22T16:48:48+00:00",
   "description":
     "Trigonometric Fourier Series",
   "author": {
@@ -1001,6 +1001,74 @@ document.addEventListener('turbolinks:load', updateInteractLink)
               </li>
               
             
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/laplace_transform/5/worksheet8"
+                >
+                  
+                  Worksheet 8 Impulse Response and Time Convolution
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/fourier_series/1/worksheet9"
+                >
+                  
+                  Worksheet 9 Trigonometric Fourier Series
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/fourier_series/2/worksheet10"
+                >
+                  
+                  Worksheet 10 Exponential Fourier Series
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/fourier_series/3/worksheet11"
+                >
+                  
+                  Worksheet 11 Line Spectra and their Applications
+                </a>
+
+                
+                
+
+              </li>
+              
+            
           </ul>
         
       </li>
@@ -1317,7 +1385,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
     <p>Symmetry in Trigonometric Fourier Series</p>
   </li>
   <li>
-    <p>Computing coefficients of Trig. Fourier Series in Matlab</p>
+    <p>Computing coefficients of Trig. Fourier Series in MATLAB</p>
   </li>
   <li>
     <p>Gibbs Phenomenon</p>
@@ -1504,7 +1572,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
   <li>If we have <em>half-wave symmetry</em> we can compute $a_n$ and $b_n$ by integrating from $0\to \pi/2$ and multiplying by 4.</li>
 </ul>
 
-<p>(For more details see page 7-10 of the textbook)</p>
+<p>(For more details see page 7-10 of Karris)</p>
 
 <h2 id="computing-coefficients-of-trig-fourier-series-in-matlab">Computing coefficients of Trig. Fourier Series in Matlab</h2>
 
@@ -1514,7 +1582,95 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
 <h3 id="solution">Solution</h3>
 
-<p>Solution: See <a href="square_ftrig.m">square_ftrig.m</a>. Script confirms that:</p>
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">format</span> <span class="n">compact</span>
+<span class="nb">clear</span> <span class="nb">all</span>
+</code></pre></div></div>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">syms</span> <span class="n">t</span> <span class="n">n</span> <span class="n">A</span> <span class="nb">pi</span>
+<span class="n">n</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">11</span><span class="p">];</span>
+</code></pre></div></div>
+
+<p>DC component</p>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">half_a0</span> <span class="o">=</span> <span class="mi">1</span><span class="p">/(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">int</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">pi</span><span class="p">)</span><span class="o">+</span><span class="n">int</span><span class="p">(</span><span class="o">-</span><span class="n">A</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="nb">pi</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>half_a0 =
+0
+
+</code></pre></div></div>
+
+<p>Compute harmonics</p>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ai</span> <span class="o">=</span> <span class="mi">1</span><span class="p">/</span><span class="nb">pi</span><span class="o">*</span><span class="p">(</span><span class="n">int</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">pi</span><span class="p">)</span><span class="o">+</span><span class="n">int</span><span class="p">(</span><span class="o">-</span><span class="n">A</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="nb">pi</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">))</span>
+<span class="n">bi</span> <span class="o">=</span> <span class="mi">1</span><span class="p">/</span><span class="nb">pi</span><span class="o">*</span><span class="p">(</span><span class="n">int</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">pi</span><span class="p">)</span><span class="o">+</span><span class="n">int</span><span class="p">(</span><span class="o">-</span><span class="n">A</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="nb">pi</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ai =
+[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+bi =
+[ (4*A)/pi, 0, (4*A)/(3*pi), 0, (4*A)/(5*pi), 0, (4*A)/(7*pi), 0, (4*A)/(9*pi), 0, (4*A)/(11*pi)]
+
+</code></pre></div></div>
+
+<p>Reconstruct $f(t)$ from harmonic sine functions</p>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ft</span> <span class="o">=</span> <span class="n">half_a0</span><span class="p">;</span>
+<span class="k">for</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">ft</span> <span class="o">=</span> <span class="n">ft</span> <span class="o">+</span> <span class="n">ai</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">bi</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+<span class="k">end</span><span class="p">;</span>
+<span class="n">ft</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ft =
+(4*A*sin(t))/pi + (4*A*sin(3*t))/(3*pi) + (4*A*sin(5*t))/(5*pi) + (4*A*sin(7*t))/(7*pi) + (4*A*sin(9*t))/(9*pi) + (4*A*sin(11*t))/(11*pi)
+
+</code></pre></div></div>
+
+<p>Make numeric</p>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ft_num</span> <span class="o">=</span> <span class="n">subs</span><span class="p">(</span><span class="n">ft</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="mf">1.0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ft_num =
+(4*sin(3*t))/(3*pi) + (4*sin(5*t))/(5*pi) + (4*sin(7*t))/(7*pi) + (4*sin(9*t))/(9*pi) + (4*sin(11*t))/(11*pi) + (4*sin(t))/pi
+
+</code></pre></div></div>
+
+<p>Print using 4 sig digits</p>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ft_num</span> <span class="o">=</span> <span class="n">vpa</span><span class="p">(</span><span class="n">ft_num</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ft_num =
+0.1415*sin(9.0*t) + 0.2546*sin(5.0*t) + 0.1157*sin(11.0*t) + 0.4244*sin(3.0*t) + 0.1819*sin(7.0*t) + 1.273*sin(t)
+
+</code></pre></div></div>
+
+<p>Plot result</p>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ezplot</span><span class="p">(</span><span class="n">ft_num</span><span class="p">),</span><span class="nb">grid</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../../images/fourier_series/1/trig_fseries_43_0.png" alt="png" /></p>
+
+<p>Plot original signal (we could use <code class="highlighter-rouge">heaviside</code> for this as well)</p>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ezplot</span><span class="p">(</span><span class="n">ft_num</span><span class="p">)</span>
+<span class="nb">hold</span> <span class="n">on</span>
+<span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span><span class="o">*</span><span class="nb">pi</span><span class="p">;</span>
+<span class="n">f</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">];</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="s1">'r-'</span><span class="p">)</span>
+<span class="nb">grid</span>
+<span class="nb">title</span><span class="p">(</span><span class="s1">'Square Wave Reconstructed from Sinewaves'</span><span class="p">)</span>
+<span class="nb">hold</span> <span class="n">off</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../../images/fourier_series/1/trig_fseries_45_0.png" alt="png" /></p>
+
+<p>To run the full solution yourself download and run <a href="square_ftrig.mlx">square_ftrig.mlx</a>.</p>
+
+<p>The Result confirms that:</p>
 
 <ul>
   <li>$a_0 = 0$</li>
@@ -1527,8 +1683,6 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 (4*A*sin(t))/pi + (4*A*sin(3*t))/(3*pi) + (4*A*sin(5*t))/(5*pi) + (4*A*sin(7*t))/(7*pi) + (4*A*sin(9*t))/(9*pi) + (4*A*sin(11*t))/(11*pi)
 </code></pre></div></div>
 
-<p><img src="pictures/fsq_trig.png" /></p>
-
 <p>Note that the coefficients match those given in the textbook (Section 7.4.1).</p>
 
 <script type="math/tex; mode=display">f(t) = \frac{4A}{\pi}\left(\sin \Omega_0 t + \frac{1}{3}\sin 3\Omega_0 t + \frac{1}{5}\sin 5\Omega_0 t + \cdots\right) = \frac{4A}{\pi}\sum_{n=\mathrm{odd}}\frac{1}{n}\sin n\Omega_0 t</script>
@@ -1537,19 +1691,91 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
 <p><img src="pictures/shifted_square_wave.png" /></p>
 
+<p>Calculation of Fourier coefficients for Shifted Square Wave Exploiting half-wave symmetry. This is almost the same procedure as before. You can confirm the results by downloading and executing this file: <a href="shifted_sq_ftrig.mlx">shifted_sq_ftrig.mlx</a>.</p>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">syms</span> <span class="n">t</span> <span class="n">n</span> <span class="n">A</span> <span class="nb">pi</span>
+</code></pre></div></div>
+
+<p>Define harmonics</p>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">11</span><span class="p">];</span>
+</code></pre></div></div>
+
+<p>DC component</p>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">half_a0</span> <span class="o">=</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>half_a0 =
+     0
+
+</code></pre></div></div>
+
+<p>Compute harmonics - use half-wave symmetry</p>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ai</span> <span class="o">=</span> <span class="mi">4</span><span class="p">/</span><span class="nb">pi</span><span class="o">*</span><span class="n">int</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="mi">0</span><span class="p">,(</span><span class="nb">pi</span><span class="p">/</span><span class="mi">2</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ai =
+[ (4*A)/pi, 0, -(4*A)/(3*pi), 0, (4*A)/(5*pi), 0, -(4*A)/(7*pi), 0, (4*A)/(9*pi), 0, -(4*A)/(11*pi)]
+
+</code></pre></div></div>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bi</span> <span class="o">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="nb">size</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bi =
+     0     0     0     0     0     0     0     0     0     0     0
+
+</code></pre></div></div>
+
+<p>Reconstruct f(t) from harmonic sine functions</p>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ft</span> <span class="o">=</span> <span class="n">half_a0</span><span class="p">;</span>
+<span class="k">for</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">ft</span> <span class="o">=</span> <span class="n">ft</span> <span class="o">+</span> <span class="n">ai</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">bi</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+<span class="k">end</span>
+<span class="n">ft</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ft =
+(4*A*cos(t))/pi - (4*A*cos(3*t))/(3*pi) + (4*A*cos(5*t))/(5*pi) - (4*A*cos(7*t))/(7*pi) + (4*A*cos(9*t))/(9*pi) - (4*A*cos(11*t))/(11*pi)
+
+</code></pre></div></div>
+
+<p>Make numeric and print to 4 sig. figs.</p>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ft_num</span> <span class="o">=</span> <span class="n">subs</span><span class="p">(</span><span class="n">ft</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="mf">1.0</span><span class="p">);</span>
+<span class="n">ft_num</span> <span class="o">=</span> <span class="n">vpa</span><span class="p">(</span><span class="n">ft_num</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ft_num =
+0.1415*cos(9.0*t) + 0.2546*cos(5.0*t) - 0.1157*cos(11.0*t) - 0.4244*cos(3.0*t) - 0.1819*cos(7.0*t) + 1.273*cos(t)
+
+</code></pre></div></div>
+
+<p>plot result and overlay original signal (we could use <code class="highlighter-rouge">heaviside</code> for this as well.</p>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ezplot</span><span class="p">(</span><span class="n">ft_num</span><span class="p">)</span>
+<span class="nb">hold</span> <span class="n">on</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span><span class="o">*</span><span class="nb">pi</span><span class="p">;</span>
+<span class="n">f</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">];</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="nb">pi</span><span class="p">/</span><span class="mi">2</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="s1">'r-'</span><span class="p">)</span>
+<span class="nb">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">1.5</span><span class="p">])</span>
+<span class="nb">grid</span>
+<span class="nb">title</span><span class="p">(</span><span class="s1">'Shifted Square Waveform Reconstructed from Cosines'</span><span class="p">)</span>
+<span class="nb">hold</span> <span class="n">off</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../../images/fourier_series/1/trig_fseries_64_0.png" alt="png" /></p>
+
 <ul>
   <li>As before $a_0=0$</li>
   <li>We observe that this function is even, so all $b_k$ coefficents will be zero</li>
-  <li>The waveform has half-wave symmetry, so only odd indexed coeeficents will be present.</li>
+  <li>The waveform has half-wave symmetry, so only odd indexed coefficents will be present.</li>
   <li>Further more, because it has half-wave symmetry we can just integrate from $0 \to \pi/2$ and multiply the result by 4.</li>
 </ul>
-
-<p>See <a href="shifted_sq_ftrig.m">shifted_sq_ftrig.m</a>.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ft =
- 
-(4*A*cos(t))/pi - (4*A*cos(3*t))/(3*pi) + (4*A*cos(5*t))/(5*pi) - (4*A*cos(7*t))/(7*pi) + (4*A*cos(9*t))/(9*pi) - (4*A*cos(11*t))/(11*pi)
-</code></pre></div></div>
 
 <p><img src="pictures/fssq_trig.png" /></p>
 

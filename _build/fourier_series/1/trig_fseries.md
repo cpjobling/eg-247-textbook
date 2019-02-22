@@ -30,7 +30,7 @@ I believe that this subject has been covered in EG-150 Signals and Systems and s
 
 * Symmetry in Trigonometric Fourier Series
 
-* Computing coefficients of Trig. Fourier Series in Matlab
+* Computing coefficients of Trig. Fourier Series in MATLAB
 
 * Gibbs Phenomenon
 
@@ -189,7 +189,7 @@ In the following, $T/2$ is taken to be the half-period of the fundamental sinewa
 * If the function is *odd*, or *even* or has *half-wave symmetry* we can compute $a_n$ and $b_n$ by integrating from $0\to \pi$ and multiplying by 2.
 * If we have *half-wave symmetry* we can compute $a_n$ and $b_n$ by integrating from $0\to \pi/2$ and multiplying by 4.
 
-(For more details see page 7-10 of the textbook)
+(For more details see page 7-10 of Karris)
 
 ## Computing coefficients of Trig. Fourier Series in Matlab
 
@@ -199,7 +199,158 @@ As an example let's take a square wave with amplitude $\pm A$ and period $T$.
 
 ### Solution
 
-Solution: See [square_ftrig.m](square_ftrig.m). Script confirms that:
+
+
+{:.input_area}
+```matlab
+format compact
+clear all
+```
+
+
+
+
+{:.input_area}
+```matlab
+syms t n A pi
+n = [1:11];
+```
+
+
+DC component
+
+
+
+{:.input_area}
+```matlab
+half_a0 = 1/(2*pi)*(int(A,t,0,pi)+int(-A,t,pi,2*pi))
+```
+
+
+{:.output .output_stream}
+```
+half_a0 =
+0
+
+```
+
+Compute harmonics
+
+
+
+{:.input_area}
+```matlab
+ai = 1/pi*(int(A*cos(n*t),t,0,pi)+int(-A*cos(n*t),t,pi,2*pi))
+bi = 1/pi*(int(A*sin(n*t),t,0,pi)+int(-A*sin(n*t),t,pi,2*pi))
+```
+
+
+{:.output .output_stream}
+```
+ai =
+[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+bi =
+[ (4*A)/pi, 0, (4*A)/(3*pi), 0, (4*A)/(5*pi), 0, (4*A)/(7*pi), 0, (4*A)/(9*pi), 0, (4*A)/(11*pi)]
+
+```
+
+Reconstruct $f(t)$ from harmonic sine functions
+
+
+
+{:.input_area}
+```matlab
+ft = half_a0;
+for k=1:length(n)
+    ft = ft + ai(k)*cos(k*t) + bi(k)*sin(k*t);
+end;
+ft
+```
+
+
+{:.output .output_stream}
+```
+ft =
+(4*A*sin(t))/pi + (4*A*sin(3*t))/(3*pi) + (4*A*sin(5*t))/(5*pi) + (4*A*sin(7*t))/(7*pi) + (4*A*sin(9*t))/(9*pi) + (4*A*sin(11*t))/(11*pi)
+
+```
+
+Make numeric
+
+
+
+{:.input_area}
+```matlab
+ft_num = subs(ft,A,1.0)
+```
+
+
+{:.output .output_stream}
+```
+ft_num =
+(4*sin(3*t))/(3*pi) + (4*sin(5*t))/(5*pi) + (4*sin(7*t))/(7*pi) + (4*sin(9*t))/(9*pi) + (4*sin(11*t))/(11*pi) + (4*sin(t))/pi
+
+```
+
+Print using 4 sig digits
+
+
+
+{:.input_area}
+```matlab
+ft_num = vpa(ft_num, 4)
+```
+
+
+{:.output .output_stream}
+```
+ft_num =
+0.1415*sin(9.0*t) + 0.2546*sin(5.0*t) + 0.1157*sin(11.0*t) + 0.4244*sin(3.0*t) + 0.1819*sin(7.0*t) + 1.273*sin(t)
+
+```
+
+Plot result
+
+
+
+{:.input_area}
+```matlab
+ezplot(ft_num),grid
+```
+
+
+
+{:.output .output_png}
+![png](../../images/fourier_series/1/trig_fseries_43_0.png)
+
+
+
+Plot original signal (we could use `heaviside` for this as well)
+
+
+
+{:.input_area}
+```matlab
+ezplot(ft_num)
+hold on
+t = [-3,-2,-2,-2,-1,-1,-1,0,0,0,1,1,1,2,2,2,3]*pi;
+f = [-1,-1,0,1,1,0,-1,-1,0,1,1,0,-1,-1,0,1,1];
+plot(t,f,'r-')
+grid
+title('Square Wave Reconstructed from Sinewaves')
+hold off
+```
+
+
+
+{:.output .output_png}
+![png](../../images/fourier_series/1/trig_fseries_45_0.png)
+
+
+
+To run the full solution yourself download and run [square_ftrig.mlx](square_ftrig.mlx). 
+
+The Result confirms that:
 
 * $a_0 = 0$
 * $a_i = 0$: function is odd
@@ -211,8 +362,6 @@ ft =
 (4*A*sin(t))/pi + (4*A*sin(3*t))/(3*pi) + (4*A*sin(5*t))/(5*pi) + (4*A*sin(7*t))/(7*pi) + (4*A*sin(9*t))/(9*pi) + (4*A*sin(11*t))/(11*pi)
 ```
 
-<img src="pictures/fsq_trig.png">
-
 Note that the coefficients match those given in the textbook (Section 7.4.1).
 
 $$f(t) = \frac{4A}{\pi}\left(\sin \Omega_0 t + \frac{1}{3}\sin 3\Omega_0 t + \frac{1}{5}\sin 5\Omega_0 t + \cdots\right) = \frac{4A}{\pi}\sum_{n=\mathrm{odd}}\frac{1}{n}\sin n\Omega_0 t$$
@@ -221,18 +370,143 @@ $$f(t) = \frac{4A}{\pi}\left(\sin \Omega_0 t + \frac{1}{3}\sin 3\Omega_0 t + \fr
 
 <img src="pictures/shifted_square_wave.png">
 
-* As before $a_0=0$
-* We observe that this function is even, so all $b_k$ coefficents will be zero
-* The waveform has half-wave symmetry, so only odd indexed coeeficents will be present.
-* Further more, because it has half-wave symmetry we can just integrate from $0 \to \pi/2$ and multiply the result by 4.
+Calculation of Fourier coefficients for Shifted Square Wave Exploiting half-wave symmetry. This is almost the same procedure as before. You can confirm the results by downloading and executing this file: [shifted_sq_ftrig.mlx](shifted_sq_ftrig.mlx).
 
-See [shifted_sq_ftrig.m](shifted_sq_ftrig.m).
 
+
+{:.input_area}
+```matlab
+syms t n A pi
+```
+
+
+Define harmonics
+
+
+
+{:.input_area}
+```matlab
+n = [1:11];
+```
+
+
+DC component
+
+
+
+{:.input_area}
+```matlab
+half_a0 = 0
+```
+
+
+{:.output .output_stream}
+```
+half_a0 =
+     0
+
+```
+
+Compute harmonics - use half-wave symmetry
+
+
+
+{:.input_area}
+```matlab
+ai = 4/pi*int(A*cos(n*t),t,0,(pi/2))
+```
+
+
+{:.output .output_stream}
+```
+ai =
+[ (4*A)/pi, 0, -(4*A)/(3*pi), 0, (4*A)/(5*pi), 0, -(4*A)/(7*pi), 0, (4*A)/(9*pi), 0, -(4*A)/(11*pi)]
+
+```
+
+
+
+{:.input_area}
+```matlab
+bi = zeros(size(n))
+```
+
+
+{:.output .output_stream}
+```
+bi =
+     0     0     0     0     0     0     0     0     0     0     0
+
+```
+
+Reconstruct f(t) from harmonic sine functions
+
+
+
+{:.input_area}
+```matlab
+ft = half_a0;
+for k=1:length(n)
+    ft = ft + ai(k)*cos(k*t) + bi(k)*sin(k*t);
+end
+ft
+```
+
+
+{:.output .output_stream}
 ```
 ft =
- 
 (4*A*cos(t))/pi - (4*A*cos(3*t))/(3*pi) + (4*A*cos(5*t))/(5*pi) - (4*A*cos(7*t))/(7*pi) + (4*A*cos(9*t))/(9*pi) - (4*A*cos(11*t))/(11*pi)
+
 ```
+
+Make numeric and print to 4 sig. figs.
+
+
+
+{:.input_area}
+```matlab
+ft_num = subs(ft,A,1.0);
+ft_num = vpa(ft_num, 4)
+```
+
+
+{:.output .output_stream}
+```
+ft_num =
+0.1415*cos(9.0*t) + 0.2546*cos(5.0*t) - 0.1157*cos(11.0*t) - 0.4244*cos(3.0*t) - 0.1819*cos(7.0*t) + 1.273*cos(t)
+
+```
+
+plot result and overlay original signal (we could use `heaviside` for this as well.
+
+
+
+{:.input_area}
+```matlab
+ezplot(ft_num)
+hold on
+
+t = [-3,-2,-2,-2,-1,-1,-1,0,0,0,1,1,1,2,2,2,3]*pi;
+f = [-1,-1,0,1,1,0,-1,-1,0,1,1,0,-1,-1,0,1,1];
+plot(t-pi/2,f,'r-')
+axis([-10,10,-1.5,1.5])
+grid
+title('Shifted Square Waveform Reconstructed from Cosines')
+hold off
+```
+
+
+
+{:.output .output_png}
+![png](../../images/fourier_series/1/trig_fseries_64_0.png)
+
+
+
+* As before $a_0=0$
+* We observe that this function is even, so all $b_k$ coefficents will be zero
+* The waveform has half-wave symmetry, so only odd indexed coefficents will be present.
+* Further more, because it has half-wave symmetry we can just integrate from $0 \to \pi/2$ and multiply the result by 4.
 
 <img src="pictures/fssq_trig.png">
 

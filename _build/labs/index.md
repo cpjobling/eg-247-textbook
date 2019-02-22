@@ -1,8 +1,8 @@
 ---
 title: 'Laboratory Exercises'
 prev_page:
-  url: /laplace_transform/4/worksheet7
-  title: 'Worksheet 7 Transfer Functions'
+  url: /fourier_series/3/worksheet11
+  title: 'Worksheet 11 Line Spectra and their Applications'
 next_page:
   url: /labs/lab01/index
   title: 'Lab 1 - Elemementary Signals'

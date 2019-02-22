@@ -27,9 +27,9 @@
   "headline":
     "Line Spectra and their Applications",
   "datePublished":
-    "2019-02-21T11:48:52+00:00",
+    "2019-02-22T16:48:48+00:00",
   "dateModified":
-    "2019-02-21T11:48:52+00:00",
+    "2019-02-22T16:48:48+00:00",
   "description":
     "Line Spectra and their Applications",
   "author": {
@@ -1001,6 +1001,74 @@ document.addEventListener('turbolinks:load', updateInteractLink)
               </li>
               
             
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/laplace_transform/5/worksheet8"
+                >
+                  
+                  Worksheet 8 Impulse Response and Time Convolution
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/fourier_series/1/worksheet9"
+                >
+                  
+                  Worksheet 9 Trigonometric Fourier Series
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/fourier_series/2/worksheet10"
+                >
+                  
+                  Worksheet 10 Exponential Fourier Series
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/fourier_series/3/worksheet11"
+                >
+                  
+                  Worksheet 11 Line Spectra and their Applications
+                </a>
+
+                
+                
+
+              </li>
+              
+            
           </ul>
         
       </li>
@@ -1380,6 +1448,8 @@ document.addEventListener('turbolinks:load', updateInteractLink)
   <li>What function do we actually need to integrate to compute $C_k$?</li>
 </ul>
 
+<p>Solutions below.</p>
+
 <pre style="border: 2px solid blue">
 
 
@@ -1464,27 +1534,87 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
 <h3 id="effect-of-pulse-width-on-frequency-spectra">Effect of pulse width on frequency spectra</h3>
 
-<ul>
-  <li>Recall pulse width = $T/w$</li>
-</ul>
+<p>let’s see what effect the duty cycle $w$ has on the spectra.</p>
+
+<p>Recall pulse width = $T/w$ and plot the complex line spectra for pulse with width $w$ which repeats every $T$ seconds. We will write a MATLAB function <code class="highlighter-rouge">pulse_fs</code> to simplify the computation.</p>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">open</span> <span class="n">pulse_fs</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">
+function [f,omega] = pulse_fs(A,w,range)
+% PULSE_FS compute fourier series spectrum in range
+% -range:range for pulse with 
+% height A, period T and width duty cycle w.
+omega = -range:range;
+for mm = 1:length(omega)
+    x = omega(mm)*pi/w;
+    if omega(mm) == 0
+        f(mm) = A/w;
+    else
+        f(mm) = (A/w)*sin(x)/(x);
+    end
+end
+return
+</code></p>
 
 <h4 id="w--2">w = 2</h4>
 
 <p>$\Omega_0 = 1$ rad/s; $w = 2$; $T = 2\pi$ s; $T/w = \pi$ s.</p>
 
-<p><img src="pictures/sinc2.png" /></p>
+<p>Compute Fourier Series</p>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">A</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">w</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">[</span><span class="n">f</span><span class="p">,</span><span class="n">omega</span><span class="p">]</span> <span class="o">=</span> <span class="n">pulse_fs</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="mi">15</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Plot line Spectrum and add add continuous $\mathrm{sinc}(x)/x$ envelope.</p>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">stem</span><span class="p">(</span><span class="n">omega</span><span class="p">,</span><span class="n">f</span><span class="p">)</span>
+<span class="nb">title</span><span class="p">(</span><span class="s1">'Line Spectra for pulse with w=2'</span><span class="p">)</span>
+<span class="nb">hold</span> <span class="n">on</span>
+<span class="n">om</span> <span class="o">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s1">'\Omega_0 [rad/s]'</span><span class="p">)</span>
+<span class="n">xc</span> <span class="o">=</span> <span class="n">om</span><span class="o">.*</span><span class="nb">pi</span><span class="o">.</span><span class="p">/</span><span class="n">w</span><span class="p">;</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">om</span><span class="p">,(</span><span class="n">A</span><span class="p">/</span><span class="n">w</span><span class="p">)</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">xc</span><span class="p">)</span><span class="o">.</span><span class="p">/(</span><span class="n">xc</span><span class="p">),</span><span class="s1">'r:'</span><span class="p">)</span>
+<span class="nb">hold</span> <span class="n">off</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../../images/fourier_series/3/exp_fs2_26_0.png" alt="png" /></p>
 
 <h4 id="w--5">w = 5</h4>
 
-<p>$\Omega_0 = 1$ rad/s; $w = 5$; $T = 2\pi$ s; $T/w = 2\pi/5$ s.</p>
+<p>$\Omega_0 = 1$ rad/s; $w = 5$; $T = 2\pi$ s; $T/w = \pi$ s.</p>
 
-<p><img src="pictures/sinc5.png" /></p>
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">A</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">w</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="p">[</span><span class="n">f</span><span class="p">,</span><span class="n">omega</span><span class="p">]</span> <span class="o">=</span> <span class="n">pulse_fs</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="mi">15</span><span class="p">);</span>
+<span class="nb">stem</span><span class="p">(</span><span class="n">omega</span><span class="p">,</span><span class="n">f</span><span class="p">)</span>
+<span class="nb">title</span><span class="p">(</span><span class="s1">'Line Spectra for pulse with w=2'</span><span class="p">)</span>
+<span class="nb">hold</span> <span class="n">on</span>
+<span class="n">om</span> <span class="o">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s1">'\Omega_0 [rad/s]'</span><span class="p">)</span>
+<span class="n">xc</span> <span class="o">=</span> <span class="n">om</span><span class="o">.*</span><span class="nb">pi</span><span class="o">.</span><span class="p">/</span><span class="n">w</span><span class="p">;</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">om</span><span class="p">,(</span><span class="n">A</span><span class="p">/</span><span class="n">w</span><span class="p">)</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">xc</span><span class="p">)</span><span class="o">.</span><span class="p">/(</span><span class="n">xc</span><span class="p">),</span><span class="s1">'r:'</span><span class="p">)</span>
+<span class="nb">hold</span> <span class="n">off</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../../images/fourier_series/3/exp_fs2_28_0.png" alt="png" /></p>
 
 <h4 id="w--10">w = 10</h4>
 
-<p>$\Omega_0 = 1$ rad/s; $w = 10$; $T = 2\pi$ s; $T/w = \pi/5$ s.</p>
+<p>$\Omega_0 = 1$ rad/s; $w = 10$; $T = 2\pi$ s; $T/w = \pi$ s.</p>
 
-<p><img src="pictures/sinc10.png" /></p>
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">A</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">w</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="p">[</span><span class="n">f</span><span class="p">,</span><span class="n">omega</span><span class="p">]</span> <span class="o">=</span> <span class="n">pulse_fs</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="mi">15</span><span class="p">);</span>
+<span class="nb">stem</span><span class="p">(</span><span class="n">omega</span><span class="p">,</span><span class="n">f</span><span class="p">)</span>
+<span class="nb">title</span><span class="p">(</span><span class="s1">'Line Spectra for pulse with w=10'</span><span class="p">)</span>
+<span class="nb">hold</span> <span class="n">on</span>
+<span class="n">om</span> <span class="o">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s1">'\Omega_0 [rad/s]'</span><span class="p">)</span>
+<span class="n">xc</span> <span class="o">=</span> <span class="n">om</span><span class="o">.*</span><span class="nb">pi</span><span class="o">.</span><span class="p">/</span><span class="n">w</span><span class="p">;</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">om</span><span class="p">,(</span><span class="n">A</span><span class="p">/</span><span class="n">w</span><span class="p">)</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">xc</span><span class="p">)</span><span class="o">.</span><span class="p">/(</span><span class="n">xc</span><span class="p">),</span><span class="s1">'r:'</span><span class="p">)</span>
+<span class="nb">hold</span> <span class="n">off</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../../images/fourier_series/3/exp_fs2_30_0.png" alt="png" /></p>
 
 <h4 id="implications">Implications</h4>
 
@@ -1652,9 +1782,19 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
 <script type="math/tex; mode=display">|C_{-k}|^2 = |C_k^*|^2 = |C_k|^2.</script>
 
-<p>This is the power spectrum for a pulse with width $T/8$.</p>
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">A</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">w</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="p">[</span><span class="n">f</span><span class="p">,</span><span class="n">omega</span><span class="p">]</span> <span class="o">=</span> <span class="n">pulse_fs</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="mi">15</span><span class="p">);</span>
+</code></pre></div></div>
 
-<p><img src="pictures/power.png" /></p>
+<p>Power spectrum</p>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">figure</span>
+<span class="nb">stem</span><span class="p">(</span><span class="n">omega</span><span class="p">,</span><span class="n">f</span><span class="o">.^</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">title</span><span class="p">(</span><span class="s1">'Power Spectrum for pulse width T/8'</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s1">'|C_k|^2'</span><span class="p">)</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s1">'\Omega_0 [rad/s]'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../../images/fourier_series/3/exp_fs2_54_0.png" alt="png" /></p>
 
 <p>Note that most of the power is concentrated at DC and in the first seven harmonic components. That is in the frequency range $[-14\pi/T,+14\pi/T]$ rad/s.</p>
 

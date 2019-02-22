@@ -7,8 +7,8 @@ prev_page:
   url: /laplace_transform/3/worksheet6
   title: 'Worksheet 6 Using Laplace Transforms for Circuit Analysis'
 next_page:
-  url: /labs/index
-  title: 'Laboratory Exercises'
+  url: /laplace_transform/5/worksheet8
+  title: 'Worksheet 8 Impulse Response and Time Convolution'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
