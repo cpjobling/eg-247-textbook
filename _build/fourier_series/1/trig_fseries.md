@@ -36,11 +36,11 @@ I believe that this subject has been covered in EG-150 Signals and Systems and s
 
 ## Motivating Examples
 
-This [Fourier Series demo](http://users.ece.gatech.edu/mcclella/matlabGUIs#FourierSeries), developed by Members of the [Center for Signal and Image Processing (CSIP)](http://www.ece.gatech.edu/CSIP) at the [School of Electrical and Computer Engineering](http://www.ece.gatech.edu/) at the [Georgia Institute of Technology](http://www.gatech.edu/), shows how periodic signals can be synthesised by a sum of sinusoidal signals.
+This [Fourier Series demo](http://dspfirst.gatech.edu/matlab/#FourierSeries), developed by Members of the Center for Signal and Image Processing (CSIP) at the [School of Electrical and Computer Engineering](http://www.ece.gatech.edu/) at the [Georgia Institute of Technology](http://www.gatech.edu/), shows how periodic signals can be synthesised by a sum of sinusoidal signals.
 
 It is here used as a motivational example in our introduction to [Fourier Series](http://en.wikipedia.org/wiki/Fourier_series). (See also [Fourier Series](http://mathworld.wolfram.com/FourierSeries.html) from Wolfram MathWorld referenced in the **Quick Reference** on Blackboard.)
 
-To install this example, download the [zip file](http://users.ece.gatech.edu/mcclella/matlabGUIs/Zipfseriesdemo-v130.zip) and unpack it somewhere on your MATLAB path.
+To install this example, download the [zip file](http://dspfirst.gatech.edu/matlab/ZipFiles/fseriesdemo-v144.zip) and unpack it somewhere on your MATLAB path.
 
 ## Wave Analysis
 
