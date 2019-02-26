@@ -361,8 +361,7 @@ $$u(t) = u_0(t)-u_0(t-1)$$
 $$y(t) = \left\{ {\begin{array}{*{20}{l}}
 {0:t \le 0}\\
 1 - e^{ - t}:\;0 < t \le 1\\
-e^{ - t}\left( {e - 1} \right):\;1 < t \le 2\\
-0:\;2 \le t
+e^{ - t}\left( {e - 1} \right):\;1 < t \lt \infty
 \end{array}} \right.$$
 
 ##### Check with MATLAB
