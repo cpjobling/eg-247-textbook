@@ -1,0 +1,1639 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Worksheet 4 Laplace Transform</title>
+  <meta name="description" content="Lecturer">
+
+  <link rel="canonical" href="/eg-247-textbook/eg-247-textbook/laplace_transform/1/worksheet4.html">
+  <link rel="alternate" type="application/rss+xml" title="EG-247 Signals and Systems" href="/eg-247-textbook/eg-247-textbook/feed.xml">
+
+  <meta property="og:url"         content="/eg-247-textbook/eg-247-textbook/laplace_transform/1/worksheet4.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Worksheet 4 Laplace Transform" />
+<meta property="og:description" content="Lecturer" />
+<meta property="og:image"       content="" />
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage":
+    "/eg-247-textbook/laplace_transform/1/worksheet4.html",
+  "headline":
+    "Worksheet 4 Laplace Transform",
+  "datePublished":
+    "2019-02-27T22:09:15+00:00",
+  "dateModified":
+    "2019-02-27T22:09:15+00:00",
+  "description":
+    "Lecturer",
+  "author": {
+    "@type": "Person",
+    "name": "Dr Chris P. Jobling"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/eg-247-textbook",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "/eg-247-textbook",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/eg-247-textbook/assets/css/styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/eg-247-textbook/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    CommonHTML: {
+        linebreaks: {
+            automatic: true,
+        },
+    },
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML' async></script>
+
+  <!-- DOM updating function -->
+  <script>
+const runWhenDOMLoaded = cb => {
+  if (document.readyState != 'loading') {
+    cb()
+  } else if (document.addEventListener) {
+    document.addEventListener('DOMContentLoaded', cb)
+  } else {
+    document.attachEvent('onreadystatechange', function() {
+      if (document.readyState == 'complete') cb()
+    })
+  }
+}
+
+// Helper function to init things quickly
+initFunction = function(myfunc) {
+  runWhenDOMLoaded(myfunc);
+  document.addEventListener('turbolinks:load', myfunc);
+};
+</script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="/eg-247-textbook/assets/js/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  <script src="https://unpkg.com/nbinteract-core" async></script>
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+
+  <!-- Google analytics -->
+  <script src="/eg-247-textbook/assets/js/ga.js" async></script>
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" async></script>
+
+  <!-- Load custom website scripts -->
+  <script src="/eg-247-textbook/assets/js/scripts.js" async></script>
+
+  <!-- Load JS that depends on site variables -->
+  <script>
+/**
+ * Set up copy/paste for code blocks
+ */
+const codeCellId = index => `codecell${index}`
+
+const clipboardButton = id =>
+  `<a class="btn copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#${id}">
+    <img src="/eg-247-textbook/assets/images/copy-button.svg" alt="Copy to clipboard">
+  </a>`
+
+// Clears selected text since ClipboardJS will select the text when copying
+const clearSelection = () => {
+  if (window.getSelection) {
+    window.getSelection().removeAllRanges()
+  } else if (document.selection) {
+    document.selection.empty()
+  }
+}
+
+// Changes tooltip text for two seconds, then changes it back
+const temporarilyChangeTooltip = (el, newText) => {
+  const oldText = el.getAttribute('data-tooltip')
+  el.setAttribute('data-tooltip', newText)
+  setTimeout(() => el.setAttribute('data-tooltip', oldText), 2000)
+}
+
+const addCopyButtonToCodeCells = () => {
+  // If ClipboardJS hasn't loaded, wait a bit and try again. This
+  // happens because we load ClipboardJS asynchronously.
+  if (window.ClipboardJS === undefined) {
+    setTimeout(addCopyButtonToCodeCells, 250)
+    return
+  }
+
+  const codeCells = document.querySelectorAll('.input_area pre')
+  codeCells.forEach((codeCell, index) => {
+    const id = codeCellId(index)
+    codeCell.setAttribute('id', id)
+    codeCell.insertAdjacentHTML('afterend', clipboardButton(id))
+  })
+
+  const clipboard = new ClipboardJS('.copybtn')
+  clipboard.on('success', event => {
+    clearSelection()
+    temporarilyChangeTooltip(event.trigger, 'Copied!')
+  })
+
+  clipboard.on('error', event => {
+    temporarilyChangeTooltip(event.trigger, 'Failed to copy')
+  })
+
+  // Get rid of clipboard before the next page visit to avoid memory leak
+  document.addEventListener('turbolinks:before-visit', () =>
+    clipboard.destroy()
+  )
+}
+
+initFunction(addCopyButtonToCodeCells);
+</script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/eg-247-textbook/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/eg-247-textbook/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  <script>
+/**
+  * To auto-embed hub URLs in interact links if given in a RESTful fashion
+ */
+
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+    
+function dict2param(dict) {
+    params = Object.keys(dict).map(function(k) {
+        return encodeURIComponent(k) + '=' + encodeURIComponent(dict[k])
+    });
+    return params.join('&')
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return dict2param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = document.querySelectorAll("a").forEach(function(link) {
+    var href = link.href;
+    // If the link is an internal link...
+    if (href.search("") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['hub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'hub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + dict2param(params);
+      link.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+// Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    hubUrl = rest['hub'];
+    if (hubUrl !== undefined) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      link = document.querySelectorAll("a.interact-button")[0];
+      if (link !== undefined) {
+          // Update the interact link URL
+          var href = link.getAttribute('href');
+          var hub_type = '';
+          if (hub_type === 'binder') {
+            // If binder links exist, we need to re-work them for jupyterhub
+            if (hubUrl.indexOf('http%3A%2F%2Flocalhost') > -1) {
+              // If localhost, assume we're working from a local Jupyter server and remove `/hub`
+              first = [hubUrl, 'git-sync'].join('/')
+            } else {
+              first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+            }
+            href = first + '?' + binder2Jupyterhub(href);
+          } else {
+            // If JupyterHub links, we only need to replace the hub url
+            href = href.replace("", hubUrl);
+            if (hubUrl.indexOf('http%3A%2F%2Flocalhost') > -1) {
+              // Assume we're working from a local Jupyter server and remove `/hub`
+              href = href.replace("/hub/user-redirect", "");
+            }
+          }
+          link.setAttribute('href', decodeURIComponent(href));
+
+          // Add text after interact link saying where we're launching
+          hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+          document.querySelectorAll("a.interact-button")[0].insertAdjacentHTML('afterend', '<div class="interact-context">on ' + hubUrlNoHttp + '</div>');
+      }
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+runWhenDOMLoaded(updateInteractLink)
+document.addEventListener('turbolinks:load', updateInteractLink)
+</script>
+</head>
+
+  <body>
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <img src="/eg-247-textbook/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/>
+  <h2 class="c-sidebar__title">EG-247 Signals and Systems</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/eg-247-textbook/introduction/index"
+        >
+          
+            1.
+          
+          Introduction
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/eg-247-textbook/elementary_signals/index"
+        >
+          
+            2.
+          
+          Elementary Signals
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/elementary_signals/hw1"
+                >
+                  
+                  Homework 1
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/eg-247-textbook/laplace_transform/index"
+        >
+          
+            3.
+          
+          Laplace Transforms and their Applications
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/laplace_transform/1/laplace"
+                >
+                  
+                    3.1
+                  
+                  The Laplace Transformation
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/laplace_transform/2/inverse_laplace"
+                >
+                  
+                    3.2
+                  
+                  The Inverse Laplace Transform
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/laplace_transform/3/circuit_analysis"
+                >
+                  
+                    3.3
+                  
+                  Using Laplace Transforms for Circuit Analysis
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/laplace_transform/4/transfer_functions"
+                >
+                  
+                    3.4
+                  
+                  Transfer Functions
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/laplace_transform/5/convolution"
+                >
+                  
+                    3.5
+                  
+                  The Impulse Response and Convolution
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/eg-247-textbook/fourier_series/index"
+        >
+          
+            4.
+          
+          Fourier Series
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/fourier_series/1/trig_fseries"
+                >
+                  
+                    4.1
+                  
+                  Trigonometric Fourier Series
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/fourier_series/2/exp_fs1"
+                >
+                  
+                    4.2
+                  
+                  Exponential Fourier Series
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/fourier_series/3/exp_fs2"
+                >
+                  
+                    4.3
+                  
+                  Line Spectra and their Applications
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/eg-247-textbook/fourier_transform/index"
+        >
+          
+            5.
+          
+          Fourier Transform
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/fourier_transform/1/ft1"
+                >
+                  
+                    5.1
+                  
+                  Defining the Fourier Transform
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/fourier_transform/2/ft2"
+                >
+                  
+                    5.2
+                  
+                  Fourier transform of commonly occuring signals
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/fourier_transform/3/ft3"
+                >
+                  
+                    5.3
+                  
+                  Fourier Transforms for Circuit and LTI Systems Analysis
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/fourier_transform/4/ft4"
+                >
+                  
+                    5.4
+                  
+                  Introduction to Filters
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/eg-247-textbook/dt_systems/index"
+        >
+          
+            6.
+          
+          Sampled Data Systems
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/dt_systems/1/sampling"
+                >
+                  
+                    6.1
+                  
+                  Sampling Theory
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/dt_systems/2/z_transform"
+                >
+                  
+                    6.2
+                  
+                  The Z-Transform
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/dt_systems/3/i_z_transform"
+                >
+                  
+                    6.3
+                  
+                  The Inverse Z-Transform
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/dt_systems/4/dt_models"
+                >
+                  
+                    6.4
+                  
+                  Models of Discrete Time Systems
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">In Class Worksheets</li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/eg-247-textbook/worksheets/index"
+        >
+          
+          Worksheets
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/introduction/worksheet1"
+                >
+                  
+                  Worksheet 1 Introduction
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/introduction/worksheet2"
+                >
+                  
+                  Worksheet 2
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/elementary_signals/worksheet3"
+                >
+                  
+                  Worksheet 3 Elementary Signals
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry c-sidebar__entry--active"
+                  href="/eg-247-textbook/laplace_transform/1/worksheet4"
+                >
+                  
+                  Worksheet 4 Laplace Transform
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/laplace_transform/2/worksheet5"
+                >
+                  
+                  Worksheet 5 Inverse Laplace Transform
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/laplace_transform/3/worksheet6"
+                >
+                  
+                  Worksheet 6 Using Laplace Transforms for Circuit Analysis
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/laplace_transform/4/worksheet7"
+                >
+                  
+                  Worksheet 7 Transfer Functions
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/laplace_transform/5/worksheet8"
+                >
+                  
+                  Worksheet 8 Impulse Response and Time Convolution
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/fourier_series/1/worksheet9"
+                >
+                  
+                  Worksheet 9 Trigonometric Fourier Series
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/fourier_series/2/worksheet10"
+                >
+                  
+                  Worksheet 10 Exponential Fourier Series
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/fourier_series/3/worksheet11"
+                >
+                  
+                  Worksheet 11 Line Spectra and their Applications
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Homework</li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Lab Exercises</li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/eg-247-textbook/labs/index"
+        >
+          
+          Laboratory Exercises
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/labs/lab01/index"
+                >
+                  
+                  Lab 1 - Elemementary Signals
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/labs/lab02/index"
+                >
+                  
+                  Lab 2 - Laplace and Inverse Laplace Transforms
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/labs/lab03/index"
+                >
+                  
+                  Lab 3 -  Laplace Transforms and Transfer Functions for Circuit Analysis
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/labs/lab04/index"
+                >
+                  
+                  Lab 4 - Time Domain Convolution
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/labs/lab05/index"
+                >
+                  
+                  Lab 5 - Fourier Series
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/labs/lab06/index"
+                >
+                  
+                  Lab 6 - Sounds and Sampling
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/labs/lab07/index"
+                >
+                  
+                  Optional Lab 7 - Filters
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/labs/project/index"
+                >
+                  
+                  Project
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Project</li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Answers to Selected problems</li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/eg-247-textbook/introduction/answers"
+        >
+          
+          Worksheet 2
+        </a>
+
+        
+      </li>
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://github.com/choldgraf/jupyter-book">Jupyter Book</a></p>
+</nav>
+
+      <!-- Shamelessly copied from minimal mistakes -->
+
+
+<!-- TOC will only show up if it has at least one item -->
+
+
+  <aside class="sidebar__right">
+    <nav class="onthispage">
+      <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#to-accompany-chapter-31-laplace-transform">To accompany Chapter 3.1 Laplace Transform</a></li>
+  <li><a href="#turningpoint-mobile-polling-setup">TurningPoint Mobile Polling Setup</a>
+    <ul>
+      <li><a href="#1-use-a-web-browser">1. Use a web browser</a></li>
+      <li><a href="#2-install-and-open-the-turningpoint-app">2. Install and open the TurningPoint app</a></li>
+      <li><a href="#todays-session-id">Today’s Session ID</a></li>
+      <li><a href="#assign-yourself-to-a-group-by-table">Assign yourself to a group by table</a></li>
+      <li><a href="#icebreaker-questions">Icebreaker Questions</a></li>
+      <li><a href="#end-of-setup">End of setup</a></li>
+    </ul>
+  </li>
+  <li><a href="#plan-b">Plan B</a>
+    <ul>
+      <li><a href="#httpsgooglformseuyh6g7za2knqt862">https://goo.gl/forms/EuyH6G7za2knqt862</a></li>
+    </ul>
+  </li>
+  <li><a href="#laplace-transforms-of-common-waveforms">Laplace transforms of common waveforms</a>
+    <ul>
+      <li><a href="#pulse">Pulse</a></li>
+      <li><a href="#line-segment">Line segment</a></li>
+      <li><a href="#triangular-pulse">Triangular Pulse</a></li>
+      <li><a href="#square-wave">Square Wave</a></li>
+      <li><a href="#half-rectified-sinewave">Half-rectified Sinewave</a></li>
+    </ul>
+  </li>
+  <li><a href="#homework">Homework</a></li>
+  <li><a href="#answers-to-in-class-problems">Answers to in-class problems</a></li>
+</ul>
+    </nav>
+  </aside>
+
+
+
+      <main class="c-textbook__page" tabindex="-1">
+          <div class="o-wrapper">
+            <div class="c-sidebar-toggle">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <button
+    id="js-sidebar-toggle"
+    class="hamburger hamburger--arrowalt is-active"
+  >
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+    <span class="c-sidebar-toggle__label">Toggle Sidebar</span>
+  </button>
+</div>
+
+            
+<div class="buttons">
+
+
+
+
+</div>
+
+
+            <div class="c-textbook__content">
+              <p><strong>Lecturer</strong></p>
+
+<p>Set up MATLAB</p>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">clear</span> <span class="nb">all</span>
+<span class="nb">format</span> <span class="n">compact</span>
+</code></pre></div></div>
+
+<h1 id="worksheet-4">Worksheet 4</h1>
+
+<h2 id="to-accompany-chapter-31-laplace-transform">To accompany Chapter 3.1 Laplace Transform</h2>
+
+<p>We will step through this worksheet in class.</p>
+
+<p>You are expected to have at least watched the video presentation of <a href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/1/laplace">Chapter 3.1</a> of the <a href="https://cpjobling.github.io/eg-247-textbook">notes</a> before coming to class. If you haven’t watch it afterwards!</p>
+
+<h2 id="turningpoint-mobile-polling-setup">TurningPoint Mobile Polling Setup</h2>
+
+<p>We will be using TurningPoint mobile response system polling in this session.</p>
+
+<p>There are two ways to participate:</p>
+
+<h3 id="1-use-a-web-browser">1. Use a web browser</h3>
+
+<p>This option always works providing you have a mobile web browser.</p>
+
+<p>Browse to: <a href="https://ttpoll.eu">https://ttpoll.eu</a>.</p>
+
+<p><img src="https://chart.googleapis.com/chart?cht=qr&amp;chs=300x300&amp;choe=UTF-8&amp;chld=H&amp;chl=https://ttpoll.eu" alt="QR Code" /></p>
+
+<p>https://ttpoll.eu</p>
+
+<h3 id="2-install-and-open-the-turningpoint-app">2. Install and open the TurningPoint app</h3>
+
+<p>Browse to: <a href="https://www.turningtechnologies.com/turningpoint-app/">TurningPoint
+app</a></p>
+
+<p><img alt="QR Code" src="https://chart.googleapis.com/chart?cht=qr&amp;chs=300x300&amp;choe=UTF-8&amp;chld=H&amp;chl=https://goo.gl/MEjxu7" /></p>
+
+<p>https://goo.gl/MEjxu7</p>
+
+<p>Use the links to the App stores at the bottom of that page or follow these links: <a href="https://itunes.apple.com/us/app/responseware/id300028504?mt=8">App Store</a>, <a href="https://play.google.com/store/apps/details?id=com.turningTech.Responseware&amp;feature=search_result#?t=W251bGwsMSwyLDEsImNvbS50dXJuaW5nVGVjaC5SZXNwb25zZXdhcmUiXQ..">Google Play</a>.</p>
+
+<p>When prompted: enter the <strong>session ID</strong></p>
+
+<h3 id="todays-session-id">Today’s Session ID</h3>
+<pre>
+
+
+
+</pre>
+<div style="font-size: 32pt; font-face: bold;">EG2470002</div>
+<pre>
+
+
+
+</pre>
+
+<h3 id="assign-yourself-to-a-group-by-table">Assign yourself to a group by table</h3>
+
+<p>There should be a card with a <strong>group name</strong> on your table.</p>
+
+<p>Please use your TurningPoint app or the TurningPoint web app to assign yourself to your table’s group name.</p>
+
+<h4 id="--launch-poll">-&gt; Launch Poll</h4>
+
+<h3 id="icebreaker-questions">Icebreaker Questions</h3>
+
+<h4 id="--launch-poll-1">-&gt; Launch Poll</h4>
+
+<h3 id="end-of-setup">End of setup</h3>
+
+<h2 id="plan-b">Plan B</h2>
+
+<p>If TurningPoint doesn’t work, use this Google form instead</p>
+
+<h3 id="httpsgooglformseuyh6g7za2knqt862">https://goo.gl/forms/EuyH6G7za2knqt862</h3>
+
+<p><img src="https://chart.googleapis.com/chart?cht=qr&amp;chs=300x300&amp;choe=UTF-8&amp;chld=H&amp;chl=https://goo.gl/forms/EuyH6G7za2knqt862" alt="qr code" /></p>
+
+<h2 id="laplace-transforms-of-common-waveforms">Laplace transforms of common waveforms</h2>
+
+<p>We will work through a few of the following on the board in class</p>
+
+<ul>
+  <li>Pulse</li>
+  <li>Linear segment</li>
+  <li>Triangular waveform</li>
+  <li>Rectangular periodic waveform (square wave)</li>
+  <li>Half rectified sine wave</li>
+</ul>
+
+<h3 id="pulse">Pulse</h3>
+
+<p>Compute the Laplace transform of the pulse shown in the figure.</p>
+
+<p><img src="images/pulse.png" alt="pulse" /></p>
+
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+
+<h3 id="line-segment">Line segment</h3>
+
+<p>Compute the Laplace transform of the line segment shown below.</p>
+
+<p><img src="images/line.png" alt="line" /></p>
+
+<p>&lt;/pre&gt;</p>
+
+<h3 id="triangular-pulse">Triangular Pulse</h3>
+
+<p>Compute the Laplace transform of the triangular pulse shown below</p>
+
+<p><img src="images/triangle.png" alt="triangle" /></p>
+
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+
+<h3 id="square-wave">Square Wave</h3>
+
+<p>Compute the Laplace transform of the periodic function shown below.</p>
+
+<p><img src="images/sqare.png" alt="square wave" /></p>
+
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+
+<h3 id="half-rectified-sinewave">Half-rectified Sinewave</h3>
+
+<p>Compute the Laplace Transform of the half-rectified sine wave shown below.</p>
+
+<p><img src="images/rectsine.png" alt="half-rectified sinewave" /></p>
+
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+
+<h2 id="homework">Homework</h2>
+
+<p>Attempt at least one of the end-of-chapter exercises from each question 1-7 of <a href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=75#ppg=71">Section 2.7 of Karris</a>. Don’t look at the answers until you have attempted the problems.</p>
+
+<p>If we have time, I will work through one or two of these in class.</p>
+
+<h2 id="answers-to-in-class-problems">Answers to in-class problems</h2>
+
+<ol>
+  <li>
+    <script type="math/tex; mode=display">Au_0(t)-Au_0(t-a)\Leftrightarrow \frac{A\left(1-e^{-as}\right)}{s}.</script>
+  </li>
+  <li>
+    <script type="math/tex; mode=display">(t-1)u_0(t-1)\Leftrightarrow \frac{e^{-s}}{s}.</script>
+  </li>
+  <li>
+    <script type="math/tex; mode=display">f_T(t)\Leftrightarrow \frac{\left(1-e^{-s}\right)^2}{s^2}.</script>
+  </li>
+  <li>
+    <script type="math/tex; mode=display">f_R(t)\Leftrightarrow \frac{A\tanh \left(\frac{As}{2}\right)}{s}.</script>
+  </li>
+  <li>
+    <script type="math/tex; mode=display">f_HW(t) \Leftrightarrow \frac{1}{\left(s^2 + 1\right)\left(1-e^{\pi s}\right)}.</script>
+  </li>
+</ol>
+
+              <nav class="c-page__nav">
+  
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/eg-247-textbook/elementary_signals/worksheet3">
+      〈 <span class="u-margin-right-tiny"></span> Worksheet 3 Elementary Signals
+    </a>
+  
+
+  
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/eg-247-textbook/laplace_transform/2/worksheet5">
+      Worksheet 5 Inverse Laplace Transform <span class="u-margin-right-tiny"></span> 〉
+    </a>
+  
+</nav>
+
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+  </body>
+</html>
