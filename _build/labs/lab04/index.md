@@ -83,7 +83,7 @@ Note, if you wish, Parts 2 to 5 can be done in the same Live Script file with th
 
 In this lab exercise we will demonstrate that time-convolution of a system response can be solved in the complex frequency domain using Laplace and Inverse Laplace transforms.
 
-* Use the inverse Laplace transform function `ilaplace` to solve the step response of the RC circuit given in exercise 10 without convolution. You will need the Laplace transform of the circuit's impulse response $h(t)$ and the unit step $u_0(t)$ (MATLAB `heaviside`).
+* Use the inverse Laplace transform function `ilaplace` to solve the step response of the RC circuit given in exercise 7 Part 4 without convolution. You will need the Laplace transform of the circuit's impulse response $h(t)$ and the unit step $u_0(t)$ (MATLAB `heaviside`).
 * Plot the result using `ezplot`
 * Confirm the result with a Simulink simulation
 
