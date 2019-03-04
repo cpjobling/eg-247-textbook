@@ -54,7 +54,7 @@ Use **run section** or **run section and advance** buttons to step through the c
 
 Allow each sound sample played in a section to complete before exercuting the next section that plays a sound sample.
 
-Use the **text** button to add comentary and your observations to your Live Script.
+Use the **text** button to add commentary and your observations to your Live Script.
 
 Use the **text style** features to add a title to your Live Script and section headings as appropriate.
 
@@ -110,7 +110,24 @@ The command to reverse the order of the samples in a matrix is `flipud()`. Exper
 
 Record your experiments in this part of the lab by saving your Live Script file. Include your thoughts and observations as text elements.
 
-## Lab Exercise 13:  Composing Music in MATLAB (2 marks)
+## Lab Exercise 13: Aliasing and anti-aliasing
+
+Download the example file [eg-247-message.wav](eg-247-message.wav) that was recorded in the lecture using the file [sampling_demo.m](sampling_demo.m) (If you have access to a microphone you can use `sampling_demo` to record your own sound file.)
+
+### Part 5: Aliasing
+
+Download the file [ex13_1.m](ex13_1.m) and open as a LiveScript. Read the script then run it. Complete the remaining examples of "decimation" (effectively aliasing) and listen carefully to the results. Comment on what you hear. 
+
+Examine the frequency sprctrum data produced by the Fast-Fourier Transform (FFT). Discuss the results.
+
+### Part 6: Sampling with anti-aliasing filters
+
+Download the file [ex13_2.m](ex13_2.m) and open as a LiveScript. Read the script then run it. Complete the remaining examples of "resampling" (effectively sampling with anti-alias pre-filtering) and listen carefully to the results. Comment on what you hear. 
+
+Examine the frequency sprctrum data produced for the sampled signals with pre-filtering. Discuss the results.
+
+
+## Minproject 3:  Composing Music in MATLAB (1 mark)
 
 ### Background
 
@@ -192,24 +209,7 @@ To play the sound, use the `sound()` function.
 
 Now you can complete the opening phrase of Beethoven's fifth by adding additional notes and pauses of the correct length.
 
-Save the commands you use to create, play and save your version of Beethoven's Fifth in a Matlab m-file as `ex02.m` and add this to your copy of this lab script along with the sound file.
-
-## Miniproject 3: Playing a Musical Scale (1 mark)
-
-To demonstrate your mastery of all that you have learnt in this lab, synthesize a scale in the key of C. This is simply eight notes in order starting with C. The notes are:
-
-C D E F G A B C
-
-The key of C is simple because there are no sharps or flats.
-
-To complete this mini-project you will have to define the frequencies for A, B, and the second occurrence of C since they do not appear in Table 1 in Lab Exercise 2. 
-
-Please answer these questions.
-
-* Q1: What are the frequencies of the notes A, B, and the second occurrence of C?
-* Q2: If I wanted to synthesize the sound of a piano playing this scale, what additional information would I need to add to a note vector? Provide links to any resources you find that help you to answer this question.
-
-Save your scale in an m-file called `scale.m`. The m-file should play the scale and then ALSO, PLAY IT BACKWARDS. (**Note**: Backwards does not mean flipped!). Attach your m-file to the lab portfolio and your answers to the 2 questions above before claiming your marks.
+Save the commands you use to create, play and save your version of Beethoven's Fifth in a MATLAB mlx-file as `beethoven.mlx` and add this to your copy of this lab script along with the sound file.
 
 
 ## What to turn in
