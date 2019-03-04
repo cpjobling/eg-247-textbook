@@ -7,8 +7,8 @@ prev_page:
   url: /fourier_series/2/worksheet10
   title: 'Worksheet 10 Exponential Fourier Series'
 next_page:
-  url: /labs/index
-  title: 'Laboratory Exercises'
+  url: /fourier_transform/1/worksheet12
+  title: 'Worksheet 12 EDefining the Fourier Transform'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

@@ -1,8 +1,8 @@
 ---
 title: 'Laboratory Exercises'
 prev_page:
-  url: /fourier_series/3/worksheet11
-  title: 'Worksheet 11 Line Spectra and their Applications'
+  url: /fourier_transform/4/worksheet15
+  title: 'Worksheet 15 Introduction to Filters'
 next_page:
   url: /labs/lab01/index
   title: 'Lab 1 - Elemementary Signals'
