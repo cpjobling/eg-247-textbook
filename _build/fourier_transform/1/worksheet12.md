@@ -2,7 +2,7 @@
 redirect_from:
   - "/fourier-transform/1/worksheet12"
 interact_link: content/fourier_transform/1/worksheet12.ipynb
-title: 'Worksheet 12 EDefining the Fourier Transform'
+title: 'Worksheet 12 Defining the Fourier Transform'
 prev_page:
   url: /fourier_series/3/worksheet11
   title: 'Worksheet 11 Line Spectra and their Applications'
@@ -12,19 +12,13 @@ next_page:
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
-# Defining the Fourier Transform
+# Worksheet 12
 
-## Agenda
+## To accompany Chapter 5.1 Defining the Fourier Transform
 
-* Fourier Transform as the Limit of a Fourier Series
+We will step through this worksheet in class. 
 
-* Doing the Maths
-
-* Special forms of the Fourier Transform
-
-* Properties of the Fourier Transform
-
-* Computing Fourier Transforms in Matlab
+You are expected to have at least watched the video presentation of [Chapter 5.1](https://cpjobling.github.io/eg-247-textbook/fourier_transform/1/ft1) of the [notes](https://cpjobling.github.io/eg-247-textbook) before coming to class. If you haven't watch it afterwards!
 
 ##  Fourier Transform as the Limit of a Fourier Series
 
@@ -100,20 +94,6 @@ xlabel('u')
 ```
 
 
-
-{:.output .output_png}
-![png](../../images/fourier_transform/1/worksheet12_16_0.png)
-
-
-
-Matlab code to reproduce this plot: [sinc_plot.m](sinc_plot.m).
-
-**Note** $sin(\pi u)/(\pi u)$ is undefined at $u = 0$. To compute its value we need to take the limit
-
-$$\lim_{u\to 0} \frac{\sin(\pi u)}{u}$$ 
-
-which can be shown to be 1. I leave the discovery of the proof to you and the internet.
-
 #### Duty cycle
 
 * We define the duty cycle $\eta = 2t_0/T$ of the rectangular pulse train as the fraction of the time the signal is "on" (equal to 1) over one period.
@@ -133,15 +113,13 @@ $$T C_k = T\eta \operatorname{sinc}\left(k\eta\right)=2t_0\operatorname{sinc}\le
 
 Then the normalized coefficents $T C_k$ of the rectangular wave a sinc envelope with constant amplitude at the origin equal to $2t_0$, and a zero crossing at fixed frequency $\pi/t_0$ rad/s, both independent of T.
 
-Plots follow (use [duty_cycle.m](duty_cycle.m) to reproduce).
 
-#### Durty cycle 50%
 
-<img src="pictures/dc_point5.png">
+{:.input_area}
+```matlab
+open duty_cycle
+```
 
-#### Duty cycle 12.5%
-
-<img src="pictures/dc_12point5.png">
 
 #### Comments
 
@@ -161,59 +139,7 @@ Plots follow (use [duty_cycle.m](duty_cycle.m) to reproduce).
 
 ### Doing the Maths
 
-Fourier series coefficients for the rectangular wave are computed using:
-
-$$C_k = \frac{1}{T}\int_{-t_0}^{t_0} \tilde{x}(t) e^{-jk(\omega_0 t)}\,dt $$
-
-where $\omega_0 = 2\pi/T$ as usual.
-
-Now define a signal $x(t)$ as a signal equal to $\tilde{x}(t)$ over one period and zero elsewhere.
-
-<img src="pictures/pulse.png">
-
-#### A rectangular pulse
-
-The aperiodic signal, a single rectangular pulse, can be thought of as being periodic with an infinite fundamental period (we will let $T\to +\infty$ later).
-
-Since $\tilde{x}(t)=x(t)$ over $t \in [-T/2,T/2]$, the spectral coefficients $C_k$ of the periodic signal $\tilde{x}(t)$ can be written in terms of the aperiodic signal $x(t)$ as follows:
-
-$$C_k = \frac{1}{T}\int_{-\infty}^{+\infty}x(t)e^{-jk\omega t} dt.$$
-
-Let us define the envelope $X(j\omega)$ of $T C_k$ (we already know this to be the sinc function):
-
-$$X(j\omega):= \int_{-\infty}^{+\infty}x(t)e^{-j\omega t} dt = \int_{-t_0}^{+t_0}e^{-j\omega t} dt = 2t_0\operatorname{sinc}\left(\frac{t_0}{\pi}\omega\right).$$
-
-The coefficients $C_k$ are therefore samples of the continuous envelope $X(j\omega)$:
-
-$$C_k = \frac{1}{T}X(jk\omega_0).$$
-
-#### Back to the periodic signal
-
-$\tilde{x}(t)$ has the Fourier series representation
-
-$$\tilde{x}(t) = \sum_{k=-\infty}^{\infty}\frac{1}{T}X(jk\omega_0)e^{jk\omega_0 t}.$$
-
-or equivalently, since $\omega_0 = 2\pi/T$:
-
-$$\tilde{x}(t) = \frac{1}{2\pi} \sum_{k=-\infty}^{\infty}X(jk\omega_0)e^{jk\omega_0 t}\omega_0.$$
-
-
-#### Now take the limits
-
-At the limit, as $T\to \infty$, in 
-
-$$\tilde{x}(t) = \frac{1}{2\pi} \sum_{k=-\infty}^{\infty} X(jk\omega_0)e^{jk\omega_0 t}\omega_0.$$
-
-We get
-
-* $\omega_0 \to d\omega$ &ndash; the fundamental frequency becomes infinitesimally small.
-* $k\omega_0 \to \omega$ &ndash; harmonic frequencies get so close together they become a continuum.
-* The summation becomes an integral.
-* $\tilde{x}(t) \to x(t)$ &ndash; the periodic signal tends to the aperiodic signal.
-
-#### Define the Inverse Fourier and Fourier Transform
-
-Putting these elements together we have an expression for the aperiodic signal in terms of its Fourier transform:
+See the [notes](ft1)
 
 **Inverse Fourier Transform**:
 
@@ -229,205 +155,11 @@ $$X(j\omega) = \int_{-\infty}^{\infty}x(t)e^{-j\omega t}\,dt := \mathcal{F}\left
 
 * The two equations on the previous slide are called the *Fourier transform pair*.
 
-* They are analogous to the *Laplace transform pair* we have already seen and we can develop tables of properties and transform pairs in the same way.
-* Equation $X(j\omega) = \int_{-\infty}^{\infty}x(t)e^{-j\omega t}\,dt.$ gives the *Fourier transform* or the *frequency spectrum* of the signal $x(t)$.
-* Equation $x(t) = \frac{1}{2\pi} \int_{-\infty}^{\infty} X(j\omega)e^{j\omega t}\,d\omega.$ is the *inverse Fourier transform*. It gives the function of time that has a given spectrum in the frequency domain.
-
-## Special Forms of the Fourier Transform
-
-The table on the next slide is developed in Section 8.2 of Karris by assuming that in general both $f(t)$ and $F(j\omega)$ are complex. So that:
-
-$$f(t) = \Re\left\{f(t)\right\} + j\Im\left\{f(t)\right\} = f_{\mathrm{Re}}(t) + j\, f_{\mathrm{Im}}(t)$$
-
-The Fourier transform can therefore be rewritten
-
-$$F(j\omega) = \int_{-\infty}^{\infty}f_{\mathrm{Re}}(t)e^{j\omega t}\,dt + j\int_{-\infty}^{\infty}\, f_{\mathrm{Im}}(t)e^{j\omega t}\,dt$$
-
-which by Euler's identity becomes
-
-$$F(j\omega) = \int_{-\infty}^{\infty}\left[f_{\mathrm{Re}}(t)\cos\omega t + f_{\mathrm{Im}}(t)\sin\omega t\right]\,dt - j\int_{-\infty}^{\infty}\left[f_{\mathrm{Re}}(t)\sin\omega t - f_{\mathrm{Im}}(t)\cos\omega t\right]\,dt$$
-
-So the Real and Imaginary parts of $F(j\omega)$ are
-
-$$F_\mathrm{Re}(j\omega) = \int_{-\infty}^{\infty}\left[f_{\mathrm{Re}}(t)\cos\omega t + f_{\mathrm{Im}}(t)\sin\omega t\right]\,dt$$
-
-$$F_\mathrm{Im}(j\omega) = - \int_{-\infty}^{\infty}\left[f_{\mathrm{Re}}(t)\sin\omega t - f_{\mathrm{Im}}(t)\cos\omega t\right]\,dt$$
-
-We can do a similar analysis for the inverse Fourier transform.
-
-### Time Domain and Frequecy Domain Correspondence
-
-
-By consideration of the Real and Imaginary parts of $f(t)$ and $F(j\omega)$ we can construct the following table. See Sections **8.2.1 Real-Time Functions** and **8.2.2 Imaginary Time Functions** which shows the summarizes the *nature* of the Fourier transform for particular types of the signal. 
-
-<html>
-<table>
-<thead>
-    <tr><td rowspan="2" style="text-align: center;">$f(t)$</td><td colspan="5" style="text-align: center;">$F(j\omega)$</td></tr>
-    <tr><td>Real</td><td>Imaginary</td><td>Complex</td><td>Even</td><td>Odd</td></tr>
-</thead>
-<tbody>
-<tr><td>Real</td><td>&nbsp;</td><td>&nbsp;</td><td>√</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-<tr><td>Real and Even</td><td>√</td><td>&nbsp;</td><td>&nbsp;</td><td>√</td><td>&nbsp;</td></tr>
-<tr><td>Real and Odd</td><td>&nbsp;</td><td>√</td><td>&nbsp;</td><td>&nbsp;</td><td>√</td></tr>
-<tr><td>Imaginary</td><td>&nbsp;</td><td>&nbsp;</td><td>√</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-<tr><td>Imaginary and Even</td><td>&nbsp;</td><td>√</td><td>&nbsp;</td><td>√</td><td>&nbsp;</td></tr>
-<tr><td>Imaginary and Odd</td><td>√</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>√</td></tr>
-</tbody>
-</table>
-</html>
-
-### A useful consequence for $f(t)$ real
-
-If $f(t)$ is real (even or odd), the real part of $F(j\omega)$ is even, and the imaginary part is odd.
-
-Then, for $f(t)$ real:
-
-$$F_\mathrm{Re}(-j\omega)=F_\mathrm{Re}(j\omega)$$
-
-and
-
-$$F_\mathrm{Im}(-j\omega)=-F_\mathrm{Im}(j\omega)$$
-
-Since
-
-$$F(j\omega) = F_\mathrm{Re}(j\omega)+jF_\mathrm{Im}(j\omega)$$ 
-
-it follows that
-
-$$F(-j\omega) = F_\mathrm{Re}(-j\omega)+jF_\mathrm{Im}(-j\omega) = F_\mathrm{Re}(j\omega)-jF_\mathrm{Im}(j\omega)$$ 
-
-or
-
-$$F(-j\omega) = F^*(j\omega)$$
-
 ## Properties of the Fourier Transform
 
 Again, we will provide any properties that you might need in the examination.
     
 You will find a number of these in the accompanying notes.
-
-For fun, you may like to read and even complete the proofs for these properties guided by the text books Karris (Section 8.3) or Boulet pp 180&mdash;185.
-
-We are more interested in your ability to exploit the properties in problem solving.
-
-A little more detail is given in the notes available on Blackboard.
-
-### Linearity
-
-The Fourier transform is a linear operation:
-
-$$a_1f_1(t)+a_2f_2(t)+\cdots+a_nf_n(t)\Leftrightarrow a_1F_1(j\omega)+a_2F_2(j\omega)+\cdots+a_nF_n(j\omega)$$
-
-### Symmetry
-
-If $F(j\omega)$ is the Fourier transform of $f(t)$, the *symmetry property of the Fourier transform* states that
-
-$$F(t)\Leftrightarrow2\pi f(-j\omega)$$
-
-That is if in $F(j\omega)$ we replace $j\omega$ with $t$, we obtain this pair.
-
-### Time/Frequency Scaling
-
-Scaling the time variable with $\alpha  \in \mathbb{R}$ either expands or compresses the Fourier transform:
-
-$$f(\alpha t)\Leftrightarrow \frac{1}{|\alpha|}F\left(j\frac{\omega}{\alpha}\right)$$
-
-* For $\alpha > 0$, the signal $f(\alpha t)$ is sped up (or compressed in time), so its frequency components will be expanded to higher frequencies.
-* For $\alpha < 0$, the signal $f(\alpha t)$ is slowed down (or expanded in time), so its frequency components will be compressed to lower frequencies.
-
-### Time Shifting
-
-A time shift results in a phase shift in the Fourier transform
-
-$$f(t-t_0) \Leftrightarrow e^{-j\omega_0}F(j\omega)$$
-
-where $\omega_0 = 2\pi/t_0$
-
-### Frequency Shifting
-
-Multiplying a time function by a complex exponential resuls in a frequency shift
-
-$$e^{j\omega 0}f(t) \Leftrightarrow X(j\omega-j\omega_0)$$
-
-
-
-### Time Differentiation
-
-If $F(j\omega)$ is the Fourier transform of $f(t)$
-
-$$\frac{d^n}{dt^n}\,f(t)\Leftrightarrow (j\omega)^nF(j\omega)$$
-
-### Frequency Differentiation
-
-If $F(j\omega)$ is the Fourier transform of $f(t)$
-
-$$(-jt)^n f(t)\Leftrightarrow \frac{d^n}{d\omega^n}F(j\omega)$$
-
-### Time Integration
-
-If $F(j\omega)$ is the Fourier transform of $f(t)$
-
-$$\int_{-\infty}^{t}f(\tau)d\tau \Leftrightarrow \frac{F(j\omega)}{j\omega}+\pi F(0)\delta(\omega)$$
-
-### Conjugate Time and Frequency Functions
-
-If $F(j\omega)$ is the Fourier transform of the complex function $f(t)$
-
-$$f^*(t)\Leftrightarrow F^*(-j\omega)$$
-
-### Time Convolution
-
-$$f_1(t)*f_2(t) \Leftrightarrow F_1(j\omega) F_2(j\omega)$$
-
-That is convolution in the time domain corresponds to multiplication in the frequency domain.
-
-(Compare with Laplace Transform)
-
-### Frequency Convolution
-
-$$f_1(t)f_2(t) \Leftrightarrow \frac{1}{2\pi} F_1(j\omega)*F_2(j\omega)$$
-
-That is, multiplication in the time domain corresponds to convolution in the frequency domain.
-
-This also has application to amplitude modulation as shown in Boulet pp 182&mdash;183.
-
-
-### Area under $f(t)$
-
-$$\int_{-\infty}^{\infty} f(t)\,dt = F(0)$$
-
-That is, the area under a time function $f(t)$ is equal to the value of the Fourier transform of $f(t)$ evaluated at $\omega = 0$ rad/s.
-
-### Area under $F(j\omega)$
-
-$$f(0) = \frac{1}{2\pi}\int_{-\infty}^{\infty} F(j\omega)\,d\omega$$
-
-That is, the value of a time function, $f(t)$, evaluated at $t=0$ is equal to the area under its Fourier transform $F(j\omega)$ times $1/2\pi$.
-
-### Energy-Density Spectrum
-
-Recalling that the power spectrum of a periodic signal is defined as the squared magnitudes of its Fourier series coefficients. A plot of the power spectrum of a signal gives us an idea of the power at different frequencies (harmonics).
-
-By analogy, the *energy-density spectrum* of an aperiodic signal is defined as the magnitude squared of its spectrum; that is 
-
-$$|F(j\omega)|^2$$
-
-is the energy-density spectrum of $f(t)$.
-
-For example
-
-$$E_{[\omega_1,\omega_2]}:=\frac{1}{2\pi}\int_{\omega_1}^{\omega_2}|F(j\omega)|^2\,d\omega.$$
-
-Note that for real signals, it is customary to include the negative frequency band as well.
-
-### Parseval's Theorem
-
-Just like the total average power of a periodic signal is equal to the sume of the powers of all the harmonics, the total energy in an aperidic signal is equal to the total energy in its sepctrum.
-
-This is the Parseval equality for Fourier transforms:
-
-$$\int_{-\infty}^{\infty}|f(t)|^2\,dt=\frac{1}{2\pi}\int_{-\infty}^{\infty}|F(j\omega)|^2\,d\omega.$$
 
 ## Table of Properites of the Fourier Transform
 
@@ -557,16 +289,6 @@ Fw = fourier(ft,omega)
 ```
 
 
-{:.output .output_stream}
-```
- 
-Fw =
- 
-2^(1/2)*pi^(1/2)*exp(-omega^2/2)
- 
-
-```
-
 
 
 {:.input_area}
@@ -574,16 +296,6 @@ Fw =
 pretty(Fw)
 ```
 
-
-{:.output .output_stream}
-```
-                    /        2 \
-                    |   omega  |
-sqrt(2) sqrt(pi) exp| - ------ |
-                    \      2   /
-
-
-```
 
 Check by computing the inverse using ifourier
 
@@ -594,75 +306,3 @@ Check by computing the inverse using ifourier
 ft = ifourier(Fw)
 ```
 
-
-{:.output .output_stream}
-```
- 
-ft =
- 
-exp(-x^2/2)
- 
-
-```
-
-See script: [ftex1.m](matlab/ftex1.m).
-
-## Summary
-
-* Fourier Transform as the Limit of a Fourier Series
-* Doing the Maths
-* Special forms of the Fourier Transform
-* Properties of the Fourier Transform
-* Computing Fourier Transforms in Matlab
-
-*Next Section*
-
-* [Fourier transform of commonly occuring signals](../2/ft2.ipynb)
-
-## Worked Solutions
-
-### Let's complete the analysis in the notebook
-
-$$C_k = \frac{1}{T}\int_{-t_0}^{t_0} e^{-jk\omega t}\,dt = -\frac{1}{jk\omega_0 T}\left[e^{-jk\omega_0 t}\right]_{-t_0}^{t_0} = -\frac{1}{jk\omega_0 T}\left(e^{-jk\omega_0 t_0}-e^{jk\omega_0 t_0}\right)$$
-
-$$C_k = \frac{2}{k\omega_0 T}\left(\frac{e^{jk\omega_0 t_0}-e^{-jk\omega_0 t_0}}{2j}\right) = 2\frac{\sin(k\omega_0 t_0)}{k\omega_0 T}$$
-
-and since $\omega = 2\pi/T$
-
-$$C_k = \frac{\sin\left(\pi k\frac{2t_0}{T}\right)}{k\pi } = \frac{T}{2t_0}{\mathop{\rm sinc}}\left(\pi k\frac{2t_0}{T}\right)$$
-
-
-### Solution 1
-
-$$\cos\omega_c t = \frac{e^{j\omega_c t}+e^{-j\omega_c t}}{2}$$
-
-it follows from the *frequency shifting* property that
-
-$$f(t)\cos\omega_c t \Leftrightarrow \frac{F(j\omega-j\omega_c)+F(j\omega + j\omega_c)}{2}.$$
-
-Similarly
-
-$$f(t)\sin\omega_c t \Leftrightarrow \frac{F(j\omega-j\omega_c)-F(j\omega + j\omega_c)}{j2}.$$
-
-### Remarks
-
-We can also tackle this using the Frequency Convolution property. See Boulet pp 182&mdash;183.
-
-### Solution 2
-
-$$\begin{gathered}
-  \mathcal{F}\left\{ e^{-t}u_0(t) \right\} &=& \int_0^\infty  e^{-t}u_0(t) e^{ - j\omega t}\;dt \\ 
-   &=& \int_0^\infty  e^{-(1 + j\omega )t} \;dt \\ 
-   &=&  - \frac{1}{j\omega  + 1}\left[ e^{ - (1 + j\omega )t} \right]_0^\infty  =  - \frac{1}{j\omega  + 1}\left[ {0 - 1} \right] \\ 
-  F(j\omega ) &=& \frac{1}{j\omega  + 1} \\ 
-\end{gathered} $$
-
-Thus
-
-$$e^{ - t}{u_0}(t)\Leftrightarrow \frac{1}{j\omega  + 1}$$
-
-### Solution 3
-
-Use the Energy-Density function.
-
-$$E_{[10,000\pi,20,000\pi]}^r=\frac{1}{2\pi}\left[\int_{10,000\pi}^{20,000\pi}|X(j\omega)|^2\,d\omega + \frac{1}{2\pi}\int_{-20,000\pi}^{-10,000\pi}|X(j\omega)|^2\,d\omega\right] = \frac{1}{\pi}\int_{10,000\pi}^{20,000\pi}|X(j\omega)|^2\,d\omega.$$

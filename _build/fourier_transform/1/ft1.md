@@ -53,25 +53,7 @@ If we instead take a time point-of-view and let $A = 1$
 
 $$C_k = \frac{1}{T}\int_{-t_0}^{t_0} e^{-jk\omega_0 t}\,dt.$$
 
-Let's complete the analysis on the whiteboard.
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
+We'll complete the analysis on the whiteboard in class.
 
 #### The Sinc Function
 
@@ -102,7 +84,7 @@ xlabel('u')
 
 
 {:.output .output_png}
-![png](../../images/fourier_transform/1/ft1_16_0.png)
+![png](../../images/fourier_transform/1/ft1_15_0.png)
 
 
 
@@ -473,67 +455,13 @@ Compute the result of multiplying a signal $f(t)$ by a carrier waveform $\cos \o
 
 *Hint* use Euler's identity and the frequency shift property
 
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
 ### Example 2: Impulse response
 
 A system has impulse response $f(t) = e^{-t}u_0(t)$. Compute the frequency sprectrum of this system.
 
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
 ### Example 3: Energy computation
 
 An aperiodic real signal $f(t)$ has Fourier transform $F(j\omega)$. Compute the energy contained the signal between 5kHz and 10kHz.
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
 
 ## Computing Fourier Transforms in Matlab
 
