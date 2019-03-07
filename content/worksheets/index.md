@@ -24,10 +24,15 @@ This is an index to the files arranged by module week.
 
 ## Week 4
 
-* [Worksheet 8](../laplace_transform/5/worksheet8) for [Chapter 3.5: The Impulse Response and Convolution](laplace_transform/5/convolution) [[PDF](worksheet8.pdf)]
+* [Worksheet 8](../laplace_transform/5/worksheet8) for [Chapter 3.5: The Impulse Response and Convolution](../laplace_transform/5/convolution) [[PDF](worksheet8.pdf)]
 
 ## Week 5
 
-* [Worksheet 9](../fourier_series/1/worksheet9) for [Chapter 4.1: Trig. Fourier Series](fourier_series/1/trig_fseries) [[PDF](worksheet9.pdf)]
-* [Worksheet 10](../fourier_series/2/worksheet10) for [Chapter 4.2: Exponential Fourier Series](fourier_series/1/exp_fs1) [[PDF](worksheet10.pdf)]
+* [Worksheet 9](../fourier_series/1/worksheet9) for [Chapter 4.1: Trig. Fourier Series](../fourier_series/1/trig_fseries) [[PDF](worksheet9.pdf)]
+* [Worksheet 10](../fourier_series/2/worksheet10) for [Chapter 4.2: Exponential Fourier Series](../fourier_series/1/exp_fs1) [[PDF](worksheet10.pdf)]
 * [Worksheet 11](../fourier_series/3/worksheet11) for [Chapter 4.3: Line Spectra and thier Applications](../fourier_series/1/exp_fs2) [[PDF](worksheet11.pdf)]
+
+## Week 6
+
+* [Worksheet 12](../fourier_transform/1/worksheet12) for [Chapter 5.1: Defining the Fourier Transform](../fourier_transform/1/ft1) [[PDF](worksheet12)]
+* [Worksheet 13](../fourier_transform/1/worksheet13) [Chapter 5.2: Fourier transforms of commonly occuring signals](../fourier_transform/2/ft2) [[PDF](worksheet13)]
