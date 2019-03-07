@@ -75,7 +75,7 @@ $$C_k = \frac{1}{2\pi}\int_{-\pi}^{\pi} f(\Omega_0 t)e^{-jk(\Omega_0 t)}\,d(\Ome
 * What are the cosequencies of symmetry on the form of the coefficients $C_k$?
 * What function do we actually need to integrate to compute $C_k$?
 
-Solutions below.
+Practice here. Solutions at bottom of section.
 
 <pre style="border: 2px solid blue">
 
@@ -169,11 +169,7 @@ Recall pulse width = $T/w$ and plot the complex line spectra for pulse with widt
 
 {:.input_area}
 ```matlab
-open pulse_fs
-```
-
-
-``
+%%file pulse_fs.m
 function [f,omega] = pulse_fs(A,w,range)
 % PULSE_FS compute fourier series spectrum in range
 % -range:range for pulse with 
@@ -188,7 +184,14 @@ for mm = 1:length(omega)
     end
 end
 return
-``
+```
+
+
+{:.output .output_stream}
+```
+Created file '/Users/eechris/dev/eg-247-textbook/content/fourier_series/3/pulse_fs.m'.
+
+```
 
 #### w = 2
 
@@ -205,7 +208,7 @@ A = 1; w = 2;
 ```
 
 
-Plot line Spectrum and add add continuous $\mathrm{sinc}(x)/x$ envelope.
+Plot line Spectrum and add add continuous $\mathrm{sinc}(x)$ envelope.
 
 
 
@@ -224,7 +227,7 @@ hold off
 
 
 {:.output .output_png}
-![png](../../images/fourier_series/3/exp_fs2_26_0.png)
+![png](../../images/fourier_series/3/exp_fs2_25_0.png)
 
 
 
@@ -250,7 +253,7 @@ hold off
 
 
 {:.output .output_png}
-![png](../../images/fourier_series/3/exp_fs2_28_0.png)
+![png](../../images/fourier_series/3/exp_fs2_27_0.png)
 
 
 
@@ -276,7 +279,7 @@ hold off
 
 
 {:.output .output_png}
-![png](../../images/fourier_series/3/exp_fs2_30_0.png)
+![png](../../images/fourier_series/3/exp_fs2_29_0.png)
 
 
 
@@ -343,7 +346,7 @@ and as $\pi/w \to 0$ each recurrent pulse becomes a unit impulse, and the pulse 
 
 Also, recalling that
 
-$$\lim_{x\to 0} \frac{sin x}{x} = 1$$
+$$\lim_{x\to 0} \frac{\sin \pi x}{\pi x} = 1$$
 
 the coefficents reduce to
 
@@ -467,7 +470,7 @@ xlabel('\Omega_0 [rad/s]')
 
 
 {:.output .output_png}
-![png](../../images/fourier_series/3/exp_fs2_54_0.png)
+![png](../../images/fourier_series/3/exp_fs2_53_0.png)
 
 
 

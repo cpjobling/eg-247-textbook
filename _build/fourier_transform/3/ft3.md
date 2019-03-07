@@ -5,7 +5,7 @@ interact_link: content/fourier_transform/3/ft3.ipynb
 title: 'Fourier Transforms for Circuit and LTI Systems Analysis'
 prev_page:
   url: /fourier_transform/2/ft2
-  title: 'Fourier transform of commonly occuring signals'
+  title: 'Fourier transforms of commonly occuring signals'
 next_page:
   url: /fourier_transform/4/ft4
   title: 'Introduction to Filters'

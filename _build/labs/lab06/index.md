@@ -32,7 +32,7 @@ We also look at a one application of digital signals processing which is simple 
 
 ## Preparation
 
-Download and run the <a href="https://github.com/cpjobling/eg-247-textbook/blob/master/portfolio/lab01/soundex.m" target="_blank">linked script</a> to familiarise yourself with the basic tools that Matlab provides for manipulating and visualizing audio files. You will need to download a sound file and store it in the same folder then edit the script so that it loads your file. Music might be best for this initial exercise but you can use any audio file.
+Download and run the <a href="https://github.com/cpjobling/eg-247-textbook/blob/master/portfolio/lab06/soundex.m" target="_blank">linked script</a> to familiarise yourself with the basic tools that Matlab provides for manipulating and visualizing audio files. You will need to download a sound file and store it in the same folder then edit the script so that it loads your file. Music might be best for this initial exercise but you can use any audio file.
 
 You will need headphones to hear the sounds without disturbing others in class.
 

@@ -5,7 +5,7 @@ interact_link: content/fourier_transform/3/worksheet14.ipynb
 title: 'Worksheet 14 Fourier Transforms for Circuit and LTI Systems Analysis'
 prev_page:
   url: /fourier_transform/2/worksheet13
-  title: 'Worksheet 13 Fourier transform of commonly occuring signals'
+  title: 'Worksheet 13 Fourier transforms of commonly occuring signals'
 next_page:
   url: /fourier_transform/4/worksheet15
   title: 'Worksheet 15 Introduction to Filters'

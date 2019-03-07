@@ -57,6 +57,12 @@ hold off
 ```
 
 
+
+{:.output .output_png}
+![png](../../images/fourier_series/2/exp_fs1_5_0.png)
+
+
+
 You can regenerate this image generated with this Matlab script: [expon.m](expon.m).
 
 * When $a < 0$ the response is a decaying exponential (red line in plot)

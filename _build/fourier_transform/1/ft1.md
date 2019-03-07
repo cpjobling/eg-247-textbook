@@ -8,7 +8,7 @@ prev_page:
   title: 'Fourier Transform'
 next_page:
   url: /fourier_transform/2/ft2
-  title: 'Fourier transform of commonly occuring signals'
+  title: 'Fourier transforms of commonly occuring signals'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
@@ -38,30 +38,27 @@ Let $\tilde x(t)$ be the Fourier series of the rectangular pulse train shown bel
 
 ### Fourier Series
 
-In the [previous section](../../fourier_series/3/exp_fs2) we used<sup>*</sup>
+In the [previous section](../../fourier_series/3/exp_fs2) we used
 
-$$C_k = \frac{1}{2\pi}\int_{-\pi/w}^{\pi/w} Ae^{-jk(\omega_0 t)}\,d(\omega_0 t) = \frac{A}{2\pi}\int_{-\pi/w}^{\pi/w} e^{-jk(\omega_0 t)}\,d(\omega_0 t) $$
+$$C_k = \frac{1}{2\pi}\int_{-\pi/w}^{\pi/w} Ae^{-jk(\Omega_0 t)}\,d(\Omega_0 t) = \frac{A}{2\pi}\int_{-\pi/w}^{\pi/w} e^{-jk(\Omega_0 t)}\,d(\Omega_0 t) $$
 
 to compute the line spectra.
-
-<hr>
-<sup>*</sup> Note there has been a slight change of nomenclature: previously we used $\Omega_0$ and $T_0$ for what we now call  $\omega_0$ and $T$.
 
 #### From the Time Point of View
 
 If we instead take a time point-of-view and let $A = 1$
 
-$$C_k = \frac{1}{T}\int_{-t_0}^{t_0} e^{-jk\omega_0 t}\,dt.$$
+$$C_k = \frac{1}{T}\int_{-t_0}^{t_0} e^{-jk\Omega_0 t}\,dt.$$
 
 We'll complete the analysis on the whiteboard in class.
 
 #### The Sinc Function
 
-The function, $\sin(x)/x$ crops up again and again in Fourier analysis. The Fourier coefficients $C_k$ are scaled *samples* of the real continuous *normalized sinc* function defined as follows:
+The function, $\sin(\pi x)/\pi x$ crops up again and again in Fourier analysis. The Fourier coefficients $C_k$ are scaled *samples* of the real continuous *normalized sinc* function defined as follows:
 
 $$\operatorname{sinc} u: = \frac{\sin \pi u}{\pi u},\;u \in \mathbb{R}.$$
 
-The function is equal to 1 at $u=0$<sup>*</sup> and has zero crossings at $u=\pm n,\; n=1,2,3,\ldots$ as shown below.
+The function is equal to 1 at $u=0$<sup>1</sup> and has zero crossings at $u=\pm n,\; n=1,2,3,\ldots$ as shown below.
 
 #### Plot the sinc function
  
@@ -84,15 +81,15 @@ xlabel('u')
 
 
 {:.output .output_png}
-![png](../../images/fourier_transform/1/ft1_15_0.png)
+![png](../../images/fourier_transform/1/ft1_14_0.png)
 
 
 
 Matlab code to reproduce this plot: [sinc_plot.m](sinc_plot.m).
 
-**Note** $sin(\pi u)/(\pi u)$ is undefined at $u = 0$. To compute its value we need to take the limit
+1. **Note** $sin(\pi u)/(\pi u)$ is undefined at $u = 0$. To compute its value we need to take the limit
 
-$$\lim_{u\to 0} \frac{\sin(\pi u)}{u}$$ 
+$$\lim_{u\to 0} \frac{\sin(\pi u)}{\pi u}$$ 
 
 which can be shown to be 1. I leave the discovery of the proof to you and the internet.
 
@@ -113,9 +110,9 @@ Let us normalize the spectral coefficients of $\tilde x(t)$ by mutiplying them b
 
 $$T C_k = T\eta \operatorname{sinc}\left(k\eta\right)=2t_0\operatorname{sinc}\left(k\frac{2t_0}{T}\right)$$
 
-Then the normalized coefficents $T C_k$ of the rectangular wave a sinc envelope with constant amplitude at the origin equal to $2t_0$, and a zero crossing at fixed frequency $\pi/t_0$ rad/s, both independent of T.
+Then the normalized coefficents $T C_k$ of the rectangular wave is a sinc envelope with constant amplitude at the origin equal to $2t_0$, and a zero crossing at fixed frequency $\pi/t_0$ rad/s, both independent of $T$.
 
-Plots follow (use [duty_cycle.m](duty_cycle.m) to reproduce).
+Plots follow (use [duty_cycle.mlx](duty_cycle.mlx) to reproduce).
 
 #### Durty cycle 50%
 
@@ -145,9 +142,9 @@ Plots follow (use [duty_cycle.m](duty_cycle.m) to reproduce).
 
 Fourier series coefficients for the rectangular wave are computed using:
 
-$$C_k = \frac{1}{T}\int_{-t_0}^{t_0} \tilde{x}(t) e^{-jk(\omega_0 t)}\,dt $$
+$$C_k = \frac{1}{T}\int_{-t_0}^{t_0} \tilde{x}(t) e^{-jk(\Omega_0 t)}\,dt $$
 
-where $\omega_0 = 2\pi/T$ as usual.
+where $\Omega_0 = 2\pi/T$ as usual.
 
 Now define a signal $x(t)$ as a signal equal to $\tilde{x}(t)$ over one period and zero elsewhere.
 
@@ -167,29 +164,29 @@ $$X(j\omega):= \int_{-\infty}^{+\infty}x(t)e^{-j\omega t} dt = \int_{-t_0}^{+t_0
 
 The coefficients $C_k$ are therefore samples of the continuous envelope $X(j\omega)$:
 
-$$C_k = \frac{1}{T}X(jk\omega_0).$$
+$$C_k = \frac{1}{T}X(jk\Omega_0).$$
 
 #### Back to the periodic signal
 
 $\tilde{x}(t)$ has the Fourier series representation
 
-$$\tilde{x}(t) = \sum_{k=-\infty}^{\infty}\frac{1}{T}X(jk\omega_0)e^{jk\omega_0 t}.$$
+$$\tilde{x}(t) = \sum_{k=-\infty}^{\infty}\frac{1}{T}X(jk\Omega_0)e^{jk\Omega_0 t}.$$
 
-or equivalently, since $\omega_0 = 2\pi/T$:
+or equivalently, since $\Omega_0 = 2\pi/T$:
 
-$$\tilde{x}(t) = \frac{1}{2\pi} \sum_{k=-\infty}^{\infty}X(jk\omega_0)e^{jk\omega_0 t}\omega_0.$$
+$$\tilde{x}(t) = \frac{1}{2\pi} \sum_{k=-\infty}^{\infty}X(jk\Omega_0)e^{jk\Omega_0 t}\Omega_0.$$
 
 
 #### Now take the limits
 
 At the limit, as $T\to \infty$, in 
 
-$$\tilde{x}(t) = \frac{1}{2\pi} \sum_{k=-\infty}^{\infty} X(jk\omega_0)e^{jk\omega_0 t}\omega_0.$$
+$$\tilde{x}(t) = \frac{1}{2\pi} \sum_{k=-\infty}^{\infty} X(jk\Omega_0)e^{jk\Omega_0 t}\Omega_0.$$
 
 We get
 
-* $\omega_0 \to d\omega$ &ndash; the fundamental frequency becomes infinitesimally small.
-* $k\omega_0 \to \omega$ &ndash; harmonic frequencies get so close together they become a continuum.
+* $\Omega_0 \to d\omega$ &ndash; the fundamental frequency becomes infinitesimally small.
+* $k\Omega_0 \to \omega$ &ndash; harmonic frequencies get so close together they become a continuum.
 * The summation becomes an integral.
 * $\tilde{x}(t) \to x(t)$ &ndash; the periodic signal tends to the aperiodic signal.
 
@@ -465,13 +462,13 @@ An aperiodic real signal $f(t)$ has Fourier transform $F(j\omega)$. Compute the 
 
 ## Computing Fourier Transforms in Matlab
 
-MATLAB has the built-in **fourier** and **ifourier** functions that can be used to compute the Fourier transform and its inverse. We will explore some of thes in the next lab.
+MATLAB has the built-in **fourier** and **ifourier** functions that can be used to compute the Fourier transform and its inverse. 
 
 For now, here's an example:
 
 ### Example
 
-Use Matlab to confirm the Fourier transform pair:
+Use MATLAB to confirm the Fourier transform pair:
     
 $$e^{-\frac{1}{2}t^2}\Leftrightarrow \sqrt{2\pi}e^{-\frac{1}{2}\omega^2}$$
 
@@ -519,7 +516,7 @@ Check by computing the inverse using ifourier
 
 {:.input_area}
 ```matlab
-ft = ifourier(Fw)
+ft = ifourier(Fw,t)
 ```
 
 
@@ -528,7 +525,7 @@ ft = ifourier(Fw)
  
 ft =
  
-exp(-x^2/2)
+exp(-t^2/2)
  
 
 ```
@@ -557,7 +554,7 @@ $$C_k = \frac{2}{k\omega_0 T}\left(\frac{e^{jk\omega_0 t_0}-e^{-jk\omega_0 t_0}}
 
 and since $\omega = 2\pi/T$
 
-$$C_k = \frac{\sin\left(\pi k\frac{2t_0}{T}\right)}{k\pi } = \frac{T}{2t_0}{\mathop{\rm sinc}}\left(\pi k\frac{2t_0}{T}\right)$$
+$$C_k = \frac{\sin\left(\pi k\frac{2t_0}{T}\right)}{k\pi } = \frac{T}{2t_0}{\mathop{\rm sinc}}\left( k\frac{2t_0}{T}\right)$$
 
 
 ### Solution 1
@@ -578,12 +575,12 @@ We can also tackle this using the Frequency Convolution property. See Boulet pp 
 
 ### Solution 2
 
-$$\begin{gathered}
+$$\begin{eqnarray*}
   \mathcal{F}\left\{ e^{-t}u_0(t) \right\} &=& \int_0^\infty  e^{-t}u_0(t) e^{ - j\omega t}\;dt \\ 
    &=& \int_0^\infty  e^{-(1 + j\omega )t} \;dt \\ 
    &=&  - \frac{1}{j\omega  + 1}\left[ e^{ - (1 + j\omega )t} \right]_0^\infty  =  - \frac{1}{j\omega  + 1}\left[ {0 - 1} \right] \\ 
   F(j\omega ) &=& \frac{1}{j\omega  + 1} \\ 
-\end{gathered} $$
+\end{eqnarray*} $$
 
 Thus
 

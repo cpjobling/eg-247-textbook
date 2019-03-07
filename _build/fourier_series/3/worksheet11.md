@@ -133,7 +133,7 @@ Integrate for $k\ne 0$
 
 * Recall pulse width = $T/w$
 
-We will use the provided MATLAB script [sinc.mlx](sinc.mlx) to explore these in class.
+We will use the provided MATLAB script [sinc.mlx](sinc.mlx) to explore these in class. You will also need [pulse_fs.m](pulse_fs.m). See Teams/OneNote for copies of these files.
 
 #### w = 2
 

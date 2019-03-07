@@ -2,7 +2,7 @@
 redirect_from:
   - "/fourier-transform/2/ft2"
 interact_link: content/fourier_transform/2/ft2.ipynb
-title: 'Fourier transform of commonly occuring signals'
+title: 'Fourier transforms of commonly occuring signals'
 prev_page:
   url: /fourier_transform/1/ft1
   title: 'Defining the Fourier Transform'
@@ -12,7 +12,7 @@ next_page:
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
-# Fourier transform of commonly occuring signals
+# Fourier transforms of commonly occurring signals
 
 ## Note on Notation
 
@@ -52,7 +52,7 @@ Last time we derived the Fourier Transform by evaluating what would happen when 
 
 In the signals and systems context, the Fourier Transform is used to convert a function of time $f(t)$ to a function of radian frequency $F(\omega)$:
 
-$$\mathcal{F}\left\{f(t)\right\} = \int_{-\infty}^{\infty} f(e)e^{-j\omega t}\,dt = F(\omega).$$
+$$\mathcal{F}\left\{f(t)\right\} = \int_{-\infty}^{\infty} f(t)e^{-j\omega t}\,dt = F(\omega).$$
 
 ### The Inverse Fourier Transform
 
@@ -94,11 +94,11 @@ This table is adapted from Table 8.9 of Karris. See also: [Wikibooks: Engineerin
 
 ## Some Selected Fourier Transforms
 
-### Relationship between f(t) and F(omega)
+### Relationship between $f(t)$ and $F(\omega)$
 
 In most of the work we will do in this course, and in practice, the *signals* that we use with the Fourier transform will be a real continuous aperiodic functions of time that are zero when $t = 0$.
 
-The Fourier transforms of such a signals will be complex continous function of frequency which have real and imaginary parts and will exist at both positive and negative values of $\omega$.
+The Fourier transforms of such signals will be complex continous functions of frequency which have real and imaginary parts and will exist at both positive and negative values of $\omega$.
 
 It is often most convenient to deal with the transformed "spectrum" by considering the magnitude and phase and we will therefore often plot $F(\omega)$ on two separate graphs as *magnitude* $|F(\omega)|$ and *phase* $\angle F(\omega)$ (where phase is measured in radians) plotted against frequency $\omega \in [-\infty,\infty]$ (in radians/second).
 
@@ -106,7 +106,7 @@ We most often represent the *system* by its so-called *frequency response* and w
 
 As for the Laplace transform, this is more conveniently determined by exploiting the *time convolution property*. That is by performing a Fourier transform of the signal, multiplying it by the system's frequency response and then inverse Fourier transforming the result.
 
-Have these ideas in mind as we go through the examples in the rest of this session.
+Have these ideas in mind as we go through the examples in the rest of this section.
 
 ### The Dirac Delta
 
@@ -298,7 +298,7 @@ Hint: Euler's formula plus solution to example 2.
 
 **Important note**: the equivalent example in Karris (Section 8.4.9 Eq. 8.75 pp 8-23&mdash;8-24) is wrong! 
 
-See worked solution on Blackboard for the corrected proof.
+See [worked solution](../solutions/ft2-ex3.pdf) for the corrected proof.
 
 <pre style="border: 2px solid blue">
 
@@ -320,7 +320,7 @@ See worked solution on Blackboard for the corrected proof.
 
 ### Example 7
 
-Use the result of Example 3 to determine the Fourier transform of $\cos\omega_0 t\; u_0(t)$.
+Use the result of Example 6 to determine the Fourier transform of $\cos\omega_0 t\; u_0(t)$.
 
 <pre style="border: 2px solid blue">
 
@@ -376,6 +376,10 @@ $$\mathcal{F}\left\{e^{-at}u_0(t)\right\}$$
 
 </pre>
 
+#### Answer
+
+$$\frac{1}{j\omega+1}$$
+
 Boulet gives the graph of this function.
 
 ### Example 9: Complex Pole Pair  cos term
@@ -405,6 +409,10 @@ $$\mathcal{F}\left\{e^{-at}\cos\omega_0 t\;u_0(t)\right\}$$
 
 
 </pre>
+
+#### Answer
+
+$$\frac{j\omega + a}{(j\omega+a)^2 + \omega_0^2}$$
 
 Boulet gives the graph of this function.
 

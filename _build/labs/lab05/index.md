@@ -31,7 +31,7 @@ The Simulink model used in Lab Exercise 16 was developed by Third Year EEE Stude
 
 ## Preparation
 
-Before we start today's lab you will need to download and install the **Fourier series demo app**, that was demonstrated in class, from Georgia Tech's [Educational Matlab GUIs](http://dspfirst.gatech.edu/matlab) page.
+Before we start today's lab you will need to download and install the **Fourier series demo app**, that was demonstrated in class, from Georgia Tech's [Educational Matlab GUIs](https://dspfirst.gatech.edu/matlab) page.
 
 To install, visit the page and scroll down to find the Fourier Series Demo app (see image below)
 ![Fourier Series Demo App](fsdemo.png)

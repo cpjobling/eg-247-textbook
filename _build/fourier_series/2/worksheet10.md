@@ -164,7 +164,7 @@ By a similar argument, all odd functions have no cosine terms so the $a_k$ coeff
 
 ### Half-wave symmetry
 
-If there is *half-wave symmetry*, $C_k = 0$ for $n$ even.
+If there is *half-wave symmetry*, $C_k = 0$ for $k$ even.
 
 ### No symmetry
 

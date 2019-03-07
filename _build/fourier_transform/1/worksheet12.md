@@ -8,7 +8,7 @@ prev_page:
   title: 'Worksheet 11 Line Spectra and their Applications'
 next_page:
   url: /fourier_transform/2/worksheet13
-  title: 'Worksheet 13 Fourier transform of commonly occuring signals'
+  title: 'Worksheet 13 Fourier transforms of commonly occuring signals'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
@@ -32,24 +32,36 @@ Let $\tilde x(t)$ be the Fourier series of the rectangular pulse train shown bel
 
 ### Fourier Series
 
-In the [previous section](../../fourier_series/3/exp_fs2) we used<sup>*</sup>
+In the [previous section](../../fourier_series/3/exp_fs2) we used
 
-$$C_k = \frac{1}{2\pi}\int_{-\pi/w}^{\pi/w} Ae^{-jk(\omega_0 t)}\,d(\omega_0 t) = \frac{A}{2\pi}\int_{-\pi/w}^{\pi/w} e^{-jk(\omega_0 t)}\,d(\omega_0 t) $$
+$$C_k = \frac{1}{2\pi}\int_{-\pi/w}^{\pi/w} Ae^{-jk(\Omega_0 t)}\,d(\Omega_0 t) = \frac{A}{2\pi}\int_{-\pi/w}^{\pi/w} e^{-jk(\Omega_0 t)}\,d(\Omega_0 t) $$
 
 to compute the line spectra.
-
-<hr>
-<sup>*</sup> Note there has been a slight change of nomenclature: previously we used $\Omega_0$ and $T_0$ for what we now call  $\omega_0$ and $T$.
 
 #### From the Time Point of View
 
 If we instead take a time point-of-view and let $A = 1$
 
-$$C_k = \frac{1}{T}\int_{-t_0}^{t_0} e^{-jk\omega_0 t}\,dt.$$
+$$C_k = \frac{1}{T}\int_{-t_0}^{t_0} e^{-jk\Omega_0 t}\,dt.$$
 
-Let's complete the analysis on the whiteboard.
+Let's complete the analysis in the whiteboard.
 
 <pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -69,11 +81,11 @@ Let's complete the analysis on the whiteboard.
 
 #### The Sinc Function
 
-The function, $\sin(x)/x$ crops up again and again in Fourier analysis. The Fourier coefficients $C_k$ are scaled *samples* of the real continuous *normalized sinc* function defined as follows:
+The function, $\sin(\pi x)/\pi x$ crops up again and again in Fourier analysis. The Fourier coefficients $C_k$ are scaled *samples* of the real continuous *normalized sinc* function defined as follows:
 
 $$\operatorname{sinc} u: = \frac{\sin \pi u}{\pi u},\;u \in \mathbb{R}.$$
 
-The function is equal to 1 at $u=0$<sup>*</sup> and has zero crossings at $u=\pm n,\; n=1,2,3,\ldots$ as shown below.
+The function is equal to 1 at $u=0$<sup>1</sup> and has zero crossings at $u=\pm n,\; n=1,2,3,\ldots$ as shown below.
 
 #### Plot the sinc function
  
@@ -111,7 +123,7 @@ Let us normalize the spectral coefficients of $\tilde x(t)$ by mutiplying them b
 
 $$T C_k = T\eta \operatorname{sinc}\left(k\eta\right)=2t_0\operatorname{sinc}\left(k\frac{2t_0}{T}\right)$$
 
-Then the normalized coefficents $T C_k$ of the rectangular wave a sinc envelope with constant amplitude at the origin equal to $2t_0$, and a zero crossing at fixed frequency $\pi/t_0$ rad/s, both independent of T.
+Then the normalized coefficents $T C_k$ of the rectangular wave is a sinc envelope with constant amplitude at the origin equal to $2t_0$, and a zero crossing at fixed frequency $\pi/t_0$ rad/s, both independent of $T$.
 
 
 
@@ -120,6 +132,18 @@ Then the normalized coefficents $T C_k$ of the rectangular wave a sinc envelope 
 open duty_cycle
 ```
 
+
+**Demo**
+
+Run duty_cycle with values of:
+
+* 50% ($\eta = 1/2$)
+
+* 25% ($\eta = ?$)
+
+* 12.5% ($\eta = ?$)
+
+* 5% ($\eta = ?$)
 
 #### Comments
 
