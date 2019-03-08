@@ -15,13 +15,13 @@ function [a0, ak, bk, w] = TrigFourierSeries(ft, T0, k_max)
  
 syms t 
  
-[Ck, w] = FourierSeries(ft, T0, k_max)
+[Ck, w] = FourierSeries(ft, T0, k_max);
 zero_index = floor(length(Ck)/2)+1;
 
 a0 = Ck(zero_index)/2
 for k = 1:k_max
-  ak(k) = Ck(zero_index + k) + Ck(zero_index - k)
-  bk(k) = j*(Ck(zero_index + k) - Ck(zero_index - k))
+  ak(k) = Ck(zero_index + k) + Ck(zero_index - k);
+  bk(k) = j*(Ck(zero_index + k) - Ck(zero_index - k));
   % angular frequency 
   w(k) = k*2*pi/T0;
 end
