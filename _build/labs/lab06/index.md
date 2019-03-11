@@ -17,7 +17,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 ### Other formats
 
-This document is available in [HTML](https://cpjobling.github.io/eg-247-textbook/labs/lab01/index) format for online viewing and as [PDF](https://cpjobling.github.io/eg-247-textbook/labs/lab01/lab01.pdf) for printing.
+This document is available in [HTML](https://cpjobling.github.io/eg-247-textbook/labs/lab06/index) format for online viewing and as [PDF](https://cpjobling.github.io/eg-247-textbook/labs/lab06/lab06.pdf) for printing.
 
 ### Acknowledgement
 
@@ -139,26 +139,25 @@ In this lab exercise, we explore how to use simple tones to compose a segment of
 
 Musical notes are arranged in groups of twelve notes called octaves. The notes that we'll be using for Beethoven's Fifth are in the octave containing frequencies from 220 Hz to 440 Hz. The twelve notes in each octave are logarithmically spaced in frequency, with each note being of a frequency 2<sup>1/12</sup> times the frequency of the note of lower frequency. Thus, a 1-octave pitch shift corresponds to a doubling of the frequencies of the notes in the original octave. Table 1 shows the ordering of notes in the octave to be used to synthesize the opening of Beethoven's fifth, as well as the fundamental frequencies for these notes. Note the notes without subscripts, correspond to the white keys on a piano. The notes with subscripts - called respective sharp (♯) and flat (♭) - represent the black keys.
 
-<table>
-<thead>
-<tr><td>Number</td>	<td>Note</td>	<td>Frequency (Hz)</td>	<td>Actual frequency (Hz)</td></tr>
-</thead>
-<tbody>
-<tr><td>1</td><td>A</td><td>220</td><td>220</td></tr>
-  <tr><td>2</td><td>A<sup>♯</sup>,B<sup>♭</sup></td><td>220 * 2<sup>1/12</sup></td><td>&nbsp;</td></tr>
-<tr><td>3</td><td>B</td><td>220 * 2<sup>2/12</sup></td><td>&nbsp;</td></tr>
-<tr><td>4</td><td>Middle C</td><td>220 * 2<sup>3/12</sup></td><td>&nbsp;</td></tr>
-<tr><td>5</td><td>C<sup>♯</sup>,D<sup>♭</sup></td><td>220 * 2<sup>4/12</sup></td><td>&nbsp;</td></tr>
-<tr><td>6</td><td>D</td><td>220 * 2<sup>5/12</sup></td><td>&nbsp;</td></tr>
-<tr><td>7</td><td>D<sup>♯</sup>,E<sup>♭</sup></td><td>220 * 2<sup>6/12</sup></td><td>&nbsp;</td></tr>
-<tr><td>8</td><td>E</td><td>220 * 2<sup>7/12</sup></td><td>&nbsp;</td></tr>
-<tr><td>9</td><td>F</td><td>220 * 2<sup>8/12</sup></td><td>&nbsp;</td></tr>
-<tr><td>10</td><td>F<sup>♯</sup>,G<sup>♭</sup></td><td>220 * 2<sup>9/12</sup></td><td>&nbsp;</td></tr>
-<tr><td>11</td><td>G</td><td>220 * 2<sup>10/12</sup></td><td>&nbsp;</td></tr>
-<tr><td>12</td><td>G<sup>♯</sup>,A<sup>♭</sup></td><td>220 * 2<sup>11/12</sup></td><td>&nbsp;</td></tr>
-    </tbody>
-</table>
-Table 1: Notes in the 220-440 Hz Octave
+**Table 1: Notes in the 220-440 Hz Octave**
+
+
+| Number | Note | Frequency (Hz) | Actual frequency (Hz) |
+|--------|------|----------------|-----------------------
+| 1      | A    |  220           | 220                   |
+| 2      | A<sup>♯</sup>,B<sup>♭</sup> | 220 * 2<sup>1/12</sup> | &nbsp; |
+| 3      | B | 220 * 2<sup>2/12</sup> | &nbsp; |
+| 4      | Middle C | 220 * 2<sup>3/12</sup> | &nbsp; |
+| 5      | C<sup>♯</sup>,D<sup>♭</sup> | 220 * 2<sup>4/12</sup> | &nbsp; |
+| 6      | D | 220 * 2<sup>5/12</sup> | &nbsp; |
+| 7      | D<sup>♯</sup>,E<sup>♭</sup> | 220 * 2<sup>6/12</sup> | &nbsp; |
+| 8      | E | 220 * 2<sup>7/12</sup> | &nbsp; |
+| 9      | F | 220 * 2<sup>8/12</sup> | &nbsp; |
+| 10     | F<sup>♯</sup>,G<sup>♭</sup> | 220 * 2<sup>9/12</sup> | &nbsp; |
+| 11     | G | 220 * 2<sup>10/12</sup></td><td>&nbsp; |
+| 12     | G<sup>♯</sup>,A<sup>♭</sup> | 220 * 2<sup>11/12</sup> | &nbsp; |
+
+
 
 You should copy this table into your OneNote notebook page for this lab and use MATLAB or a calculator to complete the table entries.
 
@@ -231,4 +230,3 @@ The deadline for claims and submission is **Midnight, 29th March**.
 ----
 
 * If you fork my repo, you should add my master repository to your upstream so that you can regularly pull and merge my updates. There's still a lot of files to be added! This [GitHub help file](https://help.github.com/articles/fork-a-repo) explains the procedure you would need to follow.
-
