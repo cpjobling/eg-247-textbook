@@ -27,9 +27,9 @@
   "headline":
     "Lab 6 - Sounds and Sampling",
   "datePublished":
-    "2019-03-08T14:09:36+00:00",
+    "2019-03-11T07:47:21+00:00",
   "dateModified":
-    "2019-03-08T14:09:36+00:00",
+    "2019-03-11T07:47:21+00:00",
   "description":
     "Lab 6: Sounds and Sampling",
   "author": {
@@ -1401,8 +1401,13 @@ document.addEventListener('turbolinks:load', updateInteractLink)
   <li><a href="#minproject-3--composing-music-in-matlab-1-mark">Minproject 3:  Composing Music in MATLAB (1 mark)</a>
     <ul>
       <li><a href="#background">Background</a></li>
+      <li><a href="#note-frequency">Note Frequency</a></li>
+      <li><a href="#note-durations">Note Durations</a></li>
+      <li><a href="#creating-music-in-matlab">Creating Music in Matlab</a></li>
     </ul>
   </li>
+  <li><a href="#what-to-turn-in">What to turn in</a></li>
+  <li><a href="#claim">Claim</a></li>
 </ul>
     </nav>
   </aside>
@@ -1571,82 +1576,77 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 <tr><td>10</td><td>F<sup>♯</sup>,G<sup>♭</sup></td><td>220 * 2<sup>9/12</sup></td><td>&nbsp;</td></tr>
 <tr><td>11</td><td>G</td><td>220 * 2<sup>10/12</sup></td><td>&nbsp;</td></tr>
 <tr><td>12</td><td>G<sup>♯</sup>,A<sup>♭</sup></td><td>220 * 2<sup>11/12</sup></td><td>&nbsp;</td></tr>
-&lt;/table&gt;
-Table 1: Notes in the 220-440 Hz Octave
+    </tbody>
+</table>
+<p>Table 1: Notes in the 220-440 Hz Octave</p>
 
-You should copy this table into your OneNote notebook page for this lab and use MATLAB or a calculator to complete the table entries.
+<p>You should copy this table into your OneNote notebook page for this lab and use MATLAB or a calculator to complete the table entries.</p>
 
-A musical score is essentially a plot of frequencies (notes, on the vertical scale for you musician types) versus time (measures, on the horizontal scale). The musical sequence of notes to the piece you will synthesize is given in Figure 1. The following discussion identifies how musical scores can be mapped to tones of specific pitch and duration.
+<p>A musical score is essentially a plot of frequencies (notes, on the vertical scale for you musician types) versus time (measures, on the horizontal scale). The musical sequence of notes to the piece you will synthesize is given in Figure 1. The following discussion identifies how musical scores can be mapped to tones of specific pitch and duration.</p>
 
-### Note Frequency
+<h3 id="note-frequency">Note Frequency</h3>
 
-In the simplest case, each note may be represented by a burst of a sinusoid followed by a shorter period of silence (a pause). The pauses allow us to distinguish between separate notes of the same pitch. The horizontal lines in Figure 1 represent the notes E, G, B, D, F from the bottom to the top. The spaces between the lines are used to represent the notes F, A, C, and E, again from the bottom to the top. Note that A-G only yields seven notes; the additional notes are due to changes in pitch called sharps (denoted by the symbol ♯) or flats (denoted by the symbol ♭) that follows a given note. A sharp increases the pitch by 2<sup>1/12</sup> and flat decreases the pitch by 2<sup>1/12</sup>.
+<p>In the simplest case, each note may be represented by a burst of a sinusoid followed by a shorter period of silence (a pause). The pauses allow us to distinguish between separate notes of the same pitch. The horizontal lines in Figure 1 represent the notes E, G, B, D, F from the bottom to the top. The spaces between the lines are used to represent the notes F, A, C, and E, again from the bottom to the top. Note that A-G only yields seven notes; the additional notes are due to changes in pitch called sharps (denoted by the symbol ♯) or flats (denoted by the symbol ♭) that follows a given note. A sharp increases the pitch by 2<sup>1/12</sup> and flat decreases the pitch by 2<sup>1/12</sup>.</p>
 
+<p><img src="music.png" alt="Musical Score for Beethoven's Fifth" />
+Figure 1: Musical Score for Beethoven’s Fifth</p>
 
-![Musical Score for Beethoven's Fifth](music.png)
-Figure 1: Musical Score for Beethoven's Fifth
+<p>In the musical score in Figure 1, the first three eighth notes are all note G. The first half note is an E♭ due to the inclusion of the three flat symbols at the left of the score, since we are in the key of C-minor. After the half note, the symbol is a rest of length equal to the duration of an eighth note. The next three eighth notes are all F, and the final half note is a D. You can get the fundamental frequencies for these notes from Table 1.</p>
 
-In the musical score in Figure 1, the first three eighth notes are all note G. The first half note is an E♭ due to the inclusion of the three flat symbols at the left of the score, since we are in the key of C-minor. After the half note, the symbol is a rest of length equal to the duration of an eighth note. The next three eighth notes are all F, and the final half note is a D. You can get the fundamental frequencies for these notes from Table 1.
+<h3 id="note-durations">Note Durations</h3>
 
-### Note Durations
+<p>The duration of each note burst is determined by whether the note is a whole note, half note, quarter note, eight note, etc. Obviously, a quarter note has twice the duration of an eighth note, and so on. So your half notes should be four times the duration of your eighth notes. The short pause you use to follow each note should be of the same duration regardless of the length of the note.</p>
 
-The duration of each note burst is determined by whether the note is a whole note, half note, quarter note, eight note, etc. Obviously, a quarter note has twice the duration of an eighth note, and so on. So your half notes should be four times the duration of your eighth notes. The short pause you use to follow each note should be of the same duration regardless of the length of the note.
+<h3 id="creating-music-in-matlab">Creating Music in Matlab</h3>
 
-### Creating Music in Matlab
+<p>This section of the lab will teach you how to create music using different tones created in Matlab.</p>
 
-This section of the lab will teach you how to create music using different tones created in Matlab.
+<p>First we are going to code a sine wave of amplitude A = 1, at an audio frequency of 220 * 7/12  Hz (which corresponds to E<sup>♭</sup>) which plays for an eighth note (0.125 seconds).</p>
 
-First we are going to code a sine wave of amplitude A = 1, at an audio frequency of 220 * 7/12  Hz (which corresponds to E<sup>♭</sup>) which plays for an eighth note (0.125 seconds).
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Fs</span> <span class="o">=</span> <span class="mi">8000</span><span class="p">;</span>
+<span class="n">Ts</span> <span class="o">=</span> <span class="mi">1</span><span class="p">/</span><span class="n">Fs</span><span class="p">;</span>
+<span class="n">Eflat</span> <span class="o">=</span> <span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="mi">220</span> <span class="o">*</span> <span class="mi">2</span><span class="o">^</span><span class="p">(</span><span class="mi">6</span><span class="p">/</span><span class="mi">12</span><span class="p">)</span> <span class="o">.*</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">Ts</span><span class="p">:</span><span class="mf">0.125</span><span class="p">]);</span>
+<span class="nb">sound</span><span class="p">(</span><span class="n">Eflat</span><span class="p">);</span>
+</code></pre></div></div>
 
-```matlab
-Fs = 8000;
-Ts = 1/Fs;
-Eflat = sin(2*pi*220 * 2^(6/12) .*[0:Ts:0.125]);
-sound(Eflat);
-```
+<p>This vector <code class="highlighter-rouge">Eflat</code> now contains samples of the sine wave from t = 0s to t = 0.125s, in samples that are spaced <code class="highlighter-rouge">Ts</code> seconds apart. Note that this sampling interval corresponds to a sampling frequency of 8 kHz (1/Ts = fs) and Ts will be 0.125 ms. This is standard for voice grade audio channels.</p>
 
-This vector `Eflat` now contains samples of the sine wave from t = 0s to t = 0.125s, in samples that are spaced `Ts` seconds apart. Note that this sampling interval corresponds to a sampling frequency of 8 kHz (1/Ts = fs) and Ts will be 0.125 ms. This is standard for voice grade audio channels.
+<p>To create a pause use the zeros function:</p>
 
-To create a pause use the zeros function:
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">pause</span> <span class="o">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="n">Ts</span><span class="p">:</span><span class="nb">time</span><span class="p">));</span>
+</code></pre></div></div>
+<p>For example to create an eighth note pause at the start of the tune:</p>
 
-```matlab
-pause = zeros(1,length(0:Ts:time));
-```
-For example to create an eighth note pause at the start of the tune:
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pause8th</span> <span class="o">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="n">Ts</span><span class="p">:</span><span class="mf">0.125</span><span class="p">));</span>
+</code></pre></div></div>
 
-```matlab
-pause8th = zeros(1,length(0:Ts:0.125));
-```
+<p>Now to write this pause and first note sound to a sound file we use the following command:</p>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">audiowrite</span><span class="p">(</span><span class="s1">'first_note.wav'</span><span class="p">,[</span><span class="n">pause8th</span><span class="p">,</span><span class="n">Eflat</span><span class="p">],</span><span class="n">Fs</span><span class="p">);</span>
+</code></pre></div></div>
+<p>To play the sound, use the <code class="highlighter-rouge">sound()</code> function.</p>
 
-Now to write this pause and first note sound to a sound file we use the following command:
-```matlab
-audiowrite('first_note.wav',[pause8th,Eflat],Fs);
-```
-To play the sound, use the `sound()` function.
+<p>Now you can complete the opening phrase of Beethoven’s fifth by adding additional notes and pauses of the correct length.</p>
 
-Now you can complete the opening phrase of Beethoven's fifth by adding additional notes and pauses of the correct length.
+<p>Save the commands you use to create, play and save your version of Beethoven’s Fifth in a MATLAB mlx-file as <code class="highlighter-rouge">beethoven.mlx</code> and add this to your copy of this lab script along with the sound file.</p>
 
-Save the commands you use to create, play and save your version of Beethoven's Fifth in a MATLAB mlx-file as `beethoven.mlx` and add this to your copy of this lab script along with the sound file.
+<h2 id="what-to-turn-in">What to turn in</h2>
 
+<p>You should attach all the scripts and audio files created or downloaded for this exercise to the OneNote submission page for this exercise, complete the claim form and turn-in your assignment through Teams.</p>
 
-## What to turn in
+<h2 id="claim">Claim</h2>
 
-You should attach all the scripts and audio files created or downloaded for this exercise to the OneNote submission page for this exercise, complete the claim form and turn-in your assignment through Teams.
+<p>Up to 2 marks each can be claimed for Exercises 12 and 13. There is 1 additional mark for Miniproject 3.</p>
 
+<p>See <a href="https://docs.google.com/spreadsheets/d/1U-O2hu_Th369EHp6mdc1_j_7ARew2WosE93cjsW012c/edit?usp=sharing">Assessment and Feedback: Labwork Assessment</a> for a detailed marking scheme.</p>
 
-## Claim
+<p>The deadline for claims and submission is <strong>Midnight, 29th March</strong>.</p>
 
-Up to 2 marks each can be claimed for Exercises 12 and 13. There is 1 additional mark for Miniproject 3.
+<hr />
 
-See [Assessment and Feedback: Labwork Assessment](https://docs.google.com/spreadsheets/d/1U-O2hu_Th369EHp6mdc1_j_7ARew2WosE93cjsW012c/edit?usp=sharing) for a detailed marking scheme.
+<ul>
+  <li>If you fork my repo, you should add my master repository to your upstream so that you can regularly pull and merge my updates. There’s still a lot of files to be added! This <a href="https://help.github.com/articles/fork-a-repo">GitHub help file</a> explains the procedure you would need to follow.</li>
+</ul>
 
-The deadline for claims and submission is **Midnight, 29th March**.
-
-----
-
-* If you fork my repo, you should add my master repository to your upstream so that you can regularly pull and merge my updates. There's still a lot of files to be added! This [GitHub help file](https://help.github.com/articles/fork-a-repo) explains the procedure you would need to follow.
-
-</tbody></table>
 
               <nav class="c-page__nav">
   

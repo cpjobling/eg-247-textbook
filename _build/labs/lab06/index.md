@@ -156,6 +156,7 @@ Musical notes are arranged in groups of twelve notes called octaves. The notes t
 <tr><td>10</td><td>F<sup>♯</sup>,G<sup>♭</sup></td><td>220 * 2<sup>9/12</sup></td><td>&nbsp;</td></tr>
 <tr><td>11</td><td>G</td><td>220 * 2<sup>10/12</sup></td><td>&nbsp;</td></tr>
 <tr><td>12</td><td>G<sup>♯</sup>,A<sup>♭</sup></td><td>220 * 2<sup>11/12</sup></td><td>&nbsp;</td></tr>
+    </tbody>
 </table>
 Table 1: Notes in the 220-440 Hz Octave
 
