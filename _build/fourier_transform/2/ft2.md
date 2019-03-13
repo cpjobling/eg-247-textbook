@@ -194,7 +194,7 @@ Note: $f(t)$ is real and odd. $F(\omega)$ is imaginary and odd.
 The signum function is a function whose value is equal to
 
 $$\operatorname{sgn} x = \left\{ {\begin{array}{*{20}{c}}
-  { - 1\;x < 1} \\ 
+  { - 1\;x < 0} \\ 
   {0\;x = 0} \\ 
   { + 1\;x > 0} 
 \end{array}} \right.$$

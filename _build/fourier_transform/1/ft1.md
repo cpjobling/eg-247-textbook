@@ -548,11 +548,11 @@ See script: [ftex1.m](matlab/ftex1.m).
 
 ### Let's complete the analysis in the notebook
 
-$$C_k = \frac{1}{T}\int_{-t_0}^{t_0} e^{-jk\omega t}\,dt = -\frac{1}{jk\omega_0 T}\left[e^{-jk\omega_0 t}\right]_{-t_0}^{t_0} = -\frac{1}{jk\omega_0 T}\left(e^{-jk\omega_0 t_0}-e^{jk\omega_0 t_0}\right)$$
+$$C_k = \frac{1}{T}\int_{-t_0}^{t_0} e^{-jk\omega t}\,dt = -\frac{1}{jk\Omega_0 T}\left[e^{-jk\Omega_0 t}\right]_{-t_0}^{t_0} = -\frac{1}{jk\Omega_0 T}\left(e^{-jk\)mega_0 t_0}-e^{jk\Omega_0 t_0}\right)$$
 
-$$C_k = \frac{2}{k\omega_0 T}\left(\frac{e^{jk\omega_0 t_0}-e^{-jk\omega_0 t_0}}{2j}\right) = 2\frac{\sin(k\omega_0 t_0)}{k\omega_0 T}$$
+$$C_k = \frac{2}{k\omega_0 T}\left(\frac{e^{jk\Omega_0 t_0}-e^{-jk\Omega_0 t_0}}{2j}\right) = 2\frac{\sin(k\Omega_0 t_0)}{k\Omega_0 T}$$
 
-and since $\omega = 2\pi/T$
+and since $\Omega = 2\pi/T$
 
 $$C_k = \frac{\sin\left(\pi k\frac{2t_0}{T}\right)}{k\pi } = \frac{T}{2t_0}{\mathop{\rm sinc}}\left( k\frac{2t_0}{T}\right)$$
 

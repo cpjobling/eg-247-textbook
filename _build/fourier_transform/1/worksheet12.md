@@ -106,6 +106,12 @@ xlabel('u')
 ```
 
 
+
+{:.output .output_png}
+![png](../../images/fourier_transform/1/worksheet12_10_0.png)
+
+
+
 #### Duty cycle
 
 * We define the duty cycle $\eta = 2t_0/T$ of the rectangular pulse train as the fraction of the time the signal is "on" (equal to 1) over one period.
