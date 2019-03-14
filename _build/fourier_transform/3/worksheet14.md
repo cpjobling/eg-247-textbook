@@ -12,15 +12,13 @@ next_page:
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
-# Fourier Transforms for Circuit and LTI Systems Analysis
+# Worksheet 14
 
-In this section we will apply what we have learned about Fourier transforms to some typical circuit problems. After a short introduction, the body of this chapter will form the basis of an examples class.
+## To accompany Chapter 5.3 Fourier Transforms for Circuit and LTI Systems Analysis
 
-## Agenda
+We will step through this worksheet in class. 
 
-* The system function
-
-* Examples
+You are expected to have at least watched the video presentation of [Chapter 5.3](https://cpjobling.github.io/eg-247-textbook/fourier_transform/3/ft3) of the [notes](https://cpjobling.github.io/eg-247-textbook) before coming to class. If you haven't watch it afterwards!
 
 ## The System Function
 
@@ -60,7 +58,7 @@ If we know the impulse resonse $h(t)$, we can compute the system response $g(t)$
 
 ### Example 1
 
-Karris example 8.8: for the linear network shown below, the impulse response is $h(t)=3e^{-2t}$. Use the Fourier transform to compute the response $y(t)$ when the input $u(t)=2[u_0(t)-u_0(t-3)]$. Verify the result with Matlab.
+Karris example 8.8: for the linear network shown below, the impulse response is $h(t)=3e^{-2t}$. Use the Fourier transform to compute the response $y(t)$ when the input $u(t)=2[u_0(t)-u_0(t-3)]$. Verify the result with MATLAB.
 
 <img src="pictures/example1.png">
 
@@ -104,16 +102,6 @@ U1 = fourier(2*heaviside(t),t,w)
 ```
 
 
-{:.output .output_stream}
-```
- 
-U1 =
- 
-2*pi*dirac(w) - 2i/w
- 
-
-```
-
 
 
 {:.input_area}
@@ -121,16 +109,6 @@ U1 =
 H = fourier(3*exp(-2*t)*heaviside(t),t,w)
 ```
 
-
-{:.output .output_stream}
-```
- 
-H =
- 
-3/(2 + w*1i)
- 
-
-```
 
 
 
@@ -140,16 +118,6 @@ Y1=simplify(H*U1)
 ```
 
 
-{:.output .output_stream}
-```
- 
-Y1 =
- 
-3*pi*dirac(w) - 6i/(w*(2 + w*1i))
- 
-
-```
-
 
 
 {:.input_area}
@@ -157,16 +125,6 @@ Y1 =
 y1 = simplify(ifourier(Y1,w,t))
 ```
 
-
-{:.output .output_stream}
-```
- 
-y1 =
- 
-(3*exp(-2*t)*(sign(t) + 1)*(exp(2*t) - 1))/2
- 
-
-```
 
 Get y2
 
@@ -180,16 +138,6 @@ y2 = subs(y1,t,t-3)
 ```
 
 
-{:.output .output_stream}
-```
- 
-y2 =
- 
-(3*exp(6 - 2*t)*(sign(t - 3) + 1)*(exp(2*t - 6) - 1))/2
- 
-
-```
-
 
 
 {:.input_area}
@@ -197,16 +145,6 @@ y2 =
 y = y1 - y2
 ```
 
-
-{:.output .output_stream}
-```
- 
-y =
- 
-(3*exp(-2*t)*(sign(t) + 1)*(exp(2*t) - 1))/2 - (3*exp(6 - 2*t)*(sign(t - 3) + 1)*(exp(2*t - 6) - 1))/2
- 
-
-```
 
 Plot result
 
@@ -222,13 +160,7 @@ grid
 ```
 
 
-
-{:.output .output_png}
-![png](../../images/fourier_transform/3/worksheet14_24_0.png)
-
-
-
-See [ft3_ex1.m](ft3_ex1.m)
+See [ft3_ex1.m](https://cpjobling.github.io/eg-247-textbook/fourier_transform/3/ft3_ex1.m)
 
 Result is equivalent to:
     
@@ -284,16 +216,6 @@ H = j*w/(j*w + 2)
 ```
 
 
-{:.output .output_stream}
-```
- 
-H =
- 
-(w*1i)/(2 + w*1i)
- 
-
-```
-
 
 
 {:.input_area}
@@ -301,16 +223,6 @@ H =
 Vin = fourier(5*exp(-3*t)*heaviside(t),t,w)
 ```
 
-
-{:.output .output_stream}
-```
- 
-Vin =
- 
-5/(3 + w*1i)
- 
-
-```
 
 
 
@@ -320,16 +232,6 @@ Vout=simplify(H*Vin)
 ```
 
 
-{:.output .output_stream}
-```
- 
-Vout =
- 
-(w*5i)/((2 + w*1i)*(3 + w*1i))
- 
-
-```
-
 
 
 {:.input_area}
@@ -337,16 +239,6 @@ Vout =
 vout = simplify(ifourier(Vout,w,t))
 ```
 
-
-{:.output .output_stream}
-```
- 
-vout =
- 
--(5*exp(-3*t)*(sign(t) + 1)*(2*exp(t) - 3))/2
- 
-
-```
 
 Plot result
 
@@ -362,13 +254,7 @@ grid
 ```
 
 
-
-{:.output .output_png}
-![png](../../images/fourier_transform/3/worksheet14_35_0.png)
-
-
-
-See [ft3_ex2.m](files/matlab/ft3_ex2.m)
+See [ft3_ex2.m](https://cpjobling.github.io/eg-247-textbook/fourier_transform/3/ft3_ex2.m)
 
 Result is equivalent to:
     
@@ -429,16 +315,6 @@ H = 10/(j*w + 4)
 ```
 
 
-{:.output .output_stream}
-```
- 
-H =
- 
-10/(4 + w*1i)
- 
-
-```
-
 
 
 {:.input_area}
@@ -446,16 +322,6 @@ H =
 Vin = fourier(3*exp(-2*t)*heaviside(t),t,w)
 ```
 
-
-{:.output .output_stream}
-```
- 
-Vin =
- 
-3/(2 + w*1i)
- 
-
-```
 
 
 
@@ -465,16 +331,6 @@ Vout=simplify(H*Vin)
 ```
 
 
-{:.output .output_stream}
-```
- 
-Vout =
- 
-30/((2 + w*1i)*(4 + w*1i))
- 
-
-```
-
 
 
 {:.input_area}
@@ -482,16 +338,6 @@ Vout =
 vout = simplify(ifourier(Vout,w,t))
 ```
 
-
-{:.output .output_stream}
-```
- 
-vout =
- 
-(15*exp(-4*t)*(sign(t) + 1)*(exp(2*t) - 1))/2
- 
-
-```
 
 Plot result
 
@@ -507,13 +353,7 @@ grid
 ```
 
 
-
-{:.output .output_png}
-![png](../../images/fourier_transform/3/worksheet14_46_0.png)
-
-
-
-See [ft3_ex3.m](ft3_ex3.m)
+See [ft3_ex3.m](https://cpjobling.github.io/eg-247-textbook/fourier_transform/3/ft3/ft3_ex3.m)
 
 Result is equiavlent to:
     
@@ -585,21 +425,6 @@ Wr = int(Pr,t,0,inf)
 ```
 
 
-{:.output .output_stream}
-```
- 
-Pr =
- 
-9*exp(-4*t)*heaviside(t)^2
- 
- 
-Wr =
- 
-9/4
- 
-
-```
-
 Calculate using Parseval's theorem
 
 
@@ -610,16 +435,6 @@ Fw = fourier(Vr,t,w)
 ```
 
 
-{:.output .output_stream}
-```
- 
-Fw =
- 
-3/(2 + w*1i)
- 
-
-```
-
 
 
 {:.input_area}
@@ -627,16 +442,6 @@ Fw =
 Fw2 = simplify(abs(Fw)^2)
 ```
 
-
-{:.output .output_stream}
-```
- 
-Fw2 =
- 
-9/abs(2 + w*1i)^2
- 
-
-```
 
 
 
@@ -646,14 +451,8 @@ Wr=2/(2*pi)*int(Fw2,w,0,inf)
 ```
 
 
-{:.output .output_stream}
-```
- 
-Wr =
- 
-(51607450253003931*pi)/72057594037927936
- 
+See [ft3_ex4.m](https://cpjobling.github.io/eg-247-textbook/fourier_transform/3/ft3/ft3_ex4.m)
 
-```
+## Solutions
 
-See [ft3_ex4.m](ft3_ex4.m)
+See Worked Solutions in the [Week 7 Section](https://swanseauniversity.sharepoint.com/sites/EG-247SignalsandSystems2017-2108-UsrGrpcopy-UsrGrp/_layouts/OneNote.aspx?id=%2Fsites%2FEG-247SignalsandSystems2017-2108-UsrGrpcopy-UsrGrp%2FSiteAssets%2FEG-247%20Signals%20and%20Systems%202017-2108-UsrGrp%20%5Bcopy%5D-UsrGrp%20Notebook&wd=target%28_Content%20Library%2FClasses%2FNew%20Section%201.one%7C681B0954-AC4E-9646-A567-FF06C3696F07%2FWeek%207%7C4CC13EA9-40BD-7B4F-B0B6-61B392AC4943%2F%29) of the OneNote Class Notebook.

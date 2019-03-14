@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>Worksheet 14 Fourier Transforms for Circuit and LTI Systems Analysis</title>
-  <meta name="description" content="Fourier Transforms for Circuit and LTI Systems Analysis">
+  <meta name="description" content="Worksheet 14">
 
   <link rel="canonical" href="/eg-247-textbook/eg-247-textbook/fourier_transform/3/worksheet14.html">
   <link rel="alternate" type="application/rss+xml" title="EG-247 Signals and Systems" href="/eg-247-textbook/eg-247-textbook/feed.xml">
@@ -14,7 +14,7 @@
   <meta property="og:url"         content="/eg-247-textbook/eg-247-textbook/fourier_transform/3/worksheet14.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Worksheet 14 Fourier Transforms for Circuit and LTI Systems Analysis" />
-<meta property="og:description" content="Fourier Transforms for Circuit and LTI Systems Analysis" />
+<meta property="og:description" content="Worksheet 14" />
 <meta property="og:image"       content="" />
 
 
@@ -27,11 +27,11 @@
   "headline":
     "Worksheet 14 Fourier Transforms for Circuit and LTI Systems Analysis",
   "datePublished":
-    "2019-03-13T22:54:12+00:00",
+    "2019-03-14T17:30:21+00:00",
   "dateModified":
-    "2019-03-13T22:54:12+00:00",
+    "2019-03-14T17:30:21+00:00",
   "description":
-    "Fourier Transforms for Circuit and LTI Systems Analysis",
+    "Worksheet 14",
   "author": {
     "@type": "Person",
     "name": "Dr Chris P. Jobling"
@@ -1375,7 +1375,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
     <nav class="onthispage">
       <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
       <ul class="toc__menu">
-  <li><a href="#agenda">Agenda</a></li>
+  <li><a href="#to-accompany-chapter-53-fourier-transforms-for-circuit-and-lti-systems-analysis">To accompany Chapter 5.3 Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
   <li><a href="#the-system-function">The System Function</a>
     <ul>
       <li><a href="#system-response-from-system-impulse-response">System response from system impulse response</a></li>
@@ -1391,6 +1391,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
       <li><a href="#example-4">Example 4</a></li>
     </ul>
   </li>
+  <li><a href="#solutions">Solutions</a></li>
 </ul>
     </nav>
   </aside>
@@ -1422,20 +1423,13 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
 
             <div class="c-textbook__content">
-              <h1 id="fourier-transforms-for-circuit-and-lti-systems-analysis">Fourier Transforms for Circuit and LTI Systems Analysis</h1>
+              <h1 id="worksheet-14">Worksheet 14</h1>
 
-<p>In this section we will apply what we have learned about Fourier transforms to some typical circuit problems. After a short introduction, the body of this chapter will form the basis of an examples class.</p>
+<h2 id="to-accompany-chapter-53-fourier-transforms-for-circuit-and-lti-systems-analysis">To accompany Chapter 5.3 Fourier Transforms for Circuit and LTI Systems Analysis</h2>
 
-<h2 id="agenda">Agenda</h2>
+<p>We will step through this worksheet in class.</p>
 
-<ul>
-  <li>
-    <p>The system function</p>
-  </li>
-  <li>
-    <p>Examples</p>
-  </li>
-</ul>
+<p>You are expected to have at least watched the video presentation of <a href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/3/ft3">Chapter 5.3</a> of the <a href="https://cpjobling.github.io/eg-247-textbook">notes</a> before coming to class. If you haven’t watch it afterwards!</p>
 
 <h2 id="the-system-function">The System Function</h2>
 
@@ -1476,7 +1470,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
 <h3 id="example-1">Example 1</h3>
 
-<p>Karris example 8.8: for the linear network shown below, the impulse response is $h(t)=3e^{-2t}$. Use the Fourier transform to compute the response $y(t)$ when the input $u(t)=2[u_0(t)-u_0(t-3)]$. Verify the result with Matlab.</p>
+<p>Karris example 8.8: for the linear network shown below, the impulse response is $h(t)=3e^{-2t}$. Use the Fourier transform to compute the response $y(t)$ when the input $u(t)=2[u_0(t)-u_0(t-3)]$. Verify the result with MATLAB.</p>
 
 <p><img src="pictures/example1.png" /></p>
 
@@ -1515,45 +1509,13 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 <span class="n">U1</span> <span class="o">=</span> <span class="n">fourier</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
-U1 =
- 
-2*pi*dirac(w) - 2i/w
- 
-
-</code></pre></div></div>
-
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">H</span> <span class="o">=</span> <span class="n">fourier</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
-H =
- 
-3/(2 + w*1i)
- 
-
 </code></pre></div></div>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Y1</span><span class="o">=</span><span class="n">simplify</span><span class="p">(</span><span class="n">H</span><span class="o">*</span><span class="n">U1</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
-Y1 =
- 
-3*pi*dirac(w) - 6i/(w*(2 + w*1i))
- 
-
-</code></pre></div></div>
-
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y1</span> <span class="o">=</span> <span class="n">simplify</span><span class="p">(</span><span class="n">ifourier</span><span class="p">(</span><span class="n">Y1</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">t</span><span class="p">))</span>
-</code></pre></div></div>
-
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
-y1 =
- 
-(3*exp(-2*t)*(sign(t) + 1)*(exp(2*t) - 1))/2
- 
-
 </code></pre></div></div>
 
 <p>Get y2</p>
@@ -1563,23 +1525,7 @@ y1 =
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y2</span> <span class="o">=</span> <span class="n">subs</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">t</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
-y2 =
- 
-(3*exp(6 - 2*t)*(sign(t - 3) + 1)*(exp(2*t - 6) - 1))/2
- 
-
-</code></pre></div></div>
-
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y</span> <span class="o">=</span> <span class="n">y1</span> <span class="o">-</span> <span class="n">y2</span>
-</code></pre></div></div>
-
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
-y =
- 
-(3*exp(-2*t)*(sign(t) + 1)*(exp(2*t) - 1))/2 - (3*exp(6 - 2*t)*(sign(t - 3) + 1)*(exp(2*t - 6) - 1))/2
- 
-
 </code></pre></div></div>
 
 <p>Plot result</p>
@@ -1591,9 +1537,7 @@ y =
 <span class="nb">grid</span> 
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/fourier_transform/3/worksheet14_24_0.png" alt="png" /></p>
-
-<p>See <a href="ft3_ex1.m">ft3_ex1.m</a></p>
+<p>See <a href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/3/ft3_ex1.m">ft3_ex1.m</a></p>
 
 <p>Result is equivalent to:</p>
 
@@ -1645,45 +1589,13 @@ y =
 <span class="n">H</span> <span class="o">=</span> <span class="nb">j</span><span class="o">*</span><span class="n">w</span><span class="p">/(</span><span class="nb">j</span><span class="o">*</span><span class="n">w</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
-H =
- 
-(w*1i)/(2 + w*1i)
- 
-
-</code></pre></div></div>
-
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Vin</span> <span class="o">=</span> <span class="n">fourier</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
-Vin =
- 
-5/(3 + w*1i)
- 
-
 </code></pre></div></div>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Vout</span><span class="o">=</span><span class="n">simplify</span><span class="p">(</span><span class="n">H</span><span class="o">*</span><span class="n">Vin</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
-Vout =
- 
-(w*5i)/((2 + w*1i)*(3 + w*1i))
- 
-
-</code></pre></div></div>
-
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">vout</span> <span class="o">=</span> <span class="n">simplify</span><span class="p">(</span><span class="n">ifourier</span><span class="p">(</span><span class="n">Vout</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">t</span><span class="p">))</span>
-</code></pre></div></div>
-
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
-vout =
- 
--(5*exp(-3*t)*(sign(t) + 1)*(2*exp(t) - 3))/2
- 
-
 </code></pre></div></div>
 
 <p>Plot result</p>
@@ -1695,9 +1607,7 @@ vout =
 <span class="nb">grid</span> 
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/fourier_transform/3/worksheet14_35_0.png" alt="png" /></p>
-
-<p>See <a href="files/matlab/ft3_ex2.m">ft3_ex2.m</a></p>
+<p>See <a href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/3/ft3_ex2.m">ft3_ex2.m</a></p>
 
 <p>Result is equivalent to:</p>
 
@@ -1753,45 +1663,13 @@ vout =
 <span class="n">H</span> <span class="o">=</span> <span class="mi">10</span><span class="p">/(</span><span class="nb">j</span><span class="o">*</span><span class="n">w</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
-H =
- 
-10/(4 + w*1i)
- 
-
-</code></pre></div></div>
-
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Vin</span> <span class="o">=</span> <span class="n">fourier</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
-Vin =
- 
-3/(2 + w*1i)
- 
-
 </code></pre></div></div>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Vout</span><span class="o">=</span><span class="n">simplify</span><span class="p">(</span><span class="n">H</span><span class="o">*</span><span class="n">Vin</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
-Vout =
- 
-30/((2 + w*1i)*(4 + w*1i))
- 
-
-</code></pre></div></div>
-
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">vout</span> <span class="o">=</span> <span class="n">simplify</span><span class="p">(</span><span class="n">ifourier</span><span class="p">(</span><span class="n">Vout</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">t</span><span class="p">))</span>
-</code></pre></div></div>
-
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
-vout =
- 
-(15*exp(-4*t)*(sign(t) + 1)*(exp(2*t) - 1))/2
- 
-
 </code></pre></div></div>
 
 <p>Plot result</p>
@@ -1803,9 +1681,7 @@ vout =
 <span class="nb">grid</span> 
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/fourier_transform/3/worksheet14_46_0.png" alt="png" /></p>
-
-<p>See <a href="ft3_ex3.m">ft3_ex3.m</a></p>
+<p>See <a href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/3/ft3/ft3_ex3.m">ft3_ex3.m</a></p>
 
 <p>Result is equiavlent to:</p>
 
@@ -1868,55 +1744,22 @@ vout =
 <span class="n">Wr</span> <span class="o">=</span> <span class="n">int</span><span class="p">(</span><span class="n">Pr</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">inf</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
-Pr =
- 
-9*exp(-4*t)*heaviside(t)^2
- 
- 
-Wr =
- 
-9/4
- 
-
-</code></pre></div></div>
-
 <p>Calculate using Parseval’s theorem</p>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Fw</span> <span class="o">=</span> <span class="n">fourier</span><span class="p">(</span><span class="n">Vr</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
-Fw =
- 
-3/(2 + w*1i)
- 
-
-</code></pre></div></div>
-
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Fw2</span> <span class="o">=</span> <span class="n">simplify</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">Fw</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
-Fw2 =
- 
-9/abs(2 + w*1i)^2
- 
-
 </code></pre></div></div>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Wr</span><span class="o">=</span><span class="mi">2</span><span class="p">/(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">)</span><span class="o">*</span><span class="n">int</span><span class="p">(</span><span class="n">Fw2</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">inf</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
-Wr =
- 
-(51607450253003931*pi)/72057594037927936
- 
+<p>See <a href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/3/ft3/ft3_ex4.m">ft3_ex4.m</a></p>
 
-</code></pre></div></div>
+<h2 id="solutions">Solutions</h2>
 
-<p>See <a href="ft3_ex4.m">ft3_ex4.m</a></p>
+<p>See Worked Solutions in the <a href="https://swanseauniversity.sharepoint.com/sites/EG-247SignalsandSystems2017-2108-UsrGrpcopy-UsrGrp/_layouts/OneNote.aspx?id=%2Fsites%2FEG-247SignalsandSystems2017-2108-UsrGrpcopy-UsrGrp%2FSiteAssets%2FEG-247%20Signals%20and%20Systems%202017-2108-UsrGrp%20%5Bcopy%5D-UsrGrp%20Notebook&amp;wd=target%28_Content%20Library%2FClasses%2FNew%20Section%201.one%7C681B0954-AC4E-9646-A567-FF06C3696F07%2FWeek%207%7C4CC13EA9-40BD-7B4F-B0B6-61B392AC4943%2F%29">Week 7 Section</a> of the OneNote Class Notebook.</p>
 
               <nav class="c-page__nav">
   

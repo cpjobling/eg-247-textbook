@@ -60,7 +60,7 @@ If we know the impulse resonse $h(t)$, we can compute the system response $g(t)$
 
 ### Example 1
 
-Karris example 8.8: for the linear network shown below, the impulse response is $h(t)=3e^{-2t}$. Use the Fourier transform to compute the response $y(t)$ when the input $u(t)=2[u_0(t)-u_0(t-3)]$. Verify the result with Matlab.
+Karris example 8.8: for the linear network shown below, the impulse response is $h(t)=3e^{-2t}$. Use the Fourier transform to compute the response $y(t)$ when the input $u(t)=2[u_0(t)-u_0(t-3)]$. Verify the result with MATLAB.
 
 <img src="pictures/example1.png">
 
@@ -228,7 +228,7 @@ grid
 
 
 
-See [ft3_ex1.m](ft3_ex1.m)
+See [ft3_ex1.m](https://cpjobling.github.io/eg-247-textbook/fourier_transform/3/ft3_ex1.m)
 
 Result is equivalent to:
     
@@ -368,7 +368,7 @@ grid
 
 
 
-See [ft3_ex2.m](files/matlab/ft3_ex2.m)
+See [ft3_ex2.m](https://cpjobling.github.io/eg-247-textbook/fourier_transform/3/ft3_ex2.m)
 
 Result is equivalent to:
     
@@ -513,7 +513,7 @@ grid
 
 
 
-See [ft3_ex3.m](ft3_ex3.m)
+See [ft3_ex3.m](https://cpjobling.github.io/eg-247-textbook/fourier_transform/3/ft3/ft3_ex3.m)
 
 Result is equiavlent to:
     
@@ -656,4 +656,16 @@ Wr =
 
 ```
 
-See [ft3_ex4.m](ft3_ex4.m)
+See [ft3_ex4.m](https://cpjobling.github.io/eg-247-textbook/fourier_transform/3/ft3/ft3_ex4.m)
+
+## Solutions
+
+* Example 1: [ft3-ex1.pdf](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/ft3-ex1.pdf)
+
+* Example 2: [ft3-ex2.pdf](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/ft3-ex2.pdf)
+
+* Example 3: [ft3-ex3.pdf](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/ft3-ex4.pdf)
+
+* Example 3: [ft3-ex4.pdf](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/ft3-ex4.pdf)
+
+

@@ -12,35 +12,13 @@ next_page:
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
-# Introduction to Filters
+# Worksheet 15
 
-## Scope and Background Reading
+## To accompany Chapter 5.4 Introduction to Filters
 
-This section is Based on the section **Filtering** from Chapter 5 of [Benoit Boulet, Fundamentals of Signals and Systems](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?ppg=221&docID=3135971&tm=1518715953782) from the **Recommended Reading List**.
+We will step through this worksheet in class. 
 
-This material is an introduction to analogue filters. You will find much more in-depth coverage on [Pages 11-1&mdash;11-48 of Karris](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?ppg=429&docID=3384197&tm=1518716026573).
-
-## Agenda
-
-* Frequency Selective Filters
-
-* Ideal low-pass filter
-
-* Butterworth low-pass filter
-
-
-* High-pass filter
-
-* Bandpass filter
-
-## Introduction
-
-* Filter design is an important application of the Fourier transform
-* Filtering is a rich topic often taught in graduate courses so we give only an introduction.
-* Our introduction *will* illustrate the usefulness of the frequency domain viewpoint.
-* We will explore how filters can shape the spectrum of a signal.
-
-Other applications of the Fourier transform are sampling theory (introduced next week) and modulation.
+You are expected to have at least watched the video presentation of [Chapter 5.4](https://cpjobling.github.io/eg-247-textbook/fourier_transform/4/ft4) of the [notes](https://cpjobling.github.io/eg-247-textbook) before coming to class. If you haven't watch it afterwards!
 
 ## Frequency Selective Filters
 
@@ -72,7 +50,7 @@ An ideal frequency-selective filter is a system that let's the frequency compone
 
 ### Motivating example
 
-See the notes in the [OneNote Class Room notebook](https://swanseauniversity-my.sharepoint.com/personal/c_p_jobling_swansea_ac_uk/_layouts/15/WopiFrame.aspx?sourcedoc={540d6da0-390f-4f0a-914e-b6445f76b02a}&action=edit&wd=target%28%2F%2F_Content%20Library%2FClasses%2FWeek%207.one%7C6a452d2f-ba94-4714-b276-8eb1269b0b5b%2FBefore%20Class%7Ce5ad343a-e348-0141-8096-60e0ca201e57%2F%29) or on Blackboard.
+See the video and script in the [OneNote Class Room notebook](https://swanseauniversity.sharepoint.com/sites/EG-247SignalsandSystems2017-2108-UsrGrpcopy-UsrGrp/SiteAssets/EG-247%20Signals%20and%20Systems%202017-2108-UsrGrp%20%5bcopy%5d-UsrGrp%20Notebook/_Content%20Library/Classes/Week%207.one#Motivating%20Example&section-id={681B0954-AC4E-9646-A567-FF06C3696F07}&page-id={E5AD343A-E348-0141-8096-60E0CA201E57}&end).
 
 ## Ideal Low-Pass Filter
 
@@ -259,20 +237,6 @@ H = tf(wc^2,[1, wc*sqrt(2), wc^2])
 ```
 
 
-{:.output .output_stream}
-```
-
-H =
- 
-          10000
-  ---------------------
-  s^2 + 141.4 s + 10000
- 
-Continuous-time transfer function.
-
-
-```
-
 Magnitude frequency response
 
 
@@ -294,12 +258,6 @@ hold off
 ```
 
 
-
-{:.output .output_png}
-![png](../../images/fourier_transform/4/worksheet15_37_0.png)
-
-
-
 Bode plot
 
 
@@ -310,12 +268,6 @@ bode(H)
 grid
 title('Bode-plot of Butterworth 2nd-Order Butterworth Low Pass Filter')
 ```
-
-
-
-{:.output .output_png}
-![png](../../images/fourier_transform/4/worksheet15_39_0.png)
-
 
 
 ### Example 8
@@ -367,12 +319,6 @@ title('Impulse Response of 2nd-Order Butterworth Low Pass Filter')
 ```
 
 
-
-{:.output .output_png}
-![png](../../images/fourier_transform/4/worksheet15_43_0.png)
-
-
-
 Step response
 
 
@@ -384,12 +330,6 @@ title('Step Response of Butterworth 2nd-Order Butterworth Low Pass Filter')
 grid
 text(0.008,1,'s_B(t) for \omega_c = 100 rad/s')
 ```
-
-
-
-{:.output .output_png}
-![png](../../images/fourier_transform/4/worksheet15_45_0.png)
-
 
 
 ## High-pass filter
@@ -468,12 +408,6 @@ hold off
 ```
 
 
-
-{:.output .output_png}
-![png](../../images/fourier_transform/4/worksheet15_52_0.png)
-
-
-
 High-pass filter
 
 
@@ -485,26 +419,6 @@ bode(Hhp)
 grid
 title('Bode-plot of Butterworth 2nd-Order Butterworth High Pass Filter')
 ```
-
-
-{:.output .output_stream}
-```
-
-Hhp =
- 
-      s^2 + 141.4 s
-  ---------------------
-  s^2 + 141.4 s + 10000
- 
-Continuous-time transfer function.
-
-
-```
-
-
-{:.output .output_png}
-![png](../../images/fourier_transform/4/worksheet15_54_1.png)
-
 
 
 ## Band-pass filter
@@ -528,12 +442,6 @@ $$H_{\mathrm{bp}}(\omega) = H_{\mathrm{hp}}(\omega)H_{\mathrm{lp}}(\omega)$$
 
 * The lowpass filter should have cut-off frequency of $\omega_{c2}$
 
-To generate all the plots shown in this presentation, you can use [butter2_ex.m](files/matlab/butter2_ex.m)
+## Solutions
 
-## Summary
-
-* Frequency-Selective Filters
-* Ideal low-pass filter
-* Butterworth low-pass filter
-* High-pass filter
-* Bandpass filter
+Solutions to Examples 5-9 are captured as a PenCast which you will find attached to the Worked Solutions section of the [Week 7 Section](https://swanseauniversity.sharepoint.com/sites/EG-247SignalsandSystems2017-2108-UsrGrpcopy-UsrGrp/SiteAssets/EG-247%20Signals%20and%20Systems%202017-2108-UsrGrp%20%5bcopy%5d-UsrGrp%20Notebook/_Content%20Library/Classes/Week%207.one#Week%207%20FT%20for%20Circuit%20Analysis%20and%20Filters&section-id={681B0954-AC4E-9646-A567-FF06C3696F07}&page-id={4CC13EA9-40BD-7B4F-B0B6-61B392AC4943}&end) of the OneNote Class Notebook.

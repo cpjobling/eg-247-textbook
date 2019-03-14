@@ -25,7 +25,7 @@ I checked other sources and [Hsu (Schaum's Signals and Systems)](https://www.daw
 
 According to Wikipedia [Fourier Transform: Other Notations](http://en.wikipedia.org/wiki/Fourier_transform#Other_notations) both are used only by electronic engineers anyway and either would be acceptible.
 
-There is some advantage in using Boulet's notation $F(j\omega)$ in that it helps to reinforce the idea that Fourier Transform is a special case of the Laplace Transform and it was the notation that I used in the [last section](../1/ft1).
+There is some advantage in using Boulet's notation $F(j\omega)$ in that it helps to reinforce the idea that Fourier Transform is a special case of the Laplace Transform and it was the notation that I used in the [last section](https://cpjobling.github.io/eg-247-textbook/fourier_transform/1/ft1).
 
 In these notes, I've used the other convention on the basis that its the more likely to be seen in your support materials. 
 
@@ -298,7 +298,7 @@ Hint: Euler's formula plus solution to example 2.
 
 **Important note**: the equivalent example in Karris (Section 8.4.9 Eq. 8.75 pp 8-23&mdash;8-24) is wrong! 
 
-See [worked solution](../solutions/ft2-ex3.pdf) for the corrected proof.
+See [worked solution](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/ft2-ex3.pdf) for the corrected proof.
 
 <pre style="border: 2px solid blue">
 
@@ -449,4 +449,4 @@ Boulet has several interesting amplifications of the material presented by Karri
 
 *Next Section*
 
-* [The Fourier Transform for Systems and Circuit Analysis](../3/ft3)
+* [The Fourier Transform for Systems and Circuit Analysis](https://cpjobling.github.io/eg-247-textbook/fourier_transform/3/ft3)

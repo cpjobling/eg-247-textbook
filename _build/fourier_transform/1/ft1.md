@@ -85,7 +85,7 @@ xlabel('u')
 
 
 
-Matlab code to reproduce this plot: [sinc_plot.m](sinc_plot.m).
+Matlab code to reproduce this plot: [sinc_plot.m](https://cpjobling.github.io/eg-247-textbook/fourier_transform/1/sinc_plot.m).
 
 1. **Note** $sin(\pi u)/(\pi u)$ is undefined at $u = 0$. To compute its value we need to take the limit
 
@@ -112,7 +112,7 @@ $$T C_k = T\eta \operatorname{sinc}\left(k\eta\right)=2t_0\operatorname{sinc}\le
 
 Then the normalized coefficents $T C_k$ of the rectangular wave is a sinc envelope with constant amplitude at the origin equal to $2t_0$, and a zero crossing at fixed frequency $\pi/t_0$ rad/s, both independent of $T$.
 
-Plots follow (use [duty_cycle.mlx](duty_cycle.mlx) to reproduce).
+Plots follow (use [duty_cycle.mlx](https://cpjobling.github.io/eg-247-textbook/fourier_transform/1/duty_cycle.mlx) to reproduce).
 
 #### Durty cycle 50%
 
@@ -542,7 +542,7 @@ See script: [ftex1.m](matlab/ftex1.m).
 
 *Next Section*
 
-* [Fourier transform of commonly occuring signals](../2/ft2.ipynb)
+* [Fourier transform of commonly occuring signals](https://cpjobling.github.io/eg-247-textbook/fourier_transform/2/ft2.ipynb)
 
 ## Worked Solutions
 

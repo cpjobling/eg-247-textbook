@@ -72,7 +72,7 @@ An ideal frequency-selective filter is a system that let's the frequency compone
 
 ### Motivating example
 
-See the notes in the [OneNote Class Room notebook](https://swanseauniversity-my.sharepoint.com/personal/c_p_jobling_swansea_ac_uk/_layouts/15/WopiFrame.aspx?sourcedoc={540d6da0-390f-4f0a-914e-b6445f76b02a}&action=edit&wd=target%28%2F%2F_Content%20Library%2FClasses%2FWeek%207.one%7C6a452d2f-ba94-4714-b276-8eb1269b0b5b%2FBefore%20Class%7Ce5ad343a-e348-0141-8096-60e0ca201e57%2F%29) or on Blackboard.
+See the video and script in the [OneNote Class Room notebook](https://swanseauniversity.sharepoint.com/sites/EG-247SignalsandSystems2017-2108-UsrGrpcopy-UsrGrp/SiteAssets/EG-247%20Signals%20and%20Systems%202017-2108-UsrGrp%20%5bcopy%5d-UsrGrp%20Notebook/_Content%20Library/Classes/Week%207.one#Motivating%20Example&section-id={681B0954-AC4E-9646-A567-FF06C3696F07}&page-id={E5AD343A-E348-0141-8096-60E0CA201E57}&end).
 
 ## Ideal Low-Pass Filter
 
@@ -528,7 +528,7 @@ $$H_{\mathrm{bp}}(\omega) = H_{\mathrm{hp}}(\omega)H_{\mathrm{lp}}(\omega)$$
 
 * The lowpass filter should have cut-off frequency of $\omega_{c2}$
 
-To generate all the plots shown in this presentation, you can use [butter2_ex.m](files/matlab/butter2_ex.m)
+To generate all the plots shown in this presentation, you can use [butter2_ex.mlx](https://cpjobling.github.io/eg-247-textbook/fourier_transform/4/butter2_ex.mlx)
 
 ## Summary
 
@@ -537,3 +537,7 @@ To generate all the plots shown in this presentation, you can use [butter2_ex.m]
 * Butterworth low-pass filter
 * High-pass filter
 * Bandpass filter
+
+## Solutions
+
+Solutions to Examples 5-9 are captured as a PenCast in [filters.pdf](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/filters.pdf).

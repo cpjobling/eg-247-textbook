@@ -32,7 +32,7 @@ Let $\tilde x(t)$ be the Fourier series of the rectangular pulse train shown bel
 
 ### Fourier Series
 
-In the [previous section](../../fourier_series/3/exp_fs2) we used
+In the [previous section](https://cpjobling.github.io/eg-247-textbook/fourier_series/3/exp_fs2) we used
 
 $$C_k = \frac{1}{2\pi}\int_{-\pi/w}^{\pi/w} Ae^{-jk(\Omega_0 t)}\,d(\Omega_0 t) = \frac{A}{2\pi}\int_{-\pi/w}^{\pi/w} e^{-jk(\Omega_0 t)}\,d(\Omega_0 t) $$
 
@@ -169,7 +169,7 @@ Run duty_cycle with values of:
 
 ### Doing the Maths
 
-See the [notes](ft1)
+See the [notes](https://cpjobling.github.io/eg-247-textbook/fourier_transform/1/ft1).
 
 **Inverse Fourier Transform**:
 

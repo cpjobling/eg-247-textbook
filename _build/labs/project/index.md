@@ -48,7 +48,7 @@ W1 < W < W2.
 
 ## Method
 
-* Write a MATLAB m-file to compute the set of filter coefficients and plot the combination (sum) of all filter frequency responses, as shown in Figure 1. Note that you can use the ‘`freqz`’ command to easily find the frequency response of a filter defined by the filter coefficient arrays B and A. Your goal is to achieve as flat of a frequency response as you can when all the frequency response of all filters are added: ± 1 dB is a good goal. Remember that the centre frequency of each filter must be fixed to one of the ten values given above and the upper and lower cutoff frequencies $f_2$ & $f_1$ must satisfy
+* Write a MATLAB Live Script to compute the set of filter coefficients and plot the combination (sum) of all filter frequency responses, as shown in Figure 1. Note that you can use the ‘`freqz`’ command to easily find the frequency response of a filter defined by the filter coefficient arrays B and A. Your goal is to achieve as flat of a frequency response as you can when all the frequency response of all filters are added: ± 1 dB is a good goal. Remember that the centre frequency of each filter must be fixed to one of the ten values given above and the upper and lower cutoff frequencies $f_2$ & $f_1$ must satisfy
 $$f_c = (f_1f_2)^{1/2}.$$ 
 
 * Your goal is to find the $\Delta f$ value for each filter that achieves a flat frequency response when all filters are combined with equal weights. 
