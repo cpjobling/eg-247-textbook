@@ -89,7 +89,7 @@ In this lab exercise we will demonstrate that time-convolution of a system respo
 
 ## What to hand in
 
-You should attach your modified versions of the example file as a single Live Script or separate scripts to the Lab 4 submission page in OneNote. Marks will be awarded according to how many of Exercises 7 (Parts 2-4) and 8 have been completed. Name each solution according to the exercise and part number: e.g. Exercise 7 scripts should be named `ex7_2`, `ex7_3`,... , `ex8` etc. Use the same naming scheme for any Simulink models submitted for assessment.
+You should attach your modified versions of the example file as a single Live Script or separate scripts to the Lab 4 submission page in OneNote. Marks can be claimed according to how many of Exercises 7 (Parts 2-4) and 8 have been completed. Name each solution according to the exercise and part number: e.g. Exercise 7 scripts should be named `ex7_2`, `ex7_3`,... , `ex8` etc. Use the same naming scheme for any Simulink models submitted for assessment.
 
 If you wish, you can submit all parts of Exercise 7 in a single Live Script file (suggest `ex7.mlx`) providing that each part is separated by properly titled sections. 
 
@@ -99,7 +99,7 @@ When you have finished attaching your work, complete the claim form and turn-in 
 
 ## Claim
 
-Up to 2 marks can be claimed if you complete Part 2 of Exercise 7, an addition 2 marks for is available for Parts 3 and 4 and 1 additional mark is available for completing Lab Exercise 8.
+Up to 2 marks can be claimed if you complete Part 2 of Exercise 7, an additional 2 marks for is available for Parts 3 and 4 and 1 additional mark is available for completing Lab Exercise 8.
 
 See [Assessment and Feedback: Labwork Assessment](https://docs.google.com/spreadsheets/d/1U-O2hu_Th369EHp6mdc1_j_7ARew2WosE93cjsW012c/edit?usp=sharing) for a detailed marking scheme.
 
