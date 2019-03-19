@@ -2,7 +2,7 @@
 redirect_from:
   - "dt-systems/1/sampling"
 interact_link: content/dt_systems/1/sampling.ipynb
-title: 'Sampling Theory'
+title: 'Sampling Theor'
 prev_page:
   url: /dt_systems/index
   title: 'Sampled Data Systems'
@@ -12,28 +12,7 @@ next_page:
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
-
-
-{:.input_area}
-```matlab
-cd matlab
-pwd
-format compact
-clear all
-```
-
-
-{:.output .output_stream}
-```
-
-ans =
-
-    '/Users/eechris/dev/eg-247-textbook/content/dt_systems/1/matlab'
-
-
-```
-
-# Sampling Systems
+# Sampling Theory
 
 ## Scope and Background Reading
 
@@ -61,6 +40,8 @@ We will be using an adaptation of a pair of demo scripts to illustrate *alialisi
 * Sampling records discrete values of a CT signal at periodic instants of time.
 * Sampled data can be used in *real-time* or *off-line* processing
 * Sampling opens up possibility of processing CT signals through *finite impulse response* (FIR) and *infinite impulse response* (IIR) filters.
+
+## In Class Example 1
 
 ## A Real Example
 
@@ -114,7 +95,7 @@ $T_s$ is the period of the periodic sampling function.
 
 ### Frequency domain
 
-Multiplication in time domain is *convolution* in the frequency domain
+Multiplication in the time domain is *convolution* in the frequency domain
 
 <img src="pictures/sampling_fr.png">
 
@@ -145,7 +126,7 @@ Gives a sufficient condition to recover a continuous time signal from its sample
 
 Let $x(t)$ be a band-limited signal with $X(\omega) = 0$ for $|\omega|>\omega_M$.
 
-Then $x(t)$ is uniquely determined by its samples $x(nT_s)$, $\infty <n < +\infty$ if
+Then $x(t)$ is uniquely determined by its samples $x(nT_s)$, $-\infty <n < +\infty$ if
 
 $$\omega_s > 2\omega_M,$$
 
@@ -172,7 +153,9 @@ This is of course theoretical only!
 
 <img src="pictures/zoh.png">
 
-## Matlab example
+## In Class Example 2
+
+### Illustrating Sampling in MATLAB
 
 Basic set up
 
@@ -181,9 +164,10 @@ Basic set up
 {:.input_area}
 ```matlab
 clear all
+format compact
 w0 = 1;        % fundamental frequency rad/s
 t0=2*pi/w0;    % period s
-tmax = 1.5*t0; % plotable range
+tmax = 1.5*t0; % plottable range
 ```
 
 
@@ -211,7 +195,7 @@ H =
 
 ```
 
-#### Calculate and plot impulse response
+#### Calculate and plot the impulse response
 
 
 
@@ -233,7 +217,7 @@ h =
 {:.input_area}
 ```matlab
 t = linspace(0,tmax,100);
-xc = eval(h); % eval evaluates a symbolic expression as a Matlab command.
+xc = eval(h); % eval evaluates a symbolic expression as a MATLAB command.
 tc = t;
 ```
 
@@ -251,13 +235,13 @@ xlabel('Time t [s]')
 
 
 {:.output .output_png}
-![png](../../images/dt_systems/1/sampling_36_0.png)
+![png](../../images/dt_systems/1/sampling_38_0.png)
 
 
 
 You can generate all the images in this presentation by running the Matlab script: [sampling.m](sampling.m) which is also available as a Live Script [sampling.mlx](matlab/sampling.mlx).
 
-#### Calculate and plot sampled data
+#### Calculate and plot the sampled data
 
 
 
@@ -287,7 +271,7 @@ xlabel('Time t [s]')
 
 
 {:.output .output_png}
-![png](../../images/dt_systems/1/sampling_40_0.png)
+![png](../../images/dt_systems/1/sampling_42_0.png)
 
 
 
@@ -327,7 +311,11 @@ The frequency response of this filter and additional notes are to be found on Pa
 * In the *time domain*, this is equivalent to interpolating the samples using time-shifted sinc functions with zeros at $nT_s$ for $\omega_c = \omega_s$.
 
 
-Signal reconstructed with sinc function
+## In Class Example 3
+
+### MATLAB Demonstrations of signal reconstruction
+
+ #### Reconstruction with sinc function
 
 
 
@@ -346,7 +334,7 @@ end
 
 
 {:.output .output_png}
-![png](../../images/dt_systems/1/sampling_45_0.png)
+![png](../../images/dt_systems/1/sampling_49_0.png)
 
 
 
@@ -364,7 +352,7 @@ xlabel('Time t [s]')
 
 
 {:.output .output_png}
-![png](../../images/dt_systems/1/sampling_46_0.png)
+![png](../../images/dt_systems/1/sampling_50_0.png)
 
 
 
@@ -389,7 +377,7 @@ ylabel('x(t)')
 
 
 {:.output .output_png}
-![png](../../images/dt_systems/1/sampling_49_0.png)
+![png](../../images/dt_systems/1/sampling_53_0.png)
 
 
 
@@ -416,7 +404,7 @@ xlabel('Time t [s]')
 
 
 {:.output .output_png}
-![png](../../images/dt_systems/1/sampling_52_0.png)
+![png](../../images/dt_systems/1/sampling_56_0.png)
 
 
 
@@ -435,7 +423,7 @@ xlabel('Time t [s]')
 
 
 {:.output .output_png}
-![png](../../images/dt_systems/1/sampling_54_0.png)
+![png](../../images/dt_systems/1/sampling_58_0.png)
 
 
 
@@ -450,6 +438,8 @@ xlabel('Time t [s]')
 ### An Aliased Signal
 
 <img src="pictures/aliasing.png">
+
+## In Class Examples 4
 
 ### Example 1
 

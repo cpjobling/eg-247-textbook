@@ -154,7 +154,7 @@ Plot result
 ```matlab
 ezplot(y)
 title('Solution to Example 1')
-ylabel('y(y)')
+ylabel('y(t)')
 xlabel('t [s]')
 grid 
 ```

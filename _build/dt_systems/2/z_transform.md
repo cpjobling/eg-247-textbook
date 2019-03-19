@@ -5,7 +5,7 @@ interact_link: content/dt_systems/2/z_transform.ipynb
 title: 'The Z-Transform'
 prev_page:
   url: /dt_systems/1/sampling
-  title: 'Sampling Theory'
+  title: 'Sampling Theor'
 next_page:
   url: /dt_systems/3/i_z_transform
   title: 'The Inverse Z-Transform'
@@ -44,13 +44,13 @@ In the remainder of this course we turn our attention to how we model and analys
 
 <img src="pictures/ct-to-dt-to-sequence.png">
 
-* The signals we process in discrete time systems are *sequences* of values $x[n]$ where $n$ is an index.
+The signals we process in discrete time systems are *sequences* of values $x[n]$ where $n$ is an index.
 
 A sequence can be obtained in real-time, e.g. as the output of a ADC, or can be stored in digital memory; processed and re-stored; or processed and output in real-time, for example in digital music.
 
 ### Nature of the systems
 
-* The input to a discrete time system is a squences of values $x[n]$
+* The input to a discrete time system is a squence of values $x[n]$
 * The output is also a sequence $y[n]$
 * The block represents the operations that convert $x[n]$ into $y[n]$. 
 * This processing takes the form of a *difference equation* 
@@ -131,7 +131,13 @@ $$F(z) = \frac{1}{1-az^{-1}}=\frac{z}{z -a}$$
 
 1. See Karris pp 9-12&mdash;9-13 for the details
 
-2. This function converges only if $$|z| < |a|$$ and the region of convergence is outside the cicle centred at $z=0$ with radius $$r=|a|$$
+2. This function converges only if 
+
+   $$|z| < |a|$$ 
+   
+   and the region of convergence is outside the circle centred at $z=0$ with radius 
+   
+   $$r=|a|$$
 
 ### Region of convergence
 
@@ -165,7 +171,9 @@ This is a special case of the geometric sequence with $a = 1$ so
 
 $$U_0(z) = \frac{1}{1-z^{-1}} = \frac{z}{z - 1}$$
 
-Region of convergence is $$|z| > 1$$
+Region of convergence is 
+
+$$|z| > 1$$
 
 ### Exponontial Decay Sequence
 
@@ -252,7 +260,13 @@ $$s = \sigma + j\omega$$
 
 $$z = e^{\sigma T_s + j\omega T_s} = e^{\sigma T_s}e^{j\omega T_s} = |z|e^{j\theta}$$
 
-where $$|z| = e^{\sigma Ts}$$ and $$\theta = \omega T_s.$$
+where 
+
+$$|z| = e^{\sigma Ts}$$
+
+and 
+
+$$\theta = \omega T_s.$$
 
 ### Introduction of sampling frequency
 
@@ -276,19 +290,40 @@ $$z = e^{\sigma t}e^{j2\pi\omega/\omega_s}$$
 
 ### Case I: $\sigma < 0$
 
-* When $\sigma < 0$ we see that from $$|z| = e^{\sigma T_s}$$ that $$|z| < 1$$
+* When $\sigma < 0$ we see that from 
+
+  $$|z| = e^{\sigma T_s}$$ 
+  
+  that 
+  
+  $$|z| < 1$$
+
 * The left-half plane of the $s$-domain maps into the unit circle in the $z$-plane.
+
 * Different negative values of $\sigma$ map onto concentric circles with radius less than unity.
 
 ### Case II: $\sigma > 0$
 
-* When $\sigma > 0$ we see that from $$|z| = e^{\sigma T_s}$$ that $$|z| > 1$$
+* When $\sigma > 0$ we see that from 
+
+  $$|z| = e^{\sigma T_s}$$
+  
+  that $$|z| > 1$$
+
 * The right-half plane of the $s$-domain maps outside the unit circle in the $z$-plane.
+
 * Different positive values of $\sigma$ map onto concentric circles with radius greater than unity.
 
 ### Case III: $\sigma = 0$
 
-* When $\sigma = 0$, $$|z| = 1$$ and $$\theta = 2\pi\omega/\omega_s$$
+* When $\sigma = 0$, 
+ 
+   $$|z| = 1$$
+  
+  and 
+  
+  $$\theta = \frac{2\pi\omega}{\omega_s}$$
+  
 * All values of $\omega$ lie on the circumference of the unit circle.
 
 ### Stability Region - s-Plane

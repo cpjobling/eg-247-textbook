@@ -1,8 +1,8 @@
 ---
 title: 'Worksheets'
 prev_page:
-  url: /dt_systems/4/dt_models
-  title: 'Models of Discrete Time Systems'
+  url: /dft/2/fft
+  title: 'The Fast-Fourier Transform'
 next_page:
   url: /introduction/worksheet1
   title: 'Worksheet 1 Introduction'

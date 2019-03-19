@@ -7,8 +7,8 @@ prev_page:
   url: /dt_systems/3/i_z_transform
   title: 'The Inverse Z-Transform'
 next_page:
-  url: /worksheets/index
-  title: 'Worksheets'
+  url: /dft/index
+  title: 'Discrete Fourier Transform'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

@@ -72,11 +72,12 @@ An ideal frequency-selective filter is a system that let's the frequency compone
 
 ### Motivating example
 
-See the video and script in the [OneNote Class Room notebook](https://swanseauniversity.sharepoint.com/sites/EG-247SignalsandSystems2017-2108-UsrGrpcopy-UsrGrp/SiteAssets/EG-247%20Signals%20and%20Systems%202017-2108-UsrGrp%20%5bcopy%5d-UsrGrp%20Notebook/_Content%20Library/Classes/Week%207.one#Motivating%20Example&section-id={681B0954-AC4E-9646-A567-FF06C3696F07}&page-id={E5AD343A-E348-0141-8096-60E0CA201E57}&end).
+See the video and script in the [OneNote Class Room notebook](https://swanseauniversity.sharepoint.com/sites/EG-247SignalsandSystems2017-2108-UsrGrpcopy-UsrGrp/_layouts/OneNote.aspx?id=%2Fsites%2FEG-247SignalsandSystems2017-2108-UsrGrpcopy-UsrGrp%2FSiteAssets%2FEG-247%20Signals%20and%20Systems%202017-2108-UsrGrp%20%5Bcopy%5D-UsrGrp%20Notebook&wd=target%28_Content%20Library%2FClasses%2FWeek%207.one%7C681B0954-AC4E-9646-A567-FF06C3696F07%2FMotivating%20Example%20for%20Introduction%20to%20Filters%7CE5AD343A-E348-0141-8096-60E0CA201E57%2F%29
+).
 
 ## Ideal Low-Pass Filter
 
-An ideal low pass filter cuts-off frequencies higher than its *cutoff frequency*, $\omega_c$.
+An ideal low pass filter cuts-off frequencies higher than its *cut-off frequency*, $\omega_c$.
 
 $$H_{\rm{lp}}(\omega ) = \left\{ {\begin{array}{*{20}{c}}
 {1,}&{|\omega |{\kern 1pt} \, < {\omega _c}}\\

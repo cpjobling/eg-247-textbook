@@ -27,9 +27,9 @@
   "headline":
     "The Z-Transform",
   "datePublished":
-    "2019-03-15T15:59:15+00:00",
+    "2019-03-19T23:11:25+00:00",
   "dateModified":
-    "2019-03-15T15:59:15+00:00",
+    "2019-03-19T23:11:25+00:00",
   "description":
     "Discrete-Time Systems and the Z-Transform",
   "author": {
@@ -777,7 +777,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
                   
                     6.1
                   
-                  Sampling Theory
+                  Sampling Theor
                 </a>
 
                 
@@ -835,6 +835,77 @@ document.addEventListener('turbolinks:load', updateInteractLink)
                     6.4
                   
                   Models of Discrete Time Systems
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/eg-247-textbook/dft/index"
+        >
+          
+            7.
+          
+          Discrete Fourier Transform
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/dft/1/dft"
+                >
+                  
+                    7.1
+                  
+                  The Discrete Fourier Transform
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/dft/2/fft"
+                >
+                  
+                    7.2
+                  
+                  The Fast-Fourier Transform
                 </a>
 
                 
@@ -1494,16 +1565,14 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
 <p><img src="pictures/ct-to-dt-to-sequence.png" /></p>
 
-<ul>
-  <li>The signals we process in discrete time systems are <em>sequences</em> of values $x[n]$ where $n$ is an index.</li>
-</ul>
+<p>The signals we process in discrete time systems are <em>sequences</em> of values $x[n]$ where $n$ is an index.</p>
 
 <p>A sequence can be obtained in real-time, e.g. as the output of a ADC, or can be stored in digital memory; processed and re-stored; or processed and output in real-time, for example in digital music.</p>
 
 <h3 id="nature-of-the-systems">Nature of the systems</h3>
 
 <ul>
-  <li>The input to a discrete time system is a squences of values $x[n]$</li>
+  <li>The input to a discrete time system is a squence of values $x[n]$</li>
   <li>The output is also a sequence $y[n]$</li>
   <li>The block represents the operations that convert $x[n]$ into $y[n]$.</li>
   <li>This processing takes the form of a <em>difference equation</em></li>
@@ -1590,19 +1659,14 @@ a^n&{n = 0,1,2,3, \ldots }
     <p>See Karris pp 9-12—9-13 for the details</p>
   </li>
   <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>This function converges only if $$</td>
-          <td>z</td>
-          <td>&lt;</td>
-          <td>a</td>
-          <td><script type="math/tex">and the region of convergence is outside the cicle centred at $z=0$ with radius</script>r=</td>
-          <td>a</td>
-          <td>$$</td>
-        </tr>
-      </tbody>
-    </table>
+    <p>This function converges only if</p>
+
+    <script type="math/tex; mode=display">% <![CDATA[
+|z| < |a| %]]></script>
+
+    <p>and the region of convergence is outside the circle centred at $z=0$ with radius</p>
+
+    <script type="math/tex; mode=display">r=|a|</script>
   </li>
 </ol>
 
@@ -1640,15 +1704,9 @@ a^n&{n = 0,1,2,3, \ldots }
 
 <script type="math/tex; mode=display">U_0(z) = \frac{1}{1-z^{-1}} = \frac{z}{z - 1}</script>
 
-<table>
-  <tbody>
-    <tr>
-      <td>Region of convergence is $$</td>
-      <td>z</td>
-      <td>&gt; 1$$</td>
-    </tr>
-  </tbody>
-</table>
+<p>Region of convergence is</p>
+
+<script type="math/tex; mode=display">|z| > 1</script>
 
 <h3 id="exponontial-decay-sequence">Exponontial Decay Sequence</h3>
 
@@ -1743,15 +1801,13 @@ a^n&{n = 0,1,2,3, \ldots }
 
 <script type="math/tex; mode=display">z = e^{\sigma T_s + j\omega T_s} = e^{\sigma T_s}e^{j\omega T_s} = |z|e^{j\theta}</script>
 
-<table>
-  <tbody>
-    <tr>
-      <td>where $$</td>
-      <td>z</td>
-      <td>= e^{\sigma Ts}<script type="math/tex">and</script>\theta = \omega T_s.$$</td>
-    </tr>
-  </tbody>
-</table>
+<p>where</p>
+
+<script type="math/tex; mode=display">|z| = e^{\sigma Ts}</script>
+
+<p>and</p>
+
+<script type="math/tex; mode=display">\theta = \omega T_s.</script>
 
 <h3 id="introduction-of-sampling-frequency">Introduction of sampling frequency</h3>
 
@@ -1783,57 +1839,64 @@ a^n&{n = 0,1,2,3, \ldots }
 
 <ul>
   <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>When $\sigma &lt; 0$ we see that from $$</td>
-          <td>z</td>
-          <td>= e^{\sigma T_s}<script type="math/tex">that</script></td>
-          <td>z</td>
-          <td>&lt; 1$$</td>
-        </tr>
-      </tbody>
-    </table>
+    <p>When $\sigma &lt; 0$ we see that from</p>
+
+    <script type="math/tex; mode=display">|z| = e^{\sigma T_s}</script>
+
+    <p>that</p>
+
+    <script type="math/tex; mode=display">% <![CDATA[
+|z| < 1 %]]></script>
   </li>
-  <li>The left-half plane of the $s$-domain maps into the unit circle in the $z$-plane.</li>
-  <li>Different negative values of $\sigma$ map onto concentric circles with radius less than unity.</li>
+  <li>
+    <p>The left-half plane of the $s$-domain maps into the unit circle in the $z$-plane.</p>
+  </li>
+  <li>
+    <p>Different negative values of $\sigma$ map onto concentric circles with radius less than unity.</p>
+  </li>
 </ul>
 
 <h3 id="case-ii-sigma--0">Case II: $\sigma &gt; 0$</h3>
 
 <ul>
   <li>
+    <p>When $\sigma &gt; 0$ we see that from</p>
+
+    <script type="math/tex; mode=display">|z| = e^{\sigma T_s}</script>
+
     <table>
       <tbody>
         <tr>
-          <td>When $\sigma &gt; 0$ we see that from $$</td>
-          <td>z</td>
-          <td>= e^{\sigma T_s}<script type="math/tex">that</script></td>
+          <td>that $$</td>
           <td>z</td>
           <td>&gt; 1$$</td>
         </tr>
       </tbody>
     </table>
   </li>
-  <li>The right-half plane of the $s$-domain maps outside the unit circle in the $z$-plane.</li>
-  <li>Different positive values of $\sigma$ map onto concentric circles with radius greater than unity.</li>
+  <li>
+    <p>The right-half plane of the $s$-domain maps outside the unit circle in the $z$-plane.</p>
+  </li>
+  <li>
+    <p>Different positive values of $\sigma$ map onto concentric circles with radius greater than unity.</p>
+  </li>
 </ul>
 
 <h3 id="case-iii-sigma--0">Case III: $\sigma = 0$</h3>
 
 <ul>
   <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>When $\sigma = 0$, $$</td>
-          <td>z</td>
-          <td>= 1<script type="math/tex">and</script>\theta = 2\pi\omega/\omega_s$$</td>
-        </tr>
-      </tbody>
-    </table>
+    <p>When $\sigma = 0$,</p>
+
+    <script type="math/tex; mode=display">|z| = 1</script>
+
+    <p>and</p>
+
+    <script type="math/tex; mode=display">\theta = \frac{2\pi\omega}{\omega_s}</script>
   </li>
-  <li>All values of $\omega$ lie on the circumference of the unit circle.</li>
+  <li>
+    <p>All values of $\omega$ lie on the circumference of the unit circle.</p>
+  </li>
 </ul>
 
 <h3 id="stability-region---s-plane">Stability Region - s-Plane</h3>
@@ -1931,7 +1994,7 @@ a^n&{n = 0,1,2,3, \ldots }
               <nav class="c-page__nav">
   
     <a id="js-page__nav__prev" class="c-page__nav__prev" href="/eg-247-textbook/dt_systems/1/sampling">
-      〈 <span class="u-margin-right-tiny"></span> Sampling Theory
+      〈 <span class="u-margin-right-tiny"></span> Sampling Theor
     </a>
   
 

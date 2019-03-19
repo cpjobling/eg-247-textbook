@@ -5,16 +5,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-  <title>Sampling Theory</title>
-  <meta name="description" content="cd matlabpwdformat compactclear all">
+  <title>Sampling Theor</title>
+  <meta name="description" content="Sampling Theory">
 
   <link rel="canonical" href="/eg-247-textbook/eg-247-textbook/dt_systems/1/sampling.html">
   <link rel="alternate" type="application/rss+xml" title="EG-247 Signals and Systems" href="/eg-247-textbook/eg-247-textbook/feed.xml">
 
   <meta property="og:url"         content="/eg-247-textbook/eg-247-textbook/dt_systems/1/sampling.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Sampling Theory" />
-<meta property="og:description" content="cd matlabpwdformat compactclear all" />
+<meta property="og:title"       content="Sampling Theor" />
+<meta property="og:description" content="Sampling Theory" />
 <meta property="og:image"       content="" />
 
 
@@ -25,13 +25,13 @@
   "mainEntityOfPage":
     "/eg-247-textbook/dt_systems/1/sampling.html",
   "headline":
-    "Sampling Theory",
+    "Sampling Theor",
   "datePublished":
-    "2019-03-15T15:59:15+00:00",
+    "2019-03-19T23:11:25+00:00",
   "dateModified":
-    "2019-03-15T15:59:15+00:00",
+    "2019-03-19T23:11:25+00:00",
   "description":
-    "cd matlabpwdformat compactclear all",
+    "Sampling Theory",
   "author": {
     "@type": "Person",
     "name": "Dr Chris P. Jobling"
@@ -777,7 +777,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
                   
                     6.1
                   
-                  Sampling Theory
+                  Sampling Theor
                 </a>
 
                 
@@ -835,6 +835,77 @@ document.addEventListener('turbolinks:load', updateInteractLink)
                     6.4
                   
                   Models of Discrete Time Systems
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/eg-247-textbook/dft/index"
+        >
+          
+            7.
+          
+          Discrete Fourier Transform
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/dft/1/dft"
+                >
+                  
+                    7.1
+                  
+                  The Discrete Fourier Transform
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/dft/2/fft"
+                >
+                  
+                    7.2
+                  
+                  The Fast-Fourier Transform
                 </a>
 
                 
@@ -1379,6 +1450,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
   <li><a href="#agenda">Agenda</a></li>
   <li><a href="#acknowledgements">Acknowledgements</a></li>
   <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#in-class-example-1">In Class Example 1</a></li>
   <li><a href="#a-real-example">A Real Example</a>
     <ul>
       <li><a href="#technical-details">Technical Details</a></li>
@@ -1397,8 +1469,9 @@ document.addEventListener('turbolinks:load', updateInteractLink)
       <li><a href="#sample-and-hold-operator">Sample-and-hold operator</a></li>
     </ul>
   </li>
-  <li><a href="#matlab-example">Matlab example</a>
+  <li><a href="#in-class-example-2">In Class Example 2</a>
     <ul>
+      <li><a href="#illustrating-sampling-in-matlab">Illustrating Sampling in MATLAB</a></li>
       <li><a href="#define-a-suitable-signal">Define a suitable signal</a></li>
       <li><a href="#notes">Notes</a></li>
     </ul>
@@ -1408,9 +1481,18 @@ document.addEventListener('turbolinks:load', updateInteractLink)
       <li><a href="#perfect-signal-interpolation-using-sinc-functions">Perfect Signal Interpolation Using sinc Functions</a></li>
     </ul>
   </li>
+  <li><a href="#in-class-example-3">In Class Example 3</a>
+    <ul>
+      <li><a href="#matlab-demonstrations-of-signal-reconstruction">MATLAB Demonstrations of signal reconstruction</a></li>
+    </ul>
+  </li>
   <li><a href="#aliasing">Aliasing</a>
     <ul>
       <li><a href="#an-aliased-signal">An Aliased Signal</a></li>
+    </ul>
+  </li>
+  <li><a href="#in-class-examples-4">In Class Examples 4</a>
+    <ul>
       <li><a href="#example-1">Example 1</a></li>
       <li><a href="#example-2">Example 2</a></li>
       <li><a href="#antialising-filters">Antialising Filters</a></li>
@@ -1457,21 +1539,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
 
             <div class="c-textbook__content">
-              <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> <span class="n">matlab</span>
-<span class="nb">pwd</span>
-<span class="nb">format</span> <span class="n">compact</span>
-<span class="nb">clear</span> <span class="nb">all</span>
-</code></pre></div></div>
-
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-ans =
-
-    '/Users/eechris/dev/eg-247-textbook/content/dt_systems/1/matlab'
-
-
-</code></pre></div></div>
-
-<h1 id="sampling-systems">Sampling Systems</h1>
+              <h1 id="sampling-theory">Sampling Theory</h1>
 
 <h2 id="scope-and-background-reading">Scope and Background Reading</h2>
 
@@ -1508,6 +1576,8 @@ ans =
   <li>Sampled data can be used in <em>real-time</em> or <em>off-line</em> processing</li>
   <li>Sampling opens up possibility of processing CT signals through <em>finite impulse response</em> (FIR) and <em>infinite impulse response</em> (IIR) filters.</li>
 </ul>
+
+<h2 id="in-class-example-1">In Class Example 1</h2>
 
 <h2 id="a-real-example">A Real Example</h2>
 
@@ -1559,7 +1629,7 @@ ans =
 
 <h3 id="frequency-domain">Frequency domain</h3>
 
-<p>Multiplication in time domain is <em>convolution</em> in the frequency domain</p>
+<p>Multiplication in the time domain is <em>convolution</em> in the frequency domain</p>
 
 <p><img src="pictures/sampling_fr.png" /></p>
 
@@ -1598,7 +1668,7 @@ ans =
   </tbody>
 </table>
 
-<p>Then $x(t)$ is uniquely determined by its samples $x(nT_s)$, $\infty &lt;n &lt; +\infty$ if</p>
+<p>Then $x(t)$ is uniquely determined by its samples $x(nT_s)$, $-\infty &lt;n &lt; +\infty$ if</p>
 
 <script type="math/tex; mode=display">\omega_s > 2\omega_M,</script>
 
@@ -1624,14 +1694,17 @@ ans =
 
 <p><img src="pictures/zoh.png" /></p>
 
-<h2 id="matlab-example">Matlab example</h2>
+<h2 id="in-class-example-2">In Class Example 2</h2>
+
+<h3 id="illustrating-sampling-in-matlab">Illustrating Sampling in MATLAB</h3>
 
 <p>Basic set up</p>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">clear</span> <span class="nb">all</span>
+<span class="nb">format</span> <span class="n">compact</span>
 <span class="n">w0</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>        <span class="c1">% fundamental frequency rad/s</span>
 <span class="n">t0</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">/</span><span class="n">w0</span><span class="p">;</span>    <span class="c1">% period s</span>
-<span class="n">tmax</span> <span class="o">=</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">t0</span><span class="p">;</span> <span class="c1">% plotable range</span>
+<span class="n">tmax</span> <span class="o">=</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">t0</span><span class="p">;</span> <span class="c1">% plottable range</span>
 </code></pre></div></div>
 
 <h3 id="define-a-suitable-signal">Define a suitable signal</h3>
@@ -1650,7 +1723,7 @@ ans =
 
 </code></pre></div></div>
 
-<h4 id="calculate-and-plot-impulse-response">Calculate and plot impulse response</h4>
+<h4 id="calculate-and-plot-the-impulse-response">Calculate and plot the impulse response</h4>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">h</span> <span class="o">=</span> <span class="n">ilaplace</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
 </code></pre></div></div>
@@ -1661,7 +1734,7 @@ ans =
 </code></pre></div></div>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t</span> <span class="o">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">tmax</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
-<span class="n">xc</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">h</span><span class="p">);</span> <span class="c1">% eval evaluates a symbolic expression as a Matlab command.</span>
+<span class="n">xc</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">h</span><span class="p">);</span> <span class="c1">% eval evaluates a symbolic expression as a MATLAB command.</span>
 <span class="n">tc</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
 </code></pre></div></div>
 
@@ -1671,11 +1744,11 @@ ans =
 <span class="nb">xlabel</span><span class="p">(</span><span class="s1">'Time t [s]'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/dt_systems/1/sampling_36_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../../images/dt_systems/1/sampling_38_0.png" alt="png" /></p>
 
 <p>You can generate all the images in this presentation by running the Matlab script: <a href="sampling.m">sampling.m</a> which is also available as a Live Script <a href="matlab/sampling.mlx">sampling.mlx</a>.</p>
 
-<h4 id="calculate-and-plot-sampled-data">Calculate and plot sampled data</h4>
+<h4 id="calculate-and-plot-the-sampled-data">Calculate and plot the sampled data</h4>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ws</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="n">w0</span><span class="p">;</span> <span class="c1">% twice minimum!</span>
 <span class="n">Ts</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">)/</span><span class="n">ws</span><span class="p">;</span>
@@ -1693,7 +1766,7 @@ ans =
 <span class="nb">xlabel</span><span class="p">(</span><span class="s1">'Time t [s]'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/dt_systems/1/sampling_40_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../../images/dt_systems/1/sampling_42_0.png" alt="png" /></p>
 
 <h3 id="notes">Notes</h3>
 
@@ -1737,7 +1810,11 @@ ans =
   </li>
 </ul>
 
-<p>Signal reconstructed with sinc function</p>
+<h2 id="in-class-example-3">In Class Example 3</h2>
+
+<h3 id="matlab-demonstrations-of-signal-reconstruction">MATLAB Demonstrations of signal reconstruction</h3>
+
+<p>#### Reconstruction with sinc function</p>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">stem</span><span class="p">(</span><span class="n">td</span><span class="p">,</span><span class="n">xs</span><span class="p">)</span>
 <span class="nb">hold</span> <span class="n">on</span>
@@ -1749,7 +1826,7 @@ ans =
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/dt_systems/1/sampling_45_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../../images/dt_systems/1/sampling_49_0.png" alt="png" /></p>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">plot</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="s1">'-.'</span><span class="p">)</span>
 <span class="nb">hold</span> <span class="n">off</span>
@@ -1758,7 +1835,7 @@ ans =
 <span class="nb">xlabel</span><span class="p">(</span><span class="s1">'Time t [s]'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/dt_systems/1/sampling_46_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../../images/dt_systems/1/sampling_50_0.png" alt="png" /></p>
 
 <p>Each impulse in $x_s(t)$ triggers the impulse reponse of the lowpass filter (the sinc signal), the resulting signal $x(t)$ at the output of the filter is the sum of all these time-shifted sinc signals with amplitudes equal to the samples $x(nT_s)$.</p>
 
@@ -1774,7 +1851,7 @@ ans =
 <span class="nb">ylabel</span><span class="p">(</span><span class="s1">'x(t)'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/dt_systems/1/sampling_49_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../../images/dt_systems/1/sampling_53_0.png" alt="png" /></p>
 
 <p>This is clearly unfeasible, at least in real-time, so we have to resort to approximations of the ideal low-pass filter.</p>
 
@@ -1792,7 +1869,7 @@ ans =
 <span class="nb">xlabel</span><span class="p">(</span><span class="s1">'Time t [s]'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/dt_systems/1/sampling_52_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../../images/dt_systems/1/sampling_56_0.png" alt="png" /></p>
 
 <h4 id="signal-reconstructed-with-first-order-hold-foh">Signal reconstructed with First-order hold (FOH)</h4>
 
@@ -1802,7 +1879,7 @@ ans =
 <span class="nb">xlabel</span><span class="p">(</span><span class="s1">'Time t [s]'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/dt_systems/1/sampling_54_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../../images/dt_systems/1/sampling_58_0.png" alt="png" /></p>
 
 <h2 id="aliasing">Aliasing</h2>
 
@@ -1821,6 +1898,8 @@ ans =
 <h3 id="an-aliased-signal">An Aliased Signal</h3>
 
 <p><img src="pictures/aliasing.png" /></p>
+
+<h2 id="in-class-examples-4">In Class Examples 4</h2>
 
 <h3 id="example-1">Example 1</h3>
 
