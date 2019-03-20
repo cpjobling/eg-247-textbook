@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>The Fast-Fourier Transform</title>
-  <meta name="description" content="cd matlabpwd">
+  <meta name="description" content="% cd matlabclear allformat compact">
 
   <link rel="canonical" href="/eg-247-textbook/eg-247-textbook/dft/2/fft.html">
   <link rel="alternate" type="application/rss+xml" title="EG-247 Signals and Systems" href="/eg-247-textbook/eg-247-textbook/feed.xml">
@@ -14,7 +14,7 @@
   <meta property="og:url"         content="/eg-247-textbook/eg-247-textbook/dft/2/fft.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="The Fast-Fourier Transform" />
-<meta property="og:description" content="cd matlabpwd" />
+<meta property="og:description" content="% cd matlabclear allformat compact" />
 <meta property="og:image"       content="" />
 
 
@@ -27,11 +27,11 @@
   "headline":
     "The Fast-Fourier Transform",
   "datePublished":
-    "2019-03-19T23:11:25+00:00",
+    "2019-03-20T00:15:59+00:00",
   "dateModified":
-    "2019-03-19T23:11:25+00:00",
+    "2019-03-20T00:15:59+00:00",
   "description":
-    "cd matlabpwd",
+    "% cd matlabclear allformat compact",
   "author": {
     "@type": "Person",
     "name": "Dr Chris P. Jobling"
@@ -1505,8 +1505,9 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
 
             <div class="c-textbook__content">
-              <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> <span class="n">matlab</span>
-<span class="nb">pwd</span>
+              <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% cd matlab</span>
+<span class="nb">clear</span> <span class="nb">all</span>
+<span class="nb">format</span> <span class="n">compact</span>
 </code></pre></div></div>
 
 <h1 id="the-fast-fourier-transform">The Fast Fourier Transform</h1>
@@ -1531,6 +1532,9 @@ document.addEventListener('turbolinks:load', updateInteractLink)
   </li>
   <li>
     <p>The FFT - a sketch of its development</p>
+  </li>
+  <li>
+    <p>An illustration of part of the FFT algorithm</p>
   </li>
   <li>
     <p>FFT v DFT</p>
@@ -1574,11 +1578,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
     <p>$2N$ complex arithmetic operations are required to compute any frequency component of $X[k].$<sup>1</sup></p>
   </li>
   <li>
-    <p>If we assume that $x[n]$ is real, then only $N/2$ of the</p>
-
-    <script type="math/tex; mode=display">|X[m]|</script>
-
-    <p>components are unique.</p>
+    <p>If we assume that $x[n]$ is real, then only $N/2$ of the $X[m]$ components are unique.</p>
   </li>
   <li>
     <p>Therefore we would require $2N\times N/2 = N^2$ complex operations to compute the entire frequency spectrum.<sup>2</sup></p>
@@ -1599,18 +1599,18 @@ document.addEventListener('turbolinks:load', updateInteractLink)
     <p>Moreover, because the $W_N^i$ points are equally spaced points on the unit circle;</p>
   </li>
   <li>
-    <p>Because $N$ is a power of 2 the points on the upper-half plane (range $0 &lt; \theta &lt; \pi$ are the mirror image of the points on the lower half plane range $\pi &lt; \theta &lt; 2\pi$;</p>
+    <p>Because $N$ is a power of 2, the points on the upper-half plane (range $0 &lt; \theta &lt; \pi$ are the mirror image of the points on the lower half plane range $\pi &lt; \theta &lt; 2\pi$;</p>
   </li>
   <li>
     <p>Thus, there is a great deal of symmetry in the computation that can be exploited to simplify the computation and reduce the number of operations considerably to a much more manageable $N \log_2 N$ operations<sup>3</sup>.</p>
   </li>
 </ul>
 
-<p>This is possible with the algorithm called the <a href="https://en.wikipedia.org/wiki/Fast_Fourier_transform">FTT</a> (fast Fourier transform) that was originally developed by <a href="https://en.wikipedia.org/wiki/James_Cooley">James Cooley</a> and <a href="https://en.wikipedia.org/wiki/John_Tukey">John Tukey</a> and considerably refined since.</p>
+<p>This is possible with the algorithm called the <a href="https://en.wikipedia.org/wiki/Fast_Fourier_transform">FTT</a> (fast Fourier transform) that was originally developed by <a href="https://en.wikipedia.org/wiki/James_Cooley">James Cooley</a> and <a href="https://en.wikipedia.org/wiki/John_Tukey">John Tukey</a> and has been considerably refined since.</p>
 
 <h2 id="the-fast-fourier-transform-fft">The Fast Fourier Transform (FFT)</h2>
 
-<p>The FFT is very well documented, including in the text book, so we will only sketch its development and present its main result.</p>
+<p>The FFT is very well documented, including in Karris, so we will only sketch its development and present its main result. However, we will illustrate part of the algorithm to make concrete an idea of the efficiency advantage that the FFT has over the DFT that we have already seen.</p>
 
 <p>Much of the development follows from the properties of the rotating vector.<sup>4</sup></p>
 
@@ -1696,6 +1696,7 @@ where $L$ is chosen as $L = \log_2N$ or $N=2^L$.</p>
   <thead>
     <tr>
       <th> </th>
+      <th> </th>
       <th>DFT</th>
       <th>FFT</th>
       <th>FFT/DFT</th>
@@ -1704,60 +1705,70 @@ where $L$ is chosen as $L = \log_2N$ or $N=2^L$.</p>
   <tbody>
     <tr>
       <td>N</td>
+      <td><script type="math/tex">\log_2 N</script></td>
       <td><script type="math/tex">N^2</script></td>
       <td>$N\log_2 N$</td>
       <td>%</td>
     </tr>
     <tr>
       <td>8</td>
+      <td>3</td>
       <td>64</td>
       <td>24</td>
       <td>37.5</td>
     </tr>
     <tr>
       <td>16</td>
+      <td>4</td>
       <td>256</td>
       <td>64</td>
       <td>25</td>
     </tr>
     <tr>
       <td>32</td>
+      <td>5</td>
       <td>1,024</td>
       <td>160</td>
       <td>15.6</td>
     </tr>
     <tr>
       <td>64</td>
+      <td>6</td>
       <td>4,096</td>
       <td>384</td>
       <td>9.4</td>
     </tr>
     <tr>
       <td>128</td>
+      <td>7</td>
       <td>16,384</td>
       <td>896</td>
       <td>5.5</td>
     </tr>
     <tr>
       <td>256</td>
+      <td>8</td>
       <td>65,536</td>
       <td>2,048</td>
       <td>3.1</td>
     </tr>
     <tr>
       <td>512</td>
+      <td>9</td>
       <td>261,144</td>
       <td>4,608</td>
       <td>1.8</td>
     </tr>
     <tr>
       <td>1024</td>
+      <td>10</td>
       <td>1,048,576</td>
       <td>10,240</td>
       <td>1</td>
     </tr>
     <tr>
       <td>2048</td>
+      <td>11</td>
       <td>4,194,304</td>
       <td>22,528</td>
       <td>0.5</td>
@@ -1766,6 +1777,8 @@ where $L$ is chosen as $L = \log_2N$ or $N=2^L$.</p>
 </table>
 
 <p>As you can see, the efficiency of the FFT actual gets better as the number of samples go up!</p>
+
+<p>However, there are other costs, such as the data storage needed for intermediate steps, that need to be taken into account as well. For example, a 8 bit FFT requires only a 3 stage decomposition, with each stage needing storage for 8 complex numbers. That is 24 in all. Whereas a 2048 sequence will require 11 stages, storing 2048 values each. That is a total of 22,528 complex values<sup>6</sup>.</p>
 
 <h2 id="fft-in-matlab">FFT in MATLAB</h2>
 
@@ -1786,20 +1799,28 @@ where $L$ is chosen as $L = \log_2N$ or $N=2^L$.</p>
 <span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 </code></pre></div></div>
 
+<p class="output output_png"><img src="../../images/dft/2/fft_46_0.png" alt="png" /></p>
+
 <p>and the FFT is produced as</p>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">fft</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
 </code></pre></div></div>
+
+<p class="output output_png"><img src="../../images/dft/2/fft_48_0.png" alt="png" /></p>
 
 <p>unwind</p>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">fftshift</span><span class="p">(</span><span class="nb">fft</span><span class="p">(</span><span class="n">y</span><span class="p">))))</span>
 </code></pre></div></div>
 
+<p class="output output_png"><img src="../../images/dft/2/fft_50_0.png" alt="png" /></p>
+
 <p>The inverse FFT is obtained with</p>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">ifft</span><span class="p">(</span><span class="nb">fft</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
 </code></pre></div></div>
+
+<p class="output output_png"><img src="../../images/dft/2/fft_52_0.png" alt="png" /></p>
 
 <h3 id="example-2-1">Example 2</h3>
 
@@ -1814,21 +1835,28 @@ where $L$ is chosen as $L = \log_2N$ or $N=2^L$.</p>
 <span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 </code></pre></div></div>
 
+<p class="output output_png"><img src="../../images/dft/2/fft_55_0.png" alt="png" /></p>
+
 <p>and the FFT is obtained with</p>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">fftshift</span><span class="p">(</span><span class="nb">fft</span><span class="p">(</span><span class="n">y</span><span class="p">))))</span>
 </code></pre></div></div>
+
+<p class="output output_png"><img src="../../images/dft/2/fft_57_0.png" alt="png" /></p>
 
 <p>The inverse FFT is obtained with</p>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">ifft</span><span class="p">(</span><span class="nb">fft</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
 </code></pre></div></div>
 
+<p class="output output_png"><img src="../../images/dft/2/fft_59_0.png" alt="png" /></p>
+
 <h2 id="summary">Summary</h2>
 
 <ul>
   <li>The inefficiency of the DFT</li>
   <li>The FFT - a sketch of its development</li>
+  <li>An illustration of part of the FFT algorithm</li>
   <li>FFT v DFT</li>
   <li>Two examples</li>
 </ul>
@@ -1866,6 +1894,9 @@ where $L$ is chosen as $L = \log_2N$ or $N=2^L$.</p>
   </li>
   <li>
     <p>Karris goes further in showing how the decomposition used to implement the FFT can be further be understood by considering even and odd decompositions. We do not have time to cover this in this module, but you are invited to read further if you are interested. You’ll also find that most text books on Digital Signal Processing will cover the FFT and give more or less understandable presentations of the way the algorithm works.</p>
+  </li>
+  <li>
+    <p>A complex number in MATLAB is 2 floating point doubles or 128 bits. So a 2048 “bin” FFT needs storage in RAM for approximately $22,528\times 128 = 2.9$ Mbit ($260$ kByte) of data.</p>
   </li>
 </ol>
 

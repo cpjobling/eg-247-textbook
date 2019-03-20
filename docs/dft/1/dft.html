@@ -27,9 +27,9 @@
   "headline":
     "The Discrete Fourier Transform",
   "datePublished":
-    "2019-03-19T23:11:25+00:00",
+    "2019-03-20T00:15:59+00:00",
   "dateModified":
-    "2019-03-19T23:11:25+00:00",
+    "2019-03-20T00:15:59+00:00",
   "description":
     "cd matlabpwd",
   "author": {
@@ -1535,9 +1535,19 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 <span class="nb">pwd</span>
 </code></pre></div></div>
 
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ans =
+
+    '/Users/eechris/dev/eg-247-textbook/content/dft/1/matlab'
+
+
+</code></pre></div></div>
+
 <h1 id="the-discrete-fourier-transform">The Discrete Fourier Transform</h1>
 
 <h2 id="scope-and-background-reading">Scope and Background Reading</h2>
+
+<p><strong>Rewrite for DFT</strong></p>
 
 <p>This session introduces the z-transform which is used in the analysis of discrete time systems. As for the Fourier and Laplace transforms, we present the definition, define the properties and give some applications of the use of the z-transform in the analysis of signals that are represented as sequences and systems represented by difference equations.</p>
 
@@ -1570,9 +1580,11 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
 <h3 id="note">Note</h3>
 
-<p>Frequency spectrum of a discrete time function $f[n]$ is obtained from its z-transform by substituting $z = e^{sT} = e^{j\omega T}$ as we saw from the mapping of the s-plane to the z-plane. This is continuous as there are an infinite number of points in the interval $0$ to $2\pi$; and it is periodic because for any point $\omega T$ there is an equivalent point $\omega T + 2 N \pi$ later.</p>
+<p>The frequency spectrum of a discrete time function $f[n]$ is obtained from its z-transform by substituting $z = e^{sT} = e^{j\omega T}$ as we saw from the mapping of the s-plane to the z-plane. This is continuous as there are an infinite number of points in the interval $0$ to $2\pi$; and it is periodic because for any point $\omega T$ there is an equivalent point $\omega T + 2 N \pi$ later.</p>
 
 <p>In practice, to compute the spectrum for a discrete time (DT) system, we only compute a finite number of equally spaced points.</p>
+
+<p>For maxium readability, and because the exponent terms we will be using are fairly complex, we shall use the functional notation $\exp(x)$ rather than exponential notation $e^x$.</p>
 
 <p>In this session, we will see that a periodic and discrete time function results in a periodic and discrete frequency function.</p>
 
@@ -1632,13 +1644,13 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
 <p>The value of this function on the unit circle in the Z-plane will be</p>
 
-<script type="math/tex; mode=display">F(e^{j\omega T}) = \sum_{n=0}^{\infty} f[n]e^{-jn \omega T}.</script>
+<script type="math/tex; mode=display">F\left(\exp\left({j\omega T}\right)\right) = \sum_{n=0}^{\infty} f[n]\exp\left({-jn \omega T}\right).</script>
 
 <p>This is an infinite sum.  So to compute it, we need to truncate it.</p>
 
-<p>Let’s assume that instead of an infinite number of points, we have $N$, equally distributed around the unit circle, then the truncated version will be:</p>
+<p>Let’s assume that instead of an infinite number of points, we have $N$ points, equally distributed around the unit circle, then the truncated version will be:</p>
 
-<script type="math/tex; mode=display">X[m] =  \sum_{n=0}^{N-1} x[n]e^{-j2\pi \frac{m n}{N}}</script>
+<script type="math/tex; mode=display">X[m] =  \sum_{n=0}^{N-1} x[n]\exp\left({-j2\pi \frac{m n}{N}}\right)</script>
 
 <p>where</p>
 
@@ -1648,13 +1660,13 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
 <p>We refer to the equation</p>
 
-<script type="math/tex; mode=display">X[m] =  \sum_{n=0}^{N-1} x[n]e^{-j2\pi \frac{m n}{N}}</script>
+<script type="math/tex; mode=display">X[m] =  \sum_{n=0}^{N-1} x[n]\exp\left({-j2\pi \frac{m n}{N}}\right)</script>
 
 <p>as the N-point Discrete-time Fourier Transform (DFT) of $x[n]$.</p>
 
 <p>The inverse DFT is defined as</p>
 
-<script type="math/tex; mode=display">x[n] =  \frac{1}{N} \sum_{m=0}^{N-1} X[m]e^{j2\pi \frac{m n}{N}}</script>
+<script type="math/tex; mode=display">x[n] =  \frac{1}{N} \sum_{m=0}^{N-1} X[m]\exp\left({j2\pi \frac{m n}{N}}\right)</script>
 
 <p>for $n = 0,1,2,\ldots, N-1$.</p>
 
@@ -1668,11 +1680,11 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
 <p>Since</p>
 
-<script type="math/tex; mode=display">e^{-j2\pi \frac{m n}{N}} = \cos\left(\frac{2\pi m n}{N}\right) + j\sin\left(\frac{2\pi m n}{N}\right)</script>
+<script type="math/tex; mode=display">\exp\left({-j2\pi \frac{m n}{N}}\right) = \cos\left(\frac{2\pi m n}{N}\right) + j\sin\left(\frac{2\pi m n}{N}\right)</script>
 
 <p>the DFT can be expresssed as</p>
 
-<script type="math/tex; mode=display">X[m] =  \sum_{n=0}^{N-1} x[n]e^{-j2\pi \frac{m n}{N}} = \sum_{n=0}^{N-1}x[n]\cos\left(\frac{2\pi m n}{N}\right) + j\sum_{n=0}^{N-1}x[n]\sin\left(\frac{2\pi m n}{N}\right).</script>
+<script type="math/tex; mode=display">X[m] =  \sum_{n=0}^{N-1} x[n]\exp\left({-j2\pi \frac{m n}{N}}\right) = \sum_{n=0}^{N-1}x[n]\cos\left(\frac{2\pi m n}{N}\right) + j\sum_{n=0}^{N-1}x[n]\sin\left(\frac{2\pi m n}{N}\right).</script>
 
 <p>For $n=0$ this reduces to</p>
 
@@ -1880,22 +1892,43 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Xm</span> <span class="o">=</span> <span class="n">dft</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
 </code></pre></div></div>
 
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Xm =
+
+   6.0000 + 0.0000i  -1.0000 - 1.0000i   0.0000 - 0.0000i  -1.0000 + 1.0000i
+
+
+</code></pre></div></div>
+
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">open</span> <span class="n">idft</span>
 </code></pre></div></div>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">xn</span> <span class="o">=</span> <span class="n">idft</span><span class="p">(</span><span class="n">Xm</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
 </code></pre></div></div>
 
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+xn =
+
+   1.0000 - 0.0000i   2.0000 - 0.0000i   2.0000 + 0.0000i   1.0000 + 0.0000i
+
+
+</code></pre></div></div>
+
 <h3 id="a-useful-compact-notation">A useful compact notation</h3>
 
-<p>The term
-<script type="math/tex">e^{-j(2\pi)}/N</script>
-is a rotating vector where the range $0 &lt;= \theta &lt;= 2\pi$ is divided into $360/N$ equal segments.</p>
+<p>The term</p>
 
-<p>It is convenient to represent this as $W_N$, that is
-<script type="math/tex">W_N = e^{-\frac{j2\pi}{N}}</script>
-and consequently, 
-<script type="math/tex">W_N^{-1} = e^{\frac{j2\pi}{N}}.</script></p>
+<script type="math/tex; mode=display">\exp\left(\frac{-j2\pi}{N}\right)</script>
+
+<p>is a rotating vector where the range $0 &lt;= \theta &lt;= 2\pi$ is divided into $360/N$ equal segments.</p>
+
+<p>It is convenient to represent this as $W_N$, that is</p>
+
+<script type="math/tex; mode=display">W_N = \exp\left({\frac{-j2\pi}{N}}\right)</script>
+
+<p>and consequently,</p>
+
+<script type="math/tex; mode=display">W_N^{-1} = \exp\left({\frac{j2\pi}{N}}\right).</script>
 
 <h3 id="example-3">Example 3</h3>
 
@@ -2095,11 +2128,15 @@ and
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">stem</span><span class="p">([</span><span class="mi">0</span><span class="p">:</span><span class="mi">15</span><span class="p">],</span><span class="n">xn</span><span class="p">),</span><span class="nb">xlabel</span><span class="p">(</span><span class="s1">'n'</span><span class="p">),</span><span class="nb">ylabel</span><span class="p">(</span><span class="s1">'x[n]'</span><span class="p">),</span><span class="nb">title</span><span class="p">(</span><span class="s1">'Discrete Time Sequence'</span><span class="p">)</span>
 </code></pre></div></div>
 
+<p class="output output_png"><img src="../../images/dft/1/dft_51_0.png" alt="png" /></p>
+
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Xm</span> <span class="o">=</span> <span class="n">dft</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span><span class="mi">16</span><span class="p">);</span>
 </code></pre></div></div>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">stem</span><span class="p">([</span><span class="mi">0</span><span class="p">:</span><span class="mi">15</span><span class="p">],</span><span class="nb">abs</span><span class="p">(</span><span class="n">Xm</span><span class="p">)),</span><span class="nb">xlabel</span><span class="p">(</span><span class="s1">'m'</span><span class="p">),</span><span class="nb">ylabel</span><span class="p">(</span><span class="s1">'|X[m]|'</span><span class="p">),</span><span class="nb">title</span><span class="p">(</span><span class="s1">'Discrete Frequency Sequence'</span><span class="p">)</span>
 </code></pre></div></div>
+
+<p class="output output_png"><img src="../../images/dft/1/dft_53_0.png" alt="png" /></p>
 
 <p>Points to note:</p>
 
@@ -2111,7 +2148,7 @@ and
         <tr>
           <td>After the $</td>
           <td>X[8]</td>
-          <td>= 1.4872$ term, the magnitude of the frequency values for the range $9 &lt;= m &lt;= 15$ are the mirror image of the values for the range $0 &lt;= m &lt;= 7$.</td>
+          <td>= 1.4872$ term, the magnitude of the frequency values for the range $9 &lt;= m \le 15$ are the mirror image of the values for the range $0 &lt;= m &lt;= 7$.</td>
         </tr>
       </tbody>
     </table>
@@ -2215,13 +2252,13 @@ and
 
 <p>For example, say the highest frequency component in a signal is 18 kHz, this signal must be sampled at $2 \times 18 = 36$ kHz or higher so that it can be completely specified by its sampled values. If the sampled frequency remains the same, i.e., 36 kHz, and the highest frequency in the signal is increased, to say 25 kHz, this signal cannot be recovered by a Digital to Analogue Converter (DAC).</p>
 
-<p>Since many real signals are not band limited, a typical digital signal processing system will include a low-pass filter, often called a <em>pre-sampling-filter</em> or simply a <em>pre-filter</em>, to ensure that the highest frequency signal allowed into the system will be equal or less than the sampling frequency so that the signal can be recovered. The highest frequency allowed in the system is referred to as the Nyquest frquency denoted as $f_n$.</p>
+<p>Since many real signals are not band limited, a typical digital signal processing system will include a low-pass filter, often called a <em>pre-sampling-filter</em> or simply a <em>pre-filter</em>, to ensure that the highest frequency signal allowed into the system will be equal or less than the sampling frequency so that the signal can be recovered. The highest frequency allowed in the system is referred to as the Nyquist frequency denoted as $f_n$.</p>
 
 <p>If the signal is not band limited, or the sampling frequency is too low, the spectral components of the signal will overlap each other and this is called <em>aliasing</em>. To avoid aliasing, we must increase the sampling rate.</p>
 
 <h3 id="windowing">Windowing</h3>
 
-<p>A DT signal may have an infinite length; in this case it must be limited to a finite interval before it is sampled. We can terminate the signal at a defined number of terms by multiplying it by a <em>window function</em>. There are several window functions that are used in practice such as the <em>rectangular</em>, <em>triangular</em>, <em>Hanning</em>, <em>Hamming</em>, <em>Kaiser</em>, etc. Window functions, and there design, are outside the scope of this module, but are discussed in Appendix E of Karris.</p>
+<p>A DT signal may have an infinite length; in this case it must be limited to a finite interval before it is sampled. We can terminate the signal at a defined number of terms by multiplying it by a <em>window function</em>. There are several window functions that are used in practice such as the <em>rectangular</em>, <em>triangular</em>, <em>Hanning</em>, <em>Hamming</em>, <em>Kaiser</em>, etc. Window functions, and their design, are outside the scope of this module, but are discussed in Appendix E of Karris.</p>
 
 <p>All I will say here is that the window function must be carefully chosen to avoid the signal being terminated too abrubtly and causing <em>leakage</em> – that is a spread of the spectrum outside the bounds imposed by the window.</p>
 

@@ -19,9 +19,21 @@ pwd
 ```
 
 
+{:.output .output_stream}
+```
+
+ans =
+
+    '/Users/eechris/dev/eg-247-textbook/content/dft/1/matlab'
+
+
+```
+
 # The Discrete Fourier Transform
 
 ## Scope and Background Reading
+
+**Rewrite for DFT**
 
 This session introduces the z-transform which is used in the analysis of discrete time systems. As for the Fourier and Laplace transforms, we present the definition, define the properties and give some applications of the use of the z-transform in the analysis of signals that are represented as sequences and systems represented by difference equations.
 
@@ -45,9 +57,11 @@ The material in this presentation and notes is based on Chapter 10 of [Steven T.
 
 ### Note
 
-Frequency spectrum of a discrete time function $f[n]$ is obtained from its z-transform by substituting $z = e^{sT} = e^{j\omega T}$ as we saw from the mapping of the s-plane to the z-plane. This is continuous as there are an infinite number of points in the interval $0$ to $2\pi$; and it is periodic because for any point $\omega T$ there is an equivalent point $\omega T + 2 N \pi$ later. 
+The frequency spectrum of a discrete time function $f[n]$ is obtained from its z-transform by substituting $z = e^{sT} = e^{j\omega T}$ as we saw from the mapping of the s-plane to the z-plane. This is continuous as there are an infinite number of points in the interval $0$ to $2\pi$; and it is periodic because for any point $\omega T$ there is an equivalent point $\omega T + 2 N \pi$ later. 
 
 In practice, to compute the spectrum for a discrete time (DT) system, we only compute a finite number of equally spaced points.
+
+For maxium readability, and because the exponent terms we will be using are fairly complex, we shall use the functional notation $\exp(x)$ rather than exponential notation $e^x$.
 
 In this session, we will see that a periodic and discrete time function results in a periodic and discrete frequency function.
 
@@ -81,13 +95,13 @@ $$F(z) = \mathcal{Z} f[n] = \sum_{n=0}^{\infty} f[n]z^{-n}.$$
 
 The value of this function on the unit circle in the Z-plane will be
 
-$$F(e^{j\omega T}) = \sum_{n=0}^{\infty} f[n]e^{-jn \omega T}.$$
+$$F\left(\exp\left({j\omega T}\right)\right) = \sum_{n=0}^{\infty} f[n]\exp\left({-jn \omega T}\right).$$
 
 This is an infinite sum.  So to compute it, we need to truncate it. 
 
-Let's assume that instead of an infinite number of points, we have $N$, equally distributed around the unit circle, then the truncated version will be:
+Let's assume that instead of an infinite number of points, we have $N$ points, equally distributed around the unit circle, then the truncated version will be:
 
-$$X[m] =  \sum_{n=0}^{N-1} x[n]e^{-j2\pi \frac{m n}{N}}$$
+$$X[m] =  \sum_{n=0}^{N-1} x[n]\exp\left({-j2\pi \frac{m n}{N}}\right)$$
 
 where
 
@@ -97,13 +111,13 @@ and $m = 0,1,2,\ldots, N-1$.
 
 We refer to the equation 
 
-$$X[m] =  \sum_{n=0}^{N-1} x[n]e^{-j2\pi \frac{m n}{N}}$$
+$$X[m] =  \sum_{n=0}^{N-1} x[n]\exp\left({-j2\pi \frac{m n}{N}}\right)$$
 
 as the N-point Discrete-time Fourier Transform (DFT) of $x[n]$.
 
 The inverse DFT is defined as
 
-$$x[n] =  \frac{1}{N} \sum_{m=0}^{N-1} X[m]e^{j2\pi \frac{m n}{N}}$$
+$$x[n] =  \frac{1}{N} \sum_{m=0}^{N-1} X[m]\exp\left({j2\pi \frac{m n}{N}}\right)$$
 
 for $n = 0,1,2,\ldots, N-1$.
 
@@ -117,11 +131,11 @@ for $m = 0,1,2,\ldots,N-1$.
 
 Since
 
-$$e^{-j2\pi \frac{m n}{N}} = \cos\left(\frac{2\pi m n}{N}\right) + j\sin\left(\frac{2\pi m n}{N}\right)$$
+$$\exp\left({-j2\pi \frac{m n}{N}}\right) = \cos\left(\frac{2\pi m n}{N}\right) + j\sin\left(\frac{2\pi m n}{N}\right)$$
 
 the DFT can be expresssed as
 
-$$X[m] =  \sum_{n=0}^{N-1} x[n]e^{-j2\pi \frac{m n}{N}} = \sum_{n=0}^{N-1}x[n]\cos\left(\frac{2\pi m n}{N}\right) + j\sum_{n=0}^{N-1}x[n]\sin\left(\frac{2\pi m n}{N}\right).$$
+$$X[m] =  \sum_{n=0}^{N-1} x[n]\exp\left({-j2\pi \frac{m n}{N}}\right) = \sum_{n=0}^{N-1}x[n]\cos\left(\frac{2\pi m n}{N}\right) + j\sum_{n=0}^{N-1}x[n]\sin\left(\frac{2\pi m n}{N}\right).$$
 
 For $n=0$ this reduces to 
 
@@ -337,6 +351,16 @@ Xm = dft(xn,4)
 ```
 
 
+{:.output .output_stream}
+```
+
+Xm =
+
+   6.0000 + 0.0000i  -1.0000 - 1.0000i   0.0000 - 0.0000i  -1.0000 + 1.0000i
+
+
+```
+
 
 
 {:.input_area}
@@ -353,16 +377,31 @@ xn = idft(Xm,4)
 ```
 
 
+{:.output .output_stream}
+```
+
+xn =
+
+   1.0000 - 0.0000i   2.0000 - 0.0000i   2.0000 + 0.0000i   1.0000 + 0.0000i
+
+
+```
+
 ### A useful compact notation
 
 The term
-$$e^{-j(2\pi)}/N$$
+
+$$\exp\left(\frac{-j2\pi}{N}\right)$$
+
 is a rotating vector where the range $0 <= \theta <= 2\pi$ is divided into $360/N$ equal segments. 
 
 It is convenient to represent this as $W_N$, that is
-$$W_N = e^{-\frac{j2\pi}{N}}$$
+
+$$W_N = \exp\left({\frac{-j2\pi}{N}}\right)$$
+
 and consequently, 
-$$W_N^{-1} = e^{\frac{j2\pi}{N}}.$$
+
+$$W_N^{-1} = \exp\left({\frac{j2\pi}{N}}\right).$$
 
 ### Example 3
 
@@ -480,7 +519,7 @@ In example 2, we found that, although the DT sequence $x[n]$ was real, the discr
 Use MATLAB to compute the magnitude of the frequency components of the following DT function:
 
 | $n$ | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 
-|-----|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|-----|---|---|---|---|---|---|---|---|---|---|----|----|----|----|----|----|
 | $x[n]$ |1.0 |1.5 |2.0 |2.3 |2.7 |3.0 |3.4 |4.1 |4.7 |4.2 |3.5 | 3.6 | 3.2 | 2.9 | 2.5 | 1.8 |
 
 We will compute this in class and make some comments afterwards.
@@ -504,6 +543,12 @@ stem([0:15],xn),xlabel('n'),ylabel('x[n]'),title('Discrete Time Sequence')
 
 
 
+{:.output .output_png}
+![png](../../images/dft/1/dft_51_0.png)
+
+
+
+
 
 {:.input_area}
 ```matlab
@@ -519,10 +564,16 @@ stem([0:15],abs(Xm)),xlabel('m'),ylabel('|X[m]|'),title('Discrete Frequency Sequ
 ```
 
 
+
+{:.output .output_png}
+![png](../../images/dft/1/dft_53_0.png)
+
+
+
 Points to note: 
 
 * $X[0] = 12$ is the DC component of the DT sequence.
-* After the $|X[8]| = 1.4872$ term, the magnitude of the frequency values for the range $9 <= m <= 15$ are the mirror image of the values for the range $0 <= m <= 7$.
+* After the $|X[8]| = 1.4872$ term, the magnitude of the frequency values for the range $9 <= m \le 15$ are the mirror image of the values for the range $0 <= m <= 7$.
 * This is not a coincidence, in fact if $x[n]$ is an N-point *real discrete time function*, only $N/2$ of the *frequency components* of $|X[m]|$ *are unique*.
 
 ## Even and Odd Properties of the DFT
@@ -612,13 +663,13 @@ The *sampling theorem* known as *Nyquist/Shannon's Sampling Theorem* (see [wp>Ny
 
 For example, say the highest frequency component in a signal is 18 kHz, this signal must be sampled at $2 \times 18 = 36$ kHz or higher so that it can be completely specified by its sampled values. If the sampled frequency remains the same, i.e., 36 kHz, and the highest frequency in the signal is increased, to say 25 kHz, this signal cannot be recovered by a Digital to Analogue Converter (DAC).
 
-Since many real signals are not band limited, a typical digital signal processing system will include a low-pass filter, often called a *pre-sampling-filter* or simply a *pre-filter*, to ensure that the highest frequency signal allowed into the system will be equal or less than the sampling frequency so that the signal can be recovered. The highest frequency allowed in the system is referred to as the Nyquest frquency denoted as $f_n$.
+Since many real signals are not band limited, a typical digital signal processing system will include a low-pass filter, often called a *pre-sampling-filter* or simply a *pre-filter*, to ensure that the highest frequency signal allowed into the system will be equal or less than the sampling frequency so that the signal can be recovered. The highest frequency allowed in the system is referred to as the Nyquist frequency denoted as $f_n$.
 
 If the signal is not band limited, or the sampling frequency is too low, the spectral components of the signal will overlap each other and this is called *aliasing*. To avoid aliasing, we must increase the sampling rate.
 
 ### Windowing
 
-A DT signal may have an infinite length; in this case it must be limited to a finite interval before it is sampled. We can terminate the signal at a defined number of terms by multiplying it by a *window function*. There are several window functions that are used in practice such as the *rectangular*, *triangular*, *Hanning*, *Hamming*, *Kaiser*, etc. Window functions, and there design, are outside the scope of this module, but are discussed in Appendix E of Karris.
+A DT signal may have an infinite length; in this case it must be limited to a finite interval before it is sampled. We can terminate the signal at a defined number of terms by multiplying it by a *window function*. There are several window functions that are used in practice such as the *rectangular*, *triangular*, *Hanning*, *Hamming*, *Kaiser*, etc. Window functions, and their design, are outside the scope of this module, but are discussed in Appendix E of Karris.
 
 All I will say here is that the window function must be carefully chosen to avoid the signal being terminated too abrubtly and causing *leakage* -- that is a spread of the spectrum outside the bounds imposed by the window.
 

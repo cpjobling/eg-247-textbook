@@ -14,8 +14,9 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 {:.input_area}
 ```matlab
-cd matlab
-pwd
+% cd matlab
+clear all
+format compact
 ```
 
 
@@ -38,6 +39,8 @@ The material in this presentation and notes is based on Chapter 10 of [Steven T.
 * The inefficiency of the DFT
 
 * The FFT - a sketch of its development
+
+* An illustration of part of the FFT algorithm
 
 * FFT v DFT
 
@@ -71,11 +74,7 @@ $$W_N^0 = e^{-j\frac{2\pi}{N}(0)} = 1.$$
 
 * $2N$ complex arithmetic operations are required to compute any frequency component of $X[k].$<sup>1</sup> 
 
-* If we assume that $x[n]$ is real, then only $N/2$ of the 
-  
-  $$|X[m]|$$ 
-  
-  components are unique. 
+* If we assume that $x[n]$ is real, then only $N/2$ of the $X[m]$ components are unique. 
 
 * Therefore we would require $2N\times N/2 = N^2$ complex operations to compute the entire frequency spectrum.<sup>2</sup>
 
@@ -89,15 +88,15 @@ $$W_N^0 = e^{-j\frac{2\pi}{N}(0)} = 1.$$
 
 * Moreover, because the $W_N^i$ points are equally spaced points on the unit circle; 
 
-* Because $N$ is a power of 2 the points on the upper-half plane (range $0 < \theta < \pi$ are the mirror image of the points on the lower half plane range $\pi < \theta < 2\pi$;
+* Because $N$ is a power of 2, the points on the upper-half plane (range $0 < \theta < \pi$ are the mirror image of the points on the lower half plane range $\pi < \theta < 2\pi$;
 
 * Thus, there is a great deal of symmetry in the computation that can be exploited to simplify the computation and reduce the number of operations considerably to a much more manageable $N \log_2 N$ operations<sup>3</sup>.
 
-This is possible with the algorithm called the [FTT](https://en.wikipedia.org/wiki/Fast_Fourier_transform) (fast Fourier transform) that was originally developed by [James Cooley](https://en.wikipedia.org/wiki/James_Cooley) and [John Tukey](https://en.wikipedia.org/wiki/John_Tukey) and considerably refined since.
+This is possible with the algorithm called the [FTT](https://en.wikipedia.org/wiki/Fast_Fourier_transform) (fast Fourier transform) that was originally developed by [James Cooley](https://en.wikipedia.org/wiki/James_Cooley) and [John Tukey](https://en.wikipedia.org/wiki/John_Tukey) and has been considerably refined since.
 
 ## The Fast Fourier Transform (FFT)
 
-The FFT is very well documented, including in the text book, so we will only sketch its development and present its main result.
+The FFT is very well documented, including in Karris, so we will only sketch its development and present its main result. However, we will illustrate part of the algorithm to make concrete an idea of the efficiency advantage that the FFT has over the DFT that we have already seen.
 
 Much of the development follows from the properties of the rotating vector.<sup>4</sup>
 
@@ -180,20 +179,22 @@ Show a flow graph of the operation for an 8 element matrix and demonstrate the s
 Under the assumptions about the relative efficiency of the DFT and FFT we can create a table like that shown below:
 
 
-| &nbsp; |  DFT      | FFT         | FFT/DFT   |
-|--------|-----------|-------------|-----------|
-| N      | $$N^2$$   | $N\log_2 N$ |         % | 
-| 8      | 64        | 24          | 37.5      |
-| 16     | 256       | 64          | 25        |
-| 32     | 1,024     | 160         | 15.6      |
-| 64     | 4,096     | 384         | 9.4       |
-| 128    | 16,384    | 896         | 5.5       |
-| 256    | 65,536    | 2,048       | 3.1       |
-| 512    | 261,144   | 4,608       | 1.8       |
-| 1024   | 1,048,576 | 10,240      | 1         |
-| 2048   | 4,194,304 | 22,528      | 0.5       |
+| &nbsp; |  &nbsp;      | DFT         | FFT       | FFT/DFT   |
+|--------|--------------|-------------|-----------|-----------|
+| N      | $$\log_2 N$$ | $$N^2$$   | $N\log_2 N$ |         % | 
+| 8      | 3            | 64        | 24          | 37.5      |
+| 16     | 4            | 256       | 64          | 25        |
+| 32     | 5            | 1,024     | 160         | 15.6      |
+| 64     | 6            | 4,096     | 384         | 9.4       |
+| 128    | 7            | 16,384    | 896         | 5.5       |
+| 256    | 8            | 65,536    | 2,048       | 3.1       |
+| 512    | 9            | 261,144   | 4,608       | 1.8       |
+| 1024   | 10           | 1,048,576 | 10,240      | 1         |
+| 2048   | 11           | 4,194,304 | 22,528      | 0.5       |
 
-As you can see, the efficiency of the FFT actual gets better as the number of samples go up!
+As you can see, the efficiency of the FFT actual gets better as the number of samples go up! 
+
+However, there are other costs, such as the data storage needed for intermediate steps, that need to be taken into account as well. For example, a 8 bit FFT requires only a 3 stage decomposition, with each stage needing storage for 8 complex numbers. That is 24 in all. Whereas a 2048 sequence will require 11 stages, storing 2048 values each. That is a total of 22,528 complex values<sup>6</sup>. 
 
 
 ## FFT in MATLAB
@@ -220,6 +221,12 @@ plot(x,y)
 ```
 
 
+
+{:.output .output_png}
+![png](../../images/dft/2/fft_46_0.png)
+
+
+
 and the FFT is produced as
 
 
@@ -228,6 +235,12 @@ and the FFT is produced as
 ```matlab
 plot(x, abs(fft(y)))
 ```
+
+
+
+{:.output .output_png}
+![png](../../images/dft/2/fft_48_0.png)
+
 
 
 unwind 
@@ -240,6 +253,12 @@ plot(x, abs(fftshift(fft(y))))
 ```
 
 
+
+{:.output .output_png}
+![png](../../images/dft/2/fft_50_0.png)
+
+
+
 The inverse FFT is obtained with
 
 
@@ -248,6 +267,12 @@ The inverse FFT is obtained with
 ```matlab
 plot(x, ifft(fft(y)))
 ```
+
+
+
+{:.output .output_png}
+![png](../../images/dft/2/fft_52_0.png)
+
 
 
 ### Example 2
@@ -268,6 +293,12 @@ plot(x,y)
 ```
 
 
+
+{:.output .output_png}
+![png](../../images/dft/2/fft_55_0.png)
+
+
+
 and the FFT is obtained with
 
 
@@ -276,6 +307,12 @@ and the FFT is obtained with
 ```matlab
 plot(x, abs(fftshift(fft(y))))
 ```
+
+
+
+{:.output .output_png}
+![png](../../images/dft/2/fft_57_0.png)
+
 
 
 The inverse FFT is obtained with
@@ -288,10 +325,17 @@ plot(x, ifft(fft(y)))
 ```
 
 
+
+{:.output .output_png}
+![png](../../images/dft/2/fft_59_0.png)
+
+
+
 ## Summary
 
 * The inefficiency of the DFT
 * The FFT - a sketch of its development
+* An illustration of part of the FFT algorithm
 * FFT v DFT
 * Two examples
 
@@ -320,6 +364,8 @@ Read the rest of Chapter 10 of Karris from page 10.9 and make your own notes on 
 $$W_N^{-1}.$$
 
 5. Karris goes further in showing how the decomposition used to implement the FFT can be further be understood by considering even and odd decompositions. We do not have time to cover this in this module, but you are invited to read further if you are interested. You'll also find that most text books on Digital Signal Processing will cover the FFT and give more or less understandable presentations of the way the algorithm works.
+
+6. A complex number in MATLAB is 2 floating point doubles or 128 bits. So a 2048 "bin" FFT needs storage in RAM for approximately $22,528\times 128 = 2.9$ Mbit ($260$ kByte) of data.
 
 ## Solutions
 
