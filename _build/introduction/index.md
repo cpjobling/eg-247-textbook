@@ -47,7 +47,11 @@ Sinusoidal signals (e.g. AC) are pretty fundamental in electrical engineering. T
 
 $$x(t) = A \cos (2\pi f_0 t - \phi).$$ 
 
-For this expression, we wish to match each of the symbols to its definition
+### In Class Exercise
+
+#### First attempt
+
+For this expression, we wish to match each of the symbols to its definition. Without discussion with your class mates, correct this table.
 
 | Symbol     | Definition         |
 |------------|--------------------|
@@ -121,7 +125,7 @@ grid
 
 
 {:.output .output_png}
-![png](../images/introduction/index_16_0.png)
+![png](../images/introduction/index_18_0.png)
 
 
 
@@ -166,7 +170,7 @@ sinewave
 
 
 {:.output .output_png}
-![png](../images/introduction/index_20_0.png)
+![png](../images/introduction/index_22_0.png)
 
 
 
@@ -176,7 +180,9 @@ Sinusoidal signals (e.g. AC) are pretty fundamental in electrical engineering. T
 
 $$x(t) = A \cos (2\pi f_0 t - \phi).$$ 
 
-Using the insight just gained by exploring this function with a computer, try matching each of the symbols to its definition again.
+#### In class exercise -- second go
+
+Using the insight just gained by exploring this function with a computer, try discussing this with your classmates and then match each of the symbols to its definition again.
 
 | Symbol     | Definition         |
 |------------|--------------------|
@@ -312,7 +318,7 @@ grid
 
 
 {:.output .output_png}
-![png](../images/introduction/index_36_0.png)
+![png](../images/introduction/index_39_0.png)
 
 
 
@@ -375,7 +381,7 @@ ylabel('Amplitude')
 
 
 {:.output .output_png}
-![png](../images/introduction/index_46_0.png)
+![png](../images/introduction/index_49_0.png)
 
 
 
@@ -415,7 +421,7 @@ ylabel('Amplitude')
 
 
 {:.output .output_png}
-![png](../images/introduction/index_50_0.png)
+![png](../images/introduction/index_53_0.png)
 
 
 
@@ -444,7 +450,7 @@ ylabel('Amplitude')
 
 
 {:.output .output_png}
-![png](../images/introduction/index_52_0.png)
+![png](../images/introduction/index_55_0.png)
 
 
 
@@ -508,7 +514,7 @@ two_sines
 
 
 {:.output .output_png}
-![png](../images/introduction/index_58_0.png)
+![png](../images/introduction/index_61_0.png)
 
 
 

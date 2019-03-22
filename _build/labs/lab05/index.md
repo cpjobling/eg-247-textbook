@@ -115,7 +115,9 @@ Open the script `exp_fseries.m` as a Live Script, run it and examine the results
 
 Copy the script `exp_fseries.m` and save it as `ex11_1`. Change the copy so that it computes and plots the exponential Fourier series for the square-wave waveform with even symmetry (Section 7.4.1 in the textbook). *Hint*: Use the same definition of f(t) that you used in Exercise 9.
 
-Compare the computed spectrum with the simulated spectrum.
+The Simulink model plots the *Power Spectrum* of the simulated reconstructed signal. To plot the power spectrum of a exponential Fourier series we need to produce a stem plot. Each stem in the power spectrum is computed using $\sqrt{C_k C_K^*}$ (see **Parseval's Theorem** in the notes). In MATLAB this would be `C(k)*conj(C(k)`. 
+
+Plot the Power Spectrum of the signal from exponential Fourier series coefficients computed in this section. Compare the computed power spectrum with the simulated power spectrum. \emph{Note}: expect dome differences!
 
 ### Part 8
 
