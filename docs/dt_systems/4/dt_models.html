@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>Models of Discrete Time Systems</title>
-  <meta name="description" content="clear allcd matlabpwdformat compact">
+  <meta name="description" content="Models of Discrete-Time Systems">
 
   <link rel="canonical" href="/eg-247-textbook/eg-247-textbook/dt_systems/4/dt_models.html">
   <link rel="alternate" type="application/rss+xml" title="EG-247 Signals and Systems" href="/eg-247-textbook/eg-247-textbook/feed.xml">
@@ -14,7 +14,7 @@
   <meta property="og:url"         content="/eg-247-textbook/eg-247-textbook/dt_systems/4/dt_models.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Models of Discrete Time Systems" />
-<meta property="og:description" content="clear allcd matlabpwdformat compact" />
+<meta property="og:description" content="Models of Discrete-Time Systems" />
 <meta property="og:image"       content="" />
 
 
@@ -27,11 +27,11 @@
   "headline":
     "Models of Discrete Time Systems",
   "datePublished":
-    "2019-03-22T11:46:50+00:00",
+    "2019-03-25T17:57:58+00:00",
   "dateModified":
-    "2019-03-22T11:46:50+00:00",
+    "2019-03-25T17:57:58+00:00",
   "description":
-    "clear allcd matlabpwdformat compact",
+    "Models of Discrete-Time Systems",
   "author": {
     "@type": "Person",
     "name": "Dr Chris P. Jobling"
@@ -1486,6 +1486,8 @@ document.addEventListener('turbolinks:load', updateInteractLink)
       <li><a href="#digital-butterworth">Digital Butterworth</a></li>
       <li><a href="#step-response">Step response</a></li>
       <li><a href="#algorithm">Algorithm</a></li>
+      <li><a href="#block-diagram-of-the-digital-bw-filter">Block Diagram of the digital BW filter</a></li>
+      <li><a href="#as-simulink-model">As Simulink Model</a></li>
       <li><a href="#convert-to-code">Convert to code</a></li>
       <li><a href="#comments">Comments</a></li>
     </ul>
@@ -1529,21 +1531,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
 
             <div class="c-textbook__content">
-              <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">clear</span> <span class="nb">all</span>
-<span class="nb">cd</span> <span class="n">matlab</span>
-<span class="nb">pwd</span>
-<span class="nb">format</span> <span class="n">compact</span>
-</code></pre></div></div>
-
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-ans =
-
-    '/Users/eechris/dev/eg-247-textbook/content/dt_systems/4/matlab'
-
-
-</code></pre></div></div>
-
-<h1 id="models-of-discrete-time-systems">Models of Discrete-Time Systems</h1>
+              <h1 id="models-of-discrete-time-systems">Models of Discrete-Time Systems</h1>
 
 <h2 id="scope-and-background-reading">Scope and Background Reading</h2>
 
@@ -1749,6 +1737,20 @@ y[n] + {a_1}y[n - 1] + {a_2}y[n - 2] +  \cdots  + {a_k}y[n - k]\\
 
 <h3 id="matlab-solution">Matlab Solution</h3>
 
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">clear</span> <span class="nb">all</span>
+<span class="nb">cd</span> <span class="n">matlab</span>
+<span class="nb">pwd</span>
+<span class="nb">format</span> <span class="n">compact</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ans =
+
+    '/Users/eechris/dev/eg-247-textbook/content/dt_systems/4/matlab'
+
+
+</code></pre></div></div>
+
 <p>See <a href="matlab/dtm_ex1_2.mlx">dtm_ex1_2.mlx</a>. (Also available as <a href="matlab/dtm_ex1_2.m">dtm_ex1_2.m</a>.)</p>
 
 <p>The difference equation describing the input-output relationship of the DT system with zero initial conditions, is:</p>
@@ -1811,7 +1813,7 @@ Discrete-time transfer function.
 <span class="nb">ylabel</span><span class="p">(</span><span class="s1">'Impulse response h[n]'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/dt_systems/4/dt_models_48_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../../images/dt_systems/4/dt_models_49_0.png" alt="png" /></p>
 
 <h4 id="response-as-stepwise-continuous-yt">Response as stepwise continuous y(t)</h4>
 
@@ -1822,7 +1824,7 @@ Discrete-time transfer function.
 <span class="nb">ylabel</span><span class="p">(</span><span class="s1">'Impulse response h(t)'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/dt_systems/4/dt_models_50_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../../images/dt_systems/4/dt_models_51_0.png" alt="png" /></p>
 
 <h3 id="53-the-dt-step-response">5.3. The DT step response</h3>
 
@@ -1918,7 +1920,7 @@ Discrete-time transfer function.
 <span class="nb">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">3.5</span><span class="p">])</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/dt_systems/4/dt_models_64_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../../images/dt_systems/4/dt_models_65_0.png" alt="png" /></p>
 
 <h3 id="simulink-model">Simulink Model</h3>
 
@@ -2062,7 +2064,7 @@ Continuous-time transfer function.
 <span class="nb">grid</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/dt_systems/4/dt_models_83_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../../images/dt_systems/4/dt_models_84_0.png" alt="png" /></p>
 
 <h3 id="sampling-frequency">Sampling Frequency</h3>
 
@@ -2145,7 +2147,7 @@ Discrete-time transfer function.
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">step</span><span class="p">(</span><span class="n">Hz</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/dt_systems/4/dt_models_98_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../../images/dt_systems/4/dt_models_99_0.png" alt="png" /></p>
 
 <h3 id="algorithm">Algorithm</h3>
 
@@ -2177,6 +2179,15 @@ y[n] - 1.956y[n - 1] + 0.9567y[n - 2] = \\
 y[n] = 1.956y[n - 1] - 0.9567y[n - 2] + 486.6 \times {10^{ - 6}}u[n - 1] + ...\\
 \quad 476.5 \times {10^{ - 6}}u[n - 2]
 \end{array}</script>
+
+<h3 id="block-diagram-of-the-digital-bw-filter">Block Diagram of the digital BW filter</h3>
+
+<p><img src="pictures/digifilter-bd.png" alt="digital filter" /></p>
+
+<h3 id="as-simulink-model">As Simulink Model</h3>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">open</span> <span class="n">digifilter</span>
+</code></pre></div></div>
 
 <h3 id="convert-to-code">Convert to code</h3>
 

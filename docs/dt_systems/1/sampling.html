@@ -27,9 +27,9 @@
   "headline":
     "Sampling Theor",
   "datePublished":
-    "2019-03-22T11:46:50+00:00",
+    "2019-03-25T17:57:58+00:00",
   "dateModified":
-    "2019-03-22T11:46:50+00:00",
+    "2019-03-25T17:57:58+00:00",
   "description":
     "Sampling Theory",
   "author": {
@@ -1589,7 +1589,8 @@ document.addEventListener('turbolinks:load', updateInteractLink)
   <li>I will the plot the data.</li>
 </ol>
 
-<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">open</span> <span class="n">sampling_demo</span>
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> <span class="n">matlab</span>
+<span class="nb">open</span> <span class="n">sampling_demo</span>
 </code></pre></div></div>
 
 <h3 id="technical-details">Technical Details</h3>
@@ -1818,15 +1819,17 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">stem</span><span class="p">(</span><span class="n">td</span><span class="p">,</span><span class="n">xs</span><span class="p">)</span>
 <span class="nb">hold</span> <span class="n">on</span>
-<span class="n">x</span> <span class="o">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">td</span><span class="p">),</span><span class="nb">length</span><span class="p">(</span><span class="n">tc</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../../images/dt_systems/1/sampling_49_0.png" alt="png" /></p>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">td</span><span class="p">),</span><span class="nb">length</span><span class="p">(</span><span class="n">tc</span><span class="p">));</span>
 <span class="k">for</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">td</span><span class="p">)</span>
     <span class="n">xk</span> <span class="o">=</span> <span class="n">xs</span><span class="p">(</span><span class="n">k</span><span class="p">);</span>
     <span class="n">sincx</span> <span class="o">=</span> <span class="n">xk</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="nb">pi</span><span class="o">*</span><span class="p">(</span><span class="n">tc</span> <span class="o">-</span> <span class="n">td</span><span class="p">(</span><span class="n">k</span><span class="p">))/</span><span class="n">Ts</span><span class="p">)</span><span class="o">.</span><span class="p">/(</span><span class="nb">pi</span><span class="o">*</span><span class="p">(</span><span class="n">tc</span> <span class="o">-</span> <span class="n">td</span><span class="p">(</span><span class="n">k</span><span class="p">))/</span><span class="n">Ts</span><span class="p">);</span>
     <span class="n">x</span><span class="p">(</span><span class="n">k</span><span class="p">,:)</span> <span class="o">=</span> <span class="n">sincx</span><span class="p">;</span>
 <span class="k">end</span>
 </code></pre></div></div>
-
-<p class="output output_png"><img src="../../images/dt_systems/1/sampling_49_0.png" alt="png" /></p>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">plot</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="s1">'-.'</span><span class="p">)</span>
 <span class="nb">hold</span> <span class="n">off</span>
@@ -1835,7 +1838,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 <span class="nb">xlabel</span><span class="p">(</span><span class="s1">'Time t [s]'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/dt_systems/1/sampling_50_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../../images/dt_systems/1/sampling_51_0.png" alt="png" /></p>
 
 <p>Each impulse in $x_s(t)$ triggers the impulse reponse of the lowpass filter (the sinc signal), the resulting signal $x(t)$ at the output of the filter is the sum of all these time-shifted sinc signals with amplitudes equal to the samples $x(nT_s)$.</p>
 
@@ -1851,7 +1854,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 <span class="nb">ylabel</span><span class="p">(</span><span class="s1">'x(t)'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/dt_systems/1/sampling_53_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../../images/dt_systems/1/sampling_54_0.png" alt="png" /></p>
 
 <p>This is clearly unfeasible, at least in real-time, so we have to resort to approximations of the ideal low-pass filter.</p>
 
@@ -1869,7 +1872,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 <span class="nb">xlabel</span><span class="p">(</span><span class="s1">'Time t [s]'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/dt_systems/1/sampling_56_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../../images/dt_systems/1/sampling_57_0.png" alt="png" /></p>
 
 <h4 id="signal-reconstructed-with-first-order-hold-foh">Signal reconstructed with First-order hold (FOH)</h4>
 
@@ -1879,7 +1882,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 <span class="nb">xlabel</span><span class="p">(</span><span class="s1">'Time t [s]'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/dt_systems/1/sampling_58_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../../images/dt_systems/1/sampling_59_0.png" alt="png" /></p>
 
 <h2 id="aliasing">Aliasing</h2>
 

@@ -12,27 +12,6 @@ next_page:
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
-
-
-{:.input_area}
-```matlab
-clear all
-cd matlab
-pwd
-format compact
-```
-
-
-{:.output .output_stream}
-```
-
-ans =
-
-    '/Users/eechris/dev/eg-247-textbook/content/dt_systems/4/matlab'
-
-
-```
-
 # Models of Discrete-Time Systems
 
 ## Scope and Background Reading
@@ -217,6 +196,27 @@ $$\frac{H(z)}{z} = \frac{z - 1}{z^2 + 0.5 z + 0.125}$$
 
 ### Matlab Solution
 
+
+
+{:.input_area}
+```matlab
+clear all
+cd matlab
+pwd
+format compact
+```
+
+
+{:.output .output_stream}
+```
+
+ans =
+
+    '/Users/eechris/dev/eg-247-textbook/content/dt_systems/4/matlab'
+
+
+```
+
 See [dtm_ex1_2.mlx](matlab/dtm_ex1_2.mlx). (Also available as [dtm_ex1_2.m](matlab/dtm_ex1_2.m).)
 
 The difference equation describing the input-output relationship of the DT system with zero initial conditions, is:
@@ -311,7 +311,7 @@ ylabel('Impulse response h[n]')
 
 
 {:.output .output_png}
-![png](../../images/dt_systems/4/dt_models_48_0.png)
+![png](../../images/dt_systems/4/dt_models_49_0.png)
 
 
 
@@ -331,7 +331,7 @@ ylabel('Impulse response h(t)')
 
 
 {:.output .output_png}
-![png](../../images/dt_systems/4/dt_models_50_0.png)
+![png](../../images/dt_systems/4/dt_models_51_0.png)
 
 
 
@@ -457,7 +457,7 @@ axis([0,15,0,3.5])
 
 
 {:.output .output_png}
-![png](../../images/dt_systems/4/dt_models_64_0.png)
+![png](../../images/dt_systems/4/dt_models_65_0.png)
 
 
 
@@ -635,7 +635,7 @@ grid
 
 
 {:.output .output_png}
-![png](../../images/dt_systems/4/dt_models_83_0.png)
+![png](../../images/dt_systems/4/dt_models_84_0.png)
 
 
 
@@ -748,7 +748,7 @@ step(Hz)
 
 
 {:.output .output_png}
-![png](../../images/dt_systems/4/dt_models_98_0.png)
+![png](../../images/dt_systems/4/dt_models_99_0.png)
 
 
 
@@ -784,6 +784,20 @@ $$\begin{array}{l}
 y[n] = 1.956y[n - 1] - 0.9567y[n - 2] + 486.6 \times {10^{ - 6}}u[n - 1] + ...\\
 \quad 476.5 \times {10^{ - 6}}u[n - 2]
 \end{array}$$
+
+### Block Diagram of the digital BW filter
+
+![digital filter](pictures/digifilter-bd.png)
+
+### As Simulink Model
+
+
+
+{:.input_area}
+```matlab
+open digifilter
+```
+
 
 ### Convert to code
 

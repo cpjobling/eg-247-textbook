@@ -55,6 +55,7 @@ I need a volunteer to provide a sound sample ....
 
 {:.input_area}
 ```matlab
+cd matlab
 open sampling_demo
 ```
 
@@ -323,12 +324,6 @@ The frequency response of this filter and additional notes are to be found on Pa
 ```matlab
 stem(td,xs)
 hold on
-x = zeros(length(td),length(tc));
-for k=1:length(td)
-    xk = xs(k);
-    sincx = xk*sin(pi*(tc - td(k))/Ts)./(pi*(tc - td(k))/Ts);
-    x(k,:) = sincx;
-end
 ```
 
 
@@ -336,6 +331,19 @@ end
 {:.output .output_png}
 ![png](../../images/dt_systems/1/sampling_49_0.png)
 
+
+
+
+
+{:.input_area}
+```matlab
+x = zeros(length(td),length(tc));
+for k=1:length(td)
+    xk = xs(k);
+    sincx = xk*sin(pi*(tc - td(k))/Ts)./(pi*(tc - td(k))/Ts);
+    x(k,:) = sincx;
+end
+```
 
 
 
@@ -352,7 +360,7 @@ xlabel('Time t [s]')
 
 
 {:.output .output_png}
-![png](../../images/dt_systems/1/sampling_50_0.png)
+![png](../../images/dt_systems/1/sampling_51_0.png)
 
 
 
@@ -377,7 +385,7 @@ ylabel('x(t)')
 
 
 {:.output .output_png}
-![png](../../images/dt_systems/1/sampling_53_0.png)
+![png](../../images/dt_systems/1/sampling_54_0.png)
 
 
 
@@ -404,7 +412,7 @@ xlabel('Time t [s]')
 
 
 {:.output .output_png}
-![png](../../images/dt_systems/1/sampling_56_0.png)
+![png](../../images/dt_systems/1/sampling_57_0.png)
 
 
 
@@ -423,7 +431,7 @@ xlabel('Time t [s]')
 
 
 {:.output .output_png}
-![png](../../images/dt_systems/1/sampling_58_0.png)
+![png](../../images/dt_systems/1/sampling_59_0.png)
 
 
 
