@@ -10,16 +10,6 @@ next_page:
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
-
-
-{:.input_area}
-```matlab
-% cd matlab
-clear all
-format compact
-```
-
-
 # The Fast Fourier Transform
 
 ## Scope and Background Reading
@@ -28,11 +18,11 @@ This session introduces the fast fourier transform (FFT) which is one of the mos
 
 The FFT is to be found in all manner of signal and image processing algorithms, and because it is more efficient than the DFT, you will find it exploited in hundreds of signal processing applications.
 
-As one example, it turns out that the computation of the convolution of two long DT sequences is more efficient if the FFT of the two signals is taken, the product of the frequency spectra is computed the Inverse DFT of the result is computed.
+As one example, it turns out that the computation of the convolution of two long DT sequences is more efficient if the FFT of the two signals is taken, the product of the frequency spectra is computed, and the Inverse DFT of the result is computed.
 
-In this presentation, we will not go through the mathematical development of the FFT, please read section 10.6 of the textbook if you want the details. Here we will concentrate on the benefits to be gained by using the FFT and give some examples of its use in MATLAB.
+In this presentation, we will not go through the mathematical development of the FFT, please read section 10.6 of Karris if you want the details. Here we will concentrate on the benefits to be gained by using the FFT and give some examples of its use in MATLAB.
 
-The material in this presentation and notes is based on Chapter 10 of [Steven T. Karris, Signals and Systems: with Matlab Computation and Simulink Modelling, 5th Edition](http://site.ebrary.com/lib/swansea/docDetail.action?docID=10547416) from the **Required Reading List**.
+The material in this presentation and notes is based on Chapter 10 of [Steven T. Karris, Signals and Systems: with Matlab Computation and Simulink Modelling, 5th Edition](http://site.ebrary.com/lib/swansea/docDetail.action?docID=10547416) from the **Required Reading List**. The models of the FFT signal flow graphs and Simulink block diagrams are based on the presentation given in Sectio 12.5 of Phillips, Parr and Riskin, Signals, Systems and Transforms, 5th Ed., Pearson, 2014. 
 
 ## Agenda
 
@@ -68,7 +58,7 @@ $$\begin{eqnarray*}
 \end{eqnarray*}$$
 
 * It is worth remembering that 
-$$W_N^0 = e^{-j\frac{2\pi}{N}(0)} = 1.$$
+$$W_N^0 = \exp\left(-j\frac{2\pi}{N}(0)\right) = 1.$$
 
 * Since $W_N^i$ is a complex number, the computation of any frequency component $X[k]$ requires $N$ complex multiplications and $N$ complex additions
 
@@ -84,13 +74,13 @@ $$W_N^0 = e^{-j\frac{2\pi}{N}(0)} = 1.$$
 
 * This may be possible with modern computing hardware, perhaps even in a mobile phone, but it seems impractical.
 
-* Fortunately, many of the $W_N$ terms in the computation are unity ($=1$). 
+* Fortunately, many of the $W_N$ terms in the computation are unity ($=\pm 1$). 
 
 * Moreover, because the $W_N^i$ points are equally spaced points on the unit circle; 
 
-* Because $N$ is a power of 2, the points on the upper-half plane (range $0 < \theta < \pi$ are the mirror image of the points on the lower half plane range $\pi < \theta < 2\pi$;
+* And because $N$ is a power of 2, the points on the upper-half plane (range $0 < \theta < \pi$ are the mirror image of the points on the lower-half plane range $\pi < \theta < 2\pi$;
 
-* Thus, there is a great deal of symmetry in the computation that can be exploited to simplify the computation and reduce the number of operations considerably to a much more manageable $N \log_2 N$ operations<sup>3</sup>.
+* Thus, there is a great deal of symmetry in the computation that can be exploited to simplify the computation and reduce the number of operations considerably to a much more manageable $N\log_2 N$ operations<sup>3</sup>.
 
 This is possible with the algorithm called the [FTT](https://en.wikipedia.org/wiki/Fast_Fourier_transform) (fast Fourier transform) that was originally developed by [James Cooley](https://en.wikipedia.org/wiki/James_Cooley) and [John Tukey](https://en.wikipedia.org/wiki/John_Tukey) and has been considerably refined since.
 
@@ -100,29 +90,29 @@ The FFT is very well documented, including in Karris, so we will only sketch its
 
 Much of the development follows from the properties of the rotating vector.<sup>4</sup>
 
-$$W_N=e^{-\frac{j2\pi}{N}}$$
+$$W_N=\exp\left(-\frac{j2\pi}{N}\right)$$
 
 which results in some simplifications and mathematical short-cuts when $N$ is a power of 2.
 
 The most useful properties are:
 
-$$\begin{eqnarray*}W_N^N &=& e^{-j\frac{2\pi}{N}N} = e^{-j2\pi} = 1.\\
-  W_N^{N/2} &=&  e^{-j\frac{2\pi}{N}\frac{N}{2}} = e^{-j\pi} = -1.\\
-  W_N^{N/4} &=&  e^{-j\frac{2\pi}{N}\frac{N}{4}} = e^{-j\pi/2} = -j.\\
-  W_N^{3N/4} &=&  e^{-j\frac{2\pi}{N}\frac{3N}{4}} = e^{-j3\pi/2} = j.\\
-  W_N^{kN} &=&  e^{-j\frac{2\pi}{N}kN} = e^{-j2\pi} = 1,\,k=0,1,2,\ldots\\
-  W_N^{kN+r} &=&  e^{-j\frac{2\pi}{N}kN}e^{-j\frac{2\pi}{N}r} = 1.W_N^r=W_N^r.\\
-  W_{2N}^{k} &=&  e^{-j\frac{2\pi}{2N}k} = e^{-j\frac{2\pi}{N}\frac{k}{2}} = W_N^{k/2}.
+$$\begin{eqnarray*}W_N^N &=& \exp\left(-j\frac{2\pi}{N}N\right) = \exp\left(-j2\pi\right) = 1.\\
+  W_N^{N/2} &=&  \exp\left(-j\frac{2\pi}{N}\frac{N}{2}\right) = \exp\left(-j\pi\right) = -1.\\
+  W_N^{N/4} &=&  \exp\left(-j\frac{2\pi}{N}\frac{N}{4}\right) = \exp\left(-j\pi/2\right) = -j.\\
+  W_N^{3N/4} &=&  \exp\left(-j\frac{2\pi}{N}\frac{3N}{4}\right) = \exp\left(-j3\pi/2\right) = j.\\
+  W_N^{kN} &=&  \exp\left(-j\frac{2\pi}{N}kN\right) = \exp\left(-j2\pi\right) = 1,\,k=0,1,2,\ldots\\
+  W_N^{kN+r} &=&  \exp\left(-j\frac{2\pi}{N}kN\right)\exp\left(-j\frac{2\pi}{N}r\right) = 1.W_N^r=W_N^r.\\
+  W_{2N}^{k} &=&  \exp\left(-j\frac{2\pi}{2N}k\right) = \exp\left(-j\frac{2\pi}{N}\frac{k}{2}\right) = W_N^{k/2}.
 \end{eqnarray*}$$
 
 Representing
 
 $$\begin{eqnarray*}
-  X[0] &=& x[0]W_N^0 + x[1]W_N^0 + x[1]W_N^0 +  \cdots  + x[N - 1]W_N^0 \hfill \\
-  X[1] &=& x[0]W_N^0 + x[1]W_N^1 + x[1]W_N^2 +  \cdots  + x[N - 1]W_N^{N - 1} \hfill \\
-  X[2] &=& x[0]W_N^0 + x[1]W_N^2 + x[1]W_N^4 +  \cdots  + x[N - 1]W_N^{2(N - 1)} \hfill \\
+  X[0] &=& x[0]W_N^0 + x[1]W_N^0 + x[2]W_N^0 +  \cdots  + x[N - 1]W_N^0 \hfill \\
+  X[1] &=& x[0]W_N^0 + x[1]W_N^1 + x[2]W_N^2 +  \cdots  + x[N - 1]W_N^{N - 1} \hfill \\
+  X[2] &=& x[0]W_N^0 + x[1]W_N^2 + x[2]W_N^4 +  \cdots  + x[N - 1]W_N^{2(N - 1)} \hfill \\
   \hfil &\cdots&  \hfill \\
-  X[N - 1] &=& x[0]W_N^0 + x[1]W_N^{N - 1} + x[1]W_N^{2(N - 1)} +  \cdots  + x[N - 1]W_N^{(N - 1)^2} \hfill \\ 
+  X[N - 1] &=& x[0]W_N^0 + x[1]W_N^{N - 1} + x[2]W_N^{2(N - 1)} +  \cdots  + x[N - 1]W_N^{(N - 1)^2} \hfill \\ 
 \end{eqnarray*}$$
 
 
@@ -170,11 +160,273 @@ It appears that the entire operation would require $NL= N\log_2N$ complex additi
 
 However, since $W_N^0 = 1$, $W_N^{N/2}=-1$, and other simplifications, it is estimated that only about half of these, that is, $N\log_2 N$ total complex arithmetic operations are required by the FFT versus the $N^2$ required by the DFT<sup>5</sup>.
 
+### Decomposition-in-Time FFT Algorithm
+
+This development follows (Philips, *et al.*, 2015). It is called the *decomposition-in-time (DIT), radix-2, FFT*.
+
+It allows us to visualize the FFT as a block diagram (for simulation) or a signal flow graph (for ease of drawing).
+
+We start from a 2-point FFT ($N=2$), and work up to an 8-point FFT ($N=8$) before generalizing the result. 
+
+We have implemented each algorithm in Simulink so we are able illustrate these structures with executable examples as we go. 
+
+
+#### 2-Point DFT
+
+$$X[k] = \sum_{n=0}^1 x[n]W^{nk}_2 = x[0]W_2^{0k} + X[1]W_2^{1k},\,k=0,1.$$
+
+Because $W_2^{0k}=\exp\left(j0\right)=1$ and $W_2^{1k}=\exp\left(-j\pi k\right)=(-1)^k$, we write
+
+$$\begin{eqnarray*}
+X[0] &=& x[0]+x[1];\\
+X[1] &=& x[0]-x[1].
+\end{eqnarray*}$$
+
+In general for the 2-point DFT, we have
+
+$$X[k]=x[0]+(-1)^kx[1].$$
+
+#### Signal flow graph of 2-point DFT
+
+![Signal flow graph of 2-point DFT](pictures/2-point-dft-sfg.png)
+
+An equivalent Simulink model in block diagram form is:
+
+![2-point dft](pictures/2-point-dft.png)
+
+#### Let's See it in MATLAB
+
+
+
+{:.input_area}
+```matlab
+cd matlab
+clear all
+format compact
+```
+
+
+
+
+{:.input_area}
+```matlab
+open two_point_dft
+```
+
+
+#### 4-point DFT
+
+The 4-point DFT is given by
+
+$$X[k] = \sum_{n=0}^3 x[n]W_4^{nk}= x[0]W_4^{0k} + x[1]W_4^{1k} + x[2]W_4^{2k} + x[3]W_4^{3k}.$$
+
+
+As a result of the periodicity of the weighting factor, we can simplify this expression:
+
+\begin{eqnarray*}
+W_N^{nk} &=& \exp\left(-j(2\pi/N)nk\right);\\
+W_4^{0k} &=& 1;\\
+W_4^{1k} &=& \exp\left(-j(\pi/2)k\right) = (-j)^k;\\
+W_4^{2k} &=& \exp\left(-j\pi k\right) = (-1)^k;\\
+W_4^{3k} &=& W_4^{2k}W_4^{1k}=(-1)^k W_4^{1k}.
+\end{eqnarray*}
+
+Using these results, we write
+
+$$\begin{eqnarray*}
+X[k] &=&  x[0] + x[1]W_4^{1k} + x[2](-1)^k + x[3](-1)^kW_4^{1k},\\
+X[k] &=&  \left[x[0] + x[2](-1)^k\right] \left[x[1] +  x[3](-1)^k\right]W_4^{1k}.
+\end{eqnarray*}$$
+
+To clarify the next step, we define two new variables
+$$\begin{eqnarray*}
+x_e[n]&=&x[2n],\,n=0,1;\\
+x_o[n]&=&x[2n+1],\,n=0,1.
+\end{eqnarray*}$$
+
+Then,
+
+$$X[k] =  \left[x_e[0] + x_e[1](-1)^k\right] \left[x_o[0] + x_o[1](-1)^k\right]W_4^{1k}.$$
+
+The factors in brackets in this equation can be recognized as 2-point DFTs:
+
+$$\begin{eqnarray*}
+X_e[m] &=& x_e[0] + x_e[1](-1)^m,\;m=0,1;\\
+X_o[m] &=& x_o[0] + x_o[1](-1)^m,\;m=0,1.
+\end{eqnarray*}$$
+
+Note that $X_e[k]$ and $X_o[k]$ are periodic; for example,
+
+$$X_e[2]= x_e[0]+ x_e[1](-1)^2 = X_e[0]$$
+
+and
+
+$$X_o[3]= x_o[0]+ x_o[1](-1)^3 = X_o[1]$$
+
+
+The 4-point DFT then is
+
+$$\begin{eqnarray*}
+X[0] &=& X_e[0] + X_o[0]W_4^{1(0)} = X_e[0] + X_o[0];\\
+X[1] &=& X_e[1] + X_o[1]W_4^{1(1)} = X_e[0] + X_o[0]W_4^1;\\
+X[2] &=& X_e[0] - X_o[0]W_4^{1(2)} = X_e[0] + X_o[0];\\
+X[3] &=& X_e[1] - X_o[1]W_4^{1(3)} = X_e[0] + X_o[0]W_4^1.
+\end{eqnarray*}$$
+
+We see that the 4-point DFT can be computed by the generation of two 2-point DFTs, followed by a *recomposition* of terms as shown in the signal flow graph below:
+
+#### Signal flow graph of 4-point DFT
+
+![Signal flow graph of 4-point DFT](pictures/4-point-dft-sfg.png)
+
+In other words,
+
+[4-point DFT of $x[n]$] = [2-point DFT of $x_e[n]$] + $W_4^{1k}$[2-point DFT of $x_o[n]$].
+
+#### SIMULINK Model of 4-Point DFT
+
+
+
+{:.input_area}
+```matlab
+open four_point_dft
+```
+
+
+#### 8-point DFT
+
+$$X[k] = \sum_{n=0}^{7}x[n]W_8^{nk}.$$
+
+After some manipulation, not reproduced here, it can be shown that the 8-point DFT is the recombination of two, 4-point DFTs that operate on the even and odd numbered values in the sequence $x[n]$ respectively. 
+
+#### Signal flow graph of 8-point DFT
+
+![Signal flow graph of 8-point DFT](pictures/8-point-dft-sfg.png)
+
+#### SIMULINK Model of 8-Point DFT
+
+
+
+{:.input_area}
+```matlab
+open eight_point_dft
+```
+
+
+#### N-Point, radix-2 DIF FFT
+
+In general, the $N$-point, radix-2 DIT FFT is computed as the recomposition of two $(N/2)$-point FFTs) as shown in the buterfly diagram below
+
+![N-point FFT](pictures/n-point-fft.png)
+
 ### Example 1
 
-Show a flow graph of the operation for an 8 element matrix and demonstrate the simple mathematics.
+Use four two-point DIT FFT to confirm that the DFT of the sequence 
 
-## DFT and FFT Comparisons
+$$x[n] = [1, 2, 3, 4]$$
+
+is 
+
+$$X[m] = [10, -2+j2, -4, -2-j2].$$
+
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+
+
+### Decomposition-in-Frequency FFT
+
+Another approach to forming the FFT is the so-called decomposition in frequency (DIF) FFT. 
+
+We will not cover it's development in detail (see Karris and Phillips *et al.*) if you want to follow it through.
+
+We instead illustrate the final result for the four-point DIF FFT.
+
+#### Signal flow graph for 4-point DIF FFT
+
+![Signal flow chart for 4-point DIF FFT](pictures/4-point-dif-fft.png)
+
+Note that the structure is a 4-point decompostion followed by two 2-point FFTs.
+
+Also note that it is frequency $X_n[k]$ that is the input to the DFT stage.
+
+#### SIMULINK Model of 8-Point DFT
+
+
+
+{:.input_area}
+```matlab
+open four_point_dif
+
+```
+
+
+### Example 2
+
+Use four two-point FIT FFT to confirm that the DFT of the sequence 
+
+$$x[n] = [1, 2, 3, 4]$$
+
+is 
+
+$$X[m] = [10, -2+j2, -4, -2-j2].$$
+
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+
+
+## Efficiency of the FFT
+
+Wether we implement it as a Decomposition-in-Time (DIT) or a Decomposition-in-Frequency (DIF), the FFT ends up having approximately $(N/2)\log_2(N)$ multiplications and a similar number of complex additions or subtractions. 
+
+In other words, $(N)\log_2(N)$ complex arithmetic operations.
+
+As complex arithmetic, particularly multiplication, is very expensive, this is a great saving over the DFT which has of order $N^2$ operations.
+
+### DFT and FFT Comparisons
 
 Under the assumptions about the relative efficiency of the DFT and FFT we can create a table like that shown below:
 
@@ -194,20 +446,19 @@ Under the assumptions about the relative efficiency of the DFT and FFT we can cr
 
 As you can see, the efficiency of the FFT actual gets better as the number of samples go up! 
 
-However, there are other costs, such as the data storage needed for intermediate steps, that need to be taken into account as well. For example, a 8 bit FFT requires only a 3 stage decomposition, with each stage needing storage for 8 complex numbers. That is 24 in all. Whereas a 2048 sequence will require 11 stages, storing 2048 values each. That is a total of 22,528 complex values<sup>6</sup>. 
-
+However, there are other costs, such as the data storage needed for intermediate steps, that need to be taken into account as well. For example, an 8-point FFT requires only a 3 stage decomposition, with each stage needing storage for 8 complex numbers. That is 24 in all. Whereas a 2048 sequence will require 11 stages, storing 2048 values each. That is a total of 22,528 complex values<sup>6</sup>. 
 
 ## FFT in MATLAB
 
 The FFT algorithm is implemented, in MATLAB, as the function `fft`. We will conclude by working through Exercises 6 and 7 from section 10.8 of Karris.
 
-### Example 2
+### Example 3
 
 Plot the Fourier transform of the rectangular pulse shown below, using the MATLAB `fft` func-tion. Then, use the `ifft` function to verify that the inverse transformation produces the rectangular pulse.
 
 ![Example 1](pictures/fft_example1.png)
 
-#### FFT for Example 2
+#### FFT for Example 3
 
 The rectangular pulse can be produced like so
 
@@ -221,12 +472,6 @@ plot(x,y)
 ```
 
 
-
-{:.output .output_png}
-![png](../../images/dft/2/fft_46_0.png)
-
-
-
 and the FFT is produced as
 
 
@@ -235,12 +480,6 @@ and the FFT is produced as
 ```matlab
 plot(x, abs(fft(y)))
 ```
-
-
-
-{:.output .output_png}
-![png](../../images/dft/2/fft_48_0.png)
-
 
 
 unwind 
@@ -253,12 +492,6 @@ plot(x, abs(fftshift(fft(y))))
 ```
 
 
-
-{:.output .output_png}
-![png](../../images/dft/2/fft_50_0.png)
-
-
-
 The inverse FFT is obtained with
 
 
@@ -269,17 +502,11 @@ plot(x, ifft(fft(y)))
 ```
 
 
-
-{:.output .output_png}
-![png](../../images/dft/2/fft_52_0.png)
-
-
-
-### Example 2
+### Example 4
 
 ![Example 2](pictures/fft_example2.png)
 
-#### FFT Example 2
+#### FFT Example 4
 
 The triangular pulse is obtained with
 
@@ -293,12 +520,6 @@ plot(x,y)
 ```
 
 
-
-{:.output .output_png}
-![png](../../images/dft/2/fft_55_0.png)
-
-
-
 and the FFT is obtained with
 
 
@@ -309,12 +530,6 @@ plot(x, abs(fftshift(fft(y))))
 ```
 
 
-
-{:.output .output_png}
-![png](../../images/dft/2/fft_57_0.png)
-
-
-
 The inverse FFT is obtained with
 
 
@@ -323,12 +538,6 @@ The inverse FFT is obtained with
 ```matlab
 plot(x, ifft(fft(y)))
 ```
-
-
-
-{:.output .output_png}
-![png](../../images/dft/2/fft_59_0.png)
-
 
 
 ## Summary
@@ -363,16 +572,65 @@ Read the rest of Chapter 10 of Karris from page 10.9 and make your own notes on 
 4. The Inverse FFT (IFFT) follows by noting that the rotation vector used in its computation is the complex conjugate
 $$W_N^{-1}.$$
 
-5. Karris goes further in showing how the decomposition used to implement the FFT can be further be understood by considering even and odd decompositions. We do not have time to cover this in this module, but you are invited to read further if you are interested. You'll also find that most text books on Digital Signal Processing will cover the FFT and give more or less understandable presentations of the way the algorithm works.
+5. Karris goes further in showing how the decomposition used to implement the FFT can be further be understood by considering even and odd decompositions. This is also the approach taken by Phillips *et al.* reproduced here.
+You'll also find that most text books on Digital Signal Processing will cover the FFT and give more or less understandable presentations of the way the algorithm works.
 
 6. A complex number in MATLAB is 2 floating point doubles or 128 bits. So a 2048 "bin" FFT needs storage in RAM for approximately $22,528\times 128 = 2.9$ Mbit ($260$ kByte) of data.
 
 ## Solutions
 
+
+
 ### Example 1
+
+From the mathematical development and signal flow graph shown earlier:
+
+\begin{eqnarray*}
+X_e[0] &=& x[0] + x[2] = 1 + 3 = 4;\\
+X_e[1] &=& x[0] - x[2] = 1 - 3 = -2;\\
+X_o[0] &=& x[1] + x[3] = 2 + 4 = 6;\\
+X_o[1] &=& x[1] - x[3] = 2 - 4 = -2.
+\end{eqnarray*}
+
+Thus,
+
+\begin{eqnarray*}
+X[0] &=& X_e[0] + X_o[0] = 4 + 6 = 10,\\
+X[1] &=& X_e[1] + W_4^1 X_o[1] = -2 + (-j)(-2) = -2 - j2,\\
+X[2] &=& X_e[0] - X_o[0] = 4 - 6 = -4,\\
+X[3] &=& X_e[1] - W_4^1 X_o[1] = -2 - (-j)(-2) = -2 + j2.
+\end{eqnarray*}
+
+Q.E.D.
+
+
+### Example 2
+
+After decomposition we have:
+
+\begin{eqnarray*}
+X_1[0] &=& x[0] + x[2] = 1 + 3 = 4;\\
+X_1[1] &=& W_4^0\left[x[1] - x[3]\right] = 2 + 4 = 6;\\
+X_2[0] &=& x[0] - x[2] = 1 - 3 = -2;\\
+X_2[1] &=& W_4^1\left[x[1] - x[3]\right] = -j[2 - 4] = j2.
+\end{eqnarray*}
+
+Hence, after 2-point FFT:
+
+\begin{eqnarray*}
+X[0] &=& X_1[0] + X_1[1] = 4 + 6 = 10,\\
+X[1] &=& X_2[0] + X_2[1] = -2 + j2,\\
+X[2] &=& X_1[0] - X_1[1] = 4 - 6 = -4,\\
+X[3] &=& X_2[0] - X_2[1] = -2 - j2.
+\end{eqnarray*}
+
+Q.E.D.
+
+
+### Example 3
 
 See script [fft_ex1.m](https://github.com/cpjobling/EG-247-Resources/blob/master/week10/matlab/fft_ex1.m).
 
-### Example 2
+### Example 4
 
 See script [fft_ex2.m](https://github.com/cpjobling/EG-247-Resources/blob/master/week10/matlab/fft_ex2.m).

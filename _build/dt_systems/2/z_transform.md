@@ -5,7 +5,7 @@ interact_link: content/dt_systems/2/z_transform.ipynb
 title: 'The Z-Transform'
 prev_page:
   url: /dt_systems/1/sampling
-  title: 'Sampling Theor'
+  title: 'Sampling Theory'
 next_page:
   url: /dt_systems/3/i_z_transform
   title: 'The Inverse Z-Transform'
@@ -288,7 +288,7 @@ $$z = e^{\sigma t}e^{j2\pi\omega/\omega_s}$$
 
 * What are the consequences of this?
 
-### Case I: $\sigma < 0$
+#### Case I: $\sigma < 0$
 
 * When $\sigma < 0$ we see that from 
 
@@ -302,19 +302,22 @@ $$z = e^{\sigma t}e^{j2\pi\omega/\omega_s}$$
 
 * Different negative values of $\sigma$ map onto concentric circles with radius less than unity.
 
-### Case II: $\sigma > 0$
+#### Case II: $\sigma > 0$
 
 * When $\sigma > 0$ we see that from 
 
   $$|z| = e^{\sigma T_s}$$
   
-  that $$|z| > 1$$
+  that 
+  
+  $$|z| > 1$$
+
 
 * The right-half plane of the $s$-domain maps outside the unit circle in the $z$-plane.
 
 * Different positive values of $\sigma$ map onto concentric circles with radius greater than unity.
 
-### Case III: $\sigma = 0$
+#### Case III: $\sigma = 0$
 
 * When $\sigma = 0$, 
  

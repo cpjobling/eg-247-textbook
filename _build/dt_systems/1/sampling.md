@@ -2,7 +2,7 @@
 redirect_from:
   - "dt-systems/1/sampling"
 interact_link: content/dt_systems/1/sampling.ipynb
-title: 'Sampling Theor'
+title: 'Sampling Theory'
 prev_page:
   url: /dt_systems/index
   title: 'Sampled Data Systems'
@@ -41,9 +41,7 @@ We will be using an adaptation of a pair of demo scripts to illustrate *alialisi
 * Sampled data can be used in *real-time* or *off-line* processing
 * Sampling opens up possibility of processing CT signals through *finite impulse response* (FIR) and *infinite impulse response* (IIR) filters.
 
-## In Class Example 1
-
-## A Real Example
+### In Class Demo 1: Sampling
 
 I need a volunteer to provide a sound sample ....
 
@@ -60,7 +58,7 @@ open sampling_demo
 ```
 
 
-### Technical Details
+#### Technical Details
 
 * **Sampling rate**: 8000 samples per second (fs = 8 kHz)
 * **Resolution**: 8 bits per sample
@@ -68,7 +66,7 @@ open sampling_demo
 * **Reconstruction**: Matlab plays the audio back at 8192 samples per second.
 
 
-### Question
+#### Question
 
 What will the bit-rate be for playback?
 
@@ -154,9 +152,9 @@ This is of course theoretical only!
 
 <img src="pictures/zoh.png">
 
-## In Class Example 2
+### In Class Demo 2
 
-### Illustrating Sampling in MATLAB
+#### Illustrating Sampling in MATLAB
 
 Basic set up
 
@@ -172,7 +170,7 @@ tmax = 1.5*t0; % plottable range
 ```
 
 
-### Define a suitable signal
+#### Define a suitable signal
 We will use a system with an underdamped second-order response.
 
 The transfer function is:
@@ -236,7 +234,7 @@ xlabel('Time t [s]')
 
 
 {:.output .output_png}
-![png](../../images/dt_systems/1/sampling_38_0.png)
+![png](../../images/dt_systems/1/sampling_37_0.png)
 
 
 
@@ -272,11 +270,11 @@ xlabel('Time t [s]')
 
 
 {:.output .output_png}
-![png](../../images/dt_systems/1/sampling_42_0.png)
+![png](../../images/dt_systems/1/sampling_41_0.png)
 
 
 
-### Notes
+#### Notes
 
 The sampled signal $x_0(t)$ carries the same information as the samples themselves, so we should be able to recover the entire signal $x(t)$.
 
@@ -312,9 +310,7 @@ The frequency response of this filter and additional notes are to be found on Pa
 * In the *time domain*, this is equivalent to interpolating the samples using time-shifted sinc functions with zeros at $nT_s$ for $\omega_c = \omega_s$.
 
 
-## In Class Example 3
-
-### MATLAB Demonstrations of signal reconstruction
+### In Class Demo 3: MATLAB Demonstrations of signal reconstruction
 
  #### Reconstruction with sinc function
 
@@ -329,7 +325,7 @@ hold on
 
 
 {:.output .output_png}
-![png](../../images/dt_systems/1/sampling_49_0.png)
+![png](../../images/dt_systems/1/sampling_47_0.png)
 
 
 
@@ -360,7 +356,7 @@ xlabel('Time t [s]')
 
 
 {:.output .output_png}
-![png](../../images/dt_systems/1/sampling_51_0.png)
+![png](../../images/dt_systems/1/sampling_49_0.png)
 
 
 
@@ -385,7 +381,7 @@ ylabel('x(t)')
 
 
 {:.output .output_png}
-![png](../../images/dt_systems/1/sampling_54_0.png)
+![png](../../images/dt_systems/1/sampling_52_0.png)
 
 
 
@@ -412,7 +408,7 @@ xlabel('Time t [s]')
 
 
 {:.output .output_png}
-![png](../../images/dt_systems/1/sampling_57_0.png)
+![png](../../images/dt_systems/1/sampling_55_0.png)
 
 
 
@@ -431,7 +427,7 @@ xlabel('Time t [s]')
 
 
 {:.output .output_png}
-![png](../../images/dt_systems/1/sampling_59_0.png)
+![png](../../images/dt_systems/1/sampling_57_0.png)
 
 
 
@@ -447,9 +443,9 @@ xlabel('Time t [s]')
 
 <img src="pictures/aliasing.png">
 
-## In Class Examples 4
+### In Class Demo 4
 
-### Example 1
+#### Demo 4.1
 
 We use the recording made at the start and run it through a script that effectively aliases the original signal be reducing the sampling frequency to less than half the original sampling frequency.
 
@@ -463,7 +459,7 @@ open aliaseg1
 ```
 
 
-### Example 2
+#### Demo  4.2
 
 Assume signal $x(t)=\cos(\omega_0 t)$ is sampled at a rate of $\omega_s = 1.5\omega_0$, violating the sampling theorem.
 
@@ -493,7 +489,7 @@ You should confirm for yourself that after lowpass filtering the spectrum with a
 
 * For more on this topic see Pages 551&mdash;552 of Boulet.
 
-### Example 3
+#### Demo 4.3
 
 This example uses anti-aliasing to downsample the audio. You should hear that the sound is less distorted as we sample below the sampling frequency of 8 kHz.
 

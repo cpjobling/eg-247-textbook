@@ -7,7 +7,7 @@ prev_page:
   title: 'Introduction to Filters'
 next_page:
   url: /dt_systems/1/sampling
-  title: 'Sampling Theor'
+  title: 'Sampling Theory'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 # Sampled Data Systems
