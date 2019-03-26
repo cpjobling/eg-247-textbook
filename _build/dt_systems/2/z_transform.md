@@ -81,7 +81,7 @@ $$x_s(t) = \sum_{n=0}^{\infty}x(nT_s)\delta(t-nT_s)$$
 
 Using the Laplace transform pairs $\delta(t) \Leftrightarrow 1$ and $\delta(t-T) \Leftrightarrow e^{-sT}$ we obtain:
 
-$$X_s(t) = \mathcal{L}\left\{\sum_{n=0}^{\infty}x(nT_s)\delta(t-nT_s)\right\} = \sum_{n=0}^{\infty}x(nT_s)e^{-nsT_s}$$
+$$X_s(s) = \mathcal{L}\left\{\sum_{n=0}^{\infty}x(nT_s)\delta(t-nT_s)\right\} = \sum_{n=0}^{\infty}x(nT_s)e^{-nsT_s}$$
 
 By substitution of $z = e^{sT_s}$ and representing samples $x(nT_s)$ as sequence $x[n]$:
 
@@ -177,7 +177,7 @@ $$|z| > 1$$
 
 ### Exponontial Decay Sequence
 
-$$f[n] = e^{naT_s}{u_0}[n]$$
+$$f[n] = e^{-naT_s}{u_0}[n]$$
 
 $$F(z) = \sum_{n=0}^{\infty}e^{-nasT_s}z^{-n} =1+e^{-aT_s}z^{-1}+e^{-2aT_s}z^{-2}+e^{-a3T_s}z^{-3}+\cdots$$
 

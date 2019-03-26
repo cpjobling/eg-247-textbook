@@ -52,7 +52,7 @@ I need a volunteer to provide a sound sample ....
 
 
 {:.input_area}
-```matlab
+```
 cd matlab
 open sampling_demo
 ```
@@ -161,7 +161,7 @@ Basic set up
 
 
 {:.input_area}
-```matlab
+```
 clear all
 format compact
 w0 = 1;        % fundamental frequency rad/s
@@ -180,7 +180,7 @@ $$H(s) = \frac{\omega_0^2}{s^2 + 2\zeta\omega_0 s + \omega_0^2}$$
 
 
 {:.input_area}
-```matlab
+```
 syms s t
 zeta = 0.3;
 H = w0^2/(s^2 + 2*zeta*w0*s + w0^2)
@@ -199,7 +199,7 @@ H =
 
 
 {:.input_area}
-```matlab
+```
 h = ilaplace(H)
 ```
 
@@ -214,7 +214,7 @@ h =
 
 
 {:.input_area}
-```matlab
+```
 t = linspace(0,tmax,100);
 xc = eval(h); % eval evaluates a symbolic expression as a MATLAB command.
 tc = t;
@@ -224,7 +224,7 @@ tc = t;
 
 
 {:.input_area}
-```matlab
+```
 plot(tc,xc)
 title('Fig 1: Continuous Time Signal x(t)')
 ylabel('x(t)')
@@ -245,7 +245,7 @@ You can generate all the images in this presentation by running the Matlab scrip
 
 
 {:.input_area}
-```matlab
+```
 ws = 4*w0; % twice minimum!
 Ts = (2*pi)/ws;
 t = 0:Ts:tmax;
@@ -257,7 +257,7 @@ td = t;
 
 
 {:.input_area}
-```matlab
+```
 stem(td,xs)
 hold on
 plot(tc,xc,'r:')
@@ -317,7 +317,7 @@ The frequency response of this filter and additional notes are to be found on Pa
 
 
 {:.input_area}
-```matlab
+```
 stem(td,xs)
 hold on
 ```
@@ -332,7 +332,7 @@ hold on
 
 
 {:.input_area}
-```matlab
+```
 x = zeros(length(td),length(tc));
 for k=1:length(td)
     xk = xs(k);
@@ -345,7 +345,7 @@ end
 
 
 {:.input_area}
-```matlab
+```
 plot(tc,x,'-.')
 hold off
 title('Fig 5: Signal x(t) reconstructed with sinc functions')
@@ -372,7 +372,7 @@ Obtained by summing all the sinc functions
 
 
 {:.input_area}
-```matlab
+```
 plot(tc,sum(x),tc,xc,'r:')
 title('Fig 6: Reconstruction with sinc functions')
 ylabel('x(t)')
@@ -396,7 +396,7 @@ In practice, the zero-order-hold is often used in practice and a low-pass filter
 
 
 {:.input_area}
-```matlab
+```
 stairs(td,xs)
 hold on
 plot(tc,xc,'r:')
@@ -417,7 +417,7 @@ xlabel('Time t [s]')
 
 
 {:.input_area}
-```matlab
+```
 plot(td,xs,'bo-',tc,xc,'r:')
 title('Fig 4: Signal x(t) reconstructed with first-order-hold')
 ylabel('x(t)')
@@ -454,7 +454,7 @@ Here's the script: [aliaseg1.mlx](aliaseg1.mlx) that I'll be using. (Also availa
 
 
 {:.input_area}
-```matlab
+```
 open aliaseg1
 ```
 
@@ -466,7 +466,7 @@ Assume signal $x(t)=\cos(\omega_0 t)$ is sampled at a rate of $\omega_s = 1.5\om
 
 
 {:.input_area}
-```matlab
+```
 open aliasing
 ```
 
@@ -498,7 +498,7 @@ Script: [aliaseg2.mlx](aliaseg2.mlx) (Also available as an m-file [aliaseg2.m](a
 
 
 {:.input_area}
-```matlab
+```
 open aliaseg2
 ```
 
