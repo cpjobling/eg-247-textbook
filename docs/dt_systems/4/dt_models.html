@@ -27,9 +27,9 @@
   "headline":
     "Models of Discrete Time Systems",
   "datePublished":
-    "2019-03-26T17:08:28+00:00",
+    "2019-03-27T15:10:08+00:00",
   "dateModified":
-    "2019-03-26T17:08:28+00:00",
+    "2019-03-27T15:10:08+00:00",
   "description":
     "Models of Discrete-Time Systems",
   "author": {
@@ -1469,16 +1469,16 @@ document.addEventListener('turbolinks:load', updateInteractLink)
       <li><a href="#results">Results</a></li>
     </ul>
   </li>
-  <li><a href="#modelling-dt-systems-in-matlab-and-simulink">Modelling DT systems in Matlab and Simulink</a>
+  <li><a href="#modelling-dt-systems-in-matlab-and-simulink">Modelling DT systems in MATLAB and Simulink</a>
     <ul>
-      <li><a href="#matlab">Matlab</a></li>
+      <li><a href="#matlab">MATLAB</a></li>
       <li><a href="#simulink-model">Simulink Model</a></li>
     </ul>
   </li>
   <li><a href="#converting-continuous-time-systems-to-discrete-time-systems">Converting Continuous Time Systems to Discrete Time Systems</a>
     <ul>
       <li><a href="#continuous-system-equivalents">Continuous System Equivalents</a></li>
-      <li><a href="#matlab-c2d-function">Matlab c2d function</a></li>
+      <li><a href="#matlab-c2d-function">MATLAB c2d function</a></li>
       <li><a href="#example-6">Example 6</a></li>
       <li><a href="#solution">Solution</a></li>
       <li><a href="#bode-plot">Bode plot</a></li>
@@ -1555,7 +1555,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
     <p>Continuous System Equivalents</p>
   </li>
   <li>
-    <p>Example: Digital Butterworth Filter</p>
+    <p>In-class demonstration: Digital Butterworth Filter</p>
   </li>
 </ul>
 
@@ -1664,6 +1664,10 @@ y[n] + {a_1}y[n - 1] + {a_2}y[n - 2] +  \cdots  + {a_k}y[n - k]\\
 <p>so</p>
 
 <script type="math/tex; mode=display">h[n] = \mathcal{Z}^{-1}\left\{H(z).1\right\} = \mathcal{Z}^{-1}\left\{H(z)\right\}</script>
+
+<p>We will work through an example in class.</p>
+
+<p>[Skip next slide in Pre-Lecture]</p>
 
 <h3 id="example-5">Example 5</h3>
 
@@ -1813,7 +1817,7 @@ Discrete-time transfer function.
 <span class="nb">ylabel</span><span class="p">(</span><span class="s1">'Impulse response h[n]'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/dt_systems/4/dt_models_49_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../../images/dt_systems/4/dt_models_50_0.png" alt="png" /></p>
 
 <h4 id="response-as-stepwise-continuous-yt">Response as stepwise continuous y(t)</h4>
 
@@ -1824,13 +1828,17 @@ Discrete-time transfer function.
 <span class="nb">ylabel</span><span class="p">(</span><span class="s1">'Impulse response h(t)'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/dt_systems/4/dt_models_51_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../../images/dt_systems/4/dt_models_52_0.png" alt="png" /></p>
 
 <h3 id="53-the-dt-step-response">5.3. The DT step response</h3>
 
 <script type="math/tex; mode=display">Y(z) = H(z)X(z)</script>
 
 <script type="math/tex; mode=display">u_0[n] \Leftrightarrow \frac{z}{z - 1}</script>
+
+<p>We will work through this example in class.</p>
+
+<p>[Skip next slide in Pre-Lecture]</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
 \begin{array}{lcl}
@@ -1875,25 +1883,16 @@ Y(z) = H(z){U_0}(z) &=& \frac{z^2 + z}{z^2 + 0.5z + 0.125}.\frac{z}{z - 1}\\
 
 <p><img src="pictures/dtm_ex1_3_1.png" /></p>
 
-<h2 id="modelling-dt-systems-in-matlab-and-simulink">Modelling DT systems in Matlab and Simulink</h2>
+<h2 id="modelling-dt-systems-in-matlab-and-simulink">Modelling DT systems in MATLAB and Simulink</h2>
 
-<h3 id="matlab">Matlab</h3>
+<p>We will consider some examples in class</p>
+
+<h3 id="matlab">MATLAB</h3>
 
 <p>Code extracted from <a href="matlab/dtm_ex1_3.m">dtm_ex1_3.m</a>:</p>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Ts</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="n">z</span> <span class="o">=</span> <span class="n">tf</span><span class="p">(</span><span class="s1">'z'</span><span class="p">,</span> <span class="n">Ts</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-z =
- 
-  z
- 
-Sample time: 1 seconds
-Discrete-time transfer function.
-
-
+<span class="n">z</span> <span class="o">=</span> <span class="n">tf</span><span class="p">(</span><span class="s1">'z'</span><span class="p">,</span> <span class="n">Ts</span><span class="p">);</span>
 </code></pre></div></div>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Hz</span> <span class="o">=</span> <span class="p">(</span><span class="n">z</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">z</span><span class="p">)/(</span><span class="n">z</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">z</span> <span class="o">+</span> <span class="mf">0.125</span><span class="p">)</span>
@@ -1920,7 +1919,7 @@ Discrete-time transfer function.
 <span class="nb">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">3.5</span><span class="p">])</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/dt_systems/4/dt_models_65_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../../images/dt_systems/4/dt_models_68_0.png" alt="png" /></p>
 
 <h3 id="simulink-model">Simulink Model</h3>
 
@@ -1937,13 +1936,21 @@ Discrete-time transfer function.
 
 <h2 id="converting-continuous-time-systems-to-discrete-time-systems">Converting Continuous Time Systems to Discrete Time Systems</h2>
 
+<p>In analogue electronics, to implement a filter we would need to resort to op-amp circuits with resistors, capacitors and inductors acting as energy dissipation, storage and release devices.</p>
+
 <ul>
-  <li>In analogue electronics, to implement a filter we would need to resort to op-amp circuits with resistors, capacitors and inductors acting as energy dissipation, storage and release devices.</li>
-  <li>In modern digital electronics, it is often more convenient to take the original transfer function $H(s)$ and produce an equivalent $H(z)$.</li>
-  <li>We can then determine a <em>difference equation</em> that will respresent $h[n]$ and implement this as <em>computer algorithm</em>.</li>
-  <li>Simple storage of past values in memory becomes the repository of past state rather than the integrators and derivative circuits that are needed in the analogue world.</li>
-  <li>To achieve this, all we need is to be able to do is to <em>sample</em> and <em>process</em> the signals quickly enough to avoid violating Nyquist-Shannon’s sampling theorem.</li>
+  <li>
+    <p>In modern digital electronics, it is often more convenient to take the original transfer function $H(s)$ and produce an equivalent $H(z)$.</p>
+  </li>
+  <li>
+    <p>We can then determine a <em>difference equation</em> that will respresent $h[n]$ and implement this as <em>computer algorithm</em>.</p>
+  </li>
+  <li>
+    <p>Simple storage of past values in memory becomes the repository of past state rather than the integrators and derivative circuits that are needed in the analogue world.</p>
+  </li>
 </ul>
+
+<p>To achieve this, all we need is to be able to do is to <em>sample</em> and <em>process</em> the signals quickly enough to avoid violating Nyquist-Shannon’s sampling theorem.</p>
 
 <h3 id="continuous-system-equivalents">Continuous System Equivalents</h3>
 
@@ -1951,10 +1958,10 @@ Discrete-time transfer function.
   <li>There is no digital system that uniquely represents a continuous system</li>
   <li>This is because as we are sampling, we only have knowledge of signals being processed at the sampling instants, and need to <em>reconstruct</em> the inter-sample behaviour.</li>
   <li>In practice, only a small number of transformations are used.</li>
-  <li>The derivation of these is beyond the scope of this module, but we’ll mention the ones that Matlab provides in a function called <code class="highlighter-rouge">c2d</code></li>
+  <li>The derivation of these is beyond the scope of this module, but <strong>in class</strong> we’ll demonstrate the ones that MATLAB provides in a function called <code class="highlighter-rouge">c2d</code></li>
 </ul>
 
-<h3 id="matlab-c2d-function">Matlab c2d function</h3>
+<h3 id="matlab-c2d-function">MATLAB c2d function</h3>
 
 <p>Let’s see what the help function says:</p>
 
@@ -2017,7 +2024,7 @@ Discrete-time transfer function.
 
 <h3 id="solution">Solution</h3>
 
-<p>See <a href="matlab/digit_butter.m">digit_butter.m</a>.</p>
+<p>See <a href="matlab/digit_butter.mlx">digit_butter.mlx</a>.</p>
 
 <p>First determine the cut-off frequency $\omega_c$</p>
 
@@ -2058,13 +2065,13 @@ Continuous-time transfer function.
 
 <h3 id="bode-plot">Bode plot</h3>
 
-<p>Matlab:</p>
+<p>MATLAB:</p>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bode</span><span class="p">(</span><span class="n">Hs</span><span class="p">,{</span><span class="mf">1e4</span><span class="p">,</span><span class="mf">1e8</span><span class="p">})</span>
 <span class="nb">grid</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/dt_systems/4/dt_models_84_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../../images/dt_systems/4/dt_models_91_0.png" alt="png" /></p>
 
 <h3 id="sampling-frequency">Sampling Frequency</h3>
 
@@ -2147,7 +2154,7 @@ Discrete-time transfer function.
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">step</span><span class="p">(</span><span class="n">Hz</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/dt_systems/4/dt_models_99_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../../images/dt_systems/4/dt_models_106_0.png" alt="png" /></p>
 
 <h3 id="algorithm">Algorithm</h3>
 
@@ -2219,9 +2226,9 @@ while (true) {
 <ul>
   <li>Discrete Time Systems</li>
   <li>Transfer Functions in the Z-Domain</li>
-  <li>Modelling digital systems in Matlab/Simulink</li>
+  <li>Modelling digital systems in MATLAB/Simulink</li>
   <li>Continuous System Equivalents</li>
-  <li>Example: Digital Butterworth Filter</li>
+  <li>In-class demonstration: Digital Butterworth Filter</li>
 </ul>
 
 <h2 id="solutions-to-example-5">Solutions to Example 5</h2>

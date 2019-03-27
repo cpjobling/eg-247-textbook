@@ -30,7 +30,7 @@ The material in this presentation and notes is based on Chapter 9 (Starting at S
 
 * Continuous System Equivalents
 
-* Example: Digital Butterworth Filter
+* In-class demonstration: Digital Butterworth Filter
 
 ## Discrete Time Systems
 
@@ -125,6 +125,10 @@ $$\delta[n] \Leftrightarrow 1$$
 so 
 
 $$h[n] = \mathcal{Z}^{-1}\left\{H(z).1\right\} = \mathcal{Z}^{-1}\left\{H(z)\right\}$$
+
+We will work through an example in class.
+
+[Skip next slide in Pre-Lecture]
 
 ### Example 5
 
@@ -311,7 +315,7 @@ ylabel('Impulse response h[n]')
 
 
 {:.output .output_png}
-![png](../../images/dt_systems/4/dt_models_49_0.png)
+![png](../../images/dt_systems/4/dt_models_50_0.png)
 
 
 
@@ -331,7 +335,7 @@ ylabel('Impulse response h(t)')
 
 
 {:.output .output_png}
-![png](../../images/dt_systems/4/dt_models_51_0.png)
+![png](../../images/dt_systems/4/dt_models_52_0.png)
 
 
 
@@ -340,6 +344,10 @@ ylabel('Impulse response h(t)')
 $$Y(z) = H(z)X(z)$$
 
 $$u_0[n] \Leftrightarrow \frac{z}{z - 1}$$
+
+We will work through this example in class.
+
+[Skip next slide in Pre-Lecture]
 
 $$\begin{array}{lcl}
 Y(z) = H(z){U_0}(z) &=& \frac{z^2 + z}{z^2 + 0.5z + 0.125}.\frac{z}{z - 1}\\
@@ -389,35 +397,24 @@ open dtm_ex1_3
 
 <img src="pictures/dtm_ex1_3_1.png">
 
-## Modelling DT systems in Matlab and Simulink
+## Modelling DT systems in MATLAB and Simulink
 
-### Matlab
+We will consider some examples in class
+
+### MATLAB
 
 Code extracted from [dtm_ex1_3.m](matlab/dtm_ex1_3.m):
 
-   
+ 
 
 
 
 {:.input_area}
 ```matlab
 Ts = 1;
-z = tf('z', Ts)
+z = tf('z', Ts);
 ```
 
-
-{:.output .output_stream}
-```
-
-z =
- 
-  z
- 
-Sample time: 1 seconds
-Discrete-time transfer function.
-
-
-```
 
 
 
@@ -457,7 +454,7 @@ axis([0,15,0,3.5])
 
 
 {:.output .output_png}
-![png](../../images/dt_systems/4/dt_models_65_0.png)
+![png](../../images/dt_systems/4/dt_models_68_0.png)
 
 
 
@@ -481,20 +478,24 @@ dtm
 
 ## Converting Continuous Time Systems to Discrete Time Systems
 
-* In analogue electronics, to implement a filter we would need to resort to op-amp circuits with resistors, capacitors and inductors acting as energy dissipation, storage and release devices.
+In analogue electronics, to implement a filter we would need to resort to op-amp circuits with resistors, capacitors and inductors acting as energy dissipation, storage and release devices.
+
 * In modern digital electronics, it is often more convenient to take the original transfer function $H(s)$ and produce an equivalent $H(z)$.
+
 * We can then determine a *difference equation* that will respresent $h[n]$ and implement this as *computer algorithm*.
+
 * Simple storage of past values in memory becomes the repository of past state rather than the integrators and derivative circuits that are needed in the analogue world. 
-* To achieve this, all we need is to be able to do is to *sample* and *process* the signals quickly enough to avoid violating Nyquist-Shannon's sampling theorem.
+
+To achieve this, all we need is to be able to do is to *sample* and *process* the signals quickly enough to avoid violating Nyquist-Shannon's sampling theorem.
 
 ### Continuous System Equivalents
 
 * There is no digital system that uniquely represents a continuous system
 * This is because as we are sampling, we only have knowledge of signals being processed at the sampling instants, and need to *reconstruct* the inter-sample behaviour.
 * In practice, only a small number of transformations are used.
-* The derivation of these is beyond the scope of this module, but we'll mention the ones that Matlab provides in a function called `c2d`
+* The derivation of these is beyond the scope of this module, but **in class** we'll demonstrate the ones that MATLAB provides in a function called `c2d`
 
-### Matlab c2d function
+### MATLAB c2d function
 
 Let's see what the help function says:
 
@@ -567,7 +568,7 @@ doc c2d
 
 ### Solution
 
-See [digit_butter.m](matlab/digit_butter.m).
+See [digit_butter.mlx](matlab/digit_butter.mlx).
 
 First determine the cut-off frequency $\omega_c$
 
@@ -622,7 +623,7 @@ $$H(s) = \frac{15.79 \times 10^9}{s^2 + 177.7 \times 10^3 s + 15.79 \times 10^9}
 
 ### Bode plot
 
-Matlab:
+MATLAB:
 
 
 
@@ -635,7 +636,7 @@ grid
 
 
 {:.output .output_png}
-![png](../../images/dt_systems/4/dt_models_84_0.png)
+![png](../../images/dt_systems/4/dt_models_91_0.png)
 
 
 
@@ -748,7 +749,7 @@ step(Hz)
 
 
 {:.output .output_png}
-![png](../../images/dt_systems/4/dt_models_99_0.png)
+![png](../../images/dt_systems/4/dt_models_106_0.png)
 
 
 
@@ -827,9 +828,9 @@ You might wish to find out what order butterworth filter would be needed to have
 
 * Discrete Time Systems
 * Transfer Functions in the Z-Domain
-* Modelling digital systems in Matlab/Simulink
+* Modelling digital systems in MATLAB/Simulink
 * Continuous System Equivalents
-* Example: Digital Butterworth Filter
+* In-class demonstration: Digital Butterworth Filter
 
 ## Solutions to Example 5
 

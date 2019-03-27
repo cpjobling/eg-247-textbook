@@ -12,27 +12,6 @@ next_page:
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
-
-
-{:.input_area}
-```matlab
-clear all
-cd matlab
-pwd
-format compact
-```
-
-
-{:.output .output_stream}
-```
-
-ans =
-
-    '/Users/eechris/dev/eg-247-textbook/content/dt_systems/3/matlab'
-
-
-```
-
 # The Inverse Z-Transform
 
 ## Scope and Background Reading
@@ -49,7 +28,7 @@ The material in this presentation and notes is based on Chapter 9 (Starting at S
 
 * Examples using Long Division
 
-* Analysis in Matlab
+* Analysis in MATLAB
 
 ## The Inverse Z-Transform
 
@@ -93,6 +72,10 @@ $$r_k = \lim_{z\to p_k}(z - p_k)\frac{F(z)}{z} = (z - p_k)\left.\frac{F(z)}{z}\r
 
 $$z\frac{F(z)}{z} = F(z) = k + \frac{r_1z}{s-p_1} + \frac{r_2z}{s-p_2} + \cdots$$
 
+We will work through an example in class.
+
+[Skip next slide in Pre-Lecture]
+
 ### Example 1
 
 Karris Example 9.4: use the partial fraction expansion to compute the inverse z-transform of
@@ -122,11 +105,11 @@ $$F(z) = \frac{1}{(1 - 0.5z^{-1})(1 - 0.75z^{-1})(1 - z^{-1})}$$
 
 </pre>
 
-### Matlab solution
+### MATLAB solution
 
 See [example1.mlx](matlab/example1.mlx). (Also available as  [example1.m](matlab/example1.m).)
 
-Uses Matlab functions: 
+Uses MATLAB functions: 
 
 * `collect` &ndash; expands a polynomial
 * `sym2poly` &ndash; converts a polynomial into a numeric polymial (vector of coefficients in descending order of exponents)
@@ -134,6 +117,26 @@ Uses Matlab functions:
 * `ztrans` &ndash; symbolic z-transform
 * `iztrans` &ndash; symbolic inverse ze-transform
 * `stem` &ndash; plots sequence as a "lollipop" diagram
+
+
+
+{:.input_area}
+```matlab
+clear all
+cd matlab
+format compact
+```
+
+
+{:.output .output_stream}
+```
+
+ans =
+
+    '/Users/eechris/dev/eg-247-textbook/content/dt_systems/3/matlab'
+
+
+```
 
 
 
@@ -321,11 +324,11 @@ $$F(z) = \frac{12z}{(z+1)(z - 1)^2}$$
 
 </pre>
 
-### Matlab solution
+### MATLAB solution
 
 See [example2.mlx](matlab/example2.mlx). (Also available as  [example2.m](matlab/example2.m).)
 
-Uses additional Matlab functions: 
+Uses additional MATLAB functions: 
 
 * `dimpulse` &ndash; computes and plots a sequence $f[n]$ for any range of values of $n$
 
@@ -377,7 +380,7 @@ $$F(z) = \frac{z + 1}{(z-1)(z^2 + 2z + 2)}$$
 
 </pre>
 
-### Matlab solution
+### MATLAB solution
 
 See [example3.mlx](matlab/example3.mlx). (Also available as [example3.m](matlab/example3.m).)
 
@@ -417,6 +420,10 @@ See Karris Section 9.6.2 (pp 9-29&mdash;9-33) if you want to find out more.
 
 To apply this method, $F(z)$ must be a rational polynomial function, and the numerator and denominator must be polynomials arranged in descending powers of $z$.
 
+We will work through an example in class.
+
+[Skip next slide in Pre-Lecture]
+
 ### Example 4
 
 Karris example 9.9: use the long division method to determine $f[n]$ for $n = 0,\,1,\,\mathrm{and}\,2$, given that
@@ -445,7 +452,7 @@ $$F(z) = \frac{1 + z^{-1} + 2z^{-2} + 3z^{-3}}{(1 - 0.25z^{-1})(1 - 0.5z^{-1})(1
 
 </pre>
 
-### Matlab
+### MATLAB
 
 See [example4.mlx](matlab/example4.mlx). (also available as [example4.m](matlab/example4.m).)
 
@@ -484,7 +491,7 @@ fn =
 *Advantages*
 
 * Most familiar.
-* Can use Matlab `residue` function.
+* Can use MATLAB `residue` function.
 
 *Disadvantages*
 
@@ -509,7 +516,7 @@ fn =
 
 *Disadvantages*
 
-* Can use Matlab `dimpulse` function to compute a large sequence of numbers.
+* Can use MATLAB `dimpulse` function to compute a large sequence of numbers.
 * Requires that $F(z)$ is a proper rational function.
 * Division may be endless.
 
@@ -518,9 +525,9 @@ fn =
 * Inverse Z-Transform
 * Examples using PFE
 * Examples using Long Division
-* Analysis in Matlab
+* Analysis in MATLAB
 
-*Next time*
+*Coming Next*
 
 * DT transfer functions, continuous system equivalents, and modelling DT systems in Matlab and Simulink.
 

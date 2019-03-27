@@ -14,7 +14,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 # Worksheet 15
 
-## To accompany Chapter 5.4 Introduction to Filters
+## To accompany Section 5.4 Introduction to Filters
 
 We will step through this worksheet in class. 
 
