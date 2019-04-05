@@ -10,32 +10,9 @@ next_page:
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
-
-
-{:.input_area}
-```matlab
-cd matlab
-pwd
-```
-
-
-{:.output .output_stream}
-```
-
-ans =
-
-    '/Users/eechris/dev/eg-247-textbook/content/dft/1/matlab'
-
-
-```
-
 # The Discrete Fourier Transform
 
 ## Scope and Background Reading
-
-**Rewrite for DFT**
-
-This session introduces the z-transform which is used in the analysis of discrete time systems. As for the Fourier and Laplace transforms, we present the definition, define the properties and give some applications of the use of the z-transform in the analysis of signals that are represented as sequences and systems represented by difference equations.
 
 The material in this presentation and notes is based on Chapter 10 of [Steven T. Karris, Signals and Systems: with Matlab Computation and Simulink Modelling, 5th Edition](http://site.ebrary.com/lib/swansea/docDetail.action?docID=10547416) from the **Required Reading List**. Additional coverage is to be found in Chapter 12 of [Benoit Boulet, Fundamentals of Signals and Systems](http://site.ebrary.com/lib/swansea/docDetail.action?docID=10228195) from the **Recommended Reading List**.
 
@@ -47,7 +24,7 @@ The material in this presentation and notes is based on Chapter 10 of [Steven T.
 
 * Common Properties and Theorems of the DFT
 
-* Sampling Theorem, Windows, and the Picket Fence Effect
+* Sampling Theorem, Windows, and the Picket Fence Effect (Notes only)
 
 ## Introduction
 
@@ -75,7 +52,7 @@ For convenience we summarize these facts in a table:
 | Discrete Fourier Transform | Discrete, Periodic | Discrete, Periodic |
 
 
-## List of Abbreviations
+### List of Abbreviations
 
 * CT -- Continous Time
 * DT -- Discrete Time
@@ -87,7 +64,7 @@ For convenience we summarize these facts in a table:
 
 In the following we shall denote a DT signal as $x[n]$ and its discrete frequency function as $X[m]$.
 
-### Z-Transform
+## Z-Transform
 
 Recall that
 
@@ -98,6 +75,8 @@ The value of this function on the unit circle in the Z-plane will be
 $$F\left(\exp\left({j\omega T}\right)\right) = \sum_{n=0}^{\infty} f[n]\exp\left({-jn \omega T}\right).$$
 
 This is an infinite sum.  So to compute it, we need to truncate it. 
+
+## The Discrete-time Fourier Transform
 
 Let's assume that instead of an infinite number of points, we have $N$ points, equally distributed around the unit circle, then the truncated version will be:
 
@@ -131,11 +110,11 @@ for $m = 0,1,2,\ldots,N-1$.
 
 Since
 
-$$\exp\left({-j2\pi \frac{m n}{N}}\right) = \cos\left(\frac{2\pi m n}{N}\right) + j\sin\left(\frac{2\pi m n}{N}\right)$$
+$$\exp\left({-j2\pi \frac{m n}{N}}\right) = \cos\left(2\pi\frac{m n}{N}\right) + j\sin\left(2\pi \frac{m n}{N}\right)$$
 
 the DFT can be expresssed as
 
-$$X[m] =  \sum_{n=0}^{N-1} x[n]\exp\left({-j2\pi \frac{m n}{N}}\right) = \sum_{n=0}^{N-1}x[n]\cos\left(\frac{2\pi m n}{N}\right) + j\sum_{n=0}^{N-1}x[n]\sin\left(\frac{2\pi m n}{N}\right).$$
+$$X[m] =  \sum_{n=0}^{N-1} x[n]\exp\left({-j2\pi \frac{m n}{N}}\right) = \sum_{n=0}^{N-1}x[n]\cos\left(2\pi \frac{m n}{N}\right) + j\sum_{n=0}^{N-1}x[n]\sin\left(2\pi\frac{ m n}{N}\right).$$
 
 For $n=0$ this reduces to 
 
@@ -143,17 +122,22 @@ $$X[m] = x[0].$$
 
 Then the real part of $X[m]$ is
 
-$$\Re \left\{ {X[m]} \right\} = x[0] + \sum\limits_{n = 1}^{N - 1} x [n]\cos \left( \frac{2\pi mn}{N} \right)\quad {\text{for}}\quad m = 0,1,2, \ldots ,N - 1$$
+$$\Re \left\{ {X[m]} \right\} = x[0] + \sum\limits_{n = 1}^{N - 1} x [n]\cos \left( 2\pi \frac{mn}{N} \right)\quad {\text{for}}\quad m = 0,1,2, \ldots ,N - 1$$
 
 and the imaginary part is
 
-$$\Im \left\{ {X[m]} \right\} = - \sum\limits_{n = 1}^{N - 1} x [n]\cos \left( \frac{2\pi mn}{N} \right)\quad {\text{for}}\quad m = 0,1,2, \ldots ,N - 1$$.
+$$\Im \left\{ {X[m]} \right\} = - \sum\limits_{n = 1}^{N - 1} x [n]\cos \left( 2\pi \frac{mn}{N} \right)\quad {\text{for}}\quad m = 0,1,2, \ldots ,N - 1$$.
 
 Note that the summations are from 1 to $N-1$ because $n=0$ is covered in the real term, and as $x[0]$ is real, it is zero in the corresponding imaginary term.
 
-### Example 1
+### In Class Example 1
 
-A discrete time signal is defined by the sequence $x[0] = 1$, $x[1] = 2$, $x[2] = 2$, $x[3] = 1$, and $x[n]=0$ for all other values of $n$. Compute the frequency components $X[m]$.
+A discrete time signal is defined by the sequence 
+
+$x[0] = 1$, $x[1] = 2$, $x[2] = 2$, $x[3] = 1$, 
+and $x[n]=0$ for all other values of $n$. 
+
+Compute the frequency components $X[m]$.
 
 ### Solution 1
 
@@ -229,7 +213,7 @@ A discrete time signal is defined by the sequence $x[0] = 1$, $x[1] = 2$, $x[2] 
 
 </pre>
 
-### Example 2
+### In Class Example 2
 
 Use the inverse DFT to compute the discrete-time sequence $x[n]$ from $X[m]$.
 
@@ -308,6 +292,25 @@ Use the inverse DFT to compute the discrete-time sequence $x[n]$ from $X[m]$.
 </pre>
 
 ### Simulink model of the DFT
+
+
+
+{:.input_area}
+```matlab
+cd matlab
+pwd
+```
+
+
+{:.output .output_stream}
+```
+
+ans =
+
+    '/Users/eechris/dev/eg-247-textbook/content/dft/1/matlab'
+
+
+```
 
 See [dft_ex10_1.slx](https://github.com/cpjobling/EG-247-Resources/blob/master/week10/matlab/dft_ex10_1.slx?raw=true)
 
@@ -403,7 +406,7 @@ and consequently,
 
 $$W_N^{-1} = \exp\left({\frac{j2\pi}{N}}\right).$$
 
-### Example 3
+### In Class Example 3
 
 Compute the complex numbers represented by the rotating vector
 $W_8$
@@ -464,13 +467,21 @@ Using this notation, the DFT and inverse DFT pairs are represented as:
 
 $$X[m] =  \sum_{n=0}^{N-1} x[n]W_N^{nm}$$ 
 and
-$$x[n] = \frac{1}{N}\sum_{n=0}^{N-1} x[n]W_N^{-nm}$$ 
+$$x[n] = \frac{1}{N}\sum_{n=0}^{N-1} X[m]W_N^{-nm}$$ 
 
 ### MATLAB implementation of DFT
 
-Using the W notation, it is very easy to write a function to implement the DFT. For example, consider [dft.m](https://github.com/cpjobling/EG-247-Resources/blob/master/week10/matlab/dft.m):
+Using the W notation, it is very easy to write a function to implement the DFT. 
 
+We will demonstrate this in class.
+
+For example, consider [dft.m](https://github.com/cpjobling/EG-247-Resources/blob/master/week10/matlab/dft.m):
+
+
+
+{:.input_area}
 ```matlab
+%%file matlab/dft.m
 function [ Xm ] = dft( xn, N )
 % Computes Discrete Fourier Transform
 % -----------------------------------
@@ -487,9 +498,20 @@ WNnm = WN .^ nm;        % DFT matrix
 Xm = xn * WNnm;         % row vector of DFT coefficients
 ```
 
+
+{:.output .output_stream}
+```
+Created file '/Users/eechris/dev/eg-247-textbook/content/dft/1/matlab/dft.m'.
+
+```
+
 Similarly for the inverse DFT [idft.m](https://github.com/cpjobling/EG-247-Resources/blob/master/week10/matlab/idft.m):
 
+
+
+{:.input_area}
 ```matlab
+%%file matlab/idft.m
 function [ xn ] = idft( Xm, N )
 % Computes Inverse Discrete Fourier Transform
 % -------------------------------------------
@@ -505,6 +527,14 @@ nm = n'*m;              % creates an N by N matrix of nm values
 WNnm = WN .^ (-nm);     % DFT matrix
 xn = (Xm * WNnm)/N;     % row vector for IDFT values
 ```
+```
+
+
+{:.output .output_stream}
+```
+Created file '/Users/eechris/dev/eg-247-textbook/content/dft/1/matlab/idft.m'.
+
+```
 
 ### Notes
 
@@ -512,9 +542,15 @@ In the remainder of these notes, the correspondence between $x[n]$ and $X[m]$ wi
 
 $$x[n] \Leftrightarrow X[m]$$
 
-In example 2, we found that, although the DT sequence $x[n]$ was real, the discrete frequency (DF) sequence was complex. However, in most applications we are interested in the magnitude and phase of the DF, that is $$|X[m]|$$ and $$\angle X[m]$$.
+In Example 2, we found that, although the DT sequence $x[n]$ was real, the discrete frequency (DF) sequence was complex. However, in most applications we are interested in the magnitude and phase of the DF, that is 
 
-### Example 4
+$$|X[m]|$$ 
+
+and 
+
+$$\angle X[m]$$.
+
+### In Class Example 4
 
 Use MATLAB to compute the magnitude of the frequency components of the following DT function:
 
@@ -544,7 +580,7 @@ stem([0:15],xn),xlabel('n'),ylabel('x[n]'),title('Discrete Time Sequence')
 
 
 {:.output .output_png}
-![png](../../images/dft/1/dft_51_0.png)
+![png](../../images/dft/1/dft_57_0.png)
 
 
 
@@ -566,7 +602,7 @@ stem([0:15],abs(Xm)),xlabel('m'),ylabel('|X[m]|'),title('Discrete Frequency Sequ
 
 
 {:.output .output_png}
-![png](../../images/dft/1/dft_53_0.png)
+![png](../../images/dft/1/dft_59_0.png)
 
 
 
@@ -657,6 +693,8 @@ $$x[n]y[n] \Leftrightarrow \frac{1}{N}\sum_{k=0}^{N-1} X[k] Y[m - k] \Leftrighta
 
 ## Sampling Theorem, Windows, and the Picket Fence Effect
 
+See notes
+
 ### Sampling Theorem
 
 The *sampling theorem* known as *Nyquist/Shannon's Sampling Theorem* (see [wp>Nyquist/Shannon Sampling Theorem](https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem)), states that *if a continuous time function, $f(t)$ is band-limited with its highest frequency component less that $W$, then $f(t)$ can be completely recovered from its sampled values, $f[n]$, f the sampling frequency is equal or greater than $2W$.
@@ -679,7 +717,7 @@ A third problem introduced by the DFT is the fact that as the spectrum of the DF
 
 You should remember that the sampling theorem states under what conditions a signal may be recovered. It does not guarantee that all significant frequencies will be present in the sampled signal.
 
-### A summary of the important features of sampling and the DFT
+## A summary of the important features of sampling and the DFT
 
 * $N$ is the number of samples in frequency.
 * $f_s$ sampling frequency, samples per seconds.
@@ -696,17 +734,19 @@ $$f_s = \frac{1}{t_t}$$
 
 $$t_f = \frac{T_f}{N}$$
 
-$$t_t = \frac{1}{T_f}$$
+##### $$t_t = \frac{1}{T_f}$$
 
 $$f_f = \frac{1}{T_t}$$
 
 We will add these quantities to the results of Example 4 in class.
 
+### Example 4 (continued)
+
 <img src="pictures/repeat.png" />
 
 To reproduce this plot use [repeat.m](https://github.com/cpjobling/EG-247-Resources/blob/master/week10/matlab/repeat.m).
 
-### Example 5
+### In Class Example 5
 
 The period of a periodic DT function is 0.125 ms and it is sampled at 1024 equally spaced points. It is assumed that with this number of samples, the sampling theorem is satisfied and thus there will be no aliasing.
 
@@ -799,7 +839,7 @@ To be done in class.
 
 *Next session*
 
-* The Fast Fourier Transform
+* The [Fast Fourier Transform](../2/fft)
 
 (without the mathematics)
 
@@ -807,9 +847,9 @@ To be done in class.
 
 Try Exercise 1 and Exercise 2 in Karris 10.8 by hand.
 
-For the exam, I wouldn't expect you to compute the whole sequence for a signal with more than 4 samples. However, you will need to be able to compute the DFT $x[n]$ and IDFT $X[m]$ of an 8-point sequence for any single value $n$ or $m$. 
+For the exam, I wouldn't expect you to compute the whole sequence for a signal with more than 4 samples. However, you will need to be able to compute the DFT $x[n]$ and IDFT $X[m]$ of an 8-point sequence for any single value $n$ or $m$. A thorough understanding of the $W_N^nm$ notation is needed and familiarity with the angle wheel (e.g as for $W_8^n$ in Example 3) will be advantageous.
 
-## Answers
+## Answers to selcted exercises
 
 ### Example 1
 
@@ -825,9 +865,10 @@ $$\begin{eqnarray*}
 
 $$W_8 = \left[ 1, \frac{1}{\sqrt{2}}+j\frac{1}{\sqrt{2}}, j, -\frac{1}{\sqrt{2}}+j\frac{1}{\sqrt{2}}, -1, -\frac{1}{\sqrt{2}}-j\frac{1}{\sqrt{2}}, -j, \frac{1}{\sqrt{2}}-j\frac{1}{\sqrt{2}} \right]$$
 
-### Example 4
+### Example 5
 
-1. 8192 kHz (8.2 Mhz)
-2. 8 kHz
-3. 8.2 Mhz
-4. 4.1 Mhz
+1. $t_t = 0.122$ $\mu$s
+2. $T_f = 1/t_t = 8192$ kHz (8.2 Mhz)
+2. $t_f = T_f/N = 8$ kHz
+3. $f_s = 1/t_t$ = 8.2 Mhz
+4. $f_n \le F_s/2 \le 4.1$ Mhz

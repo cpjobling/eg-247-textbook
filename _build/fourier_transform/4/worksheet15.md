@@ -7,8 +7,8 @@ prev_page:
   url: /fourier_transform/3/worksheet14
   title: 'Worksheet 14 Fourier Transforms for Circuit and LTI Systems Analysis'
 next_page:
-  url: /labs/index
-  title: 'Laboratory Exercises'
+  url: /dt_systems/3/worksheet16
+  title: 'Worksheet 16 The Inverse Z-Transform'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

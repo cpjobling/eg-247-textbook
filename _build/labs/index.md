@@ -1,8 +1,8 @@
 ---
 title: 'Laboratory Exercises'
 prev_page:
-  url: /fourier_transform/4/worksheet15
-  title: 'Worksheet 15 Introduction to Filters'
+  url: /dft/2/worksheet19
+  title: 'Worksheet 19 The Fast Fourier Transform'
 next_page:
   url: /labs/lab01/index
   title: 'Lab 1 - Elemementary Signals'

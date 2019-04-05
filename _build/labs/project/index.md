@@ -5,8 +5,8 @@ prev_page:
   url: /labs/lab07/index
   title: 'Optional Lab 7 - Filters'
 next_page:
-  url: /introduction/answers
-  title: 'Worksheet 2'
+  url: /labs/project/index
+  title: 'Project'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

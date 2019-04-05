@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>The Discrete Fourier Transform</title>
-  <meta name="description" content="cd matlabpwd">
+  <meta name="description" content="The Discrete Fourier Transform">
 
   <link rel="canonical" href="/eg-247-textbook/eg-247-textbook/dft/1/dft.html">
   <link rel="alternate" type="application/rss+xml" title="EG-247 Signals and Systems" href="/eg-247-textbook/eg-247-textbook/feed.xml">
@@ -14,7 +14,7 @@
   <meta property="og:url"         content="/eg-247-textbook/eg-247-textbook/dft/1/dft.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="The Discrete Fourier Transform" />
-<meta property="og:description" content="cd matlabpwd" />
+<meta property="og:description" content="The Discrete Fourier Transform" />
 <meta property="og:image"       content="" />
 
 
@@ -27,11 +27,11 @@
   "headline":
     "The Discrete Fourier Transform",
   "datePublished":
-    "2019-03-27T15:10:08+00:00",
+    "2019-04-05T08:37:43+01:00",
   "dateModified":
-    "2019-03-27T15:10:08+00:00",
+    "2019-04-05T08:37:43+01:00",
   "description":
-    "cd matlabpwd",
+    "The Discrete Fourier Transform",
   "author": {
     "@type": "Person",
     "name": "Dr Chris P. Jobling"
@@ -1208,6 +1208,74 @@ document.addEventListener('turbolinks:load', updateInteractLink)
               </li>
               
             
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/dt_systems/3/worksheet16"
+                >
+                  
+                  Worksheet 16 The Inverse Z-Transform
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/dt_systems/4/worksheet17"
+                >
+                  
+                  Worksheet 17 Models of DT Systems
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/dft/1/worksheet18"
+                >
+                  
+                  Worksheet 18 The Discrete-time Fourier Transform
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/eg-247-textbook/dft/2/worksheet19"
+                >
+                  
+                  Worksheet 19 The Fast Fourier Transform
+                </a>
+
+                
+                
+
+              </li>
+              
+            
           </ul>
         
       </li>
@@ -1407,6 +1475,25 @@ document.addEventListener('turbolinks:load', updateInteractLink)
         
       
       
+
+      
+      
+
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/eg-247-textbook/labs/project/index"
+        >
+          
+          Project
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
         <li><h2 class="c-sidebar__title">Answers to Selected problems</li>
         
       
@@ -1451,24 +1538,23 @@ document.addEventListener('turbolinks:load', updateInteractLink)
   <li><a href="#introduction">Introduction</a>
     <ul>
       <li><a href="#note">Note</a></li>
+      <li><a href="#list-of-abbreviations">List of Abbreviations</a></li>
+      <li><a href="#notation">Notation</a></li>
     </ul>
   </li>
-  <li><a href="#list-of-abbreviations">List of Abbreviations</a>
+  <li><a href="#z-transform">Z-Transform</a></li>
+  <li><a href="#the-discrete-time-fourier-transform">The Discrete-time Fourier Transform</a>
     <ul>
-      <li><a href="#notation">Notation</a></li>
-      <li><a href="#z-transform">Z-Transform</a></li>
-      <li><a href="#example-1">Example 1</a></li>
+      <li><a href="#in-class-example-1">In Class Example 1</a></li>
       <li><a href="#solution-1">Solution 1</a></li>
-      <li><a href="#example-2">Example 2</a></li>
+      <li><a href="#in-class-example-2">In Class Example 2</a></li>
       <li><a href="#solution-2">Solution 2</a></li>
       <li><a href="#simulink-model-of-the-dft">Simulink model of the DFT</a></li>
       <li><a href="#matlab-model-of-the-dft">MATLAB model of the DFT</a></li>
       <li><a href="#a-useful-compact-notation">A useful compact notation</a></li>
-      <li><a href="#example-3">Example 3</a></li>
+      <li><a href="#in-class-example-3">In Class Example 3</a></li>
       <li><a href="#solution-3">Solution 3</a></li>
       <li><a href="#matlab-implementation-of-dft">MATLAB implementation of DFT</a></li>
-      <li><a href="#notes">Notes</a></li>
-      <li><a href="#example-4">Example 4</a></li>
     </ul>
   </li>
   <li><a href="#even-and-odd-properties-of-the-dft">Even and Odd Properties of the DFT</a></li>
@@ -1486,18 +1572,22 @@ document.addEventListener('turbolinks:load', updateInteractLink)
       <li><a href="#sampling-theorem">Sampling Theorem</a></li>
       <li><a href="#windowing">Windowing</a></li>
       <li><a href="#picket-fence">Picket fence</a></li>
-      <li><a href="#a-summary-of-the-important-features-of-sampling-and-the-dft">A summary of the important features of sampling and the DFT</a></li>
-      <li><a href="#example-5">Example 5</a></li>
+    </ul>
+  </li>
+  <li><a href="#a-summary-of-the-important-features-of-sampling-and-the-dft">A summary of the important features of sampling and the DFT</a>
+    <ul>
+      <li><a href="#example-4-continued">Example 4 (continued)</a></li>
+      <li><a href="#in-class-example-5">In Class Example 5</a></li>
       <li><a href="#solution">Solution</a></li>
     </ul>
   </li>
   <li><a href="#summary">Summary</a></li>
   <li><a href="#homework">Homework</a></li>
-  <li><a href="#answers">Answers</a>
+  <li><a href="#answers-to-selcted-exercises">Answers to selcted exercises</a>
     <ul>
-      <li><a href="#example-1-1">Example 1</a></li>
-      <li><a href="#example-3-1">Example 3</a></li>
-      <li><a href="#example-4-1">Example 4</a></li>
+      <li><a href="#example-1">Example 1</a></li>
+      <li><a href="#example-3">Example 3</a></li>
+      <li><a href="#example-5">Example 5</a></li>
     </ul>
   </li>
 </ul>
@@ -1531,25 +1621,9 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
 
             <div class="c-textbook__content">
-              <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> <span class="n">matlab</span>
-<span class="nb">pwd</span>
-</code></pre></div></div>
-
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-ans =
-
-    '/Users/eechris/dev/eg-247-textbook/content/dft/1/matlab'
-
-
-</code></pre></div></div>
-
-<h1 id="the-discrete-fourier-transform">The Discrete Fourier Transform</h1>
+              <h1 id="the-discrete-fourier-transform">The Discrete Fourier Transform</h1>
 
 <h2 id="scope-and-background-reading">Scope and Background Reading</h2>
-
-<p><strong>Rewrite for DFT</strong></p>
-
-<p>This session introduces the z-transform which is used in the analysis of discrete time systems. As for the Fourier and Laplace transforms, we present the definition, define the properties and give some applications of the use of the z-transform in the analysis of signals that are represented as sequences and systems represented by difference equations.</p>
 
 <p>The material in this presentation and notes is based on Chapter 10 of <a href="http://site.ebrary.com/lib/swansea/docDetail.action?docID=10547416">Steven T. Karris, Signals and Systems: with Matlab Computation and Simulink Modelling, 5th Edition</a> from the <strong>Required Reading List</strong>. Additional coverage is to be found in Chapter 12 of <a href="http://site.ebrary.com/lib/swansea/docDetail.action?docID=10228195">Benoit Boulet, Fundamentals of Signals and Systems</a> from the <strong>Recommended Reading List</strong>.</p>
 
@@ -1566,7 +1640,7 @@ ans =
     <p>Common Properties and Theorems of the DFT</p>
   </li>
   <li>
-    <p>Sampling Theorem, Windows, and the Picket Fence Effect</p>
+    <p>Sampling Theorem, Windows, and the Picket Fence Effect (Notes only)</p>
   </li>
 </ul>
 
@@ -1622,7 +1696,7 @@ ans =
   </tbody>
 </table>
 
-<h2 id="list-of-abbreviations">List of Abbreviations</h2>
+<h3 id="list-of-abbreviations">List of Abbreviations</h3>
 
 <ul>
   <li>CT – Continous Time</li>
@@ -1636,7 +1710,7 @@ ans =
 
 <p>In the following we shall denote a DT signal as $x[n]$ and its discrete frequency function as $X[m]$.</p>
 
-<h3 id="z-transform">Z-Transform</h3>
+<h2 id="z-transform">Z-Transform</h2>
 
 <p>Recall that</p>
 
@@ -1647,6 +1721,8 @@ ans =
 <script type="math/tex; mode=display">F\left(\exp\left({j\omega T}\right)\right) = \sum_{n=0}^{\infty} f[n]\exp\left({-jn \omega T}\right).</script>
 
 <p>This is an infinite sum.  So to compute it, we need to truncate it.</p>
+
+<h2 id="the-discrete-time-fourier-transform">The Discrete-time Fourier Transform</h2>
 
 <p>Let’s assume that instead of an infinite number of points, we have $N$ points, equally distributed around the unit circle, then the truncated version will be:</p>
 
@@ -1680,11 +1756,11 @@ ans =
 
 <p>Since</p>
 
-<script type="math/tex; mode=display">\exp\left({-j2\pi \frac{m n}{N}}\right) = \cos\left(\frac{2\pi m n}{N}\right) + j\sin\left(\frac{2\pi m n}{N}\right)</script>
+<script type="math/tex; mode=display">\exp\left({-j2\pi \frac{m n}{N}}\right) = \cos\left(2\pi\frac{m n}{N}\right) + j\sin\left(2\pi \frac{m n}{N}\right)</script>
 
 <p>the DFT can be expresssed as</p>
 
-<script type="math/tex; mode=display">X[m] =  \sum_{n=0}^{N-1} x[n]\exp\left({-j2\pi \frac{m n}{N}}\right) = \sum_{n=0}^{N-1}x[n]\cos\left(\frac{2\pi m n}{N}\right) + j\sum_{n=0}^{N-1}x[n]\sin\left(\frac{2\pi m n}{N}\right).</script>
+<script type="math/tex; mode=display">X[m] =  \sum_{n=0}^{N-1} x[n]\exp\left({-j2\pi \frac{m n}{N}}\right) = \sum_{n=0}^{N-1}x[n]\cos\left(2\pi \frac{m n}{N}\right) + j\sum_{n=0}^{N-1}x[n]\sin\left(2\pi\frac{ m n}{N}\right).</script>
 
 <p>For $n=0$ this reduces to</p>
 
@@ -1692,17 +1768,22 @@ ans =
 
 <p>Then the real part of $X[m]$ is</p>
 
-<script type="math/tex; mode=display">\Re \left\{ {X[m]} \right\} = x[0] + \sum\limits_{n = 1}^{N - 1} x [n]\cos \left( \frac{2\pi mn}{N} \right)\quad {\text{for}}\quad m = 0,1,2, \ldots ,N - 1</script>
+<script type="math/tex; mode=display">\Re \left\{ {X[m]} \right\} = x[0] + \sum\limits_{n = 1}^{N - 1} x [n]\cos \left( 2\pi \frac{mn}{N} \right)\quad {\text{for}}\quad m = 0,1,2, \ldots ,N - 1</script>
 
 <p>and the imaginary part is</p>
 
-<p><script type="math/tex">\Im \left\{ {X[m]} \right\} = - \sum\limits_{n = 1}^{N - 1} x [n]\cos \left( \frac{2\pi mn}{N} \right)\quad {\text{for}}\quad m = 0,1,2, \ldots ,N - 1</script>.</p>
+<p><script type="math/tex">\Im \left\{ {X[m]} \right\} = - \sum\limits_{n = 1}^{N - 1} x [n]\cos \left( 2\pi \frac{mn}{N} \right)\quad {\text{for}}\quad m = 0,1,2, \ldots ,N - 1</script>.</p>
 
 <p>Note that the summations are from 1 to $N-1$ because $n=0$ is covered in the real term, and as $x[0]$ is real, it is zero in the corresponding imaginary term.</p>
 
-<h3 id="example-1">Example 1</h3>
+<h3 id="in-class-example-1">In Class Example 1</h3>
 
-<p>A discrete time signal is defined by the sequence $x[0] = 1$, $x[1] = 2$, $x[2] = 2$, $x[3] = 1$, and $x[n]=0$ for all other values of $n$. Compute the frequency components $X[m]$.</p>
+<p>A discrete time signal is defined by the sequence</p>
+
+<p>$x[0] = 1$, $x[1] = 2$, $x[2] = 2$, $x[3] = 1$, 
+and $x[n]=0$ for all other values of $n$.</p>
+
+<p>Compute the frequency components $X[m]$.</p>
 
 <h3 id="solution-1">Solution 1</h3>
 
@@ -1784,7 +1865,7 @@ ans =
 
 </pre>
 
-<h3 id="example-2">Example 2</h3>
+<h3 id="in-class-example-2">In Class Example 2</h3>
 
 <p>Use the inverse DFT to compute the discrete-time sequence $x[n]$ from $X[m]$.</p>
 
@@ -1870,6 +1951,18 @@ ans =
 
 <h3 id="simulink-model-of-the-dft">Simulink model of the DFT</h3>
 
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> <span class="n">matlab</span>
+<span class="nb">pwd</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ans =
+
+    '/Users/eechris/dev/eg-247-textbook/content/dft/1/matlab'
+
+
+</code></pre></div></div>
+
 <p>See <a href="https://github.com/cpjobling/EG-247-Resources/blob/master/week10/matlab/dft_ex10_1.slx?raw=true">dft_ex10_1.slx</a></p>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dft_ex10_1</span>
@@ -1930,7 +2023,7 @@ xn =
 
 <script type="math/tex; mode=display">W_N^{-1} = \exp\left({\frac{j2\pi}{N}}\right).</script>
 
-<h3 id="example-3">Example 3</h3>
+<h3 id="in-class-example-3">In Class Example 3</h3>
 
 <p>Compute the complex numbers represented by the rotating vector
 $W_8$</p>
@@ -2013,13 +2106,18 @@ $W_8$</p>
 
 <p><script type="math/tex">X[m] =  \sum_{n=0}^{N-1} x[n]W_N^{nm}</script> 
 and
-<script type="math/tex">x[n] = \frac{1}{N}\sum_{n=0}^{N-1} x[n]W_N^{-nm}</script></p>
+<script type="math/tex">x[n] = \frac{1}{N}\sum_{n=0}^{N-1} X[m]W_N^{-nm}</script></p>
 
 <h3 id="matlab-implementation-of-dft">MATLAB implementation of DFT</h3>
 
-<p>Using the W notation, it is very easy to write a function to implement the DFT. For example, consider <a href="https://github.com/cpjobling/EG-247-Resources/blob/master/week10/matlab/dft.m">dft.m</a>:</p>
+<p>Using the W notation, it is very easy to write a function to implement the DFT.</p>
 
-<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="p">[</span> <span class="n">Xm</span> <span class="p">]</span> <span class="o">=</span> <span class="n">dft</span><span class="p">(</span> <span class="n">xn</span><span class="p">,</span> <span class="n">N</span> <span class="p">)</span>
+<p>We will demonstrate this in class.</p>
+
+<p>For example, consider <a href="https://github.com/cpjobling/EG-247-Resources/blob/master/week10/matlab/dft.m">dft.m</a>:</p>
+
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">%%file matlab/dft.m</span>
+<span class="k">function</span> <span class="p">[</span> <span class="n">Xm</span> <span class="p">]</span> <span class="o">=</span> <span class="n">dft</span><span class="p">(</span> <span class="n">xn</span><span class="p">,</span> <span class="n">N</span> <span class="p">)</span>
 <span class="c1">% Computes Discrete Fourier Transform</span>
 <span class="c1">% -----------------------------------</span>
 <span class="c1">% [Xm]  = dft(xn, N)</span>
@@ -2035,9 +2133,14 @@ and
 <span class="n">Xm</span> <span class="o">=</span> <span class="n">xn</span> <span class="o">*</span> <span class="n">WNnm</span><span class="p">;</span>         <span class="c1">% row vector of DFT coefficients</span>
 </code></pre></div></div>
 
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Created file '/Users/eechris/dev/eg-247-textbook/content/dft/1/matlab/dft.m'.
+
+</code></pre></div></div>
+
 <p>Similarly for the inverse DFT <a href="https://github.com/cpjobling/EG-247-Resources/blob/master/week10/matlab/idft.m">idft.m</a>:</p>
 
-<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="p">[</span> <span class="n">xn</span> <span class="p">]</span> <span class="o">=</span> <span class="n">idft</span><span class="p">(</span> <span class="n">Xm</span><span class="p">,</span> <span class="n">N</span> <span class="p">)</span>
+<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">%%file matlab/idft.m</span>
+<span class="k">function</span> <span class="p">[</span> <span class="n">xn</span> <span class="p">]</span> <span class="o">=</span> <span class="n">idft</span><span class="p">(</span> <span class="n">Xm</span><span class="p">,</span> <span class="n">N</span> <span class="p">)</span>
 <span class="c1">% Computes Inverse Discrete Fourier Transform</span>
 <span class="c1">% -------------------------------------------</span>
 <span class="c1">% [xn]  = idft(Xm, N)</span>
@@ -2052,83 +2155,50 @@ and
 <span class="n">WNnm</span> <span class="o">=</span> <span class="n">WN</span> <span class="o">.^</span> <span class="p">(</span><span class="o">-</span><span class="n">nm</span><span class="p">);</span>     <span class="c1">% DFT matrix</span>
 <span class="n">xn</span> <span class="o">=</span> <span class="p">(</span><span class="n">Xm</span> <span class="o">*</span> <span class="n">WNnm</span><span class="p">)/</span><span class="n">N</span><span class="p">;</span>     <span class="c1">% row vector for IDFT values</span>
 </code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 
-<h3 id="notes">Notes</h3>
+{:.output .output_stream}
+</code></pre></div></div>
+<p>Created file ‘/Users/eechris/dev/eg-247-textbook/content/dft/1/matlab/idft.m’.</p>
 
-<p>In the remainder of these notes, the correspondence between $x[n]$ and $X[m]$ will be written</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+### Notes
 
-<script type="math/tex; mode=display">x[n] \Leftrightarrow X[m]</script>
+In the remainder of these notes, the correspondence between $x[n]$ and $X[m]$ will be written
 
-<table>
-  <tbody>
-    <tr>
-      <td>In example 2, we found that, although the DT sequence $x[n]$ was real, the discrete frequency (DF) sequence was complex. However, in most applications we are interested in the magnitude and phase of the DF, that is $$</td>
-      <td>X[m]</td>
-      <td><script type="math/tex">and</script>\angle X[m]$$.</td>
-    </tr>
-  </tbody>
-</table>
+$$x[n] \Leftrightarrow X[m]$$
 
-<h3 id="example-4">Example 4</h3>
+In Example 2, we found that, although the DT sequence $x[n]$ was real, the discrete frequency (DF) sequence was complex. However, in most applications we are interested in the magnitude and phase of the DF, that is 
 
-<p>Use MATLAB to compute the magnitude of the frequency components of the following DT function:</p>
+$$|X[m]|$$ 
 
-<table>
-  <thead>
-    <tr>
-      <th>$n$</th>
-      <th>0</th>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
-      <th>4</th>
-      <th>5</th>
-      <th>6</th>
-      <th>7</th>
-      <th>8</th>
-      <th>9</th>
-      <th>10</th>
-      <th>11</th>
-      <th>12</th>
-      <th>13</th>
-      <th>14</th>
-      <th>15</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>$x[n]$</td>
-      <td>1.0</td>
-      <td>1.5</td>
-      <td>2.0</td>
-      <td>2.3</td>
-      <td>2.7</td>
-      <td>3.0</td>
-      <td>3.4</td>
-      <td>4.1</td>
-      <td>4.7</td>
-      <td>4.2</td>
-      <td>3.5</td>
-      <td>3.6</td>
-      <td>3.2</td>
-      <td>2.9</td>
-      <td>2.5</td>
-      <td>1.8</td>
-    </tr>
-  </tbody>
-</table>
+and 
 
-<p>We will compute this in class and make some comments afterwards.</p>
+$$\angle X[m]$$.
 
-<div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">xn</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span><span class="k">...</span>
-    <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="k">...</span>
-    <span class="mf">0.25</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">];</span>
+### In Class Example 4
+
+Use MATLAB to compute the magnitude of the frequency components of the following DT function:
+
+| $n$ | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 
+|-----|---|---|---|---|---|---|---|---|---|---|----|----|----|----|----|----|
+| $x[n]$ |1.0 |1.5 |2.0 |2.3 |2.7 |3.0 |3.4 |4.1 |4.7 |4.2 |3.5 | 3.6 | 3.2 | 2.9 | 2.5 | 1.8 |
+
+We will compute this in class and make some comments afterwards.
+
+
+
+{:.input_area}
+```matlab
+xn = [ 1, 2, 3, 2.5, 1.5, 0.5,...
+    -0.5, -1.5, -2.5, -0.5,...
+    0.25, 1.25, 2, 1.5, 1, 0.5];
 </code></pre></div></div>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">stem</span><span class="p">([</span><span class="mi">0</span><span class="p">:</span><span class="mi">15</span><span class="p">],</span><span class="n">xn</span><span class="p">),</span><span class="nb">xlabel</span><span class="p">(</span><span class="s1">'n'</span><span class="p">),</span><span class="nb">ylabel</span><span class="p">(</span><span class="s1">'x[n]'</span><span class="p">),</span><span class="nb">title</span><span class="p">(</span><span class="s1">'Discrete Time Sequence'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/dft/1/dft_51_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../../images/dft/1/dft_57_0.png" alt="png" /></p>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Xm</span> <span class="o">=</span> <span class="n">dft</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span><span class="mi">16</span><span class="p">);</span>
 </code></pre></div></div>
@@ -2136,7 +2206,7 @@ and
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">stem</span><span class="p">([</span><span class="mi">0</span><span class="p">:</span><span class="mi">15</span><span class="p">],</span><span class="nb">abs</span><span class="p">(</span><span class="n">Xm</span><span class="p">)),</span><span class="nb">xlabel</span><span class="p">(</span><span class="s1">'m'</span><span class="p">),</span><span class="nb">ylabel</span><span class="p">(</span><span class="s1">'|X[m]|'</span><span class="p">),</span><span class="nb">title</span><span class="p">(</span><span class="s1">'Discrete Frequency Sequence'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/dft/1/dft_53_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../../images/dft/1/dft_59_0.png" alt="png" /></p>
 
 <p>Points to note:</p>
 
@@ -2246,6 +2316,8 @@ and
 
 <h2 id="sampling-theorem-windows-and-the-picket-fence-effect">Sampling Theorem, Windows, and the Picket Fence Effect</h2>
 
+<p>See notes</p>
+
 <h3 id="sampling-theorem">Sampling Theorem</h3>
 
 <p>The <em>sampling theorem</em> known as <em>Nyquist/Shannon’s Sampling Theorem</em> (see <a href="https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem">wp&gt;Nyquist/Shannon Sampling Theorem</a>), states that *if a continuous time function, $f(t)$ is band-limited with its highest frequency component less that $W$, then $f(t)$ can be completely recovered from its sampled values, $f[n]$, f the sampling frequency is equal or greater than $2W$.</p>
@@ -2268,7 +2340,7 @@ and
 
 <p>You should remember that the sampling theorem states under what conditions a signal may be recovered. It does not guarantee that all significant frequencies will be present in the sampled signal.</p>
 
-<h3 id="a-summary-of-the-important-features-of-sampling-and-the-dft">A summary of the important features of sampling and the DFT</h3>
+<h2 id="a-summary-of-the-important-features-of-sampling-and-the-dft">A summary of the important features of sampling and the DFT</h2>
 
 <ul>
   <li>$N$ is the number of samples in frequency.</li>
@@ -2287,17 +2359,19 @@ and
 
 <script type="math/tex; mode=display">t_f = \frac{T_f}{N}</script>
 
-<script type="math/tex; mode=display">t_t = \frac{1}{T_f}</script>
+<h5 id="t_t--frac1t_f"><script type="math/tex">t_t = \frac{1}{T_f}</script></h5>
 
 <script type="math/tex; mode=display">f_f = \frac{1}{T_t}</script>
 
 <p>We will add these quantities to the results of Example 4 in class.</p>
 
+<h3 id="example-4-continued">Example 4 (continued)</h3>
+
 <p><img src="pictures/repeat.png" /></p>
 
 <p>To reproduce this plot use <a href="https://github.com/cpjobling/EG-247-Resources/blob/master/week10/matlab/repeat.m">repeat.m</a>.</p>
 
-<h3 id="example-5">Example 5</h3>
+<h3 id="in-class-example-5">In Class Example 5</h3>
 
 <p>The period of a periodic DT function is 0.125 ms and it is sampled at 1024 equally spaced points. It is assumed that with this number of samples, the sampling theorem is satisfied and thus there will be no aliasing.</p>
 
@@ -2405,7 +2479,7 @@ and
 <p><em>Next session</em></p>
 
 <ul>
-  <li>The Fast Fourier Transform</li>
+  <li>The <a href="../2/fft">Fast Fourier Transform</a></li>
 </ul>
 
 <p>(without the mathematics)</p>
@@ -2414,11 +2488,11 @@ and
 
 <p>Try Exercise 1 and Exercise 2 in Karris 10.8 by hand.</p>
 
-<p>For the exam, I wouldn’t expect you to compute the whole sequence for a signal with more than 4 samples. However, you will need to be able to compute the DFT $x[n]$ and IDFT $X[m]$ of an 8-point sequence for any single value $n$ or $m$.</p>
+<p>For the exam, I wouldn’t expect you to compute the whole sequence for a signal with more than 4 samples. However, you will need to be able to compute the DFT $x[n]$ and IDFT $X[m]$ of an 8-point sequence for any single value $n$ or $m$. A thorough understanding of the $W_N^nm$ notation is needed and familiarity with the angle wheel (e.g as for $W_8^n$ in Example 3) will be advantageous.</p>
 
-<h2 id="answers">Answers</h2>
+<h2 id="answers-to-selcted-exercises">Answers to selcted exercises</h2>
 
-<h3 id="example-1-1">Example 1</h3>
+<h3 id="example-1">Example 1</h3>
 
 <script type="math/tex; mode=display">% <![CDATA[
 \begin{eqnarray*}
@@ -2428,17 +2502,18 @@ and
   X(3) &=&  - 1 + j \\ 
 \end{eqnarray*} %]]></script>
 
-<h3 id="example-3-1">Example 3</h3>
+<h3 id="example-3">Example 3</h3>
 
 <script type="math/tex; mode=display">W_8 = \left[ 1, \frac{1}{\sqrt{2}}+j\frac{1}{\sqrt{2}}, j, -\frac{1}{\sqrt{2}}+j\frac{1}{\sqrt{2}}, -1, -\frac{1}{\sqrt{2}}-j\frac{1}{\sqrt{2}}, -j, \frac{1}{\sqrt{2}}-j\frac{1}{\sqrt{2}} \right]</script>
 
-<h3 id="example-4-1">Example 4</h3>
+<h3 id="example-5">Example 5</h3>
 
 <ol>
-  <li>8192 kHz (8.2 Mhz)</li>
-  <li>8 kHz</li>
-  <li>8.2 Mhz</li>
-  <li>4.1 Mhz</li>
+  <li>$t_t = 0.122$ $\mu$s</li>
+  <li>$T_f = 1/t_t = 8192$ kHz (8.2 Mhz)</li>
+  <li>$t_f = T_f/N = 8$ kHz</li>
+  <li>$f_s = 1/t_t$ = 8.2 Mhz</li>
+  <li>$f_n \le F_s/2 \le 4.1$ Mhz</li>
 </ol>
 
               <nav class="c-page__nav">

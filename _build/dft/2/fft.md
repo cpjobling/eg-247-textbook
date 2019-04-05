@@ -22,7 +22,9 @@ As one example, it turns out that the computation of the convolution of two long
 
 In this presentation, we will not go through the mathematical development of the FFT, please read section 10.6 of Karris if you want the details. Here we will concentrate on the benefits to be gained by using the FFT and give some examples of its use in MATLAB.
 
-The material in this presentation and notes is based on Chapter 10 of [Steven T. Karris, Signals and Systems: with Matlab Computation and Simulink Modelling, 5th Edition](http://site.ebrary.com/lib/swansea/docDetail.action?docID=10547416) from the **Required Reading List**. The models of the FFT signal flow graphs and Simulink block diagrams are based on the presentation given in Sectio 12.5 of Phillips, Parr and Riskin, Signals, Systems and Transforms, 5th Ed., Pearson, 2014. 
+### Acknowledgements
+
+The material in this presentation and notes is based on Chapter 10 of [Steven T. Karris, Signals and Systems: with Matlab Computation and Simulink Modelling, 5th Edition](http://site.ebrary.com/lib/swansea/docDetail.action?docID=10547416) from the **Required Reading List**. The models of the FFT signal flow graphs and Simulink block diagrams are based on the presentation given in Section 12.5 of Phillips, Parr and Riskin, Signals, Systems and Transforms, 5th Ed., Pearson, 2014. 
 
 ## Agenda
 
@@ -58,6 +60,7 @@ $$\begin{eqnarray*}
 \end{eqnarray*}$$
 
 * It is worth remembering that 
+
 $$W_N^0 = \exp\left(-j\frac{2\pi}{N}(0)\right) = 1.$$
 
 * Since $W_N^i$ is a complex number, the computation of any frequency component $X[k]$ requires $N$ complex multiplications and $N$ complex additions
@@ -96,10 +99,14 @@ which results in some simplifications and mathematical short-cuts when $N$ is a 
 
 The most useful properties are:
 
-$$\begin{eqnarray*}W_N^N &=& \exp\left(-j\frac{2\pi}{N}N\right) = \exp\left(-j2\pi\right) = 1.\\
+$$\begin{eqnarray*}
+  W_N^N &=& \exp\left(-j\frac{2\pi}{N}N\right) = \exp\left(-j2\pi\right) = 1.\\
   W_N^{N/2} &=&  \exp\left(-j\frac{2\pi}{N}\frac{N}{2}\right) = \exp\left(-j\pi\right) = -1.\\
   W_N^{N/4} &=&  \exp\left(-j\frac{2\pi}{N}\frac{N}{4}\right) = \exp\left(-j\pi/2\right) = -j.\\
-  W_N^{3N/4} &=&  \exp\left(-j\frac{2\pi}{N}\frac{3N}{4}\right) = \exp\left(-j3\pi/2\right) = j.\\
+  W_N^{3N/4} &=&  \exp\left(-j\frac{2\pi}{N}\frac{3N}{4}\right) = \exp\left(-j3\pi/2\right) = j.\end{eqnarray*}$$
+  
+
+$$\begin{eqnarray*}
   W_N^{kN} &=&  \exp\left(-j\frac{2\pi}{N}kN\right) = \exp\left(-j2\pi\right) = 1,\,k=0,1,2,\ldots\\
   W_N^{kN+r} &=&  \exp\left(-j\frac{2\pi}{N}kN\right)\exp\left(-j\frac{2\pi}{N}r\right) = 1.W_N^r=W_N^r.\\
   W_{2N}^{k} &=&  \exp\left(-j\frac{2\pi}{2N}k\right) = \exp\left(-j\frac{2\pi}{N}\frac{k}{2}\right) = W_N^{k/2}.
@@ -143,7 +150,9 @@ This is a complex [Vandemonde matrix](https://en.wikipedia.org/wiki/Vandermonde_
 $$\mathbf{X}[m] = \mathbf{W_N} \mathbf{x}[n]$$
 
 The algorithm developed by Cooley and Tukey is based on *matrix decomposition* methods, where the matrix $\mathbf{W_N}$ is factored into $L$ smaller matrices, that is:
+
 $$\mathbf{W_N} = \mathbf{W_1} \mathbf{W_2} \mathbf{W_3} \cdots \mathbf{W_L}$$
+
 where $L$ is chosen as $L = \log_2N$ or $N=2^L$.
 
 Each row of the matrices on the right side of the decomposition, contains only two, non-zero terms, unity and $W_N^k$. 
@@ -170,7 +179,6 @@ We start from a 2-point FFT ($N=2$), and work up to an 8-point FFT ($N=8$) befor
 
 We have implemented each algorithm in Simulink so we are able illustrate these structures with executable examples as we go. 
 
-
 #### 2-Point DFT
 
 $$X[k] = \sum_{n=0}^1 x[n]W^{nk}_2 = x[0]W_2^{0k} + X[1]W_2^{1k},\,k=0,1.$$
@@ -186,9 +194,9 @@ In general for the 2-point DFT, we have
 
 $$X[k]=x[0]+(-1)^kx[1].$$
 
-#### Signal flow graph of 2-point DFT
-
 ![Signal flow graph of 2-point DFT](pictures/2-point-dft-sfg.png)
+
+
 
 An equivalent Simulink model in block diagram form is:
 
@@ -275,8 +283,6 @@ X[3] &=& X_e[1] - X_o[1]W_4^{1(3)} = X_e[0] + X_o[0]W_4^1.
 
 We see that the 4-point DFT can be computed by the generation of two 2-point DFTs, followed by a *recomposition* of terms as shown in the signal flow graph below:
 
-#### Signal flow graph of 4-point DFT
-
 ![Signal flow graph of 4-point DFT](pictures/4-point-dft-sfg.png)
 
 In other words,
@@ -319,7 +325,7 @@ In general, the $N$-point, radix-2 DIT FFT is computed as the recomposition of t
 
 ![N-point FFT](pictures/n-point-fft.png)
 
-### Example 1
+### In Class Example 1
 
 Use four two-point DIT FFT to confirm that the DFT of the sequence 
 
@@ -382,7 +388,7 @@ open four_point_dif
 ```
 
 
-### Example 2
+### In Class Example 2
 
 Use four two-point FIT FFT to confirm that the DFT of the sequence 
 
@@ -448,9 +454,11 @@ As you can see, the efficiency of the FFT actual gets better as the number of sa
 
 However, there are other costs, such as the data storage needed for intermediate steps, that need to be taken into account as well. For example, an 8-point FFT requires only a 3 stage decomposition, with each stage needing storage for 8 complex numbers. That is 24 in all. Whereas a 2048 sequence will require 11 stages, storing 2048 values each. That is a total of 22,528 complex values<sup>6</sup>. 
 
-## FFT in MATLAB
+## In Class Demonstrations
 
-The FFT algorithm is implemented, in MATLAB, as the function `fft`. We will conclude by working through Exercises 6 and 7 from section 10.8 of Karris.
+### FFT in MATLAB
+
+The FFT algorithm is implemented, in MATLAB, as the function `fft`. We will conclude the class by working through Exercises 6 and 7 from section 10.8 of Karris.
 
 ### Example 3
 
