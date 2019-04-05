@@ -5,8 +5,8 @@ prev_page:
   url: /labs/lab07/index
   title: 'Optional Lab 7 - Filters'
 next_page:
-  url: /labs/project/index
-  title: 'Project'
+  url: /introduction/answers
+  title: 'Worksheet 2'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
@@ -79,6 +79,6 @@ Deadline for submission 25:59 (midnight) 12th April, 2019.
 
 ## References
 
-Bohn, Dennis and Pennington Terry, 1987. Constant Q Graphic Equalizers, Rane Note 101, Rane Corporation. Online: http://www.rane.com/note101.html.
+Bohn, Dennis and Pennington Terry, 1987. Constant Q Graphic Equalizers, Rane Note 101, Rane Corporation. Online: [http://www.rane.com/note101.html](http://www.rane.com/note101.html).
 
-Bohn, Dennis, 2008. Bandwidth in Octaves Versus Q in Bandpass Filters, Rane Note 170, Rane Corporation. Online: http://www.rane.com/note170.html.
+Bohn, Dennis, 2008. Bandwidth in Octaves Versus Q in Bandpass Filters, Rane Note 170, Rane Corporation. Online: [http://www.rane.com/note170.html](http://www.rane.com/note170.html).
