@@ -126,7 +126,7 @@ $$\Re \left\{ {X[m]} \right\} = x[0] + \sum\limits_{n = 1}^{N - 1} x [n]\cos \le
 
 and the imaginary part is
 
-$$\Im \left\{ {X[m]} \right\} = - \sum\limits_{n = 1}^{N - 1} x [n]\cos \left( 2\pi \frac{mn}{N} \right)\quad {\text{for}}\quad m = 0,1,2, \ldots ,N - 1$$.
+$$\Im \left\{ {X[m]} \right\} = - \sum\limits_{n = 1}^{N - 1} x [n]\sin \left( 2\pi \frac{mn}{N} \right)\quad {\text{for}}\quad m = 0,1,2, \ldots ,N - 1$$.
 
 Note that the summations are from 1 to $N-1$ because $n=0$ is covered in the real term, and as $x[0]$ is real, it is zero in the corresponding imaginary term.
 
@@ -380,23 +380,13 @@ xn = idft(Xm,4)
 ```
 
 
-{:.output .output_stream}
-```
-
-xn =
-
-   1.0000 - 0.0000i   2.0000 - 0.0000i   2.0000 + 0.0000i   1.0000 + 0.0000i
-
-
-```
-
 ### A useful compact notation
 
 The term
 
 $$\exp\left(\frac{-j2\pi}{N}\right)$$
 
-is a rotating vector where the range $0 <= \theta <= 2\pi$ is divided into $360/N$ equal segments. 
+is a rotating vector where the range $0 <= \theta <= 2\pi$ is divided into $360^\circ/N$ equal segments. 
 
 It is convenient to represent this as $W_N$, that is
 
@@ -635,10 +625,10 @@ Even and odd properties of the DFT
     <td>Real</td><td>Complex<br>Real part is Even<br>Imaginary part is Odd</td>
 </tr>
 <tr>
-    <td>Raal and Even</td><td>Real and Even</td>
+    <td>Real and Even</td><td>Real and Even</td>
 </tr>
 <tr>
-    <td>Raal and Odd</td><td>Imaginary and Even</td>
+    <td>Real and Odd</td><td>Imaginary and Even</td>
 </tr>
 <tr>
     <td>Imaginary</td><td>Complex<br>Real part is Odd<br>Imaginary part is Even</td>

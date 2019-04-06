@@ -27,9 +27,9 @@
   "headline":
     "The Discrete Fourier Transform",
   "datePublished":
-    "2019-04-05T08:45:33+01:00",
+    "2019-04-06T15:54:18+01:00",
   "dateModified":
-    "2019-04-05T08:45:33+01:00",
+    "2019-04-06T15:54:18+01:00",
   "description":
     "The Discrete Fourier Transform",
   "author": {
@@ -1755,7 +1755,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
 <p>and the imaginary part is</p>
 
-<p><script type="math/tex">\Im \left\{ {X[m]} \right\} = - \sum\limits_{n = 1}^{N - 1} x [n]\cos \left( 2\pi \frac{mn}{N} \right)\quad {\text{for}}\quad m = 0,1,2, \ldots ,N - 1</script>.</p>
+<p><script type="math/tex">\Im \left\{ {X[m]} \right\} = - \sum\limits_{n = 1}^{N - 1} x [n]\sin \left( 2\pi \frac{mn}{N} \right)\quad {\text{for}}\quad m = 0,1,2, \ldots ,N - 1</script>.</p>
 
 <p>Note that the summations are from 1 to $N-1$ because $n=0$ is covered in the real term, and as $x[0]$ is real, it is zero in the corresponding imaginary term.</p>
 
@@ -1982,21 +1982,13 @@ Xm =
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">xn</span> <span class="o">=</span> <span class="n">idft</span><span class="p">(</span><span class="n">Xm</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-xn =
-
-   1.0000 - 0.0000i   2.0000 - 0.0000i   2.0000 + 0.0000i   1.0000 + 0.0000i
-
-
-</code></pre></div></div>
-
 <h3 id="a-useful-compact-notation">A useful compact notation</h3>
 
 <p>The term</p>
 
 <script type="math/tex; mode=display">\exp\left(\frac{-j2\pi}{N}\right)</script>
 
-<p>is a rotating vector where the range $0 &lt;= \theta &lt;= 2\pi$ is divided into $360/N$ equal segments.</p>
+<p>is a rotating vector where the range $0 &lt;= \theta &lt;= 2\pi$ is divided into $360^\circ/N$ equal segments.</p>
 
 <p>It is convenient to represent this as $W_N$, that is</p>
 
@@ -2242,10 +2234,10 @@ xn = [ 1, 2, 3, 2.5, 1.5, 0.5,...
     <td>Real</td><td>Complex<br />Real part is Even<br />Imaginary part is Odd</td>
 </tr>
 <tr>
-    <td>Raal and Even</td><td>Real and Even</td>
+    <td>Real and Even</td><td>Real and Even</td>
 </tr>
 <tr>
-    <td>Raal and Odd</td><td>Imaginary and Even</td>
+    <td>Real and Odd</td><td>Imaginary and Even</td>
 </tr>
 <tr>
     <td>Imaginary</td><td>Complex<br />Real part is Odd<br />Imaginary part is Even</td>

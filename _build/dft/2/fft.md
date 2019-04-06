@@ -14,7 +14,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 ## Scope and Background Reading
 
-This session introduces the fast fourier transform (FFT) which is one of the most widely used numerical algorithms in the world. It exploits some features of the symmetry of the computation of the DFT to reduce the complexity to something that takes order $N^2$ ($O(N^2)$) complex operations to something that takes order $N log N$ ($O(N \log N)$) operations. 
+This session introduces the fast fourier transform (FFT) which is one of the most widely used numerical algorithms in the world. It exploits some features of the symmetry of the computation of the DFT to reduce the complexity from something that takes order $N^2$ ($O(N^2)$) complex operations to something that takes order $N \log N$ ($O(N \log N)$) operations. 
 
 The FFT is to be found in all manner of signal and image processing algorithms, and because it is more efficient than the DFT, you will find it exploited in hundreds of signal processing applications.
 
@@ -254,7 +254,7 @@ x_o[n]&=&x[2n+1],\,n=0,1.
 
 Then,
 
-$$X[k] =  \left[x_e[0] + x_e[1](-1)^k\right] \left[x_o[0] + x_o[1](-1)^k\right]W_4^{1k}.$$
+$$X[k] =  \left[x_e[0] + x_e[1](-1)^k\right] + \left[x_o[0] + x_o[1](-1)^k\right]W_4^{1k}.$$
 
 The factors in brackets in this equation can be recognized as 2-point DFTs:
 
@@ -319,7 +319,7 @@ open eight_point_dft
 ```
 
 
-#### N-Point, radix-2 DIF FFT
+#### N-Point, radix-2 DIT FFT
 
 In general, the $N$-point, radix-2 DIT FFT is computed as the recomposition of two $(N/2)$-point FFTs) as shown in the buterfly diagram below
 
