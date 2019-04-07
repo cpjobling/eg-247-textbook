@@ -27,9 +27,9 @@
   "headline":
     "Worksheet 19 The Fast Fourier Transform",
   "datePublished":
-    "2019-04-06T15:54:18+01:00",
+    "2019-04-07T10:42:30+01:00",
   "dateModified":
-    "2019-04-06T15:54:18+01:00",
+    "2019-04-07T10:42:30+01:00",
   "description":
     "Worksheet 19",
   "author": {
@@ -1540,20 +1540,6 @@ document.addEventListener('turbolinks:load', updateInteractLink)
     </ul>
   </li>
   <li><a href="#summary">Summary</a></li>
-  <li><a href="#homework">Homework</a></li>
-  <li><a href="#the-end">The End?</a>
-    <ul>
-      <li><a href="#footnotes">Footnotes</a></li>
-    </ul>
-  </li>
-  <li><a href="#solutions">Solutions</a>
-    <ul>
-      <li><a href="#example-1">Example 1</a></li>
-      <li><a href="#example-2">Example 2</a></li>
-      <li><a href="#example-3-1">Example 3</a></li>
-      <li><a href="#example-4-1">Example 4</a></li>
-    </ul>
-  </li>
 </ul>
     </nav>
   </aside>
@@ -1627,15 +1613,16 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
 <script type="math/tex; mode=display">X[m] = \sum_{n=0}^{N-1} x[n] W_N^{mn}</script>
 
-<p>Then
-<script type="math/tex">% <![CDATA[
+<p>Then</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
 \begin{eqnarray*}
   X[0] &=& x[0]W_N^0 + x[1]W_N^0 + x[1]W_N^0 +  \cdots  + x[N - 1]W_N^0 \hfill \\
   X[1] &=& x[0]W_N^0 + x[1]W_N^1 + x[1]W_N^2 +  \cdots  + x[N - 1]W_N^{N - 1} \hfill \\
   X[2] &=& x[0]W_N^0 + x[1]W_N^2 + x[1]W_N^4 +  \cdots  + x[N - 1]W_N^{2(N - 1)} \hfill \\
   \hfil &\cdots&  \hfill \\
   X[N - 1] &=& x[0]W_N^0 + x[1]W_N^{N - 1} + x[1]W_N^{2(N - 1)} +  \cdots  + x[N - 1]W_N^{(N - 1)^2} \hfill \\ 
-\end{eqnarray*} %]]></script></p>
+\end{eqnarray*} %]]></script>
 
 <ul>
   <li>It is worth remembering that</li>
@@ -1707,62 +1694,6 @@ document.addEventListener('turbolinks:load', updateInteractLink)
   W_{2N}^{k} &=&  \exp\left(-j\frac{2\pi}{2N}k\right) = \exp\left(-j\frac{2\pi}{N}\frac{k}{2}\right) = W_N^{k/2}.
 \end{eqnarray*} %]]></script>
 
-<p>Representing</p>
-
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{eqnarray*}
-  X[0] &=& x[0]W_N^0 + x[1]W_N^0 + x[2]W_N^0 +  \cdots  + x[N - 1]W_N^0 \hfill \\
-  X[1] &=& x[0]W_N^0 + x[1]W_N^1 + x[2]W_N^2 +  \cdots  + x[N - 1]W_N^{N - 1} \hfill \\
-  X[2] &=& x[0]W_N^0 + x[1]W_N^2 + x[2]W_N^4 +  \cdots  + x[N - 1]W_N^{2(N - 1)} \hfill \\
-  \hfil &\cdots&  \hfill \\
-  X[N - 1] &=& x[0]W_N^0 + x[1]W_N^{N - 1} + x[2]W_N^{2(N - 1)} +  \cdots  + x[N - 1]W_N^{(N - 1)^2} \hfill \\ 
-\end{eqnarray*} %]]></script>
-
-<p>in matrix form:
-<script type="math/tex">% <![CDATA[
-\left[ {\begin{array}{*{20}{c}}
-{X[0]}\\
-{X[1]}\\
-{X[2]}\\
- \vdots \\
-{X[N - 1]}\end{array}} \right] = \left[ {\begin{array}{*{20}{c}}
-{W_N^0}&{W_N^0}&{W_N^0}&\cdots&{W_N^0}\\
-{W_N^0}&{W_N^1}&{W_N^2}&\cdots&{W_N^{N - 1}}\\
-{W_N^0}&{W_N^2}&{W_N^4}&\cdots&{W_N^{2(N - 1)}}\\
-\cdots&\cdots&\cdots&\cdots&\cdots\\
-{W_N^0}&{W_N^{N - 1}}&{W_N^{2(N - 1)}}&\cdots&W_N^{(N - 1)^2}\\
-\end{array}} \right]\left[ {\begin{array}{*{20}{c}}
-{x[0]}\\
-{x[1]}\\
-{x[2]}\\
- \vdots \\
-{x[N - 1]}
-\end{array}} \right]. %]]></script></p>
-
-<p>This is a complex <a href="https://en.wikipedia.org/wiki/Vandermonde_matrix">Vandemonde matrix</a> and it is more compactly expressed as:</p>
-
-<script type="math/tex; mode=display">\mathbf{X}[m] = \mathbf{W_N} \mathbf{x}[n]</script>
-
-<p>The algorithm developed by Cooley and Tukey is based on <em>matrix decomposition</em> methods, where the matrix $\mathbf{W_N}$ is factored into $L$ smaller matrices, that is:</p>
-
-<script type="math/tex; mode=display">\mathbf{W_N} = \mathbf{W_1} \mathbf{W_2} \mathbf{W_3} \cdots \mathbf{W_L}</script>
-
-<p>where $L$ is chosen as $L = \log_2N$ or $N=2^L$.</p>
-
-<p>Each row of the matrices on the right side of the decomposition, contains only two, non-zero terms, unity and $W_N^k$.</p>
-
-<p>And the DFT sequence is:</p>
-
-<script type="math/tex; mode=display">\mathbf{X}[m] = \mathbf{W_1} \mathbf{W_2} \mathbf{W_3} \cdots \mathbf{W_L} \mathbf{x}[n].</script>
-
-<p>The FFT computation starts with matrix $\mathbf{W}_L$. It operates on $\mathbf{x}[n]$ producing a row vector, and each component of the row vector is obtained by one multiplication and one addition. This is because there are only two non-zero elements on a given row, and one of those elements is unity. Since there are $N$ components of $\mathbf{x}[n]$, there will be $N$ complex multiplications and $N$ complex additions.</p>
-
-<p>This new vector is then operated on by the $\mathbf{W}<em>{L-1}$ matrix, then on $\mathbf{W}</em>{L-2}$ and so on, until the entire operation is completed.</p>
-
-<p>It appears that the entire operation would require $NL= N\log_2N$ complex additions and also $N\log_2N$ complex additions.</p>
-
-<p>However, since $W_N^0 = 1$, $W_N^{N/2}=-1$, and other simplifications, it is estimated that only about half of these, that is, $N\log_2 N$ total complex arithmetic operations are required by the FFT versus the $N^2$ required by the DFT<sup>5</sup>.</p>
-
 <h3 id="decomposition-in-time-fft-algorithm">Decomposition-in-Time FFT Algorithm</h3>
 
 <p>This development follows (Philips, <em>et al.</em>, 2015). It is called the <em>decomposition-in-time (DIT), radix-2, FFT</em>.</p>
@@ -1809,7 +1740,10 @@ X[1] &=& x[0]-x[1].
 
 <p>The 4-point DFT is given by</p>
 
-<script type="math/tex; mode=display">X[k] = \sum_{n=0}^3 x[n]W_4^{nk}= x[0]W_4^{0k} + x[1]W_4^{1k} + x[2]W_4^{2k} + x[3]W_4^{3k}.</script>
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{eqnarray*}
+X[k] &=& \sum_{n=0}^3 x[n]W_4^{nk}\\
+     &=& x[0]W_4^{0k} + x[1]W_4^{1k} + x[2]W_4^{2k} + x[3]W_4^{3k}.\end{eqnarray*} %]]></script>
 
 <p>As a result of the periodicity of the weighting factor, we can simplify this expression:</p>
 
@@ -1894,7 +1828,7 @@ X[3] &=& X_e[1] - X_o[1]W_4^{1(3)} = X_e[0] + X_o[0]W_4^1.
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">open</span> <span class="n">eight_point_dft</span>
 </code></pre></div></div>
 
-<h4 id="n-point-radix-2-dif-fft">N-Point, radix-2 DIF FFT</h4>
+<h4 id="n-point-radix-2-dit-fft">N-Point, radix-2 DIT FFT</h4>
 
 <p>In general, the $N$-point, radix-2 DIT FFT is computed as the recomposition of two $(N/2)$-point FFTs) as shown in the buterfly diagram below</p>
 
@@ -1902,7 +1836,7 @@ X[3] &=& X_e[1] - X_o[1]W_4^{1(3)} = X_e[0] + X_o[0]W_4^1.
 
 <h3 id="in-class-example-1">In Class Example 1</h3>
 
-<p>Use four two-point DIT FFT to confirm that the DFT of the sequence</p>
+<p>Use four-point DIT FFT to confirm that the DFT of the sequence</p>
 
 <script type="math/tex; mode=display">x[n] = [1, 2, 3, 4]</script>
 
@@ -1951,15 +1885,14 @@ X[3] &=& X_e[1] - X_o[1]W_4^{1(3)} = X_e[0] + X_o[0]W_4^1.
 
 <p>Also note that it is frequency $X_n[k]$ that is the input to the DFT stage.</p>
 
-<h4 id="simulink-model-of-8-point-dft-1">SIMULINK Model of 8-Point DFT</h4>
+<h4 id="simulink-model-of-4-point-dif-fft">SIMULINK Model of 4-Point DIF FFT</h4>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">open</span> <span class="n">four_point_dif</span>
-
 </code></pre></div></div>
 
 <h3 id="in-class-example-2">In Class Example 2</h3>
 
-<p>Use four two-point FIT FFT to confirm that the DFT of the sequence</p>
+<p>Use four two-point DIF FFT to confirm that the DFT of the sequence</p>
 
 <script type="math/tex; mode=display">x[n] = [1, 2, 3, 4]</script>
 
@@ -2160,100 +2093,6 @@ X[3] &=& X_e[1] - X_o[1]W_4^{1(3)} = X_e[0] + X_o[0]W_4^1.
   <li>FFT v DFT</li>
   <li>Two examples</li>
 </ul>
-
-<h2 id="homework">Homework</h2>
-
-<p>Read the rest of Chapter 10 of Karris from page 10.9 and make your own notes on the implementation of the FFT.</p>
-
-<h2 id="the-end">The End?</h2>
-
-<ul>
-  <li>This concludes this module.</li>
-  <li>There is some material that I have not covered, most notably is a significant amount of additional information about <strong>Filter Design</strong> (including the use of MATLAB for this) in Chapter 11 of Karris.</li>
-</ul>
-
-<h3 id="footnotes">Footnotes</h3>
-
-<ol>
-  <li>
-    <p><em>Note</em>: addition of two complex numbers $(a + jb) + (c + jd) = (a+b) + j(b + d)$ so requires 2 floating-point additions; multiplication $(a + jb)(c + jd) = (ac - bd)+j(ad + bc)$ requires four floating-point multiplications and two additions.</p>
-
-    <p>In MATLAB, complex numbers are represented internally as two 64 bit floating point operations so each complex operation is expensive both in terms of computing time and working memory space. And the result of an N-point DFT will require twice the memory of the original sequence, assuming that it is stored as floating point real numbers, considerably 16 times the storage is needed if the original sequence is the result of sampling by, say, an 8 bit ADC.</p>
-
-    <p>Of course, modern 64 bit mirocprocessers have hardware support for floating point operations and so these operations take a minumum number of machine cycles. Digital Signal Processors and Graphic Processing Units, probably have hardware support for complex arithmetic too. Nonethess, complex arithmetic is an expensive operation, so any simplifications we can make will be valuable.</p>
-  </li>
-  <li>
-    <p>Even if we do not have a real sequence, we only need to compute the first $N/2$ values of the spectrum because the sequence for $X[k]$ from $N/2 + 1 &lt; k \le N-1$ are complex conjugates, in the reverse order, of the sequence of $X[k]$ for $0 \le k &lt; N/2$. This is easy to prove by looking at the geometry of the unit circle in the z-plane.</p>
-  </li>
-  <li>
-    <p>If $N=1024$, $N\log_2 N = 1024\times 10 = 10,240$ complex operations.</p>
-  </li>
-  <li>
-    <p>The Inverse FFT (IFFT) follows by noting that the rotation vector used in its computation is the complex conjugate
-<script type="math/tex">W_N^{-1}.</script></p>
-  </li>
-  <li>
-    <p>Karris goes further in showing how the decomposition used to implement the FFT can be further be understood by considering even and odd decompositions. This is also the approach taken by Phillips <em>et al.</em> reproduced here.
-You’ll also find that most text books on Digital Signal Processing will cover the FFT and give more or less understandable presentations of the way the algorithm works.</p>
-  </li>
-  <li>
-    <p>A complex number in MATLAB is 2 floating point doubles or 128 bits. So a 2048 “bin” FFT needs storage in RAM for approximately $22,528\times 128 = 2.9$ Mbit ($260$ kByte) of data.</p>
-  </li>
-</ol>
-
-<h2 id="solutions">Solutions</h2>
-
-<h3 id="example-1">Example 1</h3>
-
-<p>From the mathematical development and signal flow graph shown earlier:</p>
-
-<p>\begin{eqnarray<em>}
-X_e[0] &amp;=&amp; x[0] + x[2] = 1 + 3 = 4;<br />
-X_e[1] &amp;=&amp; x[0] - x[2] = 1 - 3 = -2;<br />
-X_o[0] &amp;=&amp; x[1] + x[3] = 2 + 4 = 6;<br />
-X_o[1] &amp;=&amp; x[1] - x[3] = 2 - 4 = -2.
-\end{eqnarray</em>}</p>
-
-<p>Thus,</p>
-
-<p>\begin{eqnarray<em>}
-X[0] &amp;=&amp; X_e[0] + X_o[0] = 4 + 6 = 10,<br />
-X[1] &amp;=&amp; X_e[1] + W_4^1 X_o[1] = -2 + (-j)(-2) = -2 - j2,<br />
-X[2] &amp;=&amp; X_e[0] - X_o[0] = 4 - 6 = -4,<br />
-X[3] &amp;=&amp; X_e[1] - W_4^1 X_o[1] = -2 - (-j)(-2) = -2 + j2.
-\end{eqnarray</em>}</p>
-
-<p>Q.E.D.</p>
-
-<h3 id="example-2">Example 2</h3>
-
-<p>After decomposition we have:</p>
-
-<p>\begin{eqnarray<em>}
-X_1[0] &amp;=&amp; x[0] + x[2] = 1 + 3 = 4;<br />
-X_1[1] &amp;=&amp; W_4^0\left[x[1] - x[3]\right] = 2 + 4 = 6;<br />
-X_2[0] &amp;=&amp; x[0] - x[2] = 1 - 3 = -2;<br />
-X_2[1] &amp;=&amp; W_4^1\left[x[1] - x[3]\right] = -j[2 - 4] = j2.
-\end{eqnarray</em>}</p>
-
-<p>Hence, after 2-point FFT:</p>
-
-<p>\begin{eqnarray<em>}
-X[0] &amp;=&amp; X_1[0] + X_1[1] = 4 + 6 = 10,<br />
-X[1] &amp;=&amp; X_2[0] + X_2[1] = -2 + j2,<br />
-X[2] &amp;=&amp; X_1[0] - X_1[1] = 4 - 6 = -4,<br />
-X[3] &amp;=&amp; X_2[0] - X_2[1] = -2 - j2.
-\end{eqnarray</em>}</p>
-
-<p>Q.E.D.</p>
-
-<h3 id="example-3-1">Example 3</h3>
-
-<p>See script <a href="https://github.com/cpjobling/EG-247-Resources/blob/master/week10/matlab/fft_ex1.m">fft_ex1.m</a>.</p>
-
-<h3 id="example-4-1">Example 4</h3>
-
-<p>See script <a href="https://github.com/cpjobling/EG-247-Resources/blob/master/week10/matlab/fft_ex2.m">fft_ex2.m</a>.</p>
 
               <nav class="c-page__nav">
   

@@ -309,7 +309,7 @@ After some manipulation, not reproduced here, it can be shown that the 8-point D
 
 ![Signal flow graph of 8-point DFT](pictures/8-point-dft-sfg.png)
 
-#### SIMULINK Model of 8-Point DFT
+#### SIMULINK Model of 4-Point DFT
 
 
 
@@ -327,7 +327,7 @@ In general, the $N$-point, radix-2 DIT FFT is computed as the recomposition of t
 
 ### In Class Example 1
 
-Use four two-point DIT FFT to confirm that the DFT of the sequence 
+Use four-point DIT FFT to confirm that the DFT of the sequence 
 
 $$x[n] = [1, 2, 3, 4]$$
 
@@ -377,20 +377,19 @@ Note that the structure is a 4-point decompostion followed by two 2-point FFTs.
 
 Also note that it is frequency $X_n[k]$ that is the input to the DFT stage.
 
-#### SIMULINK Model of 8-Point DFT
+#### SIMULINK Model of 4-Point DIF FFT
 
 
 
 {:.input_area}
 ```matlab
 open four_point_dif
-
 ```
 
 
 ### In Class Example 2
 
-Use four two-point FIT FFT to confirm that the DFT of the sequence 
+Use four two-point DIF FFT to confirm that the DFT of the sequence 
 
 $$x[n] = [1, 2, 3, 4]$$
 

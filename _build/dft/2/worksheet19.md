@@ -45,6 +45,7 @@ To compute the number of operations required to complete this task, let us expan
 $$X[m] = \sum_{n=0}^{N-1} x[n] W_N^{mn}$$
 
 Then
+
 $$\begin{eqnarray*}
   X[0] &=& x[0]W_N^0 + x[1]W_N^0 + x[1]W_N^0 +  \cdots  + x[N - 1]W_N^0 \hfill \\
   X[1] &=& x[0]W_N^0 + x[1]W_N^1 + x[1]W_N^2 +  \cdots  + x[N - 1]W_N^{N - 1} \hfill \\
@@ -106,63 +107,6 @@ $$\begin{eqnarray*}
   W_{2N}^{k} &=&  \exp\left(-j\frac{2\pi}{2N}k\right) = \exp\left(-j\frac{2\pi}{N}\frac{k}{2}\right) = W_N^{k/2}.
 \end{eqnarray*}$$
 
-Representing
-
-$$\begin{eqnarray*}
-  X[0] &=& x[0]W_N^0 + x[1]W_N^0 + x[2]W_N^0 +  \cdots  + x[N - 1]W_N^0 \hfill \\
-  X[1] &=& x[0]W_N^0 + x[1]W_N^1 + x[2]W_N^2 +  \cdots  + x[N - 1]W_N^{N - 1} \hfill \\
-  X[2] &=& x[0]W_N^0 + x[1]W_N^2 + x[2]W_N^4 +  \cdots  + x[N - 1]W_N^{2(N - 1)} \hfill \\
-  \hfil &\cdots&  \hfill \\
-  X[N - 1] &=& x[0]W_N^0 + x[1]W_N^{N - 1} + x[2]W_N^{2(N - 1)} +  \cdots  + x[N - 1]W_N^{(N - 1)^2} \hfill \\ 
-\end{eqnarray*}$$
-
-
-
-in matrix form:
-$$
-\left[ {\begin{array}{*{20}{c}}
-{X[0]}\\
-{X[1]}\\
-{X[2]}\\
- \vdots \\
-{X[N - 1]}\end{array}} \right] = \left[ {\begin{array}{*{20}{c}}
-{W_N^0}&{W_N^0}&{W_N^0}&\cdots&{W_N^0}\\
-{W_N^0}&{W_N^1}&{W_N^2}&\cdots&{W_N^{N - 1}}\\
-{W_N^0}&{W_N^2}&{W_N^4}&\cdots&{W_N^{2(N - 1)}}\\
-\cdots&\cdots&\cdots&\cdots&\cdots\\
-{W_N^0}&{W_N^{N - 1}}&{W_N^{2(N - 1)}}&\cdots&W_N^{(N - 1)^2}\\
-\end{array}} \right]\left[ {\begin{array}{*{20}{c}}
-{x[0]}\\
-{x[1]}\\
-{x[2]}\\
- \vdots \\
-{x[N - 1]}
-\end{array}} \right].$$
-
-This is a complex [Vandemonde matrix](https://en.wikipedia.org/wiki/Vandermonde_matrix) and it is more compactly expressed as:
-
-$$\mathbf{X}[m] = \mathbf{W_N} \mathbf{x}[n]$$
-
-The algorithm developed by Cooley and Tukey is based on *matrix decomposition* methods, where the matrix $\mathbf{W_N}$ is factored into $L$ smaller matrices, that is:
-
-$$\mathbf{W_N} = \mathbf{W_1} \mathbf{W_2} \mathbf{W_3} \cdots \mathbf{W_L}$$
-
-where $L$ is chosen as $L = \log_2N$ or $N=2^L$.
-
-Each row of the matrices on the right side of the decomposition, contains only two, non-zero terms, unity and $W_N^k$. 
-
-And the DFT sequence is:
-
-$$\mathbf{X}[m] = \mathbf{W_1} \mathbf{W_2} \mathbf{W_3} \cdots \mathbf{W_L} \mathbf{x}[n].$$
-
-The FFT computation starts with matrix $\mathbf{W}_L$. It operates on $\mathbf{x}[n]$ producing a row vector, and each component of the row vector is obtained by one multiplication and one addition. This is because there are only two non-zero elements on a given row, and one of those elements is unity. Since there are $N$ components of $\mathbf{x}[n]$, there will be $N$ complex multiplications and $N$ complex additions. 
-
-This new vector is then operated on by the $\mathbf{W}_{L-1}$ matrix, then on $\mathbf{W}_{L-2}$ and so on, until the entire operation is completed.
-
-It appears that the entire operation would require $NL= N\log_2N$ complex additions and also $N\log_2N$ complex additions. 
-
-However, since $W_N^0 = 1$, $W_N^{N/2}=-1$, and other simplifications, it is estimated that only about half of these, that is, $N\log_2 N$ total complex arithmetic operations are required by the FFT versus the $N^2$ required by the DFT<sup>5</sup>.
-
 ### Decomposition-in-Time FFT Algorithm
 
 This development follows (Philips, *et al.*, 2015). It is called the *decomposition-in-time (DIT), radix-2, FFT*.
@@ -220,7 +164,9 @@ open two_point_dft
 
 The 4-point DFT is given by
 
-$$X[k] = \sum_{n=0}^3 x[n]W_4^{nk}= x[0]W_4^{0k} + x[1]W_4^{1k} + x[2]W_4^{2k} + x[3]W_4^{3k}.$$
+$$\begin{eqnarray*}
+X[k] &=& \sum_{n=0}^3 x[n]W_4^{nk}\\
+     &=& x[0]W_4^{0k} + x[1]W_4^{1k} + x[2]W_4^{2k} + x[3]W_4^{3k}.\end{eqnarray*}$$
 
 
 As a result of the periodicity of the weighting factor, we can simplify this expression:
@@ -313,7 +259,7 @@ open eight_point_dft
 ```
 
 
-#### N-Point, radix-2 DIF FFT
+#### N-Point, radix-2 DIT FFT
 
 In general, the $N$-point, radix-2 DIT FFT is computed as the recomposition of two $(N/2)$-point FFTs) as shown in the buterfly diagram below
 
@@ -321,7 +267,7 @@ In general, the $N$-point, radix-2 DIT FFT is computed as the recomposition of t
 
 ### In Class Example 1
 
-Use four two-point DIT FFT to confirm that the DFT of the sequence 
+Use four-point DIT FFT to confirm that the DFT of the sequence 
 
 $$x[n] = [1, 2, 3, 4]$$
 
@@ -371,20 +317,19 @@ Note that the structure is a 4-point decompostion followed by two 2-point FFTs.
 
 Also note that it is frequency $X_n[k]$ that is the input to the DFT stage.
 
-#### SIMULINK Model of 8-Point DFT
+#### SIMULINK Model of 4-Point DIF FFT
 
 
 
 {:.input_area}
 ```matlab
 open four_point_dif
-
 ```
 
 
 ### In Class Example 2
 
-Use four two-point FIT FFT to confirm that the DFT of the sequence 
+Use four two-point DIF FFT to confirm that the DFT of the sequence 
 
 $$x[n] = [1, 2, 3, 4]$$
 
@@ -549,90 +494,3 @@ plot(x, ifft(fft(y)))
 * An illustration of part of the FFT algorithm
 * FFT v DFT
 * Two examples
-
-## Homework
-
-Read the rest of Chapter 10 of Karris from page 10.9 and make your own notes on the implementation of the FFT. 
-
-## The End?
-
-* This concludes this module. 
-* There is some material that I have not covered, most notably is a significant amount of additional information about **Filter Design** (including the use of MATLAB for this) in Chapter 11 of Karris.
-
-### Footnotes
-
-1. *Note*: addition of two complex numbers $(a + jb) + (c + jd) = (a+b) + j(b + d)$ so requires 2 floating-point additions; multiplication $(a + jb)(c + jd) = (ac - bd)+j(ad + bc)$ requires four floating-point multiplications and two additions. 
-
-    In MATLAB, complex numbers are represented internally as two 64 bit floating point operations so each complex operation is expensive both in terms of computing time and working memory space. And the result of an N-point DFT will require twice the memory of the original sequence, assuming that it is stored as floating point real numbers, considerably 16 times the storage is needed if the original sequence is the result of sampling by, say, an 8 bit ADC.
-
-    Of course, modern 64 bit mirocprocessers have hardware support for floating point operations and so these operations take a minumum number of machine cycles. Digital Signal Processors and Graphic Processing Units, probably have hardware support for complex arithmetic too. Nonethess, complex arithmetic is an expensive operation, so any simplifications we can make will be valuable.
-
-2. Even if we do not have a real sequence, we only need to compute the first $N/2$ values of the spectrum because the sequence for $X[k]$ from $N/2 + 1 < k \le N-1$ are complex conjugates, in the reverse order, of the sequence of $X[k]$ for $0 \le k < N/2$. This is easy to prove by looking at the geometry of the unit circle in the z-plane.
-
-3. If $N=1024$, $N\log_2 N = 1024\times 10 = 10,240$ complex operations.
-
-4. The Inverse FFT (IFFT) follows by noting that the rotation vector used in its computation is the complex conjugate
-$$W_N^{-1}.$$
-
-5. Karris goes further in showing how the decomposition used to implement the FFT can be further be understood by considering even and odd decompositions. This is also the approach taken by Phillips *et al.* reproduced here.
-You'll also find that most text books on Digital Signal Processing will cover the FFT and give more or less understandable presentations of the way the algorithm works.
-
-6. A complex number in MATLAB is 2 floating point doubles or 128 bits. So a 2048 "bin" FFT needs storage in RAM for approximately $22,528\times 128 = 2.9$ Mbit ($260$ kByte) of data.
-
-## Solutions
-
-
-
-### Example 1
-
-From the mathematical development and signal flow graph shown earlier:
-
-\begin{eqnarray*}
-X_e[0] &=& x[0] + x[2] = 1 + 3 = 4;\\
-X_e[1] &=& x[0] - x[2] = 1 - 3 = -2;\\
-X_o[0] &=& x[1] + x[3] = 2 + 4 = 6;\\
-X_o[1] &=& x[1] - x[3] = 2 - 4 = -2.
-\end{eqnarray*}
-
-Thus,
-
-\begin{eqnarray*}
-X[0] &=& X_e[0] + X_o[0] = 4 + 6 = 10,\\
-X[1] &=& X_e[1] + W_4^1 X_o[1] = -2 + (-j)(-2) = -2 - j2,\\
-X[2] &=& X_e[0] - X_o[0] = 4 - 6 = -4,\\
-X[3] &=& X_e[1] - W_4^1 X_o[1] = -2 - (-j)(-2) = -2 + j2.
-\end{eqnarray*}
-
-Q.E.D.
-
-
-### Example 2
-
-After decomposition we have:
-
-\begin{eqnarray*}
-X_1[0] &=& x[0] + x[2] = 1 + 3 = 4;\\
-X_1[1] &=& W_4^0\left[x[1] - x[3]\right] = 2 + 4 = 6;\\
-X_2[0] &=& x[0] - x[2] = 1 - 3 = -2;\\
-X_2[1] &=& W_4^1\left[x[1] - x[3]\right] = -j[2 - 4] = j2.
-\end{eqnarray*}
-
-Hence, after 2-point FFT:
-
-\begin{eqnarray*}
-X[0] &=& X_1[0] + X_1[1] = 4 + 6 = 10,\\
-X[1] &=& X_2[0] + X_2[1] = -2 + j2,\\
-X[2] &=& X_1[0] - X_1[1] = 4 - 6 = -4,\\
-X[3] &=& X_2[0] - X_2[1] = -2 - j2.
-\end{eqnarray*}
-
-Q.E.D.
-
-
-### Example 3
-
-See script [fft_ex1.m](https://github.com/cpjobling/EG-247-Resources/blob/master/week10/matlab/fft_ex1.m).
-
-### Example 4
-
-See script [fft_ex2.m](https://github.com/cpjobling/EG-247-Resources/blob/master/week10/matlab/fft_ex2.m).
