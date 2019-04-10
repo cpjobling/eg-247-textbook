@@ -12,4 +12,3 @@ WN = exp(-j*2*pi/N);    % Wn factor
 nm = n'*m;              % creates an N by N matrix of nm values
 WNnm = WN .^ (-nm);     % DFT matrix
 xn = (Xm * WNnm)/N;     % row vector for IDFT values
-```
