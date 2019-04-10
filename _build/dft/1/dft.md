@@ -304,6 +304,7 @@ pwd
 
 {:.output .output_stream}
 ```
+/Users/eechris/dev/eg-247-textbook/content/dft/1/matlab/matlab
 
 ans =
 
@@ -379,6 +380,16 @@ open idft
 xn = idft(Xm,4)
 ```
 
+
+{:.output .output_stream}
+```
+
+xn =
+
+   1.0000 - 0.0000i   2.0000 - 0.0000i   2.0000 + 0.0000i   1.0000 + 0.0000i
+
+
+```
 
 ### A useful compact notation
 
@@ -516,7 +527,6 @@ WN = exp(-j*2*pi/N);    % Wn factor
 nm = n'*m;              % creates an N by N matrix of nm values
 WNnm = WN .^ (-nm);     % DFT matrix
 xn = (Xm * WNnm)/N;     % row vector for IDFT values
-```
 ```
 
 

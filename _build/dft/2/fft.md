@@ -479,6 +479,12 @@ plot(x,y)
 ```
 
 
+
+{:.output .output_png}
+![png](../../images/dft/2/fft_89_0.png)
+
+
+
 and the FFT is produced as
 
 
@@ -487,6 +493,12 @@ and the FFT is produced as
 ```matlab
 plot(x, abs(fft(y)))
 ```
+
+
+
+{:.output .output_png}
+![png](../../images/dft/2/fft_91_0.png)
+
 
 
 unwind 
@@ -499,6 +511,12 @@ plot(x, abs(fftshift(fft(y))))
 ```
 
 
+
+{:.output .output_png}
+![png](../../images/dft/2/fft_93_0.png)
+
+
+
 The inverse FFT is obtained with
 
 
@@ -507,6 +525,12 @@ The inverse FFT is obtained with
 ```matlab
 plot(x, ifft(fft(y)))
 ```
+
+
+
+{:.output .output_png}
+![png](../../images/dft/2/fft_95_0.png)
+
 
 
 ### Example 4
@@ -527,6 +551,12 @@ plot(x,y)
 ```
 
 
+
+{:.output .output_png}
+![png](../../images/dft/2/fft_98_0.png)
+
+
+
 and the FFT is obtained with
 
 
@@ -537,6 +567,12 @@ plot(x, abs(fftshift(fft(y))))
 ```
 
 
+
+{:.output .output_png}
+![png](../../images/dft/2/fft_100_0.png)
+
+
+
 The inverse FFT is obtained with
 
 
@@ -545,6 +581,12 @@ The inverse FFT is obtained with
 ```matlab
 plot(x, ifft(fft(y)))
 ```
+
+
+
+{:.output .output_png}
+![png](../../images/dft/2/fft_102_0.png)
+
 
 
 ## Summary

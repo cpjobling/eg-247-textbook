@@ -22,7 +22,7 @@ If you haven't watch it afterwards!
 
 ### List of Abbreviations
 
-* CT -- Continous Time
+* CT -- Continuous Time
 * DT -- Discrete Time
 * DF - Discrete frequency
 * DFT -- Discrete (Time) Fourier Transform
@@ -94,7 +94,7 @@ $$\Re \left\{ {X[m]} \right\} = x[0] + \sum\limits_{n = 1}^{N - 1} x [n]\cos \le
 
 and the imaginary part is
 
-$$\Im \left\{ {X[m]} \right\} = - \sum\limits_{n = 1}^{N - 1} x [n]\cos \left( 2\pi \frac{mn}{N} \right)\quad {\text{for}}\quad m = 0,1,2, \ldots ,N - 1$$.
+$$\Im \left\{ {X[m]} \right\} = - \sum\limits_{n = 1}^{N - 1} x [n]\sin \left( 2\pi \frac{mn}{N} \right)\quad {\text{for}}\quad m = 0,1,2, \ldots ,N - 1$$.
 
 Note that the summations are from 1 to $N-1$ because $n=0$ is covered in the real term, and as $x[0]$ is real, it is zero in the corresponding imaginary term.
 
@@ -270,16 +270,6 @@ pwd
 ```
 
 
-{:.output .output_stream}
-```
-
-ans =
-
-    '/Users/eechris/dev/eg-247-textbook/content/dft/1/matlab'
-
-
-```
-
 See [dft_ex10_1.slx](https://github.com/cpjobling/EG-247-Resources/blob/master/week10/matlab/dft_ex10_1.slx?raw=true)
 
 
@@ -322,16 +312,6 @@ Xm = dft(xn,4)
 ```
 
 
-{:.output .output_stream}
-```
-
-Xm =
-
-   6.0000 + 0.0000i  -1.0000 - 1.0000i   0.0000 - 0.0000i  -1.0000 + 1.0000i
-
-
-```
-
 
 
 {:.input_area}
@@ -347,16 +327,6 @@ open idft
 xn = idft(Xm,4)
 ```
 
-
-{:.output .output_stream}
-```
-
-xn =
-
-   1.0000 - 0.0000i   2.0000 - 0.0000i   2.0000 + 0.0000i   1.0000 + 0.0000i
-
-
-```
 
 ### A useful compact notation
 
@@ -467,12 +437,6 @@ Xm = xn * WNnm;         % row vector of DFT coefficients
 ```
 
 
-{:.output .output_stream}
-```
-Created file '/Users/eechris/dev/eg-247-textbook/content/dft/1/matlab/dft.m'.
-
-```
-
 Similarly for the inverse DFT [idft.m](https://github.com/cpjobling/EG-247-Resources/blob/master/week10/matlab/idft.m):
 
 
@@ -495,14 +459,7 @@ nm = n'*m;              % creates an N by N matrix of nm values
 WNnm = WN .^ (-nm);     % DFT matrix
 xn = (Xm * WNnm)/N;     % row vector for IDFT values
 ```
-```
 
-
-{:.output .output_stream}
-```
-Created file '/Users/eechris/dev/eg-247-textbook/content/dft/1/matlab/idft.m'.
-
-```
 
 ### Notes
 

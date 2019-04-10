@@ -194,7 +194,7 @@ x_o[n]&=&x[2n+1],\,n=0,1.
 
 Then,
 
-$$X[k] =  \left[x_e[0] + x_e[1](-1)^k\right] \left[x_o[0] + x_o[1](-1)^k\right]W_4^{1k}.$$
+$$X[k] =  \left[x_e[0] + x_e[1](-1)^k\right] +\left[x_o[0] + x_o[1](-1)^k\right]W_4^{1k}.$$
 
 The factors in brackets in this equation can be recognized as 2-point DFTs:
 
@@ -419,6 +419,12 @@ plot(x,y)
 ```
 
 
+
+{:.output .output_png}
+![png](../../images/dft/2/worksheet19_78_0.png)
+
+
+
 and the FFT is produced as
 
 
@@ -427,6 +433,12 @@ and the FFT is produced as
 ```matlab
 plot(x, abs(fft(y)))
 ```
+
+
+
+{:.output .output_png}
+![png](../../images/dft/2/worksheet19_80_0.png)
+
 
 
 unwind 
@@ -439,6 +451,12 @@ plot(x, abs(fftshift(fft(y))))
 ```
 
 
+
+{:.output .output_png}
+![png](../../images/dft/2/worksheet19_82_0.png)
+
+
+
 The inverse FFT is obtained with
 
 
@@ -447,6 +465,12 @@ The inverse FFT is obtained with
 ```matlab
 plot(x, ifft(fft(y)))
 ```
+
+
+
+{:.output .output_png}
+![png](../../images/dft/2/worksheet19_84_0.png)
+
 
 
 ### Example 4
@@ -467,6 +491,12 @@ plot(x,y)
 ```
 
 
+
+{:.output .output_png}
+![png](../../images/dft/2/worksheet19_87_0.png)
+
+
+
 and the FFT is obtained with
 
 
@@ -477,6 +507,12 @@ plot(x, abs(fftshift(fft(y))))
 ```
 
 
+
+{:.output .output_png}
+![png](../../images/dft/2/worksheet19_89_0.png)
+
+
+
 The inverse FFT is obtained with
 
 
@@ -485,6 +521,12 @@ The inverse FFT is obtained with
 ```matlab
 plot(x, ifft(fft(y)))
 ```
+
+
+
+{:.output .output_png}
+![png](../../images/dft/2/worksheet19_91_0.png)
+
 
 
 ## Summary
