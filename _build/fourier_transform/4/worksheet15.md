@@ -107,8 +107,15 @@ $$\left| H_B(\omega ) \right| = \frac{1}{\left(1 + \left(\frac{\omega }{\omega _
 
 **Remarks**
 
-* DC gain is $$|H_B(j0)|=1$$
-* Attenuation at the cut-off frequency is $$|H_B(j\omega_c)|=1/\sqrt{2}$$ for any $N$
+* DC gain is 
+
+  $$|H_B(j0)|=1$$
+
+* Attenuation at the cut-off frequency is 
+
+  $$|H_B(j\omega_c)|=1/\sqrt{2}$$
+  
+  for any $N$
 
 More about the Butterworth filter: [Wikipedia Article](http://en.wikipedia.org/wiki/Butterworth_filter)
 
