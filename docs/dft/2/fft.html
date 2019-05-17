@@ -27,9 +27,9 @@
   "headline":
     "The Fast-Fourier Transform",
   "datePublished":
-    "2019-05-15T11:53:01+01:00",
+    "2019-05-17T16:12:13+01:00",
   "dateModified":
-    "2019-05-15T11:53:01+01:00",
+    "2019-05-17T16:12:13+01:00",
   "description":
     "The Fast Fourier Transform",
   "author": {
@@ -1823,13 +1823,14 @@ X[1] &=& x[0]-x[1].
 
 <p>As a result of the periodicity of the weighting factor, we can simplify this expression:</p>
 
-<p>\begin{eqnarray<em>}
-W_N^{nk} &amp;=&amp; \exp\left(-j(2\pi/N)nk\right);<br />
-W_4^{0k} &amp;=&amp; 1;<br />
-W_4^{1k} &amp;=&amp; \exp\left(-j(\pi/2)k\right) = (-j)^k;<br />
-W_4^{2k} &amp;=&amp; \exp\left(-j\pi k\right) = (-1)^k;<br />
-W_4^{3k} &amp;=&amp; W_4^{2k}W_4^{1k}=(-1)^k W_4^{1k}.
-\end{eqnarray</em>}</p>
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{eqnarray*}
+W_N^{nk} &=& \exp\left(-j(2\pi/N)nk\right);\\
+W_4^{0k} &=& 1;\\
+W_4^{1k} &=& \exp\left(-j(\pi/2)k\right) = (-j)^k;\\
+W_4^{2k} &=& \exp\left(-j\pi k\right) = (-1)^k;\\
+W_4^{3k} &=& W_4^{2k}W_4^{1k}=(-1)^k W_4^{1k}.
+\end{eqnarray*} %]]></script>
 
 <p>Using these results, we write</p>
 
@@ -2230,21 +2231,23 @@ You’ll also find that most text books on Digital Signal Processing will cover 
 
 <p>From the mathematical development and signal flow graph shown earlier:</p>
 
-<p>\begin{eqnarray<em>}
-X_e[0] &amp;=&amp; x[0] + x[2] = 1 + 3 = 4;<br />
-X_e[1] &amp;=&amp; x[0] - x[2] = 1 - 3 = -2;<br />
-X_o[0] &amp;=&amp; x[1] + x[3] = 2 + 4 = 6;<br />
-X_o[1] &amp;=&amp; x[1] - x[3] = 2 - 4 = -2.
-\end{eqnarray</em>}</p>
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{eqnarray*}
+X_e[0] &=& x[0] + x[2] = 1 + 3 = 4;\\
+X_e[1] &=& x[0] - x[2] = 1 - 3 = -2;\\
+X_o[0] &=& x[1] + x[3] = 2 + 4 = 6;\\
+X_o[1] &=& x[1] - x[3] = 2 - 4 = -2.
+\end{eqnarray*} %]]></script>
 
 <p>Thus,</p>
 
-<p>\begin{eqnarray<em>}
-X[0] &amp;=&amp; X_e[0] + X_o[0] = 4 + 6 = 10,<br />
-X[1] &amp;=&amp; X_e[1] + W_4^1 X_o[1] = -2 + (-j)(-2) = -2 - j2,<br />
-X[2] &amp;=&amp; X_e[0] - X_o[0] = 4 - 6 = -4,<br />
-X[3] &amp;=&amp; X_e[1] - W_4^1 X_o[1] = -2 - (-j)(-2) = -2 + j2.
-\end{eqnarray</em>}</p>
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{eqnarray*}
+X[0] &=& X_e[0] + X_o[0] = 4 + 6 = 10,\\
+X[1] &=& X_e[1] + W_4^1 X_o[1] = -2 + (-j)(-2) = -2 - j2,\\
+X[2] &=& X_e[0] - X_o[0] = 4 - 6 = -4,\\
+X[3] &=& X_e[1] - W_4^1 X_o[1] = -2 - (-j)(-2) = -2 + j2.
+\end{eqnarray*} %]]></script>
 
 <p>Q.E.D.</p>
 
@@ -2252,21 +2255,23 @@ X[3] &amp;=&amp; X_e[1] - W_4^1 X_o[1] = -2 - (-j)(-2) = -2 + j2.
 
 <p>After decomposition we have:</p>
 
-<p>\begin{eqnarray<em>}
-X_1[0] &amp;=&amp; x[0] + x[2] = 1 + 3 = 4;<br />
-X_1[1] &amp;=&amp; W_4^0\left[x[1] - x[3]\right] = 2 + 4 = 6;<br />
-X_2[0] &amp;=&amp; x[0] - x[2] = 1 - 3 = -2;<br />
-X_2[1] &amp;=&amp; W_4^1\left[x[1] - x[3]\right] = -j[2 - 4] = j2.
-\end{eqnarray</em>}</p>
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{eqnarray*}
+X_1[0] &=& x[0] + x[2] = 1 + 3 = 4;\\
+X_1[1] &=& W_4^0\left[x[1] - x[3]\right] = 2 + 4 = 6;\\
+X_2[0] &=& x[0] - x[2] = 1 - 3 = -2;\\
+X_2[1] &=& W_4^1\left[x[1] - x[3]\right] = -j[2 - 4] = j2.
+\end{eqnarray*} %]]></script>
 
 <p>Hence, after 2-point FFT:</p>
 
-<p>\begin{eqnarray<em>}
-X[0] &amp;=&amp; X_1[0] + X_1[1] = 4 + 6 = 10,<br />
-X[1] &amp;=&amp; X_2[0] + X_2[1] = -2 + j2,<br />
-X[2] &amp;=&amp; X_1[0] - X_1[1] = 4 - 6 = -4,<br />
-X[3] &amp;=&amp; X_2[0] - X_2[1] = -2 - j2.
-\end{eqnarray</em>}</p>
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{eqnarray*}
+X[0] &=& X_1[0] + X_1[1] = 4 + 6 = 10,\\
+X[1] &=& X_2[0] + X_2[1] = -2 + j2,\\
+X[2] &=& X_1[0] - X_1[1] = 4 - 6 = -4,\\
+X[3] &=& X_2[0] - X_2[1] = -2 - j2.
+\end{eqnarray*} %]]></script>
 
 <p>Q.E.D.</p>
 

@@ -231,13 +231,13 @@ $$X[k] = \sum_{n=0}^3 x[n]W_4^{nk}= x[0]W_4^{0k} + x[1]W_4^{1k} + x[2]W_4^{2k} +
 
 As a result of the periodicity of the weighting factor, we can simplify this expression:
 
-\begin{eqnarray*}
+$$\begin{eqnarray*}
 W_N^{nk} &=& \exp\left(-j(2\pi/N)nk\right);\\
 W_4^{0k} &=& 1;\\
 W_4^{1k} &=& \exp\left(-j(\pi/2)k\right) = (-j)^k;\\
 W_4^{2k} &=& \exp\left(-j\pi k\right) = (-1)^k;\\
 W_4^{3k} &=& W_4^{2k}W_4^{1k}=(-1)^k W_4^{1k}.
-\end{eqnarray*}
+\end{eqnarray*}$$
 
 Using these results, we write
 
@@ -634,21 +634,21 @@ You'll also find that most text books on Digital Signal Processing will cover th
 
 From the mathematical development and signal flow graph shown earlier:
 
-\begin{eqnarray*}
+$$\begin{eqnarray*}
 X_e[0] &=& x[0] + x[2] = 1 + 3 = 4;\\
 X_e[1] &=& x[0] - x[2] = 1 - 3 = -2;\\
 X_o[0] &=& x[1] + x[3] = 2 + 4 = 6;\\
 X_o[1] &=& x[1] - x[3] = 2 - 4 = -2.
-\end{eqnarray*}
+\end{eqnarray*}$$
 
 Thus,
 
-\begin{eqnarray*}
+$$\begin{eqnarray*}
 X[0] &=& X_e[0] + X_o[0] = 4 + 6 = 10,\\
 X[1] &=& X_e[1] + W_4^1 X_o[1] = -2 + (-j)(-2) = -2 - j2,\\
 X[2] &=& X_e[0] - X_o[0] = 4 - 6 = -4,\\
 X[3] &=& X_e[1] - W_4^1 X_o[1] = -2 - (-j)(-2) = -2 + j2.
-\end{eqnarray*}
+\end{eqnarray*}$$
 
 Q.E.D.
 
@@ -657,21 +657,21 @@ Q.E.D.
 
 After decomposition we have:
 
-\begin{eqnarray*}
+$$\begin{eqnarray*}
 X_1[0] &=& x[0] + x[2] = 1 + 3 = 4;\\
 X_1[1] &=& W_4^0\left[x[1] - x[3]\right] = 2 + 4 = 6;\\
 X_2[0] &=& x[0] - x[2] = 1 - 3 = -2;\\
 X_2[1] &=& W_4^1\left[x[1] - x[3]\right] = -j[2 - 4] = j2.
-\end{eqnarray*}
+\end{eqnarray*}$$
 
 Hence, after 2-point FFT:
 
-\begin{eqnarray*}
+$$\begin{eqnarray*}
 X[0] &=& X_1[0] + X_1[1] = 4 + 6 = 10,\\
 X[1] &=& X_2[0] + X_2[1] = -2 + j2,\\
 X[2] &=& X_1[0] - X_1[1] = 4 - 6 = -4,\\
 X[3] &=& X_2[0] - X_2[1] = -2 - j2.
-\end{eqnarray*}
+\end{eqnarray*}$$
 
 Q.E.D.
 
