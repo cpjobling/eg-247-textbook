@@ -27,9 +27,9 @@
   "headline":
     "Transfer Functions",
   "datePublished":
-    "2019-12-16T12:52:06+00:00",
+    "2019-12-17T18:21:31+00:00",
   "dateModified":
-    "2019-12-16T12:52:06+00:00",
+    "2019-12-17T18:21:31+00:00",
   "description":
     "Transfer Functions",
   "author": {
@@ -1592,13 +1592,13 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 </ul>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% Matlab setup</span>
-<span class="nb">cd</span> <span class="o">..</span><span class="p">/</span><span class="n">matlab</span> 
+<span class="nb">cd</span> <span class="o">..</span><span class="p">/</span><span class="nb">matlab</span> 
 <span class="nb">pwd</span>
 <span class="nb">clear</span> <span class="nb">all</span>
 <span class="nb">format</span> <span class="n">compact</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ans =
+<div class="language-plaintext output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ans =
     '/Users/eechris/dev/eg-247-textbook/content/laplace_transform/matlab'
 
 </code></pre></div></div>
@@ -1719,10 +1719,10 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 </code></pre></div></div>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">den</span> <span class="o">=</span> <span class="n">R1</span><span class="o">*</span><span class="p">((</span><span class="mi">1</span><span class="p">/</span><span class="n">R1</span><span class="o">+</span> <span class="mi">1</span><span class="p">/</span><span class="n">R2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">/</span><span class="n">R3</span> <span class="o">+</span> <span class="n">s</span><span class="o">*</span><span class="n">C1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="o">*</span><span class="n">R3</span><span class="o">*</span><span class="n">C2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">/</span><span class="n">R2</span><span class="p">);</span>
-<span class="n">simplify</span><span class="p">(</span><span class="n">den</span><span class="p">)</span>
+<span class="nb">simplify</span><span class="p">(</span><span class="n">den</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ans =
+<div class="language-plaintext output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ans =
 100*s*((7555786372591433*s)/302231454903657293676544 + 1/20000) + 5
 
 </code></pre></div></div>
@@ -1733,7 +1733,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 <span class="n">denG</span> <span class="o">=</span> <span class="n">sym2poly</span><span class="p">(</span><span class="nb">ans</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>denG =
+<div class="language-plaintext output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>denG =
    0.000002500000000   0.005000000000000   5.000000000000000
 
 </code></pre></div></div>
@@ -1752,7 +1752,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 <script type="math/tex; mode=display">G(j\omega) = \frac{-1}{a\omega^2 - jb\omega + 5}</script>
 
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">w</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">10000</span><span class="p">;</span>
-<span class="n">Gs</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.</span><span class="p">/(</span><span class="n">a</span><span class="o">*</span><span class="n">w</span><span class="o">.^</span><span class="mi">2</span> <span class="o">-</span> <span class="nb">j</span><span class="o">.*</span><span class="n">b</span><span class="o">.*</span><span class="n">w</span> <span class="o">+</span> <span class="n">denG</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
+<span class="n">Gs</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.</span><span class="p">/(</span><span class="n">a</span><span class="o">*</span><span class="n">w</span><span class="o">.^</span><span class="mi">2</span> <span class="o">-</span> <span class="n">j</span><span class="o">.*</span><span class="n">b</span><span class="o">.*</span><span class="n">w</span> <span class="o">+</span> <span class="n">denG</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
 </code></pre></div></div>
 
 <p>Plot</p>
@@ -1774,7 +1774,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 
 <p><img src="pictures/sim_tf.png" alt="Using Transfer Functions in Simulink for System Simulation" /></p>
 
-<p>The Simulink transfer function (<strong><code class="highlighter-rouge">Transfer Fcn</code></strong>) block implements a transfer function</p>
+<p>The Simulink transfer function (<strong><code class="language-plaintext highlighter-rouge">Transfer Fcn</code></strong>) block implements a transfer function</p>
 
 <p>The transfer function block represents a general input output function</p>
 
@@ -1811,7 +1811,7 @@ $V_{\mathrm{in}}(s)=1/s$ then</p>
 <script type="math/tex; mode=display">V_{\mathrm{out}}(s) = \frac{-1}{s^2 + 3s + 1}.\frac{1}{s}</script>
 
 <p>We can solve this by partial fraction expansion and inverse Laplace transform
-as is done in the text book with the help of MATLAB’s <code class="highlighter-rouge">residue</code> function.</p>
+as is done in the text book with the help of MATLAB’s <code class="language-plaintext highlighter-rouge">residue</code> function.</p>
 
 <p>Here, however we’ll use the LTI block.</p>
 
@@ -1820,7 +1820,7 @@ as is done in the text book with the help of MATLAB’s <code class="highlighter
 <div class="language-matlab input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">G</span> <span class="o">=</span> <span class="n">tf</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">1</span><span class="p">])</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<div class="language-plaintext output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 G =
  
        -1

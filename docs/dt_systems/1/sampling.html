@@ -27,9 +27,9 @@
   "headline":
     "Sampling Theory",
   "datePublished":
-    "2019-12-16T12:52:06+00:00",
+    "2019-12-17T18:21:31+00:00",
   "dateModified":
-    "2019-12-16T12:52:06+00:00",
+    "2019-12-17T18:21:31+00:00",
   "description":
     "Sampling Theory",
   "author": {
@@ -1638,7 +1638,7 @@ document.addEventListener('turbolinks:load', updateInteractLink)
   <li>I will the plot the data.</li>
 </ol>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd matlab
+<div class="language-plaintext input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd matlab
 open sampling_demo
 </code></pre></div></div>
 
@@ -1750,7 +1750,7 @@ open sampling_demo
 
 <p>Basic set up</p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>clear all
+<div class="language-plaintext input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>clear all
 format compact
 w0 = 1;        % fundamental frequency rad/s
 t0=2*pi/w0;    % period s
@@ -1763,32 +1763,32 @@ tmax = 1.5*t0; % plottable range
 <p>The transfer function is:
 <script type="math/tex">H(s) = \frac{\omega_0^2}{s^2 + 2\zeta\omega_0 s + \omega_0^2}</script></p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>syms s t
+<div class="language-plaintext input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>syms s t
 zeta = 0.3;
 H = w0^2/(s^2 + 2*zeta*w0*s + w0^2)
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>H =
+<div class="language-plaintext output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>H =
 1/(s^2 + (3*s)/5 + 1)
 
 </code></pre></div></div>
 
 <h4 id="calculate-and-plot-the-impulse-response">Calculate and plot the impulse response</h4>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>h = ilaplace(H)
+<div class="language-plaintext input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>h = ilaplace(H)
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>h =
+<div class="language-plaintext output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>h =
 (10*91^(1/2)*exp(-(3*t)/10)*sin((91^(1/2)*t)/10))/91
 
 </code></pre></div></div>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>t = linspace(0,tmax,100);
+<div class="language-plaintext input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>t = linspace(0,tmax,100);
 xc = eval(h); % eval evaluates a symbolic expression as a MATLAB command.
 tc = t;
 </code></pre></div></div>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plot(tc,xc)
+<div class="language-plaintext input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plot(tc,xc)
 title('Fig 1: Continuous Time Signal x(t)')
 ylabel('x(t)')
 xlabel('Time t [s]')
@@ -1800,14 +1800,14 @@ xlabel('Time t [s]')
 
 <h4 id="calculate-and-plot-the-sampled-data">Calculate and plot the sampled data</h4>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ws = 4*w0; % twice minimum!
+<div class="language-plaintext input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ws = 4*w0; % twice minimum!
 Ts = (2*pi)/ws;
 t = 0:Ts:tmax;
 xs = eval(h);
 td = t;
 </code></pre></div></div>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stem(td,xs)
+<div class="language-plaintext input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stem(td,xs)
 hold on
 plot(tc,xc,'r:')
 hold off
@@ -1864,13 +1864,13 @@ xlabel('Time t [s]')
 
 <p>#### Reconstruction with sinc function</p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stem(td,xs)
+<div class="language-plaintext input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stem(td,xs)
 hold on
 </code></pre></div></div>
 
 <p class="output output_png"><img src="../../images/dt_systems/1/sampling_47_0.png" alt="png" /></p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x = zeros(length(td),length(tc));
+<div class="language-plaintext input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x = zeros(length(td),length(tc));
 for k=1:length(td)
     xk = xs(k);
     sincx = xk*sin(pi*(tc - td(k))/Ts)./(pi*(tc - td(k))/Ts);
@@ -1878,7 +1878,7 @@ for k=1:length(td)
 end
 </code></pre></div></div>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plot(tc,x,'-.')
+<div class="language-plaintext input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plot(tc,x,'-.')
 hold off
 title('Fig 5: Signal x(t) reconstructed with sinc functions')
 ylabel('x(t)')
@@ -1896,7 +1896,7 @@ xlabel('Time t [s]')
 <h4 id="reconstructed-signal">Reconstructed signal</h4>
 <p>Obtained by summing all the sinc functions</p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plot(tc,sum(x),tc,xc,'r:')
+<div class="language-plaintext input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plot(tc,sum(x),tc,xc,'r:')
 title('Fig 6: Reconstruction with sinc functions')
 ylabel('x(t)')
 </code></pre></div></div>
@@ -1911,7 +1911,7 @@ ylabel('x(t)')
 
 <h4 id="signal-reconstructed-with-zero-order-hold-zoh">Signal reconstructed with zero-order hold (ZOH)</h4>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stairs(td,xs)
+<div class="language-plaintext input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stairs(td,xs)
 hold on
 plot(tc,xc,'r:')
 title('Fig 3: Signal x(t) reconstructed with zero-order-hold')
@@ -1923,7 +1923,7 @@ xlabel('Time t [s]')
 
 <h4 id="signal-reconstructed-with-first-order-hold-foh">Signal reconstructed with First-order hold (FOH)</h4>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plot(td,xs,'bo-',tc,xc,'r:')
+<div class="language-plaintext input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plot(td,xs,'bo-',tc,xc,'r:')
 title('Fig 4: Signal x(t) reconstructed with first-order-hold')
 ylabel('x(t)')
 xlabel('Time t [s]')
@@ -1957,14 +1957,14 @@ xlabel('Time t [s]')
 
 <p>Here’s the script: <a href="aliaseg1.mlx">aliaseg1.mlx</a> that I’ll be using. (Also available as an m-file <a href="aliaseg1.m">aliaseg1.m</a>)</p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>open aliaseg1
+<div class="language-plaintext input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>open aliaseg1
 </code></pre></div></div>
 
 <h4 id="demo--42">Demo  4.2</h4>
 
 <p>Assume signal $x(t)=\cos(\omega_0 t)$ is sampled at a rate of $\omega_s = 1.5\omega_0$, violating the sampling theorem.</p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>open aliasing
+<div class="language-plaintext input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>open aliasing
 </code></pre></div></div>
 
 <p>We can see the effect on the plot below:</p>
@@ -1998,7 +1998,7 @@ xlabel('Time t [s]')
 
 <p>Script: <a href="aliaseg2.mlx">aliaseg2.mlx</a> (Also available as an m-file <a href="aliaseg2.m">aliaseg2.m</a>)</p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>open aliaseg2
+<div class="language-plaintext input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>open aliaseg2
 </code></pre></div></div>
 
 <h3 id="practical-application---digital-audio">Practical application - digital audio</h3>
@@ -2057,19 +2057,19 @@ xlabel('Time t [s]')
 <h2 id="matlab-functions-used">Matlab Functions used</h2>
 
 <ul>
-  <li>The matlab recorder command is: <code class="highlighter-rouge">recorder = audiorecorder(Fs,nBits,nChannels);</code></li>
-  <li>Sound is recorded using: <code class="highlighter-rouge">recordblocking(recObj, time);</code></li>
-  <li>Recorded sound is played back: <code class="highlighter-rouge">play(recorder);</code></li>
-  <li>Sound is extracted as Matlab data using: <code class="highlighter-rouge">x = getaudiodata(recorder);</code></li>
-  <li>Sound is plotted against sample number using: <code class="highlighter-rouge">plot(x)</code></li>
-  <li>I extracted 50 points for the stem plot using <code class="highlighter-rouge">stem([1000:1049],myRecording(1000:1049))</code></li>
-  <li>Sound is saved as an audio file using: <code class="highlighter-rouge">audiowrite(audioFile,myRecording,Fs);</code> where <code class="highlighter-rouge">audiofile</code> is a filename in form <code class="highlighter-rouge">name.extension</code>. Supported extensions are <code class="highlighter-rouge">'.wav'</code>, <code class="highlighter-rouge">'.ogg'</code>, and <code class="highlighter-rouge">'.flac'</code> on all platforms. Windows and Mac support <code class="highlighter-rouge">'.m4m'</code> and ‘<code class="highlighter-rouge">.mp4</code>’.</li>
-  <li>Sound is loaded using <code class="highlighter-rouge">[x,Fs]=audioread(audioFile);</code>. Additional file formats are supported for reading including <code class="highlighter-rouge">'.mp3'</code>.</li>
-  <li>Frequency response spectra were generated using the fast Fourier transform (<code class="highlighter-rouge">fft</code>) function.</li>
-  <li>Multiple graphs in one figure window is achieved using <code class="highlighter-rouge">subplot</code>.</li>
+  <li>The matlab recorder command is: <code class="language-plaintext highlighter-rouge">recorder = audiorecorder(Fs,nBits,nChannels);</code></li>
+  <li>Sound is recorded using: <code class="language-plaintext highlighter-rouge">recordblocking(recObj, time);</code></li>
+  <li>Recorded sound is played back: <code class="language-plaintext highlighter-rouge">play(recorder);</code></li>
+  <li>Sound is extracted as Matlab data using: <code class="language-plaintext highlighter-rouge">x = getaudiodata(recorder);</code></li>
+  <li>Sound is plotted against sample number using: <code class="language-plaintext highlighter-rouge">plot(x)</code></li>
+  <li>I extracted 50 points for the stem plot using <code class="language-plaintext highlighter-rouge">stem([1000:1049],myRecording(1000:1049))</code></li>
+  <li>Sound is saved as an audio file using: <code class="language-plaintext highlighter-rouge">audiowrite(audioFile,myRecording,Fs);</code> where <code class="language-plaintext highlighter-rouge">audiofile</code> is a filename in form <code class="language-plaintext highlighter-rouge">name.extension</code>. Supported extensions are <code class="language-plaintext highlighter-rouge">'.wav'</code>, <code class="language-plaintext highlighter-rouge">'.ogg'</code>, and <code class="language-plaintext highlighter-rouge">'.flac'</code> on all platforms. Windows and Mac support <code class="language-plaintext highlighter-rouge">'.m4m'</code> and ‘<code class="language-plaintext highlighter-rouge">.mp4</code>’.</li>
+  <li>Sound is loaded using <code class="language-plaintext highlighter-rouge">[x,Fs]=audioread(audioFile);</code>. Additional file formats are supported for reading including <code class="language-plaintext highlighter-rouge">'.mp3'</code>.</li>
+  <li>Frequency response spectra were generated using the fast Fourier transform (<code class="language-plaintext highlighter-rouge">fft</code>) function.</li>
+  <li>Multiple graphs in one figure window is achieved using <code class="language-plaintext highlighter-rouge">subplot</code>.</li>
 </ul>
 
-<p>For more information use <code class="highlighter-rouge">doc</code> <em>command</em> from the command-line.</p>
+<p>For more information use <code class="language-plaintext highlighter-rouge">doc</code> <em>command</em> from the command-line.</p>
 
 
               <nav class="c-page__nav">
