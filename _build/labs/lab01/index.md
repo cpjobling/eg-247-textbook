@@ -48,21 +48,47 @@ This will introduce the symbolic toolbox and the `heaviside`, `delta` and `ezplo
 
 We will also demonstrate the Live Script feature provided by MATLAB that will be useful for recording lab results for this module.
 
+## Assessment criteria
+
+Up to three marks can be claimed according to how many of parts 1-5 in the lab exercises have been completed. The mini project is worth an additional two marks. There are an additional 5 marks available for participating in the peer assessment. 
+
+Detailed marking criteria for this and the other labs and the project are given in the linked [Assessment Criteria](https://docs.google.com/spreadsheets/d/1EQzwSfGMdw8oiQds4bUR8sZTCgb2lMvcJHjmea-8hW4/edit?usp=sharing) [Google sheet].
+
 ## Set up
 
-Right click to save the file [elem_sigs.m](elem_sigs.m) as `elem_sigs.m` to your lab folder. Open the file from the file browser in MATLAB as a Live Script file.
+### Before you start
+
+Create a suitable folder structure on your file-store for your labs. 
+
+I suggest:
+
+```
+P:\workspace
+  signals-and-systems-lab
+	lab01
+	lab02
+```
+				:
+
+Use folder `p:\workspace\signals-and-systems-lab\lab01` for this lab.
+
+### Download starter script
+
+Right click to save the file [elem_sigs.m](elem_sigs.m) as `elem_sigs.m` to your ``lab01`` folder. Open the file from the file browser in MATLAB as a Live Script file.
 
 Here is a [short video](https://youtu.be/xwrZAE0D6cY), illustrating how to do this.
 
-## Lab Exercise 1.1
+## Lab Exercises
+
+### Lab Exercise 1.1
 
 For Lab Exercise 1 you are required to complete parts 1 to 2 of the provided script (1 mark).
 
-## Lab Exercise 1.2
+### Lab Exercise 1.2
 
 For Lab Exercise 2 you are required to complete parts 3 to 5 of the provided script (2 marks).
 
-## Mini Project 1
+### Mini Project 1
 
 Work through the procedures given between [pages 1-18 and 1-19 of the text book](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?ppg=34&docID=3384197&tm=1518436444996) to construct the piecewise signal generator first shown in [Figure 1.21](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?ppg=31&docID=3384197&tm=1518436492450) inside Simulink. 
 
@@ -76,22 +102,22 @@ Connect the signal up a derivative block and scope as shown in Figure 1.24 and s
 
 (2 marks)
 
-## Assessment criteria
-
-Up to three marks can be claimed according to how many of parts 1-5 in the lab exercises have been completed. The mini project is worth an additional two marks. There are an additional 5 marks available for participating in the peer assessment. 
-
-Detailed marking criteria for this and the other labs and the project are given in the linked [Assessment Criteria](https://docs.google.com/spreadsheets/d/1EQzwSfGMdw8oiQds4bUR8sZTCgb2lMvcJHjmea-8hW4/edit?usp=sharing) [Google sheet].
-
 ## What to Hand In
 
+
+### Claim
+
+Up to three marks can be claimed according to how many of parts 1-5 in the lab exercises have been completed. The mini project is worth an additional 2 marks.
+
+Make your claim by downloading and editing the labwork claim form and declaration: [lab01-claim.docx](lab01-claim.docx) [Word].
 
 ### Submission
 
 You should submit the following to the **Lab 01: Elementary Signals** Assignment on Canvas.
 
-1. The completed labwork claim form and declaration [lab01-claim.docx](lab01-claim.docx) [Word].
-1. As evidence for completion of the lab exercises, you should attach your completed version of the Live Script file `elem_signals.mlx`.
-1. As evidence of completion of the Miniproject the Simulink model of the piecewise linear signal `signal.slx`.
+1. The completed labwork claim form and declaration.
+2. As evidence for completion of the lab exercises, your completed version of the Live Script file `elem_signals.mlx`.
+3. As evidence of completion of the Miniproject, the Simulink model of the piecewise linear signal `signal.slx`.
 
 ### Deadline
 
@@ -113,17 +139,17 @@ Peer assessment is valuable for the following three reasons:
 
 The claims on this and the next two lab submissions will be moderated by **Peer Assessment**. Each one of you will be asked to review three of this first submission, two of the second and one of the third. 
 
-There is a total of 10 marks available for your participation in peer assessment. 
+For this lab exercise, the peer assessment is worth five marks. There is a total of 10 marks available for your participation in peer assessment. 
 
 ## How to do Peer Assessment
 
-As a peer assessor, you will be required to review five of these submissions and let me know if you agree with the self-assigned score. 
+As a peer assessor, you will be required to review three of these submissions and let me know if you agree with the self-assigned score. 
 
-To complete your peer assessments, you should download and run the MATLAB Live Scripts and Simulink models and check that the results are correct.
+To complete your peer assessments, you should download and run the MATLAB Live Scripts and Simulink models and check that the results are correct and complete.
 
-### Checking the work submitted
+### Checking the submitted work
 
-On Monday 24th February, you should receive notification that the submissions of five of your colleagues are available for peer assessment. This notification will arrive by email (if you have your Canvas notifications turned on) or via the inbox on Canvas or the Canvas Student App. 
+On Monday 24th February, you should receive notification that the submissions of three of your colleagues are available for peer assessment. This notification will arrive by email (if you have your Canvas notifications turned on) or via the inbox on Canvas or the Canvas Student App. 
 
 To perform an assessment, you will need access to MATLAB and Simulink. For compatibility reasons, you should use the version of MATLAB that is installed on the shared University desktop. (Although newer versions of MATLAB will open older versions of Simulink files, the reverse is not true.) If you have problems running any files that are submitted, please note this in your feedback.
 

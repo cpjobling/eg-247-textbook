@@ -12,11 +12,42 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 # Project - Design and Implementation of a 10-band Graphic Equaliser
 
-The goal of this lab is to design a 10-band graphic equaliser and then to simulate it in Simulink to check the design.
+## Aims
+
+The goal of this project is to design a 10-band graphic equaliser and then to simulate it in Simulink to check the design.
 
 These papers: Bohn and Pennington (1987) and Bohn (2008) may help to set the scene and perform the necessary calculations needed.
 
-MATLAB can be employed to design the required filters and then Simulink can be used to implement the graphic equaliser in real time. Most commercial equalisers use either 1/3 octave or 2/3 octave bandpass filters but to keep this from becoming too large we will employ one octave bandpass filters. 
+MATLAB can be employed to design the required filters and then Simulink can be used to implement the graphic equaliser in real time. Most commercial equalisers use either 1/3 octave or 2/3 octave bandpass filters but to keep this from becoming too large we will employ one octave bandpass filters.
+
+## Assessment criteria
+
+The project is worth 20 marks. Marks will be deducted if your submission violates the specification in any way or if I cannot test your submission because the model is incorrect, the gain settings are incorrect, the music file needed is not provided, etc.
+
+Detailed marking criteria for this and the other labs and the project are given in the linked [Assessment Criteria](https://docs.google.com/spreadsheets/d/1EQzwSfGMdw8oiQds4bUR8sZTCgb2lMvcJHjmea-8hW4/edit?usp=sharing) [Google sheet].
+
+## Setup
+
+### Before you start
+
+If you haven't already, create a suitable folder structure on your file-store for your labs. 
+
+I suggest
+
+```
+P:\workspace
+    signals-and-systems-lab
+	    lab01
+		lab02
+		lab03
+        lab04
+        lab05
+        lab06
+        lab07
+        project
+```
+
+Use folder `p:\workspace\signals-and-systems-lab\project` for this lab.
 
 ## Specification
 
@@ -50,10 +81,7 @@ W1 < W < W2.
 
 * Write a MATLAB Live Script to compute the set of filter coefficients and plot the combination (sum) of all filter frequency responses, as shown in Figure 1. Note that you can use the ‘`freqz`’ command to easily find the frequency response of a filter defined by the filter coefficient arrays B and A. Your goal is to achieve as flat of a frequency response as you can when all the frequency response of all filters are added: ± 1 dB is a good goal. Remember that the centre frequency of each filter must be fixed to one of the ten values given above and the upper and lower cutoff frequencies $f_2$ & $f_1$ must satisfy
 $$f_c = (f_1f_2)^{1/2}.$$ 
-
-* Your goal is to find the $\Delta f$ value for each filter that achieves a flat frequency response when all filters are combined with equal weights. 
-
-[*Hint*: the filters should all be constant $Q$, where 
+* Your goal is to find the $\Delta f$ value for each filter that achieves a flat frequency response when all filters are combined with equal weights. [*Hint*: the filters should all be constant $Q$, where 
 $$Q = \frac{f_c}{(f_2 - f_1)}.$$
 Once you find the right value for $Q$, all filters should have the same $Q$.]
 
@@ -66,16 +94,22 @@ Figure 2 – Block diagram of the 3 band graphic equalizer. The Simulink Model t
 
 One final note: The “From Multimedia File” and “To Audio Device” blocks can be found in the DSP Toolbox.
 
-## What to Submit
+## What to hand in
 
-You should submit the Simulink model of your graphical equalizer with the gains set to some approximation of your student number along with a copy of the music file you use to test the graphic equalizer and a diagram similar to Figure 1 that shows the flat frequency response of your design.
+### Claim
 
-## Assessment
+You should tell me the percentage confidence in your design.
 
-The project is worth 20 marks. Marks will be deducted if your submission violates the specification in any way or if I cannot test your submission because the model is incorrect, the gain settings are incorrect, the music file needed is not provided, etc.
+### Submission
 
-Deadline for submission 25:59 (midnight) 12th April, 2019.
+You should submit the following to the **Project: A Graphic Equalizer** Assignment on Canvas.
 
+1. Complete the labwork self-assessment claim form and declaration.
+1. Submit the Simulink model of your graphical equalizer with the gains set to some approximation of your student number along with a copy of the music file you use to test the graphic equalizer and a diagram similar to Figure 1 that shows the flat frequency response of your design.
+
+### Deadline
+
+The deadline for claims and submission is **Midnight, 24th April**
 
 ## References
 

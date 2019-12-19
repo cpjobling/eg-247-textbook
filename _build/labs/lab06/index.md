@@ -12,7 +12,6 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 # Lab 6: Sounds and Sampling
 
-
 ## Preamble
 
 ### Other formats
@@ -25,28 +24,59 @@ This lab has been adapted from <a href="http://class.ece.iastate.edu/mmina/ee186
 
 ## Aims
 
-This lab is an introduction to signal processing with Matlab. It will help to familiarize you with some of the main functions to read in and play sound files in MATLAB. It also looks at the ideas of aliasing and anti-aliasing filters that is key to the successful conversion from continuous to discrete time signals and systems. It is therefore an opportunity to try some basic digital signal processing.
+This lab is an introduction to signal processing with MATLAB. It will help to familiarize you with some of the main functions to read in and play sound files in MATLAB. It also looks at the ideas of aliasing and anti-aliasing filters that is key to the successful conversion from continuous to discrete time signals and systems. It is therefore an opportunity to try some basic digital signal processing.
 
 We also look at a one application of digital signals processing which is simple sound synthesis.
 
+## Assessment criteria
 
-## Preparation
+This will be a self-assessed exercise.
 
-Download and run the <a href="https://github.com/cpjobling/eg-247-textbook/blob/master/portfolio/lab06/soundex.m" target="_blank">linked script</a> to familiarise yourself with the basic tools that Matlab provides for manipulating and visualizing audio files. You will need to download a sound file and store it in the same folder then edit the script so that it loads your file. Music might be best for this initial exercise but you can use any audio file.
+Up to 2 marks each can be claimed for Exercises 12 and 13. There is 1 additional mark for Miniproject 3.
+
+Detailed marking criteria for this and the other labs and the project are given in the linked [Assessment Criteria](https://docs.google.com/spreadsheets/d/1EQzwSfGMdw8oiQds4bUR8sZTCgb2lMvcJHjmea-8hW4/edit?usp=sharing) [Google sheet].
+
+## Setup
+
+### Before you start
+
+If you haven't already, create a suitable folder structure on your file-store for your labs. 
+
+I suggest
+
+```
+P:\workspace
+    signals-and-systems-lab
+	    lab01
+		lab02
+		lab03
+        lab04
+        lab05
+        lab06
+        :
+```
+
+Use folder `p:\workspace\signals-and-systems-lab\lab06` for this lab.
+
+### Preparation
+
+Download and run the <a href="https://github.com/cpjobling/eg-247-textbook/blob/master/portfolio/lab06/soundex.m" target="_blank">linked script</a> to familiarise yourself with the basic tools that MATLAB provides for manipulating and visualizing audio files. You will need to download a sound file and store it in the same folder then edit the script so that it loads your file. Music might be best for this initial exercise but you can use any audio file.
 
 You will need headphones to hear the sounds without disturbing others in class.
 
-## [Sound Samples](http://www.ee.columbia.edu/~dpwe/sounds/) (web link)
+### [Sound Samples](http://www.ee.columbia.edu/~dpwe/sounds/) (web link)
 
 The web link above points to a source of sound samples. Choose one of these or find some other files from the internet. I downloaded and used the file <a href="http://www.ee.columbia.edu/~dpwe/sounds/musp/msmv2.wav">Music (Vocals) Example 2</a> from <a href="http://www.ee.columbia.edu/~dpwe/sounds/musp/" target="_blank">this page</a> in my example script.
 
-## Lab Exercise 12: Playing With Sound (2 marks)
+## Lab Exercises
 
-Before starting this lab, create a new Livescript File and save it as `ex12`.
+### Lab Exercise 12: Playing With Sound (2 marks)
 
-The LiveScript will open with a code cell highlighted.
+Before starting this lab, create a new MATLAB Live Script File and save it as `ex12.mlx`.
 
-Copy the first instruction below into the LiveScript code cell.
+The Live Script will open with a code cell highlighted.
+
+Copy the first instruction below into the Live Script code cell.
 
 Press the **run section** button to execute the code.
 
@@ -54,16 +84,16 @@ Using section breaks between code cells.
 
 Use **run section** or **run section and advance** buttons to step through the code.
 
-Allow each sound sample played in a section to complete before exercuting the next section that plays a sound sample.
+Allow each sound sample played in a section to complete before executing the next section that plays a sound sample.
 
 Use the **text** button to add commentary and your observations to your Live Script.
 
 Use the **text style** features to add a title to your Live Script and section headings as appropriate.
 
 
-### Part 1: Read and Store an Audio File in Matlab
+#### Part 1: Read and Store an Audio File in Matlab
 
-To read and store an audio file, you can use one of two different commands. The following stores the file into variable x.
+To read and store an audio file, you can use one of two different commands. The following stores the file into variable `x`.
 
 ```matlab
 x = audioread('filename');
@@ -71,7 +101,7 @@ x = audioread('filename');
 
 Unless the audio file is in the same folder as the script, you will need to include the entire filename including the directory.
 
-Example: `C:\My Documents\EG-247-Lab\portfolio\lab9\Audio.wav`
+Example: `C:\My Documents\EG-247-Lab\portfolio\lab06\Audio.wav`
 
 The command below stores the audio file into variable `x` and the sampling frequency in variable `Fs`.
 
@@ -79,9 +109,9 @@ The command below stores the audio file into variable `x` and the sampling frequ
 [x,Fs] = audioread('filename');
 ```
 
-### Part 2: Play the Audio File
+#### Part 2: Play the Audio File
 
-To play an audio file in Matlab you use the `sound()` function. The following function plays the sound. If the `Fs` variable is not defined or included in the command, it will assume the default sample rate of 8192 Hz.
+To play an audio file in MATLAB you use the `sound()` function. The following function plays the sound. If the `Fs` variable is not defined or included in the command, it will assume the default sample rate of 8192 Hz.
 
 ```matlab
 sound(x,Fs);
@@ -89,7 +119,7 @@ sound(x,Fs);
 
 In the PC lab, the speakers may have been disabled. But even if they are not, it will probably be best if you use head phones with either a standard 3.5 mm phone socket or USB connection to hear the sounds.
 
-### Part 3: Audio Scaling
+#### Part 3: Audio Scaling
 
 To scale an audio file the `sound()` command is used. This allows for the modification of an audio signal’s amplitude or frequency.
 
@@ -106,30 +136,29 @@ sound(x,Fs,bits);
 
 Comment on your observations.
 
-### Part 4: Playing a Sound Backwards
+#### Part 4: Playing a Sound Backwards
 
 The command to reverse the order of the samples in a matrix is `flipud()`. Experiment with this command.
 
 Record your experiments in this part of the lab by saving your Live Script file. Include your thoughts and observations as text elements.
 
-## Lab Exercise 13: Aliasing and anti-aliasing
+### Lab Exercise 13: Aliasing and anti-aliasing
 
 Download the example file [eg-247-message.wav](eg-247-message.wav) that was recorded in the lecture using the file [sampling_demo.m](sampling_demo.m) (If you have access to a microphone you can use `sampling_demo` to record your own sound file.)
 
-### Part 5: Aliasing
+#### Part 5: Aliasing
 
 Download the file [ex13_1.m](ex13_1.m) and open as a LiveScript. Read the script then run it. Complete the remaining examples of "decimation" (effectively aliasing) and listen carefully to the results. Comment on what you hear. 
 
 Examine the frequency sprctrum data produced by the Fast-Fourier Transform (FFT). Discuss the results.
 
-### Part 6: Sampling with anti-aliasing filters
+#### Part 6: Sampling with anti-aliasing filters
 
 Download the file [ex13_2.m](ex13_2.m) and open as a LiveScript. Read the script then run it. Complete the remaining examples of "resampling" (effectively sampling with anti-alias pre-filtering) and listen carefully to the results. Comment on what you hear. 
 
-Examine the frequency sprctrum data produced for the sampled signals with pre-filtering. Discuss the results.
+Examine the frequency spectrum data produced for the sampled signals with pre-filtering. Discuss the results.
 
-
-## Minproject 3:  Composing Music in MATLAB (1 mark)
+## Miniproject 3:  Composing Music in MATLAB (1 mark)
 
 ### Background
 
@@ -158,12 +187,11 @@ Musical notes are arranged in groups of twelve notes called octaves. The notes t
 | 12     | G<sup>♯</sup>,A<sup>♭</sup> | 220 * 2<sup>11/12</sup> | &nbsp; |
 
 
-
-You should copy this table into your OneNote notebook page for this lab and use MATLAB or a calculator to complete the table entries.
+You should copy this table into a document and use MATLAB or a calculator to complete the table entries.
 
 A musical score is essentially a plot of frequencies (notes, on the vertical scale for you musician types) versus time (measures, on the horizontal scale). The musical sequence of notes to the piece you will synthesize is given in Figure 1. The following discussion identifies how musical scores can be mapped to tones of specific pitch and duration.
 
-### Note Frequency
+#### Note Frequency
 
 In the simplest case, each note may be represented by a burst of a sinusoid followed by a shorter period of silence (a pause). The pauses allow us to distinguish between separate notes of the same pitch. The horizontal lines in Figure 1 represent the notes E, G, B, D, F from the bottom to the top. The spaces between the lines are used to represent the notes F, A, C, and E, again from the bottom to the top. Note that A-G only yields seven notes; the additional notes are due to changes in pitch called sharps (denoted by the symbol ♯) or flats (denoted by the symbol ♭) that follows a given note. A sharp increases the pitch by 2<sup>1/12</sup> and flat decreases the pitch by 2<sup>1/12</sup>.
 
@@ -173,13 +201,13 @@ Figure 1: Musical Score for Beethoven's Fifth
 
 In the musical score in Figure 1, the first three eighth notes are all note G. The first half note is an E♭ due to the inclusion of the three flat symbols at the left of the score, since we are in the key of C-minor. After the half note, the symbol is a rest of length equal to the duration of an eighth note. The next three eighth notes are all F, and the final half note is a D. You can get the fundamental frequencies for these notes from Table 1.
 
-### Note Durations
+#### Note Durations
 
 The duration of each note burst is determined by whether the note is a whole note, half note, quarter note, eight note, etc. Obviously, a quarter note has twice the duration of an eighth note, and so on. So your half notes should be four times the duration of your eighth notes. The short pause you use to follow each note should be of the same duration regardless of the length of the note.
 
-### Creating Music in Matlab
+#### Creating Music in MATLAB
 
-This section of the lab will teach you how to create music using different tones created in Matlab.
+This section of the lab will teach you how to create music using different tones created in MATLAB.
 
 First we are going to code a sine wave of amplitude A = 1, at an audio frequency of 220 * 7/12  Hz (which corresponds to E<sup>♭</sup>) which plays for an eighth note (0.125 seconds).
 
@@ -213,20 +241,21 @@ Now you can complete the opening phrase of Beethoven's fifth by adding additiona
 
 Save the commands you use to create, play and save your version of Beethoven's Fifth in a MATLAB mlx-file as `beethoven.mlx` and add this to your copy of this lab script along with the sound file.
 
+## What to hand in
 
-## What to turn in
-
-You should attach all the scripts and audio files created or downloaded for this exercise to the OneNote submission page for this exercise, complete the claim form and turn-in your assignment through Teams.
-
-
-## Claim
+### Claim
 
 Up to 2 marks each can be claimed for Exercises 12 and 13. There is 1 additional mark for Miniproject 3.
 
-See [Assessment and Feedback: Labwork Assessment](https://docs.google.com/spreadsheets/d/1U-O2hu_Th369EHp6mdc1_j_7ARew2WosE93cjsW012c/edit?usp=sharing) for a detailed marking scheme.
+### Submission
 
-The deadline for claims and submission is **Midnight, 29th March**.
+You should submit the following to the **Lab 06: Sounds an sampling** Assignment on Canvas.
 
-----
+1. Complete the labwork self-assessment claim form and declaration.
+1. As evidence of completion of Lab Exercise 12, you should upload the MATLAB Live Script file `ex12.mlx` plus any audio files downloaded or created. 
+1. As evidence of completion of Lab Exercise 13, you should upload the MATLAB Live Script file `ex13_1.mlx`, `ex13_2.mlx` plus any audio files downloaded or created.
+1. As evidence of completion of Mini-Project 3, you should upload the MATLAB Live Script file beethoven.mlx plus the audio file created.
 
-* If you fork my repo, you should add my master repository to your upstream so that you can regularly pull and merge my updates. There's still a lot of files to be added! This [GitHub help file](https://help.github.com/articles/fork-a-repo) explains the procedure you would need to follow.
+### Deadline
+
+The deadline for claims and submission is **Midnight, 20th March**
