@@ -33,7 +33,7 @@ Here are some highlights:
 * Pages can have [Binder](https://mybinder.org) or JupyterHub links automatically added for interactivity.
 * The website itself is based on Jekyll, and is highly extensible and can be freely-hosted on GitHub.
 
-See **[A short guide to deploying your own textbook](https://predictablynoisy.com/jupyter-book/guide/01_overview)**.
+See **[A short guide to deploying your own textbook](https://jupyterbook.org/guide/01_overview)**.
 
 ## Acknowledgements
 
