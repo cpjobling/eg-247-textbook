@@ -1,0 +1,492 @@
+---
+redirect_from:
+  - "/laplace-transform/1/laplace"
+interact_link: content/laplace_transform/1/laplace.ipynb
+kernel_name: python3
+kernel_path: content/laplace_transform/1
+has_widgets: false
+title: |-
+  The Laplace Transformation
+pagenum: 4
+prev_page:
+  url: /laplace_transform/index.html
+next_page:
+  url: /laplace_transform/2/inverse_laplace.html
+suffix: .ipynb
+search: f t s frac laplace leftrightarrow transform transforms tdtd omega trtd tr domain td n properties infty u e sf d signals tables int dt frequency lim st sa complex tau convolution karris ppg system class textbook laplacetransform j sigma cf property width tdtde transformation section com proofs elementary common systems html only inverse pi ds function ldots differentiation integration wikipedia table chapter ebookcentral proquest lib swansea ebooks reader action docid presents response notes presentation before cpjobling github io eg pdf being not encountered want problems definition selected mathcal l integral left right reference cnfn shift solution differential general dn
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">The Laplace Transformation</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="The-Laplace-Transformation">The Laplace Transformation<a class="anchor-link" href="#The-Laplace-Transformation"> </a></h1><p>The preparatory reading for this section is <a href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=75#ppg=43">Chapter 2 of Karris</a> which</p>
+<ul>
+<li>defines the Laplace transformation </li>
+<li>gives the most useful properties of the Laplace transform with proofs </li>
+<li>presents the Laplace transforms of the elementary signals discussed in the last session</li>
+<li>presents the transforms of the more common system response types that are found in basic signals and systems.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>An annotatable copy of the full notes for this presentation will be distributed before the second class meeting as <strong>Worksheet 4</strong> in the handouts section for week 2 in the <em>_Content Library</em> of the <strong>OneNote Class Notebook</strong>. You can also view the notes for this presentation as a webpage (<a href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/1/laplace.html">HTML</a>) and as a downloadable <a href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/1/laplace.pdf">PDF file</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There is some intellectual benefit to being aware of the properties of the Laplace transformation and their proofs but being a pragmatic breed, we engineers typically prefer to make use of quick references of these properties and transforms, relying on Mathematics only when facing a problem not before encountered.</p>
+<p>In our practice, we want to encourage you to use of the properties and transform tables to solve problems so I will present only the properties and not the proofs.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Agenda">Agenda<a class="anchor-link" href="#Agenda"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Definition of the Laplace Transform</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Some Selected Properties</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Transforms of Elementary Signals</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Common system responses</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Transform tables</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Examples</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Definition-of-the-Laplace-Transform">Definition of the Laplace Transform<a class="anchor-link" href="#Definition-of-the-Laplace-Transform"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Laplace-transform">Laplace transform<a class="anchor-link" href="#Laplace-transform"> </a></h3>$$\mathcal{L}\{f(t)\}=F(s) = \int_{0}^{\infty}f(t)e^{-st}dt$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Inverse-Laplace-Transform">Inverse Laplace Transform<a class="anchor-link" href="#Inverse-Laplace-Transform"> </a></h3>$$\mathcal{L}^{-1}\{F(s)\}=f(t)=\frac{1}{2\pi j}\int_{\sigma-j\omega}^{\sigma+j\omega}F(s)e^{st} ds$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Region-of-convergence">Region of convergence<a class="anchor-link" href="#Region-of-convergence"> </a></h3><p>For a Laplace transfomation to exist, the integral must be bounded. That is
+$$\left| {\int_0^\infty  {f(t){e^{ - st}}dt} } \right| &lt; \infty $$</p>
+<p>For most signals and systems of interest in this module it will be.</p>
+<p>(See discussion of exponential order on Page 2-2 of Karris).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Informal-transform-notation">Informal transform notation<a class="anchor-link" href="#Informal-transform-notation"> </a></h3><p>The Laplace transform and its inverse come in pairs which are tabulated for ease of reference. For any given function of time $f(t)$ we only need to know the transform</p>
+$$f(t)\Leftrightarrow F(s)$$<p></p>
+<p>to be able to get to the Laplace transform and <em>vice versa</em>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Some-Selected-Properties">Some Selected Properties<a class="anchor-link" href="#Some-Selected-Properties"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Linearity">Linearity<a class="anchor-link" href="#Linearity"> </a></h3>$$c_1f_1(t) + c_2f_2(t) + \ldots + c_nf_n(t) \Leftrightarrow c_1F_1(s) + c_2F_2(s) + \ldots + c_nF_n(s)$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Time-shift">Time shift<a class="anchor-link" href="#Time-shift"> </a></h3>$$f(t-a)u_0(t-a)\Leftrightarrow e^{-as}F(s)$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Frequency-shift">Frequency shift<a class="anchor-link" href="#Frequency-shift"> </a></h3>$$e^{-at}f(t)\Leftrightarrow F(s+a)$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Scaling">Scaling<a class="anchor-link" href="#Scaling"> </a></h3>$$f(at)\Leftrightarrow \frac{1}{a}F\left(\frac{s}{a}\right)$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Differentiation-in-the-time-domain">Differentiation in the time domain<a class="anchor-link" href="#Differentiation-in-the-time-domain"> </a></h3>$$f'(t) = \frac{d}{dt} f(t) \Leftrightarrow sF(s) - f(0^-)$$<p>This property facilitates the solution of differential equations</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The differentiation property can be extended to higher-orders as follows
+$$f''(t) = \frac{d^2}{dt^2}f(t) \Leftrightarrow s^2F(s) - sf(0^-) - f'(0^-)$$</p>
+$$f''(t) = \frac{d^3}{dt^3}f(t) \Leftrightarrow s^3F(s) - s^2f(0) - sf'(0^-) - f''(0^-)$$<p>and in general</p>
+$$f^{(n)}(t) = \frac{d^n}{dt^n}f(t) \Leftrightarrow s^nF(s) - s^{n-1}f(0^-) - s^{n-2}f'(0^-) - \cdots - f^{(n-1)}(0^-)$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Differentiation-in-the-complex-frequency-domain">Differentiation in the complex frequency domain<a class="anchor-link" href="#Differentiation-in-the-complex-frequency-domain"> </a></h3>$$tf(t) \Leftrightarrow -\frac{d}{ds}F(s)$$<p>and in general</p>
+$$t^nf(t) \Leftrightarrow (-1)^n\frac{d^n}{ds^n}F(s)$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Integration-in-the-time-domain">Integration in the time domain<a class="anchor-link" href="#Integration-in-the-time-domain"> </a></h3>$$\int_{-\infty}^tf(\tau)d\tau \Leftrightarrow \frac{F(s)}{s}+\frac{f(0^-)}{s}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This property is important because it provides a way to model the solution of a differential equation using op-amp integrators in so-called <a href="http://en.wikipedia.org/wiki/Analog_computer">Analogue Computers</a> and is now the basis for numerical integration systems like Simulink.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Integration-in-the-complex-frequency-domain">Integration in the complex frequency domain<a class="anchor-link" href="#Integration-in-the-complex-frequency-domain"> </a></h3><p>Providing that</p>
+$$\lim_{t\to 0} \frac{f(t)}{t}$$<p>exists</p>
+$$\frac{f(t)}{t}\Leftrightarrow \int_s^\infty F(s)ds$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Time-periodicity-property">Time periodicity property<a class="anchor-link" href="#Time-periodicity-property"> </a></h3><p>If $f(t)$ is a periodic function with period $T$ such that $f(t) = f(t+nT)$ for $n=1,2,3,\ldots$ then</p>
+$$f(t+nT) \Leftrightarrow \frac{\int_0^T f(t)e^{-st}dt}{1-e^{-sT}}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Initial-value-theorem">Initial value theorem<a class="anchor-link" href="#Initial-value-theorem"> </a></h3>$$\lim_{t\to 0}f(t) \Leftrightarrow \lim_{s\to \infty} sF(s) = f(0^-)$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Final-value-theorem">Final value theorem<a class="anchor-link" href="#Final-value-theorem"> </a></h3>$$\lim_{t\to \infty}f(t) \Leftrightarrow \lim_{s\to 0} sF(s) = f(\infty)$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Convolution-in-the-time-domain">Convolution in the time domain<a class="anchor-link" href="#Convolution-in-the-time-domain"> </a></h3>$$f_1(t)*f_2(t) = \int_{0}^{t}f_1(\tau)f_2(t-\tau) d\tau \Leftrightarrow F_1(s) F_2(s)$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is another important result as it allows us to compute the response of a system by simply multiplying the Laplace transforms of the system and the signal and then inverse Laplace transforming the result.</p>
+<p>This is usually much simpler than computing the convolution integral in the time domain &ndash; an operation we we see later!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Convolution-in-the-complex-frequency-domain">Convolution in the complex frequency domain<a class="anchor-link" href="#Convolution-in-the-complex-frequency-domain"> </a></h3><p>Multiplying two signals together in the time domain is the same as performing convolution in the complex frequency domain.</p>
+$$f_1(t)f_2(t) \Leftrightarrow \frac{1}{2\pi j}F_1(s) * F_2(s) = \frac{1}{2\pi j}\lim_{T\to \infty}\int_{c-jT}^{c+jT}F_1(\sigma)F_2(s-\sigma)d\sigma$$<p>Convolution in the complex frequency domain is nasty &ndash; multiplication in the time domain is relatively painless.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Transform-tables">Transform tables<a class="anchor-link" href="#Transform-tables"> </a></h2><p>Every textbook that covers Laplace transforms will provide a tables of properties and the most commonly encountered transforms. Karris is no exception and you will find a table of transforms in Tables 2.1 and 2.2.</p>
+<p>Here are a couple that are on the net for your reference</p>
+<ul>
+<li>Laplace transform <a href="http://en.wikipedia.org/wiki/Laplace_transform">(Wikipedia)</a></li>
+<li>Laplace Transform <a href="http://mathworld.wolfram.com/LaplaceTransform.html">(Wolfram Alpha)</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Don't-panic">Don't panic<a class="anchor-link" href="#Don't-panic"> </a></h3><p>Tables of Laplace transform properties and transforms will be included with the exam paper.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Transforms-of-Elementary-Signals">Transforms of Elementary Signals<a class="anchor-link" href="#Transforms-of-Elementary-Signals"> </a></h2><table width="60%">
+<thead>
+<tr><td width="10%">&nbsp;</td><th width="40%">f(t)</th><th width="40%">F(s)</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>$$\delta(t)$$</td><td>$$1$$</td></tr>
+<tr><td>2</td><td>$$\delta(t-a)$$</td><td>$$e^{-as}$$</td></tr>
+<tr><td>3</td><td>$$u_0(t)$$</td><td>$$\frac{1}{s}$$</td></tr>
+<tr><td>4</td><td>$$t u_0(t)$$</td><td>$$\frac{1}{s^2}$$</td></tr>
+<tr><td>5</td><td>$$t^n u_0(t)$$</td><td>$$\frac{n!}{s^{n+1}}$$</td></tr>
+<tr><td>6</td><td>$$e^{-at}u_0(t)$$</td><td>$$\frac{1}{s+a}$$</td></tr>
+<tr><td>7</td><td>$$t^n e^{-at} u_0(t)$$</td><td>$$\frac{n!}{(s+a)^{n+1}}$$</td></tr>
+<tr><td>8</td><td>$$\sin (\omega t) u_0(t)$$</td><td>$$\frac{\omega}{s^2 + \omega^2}$$</td></tr>
+<tr><td>9</td><td>$$\cos (\omega t) u_0(t)$$</td><td>$$\frac{s}{s^2 + \omega^2}$$</td></tr>
+<tr><td>10</td><td>$$e^{-at} \sin (\omega t) u_0(t)$$</td><td>$$\frac{\omega}{(s + a)^2 + \omega^2}$$</td></tr>
+<tr><td>11</td><td>$$e^{-at}\cos (\omega t) u_0(t)$$</td><td>$$\frac{s+a}{(s+a)^2 + \omega^2}$$</td></tr>
+</tbody>
+</table><p>Refer to the textbook if you want to see the proof of these transforms.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Laplace-transforms-of-common-waveforms">Laplace transforms of common waveforms<a class="anchor-link" href="#Laplace-transforms-of-common-waveforms"> </a></h2><p>We will work through a few of the following on the board in class</p>
+<ul>
+<li>Pulse</li>
+<li>Linear segment</li>
+<li>Triangular waveform</li>
+<li>Rectangular periodic waveform (square wave)</li>
+<li>Half rectified sine wave</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Using-Matlab-to-Find-Laplace-Transforms">Using Matlab to Find Laplace Transforms<a class="anchor-link" href="#Using-Matlab-to-Find-Laplace-Transforms"> </a></h2><p>The Matlab function <code>laplace</code> can be used to find laplace transforms of time functions. The lab exercises will illustrate this.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Homework">Homework<a class="anchor-link" href="#Homework"> </a></h2><p>Attempt at least one of the end-of-chapter exercises from each question 1-7 of <a href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=75#ppg=71">Section 2.7 of Karris</a>. Don't look at the answers until you have attempted the problems.</p>
+<p>If we have time, I will work through one or two of these in class.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

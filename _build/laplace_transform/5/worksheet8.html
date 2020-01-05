@@ -1,0 +1,1010 @@
+---
+redirect_from:
+  - "/laplace-transform/5/worksheet8"
+interact_link: content/laplace_transform/5/worksheet8.ipynb
+kernel_name: matlab
+kernel_path: content/laplace_transform/5
+has_widgets: false
+title: |-
+  Worksheet 8 Impulse Response and Time Convolution
+pagenum: 34
+prev_page:
+  url: /laplace_transform/4/worksheet7.html
+next_page:
+  url: /fourier_series/1/worksheet9.html
+suffix: .ipynb
+search: t u tau h s function even odd pre convolution delta infty response f style border px solid blue example fo frac left impulse functions int right le system img src pictures e integral input png laplace fe d graphical conv using product solution width convolutiondemo l only cos dt any let property evaluation leftrightarrow g y array transfer transform step following integrals arbitrary result slide output tool matlab karris thus mathcal circuit worksheet chapter class cpjobling github io eg textbook hour relation holds polynomials exponents without constants taylor series polynomial expansion represented signal dirac sifting evaluated hence because times
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Worksheet 8 Impulse Response and Time Convolution</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Worksheet-8">Worksheet 8<a class="anchor-link" href="#Worksheet-8"> </a></h1><h2 id="To-accompany-Chapter-3.5-Convolution-and-the-Impulse-Response">To accompany Chapter 3.5 Convolution and the Impulse Response<a class="anchor-link" href="#To-accompany-Chapter-3.5-Convolution-and-the-Impulse-Response"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will step through this worksheet in class.</p>
+<p>You are expected to have at least watched the video presentation of <a href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/5/convolution">Chapter 3.5</a> of the <a href="https://cpjobling.github.io/eg-247-textbook">notes</a> before coming to class. If you haven't watch it afterwards!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Agenda">Agenda<a class="anchor-link" href="#Agenda"> </a></h2><p>The material to be presented is:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="First-Hour">First Hour<a class="anchor-link" href="#First-Hour"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Even and Odd Functions of Time</li>
+<li>Time Convolution</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Even-and-Odd-Functions-of-Time">Even and Odd Functions of Time<a class="anchor-link" href="#Even-and-Odd-Functions-of-Time"> </a></h2><p>Fill in the Blanks Quiz.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Even-Functions-of-Time">Even Functions of Time<a class="anchor-link" href="#Even-Functions-of-Time"> </a></h3><p>A function $f(t)$ is said to be an <em>even function</em> of time if the following relation holds</p>
+<pre style="border: 2px solid blue">
+
+
+
+
+</pre><p>Polynomials with even exponents only, and with or without constants, are even functions. For example:</p>
+<p>Write down the Taylor-series polynomial expansion of $\cos t$. Is $\cos t$ even or odd?</p>
+<pre style="border: 2px solid blue">
+
+
+
+
+</pre><p>Odd/Even?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Odd-Functions-of-Time">Odd Functions of Time<a class="anchor-link" href="#Odd-Functions-of-Time"> </a></h3><p>A function $f(t)$ is said to be an <em>odd function</em> of time if the following relation holds</p>
+<pre style="border: 2px solid blue">
+
+
+
+
+</pre><p>Polynomials with even exponents only, and with or without constants, are even functions.</p>
+<p>Write down the Taylor-series polynomial expansion of $\cos t$. Is $\cos t$ even or odd?</p>
+<pre style="border: 2px solid blue">
+
+
+
+
+</pre><p>Odd/Even?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Observations">Observations<a class="anchor-link" href="#Observations"> </a></h3><ul>
+<li>For odd functions $f(0) =$<pre style="border: 2px solid blue"></li>
+</ul>
+<p>&lt;/pre&gt;</p>
+<ul>
+<li><p>The product of <em>two even</em> or <em>two odd</em> functions is an [Even/Odd] function.</p>
+</li>
+<li><p>The product of an even and an odd function, is an [Even/Odd] function.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the following $f_e(t)$ will denote an even function and $f_o(t)$ an odd function.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Time-integrals-of-even-and-odd-functions">Time integrals of even and odd functions<a class="anchor-link" href="#Time-integrals-of-even-and-odd-functions"> </a></h3><p>For an even function $f_e(t)$</p>
+$$\int_{-T}^{T}f_e(t) dt = 2 \int_{0}^{T}f_e(t) dt$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For an odd function $f_o(t)$</p>
+$$\int_{-T}^{T}f_o(t) dt = 0$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Even/Odd-Representation-of-an-Arbitrary-Function">Even/Odd Representation of an Arbitrary Function<a class="anchor-link" href="#Even/Odd-Representation-of-an-Arbitrary-Function"> </a></h3><p>A function $f(t)$ that is neither even nor odd can be represented as an even function by use of:</p>
+$$f_e(t) = \frac{1}{2}\left[f(t)+f(-t)\right]$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>or as an odd function by use of:</p>
+$$f_o(t) = \frac{1}{2}\left[f(t)-f(-t)\right]$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Adding these together, an abitrary signal can be represented as</p>
+$$f(t) = f_e(t) + f_o(t)$$<p>That is, any function of time can be expressed as the sum of an even and an odd function.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-1">Example 1<a class="anchor-link" href="#Example-1"> </a></h3><p>Is the Dirac delta $\delta(t)$ an even or an odd function of time?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Solution">Solution<a class="anchor-link" href="#Solution"> </a></h3><p>Let $f(t)$ be an arbitrary function of time that is continous at $t=t_0$. Then by the sifting property of the delta function</p>
+<pre style="border: 2px solid blue">
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>and for $t_0 = 0$</p>
+<pre style="border: 2px solid blue">
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Also for an even function $f_e(t)$</p>
+<pre style="border: 2px solid blue">
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>and for an odd function $f_o(t)$</p>
+<pre style="border: 2px solid blue">
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Even-or-odd?">Even or odd?<a class="anchor-link" href="#Even-or-odd?"> </a></h3><p>An odd function $f_o(t)$ evaluated at $t=0$ is zero, that is $f_o(0) = 0$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Hence</p>
+$$\int_{-\infty}^{\infty} f_o(t)\delta(t) dt = f_o(0) = 0$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Hence the product $f_o(t)\delta(t)$ is odd function of $t$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Since $f_o(t)$ is odd, $\delta(t)$ must be even because only an <em>even</em> function multiplied by an <em>odd</em> function can result in an <em>odd</em> function.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>(Even times even or odd times odd produces an even function. See earlier slide)</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Time-Convolution">Time Convolution<a class="anchor-link" href="#Time-Convolution"> </a></h2><p>Consider a system whose input is the Dirac delta ($\delta(t)$), and its output is the <strong><em>impulse response</em></strong> $h(t)$. We can represent the input-output relationship as a block diagram</p>
+<p><img src="pictures/conv1.png" width="50%"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="In-general">In general<a class="anchor-link" href="#In-general"> </a></h3><p><img src="pictures/conv2.png" width="50%"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Add-an-arbitrary-input">Add an arbitrary input<a class="anchor-link" href="#Add-an-arbitrary-input"> </a></h3><p>Let $u(t)$ be any input whose value at $t=\tau$ is $u(\tau)$, Then because of the sampling property of the delta function</p>
+<p><img src="pictures/conv3.png" width="50%"></p>
+<p>(output is $u(\tau)h(t-\tau)$)</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Integrate-both-sides">Integrate both sides<a class="anchor-link" href="#Integrate-both-sides"> </a></h3><p>Integrating both sides over all values of $\tau$ ($-\infty &lt; \tau &lt; \infty$) and making use of the fact that the delta function is even, i.e.</p>
+$$\delta(t-\tau)=\delta(\tau-t)$$<p>we have:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="pictures/conv4.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Use-the-sifting-property-of-delta">Use the sifting property of delta<a class="anchor-link" href="#Use-the-sifting-property-of-delta"> </a></h3><p>The second integral on the left side reduces to $u(t)$</p>
+<p><img src="pictures/conv5.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-Convolution-Integral">The Convolution Integral<a class="anchor-link" href="#The-Convolution-Integral"> </a></h3><p>The integral</p>
+$${\int_{-\infty}^{\infty} u(\tau)h(t-\tau)d\tau}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>or</p>
+$${\int_{-\infty}^{\infty} u(t-\tau)h(\tau)d\tau}$$<p>is known as the <em>convolution integral</em>; it states that if we know the impulse response of a system, we can compute its time response to any input by using either of the integrals.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The convolution integral is usually written $u(t)*h(t)$ or $h(t)*u(t)$ where the asterisk ($*$) denotes convolution.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Second-Hour">Second Hour<a class="anchor-link" href="#Second-Hour"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Graphical Evaluation of the Convolution Integral</li>
+<li>System Response by Laplace</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Graphical-Evaluation-of-the-Convolution-Integral">Graphical Evaluation of the Convolution Integral<a class="anchor-link" href="#Graphical-Evaluation-of-the-Convolution-Integral"> </a></h2><p>The convolution integral is most conveniently evaluated by a graphical evaluation. The text book gives three examples (6.4-6.6) which we will demonstrate using a <a href="http://www.mathworks.co.uk/matlabcentral/fileexchange/25199-graphical-demonstration-of-convolution">graphical visualization tool</a> developed by Teja Muppirala of the Mathworks.</p>
+<p>The tool: <a href="matlab/convolutiondemo.m">convolutiondemo.m</a> (see <a href="matlab/license.txt">license.txt</a>).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">clear </span><span class="s">all</span><span class="p"></span>
+<span class="n">cd </span><span class="s">../matlab/convolution_demo</span><span class="p"></span>
+<span class="n">pwd</span>
+<span class="s">format compact</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">convolutiondemo </span><span class="s">% ignore warnings</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Convolution-by-Graphical-Method---Summary-of-Steps">Convolution by Graphical Method - Summary of Steps<a class="anchor-link" href="#Convolution-by-Graphical-Method---Summary-of-Steps"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For simplicity, we give the rules for $u(t)$, but the procedure is the same if we reflect and slide $h(t)$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Substitute $u(t)$ with $u(\tau)$ &ndash; this is a simple change of variable. It doesn't change the definition of $u(t)$.</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Reflect $u(\tau)$ about the vertical axis to form $u(-\tau)$</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Slide $u(-\tau)$ to the right a distance $t$ to obtain $u(t-\tau)$</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Multiply the two signals to obtain the product $u(t-\tau)h(\tau)$</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Integrate the product over all $\tau$ from $-\infty$ to $\infty$.</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-2">Example 2<a class="anchor-link" href="#Example-2"> </a></h3><p>(This is example 6.4 in the Karris)</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The signals $h(t)$ and $u(t)$ are shown below. Compute $h(t)*u(t)$ using the graphical technique.</p>
+<p><img src="pictures/conv_ex1.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="h(t)">h(t)<a class="anchor-link" href="#h(t)"> </a></h3><p>The signal $h(t)$ is the straight line $f(t)=-t+1$ but this is defined only between $t = 0$ and $t = 1$. We thus need to gate the function by multiplying it by $u_0(t)-u_0(t-1)$ as illustrated below:</p>
+<p><img src="pictures/gate_h.png"></p>
+<p>Thus</p>
+$$h(t) \Leftrightarrow H(s)$$$$h(t) = (-t + 1)(u_0(t)-u_0(t-1)) = (-t + 1)u_0(t) - (-(t - 1)u_0(t - 1)) = -t u_0(t) + u_0(t) + (t - 1)u_0(t - 1)$$$$-t u_0(t) + u_0(t) + (t - 1)u_0(t - 1) \Leftrightarrow - \frac{1}{s^2} + \frac{1}{s} +\frac{e^{-s}}{s^2}$$$$H(s) = \frac{s + e^{-s} - 1}{s^2}$$<h3 id="u(t)">u(t)<a class="anchor-link" href="#u(t)"> </a></h3><p>The input $u(t)$ is the gating function:</p>
+$$u(t) = u_0(t)-u_0(t-1)$$<p>so</p>
+$$U(s) = \frac{1}{s}-\frac{e^{-s}}{s} = \frac{1 - e^{-s}}{s}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Prepare-for-convolutiondemo">Prepare for convolutiondemo<a class="anchor-link" href="#Prepare-for-convolutiondemo"> </a></h3><p>To prepare this problem for evaluation in the <code>convolutiondemo</code> tool, we need to determine the Laplace Transforms of $h(t)$ and $u(t)$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="convolutiondemo-settings">convolutiondemo settings<a class="anchor-link" href="#convolutiondemo-settings"> </a></h3><ul>
+<li>Let <code>g = (1 - exp(-s))/s</code></li>
+<li>Let <code>h = (s + exp(-s) - 1)/s^2</code></li>
+<li>Set range $-2 &lt; \tau &lt; -2$</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Summary-of-result">Summary of result<a class="anchor-link" href="#Summary-of-result"> </a></h3><ol>
+<li>For $t &lt; 0$: $u(t-\tau)h(\tau) = 0$</li>
+<li>For $t = 0$: $u(t-\tau) = u(-\tau)$ and $u(-\tau)h(\tau) = 0$</li>
+<li>For $0 &lt; t \le 1$: $h*u = \int_0^t (1)(-\tau + 1)d\tau = \left.\tau - \tau^2/2\right|_0^t = t-t^2/2$</li>
+<li>For $1 &lt; t \le 2$: $h*u = \int_{t-1}^1(-\tau + 1)d\tau = \left.\tau - \tau^2/2\right|_{t-1}^{1} = t^2/2-2t+2$</li>
+<li>For $2 \le t$: $u(t-\tau)h(\tau) = 0$</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-3">Example 3<a class="anchor-link" href="#Example-3"> </a></h3><p>This is example 6.5 from Karris.</p>
+$$h(t) = e^{-t}$$$$u(t) = u_0(t)-u_0(t-1)$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Answer-3">Answer 3<a class="anchor-link" href="#Answer-3"> </a></h3>$$y(t) = \left\{ {\begin{array}{*{20}{l}}
+{0:t \le 0}\\
+1 - e^{ - t}:\;0 &lt; t \le 1\\
+e^{ - t}\left( {e - 1} \right):\;1 &lt; t \lt \infty
+\end{array}} \right.$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Check-with-MATLAB">Check with MATLAB<a class="anchor-link" href="#Check-with-MATLAB"> </a></h4>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">syms </span><span class="s">t tau</span><span class="p"></span>
+<span class="n">x1</span><span class="p">=</span><span class="n">int</span><span class="p">(</span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">tau</span><span class="p">),</span><span class="n">tau</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">x2</span><span class="p">=</span><span class="n">int</span><span class="p">(</span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">tau</span><span class="p">),</span><span class="n">tau</span><span class="p">,</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-4">Example 4<a class="anchor-link" href="#Example-4"> </a></h3><p>This is example 6.6 from the text book.</p>
+$$h(t) = 2(u_0(t)-u_0(t-1))$$$$u(t) = u_0(t)-u_0(t-2)$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Answer-4">Answer 4<a class="anchor-link" href="#Answer-4"> </a></h3>$$y(t) = \left\{ {\begin{array}{*{20}{l}}
+{0:t \le 0}\\
+{2t:\;0 &lt; t \le 1}\\
+{2:\;1 &lt; t \le 2}\\
+{-2t+6:\;2 &lt; t \le 3}\\
+{0:\;3 \le t}\\
+\end{array}} \right.$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="System-Response-by-Laplace">System Response by Laplace<a class="anchor-link" href="#System-Response-by-Laplace"> </a></h2><p>In the discussion of Laplace, we stated that</p>
+$$\mathcal{L} \left\{ f(t)*g(t)\right\} = F(s)G(s)$$<p>We can use this property to make the solution of convolution problems even simpler.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Impulse-Response-and-Transfer-Functions">Impulse Response and Transfer Functions<a class="anchor-link" href="#Impulse-Response-and-Transfer-Functions"> </a></h3><p>Returning to the example we started with</p>
+<p><img src="pictures/conv1.png" width="50%"></p>
+<p>Then the impulse response of the system $h(t)$ will be given by:</p>
+$$\mathcal{L} \left\{ h(t)*\delta(t)\right\} = H(s)\Delta(s)$$<p>Where $H(s)$ be the laplace transform of the impulse response of the system $h(t)$. From properties of the Laplace transform we know that</p>
+$$\delta(t) \Leftrightarrow 1$$<p>so that $\Delta(s) = 1$ and</p>
+$$h(t)*\delta(t) \Leftrightarrow H(s).1 = H(s)$$<p>A consequence of this is that the transform of the impulse response $h(t)$ of a system with transfer function $H(s)$ is completely defined by the transfer function itself.</p>
+<p>Previously we argued that the response of system with impulse response $h(t)$ was given by the convolution integrals:</p>
+$$h(t)*u(t) = {\int_{-\infty}^{\infty} u(\tau)h(t-\tau)d\tau} = {\int_{-\infty}^{\infty} u(t-\tau)h(\tau)d\tau}$$<p>Thus the Laplace transform of any system subject to an input $u(t)$ is simply</p>
+$$Y(s) = H(s)U(s)$$<p>and</p>
+$$y(t) = \mathcal{L}^{-1} \left\{ G(s) U(s) \right\}$$<p>Using tables, solution of a convolution problem by Laplace is usually simpler than using convolution directly.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-5">Example 5<a class="anchor-link" href="#Example-5"> </a></h3><p>This is example 6.7 from Karris.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="pictures/example4.jpg" width="75%"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For the circuit shown above, show that the transfer function of the circuit is:</p>
+$$ H(s) = \frac{V_c(s)}{V_s(s)} = \frac{1/RC}{s + 1/RC} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Determine the impulse respone $h(t)$ of the circuit and the response of the capacitor voltage when the input is the unit step function $u_0(t)$ and $v_c(0^-)=0$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Assume $C=1\; \mathrm{F}$ and $R=1\;\Omega$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Solution-5a---Impulse-response">Solution 5a - Impulse response<a class="anchor-link" href="#Solution-5a---Impulse-response"> </a></h3><pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Solution--5b---Step-response">Solution  5b - Step response<a class="anchor-link" href="#Solution--5b---Step-response"> </a></h3><pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Homework">Homework<a class="anchor-link" href="#Homework"> </a></h3><p>Verify this result using the convolution integral</p>
+$$h(t)*u(t) = {\int_{-\infty}^{\infty} u(\tau)h(t-\tau)d\tau}$$
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

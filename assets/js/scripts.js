@@ -5,7 +5,7 @@
  * [2] Sidebar toggling
  * [3] Sidebar scroll preserving
  * [4] Keyboard navigation
- * [5] Right sidebar scroll highlighting
+ * [5] Right sidebar scroll highlighting / navbar show
  */
 
 const togglerId = 'js-sidebar-toggle'
@@ -13,6 +13,7 @@ const textbookId = 'js-textbook'
 const togglerActiveClass = 'is-active'
 const textbookActiveClass = 'js-show-sidebar'
 const mathRenderedClass = 'js-mathjax-rendered'
+const icon_path = document.location.origin + `${site_basename}assets`;
 
 const getToggler = () => document.getElementById(togglerId)
 const getTextbook = () => document.getElementById(textbookId)
@@ -24,10 +25,27 @@ const getTextbook = () => document.getElementById(textbookId)
 document.addEventListener('turbolinks:load', () => {
   const textbook = getTextbook()
   if (window.MathJax && !textbook.classList.contains(mathRenderedClass)) {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub])
+    MathJax.Hub.Queue(
+      ["resetEquationNumbers", MathJax.InputJax.TeX],
+      ['Typeset', MathJax.Hub]
+    )
     textbook.classList.add(mathRenderedClass)
   }
 })
+
+var initMathAnchors = () => {
+  // Disable Turbolinks for MathJax links
+  if (typeof MathJax === 'undefined') {
+    setTimeout(initMathAnchors, 250);
+    return;
+  }
+  MathJax.Hub.Queue(function () {
+    document.querySelectorAll('.MathJax a')
+      .forEach(it => it.dataset['turbolinks'] = false);
+  });
+}
+
+initFunction(initMathAnchors);
 
 /**
  * [2] Toggles sidebar and menu icon
@@ -50,7 +68,7 @@ const toggleSidebar = () => {
  * _sass/inuitcss/tools/_tools.mq.scss
  *
  */
-const autoCloseSidebarBreakpoint = 740
+const autoCloseSidebarBreakpoint = 769
 
 // Set up event listener for sidebar toggle button
 const sidebarButtonHandler = () => {
@@ -106,7 +124,7 @@ const RIGHT_ARROW_KEYCODE = 39
 
 const getPrevUrl = () => document.getElementById('js-page__nav__prev').href
 const getNextUrl = () => document.getElementById('js-page__nav__next').href
-document.addEventListener('keydown', event => {
+const initPageNav = (event) => {
   const keycode = event.which
 
   if (keycode === LEFT_ARROW_KEYCODE) {
@@ -114,27 +132,126 @@ document.addEventListener('keydown', event => {
   } else if (keycode === RIGHT_ARROW_KEYCODE) {
     Turbolinks.visit(getNextUrl())
   }
-})
+};
+
+var keyboardListener = false;
+const initListener = () => {
+  if (keyboardListener === false) {
+    document.addEventListener('keydown', initPageNav)
+    keyboardListener = true;
+  }
+}
+initFunction(initListener);
 
 /**
- * [5] Right sidebar scroll highlighting
+ * [5] Scrolling functions:
+ *   * Right sidebar scroll highlighting
+ *   * Top navbar hiding for scrolling
  */
 
-highlightRightSidebar = function() {
-  var position = document.querySelector('.c-textbook__page').scrollTop;
-  position = position + (window.innerHeight / 3);  // + Manual offset
+var didScroll;
 
-  // Highlight the "active" menu item
-  document.querySelectorAll('.c-textbook__content h2, .c-textbook__content h3').forEach((header, index) => {
-      var target = header.offsetTop;
+initScrollFunc = function() {
+  var content = document.querySelector('.c-textbook__page');
+  var topbar = document.getElementById("top-navbar");
+  var prevScrollpos = content.scrollTop; // Initializing
+
+  scrollFunc = function() {
+    // This is the function that does all the stuff when scrolling happens
+
+    var position = content.scrollTop; // Because we use this differently for sidebar
+
+    // Decide to show the navbar
+    var currentScrollPos = content.scrollTop;
+    var delta = 10;
+    var scrollDiff = prevScrollpos - currentScrollPos;
+    if (scrollDiff >= delta) {
+      // If we scrolled down, consider showing the menu
+      topbar.classList.remove("hidetop")
+    } else if (Math.abs(scrollDiff) >= delta) {
+      // If we scrolled up, consider hiding the menu
+      topbar.classList.add("hidetop")
+    } else {
+      // Do nothing because we didn't scroll enough
+    }
+    prevScrollpos = currentScrollPos;
+
+    // Highlight the right sidebar section
+    position = position + (window.innerHeight / 4);  // + Manual offset
+
+    content.querySelectorAll('h2, h3').forEach((header, index) => {
+      // Highlight based on location from the top of the screen
+      var target = header.getBoundingClientRect().top
+      var pixelOffset = 300;  // Number of pixels from top to be highlighted
       var id = header.id;
-      if (position >= target) {
+      if (target < pixelOffset) {
         var query = 'ul.toc__menu a[href="#' + id + '"]';
         document.querySelectorAll('ul.toc__menu li').forEach((item) => {item.classList.remove('active')});
         document.querySelectorAll(query).forEach((item) => {item.parentElement.classList.add('active')});
+      }
+    });
+  }
+
+  // Our event listener just sets "yep, I scrolled" to true.
+  // The interval function will set it to false after it runs.
+  content.addEventListener('scroll', () => {didScroll = true;});
+  scrollWait = 250;
+  setInterval(() => {
+    if (didScroll) {
+      scrollFunc();
+      didScroll = false;
+    }
+  }, scrollWait)
+}
+
+initFunction(initScrollFunc);
+
+
+/**
+ * [6] Left sidebar highlight
+ *   Loop through the left sidebar links and show / highlight the relevant ones
+ */
+
+var updateSidebar = () => {
+  var currentUrl = window.location.href;
+  var chapters = document.querySelector('ul.c-sidebar__chapters')
+  chapters.querySelectorAll('li.c-sidebar__chapter').forEach((chapter, index) => {
+    var sections = chapter.nextElementSibling;
+    if (currentUrl.endsWith(chapter.dataset.url + '.html')) {
+      chapter.querySelector('a').classList.add('c-sidebar__entry--active')
+      if (sections.classList.contains('c-sidebar__sections')) {
+        sections.classList.remove('u-hidden-visually');
+      }
+    }
+
+    // Loop through sections to highlight as needed
+    if (sections) {
+      sections.querySelectorAll('li.c-sidebar__section').forEach((section, ix_section) => {
+        var subsections = section.nextElementSibling;
+
+        // If we're in a top-level section page, show the section
+        if (currentUrl.endsWith(section.dataset.url + '.html')) {
+          section.querySelector('a').classList.add('c-sidebar__entry--active');
+          sections.classList.remove('u-hidden-visually');
+
+          // If we have subsections, show them if we've clicked the parent section
+          if (subsections.classList.contains('c-sidebar__subsections')) {
+            subsections.classList.remove('u-hidden-visually');
+          }
+        }
+
+        // Loop through subections to highlight if needed
+        if (subsections) {
+          subsections.querySelectorAll('li.c-sidebar__subsection').forEach((subsection, ix_subsection) => {
+            if (currentUrl.endsWith(subsection.dataset.url + '.html')) {
+              subsection.querySelector('a').classList.add('c-sidebar__entry--active');
+              sections.classList.remove('u-hidden-visually');
+              subsections.classList.remove('u-hidden-visually');
+            }
+          })
+        }
+      })
     }
   });
-  document.querySelector('.c-textbook__page').addEventListener('scroll', highlightRightSidebar);
-};
-
-initFunction(highlightRightSidebar);
+}
+initFunction(updateSidebar);

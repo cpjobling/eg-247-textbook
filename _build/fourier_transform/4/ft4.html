@@ -1,0 +1,1132 @@
+---
+redirect_from:
+  - "/fourier-transform/4/ft4"
+interact_link: content/fourier_transform/4/ft4.ipynb
+kernel_name: matlab
+kernel_path: content/fourier_transform/4
+has_widgets: false
+title: |-
+  Introduction to Filters
+pagenum: 17
+prev_page:
+  url: /fourier_transform/3/ft3.html
+next_page:
+  url: /dt_systems/index.html
+suffix: .ipynb
+search: filter omega frequency t c response pass h butterworth img src pictures png pre low off filters ideal signal x omegac left right impulse mathrm filtering cut example rm array frac order introduction bandpass frequencies its lp solution style border px solid blue selective high n kern pt leftrightarrow y hb s cutoff highpass hp com fourier transform system components noise eg signalsandsystems cuts begin end step p j sqrt second nd determine magnitude solutions reading section boulet ebookcentral proquest lib swansea ebooks reader action ppg docid tm design through range band typical bandwidth onenote usrgrpcopy e higher pi sinc
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Introduction to Filters</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Introduction-to-Filters">Introduction to Filters<a class="anchor-link" href="#Introduction-to-Filters"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Scope-and-Background-Reading">Scope and Background Reading<a class="anchor-link" href="#Scope-and-Background-Reading"> </a></h2><p>This section is Based on the section <strong>Filtering</strong> from Chapter 5 of <a href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?ppg=221&amp;docID=3135971&amp;tm=1518715953782">Benoit Boulet, Fundamentals of Signals and Systems</a> from the <strong>Recommended Reading List</strong>.</p>
+<p>This material is an introduction to analogue filters. You will find much more in-depth coverage on <a href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?ppg=429&amp;docID=3384197&amp;tm=1518716026573">Pages 11-1&mdash;11-48 of Karris</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Agenda">Agenda<a class="anchor-link" href="#Agenda"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Frequency Selective Filters</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Ideal low-pass filter</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Butterworth low-pass filter</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>High-pass filter</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Bandpass filter</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction"> </a></h2><ul>
+<li>Filter design is an important application of the Fourier transform</li>
+<li>Filtering is a rich topic often taught in graduate courses so we give only an introduction.</li>
+<li>Our introduction <em>will</em> illustrate the usefulness of the frequency domain viewpoint.</li>
+<li>We will explore how filters can shape the spectrum of a signal.</li>
+</ul>
+<p>Other applications of the Fourier transform are sampling theory (introduced next week) and modulation.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Frequency-Selective-Filters">Frequency Selective Filters<a class="anchor-link" href="#Frequency-Selective-Filters"> </a></h2><p>An ideal frequency-selective filter is a system that let's the frequency components of a signal through undistorted while frequency components at other components are completely cut off.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>The range of frequencies which are let through belong to the <strong>pass Band</strong></li>
+<li>The range of frequencies which are cut-off by the filter are called the <strong>stopband</strong></li>
+<li>A typical scenario where filtering is needed is when noise $n(t)$ is added to a signal $x(t)$ but that signal has most of its energy outside the bandwidth of a signal.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Typical-filtering-problem">Typical filtering problem<a class="anchor-link" href="#Typical-filtering-problem"> </a></h3><p><img src="pictures/filter1.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Signal">Signal<a class="anchor-link" href="#Signal"> </a></h3><p><img src="pictures/filter2.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Out-of-Bandwidth-Noise">Out-of Bandwidth Noise<a class="anchor-link" href="#Out-of-Bandwidth-Noise"> </a></h3><p><img src="pictures/filter3.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Signal-plus-Noise">Signal plus Noise<a class="anchor-link" href="#Signal-plus-Noise"> </a></h3><p><img src="pictures/filter4.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Filtering">Filtering<a class="anchor-link" href="#Filtering"> </a></h3><p><img src="pictures/filter5.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Motivating-example">Motivating example<a class="anchor-link" href="#Motivating-example"> </a></h3><p>See the video and script in the <a href="https://swanseauniversity.sharepoint.com/sites/EG-247SignalsandSystems2017-2108-UsrGrpcopy-UsrGrp/_layouts/OneNote.aspx?id=%2Fsites%2FEG-247SignalsandSystems2017-2108-UsrGrpcopy-UsrGrp%2FSiteAssets%2FEG-247%20Signals%20and%20Systems%202017-2108-UsrGrp%20%5Bcopy%5D-UsrGrp%20Notebook&amp;wd=target%28_Content%20Library%2FClasses%2FWeek%207.one%7C681B0954-AC4E-9646-A567-FF06C3696F07%2FMotivating%20Example%20for%20Introduction%20to%20Filters%7CE5AD343A-E348-0141-8096-60E0CA201E57%2F%29">OneNote Class Room notebook</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Ideal-Low-Pass-Filter">Ideal Low-Pass Filter<a class="anchor-link" href="#Ideal-Low-Pass-Filter"> </a></h2><p>An ideal low pass filter cuts-off frequencies higher than its <em>cut-off frequency</em>, $\omega_c$.</p>
+$$H_{\rm{lp}}(\omega ) = \left\{ {\begin{array}{*{20}{c}}
+{1,}&amp;{|\omega |{\kern 1pt} \, &lt; {\omega _c}}\\
+{0,}&amp;{|\omega |{\kern 1pt} \, \ge {\omega _c}}
+\end{array}} \right.$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Frequency-response">Frequency response<a class="anchor-link" href="#Frequency-response"> </a></h3><p><img src="pictures/ideal_lpf.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Impulse-response">Impulse response<a class="anchor-link" href="#Impulse-response"> </a></h3>$$h_{\rm{lp}}(t) = \frac{\omega _c}{\pi }{\mathop{\rm sinc}\nolimits} \left( \frac{\omega _c}{\pi }t \right)$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="pictures/sinc.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Filtering-is-Convolution">Filtering is Convolution<a class="anchor-link" href="#Filtering-is-Convolution"> </a></h3><p>The output of an LTI system with impulse response</p>
+$$h(t) \Leftrightarrow H(\omega)$$<p>subject to an input signal</p>
+$$x(t) \Leftrightarrow X(\omega)$$<p>is given by</p>
+$$y(t) = h(t)*x(t) \Leftrightarrow Y(\omega) = H(\omega)X(\omega)$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Issues-with-the-&quot;ideal&quot;-filter">Issues with the "ideal" filter<a class="anchor-link" href="#Issues-with-the-&quot;ideal&quot;-filter"> </a></h3><p>This is the step response:</p>
+<p><img src="pictures/step_r.png"></p>
+<p>(reproduced from Boulet Fig. 5.23 p. 205)</p>
+<p>Ripples in the impulse resonse would be undesireable, and because the impulse response is non-causal it cannot actually be implemented.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Butterworth-low-pass-filter">Butterworth low-pass filter<a class="anchor-link" href="#Butterworth-low-pass-filter"> </a></h2><p>N-th Order Butterworth Filter</p>
+$$\left| H_B(\omega ) \right| = \frac{1}{\left(1 + \left(\frac{\omega }{\omega _c}\right)^{2N}\right)^{\frac{1}{2}}}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Remarks</strong></p>
+<ul>
+<li><p>DC gain is</p>
+<p>$$|H_B(j0)|=1$$</p>
+</li>
+<li><p>Attenuation at the cut-off frequency is</p>
+<p>$$|H_B(j\omega_c)|=1/\sqrt{2}$$</p>
+<p>for any $N$</p>
+</li>
+</ul>
+<p>More about the Butterworth filter: <a href="http://en.wikipedia.org/wiki/Butterworth_filter">Wikipedia Article</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-5:-Second-order-BW-Filter">Example 5: Second-order BW Filter<a class="anchor-link" href="#Example-5:-Second-order-BW-Filter"> </a></h3><p>The second-order butterworth Filter is defined by is Characteristic Equation (CE):</p>
+$$p(s) = s^2 + \omega_c\sqrt{2}s+\omega_c^2 = 0^*$$<p>Calculate the roots of $p(s)$ (the poles of the filter transfer function) in both Cartesian and polar form.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Note</strong>: This has the same characteristic as a control system with damping ratio $\zeta = 1/\sqrt{2}$ and $\omega_n = \omega_c$!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Solution">Solution<a class="anchor-link" href="#Solution"> </a></h4><pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-6">Example 6<a class="anchor-link" href="#Example-6"> </a></h3><p>Derive the differential equation relating the input $x(t)$ to output $y(t)$ of the 2nd-Order Butterworth Low-Pass Filter with cutoff frequency $\omega_c$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Solution">Solution<a class="anchor-link" href="#Solution"> </a></h4><pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-7">Example 7<a class="anchor-link" href="#Example-7"> </a></h3><p>Determine the frequency response $H_B(\omega)=Y(\omega)/X(\omega)$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Solution">Solution<a class="anchor-link" href="#Solution"> </a></h3><pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Magnitude-of-frequency-response-of-a-2nd-order-Butterworth-Filter">Magnitude of frequency response of a 2nd-order Butterworth Filter<a class="anchor-link" href="#Magnitude-of-frequency-response-of-a-2nd-order-Butterworth-Filter"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">wc</span> <span class="p">=</span> <span class="mi">100</span><span class="p">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Transfer function</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">H</span> <span class="p">=</span> <span class="n">tf</span><span class="p">(</span><span class="n">wc</span>^<span class="mi">2</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span> <span class="n">wc</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">wc</span>^<span class="mi">2</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+H =
+ 
+          10000
+  ---------------------
+  s^2 + 141.4 s + 10000
+ 
+Continuous-time transfer function.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Magnitude frequency response</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">w</span> <span class="p">=</span> <span class="o">-</span><span class="mi">400</span><span class="p">:</span><span class="mi">400</span><span class="p">;</span>
+<span class="n">mHlp</span> <span class="p">=</span> <span class="mf">1.</span><span class="o">/</span><span class="p">(</span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">w</span><span class="o">./</span><span class="n">wc</span><span class="p">)</span><span class="o">.^</span><span class="mi">4</span><span class="p">));</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">mHlp</span><span class="p">)</span>
+<span class="n">grid</span>
+<span class="s">ylabel(&#39;|H_B(j\omega)|&#39;)</span><span class="p"></span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;Magnitude Frequency Response for 2nd-Order LP Butterworth Filter (\omega_c = 100 rad/s)&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Radian Frequency \omega [rad/s]&#39;</span><span class="p">)</span>
+<span class="n">text</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="s">&#39;\omega_c&#39;</span><span class="p">)</span>
+<span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="s">&#39;-\omega_c&#39;</span><span class="p">)</span>
+<span class="n">hold </span><span class="s">on</span><span class="p"></span>
+<span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mi">400</span><span class="p">,</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">400</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="s">&#39;r:&#39;</span><span class="p">)</span>
+<span class="n">hold </span><span class="s">off</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/fourier_transform/4/ft4_37_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Bode plot</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">bode</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+<span class="n">grid</span>
+<span class="s">title(&#39;Bode-plot of Butterworth 2nd-Order Butterworth Low Pass Filter&#39;)</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/fourier_transform/4/ft4_39_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-8">Example 8<a class="anchor-link" href="#Example-8"> </a></h3><p>Determine the impulse and step response of a butterworth low-pass filter.</p>
+<p>You will find this Fourier transform pair useful:</p>
+$$e^{-at}\sin\omega_0 t\;u_0(t) \Leftrightarrow \frac{\omega_0}{(j\omega + a)^2+\omega_0^2}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Solution">Solution<a class="anchor-link" href="#Solution"> </a></h4><pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Impulse response</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">impulse</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">grid</span>
+<span class="s">title(&#39;Impulse Response of 2nd-Order Butterworth Low Pass Filter&#39;)</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/fourier_transform/4/ft4_43_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Step response</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">step</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;Step Response of Butterworth 2nd-Order Butterworth Low Pass Filter&#39;</span><span class="p">)</span>
+<span class="n">grid</span>
+<span class="s">text(0.008,1,&#39;s_B(t) for \omega_c = 100 rad/s&#39;)</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/fourier_transform/4/ft4_45_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="High-pass-filter">High-pass filter<a class="anchor-link" href="#High-pass-filter"> </a></h2><p>An ideal highpass filter cuts-off frequencies lower than its <em>cutoff frequency</em>, $\omega_c$.</p>
+$$H_{\rm{hp}}(\omega ) = \left\{ {\begin{array}{*{20}{c}}
+{0,}&amp;{|\omega |{\kern 1pt} \, \le {\omega _c}}\\
+{1,}&amp;{|\omega |{\kern 1pt} \, &gt; {\omega _c}}
+\end{array}} \right.$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Frequency-response">Frequency response<a class="anchor-link" href="#Frequency-response"> </a></h3><p><img src="pictures/ideal_hpf.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Responses">Responses<a class="anchor-link" href="#Responses"> </a></h3><p><strong>Frequency response</strong></p>
+$$H_{\mathrm{hp}}(\omega)=1-H_{\mathrm{lp}}(\omega)$$<p><strong>Impulse response</strong></p>
+$$h_{\mathrm{hp}}(t)=\delta(t)-h_{\mathrm{lp}}(t)$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-9">Example 9<a class="anchor-link" href="#Example-9"> </a></h3><p>Determine the frequency response of a 2nd-order butterworth highpass filter</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Solution">Solution<a class="anchor-link" href="#Solution"> </a></h4><pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Magnitude frequency response</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">w</span> <span class="p">=</span> <span class="o">-</span><span class="mi">400</span><span class="p">:</span><span class="mi">400</span><span class="p">;</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="mi">1</span><span class="o">-</span><span class="n">mHlp</span><span class="p">)</span>
+<span class="n">grid</span>
+<span class="s">ylabel(&#39;|H_B(j\omega)|&#39;)</span><span class="p"></span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;Magnitude Frequency Response for 2nd-Order HP Butterworth Filter (\omega_c = 100 rad/s)&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Radian Frequency \omega [rad/s]&#39;</span><span class="p">)</span>
+<span class="n">text</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mf">0.9</span><span class="p">,</span><span class="s">&#39;\omega_c&#39;</span><span class="p">)</span>
+<span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mf">0.9</span><span class="p">,</span><span class="s">&#39;-\omega_c&#39;</span><span class="p">)</span>
+<span class="n">hold </span><span class="s">on</span><span class="p"></span>
+<span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mi">400</span><span class="p">,</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">400</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="s">&#39;r:&#39;</span><span class="p">)</span>
+<span class="n">hold </span><span class="s">off</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/fourier_transform/4/ft4_52_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>High-pass filter</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Hhp</span> <span class="p">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">H</span>
+<span class="n">bode</span><span class="p">(</span><span class="n">Hhp</span><span class="p">)</span>
+<span class="n">grid</span>
+<span class="s">title(&#39;Bode-plot of Butterworth 2nd-Order Butterworth High Pass Filter&#39;)</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Hhp =
+ 
+      s^2 + 141.4 s
+  ---------------------
+  s^2 + 141.4 s + 10000
+ 
+Continuous-time transfer function.
+
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/fourier_transform/4/ft4_54_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Band-pass-filter">Band-pass filter<a class="anchor-link" href="#Band-pass-filter"> </a></h2><p>An ideal bandpass filter cuts-off frequencies lower than its first <em>cutoff frequency</em> $\omega_{c1}$, and higher than its second <em>cutoff frequency</em> $\omega_{c2}$.</p>
+$$H_{\rm{bp}}(\omega ) = \left\{ {\begin{array}{*{20}{c}}
+{1,}&amp;\omega _{c1} &lt; \,|\omega |\, &lt; \omega _{c2}\\
+{0,}&amp;\rm{otherwise}
+\end{array}} \right.$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="pictures/bbpmfr.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Bandpass-filter-design">Bandpass filter design<a class="anchor-link" href="#Bandpass-filter-design"> </a></h3><p>A bandpass filter can be obtained by multiplying the frequency responses of a lowpass filter by a highpass filter.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$H_{\mathrm{bp}}(\omega) = H_{\mathrm{hp}}(\omega)H_{\mathrm{lp}}(\omega)$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>The highpass filter should have cut-off frequency of $\omega_{c1}$</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>The lowpass filter should have cut-off frequency of $\omega_{c2}$</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To generate all the plots shown in this presentation, you can use <a href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/4/butter2_ex.mlx">butter2_ex.mlx</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Summary">Summary<a class="anchor-link" href="#Summary"> </a></h2><ul>
+<li>Frequency-Selective Filters</li>
+<li>Ideal low-pass filter</li>
+<li>Butterworth low-pass filter</li>
+<li>High-pass filter</li>
+<li>Bandpass filter</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Solutions">Solutions<a class="anchor-link" href="#Solutions"> </a></h2><p>Solutions to Examples 5-9 are captured as a PenCast in <a href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/filters.pdf">filters.pdf</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

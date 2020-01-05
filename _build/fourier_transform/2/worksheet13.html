@@ -1,0 +1,742 @@
+---
+redirect_from:
+  - "/fourier-transform/2/worksheet13"
+interact_link: content/fourier_transform/2/worksheet13.ipynb
+kernel_name: matlab
+kernel_path: content/fourier_transform/2
+has_widgets: false
+title: |-
+  Worksheet 13 Fourier transforms of commonly occuring signals
+pagenum: 39
+prev_page:
+  url: /fourier_transform/1/worksheet12.html
+next_page:
+  url: /fourier_transform/3/worksheet14.html
+suffix: .ipynb
+search: omega t j delta frac tdtd u f pi left right fourier transform e trtd td tr function pre leftrightarrow x example operatorname cos mathcal sgn table pole img src pictures png matlab style border px solid blue note tdtde sin tdtda frequency infty gt transforms signals step derived periodic used common proof even real signum show results s worksheet chapter class cpjobling github io eg textbook fouriertransform definitions signal convert int inverse important filter karris also wikibooks thead b tdtdf tbody shift sign tdtdcomplex cosine component sampling related property sinewave odd array model unit linearity far hint plus solution
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Worksheet 13 Fourier transforms of commonly occuring signals</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Worksheet-13">Worksheet 13<a class="anchor-link" href="#Worksheet-13"> </a></h1><h2 id="To-accompany-Chapter-5.2-Fourier-transforms-of-commonly-occurring-signals">To accompany Chapter 5.2 Fourier transforms of commonly occurring signals<a class="anchor-link" href="#To-accompany-Chapter-5.2-Fourier-transforms-of-commonly-occurring-signals"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will step through this worksheet in class.</p>
+<p>You are expected to have at least watched the video presentation of <a href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/2/ft2">Chapter 5.2</a> of the <a href="https://cpjobling.github.io/eg-247-textbook">notes</a> before coming to class. If you haven't watch it afterwards!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Reminder-of-the-Definitions">Reminder of the Definitions<a class="anchor-link" href="#Reminder-of-the-Definitions"> </a></h2><p>Last time we derived the Fourier Transform by evaluating what would happen when a periodic signal was made periodic. Let us restate the definitions.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-Fourier-Transform">The Fourier Transform<a class="anchor-link" href="#The-Fourier-Transform"> </a></h3><p>Used to convert a function of time $f(t)$ to a function of radian frequency $F(\omega)$:</p>
+$$\mathcal{F}\left\{f(t)\right\} = \int_{-\infty}^{\infty} f(t)e^{-j\omega t}\,dt = F(\omega).$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-Inverse-Fourier-Transform">The Inverse Fourier Transform<a class="anchor-link" href="#The-Inverse-Fourier-Transform"> </a></h3><p>Used to convert a function of frequency $F(\omega)$ to a function of time $f(t)$:</p>
+$$\mathcal{F}^{-1}\left\{F(\omega)\right\} = \frac{1}{2\pi}\int_{-\infty}^{\infty} F(\omega)e^{j\omega t}\,d\omega = f(t) .$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note, the factor $2\pi$ is introduced because we are changing units from radians/second to seconds.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Duality-of-the-transform">Duality of the transform<a class="anchor-link" href="#Duality-of-the-transform"> </a></h3><p>Note the similarity of the Fourier and its Inverse.</p>
+<p>This has important consequences in filter design and later when we consider sampled data systems.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Table-of-Common-Fourier-Transform-Pairs">Table of Common Fourier Transform Pairs<a class="anchor-link" href="#Table-of-Common-Fourier-Transform-Pairs"> </a></h2><p>This table is adapted from Table 8.9 of Karris. See also: <a href="http://en.wikibooks.org/wiki/Engineering_Tables/Fourier_Transform_Table">Wikibooks: Engineering Tables/Fourier Transform Table</a> and <a href="http://mathworld.wolfram.com/FourierTransform.html">Fourier Transfom&mdash;WolframMathworld</a> for more complete references.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<table>
+<thead>
+    <tr><td></td><td><b>Name</b></td><td>$f(t)$</td><td>$F(\omega)$</td><td><b>Remarks</b></td></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>Dirac delta</td><td>$\delta(t)$</td><td>1</td><td>Constant energy at <i>all</i> frequencies.</td></tr>
+<tr><td>2</td><td>Time sample</td><td>$\delta(t-t_0)$</td><td>$e^{j\omega t_0}$</td><td></td></tr>
+<tr><td>3.</td><td>Phase shift</td><td>$e^{j\omega t_0}$</td><td>$2\pi\delta(\omega - \omega_0)$</td><td></td></tr>
+    <tr><td>4.</td><td><i>Signum</i> </td><td>$\operatorname{sgn} (x)$</td><td>$$\frac{2}{j\omega}$$</td><td>also known as sign function</td></tr>
+<tr><td>5.</td><td>Unit step</td><td>$u_0(t)$</td><td>$$\frac{1}{j\omega}+\pi\delta(\omega)$$</td><td></td></tr>
+<tr><td>6.</td><td>Cosine</td><td>$\cos \omega_0 t$</td><td>$\pi\left[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)\right]$</td><td></td></tr>
+<tr><td>7.</td><td>Sine</td><td>$\sin \omega_0 t$</td><td>$-j\pi\left[\delta(\omega-\omega_0)-\delta(\omega+\omega_0)\right]$</td><td></td></tr>
+<tr><td>8.</td><td>Single pole</td><td>$e^{-at}u_0(t)$</td><td>$$\frac{1}{j\omega + a}$$</td><td>$a \gt 0$</td></tr>
+<tr><td>9.</td><td>Double pole</td><td>$te^{-at}u_0(t)$</td><td>$$\frac{1}{(j\omega + a)^2}$$</td><td>$a \gt 0$</td></tr>
+<tr><td>10.</td><td>Complex pole (cosine component)</td><td>$e^{-at}\cos \omega_0 t\;u_0(t)$</td><td>$$\frac{j\omega + a}{((j\omega + a)^2+\omega^2}$$</td><td>$a\gt 0$</td></tr>
+<tr><td>11.</td><td>Complex pole (sine component)</td><td>$e^{-at}\sin \omega_0 t\;u_0(t)$</td><td>$$\frac{\omega}{((j\omega + a)^2+\omega^2}$$</td><td>$a\gt 0$</td></tr>
+    <tr><td>12.</td><td>Gating function (<i>aka</i> $\operatorname{rect} (T)$)</td><td>$A\left[u_0(t + T)-u_0(t - T)\right]$</td><td>$$2AT\frac{\sin\omega T}{\omega T}$$</td><td></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Some-Selected-Fourier-Transforms">Some Selected Fourier Transforms<a class="anchor-link" href="#Some-Selected-Fourier-Transforms"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-Dirac-Delta">The Dirac Delta<a class="anchor-link" href="#The-Dirac-Delta"> </a></h3>$$\delta(t) \Leftrightarrow 1$$<p><img src="pictures/ft_delta.png"></p>
+<p><em>Proof</em>: uses sampling and sifting properties of $\delta(t)$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Matlab</em>:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">syms </span><span class="s">t omega omega_0 t0</span><span class="p">;</span>
+<span class="n">fourier</span><span class="p">(</span><span class="n">dirac</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Related:</p>
+$$\delta(t-t_0) \Leftrightarrow e^{-j\omega t_0}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">fourier</span><span class="p">(</span><span class="n">dirac</span><span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="DC">DC<a class="anchor-link" href="#DC"> </a></h3>$$1 \Leftrightarrow 2\pi\delta(\omega)$$<p><img src="pictures/ft_dc.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Matlab</em>:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">A</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">fourier</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">omega</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Related by frequency shifting property:</p>
+$$e^{j\omega_0 t} \Leftrightarrow 2\pi\delta(\omega-\omega_0)$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Cosine-(Sinewave-with-even-symmetry)">Cosine (Sinewave with even symmetry)<a class="anchor-link" href="#Cosine-(Sinewave-with-even-symmetry)"> </a></h3>$$\cos(t) = \frac{1}{2}\left(e^{j\omega_0 t}+e^{-j\omega_0 t}\right) \Leftrightarrow \pi\delta(\omega - \omega_0) + \pi\delta(\omega + \omega_0)$$<p><img src="pictures/ft_cos.png"></p>
+<p>Note: $f(t)$ is real and even. $F(\omega)$ is also real and even.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Matlab</em>:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">fourier</span><span class="p">(</span><span class="nb">cos</span><span class="p">(</span><span class="n">omega_0</span><span class="o">*</span><span class="n">t</span><span class="p">),</span><span class="n">omega</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Sinewave">Sinewave<a class="anchor-link" href="#Sinewave"> </a></h3>$$\sin(t) = \frac{1}{j2}\left(e^{j\omega_0 t}-e^{-j\omega_0 t}\right) \Leftrightarrow -j\pi\delta(\omega - \omega_0) + j\pi\delta(\omega + \omega_0)$$<p><img src="pictures/ft_sin.png"></p>
+<p>Note: $f(t)$ is real and odd. $F(\omega)$ is imaginary and odd.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Matlab</em>:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">fourier</span><span class="p">(</span><span class="nb">sin</span><span class="p">(</span><span class="n">omega_0</span><span class="o">*</span><span class="n">t</span><span class="p">),</span><span class="n">omega</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Signum-(Sign)">Signum (Sign)<a class="anchor-link" href="#Signum-(Sign)"> </a></h3><p>The signum function is a function whose value is equal to</p>
+$$\operatorname{sgn} x = \left\{ {\begin{array}{*{20}{c}}
+  { - 1\;x &lt; 1} \\ 
+  {0\;x = 0} \\ 
+  { + 1\;x &gt; 0} 
+\end{array}} \right.$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Matlab</em>:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">fourier</span><span class="p">(</span><span class="nb">sign</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">omega</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The transform is:</p>
+$$\operatorname{sgn} x = u_0(t) - u_0(-t) = \frac{2}{j\omega}$$<p><img src="pictures/ft_sgn.png"></p>
+<p>This function is often used to model a <em>voltage comparitor</em> in circuits.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-4:-Unit-Step">Example 4: Unit Step<a class="anchor-link" href="#Example-4:-Unit-Step"> </a></h3><p>Use the signum function to show that
+$$\mathcal{F}\left\{u_0(t))\right\} = \pi\delta(\omega)+\frac{1}{j\omega}$$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Clue">Clue<a class="anchor-link" href="#Clue"> </a></h4><p>Define</p>
+$$\operatorname{sgn} t = 2 u_0(t) - 1$$<p><img src="pictures/u_as_sign.png"></p>
+<p><em>Does that help?</em></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Proof">Proof<a class="anchor-link" href="#Proof"> </a></h4>$$\operatorname{sgn} x = 2u_0(t) - 1$$<p>so</p>
+$$u_0(t) = \frac{1}{2}\left[1 + \operatorname{sgn} x\right]$$<p>From previous results $1\Leftrightarrow 2\pi\delta(\omega)$ and $\operatorname{sgn} x = 2/(j\omega)$ so by linearity</p>
+$$u_0(t) \Leftrightarrow \pi\delta(\omega)+\frac{1}{j\omega}$$<p><em>QED</em></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Matlab</em>:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">fourier</span><span class="p">(</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">omega</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-5">Example 5<a class="anchor-link" href="#Example-5"> </a></h3><p>Use the results derived so far to show that</p>
+$$e^{j\omega_0 t}u_0(t)\Leftrightarrow \pi\delta(\omega - \omega_0) + \frac{1}{j(\omega-\omega_0)}$$<p>Hint: linearity plus frequency shift property.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-6">Example 6<a class="anchor-link" href="#Example-6"> </a></h3><p>Use the results derived so far to show that</p>
+$$\sin \omega_0 t\; u_0(t)\Leftrightarrow \frac{\pi}{j2}\left[\delta(\omega-\omega_0)-\delta(\omega+\omega_0)\right] + \frac{\omega_0}{\omega_0^2 - \omega^2}$$<p>Hint: Euler's formula plus solution to example 2.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Important note</strong>: the equivalent example in Karris (Section 8.4.9 Eq. 8.75 pp 8-23&mdash;8-24) is wrong!</p>
+<p>See worked solution in OneNote for corrected proof.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-7">Example 7<a class="anchor-link" href="#Example-7"> </a></h3><p>Use the result of Example 3 to determine the Fourier transform of $\cos\omega_0 t\; u_0(t)$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Answer">Answer<a class="anchor-link" href="#Answer"> </a></h4>$$\cos\omega_0 t\; u_0(t)\Leftrightarrow \frac{\pi}{2}\left[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)\right] + \frac{j\omega}{\omega_0^2 - \omega^2}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Derivation-of-the-Fourier-Transform-from-the-Laplace-Transform">Derivation of the Fourier Transform from the Laplace Transform<a class="anchor-link" href="#Derivation-of-the-Fourier-Transform-from-the-Laplace-Transform"> </a></h2><p>If a signal is a function of time $f(t)$ which is zero for $t\le 0$, we can obtain the Fourier transform from the Lpalace transform by substituting $s$ by $j\omega$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-8:-Single-Pole-Filter">Example 8: Single Pole Filter<a class="anchor-link" href="#Example-8:-Single-Pole-Filter"> </a></h3><p>Given that</p>
+$$\mathcal{L}\left\{e^{-at}u_0(t)\right\} = \frac{1}{s + a}$$<p>Compute</p>
+$$\mathcal{F}\left\{e^{-at}u_0(t)\right\}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-9:-Complex-Pole-Pair--cos-term">Example 9: Complex Pole Pair  cos term<a class="anchor-link" href="#Example-9:-Complex-Pole-Pair--cos-term"> </a></h3><p>Given that</p>
+$$\mathcal{L}\left\{e^{-at}\cos\omega_0 t\;u_0(t)\right\} = \frac{s+a}{(s + a)^2+\omega_0^2}$$<p>Compute</p>
+$$\mathcal{F}\left\{e^{-at}\cos\omega_0 t\;u_0(t)\right\}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Fourier-Transforms-of-Common-Signals">Fourier Transforms of Common Signals<a class="anchor-link" href="#Fourier-Transforms-of-Common-Signals"> </a></h2><p>We shall conclude this session by computing as many of the the Fourier transform of some common signals as we have time for.</p>
+<ul>
+<li>rectangular pulse</li>
+<li>triangular pulse</li>
+<li>periodic time function</li>
+<li>unit impulse train (model of regular sampling)</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

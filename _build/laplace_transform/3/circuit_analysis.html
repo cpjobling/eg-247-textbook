@@ -1,0 +1,316 @@
+---
+redirect_from:
+  - "/laplace-transform/3/circuit-analysis"
+interact_link: content/laplace_transform/3/circuit_analysis.ipynb
+kernel_name: matlab
+kernel_path: content/laplace_transform/3
+has_widgets: false
+title: |-
+  Using Laplace Transforms for Circuit Analysis
+pagenum: 6
+prev_page:
+  url: /laplace_transform/2/inverse_laplace.html
+next_page:
+  url: /laplace_transform/4/transfer_functions.html
+suffix: .ipynb
+search: s complex domain frac network circuit frequency pictures png z sl sc y v admittance impedance resistive inductive capacitive where r vs laplace class worksheet g section ppg examples applications transform notes presentation also html cpjobling github io eg textbook laplacetransform circuitanalysis pdf transformation consider rlc series initial conditions zero current defining ratio obtain found known input glc parallel using transforms analysis preparatory reading chapter karris ebookcentral proquest com lib swansea ebooks reader action docid presents electrical solving problems annotatable copy full distributed before third meeting handouts week content library onenote notebook view webpage downloadable file agenda resistivetime resistivefreq inductivetime
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Using Laplace Transforms for Circuit Analysis</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Using-Laplace-Transforms-for-Circuit-Analysis">Using Laplace Transforms for Circuit Analysis<a class="anchor-link" href="#Using-Laplace-Transforms-for-Circuit-Analysis"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The preparatory reading for this section is <a href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=75#ppg=101">Chapter 4 of Karris</a> which</p>
+<ul>
+<li>presents examples of the applications of the Laplace transform for electrical solving circuit problems.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>An annotatable copy of the full notes for this presentation will be distributed before the third class meeting as <strong>Worksheet 6</strong> in the handouts section for week 3 in the <em>_Content Library</em> of the <strong>OneNote Class Notebook</strong>. You can also view the notes for this presentation as a webpage (<a href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/3/circuit_analysis.html">HTML</a>) and as a downloadable <a href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/3/circuit_analysis.pdf">PDF file</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Agenda">Agenda<a class="anchor-link" href="#Agenda"> </a></h2><p>We look at applications of the Laplace Transform for</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Circuit transformation from Time to Complex Frequency</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Complex impedance</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Complex admittance</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Circuit-Transformation-from-Time-to-Complex-Frequency">Circuit Transformation from Time to Complex Frequency<a class="anchor-link" href="#Circuit-Transformation-from-Time-to-Complex-Frequency"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Resistive-Network---Time-Domain">Resistive Network - Time Domain<a class="anchor-link" href="#Resistive-Network---Time-Domain"> </a></h3><p><img src="pictures/resistive_time.png" alt="Resistive Network - Time Domain"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Resistive-Network---Complex-Frequency-Domain">Resistive Network - Complex Frequency Domain<a class="anchor-link" href="#Resistive-Network---Complex-Frequency-Domain"> </a></h3><p><img src="pictures/resistive_freq.png" alt="Resistive Network - Complex Frequency Domain"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Inductive-Network---Time-Domain">Inductive Network - Time Domain<a class="anchor-link" href="#Inductive-Network---Time-Domain"> </a></h3><p><img src="pictures/inductive_time.png" alt="Inductive Network - Time Domain"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Inductive-Network---Complex-Frequency-Domain">Inductive Network - Complex Frequency Domain<a class="anchor-link" href="#Inductive-Network---Complex-Frequency-Domain"> </a></h3><p><img src="pictures/inductive_freq.png" alt="Inductive Network - Complex Frequency Domain"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Capacitive-Network---Time-Domain">Capacitive Network - Time Domain<a class="anchor-link" href="#Capacitive-Network---Time-Domain"> </a></h3><p><img src="pictures/capacitive_time.png" alt="Capacitive Network - Time Domain"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Capacitive-Network---Complex-Frequency-Domain">Capacitive Network - Complex Frequency Domain<a class="anchor-link" href="#Capacitive-Network---Complex-Frequency-Domain"> </a></h3><p><img src="pictures/capacitive_freq.png" alt="Capacitive Network - Complex Frequency Domain"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Examples">Examples<a class="anchor-link" href="#Examples"> </a></h3><p>We will work through these in class. See <a href="worksheet6">worksheet6</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Complex-Impedance-Z(s)">Complex Impedance Z(s)<a class="anchor-link" href="#Complex-Impedance-Z(s)"> </a></h2><p>Consider the $s$-domain RLC series circuit, where the initial conditions are assumed to be zero.</p>
+<p><img src="pictures/impedence.png" alt="Complex Impedance $Z(s)$"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For this circuit, the sum</p>
+$$R + sL + \frac{1}{sC}$$<p></p>
+<p>represents that total opposition to current flow. Then,</p>
+$$I(s) = \frac{V_s(s)}{R + sL + 1/(sC)}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>and defining the ratio $V_s(s)/I(s)$ as $Z(s)$, we obtain</p>
+$$Z(s) = \frac{V_s(s)}{I(s)} = R + sL + \frac{1}{sC}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The $s$-domain current $I(s)$ can be found from</p>
+$$I(s) = \frac{V_s(s)}{Z(s)}$$<p>where</p>
+$$Z(s) = R + sL + \frac{1}{sC}.$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Since $s = \sigma + j\omega$ is a complex number, $Z(s)$ is also complex and is known as the <em>complex input impedance</em> of this RLC series circuit.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Complex-Admittance-Y(s)">Complex Admittance Y(s)<a class="anchor-link" href="#Complex-Admittance-Y(s)"> </a></h2><p>Consider the $s$-domain GLC parallel circuit shown below where the initial conditions are zero.</p>
+<p><img src="pictures/admittance.png" alt="Complex admittance $Y(s)$"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For this circuit</p>
+$$GV(s)+ \frac{1}{sL}V(s) + sCV(s) = I_s(s)$$$$\left(G+ \frac{1}{sL} + sC\right)V(s) = I_s(s)$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Defining the ratio $I_s(s)/V(s)$ as $Y(s)$ we obtain</p>
+$$Y(s)=\frac{I_s(s)}{V(s)} = G+ \frac{1}{sL} + sC = \frac{1}{Z(s)}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The $s$-domain voltage $V(s)$ can be found from</p>
+$$V(s) = \frac{I_s(s)}{Y(s)}$$<p>where</p>
+$$Y(s) = G + \frac{1}{sL} + sC.$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$Y(s)$ is complex and is known as the <em>complex input admittance</em> of this GLC parallel circuit.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

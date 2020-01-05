@@ -1,0 +1,327 @@
+---
+interact_link: content/labs/lab06/index.ipynb
+kernel_name: matlab
+kernel_path: content/labs/lab06
+has_widgets: false
+title: |-
+  Lab 6 - Sounds and Sampling
+pagenum: 52
+prev_page:
+  url: /labs/lab05/index.html
+next_page:
+  url: /labs/lab07/index.html
+suffix: .ipynb
+search: sup lab note file matlab notes audio script frequency fs nbsp sampling live ex section musical eighth sounds music aliasing exercise m mlx part x command hz beethovens pitch should ts eg signals create run samples code using complete following frequencies fifth octave duration pause labs edu ee processing read play files download example variable c table score half length href anti additional d folder store same hear used into observations different wav function comment results tones e f g figure created eflat cpjobling github textbook pdf class introduction target systems assessment criteria marks exercises mark miniproject given before need
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Lab 6 - Sounds and Sampling</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Lab-6:-Sounds-and-Sampling">Lab 6: Sounds and Sampling<a class="anchor-link" href="#Lab-6:-Sounds-and-Sampling"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Preamble">Preamble<a class="anchor-link" href="#Preamble"> </a></h2><h3 id="Other-formats">Other formats<a class="anchor-link" href="#Other-formats"> </a></h3><p>This document is available in <a href="https://cpjobling.github.io/eg-247-textbook/labs/lab06/index">HTML</a> format for online viewing and as <a href="https://cpjobling.github.io/eg-247-textbook/labs/lab06/lab06.pdf">PDF</a> for printing.</p>
+<h3 id="Acknowledgement">Acknowledgement<a class="anchor-link" href="#Acknowledgement"> </a></h3><p>This lab has been adapted from <a href="http://class.ece.iastate.edu/mmina/ee186/labs/audio.htm" title="Audio Processing with MatLab An Introduction" target="_blank">**Audio Processing with Matlab: An Introduction**</a> by Rachel Hager from the Electrical and Computer Engineering Department at Iowa State University and <a href="https://class.ee.washington.edu/SST_textbook/musiclab.pdf">Elementary Music Synthesis</a> by Professor Virginia Stonick of Oregon State University.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Aims">Aims<a class="anchor-link" href="#Aims"> </a></h2><p>This lab is an introduction to signal processing with MATLAB. It will help to familiarize you with some of the main functions to read in and play sound files in MATLAB. It also looks at the ideas of aliasing and anti-aliasing filters that is key to the successful conversion from continuous to discrete time signals and systems. It is therefore an opportunity to try some basic digital signal processing.</p>
+<p>We also look at a one application of digital signals processing which is simple sound synthesis.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Assessment-criteria">Assessment criteria<a class="anchor-link" href="#Assessment-criteria"> </a></h2><p>This will be a self-assessed exercise.</p>
+<p>Up to 2 marks each can be claimed for Exercises 12 and 13. There is 1 additional mark for Miniproject 3.</p>
+<p>Detailed marking criteria for this and the other labs and the project are given in the linked <a href="https://docs.google.com/spreadsheets/d/1EQzwSfGMdw8oiQds4bUR8sZTCgb2lMvcJHjmea-8hW4/edit?usp=sharing">Assessment Criteria</a> [Google sheet].</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Setup">Setup<a class="anchor-link" href="#Setup"> </a></h2><h3 id="Before-you-start">Before you start<a class="anchor-link" href="#Before-you-start"> </a></h3><p>If you haven't already, create a suitable folder structure on your file-store for your labs.</p>
+<p>I suggest</p>
+
+<pre><code>P:\workspace
+    signals-and-systems-lab
+        lab01
+        lab02
+        lab03
+        lab04
+        lab05
+        lab06
+        :</code></pre>
+<p>Use folder <code>p:\workspace\signals-and-systems-lab\lab06</code> for this lab.</p>
+<h3 id="Preparation">Preparation<a class="anchor-link" href="#Preparation"> </a></h3><p>Download and run the <a href="https://github.com/cpjobling/eg-247-textbook/blob/master/portfolio/lab06/soundex.m" target="_blank">linked script</a> to familiarise yourself with the basic tools that MATLAB provides for manipulating and visualizing audio files. You will need to download a sound file and store it in the same folder then edit the script so that it loads your file. Music might be best for this initial exercise but you can use any audio file.</p>
+<p>You will need headphones to hear the sounds without disturbing others in class.</p>
+<h3 id="Sound-Samples-(web-link)"><a href="http://www.ee.columbia.edu/~dpwe/sounds/">Sound Samples</a> (web link)<a class="anchor-link" href="#Sound-Samples-(web-link)"> </a></h3><p>The web link above points to a source of sound samples. Choose one of these or find some other files from the internet. I downloaded and used the file <a href="http://www.ee.columbia.edu/~dpwe/sounds/musp/msmv2.wav">Music (Vocals) Example 2</a> from <a href="http://www.ee.columbia.edu/~dpwe/sounds/musp/" target="_blank">this page</a> in my example script.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Lab-Exercises">Lab Exercises<a class="anchor-link" href="#Lab-Exercises"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Lab-Exercise-12:-Playing-With-Sound-(2-marks)">Lab Exercise 12: Playing With Sound (2 marks)<a class="anchor-link" href="#Lab-Exercise-12:-Playing-With-Sound-(2-marks)"> </a></h3><p>Before starting this lab, create a new MATLAB Live Script File and save it as <code>ex12.mlx</code>.</p>
+<p>The Live Script will open with a code cell highlighted.</p>
+<p>Copy the first instruction below into the Live Script code cell.</p>
+<p>Press the <strong>run section</strong> button to execute the code.</p>
+<p>Using section breaks between code cells.</p>
+<p>Use <strong>run section</strong> or <strong>run section and advance</strong> buttons to step through the code.</p>
+<p>Allow each sound sample played in a section to complete before executing the next section that plays a sound sample.</p>
+<p>Use the <strong>text</strong> button to add commentary and your observations to your Live Script.</p>
+<p>Use the <strong>text style</strong> features to add a title to your Live Script and section headings as appropriate.</p>
+<h4 id="Part-1:-Read-and-Store-an-Audio-File-in-Matlab">Part 1: Read and Store an Audio File in Matlab<a class="anchor-link" href="#Part-1:-Read-and-Store-an-Audio-File-in-Matlab"> </a></h4><p>To read and store an audio file, you can use one of two different commands. The following stores the file into variable <code>x</code>.</p>
+<div class="highlight"><pre><span></span><span class="n">x</span> <span class="p">=</span> <span class="n">audioread</span><span class="p">(</span><span class="s">&#39;filename&#39;</span><span class="p">);</span>
+</pre></div>
+<p>Unless the audio file is in the same folder as the script, you will need to include the entire filename including the directory.</p>
+<p>Example: <code>C:\My Documents\EG-247-Lab\portfolio\lab06\Audio.wav</code></p>
+<p>The command below stores the audio file into variable <code>x</code> and the sampling frequency in variable <code>Fs</code>.</p>
+<div class="highlight"><pre><span></span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">Fs</span><span class="p">]</span> <span class="p">=</span> <span class="n">audioread</span><span class="p">(</span><span class="s">&#39;filename&#39;</span><span class="p">);</span>
+</pre></div>
+<h4 id="Part-2:-Play-the-Audio-File">Part 2: Play the Audio File<a class="anchor-link" href="#Part-2:-Play-the-Audio-File"> </a></h4><p>To play an audio file in MATLAB you use the <code>sound()</code> function. The following function plays the sound. If the <code>Fs</code> variable is not defined or included in the command, it will assume the default sample rate of 8192 Hz.</p>
+<div class="highlight"><pre><span></span><span class="n">sound</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">Fs</span><span class="p">);</span>
+</pre></div>
+<p>In the PC lab, the speakers may have been disabled. But even if they are not, it will probably be best if you use head phones with either a standard 3.5 mm phone socket or USB connection to hear the sounds.</p>
+<h4 id="Part-3:-Audio-Scaling">Part 3: Audio Scaling<a class="anchor-link" href="#Part-3:-Audio-Scaling"> </a></h4><p>To scale an audio file the <code>sound()</code> command is used. This allows for the modification of an audio signal’s amplitude or frequency.</p>
+<div class="highlight"><pre><span></span><span class="n">sound</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">Fs</span><span class="p">);</span>
+</pre></div>
+<p>To increase the volume of the audio track you can multiply the variable it is stored in by a scalar. To slow down or speed up the track played you can adjust the sampling rate. Comment on your observations using different values.</p>
+<p>Now experiment with different bit values (8,16,24) in the following command:</p>
+<div class="highlight"><pre><span></span><span class="n">sound</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">Fs</span><span class="p">,</span><span class="n">bits</span><span class="p">);</span>
+</pre></div>
+<p>Comment on your observations.</p>
+<h4 id="Part&#160;4:-Playing-a-Sound-Backwards">Part&#160;4: Playing a Sound Backwards<a class="anchor-link" href="#Part&#160;4:-Playing-a-Sound-Backwards"> </a></h4><p>The command to reverse the order of the samples in a matrix is <code>flipud()</code>. Experiment with this command.</p>
+<p>Record your experiments in this part of the lab by saving your Live Script file. Include your thoughts and observations as text elements.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Lab-Exercise-13:-Aliasing-and-anti-aliasing">Lab Exercise 13: Aliasing and anti-aliasing<a class="anchor-link" href="#Lab-Exercise-13:-Aliasing-and-anti-aliasing"> </a></h3><p>Download the example file <a href="eg-247-message.wav">eg-247-message.wav</a> that was recorded in the lecture using the file <a href="sampling_demo.m">sampling_demo.m</a> (If you have access to a microphone you can use <code>sampling_demo</code> to record your own sound file.)</p>
+<h4 id="Part-5:-Aliasing">Part 5: Aliasing<a class="anchor-link" href="#Part-5:-Aliasing"> </a></h4><p>Download the file <a href="ex13_1.m">ex13_1.m</a> and open as a LiveScript. Read the script then run it. Complete the remaining examples of "decimation" (effectively aliasing) and listen carefully to the results. Comment on what you hear.</p>
+<p>Examine the frequency sprctrum data produced by the Fast-Fourier Transform (FFT). Discuss the results.</p>
+<h4 id="Part-6:-Sampling-with-anti-aliasing-filters">Part 6: Sampling with anti-aliasing filters<a class="anchor-link" href="#Part-6:-Sampling-with-anti-aliasing-filters"> </a></h4><p>Download the file <a href="ex13_2.m">ex13_2.m</a> and open as a LiveScript. Read the script then run it. Complete the remaining examples of "resampling" (effectively sampling with anti-alias pre-filtering) and listen carefully to the results. Comment on what you hear.</p>
+<p>Examine the frequency spectrum data produced for the sampled signals with pre-filtering. Discuss the results.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Miniproject-3:--Composing-Music-in-MATLAB-(1-mark)">Miniproject 3:  Composing Music in MATLAB (1 mark)<a class="anchor-link" href="#Miniproject-3:--Composing-Music-in-MATLAB-(1-mark)"> </a></h2><h3 id="Background">Background<a class="anchor-link" href="#Background"> </a></h3><p>In this lab exercise, we explore how to use simple tones to compose a segment of music. By using tones of various frequencies, you will construct the first few bars of Beethoven's famous piece Symphony No. 5 in C-Minor.</p>
+<p><strong>IMPORTANT</strong>: Each musical note can be simply represented by a sinusoid whose frequency depends on the note pitch. Assume a sampling rate of 8KHz and that an eighth note = 0.125s (1000 samples).</p>
+<p>Musical notes are arranged in groups of twelve notes called octaves. The notes that we'll be using for Beethoven's Fifth are in the octave containing frequencies from 220 Hz to 440 Hz. The twelve notes in each octave are logarithmically spaced in frequency, with each note being of a frequency 2<sup>1/12</sup> times the frequency of the note of lower frequency. Thus, a 1-octave pitch shift corresponds to a doubling of the frequencies of the notes in the original octave. Table 1 shows the ordering of notes in the octave to be used to synthesize the opening of Beethoven's fifth, as well as the fundamental frequencies for these notes. Note the notes without subscripts, correspond to the white keys on a piano. The notes with subscripts - called respective sharp (♯) and flat (♭) - represent the black keys.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Table 1: Notes in the 220-440 Hz Octave</strong></p>
+<table>
+<thead><tr>
+<th>Number</th>
+<th>Note</th>
+<th>Frequency (Hz)</th>
+<th>Actual frequency (Hz)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A</td>
+<td>220</td>
+<td>220</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A<sup>♯</sup>,B<sup>♭</sup></td>
+<td>220 * 2<sup>1/12</sup></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>3</td>
+<td>B</td>
+<td>220 * 2<sup>2/12</sup></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Middle C</td>
+<td>220 * 2<sup>3/12</sup></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>5</td>
+<td>C<sup>♯</sup>,D<sup>♭</sup></td>
+<td>220 * 2<sup>4/12</sup></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>6</td>
+<td>D</td>
+<td>220 * 2<sup>5/12</sup></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>7</td>
+<td>D<sup>♯</sup>,E<sup>♭</sup></td>
+<td>220 * 2<sup>6/12</sup></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>8</td>
+<td>E</td>
+<td>220 * 2<sup>7/12</sup></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>9</td>
+<td>F</td>
+<td>220 * 2<sup>8/12</sup></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>10</td>
+<td>F<sup>♯</sup>,G<sup>♭</sup></td>
+<td>220 * 2<sup>9/12</sup></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>11</td>
+<td>G</td>
+<td>220 * 2<sup>10/12</sup>&lt;/td&gt;<td>&nbsp;</td>
+</tr>
+<tr>
+<td>12</td>
+<td>G<sup>♯</sup>,A<sup>♭</sup></td>
+<td>220 * 2<sup>11/12</sup></td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You should copy this table into a document and use MATLAB or a calculator to complete the table entries.</p>
+<p>A musical score is essentially a plot of frequencies (notes, on the vertical scale for you musician types) versus time (measures, on the horizontal scale). The musical sequence of notes to the piece you will synthesize is given in Figure 1. The following discussion identifies how musical scores can be mapped to tones of specific pitch and duration.</p>
+<h4 id="Note-Frequency">Note Frequency<a class="anchor-link" href="#Note-Frequency"> </a></h4><p>In the simplest case, each note may be represented by a burst of a sinusoid followed by a shorter period of silence (a pause). The pauses allow us to distinguish between separate notes of the same pitch. The horizontal lines in Figure 1 represent the notes E, G, B, D, F from the bottom to the top. The spaces between the lines are used to represent the notes F, A, C, and E, again from the bottom to the top. Note that A-G only yields seven notes; the additional notes are due to changes in pitch called sharps (denoted by the symbol ♯) or flats (denoted by the symbol ♭) that follows a given note. A sharp increases the pitch by 2<sup>1/12</sup> and flat decreases the pitch by 2<sup>1/12</sup>.</p>
+<p><img src="music.png" alt="Musical Score for Beethoven&#39;s Fifth">
+Figure 1: Musical Score for Beethoven's Fifth</p>
+<p>In the musical score in Figure 1, the first three eighth notes are all note G. The first half note is an E♭ due to the inclusion of the three flat symbols at the left of the score, since we are in the key of C-minor. After the half note, the symbol is a rest of length equal to the duration of an eighth note. The next three eighth notes are all F, and the final half note is a D. You can get the fundamental frequencies for these notes from Table 1.</p>
+<h4 id="Note-Durations">Note Durations<a class="anchor-link" href="#Note-Durations"> </a></h4><p>The duration of each note burst is determined by whether the note is a whole note, half note, quarter note, eight note, etc. Obviously, a quarter note has twice the duration of an eighth note, and so on. So your half notes should be four times the duration of your eighth notes. The short pause you use to follow each note should be of the same duration regardless of the length of the note.</p>
+<h4 id="Creating-Music-in-MATLAB">Creating Music in MATLAB<a class="anchor-link" href="#Creating-Music-in-MATLAB"> </a></h4><p>This section of the lab will teach you how to create music using different tones created in MATLAB.</p>
+<p>First we are going to code a sine wave of amplitude A = 1, at an audio frequency of 220 * 7/12  Hz (which corresponds to E<sup>♭</sup>) which plays for an eighth note (0.125 seconds).</p>
+<div class="highlight"><pre><span></span><span class="n">Fs</span> <span class="p">=</span> <span class="mi">8000</span><span class="p">;</span>
+<span class="n">Ts</span> <span class="p">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">Fs</span><span class="p">;</span>
+<span class="n">Eflat</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="mi">220</span> <span class="o">*</span> <span class="mi">2</span>^<span class="p">(</span><span class="mi">6</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span> <span class="o">.*</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">Ts</span><span class="p">:</span><span class="mf">0.125</span><span class="p">]);</span>
+<span class="n">sound</span><span class="p">(</span><span class="n">Eflat</span><span class="p">);</span>
+</pre></div>
+<p>This vector <code>Eflat</code> now contains samples of the sine wave from t = 0s to t = 0.125s, in samples that are spaced <code>Ts</code> seconds apart. Note that this sampling interval corresponds to a sampling frequency of 8 kHz (1/Ts = fs) and Ts will be 0.125 ms. This is standard for voice grade audio channels.</p>
+<p>To create a pause use the zeros function:</p>
+<div class="highlight"><pre><span></span><span class="n">pause</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="n">Ts</span><span class="p">:</span><span class="n">time</span><span class="p">));</span>
+</pre></div>
+<p>For example to create an eighth note pause at the start of the tune:</p>
+<div class="highlight"><pre><span></span><span class="n">pause8th</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="n">Ts</span><span class="p">:</span><span class="mf">0.125</span><span class="p">));</span>
+</pre></div>
+<p>Now to write this pause and first note sound to a sound file we use the following command:</p>
+<div class="highlight"><pre><span></span><span class="n">audiowrite</span><span class="p">(</span><span class="s">&#39;first_note.wav&#39;</span><span class="p">,[</span><span class="n">pause8th</span><span class="p">,</span><span class="n">Eflat</span><span class="p">],</span><span class="n">Fs</span><span class="p">);</span>
+</pre></div>
+<p>To play the sound, use the <code>sound()</code> function.</p>
+<p>Now you can complete the opening phrase of Beethoven's fifth by adding additional notes and pauses of the correct length.</p>
+<p>Save the commands you use to create, play and save your version of Beethoven's Fifth in a MATLAB mlx-file as <code>beethoven.mlx</code> and add this to your copy of this lab script along with the sound file.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="What-to-hand-in">What to hand in<a class="anchor-link" href="#What-to-hand-in"> </a></h2><h3 id="Claim">Claim<a class="anchor-link" href="#Claim"> </a></h3><p>Up to 2 marks each can be claimed for Exercises 12 and 13. There is 1 additional mark for Miniproject 3.</p>
+<h3 id="Submission">Submission<a class="anchor-link" href="#Submission"> </a></h3><p>You should submit the following to the <strong>Lab 06: Sounds an sampling</strong> Assignment on Canvas.</p>
+<ol>
+<li>Complete the labwork self-assessment claim form and declaration.</li>
+<li>As evidence of completion of Lab Exercise 12, you should upload the MATLAB Live Script file <code>ex12.mlx</code> plus any audio files downloaded or created. </li>
+<li>As evidence of completion of Lab Exercise 13, you should upload the MATLAB Live Script file <code>ex13_1.mlx</code>, <code>ex13_2.mlx</code> plus any audio files downloaded or created.</li>
+<li>As evidence of completion of Mini-Project 3, you should upload the MATLAB Live Script file beethoven.mlx plus the audio file created.</li>
+</ol>
+<h3 id="Deadline">Deadline<a class="anchor-link" href="#Deadline"> </a></h3><p>The deadline for claims and submission is <strong>Midnight, 20th March</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

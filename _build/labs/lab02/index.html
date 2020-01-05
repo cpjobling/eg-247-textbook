@@ -1,0 +1,187 @@
+---
+interact_link: content/labs/lab02/index.ipynb
+kernel_name: matlab
+kernel_path: content/labs/lab02
+has_widgets: false
+title: |-
+  Lab 2 - Laplace and Inverse Laplace Transforms
+pagenum: 48
+prev_page:
+  url: /labs/lab01/index.html
+next_page:
+  url: /labs/lab03/index.html
+suffix: .ipynb
+search: lab script assessment laplace peer matlab file live transforms marks exercise claim submission should inverse textbook mlx canvas cpjobling github io eg laplacelab comments ilaplacelab worksheet examples labs completed save download m complete claims feedback self review submitted student laplacetransform wish available signals systems com functions problems criteria given before folder workspace exercises open assignment three form files submissions work me grading next note notes chapter index additional pdf simulink th site ebrary lib swansea action docid ilaplace used properties transform according marking google create p ezplot appropriate resulting modified worth labwork declaration docx submit following deadline able learn give
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Lab 2 - Laplace and Inverse Laplace Transforms</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Lab-2:-Laplace-and-Inverse-Laplace-Transforms">Lab 2: Laplace and Inverse Laplace Transforms<a class="anchor-link" href="#Lab-2:-Laplace-and-Inverse-Laplace-Transforms"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Preamble">Preamble<a class="anchor-link" href="#Preamble"> </a></h2><h3 id="Associated-Class-Notes">Associated Class Notes<a class="anchor-link" href="#Associated-Class-Notes"> </a></h3><p>This lab supports the materials covered in <a href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/index">Chapter 3 Laplace Transforms</a> of the course notes. You may wish to refer to the Worksheets <a href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/1/worksheet4">worksheet 4</a> and <a href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/1/worksheet5">worksheet 5</a> for additional examples to try.</p>
+<h3 id="Other-formats">Other formats<a class="anchor-link" href="#Other-formats"> </a></h3><p>This document is available in <a href="https://cpjobling.github.io/eg-247-textbook/labs/lab02/index">HTML</a> format for online viewing and <a href="https://cpjobling.github.io/eg-247-textbook/labs/lab02/lab02.pdf">PDF</a> for printing.</p>
+<h3 id="Acknowledgements">Acknowledgements<a class="anchor-link" href="#Acknowledgements"> </a></h3><p>These examples have been adapted from Chapters 1, 2 and 3 of Stephen Karris, <a href="http://site.ebrary.com/lib/swansea/docDetail.action?docID=10547416">Signals and Systems : With MATLAB Computing and Simulink Modeling (5th Edition)</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Aims">Aims<a class="anchor-link" href="#Aims"> </a></h2><p>The purpose of this laboratory is to explore more of the features of the MATLAB symbolic toolbox, in particular the <code>laplace</code> and <code>ilaplace</code> functions. These will be used to verify some of the properties of the Laplace transform typically published in textbooks and in tables of properties and transforms and to solve some inverse transform problems.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Assessment-criteria">Assessment criteria<a class="anchor-link" href="#Assessment-criteria"> </a></h2><p>Marks will be awarded according to how many of the parts of Lab Exercise 2 and 3 have been completed.</p>
+<p>Detailed marking criteria for this and the other labs and the project are given in the linked <a href="https://docs.google.com/spreadsheets/d/1EQzwSfGMdw8oiQds4bUR8sZTCgb2lMvcJHjmea-8hW4/edit?usp=sharing">Assessment Criteria</a> [Google sheet].</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Setup">Setup<a class="anchor-link" href="#Setup"> </a></h2><h3 id="Before-you-start">Before you start<a class="anchor-link" href="#Before-you-start"> </a></h3><p>If you haven't already, create a suitable folder structure on your file-store for your labs.</p>
+<p>I suggest</p>
+
+<pre><code>P:\workspace
+    signals-and-systems-lab
+        lab01
+        lab02
+        :</code></pre>
+<p>Use folder <code>p:\workspace\signals-and-systems-lab\lab02</code> for this lab.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Lab-Exercises">Lab Exercises<a class="anchor-link" href="#Lab-Exercises"> </a></h2><h3 id="Lab-Exercise-2:-Laplace-Transforms">Lab Exercise 2: Laplace Transforms<a class="anchor-link" href="#Lab-Exercise-2:-Laplace-Transforms"> </a></h3><p>Use file save as to download the script <a href="laplace_lab.m">laplace_lab.m</a>. Open the script as a Live Script and use the Matlab <code>laplace</code> and <code>ezplot</code> functions as appropriate to complete the examples given in the comments in the script.</p>
+<p>Save and upload the resulting modified script as a Live Script file <code>laplace_lab.mlx</code> to the <strong>Lab 2: Laplace and inverse Laplace transforms</strong> assignment in Canvas.</p>
+<p>3 Marks</p>
+<h3 id="Lab-Exercise-3:-Inverse-Laplace-Transforms">Lab Exercise 3: Inverse Laplace Transforms<a class="anchor-link" href="#Lab-Exercise-3:-Inverse-Laplace-Transforms"> </a></h3><p>Use file save as to download the script <a href="ilaplace_lab.m">ilaplace_lab.m</a>. Open the script as a Live Script and use the Matlab <code>laplace</code>, <code>ilaplace</code> and <code>ezplot</code> functions as appropriate to complete the examples given in the comments in the script.</p>
+<p>Save and attach the resulting modified script as a Live Script file <code>ilaplace_lab.mlx</code> to the <strong>Lab 2: Laplace and inverse Laplace transforms</strong> assignment in Canvas.</p>
+<p>2 marks</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="What-to-Hand-In">What to Hand In<a class="anchor-link" href="#What-to-Hand-In"> </a></h2><h3 id="Claim">Claim<a class="anchor-link" href="#Claim"> </a></h3><p>Up to three marks can be claimed according to how much of Exercise 2 you have completed and Exercise 3 is worth an additional 2 marks.</p>
+<p>Make your claim by downloading and editing the labwork claim form and declaration: <a href="lab02-claim.docx">lab02-claim.docx</a> [Word].</p>
+<h3 id="Submission">Submission<a class="anchor-link" href="#Submission"> </a></h3><p>You should submit the following to the <strong>Lab 02: Laplace and inverse Laplace transforms</strong> Assignment on Canvas.</p>
+<ol>
+<li>The completed labwork claim form and declaration.</li>
+<li>As evidence for completion of the lab exercises, you should submit your completed versions of the Live Script files <code>laplace_lab.mlx</code> and <code>ilaplace_lab.mlx</code>.</li>
+</ol>
+<h3 id="Deadline">Deadline<a class="anchor-link" href="#Deadline"> </a></h3><p>The Deadline for claims and submission is Midnight, 28th February 2020.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Peer-Assessment">Peer Assessment<a class="anchor-link" href="#Peer-Assessment"> </a></h2><p>Peer assessment is valuable for the following three reasons:</p>
+<ol>
+<li>You will be able to learn something about the electronic assessment processes being used in the University.</li>
+<li>You will learn more about how to give and receive constructive feedback.</li>
+<li>It encourages you to to realistic in your claims and increases my confidence in self-assessment as a valid method of marking coursework.</li>
+<li>By seeing several submissions, you will be able to identify good and poor practice and be encouraged improve your own work.</li>
+<li>It allows me to distribute the load of validating individual claims making grading more efficient for me.</li>
+</ol>
+<p>The claims on this and the next lab submission will be moderated by <strong>Peer Assessment</strong>. Each one of you will be asked to review two of this second submission, and one of the next.</p>
+<p>For this lab exercise, the peer assessment is worth three marks. There is a total of 10 marks available for your participation in peer assessment.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="How-to-do-Peer-Assessment">How to do Peer Assessment<a class="anchor-link" href="#How-to-do-Peer-Assessment"> </a></h2><p>As a peer assessor, you will be required to review two of these submissions and let me know if you agree with the self-assigned score.</p>
+<p>To complete your peer assessments, you should download and run the MATLAB Live Scripts and check that the results are correct and complete.</p>
+<h3 id="Checking-the-submitted-work">Checking the submitted work<a class="anchor-link" href="#Checking-the-submitted-work"> </a></h3><p>On Monday 2nd March, you should receive notification that the submissions of two of your colleagues are available for peer assessment. This notification will arrive by email (if you have your Canvas notifications turned on) or via the inbox on Canvas or the Canvas Student App.</p>
+<p>To perform an assessment, you will need access to MATLAB. If you have problems running any files that are submitted, please note this in your feedback.</p>
+<p>To perform a Peer Assessment you should visit each submission, review the claim form submitted and download the attached files. I would recommend that you create a folder for each submission. I would also recommend that you clear the MATLAB workspace (see command below) before testing each submitted file.</p>
+<p><code>matlab
+clear all</code></p>
+<h3 id="Assessment-procedure-for-this-lab">Assessment procedure for this lab<a class="anchor-link" href="#Assessment-procedure-for-this-lab"> </a></h3><ol>
+<li>Open the Live Script file <code>laplace_lab.mlx</code> and execute <strong>run all</strong>. Check that the results are all present and that there are no errors. Review the formatting of the file and think about how readable and understandable the script is as a record of the experiment. </li>
+<li>Repeat for <code>ilaplace_lab.mlx</code>. </li>
+</ol>
+<h3 id="Grading">Grading<a class="anchor-link" href="#Grading"> </a></h3><p>Use the grading rubric to confirm your peer's self assessment. <strong>Note</strong> you may may award a higher mark if you feel that the student has marked themselves too harshly! You should give a reason for your score if it does not agree with the student's own self-assessment.</p>
+<h3 id="Feedback">Feedback<a class="anchor-link" href="#Feedback"> </a></h3><p>You should also provide feedback on the student's approach to the lab exercise. Your comments might include comments on:</p>
+<ul>
+<li>Any problems you encountered checking your peer's submission.</li>
+<li>Use of headings and sections to break up the Live Script documentation of the lab exercises.</li>
+<li>Good use of textual comments in the Live Script file to explain the MATLAB code.</li>
+<li>Things that the student did that you wish you had thought of.</li>
+<li>Suggestions on what the student may do next time to clarify their approach.</li>
+</ul>
+<p>Note that the instructor will moderate all peer assessments before assigning the final grade.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Doing-More">Doing More<a class="anchor-link" href="#Doing-More"> </a></h2><p>If you have time remaining, you may wish to work through <a href="http://site.ebrary.com/lib/swansea/reader.action?docID=10547416&amp;ppg=17">Appendix B of the textbook</a>. This chapter introduces Simulink in a way that matches the presentation in the rest of the book.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

@@ -1,0 +1,736 @@
+---
+redirect_from:
+  - "/fourier-series/2/worksheet10"
+interact_link: content/fourier_series/2/worksheet10.ipynb
+kernel_name: matlab
+kernel_path: content/fourier_series/2
+has_widgets: false
+title: |-
+  Worksheet 10 Exponential Fourier Series
+pagenum: 36
+prev_page:
+  url: /fourier_series/1/worksheet9.html
+next_page:
+  url: /fourier_series/3/worksheet11.html
+suffix: .ipynb
+search: t omega e pi j jk frac exponential k fourier series c left right ck symmetry wave odd coefficients complex int f n even example imaginary functions d square function solution laplace case important transform real matlab m plot result pre only half class eg equation dc blue above integral sup zero efssqw worksheet chapter cpjobling github io textbook expfs notes exponents eulers appears also definition again forms below expon response line img src pictures euler png exp cos omegat simplify computation en wikipedia org wiki values following style border px solid not except s dt trig convert cdots therefore
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Worksheet 10 Exponential Fourier Series</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Worksheet-10">Worksheet 10<a class="anchor-link" href="#Worksheet-10"> </a></h1><h2 id="To-accompany-Chapter-4.2-Exponential-Fourier-Series">To accompany Chapter 4.2 Exponential Fourier Series<a class="anchor-link" href="#To-accompany-Chapter-4.2-Exponential-Fourier-Series"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will step through this worksheet in class.</p>
+<p>You are expected to have at least watched the video presentation of <a href="https://cpjobling.github.io/eg-247-textbook/fourier_series/2/exp_fs1">Chapter 4.2</a> of the <a href="https://cpjobling.github.io/eg-247-textbook">notes</a> before coming to class. If you haven't watch it afterwards!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Agenda">Agenda<a class="anchor-link" href="#Agenda"> </a></h2><ul>
+<li>Exponents and Euler's Equation</li>
+<li>The Exponential Fourier series</li>
+<li>Symmetry in Exponential Fourier Series</li>
+<li>Example</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="The-Exponential-Function-$e^{at}$">The Exponential Function $e^{at}$<a class="anchor-link" href="#The-Exponential-Function-$e^{at}$"> </a></h2><ul>
+<li>You should already be familiar with $e^{at}$ because it appears in the solution of differential equations. </li>
+<li>It is also a function that appears in the definition of the Laplace and Inverse Laplace Transform.</li>
+<li>It pops up again and again in tables and properies of the Laplace Transform. </li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Case-when-a-is-real.">Case when a is real.<a class="anchor-link" href="#Case-when-a-is-real."> </a></h3><p>When $a$ is real the function $e^{at}$ will take one of the two forms illustrated below:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="c">%% The decaying exponential</span>
+<span class="n">t</span><span class="p">=</span><span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span><span class="n"></span>
+<span class="n">figure</span>
+<span class="s">plot(t,exp(t),t,exp(0.*t),t,exp(-t))</span><span class="p"></span>
+<span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;exp(at) -- a real&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;t (s)&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;exp(t) and exp(-t)&#39;</span><span class="p">)</span>
+<span class="n">legend</span><span class="p">(</span><span class="s">&#39;exp(t)&#39;</span><span class="p">,</span><span class="s">&#39;exp(0)&#39;</span><span class="p">,</span><span class="s">&#39;exp(-t)&#39;</span><span class="p">)</span>
+<span class="n">grid</span>
+<span class="s">hold off</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You can regenerate this image generated with this Matlab script: <a href="expon.m">expon.m</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>When $a &lt; 0$ the response is a decaying exponential (red line in plot)</li>
+<li>When $a = 0$ $e^{at} = 1$ -- essentially a model of DC</li>
+<li>When $a &gt; 0$ the response is an <em>unbounded</em> increasing exponential (blue line in plot)</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Case-when-a-is-imaginary">Case when a is imaginary<a class="anchor-link" href="#Case-when-a-is-imaginary"> </a></h3><p><img src="pictures/euler.png" title="exp(j*omega*t) = cos(omega*t) + j*sin(omega*t)"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is the case that helps us simplify the computation of sinusoidal Fourier series.</p>
+<p>It was <a href="http://en.wikipedia.org/wiki/Leonhard_Euler">Leonhard Euler</a> who discovered the <a href="http://en.wikipedia.org/wiki/Euler%27s_formula">formula</a> visualized above.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Some-important-values-of-$\omega-t$">Some important values of $\omega t$<a class="anchor-link" href="#Some-important-values-of-$\omega-t$"> </a></h4><p>These are useful when simplifying expressions that result from integrating functions that involve the imaginary exponential</p>
+<p>Give the following:</p>
+<ul>
+<li>$e^{j\omega t}$ when $\omega t = 0$</li>
+<li>$e^{j\omega t}$ when $\omega t = \pi/2$</li>
+<li>$e^{j\omega t}$ when $\omega t = \pi$</li>
+<li>$e^{j\omega t}$ when $\omega t = 3\pi/2$</li>
+<li>$e^{j\omega t}$ when $\omega t = 2\pi$</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Case-where-$a$-is-complex">Case where $a$ is complex<a class="anchor-link" href="#Case-where-$a$-is-complex"> </a></h3><p>We shall not say much about this case except to note that the Laplace transform equation includes such a number. The variable $s$ in the Laplace Transform</p>
+$$\int_{0}^{\infty} f(t)e^{-st} dt$$<p>is a <em>complex exponential</em>.</p>
+<p>The consequences of a complex $s$ have particular significance in the development of system stability theories and in control systems analysis and design. Look out for them in EG-243.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Two-Other-Important-Properties">Two Other Important Properties<a class="anchor-link" href="#Two-Other-Important-Properties"> </a></h3><p>By use of trig. identities, it is relatively straight forward to show that:</p>
+$$\cos \omega t = \frac{e^{j\omega t} + e^{-j\omega t}}{2}$$<p>and</p>
+$$\sin \omega t = \frac{e^{j\omega t} - e^{-j\omega t}}{j2}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can use this result to convert the <em>Trigonometric Fourier Series</em> into an <em>Exponential Fourier Series</em> which has only one integral term to solve per harmonic.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="The-Exponential-Fourier-Series">The Exponential Fourier Series<a class="anchor-link" href="#The-Exponential-Fourier-Series"> </a></h2>$$f(t) = \cdots + C_{-2}e^{-j2\Omega_0 t} + C_{-1}e^{-j\Omega_0 t} + C_0 + C_{1}e^{j\Omega_0 t} + C_{2}e^{j2\Omega_0 t} +\cdots $$<p>or more compactly</p>
+$$f(t) = \sum_{k=-n}^{n}C_{k}e^{-jk \Omega_0  t}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Important</strong></p>
+<p>The $C_k$ coefficents, except for $C_0$ are <em>complex</em> and appear in conjugate pairs so</p>
+$$C_{-k} = C_k^*$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Evaluation-of-the-complex-coefficients">Evaluation of the complex coefficients<a class="anchor-link" href="#Evaluation-of-the-complex-coefficients"> </a></h3><p>The coefficients are obtained from the following expressions<sup>*</sup>:</p>
+$$C_k = \frac{1}{2\pi}\int_{0}^{2\pi}f(\Omega_0 t)e^{-jk(\Omega_0 t)}\,d(\Omega_0 t)$$<p>or</p>
+$$C_k = \frac{1}{T}\int_{0}^{T}f(t)e^{-jk\Omega_0 t}\,dt$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Symmetry-in-Exponential-Fourier-Series">Symmetry in Exponential Fourier Series<a class="anchor-link" href="#Symmetry-in-Exponential-Fourier-Series"> </a></h2><p>Since the coefficients of the Exponential Fourier Series are complex numbers, we can use symmetry to determine the form of the coefficients and thereby simplify the computation of series for wave forms that have symmetry.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Even-Functions">Even Functions<a class="anchor-link" href="#Even-Functions"> </a></h3><p>For even functions, all coefficients $C_k$ are real.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Odd-Functions">Odd Functions<a class="anchor-link" href="#Odd-Functions"> </a></h3><p>For odd functions, all coefficients $C_k$ are imaginary.</p>
+<p>By a similar argument, all odd functions have no cosine terms so the $a_k$ coefficients are 0. Therefore both $C_{-k}$ and $C_k$ are imaginary.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Half-wave-symmetry">Half-wave symmetry<a class="anchor-link" href="#Half-wave-symmetry"> </a></h3><p>If there is <em>half-wave symmetry</em>, $C_k = 0$ for $k$ even.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="No-symmetry">No symmetry<a class="anchor-link" href="#No-symmetry"> </a></h3><p>If there is no symmetry the Exponential Fourier Series of $f(t)$ is complex.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Relation-of-$C_{-k}$-to-$C_{k}$">Relation of $C_{-k}$ to $C_{k}$<a class="anchor-link" href="#Relation-of-$C_{-k}$-to-$C_{k}$"> </a></h3><p>$C_{-k} = C_{k}^*$ <strong>always</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Example-1">Example 1<a class="anchor-link" href="#Example-1"> </a></h2><p>Compute the Exponential Fourier Series for the square wave shown below assuming that $\omega = 1$</p>
+<p><img src="pictures/sqw.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Some-questions-for-you">Some questions for you<a class="anchor-link" href="#Some-questions-for-you"> </a></h4><ul>
+<li>Square wave is an [<strong>odd/even/neither</strong>] function?</li>
+<li>DC component is [<strong>zero/non-zero</strong>]?</li>
+<li>Square wave [<strong>has/does not have</strong>] half-wave symmetry?</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Hence</p>
+<ul>
+<li>$C_0 = $[<strong>?</strong>]</li>
+<li>Coefficients $C_k$ are [<strong>real/imaginary/complex</strong>]?</li>
+<li>Subscripts $k$ are [<strong>odd only/even only/both odd and even</strong>]?</li>
+<li>What is the integral that needs to be solved for $C_k$?</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Solution">Solution<a class="anchor-link" href="#Solution"> </a></h4>$$\frac{1}{2\pi}\left[\int_{0}^{\pi} Ae^{-jk(\Omega_0 t)}\, d(\Omega_0 t) + \int_{\pi}^{2\pi} (-A)e^{-jk(\Omega_0 t)}\, d(\Omega_0 t)\right] = \frac{1}{2\pi}\left[\left.\frac{A}{-jk}e^{-jk(\Omega_0 t)}\right|_0^\pi+\left.\frac{-A}{-jk}e^{-jk(\Omega_0 t)}\right|_\pi^{2\pi}\right]$$$$ = \frac{1}{2\pi}\left[\frac{A}{-jk}\left(e^{-jk\pi} - 1\right)+\frac{A}{jk}\left(e^{-j2k \pi}-e^{-jk\pi}\right)\right] =
+\frac{A}{2j\pi k}\left(1 - e^{-jk\pi}+ e^{-j2k \pi}-e^{-jk\pi}\right)$$$$\frac{A}{2j\pi k}\left(e^{-j2k \pi} - 2e^{-jk\pi} -1 \right) = \frac{A}{2j\pi k}\left(e^{-jk\pi}-1\right)^2$$<p>For $n$ odd*, $e^{-jk\pi} = -1$. Therefore</p>
+$${C_n \atop {n=\mathrm{odd}}} = \frac{A}{2j\pi k}\left(e^{-jk\pi}-1\right)^2 = \frac{A}{2j\pi k}\left(-1-1\right)^2 = \frac{A}{2j\pi k}\left(-2\right)^2 = \frac{2A}{j\pi k}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><sup>*</sup> You may want to verify that $C_0 = 0$ and</p>
+$${C_n \atop {n=\mathrm{even}}} = 0.$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Computing-coefficients-of-Exponential-Fourier-Series-in-Matlab">Computing coefficients of Exponential Fourier Series in Matlab<a class="anchor-link" href="#Computing-coefficients-of-Exponential-Fourier-Series-in-Matlab"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-2">Example 2<a class="anchor-link" href="#Example-2"> </a></h3><p>Verify the result of Example 1 using MATLAB.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Solution">Solution<a class="anchor-link" href="#Solution"> </a></h3><p>Solution: See <a href="efs_sqw.m">efs_sqw.m</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="EFS_SQW">EFS_SQW<a class="anchor-link" href="#EFS_SQW"> </a></h3><p>Calculates the Exponential Fourier for a Square Wave with Odd Symmetry.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">clear </span><span class="s">all</span><span class="p"></span>
+<span class="n">format </span><span class="s">compact</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Set up parameters</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">syms </span><span class="s">t A</span><span class="p">;</span>
+
+<span class="n">tau</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">T0</span> <span class="p">=</span> <span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">;</span> <span class="c">% w = 2*pi*f -&gt; t = 2*pi/omega</span>
+<span class="n">k_vec</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span><span class="mi">5</span><span class="p">];</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Define f(t)</p>
+<p><strong>IMPORTANT</strong>: the signal definition must cover [0 to T0]</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">xt</span> <span class="p">=</span> <span class="n">A</span><span class="o">*</span><span class="p">(</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">T0</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span> <span class="o">-</span> <span class="n">A</span><span class="o">*</span><span class="p">(</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">T0</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">-</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">T0</span><span class="p">));</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Compute EFS</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="p">[</span><span class="n">X</span><span class="p">,</span> <span class="n">w</span><span class="p">]</span> <span class="p">=</span> <span class="n">FourierSeries</span><span class="p">(</span><span class="n">xt</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">k_vec</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Plot the numerical results from Matlab calculation.</p>
+<p>Convert symbolic to numeric result</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Xw</span> <span class="p">=</span> <span class="n">subs</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Plot</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
+<span class="n">stem</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="nb">abs</span><span class="p">(</span><span class="n">Xw</span><span class="p">),</span> <span class="s">&#39;o-&#39;</span><span class="p">);</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;Exponential Fourier Series for Square Waveform with Odd Symmetry&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;\Omega_0 (rad/sec)&#39;</span><span class="p">);</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;|c_k|&#39;</span><span class="p">);</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
+<span class="n">stem</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="nb">angle</span><span class="p">(</span><span class="n">Xw</span><span class="p">),</span> <span class="s">&#39;o-&#39;</span><span class="p">);</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;\Omega_0 (rad/sec)&#39;</span><span class="p">);</span> 
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;\angle c_k [radians]&#39;</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Computing-Trig.-Fourier-Series-from-Exp.-Fourier-Series">Computing Trig. Fourier Series from Exp. Fourier Series<a class="anchor-link" href="#Computing-Trig.-Fourier-Series-from-Exp.-Fourier-Series"> </a></h2><p>Refer to the <a href="exp_fs1">notes</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Summary">Summary<a class="anchor-link" href="#Summary"> </a></h2><ul>
+<li>Exponents and Euler's Equation</li>
+<li>The exponential Fourier series</li>
+<li>Symmetry in Exponential Fourier Series</li>
+<li>Example</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Answers-to-in-class-problems">Answers to in-class problems<a class="anchor-link" href="#Answers-to-in-class-problems"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Some-important-values-of-$\omega-t$---Solution">Some important values of $\omega t$ - Solution<a class="anchor-link" href="#Some-important-values-of-$\omega-t$---Solution"> </a></h3><ul>
+<li>When $\omega t = 0$: $e^{j\omega t} = e^{j0} = 1$</li>
+<li>When $\omega t = \pi/2$: $e^{j\omega t} = e^{j\pi/2} = j$</li>
+<li>When $\omega t = \pi$: $e^{j\omega t} = e^{j\pi} = -1$</li>
+<li>When $\omega t = 3\pi/2$: $e^{j\omega t} = e^{j3\pi/2} = -j$</li>
+<li>When $\omega t = 2\pi$: $e^{j\omega t} = e^{j2\pi} e^{j0}= 1$</li>
+</ul>
+<p>It is also worth being aware that $n\omega t$, when $n$ is an integer, produces rotations that often map back to the simpler cases given above. For example see $e^{j2\pi}$ above.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Some-answers-for-you">Some answers for you<a class="anchor-link" href="#Some-answers-for-you"> </a></h3><ul>
+<li>Square wave is an <strong>odd</strong> function!</li>
+<li>DC component is <strong>zero</strong>!</li>
+<li>Square wave <strong>has</strong> half-wave symmetry!</li>
+</ul>
+<p>Hence</p>
+<ul>
+<li>$C_0 = 0$</li>
+<li>Coefficients $C_k$ are <strong>imaginary</strong>!</li>
+<li>Subscripts $k$ are <strong>odd only</strong>!</li>
+<li>What is the integral that needs to be solved for $C_k$?</li>
+</ul>
+$$C_k = \frac{1}{2\pi}\int_{0}^{2\pi} f(\Omega_0 t)e^{-jk(\Omega_0 t)}\, d(\Omega_0 t) = \frac{1}{2\pi}\left[\int_{0}^{\pi} Ae^{-jk(\Omega_0 t)}\, d(\Omega_0 t) + \int_{\pi}^{2\pi} (-A)e^{-jk(\Omega_0 t)}\, d(\Omega_0 t)\right]$$
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

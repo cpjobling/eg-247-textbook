@@ -3,24 +3,22 @@
 help:
 	@echo "Please use 'make <target>' where <target> is one of:"
 	@echo "  install     to install the necessary dependencies for jupyter-book to build"
-	@echo "  book        to convert the `content/` folder into Jekyll markdown in `_build/`"
+	@echo "  book        to convert the content/ folder into Jekyll markdown in _build/"
 	@echo "  clean       to clean out site build files"
 	@echo "  runall      to run all notebooks in-place, capturing outputs with the notebook"
 	@echo "  serve       to serve the repository locally with Jekyll"
-	@echo "  build       to build the site HTML locally with Jekyll and store in _site/"
+	@echo "  build       to build the site HTML and store in _site/"
+	@echo "  site 		 to build the site HTML, store in _site/, and serve with Jekyll"
 
 
 install:
-	gem install bundler
-	bundle install
-	
+	jupyter-book install ./
+
 book:
-	rsync -a --delete content/labs/ portfolio
-	python scripts/license.py --path ./content
-	python scripts/generate_book.py
+	jupyter-book build ./
 
 runall:
-	python scripts/execute_all_notebooks.py
+	jupyter-book run ./content
 
 clean:
 	python scripts/clean.py
@@ -29,7 +27,8 @@ serve:
 	bundle exec guard
 
 build:
-	bundle exec jekyll build --destination docs
+	jupyter-book build ./ --overwrite
 
-test:
-	pytest scripts/tests/test_build.py
+site: build
+	bundle exec jekyll build
+	touch _site/.nojekyll

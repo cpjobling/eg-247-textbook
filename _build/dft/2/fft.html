@@ -1,0 +1,1731 @@
+---
+interact_link: content/dft/2/fft.ipynb
+kernel_name: matlab
+kernel_path: content/dft/2
+has_widgets: false
+title: |-
+  The Fast-Fourier Transform
+pagenum: 25
+prev_page:
+  url: /dft/1/dft.html
+next_page:
+  url: /worksheets/index.html
+suffix: .ipynb
+search: x n wn fft k point dft w j right left eqnarray complex xe xo pi exp cdots mathbf end begin example frac m signal operations matlab decomposition frequency flow hfill sequence computation log algorithm sup development karris graph pictures png dif result its simulink additions only l because required arithmetic matrix array shown floating fourier transform inverse not compute times require vector c obtained dit nk fast order processing taken computed examples samples entire sum since requires multiplications even terms points en wikipedia org wiki efficiency row operation also model note below class four pre storage numbers pulse fftex
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">The Fast-Fourier Transform</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="The-Fast-Fourier-Transform">The Fast Fourier Transform<a class="anchor-link" href="#The-Fast-Fourier-Transform"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Scope-and-Background-Reading">Scope and Background Reading<a class="anchor-link" href="#Scope-and-Background-Reading"> </a></h2><p>This session introduces the fast fourier transform (FFT) which is one of the most widely used numerical algorithms in the world. It exploits some features of the symmetry of the computation of the DFT to reduce the complexity from something that takes order $N^2$ ($O(N^2)$) complex operations to something that takes order $N \log N$ ($O(N \log N)$) operations.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The FFT is to be found in all manner of signal and image processing algorithms, and because it is more efficient than the DFT, you will find it exploited in hundreds of signal processing applications.</p>
+<p>As one example, it turns out that the computation of the convolution of two long DT sequences is more efficient if the FFT of the two signals is taken, the product of the frequency spectra is computed, and the Inverse DFT of the result is computed.</p>
+<p>In this presentation, we will not go through the mathematical development of the FFT, please read section 10.6 of Karris if you want the details. Here we will concentrate on the benefits to be gained by using the FFT and give some examples of its use in MATLAB.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Acknowledgements">Acknowledgements<a class="anchor-link" href="#Acknowledgements"> </a></h3><p>The material in this presentation and notes is based on Chapter 10 of <a href="http://site.ebrary.com/lib/swansea/docDetail.action?docID=10547416">Steven T. Karris, Signals and Systems: with Matlab Computation and Simulink Modelling, 5th Edition</a> from the <strong>Required Reading List</strong>. The models of the FFT signal flow graphs and Simulink block diagrams are based on the presentation given in Section 12.5 of Phillips, Parr and Riskin, Signals, Systems and Transforms, 5th Ed., Pearson, 2014.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Agenda">Agenda<a class="anchor-link" href="#Agenda"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>The inefficiency of the DFT</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>The FFT - a sketch of its development</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>An illustration of part of the FFT algorithm</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>FFT v DFT</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Two examples</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="The-inefficiency-of-the-DFT">The inefficiency of the DFT<a class="anchor-link" href="#The-inefficiency-of-the-DFT"> </a></h2><p>Consider a signal whose highest frequency is 18 kHz, the sampling frequency is 50 kHz, and 1024 samples are taken, i.e., $N=1024$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The time required to compute the entire DFT would be:</p>
+$$t = \frac{1024\,\mathrm{samples}}{50\times 10^3\,\mathrm{samples\ per\ second}} = 20.48\,\mathrm{ms}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To compute the number of operations required to complete this task, let us expand the N-point DFT defined as:</p>
+$$X[m] = \sum_{n=0}^{N-1} x[n] W_N^{mn}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Then
+$$\begin{eqnarray*}
+  X[0] &amp;=&amp; x[0]W_N^0 + x[1]W_N^0 + x[1]W_N^0 +  \cdots  + x[N - 1]W_N^0 \hfill \\
+  X[1] &amp;=&amp; x[0]W_N^0 + x[1]W_N^1 + x[1]W_N^2 +  \cdots  + x[N - 1]W_N^{N - 1} \hfill \\
+  X[2] &amp;=&amp; x[0]W_N^0 + x[1]W_N^2 + x[1]W_N^4 +  \cdots  + x[N - 1]W_N^{2(N - 1)} \hfill \\
+  \hfil &amp;\cdots&amp;  \hfill \\
+  X[N - 1] &amp;=&amp; x[0]W_N^0 + x[1]W_N^{N - 1} + x[1]W_N^{2(N - 1)} +  \cdots  + x[N - 1]W_N^{(N - 1)^2} \hfill \\ 
+\end{eqnarray*}$$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>It is worth remembering that </li>
+</ul>
+$$W_N^0 = \exp\left(-j\frac{2\pi}{N}(0)\right) = 1.$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Since $W_N^i$ is a complex number, the computation of any frequency component $X[k]$ requires $N$ complex multiplications and $N$ complex additions</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>$2N$ complex arithmetic operations are required to compute any frequency component of $X[k].$<sup>1</sup> </li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>If we assume that $x[n]$ is real, then only $N/2$ of the $X[m]$ components are unique. </li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Therefore we would require $2N\times N/2 = N^2$ complex operations to compute the entire frequency spectrum.<sup>2</sup></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>For our example, the $N=1024$-point DFT, would require $1024^2 = 1,048,576$ complex operations</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>These would have to be completed in 20.48 ms. </li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>This may be possible with modern computing hardware, perhaps even in a mobile phone, but it seems impractical.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Fortunately, many of the $W_N$ terms in the computation are unity ($=\pm 1$). </li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Moreover, because the $W_N^i$ points are equally spaced points on the unit circle; </li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>And because $N$ is a power of 2, the points on the upper-half plane (range $0 &lt; \theta &lt; \pi$ are the mirror image of the points on the lower-half plane range $\pi &lt; \theta &lt; 2\pi$;</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Thus, there is a great deal of symmetry in the computation that can be exploited to simplify the computation and reduce the number of operations considerably to a much more manageable $N\log_2 N$ operations<sup>3</sup>.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is possible with the algorithm called the <a href="https://en.wikipedia.org/wiki/Fast_Fourier_transform">FTT</a> (fast Fourier transform) that was originally developed by <a href="https://en.wikipedia.org/wiki/James_Cooley">James Cooley</a> and <a href="https://en.wikipedia.org/wiki/John_Tukey">John Tukey</a> and has been considerably refined since.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="The-Fast-Fourier-Transform-(FFT)">The Fast Fourier Transform (FFT)<a class="anchor-link" href="#The-Fast-Fourier-Transform-(FFT)"> </a></h2><p>The FFT is very well documented, including in Karris, so we will only sketch its development and present its main result. However, we will illustrate part of the algorithm to make concrete an idea of the efficiency advantage that the FFT has over the DFT that we have already seen.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Much of the development follows from the properties of the rotating vector.<sup>4</sup></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$W_N=\exp\left(-\frac{j2\pi}{N}\right)$$<p>which results in some simplifications and mathematical short-cuts when $N$ is a power of 2.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The most useful properties are:</p>
+$$\begin{eqnarray*}
+  W_N^N &amp;=&amp; \exp\left(-j\frac{2\pi}{N}N\right) = \exp\left(-j2\pi\right) = 1.\\
+  W_N^{N/2} &amp;=&amp;  \exp\left(-j\frac{2\pi}{N}\frac{N}{2}\right) = \exp\left(-j\pi\right) = -1.\\
+  W_N^{N/4} &amp;=&amp;  \exp\left(-j\frac{2\pi}{N}\frac{N}{4}\right) = \exp\left(-j\pi/2\right) = -j.\\
+  W_N^{3N/4} &amp;=&amp;  \exp\left(-j\frac{2\pi}{N}\frac{3N}{4}\right) = \exp\left(-j3\pi/2\right) = j.\end{eqnarray*}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$\begin{eqnarray*}
+  W_N^{kN} &amp;=&amp;  \exp\left(-j\frac{2\pi}{N}kN\right) = \exp\left(-j2\pi\right) = 1,\,k=0,1,2,\ldots\\
+  W_N^{kN+r} &amp;=&amp;  \exp\left(-j\frac{2\pi}{N}kN\right)\exp\left(-j\frac{2\pi}{N}r\right) = 1.W_N^r=W_N^r.\\
+  W_{2N}^{k} &amp;=&amp;  \exp\left(-j\frac{2\pi}{2N}k\right) = \exp\left(-j\frac{2\pi}{N}\frac{k}{2}\right) = W_N^{k/2}.
+\end{eqnarray*}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Representing</p>
+$$\begin{eqnarray*}
+  X[0] &amp;=&amp; x[0]W_N^0 + x[1]W_N^0 + x[2]W_N^0 +  \cdots  + x[N - 1]W_N^0 \hfill \\
+  X[1] &amp;=&amp; x[0]W_N^0 + x[1]W_N^1 + x[2]W_N^2 +  \cdots  + x[N - 1]W_N^{N - 1} \hfill \\
+  X[2] &amp;=&amp; x[0]W_N^0 + x[1]W_N^2 + x[2]W_N^4 +  \cdots  + x[N - 1]W_N^{2(N - 1)} \hfill \\
+  \hfil &amp;\cdots&amp;  \hfill \\
+  X[N - 1] &amp;=&amp; x[0]W_N^0 + x[1]W_N^{N - 1} + x[2]W_N^{2(N - 1)} +  \cdots  + x[N - 1]W_N^{(N - 1)^2} \hfill \\ 
+\end{eqnarray*}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>in matrix form:
+$$
+\left[ {\begin{array}{*{20}{c}}
+{X[0]}\\
+{X[1]}\\
+{X[2]}\\
+ \vdots \\
+{X[N - 1]}\end{array}} \right] = \left[ {\begin{array}{*{20}{c}}
+{W_N^0}&amp;{W_N^0}&amp;{W_N^0}&amp;\cdots&amp;{W_N^0}\\
+{W_N^0}&amp;{W_N^1}&amp;{W_N^2}&amp;\cdots&amp;{W_N^{N - 1}}\\
+{W_N^0}&amp;{W_N^2}&amp;{W_N^4}&amp;\cdots&amp;{W_N^{2(N - 1)}}\\
+\cdots&amp;\cdots&amp;\cdots&amp;\cdots&amp;\cdots\\
+{W_N^0}&amp;{W_N^{N - 1}}&amp;{W_N^{2(N - 1)}}&amp;\cdots&amp;W_N^{(N - 1)^2}\\
+\end{array}} \right]\left[ {\begin{array}{*{20}{c}}
+{x[0]}\\
+{x[1]}\\
+{x[2]}\\
+ \vdots \\
+{x[N - 1]}
+\end{array}} \right].$$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is a complex <a href="https://en.wikipedia.org/wiki/Vandermonde_matrix">Vandemonde matrix</a> and it is more compactly expressed as:</p>
+$$\mathbf{X}[m] = \mathbf{W_N} \mathbf{x}[n]$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The algorithm developed by Cooley and Tukey is based on <em>matrix decomposition</em> methods, where the matrix $\mathbf{W_N}$ is factored into $L$ smaller matrices, that is:</p>
+$$\mathbf{W_N} = \mathbf{W_1} \mathbf{W_2} \mathbf{W_3} \cdots \mathbf{W_L}$$<p>where $L$ is chosen as $L = \log_2N$ or $N=2^L$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Each row of the matrices on the right side of the decomposition, contains only two, non-zero terms, unity and $W_N^k$.</p>
+<p>And the DFT sequence is:</p>
+$$\mathbf{X}[m] = \mathbf{W_1} \mathbf{W_2} \mathbf{W_3} \cdots \mathbf{W_L} \mathbf{x}[n].$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The FFT computation starts with matrix $\mathbf{W}_L$. It operates on $\mathbf{x}[n]$ producing a row vector, and each component of the row vector is obtained by one multiplication and one addition. This is because there are only two non-zero elements on a given row, and one of those elements is unity. Since there are $N$ components of $\mathbf{x}[n]$, there will be $N$ complex multiplications and $N$ complex additions.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This new vector is then operated on by the $\mathbf{W}_{L-1}$ matrix, then on $\mathbf{W}_{L-2}$ and so on, until the entire operation is completed.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It appears that the entire operation would require $NL= N\log_2N$ complex additions and also $N\log_2N$ complex additions.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>However, since $W_N^0 = 1$, $W_N^{N/2}=-1$, and other simplifications, it is estimated that only about half of these, that is, $N\log_2 N$ total complex arithmetic operations are required by the FFT versus the $N^2$ required by the DFT<sup>5</sup>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Decomposition-in-Time-FFT-Algorithm">Decomposition-in-Time FFT Algorithm<a class="anchor-link" href="#Decomposition-in-Time-FFT-Algorithm"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This development follows (Philips, <em>et al.</em>, 2015). It is called the <em>decomposition-in-time (DIT), radix-2, FFT</em>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It allows us to visualize the FFT as a block diagram (for simulation) or a signal flow graph (for ease of drawing).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We start from a 2-point FFT ($N=2$), and work up to an 8-point FFT ($N=8$) before generalizing the result.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We have implemented each algorithm in Simulink so we are able illustrate these structures with executable examples as we go.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="2-Point-DFT">2-Point DFT<a class="anchor-link" href="#2-Point-DFT"> </a></h4>$$X[k] = \sum_{n=0}^1 x[n]W^{nk}_2 = x[0]W_2^{0k} + X[1]W_2^{1k},\,k=0,1.$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Because $W_2^{0k}=\exp\left(j0\right)=1$ and $W_2^{1k}=\exp\left(-j\pi k\right)=(-1)^k$, we write</p>
+$$\begin{eqnarray*}
+X[0] &amp;=&amp; x[0]+x[1];\\
+X[1] &amp;=&amp; x[0]-x[1].
+\end{eqnarray*}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In general for the 2-point DFT, we have</p>
+$$X[k]=x[0]+(-1)^kx[1].$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="pictures/2-point-dft-sfg.png" alt="Signal flow graph of 2-point DFT"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>An equivalent Simulink model in block diagram form is:</p>
+<p><img src="pictures/2-point-dft.png" alt="2-point dft"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Let's-See-it-in-MATLAB">Let's See it in MATLAB<a class="anchor-link" href="#Let's-See-it-in-MATLAB"> </a></h4>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">cd </span><span class="s">matlab</span><span class="p"></span>
+<span class="n">clear </span><span class="s">all</span><span class="p"></span>
+<span class="n">format </span><span class="s">compact</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">open </span><span class="s">two_point_dft</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="4-point-DFT">4-point DFT<a class="anchor-link" href="#4-point-DFT"> </a></h4><p>The 4-point DFT is given by</p>
+$$X[k] = \sum_{n=0}^3 x[n]W_4^{nk}= x[0]W_4^{0k} + x[1]W_4^{1k} + x[2]W_4^{2k} + x[3]W_4^{3k}.$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As a result of the periodicity of the weighting factor, we can simplify this expression:</p>
+$$\begin{eqnarray*}
+W_N^{nk} &amp;=&amp; \exp\left(-j(2\pi/N)nk\right);\\
+W_4^{0k} &amp;=&amp; 1;\\
+W_4^{1k} &amp;=&amp; \exp\left(-j(\pi/2)k\right) = (-j)^k;\\
+W_4^{2k} &amp;=&amp; \exp\left(-j\pi k\right) = (-1)^k;\\
+W_4^{3k} &amp;=&amp; W_4^{2k}W_4^{1k}=(-1)^k W_4^{1k}.
+\end{eqnarray*}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Using these results, we write</p>
+$$\begin{eqnarray*}
+X[k] &amp;=&amp;  x[0] + x[1]W_4^{1k} + x[2](-1)^k + x[3](-1)^kW_4^{1k},\\
+X[k] &amp;=&amp;  \left[x[0] + x[2](-1)^k\right] \left[x[1] +  x[3](-1)^k\right]W_4^{1k}.
+\end{eqnarray*}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To clarify the next step, we define two new variables
+$$\begin{eqnarray*}
+x_e[n]&amp;=&amp;x[2n],\,n=0,1;\\
+x_o[n]&amp;=&amp;x[2n+1],\,n=0,1.
+\end{eqnarray*}$$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Then,</p>
+$$X[k] =  \left[x_e[0] + x_e[1](-1)^k\right] + \left[x_o[0] + x_o[1](-1)^k\right]W_4^{1k}.$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The factors in brackets in this equation can be recognized as 2-point DFTs:</p>
+$$\begin{eqnarray*}
+X_e[m] &amp;=&amp; x_e[0] + x_e[1](-1)^m,\;m=0,1;\\
+X_o[m] &amp;=&amp; x_o[0] + x_o[1](-1)^m,\;m=0,1.
+\end{eqnarray*}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that $X_e[k]$ and $X_o[k]$ are periodic; for example,</p>
+$$X_e[2]= x_e[0]+ x_e[1](-1)^2 = X_e[0]$$<p>and</p>
+$$X_o[3]= x_o[0]+ x_o[1](-1)^3 = X_o[1]$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The 4-point DFT then is</p>
+$$\begin{eqnarray*}
+X[0] &amp;=&amp; X_e[0] + X_o[0]W_4^{1(0)} = X_e[0] + X_o[0];\\
+X[1] &amp;=&amp; X_e[1] + X_o[1]W_4^{1(1)} = X_e[0] + X_o[0]W_4^1;\\
+X[2] &amp;=&amp; X_e[0] - X_o[0]W_4^{1(2)} = X_e[0] + X_o[0];\\
+X[3] &amp;=&amp; X_e[1] - X_o[1]W_4^{1(3)} = X_e[0] + X_o[0]W_4^1.
+\end{eqnarray*}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We see that the 4-point DFT can be computed by the generation of two 2-point DFTs, followed by a <em>recomposition</em> of terms as shown in the signal flow graph below:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="pictures/4-point-dft-sfg.png" alt="Signal flow graph of 4-point DFT"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In other words,</p>
+<p>[4-point DFT of $x[n]$] = [2-point DFT of $x_e[n]$] + $W_4^{1k}$[2-point DFT of $x_o[n]$].</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="SIMULINK-Model-of-4-Point-DFT">SIMULINK Model of 4-Point DFT<a class="anchor-link" href="#SIMULINK-Model-of-4-Point-DFT"> </a></h4>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">open </span><span class="s">four_point_dft</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="8-point-DFT">8-point DFT<a class="anchor-link" href="#8-point-DFT"> </a></h4>$$X[k] = \sum_{n=0}^{7}x[n]W_8^{nk}.$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>After some manipulation, not reproduced here, it can be shown that the 8-point DFT is the recombination of two, 4-point DFTs that operate on the even and odd numbered values in the sequence $x[n]$ respectively.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Signal-flow-graph-of-8-point-DFT">Signal flow graph of 8-point DFT<a class="anchor-link" href="#Signal-flow-graph-of-8-point-DFT"> </a></h4><p><img src="pictures/8-point-dft-sfg.png" alt="Signal flow graph of 8-point DFT"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="SIMULINK-Model-of-4-Point-DFT">SIMULINK Model of 4-Point DFT<a class="anchor-link" href="#SIMULINK-Model-of-4-Point-DFT"> </a></h4>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">open </span><span class="s">eight_point_dft</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="N-Point,-radix-2-DIT-FFT">N-Point, radix-2 DIT FFT<a class="anchor-link" href="#N-Point,-radix-2-DIT-FFT"> </a></h4><p>In general, the $N$-point, radix-2 DIT FFT is computed as the recomposition of two $(N/2)$-point FFTs) as shown in the buterfly diagram below</p>
+<p><img src="pictures/n-point-fft.png" alt="N-point FFT"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="In-Class-Example-1">In Class Example 1<a class="anchor-link" href="#In-Class-Example-1"> </a></h3><p>Use four-point DIT FFT to confirm that the DFT of the sequence</p>
+$$x[n] = [1, 2, 3, 4]$$<p>is</p>
+$$X[m] = [10, -2+j2, -4, -2-j2].$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Decomposition-in-Frequency-FFT">Decomposition-in-Frequency FFT<a class="anchor-link" href="#Decomposition-in-Frequency-FFT"> </a></h3><p>Another approach to forming the FFT is the so-called decomposition in frequency (DIF) FFT.</p>
+<p>We will not cover it's development in detail (see Karris and Phillips <em>et al.</em>) if you want to follow it through.</p>
+<p>We instead illustrate the final result for the four-point DIF FFT.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Signal-flow-graph-for-4-point-DIF-FFT">Signal flow graph for 4-point DIF FFT<a class="anchor-link" href="#Signal-flow-graph-for-4-point-DIF-FFT"> </a></h4><p><img src="pictures/4-point-dif-fft.png" alt="Signal flow chart for 4-point DIF FFT"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that the structure is a 4-point decompostion followed by two 2-point FFTs.</p>
+<p>Also note that it is frequency $X_n[k]$ that is the input to the DFT stage.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="SIMULINK-Model-of-4-Point-DIF-FFT">SIMULINK Model of 4-Point DIF FFT<a class="anchor-link" href="#SIMULINK-Model-of-4-Point-DIF-FFT"> </a></h4>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">open </span><span class="s">four_point_dif</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="In-Class-Example-2">In Class Example 2<a class="anchor-link" href="#In-Class-Example-2"> </a></h3><p>Use four two-point DIF FFT to confirm that the DFT of the sequence</p>
+$$x[n] = [1, 2, 3, 4]$$<p>is</p>
+$$X[m] = [10, -2+j2, -4, -2-j2].$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Efficiency-of-the-FFT">Efficiency of the FFT<a class="anchor-link" href="#Efficiency-of-the-FFT"> </a></h2><p>Wether we implement it as a Decomposition-in-Time (DIT) or a Decomposition-in-Frequency (DIF), the FFT ends up having approximately $(N/2)\log_2(N)$ multiplications and a similar number of complex additions or subtractions.</p>
+<p>In other words, $(N)\log_2(N)$ complex arithmetic operations.</p>
+<p>As complex arithmetic, particularly multiplication, is very expensive, this is a great saving over the DFT which has of order $N^2$ operations.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="DFT-and-FFT-Comparisons">DFT and FFT Comparisons<a class="anchor-link" href="#DFT-and-FFT-Comparisons"> </a></h3><p>Under the assumptions about the relative efficiency of the DFT and FFT we can create a table like that shown below:</p>
+<table>
+<thead><tr>
+<th>&nbsp;</th>
+<th>&nbsp;</th>
+<th>DFT</th>
+<th>FFT</th>
+<th>FFT/DFT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>N</td>
+<td>$$\log_2 N$$</td>
+<td>$$N^2$$</td>
+<td>$N\log_2 N$</td>
+<td>%</td>
+</tr>
+<tr>
+<td>8</td>
+<td>3</td>
+<td>64</td>
+<td>24</td>
+<td>37.5</td>
+</tr>
+<tr>
+<td>16</td>
+<td>4</td>
+<td>256</td>
+<td>64</td>
+<td>25</td>
+</tr>
+<tr>
+<td>32</td>
+<td>5</td>
+<td>1,024</td>
+<td>160</td>
+<td>15.6</td>
+</tr>
+<tr>
+<td>64</td>
+<td>6</td>
+<td>4,096</td>
+<td>384</td>
+<td>9.4</td>
+</tr>
+<tr>
+<td>128</td>
+<td>7</td>
+<td>16,384</td>
+<td>896</td>
+<td>5.5</td>
+</tr>
+<tr>
+<td>256</td>
+<td>8</td>
+<td>65,536</td>
+<td>2,048</td>
+<td>3.1</td>
+</tr>
+<tr>
+<td>512</td>
+<td>9</td>
+<td>261,144</td>
+<td>4,608</td>
+<td>1.8</td>
+</tr>
+<tr>
+<td>1024</td>
+<td>10</td>
+<td>1,048,576</td>
+<td>10,240</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2048</td>
+<td>11</td>
+<td>4,194,304</td>
+<td>22,528</td>
+<td>0.5</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As you can see, the efficiency of the FFT actual gets better as the number of samples go up!</p>
+<p>However, there are other costs, such as the data storage needed for intermediate steps, that need to be taken into account as well. For example, an 8-point FFT requires only a 3 stage decomposition, with each stage needing storage for 8 complex numbers. That is 24 in all. Whereas a 2048 sequence will require 11 stages, storing 2048 values each. That is a total of 22,528 complex values<sup>6</sup>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="In-Class-Demonstrations">In Class Demonstrations<a class="anchor-link" href="#In-Class-Demonstrations"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="FFT-in-MATLAB">FFT in MATLAB<a class="anchor-link" href="#FFT-in-MATLAB"> </a></h3><p>The FFT algorithm is implemented, in MATLAB, as the function <code>fft</code>. We will conclude the class by working through Exercises 6 and 7 from section 10.8 of Karris.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-3">Example 3<a class="anchor-link" href="#Example-3"> </a></h3><p>Plot the Fourier transform of the rectangular pulse shown below, using the MATLAB <code>fft</code> func-tion. Then, use the <code>ifft</code> function to verify that the inverse transformation produces the rectangular pulse.</p>
+<p><img src="pictures/fft_example1.png" alt="Example 1"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="FFT-for-Example-3">FFT for Example 3<a class="anchor-link" href="#FFT-for-Example-3"> </a></h4><p>The rectangular pulse can be produced like so</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">x</span> <span class="p">=</span> <span class="p">[</span><span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">50</span><span class="p">)</span> <span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">50</span><span class="p">)];</span>
+<span class="n">y</span> <span class="p">=</span> <span class="p">[</span><span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">)</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">)];</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/dft/2/fft_89_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>and the FFT is produced as</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/dft/2/fft_91_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>unwind</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fftshift</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">y</span><span class="p">))))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/dft/2/fft_93_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The inverse FFT is obtained with</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ifft</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/dft/2/fft_95_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-4">Example 4<a class="anchor-link" href="#Example-4"> </a></h3><p><img src="pictures/fft_example2.png" alt="Example 2"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="FFT-Example-4">FFT Example 4<a class="anchor-link" href="#FFT-Example-4"> </a></h4><p>The triangular pulse is obtained with</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">x</span> <span class="p">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
+<span class="n">y</span> <span class="p">=</span> <span class="p">[</span><span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">50</span><span class="p">)</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">)];</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/dft/2/fft_98_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>and the FFT is obtained with</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fftshift</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">y</span><span class="p">))))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/dft/2/fft_100_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The inverse FFT is obtained with</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ifft</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/dft/2/fft_102_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Summary">Summary<a class="anchor-link" href="#Summary"> </a></h2><ul>
+<li>The inefficiency of the DFT</li>
+<li>The FFT - a sketch of its development</li>
+<li>An illustration of part of the FFT algorithm</li>
+<li>FFT v DFT</li>
+<li>Two examples</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Homework">Homework<a class="anchor-link" href="#Homework"> </a></h2><p>Read the rest of Chapter 10 of Karris from page 10.9 and make your own notes on the implementation of the FFT.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="The-End?">The End?<a class="anchor-link" href="#The-End?"> </a></h2><ul>
+<li>This concludes this module. </li>
+<li>There is some material that I have not covered, most notably is a significant amount of additional information about <strong>Filter Design</strong> (including the use of MATLAB for this) in Chapter 11 of Karris.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Footnotes">Footnotes<a class="anchor-link" href="#Footnotes"> </a></h3><ol>
+<li><p><em>Note</em>: addition of two complex numbers $(a + jb) + (c + jd) = (a+b) + j(b + d)$ so requires 2 floating-point additions; multiplication $(a + jb)(c + jd) = (ac - bd)+j(ad + bc)$ requires four floating-point multiplications and two additions.</p>
+<p>In MATLAB, complex numbers are represented internally as two 64 bit floating point operations so each complex operation is expensive both in terms of computing time and working memory space. And the result of an N-point DFT will require twice the memory of the original sequence, assuming that it is stored as floating point real numbers, considerably 16 times the storage is needed if the original sequence is the result of sampling by, say, an 8 bit ADC.</p>
+<p>Of course, modern 64 bit mirocprocessers have hardware support for floating point operations and so these operations take a minumum number of machine cycles. Digital Signal Processors and Graphic Processing Units, probably have hardware support for complex arithmetic too. Nonethess, complex arithmetic is an expensive operation, so any simplifications we can make will be valuable.</p>
+</li>
+<li><p>Even if we do not have a real sequence, we only need to compute the first $N/2$ values of the spectrum because the sequence for $X[k]$ from $N/2 + 1 &lt; k \le N-1$ are complex conjugates, in the reverse order, of the sequence of $X[k]$ for $0 \le k &lt; N/2$. This is easy to prove by looking at the geometry of the unit circle in the z-plane.</p>
+</li>
+<li><p>If $N=1024$, $N\log_2 N = 1024\times 10 = 10,240$ complex operations.</p>
+</li>
+<li><p>The Inverse FFT (IFFT) follows by noting that the rotation vector used in its computation is the complex conjugate
+$$W_N^{-1}.$$</p>
+</li>
+<li><p>Karris goes further in showing how the decomposition used to implement the FFT can be further be understood by considering even and odd decompositions. This is also the approach taken by Phillips <em>et al.</em> reproduced here.
+You'll also find that most text books on Digital Signal Processing will cover the FFT and give more or less understandable presentations of the way the algorithm works.</p>
+</li>
+<li><p>A complex number in MATLAB is 2 floating point doubles or 128 bits. So a 2048 "bin" FFT needs storage in RAM for approximately $22,528\times 128 = 2.9$ Mbit ($260$ kByte) of data.</p>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Solutions">Solutions<a class="anchor-link" href="#Solutions"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-1">Example 1<a class="anchor-link" href="#Example-1"> </a></h3><p>From the mathematical development and signal flow graph shown earlier:</p>
+$$\begin{eqnarray*}
+X_e[0] &amp;=&amp; x[0] + x[2] = 1 + 3 = 4;\\
+X_e[1] &amp;=&amp; x[0] - x[2] = 1 - 3 = -2;\\
+X_o[0] &amp;=&amp; x[1] + x[3] = 2 + 4 = 6;\\
+X_o[1] &amp;=&amp; x[1] - x[3] = 2 - 4 = -2.
+\end{eqnarray*}$$<p>Thus,</p>
+$$\begin{eqnarray*}
+X[0] &amp;=&amp; X_e[0] + X_o[0] = 4 + 6 = 10,\\
+X[1] &amp;=&amp; X_e[1] + W_4^1 X_o[1] = -2 + (-j)(-2) = -2 - j2,\\
+X[2] &amp;=&amp; X_e[0] - X_o[0] = 4 - 6 = -4,\\
+X[3] &amp;=&amp; X_e[1] - W_4^1 X_o[1] = -2 - (-j)(-2) = -2 + j2.
+\end{eqnarray*}$$<p>Q.E.D.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-2">Example 2<a class="anchor-link" href="#Example-2"> </a></h3><p>After decomposition we have:</p>
+$$\begin{eqnarray*}
+X_1[0] &amp;=&amp; x[0] + x[2] = 1 + 3 = 4;\\
+X_1[1] &amp;=&amp; W_4^0\left[x[1] - x[3]\right] = 2 + 4 = 6;\\
+X_2[0] &amp;=&amp; x[0] - x[2] = 1 - 3 = -2;\\
+X_2[1] &amp;=&amp; W_4^1\left[x[1] - x[3]\right] = -j[2 - 4] = j2.
+\end{eqnarray*}$$<p>Hence, after 2-point FFT:</p>
+$$\begin{eqnarray*}
+X[0] &amp;=&amp; X_1[0] + X_1[1] = 4 + 6 = 10,\\
+X[1] &amp;=&amp; X_2[0] + X_2[1] = -2 + j2,\\
+X[2] &amp;=&amp; X_1[0] - X_1[1] = 4 - 6 = -4,\\
+X[3] &amp;=&amp; X_2[0] - X_2[1] = -2 - j2.
+\end{eqnarray*}$$<p>Q.E.D.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-3">Example 3<a class="anchor-link" href="#Example-3"> </a></h3><p>See script <a href="https://github.com/cpjobling/EG-247-Resources/blob/master/week10/matlab/fft_ex1.m">fft_ex1.m</a>.</p>
+<h3 id="Example-4">Example 4<a class="anchor-link" href="#Example-4"> </a></h3><p>See script <a href="https://github.com/cpjobling/EG-247-Resources/blob/master/week10/matlab/fft_ex2.m">fft_ex2.m</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

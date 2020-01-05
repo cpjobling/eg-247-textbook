@@ -1,0 +1,1160 @@
+---
+redirect_from:
+  - "dt-systems/3/i-z-transform"
+interact_link: content/dt_systems/3/i_z_transform.ipynb
+kernel_name: matlab
+kernel_path: content/dt_systems/3
+has_widgets: false
+title: |-
+  The Inverse Z-Transform
+pagenum: 21
+prev_page:
+  url: /dt_systems/2/z_transform.html
+next_page:
+  url: /dt_systems/4/dt_models.html
+suffix: .ipynb
+search: z f example frac n matlab transform inverse pre mlx m division partial fraction r p function ndash examples karris sequence expansion pi residues rational polynomial poles left right compute plot img src pictures png using integral into k proper pk style border px solid blue solution also available lollipop results method answer through class inversion expand form complex step must next functions residue symbolic staircase disadvantages requires scope reading notes section systems simulink modelling pfe analysis any methods polynomials terms where cdots rz s work skip slide lecture uses descending order plots dz c dimpulse examplea exampleb closed theorem
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">The Inverse Z-Transform</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="The-Inverse-Z-Transform">The Inverse Z-Transform<a class="anchor-link" href="#The-Inverse-Z-Transform"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Scope-and-Background-Reading">Scope and Background Reading<a class="anchor-link" href="#Scope-and-Background-Reading"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This session we will talk about the Inverse Z-Transform and illustrate its use through an examples class.</p>
+<p>The material in this presentation and notes is based on Chapter 9 (Starting at Section 9.6) of <a href="http://site.ebrary.com/lib/swansea/docDetail.action?docID=10547416">Steven T. Karris, Signals and Systems: with Matlab Computation and Simulink Modelling, 5th Edition.</a> from the <strong>Required Reading List</strong>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Agenda">Agenda<a class="anchor-link" href="#Agenda"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Inverse Z-Transform</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Examples using PFE</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Examples using Long Division</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Analysis in MATLAB</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="The-Inverse-Z-Transform">The Inverse Z-Transform<a class="anchor-link" href="#The-Inverse-Z-Transform"> </a></h2><p>The inverse Z-Transform enables us to extract a sequence $f[n]$ from $F(z)$. It can be found by any of the following methods:</p>
+<ul>
+<li>Partial fraction expansion</li>
+<li>The inversion integral</li>
+<li>Long division of polynomials</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Partial-fraction-expansion">Partial fraction expansion<a class="anchor-link" href="#Partial-fraction-expansion"> </a></h3><p>We expand $F(z)$ into a summation of terms whose inverse is known. These terms have the form:</p>
+$$k,\;\frac{r_1 z}{z - p_1},\;\frac{r_1 z}{(z - p_1)^2},\;\frac{r_3 z}{z - p_2},\ldots$$<p>where $k$ is a constant, and $r_i$ and $p_i$ represent the residues and poles respectively, and can be real or complex<sup>1</sup>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Notes</strong></p>
+<ol>
+<li>If complex, the poles and residues will be in complex conjugate pairs </li>
+</ol>
+$$\frac{r_{i} z}{z - p_i} + \frac{r_{i}^* z}{z - p_i^*}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Step-1:-Make-Fractions-Proper">Step 1: Make Fractions Proper<a class="anchor-link" href="#Step-1:-Make-Fractions-Proper"> </a></h3><ul>
+<li>Before we expand $F(z)$ into partial fraction expansions, we must first express it as a <em>proper</em> rational function.</li>
+<li>This is done by expanding $F(z)/z$ instead of $F(z)$</li>
+<li>That is we expand</li>
+</ul>
+$$\frac{F(z)}{z} = \frac{k}{z} + \frac{r_1}{z-p_1} + \frac{r_2}{z-p_2} + \cdots$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Step-2:-Find-residues">Step 2: Find residues<a class="anchor-link" href="#Step-2:-Find-residues"> </a></h3><ul>
+<li>Find residues from</li>
+</ul>
+$$r_k = \lim_{z\to p_k}(z - p_k)\frac{F(z)}{z} = (z - p_k)\left.\frac{F(z)}{z}\right|_{z=p_k}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Step-3:-Map-back-to-transform-tables-form">Step 3: Map back to transform tables form<a class="anchor-link" href="#Step-3:-Map-back-to-transform-tables-form"> </a></h3><ul>
+<li>Rewrite $F(z)/z$:</li>
+</ul>
+$$z\frac{F(z)}{z} = F(z) = k + \frac{r_1z}{s-p_1} + \frac{r_2z}{s-p_2} + \cdots$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will work through an example in class.</p>
+<p>[Skip next slide in Pre-Lecture]</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-1">Example 1<a class="anchor-link" href="#Example-1"> </a></h3><p>Karris Example 9.4: use the partial fraction expansion to compute the inverse z-transform of</p>
+$$F(z) = \frac{1}{(1 - 0.5z^{-1})(1 - 0.75z^{-1})(1 - z^{-1})}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="MATLAB-solution">MATLAB solution<a class="anchor-link" href="#MATLAB-solution"> </a></h3><p>See <a href="matlab/example1.mlx">example1.mlx</a>. (Also available as  <a href="matlab/example1.m">example1.m</a>.)</p>
+<p>Uses MATLAB functions:</p>
+<ul>
+<li><code>collect</code> &ndash; expands a polynomial</li>
+<li><code>sym2poly</code> &ndash; converts a polynomial into a numeric polymial (vector of coefficients in descending order of exponents)</li>
+<li><code>residue</code> &ndash; calculates poles and zeros of a polynomial</li>
+<li><code>ztrans</code> &ndash; symbolic z-transform</li>
+<li><code>iztrans</code> &ndash; symbolic inverse ze-transform</li>
+<li><code>stem</code> &ndash; plots sequence as a "lollipop" diagram</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">clear </span><span class="s">all</span><span class="p"></span>
+<span class="n">cd </span><span class="s">matlab</span><span class="p"></span>
+<span class="n">format </span><span class="s">compact</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+ans =
+
+    &#39;/Users/eechris/dev/eg-247-textbook/content/dt_systems/3/matlab&#39;
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">syms </span><span class="s">z n</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The denoninator of $F(z)$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Dz</span> <span class="p">=</span> <span class="p">(</span><span class="n">z</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">z</span> <span class="o">-</span> <span class="mf">0.75</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">z</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Multiply the three factors of Dz to obtain a polynomial</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Dz_poly</span> <span class="p">=</span> <span class="n">collect</span><span class="p">(</span><span class="n">Dz</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Dz_poly =
+z^3 - (9*z^2)/4 + (13*z)/8 - 3/8
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Make-into-a-rational-polynomial">Make into a rational polynomial<a class="anchor-link" href="#Make-into-a-rational-polynomial"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$z^2$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">num</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">];</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$z^3 - 9/4 z^2 - 13/8 z - 3/8$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">den</span> <span class="p">=</span> <span class="n">sym2poly</span><span class="p">(</span><span class="n">Dz_poly</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>den =
+    1.0000   -2.2500    1.6250   -0.3750
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Compute-residues-and-poles">Compute residues and poles<a class="anchor-link" href="#Compute-residues-and-poles"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="p">=</span> <span class="n">residue</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">den</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Print-results">Print results<a class="anchor-link" href="#Print-results"> </a></h3><ul>
+<li><code>fprintf</code> works like the c-language function</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">fprintf</span><span class="p">(</span><span class="s">&#39;\n&#39;</span><span class="p">)</span>
+<span class="n">fprintf</span><span class="p">(</span><span class="s">&#39;r1 = %4.2f\t&#39;</span><span class="p">,</span> <span class="n">r</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span> <span class="n">fprintf</span><span class="p">(</span><span class="s">&#39;p1 = %4.2f\n&#39;</span><span class="p">,</span> <span class="n">p</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span><span class="c">...</span>
+<span class="n">fprintf</span><span class="p">(</span><span class="s">&#39;r2 = %4.2f\t&#39;</span><span class="p">,</span> <span class="n">r</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span> <span class="n">fprintf</span><span class="p">(</span><span class="s">&#39;p2 = %4.2f\n&#39;</span><span class="p">,</span> <span class="n">p</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span><span class="c">...</span>
+<span class="n">fprintf</span><span class="p">(</span><span class="s">&#39;r3 = %4.2f\t&#39;</span><span class="p">,</span> <span class="n">r</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span> <span class="n">fprintf</span><span class="p">(</span><span class="s">&#39;p3 = %4.2f\n&#39;</span><span class="p">,</span> <span class="n">p</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+r1 = 8.00	p1 = 1.00
+r2 = -9.00	p2 = 0.75
+r3 = 2.00	p3 = 0.50
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Symbolic-proof">Symbolic proof<a class="anchor-link" href="#Symbolic-proof"> </a></h3>$$f[n] = 2\left(\frac{1}{2}\right)^n - 9\left(\frac{3}{4}\right)^n + 8$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="c">% z-transform</span>
+<span class="n">fn</span> <span class="p">=</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>^<span class="n">n</span><span class="o">-</span><span class="mi">9</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>^<span class="n">n</span> <span class="o">+</span> <span class="mi">8</span><span class="p">;</span>
+<span class="n">Fz</span> <span class="p">=</span> <span class="n">ztrans</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Fz =
+(8*z)/(z - 1) + (2*z)/(z - 1/2) - (9*z)/(z - 3/4)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="c">% inverse z-transform</span>
+<span class="n">iztrans</span><span class="p">(</span><span class="n">Fz</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>ans =
+2*(1/2)^n - 9*(3/4)^n + 8
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Sequence">Sequence<a class="anchor-link" href="#Sequence"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">n</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">15</span><span class="p">;</span>
+<span class="n">sequence</span> <span class="p">=</span> <span class="n">subs</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span><span class="n">n</span><span class="p">);</span>
+<span class="n">stem</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">sequence</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;Discrete Time Sequence f[n] = 2*(1/2)^n-9*(3/4)^n + 8&#39;</span><span class="p">);</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;f[n]&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Sequence number n&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/dt_systems/3/i_z_transform_37_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-2">Example 2<a class="anchor-link" href="#Example-2"> </a></h3><p>Karris example 9.5: use the partial fraction expansion method to to compute the inverse z-transform of</p>
+$$F(z) = \frac{12z}{(z+1)(z - 1)^2}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="MATLAB-solution">MATLAB solution<a class="anchor-link" href="#MATLAB-solution"> </a></h3><p>See <a href="matlab/example2.mlx">example2.mlx</a>. (Also available as  <a href="matlab/example2.m">example2.m</a>.)</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Uses additional MATLAB functions:</p>
+<ul>
+<li><code>dimpulse</code> &ndash; computes and plots a sequence $f[n]$ for any range of values of $n$</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">open </span><span class="s">example2</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Results">Results<a class="anchor-link" href="#Results"> </a></h3><h4 id="'Lollipop'-Plot">'Lollipop' Plot<a class="anchor-link" href="#'Lollipop'-Plot"> </a></h4><p><img src="pictures/example2a.png"></p>
+<h4 id="'Staircase'-Plot">'Staircase' Plot<a class="anchor-link" href="#'Staircase'-Plot"> </a></h4><p>Simulates output of Zero-Order-Hold (ZOH) or Digital Analogue Converter (DAC)</p>
+<p><img src="pictures/example2b.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-3">Example 3<a class="anchor-link" href="#Example-3"> </a></h3><p>Karris example 9.6: use the partial fraction expansion method to to compute the inverse z-transform of</p>
+$$F(z) = \frac{z + 1}{(z-1)(z^2 + 2z + 2)}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="MATLAB-solution">MATLAB solution<a class="anchor-link" href="#MATLAB-solution"> </a></h3><p>See <a href="matlab/example3.mlx">example3.mlx</a>. (Also available as <a href="matlab/example3.m">example3.m</a>.)</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">open </span><span class="s">example3</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Results">Results<a class="anchor-link" href="#Results"> </a></h3><h4 id="Lollipop-Plot">Lollipop Plot<a class="anchor-link" href="#Lollipop-Plot"> </a></h4><p><img src="pictures/example3a.png"></p>
+<h4 id="Staircase-Plot">Staircase Plot<a class="anchor-link" href="#Staircase-Plot"> </a></h4><p><img src="pictures/example3b.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Inverse-Z-Transform-by-the-Inversion-Integral">Inverse Z-Transform by the Inversion Integral<a class="anchor-link" href="#Inverse-Z-Transform-by-the-Inversion-Integral"> </a></h3><p>The inversion integral states that:</p>
+$$f[n] = \frac{1}{j2\pi}\oint_C {F(z){z^{n - 1}}\,dz} $$<p>where $C$ is a closed curve that encloses all poles of the integrant.</p>
+<p>This can (<em>apparently</em>) be solved by Cauchy's residue theorem!!</p>
+<p>Fortunately (:-), this is beyond the scope of this module!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>See Karris Section 9.6.2 (pp 9-29&mdash;9-33) if you want to find out more.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Inverse-Z-Transform-by-the-Long-Division">Inverse Z-Transform by the Long Division<a class="anchor-link" href="#Inverse-Z-Transform-by-the-Long-Division"> </a></h3><p>To apply this method, $F(z)$ must be a rational polynomial function, and the numerator and denominator must be polynomials arranged in descending powers of $z$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will work through an example in class.</p>
+<p>[Skip next slide in Pre-Lecture]</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-4">Example 4<a class="anchor-link" href="#Example-4"> </a></h3><p>Karris example 9.9: use the long division method to determine $f[n]$ for $n = 0,\,1,\,\mathrm{and}\,2$, given that</p>
+$$F(z) = \frac{1 + z^{-1} + 2z^{-2} + 3z^{-3}}{(1 - 0.25z^{-1})(1 - 0.5z^{-1})(1 - 0.75z^{-1})}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="MATLAB">MATLAB<a class="anchor-link" href="#MATLAB"> </a></h3><p>See <a href="matlab/example4.mlx">example4.mlx</a>. (also available as <a href="matlab/example4.m">example4.m</a>.)</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">open </span><span class="s">example4</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Results">Results<a class="anchor-link" href="#Results"> </a></h3>
+<pre><code>sym_den =
+
+z^3 - (3*z^2)/2 + (11*z)/16 - 3/32
+
+
+fn =
+
+    1.0000
+    2.5000
+    5.0625
+    ....</code></pre>
+<h4 id="Combined-Staircase/Lollipop-Plot">Combined Staircase/Lollipop Plot<a class="anchor-link" href="#Combined-Staircase/Lollipop-Plot"> </a></h4><p><img src="pictures/example4.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Methods-of-Evaluation-of-the-Inverse-Z-Transform">Methods of Evaluation of the Inverse Z-Transform<a class="anchor-link" href="#Methods-of-Evaluation-of-the-Inverse-Z-Transform"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Partial-Fraction-Expansion">Partial Fraction Expansion<a class="anchor-link" href="#Partial-Fraction-Expansion"> </a></h3><p><em>Advantages</em></p>
+<ul>
+<li>Most familiar.</li>
+<li>Can use MATLAB <code>residue</code> function.</li>
+</ul>
+<p><em>Disadvantages</em></p>
+<ul>
+<li>Requires that $F(z)$ is a proper rational function.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Invsersion-Integral">Invsersion Integral<a class="anchor-link" href="#Invsersion-Integral"> </a></h3><p><em>Advantage</em></p>
+<ul>
+<li>Can be used whether $F(z)$ is rational or not</li>
+</ul>
+<p><em>Disadvantages</em></p>
+<ul>
+<li>Requires familiarity with the <em>Residues theorem</em> of complex variable analaysis.&lt;/li&gt;&lt;/ul&gt;</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Long-Division">Long Division<a class="anchor-link" href="#Long-Division"> </a></h3><p><em>Advantages</em></p>
+<ul>
+<li>Practical when only a small sequence of numbers is desired.</li>
+<li>Useful when z-transform has no closed-form solution.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Disadvantages</em></p>
+<ul>
+<li>Can use MATLAB <code>dimpulse</code> function to compute a large sequence of numbers.</li>
+<li>Requires that $F(z)$ is a proper rational function.</li>
+<li>Division may be endless.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Summary">Summary<a class="anchor-link" href="#Summary"> </a></h2><ul>
+<li>Inverse Z-Transform</li>
+<li>Examples using PFE</li>
+<li>Examples using Long Division</li>
+<li>Analysis in MATLAB</li>
+</ul>
+<p><em>Coming Next</em></p>
+<ul>
+<li>DT transfer functions, continuous system equivalents, and modelling DT systems in Matlab and Simulink.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Answers-to-Examples">Answers to Examples<a class="anchor-link" href="#Answers-to-Examples"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Answer-to-Example-1">Answer to Example 1<a class="anchor-link" href="#Answer-to-Example-1"> </a></h3>$$f[n] = 2\left(\frac{1}{2}\right)^n - 9\left(\frac{3}{4}\right)^n + 8$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Answer-to-Example-2">Answer to Example 2<a class="anchor-link" href="#Answer-to-Example-2"> </a></h3>$$f[n] = 3(-1)^n + 6n - 3$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Answer-to-Example-3">Answer to Example 3<a class="anchor-link" href="#Answer-to-Example-3"> </a></h3>$$f[n] = -0.5\delta[n] + 0.4 + \frac{(\sqrt{2})^n}{10}\cos \frac{3n\pi}{4} - \frac{3(\sqrt{2})^n}{10}\sin \frac{3n\pi}{4}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Answer-to-Example-4">Answer to Example 4<a class="anchor-link" href="#Answer-to-Example-4"> </a></h3><p>$f[0] = 1$, $f[1] = 5/2$, $f[2] = 81/16$, ....</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

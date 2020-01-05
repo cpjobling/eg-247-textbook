@@ -1,0 +1,237 @@
+---
+interact_link: content/labs/lab03/index.ipynb
+kernel_name: python3
+kernel_path: content/labs/lab03
+has_widgets: false
+title: |-
+  Lab 3 -  Laplace Transforms and Transfer Functions for Circuit Analysis
+pagenum: 49
+prev_page:
+  url: /labs/lab02/index.html
+next_page:
+  url: /labs/lab04/index.html
+suffix: .ipynb
+search: script lab file live assessment matlab solution mlx peer circuit m should example s ex function proj transfer linked save canvas textbook simulink exercises files t student claim submission functions cpjobling github io eg karris completed download open exercise vout response r kohm gs review notes labs using marks project feedback submissions run plot submit submitted analysis laplacetransform worksheet documentation mini give p text c nf slx claims self laplace chapter available signals systems th com also criteria assessor before folder workspace used code fig png following equation solve confirm complex e upload q impedance admittance values form evidence completion
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Lab 3 -  Laplace Transforms and Transfer Functions for Circuit Analysis</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Lab-3:-Laplace-transforms-and-transfer-functions-for-circuit-analysis">Lab 3: Laplace transforms and transfer functions for circuit analysis<a class="anchor-link" href="#Lab-3:-Laplace-transforms-and-transfer-functions-for-circuit-analysis"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Preamble">Preamble<a class="anchor-link" href="#Preamble"> </a></h2><h3 id="Associated-Class-Notes">Associated Class Notes<a class="anchor-link" href="#Associated-Class-Notes"> </a></h3><p>This lab supports the materials covered in <a href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/3/circuit_analysis">Chapter 3.3</a> and <a href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/4/transfer_functions">Chapter 3.4</a> of the course notes. You may wish to refer to the Worksheets <a href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/3/worksheet6">worksheet 6</a> and <a href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/4/worksheet7">worksheet 7</a> for additional examples to try.</p>
+<h3 id="Other-formats">Other formats<a class="anchor-link" href="#Other-formats"> </a></h3><p>This document is available in <a href="https://cpjobling.github.io/eg-247-textbook/labs/lab03/index">HTML</a> format for online viewing <a href="https://cpjobling.github.io/eg-247-textbook/labs/lab03/lab03.pdf">PDF</a> for printing.</p>
+<h3 id="Acknowledgements">Acknowledgements<a class="anchor-link" href="#Acknowledgements"> </a></h3><p>These examples have been adapted from Chapter 4 of 
+<a href="http://site.ebrary.com/lib/swansea/docDetail.action?docID=10547416">Stephen Karris, Signals and Systems : With MATLAB Computing and Simulink Modeling (5th Edition)</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Aims">Aims<a class="anchor-link" href="#Aims"> </a></h2><p>The purpose of this laboratory is to explore the use of MATLAB for circuit analysis and Simulink for circuit modelling using transfer functions.</p>
+<p>It also encourages you to make full use of the documentation features afforded by the Live Script format.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Assessment-criteria">Assessment criteria<a class="anchor-link" href="#Assessment-criteria"> </a></h2><p>Marks can be claimed according to how many of the parts of Mini-project 2 and Lab Exercises 4 to 6 have been completed.</p>
+<p>Your peer assessor is encouraged to give feedback on the quality of the Live Script documentation you include in your submissions.</p>
+<p>Detailed marking criteria for this and the other labs and the project are given in the linked <a href="https://docs.google.com/spreadsheets/d/1EQzwSfGMdw8oiQds4bUR8sZTCgb2lMvcJHjmea-8hW4/edit?usp=sharing">Assessment Criteria</a> [Google sheet].</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Setup">Setup<a class="anchor-link" href="#Setup"> </a></h2><h3 id="Before-you-start">Before you start<a class="anchor-link" href="#Before-you-start"> </a></h3><p>If you haven't already, create a suitable folder structure on your file-store for your labs.</p>
+<p>I suggest</p>
+
+<pre><code>P:\workspace
+    signals-and-systems-lab
+        lab01
+        lab02
+        lab03
+        :</code></pre>
+<p>Use folder <code>p:\workspace\signals-and-systems-lab\lab03</code> for this lab.</p>
+<h3 id="Tutorial:-Defining-Transfer-Functions-in-Matlab-(not-assessed)">Tutorial: Defining Transfer Functions in Matlab (not assessed)<a class="anchor-link" href="#Tutorial:-Defining-Transfer-Functions-in-Matlab-(not-assessed)"> </a></h3><p>The linked m-File is a short tutorial introduction to the definition of transfer functions in MATLAB. It introduces the Linear Time Invariant (LTI) block and shows how it can be used in analysis. Download, open as a Live Script file, run all the code and read the file. Save and use the Live Script file as a reference for later labs.</p>
+<p>Linked m-file: <a href="tf_matlab.m">tf_matlab.m</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Lab-Exercises">Lab Exercises<a class="anchor-link" href="#Lab-Exercises"> </a></h2><p>In all these exercises you should add sections, headings and explanatory text to document your Live Script files so and help your peer assessor understand your solutions.</p>
+<h3 id="Lab-Exercise-4">Lab Exercise 4<a class="anchor-link" href="#Lab-Exercise-4"> </a></h3><p>Download the linked script file <a href="solution3.m">solution3.m</a> for the Solution for Example 3 from Week 3. Open it as a Live Script file and run all the code. Study the file which presents part of the solution to Textbook Example 4.3.</p>
+<p>Starting from the simplified circuit (Fig. 4.9 from <a href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=101#ppg=101">Karris</a>, 2012: p4-5):</p>
+<p><img src="fig4_9.png" alt="Transformed circuit of Example 4.3"></p>
+<p>Save the Live Script file then save it as <code>ex4.mlx</code>. Modify the script file by adding explanatory text and MATLAB commands to do the following:</p>
+<ol>
+<li><p>Define equation 4.5 in MATLAB:</p>
+<p><code>eq45 = (Vout - 1 - 3/s)/(1/s + 2 + s/2) + Vout/1 + Vout/(s/2) == 0</code></p>
+<p>Now use  <code>Vout = solve(eq45,Vout)</code> function to confirm Equation 4.6</p>
+<p>$$V_{\mathrm out}(s) = \frac{2s(s+3)}{s^3+8s^2+10s+4}.$$</p>
+</li>
+<li>Use <code>roots</code> to find the factors of the denominator $$s^3+8s^2+10s+4$$ and expand the terms with complex roots to find the quadratic factor.</li>
+<li>Use the inverse Laplace Transform on the rational polynomial with real and quadratic factors to determine the symbolic expression <code>vout</code> as a function of time.</li>
+<li>Verify that the response is $$v_{\mathrm out}(t) = \left(1.36e^{-6.57t}+0.64e^{-0.715t}\cos 0.316t -1.84e^{-0.715t}\sin 0.316t\right)u_0(t)$$</li>
+<li>Use <code>ezplot</code> to plot this result.</li>
+<li>Compare your answer with the numerical solution computed in the script.</li>
+</ol>
+<p>Save your solution <code>ex4.mlx</code> for upload to Canvas.</p>
+<h3 id="Lab-Exercise-5:-Problem-Solving-in-MATLAB">Lab Exercise 5: Problem Solving in MATLAB<a class="anchor-link" href="#Lab-Exercise-5:-Problem-Solving-in-MATLAB"> </a></h3><p>Choose one of the Problems Q1-Q3 from Section 4.7 of Karris 2012 (page 4-21) and use MATLAB to adapt the methods used to solve the problem in <strong>Lab Exercise 4</strong> to determine the required solution.</p>
+<p>Save your chosen solution as a Live Script file with the name <code>ex5.mlx</code> for upload to Canvas.</p>
+<h3 id="Lab-Exercise-6:-Complex-Impedance-and-Admittance">Lab Exercise 6: Complex Impedance and Admittance<a class="anchor-link" href="#Lab-Exercise-6:-Complex-Impedance-and-Admittance"> </a></h3><p>The linked file solves Example 4.5 from Karris 2012 (Example 5 in the notes). The solution concerns the calculation of the Complex Impedance and Admittance of the Circuit shown in Figure 4.16.</p>
+<p>Linked file: <a href="solution5.m">solution5.m</a>.</p>
+<p><img src="4_16.png" alt="Circuit for Example 4.5"></p>
+<p>Download the file into MATLAB, open it as a Live Script file and use it to verify the equation for the circuit impedance $Z(s)$ given in the notes and the text. Extend it to calculate the admittance $Y(s)$.</p>
+<p>Use the same technique to solve Q4 from Section 4.7 (Exercises) of Karris (p. 4-21).</p>
+<p>Save your solution to a Live Script file with the name <code>ex6.mlx</code> for upload to Canvas.</p>
+<h3 id="Mini-Project-2:-Transfer-Functions">Mini Project 2: Transfer Functions<a class="anchor-link" href="#Mini-Project-2:-Transfer-Functions"> </a></h3><p>Download the linked MATLAB script which computes the solution to Example 4.7 
+from Karris (2007) (Example 7 from the notes). This script computes the 
+transfer function of the Op-Amp circuit shown below:</p>
+<p><img src="fig4_21.png" alt="The s-Domain circuit for Example 4.7"></p>
+<p>Linked script file: <a href="solution7.m">solution7.m</a>.</p>
+<p>In the original example:</p>
+<p>R1 = 20 kOhm</p>
+<p>R2 = 40 kOhm</p>
+<p>R3 = 50 kOhm</p>
+<p>C1 = 25 nF</p>
+<p>C2 = 10 nF</p>
+<p>Use your student number to give a different set of component values whiles maintaining the relative sizes.</p>
+<p>For example if your number was 876543 you might use:</p>
+<p>R1 = <strong>8</strong>0 kOhm</p>
+<p>R2 = <strong>7</strong>0 kOhm</p>
+<p>R3 = <strong>6</strong>0 kOhm</p>
+<p>C1 = <strong>54</strong> nF</p>
+<p>C2 = <strong>3</strong>0 nF</p>
+<p>If your student number contains 0s, you should substitute a digit if your choice.
+You may find <code>doc</code> or <code>help</code> and the symbolic toolbox function <code>sym2poly</code> useful.</p>
+<p>To Do: open <code>solution7.m</code> as a Live Script file and save as <code>proj2.mlx</code>. Adapt the script to repeat the computation using component values based on your student number.</p>
+<p>Then add text and instructions to:</p>
+<ol>
+<li>compute and plot the phase response of Gs - see function <code>angle</code></li>
+<li>make a transfer function LTI object <code>Gs2 = tf(numG,denG)</code></li>
+<li>Compare frequency response with result of <code>bode(Gs2)</code></li>
+<li>Plot the pole-zero map of <code>Gs2</code> using the <code>pzmap</code> function.</li>
+<li>Plot the step response of <code>Gs2</code> using the <code>step</code> function.</li>
+<li>Compute and plot the response of <code>Gs2</code> to a sinusoid using the <code>lsim</code> function.</li>
+<li>Repeat the simulation of the sinsoidal response in Simulink - save model as <code>proj2.slx</code>.</li>
+</ol>
+<p>Submit the files <code>proj2.mlx</code> and <code>proj2.slx</code> to Canvas.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="What-to-hand-in">What to hand in<a class="anchor-link" href="#What-to-hand-in"> </a></h2><h3 id="Claim">Claim<a class="anchor-link" href="#Claim"> </a></h3><p>Up to 3 marks can be claimed for the mini project and up to 2 marks more depending on how much of Exercises 4-6 you have completed.</p>
+<p>Make your claim by downloading and editing the labwork claim form and declaration: <a href="lab03-claim.docx">lab03-claim.docx</a> [Word].</p>
+<h3 id="Submission">Submission<a class="anchor-link" href="#Submission"> </a></h3><p>You should submit the following to the <strong>Lab 03: Laplace transforms and transfer functions for circuit analysis</strong> Assignment on Canvas.</p>
+<ol>
+<li>The completed labwork claim form and declaration.</li>
+<li>As evidence for completion of the mini-project you should submit your completed versions of the Live Script file and Simulink files <code>proj2.mlx</code> and <code>proj2.slx</code>.</li>
+<li>As evidence for completion of lab exercises 4 and 5, you should submit your completed versions of the Live Script files <code>ex4.mlx</code> and <code>ex5.mlx</code>.</li>
+<li>As evidence for completion of lab exercise 6, you should submit your completed versions of the Live Script file <code>ex6.mlx</code>.</li>
+</ol>
+<h3 id="Deadline">Deadline<a class="anchor-link" href="#Deadline"> </a></h3><p>The deadline for claims and submission is <strong>Midnight, 6th March</strong>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Peer-Assessment">Peer Assessment<a class="anchor-link" href="#Peer-Assessment"> </a></h2><p>Peer assessment is valuable for the following three reasons:</p>
+<ol>
+<li>You will be able to learn something about the electronic assessment processes being used in the University.</li>
+<li>You will learn more about how to give and receive constructive feedback.</li>
+<li>It encourages you to to realistic in your claims and increases my confidence in self-assessment as a valid method of marking coursework.</li>
+<li>By seeing several submissions, you will be able to identify good and poor practice and be encouraged improve your own work.</li>
+<li>It allows me to distribute the load of validating individual claims making grading more efficient for me.</li>
+</ol>
+<p>The claims on this lab submission will be moderated by <strong>Peer Assessment</strong>. Each one of you will be asked to review one other student's submission of this laboratory exercise.</p>
+<p>The peer assessment is worth two marks. There is a total of 10 marks available for your participation in peer assessment.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="How-to-do-Peer-Assessment">How to do Peer Assessment<a class="anchor-link" href="#How-to-do-Peer-Assessment"> </a></h2><p>As a peer assessor, you will be required to review one of these submissions and let me know if you agree with the self-assigned score.</p>
+<p>To complete your peer assessment, you should download and run all the submitted MATLAB Live Scripts and Simulink models and check that the results are correct and complete.</p>
+<p>In particular, as Live Script is a way of documenting use of MATLAB, we would like you to pay attention to the quality and readability of the submissions as executable documents.</p>
+<h3 id="Checking-the-submitted-work">Checking the submitted work<a class="anchor-link" href="#Checking-the-submitted-work"> </a></h3><p>On Monday 9th March, you should receive notification that the submission one of your colleagues is available for peer assessment. This notification will arrive by email (if you have your Canvas notifications turned on) or via the inbox on Canvas or the Canvas Student App.</p>
+<p>To perform an assessment, you will need access to MATLAB and Simulink. If you have problems running any files that are submitted, please note this in your feedback.</p>
+<p>To perform a Peer Assessment you should visit the submission, review the claim form submitted and download the attached files. I would recommend that you create a folder for this submission. I would also recommend that you clear the MATLAB workspace (see command below) before testing each submitted file.</p>
+<p><code>matlab
+clear all</code></p>
+<h3 id="Assessment-procedure-for-this-lab">Assessment procedure for this lab<a class="anchor-link" href="#Assessment-procedure-for-this-lab"> </a></h3><ol>
+<li>Open the Live Script file <code>proj2.mlx</code> and execute <strong>run all</strong>. Check that the results are all present and that there are no errors. Review the formatting of the file and think about how readable and understandable the script is as a record of the experiment. </li>
+<li>Open the Simulink model <code>proj2.slx</code>. Review the transfer function block and confirm that it matches the values computed in <code>proj2.mlx</code>. Run the simulation and check the results.</li>
+<li>Review the live Script files <code>ex4.mlx</code>, <code>ex5.mlx</code> and <code>ex6.mlx</code> in the same way that you did for <code>proj2.mlx</code>. Comment on your findings. </li>
+</ol>
+<h3 id="Grading">Grading<a class="anchor-link" href="#Grading"> </a></h3><p>Use the grading rubric to confirm your peer's self assessment. <strong>Note</strong> you may may award a higher mark if you feel that the student has marked themselves too harshly! You should give a reason for your score if it does not agree with the student's own self-assessment.</p>
+<h3 id="Feedback">Feedback<a class="anchor-link" href="#Feedback"> </a></h3><p>You should also provide feedback on the student's approach to documentation of their Live Script submissions. Your comments might include comments on:</p>
+<ul>
+<li>Use of headings and sections to break up the Live Script documentation of the lab exercises.</li>
+<li>Good use of textual comments in the Live Script file to explain the MATLAB code.</li>
+<li>Things that the student did that you wish you had thought of.</li>
+<li>Suggestions on what the student may do next time to clarify their approach.</li>
+</ul>
+<p>Note that the instructor will moderate all peer assessments before assigning the final grade.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
