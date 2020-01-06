@@ -1,0 +1,1885 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Lab 4 - Time Domain Convolution</title>
+  <meta name="description" content="        Lab 4 - Time Domain Convolution    Lab 4: Time domain convolution Preamble Associated Class Notes This lab supports the materials covered in Chapter ...">
+
+  <link rel="canonical" href="https://jupyterbook.org/eg-247-textbook/labs/lab04/">
+  <link rel="alternate" type="application/rss+xml" title="EG-247 Signals and Systems" href="https://jupyterbook.org/eg-247-textbook/feed.xml">
+
+  <meta property="og:url"         content="https://jupyterbook.org/eg-247-textbook/labs/lab04/" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Lab 4 - Time Domain Convolution" />
+<meta property="og:description" content="        Lab 4 - Time Domain Convolution    Lab 4: Time domain convolution Preamble Associated Class Notes This lab supports the materials covered in Chapter ..." />
+<meta property="og:image"       content="https://jupyterbook.org/eg-247-textbook/images/logo/logo.png" />
+
+<meta name="twitter:card" content="summary">
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": "https://jupyterbook.org/eg-247-textbook/labs/lab04/",
+  "headline": "Lab 4 - Time Domain Convolution",
+  "datePublished": "2020-01-06T01:56:18+00:00",
+  "dateModified": "2020-01-06T01:56:18+00:00",
+  "description": "        Lab 4 - Time Domain Convolution    Lab 4: Time domain convolution Preamble Associated Class Notes This lab supports the materials covered in Chapter ...",
+  "author": {
+    "@type": "Person",
+    "name": "Dr Chris P. Jobling"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://jupyterbook.org/eg-247-textbook",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://jupyterbook.org/eg-247-textbook",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/eg-247-textbook/assets/css/styles.css">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/eg-247-textbook/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<!-- (mostly) copied from nbconvert configuration -->
+<!-- https://github.com/jupyter/nbconvert/blob/master/nbconvert/templates/html/mathjax.tpl -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: 'center',
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}},
+        linebreaks: { automatic: true },
+    },
+    
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML' async></script>
+
+
+  <!-- DOM updating function -->
+  <script src="/eg-247-textbook/assets/js/page/dom-update.js"></script>
+
+  <!-- Selectors for elements on the page -->
+  <script src="/eg-247-textbook/assets/js/page/documentSelectors.js"></script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/eg-247-textbook';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js" async></script>
+  <script src="/eg-247-textbook/assets/js/page/anchors.js" async></script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+
+
+  <!-- Load the auto-generating TOC (non-async otherwise the TOC won't load w/ turbolinks) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.8.1/tocbot.min.js" async></script>
+  <script src="/eg-247-textbook/assets/js/page/tocbot.js"></script>
+
+  <!-- Google analytics -->
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script>
+
+  <!-- Load custom website scripts -->
+  <script src="/eg-247-textbook/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/eg-247-textbook/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/eg-247-textbook/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js" async></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+
+  <!-- Load JS that depends on site variables -->
+  <script src="/eg-247-textbook/assets/js/page/copy-button.js" async></script>
+
+  <!-- Hide cell code -->
+  <script src="/eg-247-textbook/assets/js/page/hide-cell.js" async></script>
+
+  <!-- Printing the screen -->
+  <!-- Include nbinteract for interactive widgets -->
+<script src="https://printjs-4de6.kxcdn.com/print.min.js" async></script>
+<script>
+printContent = () => {
+    // MathJax displays a second version of any math for assistive devices etc.
+    // This prevents double-rendering in the PDF output.
+    var ignoreAssistList = [];
+    assistives = document.querySelectorAll('.MathJax_Display span.MJX_Assistive_MathML').forEach((element, index) => {
+        var thisId = 'MathJax-assistive-' + index.toString();
+        element.setAttribute('id', thisId);
+        ignoreAssistList.push(thisId)
+    });
+
+    // Print the actual content object
+    printJS({
+        printable: 'textbook_content',
+        type: 'html',
+        css: "/eg-247-textbook/assets/css/styles.css",
+        style: "#textbook_content {padding-top: 40px};",
+        scanStyles: false,
+        targetStyles: ["*"],
+        ignoreElements: ignoreAssistList,
+        documentTitle: "Made with Jupyter Book"
+    })
+};
+
+initPrint = () => {
+    document.querySelector('#interact-button-print').addEventListener('click', printContent)
+}
+
+initFunction(initPrint)
+</script>
+
+</head>
+
+  <body>
+    <!-- Include the ThebeLab config so it gets reloaded on each page -->
+    <script type="text/x-thebe-config">{
+    requestKernel: true,
+    binderOptions: {
+    repo: "cpjobling/eg-247-textbook",
+    ref: "master",
+    },
+    codeMirrorConfig: {
+    theme: "abcdef",
+    mode: "python"
+    },
+    kernelOptions: {
+    kernelName: "python3",
+    path: "content/labs/lab04"
+    }
+}
+</script>
+
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://jupyterbook.org/intro.html"><img src="/eg-247-textbook/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" alt="textbook logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">EG-247 Signals and Systems</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/introduction/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/introduction/index.html"
+        >
+          
+            1.
+          
+          Introduction
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/elementary_signals/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/elementary_signals/index.html"
+        >
+          
+            2.
+          
+          Elementary Signals
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/elementary_signals/hw1">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/elementary_signals/hw1.html"
+              >
+                
+                Homework 1
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/laplace_transform/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/laplace_transform/index.html"
+        >
+          
+            3.
+          
+          Laplace Transforms and their Applications
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/1/laplace">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/1/laplace.html"
+              >
+                
+                  3.1
+                
+                The Laplace Transformation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/2/inverse_laplace">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/2/inverse_laplace.html"
+              >
+                
+                  3.2
+                
+                The Inverse Laplace Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/3/circuit_analysis">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/3/circuit_analysis.html"
+              >
+                
+                  3.3
+                
+                Using Laplace Transforms for Circuit Analysis
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/4/transfer_functions">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/4/transfer_functions.html"
+              >
+                
+                  3.4
+                
+                Transfer Functions
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/5/convolution">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/5/convolution.html"
+              >
+                
+                  3.5
+                
+                The Impulse Response and Convolution
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/fourier_series/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/fourier_series/index.html"
+        >
+          
+            4.
+          
+          Fourier Series
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_series/1/trig_fseries">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_series/1/trig_fseries.html"
+              >
+                
+                  4.1
+                
+                Trigonometric Fourier Series
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_series/2/exp_fs1">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_series/2/exp_fs1.html"
+              >
+                
+                  4.2
+                
+                Exponential Fourier Series
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_series/3/exp_fs2">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_series/3/exp_fs2.html"
+              >
+                
+                  4.3
+                
+                Line Spectra and their Applications
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/fourier_transform/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/fourier_transform/index.html"
+        >
+          
+            5.
+          
+          Fourier Transform
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/1/ft1">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/1/ft1.html"
+              >
+                
+                  5.1
+                
+                Defining the Fourier Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/2/ft2">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/2/ft2.html"
+              >
+                
+                  5.2
+                
+                Fourier transforms of commonly occuring signals
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/3/ft3">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/3/ft3.html"
+              >
+                
+                  5.3
+                
+                Fourier Transforms for Circuit and LTI Systems Analysis
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/4/ft4">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/4/ft4.html"
+              >
+                
+                  5.4
+                
+                Introduction to Filters
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="dt_systems/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/dt_systems/index.html"
+        >
+          
+            6.
+          
+          Fourier Transform
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="dt_systems/1/sampling">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dt_systems/1/sampling.html"
+              >
+                
+                  6.1
+                
+                Introduction to Filters
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="dt_systems/2/z_transform">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dt_systems/2/z_transform.html"
+              >
+                
+                  6.2
+                
+                Introduction to Filters
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="dt_systems/3/i_z_transform">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dt_systems/3/i_z_transform.html"
+              >
+                
+                  6.3
+                
+                Introduction to Filters
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="dt_systems/4/dt_models">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dt_systems/4/dt_models.html"
+              >
+                
+                  6.4
+                
+                Introduction to Filters
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="dft/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/dft/index.html"
+        >
+          
+            7.
+          
+          Fourier Transform
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="dft/1/dft">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dft/1/dft.html"
+              >
+                
+                  7.1
+                
+                Introduction to Filters
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="dft/2/fft">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dft/2/fft.html"
+              >
+                
+                  7.2
+                
+                Introduction to Filters
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">In Class Worksheets</li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/worksheets/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/worksheets/index.html"
+        >
+          
+          Worksheets
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/introduction/worksheet1">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/introduction/worksheet1.html"
+              >
+                
+                Worksheet 1 Introduction
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/introduction/worksheet2">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/introduction/worksheet2.html"
+              >
+                
+                Worksheet 2
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/elementary_signals/worksheet3">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/elementary_signals/worksheet3.html"
+              >
+                
+                Worksheet 3 Elementary Signals
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/1/worksheet4">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/1/worksheet4.html"
+              >
+                
+                Worksheet 4 Laplace Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/2/worksheet5">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/2/worksheet5.html"
+              >
+                
+                Worksheet 5 Inverse Laplace Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/3/worksheet6">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/3/worksheet6.html"
+              >
+                
+                Worksheet 6 Using Laplace Transforms for Circuit Analysis
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/4/worksheet7">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/4/worksheet7.html"
+              >
+                
+                Worksheet 7 Transfer Functions
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/5/worksheet8">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/5/worksheet8.html"
+              >
+                
+                Worksheet 8 Impulse Response and Time Convolution
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_series/1/worksheet9">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_series/1/worksheet9.html"
+              >
+                
+                Worksheet 9 Trigonometric Fourier Series
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_series/2/worksheet10">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_series/2/worksheet10.html"
+              >
+                
+                Worksheet 10 Exponential Fourier Series
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_series/3/worksheet11">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_series/3/worksheet11.html"
+              >
+                
+                Worksheet 11 Line Spectra and their Applications
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/1/worksheet12">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/1/worksheet12.html"
+              >
+                
+                Worksheet 12 Defining the Fourier Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/2/worksheet13">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/2/worksheet13.html"
+              >
+                
+                Worksheet 13 Fourier transforms of commonly occuring signals
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/3/worksheet14">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/3/worksheet14.html"
+              >
+                
+                Worksheet 14 Fourier Transforms for Circuit and LTI Systems Analysis
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/4/worksheet15">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/4/worksheet15.html"
+              >
+                
+                Worksheet 15 Introduction to Filters
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/dt_systems/3/worksheet16">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dt_systems/3/worksheet16.html"
+              >
+                
+                Worksheet 16 The Inverse Z-Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/dt_systems/4/worksheet17">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dt_systems/4/worksheet17.html"
+              >
+                
+                Worksheet 17 Models of DT Systems
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/dft/1/worksheet18">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dft/1/worksheet18.html"
+              >
+                
+                Worksheet 18 The Discrete-time Fourier Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/dft/2/worksheet19">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dft/2/worksheet19.html"
+              >
+                
+                Worksheet 19 The Fast Fourier Transform
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Homework</li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Lab Exercises</li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/labs/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/labs/index.html"
+        >
+          
+          Laboratory Exercises
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/lab01/index">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/lab01/index.html"
+              >
+                
+                Lab 1 - Elemementary Signals
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/lab02/index">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/lab02/index.html"
+              >
+                
+                Lab 2 - Laplace and Inverse Laplace Transforms
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/lab03/index">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/lab03/index.html"
+              >
+                
+                Lab 3 -  Laplace Transforms and Transfer Functions for Circuit Analysis
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/lab04/index">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/lab04/index.html"
+              >
+                
+                Lab 4 - Time Domain Convolution
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/lab05/index">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/lab05/index.html"
+              >
+                
+                Lab 5 - Fourier Series
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/lab06/index">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/lab06/index.html"
+              >
+                
+                Lab 6 - Sounds and Sampling
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/lab07/index">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/lab07/index.html"
+              >
+                
+                Optional Lab 7 - Filters
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Project</li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/labs/project/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/labs/project/index.html"
+        >
+          
+          Project
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Answers to Selected problems</li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/introduction/answers">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/introduction/answers.html"
+        >
+          
+          Worksheet 2
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://github.com/choldgraf/jupyter-book">Jupyter Book</a></p>
+</nav>
+
+      
+      <div class="c-topbar" id="top-navbar">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <div class="c-topbar__buttons">
+    <button
+      id="js-sidebar-toggle"
+      class="hamburger hamburger--arrowalt is-active"
+    >
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+    <div class="buttons">
+<div class="download-buttons-dropdown">
+    <button id="dropdown-button-trigger" class="interact-button"><img src="/eg-247-textbook/assets/images/download-solid.svg" alt="Download" /></button>
+    <div class="download-buttons">
+        <a href="/eg-247-textbook/content/labs/lab04/index.ipynb" download>
+        <button id="interact-button-download" class="interact-button">.ipynb</button>
+        </a>
+        
+        <a id="interact-button-print"><button id="interact-button-download" class="interact-button">.pdf</button></a>
+    </div>
+</div>
+
+
+  
+  
+  
+  
+
+
+</div>
+
+  </div>
+  <!-- Empty sidebar placeholder that we'll auto-fill with javascript -->
+  <aside class="sidebar__right">
+    <header><h4 class="nav__title"><img src="/eg-247-textbook/assets/images/list-solid.svg" alt="Search" />   On this page</h4></header>
+    <nav class="onthispage">
+    </nav>
+  </aside>
+  <a href="/eg-247-textbook/search.html" class="topbar-right-button" id="search-button">
+    <img src="/eg-247-textbook/assets/images/search-solid.svg" alt="Search" />
+  </a>
+</div>
+
+      <main class="c-textbook__page" tabindex="-1">
+            <div class="c-textbook__content" id="textbook_content">
+                  <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Lab 4 - Time Domain Convolution</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Lab-4:-Time-domain-convolution">Lab 4: Time domain convolution<a class="anchor-link" href="#Lab-4:-Time-domain-convolution"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Preamble">Preamble<a class="anchor-link" href="#Preamble"> </a></h2><h3 id="Associated-Class-Notes">Associated Class Notes<a class="anchor-link" href="#Associated-Class-Notes"> </a></h3><p>This lab supports the materials covered in <a href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/5/convolution">Chapter 3.5 The Impulse Response and Convolution</a> of the course notes. You may wish to refer to <a href="https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet8">worksheet 8</a> for additional examples to try.</p>
+<h3 id="Other-formats">Other formats<a class="anchor-link" href="#Other-formats"> </a></h3><p>This document is available in <a href="https://cpjobling.github.io/eg-247-textbook/labs/lab04/index">HTML</a> format for online viewing <a href="https://cpjobling.github.io/eg-247-textbook/labs/lab04/lab04.pdf">PDF</a> for printing.</p>
+<h3 id="Acknowledgements">Acknowledgements<a class="anchor-link" href="#Acknowledgements"> </a></h3><p>These examples have been adapted from Chapter 6 of <a href="http://site.ebrary.com/lib/swansea/docDetail.action?docID=10547416" target="_blank">Stephen Karris, Signals and Systems : With MATLAB Computing and Simulink Modeling (5th Edition)</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Matlab/Simulink-Concepts-Introduced">Matlab/Simulink Concepts Introduced<a class="anchor-link" href="#Matlab/Simulink-Concepts-Introduced"> </a></h2><p>In this lab you will:</p>
+<ul>
+<li>Explore convolution with the aid of an interactive MATLAB "app"</li>
+<li>Use the <code>int</code> and <code>heaviside</code> functions from the <strong>Symbolic Toolbox</strong> to perform symbolic computation of convolution integrals.</li>
+<li>Use <code>laplace</code> and <code>ilaplace</code> to solve convolution problems.</li>
+<li>Use <code>ezplot</code> to plot symbolic functions.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Assessment-criteria">Assessment criteria<a class="anchor-link" href="#Assessment-criteria"> </a></h2><p>This will be a self-assessed exercise.</p>
+<p>Marks can be claimed according to how many of the parts of Lab Exercises 7 and 8 have been completed.</p>
+<p>Detailed marking criteria for this and the other labs and the project are given in the linked <a href="https://docs.google.com/spreadsheets/d/1EQzwSfGMdw8oiQds4bUR8sZTCgb2lMvcJHjmea-8hW4/edit?usp=sharing">Assessment Criteria</a> [Google sheet].</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Setup">Setup<a class="anchor-link" href="#Setup"> </a></h2><h3 id="Before-you-start">Before you start<a class="anchor-link" href="#Before-you-start"> </a></h3><p>If you haven't already, create a suitable folder structure on your file-store for your labs.</p>
+<p>I suggest</p>
+
+<pre><code>P:\workspace
+    signals-and-systems-lab
+        lab01
+        lab02
+        lab03
+        lab04
+        :</code></pre>
+<p>Use folder <code>p:\workspace\signals-and-systems-lab\lab04</code> for this lab.</p>
+<h3 id="Preparation">Preparation<a class="anchor-link" href="#Preparation"> </a></h3><p>Before we start today's lab you will need to download and install the <a href="https://github.com/cpjobling/eg-247-textbook/blob/master/content/laplace_transform/matlab/convolution_demo/convolutiondemo.m" target="_blank">Graphical demonstration of convolution app</a> from the GitHub respository for this module.</p>
+<p>To install, right-click button of link as appropriate and save as to your <code>lab04</code> folder.</p>
+<p>Open and run <code>convolutiondemo.m</code>.</p>
+<p>If MATLAB issues a message about the need to change the working directory or add a folder to the MATLAB path. Accept the choice given.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Lab-Exercises">Lab Exercises<a class="anchor-link" href="#Lab-Exercises"> </a></h2><h3 id="Lab-Exercise-7:-Graphical-Demonstration-of-Convolution">Lab Exercise 7: Graphical Demonstration of Convolution<a class="anchor-link" href="#Lab-Exercise-7:-Graphical-Demonstration-of-Convolution"> </a></h3><p>In this lab exercise we will use the <code>convolutiondemo</code> app demonstrated in class as an aid to understanding and setting up the convolution integral for various systems including the step-response of an RL circuit.</p>
+<h4 id="Part-1">Part 1<a class="anchor-link" href="#Part-1"> </a></h4><p>Set up the <code>convolutiondemo</code> app as described in the notes for the computation of the Convolution Integral for Example 6.4 from the textbook illustrated below. (Refer to Example 2 in <a href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/5/convolution">the notes</a> for the MATLAB settings).</p>
+<p><img src="2014-03-03_1228.png" alt="Example 6.4"></p>
+<p>Use the tool to confirm the convolution result given by this MATLAB script: <a href="exercise7.m">exercise7.m</a>.</p>
+<h4 id="Part-2">Part 2<a class="anchor-link" href="#Part-2"> </a></h4><p>Taking the script <a href="exercise7.m">exercise7.m</a> as a model. Use the <code>convolutiondemo</code> tool as an aid to defining the integration limits needed to find and plot the convolution integral for the example shown below (Example 6.5 from the textbook).</p>
+<p><img src="2014-03-03_1240.png" alt="Example 6.5"></p>
+<h4 id="Part-3">Part 3<a class="anchor-link" href="#Part-3"> </a></h4><p>Repeat the procedure for example 6.6 from the textbook.</p>
+<p><img src="https://raw.githubusercontent.com/cpjobling/EG-247-Resources/master/portfolio/lab05/2014-03-03_1246.png" alt="Example 6.6"></p>
+<h4 id="Part-4">Part 4<a class="anchor-link" href="#Part-4"> </a></h4><p>Adapt your procedure to determine the step response of the RC circuit given as Example 6.7 in the textbook.</p>
+<p><img src="2014-03-03_1248.png" alt="Example 6.7"></p>
+<p>Note, Parts 2 to 5 should be done in the same Live Script file as the provided Part 1 example. Separate each exercise by titled sections. Don't forget to add explanatory text to document your work.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Lab-Exercise-8:-Using-Laplace-to-Solve-Convolution-Problems">Lab Exercise 8: Using Laplace to Solve Convolution Problems<a class="anchor-link" href="#Lab-Exercise-8:-Using-Laplace-to-Solve-Convolution-Problems"> </a></h3><p>In this lab exercise we will demonstrate that time-convolution of a system response can be solved in the complex frequency domain using Laplace and Inverse Laplace transforms.</p>
+<ul>
+<li>Use the inverse Laplace transform function <code>ilaplace</code> to solve the step response of the RC circuit given in exercise 7 Part 4 without convolution. You will need the Laplace transform of the circuit's impulse response $h(t)$ and the unit step $u_0(t)$ (MATLAB <code>heaviside</code>).</li>
+<li>Plot the result using <code>ezplot</code></li>
+<li>Confirm the result with a Simulink simulation</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="What-to-hand-in">What to hand in<a class="anchor-link" href="#What-to-hand-in"> </a></h2><h3 id="Claim">Claim<a class="anchor-link" href="#Claim"> </a></h3><p>Up to 2 marks can be claimed if you complete Part 2 of Exercise 7, an additional 2 marks for is available for Parts 3 and 4 and 1 additional mark is available for completing Lab Exercise 8.</p>
+<h3 id="Submission">Submission<a class="anchor-link" href="#Submission"> </a></h3><p>You should submit the following to the <strong>Lab 04: Time domain convolution</strong> Assignment on Canvas.</p>
+<ol>
+<li>Complete the labwork self-assessment claim form and declaration.</li>
+<li>As evidence of completion of Lab Exercise 7, you should upload <code>ex7_2.mlx</code>, <code>ex7_3.mlx</code>, <code>ex7_4.mlx</code> (can be sections in one Live Script <code>ex7.mlx</code>).</li>
+<li>As evidence of completion of Lab Exercise 8, you should upload <code>ex8.mlx</code>, <code>ex8.slx</code>.</li>
+</ol>
+<h3 id="Deadline">Deadline<a class="anchor-link" href="#Deadline"> </a></h3><p>The deadline for claims and submission is <strong>Midnight, 13th March</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
+            </div>
+            <div class="c-textbook__footer" id="textbook_footer">
+              
+<nav class="c-page__nav">
+  
+    
+    
+
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/eg-247-textbook/labs/lab03/index.html">
+      〈 <span class="u-margin-right-tiny"></span> Lab 3 -  Laplace Transforms and Tr...
+    </a>
+  
+
+  
+    
+
+    
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/eg-247-textbook/labs/lab05/index.html">
+      Lab 5 - Fourier Series <span class="u-margin-right-tiny"></span> 〉
+    </a>
+  
+</nav>
+
+              <footer>
+  <p class="footer">This page was created by <a href="https://github.com/jupyter/jupyter-book/graphs/contributors">The Jupyter Book Community</a></p>
+</footer>
+
+            </div>
+
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

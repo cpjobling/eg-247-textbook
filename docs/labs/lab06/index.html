@@ -1,0 +1,2053 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Lab 6 - Sounds and Sampling</title>
+  <meta name="description" content="        Lab 6 - Sounds and Sampling    Lab 6: Sounds and Sampling Preamble Other formats This document is available in HTML format for online viewing and as ...">
+
+  <link rel="canonical" href="https://jupyterbook.org/eg-247-textbook/labs/lab06/">
+  <link rel="alternate" type="application/rss+xml" title="EG-247 Signals and Systems" href="https://jupyterbook.org/eg-247-textbook/feed.xml">
+
+  <meta property="og:url"         content="https://jupyterbook.org/eg-247-textbook/labs/lab06/" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Lab 6 - Sounds and Sampling" />
+<meta property="og:description" content="        Lab 6 - Sounds and Sampling    Lab 6: Sounds and Sampling Preamble Other formats This document is available in HTML format for online viewing and as ..." />
+<meta property="og:image"       content="https://jupyterbook.org/eg-247-textbook/images/logo/logo.png" />
+
+<meta name="twitter:card" content="summary">
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": "https://jupyterbook.org/eg-247-textbook/labs/lab06/",
+  "headline": "Lab 6 - Sounds and Sampling",
+  "datePublished": "2020-01-06T01:56:18+00:00",
+  "dateModified": "2020-01-06T01:56:18+00:00",
+  "description": "        Lab 6 - Sounds and Sampling    Lab 6: Sounds and Sampling Preamble Other formats This document is available in HTML format for online viewing and as ...",
+  "author": {
+    "@type": "Person",
+    "name": "Dr Chris P. Jobling"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://jupyterbook.org/eg-247-textbook",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://jupyterbook.org/eg-247-textbook",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/eg-247-textbook/assets/css/styles.css">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/eg-247-textbook/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<!-- (mostly) copied from nbconvert configuration -->
+<!-- https://github.com/jupyter/nbconvert/blob/master/nbconvert/templates/html/mathjax.tpl -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: 'center',
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}},
+        linebreaks: { automatic: true },
+    },
+    
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML' async></script>
+
+
+  <!-- DOM updating function -->
+  <script src="/eg-247-textbook/assets/js/page/dom-update.js"></script>
+
+  <!-- Selectors for elements on the page -->
+  <script src="/eg-247-textbook/assets/js/page/documentSelectors.js"></script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/eg-247-textbook';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js" async></script>
+  <script src="/eg-247-textbook/assets/js/page/anchors.js" async></script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+
+
+  <!-- Load the auto-generating TOC (non-async otherwise the TOC won't load w/ turbolinks) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.8.1/tocbot.min.js" async></script>
+  <script src="/eg-247-textbook/assets/js/page/tocbot.js"></script>
+
+  <!-- Google analytics -->
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script>
+
+  <!-- Load custom website scripts -->
+  <script src="/eg-247-textbook/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/eg-247-textbook/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/eg-247-textbook/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js" async></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+
+  <!-- Load JS that depends on site variables -->
+  <script src="/eg-247-textbook/assets/js/page/copy-button.js" async></script>
+
+  <!-- Hide cell code -->
+  <script src="/eg-247-textbook/assets/js/page/hide-cell.js" async></script>
+
+  <!-- Printing the screen -->
+  <!-- Include nbinteract for interactive widgets -->
+<script src="https://printjs-4de6.kxcdn.com/print.min.js" async></script>
+<script>
+printContent = () => {
+    // MathJax displays a second version of any math for assistive devices etc.
+    // This prevents double-rendering in the PDF output.
+    var ignoreAssistList = [];
+    assistives = document.querySelectorAll('.MathJax_Display span.MJX_Assistive_MathML').forEach((element, index) => {
+        var thisId = 'MathJax-assistive-' + index.toString();
+        element.setAttribute('id', thisId);
+        ignoreAssistList.push(thisId)
+    });
+
+    // Print the actual content object
+    printJS({
+        printable: 'textbook_content',
+        type: 'html',
+        css: "/eg-247-textbook/assets/css/styles.css",
+        style: "#textbook_content {padding-top: 40px};",
+        scanStyles: false,
+        targetStyles: ["*"],
+        ignoreElements: ignoreAssistList,
+        documentTitle: "Made with Jupyter Book"
+    })
+};
+
+initPrint = () => {
+    document.querySelector('#interact-button-print').addEventListener('click', printContent)
+}
+
+initFunction(initPrint)
+</script>
+
+</head>
+
+  <body>
+    <!-- Include the ThebeLab config so it gets reloaded on each page -->
+    <script type="text/x-thebe-config">{
+    requestKernel: true,
+    binderOptions: {
+    repo: "cpjobling/eg-247-textbook",
+    ref: "master",
+    },
+    codeMirrorConfig: {
+    theme: "abcdef",
+    mode: ""
+    },
+    kernelOptions: {
+    kernelName: "matlab",
+    path: "content/labs/lab06"
+    }
+}
+</script>
+
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://jupyterbook.org/intro.html"><img src="/eg-247-textbook/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" alt="textbook logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">EG-247 Signals and Systems</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/introduction/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/introduction/index.html"
+        >
+          
+            1.
+          
+          Introduction
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/elementary_signals/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/elementary_signals/index.html"
+        >
+          
+            2.
+          
+          Elementary Signals
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/elementary_signals/hw1">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/elementary_signals/hw1.html"
+              >
+                
+                Homework 1
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/laplace_transform/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/laplace_transform/index.html"
+        >
+          
+            3.
+          
+          Laplace Transforms and their Applications
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/1/laplace">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/1/laplace.html"
+              >
+                
+                  3.1
+                
+                The Laplace Transformation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/2/inverse_laplace">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/2/inverse_laplace.html"
+              >
+                
+                  3.2
+                
+                The Inverse Laplace Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/3/circuit_analysis">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/3/circuit_analysis.html"
+              >
+                
+                  3.3
+                
+                Using Laplace Transforms for Circuit Analysis
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/4/transfer_functions">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/4/transfer_functions.html"
+              >
+                
+                  3.4
+                
+                Transfer Functions
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/5/convolution">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/5/convolution.html"
+              >
+                
+                  3.5
+                
+                The Impulse Response and Convolution
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/fourier_series/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/fourier_series/index.html"
+        >
+          
+            4.
+          
+          Fourier Series
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_series/1/trig_fseries">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_series/1/trig_fseries.html"
+              >
+                
+                  4.1
+                
+                Trigonometric Fourier Series
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_series/2/exp_fs1">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_series/2/exp_fs1.html"
+              >
+                
+                  4.2
+                
+                Exponential Fourier Series
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_series/3/exp_fs2">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_series/3/exp_fs2.html"
+              >
+                
+                  4.3
+                
+                Line Spectra and their Applications
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/fourier_transform/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/fourier_transform/index.html"
+        >
+          
+            5.
+          
+          Fourier Transform
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/1/ft1">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/1/ft1.html"
+              >
+                
+                  5.1
+                
+                Defining the Fourier Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/2/ft2">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/2/ft2.html"
+              >
+                
+                  5.2
+                
+                Fourier transforms of commonly occuring signals
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/3/ft3">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/3/ft3.html"
+              >
+                
+                  5.3
+                
+                Fourier Transforms for Circuit and LTI Systems Analysis
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/4/ft4">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/4/ft4.html"
+              >
+                
+                  5.4
+                
+                Introduction to Filters
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="dt_systems/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/dt_systems/index.html"
+        >
+          
+            6.
+          
+          Fourier Transform
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="dt_systems/1/sampling">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dt_systems/1/sampling.html"
+              >
+                
+                  6.1
+                
+                Introduction to Filters
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="dt_systems/2/z_transform">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dt_systems/2/z_transform.html"
+              >
+                
+                  6.2
+                
+                Introduction to Filters
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="dt_systems/3/i_z_transform">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dt_systems/3/i_z_transform.html"
+              >
+                
+                  6.3
+                
+                Introduction to Filters
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="dt_systems/4/dt_models">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dt_systems/4/dt_models.html"
+              >
+                
+                  6.4
+                
+                Introduction to Filters
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="dft/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/dft/index.html"
+        >
+          
+            7.
+          
+          Fourier Transform
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="dft/1/dft">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dft/1/dft.html"
+              >
+                
+                  7.1
+                
+                Introduction to Filters
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="dft/2/fft">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dft/2/fft.html"
+              >
+                
+                  7.2
+                
+                Introduction to Filters
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">In Class Worksheets</li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/worksheets/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/worksheets/index.html"
+        >
+          
+          Worksheets
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/introduction/worksheet1">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/introduction/worksheet1.html"
+              >
+                
+                Worksheet 1 Introduction
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/introduction/worksheet2">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/introduction/worksheet2.html"
+              >
+                
+                Worksheet 2
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/elementary_signals/worksheet3">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/elementary_signals/worksheet3.html"
+              >
+                
+                Worksheet 3 Elementary Signals
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/1/worksheet4">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/1/worksheet4.html"
+              >
+                
+                Worksheet 4 Laplace Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/2/worksheet5">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/2/worksheet5.html"
+              >
+                
+                Worksheet 5 Inverse Laplace Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/3/worksheet6">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/3/worksheet6.html"
+              >
+                
+                Worksheet 6 Using Laplace Transforms for Circuit Analysis
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/4/worksheet7">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/4/worksheet7.html"
+              >
+                
+                Worksheet 7 Transfer Functions
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/5/worksheet8">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/5/worksheet8.html"
+              >
+                
+                Worksheet 8 Impulse Response and Time Convolution
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_series/1/worksheet9">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_series/1/worksheet9.html"
+              >
+                
+                Worksheet 9 Trigonometric Fourier Series
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_series/2/worksheet10">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_series/2/worksheet10.html"
+              >
+                
+                Worksheet 10 Exponential Fourier Series
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_series/3/worksheet11">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_series/3/worksheet11.html"
+              >
+                
+                Worksheet 11 Line Spectra and their Applications
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/1/worksheet12">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/1/worksheet12.html"
+              >
+                
+                Worksheet 12 Defining the Fourier Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/2/worksheet13">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/2/worksheet13.html"
+              >
+                
+                Worksheet 13 Fourier transforms of commonly occuring signals
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/3/worksheet14">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/3/worksheet14.html"
+              >
+                
+                Worksheet 14 Fourier Transforms for Circuit and LTI Systems Analysis
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/4/worksheet15">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/4/worksheet15.html"
+              >
+                
+                Worksheet 15 Introduction to Filters
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/dt_systems/3/worksheet16">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dt_systems/3/worksheet16.html"
+              >
+                
+                Worksheet 16 The Inverse Z-Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/dt_systems/4/worksheet17">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dt_systems/4/worksheet17.html"
+              >
+                
+                Worksheet 17 Models of DT Systems
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/dft/1/worksheet18">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dft/1/worksheet18.html"
+              >
+                
+                Worksheet 18 The Discrete-time Fourier Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/dft/2/worksheet19">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dft/2/worksheet19.html"
+              >
+                
+                Worksheet 19 The Fast Fourier Transform
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Homework</li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Lab Exercises</li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/labs/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/labs/index.html"
+        >
+          
+          Laboratory Exercises
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/lab01/index">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/lab01/index.html"
+              >
+                
+                Lab 1 - Elemementary Signals
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/lab02/index">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/lab02/index.html"
+              >
+                
+                Lab 2 - Laplace and Inverse Laplace Transforms
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/lab03/index">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/lab03/index.html"
+              >
+                
+                Lab 3 -  Laplace Transforms and Transfer Functions for Circuit Analysis
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/lab04/index">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/lab04/index.html"
+              >
+                
+                Lab 4 - Time Domain Convolution
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/lab05/index">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/lab05/index.html"
+              >
+                
+                Lab 5 - Fourier Series
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/lab06/index">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/lab06/index.html"
+              >
+                
+                Lab 6 - Sounds and Sampling
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/lab07/index">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/lab07/index.html"
+              >
+                
+                Optional Lab 7 - Filters
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Project</li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/labs/project/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/labs/project/index.html"
+        >
+          
+          Project
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Answers to Selected problems</li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/introduction/answers">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/introduction/answers.html"
+        >
+          
+          Worksheet 2
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://github.com/choldgraf/jupyter-book">Jupyter Book</a></p>
+</nav>
+
+      
+      <div class="c-topbar" id="top-navbar">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <div class="c-topbar__buttons">
+    <button
+      id="js-sidebar-toggle"
+      class="hamburger hamburger--arrowalt is-active"
+    >
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+    <div class="buttons">
+<div class="download-buttons-dropdown">
+    <button id="dropdown-button-trigger" class="interact-button"><img src="/eg-247-textbook/assets/images/download-solid.svg" alt="Download" /></button>
+    <div class="download-buttons">
+        <a href="/eg-247-textbook/content/labs/lab06/index.ipynb" download>
+        <button id="interact-button-download" class="interact-button">.ipynb</button>
+        </a>
+        
+        <a id="interact-button-print"><button id="interact-button-download" class="interact-button">.pdf</button></a>
+    </div>
+</div>
+
+
+  
+  
+  
+  
+
+
+</div>
+
+  </div>
+  <!-- Empty sidebar placeholder that we'll auto-fill with javascript -->
+  <aside class="sidebar__right">
+    <header><h4 class="nav__title"><img src="/eg-247-textbook/assets/images/list-solid.svg" alt="Search" />   On this page</h4></header>
+    <nav class="onthispage">
+    </nav>
+  </aside>
+  <a href="/eg-247-textbook/search.html" class="topbar-right-button" id="search-button">
+    <img src="/eg-247-textbook/assets/images/search-solid.svg" alt="Search" />
+  </a>
+</div>
+
+      <main class="c-textbook__page" tabindex="-1">
+            <div class="c-textbook__content" id="textbook_content">
+                  <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Lab 6 - Sounds and Sampling</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Lab-6:-Sounds-and-Sampling">Lab 6: Sounds and Sampling<a class="anchor-link" href="#Lab-6:-Sounds-and-Sampling"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Preamble">Preamble<a class="anchor-link" href="#Preamble"> </a></h2><h3 id="Other-formats">Other formats<a class="anchor-link" href="#Other-formats"> </a></h3><p>This document is available in <a href="https://cpjobling.github.io/eg-247-textbook/labs/lab06/index">HTML</a> format for online viewing and as <a href="https://cpjobling.github.io/eg-247-textbook/labs/lab06/lab06.pdf">PDF</a> for printing.</p>
+<h3 id="Acknowledgement">Acknowledgement<a class="anchor-link" href="#Acknowledgement"> </a></h3><p>This lab has been adapted from <a href="http://class.ece.iastate.edu/mmina/ee186/labs/audio.htm" title="Audio Processing with MatLab An Introduction" target="_blank">**Audio Processing with Matlab: An Introduction**</a> by Rachel Hager from the Electrical and Computer Engineering Department at Iowa State University and <a href="https://class.ee.washington.edu/SST_textbook/musiclab.pdf">Elementary Music Synthesis</a> by Professor Virginia Stonick of Oregon State University.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Aims">Aims<a class="anchor-link" href="#Aims"> </a></h2><p>This lab is an introduction to signal processing with MATLAB. It will help to familiarize you with some of the main functions to read in and play sound files in MATLAB. It also looks at the ideas of aliasing and anti-aliasing filters that is key to the successful conversion from continuous to discrete time signals and systems. It is therefore an opportunity to try some basic digital signal processing.</p>
+<p>We also look at a one application of digital signals processing which is simple sound synthesis.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Assessment-criteria">Assessment criteria<a class="anchor-link" href="#Assessment-criteria"> </a></h2><p>This will be a self-assessed exercise.</p>
+<p>Up to 2 marks each can be claimed for Exercises 12 and 13. There is 1 additional mark for Miniproject 3.</p>
+<p>Detailed marking criteria for this and the other labs and the project are given in the linked <a href="https://docs.google.com/spreadsheets/d/1EQzwSfGMdw8oiQds4bUR8sZTCgb2lMvcJHjmea-8hW4/edit?usp=sharing">Assessment Criteria</a> [Google sheet].</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Setup">Setup<a class="anchor-link" href="#Setup"> </a></h2><h3 id="Before-you-start">Before you start<a class="anchor-link" href="#Before-you-start"> </a></h3><p>If you haven't already, create a suitable folder structure on your file-store for your labs.</p>
+<p>I suggest</p>
+
+<pre><code>P:\workspace
+    signals-and-systems-lab
+        lab01
+        lab02
+        lab03
+        lab04
+        lab05
+        lab06
+        :</code></pre>
+<p>Use folder <code>p:\workspace\signals-and-systems-lab\lab06</code> for this lab.</p>
+<h3 id="Preparation">Preparation<a class="anchor-link" href="#Preparation"> </a></h3><p>Download and run the <a href="https://github.com/cpjobling/eg-247-textbook/blob/master/portfolio/lab06/soundex.m" target="_blank">linked script</a> to familiarise yourself with the basic tools that MATLAB provides for manipulating and visualizing audio files. You will need to download a sound file and store it in the same folder then edit the script so that it loads your file. Music might be best for this initial exercise but you can use any audio file.</p>
+<p>You will need headphones to hear the sounds without disturbing others in class.</p>
+<h3 id="Sound-Samples-(web-link)"><a href="http://www.ee.columbia.edu/~dpwe/sounds/">Sound Samples</a> (web link)<a class="anchor-link" href="#Sound-Samples-(web-link)"> </a></h3><p>The web link above points to a source of sound samples. Choose one of these or find some other files from the internet. I downloaded and used the file <a href="http://www.ee.columbia.edu/~dpwe/sounds/musp/msmv2.wav">Music (Vocals) Example 2</a> from <a href="http://www.ee.columbia.edu/~dpwe/sounds/musp/" target="_blank">this page</a> in my example script.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Lab-Exercises">Lab Exercises<a class="anchor-link" href="#Lab-Exercises"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Lab-Exercise-12:-Playing-With-Sound-(2-marks)">Lab Exercise 12: Playing With Sound (2 marks)<a class="anchor-link" href="#Lab-Exercise-12:-Playing-With-Sound-(2-marks)"> </a></h3><p>Before starting this lab, create a new MATLAB Live Script File and save it as <code>ex12.mlx</code>.</p>
+<p>The Live Script will open with a code cell highlighted.</p>
+<p>Copy the first instruction below into the Live Script code cell.</p>
+<p>Press the <strong>run section</strong> button to execute the code.</p>
+<p>Using section breaks between code cells.</p>
+<p>Use <strong>run section</strong> or <strong>run section and advance</strong> buttons to step through the code.</p>
+<p>Allow each sound sample played in a section to complete before executing the next section that plays a sound sample.</p>
+<p>Use the <strong>text</strong> button to add commentary and your observations to your Live Script.</p>
+<p>Use the <strong>text style</strong> features to add a title to your Live Script and section headings as appropriate.</p>
+<h4 id="Part-1:-Read-and-Store-an-Audio-File-in-Matlab">Part 1: Read and Store an Audio File in Matlab<a class="anchor-link" href="#Part-1:-Read-and-Store-an-Audio-File-in-Matlab"> </a></h4><p>To read and store an audio file, you can use one of two different commands. The following stores the file into variable <code>x</code>.</p>
+<div class="highlight"><pre><span></span><span class="n">x</span> <span class="p">=</span> <span class="n">audioread</span><span class="p">(</span><span class="s">&#39;filename&#39;</span><span class="p">);</span>
+</pre></div>
+<p>Unless the audio file is in the same folder as the script, you will need to include the entire filename including the directory.</p>
+<p>Example: <code>C:\My Documents\EG-247-Lab\portfolio\lab06\Audio.wav</code></p>
+<p>The command below stores the audio file into variable <code>x</code> and the sampling frequency in variable <code>Fs</code>.</p>
+<div class="highlight"><pre><span></span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">Fs</span><span class="p">]</span> <span class="p">=</span> <span class="n">audioread</span><span class="p">(</span><span class="s">&#39;filename&#39;</span><span class="p">);</span>
+</pre></div>
+<h4 id="Part-2:-Play-the-Audio-File">Part 2: Play the Audio File<a class="anchor-link" href="#Part-2:-Play-the-Audio-File"> </a></h4><p>To play an audio file in MATLAB you use the <code>sound()</code> function. The following function plays the sound. If the <code>Fs</code> variable is not defined or included in the command, it will assume the default sample rate of 8192 Hz.</p>
+<div class="highlight"><pre><span></span><span class="n">sound</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">Fs</span><span class="p">);</span>
+</pre></div>
+<p>In the PC lab, the speakers may have been disabled. But even if they are not, it will probably be best if you use head phones with either a standard 3.5 mm phone socket or USB connection to hear the sounds.</p>
+<h4 id="Part-3:-Audio-Scaling">Part 3: Audio Scaling<a class="anchor-link" href="#Part-3:-Audio-Scaling"> </a></h4><p>To scale an audio file the <code>sound()</code> command is used. This allows for the modification of an audio signal’s amplitude or frequency.</p>
+<div class="highlight"><pre><span></span><span class="n">sound</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">Fs</span><span class="p">);</span>
+</pre></div>
+<p>To increase the volume of the audio track you can multiply the variable it is stored in by a scalar. To slow down or speed up the track played you can adjust the sampling rate. Comment on your observations using different values.</p>
+<p>Now experiment with different bit values (8,16,24) in the following command:</p>
+<div class="highlight"><pre><span></span><span class="n">sound</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">Fs</span><span class="p">,</span><span class="n">bits</span><span class="p">);</span>
+</pre></div>
+<p>Comment on your observations.</p>
+<h4 id="Part&#160;4:-Playing-a-Sound-Backwards">Part&#160;4: Playing a Sound Backwards<a class="anchor-link" href="#Part&#160;4:-Playing-a-Sound-Backwards"> </a></h4><p>The command to reverse the order of the samples in a matrix is <code>flipud()</code>. Experiment with this command.</p>
+<p>Record your experiments in this part of the lab by saving your Live Script file. Include your thoughts and observations as text elements.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Lab-Exercise-13:-Aliasing-and-anti-aliasing">Lab Exercise 13: Aliasing and anti-aliasing<a class="anchor-link" href="#Lab-Exercise-13:-Aliasing-and-anti-aliasing"> </a></h3><p>Download the example file <a href="eg-247-message.wav">eg-247-message.wav</a> that was recorded in the lecture using the file <a href="sampling_demo.m">sampling_demo.m</a> (If you have access to a microphone you can use <code>sampling_demo</code> to record your own sound file.)</p>
+<h4 id="Part-5:-Aliasing">Part 5: Aliasing<a class="anchor-link" href="#Part-5:-Aliasing"> </a></h4><p>Download the file <a href="ex13_1.m">ex13_1.m</a> and open as a LiveScript. Read the script then run it. Complete the remaining examples of "decimation" (effectively aliasing) and listen carefully to the results. Comment on what you hear.</p>
+<p>Examine the frequency sprctrum data produced by the Fast-Fourier Transform (FFT). Discuss the results.</p>
+<h4 id="Part-6:-Sampling-with-anti-aliasing-filters">Part 6: Sampling with anti-aliasing filters<a class="anchor-link" href="#Part-6:-Sampling-with-anti-aliasing-filters"> </a></h4><p>Download the file <a href="ex13_2.m">ex13_2.m</a> and open as a LiveScript. Read the script then run it. Complete the remaining examples of "resampling" (effectively sampling with anti-alias pre-filtering) and listen carefully to the results. Comment on what you hear.</p>
+<p>Examine the frequency spectrum data produced for the sampled signals with pre-filtering. Discuss the results.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Miniproject-3:--Composing-Music-in-MATLAB-(1-mark)">Miniproject 3:  Composing Music in MATLAB (1 mark)<a class="anchor-link" href="#Miniproject-3:--Composing-Music-in-MATLAB-(1-mark)"> </a></h2><h3 id="Background">Background<a class="anchor-link" href="#Background"> </a></h3><p>In this lab exercise, we explore how to use simple tones to compose a segment of music. By using tones of various frequencies, you will construct the first few bars of Beethoven's famous piece Symphony No. 5 in C-Minor.</p>
+<p><strong>IMPORTANT</strong>: Each musical note can be simply represented by a sinusoid whose frequency depends on the note pitch. Assume a sampling rate of 8KHz and that an eighth note = 0.125s (1000 samples).</p>
+<p>Musical notes are arranged in groups of twelve notes called octaves. The notes that we'll be using for Beethoven's Fifth are in the octave containing frequencies from 220 Hz to 440 Hz. The twelve notes in each octave are logarithmically spaced in frequency, with each note being of a frequency 2<sup>1/12</sup> times the frequency of the note of lower frequency. Thus, a 1-octave pitch shift corresponds to a doubling of the frequencies of the notes in the original octave. Table 1 shows the ordering of notes in the octave to be used to synthesize the opening of Beethoven's fifth, as well as the fundamental frequencies for these notes. Note the notes without subscripts, correspond to the white keys on a piano. The notes with subscripts - called respective sharp (♯) and flat (♭) - represent the black keys.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Table 1: Notes in the 220-440 Hz Octave</strong></p>
+<table>
+<thead><tr>
+<th>Number</th>
+<th>Note</th>
+<th>Frequency (Hz)</th>
+<th>Actual frequency (Hz)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A</td>
+<td>220</td>
+<td>220</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A<sup>♯</sup>,B<sup>♭</sup></td>
+<td>220 * 2<sup>1/12</sup></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>3</td>
+<td>B</td>
+<td>220 * 2<sup>2/12</sup></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Middle C</td>
+<td>220 * 2<sup>3/12</sup></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>5</td>
+<td>C<sup>♯</sup>,D<sup>♭</sup></td>
+<td>220 * 2<sup>4/12</sup></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>6</td>
+<td>D</td>
+<td>220 * 2<sup>5/12</sup></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>7</td>
+<td>D<sup>♯</sup>,E<sup>♭</sup></td>
+<td>220 * 2<sup>6/12</sup></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>8</td>
+<td>E</td>
+<td>220 * 2<sup>7/12</sup></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>9</td>
+<td>F</td>
+<td>220 * 2<sup>8/12</sup></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>10</td>
+<td>F<sup>♯</sup>,G<sup>♭</sup></td>
+<td>220 * 2<sup>9/12</sup></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>11</td>
+<td>G</td>
+<td>220 * 2<sup>10/12</sup>&lt;/td&gt;<td>&nbsp;</td>
+</tr>
+<tr>
+<td>12</td>
+<td>G<sup>♯</sup>,A<sup>♭</sup></td>
+<td>220 * 2<sup>11/12</sup></td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You should copy this table into a document and use MATLAB or a calculator to complete the table entries.</p>
+<p>A musical score is essentially a plot of frequencies (notes, on the vertical scale for you musician types) versus time (measures, on the horizontal scale). The musical sequence of notes to the piece you will synthesize is given in Figure 1. The following discussion identifies how musical scores can be mapped to tones of specific pitch and duration.</p>
+<h4 id="Note-Frequency">Note Frequency<a class="anchor-link" href="#Note-Frequency"> </a></h4><p>In the simplest case, each note may be represented by a burst of a sinusoid followed by a shorter period of silence (a pause). The pauses allow us to distinguish between separate notes of the same pitch. The horizontal lines in Figure 1 represent the notes E, G, B, D, F from the bottom to the top. The spaces between the lines are used to represent the notes F, A, C, and E, again from the bottom to the top. Note that A-G only yields seven notes; the additional notes are due to changes in pitch called sharps (denoted by the symbol ♯) or flats (denoted by the symbol ♭) that follows a given note. A sharp increases the pitch by 2<sup>1/12</sup> and flat decreases the pitch by 2<sup>1/12</sup>.</p>
+<p><img src="music.png" alt="Musical Score for Beethoven&#39;s Fifth">
+Figure 1: Musical Score for Beethoven's Fifth</p>
+<p>In the musical score in Figure 1, the first three eighth notes are all note G. The first half note is an E♭ due to the inclusion of the three flat symbols at the left of the score, since we are in the key of C-minor. After the half note, the symbol is a rest of length equal to the duration of an eighth note. The next three eighth notes are all F, and the final half note is a D. You can get the fundamental frequencies for these notes from Table 1.</p>
+<h4 id="Note-Durations">Note Durations<a class="anchor-link" href="#Note-Durations"> </a></h4><p>The duration of each note burst is determined by whether the note is a whole note, half note, quarter note, eight note, etc. Obviously, a quarter note has twice the duration of an eighth note, and so on. So your half notes should be four times the duration of your eighth notes. The short pause you use to follow each note should be of the same duration regardless of the length of the note.</p>
+<h4 id="Creating-Music-in-MATLAB">Creating Music in MATLAB<a class="anchor-link" href="#Creating-Music-in-MATLAB"> </a></h4><p>This section of the lab will teach you how to create music using different tones created in MATLAB.</p>
+<p>First we are going to code a sine wave of amplitude A = 1, at an audio frequency of 220 * 7/12  Hz (which corresponds to E<sup>♭</sup>) which plays for an eighth note (0.125 seconds).</p>
+<div class="highlight"><pre><span></span><span class="n">Fs</span> <span class="p">=</span> <span class="mi">8000</span><span class="p">;</span>
+<span class="n">Ts</span> <span class="p">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">Fs</span><span class="p">;</span>
+<span class="n">Eflat</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="mi">220</span> <span class="o">*</span> <span class="mi">2</span>^<span class="p">(</span><span class="mi">6</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span> <span class="o">.*</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">Ts</span><span class="p">:</span><span class="mf">0.125</span><span class="p">]);</span>
+<span class="n">sound</span><span class="p">(</span><span class="n">Eflat</span><span class="p">);</span>
+</pre></div>
+<p>This vector <code>Eflat</code> now contains samples of the sine wave from t = 0s to t = 0.125s, in samples that are spaced <code>Ts</code> seconds apart. Note that this sampling interval corresponds to a sampling frequency of 8 kHz (1/Ts = fs) and Ts will be 0.125 ms. This is standard for voice grade audio channels.</p>
+<p>To create a pause use the zeros function:</p>
+<div class="highlight"><pre><span></span><span class="n">pause</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="n">Ts</span><span class="p">:</span><span class="n">time</span><span class="p">));</span>
+</pre></div>
+<p>For example to create an eighth note pause at the start of the tune:</p>
+<div class="highlight"><pre><span></span><span class="n">pause8th</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="n">Ts</span><span class="p">:</span><span class="mf">0.125</span><span class="p">));</span>
+</pre></div>
+<p>Now to write this pause and first note sound to a sound file we use the following command:</p>
+<div class="highlight"><pre><span></span><span class="n">audiowrite</span><span class="p">(</span><span class="s">&#39;first_note.wav&#39;</span><span class="p">,[</span><span class="n">pause8th</span><span class="p">,</span><span class="n">Eflat</span><span class="p">],</span><span class="n">Fs</span><span class="p">);</span>
+</pre></div>
+<p>To play the sound, use the <code>sound()</code> function.</p>
+<p>Now you can complete the opening phrase of Beethoven's fifth by adding additional notes and pauses of the correct length.</p>
+<p>Save the commands you use to create, play and save your version of Beethoven's Fifth in a MATLAB mlx-file as <code>beethoven.mlx</code> and add this to your copy of this lab script along with the sound file.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="What-to-hand-in">What to hand in<a class="anchor-link" href="#What-to-hand-in"> </a></h2><h3 id="Claim">Claim<a class="anchor-link" href="#Claim"> </a></h3><p>Up to 2 marks each can be claimed for Exercises 12 and 13. There is 1 additional mark for Miniproject 3.</p>
+<h3 id="Submission">Submission<a class="anchor-link" href="#Submission"> </a></h3><p>You should submit the following to the <strong>Lab 06: Sounds an sampling</strong> Assignment on Canvas.</p>
+<ol>
+<li>Complete the labwork self-assessment claim form and declaration.</li>
+<li>As evidence of completion of Lab Exercise 12, you should upload the MATLAB Live Script file <code>ex12.mlx</code> plus any audio files downloaded or created. </li>
+<li>As evidence of completion of Lab Exercise 13, you should upload the MATLAB Live Script file <code>ex13_1.mlx</code>, <code>ex13_2.mlx</code> plus any audio files downloaded or created.</li>
+<li>As evidence of completion of Mini-Project 3, you should upload the MATLAB Live Script file beethoven.mlx plus the audio file created.</li>
+</ol>
+<h3 id="Deadline">Deadline<a class="anchor-link" href="#Deadline"> </a></h3><p>The deadline for claims and submission is <strong>Midnight, 20th March</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
+            </div>
+            <div class="c-textbook__footer" id="textbook_footer">
+              
+<nav class="c-page__nav">
+  
+    
+    
+
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/eg-247-textbook/labs/lab05/index.html">
+      〈 <span class="u-margin-right-tiny"></span> Lab 5 - Fourier Series
+    </a>
+  
+
+  
+    
+
+    
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/eg-247-textbook/labs/lab07/index.html">
+      Optional Lab 7 - Filters <span class="u-margin-right-tiny"></span> 〉
+    </a>
+  
+</nav>
+
+              <footer>
+  <p class="footer">This page was created by <a href="https://github.com/jupyter/jupyter-book/graphs/contributors">The Jupyter Book Community</a></p>
+</footer>
+
+            </div>
+
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
