@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://jupyterbook.org/eg-247-textbook/content/setup/advanced-setup.html",
   "headline": "Advanced Settings",
-  "datePublished": "2020-01-07T01:18:26+00:00",
-  "dateModified": "2020-01-07T01:18:26+00:00",
+  "datePublished": "2020-01-07T09:10:23+00:00",
+  "dateModified": "2020-01-07T09:10:23+00:00",
   "description": "# Advanced SettingsIf you want to use Python environments and the command line for installation, please follow these instructions after installing Anaconda.N...",
   "author": {
     "@type": "Person",
@@ -1657,6 +1657,129 @@ initFunction(initPrint)
 
       
     
+      
+      
+        <li><h2 class="c-sidebar__title">Setting up your own version of this book</li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="setup/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/setup/index.html"
+        >
+          
+          Worksheet 2
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/setup/jupyter">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/setup/jupyter.html"
+              >
+                
+                About Jupyter notebooks
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/setup/python">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/setup/python.html"
+              >
+                
+                Installing Python
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/setup/setup">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/setup/setup.html"
+              >
+                
+                Setting up your MATLAB-Jupyter Computing Environment
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/setup/jupyter-book">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/setup/jupyter-book.html"
+              >
+                
+                Setting up jupyter-book
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
   </ul>
   <p class="sidebar_footer">Powered by <a href="https://github.com/choldgraf/jupyter-book">Jupyter Book</a></p>
 </nav>
@@ -1717,13 +1840,9 @@ initFunction(initPrint)
 
 <p>Create and launch EG-247 Textbook environment:</p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda create <span class="nt">-n</span> eg-247-textbook
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda update conda
+conda create <span class="nt">-n</span> eg-247-textbook <span class="nv">python</span><span class="o">=</span>3.7 anaconda
 conda activate eg-247-textbook <span class="c"># source activate eg-247 on mac or unix</span>
-</code></pre></div></div>
-
-<p>Install packages:</p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install </span>jupyter numpy scipy matplotlib sympy pytest
 </code></pre></div></div>
 
 <p>Test packages:</p>
@@ -1746,18 +1865,18 @@ conda activate eg-247-textbook <span class="c"># source activate eg-247 on mac o
 
 <p>First install the Python-MATLAB bridge.</p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">set </span><span class="nv">MATLAB_HOME</span><span class="o">=</span><span class="s2">"C:</span><span class="se">\P</span><span class="s2">rogram Files</span><span class="se">\M</span><span class="s2">ATLAB</span><span class="se">\R</span><span class="s2">2018a"</span>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">set </span><span class="nv">MATLAB_HOME</span><span class="o">=</span><span class="s2">"C:</span><span class="se">\P</span><span class="s2">rogram Files</span><span class="se">\M</span><span class="s2">ATLAB</span><span class="se">\R</span><span class="s2">2019a"</span>
 <span class="nb">cd</span> %MATLAB_HOME%<span class="se">\e</span>xtern<span class="se">\e</span>ngines<span class="se">\p</span>ython
 python setup.py <span class="nb">install</span>
 </code></pre></div></div>
 <p>Now<code class="language-plaintext highlighter-rouge">MATLAB_KERNEL</code></p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip instal matlab_kernel
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>matlab_kernel
 </code></pre></div></div>
 
 <p>Now when you launch a jupyter notebook</p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter notebook introduction<span class="se">\i</span>ntroduction.ipynb
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter notebook content<span class="se">\i</span>ntroduction<span class="se">\i</span>ndex.ipynb
 </code></pre></div></div>
 
 <p>you should have a MATLAB kernel as well as a Python 3 kernel and the <a href="https://damianavila.github.io/RISE/index.html">Rise</a> slide show feature should be available.</p>
@@ -1766,18 +1885,17 @@ python setup.py <span class="nb">install</span>
 
 <p>Export settings:</p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">env export</span> <span class="o">&gt;</span> environment.yml
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">export</span> <span class="o">&gt;</span> environment.yml
 </code></pre></div></div>
 
-<p>To recreate the EG-247 environment on another machine with Anaconda installed, you
-should be able to copy the <code class="language-plaintext highlighter-rouge">environment.yml</code> file and execute:</p>
+<p>To recreate the EG-247 Textbook environment on another machine with Anaconda installed, you should be able to copy the <code class="language-plaintext highlighter-rouge">environment.yml</code> file and execute:</p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">env </span>create <span class="nt">-f</span> environment.yml
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda create <span class="nt">-f</span> environment.yml
 </code></pre></div></div>
 
 <h2 id="exit-eg-247-environment">Exit EG-247 Environment</h2>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>deactivate <span class="c"># source deactivate on mac or linux</span>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda deactivate <span class="c"># source deactivate on mac or linux</span>
 </code></pre></div></div>
 
 
