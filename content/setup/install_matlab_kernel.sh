@@ -12,8 +12,10 @@ conda install -c conda-forge rise
 pip install jupyter-book
 
 # Set up Python-MATLAB bridge and matlab_kernel
-python $MATLAB_HOME/extern/engines/python/setup.py install
+cd $MATLAB_HOME/extern/engines/python
+python setup.py install
 pip install matlab_kernel
+cd $EG_247
 
 # Save environment and exit eg-247-textbook
 conda env export > environment.yml
