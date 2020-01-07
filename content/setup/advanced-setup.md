@@ -17,14 +17,9 @@ Open a terminal window.
 Create and launch EG-247 Textbook environment:
 
 ```shell
-conda create -n eg-247-textbook
+conda update conda
+conda create -n eg-247-textbook python=3.7 anaconda
 conda activate eg-247-textbook # source activate eg-247 on mac or unix
-```
-
-Install packages:
-
-```shell
-conda install jupyter numpy scipy matplotlib sympy pytest
 ```
 
 Test packages:
@@ -52,20 +47,20 @@ This assumes windows.
 First install the Python-MATLAB bridge.
 
 ```shell
-set MATLAB_HOME="C:\Program Files\MATLAB\R2018a"
+set MATLAB_HOME="C:\Program Files\MATLAB\R2019a"
 cd %MATLAB_HOME%\extern\engines\python
 python setup.py install
 ```
 Now`MATLAB_KERNEL`
 
 ```shell
-pip instal matlab_kernel
+pip install matlab_kernel
 ```
 
 Now when you launch a jupyter notebook
 
 ```shell
-jupyter notebook introduction\introduction.ipynb
+jupyter notebook content\introduction\index.ipynb
 ```
 
 you should have a MATLAB kernel as well as a Python 3 kernel and the [Rise](https://damianavila.github.io/RISE/index.html) slide show feature should be available.
@@ -76,19 +71,18 @@ you should have a MATLAB kernel as well as a Python 3 kernel and the [Rise](http
 Export settings:
 
 ```shell
-conda env export > environment.yml
+conda export > environment.yml
 ```
 
-To recreate the EG-247 environment on another machine with Anaconda installed, you
-should be able to copy the `environment.yml` file and execute:
+To recreate the EG-247 Textbook environment on another machine with Anaconda installed, you should be able to copy the `environment.yml` file and execute:
 
 ```shell
-conda env create -f environment.yml
+conda create -f environment.yml
 ```
 
 ## Exit EG-247 Environment
 
 ```shell
-deactivate # source deactivate on mac or linux
+conda deactivate # source deactivate on mac or linux
 ```
 
