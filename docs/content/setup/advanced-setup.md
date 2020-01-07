@@ -1,4 +1,4 @@
-# Adanced Settings
+# Advanced Settings
 
 If you want to use Python environments and the command line for installation, please follow these instructions after installing Anaconda.
 
@@ -12,13 +12,13 @@ Run the **Anaconda Prompt** as an Administrator.
 
 Open a terminal window.
 
-## Go to EG-247-Resources folder
+## Go to eg-247-textbook folder
 
-Create and launch EG-247 environment:
+Create and launch EG-247 Textbook environment:
 
 ```shell
-conda env create -n eg-247
-activate eg-247 # source activate eg-247 on mac or unix
+conda create -n eg-247-textbook
+conda activate eg-247-textbook # source activate eg-247 on mac or unix
 ```
 
 Install packages:
@@ -40,7 +40,7 @@ python soton-test-python-installation.py
 Install [Rise](https://damianavila.github.io/RISE/index.html) for active slides:
 
 ```shell
-conda install -c damianavila82 rise
+conda install -c conda-forge rise
 ```
 
 
@@ -59,7 +59,7 @@ python setup.py install
 Now`MATLAB_KERNEL`
 
 ```shell
-pip install matlab_kernel
+pip instal matlab_kernel
 ```
 
 Now when you launch a jupyter notebook
