@@ -14,4 +14,8 @@ This is the basis of the **Fourier Transform** which is very important as the ba
 
 ## Scope and Background Reading
 
-The material in this presentation and notes is based on Chapter 8 (Starting at Section 8.1) of [Steven T. Karris, Signals and Systems: with Matlab Computation and Simulink Modelling, 5th Edition.](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?ppg=271&docID=3384197&tm=1518709033960) from the **Required Reading List**. I also used Chapter 5 of [Benoit Boulet, Fundamentals of Signals and Systems](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?ppg=194&docID=3135971&tm=1518709078944) from the **Recommended Reading List**.
+The material in this presentation and notes is based on Chapter 8 (Starting at Section 8.1) of Karris {% cite karris %}. I also used Chapter 5 of {% cite boulet %} from the **Recommended Reading List**.
+
+## References
+
+{% bibliography --cited %}
