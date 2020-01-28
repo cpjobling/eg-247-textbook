@@ -10,7 +10,7 @@ This is an index to the files arranged by module week.
 
 * [Worksheet 1](../introduction/worksheet1) for [Chapter 1: Introduction](../introduction/index) [[PDF](worksheet1.pdf)].
 * [Worksheet 2](../introduction/worksheet2) for end of introduction example [[PDF](worksheet2.pdf)].
-* [Worksheet 3](../elemetary_signals/worksheet3) for [Chapter 2: Elementary Signals](../elementary_signals/index) [[PDF](worksheet2.pdf)].
+* [Worksheet 3](../elementary_signals/worksheet3) for [Chapter 2: Elementary Signals](../elementary_signals/index) [[PDF](worksheet2.pdf)].
 
 ## Week 2
 
