@@ -5,16 +5,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-  <title>Worksheet 7 Transfer Functions</title>
-  <meta name="description" content="        Worksheet 7 Transfer Functions    Worksheet 7 To accompany Chapter 3.4 Transfer Functions We will step through this worksheet in class.You are expect...">
+  <title>Homework 3 Impulse Response and Convolution</title>
+  <meta name="description" content="        Homework 3 Impulse Response and Convolution    Homework 4 The Impulse Response and Convolution The questions for Homework 4 are based on the examples...">
 
-  <link rel="canonical" href="https://jupyterbook.org/eg-247-textbook/laplace_transform/4/worksheet7.html">
+  <link rel="canonical" href="https://jupyterbook.org/eg-247-textbook/homework/hw4.html">
   <link rel="alternate" type="application/rss+xml" title="EG-247 Signals and Systems" href="https://jupyterbook.org/eg-247-textbook/feed.xml">
 
-  <meta property="og:url"         content="https://jupyterbook.org/eg-247-textbook/laplace_transform/4/worksheet7.html" />
+  <meta property="og:url"         content="https://jupyterbook.org/eg-247-textbook/homework/hw4.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Worksheet 7 Transfer Functions" />
-<meta property="og:description" content="        Worksheet 7 Transfer Functions    Worksheet 7 To accompany Chapter 3.4 Transfer Functions We will step through this worksheet in class.You are expect..." />
+<meta property="og:title"       content="Homework 3 Impulse Response and Convolution" />
+<meta property="og:description" content="        Homework 3 Impulse Response and Convolution    Homework 4 The Impulse Response and Convolution The questions for Homework 4 are based on the examples..." />
 <meta property="og:image"       content="https://jupyterbook.org/eg-247-textbook/images/logo/logo.png" />
 
 <meta name="twitter:card" content="summary">
@@ -24,11 +24,11 @@
   {
   "@context": "http://schema.org",
   "@type": "NewsArticle",
-  "mainEntityOfPage": "https://jupyterbook.org/eg-247-textbook/laplace_transform/4/worksheet7.html",
-  "headline": "Worksheet 7 Transfer Functions",
+  "mainEntityOfPage": "https://jupyterbook.org/eg-247-textbook/homework/hw4.html",
+  "headline": "Homework 3 Impulse Response and Convolution",
   "datePublished": "2020-01-31T18:47:49+00:00",
   "dateModified": "2020-01-31T18:47:49+00:00",
-  "description": "        Worksheet 7 Transfer Functions    Worksheet 7 To accompany Chapter 3.4 Transfer Functions We will step through this worksheet in class.You are expect...",
+  "description": "        Homework 3 Impulse Response and Convolution    Homework 4 The Impulse Response and Convolution The questions for Homework 4 are based on the examples...",
   "author": {
     "@type": "Person",
     "name": "Dr Chris P. Jobling"
@@ -287,11 +287,11 @@ initFunction(initPrint)
     },
     codeMirrorConfig: {
     theme: "abcdef",
-    mode: ""
+    mode: "python"
     },
     kernelOptions: {
-    kernelName: "matlab",
-    path: "content/laplace_transform/4"
+    kernelName: "python3",
+    path: "content/homework"
     }
 }
 </script>
@@ -1938,14 +1938,48 @@ initFunction(initPrint)
       <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content" id="textbook_content">
                   <main class="jupyter-page">
-    <div id="page-info"><div id="page-title">Worksheet 7 Transfer Functions</div>
+    <div id="page-info"><div id="page-title">Homework 3 Impulse Response and Convolution</div>
 </div>
     <div class="jb_cell">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Worksheet-7">Worksheet 7<a class="anchor-link" href="#Worksheet-7"> </a></h1><h2 id="To-accompany-Chapter-3.4-Transfer-Functions">To accompany Chapter 3.4 Transfer Functions<a class="anchor-link" href="#To-accompany-Chapter-3.4-Transfer-Functions"> </a></h2><p>We will step through this worksheet in class.</p>
-<p>You are expected to have at least watched the video presentation of <a href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/4/transfer_functions">Chapter 3.4</a> of the <a href="https://cpjobling.github.io/eg-247-textbook">notes</a> before coming to class. If you haven't watch it afterwards!</p>
+<h1 id="Homework-4">Homework 4<a class="anchor-link" href="#Homework-4"> </a></h1><h2 id="The-Impulse-Response-and-Convolution">The Impulse Response and Convolution<a class="anchor-link" href="#The-Impulse-Response-and-Convolution"> </a></h2><p>The questions for Homework 4 are based on the examples given in <a href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=207">Section 6.8</a> of <a class="citation" href="#karris">(Karris, 2012)</a>.</p>
+<ol>
+<li>Confirm the result of <a href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/5/convolution.html#Example-5">Example 5</a> from the notes using the convolution integral </li>
+</ol>
+$$h(t) * u_0(t) = \int_{-\infty}^{\infty}\,u_0(\tau)h(t-\tau)\,d\tau$$<ol>
+<li>Compute the impulse response $h(t) = i_s(t)$ (where $i_s(t) = \delta(t)$) in terms of $R$ and $L$ for the circuit shown in Fig. Q2 below. Use this result to compute the voltage $v_L(t)$ across the inductor. </li>
+</ol>
+<p><img src="pictures/rl_circ.jpeg" alt="RL Circuit"></p>
+<p><strong>Fig. Q2: An RL Circuit</strong></p>
+<ol>
+<li><p>Redo the graphical convolution <a href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/5/convolution.html#Example-2">Example 2</a> from the notes by forming $h(t - \tau)$ instead of $u(t - \tau)$. That is, use the convolution integral $$\int_{-\infty}^{\infty}\,u(\tau)h(t-\tau)\,d\tau.$$ Confirm the result in MATLAB.</p>
+</li>
+<li><p>Redo the graphical convolution <a href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/5/convolution.html#Example-3">Example 3</a> from the notes by forming $h(t-\tau)$ instead of $u(t-\tau)$. Confirm the result in MATLAB.</p>
+</li>
+<li><p>Derive the transfer function $$H(s) = \frac{V_L(s)}{I_s(s)}$$ for the circuit of Fig. Q2.</p>
+<p>Use this result to</p>
+<p>a. Confirm the impulse response of this circuit $V_L(t)$.</p>
+<p>b. Compute the step response $$V_L(t) = \mathcal L^{-1}\left\{ H(s) U_0(s)\right\}.$$</p>
+<p>c. Validate this result in MATLAB.</p>
+</li>
+<li><p>For the network show in Fig. Q6 compute:</p>
+<p>a. The transfer function $$H(s) = \frac{V_{\mathrm{out}}(s)}{V_{\mathrm{in}}(s)};$$</p>
+<p>b. The response of this circuit to the input $v_{\mathrm{in}}(t) = u_0(t) - u_0(t - 1).$</p>
+<p>c. Validate this result in MATLAB.</p>
+<p><img src="pictures/lr_circ.png" alt="L R Circuit"></p>
+<p><strong>Fig. Q6: An LR Network</strong></p>
+</li>
+<li><p>For the network shown in Fig. Q7 compute:</p>
+<p>a.  The transfer function $$H(s) = \frac{V_{\mathrm{out}}(s)}{V_{\mathrm{in}}(s)};$$</p>
+<p>b.  Determine the step response of the network.</p>
+<p>c.  State the time constant of the network.</p>
+<p>d. Validate this result in MATLAB.</p>
+<p><img src="pictures/rc_circ.png" alt="R C Network"></p>
+<p><strong>Fig. Q7: An RC Network</strong></p>
+</li>
+</ol>
 
 </div>
 </div>
@@ -1956,8 +1990,16 @@ initFunction(initPrint)
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Second-Hour's-Agenda">Second Hour's Agenda<a class="anchor-link" href="#Second-Hour's-Agenda"> </a></h2><ul>
-<li>Transfer Functions</li>
+<h3 id="Answers-to-selected-problems">Answers to selected problems<a class="anchor-link" href="#Answers-to-selected-problems"> </a></h3><ul>
+<li>For question 2: $$h(t) = i_s(t) = \left(\frac{1}{L}\right)e^{-\left(\frac{R}{L}\right)t}\,u_0(t);$$</li>
+</ul>
+$$v_L(t)=-\left(\frac{R}{L}\right)e^{-\left(\frac{R}{L}\right)t}u_0(t) +\delta(t).$$<ul>
+<li><p>For question 5 the transfer function is $$H(s) = \frac{s}{s + R/L}$$ and the step response is: $$v_L(t) = Le^{-\left(\frac{R}{L}\right)t}u_0(t).$$</p>
+</li>
+<li><p>For question 6 the transfer function is $$H(s) = \frac{3/2}{s + 3/2}$$ and the pulse response is: $$v_L(t) = \left(1 - e^{-1.5t}\right)u_0(t) - \left(1 - e^{-1.5(t-1)}\right)u_0(t-1).$$</p>
+</li>
+<li><p>For question 7 the transfer function is $$H(s) = \frac{50}{s + 50};$$ the step response is $$\left(1 - e^{-50t}\right)u_0(t)$$ and the time constant is: $T = RC = 1/50$ s.</p>
+</li>
 </ul>
 
 </div>
@@ -1969,710 +2011,10 @@ initFunction(initPrint)
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>A Couple of Examples</li>
-</ul>
+<h3 id="Reference">Reference<a class="anchor-link" href="#Reference"> </a></h3><p><ol class="bibliography"><li><span id="karris">Karris, S. T. (2012). <i>Signals and systems with MATLAB computing and Simulink modeling</i>. Orchard Publishing. https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197</span></li></ol></p>
 
 </div>
 </div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Circuit Analysis Using MATLAB LTI Transfer Function Block</li>
-</ul>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Circuit Simulation Using Simulink Transfer Function Block</li>
-</ul>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-matlab"><pre><span></span><span class="c">% Matlab setup</span>
-<span class="n">clear </span><span class="s">all</span><span class="p"></span>
-<span class="n">format </span><span class="s">compact</span><span class="p"></span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Transfer-Functions-for-Circuits">Transfer Functions for Circuits<a class="anchor-link" href="#Transfer-Functions-for-Circuits"> </a></h2>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Example-6">Example 6<a class="anchor-link" href="#Example-6"> </a></h3><p>Derive an expression for the transfer function $G(s)$ for the circuit below. In this circuit $R_g$ represents the internal resistance of the applied (voltage) source $v_s$, and $R_L$ represents the resistance of the load that consists of $R_L$, $L$ and $C$.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img title="Circuit for Example 6" src="pictures/example6.png" width="50%" /></p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Sketch-of-Solution">Sketch of Solution<a class="anchor-link" href="#Sketch-of-Solution"> </a></h3><ul>
-<li>Replace $v_s(t)$, $R_g$, $R_L$, $L$ and $C$ by their transformed (<em>complex frequency</em>) equivalents: $V_s(s)$, $R_g$, $R_L$, $sL$ and $1/(sC)$</li>
-<li>Use the <em>Voltage Divider Rule</em> to determine $V_\mathrm{out}(s)$ as a function of $V_s(s)$ </li>
-<li>Form $G(s)$ by writing down the ratio $V_\mathrm{out}(s)/V_s(s)$</li>
-</ul>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Worked-solution.">Worked solution.<a class="anchor-link" href="#Worked-solution."> </a></h3><p>Pencast: <a href="../worked_examples/ex6.pdf">ex6.pdf</a> - open in Adobe Acrobat Reader.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Answer">Answer<a class="anchor-link" href="#Answer"> </a></h3>$$G(s) = \frac{V_\mathrm{out}(s)}{V_s(s)} = \frac{R_L + sL + 1/sC}{R_g + R_L + sL + 1/sC}.$$
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Example-7">Example 7<a class="anchor-link" href="#Example-7"> </a></h3><p>Compute the transfer function for the op-amp circuit shown below in terms of the circuit constants $R_1$, $R_2$, $R_3$, $C_1$ and $C_2$. Then replace the complex variable $s$ with $j\omega$, and the circuit constants with their numerical values and plot the magnitude</p>
-$$\left|G(j\omega)\right| = \frac{\left|V_{\mathrm{out}}(j\omega)\right|}{\left|V_{\mathrm{in}}(j\omega)\right|}$$<p>versus radian frequency $\omega$ rad/s.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img alt="Circuit for Example 7" src="pictures/example7.png" height="50%" /></p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Sketch-of-Solution">Sketch of Solution<a class="anchor-link" href="#Sketch-of-Solution"> </a></h3><ul>
-<li>Replace the components and voltages in the circuit diagram with their complex frequency equivalents</li>
-<li>Use nodal analysis to determine the voltages at the nodes either side of the 50K resistor $R_3$</li>
-<li>Note that the voltage at the input to the op-amp is a virtual ground</li>
-<li>Solve for $V_{\mathrm{out}}(s)$ as a function of $V_{\mathrm{in}}(s)$</li>
-<li>Form the reciprocal $G(s) = V_{\mathrm{out}}(s)/V_{\mathrm{in}}(s)$</li>
-<li>Use MATLAB to calculate the component values, then replace $s$ by $j\omega$.</li>
-<li>Plot 
-  $$\left|G(j\omega)\right|$$
-on log-linear "paper".</li>
-</ul>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Worked-solution.">Worked solution.<a class="anchor-link" href="#Worked-solution."> </a></h3><p>Pencast: <a href="../worked_examples/ex7.pdf">ex7.pdf</a> - open in Adobe Acrobat Reader.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Answer">Answer<a class="anchor-link" href="#Answer"> </a></h3>$$G(s) = \frac{V_\mathrm{out}(s)}{V_\mathrm{in}(s)} = \frac{-1}{R_1\left(\left(1/R_1 + 1/R_2 + 1/R_3 + sC_1\right)\left(sC_2R_3\right)+1/R_2\right)}.$$
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="The-Matlab-Bit">The Matlab Bit<a class="anchor-link" href="#The-Matlab-Bit"> </a></h3><p>See attached script: <a href="../matlab/solution7.m">solution7.m</a>.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Week-3:-Solution-7">Week 3: Solution 7<a class="anchor-link" href="#Week-3:-Solution-7"> </a></h4>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-matlab"><pre><span></span><span class="n">syms </span><span class="s">s</span><span class="p">;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-matlab"><pre><span></span><span class="n">R1</span> <span class="p">=</span> <span class="mi">200</span><span class="o">*</span><span class="mi">10</span>^<span class="mi">3</span><span class="p">;</span> 
-<span class="n">R2</span> <span class="p">=</span> <span class="mi">40</span><span class="o">*</span><span class="mi">10</span>^<span class="mi">3</span><span class="p">;</span>
-<span class="n">R3</span> <span class="p">=</span> <span class="mi">50</span><span class="o">*</span><span class="mi">10</span>^<span class="mi">3</span><span class="p">;</span>
-
-<span class="n">C1</span> <span class="p">=</span> <span class="mi">25</span><span class="o">*</span><span class="mi">10</span>^<span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">);</span>
-<span class="n">C2</span> <span class="p">=</span> <span class="mi">10</span><span class="o">*</span><span class="mi">10</span>^<span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">);</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-matlab"><pre><span></span><span class="n">den</span> <span class="p">=</span> <span class="n">R1</span><span class="o">*</span><span class="p">((</span><span class="mi">1</span><span class="o">/</span><span class="n">R1</span><span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="n">R2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="n">R3</span> <span class="o">+</span> <span class="n">s</span><span class="o">*</span><span class="n">C1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="o">*</span><span class="n">R3</span><span class="o">*</span><span class="n">C2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="n">R2</span><span class="p">);</span>
-<span class="n">simplify</span><span class="p">(</span><span class="n">den</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Result is: <code>100*s*((7555786372591433*s)/302231454903657293676544 + 1/20000) + 5</code></p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Simplify coefficients of s in denominator</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-matlab"><pre><span></span><span class="n">format </span><span class="s">long</span><span class="p"></span>
-<span class="n">denG</span> <span class="p">=</span> <span class="n">sym2poly</span><span class="p">(</span><span class="nb">ans</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-matlab"><pre><span></span><span class="n">numG</span> <span class="p">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Plot</p>
-<p>For convenience, define coefficients $a$ and $b$:</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-matlab"><pre><span></span><span class="n">a</span> <span class="p">=</span> <span class="n">denG</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="n">b</span> <span class="p">=</span> <span class="n">denG</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-matlab"><pre><span></span><span class="n">w</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">10000</span><span class="p">;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$G(j\omega) = \frac{-1}{a\omega^2 - jb\omega + 5}$$
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-matlab"><pre><span></span><span class="n">Gs</span> <span class="p">=</span> <span class="o">-</span><span class="mf">1.</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">w</span><span class="o">.^</span><span class="mi">2</span> <span class="o">-</span> <span class="nb">j</span><span class="o">.*</span><span class="n">b</span><span class="o">.*</span><span class="n">w</span> <span class="o">+</span> <span class="n">denG</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-matlab"><pre><span></span><span class="n">semilogx</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">Gs</span><span class="p">))</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Radian frequency w (rad/s&#39;</span><span class="p">)</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;|Vout/Vin|&#39;</span><span class="p">)</span>
-<span class="n">title</span><span class="p">(</span><span class="s">&#39;Magnitude Vout/Vin vs. Radian Frequency&#39;</span><span class="p">)</span>
-<span class="n">grid</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Using-Transfer-Functions-in-Matlab-for-System-Analysis">Using Transfer Functions in Matlab for System Analysis<a class="anchor-link" href="#Using-Transfer-Functions-in-Matlab-for-System-Analysis"> </a></h2><p>Please use the file <a href="../matlab/tf_matlab.m">tf_matlab.m</a> to explore the Transfer Function features provide by Matlab. Use the <em>publish</em> option to generate a nicely formatted document.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Using-Transfer-Functions-in-Simulink-for-System-Simulation">Using Transfer Functions in Simulink for System Simulation<a class="anchor-link" href="#Using-Transfer-Functions-in-Simulink-for-System-Simulation"> </a></h2><p><img src="pictures/sim_tf.png" alt="Using Transfer Functions in Simulink for System Simulation"></p>
-<p>The Simulink transfer function (<strong><code>Transfer Fcn</code></strong>) block shown above implements a transfer function representing a general
-input output function</p>
-$$G(s) = \frac{N(s)}{D(s)}$$<p>that it is not specific nor restricted to circuit analysis. It can, however be used in modelling and simulation studies.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Example">Example<a class="anchor-link" href="#Example"> </a></h3><p>Recast Example 7 as a MATLAB problem using the LTI Transfer Function block.</p>
-<p>For simplicity use parameters $R_1 = R_2 = R_3 = 1\; \Omega$, and $C_1 = C_2 = 1$ F.</p>
-<p>Calculate the step response using the LTI functions.</p>
-<p>Verify the result with Simulink.</p>
-<p>The Matlab solution: <a href="../matlab/example8.m">example8.m</a></p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="MATLAB-Solution">MATLAB Solution<a class="anchor-link" href="#MATLAB-Solution"> </a></h4><p>From a previous analysis the transfer function is:</p>
-$$G(s) = \frac{V_\mathrm{out}}{V_\mathrm{in}} = \frac{-1}{R_1\left[(1/R_1 + 1/R_2 + 1/R_3 + sC_1)(sR_3C_2) + 1/R_2\right]}$$<p>so substituting the component values we get:</p>
-$$G(s) = \frac{V_{\mathrm{out}}}{V_{\mathrm{in}}} = \frac{-1}{s^2 + 3s + 1}$$<p>We can find the step response by letting $v_{\mathrm{in}}(t) = u_0(t)$ so that
-$V_{\mathrm{in}}(s)=1/s$ then</p>
-$$V_{\mathrm{out}}(s) = \frac{-1}{s^2 + 3s + 1}.\frac{1}{s}$$<p>We can solve this by partial fraction expansion and inverse Laplace transform
-as is done in the text book with the help of Matlab's <code>residue</code> function.</p>
-<p>Here, however we'll use the LTI block that was introduced in the lecture.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Define the circuit as a transfer function</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-matlab"><pre><span></span><span class="n">G</span> <span class="p">=</span> <span class="n">tf</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">1</span><span class="p">])</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>step response is then:</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-matlab"><pre><span></span><span class="n">step</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Simples!</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Simulink-model">Simulink model<a class="anchor-link" href="#Simulink-model"> </a></h4><p>See <a href="../matlab/example_8.slx">example_8.slx</a></p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-matlab"><pre><span></span><span class="n">open </span><span class="s">example_8</span><span class="p"></span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="pictures/ex8_sim.png" alt="Simulink model"></p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Result</p>
-<p><img src="pictures/ex8_sim_result.png" alt="Simulation result"></p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's go a bit further by finding the frequency response:</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-matlab"><pre><span></span><span class="n">bode</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Matlab-Solutions">Matlab Solutions<a class="anchor-link" href="#Matlab-Solutions"> </a></h2><p>For convenience, single script MATLAB solutions to the examples are provided and can be downloaded from the accompanying <a href="../matlab">MATLAB</a> folder.</p>
-<ul>
-<li>Solution 7 [<a href="../matlab/solution7.m">solution7.m</a>]</li>
-<li>Example 8  [<a href="../matlab/example8.m">example8.m</a>]</li>
-<li>Simulink model [<a href="../matlab/example8.slx">example8.slx</a>]</li>
-</ul>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-matlab"><pre><span></span><span class="n">cd </span><span class="s">../matlab</span><span class="p"></span>
-<span class="n">ls</span>
-<span class="s">open solution7</span><span class="p"></span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -2689,8 +2031,8 @@ as is done in the text book with the help of Matlab's <code>residue</code> funct
     
     
 
-    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/eg-247-textbook/laplace_transform/3/worksheet6.html">
-      〈 <span class="u-margin-right-tiny"></span> Worksheet 6 Using Laplace Transfor...
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/eg-247-textbook/homework/hw3.html">
+      〈 <span class="u-margin-right-tiny"></span> Homework 3 Laplace Transforms for ...
     </a>
   
 
@@ -2698,8 +2040,8 @@ as is done in the text book with the help of Matlab's <code>residue</code> funct
     
 
     
-    <a id="js-page__nav__next" class="c-page__nav__next" href="/eg-247-textbook/laplace_transform/5/worksheet8.html">
-      Worksheet 8 Impulse Response and T... <span class="u-margin-right-tiny"></span> 〉
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/eg-247-textbook/labs/index.html">
+      Laboratory Exercises <span class="u-margin-right-tiny"></span> 〉
     </a>
   
 </nav>

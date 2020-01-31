@@ -1,0 +1,104 @@
+---
+interact_link: content/homework/hw4.ipynb
+kernel_name: python3
+kernel_path: content/homework
+has_widgets: false
+title: |-
+  Homework 3 Impulse Response and Convolution
+pagenum: 50
+prev_page:
+  url: /homework/hw3.html
+next_page:
+  url: /labs/index.html
+suffix: .ipynb
+search: t s h u frac tau response l left right convolution result r circuit fig q vl network example transfer function compute matlab v mathrm e confirm infty step c question impulse cpjobling github io eg textbook laplacetransform html notes d pictures b validate homework integral int delta shown rl redo graphical forming instead png constant rc questions based examples given section ebookcentral proquest com lib swansea ebooks reader action docid ppg cite karris using where terms below voltage across inductor rlcirc jpeg derive mathcal show input lrcirc lr determine state rccirc answers selected problems le pulse reference bibliography cited
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Homework 3 Impulse Response and Convolution</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Homework-4">Homework 4<a class="anchor-link" href="#Homework-4"> </a></h1><h2 id="The-Impulse-Response-and-Convolution">The Impulse Response and Convolution<a class="anchor-link" href="#The-Impulse-Response-and-Convolution"> </a></h2><p>The questions for Homework 4 are based on the examples given in <a href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=207">Section 6.8</a> of {% cite karris %}.</p>
+<ol>
+<li>Confirm the result of <a href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/5/convolution.html#Example-5">Example 5</a> from the notes using the convolution integral </li>
+</ol>
+$$h(t) * u_0(t) = \int_{-\infty}^{\infty}\,u_0(\tau)h(t-\tau)\,d\tau$$<ol>
+<li>Compute the impulse response $h(t) = i_s(t)$ (where $i_s(t) = \delta(t)$) in terms of $R$ and $L$ for the circuit shown in Fig. Q2 below. Use this result to compute the voltage $v_L(t)$ across the inductor. </li>
+</ol>
+<p><img src="pictures/rl_circ.jpeg" alt="RL Circuit"></p>
+<p><strong>Fig. Q2: An RL Circuit</strong></p>
+<ol>
+<li><p>Redo the graphical convolution <a href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/5/convolution.html#Example-2">Example 2</a> from the notes by forming $h(t - \tau)$ instead of $u(t - \tau)$. That is, use the convolution integral $$\int_{-\infty}^{\infty}\,u(\tau)h(t-\tau)\,d\tau.$$ Confirm the result in MATLAB.</p>
+</li>
+<li><p>Redo the graphical convolution <a href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/5/convolution.html#Example-3">Example 3</a> from the notes by forming $h(t-\tau)$ instead of $u(t-\tau)$. Confirm the result in MATLAB.</p>
+</li>
+<li><p>Derive the transfer function $$H(s) = \frac{V_L(s)}{I_s(s)}$$ for the circuit of Fig. Q2.</p>
+<p>Use this result to</p>
+<p>a. Confirm the impulse response of this circuit $V_L(t)$.</p>
+<p>b. Compute the step response $$V_L(t) = \mathcal L^{-1}\left\{ H(s) U_0(s)\right\}.$$</p>
+<p>c. Validate this result in MATLAB.</p>
+</li>
+<li><p>For the network show in Fig. Q6 compute:</p>
+<p>a. The transfer function $$H(s) = \frac{V_{\mathrm{out}}(s)}{V_{\mathrm{in}}(s)};$$</p>
+<p>b. The response of this circuit to the input $v_{\mathrm{in}}(t) = u_0(t) - u_0(t - 1).$</p>
+<p>c. Validate this result in MATLAB.</p>
+<p><img src="pictures/lr_circ.png" alt="L R Circuit"></p>
+<p><strong>Fig. Q6: An LR Network</strong></p>
+</li>
+<li><p>For the network shown in Fig. Q7 compute:</p>
+<p>a.  The transfer function $$H(s) = \frac{V_{\mathrm{out}}(s)}{V_{\mathrm{in}}(s)};$$</p>
+<p>b.  Determine the step response of the network.</p>
+<p>c.  State the time constant of the network.</p>
+<p>d. Validate this result in MATLAB.</p>
+<p><img src="pictures/rc_circ.png" alt="R C Network"></p>
+<p><strong>Fig. Q7: An RC Network</strong></p>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Answers-to-selected-problems">Answers to selected problems<a class="anchor-link" href="#Answers-to-selected-problems"> </a></h3><ul>
+<li>For question 2: $$h(t) = i_s(t) = \left(\frac{1}{L}\right)e^{-\left(\frac{R}{L}\right)t}\,u_0(t);$$</li>
+</ul>
+$$v_L(t)=-\left(\frac{R}{L}\right)e^{-\left(\frac{R}{L}\right)t}u_0(t) +\delta(t).$$<ul>
+<li><p>For question 5 the transfer function is $$H(s) = \frac{s}{s + R/L}$$ and the step response is: $$v_L(t) = Le^{-\left(\frac{R}{L}\right)t}u_0(t).$$</p>
+</li>
+<li><p>For question 6 the transfer function is $$H(s) = \frac{3/2}{s + 3/2}$$ and the pulse response is: $$v_L(t) = \left(1 - e^{-1.5t}\right)u_0(t) - \left(1 - e^{-1.5(t-1)}\right)u_0(t-1).$$</p>
+</li>
+<li><p>For question 7 the transfer function is $$H(s) = \frac{50}{s + 50};$$ the step response is $$\left(1 - e^{-50t}\right)u_0(t)$$ and the time constant is: $T = RC = 1/50$ s.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Reference">Reference<a class="anchor-link" href="#Reference"> </a></h3><p>{% bibliography --cited %}</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
