@@ -82,6 +82,15 @@ diff(heaviside(t),t)
 % It's not easy to plot the dirac delta function. We have to cheat a little
 td = [-1,0,1]; delta = [0,1,0];
 stem(td,delta)
+%%
+% MATLAB has this function and its derivatives built-in
+dirac(t)
+% $\delta^'(t)$
+dirac(1,t)
+% $delta^{''}(t)$
+dirac(2,t)
 %% Part 5
-% Use Matlab to solve Examples 1.8 and 1.9 from the textbook.
+% Use Matlab to solve Examples 1.8 and 1.9 from the textbook. You may not
+% get the results you expect so if this is the case, just comment on the
+% result.
 % Don't Forget to Save Your Work!
