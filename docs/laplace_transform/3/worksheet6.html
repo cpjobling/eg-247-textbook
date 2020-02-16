@@ -1,0 +1,3050 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Worksheet 6 Using Laplace Transforms for Circuit Analysis</title>
+  <meta name="description" content="        Worksheet 6 Using Laplace Transforms for Circuit Analysis    Worksheet 6 To accompany Chapter 3.3 Using Laplace Transforms for Circuit Analysis We wi...">
+
+  <link rel="canonical" href="https://jupyterbook.org/eg-247-textbook/laplace_transform/3/worksheet6.html">
+  <link rel="alternate" type="application/rss+xml" title="EG-247 Signals and Systems" href="https://jupyterbook.org/eg-247-textbook/feed.xml">
+
+  <meta property="og:url"         content="https://jupyterbook.org/eg-247-textbook/laplace_transform/3/worksheet6.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Worksheet 6 Using Laplace Transforms for Circuit Analysis" />
+<meta property="og:description" content="        Worksheet 6 Using Laplace Transforms for Circuit Analysis    Worksheet 6 To accompany Chapter 3.3 Using Laplace Transforms for Circuit Analysis We wi..." />
+<meta property="og:image"       content="https://jupyterbook.org/eg-247-textbook/images/logo/logo.png" />
+
+<meta name="twitter:card" content="summary">
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": "https://jupyterbook.org/eg-247-textbook/laplace_transform/3/worksheet6.html",
+  "headline": "Worksheet 6 Using Laplace Transforms for Circuit Analysis",
+  "datePublished": "2020-02-16T12:35:46+00:00",
+  "dateModified": "2020-02-16T12:35:46+00:00",
+  "description": "        Worksheet 6 Using Laplace Transforms for Circuit Analysis    Worksheet 6 To accompany Chapter 3.3 Using Laplace Transforms for Circuit Analysis We wi...",
+  "author": {
+    "@type": "Person",
+    "name": "Dr Chris P. Jobling"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://jupyterbook.org/eg-247-textbook",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://jupyterbook.org/eg-247-textbook",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/eg-247-textbook/assets/css/styles.css">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/eg-247-textbook/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<!-- (mostly) copied from nbconvert configuration -->
+<!-- https://github.com/jupyter/nbconvert/blob/master/nbconvert/templates/html/mathjax.tpl -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: 'center',
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}},
+        linebreaks: { automatic: true },
+    },
+    
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML' async></script>
+
+
+  <!-- DOM updating function -->
+  <script src="/eg-247-textbook/assets/js/page/dom-update.js"></script>
+
+  <!-- Selectors for elements on the page -->
+  <script src="/eg-247-textbook/assets/js/page/documentSelectors.js"></script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/eg-247-textbook';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js" async></script>
+  <script src="/eg-247-textbook/assets/js/page/anchors.js" async></script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+
+
+  <!-- Load the auto-generating TOC (non-async otherwise the TOC won't load w/ turbolinks) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.8.1/tocbot.min.js" async></script>
+  <script src="/eg-247-textbook/assets/js/page/tocbot.js"></script>
+
+  <!-- Google analytics -->
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script>
+
+  <!-- Load custom website scripts -->
+  <script src="/eg-247-textbook/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/eg-247-textbook/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/eg-247-textbook/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js" async></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+
+  <!-- Load JS that depends on site variables -->
+  <script src="/eg-247-textbook/assets/js/page/copy-button.js" async></script>
+
+  <!-- Hide cell code -->
+  <script src="/eg-247-textbook/assets/js/page/hide-cell.js" async></script>
+
+  <!-- Printing the screen -->
+  <!-- Include nbinteract for interactive widgets -->
+<script src="https://printjs-4de6.kxcdn.com/print.min.js" async></script>
+<script>
+printContent = () => {
+    // MathJax displays a second version of any math for assistive devices etc.
+    // This prevents double-rendering in the PDF output.
+    var ignoreAssistList = [];
+    assistives = document.querySelectorAll('.MathJax_Display span.MJX_Assistive_MathML').forEach((element, index) => {
+        var thisId = 'MathJax-assistive-' + index.toString();
+        element.setAttribute('id', thisId);
+        ignoreAssistList.push(thisId)
+    });
+
+    // Print the actual content object
+    printJS({
+        printable: 'textbook_content',
+        type: 'html',
+        css: "/eg-247-textbook/assets/css/styles.css",
+        style: "#textbook_content {padding-top: 40px};",
+        scanStyles: false,
+        targetStyles: ["*"],
+        ignoreElements: ignoreAssistList,
+        documentTitle: "Made with Jupyter Book"
+    })
+};
+
+initPrint = () => {
+    document.querySelector('#interact-button-print').addEventListener('click', printContent)
+}
+
+initFunction(initPrint)
+</script>
+
+</head>
+
+  <body>
+    <!-- Include the ThebeLab config so it gets reloaded on each page -->
+    <script type="text/x-thebe-config">{
+    requestKernel: true,
+    binderOptions: {
+    repo: "cpjobling/eg-247-textbook",
+    ref: "master",
+    },
+    codeMirrorConfig: {
+    theme: "abcdef",
+    mode: ""
+    },
+    kernelOptions: {
+    kernelName: "matlab",
+    path: "content/laplace_transform/3"
+    }
+}
+</script>
+
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://jupyterbook.org/intro.html"><img src="/eg-247-textbook/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" alt="textbook logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">EG-247 Signals and Systems</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/introduction/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/introduction/index.html"
+        >
+          
+            1.
+          
+          Introduction
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/elementary_signals/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/elementary_signals/index.html"
+        >
+          
+            2.
+          
+          Elementary Signals
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/hw1">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/homework/hw1.html"
+              >
+                
+                Homework 1 Elementary Signals
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/laplace_transform/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/laplace_transform/index.html"
+        >
+          
+            3.
+          
+          Laplace Transforms and their Applications
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/1/laplace">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/1/laplace.html"
+              >
+                
+                  3.1
+                
+                The Laplace Transformation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/2/inverse_laplace">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/2/inverse_laplace.html"
+              >
+                
+                  3.2
+                
+                The Inverse Laplace Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/3/circuit_analysis">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/3/circuit_analysis.html"
+              >
+                
+                  3.3
+                
+                Using Laplace Transforms for Circuit Analysis
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/4/transfer_functions">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/4/transfer_functions.html"
+              >
+                
+                  3.4
+                
+                Transfer Functions
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/5/convolution">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/5/convolution.html"
+              >
+                
+                  3.5
+                
+                The Impulse Response and Convolution
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/fourier_series/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/fourier_series/index.html"
+        >
+          
+            4.
+          
+          Fourier Series
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_series/1/trig_fseries">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_series/1/trig_fseries.html"
+              >
+                
+                  4.1
+                
+                Trigonometric Fourier Series
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_series/2/exp_fs1">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_series/2/exp_fs1.html"
+              >
+                
+                  4.2
+                
+                Exponential Fourier Series
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_series/3/exp_fs2">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_series/3/exp_fs2.html"
+              >
+                
+                  4.3
+                
+                Line Spectra and their Applications
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/fourier_transform/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/fourier_transform/index.html"
+        >
+          
+            5.
+          
+          Fourier Transform
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/1/ft1">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/1/ft1.html"
+              >
+                
+                  5.1
+                
+                Defining the Fourier Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/2/ft2">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/2/ft2.html"
+              >
+                
+                  5.2
+                
+                Fourier transforms of commonly occuring signals
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/3/ft3">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/3/ft3.html"
+              >
+                
+                  5.3
+                
+                Fourier Transforms for Circuit and LTI Systems Analysis
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/4/ft4">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/4/ft4.html"
+              >
+                
+                  5.4
+                
+                Introduction to Filters
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/dt_systems/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/dt_systems/index.html"
+        >
+          
+            6.
+          
+          Sampled Data Systems
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/dt_systems/1/sampling">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dt_systems/1/sampling.html"
+              >
+                
+                  6.1
+                
+                Sampling Theory
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/dt_systems/2/z_transform">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dt_systems/2/z_transform.html"
+              >
+                
+                  6.2
+                
+                The Z-Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/dt_systems/3/i_z_transform">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dt_systems/3/i_z_transform.html"
+              >
+                
+                  6.3
+                
+                The Inverse Z-Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/dt_systems/4/dt_models">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dt_systems/4/dt_models.html"
+              >
+                
+                  6.4
+                
+                Models of Discrete Time Systems
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/dft/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/dft/index.html"
+        >
+          
+            7.
+          
+          Discrete Fourier Transform
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/dft/1/dft">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dft/1/dft.html"
+              >
+                
+                  7.1
+                
+                The Discrete Fourier Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/dft/2/fft">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dft/2/fft.html"
+              >
+                
+                  7.2
+                
+                The Fast-Fourier Transform
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">In Class Worksheets</li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/worksheets/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/worksheets/index.html"
+        >
+          
+          Worksheets
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/introduction/worksheet1">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/introduction/worksheet1.html"
+              >
+                
+                Worksheet 1 Introduction
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/introduction/worksheet2">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/introduction/worksheet2.html"
+              >
+                
+                Worksheet 2
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/elementary_signals/worksheet3">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/elementary_signals/worksheet3.html"
+              >
+                
+                Worksheet 3 Elementary Signals
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/1/worksheet4">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/1/worksheet4.html"
+              >
+                
+                Worksheet 4 Laplace Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/2/worksheet5">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/2/worksheet5.html"
+              >
+                
+                Worksheet 5 Inverse Laplace Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/3/worksheet6">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/3/worksheet6.html"
+              >
+                
+                Worksheet 6 Using Laplace Transforms for Circuit Analysis
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/4/worksheet7">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/4/worksheet7.html"
+              >
+                
+                Worksheet 7 Transfer Functions
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/5/worksheet8">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/5/worksheet8.html"
+              >
+                
+                Worksheet 8 Impulse Response and Time Convolution
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_series/1/worksheet9">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_series/1/worksheet9.html"
+              >
+                
+                Worksheet 9 Trigonometric Fourier Series
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_series/2/worksheet10">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_series/2/worksheet10.html"
+              >
+                
+                Worksheet 10 Exponential Fourier Series
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_series/3/worksheet11">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_series/3/worksheet11.html"
+              >
+                
+                Worksheet 11 Line Spectra and their Applications
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/1/worksheet12">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/1/worksheet12.html"
+              >
+                
+                Worksheet 12 Defining the Fourier Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/2/worksheet13">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/2/worksheet13.html"
+              >
+                
+                Worksheet 13 Fourier transforms of commonly occuring signals
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/3/worksheet14">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/3/worksheet14.html"
+              >
+                
+                Worksheet 14 Fourier Transforms for Circuit and LTI Systems Analysis
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/4/worksheet15">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/4/worksheet15.html"
+              >
+                
+                Worksheet 15 Introduction to Filters
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/dt_systems/3/worksheet16">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dt_systems/3/worksheet16.html"
+              >
+                
+                Worksheet 16 The Inverse Z-Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/dt_systems/4/worksheet17">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dt_systems/4/worksheet17.html"
+              >
+                
+                Worksheet 17 Models of DT Systems
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/dft/1/worksheet18">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dft/1/worksheet18.html"
+              >
+                
+                Worksheet 18 The Discrete-time Fourier Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/dft/2/worksheet19">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dft/2/worksheet19.html"
+              >
+                
+                Worksheet 19 The Fast Fourier Transform
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Homework</li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/homework/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/homework/index.html"
+        >
+          
+          Homework
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/hw1">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/homework/hw1.html"
+              >
+                
+                Homework 1 Elementary Signals
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/hw2">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/homework/hw2.html"
+              >
+                
+                Homework 2 Laplace and Inverse Laplace Transforms
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/hw3">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/homework/hw3.html"
+              >
+                
+                Homework 3 Laplace Transforms for Ciruit Analysis
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/hw4">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/homework/hw4.html"
+              >
+                
+                Homework 4 Impulse Response and Convolution
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/hw5">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/homework/hw5.html"
+              >
+                
+                Homework 5 Fourier Series
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Lab Exercises</li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/labs/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/labs/index.html"
+        >
+          
+          Laboratory Exercises
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/tutorial/matlab-tutorial">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/tutorial/matlab-tutorial.html"
+              >
+                
+                MATLAB Tutorial
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/lab01/index">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/lab01/index.html"
+              >
+                
+                Lab 1 - Elemementary Signals
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/lab02/index">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/lab02/index.html"
+              >
+                
+                Lab 2 - Laplace and Inverse Laplace Transforms
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/lab03/index">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/lab03/index.html"
+              >
+                
+                Lab 3 -  Laplace Transforms and Transfer Functions for Circuit Analysis
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/lab04/index">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/lab04/index.html"
+              >
+                
+                Lab 4 - Time Domain Convolution
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/lab05/index">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/lab05/index.html"
+              >
+                
+                Lab 5 - Fourier Series
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/lab06/index">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/lab06/index.html"
+              >
+                
+                Lab 6 - Audio Signals and Sampling
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/lab07/index">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/lab07/index.html"
+              >
+                
+                Optional Lab 7 - Filters
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Project</li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/labs/project/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/labs/project/index.html"
+        >
+          
+          Project
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Answers to Selected problems</li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/introduction/answers">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/introduction/answers.html"
+        >
+          
+          Worksheet 2
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Setting up your own version of this book</li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/setup/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/setup/index.html"
+        >
+          
+          Setting up your own version of this book
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/setup/jupyter">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/setup/jupyter.html"
+              >
+                
+                About Jupyter notebooks
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/setup/python">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/setup/python.html"
+              >
+                
+                Installing Python
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/setup/setup">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/setup/setup.html"
+              >
+                
+                Setting up your MATLAB-Jupyter Computing Environment
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/setup/jupyter-book">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/setup/jupyter-book.html"
+              >
+                
+                Setting up jupyter-book
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://github.com/choldgraf/jupyter-book">Jupyter Book</a></p>
+</nav>
+
+      
+      <div class="c-topbar" id="top-navbar">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <div class="c-topbar__buttons">
+    <button
+      id="js-sidebar-toggle"
+      class="hamburger hamburger--arrowalt is-active"
+    >
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+    <div class="buttons">
+
+
+
+  
+  
+  
+  
+
+
+</div>
+
+  </div>
+  <!-- Empty sidebar placeholder that we'll auto-fill with javascript -->
+  <aside class="sidebar__right">
+    <header><h4 class="nav__title"><img src="/eg-247-textbook/assets/images/list-solid.svg" alt="Search" />   On this page</h4></header>
+    <nav class="onthispage">
+    </nav>
+  </aside>
+  <a href="/eg-247-textbook/search.html" class="topbar-right-button" id="search-button">
+    <img src="/eg-247-textbook/assets/images/search-solid.svg" alt="Search" />
+  </a>
+</div>
+
+      <main class="c-textbook__page" tabindex="-1">
+            <div class="c-textbook__content" id="textbook_content">
+                  <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Worksheet 6 Using Laplace Transforms for Circuit Analysis</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Worksheet-6">Worksheet 6<a class="anchor-link" href="#Worksheet-6"> </a></h1><h2 id="To-accompany-Chapter-3.3-Using-Laplace-Transforms-for-Circuit-Analysis">To accompany Chapter 3.3 Using Laplace Transforms for Circuit Analysis<a class="anchor-link" href="#To-accompany-Chapter-3.3-Using-Laplace-Transforms-for-Circuit-Analysis"> </a></h2><p>We will step through this worksheet in class.</p>
+<p>You are expected to have at least watched the video presentation of <a href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/3/circuit_analysis">Chapter 3.3</a> of the <a href="https://cpjobling.github.io/eg-247-textbook">notes</a> before coming to class. If you haven't watch it afterwards!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="c">% Matlab setup</span>
+<span class="n">format </span><span class="s">compact</span><span class="p"></span>
+<span class="n">clear </span><span class="s">all</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Circuit-Transformation-from-Time-to-Complex-Frequency">Circuit Transformation from Time to Complex Frequency<a class="anchor-link" href="#Circuit-Transformation-from-Time-to-Complex-Frequency"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Time-Domain-Model-of-a-Resistive-Network">Time Domain Model of a Resistive Network<a class="anchor-link" href="#Time-Domain-Model-of-a-Resistive-Network"> </a></h3><p><img src="pictures/resistive_time.png" alt="Resistive Network: Time Domain"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For the circuit shown, which of the following equations represent the Laplace transform of the current flowing through, and the voltage across, the resistor $R$?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>-&gt; Open poll</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Time-Domain-Model-of-an-Inductive-Network">Time Domain Model of an Inductive Network<a class="anchor-link" href="#Time-Domain-Model-of-an-Inductive-Network"> </a></h3><p><img src="pictures/inductive_time.png" alt="Inductive Network - Time Domain"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For the circuit shown, which of the following equations represent the Laplace transform of the current flowing through, and the voltage across, the inductor $L$?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>-&gt; Open poll</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Time-Domain-Model-of-a-Capacitive-Network">Time Domain Model of a Capacitive Network<a class="anchor-link" href="#Time-Domain-Model-of-a-Capacitive-Network"> </a></h3><p><img src="pictures/capacitive_time.png" alt="Capacitive Network - Time Domain"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For the circuit shown, which of the following equations represent the Laplace transform of the current flowing through, and the voltage across, the capacitor $C$?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>-&gt; Open poll</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Circuit-Transformation-from-Time-to-Complex-Frequency">Circuit Transformation from Time to Complex Frequency<a class="anchor-link" href="#Circuit-Transformation-from-Time-to-Complex-Frequency"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-1">Example 1<a class="anchor-link" href="#Example-1"> </a></h3><p>Use the Laplace transform method and apply Kirchoff's Current Law (KCL) to find the voltage $v_c(t)$ across the capacitor for the circuit below given that $v_c(0^-) = 6$ V.</p>
+<p><img src="pictures/example1_2.png" alt="Circuit for Example 1"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-2">Example 2<a class="anchor-link" href="#Example-2"> </a></h3><p>Use the Laplace transform method and apply Kirchoff's Voltage Law (KVL) to find the voltage $v_c(t)$ across the capacitor for the circuit below given that $v_c(0^-) = 6$ V.</p>
+<p><img src="pictures/example1_2.png" alt="Circuit for Example 2"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-3">Example 3<a class="anchor-link" href="#Example-3"> </a></h3><p>In the circuit below, switch $S_1$ closes at $t=0$, while at the same time, switch $S_2$ opens. Use the Laplace transform method to find $v_{\mathrm{out}}(t)$ for $t &gt; 0$.</p>
+<p><img src="pictures/example3.png" alt="Circuit for Example 3"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Show with the assistance of MATLAB (See <a href="../matlab/solution3.m">solution3.m</a>) that the solution is</p>
+$$V_{\mathrm{out}}=\left(1.36e^{-6.57t}+0.64e^{-0.715t}\cos 0.316t - 1.84e^{-0.715t}\sin 0.316t\right)u_0(t)$$<p>and plot the result.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Solution-to-Example-3">Solution to Example 3<a class="anchor-link" href="#Solution-to-Example-3"> </a></h4><p>We will use a combination of pen-and-paper and MATLAB to solve this.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="1.-Equivalent-Circuit">1. Equivalent Circuit<a class="anchor-link" href="#1.-Equivalent-Circuit"> </a></h5><p>Draw equivalent circuit at $t=0$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="2.-Transform-model">2. Transform model<a class="anchor-link" href="#2.-Transform-model"> </a></h5><p>Convert to transforms</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="3.-Determine-equation">3. Determine equation<a class="anchor-link" href="#3.-Determine-equation"> </a></h5><p>Determine equation for $V_{\rm out}(s)$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="4.-Complete-solution-in-MATLAB">4. Complete solution in MATLAB<a class="anchor-link" href="#4.-Complete-solution-in-MATLAB"> </a></h4><p>In the lecture we showed that after simplification for Example 3</p>
+$$V_{\mathrm{out}}=\frac{2s(s+3)}{s^3 + 8s^2 + 10s + 4}$$<p>We will use MATLAB to factorize the denominator $D(s)$ of the equation
+into a linear and a quadratic factor.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Find-roots-of-Denominator-D(s)">Find roots of Denominator D(s)<a class="anchor-link" href="#Find-roots-of-Denominator-D(s)"> </a></h5>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">r</span> <span class="p">=</span> <span class="n">roots</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Find-quadratic-form">Find quadratic form<a class="anchor-link" href="#Find-quadratic-form"> </a></h5>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">syms </span><span class="s">s t</span><span class="p"></span>
+<span class="n">y</span> <span class="p">=</span> <span class="n">expand</span><span class="p">((</span><span class="n">s</span> <span class="o">-</span> <span class="n">r</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="n">s</span> <span class="o">-</span> <span class="n">r</span><span class="p">(</span><span class="mi">3</span><span class="p">)))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Simplify-coefficients-of-s">Simplify coefficients of s<a class="anchor-link" href="#Simplify-coefficients-of-s"> </a></h5>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">y</span> <span class="p">=</span> <span class="n">sym2poly</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Complete-the-Square">Complete the Square<a class="anchor-link" href="#Complete-the-Square"> </a></h5>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Plot-result">Plot result<a class="anchor-link" href="#Plot-result"> </a></h5>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">t</span><span class="p">=</span><span class="mi">0</span><span class="p">:</span><span class="mf">0.01</span><span class="p">:</span><span class="mi">10</span><span class="p">;</span>
+<span class="n">Vout</span> <span class="p">=</span> <span class="mf">1.36</span><span class="o">.*</span><span class="nb">exp</span><span class="p">(</span><span class="n">r</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.*</span><span class="n">t</span><span class="p">)</span><span class="o">+</span><span class="mf">0.64</span><span class="o">.*</span><span class="nb">exp</span><span class="p">(</span><span class="nb">real</span><span class="p">(</span><span class="n">r</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">.*</span><span class="n">t</span><span class="p">)</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(</span><span class="nb">imag</span><span class="p">(</span><span class="n">r</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">.*</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="mf">1.84</span><span class="o">.*</span><span class="nb">exp</span><span class="p">(</span><span class="nb">real</span><span class="p">(</span><span class="n">r</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span><span class="o">.*</span><span class="n">t</span><span class="p">)</span><span class="o">.*</span><span class="nb">sin</span><span class="p">(</span><span class="o">-</span><span class="nb">imag</span><span class="p">(</span><span class="n">r</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span><span class="o">.*</span><span class="n">t</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vout</span><span class="p">);</span><span class="n"> grid</span>
+<span class="s">title(&#39;Plot of Vout(t) for the circuit of Example 3&#39;)</span><span class="p"></span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Vout(t) V&#39;</span><span class="p">),</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Time t s&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Worked-Solution:-Example-3">Worked Solution: Example 3<a class="anchor-link" href="#Worked-Solution:-Example-3"> </a></h4><p>File Pencast: <a href="../worked_examples/example3.pdf">example3.pdf</a> - Download and open in Adobe Acrobat Reader.</p>
+<p>The attached "PenCast" works through the solution to Example 3 by hand. It's quite a complex, error-prone (as you will see!) calculation that needs careful attention to detail. This in itself gives justification to my belief that you should use computers wherever possible.</p>
+<p>Please note, the PenCast takes around 39 minutes (I said it was a complex calculation) but you can fast forward and replay any part of it.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Alternative-solution-using-transfer-functions">Alternative solution using transfer functions<a class="anchor-link" href="#Alternative-solution-using-transfer-functions"> </a></h5>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Vout</span> <span class="p">=</span> <span class="n">tf</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">conv</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]),[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">impulse</span><span class="p">(</span><span class="n">Vout</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Complex-Impedance-$Z(s)$">Complex Impedance $Z(s)$<a class="anchor-link" href="#Complex-Impedance-$Z(s)$"> </a></h2><p>For the resistance $R$$\Omega$, inductance $L$H and capacitance $C$F, which of the following represent the complex impedance of the components?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Complex-Impedance-$Z(s)$">Complex Impedance $Z(s)$<a class="anchor-link" href="#Complex-Impedance-$Z(s)$"> </a></h2><p>Consider the $s$-domain RLC series circuit, wehere the initial conditions are assumed to be zero.</p>
+<p><img src="pictures/impedence.png" alt="Complex Impedance $Z(s)$"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For this circuit, the sum</p>
+$$R + sL + \frac{1}{sC}$$<p></p>
+<p>represents that total opposition to current flow. Then,</p>
+$$I(s) = \frac{V_s(s)}{R + sL + 1/(sC)}$$<p>and defining the ratio $V_s(s)/I(s)$ as $Z(s)$, we obtain</p>
+$$Z(s) = \frac{V_s(s)}{I(s)} = R + sL + \frac{1}{sC}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The $s$-domain current $I(s)$ can be found from</p>
+$$I(s) = \frac{V_s(s)}{Z(s)}$$<p>where</p>
+$$Z(s) = R + sL + \frac{1}{sC}.$$<p>Since $s = \sigma + j\omega$ is a complex number, $Z(s)$ is also complex and is known as the <em>complex input impedance</em> of this RLC series circuit.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Exercise">Exercise<a class="anchor-link" href="#Exercise"> </a></h3><p>Use the previous result to give an expression for $V_c(s)$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-4">Example 4<a class="anchor-link" href="#Example-4"> </a></h3><p>For the network shown below, all the complex impedence values are given in $\Omega$ (ohms).</p>
+<p><img src="pictures/example4.png" alt="Circuit for example 4"></p>
+<p>Find $Z(s)$ using:</p>
+<ol>
+<li>nodal analysis</li>
+<li>successive combinations of series and parallel impedances</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre><p><strong>Solutions</strong>: Pencasts <a href="../worked_examples/ex4_1.pdf">ex4_1.pdf</a> and <a href="../worked_examples/ex4_1.pdf">ex4_1.pdf</a> &ndash; open in Adobe Acrobat.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Complex-Admittance-$Y(s)$">Complex Admittance $Y(s)$<a class="anchor-link" href="#Complex-Admittance-$Y(s)$"> </a></h2><p>For the resistor $R$Ω, inductor $L$H and capacitance $C$F, which of the following represent the complex admittance of the components?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>-&gt; Open Poll</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Complex-Admittance-$Y(s)$">Complex Admittance $Y(s)$<a class="anchor-link" href="#Complex-Admittance-$Y(s)$"> </a></h2><p>Consider the $s$-domain GLC parallel circuit shown below where the initial conditions are zero.</p>
+<p><img src="pictures/admittance.png" alt="Complex admittance $Y(s)$"></p>
+<p>For this circuit</p>
+$$GV(s)+ \frac{1}{sL}V(s) + sCV(s) = I_s(s)$$$$\left(G+ \frac{1}{sL} + sC\right)V(s) = I_s(s)$$<p>Defining the ratio $I_s(s)/V(s)$ as $Y(s)$ we obtain</p>
+$$Y(s)=\frac{I_s(s)}{V(s)} = G+ \frac{1}{sL} + sC = \frac{1}{Z(s)}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The $s$-domain voltage $V(s)$ can be found from</p>
+$$V(s) = \frac{I_s(s)}{Y(s)}$$<p>where</p>
+$$Y(s) = G + \frac{1}{sL} + sC.$$<p>$Y(s)$ is complex and is known as the <em>complex input admittance</em> of this GLC parallel circuit.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-5---Do-It-Yourself">Example 5 - Do It Yourself<a class="anchor-link" href="#Example-5---Do-It-Yourself"> </a></h3><p>Compute $Z(s)$ and $Y(s)$ for the circuit shown below. All impedence values are in $\Omega$ (ohms). Verify your answers with MATLAB.</p>
+<p><img src="pictures/example5.png" alt="Circuit for Example 5"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Answer-5">Answer 5<a class="anchor-link" href="#Answer-5"> </a></h4>$$Z(s) = \frac{65s^4 + 490s^3 + 528s^2 + 400s + 128}{s(5s^2 + 30s + 16)}$$$$Y(s) = \frac{1}{Z(s)} = \frac{s(5s^2 + 30s + 16)}{65s^4 + 490s^3 + 528s^2 + 400s + 128}$$<p>Matlab verification: <a href="../matlab/solution5.m">solution5.m</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Example-5:-Verification-of-Solution">Example 5: Verification of Solution<a class="anchor-link" href="#Example-5:-Verification-of-Solution"> </a></h5>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">syms </span><span class="s">s</span><span class="p">;</span>
+
+<span class="n">z1</span> <span class="p">=</span> <span class="mi">13</span><span class="o">*</span><span class="n">s</span> <span class="o">+</span> <span class="mi">8</span><span class="o">/</span><span class="n">s</span><span class="p">;</span>
+<span class="n">z2</span> <span class="p">=</span> <span class="mi">5</span><span class="o">*</span><span class="n">s</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
+<span class="n">z3</span> <span class="p">=</span> <span class="mi">20</span> <span class="o">+</span> <span class="mi">16</span><span class="o">/</span><span class="n">s</span><span class="p">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">z</span> <span class="p">=</span> <span class="n">z1</span> <span class="o">+</span> <span class="n">z2</span> <span class="o">*</span> <span class="n">z3</span> <span class="o">/</span><span class="p">(</span><span class="n">z2</span> <span class="o">+</span> <span class="n">z3</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">z10</span> <span class="p">=</span> <span class="n">simplify</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">pretty</span><span class="p">(</span><span class="n">z10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Admittance">Admittance<a class="anchor-link" href="#Admittance"> </a></h5>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">y10</span> <span class="p">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">z10</span><span class="p">;</span>
+<span class="n">pretty</span><span class="p">(</span><span class="n">y10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Matlab-Solutions">Matlab Solutions<a class="anchor-link" href="#Matlab-Solutions"> </a></h2><p>For convenience, single script MATLAB solutions to the examples are provided and can be downloaded from the accompanying <a href="../matlab">MATLAB</a> folder.</p>
+<ul>
+<li>Solution 3 [<a href="../matlab/solution3.m">solution3.m</a>]</li>
+<li>Solution 5 [<a href="../matlab/solution5.m">solution5.m</a>]</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">cd </span><span class="s">../matlab</span><span class="p"></span>
+<span class="n">ls</span>
+<span class="s">open solution3.m</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
+            </div>
+            <div class="c-textbook__footer" id="textbook_footer">
+              
+<nav class="c-page__nav">
+  
+    
+    
+
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/eg-247-textbook/laplace_transform/2/worksheet5.html">
+      〈 <span class="u-margin-right-tiny"></span> Worksheet 5 Inverse Laplace Transform
+    </a>
+  
+
+  
+    
+
+    
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/eg-247-textbook/laplace_transform/4/worksheet7.html">
+      Worksheet 7 Transfer Functions <span class="u-margin-right-tiny"></span> 〉
+    </a>
+  
+</nav>
+
+              <footer>
+  <p class="footer">This page was created by <a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">Dr Chris Jobling</a> for <a href="https://www.swansea.ac.uk">Swansea University</a>.</p>
+</footer>
+
+            </div>
+
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

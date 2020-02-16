@@ -1,0 +1,3299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Sampling Theory</title>
+  <meta name="description" content="        Sampling Theory    Sampling Theory Scope and Background Reading This session is an introduction to sampling theory. It reviews the important ideas th...">
+
+  <link rel="canonical" href="https://jupyterbook.org/eg-247-textbook/dt_systems/1/sampling.html">
+  <link rel="alternate" type="application/rss+xml" title="EG-247 Signals and Systems" href="https://jupyterbook.org/eg-247-textbook/feed.xml">
+
+  <meta property="og:url"         content="https://jupyterbook.org/eg-247-textbook/dt_systems/1/sampling.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Sampling Theory" />
+<meta property="og:description" content="        Sampling Theory    Sampling Theory Scope and Background Reading This session is an introduction to sampling theory. It reviews the important ideas th..." />
+<meta property="og:image"       content="https://jupyterbook.org/eg-247-textbook/images/logo/logo.png" />
+
+<meta name="twitter:card" content="summary">
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": "https://jupyterbook.org/eg-247-textbook/dt_systems/1/sampling.html",
+  "headline": "Sampling Theory",
+  "datePublished": "2020-02-16T12:35:46+00:00",
+  "dateModified": "2020-02-16T12:35:46+00:00",
+  "description": "        Sampling Theory    Sampling Theory Scope and Background Reading This session is an introduction to sampling theory. It reviews the important ideas th...",
+  "author": {
+    "@type": "Person",
+    "name": "Dr Chris P. Jobling"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://jupyterbook.org/eg-247-textbook",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://jupyterbook.org/eg-247-textbook",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/eg-247-textbook/assets/css/styles.css">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/eg-247-textbook/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<!-- (mostly) copied from nbconvert configuration -->
+<!-- https://github.com/jupyter/nbconvert/blob/master/nbconvert/templates/html/mathjax.tpl -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: 'center',
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}},
+        linebreaks: { automatic: true },
+    },
+    
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML' async></script>
+
+
+  <!-- DOM updating function -->
+  <script src="/eg-247-textbook/assets/js/page/dom-update.js"></script>
+
+  <!-- Selectors for elements on the page -->
+  <script src="/eg-247-textbook/assets/js/page/documentSelectors.js"></script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/eg-247-textbook';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js" async></script>
+  <script src="/eg-247-textbook/assets/js/page/anchors.js" async></script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+
+
+  <!-- Load the auto-generating TOC (non-async otherwise the TOC won't load w/ turbolinks) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.8.1/tocbot.min.js" async></script>
+  <script src="/eg-247-textbook/assets/js/page/tocbot.js"></script>
+
+  <!-- Google analytics -->
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script>
+
+  <!-- Load custom website scripts -->
+  <script src="/eg-247-textbook/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/eg-247-textbook/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/eg-247-textbook/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js" async></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+
+  <!-- Load JS that depends on site variables -->
+  <script src="/eg-247-textbook/assets/js/page/copy-button.js" async></script>
+
+  <!-- Hide cell code -->
+  <script src="/eg-247-textbook/assets/js/page/hide-cell.js" async></script>
+
+  <!-- Printing the screen -->
+  <!-- Include nbinteract for interactive widgets -->
+<script src="https://printjs-4de6.kxcdn.com/print.min.js" async></script>
+<script>
+printContent = () => {
+    // MathJax displays a second version of any math for assistive devices etc.
+    // This prevents double-rendering in the PDF output.
+    var ignoreAssistList = [];
+    assistives = document.querySelectorAll('.MathJax_Display span.MJX_Assistive_MathML').forEach((element, index) => {
+        var thisId = 'MathJax-assistive-' + index.toString();
+        element.setAttribute('id', thisId);
+        ignoreAssistList.push(thisId)
+    });
+
+    // Print the actual content object
+    printJS({
+        printable: 'textbook_content',
+        type: 'html',
+        css: "/eg-247-textbook/assets/css/styles.css",
+        style: "#textbook_content {padding-top: 40px};",
+        scanStyles: false,
+        targetStyles: ["*"],
+        ignoreElements: ignoreAssistList,
+        documentTitle: "Made with Jupyter Book"
+    })
+};
+
+initPrint = () => {
+    document.querySelector('#interact-button-print').addEventListener('click', printContent)
+}
+
+initFunction(initPrint)
+</script>
+
+</head>
+
+  <body>
+    <!-- Include the ThebeLab config so it gets reloaded on each page -->
+    <script type="text/x-thebe-config">{
+    requestKernel: true,
+    binderOptions: {
+    repo: "cpjobling/eg-247-textbook",
+    ref: "master",
+    },
+    codeMirrorConfig: {
+    theme: "abcdef",
+    mode: ""
+    },
+    kernelOptions: {
+    kernelName: "matlab",
+    path: "content/dt_systems/1"
+    }
+}
+</script>
+
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://jupyterbook.org/intro.html"><img src="/eg-247-textbook/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" alt="textbook logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">EG-247 Signals and Systems</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/introduction/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/introduction/index.html"
+        >
+          
+            1.
+          
+          Introduction
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/elementary_signals/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/elementary_signals/index.html"
+        >
+          
+            2.
+          
+          Elementary Signals
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/hw1">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/homework/hw1.html"
+              >
+                
+                Homework 1 Elementary Signals
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/laplace_transform/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/laplace_transform/index.html"
+        >
+          
+            3.
+          
+          Laplace Transforms and their Applications
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/1/laplace">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/1/laplace.html"
+              >
+                
+                  3.1
+                
+                The Laplace Transformation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/2/inverse_laplace">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/2/inverse_laplace.html"
+              >
+                
+                  3.2
+                
+                The Inverse Laplace Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/3/circuit_analysis">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/3/circuit_analysis.html"
+              >
+                
+                  3.3
+                
+                Using Laplace Transforms for Circuit Analysis
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/4/transfer_functions">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/4/transfer_functions.html"
+              >
+                
+                  3.4
+                
+                Transfer Functions
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/5/convolution">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/5/convolution.html"
+              >
+                
+                  3.5
+                
+                The Impulse Response and Convolution
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/fourier_series/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/fourier_series/index.html"
+        >
+          
+            4.
+          
+          Fourier Series
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_series/1/trig_fseries">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_series/1/trig_fseries.html"
+              >
+                
+                  4.1
+                
+                Trigonometric Fourier Series
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_series/2/exp_fs1">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_series/2/exp_fs1.html"
+              >
+                
+                  4.2
+                
+                Exponential Fourier Series
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_series/3/exp_fs2">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_series/3/exp_fs2.html"
+              >
+                
+                  4.3
+                
+                Line Spectra and their Applications
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/fourier_transform/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/fourier_transform/index.html"
+        >
+          
+            5.
+          
+          Fourier Transform
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/1/ft1">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/1/ft1.html"
+              >
+                
+                  5.1
+                
+                Defining the Fourier Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/2/ft2">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/2/ft2.html"
+              >
+                
+                  5.2
+                
+                Fourier transforms of commonly occuring signals
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/3/ft3">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/3/ft3.html"
+              >
+                
+                  5.3
+                
+                Fourier Transforms for Circuit and LTI Systems Analysis
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/4/ft4">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/4/ft4.html"
+              >
+                
+                  5.4
+                
+                Introduction to Filters
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/dt_systems/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/dt_systems/index.html"
+        >
+          
+            6.
+          
+          Sampled Data Systems
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/dt_systems/1/sampling">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dt_systems/1/sampling.html"
+              >
+                
+                  6.1
+                
+                Sampling Theory
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/dt_systems/2/z_transform">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dt_systems/2/z_transform.html"
+              >
+                
+                  6.2
+                
+                The Z-Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/dt_systems/3/i_z_transform">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dt_systems/3/i_z_transform.html"
+              >
+                
+                  6.3
+                
+                The Inverse Z-Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/dt_systems/4/dt_models">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dt_systems/4/dt_models.html"
+              >
+                
+                  6.4
+                
+                Models of Discrete Time Systems
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/dft/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/dft/index.html"
+        >
+          
+            7.
+          
+          Discrete Fourier Transform
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/dft/1/dft">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dft/1/dft.html"
+              >
+                
+                  7.1
+                
+                The Discrete Fourier Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/dft/2/fft">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dft/2/fft.html"
+              >
+                
+                  7.2
+                
+                The Fast-Fourier Transform
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">In Class Worksheets</li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/worksheets/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/worksheets/index.html"
+        >
+          
+          Worksheets
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/introduction/worksheet1">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/introduction/worksheet1.html"
+              >
+                
+                Worksheet 1 Introduction
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/introduction/worksheet2">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/introduction/worksheet2.html"
+              >
+                
+                Worksheet 2
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/elementary_signals/worksheet3">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/elementary_signals/worksheet3.html"
+              >
+                
+                Worksheet 3 Elementary Signals
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/1/worksheet4">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/1/worksheet4.html"
+              >
+                
+                Worksheet 4 Laplace Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/2/worksheet5">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/2/worksheet5.html"
+              >
+                
+                Worksheet 5 Inverse Laplace Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/3/worksheet6">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/3/worksheet6.html"
+              >
+                
+                Worksheet 6 Using Laplace Transforms for Circuit Analysis
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/4/worksheet7">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/4/worksheet7.html"
+              >
+                
+                Worksheet 7 Transfer Functions
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/laplace_transform/5/worksheet8">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/laplace_transform/5/worksheet8.html"
+              >
+                
+                Worksheet 8 Impulse Response and Time Convolution
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_series/1/worksheet9">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_series/1/worksheet9.html"
+              >
+                
+                Worksheet 9 Trigonometric Fourier Series
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_series/2/worksheet10">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_series/2/worksheet10.html"
+              >
+                
+                Worksheet 10 Exponential Fourier Series
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_series/3/worksheet11">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_series/3/worksheet11.html"
+              >
+                
+                Worksheet 11 Line Spectra and their Applications
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/1/worksheet12">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/1/worksheet12.html"
+              >
+                
+                Worksheet 12 Defining the Fourier Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/2/worksheet13">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/2/worksheet13.html"
+              >
+                
+                Worksheet 13 Fourier transforms of commonly occuring signals
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/3/worksheet14">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/3/worksheet14.html"
+              >
+                
+                Worksheet 14 Fourier Transforms for Circuit and LTI Systems Analysis
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/fourier_transform/4/worksheet15">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/fourier_transform/4/worksheet15.html"
+              >
+                
+                Worksheet 15 Introduction to Filters
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/dt_systems/3/worksheet16">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dt_systems/3/worksheet16.html"
+              >
+                
+                Worksheet 16 The Inverse Z-Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/dt_systems/4/worksheet17">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dt_systems/4/worksheet17.html"
+              >
+                
+                Worksheet 17 Models of DT Systems
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/dft/1/worksheet18">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dft/1/worksheet18.html"
+              >
+                
+                Worksheet 18 The Discrete-time Fourier Transform
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/dft/2/worksheet19">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/dft/2/worksheet19.html"
+              >
+                
+                Worksheet 19 The Fast Fourier Transform
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Homework</li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/homework/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/homework/index.html"
+        >
+          
+          Homework
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/hw1">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/homework/hw1.html"
+              >
+                
+                Homework 1 Elementary Signals
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/hw2">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/homework/hw2.html"
+              >
+                
+                Homework 2 Laplace and Inverse Laplace Transforms
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/hw3">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/homework/hw3.html"
+              >
+                
+                Homework 3 Laplace Transforms for Ciruit Analysis
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/hw4">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/homework/hw4.html"
+              >
+                
+                Homework 4 Impulse Response and Convolution
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/hw5">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/homework/hw5.html"
+              >
+                
+                Homework 5 Fourier Series
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Lab Exercises</li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/labs/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/labs/index.html"
+        >
+          
+          Laboratory Exercises
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/tutorial/matlab-tutorial">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/tutorial/matlab-tutorial.html"
+              >
+                
+                MATLAB Tutorial
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/lab01/index">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/lab01/index.html"
+              >
+                
+                Lab 1 - Elemementary Signals
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/lab02/index">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/lab02/index.html"
+              >
+                
+                Lab 2 - Laplace and Inverse Laplace Transforms
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/lab03/index">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/lab03/index.html"
+              >
+                
+                Lab 3 -  Laplace Transforms and Transfer Functions for Circuit Analysis
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/lab04/index">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/lab04/index.html"
+              >
+                
+                Lab 4 - Time Domain Convolution
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/lab05/index">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/lab05/index.html"
+              >
+                
+                Lab 5 - Fourier Series
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/lab06/index">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/lab06/index.html"
+              >
+                
+                Lab 6 - Audio Signals and Sampling
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/labs/lab07/index">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/labs/lab07/index.html"
+              >
+                
+                Optional Lab 7 - Filters
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Project</li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/labs/project/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/labs/project/index.html"
+        >
+          
+          Project
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Answers to Selected problems</li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/introduction/answers">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/introduction/answers.html"
+        >
+          
+          Worksheet 2
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Setting up your own version of this book</li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/setup/index">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/setup/index.html"
+        >
+          
+          Setting up your own version of this book
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/setup/jupyter">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/setup/jupyter.html"
+              >
+                
+                About Jupyter notebooks
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/setup/python">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/setup/python.html"
+              >
+                
+                Installing Python
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/setup/setup">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/setup/setup.html"
+              >
+                
+                Setting up your MATLAB-Jupyter Computing Environment
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/setup/jupyter-book">
+              <a class="c-sidebar__entry"
+                href="/eg-247-textbook/setup/jupyter-book.html"
+              >
+                
+                Setting up jupyter-book
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://github.com/choldgraf/jupyter-book">Jupyter Book</a></p>
+</nav>
+
+      
+      <div class="c-topbar" id="top-navbar">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <div class="c-topbar__buttons">
+    <button
+      id="js-sidebar-toggle"
+      class="hamburger hamburger--arrowalt is-active"
+    >
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+    <div class="buttons">
+
+
+
+  
+  
+  
+  
+
+
+</div>
+
+  </div>
+  <!-- Empty sidebar placeholder that we'll auto-fill with javascript -->
+  <aside class="sidebar__right">
+    <header><h4 class="nav__title"><img src="/eg-247-textbook/assets/images/list-solid.svg" alt="Search" />   On this page</h4></header>
+    <nav class="onthispage">
+    </nav>
+  </aside>
+  <a href="/eg-247-textbook/search.html" class="topbar-right-button" id="search-button">
+    <img src="/eg-247-textbook/assets/images/search-solid.svg" alt="Search" />
+  </a>
+</div>
+
+      <main class="c-textbook__page" tabindex="-1">
+            <div class="c-textbook__content" id="textbook_content">
+                  <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Sampling Theory</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Sampling-Theory">Sampling Theory<a class="anchor-link" href="#Sampling-Theory"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Scope-and-Background-Reading">Scope and Background Reading<a class="anchor-link" href="#Scope-and-Background-Reading"> </a></h2><p>This session is an introduction to sampling theory. It reviews the important ideas that pertain to sampling but leaves the detailed mathematics for your further study.</p>
+<p>The material in this presentation and notes is based on Chapter 15 of <a href="http://site.ebrary.com/lib/swansea/docDetail.action?docID=10228195">Benoit Boulet, Fundamentals of Signals and Systems</a> from the <strong>Recommended Reading List</strong> and you'll find the mathematical treatments there. There is much more detail in Chapter 9 of <a href="http://site.ebrary.com/lib/swansea/docDetail.action?docID=10547416">Steven T. Karris, Signals and Systems: with Matlab Computation and Simulink Modelling, 5th Edition</a> from the <strong>Required Reading List</strong>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Agenda">Agenda<a class="anchor-link" href="#Agenda"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Sampling of Continuous-Time Signals</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Signal Reconstruction</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Discrete-time Processing of Continuous-Time Signals</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Sampling of Discrete-Time Systems</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Acknowledgements">Acknowledgements<a class="anchor-link" href="#Acknowledgements"> </a></h2><p>We will be using an adaptation of a pair of demo scripts to illustrate <em>alialising</em>. These scripts were published by Prof. Charles A. Bouman, School of Electrical and Computer Engineering, Purdue University as part of the course materials for <a href="https://engineering.purdue.edu/VISE/ee438/demos/">ECE438: Digital Signal Processing</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction"> </a></h2><ul>
+<li>The <em>sampling process</em> provides the bridge between continuous-time (CT) and discrete-time (DT) signals</li>
+<li>Sampling records discrete values of a CT signal at periodic instants of time.</li>
+<li>Sampled data can be used in <em>real-time</em> or <em>off-line</em> processing</li>
+<li>Sampling opens up possibility of processing CT signals through <em>finite impulse response</em> (FIR) and <em>infinite impulse response</em> (IIR) filters.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="In-Class-Demo-1:-Sampling">In Class Demo 1: Sampling<a class="anchor-link" href="#In-Class-Demo-1:-Sampling"> </a></h3><p>I need a volunteer to provide a sound sample ....</p>
+<ol>
+<li>I will use this <a href="https://uk.mathworks.com/help/matlab/matlab_prog/what-is-a-live-script-or-function.html">Live Script</a> <a href="matlab/sampling_demo.mlx">sampling_demo.mlx</a> to sample your voice.</li>
+<li>I will then playback the recording.</li>
+<li>I will the plot the data.</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cd</span> <span class="n">matlab</span>
+<span class="nb">open</span> <span class="n">sampling_demo</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Technical-Details">Technical Details<a class="anchor-link" href="#Technical-Details"> </a></h4><ul>
+<li><strong>Sampling rate</strong>: 8000 samples per second (fs = 8 kHz)</li>
+<li><strong>Resolution</strong>: 8 bits per sample</li>
+<li><strong>Channels</strong>: 1 channel. </li>
+<li><strong>Reconstruction</strong>: Matlab plays the audio back at 8192 samples per second.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Question">Question<a class="anchor-link" href="#Question"> </a></h4><p>What will the bit-rate be for playback?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre style="border: 2px solid blue">
+
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Sampling-CT-Signals">Sampling CT Signals<a class="anchor-link" href="#Sampling-CT-Signals"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>What is going on here?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Time-domain">Time domain<a class="anchor-link" href="#Time-domain"> </a></h3><p>Sampling can be modelled as the multiplication of a continuous-time signal by a sequence of periodic impulses as illustrated here.</p>
+<p><img src="pictures/sampling.png"></p>
+<p>This is a form of <strong>modulation</strong></p>
+<p>$T_s$ is the period of the periodic sampling function.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Frequency-domain">Frequency domain<a class="anchor-link" href="#Frequency-domain"> </a></h3><p>Multiplication in the time domain is <em>convolution</em> in the frequency domain</p>
+<p><img src="pictures/sampling_fr.png"></p>
+<p>$\omega_s$ is the frequency of the periodic sampling function = $2\pi/T_s$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-Mathematics">The Mathematics<a class="anchor-link" href="#The-Mathematics"> </a></h3><p><strong>The Sampled signal</strong>:</p>
+$${x_s}(t) = \sum\limits_{k =  - \infty }^{ + \infty } {x(k{T_s})\delta (t - k{T_s})} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Frequency convolution</strong>:
+$${X_s}(\omega ) = \frac{1}{T_s}\int_{ - \infty }^{ + \infty } {X(\upsilon )} \sum\limits_{k =  - \infty }^{ + \infty } {\delta (t - \upsilon  - k{\omega _s})} \,d\upsilon $$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Sampling property</strong>:</p>
+$${X_s}(\omega ) = \frac{1}{T_s}\int_{ - \infty }^{ + \infty } {\sum\limits_{k =  - \infty }^{ + \infty } {X(\omega  - k{\omega _s})} } \delta (t - \upsilon  - k{\omega _s})\,d\upsilon $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Sifting property</strong>:</p>
+$${X_s}(\omega ) = \frac{1}{T_s}\sum\limits_{n =  - \infty }^{ + \infty } {X(\omega  - k{\omega _s})}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Nyquist-Shannon-Sampling-Theorem">Nyquist-Shannon Sampling Theorem<a class="anchor-link" href="#Nyquist-Shannon-Sampling-Theorem"> </a></h3><p>Gives a sufficient condition to recover a continuous time signal from its samples $x(nT_s)$, $n$ is an integer.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Sampling Theoreom</strong></p>
+<p>Let $x(t)$ be a band-limited signal with $X(\omega) = 0$ for $|\omega|&gt;\omega_M$.</p>
+<p>Then $x(t)$ is uniquely determined by its samples $x(nT_s)$, $-\infty &lt;n &lt; +\infty$ if</p>
+$$\omega_s &gt; 2\omega_M,$$<p>where $\omega_s = 2\pi/T_s$ is the sampling frequency.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Recovery-of-signal-by-filtering">Recovery of signal by filtering<a class="anchor-link" href="#Recovery-of-signal-by-filtering"> </a></h3><p><img src="pictures/recovery.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="pictures/recovered.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Ideal-Lowpass-Filter-for-CT-Recovery-from-DT-Sampled-Signal">Ideal Lowpass Filter for CT Recovery from DT Sampled Signal<a class="anchor-link" href="#Ideal-Lowpass-Filter-for-CT-Recovery-from-DT-Sampled-Signal"> </a></h3><p><img src="pictures/recover-lp.png"></p>
+<p>This is of course theoretical only!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Sample-and-hold">Sample-and-hold<a class="anchor-link" href="#Sample-and-hold"> </a></h3><p><img src="pictures/sandh.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Sample-and-hold-operator">Sample-and-hold operator<a class="anchor-link" href="#Sample-and-hold-operator"> </a></h3><p><img src="pictures/zoh.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="In-Class-Demo-2">In Class Demo 2<a class="anchor-link" href="#In-Class-Demo-2"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Illustrating-Sampling-in-MATLAB">Illustrating Sampling in MATLAB<a class="anchor-link" href="#Illustrating-Sampling-in-MATLAB"> </a></h4><p>Basic set up</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">clear</span> <span class="nb">all</span>
+<span class="nb">format</span> <span class="n">compact</span>
+<span class="n">w0</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>        <span class="o">%</span> <span class="n">fundamental</span> <span class="n">frequency</span> <span class="n">rad</span><span class="o">/</span><span class="n">s</span>
+<span class="n">t0</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="n">w0</span><span class="p">;</span>    <span class="o">%</span> <span class="n">period</span> <span class="n">s</span>
+<span class="n">tmax</span> <span class="o">=</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">t0</span><span class="p">;</span> <span class="o">%</span> <span class="n">plottable</span> <span class="nb">range</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Define-a-suitable-signal">Define a suitable signal<a class="anchor-link" href="#Define-a-suitable-signal"> </a></h4><p>We will use a system with an underdamped second-order response.</p>
+<p>The transfer function is:
+$$H(s) = \frac{\omega_0^2}{s^2 + 2\zeta\omega_0 s + \omega_0^2}$$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">syms</span> <span class="n">s</span> <span class="n">t</span>
+<span class="n">zeta</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">;</span>
+<span class="n">H</span> <span class="o">=</span> <span class="n">w0</span><span class="o">^</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">zeta</span><span class="o">*</span><span class="n">w0</span><span class="o">*</span><span class="n">s</span> <span class="o">+</span> <span class="n">w0</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>H =
+1/(s^2 + (3*s)/5 + 1)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Calculate-and-plot-the-impulse-response">Calculate and plot the impulse response<a class="anchor-link" href="#Calculate-and-plot-the-impulse-response"> </a></h4>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">ilaplace</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>h =
+(10*91^(1/2)*exp(-(3*t)/10)*sin((91^(1/2)*t)/10))/91
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">tmax</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
+<span class="n">xc</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">h</span><span class="p">);</span> <span class="o">%</span> <span class="nb">eval</span> <span class="n">evaluates</span> <span class="n">a</span> <span class="n">symbolic</span> <span class="n">expression</span> <span class="k">as</span> <span class="n">a</span> <span class="n">MATLAB</span> <span class="n">command</span><span class="o">.</span>
+<span class="n">tc</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="n">xc</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fig 1: Continuous Time Signal x(t)&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x(t)&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time t [s]&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/dt_systems/1/sampling_37_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You can generate all the images in this presentation by running the Matlab script: <a href="sampling.m">sampling.m</a> which is also available as a Live Script <a href="matlab/sampling.mlx">sampling.mlx</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Calculate-and-plot-the-sampled-data">Calculate and plot the sampled data<a class="anchor-link" href="#Calculate-and-plot-the-sampled-data"> </a></h4>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ws</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="n">w0</span><span class="p">;</span> <span class="o">%</span> <span class="n">twice</span> <span class="n">minimum</span><span class="err">!</span>
+<span class="n">Ts</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span><span class="o">/</span><span class="n">ws</span><span class="p">;</span>
+<span class="n">t</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span><span class="n">Ts</span><span class="p">:</span><span class="n">tmax</span><span class="p">;</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="n">td</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">stem</span><span class="p">(</span><span class="n">td</span><span class="p">,</span><span class="n">xs</span><span class="p">)</span>
+<span class="n">hold</span> <span class="n">on</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="n">xc</span><span class="p">,</span><span class="s1">&#39;r:&#39;</span><span class="p">)</span>
+<span class="n">hold</span> <span class="n">off</span>
+<span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fig 2: Sampled Signal x_s(t)&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x_s(t)&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time t [s]&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/dt_systems/1/sampling_41_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Notes">Notes<a class="anchor-link" href="#Notes"> </a></h4><p>The sampled signal $x_0(t)$ carries the same information as the samples themselves, so we should be able to recover the entire signal $x(t)$.</p>
+<p>From the block diagram of the sample-and-hold operator, what we would need to do is find the inverse of the ZOH system with impulse response $h_0(t)$ and then use a perfect lowpass filter.</p>
+<p>The frequency response $H_0(\omega)$ is given by the usual sinc function for an even rectangular pulse signal, multiplied by $e^{-j\omega T_s/2}$ because we need a time delay of $T_s/2$ to make the signal causal:</p>
+$${H_0}(\omega ) = {T_s}{e^{ - j\omega {T_s}/2}}\frac{\sin \left( {\pi \frac{T_s}{2\pi }\omega } \right)}{\pi \frac{T_s}{2\pi}\omega } = 2{e^{ - j\omega {T_s}/2}}\frac{\sin \left( {\omega {T_s}/2} \right)}{\omega }$$<p>The inverse of $H_0(\omega)$ is given by</p>
+$${H_1}(\omega ) = {H^{ - 1}}(\omega ) = \frac{1}{2}{e^{j\omega \frac{T_s}{2}}}\frac{\omega }{\sin \left( {\frac{T_s}{2}\omega } \right)}$$<p>The <em>reconstruction filter</em> is the cascade of the inverse filter and the lowpass filter:</p>
+$$H_r(\omega)=T_sH_{\mathrm{lp}}(\omega)H_1(\omega)$$<p><img src="pictures/reconstruction_filter.png"></p>
+<p>The frequency response of this filter and additional notes are to be found on Page 546 of Boulet.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Signal-Reconstruction">Signal Reconstruction<a class="anchor-link" href="#Signal-Reconstruction"> </a></h2><p><strong>Problem</strong></p>
+<ul>
+<li>We have a bandlimited signal that is sampled at the Nyquist-Shannon sampling frequency $\omega_s = 2\pi/T_s$.</li>
+<li>We therefore have a discrete-time (DT) signal $x(nT_s)$ from which we want to reconstruct the original signal.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Perfect-Signal-Interpolation-Using-sinc-Functions">Perfect Signal Interpolation Using sinc Functions<a class="anchor-link" href="#Perfect-Signal-Interpolation-Using-sinc-Functions"> </a></h3><ul>
+<li><p>In the <em>frequency domain</em>, the ideal way to reconstruct the signal would be to construct a chain of impulses $x_s(t)$ and then to filter this signal with an ideal lowpass filter.</p>
+</li>
+<li><p>In the <em>time domain</em>, this is equivalent to interpolating the samples using time-shifted sinc functions with zeros at $nT_s$ for $\omega_c = \omega_s$.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="In-Class-Demo-3:-MATLAB-Demonstrations-of-signal-reconstruction">In Class Demo 3: MATLAB Demonstrations of signal reconstruction<a class="anchor-link" href="#In-Class-Demo-3:-MATLAB-Demonstrations-of-signal-reconstruction"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Reconstruction-with-sinc-function">Reconstruction with sinc function<a class="anchor-link" href="#Reconstruction-with-sinc-function"> </a></h4>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">stem</span><span class="p">(</span><span class="n">td</span><span class="p">,</span><span class="n">xs</span><span class="p">)</span>
+<span class="n">hold</span> <span class="n">on</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/dt_systems/1/sampling_47_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">td</span><span class="p">),</span><span class="n">length</span><span class="p">(</span><span class="n">tc</span><span class="p">));</span>
+<span class="k">for</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">length</span><span class="p">(</span><span class="n">td</span><span class="p">)</span>
+    <span class="n">xk</span> <span class="o">=</span> <span class="n">xs</span><span class="p">(</span><span class="n">k</span><span class="p">);</span>
+    <span class="n">sincx</span> <span class="o">=</span> <span class="n">xk</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">tc</span> <span class="o">-</span> <span class="n">td</span><span class="p">(</span><span class="n">k</span><span class="p">))</span><span class="o">/</span><span class="n">Ts</span><span class="p">)</span><span class="o">./</span><span class="p">(</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">tc</span> <span class="o">-</span> <span class="n">td</span><span class="p">(</span><span class="n">k</span><span class="p">))</span><span class="o">/</span><span class="n">Ts</span><span class="p">);</span>
+    <span class="n">x</span><span class="p">(</span><span class="n">k</span><span class="p">,:)</span> <span class="o">=</span> <span class="n">sincx</span><span class="p">;</span>
+<span class="n">end</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="s1">&#39;-.&#39;</span><span class="p">)</span>
+<span class="n">hold</span> <span class="n">off</span>
+<span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fig 5: Signal x(t) reconstructed with sinc functions&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x(t)&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time t [s]&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/dt_systems/1/sampling_49_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Each impulse in $x_s(t)$ triggers the impulse reponse of the lowpass filter (the sinc signal), the resulting signal $x(t)$ at the output of the filter is the sum of all these time-shifted sinc signals with amplitudes equal to the samples $x(nT_s)$.</p>
+$$x(t) = \sum\limits_{k =  - \infty }^{ + \infty } {x(n{T_s}){\rm{sinc}}} \left( {\frac{t - n{T_s}}{T_s}} \right)$$<p>(Note we have defined ${\rm{sinc}}(x)$ as $\sin(\pi x)/(\pi x)$.)</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Reconstructed-signal">Reconstructed signal<a class="anchor-link" href="#Reconstructed-signal"> </a></h4><p>Obtained by summing all the sinc functions</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">tc</span><span class="p">,</span><span class="n">xc</span><span class="p">,</span><span class="s1">&#39;r:&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fig 6: Reconstruction with sinc functions&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x(t)&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/dt_systems/1/sampling_52_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is clearly unfeasible, at least in real-time, so we have to resort to approximations of the ideal low-pass filter.</p>
+<p>A couple of examples are given below. Boulet gives more information including an evaluation of the quality of the approximation.</p>
+<p>In practice, the zero-order-hold is often used in practice and a low-pass filter with a flat passband (such as the Butterworth filter discussed in the last lecture) would be used. In audio applications, for example, the low-pass nature of speakers and the human ear add additional smoothing. For non HiFi applications (e.g. an MP3 player), this may be all that is actually used!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Signal-reconstructed-with-zero-order-hold-(ZOH)">Signal reconstructed with zero-order hold (ZOH)<a class="anchor-link" href="#Signal-reconstructed-with-zero-order-hold-(ZOH)"> </a></h4>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">stairs</span><span class="p">(</span><span class="n">td</span><span class="p">,</span><span class="n">xs</span><span class="p">)</span>
+<span class="n">hold</span> <span class="n">on</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="n">xc</span><span class="p">,</span><span class="s1">&#39;r:&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fig 3: Signal x(t) reconstructed with zero-order-hold&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x(t)&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time t [s]&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/dt_systems/1/sampling_55_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Signal-reconstructed-with-First-order-hold-(FOH)">Signal reconstructed with First-order hold (FOH)<a class="anchor-link" href="#Signal-reconstructed-with-First-order-hold-(FOH)"> </a></h4>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">td</span><span class="p">,</span><span class="n">xs</span><span class="p">,</span><span class="s1">&#39;bo-&#39;</span><span class="p">,</span><span class="n">tc</span><span class="p">,</span><span class="n">xc</span><span class="p">,</span><span class="s1">&#39;r:&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fig 4: Signal x(t) reconstructed with first-order-hold&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x(t)&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time t [s]&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/dt_systems/1/sampling_57_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Aliasing">Aliasing<a class="anchor-link" href="#Aliasing"> </a></h2><ul>
+<li><p>Aliasing Occurs when the sampling frequency is too low to ovoid overlapping between the spectra.</p>
+</li>
+<li><p>When aliasing occours, we have violated the sampling theorem: that is $\omega_s &lt; 2\omega_m$.</p>
+</li>
+<li><p>When aliasing occurs, the original signal cannot be recovered by lowpass filtering.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="An-Aliased-Signal">An Aliased Signal<a class="anchor-link" href="#An-Aliased-Signal"> </a></h3><p><img src="pictures/aliasing.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="In-Class-Demo-4">In Class Demo 4<a class="anchor-link" href="#In-Class-Demo-4"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Demo-4.1">Demo 4.1<a class="anchor-link" href="#Demo-4.1"> </a></h4><p>We use the recording made at the start and run it through a script that effectively aliases the original signal be reducing the sampling frequency to less than half the original sampling frequency.</p>
+<p>Here's the script: <a href="aliaseg1.mlx">aliaseg1.mlx</a> that I'll be using. (Also available as an m-file <a href="aliaseg1.m">aliaseg1.m</a>)</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">open</span> <span class="n">aliaseg1</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Demo--4.2">Demo  4.2<a class="anchor-link" href="#Demo--4.2"> </a></h4><p>Assume signal $x(t)=\cos(\omega_0 t)$ is sampled at a rate of $\omega_s = 1.5\omega_0$, violating the sampling theorem.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">open</span> <span class="n">aliasing</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can see the effect on the plot below:</p>
+<p><img src="pictures/aliasing_ex.png" /></p>
+<p>Image generated by <a href="aliasing.mlx">aliasing.mlx</a> (Also available as <a href="aliasing.m">aliasing.m</a>).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You should confirm for yourself that after lowpass filtering the spectrum with a filter with cutofff frequency $\omega_c = \omega_s/2$ that the signal returned is the spectrum of $x(t)=\cos(\omega_0 t/2)$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Antialising-Filters">Antialising Filters<a class="anchor-link" href="#Antialising-Filters"> </a></h3><ul>
+<li><p>Most real signals are not band-limited so we have to artificially make them bandlimited  using an <em>anti-aliasing filter</em>.</p>
+</li>
+<li><p>An anti-aliasing filter is a low-pass filter whose cutoff frequency is lower than half the sampling frequency.</p>
+</li>
+<li><p>This can produce some distortion at high-frequencies but this is often better than the distortion that would occur at low frequencies if aliasing was allowed to happen.</p>
+</li>
+<li><p>For more on this topic see Pages 551&mdash;552 of Boulet.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Demo-4.3">Demo 4.3<a class="anchor-link" href="#Demo-4.3"> </a></h4><p>This example uses anti-aliasing to downsample the audio. You should hear that the sound is less distorted as we sample below the sampling frequency of 8 kHz.</p>
+<p>Script: <a href="aliaseg2.mlx">aliaseg2.mlx</a> (Also available as an m-file <a href="aliaseg2.m">aliaseg2.m</a>)</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">open</span> <span class="n">aliaseg2</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Practical-application---digital-audio">Practical application - digital audio<a class="anchor-link" href="#Practical-application---digital-audio"> </a></h3><p>Human beings can hear sounds with frequencies up to around 20 kHz so when recording music in the modern sound studio (or phone or PC for that matter) the audio signal is antialiased with a 22 kHz filter. The signal is then sampled at 44.1 kHz before being stored for later processing and/or playback.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="DT-Processing-of-CT-Signals">DT Processing of CT Signals<a class="anchor-link" href="#DT-Processing-of-CT-Signals"> </a></h2><p><img src="pictures/ct-to-dt.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The concepts presented in this session provide a model that allows us to cross the bridge between the theoretical concept of impulse chain sampling through to a representation of a signal as discrete sequence $x[n]$ (to be introduced next lecture) and back to a continuous-time signal via reconstruction.</p>
+<p>The mathematics predicts the nature of the signals that are processed in the ideal case, but we will leave it with you to study these for yourself. (See Boulet pp 552&mdash;557).</p>
+<p>In practice, modern digital processing relies on the use of an analogue-to-digital converter (ADC) (which also introduces amplitude quantization), finite-length arithmetic inside the discrete-time system (usually a microprocessor, microcontroller or digital signal processor), followed by conversion back to a step-wise continuous signal via a digital to analogue converter (DAC) that operates like a zero-order-hold.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Sampling-of-DT-Signals">Sampling of DT Signals<a class="anchor-link" href="#Sampling-of-DT-Signals"> </a></h2><ul>
+<li><p>In modern signal processing and digital communications many of the operations that were once done in continuous time are now done entirely in discrete time.</p>
+</li>
+<li><p>For example, we can implement sampling and modulation in discrete time.</p>
+</li>
+<li><p>We can also upsample (interpolate between samples) or downsample (reduce the number of samples in a discrete-time signal)</p>
+</li>
+</ul>
+<p>These topics are left to you for further study.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Summary">Summary<a class="anchor-link" href="#Summary"> </a></h2><ul>
+<li>Sampling of Continuous-Time Signals</li>
+<li>Signal Reconstruction</li>
+<li>Discrete-time Processing of Continuous-Time Signals</li>
+<li>Sampling of Discrete-Time Systems</li>
+</ul>
+<p><em>Next session</em></p>
+<ul>
+<li>The Z-Transform</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Answer-to-Question">Answer to Question<a class="anchor-link" href="#Answer-to-Question"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>bit rate = [number of samples per second] x [number of bits per sample] x [number of channels]</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>bit rate = $8192 \times 8 \times 1$ bits/second [baud]</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>bit rate = $65,536$ bits/second</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Matlab-Functions-used">Matlab Functions used<a class="anchor-link" href="#Matlab-Functions-used"> </a></h2><ul>
+<li>The matlab recorder command is: <code>recorder = audiorecorder(Fs,nBits,nChannels);</code></li>
+<li>Sound is recorded using: <code>recordblocking(recObj, time);</code></li>
+<li>Recorded sound is played back: <code>play(recorder);</code></li>
+<li>Sound is extracted as Matlab data using: <code>x = getaudiodata(recorder);</code></li>
+<li>Sound is plotted against sample number using: <code>plot(x)</code></li>
+<li>I extracted 50 points for the stem plot using <code>stem([1000:1049],myRecording(1000:1049))</code></li>
+<li>Sound is saved as an audio file using: <code>audiowrite(audioFile,myRecording,Fs);</code> where <code>audiofile</code> is a filename in form <code>name.extension</code>. Supported extensions are <code>'.wav'</code>, <code>'.ogg'</code>, and <code>'.flac'</code> on all platforms. Windows and Mac support <code>'.m4m'</code> and '<code>.mp4</code>'. </li>
+<li>Sound is loaded using <code>[x,Fs]=audioread(audioFile);</code>. Additional file formats are supported for reading including <code>'.mp3'</code>.</li>
+<li>Frequency response spectra were generated using the fast Fourier transform (<code>fft</code>) function.</li>
+<li>Multiple graphs in one figure window is achieved using <code>subplot</code>.</li>
+</ul>
+<p>For more information use <code>doc</code> <em>command</em> from the command-line.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
+            </div>
+            <div class="c-textbook__footer" id="textbook_footer">
+              
+<nav class="c-page__nav">
+  
+    
+    
+
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/eg-247-textbook/dt_systems/index.html">
+      〈 <span class="u-margin-right-tiny"></span> Sampled Data Systems
+    </a>
+  
+
+  
+    
+
+    
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/eg-247-textbook/dt_systems/2/z_transform.html">
+      The Z-Transform <span class="u-margin-right-tiny"></span> 〉
+    </a>
+  
+</nav>
+
+              <footer>
+  <p class="footer">This page was created by <a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">Dr Chris Jobling</a> for <a href="https://www.swansea.ac.uk">Swansea University</a>.</p>
+</footer>
+
+            </div>
+
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
