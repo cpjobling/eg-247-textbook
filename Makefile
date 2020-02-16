@@ -31,7 +31,7 @@ build:
 
 site: build
 	bundle exec jekyll build  --destination docs
-	touch _site/.nojekyll
+	touch docs/.nojekyll
 	make portfolio
 
 portfolio:
