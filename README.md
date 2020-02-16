@@ -28,8 +28,7 @@ Jupyter Notebooks and Jekyll.
 
 Here are some highlights:
 
-* All course content is written in markdown and Jupyter Notebooks, stored in `notebooks/`
-* This site comes packaged with helper scripts to convert these into Jekyll pages (in `scripts/`)
+* All course content is written in markdown and Jupyter Notebooks, stored in `content/`
 * Pages can have [Binder](https://mybinder.org) or JupyterHub links automatically added for interactivity.
 * The website itself is based on Jekyll, and is highly extensible and can be freely-hosted on GitHub.
 
