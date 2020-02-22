@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://jupyterbook.org/eg-247-textbook/labs/lab05/",
   "headline": "Lab 5 - Fourier Series",
-  "datePublished": "2020-02-21T19:46:04+00:00",
-  "dateModified": "2020-02-21T19:46:04+00:00",
+  "datePublished": "2020-02-22T16:13:58+00:00",
+  "dateModified": "2020-02-22T16:13:58+00:00",
   "description": "        Lab 5 - Fourier Series    Lab 5: Fourier Series Preamble Associated Class Notes This lab supports the materials covered in Chapter 4 Fourier Series o...",
   "author": {
     "@type": "Person",
@@ -2136,9 +2136,24 @@ Right-click on the Blue Button labelled <strong>FourierSeriesDemo</strong> and s
 </ul>
 <h4 id="Part-6">Part 6<a class="anchor-link" href="#Part-6"> </a></h4><p>Open the script <code>exp_fseries.m</code> as a Live Script, run it and examine the results. Note that the script calls the <code>FourierSeries</code> function defined in <code>TrigFourierSeries.m</code> to calculate the exponential Fourier series for the square wave with odd-symmetry.</p>
 <h4 id="Part-7">Part 7<a class="anchor-link" href="#Part-7"> </a></h4><p>Copy the script <code>exp_fseries.m</code> and save it as <code>ex11_1</code>. Change the copy so that it computes and plots the exponential Fourier series for the square-wave waveform with even symmetry (Section 7.4.1 in the textbook). <em>Hint</em>: Use the same definition of f(t) that you used in Exercise 9.</p>
-<p>The Simulink model plots the <em>Power Spectrum</em> of the simulated reconstructed signal. To plot the power spectrum of a exponential Fourier series we need to produce a stem plot. Each stem in the power spectrum is computed using $\sqrt{C_k C_K^*}$ (see <strong>Parseval's Theorem</strong> in the notes). In MATLAB this would be <code>C(k)*conj(C(k)</code>.</p>
-<p>Plot the Power Spectrum of the signal from exponential Fourier series coefficients computed in this section. Compare the computed power spectrum with the simulated power spectrum. <em>Note</em>: expect some differences!</p>
-<h4 id="Part-8">Part 8<a class="anchor-link" href="#Part-8"> </a></h4><p>Copy the script <code>exp_fseries.m</code> and save it as <code>ex11_2</code>. Change the copy so that it computes and plots the exponential Fourier series for the full-wave rectified sinusoidal waveform (<strong>Note</strong>: <code>f(t) = abs(sin(t))</code> (Section 7.4.5 in the textbook).</p>
+<h4 id="Part-8">Part 8<a class="anchor-link" href="#Part-8"> </a></h4><p>The Simulink model plots the <em>Power Spectrum</em> of the simulated reconstructed signal. To plot the power spectrum of a exponential Fourier series we need to produce a stem plot. Each stem in the power spectrum is computed using $C_k C_k^*$ (see <strong>Parseval's Theorem</strong> in the notes). In MATLAB this would be:</p>
+<div class="highlight"><pre><span></span><span class="n">stem</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">C</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">*</span><span class="nb">conj</span><span class="p">(</span><span class="n">C</span><span class="p">(</span><span class="n">k</span><span class="p">)))</span>
+</pre></div>
+<p>a. Plot the Power Spectrum of the signal from exponential Fourier series coefficients computed in <strong>Part 7</strong>. Compare the computed power spectrum with the simulated power spectrum. <em>Note</em>: expect some differences!</p>
+<p>b. Estimate the power in the first $N$-harmonics of the signal using:</p>
+$$P = \sum_{k=-N}^{N}{\left|C_k\right|^2}$$<p>MATLAB:</p>
+<div class="highlight"><pre><span></span><span class="n">P</span> <span class="p">=</span> <span class="n">sum</span><span class="p">(</span><span class="n">C</span><span class="o">.*</span><span class="nb">conj</span><span class="p">(</span><span class="n">C</span><span class="p">))</span>
+</pre></div>
+<p>c. Estimate the RMS power in the signal</p>
+$$P_{\mathrm{RMS}} = \sqrt{\sum_{k=-N}^{N}\left|C_k\right|^2}$$<p>MATLAB:</p>
+<div class="highlight"><pre><span></span><span class="n">Prms</span> <span class="p">=</span> <span class="nb">sqrt</span><span class="p">(</span><span class="n">sum</span><span class="p">(</span><span class="n">C</span><span class="o">.*</span><span class="nb">conj</span><span class="p">(</span><span class="n">C</span><span class="p">)))</span>
+</pre></div>
+<p>d. Estimate the <strong>Total Harmonic Distortion</strong> in the signal</p>
+$$\mathrm{THD}\% = 100 \frac{\sqrt{\sum_{k=2}^{N} |C_k|^2}}{\sqrt{|C_1|^2}}$$<p>MATLAB:</p>
+<div class="highlight"><pre><span></span><span class="n">C1</span> <span class="p">=</span> <span class="n">Ck</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="c">% first harmonic</span>
+<span class="n">Charm</span> <span class="p">=</span> <span class="n">Ck</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">Ck</span><span class="p">));</span> <span class="c">% remaining harmonics</span>
+<span class="n">THD</span> <span class="p">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="nb">sqrt</span><span class="p">(</span><span class="n">sum</span><span class="p">(</span><span class="n">Charm</span><span class="o">.*</span><span class="nb">conj</span><span class="p">(</span><span class="n">Charm</span><span class="p">)))</span><span class="o">/</span><span class="nb">sqrt</span><span class="p">(</span><span class="n">C1</span><span class="o">*</span><span class="nb">conj</span><span class="p">(</span><span class="n">C1</span><span class="p">))</span>
+</pre></div>
 <p><strong>Note</strong></p>
 <p>As for Exercise 9, parts 7 and 8 can be added to <code>exp_fseries</code> and the whole submitted as a single Live Script file <code>ex11.mlx</code>.</p>
 
@@ -2159,7 +2174,7 @@ Right-click on the Blue Button labelled <strong>FourierSeriesDemo</strong> and s
 <li>As evidence of completion of Lab Exercise 10, you should upload the Simulink models <code>ex10_1.slx</code> and <code>ex10_2.slx</code>.</li>
 <li>As evidence of completion of Lab Exercise 11, you should upload <code>ex11_1.mlx</code> and <code>ex11_2.mlx</code> (can be sections in one Live Script <code>ex11.mlx</code>).</li>
 </ol>
-<h3 id="Deadline">Deadline<a class="anchor-link" href="#Deadline"> </a></h3><p>The deadline for claims and submission is <strong>Midnight, 20th March</strong></p>
+<h3 id="Deadline">Deadline<a class="anchor-link" href="#Deadline"> </a></h3><p>The deadline for claims and submission is <strong>4:00 pm, 20th March</strong></p>
 
 </div>
 </div>
@@ -2176,7 +2191,6 @@ Right-click on the Blue Button labelled <strong>FourierSeriesDemo</strong> and s
 <h3 id="Part-10">Part 10<a class="anchor-link" href="#Part-10"> </a></h3><p>Examine the code that is defined in <code>TrigFourierSeries</code>. Note that it calls <code>FourierSeries</code> then computes <code>ak</code> and <code>bk</code> from the <code>Ck</code> coefficients. Why did I do that do you think?</p>
 <p>If you made the suggested change to <code>FourierSeries</code>, provide compatible changes to your copy of <code>TrigFourierSeries</code>. Test it on a square wave with even symmetry (Lab 9 Part 2). Save the resulting calling script as <code>ex9_3</code>.</p>
 <p>Compute the FS of the half-wave rectified cosine function. Save the resulting calling script as <code>ex11_4</code>.</p>
-<h3 id="Bonus">Bonus<a class="anchor-link" href="#Bonus"> </a></h3><p>If you complete Parts 9 and 10 you may claim an additional 2 marks for this lab providing that you provide evidence which must include your modified versions of <code>FourierSeries.m</code> and <code>TrigFourierSeries.m</code>.</p>
 
 </div>
 </div>
