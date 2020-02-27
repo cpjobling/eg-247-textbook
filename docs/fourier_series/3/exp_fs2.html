@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://jupyterbook.org/eg-247-textbook/fourier_series/3/exp_fs2.html",
   "headline": "Line Spectra and their Applications",
-  "datePublished": "2020-02-27T00:31:23+00:00",
-  "dateModified": "2020-02-27T00:31:23+00:00",
+  "datePublished": "2020-02-27T16:58:42+00:00",
+  "dateModified": "2020-02-27T16:58:42+00:00",
   "description": "        Line Spectra and their Applications    Line Spectra and their Applications This section concludes our introduction to Fourier Series.In the last sect...",
   "author": {
     "@type": "Person",
@@ -2063,7 +2063,7 @@ initFunction(initPrint)
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Line-Spectra-for-Trig.-FS">Line Spectra for Trig. FS<a class="anchor-link" href="#Line-Spectra-for-Trig.-FS"> </a></h3><p>If we take the results for the Exponential Fourier Series and gather terms, the amplitudes for the Trig. Fourier Series are given by:</p>
-$$a_0 = 2C_0$$$$a_1 = (C_k + C_{-k})$$$$b_k = j(C_k - C_{-k})$$
+$$a_0 = 2C_0$$$$a_k = (C_k + C_{-k})$$$$b_k = j(C_k - C_{-k})$$
 </div>
 </div>
 </div>
@@ -2406,6 +2406,7 @@ $$C_k = \frac{1}{2\pi}\int_{-\pi}^{\pi} f(\Omega_0 t)e^{-jk(\Omega_0 t)}\,d(\Ome
 <span class="n">om</span> <span class="p">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>
 <span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;\Omega_0 [rad/s]&#39;</span><span class="p">)</span>
 <span class="n">xc</span> <span class="p">=</span> <span class="n">om</span><span class="o">.*</span><span class="nb">pi</span><span class="o">./</span><span class="n">w</span><span class="p">;</span>
+
 <span class="n">plot</span><span class="p">(</span><span class="n">om</span><span class="p">,(</span><span class="n">A</span><span class="o">/</span><span class="n">w</span><span class="p">)</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">xc</span><span class="p">)</span><span class="o">./</span><span class="p">(</span><span class="n">xc</span><span class="p">),</span><span class="s">&#39;r:&#39;</span><span class="p">)</span>
 <span class="n">hold </span><span class="s">off</span><span class="p"></span>
 </pre></div>
@@ -2587,7 +2588,7 @@ $$C_k = \frac{1}{2\pi}\int_{-\pi}^{\pi} f(\Omega_0 t)e^{-jk(\Omega_0 t)}\,d(\Ome
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Solution">Solution<a class="anchor-link" href="#Solution"> </a></h3><p>To solve this we take the previous result and choose amplitude (height) $A$ so that area of pulse is unity. Then we let width go to zero while maintaining the area of unity. This creates a train of impulses $\delta(t\pm 2\pi k)$.</p>
-$$C_n  = \frac{1}{2\pi}$$<p>and, therefore</p>
+$$C_k  = \frac{1}{2\pi}$$<p>and, therefore</p>
 $$f(t) = \frac{1}{2\pi}\sum_{k=-\infty}^{\infty} e^{jk\Omega_0 t}$$<p>Try it!</p>
 
 </div>
@@ -2646,7 +2647,7 @@ $$\frac{2\pi}{w}\times\frac{w}{2\pi} = 1$$
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="New-coefficents">New coefficents<a class="anchor-link" href="#New-coefficents"> </a></h4><p>The coefficients of the Exponential Fourier Series are now:</p>
-$$C_n = \frac{w/2\pi}{w}\frac{\sin(k\pi/w)}{k\pi/w} = \frac{1}{2\pi}\frac{\sin(k\pi/w)}{k\pi/w}$$<p>and as $\pi/w \to 0$ each recurrent pulse becomes a unit impulse, and the pulse train reduces to a unit impulse train.</p>
+$$C_k = \frac{w/2\pi}{w}\frac{\sin(k\pi/w)}{k\pi/w} = \frac{1}{2\pi}\frac{\sin(k\pi/w)}{k\pi/w}$$<p>and as $\pi/w \to 0$ each recurrent pulse becomes a unit impulse, and the pulse train reduces to a unit impulse train.</p>
 
 </div>
 </div>
@@ -2659,7 +2660,7 @@ $$C_n = \frac{w/2\pi}{w}\frac{\sin(k\pi/w)}{k\pi/w} = \frac{1}{2\pi}\frac{\sin(k
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Also, recalling that</p>
 $$\lim_{x\to 0} \frac{\sin \pi x}{\pi x} = 1$$<p>the coefficents reduce to</p>
-$$C_n = \frac{1}{2\pi}$$<p>That is all coefficients have the same amplitude and thus</p>
+$$C_k = \frac{1}{2\pi}$$<p>That is all coefficients have the same amplitude and thus</p>
 $$f(t) = \frac{1}{2\pi}\sum_{n=-\infty}^{\infty} e^{jk\Omega_0 t}$$
 </div>
 </div>
@@ -2780,7 +2781,7 @@ $$P_{\mathrm{RMS}} = \sqrt{\frac{1}{T}\int_0^T \left|f(t)\right|^2\,dt} = \sqrt{
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Example-4">Example 4<a class="anchor-link" href="#Example-4"> </a></h3><p>Compute the average power of a pulse train for which the pulse width is $T/2$ (duty cycle 50%). Use the previous result:</p>
+<h3 id="Example-5">Example 5<a class="anchor-link" href="#Example-5"> </a></h3><p>Compute the average power of a pulse train for which the pulse width is $T/2$ (duty cycle 50%). Use the previous result:</p>
 $$C_n = \frac{A}{w}.\frac{\sin(k\pi/w)}{k\pi/w}$$<p>as your starting point.</p>
 
 </div>
@@ -3120,7 +3121,7 @@ $$C_0 = \frac{A}{w}$$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Solution-4">Solution 4<a class="anchor-link" href="#Solution-4"> </a></h3><p>$w = 2$ so:</p>
+<h3 id="Solution-5">Solution 5<a class="anchor-link" href="#Solution-5"> </a></h3><p>$w = 2$ so:</p>
 $$C_n = \frac{A}{2}.\frac{\sin(k\pi/2)}{k\pi/2}$$<p>Write down an expression for $P$ using Parseval's Theorem</p>
 
 </div>
