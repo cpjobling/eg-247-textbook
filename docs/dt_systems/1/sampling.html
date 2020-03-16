@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>Sampling Theory</title>
-  <meta name="description" content="        Sampling Theory    Sampling Theory Scope and Background Reading This session is an introduction to sampling theory. It reviews the important ideas th...">
+  <meta name="description" content="        Sampling Theory    Sampling Theory Colophon The source code for this page is content/dt_systems/1/sampling.ipynb.You can view the notes for this pres...">
 
   <link rel="canonical" href="https://jupyterbook.org/eg-247-textbook/dt_systems/1/sampling.html">
   <link rel="alternate" type="application/rss+xml" title="EG-247 Signals and Systems" href="https://jupyterbook.org/eg-247-textbook/feed.xml">
@@ -14,7 +14,7 @@
   <meta property="og:url"         content="https://jupyterbook.org/eg-247-textbook/dt_systems/1/sampling.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Sampling Theory" />
-<meta property="og:description" content="        Sampling Theory    Sampling Theory Scope and Background Reading This session is an introduction to sampling theory. It reviews the important ideas th..." />
+<meta property="og:description" content="        Sampling Theory    Sampling Theory Colophon The source code for this page is content/dt_systems/1/sampling.ipynb.You can view the notes for this pres..." />
 <meta property="og:image"       content="https://jupyterbook.org/eg-247-textbook/images/logo/logo.png" />
 
 <meta name="twitter:card" content="summary">
@@ -26,9 +26,9 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://jupyterbook.org/eg-247-textbook/dt_systems/1/sampling.html",
   "headline": "Sampling Theory",
-  "datePublished": "2020-03-04T23:24:14+00:00",
-  "dateModified": "2020-03-04T23:24:14+00:00",
-  "description": "        Sampling Theory    Sampling Theory Scope and Background Reading This session is an introduction to sampling theory. It reviews the important ideas th...",
+  "datePublished": "2020-03-14T18:14:55+00:00",
+  "dateModified": "2020-03-14T18:14:55+00:00",
+  "description": "        Sampling Theory    Sampling Theory Colophon The source code for this page is content/dt_systems/1/sampling.ipynb.You can view the notes for this pres...",
   "author": {
     "@type": "Person",
     "name": "Dr Chris P. Jobling"
@@ -2011,8 +2011,26 @@ initFunction(initPrint)
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Colophon">Colophon<a class="anchor-link" href="#Colophon"> </a></h2><ul>
+<li><p>The source code for this page is <a href="https://github.com/cpjobling/eg-247-textbook/blob/master/content/dt_systems/1/sampling.ipynb">content/dt_systems/1/sampling.ipynb</a>.</p>
+</li>
+<li><p>You can view the notes for this presentation as a webpage (<a href="https://cpjobling.github.io/eg-247-textbook/dt_systems/1/sampling.html">HTML</a>).</p>
+</li>
+<li><p>This page is downloadable as a <a href="https://cpjobling.github.io/eg-247-textbook/dt_systems/1/sampling.pdf">PDF</a> file.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Scope-and-Background-Reading">Scope and Background Reading<a class="anchor-link" href="#Scope-and-Background-Reading"> </a></h2><p>This session is an introduction to sampling theory. It reviews the important ideas that pertain to sampling but leaves the detailed mathematics for your further study.</p>
-<p>The material in this presentation and notes is based on Chapter 15 of <a href="http://site.ebrary.com/lib/swansea/docDetail.action?docID=10228195">Benoit Boulet, Fundamentals of Signals and Systems</a> from the <strong>Recommended Reading List</strong> and you'll find the mathematical treatments there. There is much more detail in Chapter 9 of <a href="http://site.ebrary.com/lib/swansea/docDetail.action?docID=10547416">Steven T. Karris, Signals and Systems: with Matlab Computation and Simulink Modelling, 5th Edition</a> from the <strong>Required Reading List</strong>.</p>
+<p>The material in this presentation and notes is based on Chapter 15 of (missing reference) from the <strong>Recommended Reading List</strong> and you'll find the mathematical treatments there. There is much more detail in <a href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=329">Chapter 9</a> of <a class="citation" href="#karris">(Karris, 2012)</a> from the <strong>Required Reading List</strong>.</p>
 
 </div>
 </div>
@@ -2131,8 +2149,8 @@ initFunction(initPrint)
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cd</span> <span class="n">matlab</span>
-<span class="nb">open</span> <span class="n">sampling_demo</span>
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">cd </span><span class="s">matlab</span><span class="p"></span>
+<span class="n">open </span><span class="s">sampling_demo</span><span class="p"></span>
 </pre></div>
 
     </div>
@@ -2387,11 +2405,11 @@ $$\omega_s &gt; 2\omega_M,$$<p>where $\omega_s = 2\pi/T_s$ is the sampling frequ
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">clear</span> <span class="nb">all</span>
-<span class="nb">format</span> <span class="n">compact</span>
-<span class="n">w0</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>        <span class="o">%</span> <span class="n">fundamental</span> <span class="n">frequency</span> <span class="n">rad</span><span class="o">/</span><span class="n">s</span>
-<span class="n">t0</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="n">w0</span><span class="p">;</span>    <span class="o">%</span> <span class="n">period</span> <span class="n">s</span>
-<span class="n">tmax</span> <span class="o">=</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">t0</span><span class="p">;</span> <span class="o">%</span> <span class="n">plottable</span> <span class="nb">range</span>
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">clear </span><span class="s">all</span><span class="p"></span>
+<span class="n">format </span><span class="s">compact</span><span class="p"></span>
+<span class="n">w0</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>        <span class="c">% fundamental frequency rad/s</span>
+<span class="n">t0</span><span class="p">=</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="n">w0</span><span class="p">;</span>    <span class="c">% period s</span>
+<span class="n">tmax</span> <span class="p">=</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">t0</span><span class="p">;</span> <span class="c">% plottable range</span>
 </pre></div>
 
     </div>
@@ -2421,9 +2439,9 @@ $$H(s) = \frac{\omega_0^2}{s^2 + 2\zeta\omega_0 s + \omega_0^2}$$</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">syms</span> <span class="n">s</span> <span class="n">t</span>
-<span class="n">zeta</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">;</span>
-<span class="n">H</span> <span class="o">=</span> <span class="n">w0</span><span class="o">^</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">zeta</span><span class="o">*</span><span class="n">w0</span><span class="o">*</span><span class="n">s</span> <span class="o">+</span> <span class="n">w0</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">syms </span><span class="s">s t</span><span class="p"></span>
+<span class="n">zeta</span> <span class="p">=</span> <span class="mf">0.3</span><span class="p">;</span>
+<span class="n">H</span> <span class="p">=</span> <span class="n">w0</span>^<span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">s</span>^<span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">zeta</span><span class="o">*</span><span class="n">w0</span><span class="o">*</span><span class="n">s</span> <span class="o">+</span> <span class="n">w0</span>^<span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2466,7 +2484,7 @@ $$H(s) = \frac{\omega_0^2}{s^2 + 2\zeta\omega_0 s + \omega_0^2}$$</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">ilaplace</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">h</span> <span class="p">=</span> <span class="n">ilaplace</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2499,9 +2517,9 @@ $$H(s) = \frac{\omega_0^2}{s^2 + 2\zeta\omega_0 s + \omega_0^2}$$</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">tmax</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
-<span class="n">xc</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">h</span><span class="p">);</span> <span class="o">%</span> <span class="nb">eval</span> <span class="n">evaluates</span> <span class="n">a</span> <span class="n">symbolic</span> <span class="n">expression</span> <span class="k">as</span> <span class="n">a</span> <span class="n">MATLAB</span> <span class="n">command</span><span class="o">.</span>
-<span class="n">tc</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">t</span> <span class="p">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">tmax</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
+<span class="n">xc</span> <span class="p">=</span> <span class="n">eval</span><span class="p">(</span><span class="n">h</span><span class="p">);</span> <span class="c">% eval evaluates a symbolic expression as a MATLAB command.</span>
+<span class="n">tc</span> <span class="p">=</span> <span class="n">t</span><span class="p">;</span>
 </pre></div>
 
     </div>
@@ -2518,10 +2536,10 @@ $$H(s) = \frac{\omega_0^2}{s^2 + 2\zeta\omega_0 s + \omega_0^2}$$</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="n">xc</span><span class="p">)</span>
-<span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fig 1: Continuous Time Signal x(t)&#39;</span><span class="p">)</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x(t)&#39;</span><span class="p">)</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time t [s]&#39;</span><span class="p">)</span>
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="n">xc</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;Fig 1: Continuous Time Signal x(t)&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;x(t)&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Time t [s]&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2537,7 +2555,7 @@ $$H(s) = \frac{\omega_0^2}{s^2 + 2\zeta\omega_0 s + \omega_0^2}$$</p>
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/dt_systems/1/sampling_37_0.png"
+<img src="../../images/dt_systems/1/sampling_38_0.png"
 >
 </div>
 
@@ -2577,11 +2595,11 @@ $$H(s) = \frac{\omega_0^2}{s^2 + 2\zeta\omega_0 s + \omega_0^2}$$</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ws</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="n">w0</span><span class="p">;</span> <span class="o">%</span> <span class="n">twice</span> <span class="n">minimum</span><span class="err">!</span>
-<span class="n">Ts</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span><span class="o">/</span><span class="n">ws</span><span class="p">;</span>
-<span class="n">t</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span><span class="n">Ts</span><span class="p">:</span><span class="n">tmax</span><span class="p">;</span>
-<span class="n">xs</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
-<span class="n">td</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">ws</span> <span class="p">=</span> <span class="mi">4</span><span class="o">*</span><span class="n">w0</span><span class="p">;</span> <span class="c">% twice minimum!</span>
+<span class="n">Ts</span> <span class="p">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">)</span><span class="o">/</span><span class="n">ws</span><span class="p">;</span>
+<span class="n">t</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="n">Ts</span><span class="p">:</span><span class="n">tmax</span><span class="p">;</span>
+<span class="n">xs</span> <span class="p">=</span> <span class="n">eval</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="n">td</span> <span class="p">=</span> <span class="n">t</span><span class="p">;</span>
 </pre></div>
 
     </div>
@@ -2598,13 +2616,13 @@ $$H(s) = \frac{\omega_0^2}{s^2 + 2\zeta\omega_0 s + \omega_0^2}$$</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">stem</span><span class="p">(</span><span class="n">td</span><span class="p">,</span><span class="n">xs</span><span class="p">)</span>
-<span class="n">hold</span> <span class="n">on</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="n">xc</span><span class="p">,</span><span class="s1">&#39;r:&#39;</span><span class="p">)</span>
-<span class="n">hold</span> <span class="n">off</span>
-<span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fig 2: Sampled Signal x_s(t)&#39;</span><span class="p">)</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x_s(t)&#39;</span><span class="p">)</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time t [s]&#39;</span><span class="p">)</span>
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">stem</span><span class="p">(</span><span class="n">td</span><span class="p">,</span><span class="n">xs</span><span class="p">)</span>
+<span class="n">hold </span><span class="s">on</span><span class="p"></span>
+<span class="n">plot</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="n">xc</span><span class="p">,</span><span class="s">&#39;r:&#39;</span><span class="p">)</span>
+<span class="n">hold </span><span class="s">off</span><span class="p"></span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;Fig 2: Sampled Signal x_s(t)&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;x_s(t)&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Time t [s]&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2620,7 +2638,7 @@ $$H(s) = \frac{\omega_0^2}{s^2 + 2\zeta\omega_0 s + \omega_0^2}$$</p>
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/dt_systems/1/sampling_41_0.png"
+<img src="../../images/dt_systems/1/sampling_42_0.png"
 >
 </div>
 
@@ -2707,8 +2725,8 @@ $$H_r(\omega)=T_sH_{\mathrm{lp}}(\omega)H_1(\omega)$$<p><img src="pictures/recon
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">stem</span><span class="p">(</span><span class="n">td</span><span class="p">,</span><span class="n">xs</span><span class="p">)</span>
-<span class="n">hold</span> <span class="n">on</span>
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">stem</span><span class="p">(</span><span class="n">td</span><span class="p">,</span><span class="n">xs</span><span class="p">)</span>
+<span class="n">hold </span><span class="s">on</span><span class="p"></span>
 </pre></div>
 
     </div>
@@ -2724,7 +2742,7 @@ $$H_r(\omega)=T_sH_{\mathrm{lp}}(\omega)H_1(\omega)$$<p><img src="pictures/recon
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/dt_systems/1/sampling_47_0.png"
+<img src="../../images/dt_systems/1/sampling_48_0.png"
 >
 </div>
 
@@ -2743,11 +2761,11 @@ $$H_r(\omega)=T_sH_{\mathrm{lp}}(\omega)H_1(\omega)$$<p><img src="pictures/recon
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">td</span><span class="p">),</span><span class="n">length</span><span class="p">(</span><span class="n">tc</span><span class="p">));</span>
-<span class="k">for</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">length</span><span class="p">(</span><span class="n">td</span><span class="p">)</span>
-    <span class="n">xk</span> <span class="o">=</span> <span class="n">xs</span><span class="p">(</span><span class="n">k</span><span class="p">);</span>
-    <span class="n">sincx</span> <span class="o">=</span> <span class="n">xk</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">tc</span> <span class="o">-</span> <span class="n">td</span><span class="p">(</span><span class="n">k</span><span class="p">))</span><span class="o">/</span><span class="n">Ts</span><span class="p">)</span><span class="o">./</span><span class="p">(</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">tc</span> <span class="o">-</span> <span class="n">td</span><span class="p">(</span><span class="n">k</span><span class="p">))</span><span class="o">/</span><span class="n">Ts</span><span class="p">);</span>
-    <span class="n">x</span><span class="p">(</span><span class="n">k</span><span class="p">,:)</span> <span class="o">=</span> <span class="n">sincx</span><span class="p">;</span>
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">x</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">td</span><span class="p">),</span><span class="nb">length</span><span class="p">(</span><span class="n">tc</span><span class="p">));</span><span class="n"></span>
+<span class="n">for </span><span class="s">k=1:length(td)</span><span class="p"></span>
+    <span class="n">xk</span> <span class="p">=</span> <span class="n">xs</span><span class="p">(</span><span class="n">k</span><span class="p">);</span>
+    <span class="n">sincx</span> <span class="p">=</span> <span class="n">xk</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="nb">pi</span><span class="o">*</span><span class="p">(</span><span class="n">tc</span> <span class="o">-</span> <span class="n">td</span><span class="p">(</span><span class="n">k</span><span class="p">))</span><span class="o">/</span><span class="n">Ts</span><span class="p">)</span><span class="o">./</span><span class="p">(</span><span class="nb">pi</span><span class="o">*</span><span class="p">(</span><span class="n">tc</span> <span class="o">-</span> <span class="n">td</span><span class="p">(</span><span class="n">k</span><span class="p">))</span><span class="o">/</span><span class="n">Ts</span><span class="p">);</span>
+    <span class="n">x</span><span class="p">(</span><span class="n">k</span><span class="p">,:)</span> <span class="p">=</span> <span class="n">sincx</span><span class="p">;</span><span class="n"></span>
 <span class="n">end</span>
 </pre></div>
 
@@ -2765,11 +2783,11 @@ $$H_r(\omega)=T_sH_{\mathrm{lp}}(\omega)H_1(\omega)$$<p><img src="pictures/recon
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="s1">&#39;-.&#39;</span><span class="p">)</span>
-<span class="n">hold</span> <span class="n">off</span>
-<span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fig 5: Signal x(t) reconstructed with sinc functions&#39;</span><span class="p">)</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x(t)&#39;</span><span class="p">)</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time t [s]&#39;</span><span class="p">)</span>
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="s">&#39;-.&#39;</span><span class="p">)</span>
+<span class="n">hold </span><span class="s">off</span><span class="p"></span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;Fig 5: Signal x(t) reconstructed with sinc functions&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;x(t)&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Time t [s]&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2785,7 +2803,7 @@ $$H_r(\omega)=T_sH_{\mathrm{lp}}(\omega)H_1(\omega)$$<p><img src="pictures/recon
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/dt_systems/1/sampling_49_0.png"
+<img src="../../images/dt_systems/1/sampling_50_0.png"
 >
 </div>
 
@@ -2827,9 +2845,9 @@ $$x(t) = \sum\limits_{k =  - \infty }^{ + \infty } {x(n{T_s}){\rm{sinc}}} \left(
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">tc</span><span class="p">,</span><span class="n">xc</span><span class="p">,</span><span class="s1">&#39;r:&#39;</span><span class="p">)</span>
-<span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fig 6: Reconstruction with sinc functions&#39;</span><span class="p">)</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x(t)&#39;</span><span class="p">)</span>
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">tc</span><span class="p">,</span><span class="n">xc</span><span class="p">,</span><span class="s">&#39;r:&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;Fig 6: Reconstruction with sinc functions&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;x(t)&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2845,7 +2863,7 @@ $$x(t) = \sum\limits_{k =  - \infty }^{ + \infty } {x(n{T_s}){\rm{sinc}}} \left(
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/dt_systems/1/sampling_52_0.png"
+<img src="../../images/dt_systems/1/sampling_53_0.png"
 >
 </div>
 
@@ -2887,12 +2905,12 @@ $$x(t) = \sum\limits_{k =  - \infty }^{ + \infty } {x(n{T_s}){\rm{sinc}}} \left(
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">stairs</span><span class="p">(</span><span class="n">td</span><span class="p">,</span><span class="n">xs</span><span class="p">)</span>
-<span class="n">hold</span> <span class="n">on</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="n">xc</span><span class="p">,</span><span class="s1">&#39;r:&#39;</span><span class="p">)</span>
-<span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fig 3: Signal x(t) reconstructed with zero-order-hold&#39;</span><span class="p">)</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x(t)&#39;</span><span class="p">)</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time t [s]&#39;</span><span class="p">)</span>
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">stairs</span><span class="p">(</span><span class="n">td</span><span class="p">,</span><span class="n">xs</span><span class="p">)</span>
+<span class="n">hold </span><span class="s">on</span><span class="p"></span>
+<span class="n">plot</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="n">xc</span><span class="p">,</span><span class="s">&#39;r:&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;Fig 3: Signal x(t) reconstructed with zero-order-hold&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;x(t)&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Time t [s]&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2908,7 +2926,7 @@ $$x(t) = \sum\limits_{k =  - \infty }^{ + \infty } {x(n{T_s}){\rm{sinc}}} \left(
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/dt_systems/1/sampling_55_0.png"
+<img src="../../images/dt_systems/1/sampling_56_0.png"
 >
 </div>
 
@@ -2937,10 +2955,10 @@ $$x(t) = \sum\limits_{k =  - \infty }^{ + \infty } {x(n{T_s}){\rm{sinc}}} \left(
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">td</span><span class="p">,</span><span class="n">xs</span><span class="p">,</span><span class="s1">&#39;bo-&#39;</span><span class="p">,</span><span class="n">tc</span><span class="p">,</span><span class="n">xc</span><span class="p">,</span><span class="s1">&#39;r:&#39;</span><span class="p">)</span>
-<span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fig 4: Signal x(t) reconstructed with first-order-hold&#39;</span><span class="p">)</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x(t)&#39;</span><span class="p">)</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time t [s]&#39;</span><span class="p">)</span>
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">td</span><span class="p">,</span><span class="n">xs</span><span class="p">,</span><span class="s">&#39;bo-&#39;</span><span class="p">,</span><span class="n">tc</span><span class="p">,</span><span class="n">xc</span><span class="p">,</span><span class="s">&#39;r:&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;Fig 4: Signal x(t) reconstructed with first-order-hold&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;x(t)&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Time t [s]&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2956,7 +2974,7 @@ $$x(t) = \sum\limits_{k =  - \infty }^{ + \infty } {x(n{T_s}){\rm{sinc}}} \left(
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/dt_systems/1/sampling_57_0.png"
+<img src="../../images/dt_systems/1/sampling_58_0.png"
 >
 </div>
 
@@ -3026,7 +3044,7 @@ $$x(t) = \sum\limits_{k =  - \infty }^{ + \infty } {x(n{T_s}){\rm{sinc}}} \left(
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">open</span> <span class="n">aliaseg1</span>
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">open </span><span class="s">aliaseg1</span><span class="p"></span>
 </pre></div>
 
     </div>
@@ -3054,7 +3072,7 @@ $$x(t) = \sum\limits_{k =  - \infty }^{ + \infty } {x(n{T_s}){\rm{sinc}}} \left(
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">open</span> <span class="n">aliasing</span>
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">open </span><span class="s">aliasing</span><span class="p"></span>
 </pre></div>
 
     </div>
@@ -3127,7 +3145,7 @@ $$x(t) = \sum\limits_{k =  - \infty }^{ + \infty } {x(n{T_s}){\rm{sinc}}} \left(
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">open</span> <span class="n">aliaseg2</span>
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">open </span><span class="s">aliaseg2</span><span class="p"></span>
 </pre></div>
 
     </div>
@@ -3271,6 +3289,17 @@ $$x(t) = \sum\limits_{k =  - \infty }^{ + \infty } {x(n{T_s}){\rm{sinc}}} \left(
 <li>Multiple graphs in one figure window is achieved using <code>subplot</code>.</li>
 </ul>
 <p>For more information use <code>doc</code> <em>command</em> from the command-line.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="References">References<a class="anchor-link" href="#References"> </a></h2><p><ol class="bibliography"><li><span id="karris">Karris, S. T. (2012). <i>Signals and systems with MATLAB computing and Simulink modeling</i>. Orchard Publishing. https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197</span></li></ol></p>
 
 </div>
 </div>
