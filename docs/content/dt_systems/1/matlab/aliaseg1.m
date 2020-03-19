@@ -3,8 +3,8 @@
 % the effects of aliasing AND the relationship between the DTFT and CTFT when 
 % the DT signal is obtained by sampling an analog CT signal.
 % 
-% A short recorded sample is effectively sampled at four different rates 
-% and played back to hear the effects of aliasing.
+% A short recorded sample is effectively sampled at four different rates and 
+% played back to hear the effects of aliasing.
 % 
 % Adapted for EG-247 Signals and Systems by Dr Chris P. Jobling from an example 
 % by Prof. Charles A. Bouman, School of Electrical and Computer Engineering, Purdue 
@@ -22,14 +22,13 @@ audioFile = 'eg-247-message.wav';
 
 plot(data)
 %%
-%end1=input('end1?')
-%end2=input('end2?')
-%datar=data(end1:end2);
-datar=data;
+end1=100;
+end2=55000;
+datar=data(end1:end2);
 dsize=length(datar); 
 %% 
 % compute 8192 point FFT to view spectrum of speech signal
-%%
+
 deltaf=Fs/8192;
 freq=-Fs/2:deltaf:Fs/2-deltaf;
 plot(freq,abs(fftshift(fft(datar,8192))),'linewidth',2)
@@ -42,27 +41,27 @@ omega=-pi:domega:pi-domega;
 
 soundsc(datar,Fs)
 %% 
-% Reduce sampling rate by a factor of 2 through decimation and playback 
-% speech at sampling rate of 4000 Hz.
-%%
+% Reduce sampling rate by a factor of 2 through decimation and playback speech 
+% at sampling rate of 4000 Hz.
+
 datar2=datar(1:2:dsize);
 soundsc(datar2,Fs/2)
 %% 
-% Reduce sampling rate by a factor of 3 through decimation and playback 
-% speech at sampling rate of 2667 Hz.
-%%
+% Reduce sampling rate by a factor of 3 through decimation and playback speech 
+% at sampling rate of 2667 Hz.
+
 datar3=datar(1:3:dsize);
 soundsc(datar3,round(Fs/3))
 %% 
-% Reduce sampling rate by a factor of 4 through decimation and playback 
-% speech at sampling rate of 2000 Hz.
-%%
+% Reduce sampling rate by a factor of 4 through decimation and playback speech 
+% at sampling rate of 2000 Hz.
+
 datar4=datar(1:4:dsize);
 soundsc(datar4,Fs/4)
 %% 
-% Compute via the FFT the DTFT of each of the four sampled versions of the 
-% original speech. Plot magnitude of each DTFT over $-\pi$ to $\pi \ldotp$
-%%
+% Compute via the FFT the DTFT of each of the four sampled versions of the original 
+% speech. Plot magnitude of each DTFT over $-\pi$ to $\pi \ldotp$
+
 subplot(221)
 dr1=abs(fftshift(fft(datar,8192)));
 plot(omega,dr1)

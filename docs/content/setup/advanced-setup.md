@@ -32,10 +32,10 @@ Run:
 python soton-test-python-installation.py
 ```
 
-Install [Rise](https://damianavila.github.io/RISE/index.html) for active slides:
+Install [Rise](https://damianavila.github.io/RISE/set index.html) for active slides:
 
 ```shell
-conda install -c conda-forge rise
+conda install rise
 ```
 
 
@@ -71,13 +71,13 @@ you should have a MATLAB kernel as well as a Python 3 kernel and the [Rise](http
 Export settings:
 
 ```shell
-conda export > environment.yml
+conda env export --file environment.yml
 ```
 
 To recreate the EG-247 Textbook environment on another machine with Anaconda installed, you should be able to copy the `environment.yml` file and execute:
 
 ```shell
-conda create -f environment.yml
+conda env create --file environment.yml
 ```
 
 ## Exit EG-247 Environment
