@@ -24,4 +24,11 @@ In this section of the course we will cover:
 * Transfer Functions
 * Impulse Response and Convolution
 
-There is an optional (non-examined) section on State-space modelling and analysis.
+## Colophon
+
+* The source code for this page is [content/laplace_transform/index.md](https://github.com/cpjobling/eg-247-textbook/blob/master/content/laplace_transform/index.md).
+
+* You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/laplace_transform/index.html)). 
+
+* This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/laplace_transform/laplace_transform.pdf) file. 
+
