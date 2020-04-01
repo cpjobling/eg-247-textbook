@@ -8,3 +8,5 @@
 * [Homework 6](hw6): Fourier Transform
 * [Homework 7](hw7): Applications of the Fourier Transform
 * [Homework 8](hw8): Sampling Theory and the Z-Transform
+* [Homework 9](hw9): Inverse Z-Transform and Models of Discrete-Time Systems
+* [Homework 8](hw10): Discrete Fourier Transform and the Fast-Fourier Transform
