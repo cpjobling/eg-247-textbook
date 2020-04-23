@@ -15,7 +15,7 @@ This is an index to the files arranged by module week.
 ## Week 2
 
 * [Worksheet 4](../laplace_transform/1/worksheet4) for [Chapter 3.1: The Laplace Transformation](../laplace_transform/1/laplace) [[PDF](worksheet4.pdf)]
-* [Worksheet 5](../laplace_transform/2/worksheet5) for [Chapter 3.2: The Inverse Laplace Transformation](../laplace_transform/1/ilaplace) [[PDF](worksheet5.pdf)]
+* [Worksheet 5](../laplace_transform/2/worksheet5) for [Chapter 3.2: The Inverse Laplace Transformation](../laplace_transform/2/ilaplace) [[PDF](worksheet5.pdf)]
 
 ## Week 3
 
@@ -29,8 +29,8 @@ This is an index to the files arranged by module week.
 ## Week 5
 
 * [Worksheet 9](../fourier_series/1/worksheet9) for [Chapter 4.1: Trig. Fourier Series](../fourier_series/1/trig_fseries) [[PDF](worksheet9.pdf)]
-* [Worksheet 10](../fourier_series/2/worksheet10) for [Chapter 4.2: Exponential Fourier Series](../fourier_series/1/exp_fs1) [[PDF](worksheet10.pdf)]
-* [Worksheet 11](../fourier_series/3/worksheet11) for [Chapter 4.3: Line Spectra and thier Applications](../fourier_series/1/exp_fs2) [[PDF](worksheet11.pdf)]
+* [Worksheet 10](../fourier_series/2/worksheet10) for [Chapter 4.2: Exponential Fourier Series](../fourier_series/2/exp_fs1) [[PDF](worksheet10.pdf)]
+* [Worksheet 11](../fourier_series/3/worksheet11) for [Chapter 4.3: Line Spectra and thier Applications](../fourier_series/3/exp_fs2) [[PDF](worksheet11.pdf)]
 
 ## Week 6
 
@@ -39,8 +39,8 @@ This is an index to the files arranged by module week.
 
 ## Week 7
 
-* [Worksheet 14](../fourier_transform/2/worksheet14) for [Chapter 5.3: Fourier Transforms for Circuit and LTI Systems Analysis](../fourier_transform/3/ft3) for [[PDF](worksheet14.pdf)]
-* [Worksheet 15](../fourier_transform/3/worksheet15) [Chapter 5.4: Intruduction to Filters](../fourier_transform/4/ft4) [[PDF](worksheet15.pdf)]
+* [Worksheet 14](../fourier_transform/3/worksheet14) for [Chapter 5.3: Fourier Transforms for Circuit and LTI Systems Analysis](../fourier_transform/3/ft3) for [[PDF](worksheet14.pdf)]
+* [Worksheet 15](../fourier_transform/4/worksheet15) [Chapter 5.4: Intruduction to Filters](../fourier_transform/4/ft4) [[PDF](worksheet15.pdf)]
 
 ## Week 8
 

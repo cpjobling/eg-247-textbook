@@ -1,15 +1,15 @@
-%% Aliasing Example 1
+% % Aliasing Example 1
 % Matlab file used for class demo conducted during session on sampling to illustrate 
 % the effects of aliasing AND the relationship between the DTFT and CTFT when 
 % the DT signal is obtained by sampling an analog CT signal.
-% 
+%
 % A short recorded sample is effectively sampled at four different rates and 
 % played back to hear the effects of aliasing.
-% 
+%
 % Adapted for EG-247 Signals and Systems by Dr Chris P. Jobling from an example 
 % by Prof. Charles A. Bouman, School of Electrical and Computer Engineering, Purdue 
 % University, West Lafayette.
-% 
+%
 % Original file: <https://engineering.purdue.edu/VISE/ee438/demos/ https://engineering.purdue.edu/VISE/ee438/demos/>
 
 clf
