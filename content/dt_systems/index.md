@@ -12,6 +12,6 @@ We set the scene for this chapter with a useful definition from Wikipedia
 >
 > A theoretical ideal sampler produces samples equivalent to the instantaneous value of the continuous signal at the desired points.
 
--- [Sampling (Signal Processing)](https://en.wikipedia.org/wiki/Sampling_(signal_processing)), Wikipedia.
+-- <a href="https://en.wikipedia.org/wiki/Sampling_(signal_processing)">Sampling (Signal Processing)</a>, Wikipedia.
 
 In this chapter we will cover Sampling Theory, the Z-Transform, the inverse Z-Transform and Models of Digital Systems.

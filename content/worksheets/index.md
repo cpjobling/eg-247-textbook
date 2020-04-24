@@ -15,7 +15,7 @@ This is an index to the files arranged by module week.
 ## Week 2
 
 * [Worksheet 4](../laplace_transform/1/worksheet4) for [Chapter 3.1: The Laplace Transformation](../laplace_transform/1/laplace) [[PDF](worksheet4.pdf)]
-* [Worksheet 5](../laplace_transform/2/worksheet5) for [Chapter 3.2: The Inverse Laplace Transformation](../laplace_transform/2/ilaplace) [[PDF](worksheet5.pdf)]
+* [Worksheet 5](../laplace_transform/2/worksheet5) for [Chapter 3.2: The Inverse Laplace Transformation](../laplace_transform/2/inverse_laplace) [[PDF](worksheet5.pdf)]
 
 ## Week 3
 
