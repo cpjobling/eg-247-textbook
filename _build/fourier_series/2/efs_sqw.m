@@ -24,9 +24,9 @@ Xw = subs(X,A,1);
 subplot(211)
 stem(w,abs(Xw), 'o-');
 title('Exponential Fourier Series for Square Waveform with Odd Symmetry')
-xlabel('\Omega_0 (rad/sec)');
+xlabel('Hamonic frequencies: \Omega_0 (rad/sec)');
 ylabel('|c_k|');
 subplot(212)
 stem(w,angle(Xw), 'o-');
-xlabel('\Omega_0 (rad/sec)'); 
+xlabel('Hamonic frequencies: k\Omega_0 (rad/sec)'); 
 ylabel('\angle c_k [radians]');
