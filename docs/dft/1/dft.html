@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://cpjobling.github.io/eg-247-textbook/dft/1/dft.html",
   "headline": "The Discrete Fourier Transform",
-  "datePublished": "2020-05-04T13:44:19+01:00",
-  "dateModified": "2020-05-04T13:44:19+01:00",
+  "datePublished": "2020-05-05T14:42:58+01:00",
+  "dateModified": "2020-05-05T14:42:58+01:00",
   "description": "        The Discrete Fourier Transform    The Discrete Fourier Transform Colophon An annotatable worksheet for this presentation is available as Worksheet 18...",
   "author": {
     "@type": "Person",
@@ -989,6 +989,45 @@ initFunction(initPrint)
         
       
       
+        <li><h2 class="c-sidebar__title">FAQs</li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/faqs/faq">
+        <a class="c-sidebar__entry"
+          href="/eg-247-textbook/faqs/faq.html"
+        >
+          
+          Discrete Fourier Transform
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
         <li><h2 class="c-sidebar__title">In Class Worksheets</li>
         
       
@@ -1387,45 +1426,6 @@ initFunction(initPrint)
             
           
         </ul>
-      
-
-      
-    
-      
-      
-        <li class="c-sidebar__divider"></li>
-        
-      
-      
-        <li><h2 class="c-sidebar__title">FAQs</li>
-        
-      
-      
-
-      
-      
-      
-      
-
-      
-      
-      <li class="c-sidebar__chapter" data-url="/faqs/faq">
-        <a class="c-sidebar__entry"
-          href="/eg-247-textbook/faqs/faq.html"
-        >
-          
-          Worksheets
-        </a>
-      </li>
-
-      
-      
-
-      
-
-      
-      
-
       
 
       
@@ -2469,8 +2469,8 @@ $$X[m] = \Re\left\{X[m]\right\} + \Im\left\{X[m]\right\}$$<p>for $m = 0,1,2,\ldo
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Since</p>
-$$\exp\left({-j2\pi \frac{m n}{N}}\right) = \cos\left(2\pi\frac{m n}{N}\right) + j\sin\left(2\pi \frac{m n}{N}\right)$$<p>the DFT can be expresssed as</p>
-$$X[m] =  \sum_{n=0}^{N-1} x[n]\exp\left({-j2\pi \frac{m n}{N}}\right) = \sum_{n=0}^{N-1}x[n]\cos\left(2\pi \frac{m n}{N}\right) + j\sum_{n=0}^{N-1}x[n]\sin\left(2\pi\frac{ m n}{N}\right).$$
+$$\exp\left({-j2\pi \frac{m n}{N}}\right) = \cos\left(2\pi\frac{m n}{N}\right) - j\sin\left(2\pi \frac{m n}{N}\right)$$<p>the DFT can be expresssed as</p>
+$$X[m] =  \sum_{n=0}^{N-1} x[n]\exp\left({-j2\pi \frac{m n}{N}}\right) = \sum_{n=0}^{N-1}x[n]\cos\left(2\pi \frac{m n}{N}\right) - j\sum_{n=0}^{N-1}x[n]\sin\left(2\pi\frac{ m n}{N}\right).$$
 </div>
 </div>
 </div>
@@ -2526,8 +2526,7 @@ $$\Im \left\{ {X[m]} \right\} = - \sum\limits_{n = 1}^{N - 1} x [n]\sin \left( 2
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="In-Class-Example-1">In Class Example 1<a class="anchor-link" href="#In-Class-Example-1"> </a></h3><p>A discrete time signal is defined by the sequence</p>
-<p>$x[0] = 1$, $x[1] = 2$, $x[2] = 2$, $x[3] = 1$, 
-and $x[n]=0$ for all other values of $n$.</p>
+<p>$x[0] = 1$, $x[1] = 2$, $x[2] = 2$, $x[3] = 1$.</p>
 <p>Compute the frequency components $X[m]$.</p>
 
 </div>
@@ -2540,7 +2539,7 @@ and $x[n]=0$ for all other values of $n$.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Solution-1">Solution 1<a class="anchor-link" href="#Solution-1"> </a></h3><ul>
-<li>Compute the $N$ point DFT for $\Re\left\{X[m]\right\}$.</li>
+<li>Compute the $N=4$ point DFT for $\Re\left\{X[m]\right\}$.</li>
 </ul>
 <pre style="border: 2px solid blue">
 
@@ -2735,11 +2734,13 @@ and $x[n]=0$ for all other values of $n$.</p>
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
-<div class="output_subarea output_stream output_stderr output_text">
-<pre><span class="ansi-red-fg">Error using cd
-Cannot CD to /Users/eechris/dev/eg-247-textbook/content/dft/1/matlab/matlab (Name is nonexistent or not a directory).
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+ans =
 
-</span></pre>
+    &#39;/Users/eechris/dev/eg-247-textbook/content/dft/1/matlab&#39;
+
+</pre>
 </div>
 </div>
 </div>
