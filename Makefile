@@ -11,28 +11,15 @@ help:
 	@echo "  site 		 to build the site HTML, store in _site/, and serve with Jekyll"
 
 
-install:
-	jupyter-book install ./
-
-book:
-	jupyter-book build ./
-
-runall:
-	jupyter-book run ./content
-
 clean:
-	python scripts/clean.py
-
-serve:
-	bundle exec guard
+	jupyter-book clean .
 
 build:
-	jupyter-book build ./ --overwrite
+	jupyter-book build .
 
 site: build
-	bundle exec jekyll build  --destination docs
-	touch docs/.nojekyll
 	make portfolio
+	ghp-import -n -p -f ./_build/html
 
 portfolio:
 		rsync -a --delete content/labs/ portfolio
