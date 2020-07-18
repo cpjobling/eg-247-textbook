@@ -1,0 +1,1136 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Worksheet 17 &#8212; EG-247 Signals and Systems</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/mystnb.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/4/worksheet17.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Worksheet 18" href="../../dft/1/worksheet18.html" />
+    <link rel="prev" title="Worksheet 16" href="../3/worksheet16.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cpjobling.github.io/eg-247-textbook/dt_systems/4/worksheet17.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Worksheet 17" />
+<meta property="og:description" content="Worksheet 17  To accompany Chapter 6.4 Models of Discrete-Time Systems  Colophon  This worksheet can be downloaded as a PDF file. We will step through this work" />
+
+
+<meta name="twitter:card" content="summary">
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">EG-247 Signals and Systems</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../introduction/index.html">
+   Introducing Signals and Systems
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../elementary_signals/index.html">
+   Elementary Signals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../laplace_transform/index.html">
+   Laplace Transforms and their Applications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fourier_series/index.html">
+   Fourier Series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fourier_transform/index.html">
+   Fourier Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Sampled Data Systems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../dft/index.html">
+   Discrete Fourier Transform
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FAQs
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../FAQS/faq.html">
+   Answers to Frequently Asked Questions
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  In Class Worksheets
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="../../worksheets/index.html">
+   Worksheets
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../introduction/worksheet1.html">
+     Worksheet 1 Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../introduction/worksheet2.html">
+     Worksheet 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../elementary_signals/worksheet3.html">
+     Worksheet 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../elementary_signals/worksheet3.html#elementary-signals">
+     Elementary Signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/1/worksheet4.html">
+     Worksheet 4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/1/worksheet4.html#the-laplace-and-inverse-laplace-transforms">
+     The Laplace and inverse Laplace transforms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/1/worksheet4.html#id2">
+     The Laplace and inverse Laplace transforms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/1/worksheet4.html#id4">
+     The Laplace and inverse Laplace transforms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/1/worksheet4.html#id6">
+     The Laplace and inverse Laplace transforms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/2/worksheet5.html">
+     Worksheet 5 Inverse Laplace Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/3/worksheet6.html">
+     Worksheet 6 Using Laplace Transforms for Circuit Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/4/worksheet7.html">
+     Worksheet 7 Transfer Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/5/worksheet8.html">
+     Worksheet 8 Impulse Response and Time Convolution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_series/1/worksheet9.html">
+     Worksheet 9 Trigonometric Fourier Series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_series/2/worksheet10.html">
+     Worksheet 10 Exponential Fourier Series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_series/3/worksheet11.html">
+     Worksheet 11 Line Spectra and their Applications
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_transform/1/worksheet12.html">
+     Worksheet 12 Defining the Fourier Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_transform/2/worksheet13.html">
+     Worksheet 13 Fourier transforms of commonly occuring signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_transform/3/worksheet14.html">
+     Worksheet 14 Fourier Transforms for Circuit and LTI Systems Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_transform/4/worksheet15.html">
+     Worksheet 15 Introduction to Filters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3/worksheet16.html">
+     Worksheet 16 The Inverse Z-Transform
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Worksheet 17 Models of DT Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../dft/1/worksheet18.html">
+     Worksheet 18 The Discrete-time Fourier Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../dft/2/worksheet19.html">
+     Worksheet 19 The Fast Fourier Transform
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Homework
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../homework/index.html">
+   Homework
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Lab Exercises
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../labs/index.html">
+   Laboratory Exercises
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Project
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../labs/project/index.html">
+   Project
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Answers to Selected problems
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../introduction/answers.html">
+   Worksheet 2
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Setting up your own version of this book
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../setup/index.html">
+   Setting up your own version of this book
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by 
+ <a href="https://jupyterbook.org">
+  Jupyter Book
+</a>
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/dt_systems/4/worksheet17.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cpjobling/eg-247-textbook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Fdt_systems/4/worksheet17.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/cpjobling/eg-247-textbook/edit/master/dt_systems/4/worksheet17.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#to-accompany-chapter-6-4-models-of-discrete-time-systems">
+   To accompany Chapter 6.4 Models of Discrete-Time Systems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#colophon">
+   Colophon
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#agenda">
+   Agenda
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#discrete-time-systems">
+   Discrete Time Systems
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-5">
+     Example 5
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-transfer-function">
+     5.1. The transfer function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-dt-impulse-response">
+     5.2. The DT impulse response
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#matlab-solution">
+     MATLAB Solution
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#transfer-function">
+       Transfer function
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#poles-and-residues">
+       Poles and residues
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#impulse-response">
+       Impulse Response
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#plot-the-response">
+       Plot the response
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#response-as-stepwise-continuous-y-t">
+       Response as stepwise continuous y(t)
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-dt-step-response">
+     5.3. The DT step response
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     MATLAB Solution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#results">
+     Results
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modelling-dt-systems-in-matlab-and-simulink">
+   Modelling DT systems in MATLAB and Simulink
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#matlab">
+     MATLAB
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simulink-model">
+     Simulink Model
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Results
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#converting-continuous-time-systems-to-discrete-time-systems">
+   Converting Continuous Time Systems to Discrete Time Systems
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#continuous-system-equivalents">
+     Continuous System Equivalents
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#matlab-c2d-function">
+     MATLAB c2d function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-6">
+     Example 6
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution">
+     Solution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bode-plot">
+     Bode plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sampling-frequency">
+     Sampling Frequency
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#digital-butterworth">
+     Digital Butterworth
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-response">
+     Step response
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#algorithm">
+     Algorithm
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#block-diagram-of-the-digital-bw-filter">
+     Block Diagram of the digital BW filter
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#as-simulink-model">
+       As Simulink Model
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#convert-to-code">
+     Convert to code
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comments">
+     Comments
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="worksheet-17">
+<h1>Worksheet 17<a class="headerlink" href="#worksheet-17" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="to-accompany-chapter-6-4-models-of-discrete-time-systems">
+<h2>To accompany Chapter 6.4 Models of Discrete-Time Systems<a class="headerlink" href="#to-accompany-chapter-6-4-models-of-discrete-time-systems" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="colophon">
+<h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this headline">¶</a></h2>
+<p>This worksheet can be downloaded as a <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet17.pdf">PDF file</a>. We will step through this worksheet in class.</p>
+<p>An annotatable copy of the notes for this presentation will be distributed before the second class meeting as <strong>Worksheet 9</strong> in the <strong>Week 4: Classroom Activities</strong> section of the Canvas site. I will also distribute a copy to your personal <strong>Worksheets</strong> section of the <strong>OneNote Class Notebook</strong> so that you can add your own notes using OneNote.</p>
+<p>You are expected to have at least watched the video presentation of <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/4/dt_models">Chapter 6.4</a> of the <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook">notes</a> before coming to class. If you haven’t watch it afterwards!</p>
+<p>After class, the lecture recording and the annotated version of the worksheets will be made available through Canvas.</p>
+</div>
+<div class="section" id="agenda">
+<h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Discrete Time Systems (Notes)</p></li>
+</ul>
+<ul class="simple">
+<li><p>Transfer Functions in the Z-Domain (Notes)</p></li>
+</ul>
+<ul class="simple">
+<li><p>Modelling digital systems in MATLAB/Simulink</p></li>
+</ul>
+<ul class="simple">
+<li><p>Continuous System Equivalents</p></li>
+</ul>
+<ul class="simple">
+<li><p>In-class demonstration: Digital Butterworth Filter</p></li>
+</ul>
+</div>
+<div class="section" id="discrete-time-systems">
+<h2>Discrete Time Systems<a class="headerlink" href="#discrete-time-systems" title="Permalink to this headline">¶</a></h2>
+<p>In the lecture that introduced the z-transform we talked about the representation of a discrete-time (DT) system by the model shown below:</p>
+<img src="pictures/ct-to-dt.png">
+<p>In this session, we want to explore the contents of the central block.</p>
+<div class="section" id="example-5">
+<h3>Example 5<a class="headerlink" href="#example-5" title="Permalink to this headline">¶</a></h3>
+<p>Karris Example 9.10:</p>
+<p>The difference equation describing the input-output relationship of a DT system with zero initial conditions, is:</p>
+<div class="math notranslate nohighlight">
+\[y[n] - 0.5 y[n-1] + 0.125 y[n-2] = x[n] + x[n -1]\]</div>
+<p>Compute:</p>
+<ol class="simple">
+<li><p>The transfer function <span class="math notranslate nohighlight">\(H(z)\)</span></p></li>
+<li><p>The DT impulse response <span class="math notranslate nohighlight">\(h[n]\)</span></p></li>
+<li><p>The response <span class="math notranslate nohighlight">\(y[n]\)</span> when the input <span class="math notranslate nohighlight">\(x[n]\)</span> is the DT unit step <span class="math notranslate nohighlight">\(u_0[n]\)</span></p></li>
+</ol>
+</div>
+<div class="section" id="the-transfer-function">
+<h3>5.1. The transfer function<a class="headerlink" href="#the-transfer-function" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[H(z) = \frac{Y(z)}{U(z)} = ...?\]</div>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></div>
+<div class="section" id="the-dt-impulse-response">
+<h3>5.2. The DT impulse response<a class="headerlink" href="#the-dt-impulse-response" title="Permalink to this headline">¶</a></h3>
+<p>Start with:</p>
+<div class="math notranslate nohighlight">
+\[\frac{H(z)}{z} = \frac{z - 1}{z^2 + 0.5 z + 0.125}\]</div>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></div>
+<div class="section" id="matlab-solution">
+<h3>MATLAB Solution<a class="headerlink" href="#matlab-solution" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">clear</span> <span class="nb">all</span>
+<span class="n">cd</span> <span class="n">matlab</span>
+<span class="n">pwd</span>
+<span class="nb">format</span> <span class="n">compact</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>See <span class="xref myst">dtm_ex1_2.mlx</span>. (Also available as <span class="xref myst">dtm_ex1_2.m</span>.)</p>
+<p>The difference equation describing the input-output relationship of the DT system with zero initial conditions, is:</p>
+<div class="math notranslate nohighlight">
+\[y[n] - 0.5 y[n-1] + 0.125 y[n-2] = x[n] + x[n -1]\]</div>
+<div class="section" id="transfer-function">
+<h4>Transfer function<a class="headerlink" href="#transfer-function" title="Permalink to this headline">¶</a></h4>
+<p>Numerator <span class="math notranslate nohighlight">\(z + 1\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Nz</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Denominator <span class="math notranslate nohighlight">\(z^2 - 0.5 z + 0.125\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Dz</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="o">-</span><span class="mf">0.5</span> <span class="mf">0.125</span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="poles-and-residues">
+<h4>Poles and residues<a class="headerlink" href="#poles-and-residues" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">residue</span><span class="p">(</span><span class="n">Nz</span><span class="p">,</span><span class="n">Dz</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="impulse-response">
+<h4>Impulse Response<a class="headerlink" href="#impulse-response" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Hz</span> <span class="o">=</span> <span class="n">tf</span><span class="p">(</span><span class="n">Nz</span><span class="p">,</span><span class="n">Dz</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">hn</span> <span class="o">=</span> <span class="n">impulse</span><span class="p">(</span><span class="n">Hz</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="plot-the-response">
+<h4>Plot the response<a class="headerlink" href="#plot-the-response" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stem</span><span class="p">([</span><span class="mi">0</span><span class="p">:</span><span class="mi">15</span><span class="p">],</span> <span class="n">hn</span><span class="p">)</span>
+<span class="n">grid</span>
+<span class="n">title</span><span class="p">(</span><span class="s1">&#39;Example 5 - Part 2&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Impulse response h[n]&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="response-as-stepwise-continuous-y-t">
+<h4>Response as stepwise continuous y(t)<a class="headerlink" href="#response-as-stepwise-continuous-y-t" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">impulse</span><span class="p">(</span><span class="n">Hz</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">grid</span>
+<span class="n">title</span><span class="p">(</span><span class="s1">&#39;Example 5 - Part 2 - As Analogue Signal&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;nTs [s]&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Impulse response h(t)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="the-dt-step-response">
+<h3>5.3. The DT step response<a class="headerlink" href="#the-dt-step-response" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[Y(z) = H(z)X(z)\]</div>
+<div class="math notranslate nohighlight">
+\[u_0[n] \Leftrightarrow \frac{z}{z - 1}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{lcl}
+Y(z) = H(z){U_0}(z) &amp;=&amp; \frac{z^2 + z}{z^2 + 0.5z + 0.125}.\frac{z}{z - 1}\\
+ &amp; = &amp; \frac{z(z^2 + z)}{(z^2 + 0.5z + 0.125)(z - 1)}
+\end{array}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{Y(z)}{z} = \frac{z^2 + z}{(z^2 + 0.5 z + 0.125)(z - 1)}\]</div>
+<p>Solved by inverse Z-transform.</p>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></div>
+<div class="section" id="id1">
+<h3>MATLAB Solution<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>See <span class="xref myst">dtm_ex1_3.mlx</span>. (Also available as <span class="xref myst">dtm_ex1_3.m</span>.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span> <span class="n">dtm_ex1_3</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="results">
+<h3>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h3>
+<img src="pictures/dtm_ex1_3_1.png"></div>
+</div>
+<div class="section" id="modelling-dt-systems-in-matlab-and-simulink">
+<h2>Modelling DT systems in MATLAB and Simulink<a class="headerlink" href="#modelling-dt-systems-in-matlab-and-simulink" title="Permalink to this headline">¶</a></h2>
+<p>We will consider some examples in class</p>
+<div class="section" id="matlab">
+<h3>MATLAB<a class="headerlink" href="#matlab" title="Permalink to this headline">¶</a></h3>
+<p>Code extracted from <span class="xref myst">dtm_ex1_3.m</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ts</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">tf</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="n">Ts</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Hz</span> <span class="o">=</span> <span class="p">(</span><span class="n">z</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">z</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">z</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">z</span> <span class="o">+</span> <span class="mf">0.125</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">step</span><span class="p">(</span><span class="n">Hz</span><span class="p">)</span>
+<span class="n">grid</span>
+<span class="n">title</span><span class="p">(</span><span class="s1">&#39;Example 1 - Part 3 - As Analogue Signal&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;nTs [s]&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Step response y(t)&#39;</span><span class="p">)</span>
+<span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">3.5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="simulink-model">
+<h3>Simulink Model<a class="headerlink" href="#simulink-model" title="Permalink to this headline">¶</a></h3>
+<p>See <span class="xref myst">dtm.slx</span>:</p>
+<img src="pictures/simulink_model.png"><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dtm</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h4>Results<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<img src="pictures/scope.png"></div>
+</div>
+</div>
+<div class="section" id="converting-continuous-time-systems-to-discrete-time-systems">
+<h2>Converting Continuous Time Systems to Discrete Time Systems<a class="headerlink" href="#converting-continuous-time-systems-to-discrete-time-systems" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="continuous-system-equivalents">
+<h3>Continuous System Equivalents<a class="headerlink" href="#continuous-system-equivalents" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>There is no digital system that uniquely represents a continuous system</p></li>
+<li><p>This is because as we are sampling, we only have knowledge of signals being processed at the sampling instants, and need to <em>reconstruct</em> the inter-sample behaviour.</p></li>
+<li><p>In practice, only a small number of transformations are used.</p></li>
+<li><p>The derivation of these is beyond the scope of this module, but here we’ll demonstrate the ones that MATLAB provides in a function called <code class="docutils literal notranslate"><span class="pre">c2d</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="matlab-c2d-function">
+<h3>MATLAB c2d function<a class="headerlink" href="#matlab-c2d-function" title="Permalink to this headline">¶</a></h3>
+<p>Let’s see what the help function says:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">help</span> <span class="n">c2d</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">doc</span> <span class="n">c2d</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="example-6">
+<h3>Example 6<a class="headerlink" href="#example-6" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Design a 2nd-order butterworth low-pass anti-aliasing filter with transfer function <span class="math notranslate nohighlight">\(H(s)\)</span> for use in sampling music.</p></li>
+<li><p>The cut-off frequency <span class="math notranslate nohighlight">\(\omega_c = 20\)</span> kHz and the filter should have an attenuation of at least <span class="math notranslate nohighlight">\(-80\)</span> dB in the stop band.</p></li>
+<li><p>Choose a suitable sampling frequency for the audio signal and give the transfer function <span class="math notranslate nohighlight">\(H(z)\)</span> and an algorithm to implement <span class="math notranslate nohighlight">\(h[n]\)</span></p></li>
+</ul>
+</div>
+<div class="section" id="solution">
+<h3>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h3>
+<p>See <span class="xref myst">digi_butter.mlx</span>.</p>
+<p>First determine the cut-off frequency <span class="math notranslate nohighlight">\(\omega_c\)</span></p>
+<div class="math notranslate nohighlight">
+\[\omega_c = 2\pi f_c = 2\times \pi \times 20\times 10^3\;\mathrm{rad/s}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wc</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="mf">20e3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="math notranslate nohighlight">
+\[\omega_c = 125.66\times 10^3\;\mathrm{rad/s}\]</div>
+<p>From the lecture on filters, we know the 2nd-order butterworth filter has transfer function:</p>
+<div class="math notranslate nohighlight">
+\[H(s) = \frac{Y(s)}{U(s)} = \frac{\omega _c^2}{s^2 + \omega _c\sqrt 2 \,s + \omega _c^2}\]</div>
+<p>Substituting for $\omega_c = 125.6637\times 10^3 $ this is …?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Hs</span> <span class="o">=</span> <span class="n">tf</span><span class="p">(</span><span class="n">wc</span><span class="o">^</span><span class="mi">2</span><span class="p">,[</span><span class="mi">1</span> <span class="n">wc</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">wc</span><span class="o">^</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="math notranslate nohighlight">
+\[H(s) = \frac{15.79 \times 10^9}{s^2 + 177.7 \times 10^3 s + 15.79 \times 10^9}\]</div>
+</div>
+<div class="section" id="bode-plot">
+<h3>Bode plot<a class="headerlink" href="#bode-plot" title="Permalink to this headline">¶</a></h3>
+<p>MATLAB:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bode</span><span class="p">(</span><span class="n">Hs</span><span class="p">,{</span><span class="mf">1e4</span><span class="p">,</span><span class="mf">1e8</span><span class="p">})</span>
+<span class="n">grid</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="sampling-frequency">
+<h3>Sampling Frequency<a class="headerlink" href="#sampling-frequency" title="Permalink to this headline">¶</a></h3>
+<p>From the bode diagram, the frequency at which <span class="math notranslate nohighlight">\(|H(j\omega)|\)</span> is <span class="math notranslate nohighlight">\(-80\)</span> dB is approx <span class="math notranslate nohighlight">\(12.6\times 10^6\)</span> rad/s.</p>
+<p>To avoid aliasing, we should choose a sampling frequency twice this = ?</p>
+<p><span class="math notranslate nohighlight">\(\omega_s = 2\times 12.6\times 10^6\)</span> rad/s.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ws</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span> <span class="mf">12.6e6</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>So</p>
+<p><span class="math notranslate nohighlight">\(\omega_s = 25.2\times 10^6\)</span> rad/s.</p>
+<p>Sampling frequency (<span class="math notranslate nohighlight">\(f_s\)</span>) in Hz  = ?</p>
+<div class="math notranslate nohighlight">
+\[f_s = \omega_s/(2\pi)\;\mathrm{Mhz}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fs</span> <span class="o">=</span> <span class="n">ws</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="math notranslate nohighlight">
+\[f_s = 40.11\;\mathrm{Mhz}\]</div>
+<p>Sampling time <span class="math notranslate nohighlight">\(T_s = ?\)</span></p>
+<p><span class="math notranslate nohighlight">\(T_s = 1/fs\;\mathrm{s}\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ts</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">fs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="math notranslate nohighlight">
+\[T_s = 1/f_s \approx 0.25\;\mu\mathrm{s}\]</div>
+</div>
+<div class="section" id="digital-butterworth">
+<h3>Digital Butterworth<a class="headerlink" href="#digital-butterworth" title="Permalink to this headline">¶</a></h3>
+<p>zero-order-hold equivalent</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Hz</span> <span class="o">=</span> <span class="n">c2d</span><span class="p">(</span><span class="n">Hs</span><span class="p">,</span> <span class="n">Ts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="step-response">
+<h3>Step response<a class="headerlink" href="#step-response" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">step</span><span class="p">(</span><span class="n">Hz</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="algorithm">
+<h3>Algorithm<a class="headerlink" href="#algorithm" title="Permalink to this headline">¶</a></h3>
+<p>From previous result:</p>
+<div class="math notranslate nohighlight">
+\[H(z) = \frac{Y(z)}{U(z)} = \frac{486.6\times 10^{-6}z +  476.5\times 10^{-6}}{z^2 - 1.956z + 0.9567}\]</div>
+<p>Dividing top and bottom by <span class="math notranslate nohighlight">\(z^2\)</span> …</p>
+<div class="math notranslate nohighlight">
+\[H(z) = \frac{Y(z)}{U(z)} = \frac{486.6\times 10^{-6}z^{-1} +  476.5\times 10^{-6}z^{-2}}{1 - 1.956z^{-1} + 0.9567z^{-2}}\]</div>
+<p>expanding out …</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{l}
+Y(z) - 1.956{z^{ - 1}}Y(z) + 0.9567{z^{ - 2}}Y(z) = \\
+\quad 486.6 \times {10^{ - 6}}{z^{ - 1}}U(z) + 476.5 \times {10^{ - 6}}{z^{ - 2}}U(z)
+\end{array}\end{split}\]</div>
+<p>Inverse z-transform gives …</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{l}
+y[n] - 1.956y[n - 1] + 0.9567y[n - 2] = \\
+\quad 486.6 \times {10^{ - 6}}u[n - 1] + 476.5 \times {10^{ - 6}}u[n - 2]
+\end{array}\end{split}\]</div>
+<p>in algorithmic form (compute <span class="math notranslate nohighlight">\(y[n]\)</span> from past values of <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(y\)</span>) …</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{l}
+y[n] = 1.956y[n - 1] - 0.9567y[n - 2] + 486.6 \times {10^{ - 6}}u[n - 1] + ...\\
+\quad 476.5 \times {10^{ - 6}}u[n - 2]
+\end{array}\end{split}\]</div>
+</div>
+<div class="section" id="block-diagram-of-the-digital-bw-filter">
+<h3>Block Diagram of the digital BW filter<a class="headerlink" href="#block-diagram-of-the-digital-bw-filter" title="Permalink to this headline">¶</a></h3>
+<p><img alt="digital filter" src="../../_images/digifilter-bd.png" /></p>
+<div class="section" id="as-simulink-model">
+<h4>As Simulink Model<a class="headerlink" href="#as-simulink-model" title="Permalink to this headline">¶</a></h4>
+<p><span class="xref myst">digifilter.slx</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span> <span class="n">digifilter</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="convert-to-code">
+<h3>Convert to code<a class="headerlink" href="#convert-to-code" title="Permalink to this headline">¶</a></h3>
+<p>To implement:
+<span class="math notranslate nohighlight">\($y[n] = 1.956 y[n-1] - 0.9567 y[n - 2] + 486.6\times 10^{-6} u[n-1] + 476.5\times 10^{-6} u[n-2]\)</span>$</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>/* Initialize */
+Ts = 2.4933e-07; /* more probably some fraction of clock speed */
+ynm1 = 0; ynm2 = 0; unm1 = 0; unm2 = 0;
+while (true) {
+    un = read_adc;
+    yn = 1.956*ynm1 - 0.9567*ynm2 + 486.6e-6*unm1 + 476.5e-6*unm2;
+    write_dac(yn);
+    /* store past values */
+    ynm2 = ynm1; ynm1 = yn;
+    unm2 = unm1; unm1 = un;
+    wait(Ts);
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="comments">
+<h3>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h3>
+<p>PC soundcards can sample audio at 44.1 kHz so this implies that the anti-aliasing filter is much sharper than this one as <span class="math notranslate nohighlight">\(f_s/2 = 22.05\)</span> kHz.</p>
+<p>You might wish to find out what order butterworth filter would be needed to have <span class="math notranslate nohighlight">\(f_c = 20\)</span> kHz and <span class="math notranslate nohighlight">\(f_{\mathrm{stop}}\)</span> of 22.05 kHz.</p>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../3/worksheet16.html" title="previous page">Worksheet 16</a>
+    <a class='right-next' id="next-link" href="../../dft/1/worksheet18.html" title="next page">Worksheet 18</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dr Chris P. Jobling<br/>
+        
+            &copy; Copyright 2020.<br/>
+          <div class="extra_footer">
+            This page was created by 
+<a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
+  Dr Chris P. Jobling
+</a> 
+for 
+<a href="https://www.swansea.ac.uk">
+  Swansea University
+</a>.
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    
+  </body>
+</html>

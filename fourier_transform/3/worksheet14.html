@@ -1,0 +1,964 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Worksheet 14 &#8212; EG-247 Signals and Systems</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/mystnb.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/3/worksheet14.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Worksheet 15" href="../4/worksheet15.html" />
+    <link rel="prev" title="Worksheet 13" href="../2/worksheet13.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cpjobling.github.io/eg-247-textbook/fourier_transform/3/worksheet14.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Worksheet 14" />
+<meta property="og:description" content="Worksheet 14  To accompany Chapter 5.3 Fourier Transforms for Circuit and LTI Systems Analysis  This worksheet can be downloaded as a PDF file. We will step thr" />
+
+
+<meta name="twitter:card" content="summary">
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">EG-247 Signals and Systems</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../introduction/index.html">
+   Introducing Signals and Systems
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../elementary_signals/index.html">
+   Elementary Signals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../laplace_transform/index.html">
+   Laplace Transforms and their Applications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fourier_series/index.html">
+   Fourier Series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Fourier Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../dt_systems/index.html">
+   Sampled Data Systems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../dft/index.html">
+   Discrete Fourier Transform
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FAQs
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../FAQS/faq.html">
+   Answers to Frequently Asked Questions
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  In Class Worksheets
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="../../worksheets/index.html">
+   Worksheets
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../introduction/worksheet1.html">
+     Worksheet 1 Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../introduction/worksheet2.html">
+     Worksheet 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../elementary_signals/worksheet3.html">
+     Worksheet 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../elementary_signals/worksheet3.html#elementary-signals">
+     Elementary Signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/1/worksheet4.html">
+     Worksheet 4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/1/worksheet4.html#the-laplace-and-inverse-laplace-transforms">
+     The Laplace and inverse Laplace transforms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/1/worksheet4.html#id2">
+     The Laplace and inverse Laplace transforms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/1/worksheet4.html#id4">
+     The Laplace and inverse Laplace transforms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/1/worksheet4.html#id6">
+     The Laplace and inverse Laplace transforms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/2/worksheet5.html">
+     Worksheet 5 Inverse Laplace Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/3/worksheet6.html">
+     Worksheet 6 Using Laplace Transforms for Circuit Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/4/worksheet7.html">
+     Worksheet 7 Transfer Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/5/worksheet8.html">
+     Worksheet 8 Impulse Response and Time Convolution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_series/1/worksheet9.html">
+     Worksheet 9 Trigonometric Fourier Series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_series/2/worksheet10.html">
+     Worksheet 10 Exponential Fourier Series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_series/3/worksheet11.html">
+     Worksheet 11 Line Spectra and their Applications
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1/worksheet12.html">
+     Worksheet 12 Defining the Fourier Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2/worksheet13.html">
+     Worksheet 13 Fourier transforms of commonly occuring signals
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Worksheet 14 Fourier Transforms for Circuit and LTI Systems Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4/worksheet15.html">
+     Worksheet 15 Introduction to Filters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../dt_systems/3/worksheet16.html">
+     Worksheet 16 The Inverse Z-Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../dt_systems/4/worksheet17.html">
+     Worksheet 17 Models of DT Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../dft/1/worksheet18.html">
+     Worksheet 18 The Discrete-time Fourier Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../dft/2/worksheet19.html">
+     Worksheet 19 The Fast Fourier Transform
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Homework
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../homework/index.html">
+   Homework
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Lab Exercises
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../labs/index.html">
+   Laboratory Exercises
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Project
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../labs/project/index.html">
+   Project
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Answers to Selected problems
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../introduction/answers.html">
+   Worksheet 2
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Setting up your own version of this book
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../setup/index.html">
+   Setting up your own version of this book
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by 
+ <a href="https://jupyterbook.org">
+  Jupyter Book
+</a>
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/fourier_transform/3/worksheet14.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cpjobling/eg-247-textbook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Ffourier_transform/3/worksheet14.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/cpjobling/eg-247-textbook/edit/master/fourier_transform/3/worksheet14.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#to-accompany-chapter-5-3-fourier-transforms-for-circuit-and-lti-systems-analysis">
+   To accompany Chapter 5.3 Fourier Transforms for Circuit and LTI Systems Analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-system-function">
+   The System Function
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#system-response-from-system-impulse-response">
+     System response from system impulse response
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#obtaining-system-response">
+     Obtaining system response
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examples">
+   Examples
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1">
+     Example 1
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#solution-to-example-1">
+       Solution to example 1
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#matlab-verification-of-example-1">
+       Matlab verification of example 1
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2">
+     Example 2
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#solution-to-example-2">
+       Solution to example 2
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#matlab-verification-of-example-2">
+       Matlab verification of example 2
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-3">
+     Example 3
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#solution-to-example-3">
+       Solution to example 3
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#matlab-verification-of-example-3">
+       Matlab verification of example 3
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-4">
+     Example 4
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#solution-to-example-4">
+       Solution to example 4
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#matlab-verification-of-example-4">
+       Matlab verification of example 4
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solutions">
+   Solutions
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="worksheet-14">
+<h1>Worksheet 14<a class="headerlink" href="#worksheet-14" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="to-accompany-chapter-5-3-fourier-transforms-for-circuit-and-lti-systems-analysis">
+<h2>To accompany Chapter 5.3 Fourier Transforms for Circuit and LTI Systems Analysis<a class="headerlink" href="#to-accompany-chapter-5-3-fourier-transforms-for-circuit-and-lti-systems-analysis" title="Permalink to this headline">¶</a></h2>
+<p>This worksheet can be downloaded as a <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet14.pdf">PDF file</a>. We will step through this worksheet in class.</p>
+<p>An annotatable copy of the notes for this presentation will be distributed before the second class meeting as <strong>Worksheet 14</strong> in the <strong>Week 7: Classroom Activities</strong> section of the Canvas site. I will also distribute a copy to your personal <strong>Worksheets</strong> section of the <strong>OneNote Class Notebook</strong> so that you can add your own notes using OneNote.</p>
+<p>You are expected to have at least watched the video presentation of <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/3/ft3">Chapter 5.3</a> of the <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/">notes</a> before coming to class. If you haven’t watch it afterwards!</p>
+<p>After class, the lecture recording and the annotated version of the worksheets will be made available through Canvas.</p>
+</div>
+<div class="section" id="the-system-function">
+<h2>The System Function<a class="headerlink" href="#the-system-function" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="system-response-from-system-impulse-response">
+<h3>System response from system impulse response<a class="headerlink" href="#system-response-from-system-impulse-response" title="Permalink to this headline">¶</a></h3>
+<p>Recall that the convolution integral of a system with impulse response <span class="math notranslate nohighlight">\(h(t)\)</span> and input <span class="math notranslate nohighlight">\(u(t)\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[h(t)*u(t)=\int_{-\infty}^{\infty}h(t-\tau)u(\tau)\,d\tau.\]</div>
+<p>We let</p>
+<div class="math notranslate nohighlight">
+\[g(t) = h(t)*u(t)\]</div>
+<p>Then by the time convolution property</p>
+<div class="math notranslate nohighlight">
+\[h(t)*u(t) = g(t) \Leftrightarrow G(\omega) = H(\omega).U(\omega)\]</div>
+<p>We call <span class="math notranslate nohighlight">\(H(\omega)\)</span> the <em>system function</em>.</p>
+<p>We note that the system function <span class="math notranslate nohighlight">\(H(\omega)\)</span> and the impulse response <span class="math notranslate nohighlight">\(h(t)\)</span> form the Fourier transform pair</p>
+<div class="math notranslate nohighlight">
+\[h(t) \Leftrightarrow H(\omega)\]</div>
+</div>
+<div class="section" id="obtaining-system-response">
+<h3>Obtaining system response<a class="headerlink" href="#obtaining-system-response" title="Permalink to this headline">¶</a></h3>
+<p>If we know the impulse resonse <span class="math notranslate nohighlight">\(h(t)\)</span>, we can compute the system response <span class="math notranslate nohighlight">\(g(t)\)</span> of any input <span class="math notranslate nohighlight">\(u(t)\)</span> by multiplying the Fourier transforms of <span class="math notranslate nohighlight">\(H(\omega)\)</span> and <span class="math notranslate nohighlight">\(U(\omega)\)</span> to obtain <span class="math notranslate nohighlight">\(G(\omega)\)</span>. Then we take the inverse Fourier transform of <span class="math notranslate nohighlight">\(G(\omega)\)</span> to obtain the response <span class="math notranslate nohighlight">\(g(t)\)</span>.</p>
+<ol class="simple">
+<li><p>Transform <span class="math notranslate nohighlight">\(h(t) \to H(\omega)\)</span></p></li>
+<li><p>Transform <span class="math notranslate nohighlight">\(u(t) \to U(\omega)\)</span></p></li>
+<li><p>Compute <span class="math notranslate nohighlight">\(G(\omega) = H(\omega).U(\omega)\)</span></p></li>
+<li><p>Find <span class="math notranslate nohighlight">\(\mathcal{F}^{-1}\left\{G(\omega)\right\} \to g(t)\)</span></p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="example-1">
+<h3>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h3>
+<p>Karris example 8.8: for the linear network shown below, the impulse response is <span class="math notranslate nohighlight">\(h(t)=3e^{-2t}\)</span>. Use the Fourier transform to compute the response <span class="math notranslate nohighlight">\(y(t)\)</span> when the input <span class="math notranslate nohighlight">\(u(t)=2[u_0(t)-u_0(t-3)]\)</span>. Verify the result with MATLAB.</p>
+<img src="pictures/example1.png"><div class="section" id="solution-to-example-1">
+<h4>Solution to example 1<a class="headerlink" href="#solution-to-example-1" title="Permalink to this headline">¶</a></h4>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></div>
+<div class="section" id="matlab-verification-of-example-1">
+<h4>Matlab verification of example 1<a class="headerlink" href="#matlab-verification-of-example-1" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span> <span class="n">t</span> <span class="n">w</span>
+<span class="n">U1</span> <span class="o">=</span> <span class="n">fourier</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">H</span> <span class="o">=</span> <span class="n">fourier</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Y1</span><span class="o">=</span><span class="n">simplify</span><span class="p">(</span><span class="n">H</span><span class="o">*</span><span class="n">U1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y1</span> <span class="o">=</span> <span class="n">simplify</span><span class="p">(</span><span class="n">ifourier</span><span class="p">(</span><span class="n">Y1</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">t</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Get y2</p>
+<p>Substitute <span class="math notranslate nohighlight">\(t-3\)</span> into <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y2</span> <span class="o">=</span> <span class="n">subs</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">t</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">y1</span> <span class="o">-</span> <span class="n">y2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot result</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ezplot</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s1">&#39;Solution to Example 1&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y(t)&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t [s]&#39;</span><span class="p">)</span>
+<span class="n">grid</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>See <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/content/fourier_transform/3/ft3_ex1.m">ft3_ex1.m</a></p>
+<p>Result is equivalent to:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>y = 3*heaviside(t) - 3*heaviside(t - 3) + 3*heaviside(t - 3)*exp(6 - 2*t) - 3*exp(-2*t)*heaviside(t)
+</pre></div>
+</div>
+<p>Which after gathering terms gives</p>
+<div class="math notranslate nohighlight">
+\[y(t) = 3(1 - 3e^{-2t})u_0(t) - 3(1 - 3e^{-2(t-3)})u_0(t-3)\]</div>
+</div>
+</div>
+<div class="section" id="example-2">
+<h3>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h3>
+<p>Karris example 8.9: for the circuit shown below, use the Fourier transfrom method, and the system function <span class="math notranslate nohighlight">\(H(\omega)\)</span> to compute <span class="math notranslate nohighlight">\(V_L(t)\)</span>. Assume <span class="math notranslate nohighlight">\(i_L(0^-)=0\)</span>. Verify the result with Matlab.</p>
+<img src="pictures/example2.png" width="50%"><div class="section" id="solution-to-example-2">
+<h4>Solution to example 2<a class="headerlink" href="#solution-to-example-2" title="Permalink to this headline">¶</a></h4>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></div>
+<div class="section" id="matlab-verification-of-example-2">
+<h4>Matlab verification of example 2<a class="headerlink" href="#matlab-verification-of-example-2" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span> <span class="n">t</span> <span class="n">w</span>
+<span class="n">H</span> <span class="o">=</span> <span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">/</span><span class="p">(</span><span class="n">j</span><span class="o">*</span><span class="n">w</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Vin</span> <span class="o">=</span> <span class="n">fourier</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Vout</span><span class="o">=</span><span class="n">simplify</span><span class="p">(</span><span class="n">H</span><span class="o">*</span><span class="n">Vin</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vout</span> <span class="o">=</span> <span class="n">simplify</span><span class="p">(</span><span class="n">ifourier</span><span class="p">(</span><span class="n">Vout</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">t</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot result</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ezplot</span><span class="p">(</span><span class="n">vout</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s1">&#39;Solution to Example 2&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;v_</span><span class="si">{out}</span><span class="s1">(t) [V]&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t [s]&#39;</span><span class="p">)</span>
+<span class="n">grid</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>See <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/content/fourier_transform/3/ft3_ex2.m">ft3_ex2.m</a></p>
+<p>Result is equivalent to:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>vout = -5*exp(-3*t)*heaviside(t)*(2*exp(t) - 3)
+</pre></div>
+</div>
+<p>Which after gathering terms gives</p>
+<div class="math notranslate nohighlight">
+\[v_{\mathrm{out}} = 5\left(3e^{-3t} - 2e^{-2t}\right)u_0(t)\]</div>
+</div>
+</div>
+<div class="section" id="example-3">
+<h3>Example 3<a class="headerlink" href="#example-3" title="Permalink to this headline">¶</a></h3>
+<p>Karris example 8.10: for the linear network shown below, the input-output relationship is:</p>
+<div class="math notranslate nohighlight">
+\[\frac{d}{dt}v_{\mathrm{out}}+4v_{\mathrm{out}}=10v_{\mathrm{in}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(v_{\mathrm{in}}=3e^{-2t}\)</span>. Use the Fourier transform method, and the system function <span class="math notranslate nohighlight">\(H(\omega)\)</span> to compute the output <span class="math notranslate nohighlight">\(v_{\mathrm{out}}\)</span>. Verify the result with Matlab.</p>
+<img src="pictures/example3.jpg" width="75%"><div class="section" id="solution-to-example-3">
+<h4>Solution to example 3<a class="headerlink" href="#solution-to-example-3" title="Permalink to this headline">¶</a></h4>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></div>
+<div class="section" id="matlab-verification-of-example-3">
+<h4>Matlab verification of example 3<a class="headerlink" href="#matlab-verification-of-example-3" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span> <span class="n">t</span> <span class="n">w</span>
+<span class="n">H</span> <span class="o">=</span> <span class="mi">10</span><span class="o">/</span><span class="p">(</span><span class="n">j</span><span class="o">*</span><span class="n">w</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Vin</span> <span class="o">=</span> <span class="n">fourier</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Vout</span><span class="o">=</span><span class="n">simplify</span><span class="p">(</span><span class="n">H</span><span class="o">*</span><span class="n">Vin</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vout</span> <span class="o">=</span> <span class="n">simplify</span><span class="p">(</span><span class="n">ifourier</span><span class="p">(</span><span class="n">Vout</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">t</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot result</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ezplot</span><span class="p">(</span><span class="n">vout</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s1">&#39;Solution to Example 3&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;v_</span><span class="si">{out}</span><span class="s1">(t) [V]&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t [s]&#39;</span><span class="p">)</span>
+<span class="n">grid</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>See <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/content/fourier_transform/3/ft3_ex3.m">ft3_ex3.m</a></p>
+<p>Result is equiavlent to:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>15*exp(-4*t)*heaviside(t)*(exp(2*t) - 1)
+</pre></div>
+</div>
+<p>Which after gathering terms gives</p>
+<div class="math notranslate nohighlight">
+\[v_{\mathrm{out}}(t) = 15\left(e^{-2t}) - e^{-4t}\right)u_0(t)\]</div>
+</div>
+</div>
+<div class="section" id="example-4">
+<h3>Example 4<a class="headerlink" href="#example-4" title="Permalink to this headline">¶</a></h3>
+<p>Karris example 8.11: the voltage across a 1 <span class="math notranslate nohighlight">\(\Omega\)</span> resistor is known to be <span class="math notranslate nohighlight">\(V_{R}(t)=3e^{-2t} u_0(t)\)</span>. Compute the energy dissipated in the resistor for <span class="math notranslate nohighlight">\(0\lt t\lt\infty\)</span>, and verify the result using Parseval’s theorem. Verify the result with Matlab.</p>
+<p>Note from <a class="reference external" href="https://en.wikipedia.org/wiki/Lists_of_integrals">tables of integrals</a></p>
+<div class="math notranslate nohighlight">
+\[\int\frac{1}{a^2 + x^2}\,dx = \frac{1}{a}\arctan\frac{x}{a}+C.\]</div>
+<img src="pictures/example4.png" width="25%"><div class="section" id="solution-to-example-4">
+<h4>Solution to example 4<a class="headerlink" href="#solution-to-example-4" title="Permalink to this headline">¶</a></h4>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></div>
+<div class="section" id="matlab-verification-of-example-4">
+<h4>Matlab verification of example 4<a class="headerlink" href="#matlab-verification-of-example-4" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span> <span class="n">t</span> <span class="n">w</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Calcuate energy from time function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Vr</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">Pr</span> <span class="o">=</span> <span class="n">Vr</span><span class="o">^</span><span class="mi">2</span><span class="o">/</span><span class="n">R</span>
+<span class="n">Wr</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">Pr</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">inf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Calculate using Parseval’s theorem</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fw</span> <span class="o">=</span> <span class="n">fourier</span><span class="p">(</span><span class="n">Vr</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fw2</span> <span class="o">=</span> <span class="n">simplify</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">Fw</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Wr</span><span class="o">=</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span><span class="o">*</span><span class="nb">int</span><span class="p">(</span><span class="n">Fw2</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">inf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>See <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/content/fourier_transform/3/ft3_ex4.m">ft3_ex4.m</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="solutions">
+<h2>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h2>
+<p>See Worked Solutions in the <a class="reference external" href="https://swanseauniversity-my.sharepoint.com/personal/c_p_jobling_swansea_ac_uk/_layouts/OneNote.aspx?id=%2Fpersonal%2Fc_p_jobling_swansea_ac_uk%2FDocuments%2FClass%20Notebooks%2FEG-247-EG-3068%20Signals%20and%20Systems%20%282019-2020%29&amp;wd=target%28_Content%20Library%2FWorksheets.one%7C6DB507FF-A52A-442F-8ED4-3BCF0DC3D570%2FWorked%20Solutions%20to%20Examples%7C0827F501-1A74-104B-8EAA-7C96C30F1282%2F%29">Week 7 Section</a> of the OneNote Class Notebook.</p>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../2/worksheet13.html" title="previous page">Worksheet 13</a>
+    <a class='right-next' id="next-link" href="../4/worksheet15.html" title="next page">Worksheet 15</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dr Chris P. Jobling<br/>
+        
+            &copy; Copyright 2020.<br/>
+          <div class="extra_footer">
+            This page was created by 
+<a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
+  Dr Chris P. Jobling
+</a> 
+for 
+<a href="https://www.swansea.ac.uk">
+  Swansea University
+</a>.
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    
+  </body>
+</html>

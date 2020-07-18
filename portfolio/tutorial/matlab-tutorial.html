@@ -1,0 +1,1916 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>MATLAB Tutorial &#8212; EG-247 Signals and Systems</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/mystnb.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/portfolio/tutorial/matlab-tutorial.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cpjobling.github.io/eg-247-textbook/portfolio/tutorial/matlab-tutorial.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="MATLAB Tutorial" />
+<meta property="og:description" content="MATLAB Tutorial  If you are new to MATLAB and Simulink You may wish to work through the introductory examples and watch the videos contained in this tutorial.  " />
+
+
+<meta name="twitter:card" content="summary">
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">EG-247 Signals and Systems</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../introduction/index.html">
+   Introducing Signals and Systems
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../elementary_signals/index.html">
+   Elementary Signals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../laplace_transform/index.html">
+   Laplace Transforms and their Applications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fourier_series/index.html">
+   Fourier Series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fourier_transform/index.html">
+   Fourier Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../dt_systems/index.html">
+   Sampled Data Systems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../dft/index.html">
+   Discrete Fourier Transform
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FAQs
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../FAQS/faq.html">
+   Answers to Frequently Asked Questions
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  In Class Worksheets
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../worksheets/index.html">
+   Worksheets
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Homework
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../homework/index.html">
+   Homework
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Lab Exercises
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../labs/index.html">
+   Laboratory Exercises
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Project
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../labs/project/index.html">
+   Project
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Answers to Selected problems
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../introduction/answers.html">
+   Worksheet 2
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Setting up your own version of this book
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../setup/index.html">
+   Setting up your own version of this book
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by 
+ <a href="https://jupyterbook.org">
+  Jupyter Book
+</a>
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/portfolio/tutorial/matlab-tutorial.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cpjobling/eg-247-textbook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Fportfolio/tutorial/matlab-tutorial.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/cpjobling/eg-247-textbook/edit/master/portfolio/tutorial/matlab-tutorial.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#an-introduction-to-matlab">
+   An Introduction to MATLAB
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-started-with-matlab">
+   Getting Started with Matlab
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#table-of-contents">
+     Table of Contents
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-operations">
+   Basic Operations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arithmetic-operations">
+     Arithmetic Operations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1-basic-operators">
+     Exercise 1: Basic Operators
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#plus">
+       Plus (
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         +
+        </span>
+       </code>
+       )
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#minus">
+       Minus (
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         -
+        </span>
+       </code>
+       )
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#multiply">
+       Multiply (
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         *
+        </span>
+       </code>
+       )
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#power">
+       Power (
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ^
+        </span>
+       </code>
+       )
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#divide">
+       Divide
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vectors">
+   Vectors
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2-vectors">
+     Exercise 2: Vectors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vector-manipulation">
+   Vector manipulation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-3-vector-manipulation">
+     Exercise 3: Vector Manipulation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Plus (
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         +
+        </span>
+       </code>
+       )
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Minus (
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         -
+        </span>
+       </code>
+       )
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       Multiply (
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         *
+        </span>
+       </code>
+       )
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#multiply-element-by-element">
+       Multiply element by element (
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         .*
+        </span>
+       </code>
+       )
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#divide-element-by-element">
+       Divide element by element (
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ./
+        </span>
+       </code>
+       )
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id4">
+       Divide element by element (
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         .\
+        </span>
+       </code>
+       )
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#polynomials">
+   Polynomials
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finding-roots">
+     Finding roots
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiplying-dividing-polynomials">
+     Multiplying/Dividing polynomials
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-4-polynomials">
+     Exercise 4: Polynomials
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matrices">
+   Matrices
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-5-matrices">
+     Exercise 5: Matrices
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functions">
+   Functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#common-functions">
+     Common functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#common-constants">
+     Common constants
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-6-functions">
+     Exercise 6: Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#help-window-tips">
+   Help window/Tips
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#documentation">
+     Documentation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tips">
+     Tips
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#function-inputs-and-outputs">
+     Function Inputs and Outputs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transfer-functions">
+   Transfer functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-1">
+     Method 1:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-2">
+     Method 2:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transfer-function-manipulation">
+     Transfer function manipulation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#addition">
+       Addition
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#subtraction">
+       Subtraction
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#multiplication">
+       Multiplication
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#division">
+       Division
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#combination-of-operations">
+       Combination of  operations
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#time-responses">
+     Time responses
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#poles-and-zeros">
+     Poles and zeros
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#block-diagram-feedback">
+     Block diagram feedback
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-7-transfer-functions">
+     Exercise 7: Transfer Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting">
+   Plotting
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#figure-command">
+     Figure command
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting-several-responses-on-the-same-axis">
+     Plotting several responses on the same axis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finding-coordinates-of-a-point-on-a-graph">
+     Finding coordinates of a point on a graph
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#labelling-plots-and-axes">
+     Labelling plots and axes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#frequency-response-graphs">
+     Frequency response graphs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-8-plotting">
+     Exercise 8: Plotting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="matlab-tutorial">
+<h1>MATLAB Tutorial<a class="headerlink" href="#matlab-tutorial" title="Permalink to this headline">¶</a></h1>
+<p>If you are new to MATLAB and Simulink You may wish to work through the introductory examples and watch the videos contained in this tutorial.</p>
+<div class="section" id="an-introduction-to-matlab">
+<h2>An Introduction to MATLAB<a class="headerlink" href="#an-introduction-to-matlab" title="Permalink to this headline">¶</a></h2>
+<p>MATLAB is a high-level language for technical computing which is often used by engineers to help them design systems or analyze a system’s behaviour. We present the following material in a tutorial style which can be used as a self-teaching exercise, or as a reminder for those who may have used MATLAB before and forgotten some of the notation.
+The following represents a beginner’s route into the use of the MATLAB package for Signals and Systems and the Symbolic and Signal Processing toolboxes.</p>
+<p>This document is available as a <span class="xref myst">MATLAB Live Script</span> in which all the MATLAB code is executable.</p>
+</div>
+<div class="section" id="getting-started-with-matlab">
+<h2>Getting Started with Matlab<a class="headerlink" href="#getting-started-with-matlab" title="Permalink to this headline">¶</a></h2>
+<p>Before you begin, you may wish to watch the video <a class="reference external" href="https://uk.mathworks.com/videos/getting-started-with-matlab-1564521672719.html">Getting Started with MATLAB</a> (Links to an external site.) by Erin Byrne of the MathWorks.</p>
+<p>In this tutorial introduction to MATLAB we shall cover the following:</p>
+<div class="section" id="table-of-contents">
+<h3>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="#basic-operations">Basic Operations</a></p></li>
+<li><p><a class="reference external" href="#vectors">Vectors</a></p></li>
+<li><p><a class="reference external" href="#vector-manipulation">Vector manipulation</a></p></li>
+<li><p><a class="reference external" href="#polynomials">Polynomials</a></p></li>
+<li><p><a class="reference external" href="#matrices">Matrices</a></p></li>
+<li><p><a class="reference external" href="#functions">Functions</a></p></li>
+<li><p><a class="reference external" href="#help-window-tips">Help window/Tips</a></p></li>
+<li><p><a class="reference external" href="#transfer-functions">Transfer functions</a></p></li>
+<li><p><a class="reference external" href="#plotting">Plotting</a></p></li>
+<li><p><a class="reference external" href="#summary">Summary</a></p></li>
+</ul>
+<p>If you are already comfortable working with MATLAB you may wish to skip the introductory materials and jump to <a class="reference external" href="#polynomials">Polynomials</a>.</p>
+</div>
+</div>
+<div class="section" id="basic-operations">
+<h2>Basic Operations<a class="headerlink" href="#basic-operations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="arithmetic-operations">
+<h3>Arithmetic Operations<a class="headerlink" href="#arithmetic-operations" title="Permalink to this headline">¶</a></h3>
+<p>We can assign a numerical value (data) to a variable using the equal (=) sign. For example, type: a = 2 and press return. MATLAB returns:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>» <span class="n">a</span> <span class="p">=</span> <span class="mi">2</span>
+
+<span class="n">a</span> <span class="p">=</span>
+
+     <span class="n">2</span>
+</pre></div>
+</div>
+<p>or b = -5.2</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>» <span class="n">b</span> <span class="p">=</span> <span class="o">-</span><span class="mf">5.2</span>
+
+<span class="n">b</span> <span class="p">=</span>
+
+     <span class="o">-</span><span class="mf">5.2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercise-1-basic-operators">
+<h3>Exercise 1: Basic Operators<a class="headerlink" href="#exercise-1-basic-operators" title="Permalink to this headline">¶</a></h3>
+<p>Execute the commans below. The basic arithmetic operations use the operators shown. Use values of a = 4 and b = -2.1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">b</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="plus">
+<h4>Plus ( <code class="docutils literal notranslate"><span class="pre">+</span></code> )<a class="headerlink" href="#plus" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">+</span><span class="n">b</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="minus">
+<h4>Minus ( <code class="docutils literal notranslate"><span class="pre">-</span></code> )<a class="headerlink" href="#minus" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">-</span><span class="n">b</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="multiply">
+<h4>Multiply ( <code class="docutils literal notranslate"><span class="pre">*</span></code> )<a class="headerlink" href="#multiply" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">*</span><span class="n">b</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="power">
+<h4>Power ( <code class="docutils literal notranslate"><span class="pre">^</span></code> )<a class="headerlink" href="#power" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">^</span><span class="n">b</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="divide">
+<h4>Divide<a class="headerlink" href="#divide" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">/</span><span class="n">b</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="vectors">
+<h2>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">¶</a></h2>
+<p>To define a row vector we type each element of the vector (separated by a comma) between square brackets and set it equal to a variable.
+For example, to create the row vector x, enter into MATLAB:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>» <span class="n">x</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span> 
+
+<span class="n">x</span> <span class="p">=</span> 
+    <span class="n">1</span>     <span class="s">2</span>     <span class="s">3</span>     <span class="s">4</span> 
+</pre></div>
+</div>
+<p>To enter a column vector, separate the elements by a semicolon; for example:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>» <span class="n">y</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">;</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">;</span><span class="mi">4</span><span class="p">]</span> 
+
+<span class="n">y</span> <span class="p">=</span> 
+    <span class="n">1</span> 
+    <span class="s">2</span> 
+    <span class="n">3</span> 
+    <span class="s">4</span> 
+</pre></div>
+</div>
+<p>We can determine the size of the vectors x and y by using the size command.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>» <span class="nb">size</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> 
+
+<span class="nb">ans</span> <span class="p">=</span>  <span class="mi">1</span>  <span class="mi">4</span> 
+
+» <span class="nb">size</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> 
+
+<span class="nb">ans</span> <span class="p">=</span>  <span class="mi">4</span>  <span class="mi">1</span> 
+</pre></div>
+</div>
+<p>If we want to create a vector with elements between 0 and 5 evenly spaced in increments of 0.5, we can use:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>» <span class="n">t</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="mf">0.5</span><span class="p">:</span><span class="mi">5</span> 
+
+<span class="n">t</span> <span class="p">=</span>
+
+         <span class="n">0</span>    <span class="s">0.5000</span>    <span class="s">1.0000</span>    <span class="s">1.5000</span>    <span class="s">2.0000</span>    <span class="s">2.5000</span>    <span class="s">3.0000</span>    <span class="s">3.5000</span>    <span class="s">4.0000</span>    <span class="s">4.5000</span>    <span class="s">5.0000</span>
+</pre></div>
+</div>
+<div class="section" id="exercise-2-vectors">
+<h3>Exercise 2: Vectors<a class="headerlink" href="#exercise-2-vectors" title="Permalink to this headline">¶</a></h3>
+<p>A. Enter the first three prime numbers as a row vector.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">put</span> <span class="n">your</span> <span class="n">code</span> <span class="n">here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>B. Repeat (A), but use a column vector.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">put</span> <span class="n">your</span> <span class="n">code</span> <span class="n">here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>C. The following table shows some measurements of voltage across a resistor as a function of timeTime (sec)</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Time (s)</p></th>
+<th class="head"><p>0.0</p></th>
+<th class="head"><p>1.0</p></th>
+<th class="head"><p>2.0</p></th>
+<th class="head"><p>3.0</p></th>
+<th class="head"><p>4.0</p></th>
+<th class="head"><p>5.0</p></th>
+<th class="head"><p>6.0</p></th>
+<th class="head"><p>7.0</p></th>
+<th class="head"><p>8.0</p></th>
+<th class="head"><p>9.0</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Voltage (v)</p></td>
+<td><p>1.1</p></td>
+<td><p>1.2</p></td>
+<td><p>1.3</p></td>
+<td><p>1.4</p></td>
+<td><p>1.5</p></td>
+<td><p>1.4</p></td>
+<td><p>1.3</p></td>
+<td><p>1.2</p></td>
+<td><p>1.1</p></td>
+<td><p>1.0</p></td>
+</tr>
+</tbody>
+</table>
+<p>Enter the time as a column vector called <code class="docutils literal notranslate"><span class="pre">time</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">put</span> <span class="n">your</span> <span class="n">code</span> <span class="n">here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Enter the voltage as a column vector called <code class="docutils literal notranslate"><span class="pre">voltage</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">put</span> <span class="n">your</span> <span class="n">code</span> <span class="n">here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Execute the command <code class="docutils literal notranslate"><span class="pre">plot(time,</span> <span class="pre">voltage)</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">put</span> <span class="n">your</span> <span class="n">code</span> <span class="n">here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>On the resulting graph:</p>
+<ul class="simple">
+<li><p>Which variable is on the independent axis?</p></li>
+<li><p>Which variable is on the dependent axis?</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="vector-manipulation">
+<h2>Vector manipulation<a class="headerlink" href="#vector-manipulation" title="Permalink to this headline">¶</a></h2>
+<p>Manipulating vectors is almost as easy as creating them.  Try the following operations:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="mi">2</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">a</span><span class="o">-</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">a</span><span class="o">/</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>.  What happens if we try to add two variables (vectors: a+b) of different dimensions?  What is the error message?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">put</span> <span class="n">your</span> <span class="n">code</span> <span class="n">here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>(We note that, in the example <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">+</span> <span class="pre">2</span></code>, variable <code class="docutils literal notranslate"><span class="pre">a</span></code> is size 1 x 4 and <code class="docutils literal notranslate"><span class="pre">2</span></code> is size 1 x 1. Technically they could not be added together, as the dimensions are not compatible.  However MATLAB assumes, when you add/subtract/multiply/divide a variable by a number, that all elements of the vector should be operated on.  This is not true with two vectors, as we see now.)</p>
+<p>For</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>and</p>
+<p>y = [5; 6; 7; 8]</p>
+<p>would the following operations be acceptable?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">+</span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">*</span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="o">*</span><span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this case, we note that we cannot add <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">y</span></code> since they do not have appropriate dimensions.  However, if we use transpose <code class="docutils literal notranslate"><span class="pre">x'</span></code> (where <code class="docutils literal notranslate"><span class="pre">'</span></code> indicates the transpose), we can then evaluate:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">size</span></code> command could be used to verify the dimensions of the vectors.</p>
+<div class="section" id="exercise-3-vector-manipulation">
+<h3>Exercise 3: Vector Manipulation<a class="headerlink" href="#exercise-3-vector-manipulation" title="Permalink to this headline">¶</a></h3>
+<p>Try the following vector operations and note the results.  Ensure the dimensions of x and y are appropriate for the operations attempted.  Note that some of the operators are different from scalar operators.</p>
+<div class="section" id="id1">
+<h4>Plus ( <code class="docutils literal notranslate"><span class="pre">+</span></code> )<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>Must be same dimension</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">+</span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h4>Minus ( <code class="docutils literal notranslate"><span class="pre">-</span></code> )<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">-</span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h4>Multiply ( <code class="docutils literal notranslate"><span class="pre">*</span></code> )<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p>Must be appropriate dimensions</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">*</span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="multiply-element-by-element">
+<h4>Multiply element by element ( <code class="docutils literal notranslate"><span class="pre">.*</span></code> )<a class="headerlink" href="#multiply-element-by-element" title="Permalink to this headline">¶</a></h4>
+<p>Must be same dimension</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.*</span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="divide-element-by-element">
+<h4>Divide element by element ( <code class="docutils literal notranslate"><span class="pre">./</span></code> )<a class="headerlink" href="#divide-element-by-element" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">./</span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h4>Divide element by element ( <code class="docutils literal notranslate"><span class="pre">.\</span></code> )<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span>\<span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Explain in words the three operations: <code class="docutils literal notranslate"><span class="pre">.*</span></code>, <code class="docutils literal notranslate"><span class="pre">./</span></code> and <code class="docutils literal notranslate"><span class="pre">.\</span></code>.</p>
+<p>Think of an example where we might need this type of operation.</p>
+<p><strong>Remark</strong>:   Note if we put a semi-colon (;) at the end of a MATLAB command, MATLAB does not return the values to the window.  Try:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">=</span><span class="n">a</span><span class="o">+</span><span class="n">b</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">=</span><span class="n">a</span><span class="o">-</span><span class="n">b</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="polynomials">
+<h2>Polynomials<a class="headerlink" href="#polynomials" title="Permalink to this headline">¶</a></h2>
+<p>We can enter the coefficients of a polynomial as a row vector. The coefficients should be entered in descending order of the powers of x. For example</p>
+<div class="math notranslate nohighlight">
+\[p(x) = x^2 + 10s + 3\]</div>
+<p>can be represented by</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>»  <span class="n">p</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span> 
+</pre></div>
+</div>
+<p>How would we enter the following polynomial, <span class="math notranslate nohighlight">\(q\)</span>?</p>
+<div class="math notranslate nohighlight">
+\[q(t) = t^3 + 4t^2 + 3t + 1?\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">put</span> <span class="n">your</span> <span class="n">code</span> <span class="n">here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>MATLAB can interpret a vector of length n+l as the coefficients of an n<sup>th</sup> order polynomial.  Thus, if the polynomial is missing any coefficients, we must enter zeros in the appropriate place in the vector.  For example</p>
+<div class="math notranslate nohighlight">
+\[y(s) = s^4 + 1\]</div>
+<p>would be represented in MATLAB as:</p>
+<div class="highlight-matkab notranslate"><div class="highlight"><pre><span></span>» y = [6, 0, 0, 0, 1]; 
+</pre></div>
+</div>
+<div class="section" id="finding-roots">
+<h3>Finding roots<a class="headerlink" href="#finding-roots" title="Permalink to this headline">¶</a></h3>
+<p>Use the following command:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>» <span class="n">roots</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> 
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>» <span class="n">roots</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> 
+</pre></div>
+</div>
+<p>How would we enter the following polynomial, <span class="math notranslate nohighlight">\(m\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[m(s) = 4s^4 + s^3 + 2s\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">put</span> <span class="n">your</span> <span class="n">code</span> <span class="n">here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Determine the roots of <span class="math notranslate nohighlight">\(m\)</span>.</p>
+</div>
+<div class="section" id="multiplying-dividing-polynomials">
+<h3>Multiplying/Dividing polynomials<a class="headerlink" href="#multiplying-dividing-polynomials" title="Permalink to this headline">¶</a></h3>
+<p>The product of two polynomials is found by taking the convolution of their coefficients.  The function <code class="docutils literal notranslate"><span class="pre">conv</span></code> will do this for us.</p>
+<p>Polynomial: <span class="math notranslate nohighlight">\(x(s) = s + 2\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Polynomial:  <span class="math notranslate nohighlight">\(y(s) = s^2 + 4s + 8\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Polynomial: <span class="math notranslate nohighlight">\(z(s) = x(s) y(s)\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="n">conv</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dividing two polynomials is just as easy.  The <code class="docutils literal notranslate"><span class="pre">deconv</span></code> function will return the result, <span class="math notranslate nohighlight">\(Q\)</span>, as well as the remainder, <span class="math notranslate nohighlight">\(R\)</span>. Note that if there is more than one output for a function, they should be put inside square brackets and be separated by commas.  Try to divide <span class="math notranslate nohighlight">\(z(s)\)</span> by <span class="math notranslate nohighlight">\(y(s)\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Q</span><span class="p">,</span> <span class="n">R</span><span class="p">]</span> <span class="o">=</span> <span class="n">deconv</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>How do we check the result?</p>
+</div>
+<div class="section" id="exercise-4-polynomials">
+<h3>Exercise 4: Polynomials<a class="headerlink" href="#exercise-4-polynomials" title="Permalink to this headline">¶</a></h3>
+<p>We wish to plot a second-order polynomial
+<span class="math notranslate nohighlight">\($y(t) = 4t^2 + 2t - 3\)</span>$</p>
+<p>and check the roots of the equation.</p>
+<p>We can do this in two ways.</p>
+<ol class="simple">
+<li><p>We can enter the polynomial coefficients as a vector and use the <code class="docutils literal notranslate"><span class="pre">roots</span></code> command.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">put</span> <span class="n">your</span> <span class="n">code</span> <span class="n">here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol>
+<li><p>We can plot the function y against time and note the points where the function crosses the time axis (that is points where <span class="math notranslate nohighlight">\(y = 0\)</span>).</p>
+<p>a. Create a vector <code class="docutils literal notranslate"><span class="pre">t</span></code>, which has values evenly spaced from -5 to 5, in steps of 0.5.</p>
+<p>b. Calculate <span class="math notranslate nohighlight">\(y(t) = 4t^2 + 2t - 3\)</span> for all values of the time vector, <code class="docutils literal notranslate"><span class="pre">t</span></code>. Since <code class="docutils literal notranslate"><span class="pre">t</span></code> is a vector, think carefully how you will calculate <span class="math notranslate nohighlight">\(4t^2 + 2t - 3\)</span>.</p>
+<p>c. Request a plot using <code class="docutils literal notranslate"><span class="pre">plot(t,y)</span></code>.  Find the roots on the graph. Are the roots on the graph similar to the answer in 1 above?</p>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">put</span> <span class="n">your</span> <span class="n">code</span> <span class="n">here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="matrices">
+<h2>Matrices<a class="headerlink" href="#matrices" title="Permalink to this headline">¶</a></h2>
+<p>Entering matrices into MATLAB is the same as entering a vector, except each row of elements is separated by a semicolon, try:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">;</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Matrices in MATLAB can be manipulated in many ways. For example, we can find the transpose of a matrix using the apostrophe key (‘).  Try</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C</span> <span class="o">=</span> <span class="sa">B</span><span class="s1">&#39; </span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Remember that the order of multiplication is important when dealing with matrices. Would the following operations be allowed?</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="p">=</span> <span class="n">B</span> <span class="o">+</span> <span class="n">C</span>
+<span class="n">D</span> <span class="p">=</span> <span class="n">B</span> <span class="o">*</span> <span class="n">C</span><span class="o">&#39;</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">put</span> <span class="n">your</span> <span class="n">code</span> <span class="n">here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now try these:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="o">=</span> <span class="n">C</span> <span class="o">*</span> <span class="n">B</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="o">=</span> <span class="n">B</span> <span class="o">*</span> <span class="n">C</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">E</span> <span class="o">=</span> <span class="n">D</span> <span class="o">^</span> <span class="mi">3</span> <span class="o">%</span> <span class="n">power</span> <span class="n">of</span> <span class="n">a</span> <span class="n">matrix</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">inv</span><span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="o">%</span> <span class="n">inverse</span> <span class="n">of</span> <span class="n">a</span> <span class="n">matrix</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-5-matrices">
+<h3>Exercise 5: Matrices<a class="headerlink" href="#exercise-5-matrices" title="Permalink to this headline">¶</a></h3>
+<p>Find the solution of the following set of linear equations:</p>
+<p>\begin{eqnarray*}
+2 x_1 + 5 x_2 + 3 x_3  &amp;=&amp; 6 \
+3 x_1 - 2 x_2 + 4 x_3  &amp;=&amp;  - 2 \
+x_1 + 6 x_2 - 4 x_3 &amp;=&amp; 3
+\end{eqnarray*}</p>
+<p><em>Hint</em>:  We write this in the matrix form, that is, <span class="math notranslate nohighlight">\(\matrix{A}\matrix{X} = \matrix{B}\)</span>, where
+<span class="math notranslate nohighlight">\(\matrix{A}\)</span> is the matrix of coefficients of <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span>, and <span class="math notranslate nohighlight">\(x_3\)</span>.
+<span class="math notranslate nohighlight">\(\matrix{X}\)</span> is the column vector, which will contain the solutions <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span>, and <span class="math notranslate nohighlight">\(x_3\)</span>.
+<span class="math notranslate nohighlight">\(\matrix{B}\)</span> is the column vector of values on the right-hand side.</p>
+<p>Answer: = <span class="math notranslate nohighlight">\(\matrix{A}^{-1}\matrix{X} =\ldots\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">enter</span> <span class="n">your</span> <span class="n">code</span> <span class="n">here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In MATLAB, you can also solve linear equations like this using the backslash operator <code class="docutils literal notranslate"><span class="pre">\</span></code>:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="p">=</span> <span class="n">A</span><span class="o">\</span><span class="n">B</span>
+</pre></div>
+</div>
+<p>Try it:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">enter</span> <span class="n">your</span> <span class="n">code</span> <span class="n">here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<p>MATLAB includes many standard functions (and constants). Each function is a block of code that accomplishes a specific task. With practice, we can even write special MATLAB files (m-files) to save re-typing the same commands.</p>
+<div class="section" id="common-functions">
+<h3>Common functions<a class="headerlink" href="#common-functions" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">sin</span></code>, <code class="docutils literal notranslate"><span class="pre">cos</span></code>, <code class="docutils literal notranslate"><span class="pre">log</span></code> (<span class="math notranslate nohighlight">\(\log_{e}\)</span>), <code class="docutils literal notranslate"><span class="pre">log10</span></code> (<span class="math notranslate nohighlight">\(\log_{10}\)</span>), <code class="docutils literal notranslate"><span class="pre">exp</span></code>, <code class="docutils literal notranslate"><span class="pre">sqrt</span></code>, <code class="docutils literal notranslate"><span class="pre">mean</span></code>, <code class="docutils literal notranslate"><span class="pre">std</span></code> (standard deviation).</p>
+</div>
+<div class="section" id="common-constants">
+<h3>Common constants<a class="headerlink" href="#common-constants" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">pi</span></code> (= <span class="math notranslate nohighlight">\(\pi\)</span>) returns 3.1416 (rounded to 5 sig. figures). The variables <code class="docutils literal notranslate"><span class="pre">i</span></code> or <code class="docutils literal notranslate"><span class="pre">j</span></code> represent the square root of -1 (imaginary number)</p>
+<p>Try the following sine function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We wish to plot the sine wave of frequency 3 rad/s and amplitude 1 over a period of time between 0 to 20 seconds (in steps of 0.1 seconds).</p>
+<p>Write down the sine wave expression: <code class="docutils literal notranslate"><span class="pre">y(t)</span> <span class="pre">=</span> </code>?</p>
+<p>Calculate the vector y for the values of time given. Graph the results using an appropriate plot command.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">insert</span> <span class="n">your</span> <span class="n">code</span> <span class="n">here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-6-functions">
+<h3>Exercise 6: Functions<a class="headerlink" href="#exercise-6-functions" title="Permalink to this headline">¶</a></h3>
+<p>A sine wave of amplitude 5 and a frequency of 0.1 Hz is applied to the input of an analogue device, which has a constant gain of 1.5 over all frequencies. Calculate the output signal for the interval 0 to 10 seconds in increments of 0.1 seconds.</p>
+<p>Use the command</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>to see a graph of this signal. What is the frequency of the sine wave on the plot? (Use the <code class="docutils literal notranslate"><span class="pre">grid</span></code> command to help work this out (approximately)).</p>
+</div>
+</div>
+<div class="section" id="help-window-tips">
+<h2>Help window/Tips<a class="headerlink" href="#help-window-tips" title="Permalink to this headline">¶</a></h2>
+<p>To determine the usage of any function, enter:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>» <span class="n">help</span> <span class="k">function</span> <span class="n">name</span>
+</pre></div>
+</div>
+<p>Try</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">help</span> <span class="n">sin</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="documentation">
+<h3>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h3>
+<p>MATLAB has an extensive online documentation system. To access it type:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">doc</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The documentation system covers all the MATLAB functions, applications and toolboxes. Once there you have the choice of browsing the documentation or searching for particular functions.</p>
+<p>You can give an argument to the doc function to get help on a particular function or concept. For example,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">doc</span> <span class="n">elfun</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>provides an index of basic functions.</p>
+</div>
+<div class="section" id="tips">
+<h3>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Keep the documentation window open for quick access to help. Use search often!</p></li>
+<li><p>MATLAB variables are case sensitive, that is, <code class="docutils literal notranslate"><span class="pre">temp</span></code> and <code class="docutils literal notranslate"><span class="pre">Temp</span></code> would be two different variables.</p></li>
+<li><p>We can use the command <code class="docutils literal notranslate"><span class="pre">who</span></code> to see the variables in the MATLAB workspace.</p></li>
+<li><p>We can get the value of a particular variable at any time by typing its name.  Use <code class="docutils literal notranslate"><span class="pre">who</span></code> to list all the variables in the workspace.  Type the name of one of these variables to show its current value.</p></li>
+<li><p>We can use <code class="docutils literal notranslate"><span class="pre">clear</span> <span class="pre">all</span></code> to clear all the variables from the workspace or <code class="docutils literal notranslate"><span class="pre">clear</span></code> <em>variable name</em> to clear only a single variable.</p></li>
+<li><p>We can also have more than one statement on a single line, so long as we separate them with either a semicolon or comma.  Try:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gain</span> <span class="o">=</span> <span class="mi">20</span><span class="o">*</span><span class="n">log10</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="n">ang</span><span class="o">=</span><span class="n">angle</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">i</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, enter gain and angle to see the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">enter</span> <span class="n">your</span> <span class="n">code</span> <span class="n">here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we do not assign a variable to a specific operation or result, MATLAB will store the outcome of the operation in a temporary variable called ans.  For example</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>» <span class="mi">3</span><span class="o">+</span><span class="mi">6</span>
+
+<span class="nb">ans</span> <span class="p">=</span>
+
+     <span class="n">9</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="function-inputs-and-outputs">
+<h3>Function Inputs and Outputs<a class="headerlink" href="#function-inputs-and-outputs" title="Permalink to this headline">¶</a></h3>
+<p>Each function in MATLAB has a number of inputs and output variables.  We should define all the necessary inputs before we run a function. (We can use the <code class="docutils literal notranslate"><span class="pre">help</span></code> function to check the inputs and outputs of any function we are going to use.) For example, if we wanted to find out about the use of the <code class="docutils literal notranslate"><span class="pre">abs</span></code> function, we could type</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>» <span class="n">help</span> <span class="nb">abs</span>
+</pre></div>
+</div>
+<p>MATLAB returns:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">abs</span>    <span class="n">Absolute</span> <span class="n">value</span><span class="p">.</span>
+    <span class="nb">abs</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="n">is</span> <span class="n">the</span> <span class="n">absolute</span> <span class="n">value</span> <span class="n">of</span> <span class="n">the</span> <span class="n">elements</span> <span class="n">of</span> <span class="n">X</span><span class="p">.</span> <span class="n">When</span>
+    <span class="n">X</span> <span class="s">is</span> <span class="s">complex,</span> <span class="s">abs(X)</span> <span class="s">is</span> <span class="s">the</span> <span class="s">complex</span> <span class="s">modulus</span> <span class="s">(magnitude)</span> <span class="s">of</span>
+    <span class="n">the</span> <span class="s">elements</span> <span class="s">of</span> <span class="s">X.</span>
+ 
+    <span class="n">See</span> <span class="s">also</span> <span class="s">sign,</span> <span class="s">angle,</span> <span class="s">unwrap,</span> <span class="s">hypot.</span>
+
+    <span class="n">Reference</span> <span class="s">page</span> <span class="s">for</span> <span class="s">abs</span>
+    <span class="n">Other</span> <span class="s">functions</span> <span class="s">named</span> <span class="s">abs</span>
+</pre></div>
+</div>
+<p>Therefore by typing</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="p">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>the variable <code class="docutils literal notranslate"><span class="pre">y</span></code> would hold the absolute values of <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
+<p>If we want to find the modulus and the angle of a complex number, we can enter the following:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">j</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span> <span class="o">%</span> <span class="n">define</span> <span class="nb">complex</span> <span class="n">number</span> <span class="n">s</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">s</span> <span class="o">%</span> <span class="n">define</span> <span class="nb">complex</span> <span class="n">function</span> <span class="n">g</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mag</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">%</span> <span class="n">find</span> <span class="n">the</span> <span class="n">magnitude</span><span class="p">:</span> <span class="n">output</span><span class="p">:</span> <span class="n">mag</span> <span class="nb">input</span><span class="p">:</span> <span class="n">g</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ang</span> <span class="o">=</span> <span class="n">angle</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">%</span> <span class="n">find</span> <span class="n">the</span> <span class="n">angle</span> <span class="ow">in</span> <span class="n">radians</span><span class="p">:</span> <span class="n">output</span><span class="p">:</span> <span class="n">ang</span> <span class="nb">input</span><span class="p">:</span> <span class="n">g</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once we defined the output variables, they will be stored in MATLAB workspace and we can manipulate them as we wish.</p>
+</div>
+</div>
+<div class="section" id="transfer-functions">
+<h2>Transfer functions<a class="headerlink" href="#transfer-functions" title="Permalink to this headline">¶</a></h2>
+<p>A transfer function can be entered into MATLAB using several different commands:</p>
+<div class="section" id="method-1">
+<h3>Method 1:<a class="headerlink" href="#method-1" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>We can use the command <code class="docutils literal notranslate"><span class="pre">tf(num,den)</span></code>, where num and den are vectors of coefficients of the numerator and denominator polynomials, respectively.  Enter the transfer function:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[g_1(s) = \frac{3s + 1}{s^2 + 3s + 2}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">den</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g1</span> <span class="o">=</span> <span class="n">tf</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">den</span><span class="p">)</span> <span class="o">%</span> <span class="n">enter</span> <span class="n">the</span> <span class="n">transfer</span> <span class="n">function</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p>Alternatively, we can define <code class="docutils literal notranslate"><span class="pre">s</span></code> as a transfer function and then use it to ‘write’ the transfer function directly.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">=</span><span class="n">tf</span><span class="p">(</span><span class="s1">&#39;s&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">s</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="method-2">
+<h3>Method 2:<a class="headerlink" href="#method-2" title="Permalink to this headline">¶</a></h3>
+<p>We can use the command <code class="docutils literal notranslate"><span class="pre">zpk(zeros,poles,gain)</span></code>, where <code class="docutils literal notranslate"><span class="pre">zeros</span></code>, <code class="docutils literal notranslate"><span class="pre">poles</span></code> and <code class="docutils literal notranslate"><span class="pre">gain</span></code> are vectors of the zeros, poles and gain of the transfer function. For example, we can enter the following transfer function in the form</p>
+<div class="math notranslate nohighlight">
+\[g_2(s) = \frac{4(s + 5)}{(s+3)(s+10)}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">zeros</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">poles</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gain</span> <span class="o">=</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g2</span> <span class="o">=</span> <span class="n">zpk</span><span class="p">(</span><span class="n">zeros</span><span class="p">,</span><span class="n">poles</span><span class="p">,</span><span class="n">gain</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>or equivalently</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g2</span> <span class="o">=</span> <span class="n">zpk</span><span class="p">([</span><span class="o">-</span><span class="mi">5</span><span class="p">],[</span><span class="o">-</span><span class="mi">3</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span><span class="mi">4</span><span class="p">)</span> <span class="o">%</span> <span class="n">enter</span> <span class="n">the</span> <span class="n">transfer</span> <span class="n">function</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Alternatively, we can define <code class="docutils literal notranslate"><span class="pre">s</span></code> as a transfer function and then use it to ‘write’ the transfer function directly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">=</span><span class="n">zpk</span><span class="p">(</span><span class="s1">&#39;s&#39;</span><span class="p">);</span>
+<span class="n">g2</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="p">((</span><span class="n">s</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we have a factor with complex poles in the transfer function,</p>
+<p>The complex roots of the denominator can be entered easily as</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g3</span><span class="o">=</span><span class="n">zpk</span><span class="p">([</span><span class="mi">5</span><span class="p">],[</span><span class="o">-</span><span class="mi">2</span><span class="o">+</span><span class="mi">3</span><span class="n">j</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">3</span><span class="n">j</span><span class="p">],</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you want to use the symbolic version, you have to enter the complex poles as the coefficients of the quadratic <span class="math notranslate nohighlight">\(s^2 + 4s + 13\)</span> as:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g3</span><span class="o">=</span><span class="mi">4</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">s</span> <span class="o">+</span> <span class="mi">13</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you need to, you can find the coefficients of the quadratic using conv:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span><span class="n">conv</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">+</span><span class="mi">3</span><span class="n">j</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">-</span><span class="mi">3</span><span class="n">j</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Try entering the following transfer functions:</p>
+<div class="math notranslate nohighlight">
+\[g4(s) = \frac{12(3s+2)}{(s+3+j7)(s+3-j7)}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">put</span> <span class="n">your</span> <span class="n">code</span> <span class="n">here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="math notranslate nohighlight">
+\[g_5(s) = \frac{2(s+8)}{(s+0.1)(s+2)(4s+6)}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">put</span> <span class="n">your</span> <span class="n">code</span> <span class="n">here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="transfer-function-manipulation">
+<h3>Transfer function manipulation<a class="headerlink" href="#transfer-function-manipulation" title="Permalink to this headline">¶</a></h3>
+<p>Once the various transfer functions representing components in a system have been entered, we can combine them together.</p>
+<p>Use the transfer functions</p>
+<div class="math notranslate nohighlight">
+\[g_6(s)=\frac{1}{s+2}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[g_7(s)=\frac{5}{s+3}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">put</span> <span class="n">your</span> <span class="n">code</span> <span class="n">here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>to complete the following.</p>
+<div class="section" id="addition">
+<h4>Addition<a class="headerlink" href="#addition" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g6</span> <span class="o">+</span> <span class="n">g7</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="subtraction">
+<h4>Subtraction<a class="headerlink" href="#subtraction" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g6</span> <span class="o">-</span> <span class="n">g7</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="multiplication">
+<h4>Multiplication<a class="headerlink" href="#multiplication" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g6</span> <span class="o">*</span> <span class="n">g7</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="division">
+<h4>Division<a class="headerlink" href="#division" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g6</span> <span class="o">/</span> <span class="n">g7</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="combination-of-operations">
+<h4>Combination of  operations<a class="headerlink" href="#combination-of-operations" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g6</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">g6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, that we have entered various transfer functions, it is easy to use some of the system analysis commands available from the various MATLAB toolboxes.  The following commands represent some of the systems control analysis operations.</p>
+</div>
+</div>
+<div class="section" id="time-responses">
+<h3>Time responses<a class="headerlink" href="#time-responses" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>For a unit impulse response use the command: <code class="docutils literal notranslate"><span class="pre">impulse(g)</span></code></p></li>
+<li><p>For a unit step response, use the command: <code class="docutils literal notranslate"><span class="pre">step(g)</span></code></p></li>
+<li><p>For a step response of magnitude <code class="docutils literal notranslate"><span class="pre">K</span></code>, simply multiply the transfer function, <code class="docutils literal notranslate"><span class="pre">g</span></code>, by the numerical value of <code class="docutils literal notranslate"><span class="pre">K</span></code>: <code class="docutils literal notranslate"><span class="pre">step(K*g)</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="poles-and-zeros">
+<h3>Poles and zeros<a class="headerlink" href="#poles-and-zeros" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>To see the roots of the numerator (called the zeros) of a transfer function use the command: <code class="docutils literal notranslate"><span class="pre">zero(g)</span></code></p></li>
+<li><p>For the roots of the denominator (called the poles) of a transfer function (zeros of the denominator of g(s)) use the command: <code class="docutils literal notranslate"><span class="pre">pole(g)</span></code></p></li>
+<li><p>For a pole-zero map use the command: <code class="docutils literal notranslate"><span class="pre">pzmap(g)</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="block-diagram-feedback">
+<h3>Block diagram feedback<a class="headerlink" href="#block-diagram-feedback" title="Permalink to this headline">¶</a></h3>
+<p>To determine the closed-loop transfer function for a system with negative feedback we can use the command:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>» <span class="n">gc</span> <span class="p">=</span> <span class="n">feedback</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">g</span></code> is the forward transfer function and <code class="docutils literal notranslate"><span class="pre">h</span></code> represents the transfer function of the components in the feedback path. If positive feedback is required then the following command can be used:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>» <span class="n">gc</span> <span class="p">=</span> <span class="n">feedback</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercise-7-transfer-functions">
+<h3>Exercise 7: Transfer Functions<a class="headerlink" href="#exercise-7-transfer-functions" title="Permalink to this headline">¶</a></h3>
+<p>Given the following transfer functions,</p>
+<div class="math notranslate nohighlight">
+\[g_1(s) = \frac{3s+1}{s^2 + 3s + 1}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[g_2(s) = \frac{2s+3}{s^3 + 1}\]</div>
+<ul class="simple">
+<li><p>enter <span class="math notranslate nohighlight">\(g_1(s)\)</span> using row vectors</p></li>
+<li><p>enter <span class="math notranslate nohighlight">\(g_2(s)\)</span> using the <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">=</span> <span class="pre">tf('s')</span></code> method</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">put</span> <span class="n">your</span> <span class="n">code</span> <span class="n">here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p>Find the roots of the numerator and denominator polynomials using the <code class="docutils literal notranslate"><span class="pre">roots</span></code> function`</p></li>
+<li><p>Compare with the results using the <code class="docutils literal notranslate"><span class="pre">zero</span></code> and <code class="docutils literal notranslate"><span class="pre">pole</span></code> functions</p></li>
+<li><p>Examine where the roots are using the <code class="docutils literal notranslate"><span class="pre">pzmap</span></code> function</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">put</span> <span class="n">your</span> <span class="n">code</span> <span class="n">here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="plotting">
+<h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h2>
+<p>It is easy to create plots in MATLAB.  Suppose we make a time vector and then compute the sine values of the vector at each time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">:</span><span class="mf">0.25</span><span class="p">:</span><span class="mi">10</span><span class="p">;</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This illustrates that basic plotting is very easy in MATLAB, and the <code class="docutils literal notranslate"><span class="pre">plot</span></code> command has extensive add-on capabilities.  Some useful features are given here.</p>
+<div class="section" id="figure-command">
+<h3>Figure command<a class="headerlink" href="#figure-command" title="Permalink to this headline">¶</a></h3>
+<p>When we plot a graph, MATLAB opens a window called a “Figure Window”.  Every time we plot a graph, this figure window is updated.  If we want to keep the old graphs, we can open a new window by using the command:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>» <span class="n">figure</span>
+</pre></div>
+</div>
+<p>Try:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">step</span><span class="p">(</span><span class="n">g3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">figure</span>
+<span class="n">step</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">g3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="plotting-several-responses-on-the-same-axis">
+<h3>Plotting several responses on the same axis<a class="headerlink" href="#plotting-several-responses-on-the-same-axis" title="Permalink to this headline">¶</a></h3>
+<p>Plot the first response and then enter the command:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>»  <span class="n">hold</span> <span class="n">on</span>
+</pre></div>
+</div>
+<p>Try these commands:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">step</span><span class="p">(</span><span class="n">g3</span><span class="p">)</span>
+<span class="n">hold</span> <span class="n">on</span>
+<span class="n">step</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">g3</span><span class="p">)</span>
+<span class="n">step</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">g3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Enter hold off to return to the default mode.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hold</span> <span class="n">off</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="finding-coordinates-of-a-point-on-a-graph">
+<h3>Finding coordinates of a point on a graph<a class="headerlink" href="#finding-coordinates-of-a-point-on-a-graph" title="Permalink to this headline">¶</a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">ginput(N)</span></code> (N is the number of points at which co-ordinates may be found). This will give a cursor, which we can move to a point on the figure using the mouse, and then press the left-hand button to see the co-ordinates in the MATLAB Command Window.</p>
+<p><strong>Example</strong>:</p>
+<p>Type the following (these commands don’t work in the Jupyter notebook. You have to run them from the command line).</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">step</span><span class="p">(</span><span class="n">g3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and then</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ginput</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Use the mouse to click on the final value of the step response.  Look in MATLAB Command Window to see the values of x and y.</p>
+</div>
+<div class="section" id="labelling-plots-and-axes">
+<h3>Labelling plots and axes<a class="headerlink" href="#labelling-plots-and-axes" title="Permalink to this headline">¶</a></h3>
+<p>Use the following commands:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">step</span><span class="p">(</span><span class="n">g3</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (sec)&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Output&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s1">&#39;Tutorial Example&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following command allows text to be placed on a graph.  This can be useful, for example, for labelling certain areas of a plot or for pointing out specific features on the plot. Again, it will only work from the command line, not in Jupyter notebook.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">gtext</span><span class="p">(</span><span class="s">&#39;Step Response&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Move the cursor to a point on the graph, and click the left-hand button.</p>
+</div>
+<div class="section" id="frequency-response-graphs">
+<h3>Frequency response graphs<a class="headerlink" href="#frequency-response-graphs" title="Permalink to this headline">¶</a></h3>
+<p>The command <code class="docutils literal notranslate"><span class="pre">semilogx</span></code> is the same as plot except a logarithmic (base 10) scale is used for the x-axis.  See the exercise for an example.</p>
+</div>
+<div class="section" id="exercise-8-plotting">
+<h3>Exercise 8: Plotting<a class="headerlink" href="#exercise-8-plotting" title="Permalink to this headline">¶</a></h3>
+<p>The input-output relationship of an RC circuit can be represented by the following function of a complex variable:</p>
+<div class="math notranslate nohighlight">
+\[g(j\omega) = \frac{V_o(j\omega)}{V_i(j\omega)} = \frac{K}{j\omega\tau + 1}\]</div>
+<p>where <span class="math notranslate nohighlight">\(K\)</span> is the gain and <span class="math notranslate nohighlight">\(\tau\)</span> is the time constant.</p>
+<ul class="simple">
+<li><p>For <span class="math notranslate nohighlight">\(K=10\)</span> and <span class="math notranslate nohighlight">\(\tau = 5\)</span>, calculate the gain and phase of <span class="math notranslate nohighlight">\(V_o/V_i\)</span> for w = 0.01, 0.05, 0.1, 2, 5, 10 (rad/s).</p></li>
+<li><p>Plot the gain and phase using the <code class="docutils literal notranslate"><span class="pre">semilogx</span></code> function.</p></li>
+</ul>
+<p><em>Hints</em>:</p>
+<ul class="simple">
+<li><p>Enter the values <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(\tau\)</span> as <code class="docutils literal notranslate"><span class="pre">K</span></code> and <code class="docutils literal notranslate"><span class="pre">tau</span></code>. Define a frequency vector, <code class="docutils literal notranslate"><span class="pre">w</span></code>.</p></li>
+<li><p>Calculate <code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">=</span> <span class="pre">K./(j*w*tau</span> <span class="pre">+</span> <span class="pre">l)</span></code>.  Note the use of the operator <code class="docutils literal notranslate"><span class="pre">./</span></code>.</p></li>
+<li><p>Calculate the gain in dB (<code class="docutils literal notranslate"><span class="pre">gain</span> <span class="pre">=</span> <span class="pre">20</span> <span class="pre">*</span> <span class="pre">log10(gain)</span></code>) and the phase in degrees (<code class="docutils literal notranslate"><span class="pre">phase</span> <span class="pre">=</span> <span class="pre">phase</span> <span class="pre">*</span> <span class="pre">180/pi</span></code>).</p></li>
+<li><p>Plot the response using <code class="docutils literal notranslate"><span class="pre">semilogx(w,gain)</span></code> and <code class="docutils literal notranslate"><span class="pre">semilogx(w,phase)</span></code>.</p></li>
+<li><p>Label both plots.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">put</span> <span class="n">your</span> <span class="n">code</span> <span class="n">here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>What we have covered</p>
+<ul class="simple">
+<li><p>To enter numbers vectors, matrices and transfer functions easily into the package</p></li>
+<li><p>To perform several different calculations and operations on different variables</p></li>
+<li><p>To plot graphs of results</p></li>
+<li><p>To form a step response of a transfer function and plots the output response</p></li>
+</ul>
+<p>What we have not covered</p>
+<ul class="simple">
+<li><p>The Simulink tool which is used for system simulation.</p></li>
+<li><p>State space models.</p></li>
+<li><p>Digital systems.</p></li>
+</ul>
+<p>Please consult the on-line documentation to find out how to use these facilities.</p>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dr Chris P. Jobling<br/>
+        
+            &copy; Copyright 2020.<br/>
+          <div class="extra_footer">
+            This page was created by 
+<a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
+  Dr Chris P. Jobling
+</a> 
+for 
+<a href="https://www.swansea.ac.uk">
+  Swansea University
+</a>.
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    
+  </body>
+</html>

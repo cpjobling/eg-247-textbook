@@ -1,0 +1,951 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Worksheet 3 &#8212; EG-247 Signals and Systems</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/elementary_signals/worksheet3.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Worksheet 4" href="../laplace_transform/1/worksheet4.html" />
+    <link rel="prev" title="Worksheet 2" href="../introduction/worksheet2.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cpjobling.github.io/eg-247-textbook/elementary_signals/worksheet3.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Worksheet 3" />
+<meta property="og:description" content="Worksheet 3  To accompany Chapter 2 Elementary Signals  Colophon  This worksheet can be downloaded as a PDF file.  A printout of this worksheet will be distribu" />
+
+
+<meta name="twitter:card" content="summary">
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">EG-247 Signals and Systems</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/index.html">
+   Introducing Signals and Systems
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   Elementary Signals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../laplace_transform/index.html">
+   Laplace Transforms and their Applications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fourier_series/index.html">
+   Fourier Series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fourier_transform/index.html">
+   Fourier Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dt_systems/index.html">
+   Sampled Data Systems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/index.html">
+   Discrete Fourier Transform
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FAQs
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../FAQS/faq.html">
+   Answers to Frequently Asked Questions
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  In Class Worksheets
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="../worksheets/index.html">
+   Worksheets
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../introduction/worksheet1.html">
+     Worksheet 1 Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../introduction/worksheet2.html">
+     Worksheet 2
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Worksheet 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="#elementary-signals">
+     Elementary Signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../laplace_transform/1/worksheet4.html">
+     Worksheet 4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../laplace_transform/1/worksheet4.html#the-laplace-and-inverse-laplace-transforms">
+     The Laplace and inverse Laplace transforms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../laplace_transform/1/worksheet4.html#id2">
+     The Laplace and inverse Laplace transforms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../laplace_transform/1/worksheet4.html#id4">
+     The Laplace and inverse Laplace transforms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../laplace_transform/1/worksheet4.html#id6">
+     The Laplace and inverse Laplace transforms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../laplace_transform/2/worksheet5.html">
+     Worksheet 5 Inverse Laplace Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../laplace_transform/3/worksheet6.html">
+     Worksheet 6 Using Laplace Transforms for Circuit Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../laplace_transform/4/worksheet7.html">
+     Worksheet 7 Transfer Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../laplace_transform/5/worksheet8.html">
+     Worksheet 8 Impulse Response and Time Convolution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fourier_series/1/worksheet9.html">
+     Worksheet 9 Trigonometric Fourier Series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fourier_series/2/worksheet10.html">
+     Worksheet 10 Exponential Fourier Series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fourier_series/3/worksheet11.html">
+     Worksheet 11 Line Spectra and their Applications
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fourier_transform/1/worksheet12.html">
+     Worksheet 12 Defining the Fourier Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fourier_transform/2/worksheet13.html">
+     Worksheet 13 Fourier transforms of commonly occuring signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fourier_transform/3/worksheet14.html">
+     Worksheet 14 Fourier Transforms for Circuit and LTI Systems Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fourier_transform/4/worksheet15.html">
+     Worksheet 15 Introduction to Filters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../dt_systems/3/worksheet16.html">
+     Worksheet 16 The Inverse Z-Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../dt_systems/4/worksheet17.html">
+     Worksheet 17 Models of DT Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../dft/1/worksheet18.html">
+     Worksheet 18 The Discrete-time Fourier Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../dft/2/worksheet19.html">
+     Worksheet 19 The Fast Fourier Transform
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Homework
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../homework/index.html">
+   Homework
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Lab Exercises
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../labs/index.html">
+   Laboratory Exercises
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Project
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../labs/project/index.html">
+   Project
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Answers to Selected problems
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/answers.html">
+   Worksheet 2
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Setting up your own version of this book
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../setup/index.html">
+   Setting up your own version of this book
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by 
+ <a href="https://jupyterbook.org">
+  Jupyter Book
+</a>
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/elementary_signals/worksheet3.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cpjobling/eg-247-textbook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Felementary_signals/worksheet3.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/cpjobling/eg-247-textbook/edit/master/elementary_signals/worksheet3.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#to-accompany-chapter-2-elementary-signals">
+   To accompany Chapter 2 Elementary Signals
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#colophon">
+   Colophon
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p>Lecturer: Set up MATLAB</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">clear</span> <span class="nb">all</span>
+<span class="nb">format</span> <span class="n">compact</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="worksheet-3">
+<h1>Worksheet 3<a class="headerlink" href="#worksheet-3" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="to-accompany-chapter-2-elementary-signals">
+<h2>To accompany Chapter 2 Elementary Signals<a class="headerlink" href="#to-accompany-chapter-2-elementary-signals" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="colophon">
+<h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this headline">¶</a></h2>
+<p>This worksheet can be downloaded as a <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet3.pdf">PDF file</a>.</p>
+<p>A printout of this worksheet will be distributed before the first class meeting in the <strong>Week 1: Classroom Activities</strong> section of the Canvas site. I will also distribute a copy to your personal <strong>Worksheets</strong> section of the <strong>OneNote Class Notebook</strong> so that you can add your own notes using OneNote.</p>
+<p>You are expected to have at least watched the video presentation of <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/elementary_signals/index">Chapter 2</a> of the <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook">notes</a> before coming to the first class. If you haven’t watch it afterwards!</p>
+<p>After class, the lecture recording and the annotated version of this worksheet will be made available to you via OneNote and through Canvas.</p>
+</div>
+</div>
+<div class="section" id="elementary-signals">
+<h1>Elementary Signals<a class="headerlink" href="#elementary-signals" title="Permalink to this headline">¶</a></h1>
+<p>Consider this circuit, and assume that the switch is closed at <span class="math notranslate nohighlight">\(t = 0\)</span> and that all components are ideal:</p>
+<img src="pictures/circuit1.png"><p>Q1: What happens <strong>before</strong> <span class="math notranslate nohighlight">\(t=0\)</span>?</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(v_{\mathrm{out}} = \mathrm{undefined}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(v_{\mathrm{out}} = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(v_{\mathrm{out}} = V_s\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(v_{\mathrm{out}} = V_s/2\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(v_{\mathrm{out}} = \infty\)</span></p></li>
+</ol>
+<div class="section" id="open-poll">
+<h2>-&gt; Open Poll<a class="headerlink" href="#open-poll" title="Permalink to this headline">¶</a></h2>
+<p>Q2: What happens <strong>after</strong> <span class="math notranslate nohighlight">\(t=0\)</span>?</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(v_{\mathrm{out}} = \mathrm{undefined}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(v_{\mathrm{out}} = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(v_{\mathrm{out}} = V_s\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(v_{\mathrm{out}} = V_s/2\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(v_{\mathrm{out}} = \infty\)</span></p></li>
+</ol>
+</div>
+<div class="section" id="id1">
+<h2>-&gt; Open Poll<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Q3: What happens <strong>at</strong> <span class="math notranslate nohighlight">\(t=0\)</span>?</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(v_{\mathrm{out}} = \mathrm{undefined}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(v_{\mathrm{out}} = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(v_{\mathrm{out}} = V_s\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(v_{\mathrm{out}} = V_s/2\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(v_{\mathrm{out}} = \infty\)</span></p></li>
+</ol>
+</div>
+<div class="section" id="id2">
+<h2>-&gt; Open Poll<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Q4: What does the response of <span class="math notranslate nohighlight">\(V_{\mathrm{out}}\)</span> look like?</p>
+<p>Circle the picture you think is correct on your handout.</p>
+<table>
+    <tr><td>A</td><td><img src="pictures/impulse.png"></td><td>B</td><td><img src="pictures/step1.png"></td></tr>
+    <tr><td>C</td><td><img src="pictures/curve.png"></td><td>D</td><td><img src="pictures/ramp.png"></td></tr>
+</table></div>
+<div class="section" id="id3">
+<h2>-&gt; Open Poll<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="the-unit-step-function">
+<h2>The Unit Step Function<a class="headerlink" href="#the-unit-step-function" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}{u_0}(t) = \left\{ {\begin{array}{*{20}{c}}
+{0\quad t &lt; 0}\\
+{1\quad t &gt; 0}
+\end{array}} \right.\end{split}\]</div>
+<img src="pictures/unitstep.png"><div class="section" id="in-matlab">
+<h3>In Matlab<a class="headerlink" href="#in-matlab" title="Permalink to this headline">¶</a></h3>
+<p>In Matlab, we use the <code class="docutils literal notranslate"><span class="pre">heaviside</span></code> function (Named after <a class="reference external" href="https://en.wikipedia.org/wiki/Oliver_Heaviside">Oliver Heaviside</a>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span> <span class="n">t</span>
+<span class="n">ezplot</span><span class="p">(</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">heaviside</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
+ans =
+
+    0.5000
+
+</pre></div>
+</div>
+<img alt="../_images/worksheet3_15_1.png" src="../_images/worksheet3_15_1.png" />
+</div>
+</div>
+<p>See: <span class="xref myst">show_heaviside.m</span></p>
+<p>Note that, so it can be plotted, Matlab defines the <em>heaviside function</em> slightly differently from the mathematically ideal unit step:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathrm{heaviside}(t) = \left\{ {\begin{array}{*{20}{c}}
+{0\quad t &lt; 0}\\
+{1/2\quad t = 0}\\
+{1\quad t &gt; 0}
+\end{array}} \right.\end{split}\]</div>
+</div>
+<div class="section" id="circuit-revisited">
+<h3>Circuit Revisited<a class="headerlink" href="#circuit-revisited" title="Permalink to this headline">¶</a></h3>
+<p>Consider the network shown below, where the switch is closed at time <span class="math notranslate nohighlight">\(t=T\)</span>.</p>
+<img src="pictures/circuit2.png">
+<p>Express the output voltage <span class="math notranslate nohighlight">\(v_{\mathrm{out}}\)</span> as a function of the unit step function, and sketch the appropriate waveform.</p>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></div>
+</div>
+<div class="section" id="simple-signal-operations">
+<h2>Simple Signal Operations<a class="headerlink" href="#simple-signal-operations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="amplitude-scaling">
+<h3>Amplitude Scaling<a class="headerlink" href="#amplitude-scaling" title="Permalink to this headline">¶</a></h3>
+<p>Sketch <span class="math notranslate nohighlight">\(Au_0(t)\)</span> and <span class="math notranslate nohighlight">\(-Au_0(t)\)</span></p>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></div>
+<div class="section" id="time-reversal">
+<h3>Time Reversal<a class="headerlink" href="#time-reversal" title="Permalink to this headline">¶</a></h3>
+<p>Sketch <span class="math notranslate nohighlight">\(u_0(-t)\)</span></p>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></div>
+<div class="section" id="time-delay-and-advance">
+<h3>Time Delay and Advance<a class="headerlink" href="#time-delay-and-advance" title="Permalink to this headline">¶</a></h3>
+<p>Sketch <span class="math notranslate nohighlight">\(u_0(t-T)\)</span> and <span class="math notranslate nohighlight">\(u_0(t+T)\)</span></p>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></div>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="example-1">
+<h4>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h4>
+<p>Which of these signals represents <span class="math notranslate nohighlight">\(-Au_0(t+T)\)</span>?</p>
+<img src="pictures/stepf1.png" width="50%"></div>
+<div class="section" id="id4">
+<h4>-&gt; Open Poll<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="example-2">
+<h4>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h4>
+<p>What is represented by</p>
+<img src="pictures/stepf2.png" width="50%"><ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(-Au_0(t + T)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(-Au_0(-t + T)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(-Au_0(-t - T)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(-Au_0(t-T)\)</span></p></li>
+</ol>
+</div>
+<div class="section" id="id5">
+<h4>-&gt; Open Poll<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+</div>
+<div class="section" id="synthesis-of-signals-from-unit-step">
+<h2>Synthesis of Signals from Unit Step<a class="headerlink" href="#synthesis-of-signals-from-unit-step" title="Permalink to this headline">¶</a></h2>
+<p>Unit step functions can be used to represent other time-varying functions such as rectangular pulses, square waves and triangular pulses.</p>
+<div class="section" id="synthesize-rectangular-pulse">
+<h3>Synthesize Rectangular Pulse<a class="headerlink" href="#synthesize-rectangular-pulse" title="Permalink to this headline">¶</a></h3>
+<img src="pictures/rect.png"><pre style="border: 2px solid blue">
+
+
+
+
+
+</pre></div>
+<div class="section" id="synthesize-square-wave">
+<h3>Synthesize Square Wave<a class="headerlink" href="#synthesize-square-wave" title="Permalink to this headline">¶</a></h3>
+<img src="pictures/square_wave.png"><pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></div>
+<div class="section" id="synthesize-symmetric-rectangular-pulse">
+<h3>Synthesize Symmetric Rectangular Pulse<a class="headerlink" href="#synthesize-symmetric-rectangular-pulse" title="Permalink to this headline">¶</a></h3>
+<img src="pictures/symm_rect.png"><pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></div>
+<div class="section" id="synthesize-symmetric-triangular-pulse">
+<h3>Synthesize Symmetric Triangular Pulse<a class="headerlink" href="#synthesize-symmetric-triangular-pulse" title="Permalink to this headline">¶</a></h3>
+<img src="pictures/symm_tri.png"><pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></div>
+</div>
+<div class="section" id="the-ramp-function">
+<h2>The Ramp Function<a class="headerlink" href="#the-ramp-function" title="Permalink to this headline">¶</a></h2>
+<img src="pictures/rc.png">
+<p>In the circuit shown above <span class="math notranslate nohighlight">\(i_s\)</span> is a constant current source and the switch is closed at time <span class="math notranslate nohighlight">\(t=0\)</span>.</p>
+<p>Show that the voltage across the capacitor can be represented as</p>
+<div class="math notranslate nohighlight">
+\[v_C(t)=\frac{i_s}{C}t u_0(t)\]</div>
+<p>and sketch the wave form.</p>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre><p>The unit ramp function is defined as</p>
+<div class="math notranslate nohighlight">
+\[u_1(t) = \int_{-\infty}^{t}u_0(\tau)d\tau\]</div>
+<p>so</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}{u_1}(t) = \left\{ {\begin{array}{*{20}{c}}
+{0\quad t &lt; 0}\\
+{t\quad t \ge 0}
+\end{array}} \right.\end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[u_0(t) = \frac{d }{dt}u_1(t)\]</div>
+<p><strong>Note</strong></p>
+<p>Higher order functions of <span class="math notranslate nohighlight">\(t\)</span> can be generated by the repeated integration of the unit step function.</p>
+<p>For future reference, you should determine <span class="math notranslate nohighlight">\(u_2(t)\)</span>, <span class="math notranslate nohighlight">\(u_3(t)\)</span> and <span class="math notranslate nohighlight">\(u_n(t)\)</span> for yourself and make a note of the general rule:</p>
+<div class="math notranslate nohighlight">
+\[u_{n-1} = \frac{1}{n}\frac{d}{dt}u_n(t)\]</div>
+<p>Details are given in equations 1.26—1.29 in the textbook.</p>
+</div>
+<div class="section" id="the-dirac-delta-function">
+<h2>The Dirac Delta Function<a class="headerlink" href="#the-dirac-delta-function" title="Permalink to this headline">¶</a></h2>
+<img src="pictures/lr.png">
+<p>In the circuit shown above, the switch is closed at time <span class="math notranslate nohighlight">\(t=0\)</span> and <span class="math notranslate nohighlight">\(i_L(t)=0\)</span> for <span class="math notranslate nohighlight">\(t&lt;0\)</span>. Express the inductor current <span class="math notranslate nohighlight">\(i_L(t)\)</span> in terms of the unit step function and hence derive an expression for <span class="math notranslate nohighlight">\(v_L(t)\)</span>.</p>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre><p><strong>Notes</strong></p>
+<p>To solve this problem we need to invent a function that represents the derivative of the unit step function. This function is called <span class="math notranslate nohighlight">\(\delta(t)\)</span> or the <em>dirac delta</em> function (named after <a class="reference external" href="http://en.wikipedia.org/wiki/Paul_Dirac">Paul Dirac</a>).</p>
+<div class="section" id="the-delta-function">
+<h3>The delta function<a class="headerlink" href="#the-delta-function" title="Permalink to this headline">¶</a></h3>
+<p>The unit impulse or the delta function, denoted as <span class="math notranslate nohighlight">\(\delta(t)\)</span>, is the derivative of the unit step.</p>
+<p>This function is tricky because <span class="math notranslate nohighlight">\(u_0(t)\)</span> is discontinuous at <span class="math notranslate nohighlight">\(t=0\)</span> but it must have the properties</p>
+<div class="math notranslate nohighlight">
+\[\int_{-\infty}^{t}\delta(\tau)d\tau = u_0(t)\]</div>
+<p>and</p>
+<p><span class="math notranslate nohighlight">\(\delta(t) = 0\)</span> for all <span class="math notranslate nohighlight">\(t\ne 0\)</span>.</p>
+</div>
+<div class="section" id="sketch-of-the-delta-function">
+<h3>Sketch of the delta function<a class="headerlink" href="#sketch-of-the-delta-function" title="Permalink to this headline">¶</a></h3>
+<p><img alt="The delta function" src="../_images/impulse.png" /></p>
+</div>
+</div>
+<div class="section" id="important-properties-of-the-delta-function">
+<h2>Important properties of the delta function<a class="headerlink" href="#important-properties-of-the-delta-function" title="Permalink to this headline">¶</a></h2>
+<p>See the accompanying <a class="reference internal" href="index.html"><span class="doc std std-doc">notes</span></a>.</p>
+<div class="section" id="id6">
+<h3>Examples<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="example-3">
+<h4>Example 3<a class="headerlink" href="#example-3" title="Permalink to this headline">¶</a></h4>
+<p>Evaluate the following expressions</p>
+<div class="math notranslate nohighlight">
+\[3t^4\delta(t-1) \]</div>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre><div class="math notranslate nohighlight">
+\[\int_{-\infty}^{\infty}t\delta(t-2)dt\]</div>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre><div class="math notranslate nohighlight">
+\[t^2\delta'(t-3)\]</div>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></div>
+<div class="section" id="example-4">
+<h4>Example 4<a class="headerlink" href="#example-4" title="Permalink to this headline">¶</a></h4>
+<img src="pictures/example2.png"><p>(1) Express the voltage waveform <span class="math notranslate nohighlight">\(v(t)\)</span> shown above as a sum of unit step functions for the time interval <span class="math notranslate nohighlight">\(-1 &lt; t &lt; 7\)</span> s</p>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre><p>Using the result of part (1), compute the derivative of <span class="math notranslate nohighlight">\(v(t)\)</span> and sketch its waveform.</p>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="lab-work">
+<h2>Lab Work<a class="headerlink" href="#lab-work" title="Permalink to this headline">¶</a></h2>
+<p>In the first lab, next Tuesday, we will solve further elemetary signals problems using MATLAB and Simulink
+following the procedure given between pages 1-17 and 1-22 of the Karris. We will also explore the
+<code class="docutils literal notranslate"><span class="pre">heaviside</span></code> and <code class="docutils literal notranslate"><span class="pre">dirac</span></code> functions.</p>
+</div>
+<div class="section" id="answers-to-in-class-questions">
+<h2>Answers to in-class questions<a class="headerlink" href="#answers-to-in-class-questions" title="Permalink to this headline">¶</a></h2>
+<p>Mathematically</p>
+<p>Q1. <span class="math notranslate nohighlight">\(v_{\mathrm{out}} = 0\)</span> when <span class="math notranslate nohighlight">\(-\infty &lt; t &lt; 0\)</span> (answer 2)</p>
+<p>Q2. <span class="math notranslate nohighlight">\(v_{\mathrm{out}} = V_s\)</span> when <span class="math notranslate nohighlight">\(0 &lt; t &lt; \infty\)</span> (answer 3)</p>
+<p>Q3. <span class="math notranslate nohighlight">\(v_{\mathrm{out}} = \mathrm{undefined}\)</span> when <span class="math notranslate nohighlight">\(t=0\)</span> (answer 1)</p>
+<p><span class="math notranslate nohighlight">\(V_{\mathrm{out}}\)</span> jumps from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(V_s\)</span> instantanously when the switch is closed. We call this a discontinuous signal!</p>
+<p>Q4: The correct image is:</p>
+<img src="pictures/step2.png">
+<p>Example 1: Answer 3.</p>
+<p>Example 2: Answer 2.</p>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../introduction/worksheet2.html" title="previous page">Worksheet 2</a>
+    <a class='right-next' id="next-link" href="../laplace_transform/1/worksheet4.html" title="next page">Worksheet 4</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dr Chris P. Jobling<br/>
+        
+            &copy; Copyright 2020.<br/>
+          <div class="extra_footer">
+            This page was created by 
+<a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
+  Dr Chris P. Jobling
+</a> 
+for 
+<a href="https://www.swansea.ac.uk">
+  Swansea University
+</a>.
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

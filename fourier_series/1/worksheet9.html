@@ -1,0 +1,778 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Worksheet 9 &#8212; EG-247 Signals and Systems</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/mystnb.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/fourier_series/1/worksheet9.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Worksheet 10" href="../2/worksheet10.html" />
+    <link rel="prev" title="Worksheet 8" href="../../laplace_transform/5/worksheet8.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cpjobling.github.io/eg-247-textbook/fourier_series/1/worksheet9.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Worksheet 9" />
+<meta property="og:description" content="Worksheet 9  To accompany Chapter 4.1 Trigonometric Fourier Series  Colophon  This worksheet can be downloaded as a PDF file. We will step through this workshee" />
+
+
+<meta name="twitter:card" content="summary">
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">EG-247 Signals and Systems</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../introduction/index.html">
+   Introducing Signals and Systems
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../elementary_signals/index.html">
+   Elementary Signals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../laplace_transform/index.html">
+   Laplace Transforms and their Applications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Fourier Series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fourier_transform/index.html">
+   Fourier Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../dt_systems/index.html">
+   Sampled Data Systems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../dft/index.html">
+   Discrete Fourier Transform
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FAQs
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../FAQS/faq.html">
+   Answers to Frequently Asked Questions
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  In Class Worksheets
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="../../worksheets/index.html">
+   Worksheets
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../introduction/worksheet1.html">
+     Worksheet 1 Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../introduction/worksheet2.html">
+     Worksheet 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../elementary_signals/worksheet3.html">
+     Worksheet 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../elementary_signals/worksheet3.html#elementary-signals">
+     Elementary Signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/1/worksheet4.html">
+     Worksheet 4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/1/worksheet4.html#the-laplace-and-inverse-laplace-transforms">
+     The Laplace and inverse Laplace transforms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/1/worksheet4.html#id2">
+     The Laplace and inverse Laplace transforms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/1/worksheet4.html#id4">
+     The Laplace and inverse Laplace transforms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/1/worksheet4.html#id6">
+     The Laplace and inverse Laplace transforms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/2/worksheet5.html">
+     Worksheet 5 Inverse Laplace Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/3/worksheet6.html">
+     Worksheet 6 Using Laplace Transforms for Circuit Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/4/worksheet7.html">
+     Worksheet 7 Transfer Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/5/worksheet8.html">
+     Worksheet 8 Impulse Response and Time Convolution
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Worksheet 9 Trigonometric Fourier Series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2/worksheet10.html">
+     Worksheet 10 Exponential Fourier Series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3/worksheet11.html">
+     Worksheet 11 Line Spectra and their Applications
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_transform/1/worksheet12.html">
+     Worksheet 12 Defining the Fourier Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_transform/2/worksheet13.html">
+     Worksheet 13 Fourier transforms of commonly occuring signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_transform/3/worksheet14.html">
+     Worksheet 14 Fourier Transforms for Circuit and LTI Systems Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_transform/4/worksheet15.html">
+     Worksheet 15 Introduction to Filters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../dt_systems/3/worksheet16.html">
+     Worksheet 16 The Inverse Z-Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../dt_systems/4/worksheet17.html">
+     Worksheet 17 Models of DT Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../dft/1/worksheet18.html">
+     Worksheet 18 The Discrete-time Fourier Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../dft/2/worksheet19.html">
+     Worksheet 19 The Fast Fourier Transform
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Homework
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../homework/index.html">
+   Homework
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Lab Exercises
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../labs/index.html">
+   Laboratory Exercises
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Project
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../labs/project/index.html">
+   Project
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Answers to Selected problems
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../introduction/answers.html">
+   Worksheet 2
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Setting up your own version of this book
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../setup/index.html">
+   Setting up your own version of this book
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by 
+ <a href="https://jupyterbook.org">
+  Jupyter Book
+</a>
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/fourier_series/1/worksheet9.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cpjobling/eg-247-textbook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Ffourier_series/1/worksheet9.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/cpjobling/eg-247-textbook/edit/master/fourier_series/1/worksheet9.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#to-accompany-chapter-4-1-trigonometric-fourier-series">
+   To accompany Chapter 4.1 Trigonometric Fourier Series
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#colophon">
+   Colophon
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#motivating-example">
+   Motivating Example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-trigonometric-fourier-series">
+   The Trigonometric Fourier Series
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#evaluation-of-the-fourier-series-coefficients">
+     Evaluation of the Fourier series coefficients
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#odd-even-and-half-wave-symmetry">
+   Odd, Even and Half-wave Symmetry
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#odd-and-even-symmetry">
+     Odd- and even symmetry
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#half-wave-symmetry">
+     Half-wave symmetry
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#symmetry-in-trigonometric-fourier-series">
+   Symmetry in Trigonometric Fourier Series
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#symmetry-in-common-waveforms">
+     Symmetry in Common Waveforms
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#squarewave">
+       Squarewave
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifted-squarewave">
+       Shifted Squarewave
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sawtooth">
+       Sawtooth
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#triangle">
+       Triangle
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#symmetry-in-fundamental-second-and-third-harmonics">
+     Symmetry in fundamental, Second and Third Harmonics
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#fundamental">
+       Fundamental
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#second-harmonic">
+       Second Harmonic
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#third-harmonic">
+       Third Harmonic
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-simplifications-that-result-from-symmetry">
+     Some simplifications that result from symmetry
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-coefficients-of-trig-fourier-series-in-matlab">
+   Computing coefficients of Trig. Fourier Series in Matlab
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution">
+     Solution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-symmetry-computing-the-fourier-series-coefficients-of-the-shifted-square-wave">
+     Using symmetry - computing the Fourier series coefficients of the shifted square wave
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="worksheet-9">
+<h1>Worksheet 9<a class="headerlink" href="#worksheet-9" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="to-accompany-chapter-4-1-trigonometric-fourier-series">
+<h2>To accompany Chapter 4.1 Trigonometric Fourier Series<a class="headerlink" href="#to-accompany-chapter-4-1-trigonometric-fourier-series" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="colophon">
+<h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this headline">¶</a></h2>
+<p>This worksheet can be downloaded as a <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet9.pdf">PDF file</a>. We will step through this worksheet in class.</p>
+<p>An annotatable copy of the notes for this presentation will be distributed before the second class meeting as <strong>Worksheet 9</strong> in the <strong>Week 4: Classroom Activities</strong> section of the Canvas site. I will also distribute a copy to your personal <strong>Worksheets</strong> section of the <strong>OneNote Class Notebook</strong> so that you can add your own notes using OneNote.</p>
+<p>You are expected to have at least watched the video presentation of <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_series/1/trig_fseries">Chapter 4.1</a> of the <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/">notes</a> before coming to class. If you haven’t watch it afterwards!</p>
+<p>After class, the lecture recording and the annotated version of the worksheets will be made available through Canvas.</p>
+</div>
+<div class="section" id="motivating-example">
+<h2>Motivating Example<a class="headerlink" href="#motivating-example" title="Permalink to this headline">¶</a></h2>
+<p>In the class I will demonstrate the Fourier Series demo (see <a class="reference internal" href="trig_fseries.html"><span class="doc std std-doc">Notes</span></a>).</p>
+</div>
+<div class="section" id="the-trigonometric-fourier-series">
+<h2>The Trigonometric Fourier Series<a class="headerlink" href="#the-trigonometric-fourier-series" title="Permalink to this headline">¶</a></h2>
+<p>Any periodic waveform <span class="math notranslate nohighlight">\(f(t)\)</span> can be represented as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+  f(t) &amp;=&amp; \frac{1}{2}{a_0} + {a_1}\cos \Omega_0 t + {a_2}\cos 2\Omega_0 t + {a_3}\cos 3\Omega_0 t +  \cdots  + {a_n}\cos n\Omega_0 t +  \cdots  \\ 
+   &amp;+&amp; {b_1}\sin \Omega_0 t + {b_2}\sin 2\Omega_0 t + {b_3}\sin 3\Omega_0 t +  \cdots  + {b_n}\sin n\Omega_0 t +  \cdots  \\ 
+\end{eqnarray*} \end{split}\]</div>
+<p>or equivalently (if more confusingly)</p>
+<div class="math notranslate nohighlight">
+\[f(t) = \frac{1}{2}{a_0} + \sum\limits_{n = 1}^\infty  {({a_n}\cos n\Omega_0 t + {b_n}\sin n\Omega_0 t)} \]</div>
+<p>where <span class="math notranslate nohighlight">\(\Omega_0\)</span> rad/s is the <em>fundamental frequency</em>.</p>
+<div class="section" id="evaluation-of-the-fourier-series-coefficients">
+<h3>Evaluation of the Fourier series coefficients<a class="headerlink" href="#evaluation-of-the-fourier-series-coefficients" title="Permalink to this headline">¶</a></h3>
+<p>The coefficients are obtained from the following expressions (valid for any periodic waveform with fundamental frequency <span class="math notranslate nohighlight">\(\Omega_0\)</span> so long as we integrate over one period <span class="math notranslate nohighlight">\(0\to T_0\)</span> where <span class="math notranslate nohighlight">\(T_0 = 2\pi/\Omega_0\)</span>), and <span class="math notranslate nohighlight">\(\theta = \Omega_0 t\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{2}a_0 = \frac{1}{T_0}\int_{0}^{T_0}f(t)d t = \frac{1}{\pi}\int_{0}^{2\pi}f(\theta )d \theta\]</div>
+<div class="math notranslate nohighlight">
+\[a_n = \frac{1}{T_0}\int_{0}^{T_0}f(t)\cos n\Omega_0 t\,dt = \frac{1}{2\pi}\int_{0}^{2\pi}f(\theta)\cos n\theta\,d\theta\]</div>
+<div class="math notranslate nohighlight">
+\[b_n = \frac{1}{T_0}\int_{0}^{T_0}f(t)\sin n\Omega_0 t\,dt = \frac{1}{2\pi}\int_{0}^{2\pi}f(\theta)\cos n\theta \,d\theta\]</div>
+</div>
+</div>
+<div class="section" id="odd-even-and-half-wave-symmetry">
+<h2>Odd, Even and Half-wave Symmetry<a class="headerlink" href="#odd-even-and-half-wave-symmetry" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="odd-and-even-symmetry">
+<h3>Odd- and even symmetry<a class="headerlink" href="#odd-and-even-symmetry" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>An <em>odd</em> function is one for which <span class="math notranslate nohighlight">\(f(t) = -f(-t)\)</span>. The function <span class="math notranslate nohighlight">\(\sin t\)</span> is an <em>odd</em> function.</p></li>
+<li><p>An <em>even</em> function is one for which <span class="math notranslate nohighlight">\(f(t) = f(-t)\)</span>. The function <span class="math notranslate nohighlight">\(\cos t\)</span> is an <em>even</em> function.</p></li>
+</ul>
+</div>
+<div class="section" id="half-wave-symmetry">
+<h3>Half-wave symmetry<a class="headerlink" href="#half-wave-symmetry" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>A periodic function with period <span class="math notranslate nohighlight">\(T\)</span> is a function for which <span class="math notranslate nohighlight">\(f(t) = f(t + T)\)</span></p></li>
+<li><p>A periodic function with period <span class="math notranslate nohighlight">\(T\)</span>, has <em>half-wave symmetry</em> if <span class="math notranslate nohighlight">\(f(t) = -f(t + T/2)\)</span></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="symmetry-in-trigonometric-fourier-series">
+<h2>Symmetry in Trigonometric Fourier Series<a class="headerlink" href="#symmetry-in-trigonometric-fourier-series" title="Permalink to this headline">¶</a></h2>
+<p>There are simplifications we can make if the original periodic properties has certain properties:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(f(t)\)</span> is odd, <span class="math notranslate nohighlight">\(a_0=0\)</span> and there will be no cosine terms so <span class="math notranslate nohighlight">\({a_n} = 0\; \forall n &gt; 0\)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(f(t)\)</span> is even, there will be no sine terms and <span class="math notranslate nohighlight">\({b_n} = 0\; \forall n &gt; 0\)</span>. The DC may or may not be zero.</p></li>
+</ul>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(f(t)\)</span> has <em>half-wave symmetry</em> only the odd harmonics will be present. That is <span class="math notranslate nohighlight">\(a_n\)</span> and <span class="math notranslate nohighlight">\(b_n\)</span> is zero for all even values of <span class="math notranslate nohighlight">\(n\)</span> (0, 2, 4, …)</p></li>
+</ul>
+<div class="section" id="symmetry-in-common-waveforms">
+<h3>Symmetry in Common Waveforms<a class="headerlink" href="#symmetry-in-common-waveforms" title="Permalink to this headline">¶</a></h3>
+<p>To reproduce the following waveforms (without annotation) publish the script <span class="xref myst">waves.m</span>.</p>
+<div class="section" id="squarewave">
+<h4>Squarewave<a class="headerlink" href="#squarewave" title="Permalink to this headline">¶</a></h4>
+<img src="pictures/square.png">
+<ul class="simple">
+<li><p>Average value over period <span class="math notranslate nohighlight">\(T\)</span> is …?</p></li>
+<li><p>It is an <strong>odd</strong>/<strong>even</strong> function?</p></li>
+<li><p>It <strong>has/has not</strong> half-wave symmetry <span class="math notranslate nohighlight">\(f(t)=-f(t+T/2)\)</span>?</p></li>
+</ul>
+</div>
+<div class="section" id="shifted-squarewave">
+<h4>Shifted Squarewave<a class="headerlink" href="#shifted-squarewave" title="Permalink to this headline">¶</a></h4>
+<img src="pictures/shifted_sq.png">
+<ul class="simple">
+<li><p>Average value over period <span class="math notranslate nohighlight">\(T\)</span> is</p></li>
+<li><p>It is an <strong>odd</strong>/<strong>even</strong> function?</p></li>
+<li><p>It <strong>has/has not</strong> half-wave symmetry <span class="math notranslate nohighlight">\(f(t)=-f(t+T/2)\)</span>?</p></li>
+</ul>
+</div>
+<div class="section" id="sawtooth">
+<h4>Sawtooth<a class="headerlink" href="#sawtooth" title="Permalink to this headline">¶</a></h4>
+<img src="pictures/sawtooth.png">
+<ul class="simple">
+<li><p>Average value over period <span class="math notranslate nohighlight">\(T\)</span> is</p></li>
+<li><p>It is an <strong>odd</strong>/<strong>even</strong> function?</p></li>
+<li><p>It <strong>has/has not</strong> half-wave symmetry <span class="math notranslate nohighlight">\(f(t)=-f(t+T/2)\)</span>?</p></li>
+</ul>
+</div>
+<div class="section" id="triangle">
+<h4>Triangle<a class="headerlink" href="#triangle" title="Permalink to this headline">¶</a></h4>
+<img src="pictures/triangle.png">
+<ul class="simple">
+<li><p>Average value over period <span class="math notranslate nohighlight">\(T\)</span> is</p></li>
+<li><p>It is an <strong>odd</strong>/<strong>even</strong> function?</p></li>
+<li><p>It <strong>has/has not</strong> half-wave symmetry <span class="math notranslate nohighlight">\(f(t)=-f(t+T/2)\)</span>?</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="symmetry-in-fundamental-second-and-third-harmonics">
+<h3>Symmetry in fundamental, Second and Third Harmonics<a class="headerlink" href="#symmetry-in-fundamental-second-and-third-harmonics" title="Permalink to this headline">¶</a></h3>
+<p>In the following, <span class="math notranslate nohighlight">\(T/2\)</span> is taken to be the half-period of the fundamental sinewave.</p>
+<div class="section" id="fundamental">
+<h4>Fundamental<a class="headerlink" href="#fundamental" title="Permalink to this headline">¶</a></h4>
+<img src="pictures/fundamental.png">
+<ul class="simple">
+<li><p>Average value over period <span class="math notranslate nohighlight">\(T\)</span> is</p></li>
+<li><p>It is an <strong>odd</strong>/<strong>even</strong> function?</p></li>
+<li><p>It <strong>has/has not</strong> half-wave symmetry <span class="math notranslate nohighlight">\(f(t)=-f(t+T/2)\)</span>?</p></li>
+</ul>
+</div>
+<div class="section" id="second-harmonic">
+<h4>Second Harmonic<a class="headerlink" href="#second-harmonic" title="Permalink to this headline">¶</a></h4>
+<img src="pictures/2nd_harm.png">
+<ul class="simple">
+<li><p>Average value over period <span class="math notranslate nohighlight">\(T\)</span> is</p></li>
+<li><p>It is an <strong>odd</strong>/<strong>even</strong> function?</p></li>
+<li><p>It <strong>has/has not</strong> half-wave symmetry <span class="math notranslate nohighlight">\(f(t)=-f(t+T/2)\)</span>?</p></li>
+</ul>
+</div>
+<div class="section" id="third-harmonic">
+<h4>Third Harmonic<a class="headerlink" href="#third-harmonic" title="Permalink to this headline">¶</a></h4>
+<img src="pictures/3rd_harm.png">
+<ul class="simple">
+<li><p>Average value over period <span class="math notranslate nohighlight">\(T\)</span> is</p></li>
+<li><p>It is an <strong>odd</strong>/<strong>even</strong> function?</p></li>
+<li><p>It <strong>has/has not</strong> half-wave symmetry <span class="math notranslate nohighlight">\(f(t)=-f(t+T/2)\)</span>?</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="some-simplifications-that-result-from-symmetry">
+<h3>Some simplifications that result from symmetry<a class="headerlink" href="#some-simplifications-that-result-from-symmetry" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>The limits of the integrals used to compute the coefficents <span class="math notranslate nohighlight">\(a_n\)</span> and <span class="math notranslate nohighlight">\(b_n\)</span> of the Fourier series are given as <span class="math notranslate nohighlight">\(0\to 2\pi\)</span> which is one period <span class="math notranslate nohighlight">\(T\)</span></p></li>
+<li><p>We could also choose to integrate from <span class="math notranslate nohighlight">\(-\pi \to \pi\)</span></p></li>
+<li><p>If the function is <em>odd</em>, or <em>even</em> or has <em>half-wave symmetry</em> we can compute <span class="math notranslate nohighlight">\(a_n\)</span> and <span class="math notranslate nohighlight">\(b_n\)</span> by integrating from <span class="math notranslate nohighlight">\(0\to \pi\)</span> and multiplying by 2.</p></li>
+<li><p>If we have <em>half-wave symmetry</em> we can compute <span class="math notranslate nohighlight">\(a_n\)</span> and <span class="math notranslate nohighlight">\(b_n\)</span> by integrating from <span class="math notranslate nohighlight">\(0\to \pi/2\)</span> and multiplying by 4.</p></li>
+</ul>
+<p>(For more details see page 7-10 of the textbook)</p>
+</div>
+</div>
+<div class="section" id="computing-coefficients-of-trig-fourier-series-in-matlab">
+<h2>Computing coefficients of Trig. Fourier Series in Matlab<a class="headerlink" href="#computing-coefficients-of-trig-fourier-series-in-matlab" title="Permalink to this headline">¶</a></h2>
+<p>As an example let’s take a square wave with amplitude <span class="math notranslate nohighlight">\(\pm A\)</span> and period <span class="math notranslate nohighlight">\(T\)</span>.</p>
+<img src="pictures/square_wave.png"><div class="section" id="solution">
+<h3>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h3>
+<p>Solution: See <span class="xref myst">square_ftrig.mlx</span>. Script confirms that:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(a_0 = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(a_i = 0\)</span>: function is odd</p></li>
+<li><p><span class="math notranslate nohighlight">\(b_i = 0\)</span>: for <span class="math notranslate nohighlight">\(i\)</span> even - half-wave symmetry</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ft</span> <span class="o">=</span>
+ 
+<span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="n">pi</span> <span class="o">+</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">7</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">7</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">9</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">9</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">11</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">11</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that the coefficients match those given in the textbook (Section 7.4.1).</p>
+<div class="math notranslate nohighlight">
+\[f(t) = \frac{4A}{\pi}\left(\sin \Omega_0 t + \frac{1}{3}\sin 3\Omega_0 t + \frac{1}{5}\sin 5\Omega_0 t + \cdots\right) = \frac{4A}{\pi}\sum_{n=\mathrm{odd}}\frac{1}{n}\sin n\Omega_0 t\]</div>
+</div>
+<div class="section" id="using-symmetry-computing-the-fourier-series-coefficients-of-the-shifted-square-wave">
+<h3>Using symmetry - computing the Fourier series coefficients of the shifted square wave<a class="headerlink" href="#using-symmetry-computing-the-fourier-series-coefficients-of-the-shifted-square-wave" title="Permalink to this headline">¶</a></h3>
+<img src="pictures/shifted_square_wave.png"><ul class="simple">
+<li><p>As before <span class="math notranslate nohighlight">\(a_0=0\)</span></p></li>
+<li><p>We observe that this function is even, so all <span class="math notranslate nohighlight">\(b_k\)</span> coefficents will be zero</p></li>
+<li><p>The waveform has half-wave symmetry, so only odd indexed coeeficents will be present.</p></li>
+<li><p>Further more, because it has half-wave symmetry we can just integrate from <span class="math notranslate nohighlight">\(0 \to \pi/2\)</span> and multiply the result by 4.</p></li>
+</ul>
+<p>See <span class="xref myst">shifted_sq_ftrig.mlx</span>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ft</span> <span class="o">=</span>
+ 
+<span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="n">pi</span> <span class="o">-</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="mi">7</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">7</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="mi">9</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">9</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="mi">11</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">11</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that the coefficients match those given in the textbook (Section 7.4.2).</p>
+<div class="math notranslate nohighlight">
+\[f(t) = \frac{4A}{\pi}\left(\cos \Omega_0 t - \frac{1}{3}\cos 3\Omega_0 t + \frac{1}{5}\cos 5\Omega_0 t - \cdots\right) = \frac{4A}{\pi}\sum_{n=\mathrm{odd}}(-1)^{\frac{n-1}{2}} \frac{1}{n}\cos n\Omega_0 t\]</div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../../laplace_transform/5/worksheet8.html" title="previous page">Worksheet 8</a>
+    <a class='right-next' id="next-link" href="../2/worksheet10.html" title="next page">Worksheet 10</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dr Chris P. Jobling<br/>
+        
+            &copy; Copyright 2020.<br/>
+          <div class="extra_footer">
+            This page was created by 
+<a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
+  Dr Chris P. Jobling
+</a> 
+for 
+<a href="https://www.swansea.ac.uk">
+  Swansea University
+</a>.
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    
+  </body>
+</html>

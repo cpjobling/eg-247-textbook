@@ -1,0 +1,953 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Discrete-Time Systems and the Z-Transform &#8212; EG-247 Signals and Systems</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/mystnb.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/2/z_transform.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="The Inverse Z-Transform" href="../3/i_z_transform.html" />
+    <link rel="prev" title="Sampling Theory" href="../1/sampling.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cpjobling.github.io/eg-247-textbook/dt_systems/2/z_transform.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Discrete-Time Systems and the Z-Transform" />
+<meta property="og:description" content="Discrete-Time Systems and the Z-Transform  Colophon  The source code for this page is content/dt_systems/2/z_transform.ipynb.  You can view the notes for this p" />
+
+
+<meta name="twitter:card" content="summary">
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">EG-247 Signals and Systems</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../introduction/index.html">
+   Introducing Signals and Systems
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../elementary_signals/index.html">
+   Elementary Signals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../laplace_transform/index.html">
+   Laplace Transforms and their Applications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fourier_series/index.html">
+   Fourier Series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fourier_transform/index.html">
+   Fourier Transform
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="../index.html">
+   Sampled Data Systems
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1/sampling.html">
+     Sampling Theory
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     The Z-Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3/i_z_transform.html">
+     The Inverse Z-Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4/dt_models.html">
+     Models of Discrete Time Systems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../dft/index.html">
+   Discrete Fourier Transform
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FAQs
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../FAQS/faq.html">
+   Answers to Frequently Asked Questions
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  In Class Worksheets
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../worksheets/index.html">
+   Worksheets
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Homework
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../homework/index.html">
+   Homework
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Lab Exercises
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../labs/index.html">
+   Laboratory Exercises
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Project
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../labs/project/index.html">
+   Project
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Answers to Selected problems
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../introduction/answers.html">
+   Worksheet 2
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Setting up your own version of this book
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../setup/index.html">
+   Setting up your own version of this book
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by 
+ <a href="https://jupyterbook.org">
+  Jupyter Book
+</a>
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/dt_systems/2/z_transform.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cpjobling/eg-247-textbook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Fdt_systems/2/z_transform.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/cpjobling/eg-247-textbook/edit/master/dt_systems/2/z_transform.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#colophon">
+   Colophon
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scope-and-background-reading">
+   Scope and Background Reading
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#agenda">
+   Agenda
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nature-of-the-signals">
+     Nature of the signals
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nature-of-the-systems">
+     Nature of the systems
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transfer-function-model-of-a-dt-system">
+     Transfer function model of a DT system
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-z-transform">
+   The Z-Transform
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sampling-and-the-z-transform">
+     Sampling and the Z-Transform
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#properties-of-the-z-transform">
+   Properties of the z-Transform
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#some-selected-common-z-transforms">
+   Some Selected Common z-Transforms
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-geometric-sequence">
+     The Geometric Sequence
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#region-of-convergence">
+     Region of convergence
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-delta-sequence">
+     The Delta Sequence
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-unit-step">
+     The Unit Step
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#z-transform-of-unit-step">
+     Z-Transform of Unit Step
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exponontial-decay-sequence">
+     Exponontial Decay Sequence
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ramp-function">
+     Ramp Function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#z-transform-tables">
+     z-Transform Tables
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#relationship-between-the-laplace-and-z-transform">
+   Relationship Between the Laplace and Z-Transform
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mapping-of-s-to-z">
+     Mapping of s to z
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#introduction-of-sampling-frequency">
+     Introduction of sampling frequency
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpretation-of-the-mapping-s-to-z">
+     Interpretation of the mapping s to z
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#case-i-sigma-0">
+       Case I:
+       <span class="math notranslate nohighlight">
+        \(\sigma &lt; 0\)
+       </span>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#case-ii-sigma-0">
+       Case II:
+       <span class="math notranslate nohighlight">
+        \(\sigma &gt; 0\)
+       </span>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#case-iii-sigma-0">
+       Case III:
+       <span class="math notranslate nohighlight">
+        \(\sigma = 0\)
+       </span>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stability-region-s-plane">
+     Stability Region - s-Plane
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stability-region-z-plane">
+     Stability Region - z-Plane
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#frequencies-in-the-z-domain">
+     Frequencies in the z-Domain
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mapping-of-multiples-of-sampling-frequency">
+     Mapping of multiples of sampling frequency
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mapping-of-s-plane-to-z-plane">
+     Mapping of s-plane to z-plane
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mapping-z-plane-to-s-plane">
+     Mapping z-plane to s-plane
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#frequency-aliasing">
+     Frequency aliasing
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#homework">
+   Homework
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="discrete-time-systems-and-the-z-transform">
+<h1>Discrete-Time Systems and the Z-Transform<a class="headerlink" href="#discrete-time-systems-and-the-z-transform" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="colophon">
+<h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>The source code for this page is <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/content/fourier_series/1/trig_fseries.ipynb">content/dt_systems/2/z_transform.ipynb</a>.</p></li>
+<li><p>You can view the notes for this presentation as a webpage (<a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_series/1/trig_fseries.html">HTML</a>).</p></li>
+<li><p>This page is downloadable as a <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/2/z_transform.pdf">PDF</a> file.</p></li>
+</ul>
+</div>
+<div class="section" id="scope-and-background-reading">
+<h2>Scope and Background Reading<a class="headerlink" href="#scope-and-background-reading" title="Permalink to this headline">¶</a></h2>
+<p>This session introduces the z-transform which is used in the analysis of discrete time systems. As for the Fourier and Laplace transforms, we present the definition, define the properties and give some applications of the use of the z-transform in the analysis of signals that are represented as sequences and systems represented by difference equations.</p>
+<p>The material in this presentation and notes is based on <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=329">Chapter 9</a> of {% cite karris %) from the <strong>Required Reading List</strong>. Additional coverage is to be found in Chapter 13 of <span class="bibtex" id="id1">[benoit]</span> from the <strong>Recommended Reading List</strong>.</p>
+</div>
+<div class="section" id="agenda">
+<h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Introduction</p></li>
+</ul>
+<ul class="simple">
+<li><p>The Z-Transform</p></li>
+</ul>
+<ul class="simple">
+<li><p>Properties of the Z-Transform</p></li>
+</ul>
+<ul class="simple">
+<li><p>Some Selected Z-Transforms</p></li>
+</ul>
+<ul class="simple">
+<li><p>Relationship between Laplace and Z-Transform</p></li>
+</ul>
+<ul class="simple">
+<li><p>Stability Regions</p></li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<img src="pictures/ct-to-dt.png"><p>In the remainder of this course we turn our attention to how we model and analyse the behaviour of the central block in this picture.</p>
+<div class="section" id="nature-of-the-signals">
+<h3>Nature of the signals<a class="headerlink" href="#nature-of-the-signals" title="Permalink to this headline">¶</a></h3>
+<img src="pictures/ct-to-dt-to-sequence.png"><p>The signals we process in discrete time systems are <em>sequences</em> of values <span class="math notranslate nohighlight">\(x[n]\)</span> where <span class="math notranslate nohighlight">\(n\)</span> is an index.</p>
+<p>A sequence can be obtained in real-time, e.g. as the output of a ADC, or can be stored in digital memory; processed and re-stored; or processed and output in real-time, for example in digital music.</p>
+</div>
+<div class="section" id="nature-of-the-systems">
+<h3>Nature of the systems<a class="headerlink" href="#nature-of-the-systems" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>The input to a discrete time system is a squence of values <span class="math notranslate nohighlight">\(x[n]\)</span></p></li>
+<li><p>The output is also a sequence <span class="math notranslate nohighlight">\(y[n]\)</span></p></li>
+<li><p>The block represents the operations that convert <span class="math notranslate nohighlight">\(x[n]\)</span> into <span class="math notranslate nohighlight">\(y[n]\)</span>.</p></li>
+<li><p>This processing takes the form of a <em>difference equation</em></p></li>
+<li><p>This is analogous to the representation of continuous-time operations by differential equations.</p></li>
+</ul>
+</div>
+<div class="section" id="transfer-function-model-of-a-dt-system">
+<h3>Transfer function model of a DT system<a class="headerlink" href="#transfer-function-model-of-a-dt-system" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>In CT systems we use the Laplace transform to simplify the analysis of the <em>differential equations</em></p></li>
+<li><p>In DT systems the z-Transform allows us to simplify the analysis of the <em>difference equations</em></p></li>
+<li><p>In CT systems application of the Laplace transform allows us to represent systems as transfer functions and solve convolution problems by multiplication</p></li>
+<li><p>The z-transform provides <a class="reference external" href="https://www.google.co.uk/search?q=define:analogous">analogous</a> tools for the analysis of DT systems.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="the-z-transform">
+<h2>The Z-Transform<a class="headerlink" href="#the-z-transform" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[\mathcal{Z}\left\{f[n]\right\} = F(z) = \sum_{n=0}^{\infty} f[n]z^{-n}\]</div>
+<div class="math notranslate nohighlight">
+\[\mathcal{Z}^{ - 1}\left\{ {F(z)} \right\} = f[n] = \frac{1}{2\pi j}\oint\limits_{} {F(z){z^{k - 1}}\,dz}\]</div>
+<div class="section" id="sampling-and-the-z-transform">
+<h3>Sampling and the Z-Transform<a class="headerlink" href="#sampling-and-the-z-transform" title="Permalink to this headline">¶</a></h3>
+<p>In the last lecture we showed that sampling could be represented as the multiplication of a CT signal by a periodic train of impulses:</p>
+<div class="math notranslate nohighlight">
+\[x_s(t) = x(t)\sum_{n=0}^{\infty}\delta(t-nT_s)\]</div>
+<p>By the sampling property of <span class="math notranslate nohighlight">\(\delta(t)\)</span></p>
+<div class="math notranslate nohighlight">
+\[x_s(t) = \sum_{n=0}^{\infty}x(nT_s)\delta(t-nT_s)\]</div>
+<p>Using the Laplace transform pairs <span class="math notranslate nohighlight">\(\delta(t) \Leftrightarrow 1\)</span> and <span class="math notranslate nohighlight">\(\delta(t-T) \Leftrightarrow e^{-sT}\)</span> we obtain:</p>
+<div class="math notranslate nohighlight">
+\[X_s(s) = \mathcal{L}\left\{\sum_{n=0}^{\infty}x(nT_s)\delta(t-nT_s)\right\} = \sum_{n=0}^{\infty}x(nT_s)e^{-nsT_s}\]</div>
+<p>By substitution of <span class="math notranslate nohighlight">\(z = e^{sT_s}\)</span> and representing samples <span class="math notranslate nohighlight">\(x(nT_s)\)</span> as sequence <span class="math notranslate nohighlight">\(x[n]\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[X(z) = \sum_{n=0}^{\infty}x[n]z^{-n}\]</div>
+</div>
+</div>
+<div class="section" id="properties-of-the-z-transform">
+<h2>Properties of the z-Transform<a class="headerlink" href="#properties-of-the-z-transform" title="Permalink to this headline">¶</a></h2>
+<table>
+<thead>
+<tr><td>&nbsp;</td><th>Property</th><th>Discrete Time Domain</th><th>$$\mathcal{Z}$$ Transform</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Linearity</td><td>$$af_1[n]+bf_2[n]+\cdots$$</td><td>$$aF_1(z)+bF_2(z)+\cdots$$</td></tr>
+<tr><td>2</td><td>Shift of $$x[n]u_0[n]$$</td><td>$$f[n-m]u_0[n-m]$$</td><td>$$z^{-m}F(z)$$</td></tr>
+<tr><td>3</td><td>Left shift</td><td>$$f[n-m]$$</td><td>$$z^{-m}F(z)+\sum_{n=0}^{m-1}f[n-m]z^{-n}$$</td></tr>
+<tr><td>4</td><td>Right shift</td><td>$$f[n+m]$$</td><td>$$z^{m}F(z)+\sum_{n=-m}^{-1}f[n+m]z^{-n}$$</td></tr>
+<tr><td>5</td><td>Multiplication by $$a^n$$</td><td>$$a^nf[n]$$</td><td>$$F\left(\frac{z}{a}\right)$$</td></tr>
+<tr><td>6</td><td>Multiplication by $$e^{-nsT_s}$$</td><td>$$e^{-nsT_s}f[n]$$</td><td>$$F\left(e^{sT_s}z\right)$$</td></tr>
+<tr><td>7</td><td>Multiplication by $$n$$</td><td>$$nf[n]$$</td><td>$$-z\frac{d}{dz}F(z)$$</td></tr>
+<tr><td>8</td><td>Multiplication by $$n^2$$</td><td>$$n^2f[n]$$</td><td>$$-z\frac{d}{dz}F(z)+z^2\frac{d^2}{dz^2}F(z)$$</td></tr>
+<tr><td>9</td><td>Summation in time</td><td>$$\sum_{m=0}^{n}f[m]$$</td><td>$$\frac{z}{z-1}F(z)$$</td></tr>
+<tr><td>10</td><td>Time convolution</td><td>$$f_1[n]*f_2[n]$$</td><td>$$F_1(z)F_2(z)$$</td></tr>
+<tr><td>11</td><td>Frequency convolution</td><td>$$f_1[n]f_2[n]$$</td><td>$$\frac{1}{j2\pi }\oint {x{F_1}(v){F_2}\left( {\frac{z}{v}} \right)} {v^{ - 1}}dv$$</td></tr>
+<tr><td>12</td><td>Initial value theorem</td><td colspan="2">$$f[0]=\lim_{z\to\infty}F(z)$$</td></tr>
+<tr><td>13</td><td>Final value theorem</td><td colspan="2">$$\lim_{n\to\infty}f[n]=\lim_{z\to 1}(z-1)F(z)$$</td></tr>
+</tbody>
+</table>
+<p>For proofs refer to Section 9.2 of Karris.</p>
+</div>
+<div class="section" id="some-selected-common-z-transforms">
+<h2>Some Selected Common z-Transforms<a class="headerlink" href="#some-selected-common-z-transforms" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="the-geometric-sequence">
+<h3>The Geometric Sequence<a class="headerlink" href="#the-geometric-sequence" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}f[n] = \left\{ {\begin{array}{*{20}{c}}
+0&amp;{n =  - 1, - 2, - 3, \ldots }\\
+a^n&amp;{n = 0,1,2,3, \ldots }
+\end{array}} \right.\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[F(z) = \sum_{n=0}^{\infty}f[n]z^{-n} = \sum_{n=0}^{\infty}a^n z^{-n} = \sum_{n=0}^{\infty}\left(az^{-1}\right)^n\]</div>
+<p>After some analysis<sup>1</sup>, this can be shown to have a <em>closed-form</em> expression<sup>2</sup></p>
+<div class="math notranslate nohighlight">
+\[F(z) = \frac{1}{1-az^{-1}}=\frac{z}{z -a}\]</div>
+<p><strong>Notes</strong></p>
+<ol>
+<li><p>See Karris pp 9-12—9-13 for the details</p></li>
+<li><p>This function converges only if</p>
+<div class="math notranslate nohighlight">
+\[|z| &lt; |a|\]</div>
+<p>and the region of convergence is outside the circle centred at <span class="math notranslate nohighlight">\(z=0\)</span> with radius</p>
+<div class="math notranslate nohighlight">
+\[r=|a|\]</div>
+</li>
+</ol>
+</div>
+<div class="section" id="region-of-convergence">
+<h3>Region of convergence<a class="headerlink" href="#region-of-convergence" title="Permalink to this headline">¶</a></h3>
+<img src="pictures/roc.png"></div>
+<div class="section" id="the-delta-sequence">
+<h3>The Delta Sequence<a class="headerlink" href="#the-delta-sequence" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}\delta [n] = \left\{ {\begin{array}{*{20}{c}}
+1&amp;{n = 0}\\
+0&amp;\mathrm{otherwise}
+\end{array}} \right.\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\mathcal{Z}\left\{\delta [n]\right\} = \Delta(z) = \sum_{n=0}^{\infty}\delta[n]z^{-n} = 1 + \sum_{n=1}^{\infty}0z^{-n} =1\]</div>
+<div class="math notranslate nohighlight">
+\[\delta [n] \Leftrightarrow 1\]</div>
+</div>
+<div class="section" id="the-unit-step">
+<h3>The Unit Step<a class="headerlink" href="#the-unit-step" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}{u_0}[n] = {\rm{ }}\left\{ {\begin{array}{*{20}{c}}
+0&amp;{n &lt; 0}\\
+1&amp;{n \ge 0}
+\end{array}} \right.\end{split}\]</div>
+<img src="pictures/unitstep.png"></div>
+<div class="section" id="z-transform-of-unit-step">
+<h3>Z-Transform of Unit Step<a class="headerlink" href="#z-transform-of-unit-step" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\mathcal{Z}\left\{u_0 [n]\right\} U_0(z) = \sum_{n=0}^{\infty}u_0[n]z^{-n} =\sum_{n=0}^{\infty}z^{-n}\]</div>
+<p>This is a special case of the geometric sequence with <span class="math notranslate nohighlight">\(a = 1\)</span> so</p>
+<div class="math notranslate nohighlight">
+\[U_0(z) = \frac{1}{1-z^{-1}} = \frac{z}{z - 1}\]</div>
+<p>Region of convergence is</p>
+<div class="math notranslate nohighlight">
+\[|z| &gt; 1\]</div>
+</div>
+<div class="section" id="exponontial-decay-sequence">
+<h3>Exponontial Decay Sequence<a class="headerlink" href="#exponontial-decay-sequence" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[f[n] = e^{-naT_s}{u_0}[n]\]</div>
+<div class="math notranslate nohighlight">
+\[F(z) = \sum_{n=0}^{\infty}e^{-nasT_s}z^{-n} =1+e^{-aT_s}z^{-1}+e^{-2aT_s}z^{-2}+e^{-a3T_s}z^{-3}+\cdots\]</div>
+<p>This is a geometric sequence with <span class="math notranslate nohighlight">\(a = e^{-aT_s}\)</span>, so</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{Z}\left\{e^{naT_s}{u_0}[n]\right\} = \frac{1}{1-e^{-aT_s}z^{-1}} = \frac{z}{z-e^{-aT_s}}\]</div>
+<p>Region of convergence is <span class="math notranslate nohighlight">\($|e^{-aT_s}z^{-1}| &lt; 1\)</span>$</p>
+</div>
+<div class="section" id="ramp-function">
+<h3>Ramp Function<a class="headerlink" href="#ramp-function" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[f[n] = nu_0[n]\]</div>
+<div class="math notranslate nohighlight">
+\[\mathcal{Z}\left\{nu_0[n]\right\}=\sum_{n=0}^{\infty} nz^{-n} = 0 + z^{-1}+2z^{-2}+3z^{-3}+\cdots\]</div>
+<p>We recognize this as a signal <span class="math notranslate nohighlight">\(u_0[n]\)</span> multiplied by <span class="math notranslate nohighlight">\(n\)</span> for which we have the property
+<span class="math notranslate nohighlight">\($nf[n] \Leftrightarrow -z\frac{d}{dz}F(z)\)</span>$</p>
+<p>After applying the property and some manipulation, we arrive at:</p>
+<div class="math notranslate nohighlight">
+\[nu_0[n] \Leftrightarrow \frac{z}{(z-1)^2}\]</div>
+</div>
+<div class="section" id="z-transform-tables">
+<h3>z-Transform Tables<a class="headerlink" href="#z-transform-tables" title="Permalink to this headline">¶</a></h3>
+<p>As usual, we can rely on this and similar analysis to have been tabulated for us and in practice we can rely on tables of transform pairs, such as this one.</p>
+<table>
+<thead>
+<tr><td>&nbsp;</td><th>f[n]</th><th>F(z)</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>$$\delta[n]$$</td><td>$$1$$</td></tr>
+<tr><td>2</td><td>$$\delta[n-m]$$</td><td>$$z^{-m}$$</td></tr>
+<tr><td>3</td><td>$$a^nu_0[n]$$</td><td>$$\frac{z}{z-a}\;|z| > a$$</td></tr>
+<tr><td>4</td><td>$$u_0[n]$$</td><td>$$\frac{z}{z-1}\;|z| > 1$$</td></tr>
+<tr><td>5</td><td>$$(e^{-anT_s})u_0[n]$$</td><td>$$\frac{z}{z-e^{-aT_s}}\;|e^{-aT_s}z^{-1}| < 1$$</td></tr>
+<tr><td>6</td><td>$$(\cos naT_s)u_0[n]$$</td><td>$$\frac{z^2 - z\cos aT_s}{z^2 -2z\cos aT_s + 1}\;|z| > 1$$</td></tr>
+<tr><td>7</td><td>$$(\sin naT_s)u_0[n]$$</td><td>$$\frac{z\sin aT_s}{z^2 -2z\cos aT_s + 1}\;|z| > 1$$</td></tr>
+<tr><td>8</td><td>$$(a^n\cos naT_s)u_0[n]$$</td><td>$$\frac{z^2 - az\cos aT_s}{z^2 -2az\cos aT_s + a^2}\;|z| > 1$$</td></tr>
+<tr><td>9</td><td>$$(a^n\sin naT_s)u_0[n]$$</td><td>$$\frac{az\sin aT_s}{z^2 -2az\cos aT_s + a^2}\;|z| > 1$$</td></tr>
+<tr><td>10</td><td>$$u_0[n]-u_0[n-m]$$</td><td>$$\frac{z^m-1}{z^{m-1}(z-1)}$$</td></tr>
+<tr><td>11</td><td>$$nu_0[n]$$</td><td>$$\frac{z}{(z-1)^2}$$</td></tr>
+<tr><td>12</td><td>$$n^2u_0[n]$$</td><td>$$\frac{z(z+1)}{(z-1)^3}$$</td></tr>
+<tr><td>13</td><td>$$[n+1]u_0[n]$$</td><td>$$\frac{z^2}{(z-1)^2}$$</td></tr>
+<tr><td>14</td><td>$$a^n n u_0[n]$$</td><td>$$\frac{az}{(z-a)^2}$$</td></tr>
+<tr><td>15</td><td>$$a^n n^2 u_0[n]$$</td><td>$$\frac{az(z+a)}{(z-a)^3}$$</td></tr>
+<tr><td>16</td><td>$$a^n n[n+1] u_0[n]$$</td><td>$$\frac{2az^2}{(z-a)^3}$$</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="section" id="relationship-between-the-laplace-and-z-transform">
+<h2>Relationship Between the Laplace and Z-Transform<a class="headerlink" href="#relationship-between-the-laplace-and-z-transform" title="Permalink to this headline">¶</a></h2>
+<p>Given that we can represent a sampled signal in the complex frequency domain as the infinite sum of each sequence value delayed by an integer multiple of the sampling time:</p>
+<div class="math notranslate nohighlight">
+\[F(s) = \sum_{n=0}^{\infty}f[n]e^{-nsT_s}\]</div>
+<p>And by definition, the z-transform of such a sequence is:</p>
+<div class="math notranslate nohighlight">
+\[F(z) = \sum_{n=0}^{\infty}f[n]z^{-n}\]</div>
+<p>It follows that</p>
+<div class="math notranslate nohighlight">
+\[z = e^{sT_s}\]</div>
+<p>And</p>
+<div class="math notranslate nohighlight">
+\[s = \frac{1}{T_s}\ln z\]</div>
+<div class="section" id="mapping-of-s-to-z">
+<h3>Mapping of s to z<a class="headerlink" href="#mapping-of-s-to-z" title="Permalink to this headline">¶</a></h3>
+<p>Since <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(z\)</span> are both complex variables, <span class="math notranslate nohighlight">\(z=e^{sT_s}\)</span> is a mapping from the <span class="math notranslate nohighlight">\(s\)</span>-domain to the <span class="math notranslate nohighlight">\(z\)</span>-domain and <span class="math notranslate nohighlight">\(z = \ln z/T_s\)</span> is a mapping from the <span class="math notranslate nohighlight">\(z\)</span> to <span class="math notranslate nohighlight">\(s\)</span>-domain.</p>
+<img src="pictures/mapping-s-to-z.png"> <p>Now, since</p>
+<div class="math notranslate nohighlight">
+\[s = \sigma + j\omega\]</div>
+<div class="math notranslate nohighlight">
+\[z = e^{\sigma T_s + j\omega T_s} = e^{\sigma T_s}e^{j\omega T_s} = |z|e^{j\theta}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[|z| = e^{\sigma Ts}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\theta = \omega T_s.\]</div>
+</div>
+<div class="section" id="introduction-of-sampling-frequency">
+<h3>Introduction of sampling frequency<a class="headerlink" href="#introduction-of-sampling-frequency" title="Permalink to this headline">¶</a></h3>
+<p>Now, since <span class="math notranslate nohighlight">\(T_s = 1/f_s\)</span> then <span class="math notranslate nohighlight">\(\omega_s = 2\pi/f_s\)</span> or <span class="math notranslate nohighlight">\(f_s = \omega_s/(2\pi)\)</span> and <span class="math notranslate nohighlight">\(T_s = 2\pi/\omega_s\)</span></p>
+<p>We let</p>
+<div class="math notranslate nohighlight">
+\[\theta = \omega T_s = \omega\frac{2\pi}{\omega_s} = 2\pi\frac{\omega}{\omega_s}\]</div>
+<p>Hence by substitution:</p>
+<div class="math notranslate nohighlight">
+\[z = e^{\sigma t}e^{j2\pi\omega/\omega_s}\]</div>
+</div>
+<div class="section" id="interpretation-of-the-mapping-s-to-z">
+<h3>Interpretation of the mapping s to z<a class="headerlink" href="#interpretation-of-the-mapping-s-to-z" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>The quantity <span class="math notranslate nohighlight">\(e^{j2\pi\omega/\omega_s}\)</span> defines a unit-circle in the <span class="math notranslate nohighlight">\(z\)</span>-plane centred at the origin.</p></li>
+<li><p>And of course the term <span class="math notranslate nohighlight">\(\sigma\)</span> represents the (stability) boundary between the left- and right-half planes of the <span class="math notranslate nohighlight">\(s\)</span>-plane.</p></li>
+<li><p>What are the consequences of this?</p></li>
+</ul>
+<div class="section" id="case-i-sigma-0">
+<h4>Case I: <span class="math notranslate nohighlight">\(\sigma &lt; 0\)</span><a class="headerlink" href="#case-i-sigma-0" title="Permalink to this headline">¶</a></h4>
+<ul>
+<li><p>When <span class="math notranslate nohighlight">\(\sigma &lt; 0\)</span> we see that from</p>
+<div class="math notranslate nohighlight">
+\[|z| = e^{\sigma T_s}\]</div>
+<p>that</p>
+<div class="math notranslate nohighlight">
+\[|z| &lt; 1\]</div>
+</li>
+<li><p>The left-half plane of the <span class="math notranslate nohighlight">\(s\)</span>-domain maps into the unit circle in the <span class="math notranslate nohighlight">\(z\)</span>-plane.</p></li>
+<li><p>Different negative values of <span class="math notranslate nohighlight">\(\sigma\)</span> map onto concentric circles with radius less than unity.</p></li>
+</ul>
+</div>
+<div class="section" id="case-ii-sigma-0">
+<h4>Case II: <span class="math notranslate nohighlight">\(\sigma &gt; 0\)</span><a class="headerlink" href="#case-ii-sigma-0" title="Permalink to this headline">¶</a></h4>
+<ul>
+<li><p>When <span class="math notranslate nohighlight">\(\sigma &gt; 0\)</span> we see that from</p>
+<div class="math notranslate nohighlight">
+\[|z| = e^{\sigma T_s}\]</div>
+<p>that</p>
+<div class="math notranslate nohighlight">
+\[|z| &gt; 1\]</div>
+</li>
+<li><p>The right-half plane of the <span class="math notranslate nohighlight">\(s\)</span>-domain maps outside the unit circle in the <span class="math notranslate nohighlight">\(z\)</span>-plane.</p></li>
+<li><p>Different positive values of <span class="math notranslate nohighlight">\(\sigma\)</span> map onto concentric circles with radius greater than unity.</p></li>
+</ul>
+</div>
+<div class="section" id="case-iii-sigma-0">
+<h4>Case III: <span class="math notranslate nohighlight">\(\sigma = 0\)</span><a class="headerlink" href="#case-iii-sigma-0" title="Permalink to this headline">¶</a></h4>
+<ul>
+<li><p>When <span class="math notranslate nohighlight">\(\sigma = 0\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[|z| = 1\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\theta = \frac{2\pi\omega}{\omega_s}\]</div>
+</li>
+<li><p>All values of <span class="math notranslate nohighlight">\(\omega\)</span> lie on the circumference of the unit circle.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="stability-region-s-plane">
+<h3>Stability Region - s-Plane<a class="headerlink" href="#stability-region-s-plane" title="Permalink to this headline">¶</a></h3>
+<img src="pictures/s-plane.png"></div>
+<div class="section" id="stability-region-z-plane">
+<h3>Stability Region - z-Plane<a class="headerlink" href="#stability-region-z-plane" title="Permalink to this headline">¶</a></h3>
+<img src="pictures/z-plane.png"></div>
+<div class="section" id="frequencies-in-the-z-domain">
+<h3>Frequencies in the z-Domain<a class="headerlink" href="#frequencies-in-the-z-domain" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>As a consequence of the result for <strong>Case III</strong> above, we can explore how frequencies (that is is values of <span class="math notranslate nohighlight">\(s=\pm j\omega\)</span>) map onto the <span class="math notranslate nohighlight">\(z\)</span>-plane.</p></li>
+<li><p>We already know that these frequencies will map onto the unit circle and by <span class="math notranslate nohighlight">\(\theta = 2\pi\omega/\omega_s\)</span> the angles are related to the sampling frequency.</p></li>
+<li><p>Let’s see how</p></li>
+</ul>
+</div>
+<div class="section" id="mapping-of-multiples-of-sampling-frequency">
+<h3>Mapping of multiples of sampling frequency<a class="headerlink" href="#mapping-of-multiples-of-sampling-frequency" title="Permalink to this headline">¶</a></h3>
+<table>
+<thead><tr><td>$\omega$ [radians/sec]</td><td>$$|z|$$</td><td>$\theta$ [radians]</td></tr>
+</thead>
+<tbody>
+<tr><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>$\omega_s/8$</td><td>1</td><td>$\pi/4$</td></tr>
+<tr><td>$\omega_s/4$</td><td>1</td><td>$\pi/2$</td></tr>
+<tr><td>$3\omega_s/8$</td><td>1</td><td>$3\pi/4$</td></tr>
+<tr><td>$\omega_s/2$</td><td>1</td><td>$\pi$</td></tr>
+<tr><td>$5\omega_s/8$</td><td>1</td><td>$5\pi/4$</td></tr>
+<tr><td>$3\omega_s/4$</td><td>1</td><td>$3\pi/2$</td></tr>
+<tr><td>$7\omega_s/8$</td><td>1</td><td>$7\pi/4$</td></tr>
+<tr><td>$\omega_s$</td><td>1</td><td>$2\pi$</td></tr>
+</tbody>
+</table></div>
+<div class="section" id="mapping-of-s-plane-to-z-plane">
+<h3>Mapping of s-plane to z-plane<a class="headerlink" href="#mapping-of-s-plane-to-z-plane" title="Permalink to this headline">¶</a></h3>
+<img src="pictures/s-to-z-mapping.png"></div>
+<div class="section" id="mapping-z-plane-to-s-plane">
+<h3>Mapping z-plane to s-plane<a class="headerlink" href="#mapping-z-plane-to-s-plane" title="Permalink to this headline">¶</a></h3>
+<p>There is no unique mapping of <span class="math notranslate nohighlight">\(z\)</span> to <span class="math notranslate nohighlight">\(s\)</span> since</p>
+<div class="math notranslate nohighlight">
+\[s = \frac{1}{T_s} \ln z\]</div>
+<p>but for a complex variable</p>
+<div class="math notranslate nohighlight">
+\[\ln z = \ln z \pm j2n\pi\]</div>
+<p>This is in agreement with the theoretical idea that in the frequency domain, sampling creates an infinite number of spectra, each of which is centred around <span class="math notranslate nohighlight">\(\pm n\omega_s\)</span>.</p>
+</div>
+<div class="section" id="frequency-aliasing">
+<h3>Frequency aliasing<a class="headerlink" href="#frequency-aliasing" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>It’s worth observing that any stable complex pole in the <span class="math notranslate nohighlight">\(s\)</span>-plane <span class="math notranslate nohighlight">\(s=-\sigma + j\omega\)</span> will have complex conjugate pair <span class="math notranslate nohighlight">\(s = -\sigma - j\omega\)</span>.</p></li>
+<li><p>Providing <span class="math notranslate nohighlight">\(\omega &lt; \omega_s/2\)</span> these poles will be mapped to the upper and lower half-plane of the <span class="math notranslate nohighlight">\(z\)</span>-plane respectively.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\omega &gt; \omega_s/2\)</span>, an upper-half plane pole will be mapped to the lower-half plane and will have an effective frequency of <span class="math notranslate nohighlight">\(\omega_s/2 - \omega\)</span>.</p></li>
+<li><p>Similarly, its conjugate pair will move into the upper-half plane.</p></li>
+</ul>
+<p>This is another way of looking at <em>aliasing</em>.</p>
+<ul class="simple">
+<li><p>Also, any poles with frequency <span class="math notranslate nohighlight">\(\omega &gt; \omega_s\)</span> will also be aliased back into into the unit circle.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Introduction</p></li>
+<li><p>The Z-Transform</p></li>
+<li><p>Properties of the Z-Transform</p></li>
+<li><p>Some Selected Z-Transforms</p></li>
+<li><p>Relationship Between Laplace and Z-Transform</p></li>
+<li><p>Stability Regions</p></li>
+</ul>
+<p><em>Next session</em></p>
+<ul class="simple">
+<li><p>The Inverse Z-Transform – an examples class</p></li>
+</ul>
+</div>
+<div class="section" id="homework">
+<h2>Homework<a class="headerlink" href="#homework" title="Permalink to this headline">¶</a></h2>
+<p>Problems 1 to 3 in <strong>Section 9.10 Exercises</strong> of Karris explore the z-Transform</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p>{% bibliography –cited %}</p>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../1/sampling.html" title="previous page">Sampling Theory</a>
+    <a class='right-next' id="next-link" href="../3/i_z_transform.html" title="next page">The Inverse Z-Transform</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dr Chris P. Jobling<br/>
+        
+            &copy; Copyright 2020.<br/>
+          <div class="extra_footer">
+            This page was created by 
+<a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
+  Dr Chris P. Jobling
+</a> 
+for 
+<a href="https://www.swansea.ac.uk">
+  Swansea University
+</a>.
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    
+  </body>
+</html>

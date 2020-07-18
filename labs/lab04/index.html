@@ -1,0 +1,618 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lab 4: Time domain convolution &#8212; EG-247 Signals and Systems</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/mystnb.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/labs/lab04/index.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 5: Fourier Series" href="../lab05/index.html" />
+    <link rel="prev" title="Lab 3: Laplace transforms and transfer functions for circuit analysis" href="../lab03/index.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cpjobling.github.io/eg-247-textbook/labs/lab04/index.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Lab 4: Time domain convolution" />
+<meta property="og:description" content="Lab 4: Time domain convolution  Preamble  Associated Class Notes  This lab supports the materials covered in Chapter 3.5 The Impulse Response and Convolution of" />
+
+
+<meta name="twitter:card" content="summary">
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">EG-247 Signals and Systems</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../introduction/index.html">
+   Introducing Signals and Systems
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../elementary_signals/index.html">
+   Elementary Signals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../laplace_transform/index.html">
+   Laplace Transforms and their Applications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fourier_series/index.html">
+   Fourier Series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fourier_transform/index.html">
+   Fourier Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../dt_systems/index.html">
+   Sampled Data Systems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../dft/index.html">
+   Discrete Fourier Transform
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FAQs
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../FAQS/faq.html">
+   Answers to Frequently Asked Questions
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  In Class Worksheets
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../worksheets/index.html">
+   Worksheets
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Homework
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../homework/index.html">
+   Homework
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Lab Exercises
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="../index.html">
+   Laboratory Exercises
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorial/matlab-tutorial.html">
+     MATLAB Tutorial
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../peer-assessment.html">
+     Peer Assessment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lab01/index.html">
+     Lab 1 - Elemementary Signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lab02/index.html">
+     Lab 2 - Laplace and Inverse Laplace Transforms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lab03/index.html">
+     Lab 3 -  Laplace Transforms and Transfer Functions for Circuit Analysis
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Lab 4 - Time Domain Convolution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lab05/index.html">
+     Lab 5 - Fourier Series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lab06/index.html">
+     Lab 6 - Audio Signals and Sampling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lab07/index.html">
+     Optional Lab 7 - Filters
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Project
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../project/index.html">
+   Project
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Answers to Selected problems
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../introduction/answers.html">
+   Worksheet 2
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Setting up your own version of this book
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../setup/index.html">
+   Setting up your own version of this book
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by 
+ <a href="https://jupyterbook.org">
+  Jupyter Book
+</a>
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/labs/lab04/index.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cpjobling/eg-247-textbook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Flabs/lab04/index.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/cpjobling/eg-247-textbook/edit/master/labs/lab04/index.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preamble">
+   Preamble
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#associated-class-notes">
+     Associated Class Notes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#other-formats">
+     Other formats
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#acknowledgements">
+     Acknowledgements
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matlab-simulink-concepts-introduced">
+   Matlab/Simulink Concepts Introduced
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assessment-criteria">
+   Assessment criteria
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#before-you-start">
+     Before you start
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preparation">
+     Preparation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab-exercises">
+   Lab Exercises
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lab-exercise-7-graphical-demonstration-of-convolution">
+     Lab Exercise 7: Graphical Demonstration of Convolution
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#part-1">
+       Part 1
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#part-2">
+       Part 2
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#part-3">
+       Part 3
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#part-4">
+       Part 4
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lab-exercise-8-using-laplace-to-solve-convolution-problems">
+     Lab Exercise 8: Using Laplace to Solve Convolution Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-to-hand-in">
+   What to hand in
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#claim">
+     Claim
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#submission">
+     Submission
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deadline">
+     Deadline
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="lab-4-time-domain-convolution">
+<h1>Lab 4: Time domain convolution<a class="headerlink" href="#lab-4-time-domain-convolution" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="preamble">
+<h2>Preamble<a class="headerlink" href="#preamble" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="associated-class-notes">
+<h3>Associated Class Notes<a class="headerlink" href="#associated-class-notes" title="Permalink to this headline">¶</a></h3>
+<p>This lab supports the materials covered in <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/5/convolution">Chapter 3.5 The Impulse Response and Convolution</a> of the course notes. You may wish to refer to <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/5/worksheet8">worksheet 8</a> for additional examples to try.</p>
+</div>
+<div class="section" id="other-formats">
+<h3>Other formats<a class="headerlink" href="#other-formats" title="Permalink to this headline">¶</a></h3>
+<p>This document is available in <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/labs/lab04/index">HTML</a> format for online viewing <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/labs/lab04/lab04.pdf">PDF</a> for printing.</p>
+</div>
+<div class="section" id="acknowledgements">
+<h3>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">¶</a></h3>
+<p>These examples have been adapted from Chapter 6 of <a href="http://site.ebrary.com/lib/swansea/docDetail.action?docID=10547416" target="_blank">Stephen Karris, Signals and Systems : With MATLAB Computing and Simulink Modeling (5th Edition)</a></p>
+</div>
+</div>
+<div class="section" id="matlab-simulink-concepts-introduced">
+<h2>Matlab/Simulink Concepts Introduced<a class="headerlink" href="#matlab-simulink-concepts-introduced" title="Permalink to this headline">¶</a></h2>
+<p>In this lab you will:</p>
+<ul class="simple">
+<li><p>Explore convolution with the aid of an interactive MATLAB “app”</p></li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">heaviside</span></code> functions from the <strong>Symbolic Toolbox</strong> to perform symbolic computation of convolution integrals.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">laplace</span></code> and <code class="docutils literal notranslate"><span class="pre">ilaplace</span></code> to solve convolution problems.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">ezplot</span></code> to plot symbolic functions.</p></li>
+</ul>
+</div>
+<div class="section" id="assessment-criteria">
+<h2>Assessment criteria<a class="headerlink" href="#assessment-criteria" title="Permalink to this headline">¶</a></h2>
+<p>This will be a self-assessed exercise.</p>
+<p>Marks can be claimed according to how many of the parts of Lab Exercises 7 and 8 have been completed.</p>
+<p>Detailed marking criteria for this and the other labs and the project are given in the linked <a class="reference external" href="https://docs.google.com/spreadsheets/d/1EQzwSfGMdw8oiQds4bUR8sZTCgb2lMvcJHjmea-8hW4/edit?usp=sharing">Assessment Criteria</a> [Google sheet].</p>
+</div>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="before-you-start">
+<h3>Before you start<a class="headerlink" href="#before-you-start" title="Permalink to this headline">¶</a></h3>
+<p>If you haven’t already, create a suitable folder structure on your file-store for your labs.</p>
+<p>I suggest</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">P</span><span class="p">:</span>\<span class="n">workspace</span>
+    <span class="n">signals</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">systems</span><span class="o">-</span><span class="n">lab</span>
+	    <span class="n">lab01</span>
+		<span class="n">lab02</span>
+		<span class="n">lab03</span>
+        <span class="n">lab04</span>
+        <span class="p">:</span>
+</pre></div>
+</div>
+<p>Use folder <code class="docutils literal notranslate"><span class="pre">p:\workspace\signals-and-systems-lab\lab04</span></code> for this lab.</p>
+</div>
+<div class="section" id="preparation">
+<h3>Preparation<a class="headerlink" href="#preparation" title="Permalink to this headline">¶</a></h3>
+<p>Before we start today’s lab you will need to download and install the <a href="https://github.com/cpjobling/eg-247-textbook/blob/master/content/laplace_transform/matlab/convolution_demo/convolutiondemo.m" target="_blank">Graphical demonstration of convolution app</a> from the GitHub respository for this module.</p>
+<p>To install, right-click button of link as appropriate and save as to your <code class="docutils literal notranslate"><span class="pre">lab04</span></code> folder.</p>
+<p>Open and run <code class="docutils literal notranslate"><span class="pre">convolutiondemo.m</span></code>.</p>
+<p>If MATLAB issues a message about the need to change the working directory or add a folder to the MATLAB path. Accept the choice given.</p>
+</div>
+</div>
+<div class="section" id="lab-exercises">
+<h2>Lab Exercises<a class="headerlink" href="#lab-exercises" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="lab-exercise-7-graphical-demonstration-of-convolution">
+<h3>Lab Exercise 7: Graphical Demonstration of Convolution<a class="headerlink" href="#lab-exercise-7-graphical-demonstration-of-convolution" title="Permalink to this headline">¶</a></h3>
+<p>In this lab exercise we will use the <code class="docutils literal notranslate"><span class="pre">convolutiondemo</span></code> app demonstrated in class as an aid to understanding and setting up the convolution integral for various systems including the step-response of an RL circuit.</p>
+<div class="section" id="part-1">
+<h4>Part 1<a class="headerlink" href="#part-1" title="Permalink to this headline">¶</a></h4>
+<p>Set up the <code class="docutils literal notranslate"><span class="pre">convolutiondemo</span></code> app as described in the notes for the computation of the Convolution Integral for Example 6.4 from the textbook illustrated below. (Refer to Example 2 in <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/5/convolution">the notes</a> for the MATLAB settings).</p>
+<p><img alt="Example 6.4" src="../../_images/2014-03-03_1228.png" /></p>
+<p>Use the tool to confirm the convolution result given by this MATLAB script: <span class="xref myst">exercise7.m</span>.</p>
+</div>
+<div class="section" id="part-2">
+<h4>Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">¶</a></h4>
+<p>Taking the script <span class="xref myst">exercise7.m</span> as a model. Use the <code class="docutils literal notranslate"><span class="pre">convolutiondemo</span></code> tool as an aid to defining the integration limits needed to find and plot the convolution integral for the example shown below (Example 6.5 from the textbook).</p>
+<p><img alt="Example 6.5" src="../../_images/2014-03-03_1240.png" /></p>
+</div>
+<div class="section" id="part-3">
+<h4>Part 3<a class="headerlink" href="#part-3" title="Permalink to this headline">¶</a></h4>
+<p>Repeat the procedure for example 6.6 from the textbook.</p>
+<p><img alt="Example 6.6" src="https://raw.githubusercontent.com/cpjobling/EG-247-Resources/master/portfolio/lab05/2014-03-03_1246.png" /></p>
+</div>
+<div class="section" id="part-4">
+<h4>Part 4<a class="headerlink" href="#part-4" title="Permalink to this headline">¶</a></h4>
+<p>Adapt your procedure to determine the step response of the RC circuit given as Example 6.7 in the textbook.</p>
+<p><img alt="Example 6.7" src="../../_images/2014-03-03_1248.png" /></p>
+<p>Note, Parts 2 to 5 should be done in the same Live Script file as the provided Part 1 example. Separate each exercise by titled sections. Don’t forget to add explanatory text to document your work.</p>
+</div>
+</div>
+<div class="section" id="lab-exercise-8-using-laplace-to-solve-convolution-problems">
+<h3>Lab Exercise 8: Using Laplace to Solve Convolution Problems<a class="headerlink" href="#lab-exercise-8-using-laplace-to-solve-convolution-problems" title="Permalink to this headline">¶</a></h3>
+<p>In this lab exercise we will demonstrate that time-convolution of a system response can be solved in the complex frequency domain using Laplace and Inverse Laplace transforms.</p>
+<ul class="simple">
+<li><p>Use the inverse Laplace transform function <code class="docutils literal notranslate"><span class="pre">ilaplace</span></code> to solve the step response of the RC circuit given in exercise 7 Part 4 without convolution. You will need the Laplace transform of the circuit’s impulse response <span class="math notranslate nohighlight">\(h(t)\)</span> and the unit step <span class="math notranslate nohighlight">\(u_0(t)\)</span> (MATLAB <code class="docutils literal notranslate"><span class="pre">heaviside</span></code>).</p></li>
+<li><p>Plot the result using <code class="docutils literal notranslate"><span class="pre">ezplot</span></code></p></li>
+<li><p>Confirm the result with a Simulink simulation</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="what-to-hand-in">
+<h2>What to hand in<a class="headerlink" href="#what-to-hand-in" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="claim">
+<h3>Claim<a class="headerlink" href="#claim" title="Permalink to this headline">¶</a></h3>
+<p>Up to 2 marks can be claimed if you complete Part 2 of Exercise 7, an additional 2 marks for is available for Parts 3 and 4 and 1 additional mark is available for completing Lab Exercise 8.</p>
+</div>
+<div class="section" id="submission">
+<h3>Submission<a class="headerlink" href="#submission" title="Permalink to this headline">¶</a></h3>
+<p>You should submit the following to the <strong>Lab 04: Time domain convolution</strong> Assignment on Canvas.</p>
+<ol class="simple">
+<li><p>Complete the labwork self-assessment claim form and declaration.</p></li>
+<li><p>As evidence of completion of Lab Exercise 7, you should upload <code class="docutils literal notranslate"><span class="pre">ex7_2.mlx</span></code>, <code class="docutils literal notranslate"><span class="pre">ex7_3.mlx</span></code>, <code class="docutils literal notranslate"><span class="pre">ex7_4.mlx</span></code> (can be sections in one Live Script <code class="docutils literal notranslate"><span class="pre">ex7.mlx</span></code>).</p></li>
+<li><p>As evidence of completion of Lab Exercise 8, you should upload <code class="docutils literal notranslate"><span class="pre">ex8.mlx</span></code>, <code class="docutils literal notranslate"><span class="pre">ex8.slx</span></code>.</p></li>
+</ol>
+</div>
+<div class="section" id="deadline">
+<h3>Deadline<a class="headerlink" href="#deadline" title="Permalink to this headline">¶</a></h3>
+<p>The deadline for claims and submission is <strong>4:00 pm, 20th March</strong></p>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../lab03/index.html" title="previous page">Lab 3: Laplace transforms and transfer functions for circuit analysis</a>
+    <a class='right-next' id="next-link" href="../lab05/index.html" title="next page">Lab 5: Fourier Series</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dr Chris P. Jobling<br/>
+        
+            &copy; Copyright 2020.<br/>
+          <div class="extra_footer">
+            This page was created by 
+<a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
+  Dr Chris P. Jobling
+</a> 
+for 
+<a href="https://www.swansea.ac.uk">
+  Swansea University
+</a>.
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    
+  </body>
+</html>

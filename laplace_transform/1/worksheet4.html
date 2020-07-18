@@ -1,0 +1,843 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Worksheet 4 &#8212; EG-247 Signals and Systems</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/mystnb.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/1/worksheet4.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Worksheet 5" href="../2/worksheet5.html" />
+    <link rel="prev" title="Worksheet 3" href="../../elementary_signals/worksheet3.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cpjobling.github.io/eg-247-textbook/laplace_transform/1/worksheet4.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Worksheet 4" />
+<meta property="og:description" content="Worksheet 4  To accompany Chapter 3.1 Laplace Transform  Colophon  This worksheet can be downloaded as a PDF file. We will step through this worksheet in class." />
+
+
+<meta name="twitter:card" content="summary">
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">EG-247 Signals and Systems</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../introduction/index.html">
+   Introducing Signals and Systems
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../elementary_signals/index.html">
+   Elementary Signals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Laplace Transforms and their Applications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fourier_series/index.html">
+   Fourier Series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fourier_transform/index.html">
+   Fourier Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../dt_systems/index.html">
+   Sampled Data Systems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../dft/index.html">
+   Discrete Fourier Transform
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FAQs
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../FAQS/faq.html">
+   Answers to Frequently Asked Questions
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  In Class Worksheets
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="../../worksheets/index.html">
+   Worksheets
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../introduction/worksheet1.html">
+     Worksheet 1 Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../introduction/worksheet2.html">
+     Worksheet 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../elementary_signals/worksheet3.html">
+     Worksheet 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../elementary_signals/worksheet3.html#elementary-signals">
+     Elementary Signals
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Worksheet 4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="#the-laplace-and-inverse-laplace-transforms">
+     The Laplace and inverse Laplace transforms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="#id2">
+     The Laplace and inverse Laplace transforms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="#id4">
+     The Laplace and inverse Laplace transforms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="#id6">
+     The Laplace and inverse Laplace transforms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2/worksheet5.html">
+     Worksheet 5 Inverse Laplace Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3/worksheet6.html">
+     Worksheet 6 Using Laplace Transforms for Circuit Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4/worksheet7.html">
+     Worksheet 7 Transfer Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5/worksheet8.html">
+     Worksheet 8 Impulse Response and Time Convolution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_series/1/worksheet9.html">
+     Worksheet 9 Trigonometric Fourier Series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_series/2/worksheet10.html">
+     Worksheet 10 Exponential Fourier Series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_series/3/worksheet11.html">
+     Worksheet 11 Line Spectra and their Applications
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_transform/1/worksheet12.html">
+     Worksheet 12 Defining the Fourier Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_transform/2/worksheet13.html">
+     Worksheet 13 Fourier transforms of commonly occuring signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_transform/3/worksheet14.html">
+     Worksheet 14 Fourier Transforms for Circuit and LTI Systems Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_transform/4/worksheet15.html">
+     Worksheet 15 Introduction to Filters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../dt_systems/3/worksheet16.html">
+     Worksheet 16 The Inverse Z-Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../dt_systems/4/worksheet17.html">
+     Worksheet 17 Models of DT Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../dft/1/worksheet18.html">
+     Worksheet 18 The Discrete-time Fourier Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../dft/2/worksheet19.html">
+     Worksheet 19 The Fast Fourier Transform
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Homework
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../homework/index.html">
+   Homework
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Lab Exercises
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../labs/index.html">
+   Laboratory Exercises
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Project
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../labs/project/index.html">
+   Project
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Answers to Selected problems
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../introduction/answers.html">
+   Worksheet 2
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Setting up your own version of this book
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../setup/index.html">
+   Setting up your own version of this book
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by 
+ <a href="https://jupyterbook.org">
+  Jupyter Book
+</a>
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/laplace_transform/1/worksheet4.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cpjobling/eg-247-textbook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Flaplace_transform/1/worksheet4.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/cpjobling/eg-247-textbook/edit/master/laplace_transform/1/worksheet4.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#to-accompany-chapter-3-1-laplace-transform">
+   To accompany Chapter 3.1 Laplace Transform
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#colophon">
+   Colophon
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pingo">
+   Pingo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-session-id-for-this-course">
+     The Session ID for this Course
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#icebreaker-questions">
+     Icebreaker Questions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#launch-poll">
+       -&gt; Launch Poll
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#end-of-setup">
+     End of setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plan-b">
+   Plan B
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#https-goo-gl-forms-euyh6g7za2knqt862">
+     https://goo.gl/forms/EuyH6G7za2knqt862
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#first-hour-quiz">
+   First hour quiz
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><strong>Lecturer</strong></p>
+<p>Set up MATLAB</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">clear</span> <span class="nb">all</span>
+<span class="nb">format</span> <span class="n">compact</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="worksheet-4">
+<h1>Worksheet 4<a class="headerlink" href="#worksheet-4" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="to-accompany-chapter-3-1-laplace-transform">
+<h2>To accompany Chapter 3.1 Laplace Transform<a class="headerlink" href="#to-accompany-chapter-3-1-laplace-transform" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="colophon">
+<h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this headline">¶</a></h2>
+<p>This worksheet can be downloaded as a <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet4.pdf">PDF file</a>. We will step through this worksheet in class.</p>
+<p>A printout of this worksheet will be distributed before the second class meeting in the <strong>Week 2: Classroom Activities</strong> section of the Canvas site. I will also distribute a copy to your personal <strong>Worksheets</strong> section of the <strong>OneNote Class Notebook</strong> so that you can add your own notes using OneNote.</p>
+<p>You are expected to have at least watched the video presentation of <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/1/laplace">Chapter 3.1</a> of the <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook">notes</a> before coming to class. If you haven’t watch it afterwards!</p>
+<p>After class, the lecture recording and the annotated version of this worksheet will be made available to you via OneNote and through Canvas.</p>
+</div>
+<div class="section" id="pingo">
+<h2>Pingo<a class="headerlink" href="#pingo" title="Permalink to this headline">¶</a></h2>
+<p>We will be using a web-based audience response system called <strong>Pingo</strong> for in-class quizzes and informal surveys.</p>
+</div>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>Browse to: <a class="reference external" href="https://pingo.coactum.de">pingo.coactum.de</a>.</p>
+<img src="https://chart.googleapis.com/chart?cht=qr&chs=300x300&choe=UTF-8&chld=H&chl=https://pingo.coactum.de" alt="QR Code" /><p>When prompted: enter the <strong>session ID</strong></p>
+<div class="section" id="the-session-id-for-this-course">
+<h3>The Session ID for this Course<a class="headerlink" href="#the-session-id-for-this-course" title="Permalink to this headline">¶</a></h3>
+<pre>
+
+
+
+</pre>
+<div style="font-size: 32pt; font-face: bold;">194851</div>
+<pre>
+</pre></div>
+<div class="section" id="icebreaker-questions">
+<h3>Icebreaker Questions<a class="headerlink" href="#icebreaker-questions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="launch-poll">
+<h4>-&gt; Launch Poll<a class="headerlink" href="#launch-poll" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<div class="section" id="end-of-setup">
+<h3>End of setup<a class="headerlink" href="#end-of-setup" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="plan-b">
+<h2>Plan B<a class="headerlink" href="#plan-b" title="Permalink to this headline">¶</a></h2>
+<p>If TurningPoint doesn’t work, use this Google form instead</p>
+<div class="section" id="https-goo-gl-forms-euyh6g7za2knqt862">
+<h3>https://goo.gl/forms/EuyH6G7za2knqt862<a class="headerlink" href="#https-goo-gl-forms-euyh6g7za2knqt862" title="Permalink to this headline">¶</a></h3>
+<p><img alt="qr code" src="https://chart.googleapis.com/chart?cht=qr&amp;chs=300x300&amp;choe=UTF-8&amp;chld=H&amp;chl=https://goo.gl/forms/EuyH6G7za2knqt862" /></p>
+</div>
+</div>
+<div class="section" id="first-hour-quiz">
+<h2>First hour quiz<a class="headerlink" href="#first-hour-quiz" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="the-laplace-and-inverse-laplace-transforms">
+<h1>The Laplace and inverse Laplace transforms<a class="headerlink" href="#the-laplace-and-inverse-laplace-transforms" title="Permalink to this headline">¶</a></h1>
+<p>Without conferring or looking it up, which of these integrals represents the Laplace transform?</p>
+<table>
+<tr><td>A.</td><td>$$\frac{1}{2\pi j}\int_{\sigma-j\omega}^{\sigma+j\omega}\,F(s)\,e^{st}\,ds$$</td><td>B.</td><td>$$\int_{0}^{\infty}\,f(t)\,e^{-st}\,dt$$</td></tr>
+<tr><td>C.</td><td>$$\int_{-\infty}^{t}\,f(\tau)\,g(t-\tau)\,d\tau$$</td><td>D.</td><td>$$\int_{-j\omega}^{+j\omega}\,f(t)\,e^{-j\omega t}\,dt$$</td></tr>
+</table><div class="section" id="id1">
+<h2>-&gt; Launch Poll<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="id2">
+<h1>The Laplace and inverse Laplace transforms<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h1>
+<p><strong>Now discuss with your neigbours</strong></p>
+<p>Which of these integrals represents the Laplace transform?</p>
+<table>
+<tr><td>A.</td><td>$$\frac{1}{2\pi j}\int_{\sigma-j\omega}^{\sigma+j\omega}\,F(s)\,e^{st}\,ds$$</td><td>B.</td><td>$$\int_{0}^{\infty}\,f(t)\,e^{-st}\,dt$$</td></tr>
+<tr><td>C.</td><td>$$\int_{-\infty}^{t}\,f(\tau)\,g(t-\tau)\,d\tau$$</td><td>D.</td><td>$$\int_{-j\omega}^{+j\omega}\,f(t)\,e^{-j\omega t}\,dt$$</td></tr>
+</table><div class="section" id="id3">
+<h2>-&gt; Launch Poll<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="id4">
+<h1>The Laplace and inverse Laplace transforms<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h1>
+<p>Without conferring or looking it up, which of these integrals represents the inverse Laplace transform?</p>
+<table>
+<tr><td>A.</td><td>$$\frac{1}{2\pi j}\int_{\sigma-j\omega}^{\sigma+j\omega}\,F(s)\,e^{st}\,ds$$</td><td>B.</td><td>$$\int_{0}^{\infty}\,f(t)\,e^{-st}\,dt$$</td></tr>
+<tr><td>C.</td><td>$$\int_{-\infty}^{t}\,f(\tau)\,g(t-\tau)\,d\tau$$</td><td>D.</td><td>$$\int_{-j\omega}^{+j\omega}\,f(t)\,e^{-j\omega t}\,dt$$</td></tr>
+</table><div class="section" id="id5">
+<h2>-&gt; Launch Poll<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="id6">
+<h1>The Laplace and inverse Laplace transforms<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h1>
+<p><strong>Now discuss with your neigbours</strong></p>
+<p>Which of these integrals represents the inverse Laplace transform?</p>
+<table>
+<tr><td>A.</td><td>$$\frac{1}{2\pi j}\int_{\sigma-j\omega}^{\sigma+j\omega}\,F(s)\,e^{st}\,ds$$</td><td>B.</td><td>$$\int_{0}^{\infty}\,f(t)\,e^{-st}\,dt$$</td></tr>
+<tr><td>C.</td><td>$$\int_{-\infty}^{t}\,f(\tau)\,g(t-\tau)\,d\tau$$</td><td>D.</td><td>$$\int_{-j\omega}^{+j\omega}\,f(t)\,e^{-j\omega t}\,dt$$</td></tr>
+</table><div class="section" id="id7">
+<h2>-&gt; Launch Poll<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="laplace-transforms">
+<h2>Laplace transforms<a class="headerlink" href="#laplace-transforms" title="Permalink to this headline">¶</a></h2>
+<p>Match the transform to the time-domain operator</p>
+<p><strong>Please confer</strong></p>
+<table>
+    <tr><td>1.</td><td>$$\int_{-\infty}^{t}\,f(\tau)\,d\tau$$</td><td>A.</td><td>$$\frac{F(s)}{s}+\frac{f(0^-)}{s}$$</td></tr>
+    <tr><td>2.</td><td>$$\lim_{t\rightarrow 0}\,f(t)$$</td><td>B.</td><td>$$sF(s) - f(0^-)$$</td></tr>
+    <tr><td>3.</td><td>$$\int_0^t\,f_1(\tau)f_2(t-\tau)\,d\tau$$</td><td>C.</td><td>$$\frac{\int_{0}^{T}\,f(t)\,e^{-sT}}{1-e^{-sT}}$$</td></tr>
+    <tr><td>4.</td><td>$$\frac{d}{dt}\,f(t)$$</td><td>D.</td><td>$$F_1(s)\,F_2(s)$$</td></tr>
+    <tr><td>5.</td><td>$$f(t + nT)$$</td><td>E.</td><td>$$\lim_{s\rightarrow \infty}\,sF(s)$$</td></tr>
+</table></div>
+<div class="section" id="properties-of-laplace-transforms">
+<h2>Properties of Laplace transforms<a class="headerlink" href="#properties-of-laplace-transforms" title="Permalink to this headline">¶</a></h2>
+<p>Match each of these mathematical properties to the associated Laplace transform property.</p>
+<p><strong>You should confer</strong></p>
+<table>
+    <tr><td>1.</td><td>Linearity</td><td>A.</td><td>$$f(t - a)\,u_0(t - a) \Leftrightarrow e^{-as} F(s)$$</td></tr>
+    <tr><td>2.</td><td>Time Scaling</td><td>B.</td><td>$$c_1f_1(t) + c_2f_2(t)+ \cdots + c_nf_n(t)\Leftrightarrow c_1F_1(s) + c_2F_2(s) + \cdots + c_nF_n(s)$$</td></tr>
+    <tr><td>3.</td><td>Time-shift</td><td>C.</td><td>$$e^{-at}\, f(t) \Leftrightarrow F(s + a)$$</td></tr>
+    <tr><td>4.</td><td>Frequency Shift</td><td>D.</td><td>$$f(at) \Leftrightarrow (1/a) \, F (s/a)$$</td></tr>
+</table></div>
+<div class="section" id="name-that-property">
+<h2>Name that property<a class="headerlink" href="#name-that-property" title="Permalink to this headline">¶</a></h2>
+<p>What property is this?</p>
+<div class="math notranslate nohighlight">
+\[\lim_{t\rightarrow \infty}\,f(t)\Leftrightarrow \lim_{s\rightarrow 0}\,sF(s)\]</div>
+<p>A. Convolution in the time domain</p>
+<p>B. Initial value theorem</p>
+<p>C. Final value theorem</p>
+<p>D. Differentiation in the time domain</p>
+<p>E. Integration in the time domain</p>
+<div class="section" id="id8">
+<h3>-&gt; Launch Poll<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="elementary-signals">
+<h2>Elementary signals<a class="headerlink" href="#elementary-signals" title="Permalink to this headline">¶</a></h2>
+<p>Match the elementary signal to it’s Laplace transform</p>
+<p><strong>You may confer</strong></p>
+<table>
+    <tr><td>1.</td><td>Dirac delta (unit impulse)</td><td>$$\delta(t)$$</td><td>A.</td><td>$$e^{-as}$$</td></tr>
+    <tr><td>2.</td><td>Unit step</td><td>$$u_0(t)$$</td><td>B.</td><td>$$\frac{1-e^{-as}}{s}$$</td></tr>
+    <tr><td>3.</td><td>Unit ramp</td><td>$$u_1(t) = t u_0(t)$$</td><td>C.</td><td>$$\frac{1}{s}$$</td></tr>
+    <tr><td>4.</td><td>Exponential decay</td><td>$$e^{-at}u_0(t)$$</td><td>D.</td><td>$$1$$</td></tr>
+    <tr><td>5.</td><td>Damped sinusoid</td><td>$$e^{-at}\,\sin(\omega t)u_0(t)$$</td><td>E.</td><td>$$\frac{1}{s^2}$$</td></tr>
+    <tr><td>6.</td><td>Sampling function</td><td>$$\delta(t-a)$$</td><td>F.</td><td>$$\frac{1}{s+a}$$</td></tr>
+    <tr><td>7.</td><td>Gating function</td><td>$$u_0(t)-u_0(t-a)$$</td><td>G.</td><td>$$\frac{\omega}{(s+a)^2+\omega^2}$$</td></tr>
+</table></div>
+<div class="section" id="end-of-first-hour-quiz">
+<h2>End of first hour quiz<a class="headerlink" href="#end-of-first-hour-quiz" title="Permalink to this headline">¶</a></h2>
+<p>Is there anything in this quiz that you think we should go over in more detail in class?</p>
+<div class="section" id="id9">
+<h3>-&gt; Launch Poll<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="laplace-transforms-of-common-waveforms">
+<h2>Laplace transforms of common waveforms<a class="headerlink" href="#laplace-transforms-of-common-waveforms" title="Permalink to this headline">¶</a></h2>
+<p>We will work through a few of the following on the board in class</p>
+<ul class="simple">
+<li><p>Pulse</p></li>
+<li><p>Linear segment</p></li>
+<li><p>Triangular waveform</p></li>
+<li><p>Rectangular periodic waveform (square wave)</p></li>
+<li><p>Half rectified sine wave</p></li>
+</ul>
+<div class="section" id="pulse">
+<h3>Pulse<a class="headerlink" href="#pulse" title="Permalink to this headline">¶</a></h3>
+<p>Compute the Laplace transform of the pulse shown in the figure.</p>
+<p><img alt="pulse" src="../../_images/pulse.png" /></p>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></div>
+<div class="section" id="line-segment">
+<h3>Line segment<a class="headerlink" href="#line-segment" title="Permalink to this headline">¶</a></h3>
+<p>Compute the Laplace transform of the line segment shown below.</p>
+<p><img alt="line" src="../../_images/line.png" /></p>
+</pre></div>
+<div class="section" id="triangular-pulse">
+<h3>Triangular Pulse<a class="headerlink" href="#triangular-pulse" title="Permalink to this headline">¶</a></h3>
+<p>Compute the Laplace transform of the triangular pulse shown below</p>
+<p><img alt="triangle" src="../../_images/triangle.png" /></p>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></div>
+<div class="section" id="square-wave">
+<h3>Square Wave<a class="headerlink" href="#square-wave" title="Permalink to this headline">¶</a></h3>
+<p>Compute the Laplace transform of the periodic function shown below.</p>
+<p><img alt="square wave" src="../../_images/sqare.png" /></p>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></div>
+<div class="section" id="half-rectified-sinewave">
+<h3>Half-rectified Sinewave<a class="headerlink" href="#half-rectified-sinewave" title="Permalink to this headline">¶</a></h3>
+<p>Compute the Laplace Transform of the half-rectified sine wave shown below.</p>
+<p><img alt="half-rectified sinewave" src="../../_images/rectsine.png" /></p>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></div>
+</div>
+<div class="section" id="homework">
+<h2>Homework<a class="headerlink" href="#homework" title="Permalink to this headline">¶</a></h2>
+<p>Attempt at least one of the end-of-chapter exercises from each question 1-7 of <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=75#ppg=71">Section 2.7</a> of <span class="bibtex" id="id10">[karris]</span>. Don’t look at the answers until you have attempted the problems.</p>
+<p>If we have time, I will work through one or two of these in class.</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p>{% bibliography –cited %}</p>
+</div>
+<div class="section" id="answers-to-in-class-problems">
+<h2>Answers to in-class problems<a class="headerlink" href="#answers-to-in-class-problems" title="Permalink to this headline">¶</a></h2>
+<ol>
+<li><div class="math notranslate nohighlight">
+\[Au_0(t)-Au_0(t-a)\Leftrightarrow \frac{A\left(1-e^{-as}\right)}{s}.\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[(t-1)u_0(t-1)\Leftrightarrow \frac{e^{-s}}{s}.\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[f_T(t)\Leftrightarrow \frac{\left(1-e^{-s}\right)^2}{s^2}.\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[f_R(t)\Leftrightarrow \frac{A\tanh \left(\frac{As}{2}\right)}{s}.\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[f_{HW}(t) \Leftrightarrow \frac{1}{\left(s^2 + 1\right)\left(1-e^{\pi s}\right)}.\]</div>
+</li>
+</ol>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../../elementary_signals/worksheet3.html" title="previous page">Worksheet 3</a>
+    <a class='right-next' id="next-link" href="../2/worksheet5.html" title="next page">Worksheet 5</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dr Chris P. Jobling<br/>
+        
+            &copy; Copyright 2020.<br/>
+          <div class="extra_footer">
+            This page was created by 
+<a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
+  Dr Chris P. Jobling
+</a> 
+for 
+<a href="https://www.swansea.ac.uk">
+  Swansea University
+</a>.
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    
+  </body>
+</html>

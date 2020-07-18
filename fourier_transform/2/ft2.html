@@ -1,0 +1,842 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Fourier transforms of commonly occurring signals &#8212; EG-247 Signals and Systems</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/mystnb.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/2/ft2.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Fourier Transforms for Circuit and LTI Systems Analysis" href="../3/ft3.html" />
+    <link rel="prev" title="Defining the Fourier Transform" href="../1/ft1.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cpjobling.github.io/eg-247-textbook/fourier_transform/2/ft2.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Fourier transforms of commonly occurring signals" />
+<meta property="og:description" content="Fourier transforms of commonly occurring signals  Colophon  An annotatable worksheet for this presentation is available as Worksheet 13.  The source code for th" />
+
+
+<meta name="twitter:card" content="summary">
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">EG-247 Signals and Systems</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../introduction/index.html">
+   Introducing Signals and Systems
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../elementary_signals/index.html">
+   Elementary Signals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../laplace_transform/index.html">
+   Laplace Transforms and their Applications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fourier_series/index.html">
+   Fourier Series
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="../index.html">
+   Fourier Transform
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1/ft1.html">
+     Defining the Fourier Transform
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Fourier transforms of commonly occuring signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3/ft3.html">
+     Introduction to Filters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4/ft4.html">
+     Fourier Transforms for Circuit and LTI Systems Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../dt_systems/index.html">
+   Sampled Data Systems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../dft/index.html">
+   Discrete Fourier Transform
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FAQs
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../FAQS/faq.html">
+   Answers to Frequently Asked Questions
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  In Class Worksheets
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../worksheets/index.html">
+   Worksheets
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Homework
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../homework/index.html">
+   Homework
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Lab Exercises
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../labs/index.html">
+   Laboratory Exercises
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Project
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../labs/project/index.html">
+   Project
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Answers to Selected problems
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../introduction/answers.html">
+   Worksheet 2
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Setting up your own version of this book
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../setup/index.html">
+   Setting up your own version of this book
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by 
+ <a href="https://jupyterbook.org">
+  Jupyter Book
+</a>
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/fourier_transform/2/ft2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cpjobling/eg-247-textbook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Ffourier_transform/2/ft2.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/cpjobling/eg-247-textbook/edit/master/fourier_transform/2/ft2.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#colophon">
+   Colophon
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#note-on-notation">
+   Note on Notation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#agenda">
+   Agenda
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reminder-of-the-definitions">
+   Reminder of the Definitions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-fourier-transform">
+     The Fourier Transform
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-inverse-fourier-transform">
+     The Inverse Fourier Transform
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#duality-of-the-transform">
+     Duality of the transform
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#table-of-common-fourier-transform-pairs">
+   Table of Common Fourier Transform Pairs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#some-selected-fourier-transforms">
+   Some Selected Fourier Transforms
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#relationship-between-f-t-and-f-omega">
+     Relationship between
+     <span class="math notranslate nohighlight">
+      \(f(t)\)
+     </span>
+     and
+     <span class="math notranslate nohighlight">
+      \(F(\omega)\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-dirac-delta">
+     The Dirac Delta
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dc">
+     DC
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cosine-sinewave-with-even-symmetry">
+     Cosine (Sinewave with even symmetry)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sinewave">
+     Sinewave
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#signum-sign">
+     Signum (Sign)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-4-unit-step">
+     Example 4: Unit Step
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#clue">
+       Clue
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#proof">
+       Proof
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#graph-of-unit-step">
+       Graph of unit step
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-5">
+     Example 5
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-6">
+     Example 6
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-7">
+     Example 7
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#solution-to-example-7">
+       Solution to example 7
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#derivation-of-the-fourier-transform-from-the-laplace-transform">
+   Derivation of the Fourier Transform from the Laplace Transform
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-8-single-pole-filter">
+     Example 8: Single Pole Filter
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#solution-to-example-8">
+       Solution to example 8
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-9-complex-pole-pair-cos-term">
+     Example 9: Complex Pole Pair  cos term
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#solution-to-example-9">
+       Solution to example 9
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fourier-transforms-of-common-signals">
+   Fourier Transforms of Common Signals
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#suggestions-for-further-reading">
+   Suggestions for Further Reading
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="fourier-transforms-of-commonly-occurring-signals">
+<h1>Fourier transforms of commonly occurring signals<a class="headerlink" href="#fourier-transforms-of-commonly-occurring-signals" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="colophon">
+<h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this headline">¶</a></h2>
+<p>An annotatable worksheet for this presentation is available as <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/2/worksheet13.html"><strong>Worksheet 13</strong></a>.</p>
+<ul class="simple">
+<li><p>The source code for this page is <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/content/fourier_transform/2/ft2.ipynb">content/fourier_transform/2/ft2.ipynb</a>.</p></li>
+<li><p>You can view the notes for this presentation as a webpage (<a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/2/ft2.html">HTML</a>).</p></li>
+<li><p>This page is downloadable as a <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/2/ft2.pdf">PDF</a> file.</p></li>
+</ul>
+</div>
+<div class="section" id="note-on-notation">
+<h2>Note on Notation<a class="headerlink" href="#note-on-notation" title="Permalink to this headline">¶</a></h2>
+<p>If you have been reading both Karris and Boulet you may have noticed a difference in the notation used in the definition of Fourier Transform:</p>
+<ul class="simple">
+<li><p>Karris uses <span class="math notranslate nohighlight">\(F(\omega)\)</span></p></li>
+<li><p>Boulet uses <span class="math notranslate nohighlight">\(F(j\omega)\)</span></p></li>
+</ul>
+<p>I checked other sources and <a class="reference external" href="https://www.dawsonera.com/abstract/9780071634731">Hsu (Schaum’s Signals and Systems)</a> and Morrell (The <a class="reference external" href="https://www.youtube.com/watch?v=bqYxhYGA2qU&amp;list=PL51707156C4956932">Fourier Analysis Video Series on YouTube</a>) both use the <span class="math notranslate nohighlight">\(F(\omega)\)</span> notation.</p>
+<p>According to Wikipedia <a class="reference external" href="http://en.wikipedia.org/wiki/Fourier_transform#Other_notations">Fourier Transform: Other Notations</a> both are used only by electronic engineers anyway and either would be acceptible.</p>
+<p>There is some advantage in using Boulet’s notation <span class="math notranslate nohighlight">\(F(j\omega)\)</span> in that it helps to reinforce the idea that Fourier Transform is a special case of the Laplace Transform and it was the notation that I used in the <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/1/ft1">last section</a>.</p>
+<p>In these notes, I’ve used the other convention on the basis that its the more likely to be seen in your support materials.</p>
+<p>However, I am happy to change back if you find the addition of <span class="math notranslate nohighlight">\(j\)</span> useful.</p>
+<p>You should be aware that Fourier Transforms are in general complex so whatever the notation used to <em>represent</em> the transform, we are still dealing with real and imaginary parts or magnitudes and phases when we use the <em>actual transforms</em> in analysis.</p>
+</div>
+<div class="section" id="agenda">
+<h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Tables of Transform Pairs</p></li>
+<li><p>Examples of Selected Transforms</p></li>
+<li><p>Relationship between Laplace and Fourier</p></li>
+<li><p>Fourier Transforms of Common Signals</p></li>
+</ul>
+</div>
+<div class="section" id="reminder-of-the-definitions">
+<h2>Reminder of the Definitions<a class="headerlink" href="#reminder-of-the-definitions" title="Permalink to this headline">¶</a></h2>
+<p>Last time we derived the Fourier Transform by evaluating what would happen when a periodic signal was made periodic. Let us restate the definitions.</p>
+<div class="section" id="the-fourier-transform">
+<h3>The Fourier Transform<a class="headerlink" href="#the-fourier-transform" title="Permalink to this headline">¶</a></h3>
+<p>In the signals and systems context, the Fourier Transform is used to convert a function of time <span class="math notranslate nohighlight">\(f(t)\)</span> to a function of radian frequency <span class="math notranslate nohighlight">\(F(\omega)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{F}\left\{f(t)\right\} = \int_{-\infty}^{\infty} f(t)e^{-j\omega t}\,dt = F(\omega).\]</div>
+</div>
+<div class="section" id="the-inverse-fourier-transform">
+<h3>The Inverse Fourier Transform<a class="headerlink" href="#the-inverse-fourier-transform" title="Permalink to this headline">¶</a></h3>
+<p>In the signals and systems context, the <em>Inverse Fourier Transform</em> is used to convert a function of frequency <span class="math notranslate nohighlight">\(F(\omega)\)</span> to a function of time <span class="math notranslate nohighlight">\(f(t)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{F}^{-1}\left\{F(\omega)\right\} = \frac{1}{2\pi}\int_{-\infty}^{\infty} F(\omega)e^{j\omega t}\,d\omega = f(t) .\]</div>
+<p>Note, the factor <span class="math notranslate nohighlight">\(2\pi\)</span> is introduced because we are changing units from radians/second to seconds.</p>
+</div>
+<div class="section" id="duality-of-the-transform">
+<h3>Duality of the transform<a class="headerlink" href="#duality-of-the-transform" title="Permalink to this headline">¶</a></h3>
+<p>Note the similarity of the Fourier and its Inverse.</p>
+<p>This has important consequences in filter design and later when we consider sampled data systems.</p>
+</div>
+</div>
+<div class="section" id="table-of-common-fourier-transform-pairs">
+<h2>Table of Common Fourier Transform Pairs<a class="headerlink" href="#table-of-common-fourier-transform-pairs" title="Permalink to this headline">¶</a></h2>
+<p>This table is adapted from Table 8.9 of Karris. See also: <a class="reference external" href="https://en.wikibooks.org/wiki/Engineering_Tables/Fourier_Transform_Table">Wikibooks: Engineering Tables/Fourier Transform Table</a> and <a class="reference external" href="https://mathworld.wolfram.com/FourierTransform.html">Fourier Transfom—WolframMathworld</a> for more complete references.</p>
+<table>
+<thead>
+    <tr><td></td><td><b>Name</b></td><td>$f(t)$</td><td>$F(\omega)$</td><td><b>Remarks</b></td></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>Dirac delta</td><td>$\delta(t)$</td><td>1</td><td>Constant energy at <i>all</i> frequencies.</td></tr>
+<tr><td>2</td><td>Time sample</td><td>$\delta(t-t_0)$</td><td>$e^{-j\omega t_0}$</td><td></td></tr>
+<tr><td>3.</td><td>Phase shift</td><td>$e^{j\omega t_0}$</td><td>$2\pi\delta(\omega - \omega_0)$</td><td></td></tr>
+    <tr><td>4.</td><td><i>Signum</i> </td><td>$\operatorname{sgn} (x)$</td><td>$$\frac{2}{j\omega}$$</td><td>also known as sign function</td></tr>
+<tr><td>5.</td><td>Unit step</td><td>$u_0(t)$</td><td>$$\frac{1}{j\omega}+\pi\delta(\omega)$$</td><td></td></tr>
+<tr><td>6.</td><td>Cosine</td><td>$\cos \omega_0 t$</td><td>$\pi\left[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)\right]$</td><td></td></tr>
+<tr><td>7.</td><td>Sine</td><td>$\sin \omega_0 t$</td><td>$-j\pi\left[\delta(\omega-\omega_0)-\delta(\omega+\omega_0)\right]$</td><td></td></tr>
+<tr><td>8.</td><td>Single pole</td><td>$e^{-at}u_0(t)$</td><td>$$\frac{1}{j\omega + a}$$</td><td>$a \gt 0$</td></tr>
+<tr><td>9.</td><td>Double pole</td><td>$te^{-at}u_0(t)$</td><td>$$\frac{1}{(j\omega + a)^2}$$</td><td>$a \gt 0$</td></tr>
+<tr><td>10.</td><td>Complex pole (cosine component)</td><td>$e^{-at}\cos \omega_0 t\;u_0(t)$</td><td>$$\frac{j\omega + a}{((j\omega + a)^2+\omega^2}$$</td><td>$a\gt 0$</td></tr>
+<tr><td>11.</td><td>Complex pole (sine component)</td><td>$e^{-at}\sin \omega_0 t\;u_0(t)$</td><td>$$\frac{\omega}{((j\omega + a)^2+\omega^2}$$</td><td>$a\gt 0$</td></tr>
+    <tr><td>12.</td><td>Gating function (<i>aka</i> $\operatorname{rect} (T)$)</td><td>$A\left[u_0(t + T)-u_0(t - T)\right]$</td><td>$$2AT\frac{\sin\omega T}{\omega T}$$</td><td></td></tr>
+</tbody>
+</table></div>
+<div class="section" id="some-selected-fourier-transforms">
+<h2>Some Selected Fourier Transforms<a class="headerlink" href="#some-selected-fourier-transforms" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="relationship-between-f-t-and-f-omega">
+<h3>Relationship between <span class="math notranslate nohighlight">\(f(t)\)</span> and <span class="math notranslate nohighlight">\(F(\omega)\)</span><a class="headerlink" href="#relationship-between-f-t-and-f-omega" title="Permalink to this headline">¶</a></h3>
+<p>In most of the work we will do in this course, and in practice, the <em>signals</em> that we use with the Fourier transform will be a real continuous aperiodic functions of time that are zero when <span class="math notranslate nohighlight">\(t = 0\)</span>.</p>
+<p>The Fourier transforms of such signals will be complex continous functions of frequency which have real and imaginary parts and will exist at both positive and negative values of <span class="math notranslate nohighlight">\(\omega\)</span>.</p>
+<p>It is often most convenient to deal with the transformed “spectrum” by considering the magnitude and phase and we will therefore often plot <span class="math notranslate nohighlight">\(F(\omega)\)</span> on two separate graphs as <em>magnitude</em> <span class="math notranslate nohighlight">\(|F(\omega)|\)</span> and <em>phase</em> <span class="math notranslate nohighlight">\(\angle F(\omega)\)</span> (where phase is measured in radians) plotted against frequency <span class="math notranslate nohighlight">\(\omega \in [-\infty,\infty]\)</span> (in radians/second).</p>
+<p>We most often represent the <em>system</em> by its so-called <em>frequency response</em> and we will be interested on what effect the system has on the signal <span class="math notranslate nohighlight">\(f(t)\)</span>.</p>
+<p>As for the Laplace transform, this is more conveniently determined by exploiting the <em>time convolution property</em>. That is by performing a Fourier transform of the signal, multiplying it by the system’s frequency response and then inverse Fourier transforming the result.</p>
+<p>Have these ideas in mind as we go through the examples in the rest of this section.</p>
+</div>
+<div class="section" id="the-dirac-delta">
+<h3>The Dirac Delta<a class="headerlink" href="#the-dirac-delta" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\delta(t) \Leftrightarrow 1\]</div>
+<img src="pictures/ft_delta.png">
+<p><em>Proof</em>: uses sampling and sifting properties of <span class="math notranslate nohighlight">\(\delta(t)\)</span>.</p>
+<p><em>Matlab</em>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span> <span class="n">t</span><span class="p">;</span>
+<span class="n">fourier</span><span class="p">(</span><span class="n">dirac</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span> 
+ans =
+ 
+1
+ 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Related:</p>
+<div class="math notranslate nohighlight">
+\[\delta(t-t_0) \Leftrightarrow e^{-j\omega t_0}\]</div>
+</div>
+<div class="section" id="dc">
+<h3>DC<a class="headerlink" href="#dc" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[1 \Leftrightarrow 2\pi\delta(\omega)\]</div>
+<img src="pictures/ft_dc.png"><p><em>Matlab</em>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span> <span class="n">t</span> <span class="n">omega</span><span class="p">;</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">sym</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">fourier</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">omega</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span> 
+ans =
+ 
+2*pi*dirac(omega)
+ 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Related by frequency shifting property:</p>
+<div class="math notranslate nohighlight">
+\[e^{j\omega_0 t} \Leftrightarrow 2\pi\delta(\omega-\omega_0)\]</div>
+</div>
+<div class="section" id="cosine-sinewave-with-even-symmetry">
+<h3>Cosine (Sinewave with even symmetry)<a class="headerlink" href="#cosine-sinewave-with-even-symmetry" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\cos(t) = \frac{1}{2}\left(e^{j\omega_0 t}+e^{-j\omega_0 t}\right) \Leftrightarrow \pi\delta(\omega - \omega_0) + \pi\delta(\omega + \omega_0)\]</div>
+<img src="pictures/ft_cos.png">
+<p>Note: <span class="math notranslate nohighlight">\(f(t)\)</span> is real and even. <span class="math notranslate nohighlight">\(F(\omega)\)</span> is also real and even.</p>
+</div>
+<div class="section" id="sinewave">
+<h3>Sinewave<a class="headerlink" href="#sinewave" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\sin(t) = \frac{1}{j2}\left(e^{j\omega_0 t}-e^{-j\omega_0 t}\right) \Leftrightarrow -j\pi\delta(\omega - \omega_0) + j\pi\delta(\omega + \omega_0)\]</div>
+<img src="pictures/ft_sin.png">
+<p>Note: <span class="math notranslate nohighlight">\(f(t)\)</span> is real and odd. <span class="math notranslate nohighlight">\(F(\omega)\)</span> is imaginary and odd.</p>
+</div>
+<div class="section" id="signum-sign">
+<h3>Signum (Sign)<a class="headerlink" href="#signum-sign" title="Permalink to this headline">¶</a></h3>
+<p>The signum function is a function whose value is equal to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\operatorname{sgn} x = \left\{ {\begin{array}{*{20}{c}}
+  { - 1\;x &lt; 0} \\ 
+  {0\;x = 0} \\ 
+  { + 1\;x &gt; 0} 
+\end{array}} \right.\end{split}\]</div>
+<p>The transform is:</p>
+<div class="math notranslate nohighlight">
+\[\operatorname{sgn} x = u_0(t) - u_0(-t) = \frac{2}{j\omega}\]</div>
+<img src="pictures/ft_sgn.png">
+<p>This function is often used to model a <em>voltage comparitor</em> in circuits.</p>
+</div>
+<div class="section" id="example-4-unit-step">
+<h3>Example 4: Unit Step<a class="headerlink" href="#example-4-unit-step" title="Permalink to this headline">¶</a></h3>
+<p>Use the signum function to show that
+<span class="math notranslate nohighlight">\($\mathcal{F}\left\{u_0(t))\right\} = \pi\delta(\omega)+\frac{1}{j\omega}\)</span>$</p>
+<div class="section" id="clue">
+<h4>Clue<a class="headerlink" href="#clue" title="Permalink to this headline">¶</a></h4>
+<p>Define</p>
+<div class="math notranslate nohighlight">
+\[\operatorname{sgn} t = 2 u_0(t) - 1\]</div>
+<img src="pictures/u_as_sign.png">
+<p><em>Does that help?</em></p>
+</div>
+<div class="section" id="proof">
+<h4>Proof<a class="headerlink" href="#proof" title="Permalink to this headline">¶</a></h4>
+<div class="math notranslate nohighlight">
+\[\operatorname{sgn} x = 2u_0(t) - 1\]</div>
+<p>so</p>
+<div class="math notranslate nohighlight">
+\[u_0(t) = \frac{1}{2}\left[1 + \operatorname{sgn} x\right]\]</div>
+<p>From previous results <span class="math notranslate nohighlight">\(1\Leftrightarrow 2\pi\delta(\omega)\)</span> and <span class="math notranslate nohighlight">\(\operatorname{sgn} x = 2/(j\omega)\)</span> so by linearity</p>
+<div class="math notranslate nohighlight">
+\[u_0(t) \Leftrightarrow \pi\delta(\omega)+\frac{1}{j\omega}\]</div>
+<p><em>QED</em></p>
+</div>
+<div class="section" id="graph-of-unit-step">
+<h4>Graph of unit step<a class="headerlink" href="#graph-of-unit-step" title="Permalink to this headline">¶</a></h4>
+<div class="math notranslate nohighlight">
+\[u_0(t) \Leftrightarrow \pi\delta(\omega)+\frac{1}{j\omega}\]</div>
+<img src="pictures/ft_step.png"><p>Unit step is neither even nor odd so the Fourier transform is complex with real part <span class="math notranslate nohighlight">\(F_\mathrm{Re}(\omega) = \pi\delta(\omega)\)</span> and imaginary part <span class="math notranslate nohighlight">\(F_\mathrm{Im}(\omega) = 1/(j\omega)\)</span>. The real part is even, and theimaginary part is odd.</p>
+</div>
+</div>
+<div class="section" id="example-5">
+<h3>Example 5<a class="headerlink" href="#example-5" title="Permalink to this headline">¶</a></h3>
+<p>Use the results derived so far to show that</p>
+<div class="math notranslate nohighlight">
+\[e^{j\omega_0 t}u_0(t)\Leftrightarrow \pi\delta(\omega - \omega_0) + \frac{1}{j(\omega-\omega_0)}\]</div>
+<p>Hint: linearity plus frequency shift property.</p>
+</div>
+<div class="section" id="example-6">
+<h3>Example 6<a class="headerlink" href="#example-6" title="Permalink to this headline">¶</a></h3>
+<p>Use the results derived so far to show that</p>
+<div class="math notranslate nohighlight">
+\[\sin \omega_0 t\; u_0(t)\Leftrightarrow \frac{\pi}{j2}\left[\delta(\omega-\omega_0)-\delta(\omega+\omega_0)\right] + \frac{\omega_0}{\omega_0^2 - \omega^2}\]</div>
+<p>Hint: Euler’s formula plus solution to example 2.</p>
+<p><strong>Important note</strong>: the equivalent example in Karris (Section 8.4.9 Eq. 8.75 pp 8-23—8-24) is wrong!</p>
+<p>See <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/ft2-ex3.pdf">worked solution</a> for the corrected proof.</p>
+</div>
+<div class="section" id="example-7">
+<h3>Example 7<a class="headerlink" href="#example-7" title="Permalink to this headline">¶</a></h3>
+<p>Use the result of Example 6 to determine the Fourier transform of <span class="math notranslate nohighlight">\(\cos\omega_0 t\; u_0(t)\)</span>.</p>
+<div class="section" id="solution-to-example-7">
+<h4>Solution to example 7<a class="headerlink" href="#solution-to-example-7" title="Permalink to this headline">¶</a></h4>
+<div class="math notranslate nohighlight">
+\[\cos\omega_0 t\; u_0(t)\Leftrightarrow \frac{\pi}{2}\left[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)\right] + \frac{j\omega}{\omega_0^2 - \omega^2}\]</div>
+</div>
+</div>
+</div>
+<div class="section" id="derivation-of-the-fourier-transform-from-the-laplace-transform">
+<h2>Derivation of the Fourier Transform from the Laplace Transform<a class="headerlink" href="#derivation-of-the-fourier-transform-from-the-laplace-transform" title="Permalink to this headline">¶</a></h2>
+<p>If a signal is a function of time <span class="math notranslate nohighlight">\(f(t)\)</span> which is zero for <span class="math notranslate nohighlight">\(t\le 0\)</span>, we can obtain the Fourier transform from the Lpalace transform by substituting <span class="math notranslate nohighlight">\(s\)</span> by <span class="math notranslate nohighlight">\(j\omega\)</span>.</p>
+<div class="section" id="example-8-single-pole-filter">
+<h3>Example 8: Single Pole Filter<a class="headerlink" href="#example-8-single-pole-filter" title="Permalink to this headline">¶</a></h3>
+<p>Given that</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{L}\left\{e^{-at}u_0(t)\right\} = \frac{1}{s + a}\]</div>
+<p>Compute</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{F}\left\{e^{-at}u_0(t)\right\}\]</div>
+<div class="section" id="solution-to-example-8">
+<h4>Solution to example 8<a class="headerlink" href="#solution-to-example-8" title="Permalink to this headline">¶</a></h4>
+<div class="math notranslate nohighlight">
+\[\frac{1}{j\omega+1}\]</div>
+<p>Boulet gives the graph of this function.</p>
+</div>
+</div>
+<div class="section" id="example-9-complex-pole-pair-cos-term">
+<h3>Example 9: Complex Pole Pair  cos term<a class="headerlink" href="#example-9-complex-pole-pair-cos-term" title="Permalink to this headline">¶</a></h3>
+<p>Given that</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{L}\left\{e^{-at}\cos\omega_0 t\;u_0(t)\right\} = \frac{s+a}{(s + a)^2+\omega_0^2}\]</div>
+<p>Compute</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{F}\left\{e^{-at}\cos\omega_0 t\;u_0(t)\right\}\]</div>
+<div class="section" id="solution-to-example-9">
+<h4>Solution to example 9<a class="headerlink" href="#solution-to-example-9" title="Permalink to this headline">¶</a></h4>
+<div class="math notranslate nohighlight">
+\[\frac{j\omega + a}{(j\omega+a)^2 + \omega_0^2}\]</div>
+<p>Boulet gives the graph of this function.</p>
+</div>
+</div>
+</div>
+<div class="section" id="fourier-transforms-of-common-signals">
+<h2>Fourier Transforms of Common Signals<a class="headerlink" href="#fourier-transforms-of-common-signals" title="Permalink to this headline">¶</a></h2>
+<p>We shall conclude this session by computing as many of the the Fourier transform of some common signals as we have time for.</p>
+<ul class="simple">
+<li><p>rectangular pulse</p></li>
+<li><p>triangular pulse</p></li>
+<li><p>periodic time function</p></li>
+<li><p>unit impulse train (model of regular sampling)</p></li>
+</ul>
+<p>I will not provide notes for these, but you will find more details in Chapter 8 of Karris and Chapter 5 of Boulet and</p>
+<p>I have created some worked examples (see Blackboard and the OneNote notebook) to help with revision.</p>
+</div>
+<div class="section" id="suggestions-for-further-reading">
+<h2>Suggestions for Further Reading<a class="headerlink" href="#suggestions-for-further-reading" title="Permalink to this headline">¶</a></h2>
+<p>Boulet has several interesting amplifications of the material presented by Karris. You would be well advised to read these. Particular highlights which we will not have time to cover:</p>
+<ul class="simple">
+<li><p>Time multiplication and its relation to amplitude modulation (pp 182—183).</p></li>
+<li><p>Fourier transform of the complex exponential signal <span class="math notranslate nohighlight">\(e^{(\alpha +j\beta)t}\)</span> with graphs (pp 184—187).</p></li>
+<li><p>Use of inverse Fourier series to determine <span class="math notranslate nohighlight">\(f(t)\)</span> from a given <span class="math notranslate nohighlight">\(F(j\omega)\)</span> and the “ideal” low-pass filter (pp 188—191).</p></li>
+<li><p>The Duality of the Fourier transform (pp 191—192).</p></li>
+</ul>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Tables of Transform Pairs</p></li>
+<li><p>Examples of Selected Transforms</p></li>
+<li><p>Relationship between Laplace and Fourier</p></li>
+<li><p>Fourier Transforms of Common Signals</p></li>
+</ul>
+<p><em>Next Section</em></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/3/ft3">The Fourier Transform for Systems and Circuit Analysis</a></p></li>
+</ul>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../1/ft1.html" title="previous page">Defining the Fourier Transform</a>
+    <a class='right-next' id="next-link" href="../3/ft3.html" title="next page">Fourier Transforms for Circuit and LTI Systems Analysis</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dr Chris P. Jobling<br/>
+        
+            &copy; Copyright 2020.<br/>
+          <div class="extra_footer">
+            This page was created by 
+<a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
+  Dr Chris P. Jobling
+</a> 
+for 
+<a href="https://www.swansea.ac.uk">
+  Swansea University
+</a>.
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,985 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Exponential Fourier Series &#8212; EG-247 Signals and Systems</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/mystnb.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/fourier_series/2/exp_fs1.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Line Spectra and their Applications" href="../3/exp_fs2.html" />
+    <link rel="prev" title="Trigonometric Fourier Series" href="../1/trig_fseries.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cpjobling.github.io/eg-247-textbook/fourier_series/2/exp_fs1.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Exponential Fourier Series" />
+<meta property="og:description" content="Exponential Fourier Series  Colophon  An annotatable worksheet for this presentation is available as Worksheet 10.  The source code for this page is content/fou" />
+
+
+<meta name="twitter:card" content="summary">
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">EG-247 Signals and Systems</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../introduction/index.html">
+   Introducing Signals and Systems
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../elementary_signals/index.html">
+   Elementary Signals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../laplace_transform/index.html">
+   Laplace Transforms and their Applications
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="../index.html">
+   Fourier Series
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1/trig_fseries.html">
+     Trigonometric Fourier Series
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Exponential Fourier Series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3/exp_fs2.html">
+     Line Spectra and their Applications
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fourier_transform/index.html">
+   Fourier Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../dt_systems/index.html">
+   Sampled Data Systems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../dft/index.html">
+   Discrete Fourier Transform
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FAQs
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../FAQS/faq.html">
+   Answers to Frequently Asked Questions
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  In Class Worksheets
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../worksheets/index.html">
+   Worksheets
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Homework
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../homework/index.html">
+   Homework
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Lab Exercises
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../labs/index.html">
+   Laboratory Exercises
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Project
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../labs/project/index.html">
+   Project
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Answers to Selected problems
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../introduction/answers.html">
+   Worksheet 2
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Setting up your own version of this book
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../setup/index.html">
+   Setting up your own version of this book
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by 
+ <a href="https://jupyterbook.org">
+  Jupyter Book
+</a>
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/fourier_series/2/exp_fs1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cpjobling/eg-247-textbook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Ffourier_series/2/exp_fs1.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/cpjobling/eg-247-textbook/edit/master/fourier_series/2/exp_fs1.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#colophon">
+   Colophon
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#agenda">
+   Agenda
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-exponential-function-e-at">
+   The Exponential Function
+   <span class="math notranslate nohighlight">
+    \(e^{at}\)
+   </span>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#case-when-a-is-real">
+     Case when a is real.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#case-when-a-is-imaginary">
+     Case when a is imaginary
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#some-important-values-of-omega-t">
+       Some important values of
+       <span class="math notranslate nohighlight">
+        \(\omega t\)
+       </span>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#case-where-a-is-complex">
+     Case where
+     <span class="math notranslate nohighlight">
+      \(a\)
+     </span>
+     is complex
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#two-other-important-properties">
+     Two Other Important Properties
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-exponential-fourier-series">
+   The Exponential Fourier Series
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grouping-terms-with-same-exponents">
+     Grouping terms with same exponents
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#new-coefficents">
+     New coefficents
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#evaluation-of-the-complex-coefficients">
+     Evaluation of the complex coefficients
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trigonometric-fourier-series-from-exponential-fourier-series">
+     Trigonometric Fourier Series from Exponential Fourier Series
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#symmetry-in-exponential-fourier-series">
+   Symmetry in Exponential Fourier Series
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#even-functions">
+     Even Functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#odd-functions">
+     Odd Functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#half-wave-symmetry">
+     Half-wave symmetry
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#no-symmetry">
+     No symmetry
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#relation-of-c-k-to-c-k">
+     Relation of
+     <span class="math notranslate nohighlight">
+      \(C_{-k}\)
+     </span>
+     to
+     <span class="math notranslate nohighlight">
+      \(C_{k}\)
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-1">
+   Example 1
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solved-in-in-class">
+     Solved in in Class
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#some-questions-for-you">
+       Some questions for you
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#solution-to-example-1">
+       Solution to example 1
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exponential-fourier-series-for-the-square-wave-with-odd-symmetry">
+   Exponential Fourier series for the square wave with odd symmetry
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trig-fourier-series-from-exponential-fourier-series">
+   Trig. Fourier Series from Exponential Fourier Series
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-coefficients-of-exponential-fourier-series-in-matlab">
+   Computing coefficients of Exponential Fourier Series in MATLAB
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2">
+     Example 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-to-example-2">
+     Solution to example 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#efs-sqw">
+     EFS_SQW
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#answers-to-in-class-problems">
+   Answers to in-class problems
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-important-values-of-omega-t-solution">
+     Some important values of
+     <span class="math notranslate nohighlight">
+      \(\omega t\)
+     </span>
+     - Solution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-answers-for-you">
+     Some answers for you
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="exponential-fourier-series">
+<h1>Exponential Fourier Series<a class="headerlink" href="#exponential-fourier-series" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="colophon">
+<h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this headline">¶</a></h2>
+<p>An annotatable worksheet for this presentation is available as <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_series/2/worksheet10.html"><strong>Worksheet 10</strong></a>.</p>
+<ul class="simple">
+<li><p>The source code for this page is <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/content/fourier_series/2/exp_fs1.ipynb">content/fourier_series/2/exp_fs1.ipynb</a>.</p></li>
+<li><p>You can view the notes for this presentation as a webpage (<a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_series/2/exp_fs1.html">HTML</a>).</p></li>
+<li><p>This page is downloadable as a <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_series/2/exp_fs1.pdf">PDF</a> file.</p></li>
+</ul>
+<p>This section builds on our <a class="reference internal" href="../1/trig_fseries.html"><span class="doc std std-doc">Revision of the to Trigonometrical Fourier Series</span></a>.</p>
+<p>Trigonometric Fourier series uses integration of a periodic signal multiplied by sines and cosines at the fundamental and harmonic frequencies. If performed by hand, this can a painstaking process. Even with the simplifications made possible by exploiting waveform symmetries, there is still a need to integrate cosine and sine terms, be aware of and able to exploit the trigonometrc identities, and the properties of <em>orthogonal functions</em> before we can arrive at the simplified solutions. This is why I concentrated on the properties and left the computation to a computer.</p>
+<p>However, by exploiting the exponential function <span class="math notranslate nohighlight">\(e^{at}\)</span>, we can derive a method for calculating the coefficients of the harmonics that is much easier to calculate by hand and convert into an algorithm that can be executed by computer.</p>
+<p>The result is called the <em>Exponential Fourier Series</em>.</p>
+</div>
+<div class="section" id="agenda">
+<h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Exponents and Euler’s Equation</p></li>
+<li><p>The Exponential Fourier series</p></li>
+<li><p>Symmetry in Exponential Fourier Series</p></li>
+<li><p>Example</p></li>
+</ul>
+</div>
+<div class="section" id="the-exponential-function-e-at">
+<h2>The Exponential Function <span class="math notranslate nohighlight">\(e^{at}\)</span><a class="headerlink" href="#the-exponential-function-e-at" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>You should already be familiar with <span class="math notranslate nohighlight">\(e^{at}\)</span> because it appears in the solution of differential equations.</p></li>
+<li><p>It is also a function that appears in the definition of the Laplace and Inverse Laplace Transform.</p></li>
+<li><p>It pops up again and again in tables and properies of the Laplace Transform.</p></li>
+</ul>
+<div class="section" id="case-when-a-is-real">
+<h3>Case when a is real.<a class="headerlink" href="#case-when-a-is-real" title="Permalink to this headline">¶</a></h3>
+<p>When <span class="math notranslate nohighlight">\(a\)</span> is real the function <span class="math notranslate nohighlight">\(e^{at}\)</span> will take one of the two forms illustrated below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span> <span class="n">The</span> <span class="n">decaying</span> <span class="n">exponential</span>
+<span class="n">t</span><span class="o">=</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>
+<span class="n">figure</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">exp</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.</span><span class="o">*</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">))</span>
+<span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+<span class="n">title</span><span class="p">(</span><span class="s1">&#39;exp(at) -- a real&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t (s)&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;exp(t) and exp(-t)&#39;</span><span class="p">)</span>
+<span class="n">legend</span><span class="p">(</span><span class="s1">&#39;exp(t)&#39;</span><span class="p">,</span><span class="s1">&#39;exp(0)&#39;</span><span class="p">,</span><span class="s1">&#39;exp(-t)&#39;</span><span class="p">)</span>
+<span class="n">grid</span>
+<span class="n">hold</span> <span class="n">off</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/exp_fs1_6_0.png" src="../../_images/exp_fs1_6_0.png" />
+</div>
+</div>
+<p>You can regenerate this image generated with this Matlab script: <span class="xref myst">expon.m</span>.</p>
+<ul class="simple">
+<li><p>When <span class="math notranslate nohighlight">\(a &lt; 0\)</span> the response is a decaying exponential (red line in plot)</p></li>
+<li><p>When <span class="math notranslate nohighlight">\(a = 0\)</span> <span class="math notranslate nohighlight">\(e^{at} = 1\)</span> – essentially a model of DC</p></li>
+<li><p>When <span class="math notranslate nohighlight">\(a &gt; 0\)</span> the response is an <em>unbounded</em> increasing exponential (blue line in plot)</p></li>
+</ul>
+</div>
+<div class="section" id="case-when-a-is-imaginary">
+<h3>Case when a is imaginary<a class="headerlink" href="#case-when-a-is-imaginary" title="Permalink to this headline">¶</a></h3>
+<img src="pictures/euler.png" title="exp(j*omega*t) = cos(omega*t) + j*sin(omega*t)"><p>This is the case that helps us simplify the computation of sinusoidal Fourier series.</p>
+<p>It was <a class="reference external" href="https://en.wikipedia.org/wiki/Leonhard_Euler">Leonhard Euler</a> who discovered the <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%27s_formula">formula</a> visualized above.</p>
+<div class="section" id="some-important-values-of-omega-t">
+<h4>Some important values of <span class="math notranslate nohighlight">\(\omega t\)</span><a class="headerlink" href="#some-important-values-of-omega-t" title="Permalink to this headline">¶</a></h4>
+<p>These are useful when simplifying expressions that result from integrating functions that involve the imaginary exponential</p>
+<p>Give the following:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(e^{j\omega t}\)</span> when <span class="math notranslate nohighlight">\(\omega t = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(e^{j\omega t}\)</span> when <span class="math notranslate nohighlight">\(\omega t = \pi/2\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(e^{j\omega t}\)</span> when <span class="math notranslate nohighlight">\(\omega t = \pi\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(e^{j\omega t}\)</span> when <span class="math notranslate nohighlight">\(\omega t = 3\pi/2\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(e^{j\omega t}\)</span> when <span class="math notranslate nohighlight">\(\omega t = 2\pi\)</span></p></li>
+</ul>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></div>
+</div>
+<div class="section" id="case-where-a-is-complex">
+<h3>Case where <span class="math notranslate nohighlight">\(a\)</span> is complex<a class="headerlink" href="#case-where-a-is-complex" title="Permalink to this headline">¶</a></h3>
+<p>We shall not say much about this case except to note that the Laplace transform equation includes such a number. The variable <span class="math notranslate nohighlight">\(s\)</span> in the Laplace Transform</p>
+<div class="math notranslate nohighlight">
+\[\int_{0}^{\infty} f(t)e^{-st} dt\]</div>
+<p>is a <em>complex exponential</em>.</p>
+<p>The consequences of a complex <span class="math notranslate nohighlight">\(s\)</span> have particular significance in the development of system stability theories and in control systems analysis and design. Look out for them in EG-243.</p>
+</div>
+<div class="section" id="two-other-important-properties">
+<h3>Two Other Important Properties<a class="headerlink" href="#two-other-important-properties" title="Permalink to this headline">¶</a></h3>
+<p>By use of trig. identities, it is relatively straight forward to show that:</p>
+<div class="math notranslate nohighlight">
+\[\cos \omega t = \frac{e^{j\omega t} + e^{-j\omega t}}{2}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\sin \omega t = \frac{e^{j\omega t} - e^{-j\omega t}}{j2}\]</div>
+<p>We can use this result to convert the <em>Trigonometric Fourier Series</em> into an <em>Exponential Fourier Series</em> which has only one integral term to solve per harmonic.</p>
+</div>
+</div>
+<div class="section" id="the-exponential-fourier-series">
+<h2>The Exponential Fourier Series<a class="headerlink" href="#the-exponential-fourier-series" title="Permalink to this headline">¶</a></h2>
+<p>As <a class="reference internal" href="../1/trig_fseries.html"><span class="doc std std-doc">as stated in the notes on the Trigonometric Fourier Series</span></a> any periodic waveform <span class="math notranslate nohighlight">\(f(t)\)</span> can be represented as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{gathered}
+  f(t) = \frac{1}{2}{a_0} + {a_1}\cos \Omega_0 t + {a_2}\cos 2\Omega_0 t +  \cdots  \\ 
+   + {b_1}\sin \Omega_0 t + {b_2}\sin 2\Omega_0 t +  \cdots  \\ 
+\end{gathered} \end{split}\]</div>
+<p>If we replace the <span class="math notranslate nohighlight">\(\cos\)</span> and <span class="math notranslate nohighlight">\(\sin\)</span> terms with their imaginary expontial equivalents:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{gathered}
+  f(t) = \frac{1}{2}{a_0} + {a_1}\left(\frac{e^{j\Omega_0 t} + e^{-j\Omega_0 t}}{2}\right) + {a_2}\left(\frac{e^{j2\Omega_0 t} + e^{-j2\Omega_0 t}}{2}\right) +  \cdots  \\ 
+   + {b_1}\left(\frac{e^{j\Omega_0 t} - e^{-j\Omega_0 t}}{j2}\right) + {b_2}\left(\frac{e^{j2\Omega_0 t} - e^{-j2\Omega_0 t}}{j2}\right) +  \cdots  \\ 
+\end{gathered} \end{split}\]</div>
+<div class="section" id="grouping-terms-with-same-exponents">
+<h3>Grouping terms with same exponents<a class="headerlink" href="#grouping-terms-with-same-exponents" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[f(t) = \cdots + \left(\frac{a_2}{2}-\frac{b_2}{j2}\right)e^{-j2\Omega_0 t} + \left(\frac{a_1}{2}-\frac{b_1}{j2}\right)e^{-j\Omega_0 t} + \frac{1}{2}{a_0} + \left(\frac{a_1}{2}+\frac{b_1}{j2}\right)e^{j\Omega_0 t} + \left(\frac{a_2}{2}+\frac{b_2}{j2}\right)e^{j2\Omega_0 t} +\cdots \]</div>
+</div>
+<div class="section" id="new-coefficents">
+<h3>New coefficents<a class="headerlink" href="#new-coefficents" title="Permalink to this headline">¶</a></h3>
+<p>The terms in parentheses are usually denoted as</p>
+<div class="math notranslate nohighlight">
+\[C_{-k} = \frac{1}{2}\left(a_k-\frac{b_k}{j}\right) = \frac{1}{2}\left(a_k+j b_k\right)\]</div>
+<div class="math notranslate nohighlight">
+\[C_{k} = \frac{1}{2}\left(a_k+\frac{b_k}{j}\right) = \frac{1}{2}\left(a_k-j b_k\right)\]</div>
+<div class="math notranslate nohighlight">
+\[C_0 = \frac{1}{2}a_0\]</div>
+<p>The Exponential Fourier Series is</p>
+<div class="math notranslate nohighlight">
+\[f(t) = \cdots + C_{-2}e^{-j2\Omega_0 t} + C_{-1}e^{-j\Omega_0 t} + C_0 + C_{1}e^{j\Omega_0 t} + C_{2}e^{j2\Omega_0 t} +\cdots \]</div>
+<p>or more compactly</p>
+<div class="math notranslate nohighlight">
+\[f(t) = \sum_{k=-n}^{n}C_{k}e^{jk \Omega_0  t}\]</div>
+<p><strong>Important</strong></p>
+<p>The <span class="math notranslate nohighlight">\(C_k\)</span> coefficents, except for <span class="math notranslate nohighlight">\(C_0\)</span> are <em>complex</em> and appear in conjugate pairs so</p>
+<div class="math notranslate nohighlight">
+\[C_{-k} = C_k^*\]</div>
+</div>
+<div class="section" id="evaluation-of-the-complex-coefficients">
+<h3>Evaluation of the complex coefficients<a class="headerlink" href="#evaluation-of-the-complex-coefficients" title="Permalink to this headline">¶</a></h3>
+<p>The coefficients are obtained from the following expressions<sup>*</sup>:</p>
+<div class="math notranslate nohighlight">
+\[C_k = \frac{1}{2\pi}\int_{0}^{2\pi}f(\Omega_0 t)e^{-jk(\Omega_0 t)}\,d(\Omega_0 t)\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[C_k = \frac{1}{T}\int_{0}^{T}f(t)e^{-jk\Omega_0 t}\,dt\]</div>
+<p>These are much easier to derive and compute than the equivalent Trigonemetric Fourier Series coefficients.</p>
+<p><sup>*</sup> The analysis that leads to this result is provided between pages <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?ppg=243&amp;docID=3384197&amp;tm=1518704101461">7-31 and 7-32 of the text book</a>. It is not a difficult proof, but we are more interested in the result.</p>
+</div>
+<div class="section" id="trigonometric-fourier-series-from-exponential-fourier-series">
+<h3>Trigonometric Fourier Series from Exponential Fourier Series<a class="headerlink" href="#trigonometric-fourier-series-from-exponential-fourier-series" title="Permalink to this headline">¶</a></h3>
+<p>By substituting <span class="math notranslate nohighlight">\(C_{-k}\)</span> and <span class="math notranslate nohighlight">\(C_{k}\)</span> back into the original expansion</p>
+<div class="math notranslate nohighlight">
+\[C_k+C_{-k} = \frac{1}{2}\left(a_k-jb_k + a_k+jb_k\right)\]</div>
+<p>so</p>
+<div class="math notranslate nohighlight">
+\[a_k = C_k + C_{-k}\]</div>
+<p>Similarly</p>
+<div class="math notranslate nohighlight">
+\[C_k-C_{-k} = \frac{1}{2}\left(a_k-jb_k - a_k-jb_k\right)\]</div>
+<p>so</p>
+<div class="math notranslate nohighlight">
+\[b_k = j\left(C_k - C_{-k}\right)\]</div>
+<p>Thus we can easily go back to the Trigonetric Fourier series if we want to.</p>
+</div>
+</div>
+<div class="section" id="symmetry-in-exponential-fourier-series">
+<h2>Symmetry in Exponential Fourier Series<a class="headerlink" href="#symmetry-in-exponential-fourier-series" title="Permalink to this headline">¶</a></h2>
+<p>Since the coefficients of the Exponential Fourier Series are complex numbers, we can use symmetry to determine the form of the coefficients and thereby simplify the computation of series for wave forms that have symmetry.</p>
+<div class="section" id="even-functions">
+<h3>Even Functions<a class="headerlink" href="#even-functions" title="Permalink to this headline">¶</a></h3>
+<p>For even functions, all coefficients <span class="math notranslate nohighlight">\(C_k\)</span> are real.</p>
+<p><strong>Proof</strong></p>
+<p>Recall</p>
+<div class="math notranslate nohighlight">
+\[C_{-k} = \frac{1}{2}\left(a_k-\frac{b_k}{j}\right) = \frac{1}{2}\left(a_k+jb_k\right)\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[C_k = \frac{1}{2}\left(a_k+\frac{b_k}{j}\right) = \frac{1}{2}\left(a_k-jb_k\right)\]</div>
+<p>From knowledge of the trig. fourier series, even functions have no sine terms so the <span class="math notranslate nohighlight">\(b_k\)</span> coefficients are 0. Therefore both <span class="math notranslate nohighlight">\(C_{-k}\)</span> and <span class="math notranslate nohighlight">\(C_k\)</span> are real.</p>
+</div>
+<div class="section" id="odd-functions">
+<h3>Odd Functions<a class="headerlink" href="#odd-functions" title="Permalink to this headline">¶</a></h3>
+<p>For odd functions, all coefficients <span class="math notranslate nohighlight">\(C_k\)</span> are imaginary.</p>
+<p>By a similar argument, all odd functions have no cosine terms so the <span class="math notranslate nohighlight">\(a_k\)</span> coefficients are 0. Therefore both <span class="math notranslate nohighlight">\(C_{-k}\)</span> and <span class="math notranslate nohighlight">\(C_k\)</span> are imaginary.</p>
+</div>
+<div class="section" id="half-wave-symmetry">
+<h3>Half-wave symmetry<a class="headerlink" href="#half-wave-symmetry" title="Permalink to this headline">¶</a></h3>
+<p>If there is <em>half-wave symmetry</em>, <span class="math notranslate nohighlight">\(C_k = 0\)</span> for <span class="math notranslate nohighlight">\(k\)</span> even.</p>
+<p>For proof see notes</p>
+<p><strong>Proof</strong></p>
+<p>From Trigonometric Fourier Series, if there is half-wave symmetry, all even harnonics are zero, thus both <span class="math notranslate nohighlight">\(a_k\)</span> and <span class="math notranslate nohighlight">\(b_k\)</span> are zero for <span class="math notranslate nohighlight">\(k\)</span> even. Hence <span class="math notranslate nohighlight">\(C_{-k}\)</span> and <span class="math notranslate nohighlight">\(C_k\)</span> are also zero when <span class="math notranslate nohighlight">\(k\)</span> is even.</p>
+</div>
+<div class="section" id="no-symmetry">
+<h3>No symmetry<a class="headerlink" href="#no-symmetry" title="Permalink to this headline">¶</a></h3>
+<p>If there is no symmetry the Exponential Fourier Series of <span class="math notranslate nohighlight">\(f(t)\)</span> is complex.</p>
+</div>
+<div class="section" id="relation-of-c-k-to-c-k">
+<h3>Relation of <span class="math notranslate nohighlight">\(C_{-k}\)</span> to <span class="math notranslate nohighlight">\(C_{k}\)</span><a class="headerlink" href="#relation-of-c-k-to-c-k" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(C_{-k} = C_{k}^*\)</span> <strong>always</strong></p>
+</div>
+</div>
+<div class="section" id="example-1">
+<h2>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h2>
+<p>Compute the Exponential Fourier Series for the square wave shown below assuming that <span class="math notranslate nohighlight">\(\omega = 1\)</span></p>
+<img src="pictures/sqw.png"> <div class="section" id="solved-in-in-class">
+<h3>Solved in in Class<a class="headerlink" href="#solved-in-in-class" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="some-questions-for-you">
+<h4>Some questions for you<a class="headerlink" href="#some-questions-for-you" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Square wave is an [<strong>odd/even/neither</strong>] function?</p></li>
+<li><p>DC component is [<strong>zero/non-zero</strong>]?</p></li>
+<li><p>Square wave [<strong>has/does not have</strong>] half-wave symmetry?</p></li>
+</ul>
+<p>Hence</p>
+<ul class="simple">
+<li><p>$C_0 = $[<strong>?</strong>]</p></li>
+<li><p>Coefficients <span class="math notranslate nohighlight">\(C_k\)</span> are [<strong>real/imaginary/complex</strong>]?</p></li>
+<li><p>Subscripts <span class="math notranslate nohighlight">\(k\)</span> are [<strong>odd only/even only/both odd and even</strong>]?</p></li>
+<li><p>What is the integral that needs to be solved for <span class="math notranslate nohighlight">\(C_k\)</span>?</p></li>
+</ul>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></div>
+<div class="section" id="solution-to-example-1">
+<h4>Solution to example 1<a class="headerlink" href="#solution-to-example-1" title="Permalink to this headline">¶</a></h4>
+<div class="math notranslate nohighlight">
+\[\frac{1}{2\pi}\left[\int_{0}^{\pi} Ae^{-jk(\Omega_0 t)}\, d(\Omega_0 t) + \int_{\pi}^{2\pi} (-A)e^{-jk(\Omega_0 t)}\, d(\Omega_0 t)\right] = \frac{1}{2\pi}\left[\left.\frac{A}{-jk}e^{-jk(\Omega_0 t)}\right|_0^\pi+\left.\frac{-A}{-jk}e^{-jk(\Omega_0 t)}\right|_\pi^{2\pi}\right]\]</div>
+<div class="math notranslate nohighlight">
+\[ = \frac{1}{2\pi}\left[\frac{A}{-jk}\left(e^{-jk\pi} - 1\right)+\frac{A}{jk}\left(e^{-j2k \pi}-e^{-jk\pi}\right)\right] =
+\frac{A}{2j\pi k}\left(1 - e^{-jk\pi}+ e^{-j2k \pi}-e^{-jk\pi}\right)\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{A}{2j\pi k}\left(e^{-j2k \pi} - 2e^{-jk\pi} -1 \right) = \frac{A}{2j\pi k}\left(e^{-jk\pi}-1\right)^2\]</div>
+<p>For <span class="math notranslate nohighlight">\(n\)</span> odd*, <span class="math notranslate nohighlight">\(e^{-jk\pi} = -1\)</span>. Therefore</p>
+<div class="math notranslate nohighlight">
+\[{C_k \atop {k=\mathrm{odd}}} = \frac{A}{2j\pi k}\left(e^{-jk\pi}-1\right)^2 = \frac{A}{2j\pi k}\left(-1-1\right)^2 = \frac{A}{2j\pi k}\left(-2\right)^2 = \frac{2A}{j\pi k}\]</div>
+<p><sup>*</sup> You may want to verify that <span class="math notranslate nohighlight">\(C_0 = 0\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[{C_k \atop {k=\mathrm{even}}} = 0.\]</div>
+</div>
+</div>
+</div>
+<div class="section" id="exponential-fourier-series-for-the-square-wave-with-odd-symmetry">
+<h2>Exponential Fourier series for the square wave with odd symmetry<a class="headerlink" href="#exponential-fourier-series-for-the-square-wave-with-odd-symmetry" title="Permalink to this headline">¶</a></h2>
+<p>From the definition of the exponential Fourier series</p>
+<div class="math notranslate nohighlight">
+\[f(t) = \cdots + C_{-2}e^{-j2\Omega_0 t} + C_{-1}e^{-j\Omega_0 t} + C_{0} + C_{1}e^{j\Omega_0 t} + C_{2}e^{j2\Omega_0 t} + \cdots\]</div>
+<p>the <em>exponential Fourier series for the square wave with odd symmetry</em> is</p>
+<div class="math notranslate nohighlight">
+\[f(t) = \frac{2A}{j\pi}\left(\cdots - \frac{1}{3}e^{-j3\Omega_0 t} - e^{-j\Omega_0 t} + e^{j\Omega_0 t} + \frac{1}{3}e^{j3\Omega_0 t} + \cdots\right) = \frac{2A}{j\pi}\sum_{k = \mathrm{odd}} \frac{1}{k}e^{jk\Omega_0 t}\]</div>
+<p>Note sign change in first two terms. This is due to the fact that <span class="math notranslate nohighlight">\(C_{-k} = C_k^*\)</span>.</p>
+<p>E.g. since <span class="math notranslate nohighlight">\(C_3 = 2A/j3\pi\)</span>, <span class="math notranslate nohighlight">\(C_{-3} = C_3^* = -2A/j3\pi\)</span></p>
+</div>
+<div class="section" id="trig-fourier-series-from-exponential-fourier-series">
+<h2>Trig. Fourier Series from Exponential Fourier Series<a class="headerlink" href="#trig-fourier-series-from-exponential-fourier-series" title="Permalink to this headline">¶</a></h2>
+<p>Since</p>
+<div class="math notranslate nohighlight">
+\[f(t) = \frac{2A}{j\pi}\left(\cdots - \frac{1}{3}e^{-j3\Omega_0 t} - e^{-j\Omega_0 t} + e^{j\Omega_0 t} + \frac{1}{3}e^{j3\Omega_0 t} + \cdots\right) \]</div>
+<p>gathering terms at each harmonic frequency gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+f(t) &amp;=&amp; \frac{4A}{\pi}\left(\cdots + \left(\frac{e^{j\Omega_0 t} - e^{-j\Omega_0 t}}{2j}\right)  + \frac{1}{3}\left(\frac{e^{j3\Omega_0 t} - e^{-j3\Omega_0 t}}{2j}\right)  +  \cdots\right) \\
+&amp;=&amp; \frac{4A}{\pi}\left(\sin \Omega_0 t + \frac{1}{3}\sin 3\Omega_0 t + \cdots\right)\\
+&amp;=&amp; \frac{4A}{\pi} \sum_{k=\mathrm{odd}} \frac{1}{k}\sin k\Omega_0 t.\end{eqnarray*}\end{split}\]</div>
+</div>
+<div class="section" id="computing-coefficients-of-exponential-fourier-series-in-matlab">
+<h2>Computing coefficients of Exponential Fourier Series in MATLAB<a class="headerlink" href="#computing-coefficients-of-exponential-fourier-series-in-matlab" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="example-2">
+<h3>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h3>
+<p>Verify the result of Example 1 using MATLAB.</p>
+</div>
+<div class="section" id="solution-to-example-2">
+<h3>Solution to example 2<a class="headerlink" href="#solution-to-example-2" title="Permalink to this headline">¶</a></h3>
+<p>Solution: See <span class="xref myst">efs_sqw.m</span>.</p>
+</div>
+<div class="section" id="efs-sqw">
+<h3>EFS_SQW<a class="headerlink" href="#efs-sqw" title="Permalink to this headline">¶</a></h3>
+<p>Calculates the Exponential Fourier for a Square Wave with Odd Symmetry.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">clear</span> <span class="nb">all</span>
+<span class="nb">format</span> <span class="n">compact</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Set up parameters</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span> <span class="n">t</span> <span class="n">A</span><span class="p">;</span>
+
+<span class="n">tau</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">T0</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">;</span> <span class="o">%</span> <span class="n">w</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">f</span> <span class="o">-&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="n">omega</span>
+<span class="n">k_vec</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span><span class="mi">5</span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Define f(t)</p>
+<p><strong>IMPORTANT</strong>: the signal definition must cover [0 to T0]</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xt</span> <span class="o">=</span> <span class="n">A</span><span class="o">*</span><span class="p">(</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">T0</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span> <span class="o">-</span> <span class="n">A</span><span class="o">*</span><span class="p">(</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">T0</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">-</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">T0</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compute EFS</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">X</span><span class="p">,</span> <span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="n">FourierSeries</span><span class="p">(</span><span class="n">xt</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">k_vec</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>X =
+[ (A*2i)/(5*pi), 0, (A*2i)/(3*pi), 0, (A*2i)/pi, 0, -(A*2i)/pi, 0, -(A*2i)/(3*pi), 0, -(A*2i)/(5*pi)]
+w =
+    -5    -4    -3    -2    -1     0     1     2     3     4     5
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot the numerical results from MATLAB calculation.</p>
+<p>Convert symbolic to numeric result</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Xw</span> <span class="o">=</span> <span class="n">subs</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
+<span class="n">stem</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="nb">abs</span><span class="p">(</span><span class="n">Xw</span><span class="p">),</span> <span class="s1">&#39;o-&#39;</span><span class="p">);</span>
+<span class="n">title</span><span class="p">(</span><span class="s1">&#39;Exponential Fourier Series for Square Waveform with Odd Symmetry&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Hamonic frequencies: k\Omega_0 (rad/sec)&#39;</span><span class="p">);</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;|c_k|&#39;</span><span class="p">);</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
+<span class="n">stem</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">angle</span><span class="p">(</span><span class="n">Xw</span><span class="p">),</span> <span class="s1">&#39;o-&#39;</span><span class="p">);</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Hamonic frequencies: k\Omega_0 (rad/sec)&#39;</span><span class="p">);</span> 
+<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\a</span><span class="s1">ngle c_k [radians]&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/exp_fs1_62_0.png" src="../../_images/exp_fs1_62_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Exponents and Euler’s Equation</p></li>
+<li><p>The exponential Fourier series</p></li>
+<li><p>Symmetry in Exponential Fourier Series</p></li>
+<li><p>Example</p></li>
+</ul>
+</div>
+<div class="section" id="answers-to-in-class-problems">
+<h2>Answers to in-class problems<a class="headerlink" href="#answers-to-in-class-problems" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="some-important-values-of-omega-t-solution">
+<h3>Some important values of <span class="math notranslate nohighlight">\(\omega t\)</span> - Solution<a class="headerlink" href="#some-important-values-of-omega-t-solution" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>When <span class="math notranslate nohighlight">\(\omega t = 0\)</span>: <span class="math notranslate nohighlight">\(e^{j\omega t} = e^{j0} = 1\)</span></p></li>
+<li><p>When <span class="math notranslate nohighlight">\(\omega t = \pi/2\)</span>: <span class="math notranslate nohighlight">\(e^{j\omega t} = e^{j\pi/2} = j\)</span></p></li>
+<li><p>When <span class="math notranslate nohighlight">\(\omega t = \pi\)</span>: <span class="math notranslate nohighlight">\(e^{j\omega t} = e^{j\pi} = -1\)</span></p></li>
+<li><p>When <span class="math notranslate nohighlight">\(\omega t = 3\pi/2\)</span>: <span class="math notranslate nohighlight">\(e^{j\omega t} = e^{j3\pi/2} = -j\)</span></p></li>
+<li><p>When <span class="math notranslate nohighlight">\(\omega t = 2\pi\)</span>: <span class="math notranslate nohighlight">\(e^{j\omega t} = e^{j2\pi} e^{j0}= 1\)</span></p></li>
+</ul>
+<p>It is also worth being aware that <span class="math notranslate nohighlight">\(n\omega t\)</span>, when <span class="math notranslate nohighlight">\(n\)</span> is an integer, produces rotations that often map back to the simpler cases given above. For example see <span class="math notranslate nohighlight">\(e^{j2\pi}\)</span> above.</p>
+</div>
+<div class="section" id="some-answers-for-you">
+<h3>Some answers for you<a class="headerlink" href="#some-answers-for-you" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Square wave is an <strong>odd</strong> function!</p></li>
+<li><p>DC component is <strong>zero</strong>!</p></li>
+<li><p>Square wave <strong>has</strong> half-wave symmetry!</p></li>
+</ul>
+<p>Hence</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(C_0 = 0\)</span></p></li>
+<li><p>Coefficients <span class="math notranslate nohighlight">\(C_k\)</span> are <strong>imaginary</strong>!</p></li>
+<li><p>Subscripts <span class="math notranslate nohighlight">\(k\)</span> are <strong>odd only</strong>!</p></li>
+<li><p>What is the integral that needs to be solved for <span class="math notranslate nohighlight">\(C_k\)</span>?</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[C_k = \frac{1}{2\pi}\int_{0}^{2\pi} f(\Omega_0 t)e^{-jk(\Omega_0 t)}\, d(\Omega_0 t) = \frac{1}{2\pi}\left[\int_{0}^{\pi} Ae^{-jk(\Omega_0 t)}\, d(\Omega_0 t) + \int_{\pi}^{2\pi} (-A)e^{-jk(\Omega_0 t)}\, d(\Omega_0 t)\right]\]</div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../1/trig_fseries.html" title="previous page">Trigonometric Fourier Series</a>
+    <a class='right-next' id="next-link" href="../3/exp_fs2.html" title="next page">Line Spectra and their Applications</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dr Chris P. Jobling<br/>
+        
+            &copy; Copyright 2020.<br/>
+          <div class="extra_footer">
+            This page was created by 
+<a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
+  Dr Chris P. Jobling
+</a> 
+for 
+<a href="https://www.swansea.ac.uk">
+  Swansea University
+</a>.
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    
+  </body>
+</html>
