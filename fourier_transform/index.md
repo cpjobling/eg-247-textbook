@@ -14,7 +14,7 @@ This is the basis of the **Fourier Transform** which is very important as the ba
 
 ## Scope and Background Reading
 
-The material in this presentation and notes is based on Chapter 8 (Starting at Section 8.1) of Karris {% cite karris %}. I also used Chapter 5 of {% cite boulet %} from the **Recommended Reading List**.
+The material in this presentation and notes is based on Chapter 8 (Starting at Section 8.1) of Karris {cite}`karris`. I also used Chapter 5 of {cite}`$1` from the **Recommended Reading List**.
 
 ## References
 
