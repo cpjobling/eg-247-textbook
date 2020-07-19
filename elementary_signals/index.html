@@ -43,7 +43,7 @@
 <meta property="og:url"         content="https://cpjobling.github.io/eg-247-textbook/elementary_signals/index.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Elementary Signals" />
-<meta property="og:description" content="Elementary Signals  The preparatory reading for this section is Chapter 1 of [karris] which  begins with a discussion of the elementary signals that may be appl" />
+<meta property="og:description" content="Elementary Signals  The preparatory reading for this section is Chapter 1 of [Kar12] which  begins with a discussion of the elementary signals that may be appli" />
 
 
 <meta name="twitter:card" content="summary">
@@ -116,6 +116,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../dft/index.html">
    Discrete Fourier Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../zbib.html">
+   Bibliography
   </a>
  </li>
 </ul>
@@ -431,7 +436,7 @@
                 
   <div class="section" id="elementary-signals">
 <h1>Elementary Signals<a class="headerlink" href="#elementary-signals" title="Permalink to this headline">¶</a></h1>
-<p>The preparatory reading for this section is <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=75#ppg=17">Chapter 1</a> of <span class="bibtex" id="id1">[karris]</span> which</p>
+<p>The preparatory reading for this section is <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=75#ppg=17">Chapter 1</a> of <a class="bibtex reference internal" href="../zbib.html#karris" id="id1">[Kar12]</a> which</p>
 <ul class="simple">
 <li><p>begins with a discussion of the elementary signals that may be applied to electrical circuits</p></li>
 <li><p>introduces the unit step, unit ramp and dirac delta functions</p></li>
@@ -446,14 +451,26 @@
 <li><p>You can view the notes for this presentation as a webpage (<a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/elementary_signals/index.html">HTML</a>).</p></li>
 <li><p>This page is downloadable as a <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/elementary_signals/elementary_signals.pdf">PDF</a> file.</p></li>
 </ul>
-<p>Consider the network shown below, where the switch is closed at time <span class="math notranslate nohighlight">\(t=T\)</span> and all components are ideal.</p>
-<img src="./pictures/circuit2.png">
+<p>Consider the network shown in <a class="reference internal" href="#switch"><span class="std std-numref">Fig. 1</span></a> where the switch is closed at time <span class="math notranslate nohighlight">\(t=T\)</span> and all components are ideal.</p>
+<div class="figure align-default" id="switch">
+<a class="reference internal image-reference" href="../_images/circuit2.png"><img alt="Network with a switch which is closed at t = T." src="../_images/circuit2.png" style="width: 294.0px; height: 268.0px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Network with a switch which is closed at <span class="math notranslate nohighlight">\(t = T\)</span>.</span><a class="headerlink" href="#switch" title="Permalink to this image">¶</a></p>
+</div>
 <p>Express the output voltage <span class="math notranslate nohighlight">\(V_{\mathrm{out}}\)</span> as a function of the unit step function, and sketch the appropriate waveform.</p>
 <p><strong>Solution</strong></p>
-<p>Before the switch is closed at <span class="math notranslate nohighlight">\(t &lt; T\)</span>, <span class="math notranslate nohighlight">\($V_{\mathrm{out}} = 0.\)</span>$</p>
-<p>After the switch is closed for <span class="math notranslate nohighlight">\(t &gt; T\)</span>, <span class="math notranslate nohighlight">\($V_{\mathrm{out}} = V_s.\)</span>$</p>
-<p>We imagine that the voltage jumps instantaneously from 0 to <span class="math notranslate nohighlight">\(V_s\)</span> volts at <span class="math notranslate nohighlight">\(t = T\)</span> seconds.</p>
-<img src="pictures/step.png" width="30%" alt="step function" />
+<p>Before the switch is closed at <span class="math notranslate nohighlight">\(t &lt; T\)</span>:
+\begin{equation}
+V_{\mathrm{out}} = 0.
+\end{equation}</p>
+<p>After the switch is closed for <span class="math notranslate nohighlight">\(t &gt; T\)</span>:
+\begin{equation}
+V_{\mathrm{out}} = V_s.
+\end{equation}</p>
+<p>We imagine that the voltage jumps instantaneously from 0 to <span class="math notranslate nohighlight">\(V_s\)</span> volts at <span class="math notranslate nohighlight">\(t = T\)</span> seconds as shown in <a class="reference internal" href="#step"><span class="std std-numref">Fig. 2</span></a>.</p>
+<div class="figure align-default" id="step">
+<a class="reference internal image-reference" href="../_images/step.png"><img alt="The step function" src="../_images/step.png" style="width: 30%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">The step function</span><a class="headerlink" href="#step" title="Permalink to this image">¶</a></p>
+</div>
 <p>We call this type of signal a step function.</p>
 </div>
 <div class="section" id="the-unit-step-function">
@@ -463,7 +480,11 @@
 {0\quad t &lt; 0}\\
 {1\quad t &gt; 0}
 \end{array}} \right.\end{split}\]</div>
-<img src="pictures/unitstep.png"><div class="section" id="in-matlab">
+<div class="figure align-default" id="unitstep">
+<img alt="The unit step Function" src="../_images/unitstep.png" />
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">The unit step Function</span><a class="headerlink" href="#unitstep" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="in-matlab">
 <h3>In Matlab<a class="headerlink" href="#in-matlab" title="Permalink to this headline">¶</a></h3>
 <p>In Matlab, we use the <code class="docutils literal notranslate"><span class="pre">heaviside</span></code> function (named after <a class="reference external" href="http://en.wikipedia.org/wiki/Oliver_Heaviside">Oliver Heaviside</a>).</p>
 <div class="cell docutils container">

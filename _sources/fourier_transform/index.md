@@ -10,12 +10,8 @@ This chapter continues our coverage of **Fourier Analysis** with an introduction
 
 * In the limit $T\to \infty$, the signal becomes **aperiodic** and $k\Omega_0 \to \omega$ which is a *continuous* function of frequency.
 
-This is the basis of the **Fourier Transform** which is very important as the basis for data transmission, signal filtering, and the determination of system frequency reponse.
+This is the basis of the **Fourier Transform** which is very important as the basis for data transmission, signal filtering, and the determination of system frequency response.
 
 ## Scope and Background Reading
 
-The material in this presentation and notes is based on Chapter 8 (Starting at Section 8.1) of Karris {cite}`karris`. I also used Chapter 5 of {cite}`$1` from the **Recommended Reading List**.
-
-## References
-
-{% bibliography --cited %}
+The material in this presentation and notes is based on Chapter 8 (Starting at Section 8.1) of Karris {cite}`karris`. I also used Chapter 5 of {cite}`phillips` from the **Recommended Reading List**.

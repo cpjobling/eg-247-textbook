@@ -32,7 +32,7 @@
     <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/dft/2/fft.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Answers to Frequently Asked Questions" href="../../FAQS/faq.html" />
+    <link rel="next" title="References" href="../../zbib.html" />
     <link rel="prev" title="The Discrete Fourier Transform" href="../1/dft.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -122,6 +122,11 @@
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../zbib.html">
+   Bibliography
+  </a>
  </li>
 </ul>
 <p class="caption">
@@ -302,11 +307,6 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#colophon">
    Colophon
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#scope-and-background-reading">
-   Scope and Background Reading
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -545,16 +545,36 @@
 <li><p>You can view the notes for this presentation as a webpage (<a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dft/2/fft.html">HTML</a>).</p></li>
 <li><p>This page is downloadable as a <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dft/2/fft.pdf">PDF</a> file.</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>## Scope and Background Reading
+
+This session introduces the fast fourier transform (FFT) which is one of the most widely used numerical algorithms in the world. It exploits some features of the symmetry of the computation of the DFT to reduce the complexity from something that takes order $N^2$ ($O(N^2)$) complex operations to something that takes order $N \log N$ ($O(N \log N)$) operations. 
+</pre></div>
 </div>
-<div class="section" id="scope-and-background-reading">
-<h2>Scope and Background Reading<a class="headerlink" href="#scope-and-background-reading" title="Permalink to this headline">¶</a></h2>
-<p>This session introduces the fast fourier transform (FFT) which is one of the most widely used numerical algorithms in the world. It exploits some features of the symmetry of the computation of the DFT to reduce the complexity from something that takes order <span class="math notranslate nohighlight">\(N^2\)</span> (<span class="math notranslate nohighlight">\(O(N^2)\)</span>) complex operations to something that takes order <span class="math notranslate nohighlight">\(N \log N\)</span> (<span class="math notranslate nohighlight">\(O(N \log N)\)</span>) operations.</p>
-<p>The FFT is to be found in all manner of signal and image processing algorithms, and because it is more efficient than the DFT, you will find it exploited in hundreds of signal processing applications.</p>
-<p>As one example, it turns out that the computation of the convolution of two long DT sequences is more efficient if the FFT of the two signals is taken, the product of the frequency spectra is computed, and the Inverse DFT of the result is computed.</p>
-<p>In this presentation, we will not go through the mathematical development of the FFT, please read section 10.6 of Karris if you want the details. Here we will concentrate on the benefits to be gained by using the FFT and give some examples of its use in MATLAB.</p>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">[0;31mError: Invalid text character. Check for unsupported symbol, invisible character, or pasting of non-ASCII characters.
+
+[0m</pre>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">FFT</span> <span class="ow">is</span> <span class="n">to</span> <span class="n">be</span> <span class="n">found</span> <span class="ow">in</span> <span class="nb">all</span> <span class="n">manner</span> <span class="n">of</span> <span class="n">signal</span> <span class="ow">and</span> <span class="n">image</span> <span class="n">processing</span> <span class="n">algorithms</span><span class="p">,</span> <span class="ow">and</span> <span class="n">because</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">more</span> <span class="n">efficient</span> <span class="n">than</span> <span class="n">the</span> <span class="n">DFT</span><span class="p">,</span> <span class="n">you</span> <span class="n">will</span> <span class="n">find</span> <span class="n">it</span> <span class="n">exploited</span> <span class="ow">in</span> <span class="n">hundreds</span> <span class="n">of</span> <span class="n">signal</span> <span class="n">processing</span> <span class="n">applications</span><span class="o">.</span>
+
+<span class="n">As</span> <span class="n">one</span> <span class="n">example</span><span class="p">,</span> <span class="n">it</span> <span class="n">turns</span> <span class="n">out</span> <span class="n">that</span> <span class="n">the</span> <span class="n">computation</span> <span class="n">of</span> <span class="n">the</span> <span class="n">convolution</span> <span class="n">of</span> <span class="n">two</span> <span class="n">long</span> <span class="n">DT</span> <span class="n">sequences</span> <span class="ow">is</span> <span class="n">more</span> <span class="n">efficient</span> <span class="k">if</span> <span class="n">the</span> <span class="n">FFT</span> <span class="n">of</span> <span class="n">the</span> <span class="n">two</span> <span class="n">signals</span> <span class="ow">is</span> <span class="n">taken</span><span class="p">,</span> <span class="n">the</span> <span class="n">product</span> <span class="n">of</span> <span class="n">the</span> <span class="n">frequency</span> <span class="n">spectra</span> <span class="ow">is</span> <span class="n">computed</span><span class="p">,</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">Inverse</span> <span class="n">DFT</span> <span class="n">of</span> <span class="n">the</span> <span class="n">result</span> <span class="ow">is</span> <span class="n">computed</span><span class="o">.</span>
+
+<span class="n">In</span> <span class="n">this</span> <span class="n">presentation</span><span class="p">,</span> <span class="n">we</span> <span class="n">will</span> <span class="ow">not</span> <span class="n">go</span> <span class="n">through</span> <span class="n">the</span> <span class="n">mathematical</span> <span class="n">development</span> <span class="n">of</span> <span class="n">the</span> <span class="n">FFT</span><span class="p">,</span> <span class="n">please</span> <span class="n">read</span> <span class="n">section</span> <span class="mf">10.6</span> <span class="n">of</span> <span class="n">Karris</span> <span class="k">if</span> <span class="n">you</span> <span class="n">want</span> <span class="n">the</span> <span class="n">details</span><span class="o">.</span> <span class="n">Here</span> <span class="n">we</span> <span class="n">will</span> <span class="n">concentrate</span> <span class="n">on</span> <span class="n">the</span> <span class="n">benefits</span> <span class="n">to</span> <span class="n">be</span> <span class="n">gained</span> <span class="n">by</span> <span class="n">using</span> <span class="n">the</span> <span class="n">FFT</span> <span class="ow">and</span> <span class="n">give</span> <span class="n">some</span> <span class="n">examples</span> <span class="n">of</span> <span class="n">its</span> <span class="n">use</span> <span class="ow">in</span> <span class="n">MATLAB</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="acknowledgements">
 <h3>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">¶</a></h3>
-<p>The material in this presentation and notes is based on <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=405">Chapter 10</a> of <span class="bibtex" id="id1">[karris]</span> from the <strong>Required Reading List</strong>. The models of the FFT signal flow graphs and Simulink block diagrams are based on the presentation given in Section 12.5 of <span class="bibtex" id="id2">[phillips]</span>.</p>
+<p>The material in this presentation and notes is based on <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=405">Chapter 10</a> of <a class="bibtex reference internal" href="../../zbib.html#karris" id="id1">[Kar12]</a> from the <strong>Required Reading List</strong>. The models of the FFT signal flow graphs and Simulink block diagrams are based on the presentation given in Section 12.5 of <span class="bibtex" id="id2">[phillips]</span>.</p>
 </div>
 </div>
 <div class="section" id="agenda">
@@ -1034,7 +1054,7 @@ X[3] &amp;=&amp; X_e[1] - X_o[1]W_4^{1(3)} = X_e[1] + X_o[1]W_4^1.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fft_91_0.png" src="../../_images/fft_91_0.png" />
+<img alt="../../_images/fft_93_0.png" src="../../_images/fft_93_0.png" />
 </div>
 </div>
 <p>and the FFT is produced as</p>
@@ -1045,7 +1065,7 @@ X[3] &amp;=&amp; X_e[1] - X_o[1]W_4^{1(3)} = X_e[1] + X_o[1]W_4^1.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fft_93_0.png" src="../../_images/fft_93_0.png" />
+<img alt="../../_images/fft_95_0.png" src="../../_images/fft_95_0.png" />
 </div>
 </div>
 <p>unwind</p>
@@ -1056,7 +1076,7 @@ X[3] &amp;=&amp; X_e[1] - X_o[1]W_4^{1(3)} = X_e[1] + X_o[1]W_4^1.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fft_95_0.png" src="../../_images/fft_95_0.png" />
+<img alt="../../_images/fft_97_0.png" src="../../_images/fft_97_0.png" />
 </div>
 </div>
 <p>The inverse FFT is obtained with</p>
@@ -1067,7 +1087,7 @@ X[3] &amp;=&amp; X_e[1] - X_o[1]W_4^{1(3)} = X_e[1] + X_o[1]W_4^1.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fft_97_0.png" src="../../_images/fft_97_0.png" />
+<img alt="../../_images/fft_99_0.png" src="../../_images/fft_99_0.png" />
 </div>
 </div>
 </div>
@@ -1087,7 +1107,7 @@ X[3] &amp;=&amp; X_e[1] - X_o[1]W_4^{1(3)} = X_e[1] + X_o[1]W_4^1.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fft_100_0.png" src="../../_images/fft_100_0.png" />
+<img alt="../../_images/fft_102_0.png" src="../../_images/fft_102_0.png" />
 </div>
 </div>
 <p>and the FFT is obtained with</p>
@@ -1098,7 +1118,7 @@ X[3] &amp;=&amp; X_e[1] - X_o[1]W_4^{1(3)} = X_e[1] + X_o[1]W_4^1.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fft_102_0.png" src="../../_images/fft_102_0.png" />
+<img alt="../../_images/fft_104_0.png" src="../../_images/fft_104_0.png" />
 </div>
 </div>
 <p>The inverse FFT is obtained with</p>
@@ -1109,7 +1129,7 @@ X[3] &amp;=&amp; X_e[1] - X_o[1]W_4^{1(3)} = X_e[1] + X_o[1]W_4^1.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fft_104_0.png" src="../../_images/fft_104_0.png" />
+<img alt="../../_images/fft_106_0.png" src="../../_images/fft_106_0.png" />
 </div>
 </div>
 </div>
@@ -1218,7 +1238,7 @@ X[3] &amp;=&amp; X_2[0] - X_2[1] = -2 - j2.
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="../1/dft.html" title="previous page">The Discrete Fourier Transform</a>
-    <a class='right-next' id="next-link" href="../../FAQS/faq.html" title="next page">Answers to Frequently Asked Questions</a>
+    <a class='right-next' id="next-link" href="../../zbib.html" title="next page">References</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
