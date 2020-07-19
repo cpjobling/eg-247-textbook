@@ -14,12 +14,23 @@ help:
 clean:
 	jupyter-book clean .
 
-build:
+build:  
+	make assets
 	jupyter-book build .
 
-site: build
+site:   build
 	make portfolio
 	ghp-import -n -p -f ./_build/html
 
-portfolio:
+portfolio: FORCE
 	rsync -a --delete labs/ portfolio
+
+assets: FORCE
+	rsync -a --delete \
+	introduction \
+	elementary_signals \
+	laplace_transform \
+	fourier_series \
+	worksheets \
+	assets
+FORCE:

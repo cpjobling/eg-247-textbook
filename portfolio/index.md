@@ -7,7 +7,7 @@ If you need a MATLAB refresher, you may wish to work through the [MATLAB Tutoria
 * [Lab 01: Elementary Signals](lab01/index)
 * [Lab 02: Laplace and Inverse Laplace Transforms](lab02/index)
 * [Lab 03: Laplace Transforms and Transfer Functions for Circuit Analysis](lab03/index)
-* [Lab 04: Time Domain Convolution](lab04index)
+* [Lab 04: Time Domain Convolution](lab04/index)
 * [Lab 05: Fourier Series](lab05/index)
 * [Lab 06: Audio Signals and Sampling](lab06/index)
 

@@ -72,7 +72,7 @@ ezplot(ft,[0,4.5])
 % been defined as a row vector of the numerical coefficients in descending
 % powers of s:
 Ds1 = [1, 12, 44, 48];
-roots(Ds)
+roots(Ds1)
 %%
 % The second is a symbolic function:
 Ds2 = s^3 + 12*s^2 + 44*s + 48;

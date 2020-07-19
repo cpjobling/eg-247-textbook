@@ -18,7 +18,7 @@ syms t
 [Ck, w] = FourierSeries(ft, T0, k_max);
 zero_index = floor(length(Ck)/2)+1;
 
-a0 = Ck(zero_index)/2
+a0 = Ck(zero_index)/2;
 for k = 1:k_max
   ak(k) = Ck(zero_index + k) + Ck(zero_index - k);
   bk(k) = j*(Ck(zero_index + k) - Ck(zero_index - k));
