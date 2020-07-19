@@ -22,5 +22,4 @@ site: build
 	ghp-import -n -p -f ./_build/html
 
 portfolio:
-		rsync -a --delete content/labs/ portfolio
-
+	rsync -a --delete labs/ portfolio
