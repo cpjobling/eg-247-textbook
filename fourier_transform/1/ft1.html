@@ -43,7 +43,7 @@
 <meta property="og:url"         content="https://cpjobling.github.io/eg-247-textbook/fourier_transform/1/ft1.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Defining the Fourier Transform" />
-<meta property="og:description" content="Defining the Fourier Transform  Colophon  An annotatable worksheet for this presentation is available as Worksheet 12.  The source code for this page is content" />
+<meta property="og:description" content="Defining the Fourier Transform  Colophon  An annotatable worksheet for this presentation is available as Worksheet 12.  The source code for this page is fourier" />
 
 
 <meta name="twitter:card" content="summary">
@@ -113,12 +113,12 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../3/ft3.html">
-     Introduction to Filters
+     Fourier Transforms for Circuit and LTI Systems Analysis
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../4/ft4.html">
-     Fourier Transforms for Circuit and LTI Systems Analysis
+     Introduction to Filters
     </a>
    </li>
   </ul>
@@ -621,7 +621,7 @@
 <h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this headline">¶</a></h2>
 <p>An annotatable worksheet for this presentation is available as <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/1/worksheet12.html"><strong>Worksheet 12</strong></a>.</p>
 <ul class="simple">
-<li><p>The source code for this page is <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/content/fourier_transform/1/ft1.ipynb">content/fourier_transform/1/ft1.ipynb</a>.</p></li>
+<li><p>The source code for this page is <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_transform/1/ft1.ipynb">fourier_transform/1/ft1.ipynb</a>.</p></li>
 <li><p>You can view the notes for this presentation as a webpage (<a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/1/ft1.html">HTML</a>).</p></li>
 <li><p>This page is downloadable as a <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/1/ft1.pdf">PDF</a> file.</p></li>
 </ul>
@@ -649,7 +649,8 @@
 <p>We start by considering the pulse train that we used in the last lecture and demonstrate that the discrete line spectra for the Fourier Series becomes a continuous spectrum as the signal becomes aperiodic.</p>
 <p>This analysis is from <span class="bibtex" id="id1">[$1]</span> pp 142—144 and 176—180.</p>
 <p>Let <span class="math notranslate nohighlight">\(\tilde x(t)\)</span> be the Fourier series of the rectangular pulse train shown below:</p>
-<img src="pictures/pulse_train.png"><div class="section" id="fourier-series">
+<p><img alt="A pulse train" src="../../_images/pulse_train.png" /></p>
+<div class="section" id="fourier-series">
 <h3>Fourier Series<a class="headerlink" href="#fourier-series" title="Permalink to this headline">¶</a></h3>
 <p>In the <a class="reference internal" href="../../fourier_series/3/exp_fs2.html"><span class="doc std std-doc">previous section</span></a> we used</p>
 <div class="math notranslate nohighlight">
@@ -676,6 +677,15 @@
 \[sinc(u) = \frac{\sin \pi u}{\pi u},\; u \in \mathbb{R}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">../</span><span class="n">matlab</span>
+<span class="nb">format</span> <span class="n">compact</span>
+<span class="n">clear</span> <span class="nb">all</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">.*</span><span class="n">x</span><span class="p">)</span><span class="o">./</span><span class="p">(</span><span class="n">pi</span><span class="o">.*</span><span class="n">x</span><span class="p">))</span>
 <span class="n">grid</span>
@@ -686,10 +696,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ft1_15_0.png" src="../../_images/ft1_15_0.png" />
+<img alt="../../_images/ft1_16_0.png" src="../../_images/ft1_16_0.png" />
 </div>
 </div>
-<p>Matlab code to reproduce this plot: <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/1/plot_sinc.m">plot_sinc.m</a>.</p>
+<p>Matlab code to reproduce this plot: <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/matlab/plot_sinc.m">plot_sinc.m</a>.</p>
 <ol class="simple">
 <li><p><strong>Note</strong> <span class="math notranslate nohighlight">\(sin(\pi u)/(\pi u)\)</span> is undefined at <span class="math notranslate nohighlight">\(u = 0\)</span>. To compute its value we need to take the limit</p></li>
 </ol>
@@ -715,14 +725,16 @@
 <div class="math notranslate nohighlight">
 \[T C_k = T\eta \operatorname{sinc}\left(k\eta\right)=2t_0\operatorname{sinc}\left(k\frac{2t_0}{T}\right)\]</div>
 <p>Then the normalized coefficents <span class="math notranslate nohighlight">\(T C_k\)</span> of the rectangular wave is a sinc envelope with constant amplitude at the origin equal to <span class="math notranslate nohighlight">\(2t_0\)</span>, and a zero crossing at fixed frequency <span class="math notranslate nohighlight">\(\pi/t_0\)</span> rad/s, both independent of <span class="math notranslate nohighlight">\(T\)</span>.</p>
-<p>Plots follow (use <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/1/duty_cycle.mlx">duty_cycle.mlx</a> to reproduce).</p>
+<p>Plots follow (use <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/matlab/duty_cycle.mlx">duty_cycle.mlx</a> to reproduce).</p>
 </div>
 <div class="section" id="durty-cycle-50">
 <h4>Durty cycle 50%<a class="headerlink" href="#durty-cycle-50" title="Permalink to this headline">¶</a></h4>
-<img src="pictures/dc_point5.png"></div>
+<p><img alt="Duty cycle 50%" src="../../_images/dc_point5.png" /></p>
+</div>
 <div class="section" id="duty-cycle-12-5">
 <h4>Duty cycle 12.5%<a class="headerlink" href="#duty-cycle-12-5" title="Permalink to this headline">¶</a></h4>
-<img src="pictures/dc_12point5.png"></div>
+<p><img alt="Duty cycle 12.5%" src="../../_images/dc_12point5.png" /></p>
+</div>
 <div class="section" id="comments">
 <h4>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
@@ -750,7 +762,8 @@
 \[C_k = \frac{1}{T}\int_{-t_0}^{t_0} \tilde{x}(t) e^{-jk(\Omega_0 t)}\,dt \]</div>
 <p>where <span class="math notranslate nohighlight">\(\Omega_0 = 2\pi/T\)</span> as usual.</p>
 <p>Now define a signal <span class="math notranslate nohighlight">\(x(t)\)</span> as a signal equal to <span class="math notranslate nohighlight">\(\tilde{x}(t)\)</span> over one period and zero elsewhere.</p>
-<img src="pictures/pulse.png"><div class="section" id="a-rectangular-pulse">
+<p><img alt="A pulse" src="../../_images/pulse.png" /></p>
+<div class="section" id="a-rectangular-pulse">
 <h4>A rectangular pulse<a class="headerlink" href="#a-rectangular-pulse" title="Permalink to this headline">¶</a></h4>
 <p>The aperiodic signal, a single rectangular pulse, can be thought of as being periodic with an infinite fundamental period (we will let <span class="math notranslate nohighlight">\(T\to +\infty\)</span> later).</p>
 <p>Since <span class="math notranslate nohighlight">\(\tilde{x}(t)=x(t)\)</span> over <span class="math notranslate nohighlight">\(t \in [-T/2,T/2]\)</span>, the spectral coefficients <span class="math notranslate nohighlight">\(C_k\)</span> of the periodic signal <span class="math notranslate nohighlight">\(\tilde{x}(t)\)</span> can be written in terms of the aperiodic signal <span class="math notranslate nohighlight">\(x(t)\)</span> as follows:</p>
@@ -1045,11 +1058,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span> 
-Fw =
- 
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Fw =
 2^(1/2)*pi^(1/2)*exp(-omega^2/2)
- 
 </pre></div>
 </div>
 </div>
@@ -1078,16 +1088,13 @@ sqrt(2) sqrt(pi) exp| - ------ |
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span> 
-ft =
- 
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>ft =
 exp(-t^2/2)
- 
 </pre></div>
 </div>
 </div>
 </div>
-<p>See script: <span class="xref myst">ftex1.m</span>.</p>
+<p>See script: <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/ftex1.m">ftex1.m</a>.</p>
 </div>
 </div>
 <div class="section" id="summary">
@@ -1101,12 +1108,12 @@ exp(-t^2/2)
 </ul>
 <p><em>Next Section</em></p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/2/ft2">Fourier transform of commonly occuring signals</a></p></li>
+<li><p><a class="reference internal" href="../2/ft2.html"><span class="doc std std-doc">Fourier transform of commonly occuring signals</span></a></p></li>
 </ul>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<p>{% bibliography –cited %}</p>
+<p>See <a class="reference internal" href="../../zbib.html"><span class="doc std std-doc">Bibliography</span></a>.</p>
 </div>
 <div class="section" id="worked-solutions">
 <h2>Worked Solutions<a class="headerlink" href="#worked-solutions" title="Permalink to this headline">¶</a></h2>

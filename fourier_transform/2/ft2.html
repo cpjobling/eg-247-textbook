@@ -113,12 +113,12 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../3/ft3.html">
-     Introduction to Filters
+     Fourier Transforms for Circuit and LTI Systems Analysis
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../4/ft4.html">
-     Fourier Transforms for Circuit and LTI Systems Analysis
+     Introduction to Filters
     </a>
    </li>
   </ul>
@@ -490,6 +490,11 @@
    Summary
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -506,7 +511,7 @@
 <h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this headline">¶</a></h2>
 <p>An annotatable worksheet for this presentation is available as <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/2/worksheet13.html"><strong>Worksheet 13</strong></a>.</p>
 <ul class="simple">
-<li><p>The source code for this page is <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/content/fourier_transform/2/ft2.ipynb">content/fourier_transform/2/ft2.ipynb</a>.</p></li>
+<li><p>The source code for this page is <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_transform/2/ft2.ipynb">fourier_transform/2/ft2.ipynb</a>.</p></li>
 <li><p>You can view the notes for this presentation as a webpage (<a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/2/ft2.html">HTML</a>).</p></li>
 <li><p>This page is downloadable as a <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/2/ft2.pdf">PDF</a> file.</p></li>
 </ul>
@@ -518,9 +523,9 @@
 <li><p>Karris uses <span class="math notranslate nohighlight">\(F(\omega)\)</span></p></li>
 <li><p>Boulet uses <span class="math notranslate nohighlight">\(F(j\omega)\)</span></p></li>
 </ul>
-<p>I checked other sources and <a class="reference external" href="https://www.dawsonera.com/abstract/9780071634731">Hsu (Schaum’s Signals and Systems)</a> and Morrell (The <a class="reference external" href="https://www.youtube.com/watch?v=bqYxhYGA2qU&amp;list=PL51707156C4956932">Fourier Analysis Video Series on YouTube</a>) both use the <span class="math notranslate nohighlight">\(F(\omega)\)</span> notation.</p>
+<p>I checked other sources and <a class="reference external" href="https://www.dawsonera.com/abstract/9780071634731">Hsu (Schaum’s Signals and Systems)</a><a class="bibtex reference internal" href="../../zbib.html#schaum" id="id1">[Hsu11]</a> and Morrell (The <a class="reference external" href="https://www.youtube.com/watch?v=bqYxhYGA2qU&amp;list=PL51707156C4956932">Fourier Analysis Video Series on YouTube</a>) both use the <span class="math notranslate nohighlight">\(F(\omega)\)</span> notation.</p>
 <p>According to Wikipedia <a class="reference external" href="http://en.wikipedia.org/wiki/Fourier_transform#Other_notations">Fourier Transform: Other Notations</a> both are used only by electronic engineers anyway and either would be acceptible.</p>
-<p>There is some advantage in using Boulet’s notation <span class="math notranslate nohighlight">\(F(j\omega)\)</span> in that it helps to reinforce the idea that Fourier Transform is a special case of the Laplace Transform and it was the notation that I used in the <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/1/ft1">last section</a>.</p>
+<p>There is some advantage in using Boulet’s notation <span class="math notranslate nohighlight">\(F(j\omega)\)</span> in that it helps to reinforce the idea that Fourier Transform is a special case of the Laplace Transform and it was the notation that I used in the <a class="reference internal" href="../1/ft1.html"><span class="doc std std-doc">last section</span></a>.</p>
 <p>In these notes, I’ve used the other convention on the basis that its the more likely to be seen in your support materials.</p>
 <p>However, I am happy to change back if you find the addition of <span class="math notranslate nohighlight">\(j\)</span> useful.</p>
 <p>You should be aware that Fourier Transforms are in general complex so whatever the notation used to <em>represent</em> the transform, we are still dealing with real and imaginary parts or magnitudes and phases when we use the <em>actual transforms</em> in analysis.</p>
@@ -593,7 +598,7 @@
 <h3>The Dirac Delta<a class="headerlink" href="#the-dirac-delta" title="Permalink to this headline">¶</a></h3>
 <div class="math notranslate nohighlight">
 \[\delta(t) \Leftrightarrow 1\]</div>
-<img src="pictures/ft_delta.png">
+<p><img alt="Fourier transform of the Dirac delta" src="../../_images/ft_delta.png" /></p>
 <p><em>Proof</em>: uses sampling and sifting properties of <span class="math notranslate nohighlight">\(\delta(t)\)</span>.</p>
 <p><em>Matlab</em>:</p>
 <div class="cell docutils container">
@@ -621,7 +626,8 @@ ans =
 <h3>DC<a class="headerlink" href="#dc" title="Permalink to this headline">¶</a></h3>
 <div class="math notranslate nohighlight">
 \[1 \Leftrightarrow 2\pi\delta(\omega)\]</div>
-<img src="pictures/ft_dc.png"><p><em>Matlab</em>:</p>
+<p><img alt="Fourier transform of a constant (model of DC)" src="../../_images/ft_dc.png" /></p>
+<p><em>Matlab</em>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span> <span class="n">t</span> <span class="n">omega</span><span class="p">;</span>
@@ -648,14 +654,14 @@ ans =
 <h3>Cosine (Sinewave with even symmetry)<a class="headerlink" href="#cosine-sinewave-with-even-symmetry" title="Permalink to this headline">¶</a></h3>
 <div class="math notranslate nohighlight">
 \[\cos(t) = \frac{1}{2}\left(e^{j\omega_0 t}+e^{-j\omega_0 t}\right) \Leftrightarrow \pi\delta(\omega - \omega_0) + \pi\delta(\omega + \omega_0)\]</div>
-<img src="pictures/ft_cos.png">
+<p><img alt="Fourier transform of a cosine signal" src="../../_images/ft_cos.png" /></p>
 <p>Note: <span class="math notranslate nohighlight">\(f(t)\)</span> is real and even. <span class="math notranslate nohighlight">\(F(\omega)\)</span> is also real and even.</p>
 </div>
 <div class="section" id="sinewave">
 <h3>Sinewave<a class="headerlink" href="#sinewave" title="Permalink to this headline">¶</a></h3>
 <div class="math notranslate nohighlight">
 \[\sin(t) = \frac{1}{j2}\left(e^{j\omega_0 t}-e^{-j\omega_0 t}\right) \Leftrightarrow -j\pi\delta(\omega - \omega_0) + j\pi\delta(\omega + \omega_0)\]</div>
-<img src="pictures/ft_sin.png">
+<p><img alt="Fourier transform of a sinewave signal" src="../../_images/ft_sin.png" /></p>
 <p>Note: <span class="math notranslate nohighlight">\(f(t)\)</span> is real and odd. <span class="math notranslate nohighlight">\(F(\omega)\)</span> is imaginary and odd.</p>
 </div>
 <div class="section" id="signum-sign">
@@ -670,7 +676,7 @@ ans =
 <p>The transform is:</p>
 <div class="math notranslate nohighlight">
 \[\operatorname{sgn} x = u_0(t) - u_0(-t) = \frac{2}{j\omega}\]</div>
-<img src="pictures/ft_sgn.png">
+<p><img alt="Fourier transform of sgn(t)" src="../../_images/ft_sgn.png" /></p>
 <p>This function is often used to model a <em>voltage comparitor</em> in circuits.</p>
 </div>
 <div class="section" id="example-4-unit-step">
@@ -682,7 +688,7 @@ ans =
 <p>Define</p>
 <div class="math notranslate nohighlight">
 \[\operatorname{sgn} t = 2 u_0(t) - 1\]</div>
-<img src="pictures/u_as_sign.png">
+<p><img alt="sgn(t) = 2 u_0(t) - 1" src="../../_images/u_as_sign.png" /></p>
 <p><em>Does that help?</em></p>
 </div>
 <div class="section" id="proof">
@@ -701,7 +707,8 @@ ans =
 <h4>Graph of unit step<a class="headerlink" href="#graph-of-unit-step" title="Permalink to this headline">¶</a></h4>
 <div class="math notranslate nohighlight">
 \[u_0(t) \Leftrightarrow \pi\delta(\omega)+\frac{1}{j\omega}\]</div>
-<img src="pictures/ft_step.png"><p>Unit step is neither even nor odd so the Fourier transform is complex with real part <span class="math notranslate nohighlight">\(F_\mathrm{Re}(\omega) = \pi\delta(\omega)\)</span> and imaginary part <span class="math notranslate nohighlight">\(F_\mathrm{Im}(\omega) = 1/(j\omega)\)</span>. The real part is even, and theimaginary part is odd.</p>
+<p><img alt="Fourier transform of the unit step function" src="../../_images/ft_step.png" /></p>
+<p>Unit step is neither even nor odd so the Fourier transform is complex with real part <span class="math notranslate nohighlight">\(F_\mathrm{Re}(\omega) = \pi\delta(\omega)\)</span> and imaginary part <span class="math notranslate nohighlight">\(F_\mathrm{Im}(\omega) = 1/(j\omega)\)</span>. The real part is even, and theimaginary part is odd.</p>
 </div>
 </div>
 <div class="section" id="example-5">
@@ -778,7 +785,7 @@ ans =
 </div>
 <div class="section" id="suggestions-for-further-reading">
 <h2>Suggestions for Further Reading<a class="headerlink" href="#suggestions-for-further-reading" title="Permalink to this headline">¶</a></h2>
-<p>Boulet has several interesting amplifications of the material presented by Karris. You would be well advised to read these. Particular highlights which we will not have time to cover:</p>
+<p>Boulet has several interesting amplifications of the material presented by <a class="bibtex reference internal" href="../../zbib.html#karris" id="id2">[Kar12]</a>. You would be well advised to read these. Particular highlights which we will not have time to cover:</p>
 <ul class="simple">
 <li><p>Time multiplication and its relation to amplitude modulation (pp 182—183).</p></li>
 <li><p>Fourier transform of the complex exponential signal <span class="math notranslate nohighlight">\(e^{(\alpha +j\beta)t}\)</span> with graphs (pp 184—187).</p></li>
@@ -794,9 +801,13 @@ ans =
 <li><p>Relationship between Laplace and Fourier</p></li>
 <li><p>Fourier Transforms of Common Signals</p></li>
 </ul>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p>See <a class="reference internal" href="../../zbib.html"><span class="doc std std-doc">Bibliography</span></a>.</p>
 <p><em>Next Section</em></p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/3/ft3">The Fourier Transform for Systems and Circuit Analysis</a></p></li>
+<li><p><a class="reference internal" href="../3/ft3.html"><span class="doc std std-doc">The Fourier Transform for Systems and Circuit Analysis</span></a></p></li>
 </ul>
 </div>
 </div>

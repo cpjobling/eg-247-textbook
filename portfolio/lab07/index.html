@@ -341,6 +341,28 @@
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-to-hand-in-eg-3068-only">
+   What to hand in (EG-3068 Only)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#claim">
+     Claim
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#submission">
+     Submission
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deadline">
+     Deadline
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
         </nav>
@@ -361,8 +383,8 @@
 </div>
 <div class="section" id="acknowledgements">
 <h3>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">¶</a></h3>
-<p>This lab is based on <a class="reference external" href="http://dadorran.wordpress.com/2013/10/18/filter-design-using-matlab-demo/">Filter Design Using Matlab Demo by David Dorran</a>.</p>
-<p>There is a <a class="reference external" href="http://www.youtube.com/watch?v=vfH5r4cKukg&amp;list=PLJ8LTUMGG9U4vAGind2_Bh4TUfgg1y0F4&amp;feature=share&amp;index=2">YouTube video</a> that illustrates what we are going to be using.</p>
+<p>This lab is based on <a class="reference external" href="https://dadorran.wordpress.com/2013/10/18/filter-design-using-matlab-demo/">Filter Design Using Matlab Demo by David Dorran</a>.</p>
+<p>There is a <a class="reference external" href="https://www.youtube.com/watch?v=vfH5r4cKukg&amp;list=PLJ8LTUMGG9U4vAGind2_Bh4TUfgg1y0F4&amp;feature=share&amp;index=2">YouTube video</a> that illustrates what we are going to be using.</p>
 </div>
 </div>
 <div class="section" id="aims">
@@ -401,9 +423,32 @@ I is not assessed, but you may find it useful preparation for the project.</p>
 <div class="section" id="lab-exercise-15-interactive-filter-design">
 <h3>Lab Exercise 15: Interactive Filter Design<a class="headerlink" href="#lab-exercise-15-interactive-filter-design" title="Permalink to this headline">¶</a></h3>
 <p>MATLAB provides a filter design tool with a graphical user interface called <code class="docutils literal notranslate"><span class="pre">fdatool</span></code>.</p>
-<p>We want you to use this tool to design and test a low-pass, band-pass and high-pass Butterworth filter with sampling frequency equal to 44.1 kHz. The filter should implement the first, second and third stage in a three-stage graphic equalizer with a low pass filter with a cut-off frequency of 31.5 Hz, a pass-band filter for the middle filter (f<sub>1</sub>  to f<sub>2</sub>) of about one octave and centre-frequency fc equal to 63 hz and a high-pass filter with pass-frequency of 125 Hz.</p>
-<p>The aim of this exercise is to determine the order of the Butterworth filters to be used in your design and the Q factor needed (where  Q = f<sub>c</sub> / (f<sub>2</sub> – f<sub>1</sub>)) for the pass-band filters required to implement the mid-range of your 10-stage graphic equalizer.</p>
-<p>The centre pass-band filter should be designed so that f<sub>2</sub> &amp; f<sub>1</sub> satisfies f<sub>c</sub> = (f<sub>1</sub>f<sub>2</sub>)<sup>1/2</sup>.  Your goal is to find the ∆f value for this filter that achieves a flat frequency response when it is combined with equal weight to the low-pass and high-pass filters.</p>
+<p>We want you to use this tool to design and test a low-pass, band-pass and high-pass Butterworth filter with sampling frequency equal to 44.1 kHz. The filter should implement the first, second and third stage in a three-stage graphic equalizer with a low pass filter with a cut-off frequency of 31.5 Hz, a pass-band filter for the middle filter (<span class="math notranslate nohighlight">\(f_1\)</span>  to <span class="math notranslate nohighlight">\(f_2\)</span>) of about one octave and centre-frequency <span class="math notranslate nohighlight">\(f_c\)</span> equal to 63 hz and a high-pass filter with pass-frequency of 125 Hz.</p>
+<p>The aim of this exercise is to determine the order of the Butterworth filters to be used in your design and the Q factor needed (where  <span class="math notranslate nohighlight">\(Q = f_c / (f_2 - f_1)\)</span>) for the pass-band filters required to implement the mid-range of your 10-stage graphic equalizer.</p>
+<p>The centre pass-band filter should be designed so that <span class="math notranslate nohighlight">\(f_1\)</span> and <span class="math notranslate nohighlight">\(f_1\)</span> satisfy <span class="math notranslate nohighlight">\(f_c = \sqrt{(f_1f_2)}\)</span>.  Your goal is to find the <span class="math notranslate nohighlight">\(\Delta f\)</span> value for this filter that achieves a flat frequency response when it is combined with equal weight to the low-pass and high-pass filters.</p>
+</div>
+</div>
+<div class="section" id="what-to-hand-in-eg-3068-only">
+<h2>What to hand in (EG-3068 Only)<a class="headerlink" href="#what-to-hand-in-eg-3068-only" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="claim">
+<h3>Claim<a class="headerlink" href="#claim" title="Permalink to this headline">¶</a></h3>
+<p>Up to 3 marks each can be claimed for the design evidenced by a suitable Live Script and filter design file. You should use the <code class="docutils literal notranslate"><span class="pre">filterDesigner</span></code> from the <a class="reference external" href="https://uk.mathworks.com/products/dsp-system.html?s_tid=srchtitle">DSP System Toolbox</a> and save your designs to disk.</p>
+<p>Up to 2 marks can be claimed if you have a Simulink model showing the filters set with a gain of 10, 0 and -10 dB respectively. You can start with the model used in the <span class="xref myst">Project Descriptor</span> (<span class="xref myst">Three_Band_EQ_Model.slx</span>).</p>
+<p>You may find it useful to use the <strong>Filter Realization Wizard</strong> block (part of the Simulink Collection from the DSP System Toolbox) which combines the <code class="docutils literal notranslate"><span class="pre">fiterDesigner</span></code> with a block that can be used in simulation.</p>
+</div>
+<div class="section" id="submission">
+<h3>Submission<a class="headerlink" href="#submission" title="Permalink to this headline">¶</a></h3>
+<p>You should submit the following to the <strong>Lab 07: Filters</strong> Assignment on Canvas.</p>
+<ol class="simple">
+<li><p>Complete the labwork self-assessment claim form and declaration.</p></li>
+<li><p>Evidence of your filter design as a m-file or MLX file.</p></li>
+<li><p>Simulink model of your three part filter with gain settings -10dB, 0dB and 10dB.</p></li>
+<li><p>The audio file that you used for testing.</p></li>
+</ol>
+</div>
+<div class="section" id="deadline">
+<h3>Deadline<a class="headerlink" href="#deadline" title="Permalink to this headline">¶</a></h3>
+<p>The deadline for claims and submission is <strong>4:00 pm, 3rd April</strong></p>
 </div>
 </div>
 </div>
