@@ -26,7 +26,7 @@ portfolio: FORCE
 	rsync -a --delete labs/ portfolio
 
 assets: FORCE
-	rsync -a --delete \
+	rsync -av --delete --exclude='*.ipynb' --exclude='*.md' --exclude='.*' --delete-excluded \
 	introduction \
 	elementary_signals \
 	laplace_transform \
