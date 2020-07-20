@@ -32,5 +32,5 @@ assets: FORCE
 	laplace_transform \
 	fourier_series \
 	worksheets \
-	assets
+	_assets
 FORCE:
