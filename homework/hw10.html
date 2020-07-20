@@ -43,7 +43,7 @@
 <meta property="og:url"         content="https://cpjobling.github.io/eg-247-textbook/homework/hw10.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Homework 10" />
-<meta property="og:description" content="Homework 10  Discrete Fourier Transform and the Fast-Fourier Transform  Discrete Fourier Transform  <ol>     <li>Try Exercise 1 and Exercise 2 in section <a hre" />
+<meta property="og:description" content="Homework 10  Discrete Fourier Transform and the Fast-Fourier Transform  Discrete Fourier Transform  Try Exercise 1 and Exercise 2 in section <a href="https://eb" />
 
 
 <meta name="twitter:card" content="summary">
@@ -383,52 +383,60 @@
 <div class="section" id="discrete-fourier-transform">
 <h3>Discrete Fourier Transform<a class="headerlink" href="#discrete-fourier-transform" title="Permalink to this headline">¶</a></h3>
 <ol>
-    <li>Try Exercise 1 and Exercise 2 in section <a href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=421">10.8</a> of {cite}`karris` by hand.</li>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;li&gt;The eight-point	Discrete Fourier Transform (DFT) of the	function:
-</pre></div>
-</div>
+<li><p>Try Exercise 1 and Exercise 2 in section <a href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=421">10.8</a> of Karris<a class="bibtex reference internal" href="../zbib.html#karris" id="id1">[Kar12]</a> by hand.</li></p></li>
+<li><p>The eight-point	Discrete Fourier Transform (DFT) of the	function:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}x[n] = \left\{\begin{array}{r&#64;{\quad}l}
-                    n &amp; 0 \le n \le 4\\
-                    0 &amp; \mathrm{otherwise}
-                \end{array}\right.\end{split}\]</div>
+\[\begin{split}
+     x[n] = \left\{
+         \begin{array}{r&#64;{\quad}l}
+             n &amp; 0 \le n \le 4\\
+             0 &amp; \mathrm{otherwise}
+         \end{array}
+     \right.
+   \end{split}\]</div>
 <p>is given by</p>
-<div class="math notranslate nohighlight">
-\[X[m] = \left[ 10,-5.41-j4.83, 2 + j2, -2.59-j0.83, 2, -2.59+j0.83, 2-j2, -5.41+j4.83\right].\]</div>
+<p>\begin{equation}
+X[m] = \left[ 10,-5.41-j4.83, 2 + j2, -2.59-j0.83, 2, -2.59+j0.83, 2-j2, -5.41+j4.83\right].
+\end{equation}</p>
 <ol>
-<li>Sketch the time sequence	$x[n]$.</li>
-<li>Use the DFT formula 
-<div class="math notranslate nohighlight">
-\[X[m] = \sum_{n=0}^{7}\,x[n]\exp{\left(-j\left(\frac{2\pi m}{8}\right)n\right)} = \sum_{n=0}^{7}\,x[n]W_8^{nm}\]</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>       to confirm that the value of $X[4]=2$.&lt;/li&gt;
-</pre></div>
-</div>
-<li>Use the	DFT	formula	given Q2(b)	to confirm the DC value of the	signal.</li>
-<li>Confirm	that the correct value of $x[1]$ is	returned by	the	inverse	DFT
-<div class="math notranslate nohighlight">
-\[x[n] = \frac{1}{8}\sum_{m=0}^{7}\,X[m]\exp{\left(j\left(\frac{2\pi n}{8}\right)m\right)} = \frac{1}{8}\sum_{m=0}^{7}\,X[m]W_{8}^{-nm}.\]</div>
+<li><p>Sketch the time sequence <span class="math notranslate nohighlight">\(x[n]\)</span>.</p></li>
+<li><p>Use the DFT formula</p>
+<p>\begin{equation}
+X[m] = \sum_{n=0}^{7},x[n]\exp{\left(-j\left(\frac{2\pi m}{8}\right)n\right)} = \sum_{n=0}^{7},x[n]W_8^{nm}
+\end{equation}</p>
+<p>to confirm that the value of <span class="math notranslate nohighlight">\(X[4]=2\)</span>.</p>
+</li>
+<li><p>Use the	DFT	formula	given to confirm the DC value of the signal.</p></li>
+<li><p>Confirm that the correct value of <span class="math notranslate nohighlight">\(x[1]\)</span> is returned by the inverse DFT</p>
+<p>\begin{equation}
+x[n] = \frac{1}{8}\sum_{m=0}^{7},X[m]\exp{\left(j\left(\frac{2\pi n}{8}\right)m\right)} = \frac{1}{8}\sum_{m=0}^{7},X[m]W_{8}^{-nm}.
+\end{equation}</p>
+</li>
 </ol>
-<li>If	we	wanted	to	compute	a 1024 point DFT from a	sampled-data signal, how much	speed-up could we expect to achieve	using the FFT rather than the standard formula for the	DFT?</li>
-<li>Given that direct convolution of two	digital	sequences takes order $n^2$ floating point operations, is taking the FFT of the two 1024 point signals, multiplying them and taking	the	inverse	FFT	more efficient than direct convolution?	If not, for how	many samples,	would using	the	FFT	be more efficient than direct convolution?</li>
+</li>
+<li><p>If	we	wanted	to	compute	a 1024 point DFT from a	sampled-data signal, how much	speed-up could we expect to achieve	using the FFT rather than the standard formula for the	DFT?</p></li>
+<li><p>Given that direct convolution of two	digital	sequences takes order <span class="math notranslate nohighlight">\(n^2\)</span> floating point operations, is taking the FFT of the two 1024 point signals, multiplying them and taking	the	inverse	FFT	more efficient than direct convolution?	If not, for how	many samples,	would using	the	FFT	be more efficient than direct convolution?</p></li>
 </ol>
 </div>
 </div>
 <div class="section" id="solutions">
 <h2>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h2>
-<ol>
-    <li>See section <a href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=421">10.9</a> of {cite}`karris`</li>
-<li><ol>
-   <li>Sketch a point or stem plot with x-axis $n$ and y-axis $x[n]$.</li>
-   <li>Compute $X[4]$ noting that the exponential term for $m = 4$ is $-1$.</li>
-   <li>Compute $X[0]$ but note that the exponential term is $1$ for all $n$ so this is	 simply the sum of $x[n]$.</li>
-    </ol>
-<li>FFT takes 9.8% of the time or is 102	times faster than DFT.</li>
-<li>Convolution of two 1024 real sequences takes 1,048,576 real	operations.	FFT	of each	signal takes 10,240 complex	operations,	multiplication of two signals in complex domain	takes 1,024	complex	multiplications, inverse FFT is	10,240 more. So	 FFT method	is around 31,000 complex operations. Even if taking	into account difference	between complex	and	real arithmetic, FFT is	order 10 times faster (and needs less memory) than convolution.</li>
+<ol class="simple">
+<li><p>See section <a href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=421">10.9</a> of Karris<a class="bibtex reference internal" href="../zbib.html#karris" id="id2">[Kar12]</a></p></li>
+<li><p><em>Hints</em>:</p>
+<ol class="simple">
+<li><p>Sketch a point or stem plot with x-axis <span class="math notranslate nohighlight">\(n\)</span> and y-axis <span class="math notranslate nohighlight">\(x[n]\)</span>.</p></li>
+<li><p>Compute <span class="math notranslate nohighlight">\(X[4]\)</span> noting that the exponential term for <span class="math notranslate nohighlight">\(m = 4\)</span> is <span class="math notranslate nohighlight">\(-1\)</span>.</p></li>
+<li><p>Compute <span class="math notranslate nohighlight">\(X[0]\)</span> but note that the exponential term is <span class="math notranslate nohighlight">\(1\)</span> for all <span class="math notranslate nohighlight">\(n\)</span> so this is simply the sum of <span class="math notranslate nohighlight">\(x[n]\)</span>.</p></li>
+</ol>
+</li>
+<li><p>FFT takes 9.8% of the time or is 102	times faster than DFT.</p></li>
+<li><p>Convolution of two 1024 real sequences takes 1,048,576 real	operations.	FFT	of each	signal takes 10,240 complex	operations,	multiplication of two signals in complex domain	takes 1,024	complex	multiplications, inverse FFT is	10,240 more. So	 FFT method	is around 31,000 complex operations. Even if taking	into account difference	between complex	and	real arithmetic, FFT is	order 10 times faster (and needs less memory) than convolution.</p></li>
 </ol>
 </div>
 <div class="section" id="reference">
 <h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
-<p>{% bibliography –cited %}</p>
+<p>See <a class="reference internal" href="../zbib.html"><span class="doc std std-doc">Bibliograhy</span></a>.</p>
 </div>
 </div>
 
