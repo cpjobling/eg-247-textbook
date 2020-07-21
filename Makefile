@@ -11,6 +11,10 @@ help:
 	@echo "  site 		 to build the site HTML, store in _site/, and serve with Jekyll"
 
 
+rebuild:
+	make clean
+	make build
+
 clean:
 	jupyter-book clean .
 
