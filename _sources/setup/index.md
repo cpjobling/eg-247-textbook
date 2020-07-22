@@ -13,6 +13,8 @@ jupyter:
     name: python3
 ---
 
+# Setting up your Own Jupyter-MATLAB Computing Environment
+
 This section will develop into a user guide explaining how you can have your own copy of this textbook and the Jupyter-MATLAB platform that provides the live-coding platform used in class.
 
 This is a fairly technical process so I would only advise you to undertake it if you are comfortable working in the command line of your operating system!

@@ -1,4 +1,4 @@
-# Table of Common Fourier Transform Pairs
+# Common Fourier Transform Pairs
 
 |No. | **Name** | $f(t)$ | $F(\omega)$ | **Remarks** |
 |---:|----------|--------|-------------|-------------|

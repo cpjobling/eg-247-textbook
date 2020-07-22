@@ -1,4 +1,4 @@
-# Table of Properties of the Z-Transform
+# Properties of the Z-Transform
 
 | No. | **Property** | $f[n]$ | $F(z)$ |
 |----:|----------|--------|--------------|
