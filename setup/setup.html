@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Advanced users &#8212; EG-247 Signals and Systems</title>
+    <title>Setup &#8212; EG-247 Signals and Systems</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="../_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
@@ -32,8 +32,8 @@
     <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/setup/setup.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="jupyter-book.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="python.html" />
+    <link rel="next" title="Testing the Jupyter Matlab Kernel" href="matlab_kernel.html" />
+    <link rel="prev" title="Install Python" href="python.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -42,8 +42,8 @@
 <!-- Opengraph tags -->
 <meta property="og:url"         content="https://cpjobling.github.io/eg-247-textbook/setup/setup.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Advanced users" />
-<meta property="og:description" content="Advanced users  You may prefer to use the python environments and the command line, in which case, refer to Advanced Settings.About this notebook  A Jupyter not" />
+<meta property="og:title"       content="Setup" />
+<meta property="og:description" content="Setup  I have used Jupyter notebooks for EG-247 Signals and Systems for a number of reasons:  I can easily produce maths-rich textbook quality notes using the M" />
 
 
 <meta name="twitter:card" content="summary">
@@ -188,59 +188,29 @@
    Setting up your own version of this book
   </a>
   <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="jupyter.html">
+     About Jupyter notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="python.html">
+     Installing Python
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Advanced users
+     Setting up your MATLAB-Jupyter Computing Environment
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="#about-this-notebook">
-     About this notebook
+    <a class="reference internal" href="matlab_kernel.html">
+     Testing the Jupyter Matlab Kernel
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="#set-up-anaconda-environment">
-     Set up anaconda environment
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="#test-base-setup">
-     Test Base Setup
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="#python-matlab-bridge">
-     Python-MATLAB Bridge
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="#test-python-can-now-communicate-with-matlab">
-     Test Python can now communicate with MATLAB
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="#matlab-kernel-for-jupyter">
-     MATLAB Kernel for Jupyter
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="#test-matlab-kernel">
-     Test MATLAB Kernel
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="#for-more-information-on-jupyter">
-     For More Information on Jupyter
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="#jupyter-noteboooks-versus-matlab-live-scripts">
-     Jupyter Noteboooks versus MATLAB Live Scripts
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="#references">
-     References
+    <a class="reference internal" href="jupyter-book.html">
+     Setting up jupyter-book
     </a>
    </li>
   </ul>
@@ -336,7 +306,91 @@
             <i class="fas fa-list"></i> On this page
         </div>
         <nav id="bd-toc-nav">
-            
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#advanced-users">
+   Advanced users
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#about-this-notebook">
+   About this notebook
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-up-anaconda-environment">
+   Set up anaconda environment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#test-base-setup">
+   Test Base Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-matlab-bridge">
+   Python-MATLAB Bridge
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mac-os">
+     Mac OS:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#unix">
+     Unix
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ubuntu-running-in-windows-using-wsl">
+     Ubuntu running in Windows using WSL
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#windows">
+     Windows
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#install-matlab-engine">
+     Install MATLAB Engine
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#test-python-can-now-communicate-with-matlab">
+   Test Python can now communicate with MATLAB
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matlab-kernel-for-jupyter">
+   MATLAB Kernel for Jupyter
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#test-matlab-kernel">
+   Test MATLAB Kernel
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#for-more-information-on-jupyter">
+   For More Information on Jupyter
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jupyter-noteboooks-versus-matlab-live-scripts">
+   Jupyter Noteboooks versus MATLAB Live Scripts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
         </nav>
     </div>
 </div>
@@ -345,7 +399,9 @@
         
               <div>
                 
-  <p>I have used Jupyter notebooks for <strong>EG-247 Signals and Systems</strong> for a number of reasons:</p>
+  <div class="section" id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
+<p>I have used Jupyter notebooks for <strong>EG-247 Signals and Systems</strong> for a number of reasons:</p>
 <ol class="simple">
 <li><p>I can easily produce maths-rich textbook quality notes using the Markdown system provided for documentation blocks.</p></li>
 <li><p>I can generate a slide-show from my notes but also print them as PDF files for your convenience.</p></li>
@@ -361,20 +417,20 @@
 <p>Alternatively, you can use the <strong>Anaconda Navigator</strong> to launch a Jupyter Notebook and then navigate to the <code class="docutils literal notranslate"><span class="pre">setup.ipynb</span></code> file.</p>
 <p><strong>Note</strong> for Windows users, you need to start jupyter as an Administrator.</p>
 <div class="section" id="advanced-users">
-<h1>Advanced users<a class="headerlink" href="#advanced-users" title="Permalink to this headline">¶</a></h1>
+<h2>Advanced users<a class="headerlink" href="#advanced-users" title="Permalink to this headline">¶</a></h2>
 <p>You may prefer to use the python environments and the command line, in which case, refer to <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/setup/advanced-setup.md">Advanced Settings</a>.</p>
 </div>
 <div class="section" id="about-this-notebook">
-<h1>About this notebook<a class="headerlink" href="#about-this-notebook" title="Permalink to this headline">¶</a></h1>
+<h2>About this notebook<a class="headerlink" href="#about-this-notebook" title="Permalink to this headline">¶</a></h2>
 <p>A Jupyter notebook is a combination of documentation and code cells. It is both a sequence of commands (in this case written in Python) that can be executed in sequence and a record of that execution. This notebook documents the process of installing the MATLAB kernel for Jupyter.</p>
 <p>You should be able to run each code cell in turn without errors. To execute code in a Jupyter notebook, select a code cell and press the run button or type <code class="docutils literal notranslate"><span class="pre">Shift-Enter</span></code>. The next cell will automatically be selected.</p>
 <p>Alternatively you can simply run the whole notebook by selecting the <code class="docutils literal notranslate"><span class="pre">Cell-&gt;Run</span> <span class="pre">All</span></code> command from the menu.</p>
 </div>
 <div class="section" id="set-up-anaconda-environment">
-<h1>Set up anaconda environment<a class="headerlink" href="#set-up-anaconda-environment" title="Permalink to this headline">¶</a></h1>
+<h2>Set up anaconda environment<a class="headerlink" href="#set-up-anaconda-environment" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="test-base-setup">
-<h1>Test Base Setup<a class="headerlink" href="#test-base-setup" title="Permalink to this headline">¶</a></h1>
+<h2>Test Base Setup<a class="headerlink" href="#test-base-setup" title="Permalink to this headline">¶</a></h2>
 <p>The following Python code (adapted from the script <a class="reference external" href="https://fangohr.github.io/blog/code/python/soton-test-python-installation.py">soton-test-python-installation.py</a> [1]) can be executed to report whether particular python packages are available on the system.</p>
 <p>First we define some tests.</p>
 <div class="cell docutils container">
@@ -499,13 +555,13 @@
 <p>The remaining installation instructions are adapted from [2].</p>
 </div>
 <div class="section" id="python-matlab-bridge">
-<h1>Python-MATLAB Bridge<a class="headerlink" href="#python-matlab-bridge" title="Permalink to this headline">¶</a></h1>
+<h2>Python-MATLAB Bridge<a class="headerlink" href="#python-matlab-bridge" title="Permalink to this headline">¶</a></h2>
 <p>To install this, we first have to install MATLAB. I’m assuming that this has been done and you have MATLAB 2017b or greater installed.</p>
 <p>Now we install the Python-MATLAB bridge.</p>
 <p>Here we’ve adapted the instructions given in the official Matlab documentation <a class="reference external" href="https://uk.mathworks.com/help/matlab/matlab-engine-for-python.html">MATLAB API for Python</a>.</p>
 <p>I ran this on my Mac. The equivalent Windows and Linux commands are given in the comments.</p>
 <div class="section" id="mac-os">
-<h2>Mac OS:<a class="headerlink" href="#mac-os" title="Permalink to this headline">¶</a></h2>
+<h3>Mac OS:<a class="headerlink" href="#mac-os" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">matlabroot</span><span class="o">=</span><span class="s1">&#39;/Applications/MATLAB_R2020a.app&#39;</span>
@@ -515,7 +571,7 @@
 </div>
 </div>
 <div class="section" id="unix">
-<h2>Unix<a class="headerlink" href="#unix" title="Permalink to this headline">¶</a></h2>
+<h3>Unix<a class="headerlink" href="#unix" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">cd</span> <span class="p">{</span><span class="n">matlabroot</span><span class="p">}</span><span class="o">/</span><span class="n">extern</span><span class="o">/</span><span class="n">engines</span><span class="o">/</span><span class="n">python</span>
@@ -525,7 +581,7 @@
 </div>
 </div>
 <div class="section" id="ubuntu-running-in-windows-using-wsl">
-<h2>Ubuntu running in Windows using WSL<a class="headerlink" href="#ubuntu-running-in-windows-using-wsl" title="Permalink to this headline">¶</a></h2>
+<h3>Ubuntu running in Windows using WSL<a class="headerlink" href="#ubuntu-running-in-windows-using-wsl" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">matlabroot</span><span class="o">=</span><span class="s1">&#39;/mnt/c/Program\ Files/MATLAB/R2019b&#39;</span>
@@ -536,7 +592,7 @@
 </div>
 </div>
 <div class="section" id="windows">
-<h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">matlabroot</span><span class="o">=</span><span class="s1">&#39;C:\Program Files\MATLAB\R2019b&#39;</span>
@@ -547,7 +603,7 @@
 </div>
 </div>
 <div class="section" id="install-matlab-engine">
-<h2>Install MATLAB Engine<a class="headerlink" href="#install-matlab-engine" title="Permalink to this headline">¶</a></h2>
+<h3>Install MATLAB Engine<a class="headerlink" href="#install-matlab-engine" title="Permalink to this headline">¶</a></h3>
 <p><strong>Notes</strong></p>
 <ul class="simple">
 <li><p>On windows you have to do this step as an admin user</p>
@@ -572,7 +628,7 @@
 </div>
 </div>
 <div class="section" id="test-python-can-now-communicate-with-matlab">
-<h1>Test Python can now communicate with MATLAB<a class="headerlink" href="#test-python-can-now-communicate-with-matlab" title="Permalink to this headline">¶</a></h1>
+<h2>Test Python can now communicate with MATLAB<a class="headerlink" href="#test-python-can-now-communicate-with-matlab" title="Permalink to this headline">¶</a></h2>
 <p>First start a MATLAB session. You may have to restart your Python kernel first!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -615,7 +671,7 @@
 </div>
 </div>
 <div class="section" id="matlab-kernel-for-jupyter">
-<h1>MATLAB Kernel for Jupyter<a class="headerlink" href="#matlab-kernel-for-jupyter" title="Permalink to this headline">¶</a></h1>
+<h2>MATLAB Kernel for Jupyter<a class="headerlink" href="#matlab-kernel-for-jupyter" title="Permalink to this headline">¶</a></h2>
 <p>Finally we install the <code class="docutils literal notranslate"><span class="pre">matlab_kernel</span></code> using the instructions given here: <a class="reference external" href="https://github.com/Calysto/matlab_kernel/blob/master/README.rst">Calysto/matlab_kernel</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -637,13 +693,13 @@
 </div>
 </div>
 <div class="section" id="test-matlab-kernel">
-<h1>Test MATLAB Kernel<a class="headerlink" href="#test-matlab-kernel" title="Permalink to this headline">¶</a></h1>
+<h2>Test MATLAB Kernel<a class="headerlink" href="#test-matlab-kernel" title="Permalink to this headline">¶</a></h2>
 <p>From the <code class="docutils literal notranslate"><span class="pre">Kernel</span></code> menu you should be able to navigate to <code class="docutils literal notranslate"><span class="pre">Change</span> <span class="pre">kernel</span></code> and <code class="docutils literal notranslate"><span class="pre">Matlab</span></code> should now be listed (Fig. 1).</p>
-<p><img alt="Figure 1: The Kernel Menu" src="../_images/fig12.png" />
+<p><img alt="Figure 1: The Kernel Menu" src="../_images/fig11.png" />
 Figure 1: The Kernel Menu</p>
 <p>Go ahead and switch to the MATLAB kernel.</p>
 <p>If all is well, you should see the Kernel indicator (top right) change to ‘Matlab’ (Fig. 2)</p>
-<p><img alt="Figure 2: Matlab kernel indicator" src="../_images/fig22.png" />
+<p><img alt="Figure 2: Matlab kernel indicator" src="../_images/fig21.png" />
 Figure 2: The MATLAB kernel indicator</p>
 <p>You should now be able to execute the MATLAB <code class="docutils literal notranslate"><span class="pre">magic(10)</span></code> function again and get the result shown:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">magic</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -675,7 +731,7 @@ Figure 2: The MATLAB kernel indicator</p>
 <p>If <em>you</em> have any problems, send me a message through the Teams page for the EG-247 Course.</p>
 </div>
 <div class="section" id="for-more-information-on-jupyter">
-<h1>For More Information on Jupyter<a class="headerlink" href="#for-more-information-on-jupyter" title="Permalink to this headline">¶</a></h1>
+<h2>For More Information on Jupyter<a class="headerlink" href="#for-more-information-on-jupyter" title="Permalink to this headline">¶</a></h2>
 <p>To learn more about Jupyter notebooks, the key resource is the <a class="reference external" href="https://jupyter.org">Jupyter Project site</a> itself. There, under the documentation section, you will find everything you need to fully understand Jupyter. However, it’s not arranged in a way that is useful for a beginner!</p>
 <p>For a quick introduction, I particularly recommend Corey Schafer’s YouTube tutorial: https://youtu.be/HW29067qVWk.</p>
 <div class="cell docutils container">
@@ -688,18 +744,19 @@ Figure 2: The MATLAB kernel indicator</p>
 </div>
 </div>
 <div class="section" id="jupyter-noteboooks-versus-matlab-live-scripts">
-<h1>Jupyter Noteboooks versus MATLAB Live Scripts<a class="headerlink" href="#jupyter-noteboooks-versus-matlab-live-scripts" title="Permalink to this headline">¶</a></h1>
+<h2>Jupyter Noteboooks versus MATLAB Live Scripts<a class="headerlink" href="#jupyter-noteboooks-versus-matlab-live-scripts" title="Permalink to this headline">¶</a></h2>
 <p>Both Jupyter and MATLAB Live Script trace their origins – or at least their inspiration – to the <a href="https://en.wikipedia.org/wiki/Wolfram_Mathematica_(software)#The_Notebook_interface">Mathematica Notebook interface</a>. All allow the mixing of code with output, the running of code in sections, and the ability to add formatted text, images, and equations to tell a story and provide a repeatable record of a computation.</p>
 <p>The Mathworks claims some <a class="reference external" href="https://uk.mathworks.com/matlabcentral/answers/329935-jupyter-notebook-vs-live-scripts#answer_259207">advantages for the MATLAB Live Script interface</a> due to its close integration with the MATLAB desktop and the new MATLAB Online product. Other teachers have also advocated the use of Live Script in teaching, e.g. <a class="reference external" href="http://bastibe.de/2016-06-15-matlab-live-scripts.html">Teaching with Matlab Live Scripts</a>. The main issue though is that MATLAB is an expensive, licensed product. It’s free to use while you are a student or a teacher at Swansea University. It is extremely expensive once you graduate!</p>
 <p>For me, the main advantage of Jupyter notebooks is that it is language independent, well supported, open source and free! It also has some features, mentioned at the top of this document, that make it particularly attractive as a support tool for the teaching on this course.</p>
 <p>That said, we will be using MATLAB throughout this course and MATLAB Live Scripts in the Labs for this module.</p>
 </div>
 <div class="section" id="references">
-<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p>Fangohr, Prof Hans, <em>Installation of Python, Spyder, Numpy, Sympy, Scipy, Pytest, Matplotlib via Anaconda</em>, University of Southampton, 20116. Available from: https://fangohr.github.io/blog/installation-of-python-spyder-numpy-sympy-scipy-pytest-matplotlib-via-anaconda.html.</p></li>
 <li><p>Blank, Doug, Silvester, Steven and Lee, Antony, <em><code class="docutils literal notranslate"><span class="pre">Calysto/matlab_kernel</span></code> README</em>, Calysto, 2017. Available from GitHub: https://github.com/Calysto/matlab_kernel/blob/master/README.rst.</p></li>
 </ol>
+</div>
 </div>
 
 
@@ -711,8 +768,8 @@ Figure 2: The MATLAB kernel indicator</p>
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="python.html" title="previous page">&lt;no title&gt;</a>
-    <a class='right-next' id="next-link" href="jupyter-book.html" title="next page">&lt;no title&gt;</a>
+    <a class='left-prev' id="prev-link" href="python.html" title="previous page">Install Python</a>
+    <a class='right-next' id="next-link" href="matlab_kernel.html" title="next page">Testing the Jupyter Matlab Kernel</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

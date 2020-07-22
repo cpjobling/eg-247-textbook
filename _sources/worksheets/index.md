@@ -49,7 +49,7 @@ No worksheets this week.
 ## Week 9
 
 * [Worksheet 16](../dt_systems/3/worksheet16) for [Chapter 6.3: The Inverse Z-Transform](../dt_systems/3/i_z_transform) [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet16.pdf)]
-* [Worksheet 17](../dt_systems/4/worksheet13) for [Chapter 6.4: Models of Discrete-time Systems](../dt_systems/4/dt_models) [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet17.pdf)]
+* [Worksheet 17](../dt_systems/4/worksheet17) for [Chapter 6.4: Models of Discrete-time Systems](../dt_systems/4/dt_models) [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet17.pdf)]
 
 ## Week 10
 
