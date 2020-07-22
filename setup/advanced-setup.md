@@ -1,4 +1,4 @@
-# Advanced Settings
+# Quick Start - For Advanced Users
 
 If you want to use Python environments and the command line for installation, please follow these instructions after installing Anaconda.
 

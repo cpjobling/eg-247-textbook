@@ -11,6 +11,9 @@ help:
 	@echo "  site 		 to build the site HTML, store in _site/, and serve with Jekyll"
 
 
+linkcheck:
+	jupyter-book build . --builder linkcheck
+
 rebuild:
 	make clean
 	make build
@@ -24,17 +27,25 @@ build:
 
 site:   build
 	make portfolio
-	ghp-import -n -p -f ./_build/html
+	touch ./build/html/.nojekyll
+	ghp-import --no-jekyll -p -f ./_build/html
 
 portfolio: FORCE
 	rsync -a --delete labs/ portfolio
 
 assets: FORCE
 	rsync -av --delete --exclude='*.ipynb' --exclude='*.md' --exclude='.*' --delete-excluded \
-	introduction \
+	dft \
+	dt_systems \
 	elementary_signals \
-	laplace_transform \
+	FAQS \
 	fourier_series \
+	fourier_transform \
+	homework \
+	introduction \
+	labs \
+	laplace_transform \
+	setup \
 	worksheets \
 	_assets
 FORCE:

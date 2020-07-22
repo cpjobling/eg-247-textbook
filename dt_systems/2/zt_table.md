@@ -1,4 +1,4 @@
-# z-Transform Tables
+# Table of z-Transforms
 
 |No. | **f[n]** | **F(z)** | **Region of Convergence** |
 |---:|:--------:|:--------:|---------------------------|

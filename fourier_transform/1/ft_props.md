@@ -1,4 +1,4 @@
-# Table of Properties of the Fourier Transform
+# Properties of the Fourier Transform
 
 | No. | **Name** | $f(t)$ | $F(j\omega)$ | **Remarks** |
 |----:|----------|--------|--------------|-------------|
