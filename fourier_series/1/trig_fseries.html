@@ -532,14 +532,14 @@
 </div>
 <div class="section" id="motivating-examples">
 <h2>Motivating Examples<a class="headerlink" href="#motivating-examples" title="Permalink to this headline">¶</a></h2>
-<p>This <a class="reference external" href="http://dspfirst.gatech.edu/matlab/#FourierSeries">Fourier Series demo</a>, developed by Members of the Center for Signal and Image Processing (CSIP) at the <a class="reference external" href="http://www.ece.gatech.edu/">School of Electrical and Computer Engineering</a> at the <a class="reference external" href="http://www.gatech.edu/">Georgia Institute of Technology</a>, shows how periodic signals can be synthesised by a sum of sinusoidal signals.</p>
-<p>It is here used as a motivational example in our introduction to <a class="reference external" href="http://en.wikipedia.org/wiki/Fourier_series">Fourier Series</a>. (See also <a class="reference external" href="http://mathworld.wolfram.com/FourierSeries.html">Fourier Series</a> from Wolfram MathWorld referenced in the <strong>Quick Reference</strong> on Blackboard.)</p>
+<p>This <a class="reference external" href="http://dspfirst.gatech.edu/matlab/#fseriesdemo">Fourier Series demo</a>, developed by Members of the Center for Signal and Image Processing (CSIP) at the <a class="reference external" href="https://www.ece.gatech.edu/">School of Electrical and Computer Engineering</a> at the <a class="reference external" href="https://www.gatech.edu/">Georgia Institute of Technology</a>, shows how periodic signals can be synthesised by a sum of sinusoidal signals.</p>
+<p>It is here used as a motivational example in our introduction to <a class="reference external" href="https://en.wikipedia.org/wiki/Fourier_series">Fourier Series</a>. (See also <a class="reference external" href="https://mathworld.wolfram.com/FourierSeries.html">Fourier Series</a> from Wolfram MathWorld referenced in the <strong>Quick Reference</strong> on Blackboard.)</p>
 <p>To install this example, download the <a class="reference external" href="http://dspfirst.gatech.edu/matlab/ZipFiles/fseriesdemo-v144.zip">zip file</a> and unpack it somewhere on your MATLAB path.</p>
 </div>
 <div class="section" id="wave-analysis">
 <h2>Wave Analysis<a class="headerlink" href="#wave-analysis" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="http://en.wikipedia.org/wiki/Joseph_Fourier">Jean Baptiste Joseph Fourier</a> (21 March 1768 – 16 May 1830) discovered that any <em><strong>periodic</strong></em> signal could be represented as a series of <em>harmonically related</em> sinusoids.</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Joseph_Fourier">Jean Baptiste Joseph Fourier</a> (21 March 1768 – 16 May 1830) discovered that any <em><strong>periodic</strong></em> signal could be represented as a series of <em>harmonically related</em> sinusoids.</p></li>
 <li><p>An <em>harmonic</em> is a frequency whose value is an integer multiple of some <em>fundamental frequency</em></p></li>
 <li><p>For example, the frequencies 2 MHz, 3 Mhz, 4 MHz are the second, third and fourth harmonics of a sinusoid with fundamental frequency 1 Mhz.</p></li>
 </ul>
@@ -547,13 +547,17 @@
 <h3>The Trigonometric Fourier Series<a class="headerlink" href="#the-trigonometric-fourier-series" title="Permalink to this headline">¶</a></h3>
 <p>Any periodic waveform <span class="math notranslate nohighlight">\(f(t)\)</span> can be represented as</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{eqnarray*}
+\[\begin{split}
+\begin{eqnarray*}
   f(t) &amp;=&amp; \frac{1}{2}{a_0} + {a_1}\cos \Omega_0 t + {a_2}\cos 2\Omega_0 t + {a_3}\cos 3\Omega_0 t +  \cdots  + {a_n}\cos n\Omega_0 t +  \cdots  \\ 
    &amp;+&amp; {b_1}\sin \Omega_0 t + {b_2}\sin 2\Omega_0 t + {b_3}\sin 3\Omega_0 t +  \cdots  + {b_n}\sin n\Omega_0 t +  \cdots  \\ 
-\end{eqnarray*} \end{split}\]</div>
+\end{eqnarray*}
+\end{split}\]</div>
 <p>or equivalently (if more confusingly)</p>
 <div class="math notranslate nohighlight">
-\[f(t) = \frac{1}{2}{a_0} + \sum\limits_{n = 1}^\infty  {({a_n}\cos n\Omega_0 t + {b_n}\sin n\Omega_0 t)} \]</div>
+\[
+f(t) = \frac{1}{2}{a_0} + \sum\limits_{n = 1}^\infty  {({a_n}\cos n\Omega_0 t + {b_n}\sin n\Omega_0 t)}
+\]</div>
 <p>where <span class="math notranslate nohighlight">\(\Omega_0\)</span> rad/s is the <em>fundamental frequency</em>.</p>
 </div>
 <div class="section" id="notation">
@@ -721,7 +725,9 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>half_a0 =
-0
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>0
 </pre></div>
 </div>
 </div>
@@ -763,7 +769,12 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>ft_num =
-(cos(4.0*t)*sin(2.0*pi))/pi + (0.5*cos(8.0*t)*sin(4.0*pi))/pi + (0.4444*cos(9.0*t)*sin(4.5*pi))/pi + (0.8*cos(5.0*t)*sin(2.5*pi))/pi + (0.4*cos(10.0*t)*sin(5.0*pi))/pi + (0.3636*cos(11.0*t)*sin(5.5*pi))/pi + (1.333*cos(3.0*t)*sin(1.5*pi))/pi + (0.6667*cos(6.0*t)*sin(3.0*pi))/pi + (0.5714*cos(7.0*t)*sin(3.5*pi))/pi + (4.0*sin(0.5*pi)*cos(t))/pi + (2.0*cos(2.0*t)*sin(pi))/pi
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>(sin(t)*((2.0*cos(pi) + 1.0)*(cos(pi) - 1.0) - 1.0*cos(pi) + 1.0))/pi + (cos(4.0*t)*(0.5*sin(4.0*pi) - 0.25*sin(8.0*pi)))/pi + (cos(8.0*t)*(0.25*sin(8.0*pi) - 0.125*sin(16.0*pi)))/pi + (sin(5.0*t)*(0.2*cos(10.0*pi) - 0.2*cos(5.0*pi) + 0.4*sin(2.5*pi)^2))/pi + (sin(10.0*t)*(0.1*cos(20.0*pi) - 0.1*cos(10.0*pi) + 0.2*sin(5.0*pi)^2))/pi + (sin(9.0*t)*(0.1111*cos(18.0*pi) - 0.1111*cos(9.0*pi) + 0.2222*sin(4.5*pi)^2))/pi + (sin(11.0*t)*(0.09091*cos(22.0*pi) - 0.09091*cos(11.0*pi) + 0.1818*sin(5.5*pi)^2))/pi + (sin(3.0*t)*(0.3333*cos(6.0*pi) - 0.3333*cos(3.0*pi) + 0.6667*sin(1.5*pi)^2))/pi + (sin(6.0*t)*(0.1667*cos(12.0*pi) - 0.1667*cos(6.0*pi) + 0.3333*sin(3.0*pi)^2))/pi + (sin(7.0*t)*(0.1429*cos(14.0*pi) - 0.1429*cos(7.0*pi) + 0.2857*sin(3.5*pi)^2))/pi + (sin(2.0*t)*(sin(pi)^2 + sin(pi)^2*(4.0*sin(pi)^2 - 3.0)))/pi + (sin(4.0*t)*(0.25*cos(8.0*pi) - 0.25*cos(4.0*pi) + 0.5*sin(2.0*pi)^2))/pi + (sin(8.0*t)*(0.125*cos(16.0*pi) - 0.125*cos(8.0*pi) + 0.25*sin(4.0*pi)^2))/pi + (cos(9.0*t)*(0.2222*sin(9.0*pi) - 0.1111*sin
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>(18.0*pi)))/pi + (cos(5.0*t)*(0.4*sin(5.0*pi) - 0.2*sin(10.0*pi)))/pi + (cos(10.0*t)*(0.2*sin(10.0*pi) - 0.1*sin(20.0*pi)))/pi + (cos(2.0*t)*(0.5*sin(2.0*pi) + 0.5*sin(2.0*pi)*(4.0*sin(pi)^2 - 1.0)))/pi + (cos(11.0*t)*(0.1818*sin(11.0*pi) - 0.09091*sin(22.0*pi)))/pi + (cos(3.0*t)*(0.6667*sin(3.0*pi) - 0.3333*sin(6.0*pi)))/pi + (cos(6.0*t)*(0.3333*sin(6.0*pi) - 0.1667*sin(12.0*pi)))/pi + (cos(t)*(sin(pi) - 1.0*sin(pi)*(2.0*cos(pi) - 1.0)))/pi + (cos(7.0*t)*(0.2857*sin(7.0*pi) - 0.1429*sin(14.0*pi)))/pi
 </pre></div>
 </div>
 </div>
@@ -883,7 +894,9 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>ft_num =
-(cos(4.0*t)*sin(2.0*pi))/pi + (0.5*cos(8.0*t)*sin(4.0*pi))/pi + (0.4444*cos(9.0*t)*sin(4.5*pi))/pi + (0.8*cos(5.0*t)*sin(2.5*pi))/pi + (0.4*cos(10.0*t)*sin(5.0*pi))/pi + (0.3636*cos(11.0*t)*sin(5.5*pi))/pi + (1.333*cos(3.0*t)*sin(1.5*pi))/pi + (0.6667*cos(6.0*t)*sin(3.0*pi))/pi + (0.5714*cos(7.0*t)*sin(3.5*pi))/pi + (4.0*sin(0.5*pi)*cos(t))/pi + (2.0*cos(2.0*t)*sin(pi))/pi
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>(cos(4.0*t)*sin(2.0*pi))/pi + (0.5*cos(8.0*t)*sin(4.0*pi))/pi + (0.4444*cos(9.0*t)*sin(4.5*pi))/pi + (0.8*cos(5.0*t)*sin(2.5*pi))/pi + (0.4*cos(10.0*t)*sin(5.0*pi))/pi + (0.3636*cos(11.0*t)*sin(5.5*pi))/pi + (1.333*cos(3.0*t)*sin(1.5*pi))/pi + (0.6667*cos(6.0*t)*sin(3.0*pi))/pi + (0.5714*cos(7.0*t)*sin(3.5*pi))/pi + (4.0*sin(0.5*pi)*cos(t))/pi + (2.0*cos(2.0*t)*sin(pi))/pi
 </pre></div>
 </div>
 </div>

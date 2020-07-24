@@ -8,7 +8,7 @@ This is an index to the files arranged by module week.
 
 ## Week 1
 
-* [Worksheet 1](../introduction/worksheet1) for [Chapter 1: Introduction](../introduction/index) [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/Sworksheet1.pdf)].
+* [Worksheet 1](../introduction/worksheet1) for [Chapter 1: Introduction](../introduction/index) [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet1.pdf)].
 * [Worksheet 2](../introduction/worksheet2) for end of introduction example [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet2.pdf)].
 * [Worksheet 3](../elementary_signals/worksheet3) for [Chapter 2: Elementary Signals](../elementary_signals/index) [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet2.pdf)].
 

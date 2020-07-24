@@ -460,6 +460,15 @@ signal index. For example, to represent the discrete-time (DT) signal:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
+n =
+
+    -3    -2    -1     0     1     2     3
+
+</pre></div>
+</div>
+</div>
 </div>
 <p>You can plot this signal by typing <code class="docutils literal notranslate"><span class="pre">stem(n,x)</span></code>. If you want to examine the signal over a wider range of indices, you will need to extend both <code class="docutils literal notranslate"><span class="pre">n</span></code> and <code class="docutils literal notranslate"><span class="pre">x</span></code>. For instance, if you want to plot the signal over <span class="math notranslate nohighlight">\(5\le n \le 5\)</span>, you can extend the index vector <code class="docutils literal notranslate"><span class="pre">n</span></code>, then add additional elements to <code class="docutils literal notranslate"><span class="pre">x</span></code> for these new samples:</p>
 <div class="cell docutils container">
@@ -524,12 +533,18 @@ for <span class="math notranslate nohighlight">\(0\le n \le 32\)</span> you woul
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/tutorial_14_0.png" src="../../_images/tutorial_14_0.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stem</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">imag</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/tutorial_15_0.png" src="../../_images/tutorial_15_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -538,12 +553,18 @@ for <span class="math notranslate nohighlight">\(0\le n \le 32\)</span> you woul
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/tutorial_16_0.png" src="../../_images/tutorial_16_0.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stem</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">angle</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/tutorial_17_0.png" src="../../_images/tutorial_17_0.png" />
 </div>
 </div>
 <p>For the last example, note that value returned by <code class="docutils literal notranslate"><span class="pre">angle</span></code> is the phase of the complex number in radians.To convert to degrees, type <code class="docutils literal notranslate"><span class="pre">stem(n,angle(x)*(180/pi))</span></code>.</p>
@@ -615,6 +636,14 @@ for <span class="math notranslate nohighlight">\(0\le n \le 32\)</span> you woul
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">[0;31mError using *
+Incorrect dimensions for matrix multiplication. Check that the number of columns in the first matrix matches the number of rows in the second matrix. To perform elementwise multiplication, use '.*'.
+
+[0m</pre>
+</div>
+</div>
 </div>
 <p>This is because matrix multiplication requires that the number of columns in the first argument match the number of rows in the second argumemt, which is not true for two <span class="math notranslate nohighlight">\(1\times 5\)</span> vectors <code class="docutils literal notranslate"><span class="pre">x1</span></code> and <code class="docutils literal notranslate"><span class="pre">x2</span></code>. You must also use <code class="docutils literal notranslate"><span class="pre">./</span></code> and <code class="docutils literal notranslate"><span class="pre">.^</span></code>  when operating on vectors term-by-term, since <code class="docutils literal notranslate"><span class="pre">/</span></code> and <code class="docutils literal notranslate"><span class="pre">^</span></code> are also matric operations in MATLAB.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">print</span></code> command allows you to print the current plot. You should type <code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">print</span></code> to understand how it works on your system, as it will vary according to the operating system and configuration of the computer you are using.</p>
@@ -630,6 +659,9 @@ for <span class="math notranslate nohighlight">\(0\le n \le 32\)</span> you woul
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/tutorial_31_0.png" src="../../_images/tutorial_31_0.png" />
+</div>
 </div>
 <p>You could label your graph by typing</p>
 <div class="cell docutils container">
@@ -639,6 +671,9 @@ for <span class="math notranslate nohighlight">\(0\le n \le 32\)</span> you woul
 <span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Phase of x[n] (radians)&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/tutorial_33_0.png" src="../../_images/tutorial_33_0.png" />
 </div>
 </div>
 </div>
@@ -659,6 +694,9 @@ for <span class="math notranslate nohighlight">\(0\le n \le 32\)</span> you woul
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/tutorial_35_0.png" src="../../_images/tutorial_35_0.png" />
+</div>
 </div>
 <p>If you then wanted to do the same for <span class="math notranslate nohighlight">\(x_2[n]=sin(\pi n/4)\)</span>, you could copy <code class="docutils literal notranslate"><span class="pre">prob1.m</span></code> to <code class="docutils literal notranslate"><span class="pre">prob2.m</span></code>, then edit slightly to get:</p>
 <div class="cell docutils container">
@@ -673,6 +711,9 @@ for <span class="math notranslate nohighlight">\(0\le n \le 32\)</span> you woul
 <span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x2[n]&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/tutorial_37_0.png" src="../../_images/tutorial_37_0.png" />
 </div>
 </div>
 <p>You can then type <code class="docutils literal notranslate"><span class="pre">prob2</span></code> to run these commands and generate the desired plot and compute the average value of the new signal. Instead of retyping all 7 lines, you only had to edit about a dozen characters. We strongly encourage you to use scripts in working through these laboratories, with a separate script for each exercise, even each part of an exercise. Scripts also make debugging your work easier, as you can fix one mistake and re-run the modified sequence of commands. To encourage you to use scripts, we will ask you to attach your solutions to each lab exercise to the lab portfolio as scripts. You must do this in order to claim your marks.</p>
@@ -696,10 +737,42 @@ for <span class="math notranslate nohighlight">\(0\le n \le 32\)</span> you woul
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
+y =
+
+   -80
+
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
+z =
+
+   -40
+
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">]</span> <span class="o">=</span> <span class="n">foo</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
+y =
+
+   424
+
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
+z =
+
+   100
+
 </pre></div>
 </div>
 </div>
