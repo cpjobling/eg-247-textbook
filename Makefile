@@ -27,7 +27,7 @@ build:
 
 site:   build
 	make portfolio
-	touch ./build/html/.nojekyll
+	touch _build/html/.nojekyll
 	ghp-import --no-jekyll -p -f ./_build/html
 
 portfolio: FORCE

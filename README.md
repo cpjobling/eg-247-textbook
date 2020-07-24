@@ -6,7 +6,7 @@ It is a collection of Markdown pages and Jupyter Notebooks.
 
 The Jupyter Notebooks can be presented as pages and slides. They use the MATLAB kernel and after some setup the notebooks can be downloaded and they become executable documents.
 
-The published version of the textbook is **[EG-247 Signals and Systems](http://cpjobling.github.io/eg-247-textbook/introduction/index)**.
+The published version of the textbook is **[EG-247 Signals and Systems](https://cpjobling.github.io/eg-247-textbook/introduction/index)**.
 
 ## Explore this book
 

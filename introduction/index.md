@@ -22,7 +22,7 @@ kernelspec:
 
 An annotatable copy of the notes for this presentation is available as [**Worksheet 1**](worksheet1). 
 
-* The source code for this page is [introduction/index.ipynb](https://github.com/cpjobling/eg-247-textbook/blob/master/introduction/index.md).
+* The source code for this page is [introduction/index.nb](https://github.com/cpjobling/eg-247-textbook/blob/master/introduction/index.md).
 
 * You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/introduction/index.html)). 
 
