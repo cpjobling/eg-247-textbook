@@ -20,11 +20,11 @@ kernelspec:
 
 ## Colophon
 
-An annotatable copy of the notes for this presentation is available as [**Worksheet 1**](worksheet1). 
+An annotatable copy of the notes for this presentation is available as [**Worksheet 1**](worksheet1).
 
-* The source code for this page is [introduction/index.nb](https://github.com/cpjobling/eg-247-textbook/blob/master/introduction/index.md).
+* The source code for this page is [introduction/index.ipynb](https://github.com/cpjobling/eg-247-textbook/blob/master/introduction/index.md).
 
-* You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/introduction/index.html)). 
+* You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/introduction/index.html)).
 
 * This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/introduction/introduction.pdf) file.
 
@@ -70,7 +70,7 @@ $$x(t) = A \cos (2\pi f_0 t - \phi).$$
 
 #### First attempt
 
-For this expression, we wish to match each of the symbols to its definition. 
+For this expression, we wish to match each of the symbols to its definition.
 
 Without computing anything, see if you can complete this table.
 
@@ -85,7 +85,7 @@ Without computing anything, see if you can complete this table.
 
 ### Gaining insight using computers
 
-To help us answer these questions, let's use our Mathematical tools to plot a signal like this and explore it. The example we will use is from *Signals and Systems for Dummies* (SS4D: page 12): 
+To help us answer these questions, let's use our Mathematical tools to plot a signal like this and explore it. The example we will use is from *Signals and Systems for Dummies* (SS4D: page 12):
 
 $$3\cos(2\pi\cdot 2t - 3\pi/4)$$
 
@@ -98,7 +98,7 @@ Here's the link: <https://www.wolframalpha.com>
 Paste this into the search box
 
     plot 3 cos(2 pi 2 t - 3 pi/4) 
-    
+
 Try changing the numbers to gain insight.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -281,11 +281,18 @@ Discrete-time signals are a function of a time index $n$. A discrete-time signal
 
 ### Example 2
 
-Consider the following simple signal, a pulse sequence:$$y[n] = \left\{ {\begin{array}{*{20}{c}}
-{5,\;0 \le n < 10}\\
-{0,\;{\rm{otherwise}}\quad \;}
-\end{array}} \right.$$
-We can plot this in Matlab as a *stem plot*
+Consider the following simple signal, a pulse sequence:
+$$
+  y[n] = \left\{ 
+    {
+      \begin{array}{*{20}{c}}
+        {5,\;0 \le n < 10}\\
+        {0,\;{\rm{otherwise}}\quad \;}
+      \end{array}
+    } 
+  \right.
+$$
+We can plot this in MATLAB as a *stem plot*
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 

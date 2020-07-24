@@ -177,31 +177,38 @@ The lecturer will change the numbers in class. Note what happens and try to gain
 In MATLAB we would need to tackle this by breaking down the steps.
 
 ```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+tags: [remove-output]
+---
 %Make sure that we have a clean workspace
 clear all
 format compact
 ```
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 Define `t`
 
 ```{code-cell}
 ---
 slideshow:
-  slide_type: '-'
+  slide_type: fragment
+tags: [remove-output]
 ---
 t = linspace(0, 1, 100);
 ```
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 Define `x`
 
 ```{code-cell}
 ---
 slideshow:
-  slide_type: '-'
+  slide_type: fragment
+tags: [remove-output]
 ---
 x = 3 * cos(2*pi*2*t - 3*pi/4);
 ```
@@ -211,11 +218,10 @@ x = 3 * cos(2*pi*2*t - 3*pi/4);
 Plot result, and label plot
 
 ```{code-cell}
-:tags: [hide-output]
-
 ---
 slideshow:
-  slide_type: '-'
+  slide_type: fragment
+tags: [remove-output]
 ---
 plot(t,x)
 title('A Sinusoidal Signal')
@@ -229,11 +235,10 @@ grid
 If you want to execute this in MATLAB, you can create a file.
 
 ```{code-cell}
-:tags: [hide-output]
-
 ---
 slideshow:
   slide_type: notes
+tags: [remove-output]
 ---
 %%file sinewave.m
 % SINEWAVE - plot function $x(t) = 3 \cos(2\pi t - 3 \pi/4)$ for $t = 0\ldots 1$
@@ -367,11 +372,10 @@ If the input to this system is replaced with a sinewave $x(t)=\sin(t)$ and the o
 If you get a chance, try this in yourself in MATLAB and copy the result into your copy of this worksheet.
 
 ```{code-cell}
-:tags: [hide-output]
-
 ---
 slideshow:
   slide_type: subslide
+tags: [remove-output]
 ---
 open gain_level_shift
 ```
@@ -399,11 +403,10 @@ We can plot this in Matlab as a *stem plot*
 Define function and save as [y.m](https://cpjobling.github.io/eg-247-textbook/introduction/y.m).
 
 ```{code-cell}
-:tags: [hide-output]
-
 ---
 slideshow:
   slide_type: subslide
+tags: [remove-output]
 ---
 %%file y.m
 % Define the function
@@ -417,21 +420,19 @@ end
 ```
 
 ```{code-cell}
-:tags: [hide-output]
-
 ---
 slideshow:
   slide_type: subslide
+tags: [remove-output]
 ---
 open y
 ```
 
 ```{code-cell}
-:tags: [hide-output]
-
 ---
 slideshow:
   slide_type: subslide
+tags: [remove-output]
 ---
 %% Define sample points
 n = -15:18;
@@ -445,11 +446,10 @@ end
 ```
 
 ```{code-cell}
-:tags: [hide-output]
-
 ---
 slideshow:
   slide_type: subslide
+tags: [remove-output]
 ---
 %% Plot the result
 stem(n,xn)
@@ -523,11 +523,10 @@ The term *tap* denotes that output at time instant $n$ is formed from two time i
 This system is available as a Simulink model [discrete_system.slx](https://cpjobling.github.io/eg-247-textbook/introduction/discrete_system.slx)
 
 ```{code-cell}
-:tags: [hide-output]
-
 ---
 slideshow:
   slide_type: subslide
+tags: [remove-output]
 ---
 open discrete_system
 ```
@@ -562,11 +561,10 @@ The sinusoidal signal we saw earlier is periodic because of the $\mod 2\pi$ prop
 This code generates a square wave.
 
 ```{code-cell}
-:tags: [hide-output]
-
 ---
 slideshow:
   slide_type: subslide
+tags: [remove-output]
 ---
 %% A Periodic signal (square wave)
 t = linspace(0, 1, 500);
@@ -578,11 +576,10 @@ x = square(2 * pi * 5 * t);
 This Square wave is a 5 Hz waveform sampled at 500 Hz for 1 second
 
 ```{code-cell}
-:tags: [hide-output]
-
 ---
 slideshow:
   slide_type: subslide
+tags: [remove-output]
 ---
 plot(t, x);
 ylim([-2, 2]);
@@ -619,11 +616,10 @@ Signals that are *deterministic* (completely determined functions of time) but n
 This is how we generate an aperiodic rectangular pulse of duration $\tau$ in Matlab:
 
 ```{code-cell}
-:tags: [hide-output]
-
 ---
 slideshow:
   slide_type: subslide
+tags: [remove-output]
 ---
 %% An aperiodic function
 tau = 1;
@@ -635,6 +631,7 @@ y = rectangularPulse(0,tau,x);
 ---
 slideshow:
   slide_type: subslide
+tags: [remove-output]
 ---
 plot(x,y)
 ylim([-0.2,1.2])
@@ -650,16 +647,15 @@ ylabel('Amplitude')
 
 A signal is random if one or more signal attributes takes on unpredictable
 values in a probability sense.
-￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼
+
 Engineers working with communication receivers are concerned with random
 signals, especially noise.
 
 ```{code-cell}
-:tags: [hide-output]
-
 ---
 slideshow:
   slide_type: subslide
+tags: [remove-output]
 ---
 %% Plot a Random Signal
 plot(0.5 + 0.25 * rand(100,1))
@@ -729,11 +725,10 @@ Consider the sum of a two-sinusoids signal
 $$x(t) = \underbrace {A_1\cos(2\pi f_1 t)}_{s_1} + \underbrace {A_2\cos(2\pi f_2 t)}_{s_2}$$
 
 ```{code-cell}
-:tags: [hide-output]
-
 ---
 slideshow:
   slide_type: notes
+tags: [remove-output]
 ---
 %%file two_sines.m
 %... plot two sinusoids signal
@@ -759,6 +754,7 @@ ylabel('Frequency Spectrum X(f)'),xlabel('Frequency (Hz)')
 ---
 slideshow:
   slide_type: subslide
+tags: [remove-output]
 ---
 two_sines
 ```
