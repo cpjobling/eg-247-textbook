@@ -15,13 +15,17 @@ kernelspec:
 
 # Answers to Worksheet 2
 
-Consider a signal 
+Consider a signal
 
-$$x = f(t) = \left\{ {\begin{array}{*{20}{c}}
-{0\;:\;t <  - 1}\\
-{t + 1\;:\; - 1 \le t \le 1}\\
-{0\;:\;t > 1}
-\end{array}} \right.$$
+$$
+  x = f(t) = \left\{ 
+    {\begin{array}{*{20}{c}}
+      {0\;:\;t <  - 1}\\
+      {t + 1\;:\; - 1 \le t \le 1}\\
+      {0\;:\;t > 1}
+    \end{array}} 
+ \right.
+$$
 
 Sketch this signal
 
