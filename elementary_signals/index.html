@@ -283,9 +283,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/elementary_signals/index.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/elementary_signals/index.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -306,7 +306,7 @@
             href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Felementary_signals/index.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/cpjobling/eg-247-textbook/edit/master/elementary_signals/index.ipynb"><button
+        <a class="edit-button" href="https://github.com/cpjobling/eg-247-textbook/edit/master/elementary_signals/index.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -464,7 +464,8 @@
         
               <div>
                 
-  <div class="section" id="elementary-signals">
+  <!-- #region slideshow={"slide_type": "slide"} -->
+<div class="section" id="elementary-signals">
 <h1>Elementary Signals<a class="headerlink" href="#elementary-signals" title="Permalink to this headline">¶</a></h1>
 <p>The preparatory reading for this section is <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=75#ppg=17">Chapter 1</a> of <a class="bibtex reference internal" href="../zbib.html#karris" id="id1">[Kar12]</a> which</p>
 <ul class="simple">
@@ -473,6 +474,8 @@
 <li><p>presents the sampling and sifting properties of the delta function and</p></li>
 <li><p>concludes with examples of how other useful signals can be synthesised from these elementary signals.</p></li>
 </ul>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "notes"} -->
 <div class="section" id="colophon">
 <h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this headline">¶</a></h2>
 <p>An annotatable worksheet for this presentation is available as <a class="reference internal" href="worksheet3.html"><span class="doc std std-doc"><strong>Worksheet 3</strong></span></a>.</p>
@@ -481,9 +484,13 @@
 <li><p>You can view the notes for this presentation as a webpage (<a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/elementary_signals/index.html">HTML</a>).</p></li>
 <li><p>This page is downloadable as a <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/elementary_signals/elementary_signals.pdf">PDF</a> file.</p></li>
 </ul>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
 <p>Consider the network shown in below where the switch is closed at time <span class="math notranslate nohighlight">\(t=T\)</span> and all components are ideal.</p>
 <p><img alt="Network with a switch which is closed at t = T." src="../_images/circuit2.png" /></p>
 <p>Express the output voltage <span class="math notranslate nohighlight">\(V_{\mathrm{out}}\)</span> as a function of the unit step function, and sketch the appropriate waveform.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
 <p><strong>Solution</strong></p>
 <p>Before the switch is closed at <span class="math notranslate nohighlight">\(t &lt; T\)</span>:
 \begin{equation}
@@ -493,9 +500,13 @@ V_{\mathrm{out}} = 0.
 \begin{equation}
 V_{\mathrm{out}} = V_s.
 \end{equation}</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
 <p>We imagine that the voltage jumps instantaneously from 0 to <span class="math notranslate nohighlight">\(V_s\)</span> volts at <span class="math notranslate nohighlight">\(t = T\)</span> seconds as shown below.</p>
 <img src="./pictures/step.png" width = "30%"  alt="The step function" />
 <p>We call this type of signal a step function.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "slide"} -->
 </div>
 <div class="section" id="the-unit-step-function">
 <h2>The Unit Step Function<a class="headerlink" href="#the-unit-step-function" title="Permalink to this headline">¶</a></h2>
@@ -505,38 +516,22 @@ V_{\mathrm{out}} = V_s.
 {1\quad t &gt; 0}
 \end{array}} \right.\end{split}\]</div>
 <p><img alt="The unit step function" src="../_images/unitstep1.png" /></p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
 <div class="section" id="in-matlab">
 <h3>In Matlab<a class="headerlink" href="#in-matlab" title="Permalink to this headline">¶</a></h3>
 <p>In Matlab, we use the <code class="docutils literal notranslate"><span class="pre">heaviside</span></code> function (named after <a class="reference external" href="https://en.wikipedia.org/wiki/Oliver_Heaviside">Oliver Heaviside</a>).</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">file</span> <span class="n">plot_heaviside</span><span class="o">.</span><span class="n">m</span>
-<span class="n">syms</span> <span class="n">t</span>
+<!-- #endregion -->
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%%file plot_heaviside.m</span>
+<span class="n">syms</span> <span class="s">t</span>
 <span class="n">ezplot</span><span class="p">(</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">heaviside</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Created file &#39;/Users/eechris/dev/eg-247-textbook/content/elementary_signals/plot_heaviside.m&#39;.
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">plot_heaviside</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plot_heaviside</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>ans =
-    0.5000
-</pre></div>
-</div>
-<img alt="../_images/index_8_1.png" src="../_images/index_8_1.png" />
-</div>
-</div>
+<!-- #region slideshow={"slide_type": "notes"} -->
 <p>Note that, so that it can be plotted, Matlab defines the <em>heaviside function</em> slightly differently from the mathematically ideal unit step:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\mathrm{heaviside}(t) = \left\{ {\begin{array}{*{20}{c}}
@@ -544,122 +539,118 @@ V_{\mathrm{out}} = V_s.
 {1/2\quad t = 0}\\
 {1\quad t &gt; 0}
 \end{array}} \right.\end{split}\]</div>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "slide"} -->
 </div>
 </div>
 <div class="section" id="simple-signal-operations">
 <h2>Simple Signal Operations<a class="headerlink" href="#simple-signal-operations" title="Permalink to this headline">¶</a></h2>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
 <div class="section" id="amplitude-scaling">
 <h3>Amplitude Scaling<a class="headerlink" href="#amplitude-scaling" title="Permalink to this headline">¶</a></h3>
 <p>Sketch <span class="math notranslate nohighlight">\(Au_0(t)\)</span> and <span class="math notranslate nohighlight">\(-Au_0(t)\)</span></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span> <span class="n">t</span><span class="p">;</span>
-<span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">);</span> <span class="o">%</span> <span class="n">rename</span> <span class="n">heaviside</span> <span class="n">function</span> <span class="k">for</span> <span class="n">ease</span> <span class="n">of</span> <span class="n">use</span>
-<span class="n">A</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="o">%</span> <span class="n">so</span> <span class="n">signal</span> <span class="n">can</span> <span class="n">be</span> <span class="n">plotted</span>
-<span class="n">ezplot</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="n">grid</span><span class="p">,</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Applitude scaling $$Au_0(t)$$&#39;</span><span class="p">,</span><span class="s1">&#39;interpreter&#39;</span><span class="p">,</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+<!-- #endregion -->
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span> <span class="s">t</span><span class="p">;</span>
+<span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">=</span> <span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">);</span> <span class="c">% rename heaviside function for ease of use</span>
+<span class="n">A</span> <span class="p">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c">% so signal can be plotted</span>
+<span class="n">ezplot</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="n">grid</span><span class="p">,</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Applitude scaling $$Au_0(t)$$&#39;</span><span class="p">,</span><span class="s">&#39;interpreter&#39;</span><span class="p">,</span><span class="s">&#39;latex&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/index_12_0.png" src="../_images/index_12_0.png" />
-</div>
-</div>
+<!-- #region slideshow={"slide_type": "notes"} -->
 <p>Note that the signal is scaled in the <span class="math notranslate nohighlight">\(y\)</span> direction.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ezplot</span><span class="p">(</span><span class="o">-</span><span class="n">A</span><span class="o">*</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="n">grid</span><span class="p">,</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Amplitude scaling and mirroring $$-Au_0(t)$$&#39;</span><span class="p">,</span><span class="s1">&#39;interpreter&#39;</span><span class="p">,</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+<!-- #endregion -->
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ezplot</span><span class="p">(</span><span class="o">-</span><span class="n">A</span><span class="o">*</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="n">grid</span><span class="p">,</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Amplitude scaling and mirroring $$-Au_0(t)$$&#39;</span><span class="p">,</span><span class="s">&#39;interpreter&#39;</span><span class="p">,</span><span class="s">&#39;latex&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/index_14_0.png" src="../_images/index_14_0.png" />
-</div>
-</div>
+<!-- #region slideshow={"slide_type": "notes"} -->
 <p>Note that, because of the sign, the signal is mirrored about the <span class="math notranslate nohighlight">\(x\)</span> axis as well as being scaled by 2.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
 </div>
 <div class="section" id="time-reversal">
 <h3>Time Reversal<a class="headerlink" href="#time-reversal" title="Permalink to this headline">¶</a></h3>
 <p>Sketch <span class="math notranslate nohighlight">\(u_0(-t)\)</span></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ezplot</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="n">u0</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="n">grid</span><span class="p">,</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Time reversal $$Au_0(-t)$$&#39;</span><span class="p">,</span><span class="s1">&#39;interpreter&#39;</span><span class="p">,</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+<!-- #endregion -->
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ezplot</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="n">u0</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="n">grid</span><span class="p">,</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Time reversal $$Au_0(-t)$$&#39;</span><span class="p">,</span><span class="s">&#39;interpreter&#39;</span><span class="p">,</span><span class="s">&#39;latex&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/index_17_0.png" src="../_images/index_17_0.png" />
-</div>
-</div>
+<!-- #region slideshow={"slide_type": "notes"} -->
 <p>The sign on the function argument <span class="math notranslate nohighlight">\(-t\)</span> causes the whole signal to be reversed in time. Note that another way of looking at this is that the signal is mirrored about the <span class="math notranslate nohighlight">\(y\)</span> axis.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
 </div>
 <div class="section" id="time-delay-and-advance">
 <h3>Time Delay and Advance<a class="headerlink" href="#time-delay-and-advance" title="Permalink to this headline">¶</a></h3>
 <p>Sketch <span class="math notranslate nohighlight">\(u_0(t-T)\)</span> and <span class="math notranslate nohighlight">\(u_0(t+T)\)</span></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="o">%</span> <span class="n">again</span> <span class="n">to</span> <span class="n">make</span> <span class="n">the</span> <span class="n">signal</span> <span class="n">plottable</span><span class="o">.</span>
-<span class="n">ezplot</span><span class="p">(</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">T</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]),</span><span class="n">grid</span><span class="p">,</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Time delay $$u_0(t - T)$$&#39;</span><span class="p">,</span><span class="s1">&#39;interpreter&#39;</span><span class="p">,</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+<!-- #endregion -->
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c">% again to make the signal plottable.</span>
+<span class="n">ezplot</span><span class="p">(</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">T</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]),</span><span class="n">grid</span><span class="p">,</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Time delay $$u_0(t - T)$$&#39;</span><span class="p">,</span><span class="s">&#39;interpreter&#39;</span><span class="p">,</span><span class="s">&#39;latex&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/index_20_0.png" src="../_images/index_20_0.png" />
-</div>
-</div>
+<!-- #region slideshow={"slide_type": "notes"} -->
 <p>This is a <em>time delay</em> … note for <span class="math notranslate nohighlight">\(u_0(t - T)\)</span> the step change occurs T seconds <strong>later</strong> than it does for <span class="math notranslate nohighlight">\(u_o(t)\)</span>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ezplot</span><span class="p">(</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="n">T</span><span class="p">),[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="n">grid</span><span class="p">,</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Time advance $$u_0(t + T)$$&#39;</span><span class="p">,</span><span class="s1">&#39;interpreter&#39;</span><span class="p">,</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+<!-- #endregion -->
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ezplot</span><span class="p">(</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="n">T</span><span class="p">),[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="n">grid</span><span class="p">,</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Time advance $$u_0(t + T)$$&#39;</span><span class="p">,</span><span class="s">&#39;interpreter&#39;</span><span class="p">,</span><span class="s">&#39;latex&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/index_22_0.png" src="../_images/index_22_0.png" />
-</div>
-</div>
+<!-- #region slideshow={"slide_type": "notes"} -->
 <p>This is a <em>time advance</em> … note for <span class="math notranslate nohighlight">\(u_0(t + T)\)</span> the step change occurs T seconds <strong>earlier</strong> than it does for <span class="math notranslate nohighlight">\(u_o(t)\)</span>.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
 </div>
 <div class="section" id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
 <p>We will work through some examples in class. See <a class="reference internal" href="worksheet3.html"><span class="doc std std-doc">Worksheet 3</span></a>.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "slide"} -->
 </div>
 </div>
 <div class="section" id="synthesis-of-signals-from-the-unit-step">
 <h2>Synthesis of Signals from the Unit Step<a class="headerlink" href="#synthesis-of-signals-from-the-unit-step" title="Permalink to this headline">¶</a></h2>
 <p>Unit step functions can be used to represent other time-varying functions such as rectangular pulses, square waves and triangular pulses. See <a class="reference internal" href="worksheet3.html"><span class="doc std std-doc">Worksheet 3</span></a> for the examples that we will look at in class.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "slide"} -->
 </div>
 <div class="section" id="the-ramp-function">
 <h2>The Ramp Function<a class="headerlink" href="#the-ramp-function" title="Permalink to this headline">¶</a></h2>
 <p><img alt="Integrator (RC) circuit" src="../_images/rc.png" /></p>
 <p>In the circuit shown above <span class="math notranslate nohighlight">\(i_s\)</span> is a constant current source and the switch is closed at time <span class="math notranslate nohighlight">\(t=0\)</span>.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
 <p>When the current through the capacitor <span class="math notranslate nohighlight">\(i_c(t) = i_s\)</span> is a constant and the voltage across the capacitor is</p>
 <div class="math notranslate nohighlight">
 \[v_c(t) = \frac{1}{C}\int_{-\infty}^{t} i_c(\tau)\;d\tau\]</div>
 <p>where <span class="math notranslate nohighlight">\(\tau\)</span> is a dummy variable.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
 <p>Since the switch closes at <span class="math notranslate nohighlight">\(t=0\)</span>, we can express the current <span class="math notranslate nohighlight">\(i_c(t)\)</span> as</p>
 <div class="math notranslate nohighlight">
 \[i_c(t) = i_s u_0(t)\]</div>
 <p>and if <span class="math notranslate nohighlight">\(v_c(t) = 0\)</span> for <span class="math notranslate nohighlight">\(t &lt; 0\)</span> we have</p>
 <div class="math notranslate nohighlight">
 \[v_c(t) = \frac{i_s}{C}\int_{-\infty}^{t} u_0(\tau)\;d\tau = \underbrace { \frac{i_s}{C}\int_{ - \infty }^0 0\;{\kern 1pt} d\tau }_0 + \frac{i_s}{C}\int_{0}^{t} 1\;d\tau\]</div>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
 <p>So, the voltage across the capacitor can be represented as</p>
 <div class="math notranslate nohighlight">
 \[v_C(t)=\frac{i_s}{C}t u_0(t)\]</div>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "notes"} -->
 <p><strong>Note</strong> that in this as in other examples throughout these notes, and in published tables of transforms, the inclusion of <span class="math notranslate nohighlight">\(u_0(t)\)</span> in <span class="math notranslate nohighlight">\(v_c(t)\)</span> acts as a “gating function” that limits the definition of the signal to the causal range <span class="math notranslate nohighlight">\(0 \le t \lt \infty\)</span>.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
 <p>To sketch the wave form, let’s arbitrarily let <span class="math notranslate nohighlight">\(C\)</span> and <span class="math notranslate nohighlight">\(i_s\)</span> be one and then plot with MATLAB.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="ow">is</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="n">vc</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">=</span><span class="p">(</span><span class="ow">is</span><span class="o">/</span><span class="n">C</span><span class="p">)</span><span class="o">*</span><span class="n">t</span><span class="o">*</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
-<span class="n">ezplot</span><span class="p">(</span><span class="n">vc</span><span class="p">(</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">]),</span><span class="n">grid</span><span class="p">,</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;A ramp function&#39;</span><span class="p">)</span>
+<!-- #endregion -->
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">C</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">is</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">vc</span><span class="p">(</span><span class="n">t</span><span class="p">)=(</span><span class="n">is</span><span class="o">/</span><span class="n">C</span><span class="p">)</span><span class="o">*</span><span class="n">t</span><span class="o">*</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+<span class="n">ezplot</span><span class="p">(</span><span class="n">vc</span><span class="p">(</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">]),</span><span class="n">grid</span><span class="p">,</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;A ramp function&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/index_32_0.png" src="../_images/index_32_0.png" />
-</div>
-</div>
+<!-- #region slideshow={"slide_type": "notes"} -->
 <p>This type of signal is called a <strong>ramp function</strong>. Note that it is the <em>integral</em> of the step function (the resistor-capacitor circuit implements a simple integrator circuit).</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
 <p>The unit ramp function is defined as</p>
 <div class="math notranslate nohighlight">
 \[u_1(t) = \int_{-\infty}^{t}u_0(\tau)d\tau\]</div>
@@ -672,17 +663,23 @@ V_{\mathrm{out}} = V_s.
 <p>and</p>
 <div class="math notranslate nohighlight">
 \[u_0(t) = \frac{d }{dt}u_1(t)\]</div>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "notes"} -->
 <p><strong>Note</strong></p>
 <p>Higher order functions of <span class="math notranslate nohighlight">\(t\)</span> can be generated by the repeated integration of the unit step function.</p>
 <p>For future reference, you should determine <span class="math notranslate nohighlight">\(u_2(t)\)</span>, <span class="math notranslate nohighlight">\(u_3(t)\)</span> and <span class="math notranslate nohighlight">\(u_n(t)\)</span> for yourself and make a note of the general rule:</p>
 <div class="math notranslate nohighlight">
 \[u_{n-1} = \frac{1}{n}\frac{d}{dt}u_n(t)\]</div>
 <p>Details are given in equations 1.26—1.29 in Karris.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "slide"} -->
 </div>
 <div class="section" id="the-dirac-delta-function">
 <h2>The Dirac Delta Function<a class="headerlink" href="#the-dirac-delta-function" title="Permalink to this headline">¶</a></h2>
 <p><img alt="A differentiating function (RL network)" src="../_images/lr.png" /></p>
 <p>In the circuit shown above, the switch is closed at time <span class="math notranslate nohighlight">\(t=0\)</span> and <span class="math notranslate nohighlight">\(i_L(t)=0\)</span> for <span class="math notranslate nohighlight">\(t&lt;0\)</span>. Express the inductor current <span class="math notranslate nohighlight">\(i_L(t)\)</span> in terms of the unit step function and hence derive an expression for <span class="math notranslate nohighlight">\(v_L(t)\)</span>.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
 <p><strong>Solution</strong></p>
 <div class="math notranslate nohighlight">
 \[v_L(t) = L\frac{di_L}{dt}\]</div>
@@ -692,7 +689,11 @@ V_{\mathrm{out}} = V_s.
 <p>Thus</p>
 <div class="math notranslate nohighlight">
 \[v_L(t) = i_s L\frac{d}{dt} u_0(t).\]</div>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "notes"} -->
 <p>To solve this problem we need to invent a function that represents the derivative of the unit step function. This function is called <span class="math notranslate nohighlight">\(\delta(t)\)</span> or the <em>dirac delta</em> function (named after <a class="reference external" href="https://en.wikipedia.org/wiki/Paul_Dirac">Paul Dirac</a>).</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
 <div class="section" id="the-delta-function">
 <h3>The delta function<a class="headerlink" href="#the-delta-function" title="Permalink to this headline">¶</a></h3>
 <p>The unit impulse or the delta function, denoted as <span class="math notranslate nohighlight">\(\delta(t)\)</span>, is the derivative of the unit step.</p>
@@ -703,32 +704,32 @@ V_{\mathrm{out}} = V_s.
 <div class="math notranslate nohighlight">
 \[\delta(t) = 0\;\forall\;
 t\ne 0.\]</div>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
 </div>
 <div class="section" id="sketch-of-the-delta-function">
 <h3>Sketch of the delta function<a class="headerlink" href="#sketch-of-the-delta-function" title="Permalink to this headline">¶</a></h3>
 <p><img alt="The delta function" src="../_images/impulse.png" /></p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
 </div>
 <div class="section" id="matlab-confirmation">
 <h3>MATLAB Confirmation<a class="headerlink" href="#matlab-confirmation" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span> <span class="ow">is</span> <span class="n">L</span><span class="p">;</span>
-<span class="n">vL</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="ow">is</span> <span class="o">*</span> <span class="n">L</span> <span class="o">*</span> <span class="n">diff</span><span class="p">(</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<!-- #endregion -->
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span> <span class="s">is</span> <span class="s">L</span><span class="p">;</span>
+<span class="n">vL</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">=</span> <span class="n">is</span> <span class="o">*</span> <span class="n">L</span> <span class="o">*</span> <span class="n">diff</span><span class="p">(</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>vL(t) =
-L*is*dirac(t)
-</pre></div>
-</div>
-</div>
-</div>
+<!-- #region slideshow={"slide_type": "notes"} -->
 <p>Note that we can’t plot dirac(t) in MATLAB with <code class="docutils literal notranslate"><span class="pre">ezplot</span></code>.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "slide"} -->
 </div>
 </div>
 <div class="section" id="important-properties-of-the-delta-function">
 <h2>Important properties of the delta function<a class="headerlink" href="#important-properties-of-the-delta-function" title="Permalink to this headline">¶</a></h2>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
 <div class="section" id="sampling-property">
 <h3>Sampling Property<a class="headerlink" href="#sampling-property" title="Permalink to this headline">¶</a></h3>
 <p>The <em>sampling property</em> of the delta function states that</p>
@@ -737,17 +738,25 @@ L*is*dirac(t)
 <p>or, when <span class="math notranslate nohighlight">\(a = 0\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[f(t)\delta(t) = f(0)\delta(t)\]</div>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "notes"} -->
 <p>Multiplication of any function <span class="math notranslate nohighlight">\(f(t)\)</span> by the delta function <span class="math notranslate nohighlight">\(\delta(t)\)</span> results in sampling the function at the time instants for which the delta function is not zero.</p>
 <p>The study of descrete-time (sampled) systems is based on this property.</p>
 <p><em>You should work through the proof</em> for youself.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
 </div>
 <div class="section" id="sifting-property">
 <h3>Sifting Property<a class="headerlink" href="#sifting-property" title="Permalink to this headline">¶</a></h3>
 <p>The <em>sifting property</em> of the delta function states that</p>
 <div class="math notranslate nohighlight">
 \[\int_{-\infty}^{\infty}f(t)\delta(t-\alpha)dt=f(\alpha)\]</div>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "notes"} -->
 <p>That is, if multiply any function <span class="math notranslate nohighlight">\(f(t)\)</span> by <span class="math notranslate nohighlight">\(\delta(t-\alpha)\)</span>, and integrate from <span class="math notranslate nohighlight">\(-\infty\)</span> to <span class="math notranslate nohighlight">\(+\infty\)</span>, we will get the value of <span class="math notranslate nohighlight">\(f(t)\)</span> evaluated at <span class="math notranslate nohighlight">\(t=\alpha.\)</span></p>
 <p><em>You should also work through the proof</em> for yourself.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
 </div>
 <div class="section" id="higher-order-delta-fuctions">
 <h3>Higher Order Delta Fuctions<a class="headerlink" href="#higher-order-delta-fuctions" title="Permalink to this headline">¶</a></h3>
@@ -755,12 +764,18 @@ L*is*dirac(t)
 <div class="math notranslate nohighlight">
 \[\delta^n(t)=\frac{d^n}{dt^n}[u_0(t)]\]</div>
 <p>The function <span class="math notranslate nohighlight">\(\delta'(t)\)</span> is called the <em>doublet</em>, <span class="math notranslate nohighlight">\(\delta''(t)\)</span> is called the <em>triplet</em> and so on.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
 <p>By a procedure similar to the derivation of the sampling property we can show that</p>
 <div class="math notranslate nohighlight">
 \[f(t)\delta'(t-a)=f(a)\delta'(t-a)-f'(t)\delta(t-a)\]</div>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
 <p>Also, derivation of the sifting property can be extended to show that</p>
 <div class="math notranslate nohighlight">
 \[\int_{-\infty}^{\infty}f(t)\delta^n(t-\alpha)dt = \left. ( - 1)^n\frac{d^n}{dt^n}[f(t)] \right|_{t = \alpha }\]</div>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "slide"} -->
 </div>
 </div>
 <div class="section" id="summary">
@@ -775,6 +790,8 @@ L*is*dirac(t)
 <li><p>The <em>Dirac delta</em> function <span class="math notranslate nohighlight">\(\delta(t)\)</span> is the derivative of the unit step function. We sometimes refer to it as the <em>unit impulse function</em>.</p></li>
 <li><p>The delta function has sampling and sifting properties that will be useful in the development of <em>time convolution</em> and <em>sampling theory</em>.</p></li>
 </ul>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "notes"} -->
 </div>
 <div class="section" id="id2">
 <h3>Examples<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
@@ -788,6 +805,7 @@ L*is*dirac(t)
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>See <a class="reference internal" href="../zbib.html"><span class="doc std std-doc">Bibliography</span></a></p>
+<!-- #endregion -->
 <div class="toctree-wrapper compound">
 </div>
 </div>
