@@ -33,7 +33,7 @@ An annotatable worksheet for this presentation is available as [**Worksheet 3**]
 
 * You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/elementary_signals/index.html)). 
 
-* This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/elementary_signals/elementary_signals.pdf) file. 
+* This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/elementary_signals/elementary_signals.pdf) file.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -80,7 +80,7 @@ $${u_0}(t) = \left\{ {\begin{array}{*{20}{c}}
 
 ### In Matlab
 
-In Matlab, we use the `heaviside` function (named after [Oliver Heaviside](https://en.wikipedia.org/wiki/Oliver_Heaviside)). 
+In Matlab, we use the `heaviside` function (named after [Oliver Heaviside](https://en.wikipedia.org/wiki/Oliver_Heaviside)).
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -135,7 +135,7 @@ slideshow:
 syms t;
 u0(t) = heaviside(t); % rename heaviside function for ease of use
 A = 2; % so signal can be plotted
-ezplot(A*u0(t),[-1,1]),grid,title('Applitude scaling $$Au_0(t)$$','interpreter','latex')
+ezplot(A*u0(t),[-1,1]),grid,title('Amplitude scaling $$Au_0(t)$$','interpreter','latex')
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}
@@ -221,7 +221,7 @@ Unit step functions can be used to represent other time-varying functions such a
 
 ![Integrator (RC) circuit](./pictures/rc.png)
 
-In the circuit shown above $i_s$ is a constant current source and the switch is closed at time $t=0$. 
+In the circuit shown above $i_s$ is a constant current source and the switch is closed at time $t=0$.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -245,7 +245,7 @@ $$v_c(t) = \frac{i_s}{C}\int_{-\infty}^{t} u_0(\tau)\;d\tau = \underbrace { \fra
 
 So, the voltage across the capacitor can be represented as
 
-$$v_C(t)=\frac{i_s}{C}t u_0(t)$$ 
+$$v_C(t)=\frac{i_s}{C}t u_0(t)$$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -415,7 +415,6 @@ The function $\delta'(t)$ is called the *doublet*, $\delta''(t)$ is called the *
 By a procedure similar to the derivation of the sampling property we can show that
 
 $$f(t)\delta'(t-a)=f(a)\delta'(t-a)-f'(t)\delta(t-a)$$
-
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
