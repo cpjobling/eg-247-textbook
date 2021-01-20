@@ -1,15 +1,15 @@
 ---
 jupytext:
-  formats: md:myst,ipynb
+  formats: ipynb,md:myst
   text_representation:
     extension: .md
     format_name: myst
-    format_version: '0.9'
-    jupytext_version: 1.5.2
+    format_version: 0.12
+    jupytext_version: 1.9.1
 kernelspec:
-  display_name: Matlab
+  display_name: MATLAB
   language: matlab
-  name: matlab
+  name: imatlab
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -30,15 +30,16 @@ You are expected to have at least watched the video presentation of [Chapter 3.3
 
 After class, the lecture recording and the annotated version of this worksheet will be made available through Canvas.
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: skip
 tags: [remove-output]
 ---
 % Matlab setup
-format compact
 clear all
+format compact
+imatlab_export_fig('print-svg')  % Static svg figures.
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -321,7 +322,7 @@ into a linear and a quadratic factor.
 
 ##### Find roots of Denominator D(s)
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: fragment
@@ -334,7 +335,7 @@ r = roots([1, 8, 10, 4])
 
 ##### Find quadratic form
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: fragment
@@ -348,7 +349,7 @@ y = expand((s - r(2))*(s - r(3)))
 
 ##### Simplify coefficients of s
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -393,7 +394,7 @@ y = sym2poly(y)
 
 ##### Plot result
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -421,7 +422,7 @@ Please note, the PenCast takes around 39 minutes (I said it was a complex calcul
 
 ##### Alternative solution using transfer functions
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -430,7 +431,7 @@ tags: [remove-output]
 Vout = tf(2*conv([1, 0],[1, 3]),[1, 8, 10, 4])
 ```
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -618,7 +619,7 @@ Matlab verification: [solution5.m](https://cpjobling.github.io/eg-247-textbook/l
 
 ##### Example 5: Verification of Solution
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -631,7 +632,7 @@ z2 = 5*s + 10;
 z3 = 20 + 16/s;
 ```
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -640,7 +641,7 @@ tags: [remove-output]
 z = z1 + z2 * z3 /(z2 + z3)
 ```
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -649,7 +650,7 @@ tags: [remove-output]
 z10 = simplify(z)
 ```
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -660,7 +661,7 @@ pretty(z10)
 
 ##### Admittance
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -679,7 +680,7 @@ For convenience, single script MATLAB solutions to the examples are provided and
 * Solution 3 [[solution3.m](https://cpjobling.github.io/eg-247-textbook/laplace_transform/matlab/solution3.m)]
 * Solution 5 [[solution5.m](.https://cpjobling.github.io/eg-247-textbook/laplace_transform/matlab/solution5.m)]
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: fragment

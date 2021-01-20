@@ -1,15 +1,15 @@
 ---
 jupytext:
-  formats: md:myst,ipynb
+  formats: ipynb,md:myst
   text_representation:
     extension: .md
     format_name: myst
-    format_version: '0.9'
-    jupytext_version: 1.5.2
+    format_version: 0.12
+    jupytext_version: 1.9.1
 kernelspec:
-  display_name: Matlab
+  display_name: MATLAB
   language: matlab
-  name: matlab
+  name: imatlab
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -48,16 +48,17 @@ After class, the lecture recording and the annotated version of the worksheets w
 
 * Circuit Simulation Using Simulink Transfer Function Block
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: skip
 tags: [remove-output]
 ---
 % Matlab setup
+clear all
 cd ../matlab 
 pwd
-clear all
+imatlab_export_fig('print-svg')  % Static svg figures.
 format compact
 ```
 
@@ -185,7 +186,7 @@ See attached script: [solution7.m](https://cpjobling.github.io/eg-247-textbook/l
 
 #### Week 3: Solution 7
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: fragment
@@ -194,7 +195,7 @@ tags: [remove-output]
 syms s;
 ```
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -208,7 +209,7 @@ C1 = 25*10^(-9);
 C2 = 10*10^(-9);
 ```
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -226,7 +227,7 @@ Result is: `100*s*((7555786372591433*s)/302231454903657293676544 + 1/20000) + 5`
 
 Simplify coefficients of s in denominator
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -236,7 +237,7 @@ format long
 denG = sym2poly(ans)
 ```
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -251,14 +252,14 @@ Plot
 
 For convenience, define coefficients $a$ and $b$:
 
-```{code-cell}
+```{code-cell} matlab
 :tags: [remove-output]
 
 a = denG(1);
 b = denG(2);
 ```
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -271,7 +272,7 @@ w = 1:10:10000;
 
 $$G(j\omega) = \frac{-1}{a\omega^2 - jb\omega + 5}$$
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -280,7 +281,7 @@ tags: [remove-output]
 Gs = -1./(a*w.^2 - j.*b.*w + denG(3));
 ```
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -351,7 +352,7 @@ Here, however we'll use the LTI block that was introduced in the lecture.
 
 Define the circuit as a transfer function
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -364,7 +365,7 @@ G = tf([-1],[1 3 1])
 
 step response is then:
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -383,7 +384,7 @@ Simples!
 
 See [example_8.slx](https://cpjobling.github.io/eg-247-textbook/laplace_transform/matlab/example_8.slx)
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: fragment
@@ -406,7 +407,7 @@ Result
 
 Let's go a bit further by finding the frequency response:
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -423,7 +424,7 @@ For convenience, single script MATLAB solutions to the examples are provided and
 * Example 8  [[example8.m](https://cpjobling.github.io/eg-247-textbook/laplace_transform/matlab/example8.m)]
 * Simulink model [[example_8.slx](https://cpjobling.github.io/eg-247-textbook/laplace_transform/matlab/example_8.slx)]
 
-```{code-cell}
+```{code-cell} matlab
 :tags: [remove-output]
 
 cd ../matlab
