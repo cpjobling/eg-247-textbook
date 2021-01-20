@@ -4,8 +4,8 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: '0.9'
-    jupytext_version: 1.5.2
+    format_version: 0.12
+    jupytext_version: 1.9.1
 kernelspec:
   display_name: Python 3
   language: python
@@ -250,24 +250,19 @@ Tables of Laplace transform properties and transforms will be included with the 
 
 ## Transforms of Elementary Signals
 
-<table width="60%">
-<thead>
-<tr><td width="10%">&nbsp;</td><th width="40%">f(t)</th><th width="40%">F(s)</th></tr>
-</thead>
-<tbody>
-<tr><td>1</td><td>$$\delta(t)$$</td><td>$$1$$</td></tr>
-<tr><td>2</td><td>$$\delta(t-a)$$</td><td>$$e^{-as}$$</td></tr>
-<tr><td>3</td><td>$$u_0(t)$$</td><td>$$\frac{1}{s}$$</td></tr>
-<tr><td>4</td><td>$$t u_0(t)$$</td><td>$$\frac{1}{s^2}$$</td></tr>
-<tr><td>5</td><td>$$t^n u_0(t)$$</td><td>$$\frac{n!}{s^{n+1}}$$</td></tr>
-<tr><td>6</td><td>$$e^{-at}u_0(t)$$</td><td>$$\frac{1}{s+a}$$</td></tr>
-<tr><td>7</td><td>$$t^n e^{-at} u_0(t)$$</td><td>$$\frac{n!}{(s+a)^{n+1}}$$</td></tr>
-<tr><td>8</td><td>$$\sin (\omega t) u_0(t)$$</td><td>$$\frac{\omega}{s^2 + \omega^2}$$</td></tr>
-<tr><td>9</td><td>$$\cos (\omega t) u_0(t)$$</td><td>$$\frac{s}{s^2 + \omega^2}$$</td></tr>
-<tr><td>10</td><td>$$e^{-at} \sin (\omega t) u_0(t)$$</td><td>$$\frac{\omega}{(s + a)^2 + \omega^2}$$</td></tr>
-<tr><td>11</td><td>$$e^{-at}\cos (\omega t) u_0(t)$$</td><td>$$\frac{s+a}{(s+a)^2 + \omega^2}$$</td></tr>
-</tbody>
-</table>
+| &nbsp;  | $f(t)$                                         | $F(s)$                                              |
+|---------|------------------------------------------------|-----------------------------------------------------|
+| 1       | $\displaystyle \delta(t)$                      | $\displaystyle 1$                                   |
+| 2       | $\displaystyle \delta(t-a)$                    | $\displaystyle e^{-as}$                             |
+| 3       | $\displaystyle u_0(t)$                         | $\displaystyle \frac{1}{s}$                         |
+| 4       | $\displaystyle t u_0(t)$                       | $\displaystyle \frac{1}{s^2}$                       |
+| 5       | $\displaystyle t^n u_0(t)$                     | $\displaystyle \frac{n!}{s^{n+1}}$                  |
+| 6       | $\displaystyle e^{-at}u_0(t)$                  | $\displaystyle \frac{1}{s+a}$                       |
+| 7       | $\displaystyle t^n e^{-at} u_0(t)$             | $\displaystyle \frac{n!}{(s+a)^{n+1}}$              |
+| 8       | $\displaystyle \sin (\omega t) u_0(t)$         | $\displaystyle \frac{\omega}{s^2 + \omega^2}$       |
+| 9       | $\displaystyle \cos (\omega t) u_0(t)$         | $\displaystyle \frac{s}{s^2 + \omega^2}$            |
+| 10      | $\displaystyle e^{-at} \sin (\omega t) u_0(t)$ | $\displaystyle \frac{\omega}{(s + a)^2 + \omega^2}$ |
+| 11      | $\displaystyle e^{-at}\cos (\omega t) u_0(t)$  | $\displaystyle \frac{s+a}{(s+a)^2 + \omega^2}$      |
 
 
 Refer to the textbook if you want to see the proof of these transforms.

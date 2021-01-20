@@ -1,15 +1,15 @@
 ---
 jupytext:
-  formats: md:myst,ipynb
+  formats: ipynb,md:myst
   text_representation:
     extension: .md
     format_name: myst
-    format_version: '0.9'
-    jupytext_version: 1.5.2
+    format_version: 0.12
+    jupytext_version: 1.9.1
 kernelspec:
-  display_name: Matlab
+  display_name: MATLAB
   language: matlab
-  name: matlab
+  name: imatlab
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -25,6 +25,12 @@ An annotatable copy of the notes for this presentation will be distributed befor
 You are expected to have at least watched the video presentation of [Chapter 3.2](https://cpjobling.github.io/eg-247-textbook/laplace_transform/2/inverse_laplace) of the [notes](https://cpjobling.github.io/eg-247-textbook) before coming to class. If you haven't watch it afterwards!
 
 After class, the lecture recording and the annotated version of this worksheet will be made available through Canvas.
+
+```{code-cell} matlab
+clear all
+format compact
+imatlab_export_fig('print-svg')  % Static svg figures.
+```
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -42,7 +48,7 @@ After class, the lecture recording and the annotated version of this worksheet w
 
 A. Yes, watched video
 
-B. Yes, watched th video and read the notes
+B. Yes, watched the video and read the notes
 
 C. Just read the notes
 
@@ -131,7 +137,7 @@ Quick solution: [Wolfram Alpha](https://www.wolframalpha.com/input/?i=inverse+la
 
 #### Matlab Solution - Numerical
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -141,7 +147,7 @@ format compact
 clear all
 ```
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -165,7 +171,7 @@ $$f_1(t) = e^{-3t} + e^{-2t}$$
 
 #### Matlab solution - symbolic
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: fragment
@@ -195,7 +201,7 @@ Quick solution: [Wolfram Alpha](https://www.wolframalpha.com/input/?i=inverse+la
 
 Because the denominator of $F_2(s)$ is a cubic, it will be difficult to factorise without computer assistance so we use MATLAB to factorise $D(s)$
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -412,7 +418,7 @@ See [notes for proof](inverse_laplace).
 
 #### Matlab verification for solition 5
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -422,7 +428,7 @@ Ns = [1, 2, 2]; Ds = [1 1];
 [r, p, k] = residue(Ns, Ds)
 ```
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -445,7 +451,7 @@ For convenience, single script MATLAB solutions to the examples are provided and
 * Example 4 - Repeated real poles [[ex3_4.m](https://cpjobling.github.io/eg-247-textbook/laplace_transform/matlab/ex3_4.m)]
 * Example 5 - Non proper rational polynomial [[ex3_5.m](https://cpjobling.github.io/eg-247-textbook/laplace_transform/matlab/ex3_5.m)]
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide

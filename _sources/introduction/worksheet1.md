@@ -4,12 +4,12 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: '0.9'
-    jupytext_version: 1.5.2
+    format_version: 0.12
+    jupytext_version: 1.9.1
 kernelspec:
-  display_name: Matlab
+  display_name: MATLAB
   language: matlab
-  name: matlab
+  name: imatlab
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -177,7 +177,7 @@ The lecturer will change the numbers in class. Note what happens and try to gain
 
 In MATLAB we would need to tackle this by breaking down the steps.
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -186,13 +186,14 @@ tags: [remove-output]
 %Make sure that we have a clean workspace
 clear all
 format compact
+imatlab_export_fig('print-svg')
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 Define `t`
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: fragment
@@ -205,7 +206,7 @@ t = linspace(0, 1, 100);
 
 Define `x`
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: fragment
@@ -218,7 +219,7 @@ x = 3 * cos(2*pi*2*t - 3*pi/4);
 
 Plot result, and label plot
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: fragment
@@ -233,15 +234,11 @@ grid
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-If you want to execute this in MATLAB, you can create a file.
+If you want to execute this in MATLAB, you can create a file by copying this text into an `m-file`:
 
-```{code-cell}
----
-slideshow:
-  slide_type: notes
-tags: [remove-output]
----
-%%file sinewave.m
++++ {"slideshow": {"slide_type": "notes"}, "tags": ["remove-output"]}
+
+```matlab
 % SINEWAVE - plot function $x(t) = 3 \cos(2\pi t - 3 \pi/4)$ for $t = 0\ldots 1$
 
 %% Set up the problem
@@ -257,11 +254,15 @@ ylabel('Amplitude')
 grid
 ```
 
+```{code-cell} matlab
+edit sinewave
+```
+
 +++ {"slideshow": {"slide_type": "notes"}}
 
-To run this script, just type the filename withount the `.m` extension.
+To run this script, just type the filename without the `.m` extension.
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: notes
@@ -372,7 +373,7 @@ If the input to this system is replaced with a sinewave $x(t)=\sin(t)$ and the o
 
 If you get a chance, try this in yourself in MATLAB and copy the result into your copy of this worksheet.
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -397,19 +398,13 @@ Consider the following simple signal, a pulse sequence:$$y[n] = \left\{ {\begin{
 \end{array}} \right.$$
 We can plot this in Matlab as a *stem plot*
 
-+++ {"slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "subslide"}, "tags": ["remove-output"]}
 
-#### MATLAB run
+#### Procedure
 
-Define function and save as [y.m](https://cpjobling.github.io/eg-247-textbook/introduction/y.m).
+Define function using this text:
 
-```{code-cell}
----
-slideshow:
-  slide_type: subslide
-tags: [remove-output]
----
-%%file y.m
+```matlab
 % Define the function
 function [ y ] = x( n )
   if n < 0 | n >= 10 
@@ -419,17 +414,13 @@ function [ y ] = x( n )
   end
 end
 ```
+and save as [y.m](https://cpjobling.github.io/eg-247-textbook/introduction/y.m).
 
-```{code-cell}
----
-slideshow:
-  slide_type: subslide
-tags: [remove-output]
----
-open y
+```{code-cell} matlab
+edit y
 ```
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -446,7 +437,7 @@ for i = 1:length(xn)
 end
 ```
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -523,7 +514,7 @@ The term *tap* denotes that output at time instant $n$ is formed from two time i
 
 This system is available as a Simulink model [discrete_system.slx](https://cpjobling.github.io/eg-247-textbook/introduction/discrete_system.slx)
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -561,7 +552,7 @@ The sinusoidal signal we saw earlier is periodic because of the $\mod 2\pi$ prop
 
 This code generates a square wave.
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -576,7 +567,7 @@ x = square(2 * pi * 5 * t);
 
 This Square wave is a 5 Hz waveform sampled at 500 Hz for 1 second
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -616,7 +607,7 @@ Signals that are *deterministic* (completely determined functions of time) but n
 
 This is how we generate an aperiodic rectangular pulse of duration $\tau$ in Matlab:
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -628,7 +619,7 @@ x = linspace(-1,5,1000);
 y = rectangularPulse(0,tau,x);
 ```
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -652,7 +643,7 @@ values in a probability sense.
 Engineers working with communication receivers are concerned with random
 signals, especially noise.
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -725,13 +716,11 @@ Systems, continuous and discrete, can also be transformed to the frequency and s
 Consider the sum of a two-sinusoids signal
 $$x(t) = \underbrace {A_1\cos(2\pi f_1 t)}_{s_1} + \underbrace {A_2\cos(2\pi f_2 t)}_{s_2}$$
 
-```{code-cell}
----
-slideshow:
-  slide_type: notes
-tags: [remove-output]
----
-%%file two_sines.m
++++ {"slideshow": {"slide_type": "notes"}, "tags": ["remove-output"]}
+
+This can be coded as
+
+```matlab
 %... plot two sinusoids signal
 A1 = 2; f1 = 1;
 A2 = 1.5;f2 = 2.2;
@@ -751,12 +740,18 @@ arrow([f2,0],[f2,A2]),text(f2,A2+0.2,'A2'),text(f2+0.05,0.2,'f2')
 ylabel('Frequency Spectrum X(f)'),xlabel('Frequency (Hz)')
 ```
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
 tags: [remove-output]
 ---
+edit two_sines
+```
+
+Run
+
+```{code-cell} matlab
 two_sines
 ```
 

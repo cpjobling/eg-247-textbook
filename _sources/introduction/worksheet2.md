@@ -4,12 +4,12 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: '0.9'
-    jupytext_version: 1.5.2
+    format_version: 0.12
+    jupytext_version: 1.9.1
 kernelspec:
-  display_name: Matlab
+  display_name: MATLAB
   language: matlab
-  name: matlab
+  name: imatlab
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}

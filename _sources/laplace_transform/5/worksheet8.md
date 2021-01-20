@@ -1,15 +1,15 @@
 ---
 jupytext:
-  formats: md:myst,ipynb
+  formats: ipynb,md:myst
   text_representation:
     extension: .md
     format_name: myst
-    format_version: '0.9'
-    jupytext_version: 1.5.2
+    format_version: 0.12
+    jupytext_version: 1.9.1
 kernelspec:
-  display_name: Matlab
+  display_name: MATLAB
   language: matlab
-  name: matlab
+  name: imatlab
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -318,16 +318,18 @@ The convolution integral is most conveniently evaluated by a graphical evaluatio
 
 The tool: [convolutiondemo.m](https://github.com/cpjobling/eg-247-textbook/blob/master/laplace_transform/matlab/convolution_demo/convolutiondemo.m) (see [license.txt](https://github.com/cpjobling/eg-247-textbook/blob/master/laplace_transform/matlab/convolution_demo/license.txt)).
 
-```{code-cell}
+```{code-cell} matlab
 :tags: [remove-output]
 
 clear all
+cd ../matlab/convolution_demo
+imatlab_export_fig('print-svg')  % Static svg figures.
 cd ../matlab/convolution_demo
 pwd
 format compact
 ```
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
@@ -472,7 +474,7 @@ e^{ - t}\left( {e - 1} \right):\;1 < t \lt \infty
 
 #### Check with MATLAB
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: fragment
@@ -482,7 +484,7 @@ syms t tau
 x1=int(exp(-tau),tau,0,t)
 ```
 
-```{code-cell}
+```{code-cell} matlab
 ---
 slideshow:
   slide_type: fragment

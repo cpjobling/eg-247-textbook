@@ -1,21 +1,42 @@
 
-
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tutorial: Basic Matlab Functions for Representing Signals &#8212; EG-247 Signals and Systems</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
-    <link href="../../_static/css/index.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/sphinx-book-theme.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
@@ -23,20 +44,25 @@
     <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/mystnb.js"></script>
-    <script src="../../_static/sphinx-book-theme.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/labs/lab06/tutorial.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Lab 7: Filters" href="../lab07/index.html" />
     <link rel="prev" title="Lab 6: Audio Signals and Sampling" href="index.html" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="docsearch:language" content="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
 
 
 <!-- Opengraph tags -->
@@ -46,7 +72,7 @@
 <meta property="og:description" content="Tutorial: Basic Matlab Functions for Representing Signals  In this tutorial, you will learn how to use several MATLAB functions that are frequently used to cons" />
 
 
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary" />
 
 
   </head>
@@ -65,51 +91,172 @@
   <h1 class="site-logo" id="site-title">EG-247 Signals and Systems</h1>
   
 </a>
-</div>
-
-<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form>
-
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <ul class="nav sidenav_l1">
+    <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../../introduction/index.html">
    Introducing Signals and Systems
   </a>
  </li>
 </ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Online notes
+ </span>
+</p>
 <ul class="nav sidenav_l1">
- <li class="toctree-l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../../elementary_signals/index.html">
    Elementary Signals
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/hw1.html">
+     Homework 1
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../../laplace_transform/index.html">
    Laplace Transforms and their Applications
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/1/laplace.html">
+     The Laplace Transformation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/2/inverse_laplace.html">
+     The Inverse Laplace Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/3/circuit_analysis.html">
+     Transfer Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/4/transfer_functions.html">
+     Using Laplace Transforms for Circuit Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/5/convolution.html">
+     The Impulse Response and Convolution
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../../fourier_series/index.html">
    Fourier Series
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_series/1/trig_fseries.html">
+     Trigonometric Fourier Series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_series/2/exp_fs1.html">
+     Exponential Fourier Series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_series/3/exp_fs2.html">
+     Line Spectra and their Applications
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../../fourier_transform/index.html">
    Fourier Transform
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_transform/1/ft1.html">
+     Defining the Fourier Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_transform/2/ft2.html">
+     Fourier transforms of commonly occuring signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_transform/3/ft3.html">
+     Fourier Transforms for Circuit and LTI Systems Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_transform/4/ft4.html">
+     Introduction to Filters
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../../dt_systems/index.html">
    Sampled Data Systems
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../dt_systems/1/sampling.html">
+     Sampling Theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../dt_systems/2/z_transform.html">
+     The Z-Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../dt_systems/3/i_z_transform.html">
+     The Inverse Z-Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../dt_systems/4/dt_models.html">
+     Models of Discrete Time Systems
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../../dft/index.html">
    Discrete Fourier Transform
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../dft/1/dft.html">
+     The Discrete Fourier Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../dft/2/fft.html">
+     The Fast-Fourier Transform
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../../zbib.html">
@@ -117,7 +264,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption collapsible-parent">
  <span class="caption-text">
   FAQs
  </span>
@@ -129,41 +276,194 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption collapsible-parent">
  <span class="caption-text">
   In Class Worksheets
  </span>
 </p>
 <ul class="nav sidenav_l1">
- <li class="toctree-l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../../worksheets/index.html">
    Worksheets
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../introduction/worksheet1.html">
+     Worksheet 1 Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../introduction/worksheet2.html">
+     Worksheet 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../elementary_signals/worksheet3.html">
+     Worksheet 3 Elementary Signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/1/worksheet4.html">
+     Worksheet 4 Laplace Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/2/worksheet5.html">
+     Worksheet 5 Inverse Laplace Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/3/worksheet6.html">
+     Worksheet 6 Using Laplace Transforms for Circuit Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/4/worksheet7.html">
+     Worksheet 7 Transfer Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../laplace_transform/5/worksheet8.html">
+     Worksheet 8 Impulse Response and Time Convolution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_series/1/worksheet9.html">
+     Worksheet 9 Trigonometric Fourier Series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_series/2/worksheet10.html">
+     Worksheet 10 Exponential Fourier Series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_series/3/worksheet11.html">
+     Worksheet 11 Line Spectra and their Applications
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_transform/1/worksheet12.html">
+     Worksheet 12 Defining the Fourier Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_transform/2/worksheet13.html">
+     Worksheet 13 Fourier transforms of commonly occuring signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_transform/3/worksheet14.html">
+     Worksheet 14 Fourier Transforms for Circuit and LTI Systems Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../fourier_transform/4/worksheet15.html">
+     Worksheet 15 Introduction to Filters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../dt_systems/3/worksheet16.html">
+     Worksheet 16 The Inverse Z-Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../dt_systems/4/worksheet17.html">
+     Worksheet 17 Models of DT Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../dft/1/worksheet18.html">
+     Worksheet 18 The Discrete-time Fourier Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../dft/2/worksheet19.html">
+     Worksheet 19 The Fast Fourier Transform
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
 </ul>
-<p class="caption">
+<p class="caption collapsible-parent">
  <span class="caption-text">
-  Homework
+  Homework problems
  </span>
 </p>
 <ul class="nav sidenav_l1">
- <li class="toctree-l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../../homework/index.html">
    Homework
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/hw1.html">
+     Homework 1 Elementary Signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/hw2.html">
+     Homework 2 Laplace and Inverse Laplace Transforms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/hw3.html">
+     Homework 3 Laplace Transforms for Ciruit Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/hw4.html">
+     Homework 4 Impulse Response and Convolution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/hw5.html">
+     Homework 5 Fourier Series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/hw6.html">
+     Homework 6
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/hw7.html">
+     Homework 7 Applications of the Fourier Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/hw8.html">
+     Homework 8 Sampling Theory and the Z-Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/hw9.html">
+     Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/hw10.html">
+     Homework 10 Discrete Fourier Transform and the Fast-Fourier Transform
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
 </ul>
-<p class="caption">
+<p class="caption collapsible-parent">
  <span class="caption-text">
   Lab Exercises
  </span>
 </p>
 <ul class="current nav sidenav_l1">
- <li class="toctree-l1 current active">
+ <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="../index.html">
    Laboratory Exercises
   </a>
-  <ul class="current">
+  <ul class="current collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="../tutorial/matlab-tutorial.html">
      MATLAB Tutorial
@@ -215,9 +515,11 @@
     </a>
    </li>
   </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
 </ul>
-<p class="caption">
+<p class="caption collapsible-parent">
  <span class="caption-text">
   Project
  </span>
@@ -229,19 +531,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Answers to Selected Problems
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../introduction/answers.html">
-   Worksheet 2
-  </a>
- </li>
-</ul>
-<p class="caption">
+<p class="caption collapsible-parent">
  <span class="caption-text">
   Appendices
  </span>
@@ -277,16 +567,48 @@
    List of Planned Enhancements
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../../setup/index.html">
    Setting up your own version of this book
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../setup/jupyter.html">
+     About Jupyter notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../setup/python.html">
+     Installing Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../setup/setup.html">
+     Setting up your Own Jupyter-MATLAB Computing Environment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../setup/matlab_kernel.html">
+     Testing the Jupyter Matlab Kernel
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../setup/advanced-setup.html">
+     Quick Start - For Experienced Users
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../setup/jupyter-book.html">
+     Setting up jupyter-book
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
 </ul>
 
-</nav>
-
- <!-- To handle the deprecated key -->
+</nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
   Powered by 
@@ -319,11 +641,11 @@
             <i class="fas fa-arrow-up"></i>
         </button>
         
-        <div class="dropdown-buttons-trigger">
+        
+<div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
 
-    
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
         
@@ -335,8 +657,8 @@
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
-    
 </div>
+
         <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
@@ -360,17 +682,36 @@
 
         <!-- Full screen (wrap in <a> to have style consistency -->
         <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
                     class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cpjobling/eg-247-textbook/master?urlpath=tree/labs/lab06/tutorial.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
 
     </div>
 
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
+        
         <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> On this page
+            <i class="fas fa-list"></i> Contents
         </div>
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
@@ -417,6 +758,7 @@
 </ul>
 
         </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -446,8 +788,8 @@ signal index. For example, to represent the discrete-time (DT) signal:</p>
 <p>You could first use the colon operator to define the index vector for the non-zero samples of <code class="docutils literal notranslate"><span class="pre">x[n]</span></code>, and then define the vector <code class="docutils literal notranslate"><span class="pre">x</span></code> containing the values of the signal at each of these time indices:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:</span><span class="mi">3</span><span class="p">];</span>
-<span class="n">x</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="p">;</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:</span><span class="mi">3</span><span class="p">];</span>
+<span class="n">x</span> <span class="p">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
@@ -456,16 +798,7 @@ signal index. For example, to represent the discrete-time (DT) signal:</p>
 <p>To see the result, just type the variable name:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">n</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
-n =
-
-    -3    -2    -1     0     1     2     3
-
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">n</span>
 </pre></div>
 </div>
 </div>
@@ -473,8 +806,8 @@ n =
 <p>You can plot this signal by typing <code class="docutils literal notranslate"><span class="pre">stem(n,x)</span></code>. If you want to examine the signal over a wider range of indices, you will need to extend both <code class="docutils literal notranslate"><span class="pre">n</span></code> and <code class="docutils literal notranslate"><span class="pre">x</span></code>. For instance, if you want to plot the signal over <span class="math notranslate nohighlight">\(5\le n \le 5\)</span>, you can extend the index vector <code class="docutils literal notranslate"><span class="pre">n</span></code>, then add additional elements to <code class="docutils literal notranslate"><span class="pre">x</span></code> for these new samples:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span><span class="mi">5</span><span class="p">];</span>
-<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span> <span class="n">x</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">];</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span><span class="mi">5</span><span class="p">];</span>
+<span class="n">x</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span> <span class="n">x</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">];</span>
 </pre></div>
 </div>
 </div>
@@ -482,8 +815,8 @@ n =
 <p>If you want to greatly extend the range of the signal, you may find it helpful to use the function <code class="docutils literal notranslate"><span class="pre">zeros</span></code>. For instance, if you wanted to include the region <span class="math notranslate nohighlight">\(-100 \le n \le 100\)</span>, after you had already extended <code class="docutils literal notranslate"><span class="pre">x</span></code> to include <span class="math notranslate nohighlight">\(-5 \le n \le 5\)</span> as shown above, you could type:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">:</span><span class="mi">100</span><span class="p">];</span>
-<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">95</span><span class="p">),</span> <span class="n">x</span><span class="p">,</span> <span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">95</span><span class="p">)];</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">:</span><span class="mi">100</span><span class="p">];</span>
+<span class="n">x</span> <span class="p">=</span> <span class="p">[</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">95</span><span class="p">),</span> <span class="n">x</span><span class="p">,</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">95</span><span class="p">)];</span>
 </pre></div>
 </div>
 </div>
@@ -491,16 +824,16 @@ n =
 <p>Suppose you want to define <span class="math notranslate nohighlight">\(x_1[n]\)</span> to be the discrete-tiem unit impulse function and <span class="math notranslate nohighlight">\(x_2[n]\)</span> to be a time advanced version of <span class="math notranslate nohighlight">\(x_1[n]\)</span>, i.e. <span class="math notranslate nohighlight">\(x_1[n] = \delta[n]\)</span> and <span class="math notranslate nohighlight">\(x_2[n]=\delta[n+2]\)</span>. You could represent these signals in MATLAB by typing</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nx1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">];</span>
-<span class="n">x1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)];</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">nx1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">];</span>
+<span class="n">x1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)];</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nx2</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span><span class="mi">5</span><span class="p">];</span>
-<span class="n">x2</span> <span class="o">=</span> <span class="p">[</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="mi">1</span> <span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">)];</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">nx2</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span><span class="mi">5</span><span class="p">];</span>
+<span class="n">x2</span> <span class="p">=</span> <span class="p">[</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="mi">1</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">)];</span>
 </pre></div>
 </div>
 </div>
@@ -516,12 +849,12 @@ n =
 <p>Sinusoids and complex exponentials are important signals in the study of linear systems. MATLAB provides several functions that are useful for defining such signals, especially if you have already defined either a discrete-time or continuous-time index vector. For instance, if you wanted to form a vector to represent <span class="math notranslate nohighlight">\(x(t) = \sin(\pi t/4)\)</span> for <span class="math notranslate nohighlight">\(-5 \le t \le 5\)</span>, you could use the vector <code class="docutils literal notranslate"><span class="pre">t</span></code> defined in the previous paragraph and type <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">sin(pi*t/4)</span></code>. Note that when the argument to <code class="docutils literal notranslate"><span class="pre">sin</span></code> (or many other MATLAB functions such as <code class="docutils literal notranslate"><span class="pre">cos</span></code> or <code class="docutils literal notranslate"><span class="pre">exp</span></code>) is a vector, the function returns a vector of the same size where each element of the output vector is the function applied to the corresponding element of the imput vector.</p>
 <p>You can use the <code class="docutils literal notranslate"><span class="pre">plot</span></code> command to plot your approximation to the continuous-time function <span class="math notranslate nohighlight">\(x(t)\)</span>. Unlike <code class="docutils literal notranslate"><span class="pre">stem</span></code>, <code class="docutils literal notranslate"><span class="pre">plot</span></code> connects adjacent elements with a straight line, so that when the time index is finely sampled, the straight lines are a close approximation to the plot of the original continuous-time signal. For this example you can generate such a plot by typing <code class="docutils literal notranslate"><span class="pre">plot(t,x)</span></code>. In general, you will want to use <code class="docutils literal notranslate"><span class="pre">stem</span></code> to plot short discrete-time sequemnces, and <code class="docutils literal notranslate"><span class="pre">plot</span></code> for sampled approximations of continuous-time signals or for very long discrete-time signals where the number of stems grows unwieldy.</p>
 <p>Discrete-time sinusoids and complex exponentials can also be generated using <code class="docutils literal notranslate"><span class="pre">cos</span></code>, <code class="docutils literal notranslate"><span class="pre">sin</span></code> and <code class="docutils literal notranslate"><span class="pre">exp</span></code>. For example, to respresent the discrete-time signal
-<span class="math notranslate nohighlight">\($x[n]=e^{j(\pi/8)n}\)</span>$
-for <span class="math notranslate nohighlight">\(0\le n \le 32\)</span> you would type:</p>
+$<span class="math notranslate nohighlight">\(x[n]=e^{j(\pi/8)n}\)</span><span class="math notranslate nohighlight">\(
+for \)</span>0\le n \le 32$ you would type:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">32</span><span class="p">];</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">j</span><span class="o">*</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span><span class="o">*</span><span class="n">n</span><span class="p">);</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">32</span><span class="p">];</span>
+<span class="n">x</span> <span class="p">=</span> <span class="nb">exp</span><span class="p">(</span><span class="nb">j</span><span class="o">*</span><span class="p">(</span><span class="nb">pi</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span><span class="o">*</span><span class="n">n</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -529,42 +862,30 @@ for <span class="math notranslate nohighlight">\(0\le n \le 32\)</span> you woul
 <p>The vector <code class="docutils literal notranslate"><span class="pre">x</span></code> now contains the complex values of the signal <span class="math notranslate nohighlight">\(x[n]\)</span> over the interval <span class="math notranslate nohighlight">\(0\le n \le 32\)</span>. To plot complex signals, you can plot either the real and imaginary parts, or magnitude and angle, separately.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stem</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">real</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">stem</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="nb">real</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/tutorial_14_0.png" src="../../_images/tutorial_14_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stem</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">imag</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">stem</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="nb">imag</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/tutorial_15_0.png" src="../../_images/tutorial_15_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stem</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">stem</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/tutorial_16_0.png" src="../../_images/tutorial_16_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stem</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">angle</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">stem</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="nb">angle</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/tutorial_17_0.png" src="../../_images/tutorial_17_0.png" />
 </div>
 </div>
 <p>For the last example, note that value returned by <code class="docutils literal notranslate"><span class="pre">angle</span></code> is the phase of the complex number in radians.To convert to degrees, type <code class="docutils literal notranslate"><span class="pre">stem(n,angle(x)*(180/pi))</span></code>.</p>
@@ -574,14 +895,14 @@ for <span class="math notranslate nohighlight">\(0\le n \le 32\)</span> you woul
 <p>MATLAB also alows you to add, subtract, multiply and divide, scale and exponentiate signals. As lomg as the vectors representing the signals have the same time-origins and the same number of elements. E.g.,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="n">sin</span><span class="p">((</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">15</span><span class="p">]);</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">((</span><span class="nb">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">15</span><span class="p">]);</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x2</span> <span class="o">=</span> <span class="n">cos</span><span class="p">((</span><span class="n">pi</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span><span class="o">*</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">15</span><span class="p">]);</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">x2</span> <span class="p">=</span> <span class="nb">cos</span><span class="p">((</span><span class="nb">pi</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span><span class="o">*</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">15</span><span class="p">]);</span>
 </pre></div>
 </div>
 </div>
@@ -589,42 +910,42 @@ for <span class="math notranslate nohighlight">\(0\le n \le 32\)</span> you woul
 <p>you can perform the following term-by-term operations:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y1</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span><span class="p">;</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">y1</span> <span class="p">=</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y1</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">-</span> <span class="n">x2</span><span class="p">;</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">y1</span> <span class="p">=</span> <span class="n">x1</span> <span class="o">-</span> <span class="n">x2</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y1</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">.*</span> <span class="n">x2</span><span class="p">;</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">y1</span> <span class="p">=</span> <span class="n">x1</span> <span class="o">.*</span> <span class="n">x2</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y1</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">./</span> <span class="n">x2</span><span class="p">;</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">y1</span> <span class="p">=</span> <span class="n">x1</span> <span class="o">./</span> <span class="n">x2</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y1</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x1</span><span class="p">;</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">y1</span> <span class="p">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x1</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y1</span> <span class="o">=</span> <span class="n">x1</span><span class="o">.^</span><span class="mi">3</span><span class="p">;</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">y1</span> <span class="p">=</span> <span class="n">x1</span><span class="o">.^</span><span class="mi">3</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
@@ -632,16 +953,8 @@ for <span class="math notranslate nohighlight">\(0\le n \le 32\)</span> you woul
 <p>Note that for multiplying, dividing and exponentiating on a term-by-term basis you must precede the operator with a period ‘<code class="docutils literal notranslate"><span class="pre">.</span></code>’, i.e. use the <code class="docutils literal notranslate"><span class="pre">.*</span></code> operator rather than just <code class="docutils literal notranslate"><span class="pre">*</span></code> for term-by-term multiplication. MATLAB interprets the <code class="docutils literal notranslate"><span class="pre">*</span></code> operator without a period to be <em>matrix multiplication</em> operator, not term-by-term multiplication. For example if you try to multiply <code class="docutils literal notranslate"><span class="pre">x1</span></code> by <code class="docutils literal notranslate"><span class="pre">x2</span></code> using <code class="docutils literal notranslate"><span class="pre">*</span></code>, you will get an error message:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span><span class="o">*</span><span class="n">x2</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span><span class="o">*</span><span class="n">x2</span>
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="stderr docutils container">
-<pre class="stderr literal-block">[0;31mError using *
-Incorrect dimensions for matrix multiplication. Check that the number of columns in the first matrix matches the number of rows in the second matrix. To perform elementwise multiplication, use '.*'.
-
-[0m</pre>
 </div>
 </div>
 </div>
@@ -653,27 +966,21 @@ Incorrect dimensions for matrix multiplication. Check that the number of columns
 <p>MATLAB also includes sveral commands to help you to label plots appropriately, as well as print them out. The <code class="docutils literal notranslate"><span class="pre">title</span></code> command places its argument over the current plot as a title. The commands <code class="docutils literal notranslate"><span class="pre">xlabel</span></code> and <code class="docutils literal notranslate"><span class="pre">ylabel</span></code> allow you to label the axes of your grapg, making kt clear what has been plotted. Every graph you generate should have a title, as well as labels for both axes. For example, consider again a plot of the follwoing signal and index vector:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">32</span><span class="p">];</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">j</span><span class="o">*</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span><span class="o">*</span><span class="n">n</span><span class="p">);</span>
-<span class="n">stem</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">angle</span><span class="p">(</span><span class="n">x</span><span class="p">));</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">32</span><span class="p">];</span>
+<span class="n">x</span> <span class="p">=</span> <span class="nb">exp</span><span class="p">(</span><span class="nb">j</span><span class="o">*</span><span class="p">(</span><span class="nb">pi</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span><span class="o">*</span><span class="n">n</span><span class="p">);</span>
+<span class="n">stem</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="nb">angle</span><span class="p">(</span><span class="n">x</span><span class="p">));</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/tutorial_31_0.png" src="../../_images/tutorial_31_0.png" />
 </div>
 </div>
 <p>You could label your graph by typing</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Phase of exp(j*(pi/8)*n)&#39;</span><span class="p">)</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;n (samples)&#39;</span><span class="p">)</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Phase of x[n] (radians)&#39;</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Phase of exp(j*(pi/8)*n)&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;n (samples)&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Phase of x[n] (radians)&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/tutorial_33_0.png" src="../../_images/tutorial_33_0.png" />
 </div>
 </div>
 </div>
@@ -683,37 +990,31 @@ Incorrect dimensions for matrix multiplication. Check that the number of columns
 <p>For example, suppose you had the following script <code class="docutils literal notranslate"><span class="pre">prob1.m</span></code> (see the resources <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/labs/lab06/prob1.m">prob1.m</a>) to plot the discrete time signal <span class="math notranslate nohighlight">\(x_1[n] = \cos(\pi n/4)\)</span> and compute its mean over the interval <span class="math notranslate nohighlight">\(0 \le n \le 16\)</span>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">prob1</span><span class="o">.</span><span class="n">m</span>
-<span class="n">n</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">16</span><span class="p">];</span>
-<span class="n">x1</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">pi</span><span class="o">*</span><span class="n">n</span><span class="o">/</span><span class="mi">4</span><span class="p">);</span>
-<span class="n">y1</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">x1</span><span class="p">);</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% prob1.m</span>
+<span class="n">n</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">16</span><span class="p">];</span>
+<span class="n">x1</span> <span class="p">=</span> <span class="nb">cos</span><span class="p">(</span><span class="nb">pi</span><span class="o">*</span><span class="n">n</span><span class="o">/</span><span class="mi">4</span><span class="p">);</span>
+<span class="n">y1</span> <span class="p">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">x1</span><span class="p">);</span>
 <span class="n">stem</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">x1</span><span class="p">)</span>
-<span class="n">title</span><span class="p">(</span><span class="s1">&#39;x1 = cos(pi/4*n)&#39;</span><span class="p">)</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;n (samples)&#39;</span><span class="p">)</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x1[n]&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;x1 = cos(pi/4*n)&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;n (samples)&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;x1[n]&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/tutorial_35_0.png" src="../../_images/tutorial_35_0.png" />
 </div>
 </div>
 <p>If you then wanted to do the same for <span class="math notranslate nohighlight">\(x_2[n]=sin(\pi n/4)\)</span>, you could copy <code class="docutils literal notranslate"><span class="pre">prob1.m</span></code> to <code class="docutils literal notranslate"><span class="pre">prob2.m</span></code>, then edit slightly to get:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">prob2</span><span class="o">.</span><span class="n">m</span>
-<span class="n">n</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">16</span><span class="p">];</span>
-<span class="n">x2</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">*</span><span class="n">n</span><span class="o">/</span><span class="mi">4</span><span class="p">);</span>
-<span class="n">y2</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">x2</span><span class="p">);</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% prob2.m</span>
+<span class="n">n</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">16</span><span class="p">];</span>
+<span class="n">x2</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="nb">pi</span><span class="o">*</span><span class="n">n</span><span class="o">/</span><span class="mi">4</span><span class="p">);</span>
+<span class="n">y2</span> <span class="p">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">x2</span><span class="p">);</span>
 <span class="n">stem</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">x2</span><span class="p">)</span>
-<span class="n">title</span><span class="p">(</span><span class="s1">&#39;x2 = sin(pi/4*n)&#39;</span><span class="p">)</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;n (samples)&#39;</span><span class="p">)</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x2[n]&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;x2 = sin(pi/4*n)&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;n (samples)&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;x2[n]&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/tutorial_37_0.png" src="../../_images/tutorial_37_0.png" />
 </div>
 </div>
 <p>You can then type <code class="docutils literal notranslate"><span class="pre">prob2</span></code> to run these commands and generate the desired plot and compute the average value of the new signal. Instead of retyping all 7 lines, you only had to edit about a dozen characters. We strongly encourage you to use scripts in working through these laboratories, with a separate script for each exercise, even each part of an exercise. Scripts also make debugging your work easier, as you can fix one mistake and re-run the modified sequence of commands. To encourage you to use scripts, we will ask you to attach your solutions to each lab exercise to the lab portfolio as scripts. You must do this in order to claim your marks.</p>
@@ -733,46 +1034,14 @@ Incorrect dimensions for matrix multiplication. Check that the number of columns
 <p>Two sample calls to <code class="docutils literal notranslate"><span class="pre">foo</span></code> are shown below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">]</span> <span class="o">=</span> <span class="n">foo</span><span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
-y =
-
-   -80
-
-</pre></div>
-</div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
-z =
-
-   -40
-
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">]</span> <span class="p">=</span> <span class="n">foo</span><span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">]</span> <span class="o">=</span> <span class="n">foo</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
-y =
-
-   424
-
-</pre></div>
-</div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
-z =
-
-   100
-
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">]</span> <span class="p">=</span> <span class="n">foo</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -784,6 +1053,25 @@ z =
 </div>
 </div>
 
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "matlab"
+        },
+        kernelOptions: {
+            kernelName: "matlab",
+            path: "./labs/lab06"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'matlab'</script>
 
               </div>
               
@@ -824,7 +1112,10 @@ for
       </div>
     </div>
 
-    <script src="../../_static/js/index.js"></script>
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
     
   </body>
 </html>
