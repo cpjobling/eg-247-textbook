@@ -34,11 +34,7 @@ imatlab_export_fig('print-svg')  % Static svg figures.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-## Hour 2 Quiz
-
-+++ {"slideshow": {"slide_type": "skip"}}
-
-**TO DO**: Move these quiz questions into Canvas pre-class quizzes
+## Quiz
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -64,7 +60,6 @@ D. Didn't prepare anything
 
 Inverse laplace transform the following
 
-**Please do confer**
 
 <table>
     <tr><td>1.</td><td>$$1$$</td><td>A.</td><td>$$e^{-at}$$</td></tr>
@@ -75,6 +70,10 @@ Inverse laplace transform the following
     <tr><td>6.</td><td>$$s$$</td><td>F.</td><td>$$\delta(t)$$</td></tr>
 </table>
 
++++ {"slideshow": {"slide_type": "fragment"}}
+
+**-> Launch Poll 2**
+
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### Question 3: Fill in the blanks
@@ -84,7 +83,7 @@ The [----] of a rational polynomial are the zeros of the numerator. The [----] o
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-**-> Launch Poll**
+**-> Launch Poll 3**
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -92,9 +91,7 @@ The [----] of a rational polynomial are the zeros of the numerator. The [----] o
 
 Is there anything in this quiz that you think we should go over in more detail in class?
 
-+++ {"slideshow": {"slide_type": "fragment"}}
-
-**-> Launch Poll 2**
+Write your answers in the chat or add to the **💬❓Questions and Discussion on the Laplace Transformation and its Applications** board in Canvas after class.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
