@@ -30,76 +30,19 @@ You are expected to have at least watched the video presentation of [Chapter 3.1
 
 After class, the lecture recording and the annotated version of this worksheet will be made available to you via OneNote and through Canvas.
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
-## Pingo
-
-We will be using a web-based audience response system called **Pingo** for in-class quizzes and informal surveys.
-
-+++ {"slideshow": {"slide_type": "subslide"}}
-
-## Setup
-
-Browse to: [pingo.coactum.de](https://pingo.coactum.de). 
-
-<img src="https://chart.googleapis.com/chart?cht=qr&chs=300x300&choe=UTF-8&chld=H&chl=https://pingo.coactum.de" alt="QR Code" />
-
-+++ {"slideshow": {"slide_type": "subslide"}}
-
-When prompted: enter the **session ID**
-
-### The Session ID for this Course
-<pre>
-
-
-
-</pre>
-<div style="font-size: 32pt; font-face: bold;">194851</div>
-<pre>
-
-
-
-</pre>
-
-+++ {"slideshow": {"slide_type": "subslide"}}
-
-### Icebreaker Questions
-
-+++ {"slideshow": {"slide_type": "fragment"}}
-
-**-> Launch Poll**
-
-+++ {"slideshow": {"slide_type": "subslide"}}
-
-### End of setup
-
-+++ {"slideshow": {"slide_type": "subslide"}}
-
-## Plan B
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-If TurningPoint doesn't work, use this Google form instead
-
-+++ {"slideshow": {"slide_type": "subslide"}}
-
-### https://goo.gl/forms/EuyH6G7za2knqt862
-
-![qr code](https://chart.googleapis.com/chart?cht=qr&chs=300x300&choe=UTF-8&chld=H&chl=https://goo.gl/forms/EuyH6G7za2knqt862)
-
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ## First hour quiz: The Laplace and inverse Laplace transforms
 
 +++ {"slideshow": {"slide_type": "skip"}}
 
-**TO DO**: Move Questions 1-5 into a Canvas pre-class quiz
+This will be a group activity. If you did the quiz in Canvas before class you will be in a good place to get these answers.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
 ### Question 1: The Laplace Transform
 
-Without conferring or looking it up, which of these integrals represents the Laplace transform?
+Without conferring or looking it up, which of these integrals represents the Laplace and Inverse laplace transforms?
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -108,66 +51,15 @@ Without conferring or looking it up, which of these integrals represents the Lap
 <tr><td>C.</td><td>$$\int_{-\infty}^{t}\,f(\tau)\,g(t-\tau)\,d\tau$$</td><td>D.</td><td>$$\int_{-j\omega}^{+j\omega}\,f(t)\,e^{-j\omega t}\,dt$$</td></tr>
 </table>
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
-**-> Launch Poll**
+Bonus: what are the other two integrals?
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Discuss: The Laplace transform
-
-**Now discuss with your neigbours**
-
-Which of these integrals represents the Laplace transform?
-
-<table>
-<tr><td>A.</td><td>$$\frac{1}{2\pi j}\int_{\sigma-j\omega}^{\sigma+j\omega}\,F(s)\,e^{st}\,ds$$</td><td>B.</td><td>$$\int_{0}^{\infty}\,f(t)\,e^{-st}\,dt$$</td></tr>
-<tr><td>C.</td><td>$$\int_{-\infty}^{t}\,f(\tau)\,g(t-\tau)\,d\tau$$</td><td>D.</td><td>$$\int_{-j\omega}^{+j\omega}\,f(t)\,e^{-j\omega t}\,dt$$</td></tr>
-</table>
-
-+++ {"slideshow": {"slide_type": "fragment"}}
-
-**-> Launch Poll**
-
-+++ {"slideshow": {"slide_type": "subslide"}}
-
-### Question 2: The inverse Laplace transform
-
-Having discussed the question, which of these integrals represents the inverse Laplace transform?
-
-<table>
-<tr><td>A.</td><td>$$\frac{1}{2\pi j}\int_{\sigma-j\omega}^{\sigma+j\omega}\,F(s)\,e^{st}\,ds$$</td><td>B.</td><td>$$\int_{0}^{\infty}\,f(t)\,e^{-st}\,dt$$</td></tr>
-<tr><td>C.</td><td>$$\int_{-\infty}^{t}\,f(\tau)\,g(t-\tau)\,d\tau$$</td><td>D.</td><td>$$\int_{-j\omega}^{+j\omega}\,f(t)\,e^{-j\omega t}\,dt$$</td></tr>
-</table>
-
-+++ {"slideshow": {"slide_type": "fragment"}}
-
-**-> Launch Poll**
-
-+++ {"slideshow": {"slide_type": "subslide"}}
-
-### Discuss: The inverse Laplace transform
-
-**Now discuss with your neigbours**
-
-Which of these integrals represents the inverse Laplace transform?
-
-<table>
-<tr><td>A.</td><td>$$\frac{1}{2\pi j}\int_{\sigma-j\omega}^{\sigma+j\omega}\,F(s)\,e^{st}\,ds$$</td><td>B.</td><td>$$\int_{0}^{\infty}\,f(t)\,e^{-st}\,dt$$</td></tr>
-<tr><td>C.</td><td>$$\int_{-\infty}^{t}\,f(\tau)\,g(t-\tau)\,d\tau$$</td><td>D.</td><td>$$\int_{-j\omega}^{+j\omega}\,f(t)\,e^{-j\omega t}\,dt$$</td></tr>
-</table>
-
-+++ {"slideshow": {"slide_type": "fragment"}}
-
-#### -> Launch Poll
-
-+++ {"slideshow": {"slide_type": "subslide"}}
-
-### Question 3: Laplace transforms
+### Question 2: Laplace transforms
 
 Match the transform to the time-domain operator
-
-**Please confer**
 
 <table>
     <tr><td>1.</td><td>$$\int_{-\infty}^{t}\,f(\tau)\,d\tau$$</td><td>A.</td><td>$$\frac{F(s)}{s}+\frac{f(0^-)}{s}$$</td></tr>
@@ -179,11 +71,9 @@ Match the transform to the time-domain operator
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Question 4: Properties of Laplace transforms
+### Question 3: Properties of Laplace transforms
 
 Match each of these mathematical properties to the associated Laplace transform property.
-
-**You should confer**
 
 <table>
     <tr><td>1.</td><td>Linearity</td><td>A.</td><td>$$f(t - a)\,u_0(t - a) \Leftrightarrow e^{-as} F(s)$$</td></tr>
@@ -194,7 +84,7 @@ Match each of these mathematical properties to the associated Laplace transform 
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Question 5: Name that property
+### Question 4: Name that property
 
 What property is this? 
 
@@ -210,17 +100,11 @@ D. Differentiation in the time domain
 
 E. Integration in the time domain
 
-+++ {"slideshow": {"slide_type": "fragment"}}
-
-**-> Launch Poll**
-
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Question 6: Elementary signals
+### Question 5: Elementary signals
 
-Match the elementary signal to it's Laplace transform
-
-**You may confer**
+Match the elementary signal to its Laplace transform
 
 <table>
     <tr><td>1.</td><td>Dirac delta (unit impulse)</td><td>$$\delta(t)$$</td><td>A.</td><td>$$e^{-as}$$</td></tr>
@@ -238,9 +122,7 @@ Match the elementary signal to it's Laplace transform
 
 Is there anything in this quiz that you think we should go over in more detail in class?
 
-+++ {"slideshow": {"slide_type": "fragment"}}
-
-**-> Launch Poll**
+Write your answers in the chat or add to the **💬❓Questions and Discussion on the Laplace Transformation and its Applications** board in Canvas after class.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
