@@ -32,7 +32,7 @@ An annotatable copy of the notes for this presentation is available as [**Worksh
 
 ## Signals and Systems for Dummies
 
-Signals and Systems for Dummies (**SS4D**) {cite}`ss4d` provides a useful introduction to the topics that will be covered in this module and it is in the [Reading List](https://eu.alma.exlibrisgroup.com/leganto/login;jsessionid=c8c0bb26a7e72f4b7d298c523025102f.app03.eu00.prod.alma.dc03.hosted.exlibrisgroup.com:1801) as a *recommended text*. I have based this presentation on Chapter 1 which is available as a [downloadable PDF](https://www.dummies.com/store/product/Signals-and-Systems-For-Dummies.productCd-111847581X.html) from the publishers.
+Signals and Systems for Dummies (**SS4D**) {cite}`ss4d` provides a useful introduction to the topics that will be covered in this module and it is in the [Reading List](https://eu.alma.exlibrisgroup.com/leganto/readinglist/searchlists/27328240030002417) as a *recommended text*. I have based this presentation on Chapter 1 which is available as a [downloadable PDF](https://www.dummies.com/store/product/Signals-and-Systems-For-Dummies.productCd-111847581X.html) from the publishers.
 
 You should read Chapter 1 of SS4D in conjunction with the notes for this presentation.
 
@@ -550,7 +550,7 @@ slideshow:
 edit two_sines
 ```
 
-Run 
+Run
 
 ```{code-cell} matlab
 two_sines
