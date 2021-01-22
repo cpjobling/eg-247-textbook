@@ -29,7 +29,7 @@ The preparatory reading for this section is [Chapter 1](https://ebookcentral.pro
 
 An annotatable worksheet for this presentation is available as [**Worksheet 3**](/elementary_signals/worksheet3).
 
-* The source code for this page is [elementary_signals/index.ipynb](https://github.com/cpjobling/eg-247-textbook/blob/master/elementary_signals/index.ipynb).
+* The source code for this page is [elementary_signals/index.md](https://github.com/cpjobling/eg-247-textbook/blob/master/elementary_signals/index.md).
 
 * You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/elementary_signals/index.html)). 
 
@@ -94,7 +94,7 @@ heaviside(0)
 ```{code-cell} matlab
 ---
 slideshow:
-  slide_type: '-'
+  slide_type: skip
 ---
 imatlab_export_fig('print-svg')  % Static svg figures.
 ```
