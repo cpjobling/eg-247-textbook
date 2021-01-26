@@ -66,7 +66,7 @@ Q1: What happens **before** $t=0$?
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-**-> Open Poll**
+**-> Open Poll: 1.2.1**
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -80,7 +80,7 @@ Q2: What happens **after** $t=0$?
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-**-> Open Poll**
+**-> Open Poll: 1.2.2**
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -94,7 +94,7 @@ Q3: What happens **at** $t=0$?
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-**-> Open Poll**
+**-> Open Poll: 1.2.3**
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -109,7 +109,7 @@ Circle the picture you think is correct on your handout.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-**-> Open Poll**
+**-> Open Poll: 1.2.4**
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -126,7 +126,7 @@ $${u_0}(t) = \left\{ {\begin{array}{*{20}{c}}
 
 ### In Matlab
 
-In Matlab, we use the `heaviside` function (Named after [Oliver Heaviside](https://en.wikipedia.org/wiki/Oliver_Heaviside)). 
+In Matlab, we use the `heaviside` function (Named after [Oliver Heaviside](https://en.wikipedia.org/wiki/Oliver_Heaviside)).
 
 ```{code-cell} matlab
 ---
@@ -277,7 +277,7 @@ Which of these signals represents $-Au_0(t+T)$?
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-**-> Open Poll**
+**-> Open Poll: 1.2.5**
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -296,7 +296,7 @@ What is represented by
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-**-> Open Poll**
+**-> Open Poll: 1.2.6**
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -398,7 +398,7 @@ Unit step functions can be used to represent other time-varying functions such a
 
 <img src="pictures/rc.png">
 
-In the circuit shown above $i_s$ is a constant current source and the switch is closed at time $t=0$. 
+In the circuit shown above $i_s$ is a constant current source and the switch is closed at time $t=0$.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -559,7 +559,7 @@ $$3t^4\delta(t-1) $$
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-$$\int_{-\infty}^{\infty}t\delta(t-2)dt$$ 
+$$\int_{-\infty}^{\infty}t\delta(t-2)dt$$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -581,7 +581,7 @@ $$\int_{-\infty}^{\infty}t\delta(t-2)dt$$
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-$$t^2\delta'(t-3)$$ 
+$$t^2\delta'(t-3)$$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
