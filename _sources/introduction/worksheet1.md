@@ -78,6 +78,22 @@ The notes contain all the results of these code examples
 
 Any notes that I would need to make on  a WhiteBoard will be done on my copy of this worksheet in the OneNote content collection - which means you have it as soon as the network syncs your copy
 
++++ {"slideshow": {"slide_type": "skip"}}
+
+## Setup MATLAB
+
+```{code-cell} matlab
+---
+slideshow:
+  slide_type: skip
+tags: [remove-output]
+---
+%Make sure that we have a clean workspace
+clear all
+format compact
+imatlab_export_fig('print-svg')
+```
+
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ## Pingo
@@ -177,18 +193,6 @@ The lecturer will change the numbers in class. Note what happens and try to gain
 
 In MATLAB we would need to tackle this by breaking down the steps.
 
-```{code-cell} matlab
----
-slideshow:
-  slide_type: subslide
-tags: [remove-output]
----
-%Make sure that we have a clean workspace
-clear all
-format compact
-imatlab_export_fig('print-svg')
-```
-
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 Define `t`
@@ -232,6 +236,10 @@ ylabel('Amplitude')
 grid
 ```
 
+```{code-cell} matlab
+edit sinewave
+```
+
 +++ {"slideshow": {"slide_type": "notes"}}
 
 If you want to execute this in MATLAB, you can create a file by copying this text into an `m-file`:
@@ -252,10 +260,6 @@ title('A Sinusoidal Signal')
 xlabel('Time t (s)')
 ylabel('Amplitude')
 grid
-```
-
-```{code-cell} matlab
-edit sinewave
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}
