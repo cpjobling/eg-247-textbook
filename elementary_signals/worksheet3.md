@@ -56,7 +56,7 @@ Express the output voltage $V_{\mathrm{out}}$ as a function of the unit step fun
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-Q1: What happens **before** $t=0$?
+Q1: What happens **before** $t=T$?
 
 1. $v_{\mathrm{out}} = \mathrm{undefined}$
 2. $v_{\mathrm{out}} = 0$
@@ -70,7 +70,7 @@ Q1: What happens **before** $t=0$?
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-Q2: What happens **after** $t=0$?
+Q2: What happens **after** $t=T$?
 
 1. $v_{\mathrm{out}} = \mathrm{undefined}$
 2. $v_{\mathrm{out}} = 0$
@@ -84,7 +84,7 @@ Q2: What happens **after** $t=0$?
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-Q3: What happens **at** $t=0$?
+Q3: What happens **at** $t=T$?
 
 1. $v_{\mathrm{out}} = \mathrm{undefined}$
 2. $v_{\mathrm{out}} = 0$
