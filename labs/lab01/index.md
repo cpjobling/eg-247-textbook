@@ -99,7 +99,7 @@ For Lab Exercise 2 you are required to complete parts 3 to 5 of the provided scr
 
 Work through the procedures given between [pages 1-18 and 1-19](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?ppg=34&docID=3384197&tm=1518436444996) of Karris{cite}`karris` to construct the piecewise signal generator first shown in [Figure 1.21](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?ppg=31&docID=3384197&tm=1518436492450) inside Simulink. 
 
-![Signal Synthesis Example](fig21.PNG)
+![Signal Synthesis Example](fig21.png)
 
 *Signal to be synthesised (Reproduction of Fig 1.21 of Karris)*
 
