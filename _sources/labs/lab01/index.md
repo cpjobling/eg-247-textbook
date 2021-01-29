@@ -1,19 +1,20 @@
 ---
-jupyter:
-  jupytext:
-    text_representation:
-      extension: .md
-      format_name: markdown
-      format_version: '1.2'
-      jupytext_version: 1.9.1
-  kernelspec:
-    display_name: MATLAB
-    language: matlab
-    name: imatlab
+jupytext:
+  formats: ipynb,md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.12
+    jupytext_version: 1.9.1
+kernelspec:
+  display_name: MATLAB
+  language: matlab
+  name: imatlab
 ---
 
 # Lab 01: Elementary Signals
 
++++
 
 ## Keeping Lab Records
 
@@ -23,6 +24,7 @@ One elegant way to do this would be to fork this GitHub repository ([cpjobling/e
 
 If you do not use GitHub as the master repository of your portfolio, please ensure that you backup your work files regularly. You will be required to submit some or all of them for assessment.
 
++++
 
 ## Preamble to this Lab
 
@@ -38,6 +40,7 @@ This document is available in [HTML](https://cpjobling.github.io/eg-247-textbook
 
 These examples have been adapted from [Chapter 1](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197#ppg=17) of Karris{cite}`karris`.
 
++++
 
 ## Aims
 
@@ -51,13 +54,15 @@ This will introduce the symbolic toolbox and the `heaviside`, `delta` and `ezplo
 
 We will also demonstrate the Live Script feature provided by MATLAB that will be useful for recording lab results for this module.
 
++++
 
 ## Assessment criteria
 
 Up to three marks can be claimed according to how many of parts 1-5 in the lab exercises have been completed. The mini project is worth an additional two marks. There are an additional 5 marks available for participating in the peer assessment. 
 
-Detailed marking criteria for this and the other labs and the project are given in the linked [Assessment Criteria](https://docs.google.com/spreadsheets/d/1EQzwSfGMdw8oiQds4bUR8sZTCgb2lMvcJHjmea-8hW4/edit?usp=sharing) [Google sheet].
+Detailed marking criteria for this and the other labs and the project are given in the linked [Assessment Criteria](https://docs.google.com/spreadsheets/d/1HsyBZp4h71DuIj2ris1nP52JdWaWiaT6UsOwQKGnwzI/edit?usp=sharing) [Google sheet].
 
++++
 
 ## Set up
 
@@ -77,11 +82,13 @@ OneDrive\workspace
 
 Use folder `OneDrive\workspace\signals-and-systems-lab\lab01` for this lab.
 
++++
 
 ### Download starter script
 
 Right click to save the file [elem_sigs.mlx](https://cpjobling.github.io/eg-247-textbook/labs/lab01/elem_sigs.mlx) to your ``lab01`` folder. Open the file from the file browser in MATLAB.
 
++++
 
 ## Lab Exercises
 
@@ -89,11 +96,13 @@ Right click to save the file [elem_sigs.mlx](https://cpjobling.github.io/eg-247-
 
 For Lab Exercise 1 you are required to complete parts 1 to 2 of the provided script (1 mark).
 
++++
 
 ### Lab Exercise 1.2
 
 For Lab Exercise 2 you are required to complete parts 3 to 5 of the provided script (2 marks).
 
++++
 
 ### Mini Project 1
 
@@ -109,7 +118,8 @@ Connect the signal up a derivative block and scope as shown in Figure 1.24 and s
 
 (2 marks)
 
-<!-- #region -->
++++
+
 ## What to Hand In
 
 
@@ -135,8 +145,9 @@ The Deadline for claims and submission is: 
 
 ### Important
 
-To avoid errors in verification, particularly with Simulink, you should check that your script and simulations work on the version of MATLAB that is installed in the shared desktop (Version 2018a when I last checked). If you have installed a more recent version of MATLAB, ensure that you save your Simulink model using the older version (use **File** > **Export Model to** > **Previous Version**).
-<!-- #endregion -->
+To avoid errors in verification, particularly with Simulink, you should check that your script and simulations work on the version of MATLAB that is installed in the shared desktop (Version 2019a when I last checked). If you have installed a more recent version of MATLAB, or are using MATLAB online, you should note the version of MATLAB that you ahve used in the the submission comment. You can also save your Simulink model using the older version (use **File** > **Export Model to** > **Previous Version**).
+
++++
 
 ## Peer assessment procedure for this lab
 
@@ -152,6 +163,7 @@ This is the procedure you should follow:
 
 4. Open and run the Simulink model `signal.slx` and confirm that the results match the figure given above. 
 
++++
 
 ## Doing More
 
