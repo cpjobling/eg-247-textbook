@@ -678,7 +678,7 @@ pretty(y10)
 For convenience, single script MATLAB solutions to the examples are provided and can be downloaded from the accompanying [MATLAB](https://github.com/cpjobling/eg-247-textbook/tree/master/laplace_transform/matlab) folder in the [GitHub repository](https://github.com/cpjobling/eg-247-textbook).
 
 * Solution 3 [[solution3.m](https://cpjobling.github.io/eg-247-textbook/laplace_transform/matlab/solution3.m)]
-* Solution 5 [[solution5.m](.https://cpjobling.github.io/eg-247-textbook/laplace_transform/matlab/solution5.m)]
+* Solution 5 [[solution5.m](https://cpjobling.github.io/eg-247-textbook/laplace_transform/matlab/solution5.m)]
 
 ```{code-cell} matlab
 ---
