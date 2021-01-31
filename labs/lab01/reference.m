@@ -7,7 +7,7 @@
 % $${u_0}(t) = \left\{ {\begin{array}{*{20}{c}}{0\quad t < 0}\\{1\quad t > 0}\end{array}} 
 % \right.$$
 % 
-% In MATLAB the unit step is defined using the |heaviside| function. The command 
+% In MATLAB the unit step is defined using the |heaviside| function. The command  
 % |doc heaviside| will open the documentation for this function in your web browser 
 % or a separate documentation window if you're using the desktop MATLAB application.
 
@@ -41,7 +41,7 @@ ezplot(u0(t),[-1,1]),grid
 % Note that |heaviside(0)| returns the value $1/2$ which is not mathematically 
 % correct. As we discussed in class, the unit step function $u_o(t)$ is undefined 
 % at $t=0$.
-%% 
+% 
 % Once you have set things up and defined numerical values of the variables, 
 % the basic signal operations work as you'd expect:
 
@@ -54,9 +54,7 @@ x0(t) = A * u0(t - T);
 ezplot(x0(t), [-1, 4]),grid
 title('x_0(t)'),xlabel('t'),ylabel('A u_0(t - T)')
 %% Exercise 1
-% Reproduce Figure 1 (Figure 1.8 from the textbook Karris (page 1-4)) in MATLAB:
-% 
-% *Figure 1 Other forms of the step function*
+% Reproduce Figure 1.8 from the textbook Karris (page 1-4) in MATLAB:
 % 
 % Use the |heaviside|, |subplot|, and |ezplot| functions to plot each of the 
 % following on a 3x3 grid:
@@ -75,9 +73,8 @@ title('x_0(t)'),xlabel('t'),ylabel('A u_0(t - T)')
 % 
 % _Hint_: You will need to adjust the axes of each subplot to ensure that the 
 % step function is clearly visible. Compare your results with Figure 1 and tweek 
-% your settings until your graph looks right.
-% Solution
-% We'll do the first couple of entries for you.
+% your settings until your graph looks right. Solution We'll do the first couple 
+% of entries for you.
 % 
 % $$x_1(t) = -Au_0(t)$$
 
@@ -93,71 +90,51 @@ x2(t) = - A * u0(t - T);
 ezplot(x2(t), [-1, 4, -2.5, 0.5])
 title('(b)'),ylabel('- A u_0(t - T)'),xlabel('t')
 %% 
-% $$x_3(t)=-Au_0(t+T)$$
-% 
-% Remove the comments below:
-
-% subplot(3,3,3)
-% x3(t) = - A * u0(t + T);
-% ezplot(x3(t), [-4, 1, -2.5, 0.5])
-% title('(c)'),ylabel('- A u_0(t + T)'),xlabel('t')
-% Complete the picture.
+% $$x_3(t)=-Au_0(t+T)$$ 
+% remove comments below
+subplot(3,3,3)
+x3(t) = - A * u0(t + T);
+ezplot(x3(t), [-4, 1, -2.5, 0.5])
+title('(c)'),ylabel('- A u_0(t + T)'),xlabel('t')
+%% Complete the picture
 % $$x_4(t) = Au_0(-t)$$
 
 subplot(3,3,4)
+x4(t) = A * u0(-t);
+ezplot(x4(t), [-2.5, 2.5, -0.5, 2.5])
+title('(d)'),ylabel('A u_0(-t)'),xlabel('t')
 %% 
-% Your code goes here for x|4(t)| to |x9(t).|
+% $$x_5(t) = Au_0(-t+T)$$
 
-% Clear figure before moving on
-clf
-%% Part 2
-% Use the |heaviside| and |ezplot| function to show that $u_0(t) - u_0(t - 1)$ 
-% represents the rectangular pulse shown in Figure 1.9 (a) in the textbook.
-%% Part 3
-% Use the |heaviside| and |ezplot| functions to validate equations 1.13, 1.14, 
-% 1.17 and 1.18 in the textbook.
-%% The Ramp Function
-% The integral of the *unit step* function is the *ramp function*
-% 
-% $$u_1(t) = \int_{-\infty}^{t} u_0(\tau)d\tau$$
-% 
-% Gives
-% 
-% $${u_1}(t) = \left\{ {\begin{array}{*{20}{c}}{0\quad t < 0}\\{t\quad t > 0}\end{array}} 
-% \right. = t{u_0}(t)$$
-% 
-% To verify this result:
-
-syms tau
-int(heaviside(tau),-inf, t)
+subplot(3,3,5)
+x5(t) = A * u0(-t + T);
+ezplot(x5(t), [-1, 4, -0.5, 2.5])
+title('(e)'),ylabel('A u_0(-t+T)'),xlabel('t')
 %% 
-% Plot the ramp function
+% $$x_6(t) = Au_0(-t-T)$$
 
-ezplot(t * heaviside(t), [-1,5]), grid
-%% Part 4
-% Use |ezplot| to plot $u_2(t)$ and $u_3(t)$ computed as defined on Page 1-10 
-% of the textbook.
-%% The Dirac Delta Function
-% $\delta(t)$ is the derivative of $u_0(t)$
-
-diff(heaviside(t),t)
+subplot(3,3,6)
+x6(t) = A * u0(-t - T);
+ezplot(x6(t), [-4, 1, -0.5, 2.5])
+title('(f)'),ylabel('A u_0(-t-T)'),xlabel('t')
 %% 
-% It's not easy to plot the dirac delta function. We have to cheat a little 
-% by using a stem plot:
+% $$x_7(t) = -Au_0(-t)$$
 
-td = [-1,0,1]; delta = [0,1,0];
-stem(td,delta)
+subplot(3,3,7)
+x7(t) = - A * u0(-t);
+ezplot(x7(t), [-4, 1, -2.5, 0.5])
+title('(g)'),ylabel('- A u_0(-t)'),xlabel('t')
 %% 
-% MATLAB has this function and its derivatives built-in
+% $$x_8(t)=-Au_0(-t+T)$$
 
-dirac(t)
-% $\delta^'(t)$
-dirac(1,t)
-% $delta^{''}(t)$
-dirac(2,t)
-%% Part 5
-% Use MATLAB to solve Examples 1.8 and 1.9 from the textbook. You may not get 
-% the results you expect so if this is the case, just comment on the result. 
-% 
-% Don't Forget to Save Your Work!
-%%
+subplot(3,3,8)
+x8(t) = - A * u0(-t + T);
+ezplot(x8(t), [-1, 4, -2.5, 0.5])
+title('(h)'),ylabel('- A u_0(-t + T)'),xlabel('t')
+%% 
+% $$x_9(t)=-Au_0(-t-T)$$
+
+subplot(3,3,9)
+x9(t) = - A * u0(-t - T);
+ezplot(x9(t), [-3, 2, -2.5, 0.5])
+title('(i)'),ylabel('- A u_0(-t - T)'),xlabel('t')
