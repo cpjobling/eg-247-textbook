@@ -86,7 +86,7 @@ Use folder `OneDrive\workspace\signals-and-systems-lab\lab01` for this lab.
 
 ### Download starter script
 
-Right click to save the file [elem_sigs.mlx](https://cpjobling.github.io/eg-247-textbook/labs/lab01/elem_sigs.mlx) to your ``lab01`` folder. Open the file from the file browser in MATLAB.
+Right click to save the file [elem_sigs.mlx](https://github.com/cpjobling/eg-247-textbook/blob/master/labs/lab01/elem_sigs.mlx) to your ``lab01`` folder. Open the file from the file browser in MATLAB.
 
 +++
 
@@ -161,7 +161,7 @@ This is the procedure you should follow:
 
 3. Open the Live Script file `elem_signals.mlx` and execute **run all**. Check that the results are all present and that there are no errors. Review the formatting of the file and think about how readable and understandable the script is as a record of the experiment. 
 
-4. Open and run the Simulink model `signal.slx` and confirm that the results match the figure given above. 
+4. Open and run the Simulink model `signal.slx` and confirm that the results match the figure given above.
 
 +++
 

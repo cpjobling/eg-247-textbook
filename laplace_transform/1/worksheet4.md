@@ -42,7 +42,7 @@ This will be a group activity. If you did the quiz in Canvas before class you wi
 
 ### Question 1: The Laplace Transform
 
-Without conferring or looking it up, which of these integrals represents the Laplace and Inverse laplace transforms?
+Without looking it up, which of these integrals represents the Laplace and Inverse laplace transforms?
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -178,6 +178,33 @@ Compute the Laplace transform of the pulse shown in the figure.
 Compute the Laplace transform of the line segment shown below.
 
 ![line](images/line.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+<pre style="border: 2px solid blue">
 
 
 

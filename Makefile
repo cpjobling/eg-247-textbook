@@ -25,7 +25,10 @@ build:
 	make assets
 	jupyter-book build .
 
-site:   build
+site:   
+	make clean
+	make assets
+	jupyter-book build .
 	make portfolio
 	touch _build/html/.nojekyll
 	ghp-import --no-jekyll -p -f ./_build/html
