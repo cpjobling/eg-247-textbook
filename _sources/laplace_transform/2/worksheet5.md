@@ -38,24 +38,6 @@ imatlab_export_fig('print-svg')  % Static svg figures.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Question 3: Did you watch the pre lecture video (or read the notes) for the Inverse Laplace Transform?
-
-+++ {"slideshow": {"slide_type": "fragment"}}
-
-A. Yes, watched video
-
-B. Yes, watched the video and read the notes
-
-C. Just read the notes
-
-D. Didn't prepare anything
-
-+++ {"slideshow": {"slide_type": "fragment"}}
-
-**-> Launch Poll 1**
-
-+++ {"slideshow": {"slide_type": "subslide"}}
-
 ### Question 2: Inverse Laplace transforms
 
 Inverse laplace transform the following
@@ -70,10 +52,6 @@ Inverse laplace transform the following
     <tr><td>6.</td><td>$$s$$</td><td>F.</td><td>$$\delta(t)$$</td></tr>
 </table>
 
-+++ {"slideshow": {"slide_type": "fragment"}}
-
-**-> Launch Poll 2**
-
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### Question 3: Fill in the blanks
@@ -81,9 +59,9 @@ Inverse laplace transform the following
 Complete this sentence:
 The [----] of a rational polynomial are the zeros of the numerator. The [----] of a rational polynomial are the zeros of the [-----].
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
-**-> Launch Poll 3**
+**-> Break out rooms**
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
