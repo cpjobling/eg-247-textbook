@@ -8,6 +8,10 @@
 % Laplace transforms, the use of the |residue| function to compute the residues of partial fraction expansions 
 % using a worked example from the notes. We also demonstrate the use of the |ilaplace| function to solve inverse 
 % Laplace transform problems. 
+% 
+% Please note that all citations of the "textbook" refer to 
+% <https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=79 Chapter 3 of Karris (2012)> 
+% which is accessible by following the link. 
 %
 % We will conclude this exercise by asking you to use using the |ilaplace| function to find the inverse Laplace 
 % transform for two typical non-trivial problems. 
