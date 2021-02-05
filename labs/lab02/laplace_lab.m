@@ -12,7 +12,10 @@
 % tables and properties of the Laplace Transform. We will then use the |laplace| 
 % function to find the Laplace transform of some typical elementary signals. We 
 % will conclude this exercise by using the laplace function to solve a selection 
-% of problems from  <http://site.ebrary.com/lib/swansea/reader.action?docID=10547416&ppg=17 
+% of problems from  <% Please note that all citations of the "textbook" refer to 
+% <https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=26 Chapter 2 of Karris (2012)> 
+% which is accessible by following the link. 
+ 
 % Chapter 2 of the textbook>.
 % 
 % This next command opens the documentation for the |laplace| function. You 
