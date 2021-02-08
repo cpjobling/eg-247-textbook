@@ -70,6 +70,16 @@ For the circuit shown, which of the following equations represent the Laplace tr
 
 For the circuit shown, which of the following equations represent the Laplace transform of the current flowing through, and the voltage across, the inductor $L$?
 
++++ {"slideshow": {"slide_type": "notes"}}
+
+$$I_L(s)=sLV_L(s) - Lv_L(0^-)$$
+
+$$I_L(s)=\frac{V_L(s)}{sL} + \frac{v_L(0^-)}{s}$$
+
+$$VL(s) = sLI_L(s) - Li_L(0^-)$$
+
+$$V_L(s)=\frac{I_L(s)}{sL} + \frac{i_L(0^-)}{s}$$
+
 +++ {"slideshow": {"slide_type": "fragment"}}
 
 **-> Open poll**
@@ -83,6 +93,16 @@ For the circuit shown, which of the following equations represent the Laplace tr
 +++ {"slideshow": {"slide_type": "fragment"}}
 
 For the circuit shown, which of the following equations represent the Laplace transform of the current flowing through, and the voltage across, the capacitor $C$?
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+$$V_c(s)=sCI_C(s) - Ci_C(0^-)$$
+
+$$I_c(s) = sCV_C(s) - Cv_C(0^-)$$
+
+$$V_c(s) = \frac{I_C(s)}{sC} + \frac{i_C(0^-)}{s}$$
+
+$$I_c(s)=\frac{V_C(s)}{sC} + \frac{v_C(0^-)}{s}$$
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -446,6 +466,24 @@ impulse(Vout)
 
 For the resistance $R$$\Omega$, inductance $L$H and capacitance $C$F, which of the following represent the complex impedance of the components?
 
++++ {"slideshow": {"slide_type": "notes"}}
+
+$$sL$$
+
+$$1/R$$
+
+$$sC$$
+
+$$\frac{1}{sC}$$
+
+$$\frac{1}{sL}$$
+
+$$R$$
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+**-> Open Poll**
+
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 Consider the $s$-domain RLC series circuit, wehere the initial conditions are assumed to be zero.
@@ -544,6 +582,20 @@ Find $Z(s)$ using:
 ## Complex Admittance $Y(s)$
 
 For the resistor $R$Ω, inductor $L$H and capacitance $C$F, which of the following represent the complex admittance of the components?
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+$$sL$$
+
+$$1/R$$
+
+$$sC$$
+
+$$\frac{1}{sC}$$
+
+$$\frac{1}{sL}$$
+
+$$R$$
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 

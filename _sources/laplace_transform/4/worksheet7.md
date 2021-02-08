@@ -32,7 +32,7 @@ After class, the lecture recording and the annotated version of the worksheets w
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-## Second Hour's Agenda
+## Agenda
 
 * Transfer Functions
 
