@@ -201,12 +201,12 @@ slideshow:
   slide_type: subslide
 tags: [remove-output]
 ---
-R1 = 200*10^3; 
-R2 = 40*10^3;
-R3 = 50*10^3;
+R1 = 200*10^3; % 200 kOhm 
+R2 = 40*10^3; % 40 kOhm
+R3 = 50*10^3; % 50 kOhm
 
-C1 = 25*10^(-9);
-C2 = 10*10^(-9);
+C1 = 25*10^(-9); % 25 nF
+C2 = 10*10^(-9); % 10 nF
 ```
 
 ```{code-cell} matlab
@@ -278,7 +278,7 @@ slideshow:
   slide_type: subslide
 tags: [remove-output]
 ---
-Gs = -1./(a*w.^2 - j.*b.*w + denG(3));
+Gw = -1./(a*w.^2 - j.*b.*w + denG(3));
 ```
 
 ```{code-cell} matlab
@@ -287,7 +287,7 @@ slideshow:
   slide_type: subslide
 tags: [remove-output]
 ---
-semilogx(w, abs(Gs))
+semilogx(w, abs(Gw))
 xlabel('Radian frequency w (rad/s')
 ylabel('|Vout/Vin|')
 title('Magnitude Vout/Vin vs. Radian Frequency')
