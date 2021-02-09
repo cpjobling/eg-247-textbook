@@ -975,12 +975,12 @@ on log-linear “paper”.</p></li>
 </div>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">R1</span> <span class="o">=</span> <span class="mi">200</span><span class="o">*</span><span class="mi">10</span><span class="o">^</span><span class="mi">3</span><span class="p">;</span> 
-<span class="n">R2</span> <span class="o">=</span> <span class="mi">40</span><span class="o">*</span><span class="mi">10</span><span class="o">^</span><span class="mi">3</span><span class="p">;</span>
-<span class="n">R3</span> <span class="o">=</span> <span class="mi">50</span><span class="o">*</span><span class="mi">10</span><span class="o">^</span><span class="mi">3</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">R1</span> <span class="o">=</span> <span class="mi">200</span><span class="o">*</span><span class="mi">10</span><span class="o">^</span><span class="mi">3</span><span class="p">;</span> <span class="o">%</span> <span class="mi">200</span> <span class="n">kOhm</span> 
+<span class="n">R2</span> <span class="o">=</span> <span class="mi">40</span><span class="o">*</span><span class="mi">10</span><span class="o">^</span><span class="mi">3</span><span class="p">;</span> <span class="o">%</span> <span class="mi">40</span> <span class="n">kOhm</span>
+<span class="n">R3</span> <span class="o">=</span> <span class="mi">50</span><span class="o">*</span><span class="mi">10</span><span class="o">^</span><span class="mi">3</span><span class="p">;</span> <span class="o">%</span> <span class="mi">50</span> <span class="n">kOhm</span>
 
-<span class="n">C1</span> <span class="o">=</span> <span class="mi">25</span><span class="o">*</span><span class="mi">10</span><span class="o">^</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">);</span>
-<span class="n">C2</span> <span class="o">=</span> <span class="mi">10</span><span class="o">*</span><span class="mi">10</span><span class="o">^</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">);</span>
+<span class="n">C1</span> <span class="o">=</span> <span class="mi">25</span><span class="o">*</span><span class="mi">10</span><span class="o">^</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">);</span> <span class="o">%</span> <span class="mi">25</span> <span class="n">nF</span>
+<span class="n">C2</span> <span class="o">=</span> <span class="mi">10</span><span class="o">*</span><span class="mi">10</span><span class="o">^</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">);</span> <span class="o">%</span> <span class="mi">10</span> <span class="n">nF</span>
 </pre></div>
 </div>
 </div>
@@ -1031,14 +1031,14 @@ on log-linear “paper”.</p></li>
 \[G(j\omega) = \frac{-1}{a\omega^2 - jb\omega + 5}\]</div>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Gs</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">w</span><span class="o">.^</span><span class="mi">2</span> <span class="o">-</span> <span class="n">j</span><span class="o">.*</span><span class="n">b</span><span class="o">.*</span><span class="n">w</span> <span class="o">+</span> <span class="n">denG</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Gw</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">w</span><span class="o">.^</span><span class="mi">2</span> <span class="o">-</span> <span class="n">j</span><span class="o">.*</span><span class="n">b</span><span class="o">.*</span><span class="n">w</span> <span class="o">+</span> <span class="n">denG</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">semilogx</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">Gs</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">semilogx</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">Gw</span><span class="p">))</span>
 <span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Radian frequency w (rad/s&#39;</span><span class="p">)</span>
 <span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;|Vout/Vin|&#39;</span><span class="p">)</span>
 <span class="n">title</span><span class="p">(</span><span class="s1">&#39;Magnitude Vout/Vin vs. Radian Frequency&#39;</span><span class="p">)</span>
