@@ -87,7 +87,7 @@ laplace(exp(-a*t)*u0(t))
 % # The Time Shifting Property (use |syms T positive| to give Matlab a hint!)
 % # The Frequency Shifting Property 
 % # The Scaling Property
-% # The Transform of First, Second and nth-Order Time Derviatives
+% # The Transform of First and Second Order Time Derviatives
 % # The Integration in Time Domain Property
 %% Problem 4
 % Calculate the Laplace Transform of a rectangular pulse with a height 2 that 
