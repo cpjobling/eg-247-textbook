@@ -97,4 +97,4 @@ You should submit the following to the **Lab 07: Filters** Assignment on Canvas.
 
 ### Deadline
 
-The deadline for claims and submission is **4:00 pm, 29th March 2021**
+The deadline for claims and submission is **4:00 pm, 21st April 2021**

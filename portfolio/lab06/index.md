@@ -272,4 +272,4 @@ You should submit the following to the **Lab 06: Audio signals and sampling** As
 
 ### Deadline
 
-The deadline for claims and submission is **4:00 pm, 22nd March 2021**
+The deadline for claims and submission is **4:00 pm, 21st April 2021**
