@@ -141,7 +141,7 @@ You should submit the following to the **Lab 01: Elementary Signals** Assignment
 
 The Deadline for claims and submission is: 
 
-**4:00 pm, 15th February 2021**.
+**4:00 pm, 24th February 2021**.
 
 ### Important
 
