@@ -324,12 +324,14 @@ The convolution integral is most conveniently evaluated by a graphical evaluatio
 The tool: [convolutiondemo.m](https://github.com/cpjobling/eg-247-textbook/blob/master/laplace_transform/matlab/convolution_demo/convolutiondemo.m) (see [license.txt](https://github.com/cpjobling/eg-247-textbook/blob/master/laplace_transform/matlab/convolution_demo/license.txt)).
 
 ```{code-cell} matlab
-:tags: [remove-output]
-
+---
+slideshow:
+  slide_type: skip
+tags: [remove-output]
+---
 clear all
 cd ../matlab/convolution_demo
 imatlab_export_fig('print-svg')  % Static svg figures.
-cd ../matlab/convolution_demo
 pwd
 format compact
 ```
@@ -582,7 +584,7 @@ $$Y(s) = H(s)U(s)$$
 
 and 
 
-$$y(t) = \mathcal{L}^{-1} \left\{ G(s) U(s) \right\}$$
+$$y(t) = \mathcal{L}^{-1} \left\{ H(s) U(s) \right\}$$
 
 Using tables, solution of a convolution problem by Laplace is usually simpler than using convolution directly.
 

@@ -526,7 +526,7 @@ $$Y(s) = H(s)U(s)$$
 
 and 
 
-$$y(t) = \mathcal{L}^{-1} \left\{ G(s) U(s) \right\}$$
+$$y(t) = \mathcal{L}^{-1} \left\{ H(s) U(s) \right\}$$
 
 Using tables, solution of a convolution problem by Laplace is usually simpler than using convolution directly.
 
