@@ -92,7 +92,7 @@ A function $f(t)$ is said to be an *odd function* of time if the following relat
 
 Polynomials with even exponents only, and with or without constants, are even functions.
 
-Write down the Taylor-series polynomial expansion of $\cos t$. Is $\cos t$ even or odd?
+Write down the Taylor-series polynomial expansion of $\sin t$. Is $\sin t$ even or odd?
 
 <pre style="border: 2px solid blue">
 
@@ -107,7 +107,8 @@ Odd/Even?
 
 ### Observations
 
-* For odd functions $f(0) =$
+For odd functions $f(0) =$
+
 <pre style="border: 2px solid blue">
 
 
@@ -115,11 +116,15 @@ Odd/Even?
 
 </pre>
 
-* The product of *two even* or *two odd* functions is an [Even/Odd] function.
+The product of *two even* or *two odd* functions is an [Even/Odd] function.
 
-* The product of an even and an odd function, is an [Even/Odd] function.
+The product of an even and an odd function, is an [Even/Odd] function.
 
-+++ {"slideshow": {"slide_type": "notes"}}
++++ {"slideshow": {"slide_type": "slide"}}
+
+## More about Even and Odd Functions
+
++++ {"slideshow": {"slide_type": "slide"}}
 
 In the following $f_e(t)$ will denote an even function and $f_o(t)$ an odd function.
 
