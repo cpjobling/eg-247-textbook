@@ -852,16 +852,6 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#u-t">
-     u(t)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#prepare-for-convolutiondemo">
-     Prepare for convolutiondemo
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#convolutiondemo-settings">
      convolutiondemo settings
     </a>
@@ -1146,7 +1136,8 @@
 </div>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">convolutiondemo</span> <span class="o">%</span> <span class="n">ignore</span> <span class="n">warnings</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+<span class="n">convolutiondemo</span> <span class="o">%</span> <span class="n">ignore</span> <span class="n">warnings</span>
 </pre></div>
 </div>
 </div>
@@ -1178,35 +1169,12 @@
 <div class="section" id="h-t">
 <h3>h(t)<a class="headerlink" href="#h-t" title="Permalink to this headline">¶</a></h3>
 <p>The signal <span class="math notranslate nohighlight">\(h(t)\)</span> is the straight line <span class="math notranslate nohighlight">\(f(t)=-t+1\)</span> but this is defined only between <span class="math notranslate nohighlight">\(t = 0\)</span> and <span class="math notranslate nohighlight">\(t = 1\)</span>. We thus need to gate the function by multiplying it by <span class="math notranslate nohighlight">\(u_0(t)-u_0(t-1)\)</span> as illustrated below:</p>
-<img src="pictures/gate_h.png">
-<p>Thus</p>
-<div class="math notranslate nohighlight">
-\[h(t) \Leftrightarrow H(s)\]</div>
-<div class="math notranslate nohighlight">
-\[h(t) = (-t + 1)(u_0(t)-u_0(t-1)) = (-t + 1)u_0(t) - (-(t - 1)u_0(t - 1)) = -t u_0(t) + u_0(t) + (t - 1)u_0(t - 1)\]</div>
-<div class="math notranslate nohighlight">
-\[-t u_0(t) + u_0(t) + (t - 1)u_0(t - 1) \Leftrightarrow - \frac{1}{s^2} + \frac{1}{s} +\frac{e^{-s}}{s^2}\]</div>
-<div class="math notranslate nohighlight">
-\[H(s) = \frac{s + e^{-s} - 1}{s^2}\]</div>
-</div>
-<div class="section" id="u-t">
-<h3>u(t)<a class="headerlink" href="#u-t" title="Permalink to this headline">¶</a></h3>
-<p>The input <span class="math notranslate nohighlight">\(u(t)\)</span> is the gating function:</p>
-<div class="math notranslate nohighlight">
-\[u(t) = u_0(t)-u_0(t-1)\]</div>
-<p>so</p>
-<div class="math notranslate nohighlight">
-\[U(s) = \frac{1}{s}-\frac{e^{-s}}{s} = \frac{1 - e^{-s}}{s}\]</div>
-</div>
-<div class="section" id="prepare-for-convolutiondemo">
-<h3>Prepare for convolutiondemo<a class="headerlink" href="#prepare-for-convolutiondemo" title="Permalink to this headline">¶</a></h3>
-<p>To prepare this problem for evaluation in the <code class="docutils literal notranslate"><span class="pre">convolutiondemo</span></code> tool, we need to determine the Laplace Transforms of <span class="math notranslate nohighlight">\(h(t)\)</span> and <span class="math notranslate nohighlight">\(u(t)\)</span>.</p>
-</div>
+<img src="pictures/gate_h.png"></div>
 <div class="section" id="convolutiondemo-settings">
 <h3>convolutiondemo settings<a class="headerlink" href="#convolutiondemo-settings" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>Let <code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">=</span> <span class="pre">(1</span> <span class="pre">-</span> <span class="pre">exp(-s))/s</span></code></p></li>
-<li><p>Let <code class="docutils literal notranslate"><span class="pre">h</span> <span class="pre">=</span> <span class="pre">(s</span> <span class="pre">+</span> <span class="pre">exp(-s)</span> <span class="pre">-</span> <span class="pre">1)/s^2</span></code></p></li>
+<li><p>Let <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">=</span> <span class="pre">heaviside(t)-heaviside(t-1)</span> <span class="pre">%</span> <span class="pre">u(t)</span></code></p></li>
+<li><p>Let <code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">=</span> <span class="pre">(t-1)*(heaviside(t)-heaviside(t-1))</span> <span class="pre">%</span> <span class="pre">h(t)</span></code></p></li>
 <li><p>Set range <span class="math notranslate nohighlight">\(-2 &lt; \tau &lt; -2\)</span></p></li>
 </ul>
 </div>

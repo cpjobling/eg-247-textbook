@@ -849,27 +849,34 @@
          h(t)
         </a>
        </li>
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#u-t">
-         u(t)
-        </a>
-       </li>
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#prepare-for-convolutiondemo">
-         Prepare for convolutiondemo
-        </a>
-       </li>
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#convolutiondemo-settings">
-         convolutiondemo settings
-        </a>
-       </li>
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#summary-of-result">
-         Summary of result
-        </a>
-       </li>
       </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#convolutiondemo-settings">
+     convolutiondemo settings
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#alternative-solution">
+     Alternative solution
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#u-t">
+       u(t)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       convolutiondemo settings
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#summary-of-result">
+       Summary of result
+      </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#example-3">
@@ -1176,7 +1183,20 @@
 <img src="pictures/conv_ex1.png"><div class="section" id="h-t">
 <h5>h(t)<a class="headerlink" href="#h-t" title="Permalink to this headline">¶</a></h5>
 <p>The signal <span class="math notranslate nohighlight">\(h(t)\)</span> is the straight line <span class="math notranslate nohighlight">\(f(t)=-t+1\)</span> but this is defined only between <span class="math notranslate nohighlight">\(t = 0\)</span> and <span class="math notranslate nohighlight">\(t = 1\)</span>. We thus need to gate the function by multiplying it by <span class="math notranslate nohighlight">\(u_0(t)-u_0(t-1)\)</span> as illustrated below:</p>
-<img src="pictures/gate_h.png">
+<img src="pictures/gate_h.png"></div>
+</div>
+</div>
+<div class="section" id="convolutiondemo-settings">
+<h3>convolutiondemo settings<a class="headerlink" href="#convolutiondemo-settings" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Let <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">=</span> <span class="pre">heaviside(t)-heaviside(t-1)</span> <span class="pre">%</span> <span class="pre">u(t)</span></code></p></li>
+<li><p>Let <code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">=</span> <span class="pre">(t-1)*(heaviside(t)-heaviside(t-1))</span> <span class="pre">%</span> <span class="pre">h(t)</span></code></p></li>
+<li><p>Set range <span class="math notranslate nohighlight">\(-2 &lt; \tau &lt; -2\)</span></p></li>
+</ul>
+</div>
+<div class="section" id="alternative-solution">
+<h3>Alternative solution<a class="headerlink" href="#alternative-solution" title="Permalink to this headline">¶</a></h3>
+<p>The original version of <code class="docutils literal notranslate"><span class="pre">convolutiondemo</span></code> didn’t support the <code class="docutils literal notranslate"><span class="pre">heaviside</span></code> function so to prepare this problem for evaluation in the <code class="docutils literal notranslate"><span class="pre">convolutiondemo</span></code> tool, we needed to determine the Laplace Transforms of <span class="math notranslate nohighlight">\(h(t)\)</span> and <span class="math notranslate nohighlight">\(u(t)\)</span>.</p>
 <p>Thus</p>
 <div class="math notranslate nohighlight">
 \[h(t) \Leftrightarrow H(s)\]</div>
@@ -1186,9 +1206,8 @@
 \[-t u_0(t) + u_0(t) + (t - 1)u_0(t - 1) \Leftrightarrow - \frac{1}{s^2} + \frac{1}{s} +\frac{e^{-s}}{s^2}\]</div>
 <div class="math notranslate nohighlight">
 \[H(s) = \frac{s + e^{-s} - 1}{s^2}\]</div>
-</div>
 <div class="section" id="u-t">
-<h5>u(t)<a class="headerlink" href="#u-t" title="Permalink to this headline">¶</a></h5>
+<h4>u(t)<a class="headerlink" href="#u-t" title="Permalink to this headline">¶</a></h4>
 <p>The input <span class="math notranslate nohighlight">\(u(t)\)</span> is the gating function:</p>
 <div class="math notranslate nohighlight">
 \[u(t) = u_0(t)-u_0(t-1)\]</div>
@@ -1196,20 +1215,16 @@
 <div class="math notranslate nohighlight">
 \[U(s) = \frac{1}{s}-\frac{e^{-s}}{s} = \frac{1 - e^{-s}}{s}\]</div>
 </div>
-<div class="section" id="prepare-for-convolutiondemo">
-<h5>Prepare for convolutiondemo<a class="headerlink" href="#prepare-for-convolutiondemo" title="Permalink to this headline">¶</a></h5>
-<p>To prepare this problem for evaluation in the <code class="docutils literal notranslate"><span class="pre">convolutiondemo</span></code> tool, we need to determine the Laplace Transforms of <span class="math notranslate nohighlight">\(h(t)\)</span> and <span class="math notranslate nohighlight">\(u(t)\)</span>.</p>
-</div>
-<div class="section" id="convolutiondemo-settings">
-<h5>convolutiondemo settings<a class="headerlink" href="#convolutiondemo-settings" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id2">
+<h4>convolutiondemo settings<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><p>Let <code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">=</span> <span class="pre">(1</span> <span class="pre">-</span> <span class="pre">exp(-s))/s</span></code></p></li>
-<li><p>Let <code class="docutils literal notranslate"><span class="pre">h</span> <span class="pre">=</span> <span class="pre">(s</span> <span class="pre">+</span> <span class="pre">exp(-s)</span> <span class="pre">-</span> <span class="pre">1)/s^2</span></code></p></li>
+<li><p>Let <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">=</span> <span class="pre">(1</span> <span class="pre">-</span> <span class="pre">exp(-s))/s</span> <span class="pre">%</span> <span class="pre">U(s)</span></code></p></li>
+<li><p>Let <code class="docutils literal notranslate"> <span class="pre">g=</span> <span class="pre">(s</span> <span class="pre">+</span> <span class="pre">exp(-s)</span> <span class="pre">-</span> <span class="pre">1)/s^2</span> <span class="pre">%</span> <span class="pre">H(s)</span></code></p></li>
 <li><p>Set range <span class="math notranslate nohighlight">\(-2 &lt; \tau &lt; -2\)</span></p></li>
 </ul>
 </div>
 <div class="section" id="summary-of-result">
-<h5>Summary of result<a class="headerlink" href="#summary-of-result" title="Permalink to this headline">¶</a></h5>
+<h4>Summary of result<a class="headerlink" href="#summary-of-result" title="Permalink to this headline">¶</a></h4>
 <ol class="simple">
 <li><p>For <span class="math notranslate nohighlight">\(t &lt; 0\)</span>: $<span class="math notranslate nohighlight">\(u(t-\tau)h(\tau) = 0\)</span>$</p></li>
 <li><p>For <span class="math notranslate nohighlight">\(t = 0\)</span>: <span class="math notranslate nohighlight">\(u(t-\tau) = u(-\tau)\)</span> and <span class="math notranslate nohighlight">\(u(-\tau)h(\tau) = 0\)</span></p></li>
@@ -1219,7 +1234,6 @@ $<span class="math notranslate nohighlight">\(h*u = \int_0^t (1)(-\tau + 1)d\tau
 $<span class="math notranslate nohighlight">\(h*u = \int_{t-1}^1(-\tau + 1)d\tau = \left.\tau - \tau^2/2\right|_{t-1}^{1} = t^2/2-2t+2\)</span>$</p></li>
 <li><p>For <span class="math notranslate nohighlight">\(2 \le t\)</span>: $<span class="math notranslate nohighlight">\(u(t-\tau)h(\tau) = 0\)</span>$</p></li>
 </ol>
-</div>
 </div>
 <div class="section" id="example-3">
 <h4>Example 3<a class="headerlink" href="#example-3" title="Permalink to this headline">¶</a></h4>

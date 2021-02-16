@@ -342,6 +342,7 @@ slideshow:
   slide_type: subslide
 tags: [remove-output]
 ---
+ls
 convolutiondemo % ignore warnings
 ```
 
@@ -393,38 +394,12 @@ The signal $h(t)$ is the straight line $f(t)=-t+1$ but this is defined only betw
 
 <img src="pictures/gate_h.png">
 
-Thus
-
-$$h(t) \Leftrightarrow H(s)$$
-
-$$h(t) = (-t + 1)(u_0(t)-u_0(t-1)) = (-t + 1)u_0(t) - (-(t - 1)u_0(t - 1)) = -t u_0(t) + u_0(t) + (t - 1)u_0(t - 1)$$
-
-$$-t u_0(t) + u_0(t) + (t - 1)u_0(t - 1) \Leftrightarrow - \frac{1}{s^2} + \frac{1}{s} +\frac{e^{-s}}{s^2}$$
-
-$$H(s) = \frac{s + e^{-s} - 1}{s^2}$$
-
-### u(t)
-
-The input $u(t)$ is the gating function:
-
-$$u(t) = u_0(t)-u_0(t-1)$$
-
-so
-
-$$U(s) = \frac{1}{s}-\frac{e^{-s}}{s} = \frac{1 - e^{-s}}{s}$$
-
-+++ {"slideshow": {"slide_type": "subslide"}}
-
-### Prepare for convolutiondemo
-
-To prepare this problem for evaluation in the `convolutiondemo` tool, we need to determine the Laplace Transforms of $h(t)$ and $u(t)$.
-
-+++ {"slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "notes"}}
 
 ### convolutiondemo settings
 
-* Let `g = (1 - exp(-s))/s`
-* Let `h = (s + exp(-s) - 1)/s^2`
+* Let `f = heaviside(t)-heaviside(t-1) % u(t)`
+* Let `g = (t-1)*(heaviside(t)-heaviside(t-1)) % h(t)`
 * Set range $-2 < \tau < -2$
 
 +++ {"slideshow": {"slide_type": "notes"}}
