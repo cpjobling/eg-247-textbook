@@ -375,6 +375,22 @@ The signal $h(t)$ is the straight line $f(t)=-t+1$ but this is defined only betw
 
 <img src="pictures/gate_h.png">
 
++++ {"slideshow": {"slide_type": "notes"}}
+
+### convolutiondemo settings
+
+* Let `f = heaviside(t)-heaviside(t-1) % u(t)`
+* Let `g = (t-1)*(heaviside(t)-heaviside(t-1)) % h(t)`
+* Set range $-2 < \tau < -2$
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+### Alternative solution
+
+The original version of `convolutiondemo` didn't support the `heaviside` function so to prepare this problem for evaluation in the `convolutiondemo` tool, we needed to determine the Laplace Transforms of $h(t)$ and $u(t)$.
+
++++ {"slideshow": {"slide_type": "notes"}}
+
 Thus
 
 $$h(t) \Leftrightarrow H(s)$$
@@ -397,16 +413,11 @@ $$U(s) = \frac{1}{s}-\frac{e^{-s}}{s} = \frac{1 - e^{-s}}{s}$$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-##### Prepare for convolutiondemo
-
-To prepare this problem for evaluation in the `convolutiondemo` tool, we need to determine the Laplace Transforms of $h(t)$ and $u(t)$.
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
 ##### convolutiondemo settings
 
-* Let `g = (1 - exp(-s))/s`
-* Let `h = (s + exp(-s) - 1)/s^2`
+* Let `f = (1 - exp(-s))/s % U(s)`
+* Let `
+g= (s + exp(-s) - 1)/s^2 % H(s)`
 * Set range $-2 < \tau < -2$
 
 +++ {"slideshow": {"slide_type": "notes"}}
