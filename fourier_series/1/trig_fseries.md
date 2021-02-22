@@ -20,13 +20,13 @@ kernelspec:
 
 Any periodic waveform can be approximated by a DC component (which may be 0) and the sum of the fundamental and harmomic sinusoidal waveforms. This has important applications in many applications of electronics but is particularly crucial for signal processing and communications.
 
-+++
++++ {"slideshow": {"slide_type": "skip"}}
 
 ## Colophon
 
 An annotatable worksheet for this presentation is available as [**Worksheet 9**](https://cpjobling.github.io/eg-247-textbook/fourier_series/1/worksheet9.html).
 
-* The source code for this page is [fourier_series/1/trig_fseries.ipynb](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_series/1/trig_fseries.ipynb).
+* The source code for this page is [fourier_series/1/trig_fseries.md](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_series/1/trig_fseries.md).
 
 * You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/fourier_series/1/trig_fseries.html)). 
 
@@ -62,7 +62,7 @@ I believe that this subject has been covered in EG-150 Signals and Systems and s
 
 * Gibbs Phenomenon
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "notes"}}
 
 ## Motivating Examples
 
@@ -138,6 +138,66 @@ $$\frac{1}{2}a_0 = \frac{1}{T_0}\int_{0}^{T_0}f(t)d t = \frac{1}{\pi}\int_{0}^{2
 $$a_n = \frac{1}{T_0}\int_{0}^{T_0}f(t)\cos n\Omega_0 t\,dt = \frac{1}{2\pi}\int_{0}^{2\pi}f(\theta)\cos n\theta\,d\theta$$
 
 $$b_n = \frac{1}{T_0}\int_{0}^{T_0}f(t)\sin n\Omega_0 t\,dt = \frac{1}{2\pi}\int_{0}^{2\pi}f(\theta)\cos n\theta \,d\theta$$
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Demo 1
+
+Building up wave forms from sinusoids.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Demo 2
+
+Actual measurements
+
+Taken by Dr Tim Davies with a Rhode&Schwarz Oscilloscope.
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+Note all spectra shown in these slides are generated numerically from the input signals by sampling and the application of the Fast Fourier Transform (FFT).
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+#### 1 kHz Sinewave
+
+![A 1 kHz sinewave](pictures/1kHz_Sinewave.png "A 1kHz sinewave")
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+#### Spectrum of 1kHz sinewave
+
+Showing one peak at harmonic frequency.
+
+![Spectrum of 1kHz sinewave. Note one line at fundamental frequency.](pictures/fft_of_sinwave.png "Spectrum of 1kHz sinewave. Note one line at fundamental frequency.")
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+#### 1 kHz Squarewave
+
+![A 1 kHz square wave](pictures/1kHz_sqr.png "A 1kHz square wave.")
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+#### Spectrum of 1kHz square wave
+
+Clearly showing peaks at fundamental, 1/3, 1/5, 1/7 and 1/9 at 3rd, 5th and 7th harmonic frequencies. Note for sawtooth, harmonics decline in amplitude as the reciprocal of the of $k$.
+
+![Spectrum of 1kHz sinewave. Note only odd harmonics present.](pictures/FFT_sqr.png "Spectrum of 1kHz square wave. Note only odd harmonics present.")
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+#### 1 kHz Sawtooth waveform
+
+![A 1 kHz sawtooth waveform](pictures/1kHz_saw.png "A 1 kHz sawtooth waveform")
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+#### Spectrum of 1kHz sawtooth waveform
+
+Clearly showing peaks at fundamental, 1/9, 1/25, 1/7 and 1/49 at 3rd, 5th and 7th harmonic frequencies. Note for sawtooth, harmonics decline in amplitude as the reciprocal of the square of $k$.
+
+![Spectrum of 1kHz sawtooth wavform.](pictures/1kHz_saw_fft.png "Spectrum of 1kHz sawtooth wavform.")
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
