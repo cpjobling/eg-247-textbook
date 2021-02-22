@@ -53,7 +53,6 @@ $$f(t) = \frac{1}{2}{a_0} + \sum\limits_{n = 1}^\infty  {({a_n}\cos n\Omega_0 t 
 
 where $\Omega_0$ rad/s is the *fundamental frequency*.
 
-
 +++
 
 ### Evaluation of the Fourier series coefficients
@@ -101,7 +100,6 @@ There are simplifications we can make if the original periodic properties has ce
 +++ {"slideshow": {"slide_type": "fragment"}}
 
 * If $f(t)$ has *half-wave symmetry* only the odd harmonics will be present. That is $a_n$ and $b_n$ is zero for all even values of $n$ (0, 2, 4, ...)
-    
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -267,10 +265,6 @@ slideshow:
   slide_type: fragment
 ---
 open shifted_sq_ftrig
-```
-
-```{code-cell} matlab
-
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}
