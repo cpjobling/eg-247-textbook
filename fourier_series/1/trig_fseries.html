@@ -763,6 +763,48 @@
      Evaluation of the Fourier series coefficients
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#demo-1">
+     Demo 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#demo-2">
+     Demo 2
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#khz-sinewave">
+       1 kHz Sinewave
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#spectrum-of-1khz-sinewave">
+       Spectrum of 1kHz sinewave
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#khz-squarewave">
+       1 kHz Squarewave
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#spectrum-of-1khz-square-wave">
+       Spectrum of 1kHz square wave
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#khz-sawtooth-waveform">
+       1 kHz Sawtooth waveform
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#spectrum-of-1khz-sawtooth-waveform">
+       Spectrum of 1kHz sawtooth waveform
+      </a>
+     </li>
+    </ul>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -883,7 +925,7 @@
 <h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this headline">¶</a></h2>
 <p>An annotatable worksheet for this presentation is available as <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_series/1/worksheet9.html"><strong>Worksheet 9</strong></a>.</p>
 <ul class="simple">
-<li><p>The source code for this page is <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_series/1/trig_fseries.ipynb">fourier_series/1/trig_fseries.ipynb</a>.</p></li>
+<li><p>The source code for this page is <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_series/1/trig_fseries.md">fourier_series/1/trig_fseries.md</a>.</p></li>
 <li><p>You can view the notes for this presentation as a webpage (<a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_series/1/trig_fseries.html">HTML</a>).</p></li>
 <li><p>This page is downloadable as a <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_series/1/trig_fseries.pdf">PDF</a> file.</p></li>
 </ul>
@@ -965,6 +1007,43 @@ f(t) = \frac{1}{2}{a_0} + \sum\limits_{n = 1}^\infty  {({a_n}\cos n\Omega_0 t + 
 \[a_n = \frac{1}{T_0}\int_{0}^{T_0}f(t)\cos n\Omega_0 t\,dt = \frac{1}{2\pi}\int_{0}^{2\pi}f(\theta)\cos n\theta\,d\theta\]</div>
 <div class="math notranslate nohighlight">
 \[b_n = \frac{1}{T_0}\int_{0}^{T_0}f(t)\sin n\Omega_0 t\,dt = \frac{1}{2\pi}\int_{0}^{2\pi}f(\theta)\cos n\theta \,d\theta\]</div>
+</div>
+<div class="section" id="demo-1">
+<h3>Demo 1<a class="headerlink" href="#demo-1" title="Permalink to this headline">¶</a></h3>
+<p>Building up wave forms from sinusoids.</p>
+</div>
+<div class="section" id="demo-2">
+<h3>Demo 2<a class="headerlink" href="#demo-2" title="Permalink to this headline">¶</a></h3>
+<p>Actual measurements</p>
+<p>Taken by Dr Tim Davies with a Rhode&amp;Schwarz Oscilloscope.</p>
+<p>Note all spectra shown in these slides are generated numerically from the input signals by sampling and the application of the Fast Fourier Transform (FFT).</p>
+<div class="section" id="khz-sinewave">
+<h4>1 kHz Sinewave<a class="headerlink" href="#khz-sinewave" title="Permalink to this headline">¶</a></h4>
+<p><img alt="A 1 kHz sinewave" src="../../_images/1kHz_Sinewave.png" /></p>
+</div>
+<div class="section" id="spectrum-of-1khz-sinewave">
+<h4>Spectrum of 1kHz sinewave<a class="headerlink" href="#spectrum-of-1khz-sinewave" title="Permalink to this headline">¶</a></h4>
+<p>Showing one peak at harmonic frequency.</p>
+<p><img alt="Spectrum of 1kHz sinewave. Note one line at fundamental frequency." src="../../_images/fft_of_sinwave.png" /></p>
+</div>
+<div class="section" id="khz-squarewave">
+<h4>1 kHz Squarewave<a class="headerlink" href="#khz-squarewave" title="Permalink to this headline">¶</a></h4>
+<p><img alt="A 1 kHz square wave" src="../../_images/1kHz_sqr.png" /></p>
+</div>
+<div class="section" id="spectrum-of-1khz-square-wave">
+<h4>Spectrum of 1kHz square wave<a class="headerlink" href="#spectrum-of-1khz-square-wave" title="Permalink to this headline">¶</a></h4>
+<p>Clearly showing peaks at fundamental, 1/3, 1/5, 1/7 and 1/9 at 3rd, 5th and 7th harmonic frequencies. Note for sawtooth, harmonics decline in amplitude as the reciprocal of the of <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p><img alt="Spectrum of 1kHz sinewave. Note only odd harmonics present." src="../../_images/FFT_sqr.png" /></p>
+</div>
+<div class="section" id="khz-sawtooth-waveform">
+<h4>1 kHz Sawtooth waveform<a class="headerlink" href="#khz-sawtooth-waveform" title="Permalink to this headline">¶</a></h4>
+<p><img alt="A 1 kHz sawtooth waveform" src="../../_images/1kHz_saw.png" /></p>
+</div>
+<div class="section" id="spectrum-of-1khz-sawtooth-waveform">
+<h4>Spectrum of 1kHz sawtooth waveform<a class="headerlink" href="#spectrum-of-1khz-sawtooth-waveform" title="Permalink to this headline">¶</a></h4>
+<p>Clearly showing peaks at fundamental, 1/9, 1/25, 1/7 and 1/49 at 3rd, 5th and 7th harmonic frequencies. Note for sawtooth, harmonics decline in amplitude as the reciprocal of the square of <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p><img alt="Spectrum of 1kHz sawtooth wavform." src="../../_images/1kHz_saw_fft.png" /></p>
+</div>
 </div>
 </div>
 <div class="section" id="odd-even-and-half-wave-symmetry">
@@ -1165,7 +1244,7 @@ f(t) = \frac{1}{2}{a_0} + \sum\limits_{n = 1}^\infty  {({a_n}\cos n\Omega_0 t + 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/trig_fseries_45_0.svg" src="../../_images/trig_fseries_45_0.svg" /></div>
+<img alt="../../_images/trig_fseries_54_0.svg" src="../../_images/trig_fseries_54_0.svg" /></div>
 </div>
 <p>Plot original signal (we could use <code class="docutils literal notranslate"><span class="pre">heaviside</span></code> for this as well)</p>
 <div class="cell docutils container">
@@ -1183,7 +1262,7 @@ f(t) = \frac{1}{2}{a_0} + \sum\limits_{n = 1}^\infty  {({a_n}\cos n\Omega_0 t + 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/trig_fseries_47_0.svg" src="../../_images/trig_fseries_47_0.svg" /></div>
+<img alt="../../_images/trig_fseries_56_0.svg" src="../../_images/trig_fseries_56_0.svg" /></div>
 </div>
 <p>To run the full solution yourself download and run <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_series/matlab/square_ftrig.mlx">square_ftrig.mlx</a>.</p>
 <p>The Result confirms that:</p>
