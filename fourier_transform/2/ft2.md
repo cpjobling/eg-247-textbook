@@ -49,8 +49,6 @@ However, I am happy to change back if you find the addition of $j$ useful.
 
 You should be aware that Fourier Transforms are in general complex so whatever the notation used to *represent* the transform, we are still dealing with real and imaginary parts or magnitudes and phases when we use the *actual transforms* in analysis.
 
-
-
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## Agenda
@@ -102,25 +100,19 @@ This table is adapted from Table 8.9 of Karris. See also: [Wikibooks: Engineerin
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-<table>
-<thead>
-    <tr><td></td><td><b>Name</b></td><td>$f(t)$</td><td>$F(\omega)$</td><td><b>Remarks</b></td></tr>
-</thead>
-<tbody>
-<tr><td>1</td><td>Dirac delta</td><td>$\delta(t)$</td><td>1</td><td>Constant energy at <i>all</i> frequencies.</td></tr>
-<tr><td>2</td><td>Time sample</td><td>$\delta(t-t_0)$</td><td>$e^{-j\omega t_0}$</td><td></td></tr>
-<tr><td>3.</td><td>Phase shift</td><td>$e^{j\omega t_0}$</td><td>$2\pi\delta(\omega - \omega_0)$</td><td></td></tr>
-    <tr><td>4.</td><td><i>Signum</i> </td><td>$\operatorname{sgn} (x)$</td><td>$$\frac{2}{j\omega}$$</td><td>also known as sign function</td></tr>
-<tr><td>5.</td><td>Unit step</td><td>$u_0(t)$</td><td>$$\frac{1}{j\omega}+\pi\delta(\omega)$$</td><td></td></tr>
-<tr><td>6.</td><td>Cosine</td><td>$\cos \omega_0 t$</td><td>$\pi\left[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)\right]$</td><td></td></tr>
-<tr><td>7.</td><td>Sine</td><td>$\sin \omega_0 t$</td><td>$-j\pi\left[\delta(\omega-\omega_0)-\delta(\omega+\omega_0)\right]$</td><td></td></tr>
-<tr><td>8.</td><td>Single pole</td><td>$e^{-at}u_0(t)$</td><td>$$\frac{1}{j\omega + a}$$</td><td>$a \gt 0$</td></tr>
-<tr><td>9.</td><td>Double pole</td><td>$te^{-at}u_0(t)$</td><td>$$\frac{1}{(j\omega + a)^2}$$</td><td>$a \gt 0$</td></tr>
-<tr><td>10.</td><td>Complex pole (cosine component)</td><td>$e^{-at}\cos \omega_0 t\;u_0(t)$</td><td>$$\frac{j\omega + a}{((j\omega + a)^2+\omega^2}$$</td><td>$a\gt 0$</td></tr>
-<tr><td>11.</td><td>Complex pole (sine component)</td><td>$e^{-at}\sin \omega_0 t\;u_0(t)$</td><td>$$\frac{\omega}{((j\omega + a)^2+\omega^2}$$</td><td>$a\gt 0$</td></tr>
-    <tr><td>12.</td><td>Gating function (<i>aka</i> $\operatorname{rect} (T)$)</td><td>$A\left[u_0(t + T)-u_0(t - T)\right]$</td><td>$$2AT\frac{\sin\omega T}{\omega T}$$</td><td></td></tr>
-</tbody>
-</table>
+|     | **Name**                         | $f(t)$                            | $F(\omega)$ | **Remarks**                           |
+|-----| ---------------------------------|-----------------------------------|-------------|---------------------------------------|
+| 1.  | Dirac delta                      | $\delta(t)$                       | $1$         | Constant energy at *all* frequencies. |
+| 2.  | Time sample                      | $\delta(t-t_0)$                   |  $e^{-j\omega t_0}$ |  
+| 3.  | Phase shift                      | $e^{j\omega t_0}$                 |  $2\pi\delta(\omega - \omega_0)$ |  
+| 4.  | *Signum*                         | $\operatorname{sgn} (x)$          |  $\displaystyle{\frac{2}{j\omega}}$ |  also known as sign function
+| 5.  |  Unit step                       | $u_0(t)$                          |  $\displaystyle{\frac{1}{j\omega}+\pi\delta(\omega)}$ |  
+| 6.  |  Cosine                          | $\cos \omega_0 t$                 |  $\pi\left[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)\right]$ |  
+| 7.  |  Sine                            | $\sin \omega_0 t$                 |  $-j\pi\left[\delta(\omega-\omega_0)-\delta(\omega+\omega_0)\right]$ |  
+| 8.  |  Single pole                     | $e^{-at}u_0(t)$                   |  $\displaystyle{\frac{1}{j\omega + a}}$ |  $a \gt 0$ |
+| 9.  |  Double pole                     | $te^{-at}u_0(t)$                  |  $\displaystyle{\frac{1}{(j\omega + a)^2}}$ |  $a \gt 0$ |
+| 10. |  Complex pole (cosine component) | $e^{-at}\cos \omega_0 t\;u_0(t)$  |  $\displaystyle{\frac{j\omega + a}{((j\omega + a)^2+\omega^2}}$ |  $a\gt 0$
+| 11. |  Complex pole (sine component)   | $e^{-a t}\sin \omega_0 t\;u_0(t)$ |  $\displaystyle{\frac{\omega}{((j\omega + a)^2+\omega^2}}$ |  $a\gt 0$ |
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -154,7 +146,7 @@ $$\delta(t) \Leftrightarrow 1$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-*Matlab*: 
+*Matlab*:
 
 ```{code-cell} matlab
 ---
@@ -254,7 +246,10 @@ This function is often used to model a *voltage comparitor* in circuits.
 ### Example 4: Unit Step
 
 Use the signum function to show that
-$$\mathcal{F}\left\{u_0(t))\right\} = \pi\delta(\omega)+\frac{1}{j\omega}$$
+
+$$
+\mathcal{F}\left\{u_0(t))\right\} = \pi\delta(\omega)+\frac{1}{j\omega}
+$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -411,7 +406,6 @@ Boulet has several interesting amplifications of the material presented by {cite
 * Fourier transform of the complex exponential signal $e^{(\alpha +j\beta)t}$ with graphs (pp 184&mdash;187).
 * Use of inverse Fourier series to determine $f(t)$ from a given $F(j\omega)$ and the "ideal" low-pass filter (pp 188&mdash;191).
 * The Duality of the Fourier transform (pp 191&mdash;192).
-
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
