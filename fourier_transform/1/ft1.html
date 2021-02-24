@@ -1400,26 +1400,106 @@
 <h2>Table of Properites of the Fourier Transform<a class="headerlink" href="#table-of-properites-of-the-fourier-transform" title="Permalink to this headline">¶</a></h2>
 <p>As was the case of the Laplace Transform, properties of Fourier transforms are usually summarized in Tables of Fourier Transform properties. For example this one: <a class="reference external" href="https://en.wikipedia.org/wiki/Fourier_transform#Properties_of_the_Fourier_transform">Properties of the Fourier Transform (Wikpedia)</a> and Table 8.8 in <a class="bibtex reference internal" href="../../zbib.html#karris" id="id5">[Kar12]</a> (page 8-17).</p>
 <p>More detail and some commentry is given in the printable version of these notes.</p>
-<table>
-<thead> 
-    <tr><td></td><td><b>Name</b></td><td>$f(t)$</td><td>$F(j\omega)$</td><td><b>Remarks</b></td></tr>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:right head"><p>No.</p></th>
+<th class="head"><p><strong>Name</strong></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(f(t)\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(F(j\omega)\)</span></p></th>
+<th class="head"><p><strong>Remarks</strong></p></th>
+</tr>
 </thead>
 <tbody>
-<tr><td>1</td><td>Linearity</td><td>$a_1f_1(t)+a_2f_2(t)+\cdots+a_nf_n(t)$</td><td>$a_1F_1(j\omega)+a_2F_2(j\omega)+\cdots+a_nF_n(j\omega)$</td><td>Fourier transform is a linear operator.</td></tr>
-<tr><td>2</td><td>Symmetry</td><td>$2\pi f(-j\omega)$</td><td>$F(t)$</td><td></td></tr>
-<tr><td>3.</td><td>Time and frequency scaling</td><td>$f(\alpha t)$</td><td>$$\frac{1}{|\alpha|}F\left(j\frac{\omega}{\alpha}\right)$$</td><td>time compression is frequency expansion and *vice versa*</td></tr>
-<tr><td>4.</td><td>Time shifting</td><td>$$f(t-t_0)$$</td><td>$$e^{-j\omega t_0}F(j\omega)$$</td><td>A time shift corresponds to a phase shift in frequency domain</td></tr>
-<tr><td>5.</td><td>Frequency shifting</td><td>$$e^{j\omega_0 t}f(t)$$</td><td>$$F(j\omega-j\omega_0)$$</td><td>Multiplying a signal by a complex exponential results in a frequency shift.</td></tr>
-<tr><td>6.</td><td>Time differentiation</td><td>$$\frac{d^n}{dt^n}\,f(t)$$</td><td>$$(j\omega)^nF(j\omega)$$</td><td></td></tr>
-<tr><td>7.</td><td>Frequency differentiation</td><td>$$(-jt)^n f(t)$$</td><td>$$\frac{d^n}{d\omega^n}F(j\omega)$$</td><td></td></tr>
-<tr><td>8.</td><td>Time integration</td><td>$$\int_{-\infty}^{t}f(\tau)d\tau$$</td><td>$$\frac{F(j\omega)}{j\omega}+\pi F(0)\delta(\omega)$$</td><td></td></tr>
-<tr><td>9.</td><td>Conjugation</td><td>$$f^*(t)$$</td><td>$$F^*(-j\omega)$$</td><td></td></tr>
-<tr><td>10.</td><td>Time convolution</td><td>$$f_1(t)*f_2(t)$$</td><td>$$F_1(j\omega) F_2(j\omega)$$</td><td>Compare with Laplace Transform</td></tr>
-<tr><td>11.</td><td>Frequency convolution</td><td>$$f_1(t)f_2(t)$$</td><td>$$\frac{1}{2\pi} F_1(j\omega)*F_2(j\omega)$$</td><td>This has application to amplitude modulation as shown in Boulet pp 182&mdash;183.</td></tr>
-<tr><td>12.</td><td>Area under $f(t)$</td><td>$$\int_{-\infty}^{\infty} f(t)\,dt = F(0)$$</td><td></td><td>Way to calculate DC (or average) value of a signal</td></tr>
-<tr><td>13.</td><td>Area under $F(j\omega)$</td><td>$$f(0) = \frac{1}{2\pi}\int_{-\infty}^{\infty} F(j\omega)\,d\omega$$</td><td></td><td></td></tr>
-<tr><td>14.</td><td>Energy-Density Spectrum</td><td>$$E_{[\omega_1,\omega_2]}:=\frac{1}{2\pi}\int_{\omega_1}^{\omega_2}|F(j\omega)|^2\,d\omega.$$</td><td></td><td></td></tr>
-<tr><td>15.</td><td>Parseval's theorem</td><td>$$\int_{-\infty}^{\infty}|f(t)|^2\,dt=\frac{1}{2\pi}\int_{-\infty}^{\infty}|F(j\omega)|^2\,d\omega.$$</td><td></td><td>Definition RMS follows from this</td></tr>
+<tr class="row-even"><td class="text-align:right"><p>1.</p></td>
+<td><p>Linearity</p></td>
+<td><p><span class="math notranslate nohighlight">\(a_1f_1(t)+a_2f_2(t)+\cdots+a_nf_n(t)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(a_1F_1(j\omega)+a_2F_2(j\omega)+\cdots+a_nF_n(j\omega)\)</span></p></td>
+<td><p>Fourier transform is a linear operator.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:right"><p>2.</p></td>
+<td><p>Symmetry</p></td>
+<td><p><span class="math notranslate nohighlight">\(2\pi f(-j\omega)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(F(t)\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:right"><p>3.</p></td>
+<td><p>Time and frequency scaling</p></td>
+<td><p><span class="math notranslate nohighlight">\(f(\alpha t)\)</span></p></td>
+<td><p>$$\frac{1}{</p></td>
+<td><p>\alpha</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:right"><p>4.</p></td>
+<td><p>Time shifting</p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle{f(t-t_0)}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle{e^{-j\omega t_0}F(j\omega)}\)</span></p></td>
+<td><p>A time shift corresponds to a phase shift in frequency domain</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:right"><p>5.</p></td>
+<td><p>Frequency shifting</p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle{e^{j\omega_0 t}f(t)}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle{F(j\omega-j\omega_0)}\)</span></p></td>
+<td><p>Multiplying a signal by a complex exponential results in a frequency shift.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:right"><p>6.</p></td>
+<td><p>Time differentiation</p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle{\frac{d^n}{dt^n}\,f(t)}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle{(j\omega)^nF(j\omega)}\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:right"><p>7.</p></td>
+<td><p>Frequency differentiation</p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle{(-jt)^n f(t)}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle{\frac{d^n}{d\omega^n}F(j\omega)}\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:right"><p>8.</p></td>
+<td><p>Time integration</p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle{\int_{-\infty}^{t}f(\tau)d\tau}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle{\frac{F(j\omega)}{j\omega}+\pi F(0)\delta(\omega)}\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:right"><p>9.</p></td>
+<td><p>Conjugation</p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle{f^*(t)}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle{F^*(-j\omega)}\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:right"><p>10.</p></td>
+<td><p>Time convolution</p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle{f_1(t)*f_2(t)}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle{F_1(j\omega) F_2(j\omega)}\)</span></p></td>
+<td><p>Compare with Laplace Transform</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:right"><p>11.</p></td>
+<td><p>Frequency convolution</p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle{f_1(t)f_2(t)}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle{\frac{1}{2\pi}F_1(j\omega)*F_2(j\omega)}\)</span></p></td>
+<td><p>This has application to amplitude modulation as shown in Boulet pp 182—183.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:right"><p>12.</p></td>
+<td><p>Area under <span class="math notranslate nohighlight">\(f(t)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle{\int_{-\infty}^{\infty} f(t)\,dt = F(0)}\)</span></p></td>
+<td><p></p></td>
+<td><p>Way to calculate DC (or average) value of a signal</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:right"><p>13.</p></td>
+<td><p>Area under <span class="math notranslate nohighlight">\(F(j\omega)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle{f(0) = \frac{1}{2\pi}\int_{-\infty}^{\infty}F(j\omega)\,d\omega}\)</span></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:right"><p>14.</p></td>
+<td><p>Energy-Density Spectrum</p></td>
+<td><p>$\displaystyle{E_{[\omega_1,\omega_2]}:=\frac{1}{2\pi}\int_{\omega_1}^{\omega_2}</p></td>
+<td><p>F(j\omega)</p></td>
+<td><p>^2,d\omega.}$</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:right"><p>15.</p></td>
+<td><p>Parseval’s theorem</p></td>
+<td><p>$\displaystyle{\int_{-\infty}^{\infty}</p></td>
+<td><p>f(t)</p></td>
+<td><p>^2,dt=\frac{1}{2\pi}\int_{-\infty}^{\infty}</p></td>
+</tr>
 </tbody>
 </table>
 <p>See also: <a class="reference external" href="https://en.wikibooks.org/wiki/Engineering_Tables/Fourier_Transform_Properties">Wikibooks: Engineering Tables/Fourier Transform Properties</a> and <a class="reference external" href="https://mathworld.wolfram.com/FourierTransform.html">Fourier Transfom—WolframMathworld</a> for more complete references.</p>
@@ -1552,12 +1632,15 @@ sqrt(2) sqrt(pi) exp| - ------ |
 </div>
 <div class="section" id="solution-2">
 <h3>Solution 2<a class="headerlink" href="#solution-2" title="Permalink to this headline">¶</a></h3>
-<p>\begin{eqnarray*}
-\mathcal{F}\left{ e^{-t}u_0(t) \right} &amp;=&amp; \int_0^\infty  e^{-t}u_0(t) e^{ - j\omega t};dt \
-&amp;=&amp; \int_0^\infty  e^{-(1 + j\omega )t} ;dt \
-&amp;=&amp;  - \frac{1}{j\omega  + 1}\left[ e^{ - (1 + j\omega )t} \right]_0^\infty  =  - \frac{1}{j\omega  + 1}\left[ {0 - 1} \right] \
-F(j\omega ) &amp;=&amp; \frac{1}{j\omega  + 1} \
-\end{eqnarray*}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{eqnarray*}
+      \mathcal{F}\left\{ e^{-t}u_0(t) \right\} &amp;=&amp; \int_0^\infty  e^{-t}u_0(t) e^{ - j\omega t}\;dt \\ 
+       &amp;=&amp; \int_0^\infty  e^{-(1 + j\omega )t} \;dt \\ 
+       &amp;=&amp;  - \frac{1}{j\omega  + 1}\left[ e^{ - (1 + j\omega )t} \right]_0^\infty  =  - \frac{1}{j\omega  + 1}\left[ {0 - 1} \right] \\ 
+      F(j\omega ) &amp;=&amp; \frac{1}{j\omega  + 1} \\ 
+    \end{eqnarray*}
+\end{split}\]</div>
 <p>Thus</p>
 <div class="math notranslate nohighlight">
 \[e^{ - t}{u_0}(t)\Leftrightarrow \frac{1}{j\omega  + 1}\]</div>
