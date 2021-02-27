@@ -53,7 +53,7 @@ The result is called the *Exponential Fourier Series*.
 
 * You should already be familiar with $e^{at}$ because it appears in the solution of differential equations. 
 * It is also a function that appears in the definition of the Laplace and Inverse Laplace Transform.
-* It pops up again and again in tables and properies of the Laplace Transform. 
+* It pops up again and again in tables and properies of the Laplace Transform.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -341,7 +341,7 @@ $C_{-k} = C_{k}^*$ **always**
 
 Compute the Exponential Fourier Series for the square wave shown below assuming that $\omega = 1$
 
-<img src="pictures/sqw.png"> 
+<img src="pictures/sqw.png">
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -440,7 +440,7 @@ f(t) &=& \frac{4A}{\pi}\left(\cdots + \left(\frac{e^{j\Omega_0 t} - e^{-j\Omega_
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-## Computing coefficients of Exponential Fourier Series in MATLAB 
+## Computing coefficients of Exponential Fourier Series in MATLAB
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -452,7 +452,7 @@ Verify the result of Example 1 using MATLAB.
 
 ### Solution to example 2
 
-Solution: See [efs_sqw.m](https://cpjobling.github.io/eg-247-textbook/fourier_series/matlab/efs_sqw.m). 
+Solution: See [efs_sqw.m](https://cpjobling.github.io/eg-247-textbook/fourier_series/matlab/efs_sqw.m).
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -565,7 +565,7 @@ ylabel('\angle c_k [radians]');
 * When $\omega t = \pi/2$: $e^{j\omega t} = e^{j\pi/2} = j$
 * When $\omega t = \pi$: $e^{j\omega t} = e^{j\pi} = -1$
 * When $\omega t = 3\pi/2$: $e^{j\omega t} = e^{j3\pi/2} = -j$
-* When $\omega t = 2\pi$: $e^{j\omega t} = e^{j2\pi} e^{j0}= 1$
+* When $\omega t = 2\pi$: $e^{j\omega t} = e^{j2\pi} = e^{j0}= 1$
 
 It is also worth being aware that $n\omega t$, when $n$ is an integer, produces rotations that often map back to the simpler cases given above. For example see $e^{j2\pi}$ above.
 

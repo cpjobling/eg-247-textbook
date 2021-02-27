@@ -321,7 +321,7 @@ $$P_{\mathrm{RMS}} = \sqrt{\frac{1}{T}\int_0^T |f(t)|^2 dt}$$
 
 ### Parseval's Theorem
 
-[Parseval's Theorem](https://en.wikipedia.org/wiki/Parseval's_theorem) states that the total average power of a a periodic signal $f(t)$ is equal to the sum of the average powers of all its harmonic components.
+[Parseval's Theorem](https://en.wikipedia.org/wiki/Parseval's_theorem) states that the total average power of a periodic signal $f(t)$ is equal to the sum of the average powers of all its harmonic components.
 
 The power in the $k$th harmonic $C_ke^{jk\Omega_0 t}$ is given by
 
@@ -345,8 +345,7 @@ $$P = \frac{1}{T}\int_0^T \left|f(t)\right|^2\,dt = \sum_{k=-\infty}^{\infty}\le
 
 By a similar argument:
 
-$$P_{\mathrm{RMS}} = \sqrt{\frac{1}{T}\int_0^T \left|f(t)\right|^2\,dt} = \sqrt{\sum_{k=-\infty}^{\infty}\left|C_k\right|^2}.$$  
-    
+$$P_{\mathrm{RMS}} = \sqrt{\frac{1}{T}\int_0^T \left|f(t)\right|^2\,dt} = \sqrt{\sum_{k=-\infty}^{\infty}\left|C_k\right|^2}.$$
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -416,7 +415,7 @@ xlabel('\Omega_0 [rad/s]')
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-Note that most of the power is concentrated at DC and in the first seven harmonic components. That is in the frequency range $[-14\pi/T,+14\pi/T]$ rad/s. 
+Note that most of the power is concentrated at DC and in the first seven harmonic components. That is in the frequency range $[-14\pi/T,+14\pi/T]$ rad/s.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -434,7 +433,7 @@ This can occur in the line voltages of an industrial plant that makes heavy use 
 
 #### THD Defined
 
-Clearly, some of the harmonics for $k\ne \pm 1$ are nonzero. One way to characterie the distortion is to compute the ratio of average power in all the harmonics that "should not be present", that is for $k > 1$, to the total average power of the distorted sine wave. The square-root of this ratio is called the *total harmonic distortion* (THD) of the signal.
+Clearly, some of the harmonics for $k\ne \pm 1$ are nonzero. One way to characterize the distortion is to compute the ratio of average power in all the harmonics that "should not be present", that is for $k > 1$, to the total average power of the distorted sine wave. The square-root of this ratio is called the *total harmonic distortion* (THD) of the signal.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -507,8 +506,6 @@ We will return to this idea later.
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## Summary
-
-*Summary*
 
 * Line spectra
 * Power in periodic signals
