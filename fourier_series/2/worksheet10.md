@@ -47,7 +47,7 @@ After class, the lecture recording and the annotated version of the worksheets w
 
 * You should already be familiar with $e^{at}$ because it appears in the solution of differential equations. 
 * It is also a function that appears in the definition of the Laplace and Inverse Laplace Transform.
-* It pops up again and again in tables and properies of the Laplace Transform. 
+* It pops up again and again in tables and properies of the Laplace Transform.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -242,7 +242,7 @@ $C_{-k} = C_{k}^*$ **always**
 
 Compute the Exponential Fourier Series for the square wave shown below assuming that $\omega = 1$
 
-<img src="pictures/sqw.png"> 
+<img src="pictures/sqw.png">
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -304,7 +304,7 @@ $${C_k \atop {k=\mathrm{even}}} = 0.$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-## Computing coefficients of Exponential Fourier Series in Matlab 
+## Computing coefficients of Exponential Fourier Series in Matlab
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -316,7 +316,7 @@ Verify the result of Example 1 using MATLAB.
 
 ### Solution
 
-Solution: See [efs_sqw.m](https://cpjobling.github.io/eg-247-textbook/fourier_series/matlab/efs_sqw.m). 
+Solution: See [efs_sqw.m](https://cpjobling.github.io/eg-247-textbook/fourier_series/matlab/efs_sqw.m).
 
 ```{code-cell} matlab
 ---
@@ -407,6 +407,8 @@ xlabel('Hamonic frequencies: k\Omega_0 (rad/sec)');
 ylabel('\angle c_k [radians]');
 ```
 
++++ {"slideshow": {"slide_type": "slide"}}
+
 ## Computing Trig. Fourier Series from Exp. Fourier Series
 
 Refer to the [notes](exp_fs1).
@@ -432,7 +434,7 @@ Refer to the [notes](exp_fs1).
 * When $\omega t = \pi/2$: $e^{j\omega t} = e^{j\pi/2} = j$
 * When $\omega t = \pi$: $e^{j\omega t} = e^{j\pi} = -1$
 * When $\omega t = 3\pi/2$: $e^{j\omega t} = e^{j3\pi/2} = -j$
-* When $\omega t = 2\pi$: $e^{j\omega t} = e^{j2\pi} e^{j0}= 1$
+* When $\omega t = 2\pi$: $e^{j\omega t} = e^{j2\pi} = e^{j0}= 1$
 
 It is also worth being aware that $n\omega t$, when $n$ is an integer, produces rotations that often map back to the simpler cases given above. For example see $e^{j2\pi}$ above.
 
