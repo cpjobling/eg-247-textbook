@@ -18,7 +18,7 @@ kernelspec:
 
 ## To accompany Chapter 5.2 Fourier transforms of commonly occurring signals
 
-+++ {"slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "notes"}}
 
 This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet13.pdf). We will step through this worksheet in class. 
 
@@ -66,7 +66,7 @@ This has important consequences in filter design and later when we consider samp
 
 ## Table of Common Fourier Transform Pairs
 
-This table is adapted from Table 8.9 of Karris. See also: [Wikibooks: Engineering Tables/Fourier Transform Table](https://en.wikibooks.org/wiki/Engineering_Tables/Fourier_Transform_Table) and [Fourier Transfom&mdash;WolframMathworld](https://mathworld.wolfram.com/FourierTransform.html) for more complete references.
+This table is adapted from Table 8.9 of Karris. See also: [Wikibooks: Engineering Tables/Fourier Transform Table](https://en.wikibooks.org/wiki/Engineering_Tables/Fourier_Transform_Table) and [Fourier Transform&mdash;WolframMathworld](https://mathworld.wolfram.com/FourierTransform.html) for more complete references.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -105,6 +105,10 @@ $$\delta(t) \Leftrightarrow 1$$
 *Matlab*:
 
 ```{code-cell} matlab
+---
+slideshow:
+  slide_type: skip
+---
 imatlab_export_fig('print-svg')  % Static svg figures.
 ```
 
@@ -114,6 +118,7 @@ slideshow:
   slide_type: fragment
 ---
 syms t omega omega_0 t0;
+u0(t) = heaviside(t); % useful utility function
 fourier(dirac(t))
 ```
 
@@ -128,7 +133,7 @@ $$\delta(t-t_0) \Leftrightarrow e^{-j\omega t_0}$$
 slideshow:
   slide_type: fragment
 ---
-fourier(dirac(t - t0))
+fourier(dirac(t - t0),omega)
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -148,7 +153,7 @@ $$1 \Leftrightarrow 2\pi\delta(\omega)$$
 slideshow:
   slide_type: fragment
 ---
-A = sym(1);
+A = sym(1); % take one to be a symbol
 fourier(A,omega)
 ```
 
@@ -306,7 +311,7 @@ $$u_0(t) \Leftrightarrow \pi\delta(\omega)+\frac{1}{j\omega}$$
 slideshow:
   slide_type: fragment
 ---
-fourier(heaviside(t),omega)
+fourier(u0(t),omega)
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -411,7 +416,7 @@ $$\cos\omega_0 t\; u_0(t)\Leftrightarrow \frac{\pi}{2}\left[\delta(\omega-\omega
 
 ## Derivation of the Fourier Transform from the Laplace Transform
 
-If a signal is a function of time $f(t)$ which is zero for $t\le 0$, we can obtain the Fourier transform from the Lpalace transform by substituting $s$ by $j\omega$.
+If a signal is a function of time $f(t)$ which is zero for $t\le 0$, we can obtain the Fourier transform from the Laplace transform by substituting $s$ by $j\omega$.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 

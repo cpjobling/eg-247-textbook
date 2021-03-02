@@ -887,7 +887,7 @@
 </div>
 <div class="section" id="table-of-common-fourier-transform-pairs">
 <h2>Table of Common Fourier Transform Pairs<a class="headerlink" href="#table-of-common-fourier-transform-pairs" title="Permalink to this headline">¶</a></h2>
-<p>This table is adapted from Table 8.9 of Karris. See also: <a class="reference external" href="https://en.wikibooks.org/wiki/Engineering_Tables/Fourier_Transform_Table">Wikibooks: Engineering Tables/Fourier Transform Table</a> and <a class="reference external" href="https://mathworld.wolfram.com/FourierTransform.html">Fourier Transfom—WolframMathworld</a> for more complete references.</p>
+<p>This table is adapted from Table 8.9 of Karris. See also: <a class="reference external" href="https://en.wikibooks.org/wiki/Engineering_Tables/Fourier_Transform_Table">Wikibooks: Engineering Tables/Fourier Transform Table</a> and <a class="reference external" href="https://mathworld.wolfram.com/FourierTransform.html">Fourier Transform—WolframMathworld</a> for more complete references.</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
@@ -986,6 +986,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span> <span class="n">t</span> <span class="n">omega</span> <span class="n">omega_0</span> <span class="n">t0</span><span class="p">;</span>
+<span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">);</span> <span class="o">%</span> <span class="n">useful</span> <span class="n">utility</span> <span class="n">function</span>
 <span class="n">fourier</span><span class="p">(</span><span class="n">dirac</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -996,7 +997,7 @@
 \[\delta(t-t_0) \Leftrightarrow e^{-j\omega t_0}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fourier</span><span class="p">(</span><span class="n">dirac</span><span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fourier</span><span class="p">(</span><span class="n">dirac</span><span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">t0</span><span class="p">),</span><span class="n">omega</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1010,7 +1011,7 @@
 <p><em>Matlab</em>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">sym</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">sym</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="o">%</span> <span class="n">take</span> <span class="n">one</span> <span class="n">to</span> <span class="n">be</span> <span class="n">a</span> <span class="n">symbol</span>
 <span class="n">fourier</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">omega</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1118,7 +1119,7 @@
 <p><em>Matlab</em>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fourier</span><span class="p">(</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">omega</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fourier</span><span class="p">(</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">omega</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1201,7 +1202,7 @@
 </div>
 <div class="section" id="derivation-of-the-fourier-transform-from-the-laplace-transform">
 <h2>Derivation of the Fourier Transform from the Laplace Transform<a class="headerlink" href="#derivation-of-the-fourier-transform-from-the-laplace-transform" title="Permalink to this headline">¶</a></h2>
-<p>If a signal is a function of time <span class="math notranslate nohighlight">\(f(t)\)</span> which is zero for <span class="math notranslate nohighlight">\(t\le 0\)</span>, we can obtain the Fourier transform from the Lpalace transform by substituting <span class="math notranslate nohighlight">\(s\)</span> by <span class="math notranslate nohighlight">\(j\omega\)</span>.</p>
+<p>If a signal is a function of time <span class="math notranslate nohighlight">\(f(t)\)</span> which is zero for <span class="math notranslate nohighlight">\(t\le 0\)</span>, we can obtain the Fourier transform from the Laplace transform by substituting <span class="math notranslate nohighlight">\(s\)</span> by <span class="math notranslate nohighlight">\(j\omega\)</span>.</p>
 <div class="section" id="example-8-single-pole-filter">
 <h3>Example 8: Single Pole Filter<a class="headerlink" href="#example-8-single-pole-filter" title="Permalink to this headline">¶</a></h3>
 <p>Given that</p>

@@ -96,7 +96,7 @@ This has important consequences in filter design and later when we consider samp
 
 ## Table of Common Fourier Transform Pairs
 
-This table is adapted from Table 8.9 of Karris. See also: [Wikibooks: Engineering Tables/Fourier Transform Table](https://en.wikibooks.org/wiki/Engineering_Tables/Fourier_Transform_Table) and [Fourier Transfom&mdash;WolframMathworld](https://mathworld.wolfram.com/FourierTransform.html) for more complete references.
+This table is adapted from Table 8.9 of Karris. See also: [Wikibooks: Engineering Tables/Fourier Transform Table](https://en.wikibooks.org/wiki/Engineering_Tables/Fourier_Transform_Table) and [Fourier Transfomr&mdash;WolframMathworld](https://mathworld.wolfram.com/FourierTransform.html) for more complete references.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -333,7 +333,7 @@ $$\cos\omega_0 t\; u_0(t)\Leftrightarrow \frac{\pi}{2}\left[\delta(\omega-\omega
 
 ## Derivation of the Fourier Transform from the Laplace Transform
 
-If a signal is a function of time $f(t)$ which is zero for $t\le 0$, we can obtain the Fourier transform from the Lpalace transform by substituting $s$ by $j\omega$.
+If a signal is a function of time $f(t)$ which is zero for $t\le 0$, we can obtain the Fourier transform from the Laplace transform by substituting $s$ by $j\omega$.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
