@@ -26,7 +26,7 @@ An annotatable copy of the notes for this presentation will be distributed befor
 
 You are expected to have at least watched the video presentation of [Chapter 5.4](https://cpjobling.github.io/eg-247-textbook/fourier_transform/4/ft4) of the [notes](https://cpjobling.github.io/eg-247-textbook/) before coming to class. If you haven't watch it afterwards!
 
-After class, the lecture recording and the annotated version of the worksheets will be made available through Canvas.We will step through this worksheet in class. 
+After class, the lecture recording and the annotated version of the worksheets will be made available through Canvas.We will step through this worksheet in class.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -74,7 +74,7 @@ An ideal frequency-selective filter is a system that let's the frequency compone
 
 ### Motivating example
 
-See the video and script on [*Canvas Week 7*](https://canvas.swansea.ac.uk/courses/646/pages/week-7-classroom-activities?module_item_id=398892).
+See the video and script on [*Canvas Week 7*](https://canvas.swansea.ac.uk/courses/16097/pages/motivating-example-filter-design-using-matlab?module_item_id=1000013).
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -551,4 +551,4 @@ $$H_{\mathrm{bp}}(\omega) = H_{\mathrm{hp}}(\omega)H_{\mathrm{lp}}(\omega)$$
 
 ## Solutions
 
-Solutions to Examples 5-9 are captured as a PenCast which you will find attached to the Worked Solutions section of the [Week 7 Section](https://swanseauniversity-my.sharepoint.com/personal/c_p_jobling_swansea_ac_uk/_layouts/OneNote.aspx?id=%2Fpersonal%2Fc_p_jobling_swansea_ac_uk%2FDocuments%2FClass%20Notebooks%2FEG-247-EG-3068%20Signals%20and%20Systems%20%282019-2020%29&wd=target%28_Content%20Library%2FWorksheets.one%7C6DB507FF-A52A-442F-8ED4-3BCF0DC3D570%2FWorked%20Solutions%20to%20Examples%7C0827F501-1A74-104B-8EAA-7C96C30F1282%2F%29) of the OneNote Class Notebook or here [filters2.pdf](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/filters2.pdf)
+Solutions to Examples 5-9 are captured as a PenCast which you will find attached to the Worked Solutions section of the [Week 7 Section](https://canvas.swansea.ac.uk/courses/16097/pages/worked-solutions-to-selected-week-7-problems?module_item_id=939107) of the Canvas course site or here [filters2.pdf](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/filters2.pdf)

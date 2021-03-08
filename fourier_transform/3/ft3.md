@@ -439,7 +439,7 @@ Result is equiavlent to:
 
 Which after gathering terms gives
 
-$$v_{\mathrm{out}}(t) = 15\left(e^{-2t}) - e^{-4t}\right)u_0(t)$$
+$$v_{\mathrm{out}}(t) = 15\left(e^{-2t} - e^{-4t}\right)u_0(t)$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
