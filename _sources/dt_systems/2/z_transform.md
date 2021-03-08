@@ -199,11 +199,11 @@ $$F(z) = \frac{1}{1-az^{-1}}=\frac{z}{z -a}$$
 
 2. This function converges only if 
 
-   $$|z| < |a|$$ 
+   $\displaystyle{|z| < |a|}$ 
    
    and the region of convergence is outside the circle centred at $z=0$ with radius 
    
-   $$r=|a|$$.
+   $\displaystyle{r=|a|}$.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
