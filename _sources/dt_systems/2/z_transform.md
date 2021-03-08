@@ -494,7 +494,7 @@ $$z = e^{\sigma t}e^{j2\pi\omega/\omega_s}$$
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-| $\omega$ [radians/sec] | $\|z\|$ | $\theta$ [radians] |
+| $\omega$ [radians/sec] | $\mid z\mid $ | $\theta$ [radians] |
 |------------------------|-------|--------------------|
 | 0 | 1 | 0 |
 | $\omega_s/8$ | 1 | $\pi/4$ |
