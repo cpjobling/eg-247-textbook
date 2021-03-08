@@ -648,11 +648,14 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/dt_systems/2/z_transform.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+        <a class="dropdown-buttons"
+            href="../../_sources/dt_systems/2/z_transform.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/dt_systems/2/z_transform.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -673,7 +676,7 @@
             href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Fdt_systems/2/z_transform.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/cpjobling/eg-247-textbook/edit/master/dt_systems/2/z_transform.ipynb"><button
+        <a class="edit-button" href="https://github.com/cpjobling/eg-247-textbook/edit/master/dt_systems/2/z_transform.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -777,16 +780,6 @@
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-geometric-sequence">
      The Geometric Sequence
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#region-of-convergence">
-     Region of convergence
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-delta-sequence">
-     The Delta Sequence
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -1017,21 +1010,21 @@
 <h2>Properties of the z-Transform<a class="headerlink" href="#properties-of-the-z-transform" title="Permalink to this headline">¶</a></h2>
 <table>
 <thead>
-<tr><td>&nbsp;</td><th>Property</th><th>Discrete Time Domain</th><th>$$\mathcal{Z}$$ Transform</th></tr></thead>
+<tr><td>&nbsp;</td><th>Property</th><th>Discrete Time Domain</th><th>$\displaystyle{\mathcal{Z}}$ Transform</th></tr></thead>
 <tbody>
-<tr><td>1</td><td>Linearity</td><td>$$af_1[n]+bf_2[n]+\cdots$$</td><td>$$aF_1(z)+bF_2(z)+\cdots$$</td></tr>
-<tr><td>2</td><td>Shift of $$x[n]u_0[n]$$</td><td>$$f[n-m]u_0[n-m]$$</td><td>$$z^{-m}F(z)$$</td></tr>
-<tr><td>3</td><td>Left shift</td><td>$$f[n-m]$$</td><td>$$z^{-m}F(z)+\sum_{n=0}^{m-1}f[n-m]z^{-n}$$</td></tr>
-<tr><td>4</td><td>Right shift</td><td>$$f[n+m]$$</td><td>$$z^{m}F(z)+\sum_{n=-m}^{-1}f[n+m]z^{-n}$$</td></tr>
-<tr><td>5</td><td>Multiplication by $$a^n$$</td><td>$$a^nf[n]$$</td><td>$$F\left(\frac{z}{a}\right)$$</td></tr>
-<tr><td>6</td><td>Multiplication by $$e^{-nsT_s}$$</td><td>$$e^{-nsT_s}f[n]$$</td><td>$$F\left(e^{sT_s}z\right)$$</td></tr>
-<tr><td>7</td><td>Multiplication by $$n$$</td><td>$$nf[n]$$</td><td>$$-z\frac{d}{dz}F(z)$$</td></tr>
-<tr><td>8</td><td>Multiplication by $$n^2$$</td><td>$$n^2f[n]$$</td><td>$$-z\frac{d}{dz}F(z)+z^2\frac{d^2}{dz^2}F(z)$$</td></tr>
-<tr><td>9</td><td>Summation in time</td><td>$$\sum_{m=0}^{n}f[m]$$</td><td>$$\frac{z}{z-1}F(z)$$</td></tr>
-<tr><td>10</td><td>Time convolution</td><td>$$f_1[n]*f_2[n]$$</td><td>$$F_1(z)F_2(z)$$</td></tr>
-<tr><td>11</td><td>Frequency convolution</td><td>$$f_1[n]f_2[n]$$</td><td>$$\frac{1}{j2\pi }\oint {x{F_1}(v){F_2}\left( {\frac{z}{v}} \right)} {v^{ - 1}}dv$$</td></tr>
-<tr><td>12</td><td>Initial value theorem</td><td colspan="2">$$f[0]=\lim_{z\to\infty}F(z)$$</td></tr>
-<tr><td>13</td><td>Final value theorem</td><td colspan="2">$$\lim_{n\to\infty}f[n]=\lim_{z\to 1}(z-1)F(z)$$</td></tr>
+<tr><td>1</td><td>Linearity</td><td>$\displaystyle{af_1[n]+bf_2[n]+\cdots}$</td><td>$\displaystyle{aF_1(z)+bF_2(z)+\cdots}$</td></tr>
+<tr><td>2</td><td>Shift of $\displaystyle{x[n]u_0[n]}$</td><td>$\displaystyle{f[n-m]u_0[n-m]}$</td><td>$\displaystyle{z^{-m}F(z)}$</td></tr>
+<tr><td>3</td><td>Left shift</td><td>$\displaystyle{f[n-m]}$</td><td>$\displaystyle{z^{-m}F(z)+\sum_{n=0}^{m-1}f[n-m]z^{-n}}$</td></tr>
+<tr><td>4</td><td>Right shift</td><td>$\displaystyle{f[n+m]}$</td><td>$\displaystyle{z^{m}F(z)+\sum_{n=-m}^{-1}f[n+m]z^{-n}}$</td></tr>
+<tr><td>5</td><td>Multiplication by $\displaystyle{a^n}$</td><td>$\displaystyle{a^nf[n]}$</td><td>$\displaystyle{F\left(\frac{z}{a}\right)}$</td></tr>
+<tr><td>6</td><td>Multiplication by $\displaystyle{e^{-nsT_s}}$</td><td>$\displaystyle{e^{-nsT_s}f[n]}$</td><td>$\displaystyle{F\left(e^{sT_s}z\right)}$</td></tr>
+<tr><td>7</td><td>Multiplication by $\displaystyle{n}$</td><td>$\displaystyle{nf[n]}$</td><td>$\displaystyle{-z\frac{d}{dz}F(z)}$</td></tr>
+<tr><td>8</td><td>Multiplication by $\displaystyle{n^2}$</td><td>$\displaystyle{n^2f[n]}$</td><td>$\displaystyle{-z\frac{d}{dz}F(z)+z^2\frac{d^2}{dz^2}F(z)}$</td></tr>
+<tr><td>9</td><td>Summation in time</td><td>$\displaystyle{\sum_{m=0}^{n}f[m]}$</td><td>$\displaystyle{\frac{z}{z-1}F(z)}$</td></tr>
+<tr><td>10</td><td>Time convolution</td><td>$\displaystyle{f_1[n]*f_2[n]}$</td><td>$\displaystyle{F_1(z)F_2(z)}$</td></tr>
+<tr><td>11</td><td>Frequency convolution</td><td>$\displaystyle{f_1[n]f_2[n]}$</td><td>$\displaystyle{\frac{1}{j2\pi }\oint {x{F_1}(v){F_2}\left( {\frac{z}{v}} \right)} {v^{ - 1}}dv}$</td></tr>
+<tr><td>12</td><td>Initial value theorem</td><td colspan="2">$\displaystyle{f[0]=\lim_{z\to\infty}F(z)}$</td></tr>
+<tr><td>13</td><td>Final value theorem</td><td colspan="2">$\displaystyle{\lim_{n\to\infty}f[n]=\lim_{z\to 1}(z-1)F(z)}$</td></tr>
 </tbody>
 </table>
 <p>For proofs refer to Section 9.2 of <a class="bibtex reference internal" href="../../zbib.html#karris" id="id3">[Kar12]</a>.</p>
@@ -1057,21 +1050,13 @@ a^n&amp;{n = 0,1,2,3, \ldots }
 <div class="math notranslate nohighlight">
 \[|z| &lt; |a|\]</div>
 <p>and the region of convergence is outside the circle centred at <span class="math notranslate nohighlight">\(z=0\)</span> with radius</p>
-<p>$<span class="math notranslate nohighlight">\(r=|a|\)</span>$.</p>
-</li>
-</ol>
-</div>
-<div class="section" id="region-of-convergence">
-<h3>Region of convergence<a class="headerlink" href="#region-of-convergence" title="Permalink to this headline">¶</a></h3>
-<p><img alt="Region of convergence" src="../../_images/roc.png" /></p>
-</div>
-<div class="section" id="the-delta-sequence">
-<h3>The Delta Sequence<a class="headerlink" href="#the-delta-sequence" title="Permalink to this headline">¶</a></h3>
 <div class="math notranslate nohighlight">
-\[\begin{split}\delta [n] = \left\{ {\begin{array}{*{20}{c}}
+\[ \begin{align}\begin{aligned}r=|a|$$.\\+++ {&quot;slideshow&quot;: {&quot;slide_type&quot;: &quot;subslide&quot;}}\\### Region of convergence\\![Region of convergence](./pictures/roc.png)\\+++ {&quot;slideshow&quot;: {&quot;slide_type&quot;: &quot;subslide&quot;}}\\### The Delta Sequence\\+++ {&quot;slideshow&quot;: {&quot;slide_type&quot;: &quot;fragment&quot;}}\\\begin{split}$$\delta [n] = \left\{ {\begin{array}{*{20}{c}}
 1&amp;{n = 0}\\
 0&amp;\mathrm{otherwise}
-\end{array}} \right.\end{split}\]</div>
+\end{array}} \right.\end{split}\end{aligned}\end{align} \]</div>
+</li>
+</ol>
 <div class="math notranslate nohighlight">
 \[\mathcal{Z}\left\{\delta [n]\right\} = \Delta(z) = \sum_{n=0}^{\infty}\delta[n]z^{-n} = 1 + \sum_{n=1}^{\infty}0z^{-n} =1\]</div>
 <div class="math notranslate nohighlight">
@@ -1127,22 +1112,22 @@ $<span class="math notranslate nohighlight">\(nf[n] \Leftrightarrow -z\frac{d}{d
 <thead>
 <tr><td>&nbsp;</td><th>f[n]</th><th>F(z)</th></tr></thead>
 <tbody>
-<tr><td>1</td><td>$$\delta[n]$$</td><td>$$1$$</td></tr>
-<tr><td>2</td><td>$$\delta[n-m]$$</td><td>$$z^{-m}$$</td></tr>
-<tr><td>3</td><td>$$a^nu_0[n]$$</td><td>$$\frac{z}{z-a}\;|z| > a$$</td></tr>
-<tr><td>4</td><td>$$u_0[n]$$</td><td>$$\frac{z}{z-1}\;|z| > 1$$</td></tr>
-<tr><td>5</td><td>$$(e^{-anT_s})u_0[n]$$</td><td>$$\frac{z}{z-e^{-aT_s}}\;|e^{-aT_s}z^{-1}| < 1$$</td></tr>
-<tr><td>6</td><td>$$(\cos naT_s)u_0[n]$$</td><td>$$\frac{z^2 - z\cos aT_s}{z^2 -2z\cos aT_s + 1}\;|z| > 1$$</td></tr>
-<tr><td>7</td><td>$$(\sin naT_s)u_0[n]$$</td><td>$$\frac{z\sin aT_s}{z^2 -2z\cos aT_s + 1}\;|z| > 1$$</td></tr>
-<tr><td>8</td><td>$$(a^n\cos naT_s)u_0[n]$$</td><td>$$\frac{z^2 - az\cos aT_s}{z^2 -2az\cos aT_s + a^2}\;|z| > 1$$</td></tr>
-<tr><td>9</td><td>$$(a^n\sin naT_s)u_0[n]$$</td><td>$$\frac{az\sin aT_s}{z^2 -2az\cos aT_s + a^2}\;|z| > 1$$</td></tr>
-<tr><td>10</td><td>$$u_0[n]-u_0[n-m]$$</td><td>$$\frac{z^m-1}{z^{m-1}(z-1)}$$</td></tr>
-<tr><td>11</td><td>$$nu_0[n]$$</td><td>$$\frac{z}{(z-1)^2}$$</td></tr>
-<tr><td>12</td><td>$$n^2u_0[n]$$</td><td>$$\frac{z(z+1)}{(z-1)^3}$$</td></tr>
-<tr><td>13</td><td>$$[n+1]u_0[n]$$</td><td>$$\frac{z^2}{(z-1)^2}$$</td></tr>
-<tr><td>14</td><td>$$a^n n u_0[n]$$</td><td>$$\frac{az}{(z-a)^2}$$</td></tr>
-<tr><td>15</td><td>$$a^n n^2 u_0[n]$$</td><td>$$\frac{az(z+a)}{(z-a)^3}$$</td></tr>
-<tr><td>16</td><td>$$a^n n[n+1] u_0[n]$$</td><td>$$\frac{2az^2}{(z-a)^3}$$</td></tr>
+<tr><td>1</td><td>$\displaystyle{\delta[n]}$</td><td>$\displaystyle{1}$</td></tr>
+<tr><td>2</td><td>$\displaystyle{\delta[n-m]}$</td><td>$\displaystyle{z^{-m}}$</td></tr>
+<tr><td>3</td><td>$\displaystyle{a^nu_0[n]}$</td><td>$\displaystyle{\frac{z}{z-a}\;|z| > a}$</td></tr>
+<tr><td>4</td><td>$\displaystyle{u_0[n]}$</td><td>$\displaystyle{\frac{z}{z-1}\;|z| > 1}$</td></tr>
+<tr><td>5</td><td>$\displaystyle{(e^{-anT_s})u_0[n]}$</td><td>$\displaystyle{\frac{z}{z-e^{-aT_s}}\;|e^{-aT_s}z^{-1}| < 1}$</td></tr>
+<tr><td>6</td><td>$\displaystyle{(\cos naT_s)u_0[n]}$</td><td>$\displaystyle{\frac{z^2 - z\cos aT_s}{z^2 -2z\cos aT_s + 1}\;|z| > 1}$</td></tr>
+<tr><td>7</td><td>$\displaystyle{(\sin naT_s)u_0[n]}$</td><td>$\displaystyle{\frac{z\sin aT_s}{z^2 -2z\cos aT_s + 1}\;|z| > 1}$</td></tr>
+<tr><td>8</td><td>$\displaystyle{(a^n\cos naT_s)u_0[n]}$</td><td>$\displaystyle{\frac{z^2 - az\cos aT_s}{z^2 -2az\cos aT_s + a^2}\;|z| > 1}$</td></tr>
+<tr><td>9</td><td>$\displaystyle{(a^n\sin naT_s)u_0[n]}$</td><td>$\displaystyle{\frac{az\sin aT_s}{z^2 -2az\cos aT_s + a^2}\;|z| > 1}$</td></tr>
+<tr><td>10</td><td>$\displaystyle{u_0[n]-u_0[n-m]}$</td><td>$\displaystyle{\frac{z^m-1}{z^{m-1}(z-1)}}$</td></tr>
+<tr><td>11</td><td>$\displaystyle{nu_0[n]}$</td><td>$\displaystyle{\frac{z}{(z-1)^2}}$</td></tr>
+<tr><td>12</td><td>$\displaystyle{n^2u_0[n]}$</td><td>$\displaystyle{\frac{z(z+1)}{(z-1)^3}}$</td></tr>
+<tr><td>13</td><td>$\displaystyle{[n+1]u_0[n]}$</td><td>$\displaystyle{\frac{z^2}{(z-1)^2}}$</td></tr>
+<tr><td>14</td><td>$\displaystyle{a^n n u_0[n]}$</td><td>$\displaystyle{\frac{az}{(z-a)^2}}$</td></tr>
+<tr><td>15</td><td>$\displaystyle{a^n n^2 u_0[n]}$</td><td>$\displaystyle{\frac{az(z+a)}{(z-a)^3}}$</td></tr>
+<tr><td>16</td><td>$\displaystyle{a^n n[n+1] u_0[n]}$</td><td>$\displaystyle{\frac{2az^2}{(z-a)^3}}$</td></tr>
 </tbody>
 </table></div>
 </div>
