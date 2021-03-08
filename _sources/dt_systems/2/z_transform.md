@@ -145,25 +145,26 @@ $$X(z) = \sum_{n=0}^{\infty}x[n]z^{-n}$$
 
 ## Properties of the z-Transform
 
-<table>
-<thead>
-<tr><td>&nbsp;</td><th>Property</th><th>Discrete Time Domain</th><th>$\displaystyle{\mathcal{Z}}$ Transform</th></tr></thead>
-<tbody>
-<tr><td>1</td><td>Linearity</td><td>$\displaystyle{af_1[n]+bf_2[n]+\cdots}$</td><td>$\displaystyle{aF_1(z)+bF_2(z)+\cdots}$</td></tr>
-<tr><td>2</td><td>Shift of $\displaystyle{x[n]u_0[n]}$</td><td>$\displaystyle{f[n-m]u_0[n-m]}$</td><td>$\displaystyle{z^{-m}F(z)}$</td></tr>
-<tr><td>3</td><td>Left shift</td><td>$\displaystyle{f[n-m]}$</td><td>$\displaystyle{z^{-m}F(z)+\sum_{n=0}^{m-1}f[n-m]z^{-n}}$</td></tr>
-<tr><td>4</td><td>Right shift</td><td>$\displaystyle{f[n+m]}$</td><td>$\displaystyle{z^{m}F(z)+\sum_{n=-m}^{-1}f[n+m]z^{-n}}$</td></tr>
-<tr><td>5</td><td>Multiplication by $\displaystyle{a^n}$</td><td>$\displaystyle{a^nf[n]}$</td><td>$\displaystyle{F\left(\frac{z}{a}\right)}$</td></tr>
-<tr><td>6</td><td>Multiplication by $\displaystyle{e^{-nsT_s}}$</td><td>$\displaystyle{e^{-nsT_s}f[n]}$</td><td>$\displaystyle{F\left(e^{sT_s}z\right)}$</td></tr>
-<tr><td>7</td><td>Multiplication by $\displaystyle{n}$</td><td>$\displaystyle{nf[n]}$</td><td>$\displaystyle{-z\frac{d}{dz}F(z)}$</td></tr>
-<tr><td>8</td><td>Multiplication by $\displaystyle{n^2}$</td><td>$\displaystyle{n^2f[n]}$</td><td>$\displaystyle{-z\frac{d}{dz}F(z)+z^2\frac{d^2}{dz^2}F(z)}$</td></tr>
-<tr><td>9</td><td>Summation in time</td><td>$\displaystyle{\sum_{m=0}^{n}f[m]}$</td><td>$\displaystyle{\frac{z}{z-1}F(z)}$</td></tr>
-<tr><td>10</td><td>Time convolution</td><td>$\displaystyle{f_1[n]*f_2[n]}$</td><td>$\displaystyle{F_1(z)F_2(z)}$</td></tr>
-<tr><td>11</td><td>Frequency convolution</td><td>$\displaystyle{f_1[n]f_2[n]}$</td><td>$\displaystyle{\frac{1}{j2\pi }\oint {x{F_1}(v){F_2}\left( {\frac{z}{v}} \right)} {v^{ - 1}}dv}$</td></tr>
-<tr><td>12</td><td>Initial value theorem</td><td colspan="2">$\displaystyle{f[0]=\lim_{z\to\infty}F(z)}$</td></tr>
-<tr><td>13</td><td>Final value theorem</td><td colspan="2">$\displaystyle{\lim_{n\to\infty}f[n]=\lim_{z\to 1}(z-1)F(z)}$</td></tr>
-</tbody>
-</table>
+
+| &nbsp; | Property | Discrete Time Domain | $\displaystyle{\mathcal{Z}}$ Transform |
+|---|---------------|----------------------|----------------------------------------|
+| 1 | Linearity | $\displaystyle{af_1[n]+bf_2[n]+\cdots}$ | $\displaystyle{aF_1(z)+bF_2(z)+\cdots}$ |
+| 2 | Shift of $\displaystyle{x[n]u_0[n]}$ | $\displaystyle{f[n-m]u_0[n-m]}$ | $\displaystyle{z^{-m}F(z)}$ |
+| 3 | Left shift | $\displaystyle{f[n-m]}$ | $\displaystyle{z^{-m}F(z)+\sum_{n=0}^{m-1}f[n-m]z^{-n}}$ |
+| 4 | Right shift | $\displaystyle{f[n+m]}$ | $\displaystyle{z^{m}F(z)+\sum_{n=-m}^{-1}f[n+m]z^{-n}}$ |
+| 5 | Multiplication by $\displaystyle{a^n}$ | $\displaystyle{a^nf[n]}$ | $\displaystyle{F\left(\frac{z}{a}\right)}$ |
+| 6 | Multiplication by $\displaystyle{e^{-nsT_s}}$ | $\displaystyle{e^{-nsT_s}f[n]}$ | $\displaystyle{F\left(e^{sT_s}z\right)}$ |
+| 7 | Multiplication by $\displaystyle{n}$ | $\displaystyle{nf[n]}$ | $\displaystyle{-z\frac{d}{dz}F(z)}$ |
+| 8 | Multiplication by $\displaystyle{n^2}$ | $\displaystyle{n^2f[n]}$ | $\displaystyle{-z\frac{d}{dz}F(z)+z^2\frac{d^2}{dz^2}F(z)}$ |
+| 9 | Summation in time | $\displaystyle{\sum_{m=0}^{n}f[m]}$ | $\displaystyle{\frac{z}{z-1}F(z)}$ |
+| 10 | Time convolution | $\displaystyle{f_1[n]*f_2[n]}$ | $\displaystyle{F_1(z)F_2(z)}$ |
+| 11 | Frequency convolution | $\displaystyle{f_1[n]f_2[n]}$ | $\displaystyle{\frac{1}{j2\pi }\oint {x{F_1}(v){F_2}\left( {\frac{z}{v}} \right)} {v^{ - 1}}dv}$ |
+| 12 | Initial value theorem | $\displaystyle{f[0]=\lim_{z\to\infty}F(z)}$ | |
+| 13 | Final value theorem| $\displaystyle{\lim_{n\to\infty}f[n]=\lim_{z\to 1}(z-1)F(z)}$ | |
+
+
+
+
 
 For proofs refer to Section 9.2 of {cite}`karris`.
 
