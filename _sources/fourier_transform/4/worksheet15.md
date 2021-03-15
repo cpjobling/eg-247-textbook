@@ -18,7 +18,7 @@ kernelspec:
 
 ## To accompany Section 5.4 Introduction to Filters
 
-+++ {"slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "skip"}}
 
 This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet15.pdf). We will step through this worksheet in class. 
 
@@ -83,7 +83,7 @@ See the video and script on [*Canvas Week 7*](https://canvas.swansea.ac.uk/cours
 An ideal low pass filter cuts-off frequencies higher than its *cutoff frequency*, $\omega_c$.
 
 $$H_{\rm{lp}}(\omega ) = \left\{ {\begin{array}{*{20}{c}}
-{1,}&{|\omega |{\kern 1pt} \, < {\omega _c}}\\
+{1,}&{|\omega |{\kern 1pt} \, \le {\omega _c}}\\
 {0,}&{|\omega |{\kern 1pt} \, \ge {\omega _c}}
 \end{array}} \right.$$
 
@@ -159,7 +159,7 @@ More about the Butterworth filter: [Wikipedia Article](https://en.wikipedia.org/
 
 ### Example 5: Second-order BW Filter
 
-The second-order butterworth Filter is defined by is Characteristic Equation (CE):
+The second-order butterworth Filter is defined by Characteristic Equation (CE):
 
 $$p(s) = s^2 + \omega_c\sqrt{2}s+\omega_c^2 = 0^*$$
 

@@ -648,11 +648,14 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/dt_systems/1/sampling.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+        <a class="dropdown-buttons"
+            href="../../_sources/dt_systems/1/sampling.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/dt_systems/1/sampling.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -673,7 +676,7 @@
             href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Fdt_systems/1/sampling.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/cpjobling/eg-247-textbook/edit/master/dt_systems/1/sampling.ipynb"><button
+        <a class="edit-button" href="https://github.com/cpjobling/eg-247-textbook/edit/master/dt_systems/1/sampling.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -1072,8 +1075,11 @@
 <p><strong>The Sampled signal</strong>:</p>
 <div class="math notranslate nohighlight">
 \[{x_s}(t) = \sum\limits_{k =  - \infty }^{ + \infty } {x(k{T_s})\delta (t - k{T_s})} \]</div>
-<p><strong>Frequency convolution</strong>:
-$<span class="math notranslate nohighlight">\({X_s}(\omega ) = \frac{1}{T_s}\int_{ - \infty }^{ + \infty } {X(\upsilon )} \sum\limits_{k =  - \infty }^{ + \infty } {\delta (t - \upsilon  - k{\omega _s})} \,d\upsilon \)</span>$</p>
+<p><strong>Frequency convolution</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+  {X_s}(\omega ) = \frac{1}{T_s}\int_{ - \infty }^{ + \infty } {X(\upsilon )} \sum\limits_{k =  - \infty }^{ + \infty } {\delta (t - \upsilon  - k{\omega _s})} \,d\upsilon
+\]</div>
 <p><strong>Sampling property</strong>:</p>
 <div class="math notranslate nohighlight">
 \[{X_s}(\omega ) = \frac{1}{T_s}\int_{ - \infty }^{ + \infty } {\sum\limits_{k =  - \infty }^{ + \infty } {X(\omega  - k{\omega _s})} } \delta (t - \upsilon  - k{\omega _s})\,d\upsilon \]</div>
@@ -1122,7 +1128,13 @@ $<span class="math notranslate nohighlight">\({X_s}(\omega ) = \frac{1}{T_s}\int
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">clear</span> <span class="s">all</span>
 <span class="n">imatlab_export_fig</span><span class="p">(</span><span class="s">&#39;print-svg&#39;</span><span class="p">)</span>  <span class="c">% Static svg figures.</span>
 <span class="n">format</span> <span class="s">compact</span>
-<span class="n">w0</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>        <span class="c">% fundamental frequency rad/s</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">w0</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>        <span class="c">% fundamental frequency rad/s</span>
 <span class="n">t0</span><span class="p">=</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="n">w0</span><span class="p">;</span>    <span class="c">% period s</span>
 <span class="n">tmax</span> <span class="p">=</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">t0</span><span class="p">;</span> <span class="c">% plottable range</span>
 </pre></div>
@@ -1145,7 +1157,9 @@ $<span class="math notranslate nohighlight">\(H(s) = \frac{\omega_0^2}{s^2 + 2\z
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>H =
-1/(s^2 + (3*s)/5 + 1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/(s^2 + (3*s)/5 + 1)
 </pre></div>
 </div>
 </div>
@@ -1161,7 +1175,9 @@ $<span class="math notranslate nohighlight">\(H(s) = \frac{\omega_0^2}{s^2 + 2\z
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>h =
-(10*91^(1/2)*exp(-(3*t)/10)*sin((91^(1/2)*t)/10))/91
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(10*91^(1/2)*exp(-(3*t)/10)*sin((91^(1/2)*t)/10))/91
 </pre></div>
 </div>
 </div>
@@ -1185,7 +1201,7 @@ $<span class="math notranslate nohighlight">\(H(s) = \frac{\omega_0^2}{s^2 + 2\z
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/sampling_38_0.svg" src="../../_images/sampling_38_0.svg" /></div>
+<img alt="../../_images/sampling_40_0.svg" src="../../_images/sampling_40_0.svg" /></div>
 </div>
 <p>You can generate all the images in this presentation by running the Matlab script: <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/1/matlab/sampling.m">sampling.m</a> which is also available as a Live Script <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/1/matlab/sampling.mlx">sampling.mlx</a>.</p>
 </div>
@@ -1215,7 +1231,7 @@ $<span class="math notranslate nohighlight">\(H(s) = \frac{\omega_0^2}{s^2 + 2\z
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/sampling_42_0.svg" src="../../_images/sampling_42_0.svg" /></div>
+<img alt="../../_images/sampling_44_0.svg" src="../../_images/sampling_44_0.svg" /></div>
 </div>
 </div>
 <div class="section" id="notes">
@@ -1262,7 +1278,7 @@ $<span class="math notranslate nohighlight">\(H(s) = \frac{\omega_0^2}{s^2 + 2\z
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/sampling_48_0.svg" src="../../_images/sampling_48_0.svg" /></div>
+<img alt="../../_images/sampling_50_0.svg" src="../../_images/sampling_50_0.svg" /></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1287,7 +1303,7 @@ $<span class="math notranslate nohighlight">\(H(s) = \frac{\omega_0^2}{s^2 + 2\z
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/sampling_50_0.svg" src="../../_images/sampling_50_0.svg" /></div>
+<img alt="../../_images/sampling_52_0.svg" src="../../_images/sampling_52_0.svg" /></div>
 </div>
 <p>Each impulse in <span class="math notranslate nohighlight">\(x_s(t)\)</span> triggers the impulse reponse of the lowpass filter (the sinc signal), the resulting signal <span class="math notranslate nohighlight">\(x(t)\)</span> at the output of the filter is the sum of all these time-shifted sinc signals with amplitudes equal to the samples <span class="math notranslate nohighlight">\(x(nT_s)\)</span>.</p>
 <div class="math notranslate nohighlight">
@@ -1306,7 +1322,7 @@ $<span class="math notranslate nohighlight">\(H(s) = \frac{\omega_0^2}{s^2 + 2\z
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/sampling_53_0.svg" src="../../_images/sampling_53_0.svg" /></div>
+<img alt="../../_images/sampling_55_0.svg" src="../../_images/sampling_55_0.svg" /></div>
 </div>
 <p>This is clearly unfeasible, at least in real-time, so we have to resort to approximations of the ideal low-pass filter.</p>
 <p>A couple of examples are given below. Boulet gives more information including an evaluation of the quality of the approximation.</p>
@@ -1326,7 +1342,7 @@ $<span class="math notranslate nohighlight">\(H(s) = \frac{\omega_0^2}{s^2 + 2\z
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/sampling_56_0.svg" src="../../_images/sampling_56_0.svg" /></div>
+<img alt="../../_images/sampling_58_0.svg" src="../../_images/sampling_58_0.svg" /></div>
 </div>
 </div>
 <div class="section" id="signal-reconstructed-with-first-order-hold-foh">
@@ -1341,7 +1357,7 @@ $<span class="math notranslate nohighlight">\(H(s) = \frac{\omega_0^2}{s^2 + 2\z
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/sampling_58_0.svg" src="../../_images/sampling_58_0.svg" /></div>
+<img alt="../../_images/sampling_60_0.svg" src="../../_images/sampling_60_0.svg" /></div>
 </div>
 </div>
 </div>
@@ -1434,6 +1450,7 @@ $<span class="math notranslate nohighlight">\(H(s) = \frac{\omega_0^2}{s^2 + 2\z
 <ul class="simple">
 <li><p>Sampling of Continuous-Time Signals</p></li>
 <li><p>Signal Reconstruction</p></li>
+<li><p>Aliasing</p></li>
 <li><p>Discrete-time Processing of Continuous-Time Signals</p></li>
 <li><p>Sampling of Discrete-Time Systems</p></li>
 </ul>
