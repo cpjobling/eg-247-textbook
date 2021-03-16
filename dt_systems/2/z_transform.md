@@ -263,7 +263,7 @@ $$|z| > 1$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Exponontial Decay Sequence
+### Exponential Decay Sequence
 
 $$f[n] = e^{-naT_s}{u_0}[n]$$
 
@@ -275,7 +275,7 @@ $$F(z) = \sum_{n=0}^{\infty}e^{-nasT_s}z^{-n} =1+e^{-aT_s}z^{-1}+e^{-2aT_s}z^{-2
 
 This is a geometric sequence with $a = e^{-aT_s}$, so
 
-$$\mathcal{Z}\left\{e^{naT_s}{u_0}[n]\right\} = \frac{1}{1-e^{-aT_s}z^{-1}} = \frac{z}{z-e^{-aT_s}}$$
+$$\mathcal{Z}\left\{e^{-naT_s}{u_0}[n]\right\} = \frac{1}{1-e^{-aT_s}z^{-1}} = \frac{z}{z-e^{-aT_s}}$$
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
