@@ -12,9 +12,9 @@ function [a0, ak, bk, w] = TrigFourierSeries(ft, T0, k_max)
 % it must be a symbolic function of t % 
 % T0: the period of the signal 
 % k_max: the highest harmonic to be computed
- 
+
 syms t 
- 
+
 [Ck, w] = FourierSeries(ft, T0, k_max);
 zero_index = floor(length(Ck)/2)+1;
 
@@ -25,4 +25,4 @@ for k = 1:k_max
   % angular frequency 
   w(k) = k*2*pi/T0;
 end
- 
+
