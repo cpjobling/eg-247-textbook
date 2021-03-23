@@ -1007,7 +1007,7 @@
 <h3>5.2. The DT impulse response<a class="headerlink" href="#the-dt-impulse-response" title="Permalink to this headline">¶</a></h3>
 <p>Start with:</p>
 <div class="math notranslate nohighlight">
-\[\frac{H(z)}{z} = \frac{z - 1}{z^2 + 0.5 z + 0.125}\]</div>
+\[\frac{H(z)}{z} = \frac{z + 1}{z^2 + 0.5 z + 0.125}\]</div>
 <pre style="border: 2px solid blue">
 
 
@@ -1048,10 +1048,10 @@
 \[y[n] - 0.5 y[n-1] + 0.125 y[n-2] = x[n] + x[n -1]\]</div>
 <div class="section" id="transfer-function">
 <h4>Transfer function<a class="headerlink" href="#transfer-function" title="Permalink to this headline">¶</a></h4>
-<p>Numerator <span class="math notranslate nohighlight">\(z + 1\)</span></p>
+<p>Numerator <span class="math notranslate nohighlight">\(z^2 + z\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Nz</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">];</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Nz</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">];</span>
 </pre></div>
 </div>
 </div>
@@ -1079,7 +1079,7 @@
 <h4>Impulse Response<a class="headerlink" href="#impulse-response" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Hz</span> <span class="o">=</span> <span class="n">tf</span><span class="p">(</span><span class="n">Nz</span><span class="p">,</span><span class="n">Dz</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Hz</span> <span class="o">=</span> <span class="n">tf</span><span class="p">(</span><span class="n">Nz</span><span class="p">,</span><span class="n">Dz</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">hn</span> <span class="o">=</span> <span class="n">impulse</span><span class="p">(</span><span class="n">Hz</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -1240,7 +1240,7 @@ Y(z) = H(z){U_0}(z) &amp;=&amp; \frac{z^2 + z}{z^2 + 0.5z + 0.125}.\frac{z}{z - 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">doc</span> <span class="n">c2d</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">help</span> <span class="n">c2d</span>
 </pre></div>
 </div>
 </div>

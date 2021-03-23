@@ -12,9 +12,9 @@
 %% Solution
 % Numerator
 % 
-% $$z+1$$
+% $$z^2+z$$
 
-Nz = [0 1 1]
+Nz = [1 1 01]
 %% 
 % Denominator
 % 
