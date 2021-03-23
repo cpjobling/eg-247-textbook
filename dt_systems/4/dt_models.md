@@ -14,21 +14,27 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# Worksheet 17 
+# Models of Discrete-Time Systems
 
-## To accompany Chapter 6.4 Models of Discrete-Time Systems
++++
 
-+++ {"slideshow": {"slide_type": "notes"}}
+## Colophon
 
-# Colophon
+An annotatable worksheet for this presentation is available as [**Worksheet 17**](worksheet17).
 
-This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet17.pdf). We will step through this worksheet in class. 
+* The source code for this page is [dt_systems/4/dt_models.ipynb](https://github.com/cpjobling/eg-247-textbook/blob/master/dt_systems/4/dt_models.ipynb).
 
-An annotatable copy of the notes for this presentation will be distributed before the second class meeting as **Worksheet 17** in the **Week 9: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **Worksheets** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote. 
+* You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/dt_systems/4/dt_models.html)). 
 
-You are expected to have at least watched the video presentation of [Chapter 6.4](https://cpjobling.github.io/eg-247-textbook/dt_systems/4/dt_models) of the [notes](https://cpjobling.github.io/eg-247-textbook) before coming to class. If you haven't watch it afterwards!
+* This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/dt_systems/4/dt_models.pdf) file.
 
-After class, the lecture recording and the annotated version of the worksheets will be made available through Canvas.
++++ {"slideshow": {"slide_type": "slide"}}
+
+## Scope and Background Reading
+
+In this section we will explore digital systems and learn more about the z-transfer function model.
+
+The material in this presentation and notes is based on Chapter 9 (Starting at [Section 9.7](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=363)) of {cite}`karris`. I have skipped the section on digital state-space models.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -36,15 +42,15 @@ After class, the lecture recording and the annotated version of the worksheets w
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Discrete Time Systems (Notes)
+* Discrete Time Systems
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Transfer Functions in the Z-Domain (Notes)
+* Transfer Functions in the Z-Domain
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Modelling digital systems in MATLAB/Simulink
+* Modelling digital systems in Matlab/Simulink
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -60,9 +66,139 @@ After class, the lecture recording and the annotated version of the worksheets w
 
 In the lecture that introduced the z-transform we talked about the representation of a discrete-time (DT) system by the model shown below:
 
-![Model of a DT system](./pictures/ct-to-dt.png)
+![DT System](./pictures/ct-to-dt.png)
 
 In this session, we want to explore the contents of the central block.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### DT System as a Sequence Processor
+
+* As noted in the previous slide, the discrete time system (DTS) `takes as an input the sequence $x_d[n]$<sup>1</sup> which in a physical signal would be obtained by sampling the continuous time signal $x(t)$ using an analogue to digital converter (ADC).
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+* It produces another sequence $y_d[n]$ by *processing* the input sequence in some way.
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+* The output sequence is converted into an analogue signal $y(t)$ by a digital to analogue converter (DAC).
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+![DT System as a Sequence Processor](./pictures/sigs.png)
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### What is the nature of the DTS?
+
+* The discrete time system (DTS) is a block that converts a sequence $x_d[n]$ into another sequence $y_d[n]$
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+* The transformation will be a *difference equation* $h[n]$
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+* By analogy with CT systems, $h[n]$ is the impulse response of the DTS, and $y[n]$ can be obtained by *convolving* $h[n]$ with $x_d[n]$ so:
+
+$$y_d[n] = h[n] * x_d[n]$$
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+* Taking the z-transform of $h[n]$ we get $H(z)$, and from the transform properties, convolution of the signal $x_d[n]$ by system $h[n]$ will be *multiplication* of the z-transforms:
+
+$$Y_d(z) = H(z) X_d(z)$$
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+* So, what does $h[n]$ and therefore $H(z)$ look like?
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+## Transfer Functions in the Z-Domain
+
+Let us assume that the sequence transformation is a *difference equation* of the form<sup>2</sup>:
+
+$$\begin{array}{l}
+y[n] + {a_1}y[n - 1] + {a_2}y[n - 2] +  \cdots  + {a_k}y[n - k]\\
+\quad  = {b_0}x[n] + {b_1}u[n - 1] + {b_2}u[n - 2] +  \cdots  + {b_k}u[n - k]
+\end{array}$$
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Take Z-Transform of both sides
+
+From the z-transform properties
+
+$$f[n-m] \Leftrightarrow z^{-m}F(z)$$
+
+so....
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+$$Y(z) + a_1z^{-1}Y(z) + a_2z^{-2}Y(z) + \cdots + a_kz^{-k}Y(z) = ...$$
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+$$b_0 U(z) + b_1z^{-1}U(z) + b_2z^{-2}U(z) + \cdots + b_kz^{-k}U(z)$$
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Gather terms
+
+$$\begin{array}{l}
+\left( 1 + {a_1} z^{-1} + {a_2} z^{-2} +  \cdots {a_k} z^{-k} \right)Y(z) = \\
+\quad \left( b_0 + b_1 z^{-1} + b_2 z^{- 2} +  \cdots b_k z^{- k} \right)U(z)
+\end{array}$$
+
+from which ...
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+$$Y(z) = \left(\frac{b_0 + b_{1}z^{-1} + b_{2}z^{-2} + \cdots b_{k}z^{-k}}{1 + a_{1}z^{-1} + a_{2}z^{-2} + \cdots a_{k}z^{-k}
+}\right) U(z)$$
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Define transfer function
+
+We define the *discrete time transfer function* $H(z) := Y(z)/U(z)$ so...
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+$$H(z) = \frac{Y(z)}{U(z)} = \frac{b_0 + b_{1}z^{-1} + b_{2}z^{-2} + \cdots b_{k}z^{-k}}{1 + a_{1}z^{-1} + a_{2}z^{-2} + \cdots a_{k}z^{-k}
+}$$
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+... or more conventionally<sup>3</sup>:
+
+$$H(z) = \frac{b_0z^k + b_{1}z^{k-1} + b_{2}z^{k-2} + \cdots b_{k-1}z + b_{k}}{z^k + a_{1}z^{k-1} + a_{2}z^{k-2} + \cdots a_{k-1} z + a_{k}}$$
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### DT impulse response
+
+The *discrete-time impulse reponse* $h[n]$ is the response of the DT system to the input $x[n] = \delta[n]$
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+Last week we showed that $$\mathcal{Z}\left\{\delta[n]\right\}$$ was defined by the transform pair 
+
+$$\delta[n] \Leftrightarrow 1$$
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+so 
+
+$$h[n] = \mathcal{Z}^{-1}\left\{H(z).1\right\} = \mathcal{Z}^{-1}\left\{H(z)\right\}$$
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+We will work through an example in class.
+
+[Skip next slide in Pre-Lecture]
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -118,7 +254,7 @@ $$H(z) = \frac{Y(z)}{U(z)} = ...?$$
 
 Start with:
 
-$$\frac{H(z)}{z} = \frac{z + 1}{z^2 + 0.5 z + 0.125}$$
+$$\frac{H(z)}{z} = \frac{z - 1}{z^2 + 0.5 z + 0.125}$$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -146,7 +282,7 @@ $$\frac{H(z)}{z} = \frac{z + 1}{z^2 + 0.5 z + 0.125}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### MATLAB Solution
+### Matlab Solution
 
 ```{code-cell} matlab
 ---
@@ -201,7 +337,7 @@ Dz = [1 -0.5 0.125];
 #### Impulse Response
 
 ```{code-cell} matlab
-Hz = tf(Nz,Dz,-1)
+Hz = tf(Nz,Dz,1)
 hn = impulse(Hz, 15);
 ```
 
@@ -245,6 +381,12 @@ $$u_0[n] \Leftrightarrow \frac{z}{z - 1}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
+We will work through this example in class.
+
+[Skip next slide in Pre-Lecture]
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
 $$\begin{array}{lcl}
 Y(z) = H(z){U_0}(z) &=& \frac{z^2 + z}{z^2 + 0.5z + 0.125}.\frac{z}{z - 1}\\
  & = & \frac{z(z^2 + z)}{(z^2 + 0.5z + 0.125)(z - 1)}
@@ -284,7 +426,7 @@ Solved by inverse Z-transform.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### MATLAB Solution
+### Matlab Solution
 
 See [dtm_ex1_3.mlx](https://cpjobling.github.io/eg-247-textbook/dt_systems/4/matlab/dtm_ex1_3.mlx). (Also available as [dtm_ex1_3.m](https://cpjobling.github.io/eg-247-textbook/dt_systems/4/matlab/dtm_ex1_3.m).)
 
@@ -368,6 +510,24 @@ dtm
 
 ## Converting Continuous Time Systems to Discrete Time Systems
 
+In analogue electronics, to implement a filter we would need to resort to op-amp circuits with resistors, capacitors and inductors acting as energy dissipation, storage and release devices.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+* In modern digital electronics, it is often more convenient to take the original transfer function $H(s)$ and produce an equivalent $H(z)$.
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+* We can then determine a *difference equation* that will respresent $h[n]$ and implement this as *computer algorithm*.
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+* Simple storage of past values in memory becomes the repository of past state rather than the integrators and derivative circuits that are needed in the analogue world.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+To achieve this, all we need is to be able to do is to *sample* and *process* the signals quickly enough to avoid violating Nyquist-Shannon's sampling theorem.
+
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### Continuous System Equivalents
@@ -375,7 +535,7 @@ dtm
 * There is no digital system that uniquely represents a continuous system
 * This is because as we are sampling, we only have knowledge of signals being processed at the sampling instants, and need to *reconstruct* the inter-sample behaviour.
 * In practice, only a small number of transformations are used.
-* The derivation of these is beyond the scope of this module, but here we'll demonstrate the ones that MATLAB provides in a function called `c2d`
+* The derivation of these is beyond the scope of this module, but **in class** we'll demonstrate the ones that MATLAB provides in a function called `c2d`
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -396,7 +556,7 @@ help c2d
 slideshow:
   slide_type: fragment
 ---
-help c2d
+doc c2d
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -599,7 +759,7 @@ y[n] = 1.956y[n - 1] - 0.9567y[n - 2] + 486.6 \times {10^{ - 6}}u[n - 1] + ...\\
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### As Simulink Model
+### As Simulink Model
 
 [digifilter.slx](https://cpjobling.github.io/eg-247-textbook/dt_systems/4/matlab/digifilter.slx)
 
@@ -640,3 +800,47 @@ $$y[n] = 1.956 y[n-1] - 0.9567 y[n - 2] + 486.6\times 10^{-6} u[n-1] + 476.5\tim
 PC soundcards can sample audio at 44.1 kHz so this implies that the anti-aliasing filter is much sharper than this one as $f_s/2 = 22.05$ kHz.
 
 You might wish to find out what order butterworth filter would be needed to have $f_c = 20$ kHz and $f_{\mathrm{stop}}$ of 22.05 kHz.
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+## Summary
+
+* Discrete Time Systems
+* Transfer Functions in the Z-Domain
+* Modelling digital systems in MATLAB/Simulink
+* Continuous System Equivalents
+* In-class demonstration: Digital Butterworth Filter
+
++++
+
+## Reference
+
+{% bibliography --cited %}
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+## Solutions to Example 5
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+### Solution to 5.1.
+
+The transfer function is
+
+$$H(z) = \frac{Y(z)}{X(z)} = \frac{z^2 + z}{z^2 - 0.5z + 0.125}$$
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+### Solution to 5.2.
+
+The DT impulse response:
+
+$$h[n] = \left( \frac{\sqrt 2}{4} \right)^n{\left( \cos \left( \frac{n\pi}{4} \right) + 5\sin \left( \frac{n\pi}{4} \right) \right)}$$
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+### Solution to 5.3.
+
+Step response:
+
+$$y[n] = \left(3.2 - \left( \frac{\sqrt 2}{4} \right)^n\left( 2.2 \cos \left( \frac{n\pi}{4} \right) + 0.6\sin \left(\frac{n\pi}{4} \right) \right)\right) u_0[n]$$
