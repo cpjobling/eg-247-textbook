@@ -1184,11 +1184,17 @@ y[n] + {a_1}y[n - 1] + {a_2}y[n - 2] +  \cdots  + {a_k}y[n - k]\\
 <h3>Matlab Solution<a class="headerlink" href="#matlab-solution" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">clear</span> <span class="nb">all</span>
-<span class="n">imatlab_export_fig</span><span class="p">(</span><span class="s1">&#39;print-svg&#39;</span><span class="p">)</span>  <span class="o">%</span> <span class="n">Static</span> <span class="n">svg</span> <span class="n">figures</span><span class="o">.</span>
-<span class="n">cd</span> <span class="n">matlab</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">clear</span> <span class="s">all</span>
+<span class="n">imatlab_export_fig</span><span class="p">(</span><span class="s">&#39;print-svg&#39;</span><span class="p">)</span>  <span class="c">% Static svg figures.</span>
+<span class="n">cd</span> <span class="s">matlab</span>
 <span class="n">pwd</span>
-<span class="nb">format</span> <span class="n">compact</span>
+<span class="s">format</span> <span class="s">compact</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+    &#39;/Users/eechris/code/src/github.com/cpjobling/eg-247-textbook/dt_systems/4/matlab&#39;
 </pre></div>
 </div>
 </div>
@@ -1202,7 +1208,7 @@ y[n] + {a_1}y[n - 1] + {a_2}y[n - 2] +  \cdots  + {a_k}y[n - k]\\
 <p>Numerator <span class="math notranslate nohighlight">\(z^2 + z\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Nz</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">];</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Nz</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">];</span>
 </pre></div>
 </div>
 </div>
@@ -1210,7 +1216,7 @@ y[n] + {a_1}y[n - 1] + {a_2}y[n - 2] +  \cdots  + {a_k}y[n - k]\\
 <p>Denominator <span class="math notranslate nohighlight">\(z^2 - 0.5 z + 0.125\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Dz</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="o">-</span><span class="mf">0.5</span> <span class="mf">0.125</span><span class="p">];</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Dz</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span> <span class="o">-</span><span class="mf">0.5</span> <span class="mf">0.125</span><span class="p">];</span>
 </pre></div>
 </div>
 </div>
@@ -1220,7 +1226,23 @@ y[n] + {a_1}y[n - 1] + {a_2}y[n - 2] +  \cdots  + {a_k}y[n - k]\\
 <h4>Poles and residues<a class="headerlink" href="#poles-and-residues" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">residue</span><span class="p">(</span><span class="n">Nz</span><span class="p">,</span><span class="n">Dz</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="p">=</span> <span class="n">residue</span><span class="p">(</span><span class="n">Nz</span><span class="p">,</span><span class="n">Dz</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>r =
+   0.7500 - 0.5000i
+   0.7500 + 0.5000i
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p =
+   0.2500 + 0.2500i
+   0.2500 - 0.2500i
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>k =
+     1
 </pre></div>
 </div>
 </div>
@@ -1230,8 +1252,34 @@ y[n] + {a_1}y[n - 1] + {a_2}y[n - 2] +  \cdots  + {a_k}y[n - k]\\
 <h4>Impulse Response<a class="headerlink" href="#impulse-response" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Hz</span> <span class="o">=</span> <span class="n">tf</span><span class="p">(</span><span class="n">Nz</span><span class="p">,</span><span class="n">Dz</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">hn</span> <span class="o">=</span> <span class="n">impulse</span><span class="p">(</span><span class="n">Hz</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Hz</span> <span class="p">=</span> <span class="n">tf</span><span class="p">(</span><span class="n">Nz</span><span class="p">,</span><span class="n">Dz</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">hn</span> <span class="p">=</span> <span class="n">impulse</span><span class="p">(</span><span class="n">Hz</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hz =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        z^2 + z
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  z^2 - 0.5 z + 0.125
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample time: 1 seconds
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Discrete-time transfer function.
 </pre></div>
 </div>
 </div>
@@ -1241,28 +1289,32 @@ y[n] + {a_1}y[n - 1] + {a_2}y[n - 2] +  \cdots  + {a_k}y[n - k]\\
 <h4>Plot the response<a class="headerlink" href="#plot-the-response" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stem</span><span class="p">([</span><span class="mi">0</span><span class="p">:</span><span class="mi">15</span><span class="p">],</span> <span class="n">hn</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">stem</span><span class="p">([</span><span class="mi">0</span><span class="p">:</span><span class="mi">15</span><span class="p">],</span> <span class="n">hn</span><span class="p">)</span>
 <span class="n">grid</span>
-<span class="n">title</span><span class="p">(</span><span class="s1">&#39;Example 5 - Part 2&#39;</span><span class="p">)</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">)</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Impulse response h[n]&#39;</span><span class="p">)</span>
+<span class="s">title(&#39;Example 5 - Part 2&#39;)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;n&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Impulse response h[n]&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/dt_models_51_0.svg" src="../../_images/dt_models_51_0.svg" /></div>
 </div>
 </div>
 <div class="section" id="response-as-stepwise-continuous-y-t">
 <h4>Response as stepwise continuous y(t)<a class="headerlink" href="#response-as-stepwise-continuous-y-t" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">impulse</span><span class="p">(</span><span class="n">Hz</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">impulse</span><span class="p">(</span><span class="n">Hz</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span>
 <span class="n">grid</span>
-<span class="n">title</span><span class="p">(</span><span class="s1">&#39;Example 5 - Part 2 - As Analogue Signal&#39;</span><span class="p">)</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;nTs [s]&#39;</span><span class="p">)</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Impulse response h(t)&#39;</span><span class="p">)</span>
+<span class="s">title(&#39;Example 5 - Part 2 - As Analogue Signal&#39;)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;nTs [s]&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Impulse response h(t)&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/dt_models_53_0.svg" src="../../_images/dt_models_53_0.svg" /></div>
 </div>
 </div>
 </div>
@@ -1308,7 +1360,7 @@ Y(z) = H(z){U_0}(z) &amp;=&amp; \frac{z^2 + z}{z^2 + 0.5z + 0.125}.\frac{z}{z - 
 <p>See <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/4/matlab/dtm_ex1_3.mlx">dtm_ex1_3.mlx</a>. (Also available as <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/4/matlab/dtm_ex1_3.m">dtm_ex1_3.m</a>.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span> <span class="n">dtm_ex1_3</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">open</span> <span class="s">dtm_ex1_3</span>
 </pre></div>
 </div>
 </div>
@@ -1327,30 +1379,58 @@ Y(z) = H(z){U_0}(z) &amp;=&amp; \frac{z^2 + z}{z^2 + 0.5z + 0.125}.\frac{z}{z - 
 <p>Code extracted from <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/4/matlab/dtm_ex1_3.m">dtm_ex1_3.m</a>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ts</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="n">z</span> <span class="o">=</span> <span class="n">tf</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="n">Ts</span><span class="p">);</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Ts</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">z</span> <span class="p">=</span> <span class="n">tf</span><span class="p">(</span><span class="s">&#39;z&#39;</span><span class="p">,</span> <span class="n">Ts</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Hz</span> <span class="o">=</span> <span class="p">(</span><span class="n">z</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">z</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">z</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">z</span> <span class="o">+</span> <span class="mf">0.125</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Hz</span> <span class="p">=</span> <span class="p">(</span><span class="n">z</span>^<span class="mi">2</span> <span class="o">+</span> <span class="n">z</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">z</span>^<span class="mi">2</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">z</span> <span class="o">+</span> <span class="mf">0.125</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hz =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        z^2 + z
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  z^2 - 0.5 z + 0.125
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample time: 1 seconds
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Discrete-time transfer function.
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">step</span><span class="p">(</span><span class="n">Hz</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">step</span><span class="p">(</span><span class="n">Hz</span><span class="p">)</span>
 <span class="n">grid</span>
-<span class="n">title</span><span class="p">(</span><span class="s1">&#39;Example 1 - Part 3 - As Analogue Signal&#39;</span><span class="p">)</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;nTs [s]&#39;</span><span class="p">)</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Step response y(t)&#39;</span><span class="p">)</span>
+<span class="s">title(&#39;Example 1 - Part 3 - As Analogue Signal&#39;)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;nTs [s]&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Step response y(t)&#39;</span><span class="p">)</span>
 <span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">3.5</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/dt_models_69_0.svg" src="../../_images/dt_models_69_0.svg" /></div>
 </div>
 </div>
 <div class="section" id="simulink-model">
@@ -1359,7 +1439,7 @@ Y(z) = H(z){U_0}(z) &amp;=&amp; \frac{z^2 + z}{z^2 + 0.5z + 0.125}.\frac{z}{z - 
 <p><img alt="Simulink model" src="../../_images/simulink_model.png" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dtm</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">dtm</span>
 </pre></div>
 </div>
 </div>
@@ -1397,14 +1477,59 @@ Y(z) = H(z){U_0}(z) &amp;=&amp; \frac{z^2 + z}{z^2 + 0.5z + 0.125}.\frac{z}{z - 
 <p>Let’s see what the help function says:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">help</span> <span class="n">c2d</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">help</span> <span class="s">c2d</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> C2D  Converts continuous-time dynamic system to discrete time.
+ 
+    SYSD = C2D(SYSC,TS,METHOD) computes a discrete-time model SYSD with
+    sample time TS that approximates the continuous-time model SYSC.
+    The string METHOD selects the discretization method among the following:
+       &#39;zoh&#39;           Zero-order hold on the inputs
+       &#39;foh&#39;           Linear interpolation of inputs
+       &#39;impulse&#39;       Impulse-invariant discretization
+       &#39;tustin&#39;        Bilinear (Tustin) approximation.
+       &#39;matched&#39;       Matched pole-zero method (for SISO systems only).
+       &#39;least-squares&#39; Least-squares minimization of the error between
+                       frequency responses of the continuous and discrete
+                       systems (for SISO systems only).
+       &#39;damped&#39;        Damped Tustin approximation based on TRBDF2 formula
+                       (sparse models only).
+    The default is &#39;zoh&#39; when METHOD is omitted. The sample time TS should
+    be specified in the time units of SYSC (see &quot;TimeUnit&quot; property).
+ 
+    C2D(SYSC,TS,OPTIONS) gives access to additional discretization options. 
+    Use C2DOPTIONS to create and configure the option set OPTIONS. For 
+    example, you can specify a prewarping frequency for the Tustin method by:
+       opt = c2dOptions(&#39;Method&#39;,&#39;tustin&#39;,&#39;PrewarpFrequency&#39;,.5);
+       sysd = c2d(sysc,.1,opt);
+ 
+    For state-space models,
+       [SYSD,G] = C2D(SYSC,Ts,METHOD)
+    also returns the matrix G mapping the states xc(t) of SYSC to the states 
+    xd[k] of SYSD:
+       xd[k] = G * [xc(k*Ts) ; u[k]]
+    Given an initial condition x0 for SYSC and an initial input value u0=u(0), 
+    the equivalent initial condition for SYSD is (assuming u(t)=0 for t&lt;0):
+       xd[0] = G * [x0;u0] .
+ 
+    See also C2DOPTIONS, D2C, D2D, DYNAMICSYSTEM.
+
+    Documentation for c2d
+       doc c2d
+
+    Other functions named c2d
+
+       DynamicSystem/c2d    ltipack.tfdata/c2d
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">doc</span> <span class="n">c2d</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">doc</span> <span class="s">c2d</span>
 </pre></div>
 </div>
 </div>
@@ -1426,7 +1551,13 @@ Y(z) = H(z){U_0}(z) &amp;=&amp; \frac{z^2 + z}{z^2 + 0.5z + 0.125}.\frac{z}{z - 
 \[\omega_c = 2\pi f_c = 2\times \pi \times 20\times 10^3\;\mathrm{rad/s}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wc</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="mf">20e3</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">wc</span> <span class="p">=</span> <span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="mf">20e3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>wc =
+   1.2566e+05
 </pre></div>
 </div>
 </div>
@@ -1439,7 +1570,30 @@ Y(z) = H(z){U_0}(z) &amp;=&amp; \frac{z^2 + z}{z^2 + 0.5z + 0.125}.\frac{z}{z - 
 <p>Substituting for <span class="math notranslate nohighlight">\(\omega_c = 125.6637\times 10^3 \)</span> this is …?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Hs</span> <span class="o">=</span> <span class="n">tf</span><span class="p">(</span><span class="n">wc</span><span class="o">^</span><span class="mi">2</span><span class="p">,[</span><span class="mi">1</span> <span class="n">wc</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">wc</span><span class="o">^</span><span class="mi">2</span><span class="p">])</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Hs</span> <span class="p">=</span> <span class="n">tf</span><span class="p">(</span><span class="n">wc</span>^<span class="mi">2</span><span class="p">,[</span><span class="mi">1</span> <span class="n">wc</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">wc</span>^<span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hs =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           1.579e10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ---------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  s^2 + 1.777e05 s + 1.579e10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
 </pre></div>
 </div>
 </div>
@@ -1452,11 +1606,13 @@ Y(z) = H(z){U_0}(z) &amp;=&amp; \frac{z^2 + z}{z^2 + 0.5z + 0.125}.\frac{z}{z - 
 <p>MATLAB:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bode</span><span class="p">(</span><span class="n">Hs</span><span class="p">,{</span><span class="mf">1e4</span><span class="p">,</span><span class="mf">1e8</span><span class="p">})</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">bode</span><span class="p">(</span><span class="n">Hs</span><span class="p">,{</span><span class="mf">1e4</span><span class="p">,</span><span class="mf">1e8</span><span class="p">})</span>
 <span class="n">grid</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/dt_models_92_0.svg" src="../../_images/dt_models_92_0.svg" /></div>
 </div>
 </div>
 <div class="section" id="sampling-frequency">
@@ -1466,7 +1622,13 @@ Y(z) = H(z){U_0}(z) &amp;=&amp; \frac{z^2 + z}{z^2 + 0.5z + 0.125}.\frac{z}{z - 
 <p><span class="math notranslate nohighlight">\(\omega_s = 2\times 12.6\times 10^6\)</span> rad/s.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ws</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span> <span class="mf">12.6e6</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ws</span> <span class="p">=</span> <span class="mi">2</span><span class="o">*</span> <span class="mf">12.6e6</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ws =
+    25200000
 </pre></div>
 </div>
 </div>
@@ -1478,7 +1640,13 @@ Y(z) = H(z){U_0}(z) &amp;=&amp; \frac{z^2 + z}{z^2 + 0.5z + 0.125}.\frac{z}{z - 
 \[f_s = \omega_s/(2\pi)\;\mathrm{Mhz}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fs</span> <span class="o">=</span> <span class="n">ws</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">fs</span> <span class="p">=</span> <span class="n">ws</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fs =
+   4.0107e+06
 </pre></div>
 </div>
 </div>
@@ -1489,7 +1657,13 @@ Y(z) = H(z){U_0}(z) &amp;=&amp; \frac{z^2 + z}{z^2 + 0.5z + 0.125}.\frac{z}{z - 
 <p><span class="math notranslate nohighlight">\(T_s = 1/fs\;\mathrm{s}\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ts</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">fs</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Ts</span> <span class="p">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">fs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ts =
+   2.4933e-07
 </pre></div>
 </div>
 </div>
@@ -1502,7 +1676,33 @@ Y(z) = H(z){U_0}(z) &amp;=&amp; \frac{z^2 + z}{z^2 + 0.5z + 0.125}.\frac{z}{z - 
 <p>zero-order-hold equivalent</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Hz</span> <span class="o">=</span> <span class="n">c2d</span><span class="p">(</span><span class="n">Hs</span><span class="p">,</span> <span class="n">Ts</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Hz</span> <span class="p">=</span> <span class="n">c2d</span><span class="p">(</span><span class="n">Hs</span><span class="p">,</span> <span class="n">Ts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hz =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0.0004836 z + 0.0004765
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -----------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  z^2 - 1.956 z + 0.9567
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample time: 2.4933e-07 seconds
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Discrete-time transfer function.
 </pre></div>
 </div>
 </div>
@@ -1512,10 +1712,12 @@ Y(z) = H(z){U_0}(z) &amp;=&amp; \frac{z^2 + z}{z^2 + 0.5z + 0.125}.\frac{z}{z - 
 <h3>Step response<a class="headerlink" href="#step-response" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">step</span><span class="p">(</span><span class="n">Hz</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">step</span><span class="p">(</span><span class="n">Hz</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/dt_models_107_0.svg" src="../../_images/dt_models_107_0.svg" /></div>
 </div>
 </div>
 <div class="section" id="algorithm">
@@ -1554,7 +1756,7 @@ y[n] = 1.956y[n - 1] - 0.9567y[n - 2] + 486.6 \times {10^{ - 6}}u[n - 1] + ...\\
 <p><a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/4/matlab/digifilter.slx">digifilter.slx</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span> <span class="n">digifilter</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">open</span> <span class="s">digifilter</span>
 </pre></div>
 </div>
 </div>
