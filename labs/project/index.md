@@ -94,7 +94,7 @@ You should submit the following to the **Project: A Graphic Equalizer** Assignme
 
 ### Deadline
 
-The deadline for claims and submission is **4:00 PM BST, 28th April 2021**
+The deadline for claims and submission is **4:00 PM BST, 30th April 2021**
 
 
 ## References
