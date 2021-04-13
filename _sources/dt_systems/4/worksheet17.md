@@ -20,7 +20,7 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-# Colophon
+## Colophon
 
 This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet17.pdf). We will step through this worksheet in class. 
 

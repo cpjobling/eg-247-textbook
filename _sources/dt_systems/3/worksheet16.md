@@ -20,7 +20,7 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-# Colophon
+## Colophon
 
 This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet16.pdf). We will step through this worksheet in class. 
 
@@ -212,7 +212,7 @@ num = [0, 1, 0, 0];
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-$z^3 - 9/4 z^2 - 13/8 z - 3/8$ 
+$z^3 - 9/4 z^2 - 13/8 z - 3/8$
 
 ```{code-cell} matlab
 ---
