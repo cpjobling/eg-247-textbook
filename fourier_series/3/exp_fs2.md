@@ -547,7 +547,7 @@ The *power spectrum* of signal is the sequence of average powers in each complex
 
 $$|C_k|^2.$$ 
 
-For real perodic signals the power spectrum is a real even sequence as 
+For real periodic signals the power spectrum is a real even sequence as 
 
 $$|C_{-k}|^2 = |C_k^*|^2 = |C_k|^2.$$
 
