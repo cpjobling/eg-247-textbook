@@ -222,22 +222,24 @@ Compute the $N=4$ point DFT for $\Re\left\{X[m]\right\}$.
 $x[n] = \left[1, 2, 2, 1\right]$ and $N=4$.
 
 $x[0]$:
-$$
+
+
 \begin{eqnarray*}
 \Re \left\{ {X[0]} \right\} &=& x[0] + \sum\limits_{n = 1}^{N - 1} x[n]\cos \left( 0 \right)\\
                             &=& 1 + 2\times 1 + 2\times 1 + 1\times 1\\
 \Re \left\{ {X[0]} \right\} &=& 6
 \end{eqnarray*}
-$$
+
 
 $x[1]$:
-$$
+
+$
 \begin{eqnarray*}
 \Re \left\{ {X[1]} \right\} &=& x[0] + \sum\limits_{n = 1}^{N - 1} x[n]\cos \left( \frac{n\pi}{2} \right)\\
                             &=& 1 + 2\times 0 + 2 \times -1 + 1 \times 0\\
 \Re \left\{ {X[1]} \right\} &=& -1
 \end{eqnarray*}
-$$
+$
 
 $x[2]$:
 $$
