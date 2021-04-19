@@ -1101,162 +1101,126 @@
 <div class="section" id="solution-1">
 <h3>Solution 1<a class="headerlink" href="#solution-1" title="Permalink to this headline">¶</a></h3>
 <p>Compute the <span class="math notranslate nohighlight">\(N=4\)</span> point DFT for <span class="math notranslate nohighlight">\(\Re\left\{X[m]\right\}\)</span>.</p>
-<p><span class="math notranslate nohighlight">\(x[n] = \left[1 2 2 1\right]\)</span> and <span class="math notranslate nohighlight">\(N=4\)</span>.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+<p><span class="math notranslate nohighlight">\(x[n] = \left[1, 2, 2, 1\right]\)</span> and <span class="math notranslate nohighlight">\(N=4\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(x[0]\)</span>:
+$<span class="math notranslate nohighlight">\(
 \begin{eqnarray*}
-\Re \left\{ {X[0]} \right\} &amp;=&amp; x[0] + \sum\limits_{n = 1}^{N - 1} x [n]\cos \left( 0 \right)\\
-                            &amp;=&amp; 1 + 2 + 2 + 1\\
+\Re \left\{ {X[0]} \right\} &amp;=&amp; x[0] + \sum\limits_{n = 1}^{N - 1} x[n]\cos \left( 0 \right)\\
+                            &amp;=&amp; 1 + 2\times 1 + 2\times 1 + 1\times 1\\
 \Re \left\{ {X[0]} \right\} &amp;=&amp; 6
 \end{eqnarray*}
-\end{split}\]</div>
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-<ul class="simple">
-<li><p>Compute the four point DFT for <span class="math notranslate nohighlight">\(\Im\left\{X[m]\right\}\)</span>.</p></li>
-</ul>
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\)</span>$</p>
+<p><span class="math notranslate nohighlight">\(x[1]\)</span>:
+$<span class="math notranslate nohighlight">\(
+\begin{eqnarray*}
+\Re \left\{ {X[1]} \right\} &amp;=&amp; x[0] + \sum\limits_{n = 1}^{N - 1} x[n]\cos \left( \frac{n\pi}{2} \right)\\
+                            &amp;=&amp; 1 + 2\times 0 + 2 \times -1 + 1 \times 0\\
+\Re \left\{ {X[1]} \right\} &amp;=&amp; -1
+\end{eqnarray*}
+\)</span>$</p>
+<p><span class="math notranslate nohighlight">\(x[2]\)</span>:
+$<span class="math notranslate nohighlight">\(
+\begin{eqnarray*}
+\Re \left\{ {X[2]} \right\} &amp;=&amp; x[0] + \sum\limits_{n = 1}^{N - 1} x[n]\cos \left( n\pi \right)\\
+                            &amp;=&amp; 1 + 2\times -1 + 2 \times 1 + 1\times -1\\
+\Re \left\{ {X[2]} \right\} &amp;=&amp; 0
+\end{eqnarray*}
+\)</span>$</p>
+<p><span class="math notranslate nohighlight">\(x[3]\)</span>:
+$<span class="math notranslate nohighlight">\(
+\begin{eqnarray*}
+\Re \left\{ {X[3]} \right\} &amp;=&amp; x[0] + \sum\limits_{n = 1}^{N - 1} x[n]\cos \left( \frac{3n\pi}{2} \right)\\
+                            &amp;=&amp; 1 + 2\times 0 + 2 \times -1 + 1\times 0\\
+\Re \left\{ {X[3]} \right\} &amp;=&amp; -1
+\end{eqnarray*}
+\)</span>$</p>
+<p>Compute the four point DFT for <span class="math notranslate nohighlight">\(\Im\left\{X[m]\right\}\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(x[0]\)</span>:
+$<span class="math notranslate nohighlight">\(
+\begin{eqnarray*}
+\Im \left\{ {X[0]} \right\} &amp;=&amp; - \sum\limits_{n = 1}^{N - 1} x[n]\sin \left( 0 \right)\\
+\Im \left\{ {X[0]} \right\} &amp;=&amp; 0
+\end{eqnarray*}
+\)</span>$</p>
+<p><span class="math notranslate nohighlight">\(x[1]\)</span>:
+$<span class="math notranslate nohighlight">\(
+\begin{eqnarray*}
+\Im \left\{ {X[1]} \right\} &amp;=&amp; - \sum\limits_{n = 1}^{N - 1} x[n]\sin \left( \frac{n\pi}{2} \right)\\
+                            &amp;=&amp; - (2\times 1 + 2 \times 0 + 1 \times -1)\\
+\Im \left\{ {X[1]} \right\} &amp;=&amp; -1
+\end{eqnarray*}
+\)</span>$</p>
+<p><span class="math notranslate nohighlight">\(x[2]\)</span>:
+$<span class="math notranslate nohighlight">\(
+\begin{eqnarray*}
+\Im \left\{ {X[2]} \right\} &amp;=&amp; - \sum\limits_{n = 1}^{N - 1} x[n]\sin \left( n\pi \right)\\
+                            &amp;=&amp; - (2\times 0 + 2 \times 0 + 1\times 0)\\
+\Im \left\{ {X[2]} \right\} &amp;=&amp; 0
+\end{eqnarray*}
+\)</span>$</p>
+<p><span class="math notranslate nohighlight">\(x[3]\)</span>:
+$<span class="math notranslate nohighlight">\(
+\begin{eqnarray*}
+\Im \left\{ {X[3]} \right\} &amp;=&amp; - \sum\limits_{n = 1}^{N - 1} x[n]\sin \left( \frac{3n\pi}{2} \right)\\
+                            &amp;=&amp; - (2\times -1 + 2 \times 0 + 1\times 1)\\
+\Im \left\{ {X[3]} \right\} &amp;=&amp; 1
+\end{eqnarray*}
+\)</span>$</p>
 </pre>
 <ul class="simple">
 <li><p>Add these together to find <span class="math notranslate nohighlight">\(X[m]\)</span>.</p></li>
 </ul>
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre></div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray*}
+X[0] &amp;=&amp; 6 + j0\\
+X[1] &amp;=&amp; -1 - j\\
+X[2] &amp;=&amp; 0\\
+X[3] &amp;=&amp; -1 + j
+\end{eqnarray*}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[X[m] = \left[6, -1 - j, 0, -1 - j\right].\]</div>
+</div>
 <div class="section" id="in-class-example-2">
 <h3>In Class Example 2<a class="headerlink" href="#in-class-example-2" title="Permalink to this headline">¶</a></h3>
 <p>Use the inverse DFT to compute the discrete-time sequence <span class="math notranslate nohighlight">\(x[n]\)</span> from <span class="math notranslate nohighlight">\(X[m]\)</span>.</p>
 </div>
 <div class="section" id="solution-2">
 <h3>Solution 2<a class="headerlink" href="#solution-2" title="Permalink to this headline">¶</a></h3>
-<p>Write down the expression <span class="math notranslate nohighlight">\(x[n]\)</span> in terms of <span class="math notranslate nohighlight">\(X[m]\)</span>.</p>
-<p><span class="math notranslate nohighlight">\(x[n] = \left[1 2 2 1\right]\)</span> and <span class="math notranslate nohighlight">\(N=4\)</span>.</p>
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-<ul class="simple">
-<li><p>Compute <span class="math notranslate nohighlight">\(x[0]\)</span> from this result.</p></li>
-</ul>
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-<ul class="simple">
-<li><p>Repeat for <span class="math notranslate nohighlight">\(x[1]\)</span>, <span class="math notranslate nohighlight">\(x[2]\)</span> and <span class="math notranslate nohighlight">\(x[3]\)</span>.</p></li>
-</ul>
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre></div>
+<div class="math notranslate nohighlight">
+\[
+x[n] = \frac{1}{4}\sum_{m=0}^{3} X[m]\exp\left(j2\pi\frac{mn}{4}\right)
+\]</div>
+<p>Compute <span class="math notranslate nohighlight">\(x[0]\)</span> from this result.</p>
+<div class="math notranslate nohighlight">
+\[x[0] = \frac{1}{4}\left[6, -1 - j, 0, -1 + j\right] = \frac{6-2}{4} = 1\]</div>
+<p>Repeat for <span class="math notranslate nohighlight">\(x[1]\)</span>, <span class="math notranslate nohighlight">\(x[2]\)</span> and <span class="math notranslate nohighlight">\(x[3]\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(x[1]\)</span>: uses <span class="math notranslate nohighlight">\(\exp\left(j\frac{\pi}{2}m\right) = \pm j\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray*}
+x[1] &amp;=&amp; \frac{1}{4}\left(6 + j(-1-j)+0-j(-1+j)\right)\\
+&amp;=&amp; \frac{1}{4}\left(6 + -j+1+0+j+1)\right) = \frac{8}{4} = 2\\
+\end{eqnarray*}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(x[2]\)</span>: uses <span class="math notranslate nohighlight">\(\exp\left(j\pi m\right) = 1, -1, 1, -1\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray*}
+x[2] &amp;=&amp; \frac{1}{4}\left(1\times 6 + -1\times (-1-j)+1\times 0-1\times(-1+j)\right)\\
+&amp;=&amp; \frac{1}{4}\left(6 + 1+j+0+1-j)\right) = \frac{8}{4} = 2\\
+\end{eqnarray*}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(x[3]\)</span>: uses <span class="math notranslate nohighlight">\(\exp\left(j3\frac{\pi}{2} m\right)\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray*}
+x[2] &amp;=&amp; \frac{1}{4}\left(1\times 6 + -j\times (-1-j)+1\times 0+j\times(-1+j)\right)\\
+&amp;=&amp; \frac{1}{4}\left(6 + j-1 +0-j +1 )\right) = \frac{4}{1} = 1\\
+\end{eqnarray*}
+\end{split}\]</div>
+</div>
 <div class="section" id="simulink-model-of-the-dft">
 <h3>Simulink model of the DFT<a class="headerlink" href="#simulink-model-of-the-dft" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
@@ -1539,7 +1503,7 @@ $<span class="math notranslate nohighlight">\(x[n] = \frac{1}{N}\sum_{n=0}^{N-1}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/dft_58_0.svg" src="../../_images/dft_58_0.svg" /></div>
+<img alt="../../_images/dft_60_0.svg" src="../../_images/dft_60_0.svg" /></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1555,7 +1519,7 @@ $<span class="math notranslate nohighlight">\(x[n] = \frac{1}{N}\sum_{n=0}^{N-1}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/dft_60_0.svg" src="../../_images/dft_60_0.svg" /></div>
+<img alt="../../_images/dft_62_0.svg" src="../../_images/dft_62_0.svg" /></div>
 </div>
 <p>Points to note:</p>
 <ul class="simple">

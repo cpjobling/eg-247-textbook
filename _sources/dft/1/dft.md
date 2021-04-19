@@ -219,86 +219,99 @@ Compute the frequency components $X[m]$.
 
 Compute the $N=4$ point DFT for $\Re\left\{X[m]\right\}$.
 
-$x[n] = \left[1 2 2 1\right]$ and $N=4$.
+$x[n] = \left[1, 2, 2, 1\right]$ and $N=4$.
 
+$x[0]$:
 $$
 \begin{eqnarray*}
-\Re \left\{ {X[0]} \right\} &=& x[0] + \sum\limits_{n = 1}^{N - 1} x [n]\cos \left( 0 \right)\\
-                            &=& 1 + 2 + 2 + 1\\
+\Re \left\{ {X[0]} \right\} &=& x[0] + \sum\limits_{n = 1}^{N - 1} x[n]\cos \left( 0 \right)\\
+                            &=& 1 + 2\times 1 + 2\times 1 + 1\times 1\\
 \Re \left\{ {X[0]} \right\} &=& 6
 \end{eqnarray*}
 $$
 
-<pre style="border: 2px solid blue">
+$x[1]$:
+$$
+\begin{eqnarray*}
+\Re \left\{ {X[1]} \right\} &=& x[0] + \sum\limits_{n = 1}^{N - 1} x[n]\cos \left( \frac{n\pi}{2} \right)\\
+                            &=& 1 + 2\times 0 + 2 \times -1 + 1 \times 0\\
+\Re \left\{ {X[1]} \right\} &=& -1
+\end{eqnarray*}
+$$
 
+$x[2]$:
+$$
+\begin{eqnarray*}
+\Re \left\{ {X[2]} \right\} &=& x[0] + \sum\limits_{n = 1}^{N - 1} x[n]\cos \left( n\pi \right)\\
+                            &=& 1 + 2\times -1 + 2 \times 1 + 1\times -1\\
+\Re \left\{ {X[2]} \right\} &=& 0
+\end{eqnarray*}
+$$
 
+$x[3]$:
+$$
+\begin{eqnarray*}
+\Re \left\{ {X[3]} \right\} &=& x[0] + \sum\limits_{n = 1}^{N - 1} x[n]\cos \left( \frac{3n\pi}{2} \right)\\
+                            &=& 1 + 2\times 0 + 2 \times -1 + 1\times 0\\
+\Re \left\{ {X[3]} \right\} &=& -1
+\end{eqnarray*}
+$$
 
++++ {"slideshow": {"slide_type": "notes"}}
 
+Compute the four point DFT for $\Im\left\{X[m]\right\}$.
 
+$x[0]$:
+$$
+\begin{eqnarray*}
+\Im \left\{ {X[0]} \right\} &=& - \sum\limits_{n = 1}^{N - 1} x[n]\sin \left( 0 \right)\\
+\Im \left\{ {X[0]} \right\} &=& 0
+\end{eqnarray*}
+$$
 
+$x[1]$:
+$$
+\begin{eqnarray*}
+\Im \left\{ {X[1]} \right\} &=& - \sum\limits_{n = 1}^{N - 1} x[n]\sin \left( \frac{n\pi}{2} \right)\\
+                            &=& - (2\times 1 + 2 \times 0 + 1 \times -1)\\
+\Im \left\{ {X[1]} \right\} &=& -1
+\end{eqnarray*}
+$$
 
+$x[2]$:
+$$
+\begin{eqnarray*}
+\Im \left\{ {X[2]} \right\} &=& - \sum\limits_{n = 1}^{N - 1} x[n]\sin \left( n\pi \right)\\
+                            &=& - (2\times 0 + 2 \times 0 + 1\times 0)\\
+\Im \left\{ {X[2]} \right\} &=& 0
+\end{eqnarray*}
+$$
 
+$x[3]$:
+$$
+\begin{eqnarray*}
+\Im \left\{ {X[3]} \right\} &=& - \sum\limits_{n = 1}^{N - 1} x[n]\sin \left( \frac{3n\pi}{2} \right)\\
+                            &=& - (2\times -1 + 2 \times 0 + 1\times 1)\\
+\Im \left\{ {X[3]} \right\} &=& 1
+\end{eqnarray*}
+$$
 
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-* Compute the four point DFT for $\Im\left\{X[m]\right\}$.
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
++++ {"slideshow": {"slide_type": "notes"}}
 
 </pre>
 
 * Add these together to find $X[m]$.
 
-<pre style="border: 2px solid blue">
+$$
+\begin{eqnarray*}
+X[0] &=& 6 + j0\\
+X[1] &=& -1 - j\\
+X[2] &=& 0\\
+X[3] &=& -1 + j
+\end{eqnarray*}
+$$
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
+$$X[m] = \left[6, -1 - j, 0, -1 - j\right].$$
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -310,79 +323,42 @@ Use the inverse DFT to compute the discrete-time sequence $x[n]$ from $X[m]$.
 
 ### Solution 2
 
-Write down the expression $x[n]$ in terms of $X[m]$.
+$$
+x[n] = \frac{1}{4}\sum_{m=0}^{3} X[m]\exp\left(j2\pi\frac{mn}{4}\right)
+$$
 
-$x[n] = \left[1 2 2 1\right]$ and $N=4$.
+Compute $x[0]$ from this result.
 
-<pre style="border: 2px solid blue">
+$$x[0] = \frac{1}{4}\left[6, -1 - j, 0, -1 + j\right] = \frac{6-2}{4} = 1$$
 
+Repeat for $x[1]$, $x[2]$ and $x[3]$.
 
+$x[1]$: uses $\exp\left(j\frac{\pi}{2}m\right) = \pm j$
 
+$$
+\begin{eqnarray*}
+x[1] &=& \frac{1}{4}\left(6 + j(-1-j)+0-j(-1+j)\right)\\
+&=& \frac{1}{4}\left(6 + -j+1+0+j+1)\right) = \frac{8}{4} = 2\\
+\end{eqnarray*}
+$$
 
+$x[2]$: uses $\exp\left(j\pi m\right) = 1, -1, 1, -1$
 
+$$
+\begin{eqnarray*}
+x[2] &=& \frac{1}{4}\left(1\times 6 + -1\times (-1-j)+1\times 0-1\times(-1+j)\right)\\
+&=& \frac{1}{4}\left(6 + 1+j+0+1-j)\right) = \frac{8}{4} = 2\\
+\end{eqnarray*}
+$$
 
+$x[3]$: uses $\exp\left(j3\frac{\pi}{2} m\right)$
 
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-* Compute $x[0]$ from this result.
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-* Repeat for $x[1]$, $x[2]$ and $x[3]$.
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
+$$
+\begin{eqnarray*}
+x[2] &=& \frac{1}{4}\left(1\times 6 + -j\times (-1-j)+1\times 0+j\times(-1+j)\right)\\
+&=& \frac{1}{4}\left(6 + j-1 +0-j +1 )\right) = \frac{4}{1} = 1\\
+\end{eqnarray*}
+$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
