@@ -1,4 +1,4 @@
-nda function [ xn ] = idft( Xm, N )
+function [ xn ] = idft( Xm, N )
 % Computes Inverse Discrete Fourier Transform
 % -------------------------------------------
 % [xn]  = idft(Xm, N)
