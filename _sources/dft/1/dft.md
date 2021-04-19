@@ -14,7 +14,6 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-
 # The Discrete Fourier Transform
 
 +++
@@ -120,7 +119,7 @@ $$F\left(\exp\left({j\omega T}\right)\right) = \sum_{n=0}^{\infty} f[n]\exp\left
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-This is an infinite sum.  So to compute it, we need to truncate it. 
+This is an infinite sum.  So to compute it, we need to truncate it.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -218,9 +217,10 @@ Compute the frequency components $X[m]$.
 
 ### Solution 1
 
-* Compute the $N=4$ point DFT for $\Re\left\{X[m]\right\}$.
+*Compute the $N=4$ point DFT for $\Re\left\{X[m]\right\}$.
 
 <pre style="border: 2px solid blue">
+
 
 
 
@@ -458,7 +458,7 @@ The term
 
 $$\exp\left(\frac{-j2\pi}{N}\right)$$
 
-is a rotating vector where the range $0 <= \theta <= 2\pi$ is divided into $360^\circ/N$ equal segments. 
+is a rotating vector where the range $0 <= \theta <= 2\pi$ is divided into $360^\circ/N$ equal segments.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -537,7 +537,7 @@ Using this notation, the DFT and inverse DFT pairs are represented as:
 
 $$X[m] =  \sum_{n=0}^{N-1} x[n]W_N^{nm}$$ 
 and
-$$x[n] = \frac{1}{N}\sum_{n=0}^{N-1} X[m]W_N^{-nm}$$ 
+$$x[n] = \frac{1}{N}\sum_{n=0}^{N-1} X[m]W_N^{-nm}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -713,7 +713,7 @@ It is not difficult to prove these by expanding
 
 $$X[m] = \sum_{n=0}^{N-1} x[n]W_N^{mn}$$
 
-into its real and imaginary parts using Euler's identity and considering the cosine (even) and sine (odd) terms that result. 
+into its real and imaginary parts using Euler's identity and considering the cosine (even) and sine (odd) terms that result.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -734,7 +734,7 @@ We then state the following useful properties. For proofs, see Karris, 10.3. **N
 
 ### Linearity
 
-$$a x_1[n] + b x_2[n] + \cdots \Leftrightarrow a X_1[m] + b X_2[m] + \cdots$$ 
+$$a x_1[n] + b x_2[n] + \cdots \Leftrightarrow a X_1[m] + b X_2[m] + \cdots$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
