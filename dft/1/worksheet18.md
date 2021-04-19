@@ -58,7 +58,7 @@ $$F\left(\exp\left({j\omega T}\right)\right) = \sum_{n=0}^{\infty} f[n]\exp\left
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-This is an infinite sum.  So to compute it, we need to truncate it. 
+This is an infinite sum.  So to compute it, we need to truncate it.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -397,7 +397,7 @@ The term
 
 $$\exp\left(\frac{-j2\pi}{N}\right)$$
 
-is a rotating vector where the range $0 <= \theta <= 2\pi$ is divided into $360/N$ equal segments. 
+is a rotating vector where the range $0 <= \theta <= 2\pi$ is divided into $360/N$ equal segments.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -434,9 +434,13 @@ $W_8$
 
 </pre>
 
++++ {"slideshow": {"slide_type": "notes"}}
+
 * Visualize on unit circle
 
 ![Visualization of the function unction $W_8^n$](pictures/circle.png)
+
++++ {"slideshow": {"slide_type": "notes"}}
 
 * Complete this table
 
@@ -444,6 +448,7 @@ $W_8$
 |-----|-----------------|------|-----------|--------|
 | 0   | 0               | 1    |  0        | 1      |
 
++++ {"slideshow": {"slide_type": "notes"}}
 
 <pre style="border: 2px solid blue">
 
@@ -476,7 +481,7 @@ Using this notation, the DFT and inverse DFT pairs are represented as:
 
 $$X[m] =  \sum_{n=0}^{N-1} x[n]W_N^{nm}$$ 
 and
-$$x[n] = \frac{1}{N}\sum_{n=0}^{N-1} X[m]W_N^{-nm}$$ 
+$$x[n] = \frac{1}{N}\sum_{n=0}^{N-1} X[m]W_N^{-nm}$$
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -546,7 +551,9 @@ $$|X[m]|$$
 
 and 
 
-$$\angle X[m]$$.
+$$
+ \angle X[m].
+$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -652,18 +659,6 @@ The period of a periodic DT function is 0.125 ms and it is sampled at 1024 equal
 4. Compute the Nyquist frequency $f_n$.
 
 +++ {"slideshow": {"slide_type": "notes"}}
-
-
-
-
-
-
-
-
-
-
-
-
 
 ### Solution
 
