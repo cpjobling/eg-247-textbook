@@ -607,7 +607,9 @@ $$|X[m]|$$
 
 and 
 
-$$\angle X[m]$$.
+$$
+    \angle X[m].
+$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
