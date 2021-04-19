@@ -362,11 +362,11 @@ x[2] &=& \frac{1}{4}\left(1\times 6 + -1\times (-1-j)+1\times 0-1\times(-1+j)\ri
 \end{eqnarray*}
 $$
 
-$x[3]$: uses $\exp\left(j3\frac{\pi}{2} m\right)$
+$x[3]$: uses $\exp\left(j\frac{3\pi}{2} m\right)$
 
 $$
 \begin{eqnarray*}
-x[2] &=& \frac{1}{4}\left(1\times 6 + -j\times (-1-j)+1\times 0+j\times(-1+j)\right)\\
+x[3] &=& \frac{1}{4}\left(1\times 6 + -j\times (-1-j)+1\times 0+j\times(-1+j)\right)\\
 &=& \frac{1}{4}\left(6 + j-1 +0-j +1 )\right) = \frac{4}{1} = 1\\
 \end{eqnarray*}
 $$
