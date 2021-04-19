@@ -256,11 +256,13 @@ $$
 
 $x[3]$:
 
-$$\begin{eqnarray*}
+$$
+\begin{eqnarray*}
 \Re \left\{ {X[3]} \right\} &=& x[0] + \sum\limits_{n = 1}^{N - 1} x[n]\cos \left( \frac{3n\pi}{2} \right)\\
                             &=& 1 + 2\times 0 + 2 \times -1 + 1\times 0\\
 \Re \left\{ {X[3]} \right\} &=& -1
-\end{eqnarray*}$
+\end{eqnarray*}
+$$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
