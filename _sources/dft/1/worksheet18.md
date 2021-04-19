@@ -74,11 +74,11 @@ $$X[m] =  \sum_{n=0}^{N-1} x[n]\exp\left({-j2\pi \frac{m n}{N}}\right)$$
 
 where
 
-$$\omega  = \left( {\frac{2\pi}{N}} \right)m$$
+$$\omega  = \left( {\frac{2\pi}{N}} \right)nm$$
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-and $m = 0,1,2,\ldots, N-1$.
+and $m = 0,1,2,\ldots, N-1$ and $n = 0,1,2,\ldots, N-1$.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -614,7 +614,7 @@ Points to note:
 ## A summary of the important features of sampling and the DFT
 
 * $N$ is the number of samples in frequency.
-* $f_s$ sampling frequency, samples per seconds.
+* $f_s$ sampling frequency, samples per second.
 * $T_t$ period of a periodic DT function.
 * $t_s$ interval between the $N$ samples in time period $T_t$.
 * $f_f$ period of a periodic DF function.
