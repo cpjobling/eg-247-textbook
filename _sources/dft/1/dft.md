@@ -217,7 +217,17 @@ Compute the frequency components $X[m]$.
 
 ### Solution 1
 
-*Compute the $N=4$ point DFT for $\Re\left\{X[m]\right\}$.
+Compute the $N=4$ point DFT for $\Re\left\{X[m]\right\}$.
+
+$x[n] = \left[1 2 2 1\right]$ and $N=4$.
+
+$$
+\begin{eqnarray*}
+\Re \left\{ {X[0]} \right\} &=& x[0] + \sum\limits_{n = 1}^{N - 1} x [n]\cos \left( 0 \right)\\
+                            &=& 1 + 2 + 2 + 1\\
+\Re \left\{ {X[0]} \right\} &=& 6
+\end{eqnarray*}
+$$
 
 <pre style="border: 2px solid blue">
 
@@ -300,7 +310,9 @@ Use the inverse DFT to compute the discrete-time sequence $x[n]$ from $X[m]$.
 
 ### Solution 2
 
-* Write down the expression $x[n]$ in terms of $X[m]$.
+Write down the expression $x[n]$ in terms of $X[m]$.
+
+$x[n] = \left[1 2 2 1\right]$ and $N=4$.
 
 <pre style="border: 2px solid blue">
 
