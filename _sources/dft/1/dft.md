@@ -226,7 +226,7 @@ $x[0]$:
 
 $$
 \begin{eqnarray*}
-\Re \left\{ {X[0]} \right\} &=& x[0] + \sum\limits_{n = 1}^{N - 1} x[n]\cos \left( 0 \right)\\
+\Re \left\{ {X[0]} \right\} &=& x[0] + \sum\limits_{n = 1}^{3} x[n]\cos \left( 0 \right)\\
                             &=& 1 + 2\times 1 + 2\times 1 + 1\times 1\\
 \Re \left\{ {X[0]} \right\} &=& 6
 \end{eqnarray*}
@@ -237,7 +237,7 @@ $x[1]$:
 
 $$
 \begin{eqnarray*}
-\Re \left\{ {X[1]} \right\} &=& x[0] + \sum\limits_{n = 1}^{N - 1} x[n]\cos \left( \frac{n\pi}{2} \right)\\
+\Re \left\{ {X[1]} \right\} &=& x[0] + \sum\limits_{n = 1}^{3} x[n]\cos \left( \frac{n\pi}{2} \right)\\
                             &=& 1 + 2\times 0 + 2 \times -1 + 1 \times 0\\
 \Re \left\{ {X[1]} \right\} &=& -1
 \end{eqnarray*}
@@ -248,7 +248,7 @@ $x[2]$:
 
 $$
 \begin{eqnarray*}
-\Re \left\{ {X[2]} \right\} &=& x[0] + \sum\limits_{n = 1}^{N - 1} x[n]\cos \left( n\pi \right)\\
+\Re \left\{ {X[2]} \right\} &=& x[0] + \sum\limits_{n = 1}^{3} x[n]\cos \left( n\pi \right)\\
                             &=& 1 + 2\times -1 + 2 \times 1 + 1\times -1\\
 \Re \left\{ {X[2]} \right\} &=& 0
 \end{eqnarray*}
@@ -258,7 +258,7 @@ $x[3]$:
 
 $$
 \begin{eqnarray*}
-\Re \left\{ {X[3]} \right\} &=& x[0] + \sum\limits_{n = 1}^{N - 1} x[n]\cos \left( \frac{3n\pi}{2} \right)\\
+\Re \left\{ {X[3]} \right\} &=& x[0] + \sum\limits_{n = 1}^{3} x[n]\cos \left( \frac{3n\pi}{2} \right)\\
                             &=& 1 + 2\times 0 + 2 \times -1 + 1\times 0\\
 \Re \left\{ {X[3]} \right\} &=& -1
 \end{eqnarray*}
@@ -272,7 +272,7 @@ $x[0]$:
 
 $$
 \begin{eqnarray*}
-\Im \left\{ {X[0]} \right\} &=& - \sum\limits_{n = 1}^{N - 1} x[n]\sin \left( 0 \right)\\
+\Im \left\{ {X[0]} \right\} &=& - \sum\limits_{n = 1}^{3} x[n]\sin \left( 0 \right)\\
 \Im \left\{ {X[0]} \right\} &=& 0
 \end{eqnarray*}
 $$
@@ -281,7 +281,7 @@ $x[1]$:
 
 $$
 \begin{eqnarray*}
-\Im \left\{ {X[1]} \right\} &=& - \sum\limits_{n = 1}^{N - 1} x[n]\sin \left( \frac{n\pi}{2} \right)\\
+\Im \left\{ {X[1]} \right\} &=& - \sum\limits_{n = 1}^{3} x[n]\sin \left( \frac{n\pi}{2} \right)\\
                             &=& - (2\times 1 + 2 \times 0 + 1 \times -1)\\
 \Im \left\{ {X[1]} \right\} &=& -1
 \end{eqnarray*}
@@ -291,7 +291,7 @@ $x[2]$:
 
 $$
 \begin{eqnarray*}
-\Im \left\{ {X[2]} \right\} &=& - \sum\limits_{n = 1}^{N - 1} x[n]\sin \left( n\pi \right)\\
+\Im \left\{ {X[2]} \right\} &=& - \sum\limits_{n = 1}^{3} x[n]\sin \left( n\pi \right)\\
                             &=& - (2\times 0 + 2 \times 0 + 1\times 0)\\
 \Im \left\{ {X[2]} \right\} &=& 0
 \end{eqnarray*}
@@ -301,7 +301,7 @@ $x[3]$:
 
 $$
 \begin{eqnarray*}
-\Im \left\{ {X[3]} \right\} &=& - \sum\limits_{n = 1}^{N - 1} x[n]\sin \left( \frac{3n\pi}{2} \right)\\
+\Im \left\{ {X[3]} \right\} &=& - \sum\limits_{n = 1}^{3} x[n]\sin \left( \frac{3n\pi}{2} \right)\\
                             &=& - (2\times -1 + 2 \times 0 + 1\times 1)\\
 \Im \left\{ {X[3]} \right\} &=& 1
 \end{eqnarray*}
