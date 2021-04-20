@@ -32,7 +32,7 @@ An annotatable worksheet for this presentation is available as [**Worksheet 19**
 
 ## Scope and Background Reading
 
-This session introduces the fast fourier transform (FFT) which is one of the most widely used numerical algorithms in the world. It exploits some features of the symmetry of the computation of the DFT to reduce the complexity from something that takes order $N^2$ ($O(N^2)$) complex operations to something that takes order $N \log N$ ($O(N \log N)$) operations. 
+This session introduces the fast fourier transform (FFT) which is one of the most widely used numerical algorithms in the world. It exploits some features of the symmetry of the computation of the DFT to reduce the complexity from something that takes order $N^2$ ($O(N^2)$) complex operations to something that takes order $N \log N$ ($O(N \log N)$) operations.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -76,7 +76,7 @@ The material in this presentation and notes is based on [Chapter 10](https://ebo
 
 ## The inefficiency of the DFT
 
-Consider a signal whose highest frequency is 18 kHz, the sampling frequency is 50 kHz, and 1024 samples are taken, i.e., $N=1024$. 
+Consider a signal whose highest frequency is 18 kHz, the sampling frequency is 50 kHz, and 1024 samples are taken, i.e., $N=1024$.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -114,11 +114,11 @@ $$W_N^0 = \exp\left(-j\frac{2\pi}{N}(0)\right) = 1.$$
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* $2N$ complex arithmetic operations are required to compute any frequency component of $X[k].$<sup>1</sup> 
+* $2N$ complex arithmetic operations are required to compute any frequency component of $X[k].$<sup>1</sup>
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* If we assume that $x[n]$ is real, then only $N/2$ of the $X[m]$ components are unique. 
+* If we assume that $x[n]$ is real, then only $N/2$ of the $X[m]$ components are unique.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -130,7 +130,7 @@ $$W_N^0 = \exp\left(-j\frac{2\pi}{N}(0)\right) = 1.$$
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* These would have to be completed in 20.48 ms. 
+* These would have to be completed in 20.48 ms.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -138,11 +138,11 @@ $$W_N^0 = \exp\left(-j\frac{2\pi}{N}(0)\right) = 1.$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-* Fortunately, many of the $W_N$ terms in the computation are unity ($=\pm 1$). 
+* Fortunately, many of the $W_N$ terms in the computation are unity ($=\pm 1$).
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Moreover, because the $W_N^i$ points are equally spaced points on the unit circle; 
+* Moreover, because the $W_N^i$ points are equally spaced points on the unit circle;
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -181,7 +181,6 @@ $$\begin{eqnarray*}
   W_N^{N/2} &=&  \exp\left(-j\frac{2\pi}{N}\frac{N}{2}\right) = \exp\left(-j\pi\right) = -1.\\
   W_N^{N/4} &=&  \exp\left(-j\frac{2\pi}{N}\frac{N}{4}\right) = \exp\left(-j\pi/2\right) = -j.\\
   W_N^{3N/4} &=&  \exp\left(-j\frac{2\pi}{N}\frac{3N}{4}\right) = \exp\left(-j3\pi/2\right) = j.\end{eqnarray*}$$
-  
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -202,7 +201,6 @@ $$\begin{eqnarray*}
   \hfil &\cdots&  \hfill \\
   X[N - 1] &=& x[0]W_N^0 + x[1]W_N^{N - 1} + x[2]W_N^{2(N - 1)} +  \cdots  + x[N - 1]W_N^{(N - 1)^2} \hfill \\ 
 \end{eqnarray*}$$
-
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -253,7 +251,7 @@ $$\mathbf{X}[m] = \mathbf{W_1} \mathbf{W_2} \mathbf{W_3} \cdots \mathbf{W_L} \ma
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-The FFT computation starts with matrix $\mathbf{W}_L$. It operates on $\mathbf{x}[n]$ producing a row vector, and each component of the row vector is obtained by one multiplication and one addition. This is because there are only two non-zero elements on a given row, and one of those elements is unity. Since there are $N$ components of $\mathbf{x}[n]$, there will be $N$ complex multiplications and $N$ complex additions. 
+The FFT computation starts with matrix $\mathbf{W}_L$. It operates on $\mathbf{x}[n]$ producing a row vector, and each component of the row vector is obtained by one multiplication and one addition. This is because there are only two non-zero elements on a given row, and one of those elements is unity. Since there are $N$ components of $\mathbf{x}[n]$, there will be $N$ complex multiplications and $N$ complex additions.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -261,7 +259,7 @@ This new vector is then operated on by the $\mathbf{W}_{L-1}$ matrix, then on $\
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-It appears that the entire operation would require $NL= N\log_2N$ complex additions and also $N\log_2N$ complex additions. 
+It appears that the entire operation would require $NL= N\log_2N$ complex additions and also $N\log_2N$ complex additions.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -281,11 +279,11 @@ It allows us to visualize the FFT as a block diagram (for simulation) or a signa
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-We start from a 2-point FFT ($N=2$), and work up to an 8-point FFT ($N=8$) before generalizing the result. 
+We start from a 2-point FFT ($N=2$), and work up to an 8-point FFT ($N=8$) before generalizing the result.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-We have implemented each algorithm in Simulink so we are able illustrate these structures with executable examples as we go. 
+We have implemented each algorithm in Simulink so we are able illustrate these structures with executable examples as we go.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -311,7 +309,6 @@ $$X[k]=x[0]+(-1)^kx[1].$$
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ![Signal flow graph of 2-point DFT](pictures/2-point-dft-sfg.png)
-
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -376,6 +373,7 @@ X[k] &=&  \left[x[0] + x[2](-1)^k\right] \left[x[1] +  x[3](-1)^k\right]W_4^{1k}
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 To clarify the next step, we define two new variables
+
 $$\begin{eqnarray*}
 x_e[n]&=&x[2n],\,n=0,1;\\
 x_o[n]&=&x[2n+1],\,n=0,1.
@@ -492,7 +490,7 @@ $$X[k] = \sum_{n=0}^{7}x[n]W_8^{nk}.$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-After some manipulation, not reproduced here, it can be shown that the 8-point DFT is the recombination of two, 4-point DFTs that operate on the even and odd numbered values in the sequence $x[n]$ respectively. 
+After some manipulation, not reproduced here, it can be shown that the 8-point DFT is the recombination of two, 4-point DFTs that operate on the even and odd numbered values in the sequence $x[n]$ respectively.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -641,7 +639,7 @@ Under the assumptions about the relative efficiency of the DFT and FFT we can cr
 
 As you can see, the efficiency of the FFT actual gets better as the number of samples go up! 
 
-However, there are other costs, such as the data storage needed for intermediate steps, that need to be taken into account as well. For example, an 8-point FFT requires only a 3 stage decomposition, with each stage needing storage for 8 complex numbers. That is 24 in all. Whereas a 2048 sequence will require 11 stages, storing 2048 values each. That is a total of 22,528 complex values<sup>6</sup>. 
+However, there are other costs, such as the data storage needed for intermediate steps, that need to be taken into account as well. For example, an 8-point FFT requires only a 3 stage decomposition, with each stage needing storage for 8 complex numbers. That is 24 in all. Whereas a 2048 sequence will require 11 stages, storing 2048 values each. That is a total of 22,528 complex values<sup>6</sup>.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -674,7 +672,7 @@ slideshow:
 ---
 x = [linspace(-2,-1,50) linspace(-1,1,100) linspace(1,2,50)];
 y = [linspace(0,0,50) linspace(1,1,100) linspace(0,0,50)];
-plot(x,y)
+stem(x,y)
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -686,19 +684,19 @@ and the FFT is produced as
 slideshow:
   slide_type: fragment
 ---
-plot(x, abs(fft(y)))
+stem(x, abs(fft(y)))
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-unwind 
+unwind
 
 ```{code-cell} matlab
 ---
 slideshow:
   slide_type: fragment
 ---
-plot(x, abs(fftshift(fft(y))))
+stem(x, abs(fftshift(fft(y))))
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -710,7 +708,7 @@ The inverse FFT is obtained with
 slideshow:
   slide_type: fragment
 ---
-plot(x, ifft(fft(y)))
+stem(x, ifft(fft(y)))
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -732,7 +730,7 @@ slideshow:
 ---
 x = linspace(-1,1,100);
 y = [linspace(0,1,50) linspace(1,0,50)];
-plot(x,y)
+stem(x,y)
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -744,7 +742,7 @@ and the FFT is obtained with
 slideshow:
   slide_type: subslide
 ---
-plot(x, abs(fftshift(fft(y))))
+stem(x, abs(fftshift(fft(y))))
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -756,7 +754,7 @@ The inverse FFT is obtained with
 slideshow:
   slide_type: fragment
 ---
-plot(x, ifft(fft(y)))
+stem(x, ifft(fft(y)))
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -773,7 +771,7 @@ plot(x, ifft(fft(y)))
 
 ## Homework
 
-Read the rest of Chapter 10 of Karris from page 10.9 and make your own notes on the implementation of the FFT. 
+Read the rest of Chapter 10 of Karris from page 10.9 and make your own notes on the implementation of the FFT.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -813,7 +811,6 @@ You'll also find that most text books on Digital Signal Processing will cover th
 +++ {"slideshow": {"slide_type": "notes"}}
 
 ## Solutions
-
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
