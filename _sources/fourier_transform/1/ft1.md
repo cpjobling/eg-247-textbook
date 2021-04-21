@@ -332,7 +332,7 @@ By consideration of the Real and Imaginary parts of $f(t)$ and $F(j\omega)$ we c
 <html>
 <table>
 <thead>
-    <tr><td rowspan="2" style="text-align: center;">$$f(t)$$</td><td colspan="5" style="text-align: center;">$$F(j\omega)$$</td></tr>
+    <tr><td rowspan="2" style="text-align: center;">f(t)</td><td colspan="5" style="text-align: center;">F(j⍵)</td></tr>
     <tr><td>Real</td><td>Imaginary</td><td>Complex</td><td>Even</td><td>Odd</td></tr>
 </thead>
 <tbody>
