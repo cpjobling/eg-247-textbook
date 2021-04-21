@@ -327,7 +327,7 @@ We can do a similar analysis for the inverse Fourier transform.
 ### Time Domain and Frequecy Domain Correspondence
 
 
-By consideration of the Real and Imaginary parts of $f(t)$ and $F(j\omega)$ we can construct the following table. See Sections **8.2.1 Real-Time Functions** and **8.2.2 Imaginary Time Functions** which shows the summarizes the *nature* of the Fourier transform for particular types of the signal. 
+By consideration of the Real and Imaginary parts of $f(t)$ and $F(j\omega)$ we can construct the following table. 
 
 <html>
 <table>
@@ -345,6 +345,8 @@ By consideration of the Real and Imaginary parts of $f(t)$ and $F(j\omega)$ we c
 </tbody>
 </table>
 </html>
+
+See {cite}`karris` Sections **8.2.1 Real-Time Functions** and **8.2.2 Imaginary Time Functions** which summarizes the *nature* of the Fourier transform for particular types of the signal. 
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
