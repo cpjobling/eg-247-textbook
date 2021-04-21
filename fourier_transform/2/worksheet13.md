@@ -75,7 +75,7 @@ This table is adapted from Table 8.9 of Karris. See also: [Wikibooks: Engineerin
 | 1.  | Dirac delta                      | $\delta(t)$                       | $1$         | Constant energy at *all* frequencies. |
 | 2.  | Time sample                      | $\delta(t-t_0)$                   |  $e^{-j\omega t_0}$ |  
 | 3.  | Phase shift                      | $e^{j\omega t_0}$                 |  $2\pi\delta(\omega - \omega_0)$ |  
-| 4.  | *Signum*                         | $\operatorname{sgn} (x)$          |  $\displaystyle{\frac{2}{j\omega}}$ |  also known as sign function
+| 4.  | *Signum*                         | $\operatorname{sgn} t$          |  $\displaystyle{\frac{2}{j\omega}}$ |  also known as sign function
 | 5.  |  Unit step                       | $u_0(t)$                          |  $\displaystyle{\frac{1}{j\omega}+\pi\delta(\omega)}$ |  
 | 6.  |  Cosine                          | $\cos \omega_0 t$                 |  $\pi\left[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)\right]$ |  
 | 7.  |  Sine                            | $\sin \omega_0 t$                 |  $-j\pi\left[\delta(\omega-\omega_0)-\delta(\omega+\omega_0)\right]$ |  
@@ -215,10 +215,10 @@ fourier(sin(omega_0*t),omega)
 
 The signum function is a function whose value is equal to
 
-$$\operatorname{sgn} x = \left\{ {\begin{array}{*{20}{c}}
-  { - 1\;x < 1} \\ 
+$$\operatorname{sgn} t = \left\{ {\begin{array}{*{20}{c}}
+  { - 1\;t < 1} \\ 
   {0\;x = 0} \\ 
-  { + 1\;x > 0} 
+  { + 1\;t > 0} 
 \end{array}} \right.$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -237,7 +237,7 @@ fourier(sign(t),omega)
 
 The transform is:
 
-$$\operatorname{sgn} x = u_0(t) - u_0(-t) = \frac{2}{j\omega}$$
+$$\operatorname{sgn} t = u_0(t) - u_0(-t) = \frac{2}{j\omega}$$
 
 ![Fourier transform of sgn(t)](./pictures/ft_sgn.png)
 
@@ -290,11 +290,11 @@ $$\operatorname{sgn} t = 2 u_0(t) - 1$$
 
 #### Proof
 
-$$\operatorname{sgn} x = 2u_0(t) - 1$$
+$$\operatorname{sgn} t = 2u_0(t) - 1$$
 
 so
 
-$$u_0(t) = \frac{1}{2}\left[1 + \operatorname{sgn} x\right]$$
+$$u_0(t) = \frac{1}{2} + \frac{ \operatorname{sgn} t}{2}$$
 
 From previous results $1\Leftrightarrow 2\pi\delta(\omega)$ and $\operatorname{sgn} x = 2/(j\omega)$ so by linearity
 
