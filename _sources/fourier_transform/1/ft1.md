@@ -346,7 +346,7 @@ By consideration of the Real and Imaginary parts of $f(t)$ and $F(j\omega)$ we c
 </table>
 </html>
 
-See {cite}`karris` Sections **8.2.1 Real-Time Functions** and **8.2.2 Imaginary Time Functions** which summarizes the *nature* of the Fourier transform for particular types of the signal. 
+See {cite}`karris` Sections **8.2.1 Real-Time Functions** and **8.2.2 Imaginary Time Functions** which summarizes the *nature* of the Fourier transform for particular types of the signal.
 
 ```{code-cell} matlab
 
