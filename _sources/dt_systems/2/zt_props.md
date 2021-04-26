@@ -16,4 +16,5 @@
 | 12 | Initial value theorem | $\displaystyle{f[0]=\lim_{z\to\infty}F(z)}$ | |
 | 13 | Final value theorem| $\displaystyle{\lim_{n\to\infty}f[n]=\lim_{z\to 1}(z-1)F(z)}$ | |
 
+See also: [Wikibooks: Engineering_Tables/Z_Transform_Properties](https://en.wikibooks.org/wiki/Engineering_Tables/Z_Transform_Properties) and [Z Transform&mdash;WolframMathworld](https://mathworld.wolfram.com/Z-Transform.html) for more complete references.
 

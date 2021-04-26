@@ -1,4 +1,4 @@
-# Table of z-Transforms
+# Table of Z-Transforms
 
 | &nbsp; | f[n]                    | F(z).              | Region of Convergence |
 |--------|----------------------------|--------------------|-------------------|
@@ -18,3 +18,11 @@
 | 14 | $\displaystyle{a^n n u_0[n]}$ | $\displaystyle{\frac{az}{(z-a)^2}}$ | |
 | 15 | $\displaystyle{a^n n^2 u_0[n]}$ | $\displaystyle{\frac{az(z+a)}{(z-a)^3}}$ | |
 | 16 | $\displaystyle{a^n n[n+1] u_0[n]}$ | $\displaystyle{\frac{2az^2}{(z-a)^3}}$ | |
+
+See also: [Wikibooks: Engineering_Tables/Z_Transform_Table](https://en.wikibooks.org/wiki/Engineering_Tables/Z_Transform_Table) and [Z Transform&mdash;WolframMathworld](https://mathworld.wolfram.com/Z-Transform.html) for more complete references.
+
+
+
+```python
+
+```
