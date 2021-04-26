@@ -308,8 +308,6 @@ $$nu_0[n] \Leftrightarrow \frac{z}{(z-1)^2}$$
 
 As usual, we can rely on this and similar analysis to have been tabulated for us and in practice we can rely on tables of transform pairs, such as this one.
 
-$\displaystyle{\frac{z}{z-a}}$
-
 | &nbsp; | f[n]                    | F(z).              | Region of Convergence |
 |--------|----------------------------|--------------------|-------------------|
 | 1.     |    $\displaystyle{\delta[n]}$ | $\displaystyle{1}$ |
