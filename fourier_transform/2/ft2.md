@@ -96,7 +96,7 @@ This has important consequences in filter design and later when we consider samp
 
 ## Table of Common Fourier Transform Pairs
 
-This table is adapted from Table 8.9 of Karris. See also: [Wikibooks: Engineering Tables/Fourier Transform Table](https://en.wikibooks.org/wiki/Engineering_Tables/Fourier_Transform_Table) and [Fourier Transfomr&mdash;WolframMathworld](https://mathworld.wolfram.com/FourierTransform.html) for more complete references.
+This table is adapted from Table 8.9 of Karris. See also: [Wikibooks: Engineering Tables/Fourier Transform Table](https://en.wikibooks.org/wiki/Engineering_Tables/Fourier_Transform_Table) and [Fourier Transform&mdash;WolframMathworld](https://mathworld.wolfram.com/FourierTransform.html) for more complete references.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
