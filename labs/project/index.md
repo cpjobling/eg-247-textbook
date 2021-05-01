@@ -89,8 +89,8 @@ You should complete the labwork self-assessment claim form and declaration and t
 You should submit the following to the **Project: A Graphic Equalizer** Assignment on Canvas.
 
 1. Your completed version of the Graphic Equalizer calculator script named `graphic_eq_student_number.mlx`.
-1. Submit the Simulink model of your graphical equalizer with the values of centre frequency $f_c$ and $G_\mathrm{dB}$ that are unique to you named `graphic_eq_model_student_number.slx`. This model should include the testing harnest simular to that distributed with `Three_Band_EQ_model` and should have been used to test your design.
-1. You should include a copy of the music file (sampled at 44.1 kHz) that you used to test your design.
+1. Submit the Simulink model of your graphical equalizer with the values of centre frequency $f_c$ and $G_\mathrm{dB}$ that are unique to you named `graphic_eq_model_student_number.slx`. This model should include the testing harness similar to that distributed with `Three_Band_EQ_model` and should have been used to test your design.
+1. You should include a copy of the music file (sampled at least 44.1 kHz) that you used to test your design.
 
 ### Deadline
 
