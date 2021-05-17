@@ -3,16 +3,16 @@
 The scripts and functions in this folder are utility functions used in the matlab examples. You should download the contents and add the folder to your MATLAB path.
 
 ```
-path(path,'path_to_eg-247-resources')
+addpath(path,'path_to_eg-247-resources')
 ```
 
 ## Windows
 
-If you have downloaded the EG-247 lab portfolio to `C:\Users\Me\Documents\MATLAB\Workspace\eg-247\labs`
+If you have downloaded the EG-247 lab portfolio to `C:\Users\Me\Documents\MATLAB\eg-247\labs`
 add the `MATLAB` folder like this.
 
 ```
-cd('C:\Users\Me\Documents\MATLAB\Workspace\eg-247\labs')
+cd('C:\Users\Me\Documents\MATLAB\eg-247\labs')
 addpath([pwd,'\MATLAB'])
 ```
 
