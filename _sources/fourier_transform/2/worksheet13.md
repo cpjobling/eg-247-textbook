@@ -81,8 +81,8 @@ This table is adapted from Table 8.9 of Karris. See also: [Wikibooks: Engineerin
 | 7.  |  Sine                            | $\sin \omega_0 t$                 |  $-j\pi\left[\delta(\omega-\omega_0)-\delta(\omega+\omega_0)\right]$ |  
 | 8.  |  Single pole                     | $e^{-at}u_0(t)$                   |  $\displaystyle{\frac{1}{j\omega + a}}$ |  $a \gt 0$ |
 | 9.  |  Double pole                     | $te^{-at}u_0(t)$                  |  $\displaystyle{\frac{1}{(j\omega + a)^2}}$ |  $a \gt 0$ |
-| 10. |  Complex pole (cosine component) | $e^{-at}\cos \omega_0 t\;u_0(t)$  |  $\displaystyle{\frac{j\omega + a}{((j\omega + a)^2+\omega^2}}$ |  $a\gt 0$
-| 11. |  Complex pole (sine component)   | $e^{-a t}\sin \omega_0 t\;u_0(t)$ |  $\displaystyle{\frac{\omega}{((j\omega + a)^2+\omega^2}}$ |  $a\gt 0$ |
+| 10. |  Complex pole (cosine component) | $e^{-at}\cos \omega_0 t\;u_0(t)$  |  $\displaystyle{\frac{j\omega + a}{(j\omega + a)^2+\omega_0^2}}$ |  $a\gt 0$
+| 11. |  Complex pole (sine component)   | $e^{-a t}\sin \omega_0 t\;u_0(t)$ |  $\displaystyle{\frac{\omega_0}{(j\omega + a)^2+\omega_0^2}}$ |  $a\gt 0$ |
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
