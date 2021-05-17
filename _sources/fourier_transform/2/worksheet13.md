@@ -74,7 +74,7 @@ This table is adapted from Table 8.9 of Karris. See also: [Wikibooks: Engineerin
 |-----| ---------------------------------|-----------------------------------|-------------|---------------------------------------|
 | 1.  | Dirac delta                      | $\delta(t)$                       | $1$         | Constant energy at *all* frequencies. |
 | 2.  | Time sample                      | $\delta(t-t_0)$                   |  $e^{-j\omega t_0}$ |  
-| 3.  | Phase shift                      | $e^{j\omega t_0}$                 |  $2\pi\delta(\omega - \omega_0)$ |  
+| 3.  | Phase shift                      | $e^{j\omega_0 t}$                 |  $2\pi\delta(\omega - \omega_0)$ |  
 | 4.  | *Signum*                         | $\operatorname{sgn} t$          |  $\displaystyle{\frac{2}{j\omega}}$ |  also known as sign function
 | 5.  |  Unit step                       | $u_0(t)$                          |  $\displaystyle{\frac{1}{j\omega}+\pi\delta(\omega)}$ |  
 | 6.  |  Cosine                          | $\cos \omega_0 t$                 |  $\pi\left[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)\right]$ |  

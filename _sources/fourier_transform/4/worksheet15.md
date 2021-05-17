@@ -339,6 +339,14 @@ grid
 title('Bode-plot of Butterworth 2nd-Order Butterworth Low Pass Filter')
 ```
 
++++ {"slideshow": {"slide_type": "notes"}}
+
+Note that the attentuation of the filter is flat at 0 dB in the pass-band at frequencies below the cut-off frequency $\omega < \omega_c$; has a value of $-3$ dB at the cut-off frquency $\omega = \omega_c$; and has a "roll-off" (rate of decrease) of $N\times 20$ dB/decade in the stop-band. 
+
+In this case, $N=2$, and $\omega_c = 100$ rad/s so the attenuation is -40 dB at $\omega = 10\omega_c = 1,000$ rad/s and $\omega = -80$ dB at $\omega = 100\omega_c = 10,000$ rad/s.
+
+The phase is $0^\circ$ at $\omega = 0$; $N\times 90^\circ$ at $\omega = \infty$; and $N\times 45^\circ$ and $\omega = \omega_c$.
+
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ### Example 8
