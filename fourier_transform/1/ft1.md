@@ -429,9 +429,7 @@ $$f(\alpha t)\Leftrightarrow \frac{1}{|\alpha|}F\left(j\frac{\omega}{\alpha}\rig
 
 A time shift results in a phase shift in the Fourier transform
 
-$$f(t-t_0) \Leftrightarrow e^{-j\omega_0}F(j\omega)$$
-
-where $\omega_0 = 2\pi/t_0$
+$$f(t-t_0) \Leftrightarrow e^{-j\omega t_0}F(j\omega)$$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
