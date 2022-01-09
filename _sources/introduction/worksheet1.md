@@ -769,7 +769,7 @@ two_sines
 Which analysis method you may have already encountered, would turn the time response shown in this picture to the frequency spectrum shown in the bottom graph? 
 
 * Fourier transform
-* Parsevel's theorem 
+* Parseval's theorem 
 * Laplace transform
 * Phasor analysis
 
