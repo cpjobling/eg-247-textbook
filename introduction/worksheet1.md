@@ -26,13 +26,13 @@ This give us an opportunity to demonstrate the electronic resources, Canvas, One
 
 ## Colophon
 
-This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet1.pdf).
+This worksheet has been designed to be used in Microsoft's OneNote. Should you wish to use another note taking application, a version of this worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet1.pdf).
 
-A printout of this worksheet will be distributed before the first class meeting in the **Week 1: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **Worksheets** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote. 
+A copy of this worksheet will be distributed before the first class meeting in the **Week 1: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **Worksheets** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote.
 
 You are expected to have at least watched the video presentation of [Chapter 1](https://cpjobling.github.io/eg-247-textbook/introduction) of the [notes](https://cpjobling.github.io/eg-247-textbook) before coming to the first class.
 
-After class, the lecture recording and the annotated version of this worksheet will be made available to you via OneNote and through Canvas.
+After class, the lecture recording and the annotated version of this worksheet will be made available to you through Canvas.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -42,41 +42,38 @@ There will (usually) be two worksheets per week - one per class hour.
 
 The worksheets are based on the corresponding sections of the notes.
 
-We will use the worksheets and Pingo to make the class as active as we can
+We will use the worksheets as class whiteboards and the Pingo audience response system to make the class as active as we can.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### Before class
 
-I will have published a video of me presenting the slide-show version of the notes in advance of class
+* I will have published a video of me presenting the slide-show version of the notes in advance of class.
 
-A version of this worksheet (PDF printout) will have been distributed to your **Handouts** folder on OneNote so that you can make your own notes.
-
-+++ {"slideshow": {"slide_type": "subslide"}}
-
-### After class
-
-I will link to the Whiteboard pages in Canvas
-
-Copies of the lecture recordings will be uploaded to Canvas
-
-There will be a lab in which you can learn more about the topics covered using MATLAB
-
-You should attempt the homework
-
-At the end of each week's activities, you should have a complete record of everything that happened in class and ample opportunities to have made additional notes and practice the techniques shown.
+* A copy of this worksheet will have been distributed to your **Worksheets** folder on OneNote so that you can make your own notes.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### In class
 
-I will step through the worksheet in class using the Slide Show feature of Jupyter Notebooks
+* I will step through the worksheet in class using the Slide Show feature of Jupyter Notebooks.
 
-I can execute embedded examples of MATLAB code as we go
+* I can execute embedded examples of MATLAB code as we go (the notes contain all the results of these code examples).
 
-The notes contain all the results of these code examples
+* Any hand written notes that I would need to make on a White Board will be done on my copy of this worksheet. This means you have a copy of my handwritten notes as soon as the network syncs your class notebook.
 
-Any notes that I would need to make on  a WhiteBoard will be done on my copy of this worksheet in the OneNote content collection - which means you have it as soon as the network syncs your copy
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### After class¶
+
+* I will copy my annotated version of this worksheet into the **_Content Library** of the class notebook
+* I will provide a link to the OneNote page on the Whiteboard pages in Canvas.
+* Copies of the lecture recordings will be uploaded to Canvas.
+
+* There will be a lab in which you can learn more about the topics covered using MATLAB.
+* You should attempt the homework.
+
+At the end of each week’s activities, you should have a complete record of everything that happened in class and ample opportunities to have made additional notes and practice the techniques shown.
 
 +++ {"slideshow": {"slide_type": "skip"}}
 
@@ -718,6 +715,7 @@ Systems, continuous and discrete, can also be transformed to the frequency and s
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 Consider the sum of a two-sinusoids signal
+
 $$x(t) = \underbrace {A_1\cos(2\pi f_1 t)}_{s_1} + \underbrace {A_2\cos(2\pi f_2 t)}_{s_2}$$
 
 +++ {"slideshow": {"slide_type": "notes"}, "tags": ["remove-output"]}
@@ -770,7 +768,7 @@ two_sines
 Which analysis method you may have already encountered, would turn the time response shown in this picture to the frequency spectrum shown in the bottom graph? 
 
 * Fourier transform
-* Parsevel's theorem 
+* Parseval's theorem 
 * Laplace transform
 * Phasor analysis
 

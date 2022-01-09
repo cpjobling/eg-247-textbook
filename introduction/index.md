@@ -524,6 +524,7 @@ Systems, continuous and discrete, can also be transformed to the frequency and s
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 Consider the sum of a two-sinusoids signal
+
 $$x(t) = \underbrace {A_1\cos(2\pi f_1 t)}_{s_1} + \underbrace {A_2\cos(2\pi f_2 t)}_{s_2}$$
 
 +++ {"slideshow": {"slide_type": "notes"}}
