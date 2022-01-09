@@ -44,16 +44,17 @@ Note that Signals and Systems for Dummies is available as an e-book from the [Un
 
 ## Topics
 
-* Continuous-time signals
-* Continuous-time systems
-* Discrete-time signals
-* Discrete-time systems
-* Signal Classifications
-* Domains for Signals
-* Systems Thinking and Systems Design
+* [Continuous-time Signals](ctsignals)
+* [Continuous-time Systems](ctsystems)
+* [Discrete-time Signals](dtsignals)
+* [Discrete-time Systems](dtsystems)
+* [Signal Classifications](sigclass)
+* [Domains for Signals](domains)
+* [Systems Thinking and Systems Design](systems_thinking)
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
+(ctsignals)=
 ## Continuous-time signals
 
 Continuous signals are represented mathematically by functions which vary continuously with time.
@@ -249,6 +250,7 @@ What is the period of the waveform in seconds?
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
+(ctsystems)=
 ## Continuous-time Systems
 
 Systems operate on signals. In mathematical terms, a *system* is a function or an *operator*, $H\{\}$ that maps the input signal $x(t)$ to an output signal $y(t)$. 
@@ -277,6 +279,7 @@ The Similink code can be downloaded from this file [gain_level_shift.slx](https:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
+(dtsignals)=
 ## Discrete-time Signals
 
 Discrete-time signals are a function of a time index $n$. A discrete-time signal $x[n]$, unlike a continuous-time signal $x(t)$, is only defined at integer values of the independent variable $n$. This means that the signal is only active at specific periods of time. Discrete-time signals can be stored in computer memory.
@@ -364,6 +367,7 @@ grid
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
+(dtsystems)=
 ## Discrete-time Systems
 
 A discrete-time system, like its continuous-time counterpart, is a function, $H\{\}$, that maps the input $x[n]$￼ ￼to the output $y[n] = H\{x[n]\}$. An example of a discrete-time system is the *two-tap* filter:
@@ -384,6 +388,7 @@ In words, this system scales the present input by 3/4 and adds it to the past va
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
+(sigclass)=
 ## Signal Classifications
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -496,6 +501,7 @@ ylabel('Amplitude')
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
+(domains)=
 ## Domains for Signals and Systems
 
 Most of the signals we encounter on a daily basis reside in the time domain. They’re functions of independent variable $t$ or $n$. But sometimes when you’re working with continuous-time signals, you may need to transform away from the time domain ($t$) to another domain.
@@ -586,6 +592,7 @@ In addition to visualization properties, the s-domain reduces differential equat
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
+(systems_thinking)=
 ## Systems Thinking and Systems Design
 
 See section **Testing Product Concepts with Behavioral Level Modeling** from Chapter 1 of [SS4D](https://www.dummies.com/store/product/Signals-and-Systems-For-Dummies.productCd-111847581X.html) ({cite}`ss4d` pages 18--20) and add some notes to summarize this for yourself.
