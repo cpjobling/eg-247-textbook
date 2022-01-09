@@ -22,7 +22,6 @@ We will step through this worksheet in class.
 
 This give us an opportunity to demonstrate the electronic resources, Canvas, OneNote, Pingo, MATLAB, Simulink and Wolfram Alpha, that we will use to make our time in class more active and engaging. We will also test your background knowledge coming into the module.
 
-
 +++ {"slideshow": {"slide_type": "notes"}}
 
 ## Colophon
