@@ -4,8 +4,8 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: 0.12
-    jupytext_version: 1.9.1
+    format_version: 0.13
+    jupytext_version: 1.11.5
 kernelspec:
   display_name: MATLAB
   language: matlab
@@ -22,7 +22,7 @@ kernelspec:
 
 An annotatable copy of the notes for this presentation is available as [**Worksheet 1**](worksheet1).
 
-* The source code for this page is [introduction/index.ipynb](https://github.com/cpjobling/eg-247-textbook/blob/master/introduction/index.md).
+* The [Jupytext](https://jupytext.readthedocs.io/en/latest/index.html) source code for this page is [introduction/index.md](https://github.com/cpjobling/eg-247-textbook/blob/master/introduction/index.md).
 
 * You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/introduction/index.html)).
 
@@ -286,6 +286,7 @@ Discrete-time signals are a function of a time index $n$. A discrete-time signal
 ### Example 2
 
 Consider the following simple signal, a pulse sequence:
+
 $$
   y[n] = \left\{ 
     {
@@ -296,6 +297,7 @@ $$
     } 
   \right.
 $$
+
 We can plot this in MATLAB as a *stem plot*
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -603,4 +605,6 @@ See pages 21-23 of the free sample ([Chapter 1](https://www.dummies.com/store/pr
 
 ## Reference
 
-See [Bibliography](/zbib)
+```{bibliography}
+:filter: docname in docnames
+```
