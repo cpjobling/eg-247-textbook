@@ -4,8 +4,8 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: 0.12
-    jupytext_version: 1.9.1
+    format_version: 0.13
+    jupytext_version: 1.11.5
 kernelspec:
   display_name: MATLAB
   language: matlab
@@ -16,7 +16,7 @@ kernelspec:
 
 # Worksheet 17 
 
-## To accompany Chapter 6.4 Models of Discrete-Time Systems
+## To accompany [Models of Discrete-Time Systems](https://cpjobling.github.io/eg-247-textbook/dt_systems/4/dt_models.html)
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -26,7 +26,7 @@ This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-
 
 An annotatable copy of the notes for this presentation will be distributed before the second class meeting as **Worksheet 17** in the **Week 9: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **Worksheets** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote. 
 
-You are expected to have at least watched the video presentation of [Chapter 6.4](https://cpjobling.github.io/eg-247-textbook/dt_systems/4/dt_models) of the [notes](https://cpjobling.github.io/eg-247-textbook) before coming to class. If you haven't watch it afterwards!
+You are expected to have at least watched the video presentation of [Models of Discrete-Time Systems](https://cpjobling.github.io/eg-247-textbook/dt_systems/4/dt_models) of the [notes](https://cpjobling.github.io/eg-247-textbook) before coming to class. If you haven't watch it afterwards!
 
 After class, the lecture recording and the annotated version of the worksheets will be made available through Canvas.
 
@@ -36,23 +36,23 @@ After class, the lecture recording and the annotated version of the worksheets w
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Discrete Time Systems (Notes)
+* Discrete Time Systems ([Notes](dt_models.html#dts))
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Transfer Functions in the Z-Domain (Notes)
+* Transfer Functions in the Z-Domain ([Notes](dt_models.html#tf))
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Modelling digital systems in MATLAB/Simulink
+* [Modelling digital systems in MATLAB/Simulink](simulink)
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Continuous System Equivalents
+* [Converting Continuous Time Systems to Discrete Time Systems](cse)
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* In-class demonstration: Digital Butterworth Filter
+* [Example: Digital Butterworth Filter](demo)
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -84,7 +84,7 @@ Compute:
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### 5.1. The transfer function
+#### 5.1. The transfer function
 
 $$H(z) = \frac{Y(z)}{U(z)} = ...?$$
 
@@ -114,7 +114,7 @@ $$H(z) = \frac{Y(z)}{U(z)} = ...?$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### 5.2. The DT impulse response
+#### 5.2. The DT impulse response
 
 Start with:
 
@@ -146,7 +146,7 @@ $$\frac{H(z)}{z} = \frac{z + 1}{z^2 + 0.5 z + 0.125}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### MATLAB Solution
+##### MATLAB Solution
 
 ```{code-cell} matlab
 ---
@@ -172,7 +172,7 @@ $$y[n] - 0.5 y[n-1] + 0.125 y[n-2] = x[n] + x[n -1]$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### Transfer function
+###### Transfer function
 
 Numerator $z^2 + z$
 
@@ -190,7 +190,7 @@ Dz = [1 -0.5 0.125];
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### Poles and residues
+###### Poles and residues
 
 ```{code-cell} matlab
 [r,p,k] = residue(Nz,Dz)
@@ -198,7 +198,7 @@ Dz = [1 -0.5 0.125];
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### Impulse Response
+###### Impulse Response
 
 ```{code-cell} matlab
 Hz = tf(Nz,Dz,-1)
@@ -207,7 +207,7 @@ hn = impulse(Hz, 15);
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### Plot the response
+###### Plot the response
 
 ```{code-cell} matlab
 ---
@@ -223,7 +223,7 @@ ylabel('Impulse response h[n]')
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### Response as stepwise continuous y(t)
+###### Response as stepwise continuous y(t)
 
 ```{code-cell} matlab
 impulse(Hz,15)
@@ -235,7 +235,7 @@ ylabel('Impulse response h(t)')
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-### 5.3. The DT step response
+#### 5.3. The DT step response
 
 $$Y(z) = H(z)X(z)$$
 
@@ -284,7 +284,7 @@ Solved by inverse Z-transform.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### MATLAB Solution
+#### MATLAB Solution
 
 See [dtm_ex1_3.mlx](https://cpjobling.github.io/eg-247-textbook/dt_systems/4/matlab/dtm_ex1_3.mlx). (Also available as [dtm_ex1_3.m](https://cpjobling.github.io/eg-247-textbook/dt_systems/4/matlab/dtm_ex1_3.m).)
 
@@ -294,12 +294,13 @@ open dtm_ex1_3
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-### Results
+##### Results
 
 ![Results](./pictures/dtm_ex1_3_1.png)
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
+(simulink)=
 ## Modelling DT systems in MATLAB and Simulink
 
 +++ {"slideshow": {"slide_type": "fragment"}}
@@ -366,6 +367,7 @@ dtm
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
+(cse)=
 ## Converting Continuous Time Systems to Discrete Time Systems
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -391,17 +393,10 @@ slideshow:
 help c2d
 ```
 
-```{code-cell} matlab
----
-slideshow:
-  slide_type: fragment
----
-help c2d
-```
-
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Example 6
+(demo)=
+## Example: Digital Butterworth Filter
 
 * Design a 2nd-order butterworth low-pass anti-aliasing filter with transfer function $H(s)$ for use in sampling music. 
 * The cut-off frequency $\omega_c = 20$&nbsp;kHz and the filter should have an attenuation of at least $-80$&nbsp;dB in the stop band. 
@@ -455,7 +450,7 @@ $$H(s) = \frac{15.79 \times 10^9}{s^2 + 177.7 \times 10^3 s + 15.79 \times 10^9}
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Bode plot
+#### Bode plot
 
 MATLAB:
 
@@ -470,7 +465,7 @@ grid
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Sampling Frequency
+#### Sampling Frequency
 
 From the bode diagram, the frequency at which $|H(j\omega)|$ is $-80$&nbsp;dB is approx $12.6\times 10^6$&nbsp;rad/s.
 
@@ -534,7 +529,7 @@ $$T_s = 1/f_s \approx 0.25\;\mu\mathrm{s}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Digital Butterworth
+#### Digital Butterworth
 
 zero-order-hold equivalent
 
@@ -544,7 +539,7 @@ Hz = c2d(Hs, Ts)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Step response
+#### Step response
 
 ```{code-cell} matlab
 step(Hz)
@@ -552,7 +547,7 @@ step(Hz)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Algorithm
+#### Algorithm
 
 From previous result:
 
@@ -593,7 +588,7 @@ y[n] = 1.956y[n - 1] - 0.9567y[n - 2] + 486.6 \times {10^{ - 6}}u[n - 1] + ...\\
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Block Diagram of the digital BW filter
+#### Block Diagram of the digital BW filter
 
 ![digital filter](pictures/digifilter-bd.png)
 
@@ -613,9 +608,10 @@ open digifilter
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Convert to code
+#### Convert to code
 
 To implement:
+
 $$y[n] = 1.956 y[n-1] - 0.9567 y[n - 2] + 486.6\times 10^{-6} u[n-1] + 476.5\times 10^{-6} u[n-2]$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -632,11 +628,3 @@ $$y[n] = 1.956 y[n-1] - 0.9567 y[n - 2] + 486.6\times 10^{-6} u[n-1] + 476.5\tim
         unm2 = unm1; unm1 = un;
         wait(Ts);
     }
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-### Comments
-
-PC soundcards can sample audio at 44.1 kHz so this implies that the anti-aliasing filter is much sharper than this one as $f_s/2 = 22.05$ kHz.
-
-You might wish to find out what order butterworth filter would be needed to have $f_c = 20$ kHz and $f_{\mathrm{stop}}$ of 22.05 kHz.

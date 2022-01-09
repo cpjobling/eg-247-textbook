@@ -9,7 +9,7 @@
 title: EG-247 Signals and Systems
 author: Dr Chris P. Jobling
 email: c.p.jobling@swansea.ac.uk
-copyright: "Swansea University (2019-2021)"
+copyright: "Swansea University (2019-2022)"
 description: >-
   Notes and example programmes to accompany the module.
 
@@ -51,13 +51,7 @@ html:
       utterences: false
 
 colab_default: false
-sphinx:
-  config:
-    html_extra_path: ['_assets']
-    exclude_patterns: ['**/README.md','portfolio','README.md','LICENSE.md']
-    linkcheck_ignore: [r'https://sp.ebrary.com/Shibboleth.sso', r'https://ebookcentral.proquest.com/', r'https://iss-openathensla-runtime.swan.ac.uk']
-    parse:
-      myst_extended_syntax: true
+
 
 #######################################################################################
 # Jupyter Book settings
@@ -68,7 +62,7 @@ sphinx:
 show_sidebar: true                # Show the sidebar. Only set to false if your only wish to host a single page.
 collapse_inactive_chapters: true  # Whether to collapse the inactive chapters in the sidebar
 collapse_inactive_sections: true  # Whether to collapse the sub-sections within a non-active section in the sidebar
-textbook_logo: images/logo/logo.png               # A logo to be displayed at the top of your textbook sidebar. Should be square
+# textbook_logo: images/logo/logo.png               # A logo to be displayed at the top of your textbook sidebar. Should be square
 textbook_logo_link: https://cpjobling.github.io/eg-247-textbook/          # A link for the logo.
 sidebar_footer_text: Powered by <a href="https://github.com/choldgraf/jupyter-book">Jupyter
   Book</a>
@@ -120,9 +114,12 @@ download_page_header: Made with Jupyter Book                # A header that will
 #######################################################################################
 # Jupyter book extensions and additional features
 
+
+
 # Bibliography and citation settings. See https://github.com/inukshuk/jekyll-scholar#configuration for options
-scholar:
-  style: apa
+
+bibtex_bibfiles:
+  - references.bib
 
 
 #######################################################################################
@@ -171,3 +168,11 @@ collections:
     permalink: /:path.html
 
 
+sphinx:
+  config:
+    bibtex_reference_style: author_year
+    html_extra_path: ['_assets']
+    exclude_patterns: ['**/README.md','portfolio','README.md','LICENSE.md']
+    linkcheck_ignore: [r'https://sp.ebrary.com/Shibboleth.sso', r'https://ebookcentral.proquest.com/', r'https://iss-openathensla-runtime.swan.ac.uk']
+  parse:
+      myst_extended_syntax: true

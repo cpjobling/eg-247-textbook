@@ -10,6 +10,11 @@ help:
 	@echo "  build       to build the site HTML and store in _site/"
 	@echo "  site 		 to build the site HTML, store in _site/, and serve with Jekyll"
 
+runall:
+	jupyter-book build . --all
+
+realclean:
+	jupyter-book clean . --all
 
 linkcheck:
 	jupyter-book build . --builder linkcheck

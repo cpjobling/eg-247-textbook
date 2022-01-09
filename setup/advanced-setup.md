@@ -47,7 +47,7 @@ This assumes windows.
 First install the Python-MATLAB bridge.
 
 ```shell
-set MATLAB_HOME="C:\Program Files\MATLAB\R2019a"
+set MATLAB_HOME="C:\Program Files\MATLAB\R2021b"
 cd %MATLAB_HOME%\extern\engines\python
 python setup.py install
 ```
