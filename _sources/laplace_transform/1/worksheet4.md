@@ -201,7 +201,9 @@ $$\frac{1-e^{-as}}{s}$$
     
 $$u_1(t) = t u_0(t)$$
     
-</td><td>C.</td><td>$$\frac{1}{s}$$
+</td><td>C.</td><td>
+    
+$$\frac{1}{s}$$
     
 </td></tr>
 <tr><td>4.</td><td>Exponential decay</td><td>
