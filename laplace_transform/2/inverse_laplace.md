@@ -4,8 +4,8 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: 0.12
-    jupytext_version: 1.9.1
+    format_version: 0.13
+    jupytext_version: 1.11.5
 kernelspec:
   display_name: MATLAB
   language: matlab
@@ -114,7 +114,7 @@ The poles of $F(s)$ can be real and distinct, real and repeated, complex conjuga
 
 The nature of the poles governs the best way to tackle the PFE that leads to the solution of the Inverse Laplace Transform. Thus, we need to structure our presentation to cover one of the following cases:
 
-* The case where $F(s)$ has distinct poles
+* The case where $F(s)$ has distinct real poles
 * The case where $F(s)$ has complex poles
 * The case where $F(s)$ has repeated poles
 * The case where $F(s)$ is an improper rational polynomial
@@ -123,11 +123,11 @@ We will examine each case by means of a worked example. Please refer to Chapter 
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-## The case of the distinct poles
+## The case of the distinct real poles
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-If the poles $p_1,\,p_2,\,p_3,\,\ldots,\, p_n$ are *distinct* we can factor the denominator of F(s) in the form 
+If the poles $p_1,\,p_2,\,p_3,\,\ldots,\, p_n$ are *distinct* we can factor the denominator of $F(s)$ in the form 
 
 $$F(s) = \frac{N(s)}{(s-p_1)(s-p_2)(s-p_3)\ldots(s-p_n)}$$
 
@@ -151,11 +151,11 @@ Use the PFE method to simplify $F_1(s)$ below and find the time domain function 
 
 $$F_1(s) = \frac{2s+5}{s^2 + 5s + 6}$$
 
-(Quick solution: [Wolfram Alpha](https://www.wolframalpha.com/input/?i=inverse+laplace+transform+%7B(2s+%2B+5)%2F(s%5E2+%2B+5s+%2B+6)%7D)
+(Quick solution: [Wolfram Alpha](https://www.wolframalpha.com/input/?i=inverse+laplace+transform+%7B(2s+%2B+5)%2F(s%5E2+%2B+5s+%2B+6)%7D))
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### Matlab Solution - Numerical
+#### MATLAB Solution - Numerical
 
 ```{code-cell} matlab
 ---
@@ -188,7 +188,7 @@ $$f_1(t) = e^{-3t} + e^{-2t}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### Matlab solution - symbolic
+#### MATLAB solution - symbolic
 
 ```{code-cell} matlab
 ---
@@ -217,7 +217,7 @@ $$F_2(s) = \frac{3s^2+2s+5}{s^3 + 9s^2 + 23s + 15}$$
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-Because the denominator of $F_2(s)$ is a cubic, it will be difficult to factorise without computer assistance so we use Matlab to factorise $D(s)$
+Because the denominator of $F_2(s)$ is a cubic, it will be difficult to factorise without computer assistance so we use MATLAB to factorise $D(s)$
 
 ```{code-cell} matlab
 ---
@@ -234,7 +234,7 @@ In an exam you'd be given the factors
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-We can now use the previous technique to find the solution which according to Matlab should be
+We can now use the previous technique to find the solution which according to MATLAB should be
 
 $$f_1(t) = \frac{3}{4}e^{-t} - \frac{13}{2}e^{-3t} + \frac{35}{4}e^{-5t}$$
 
@@ -279,7 +279,7 @@ Then comparing this with the desired form $(s - a)^2 + \omega^2$, we have $a = -
 
 To solve this, we need to find the PFE for the assumed solution:
 
-$$F_3(s) = \frac{r_1}{s+1} + \frac{r_2(s+2)}{(s + 2)^2 + 2^2} \frac{2 r_3}{(s + 2)^2 + 2^2}  $$
+$$F_3(s) = \frac{r_1}{s+1} + \frac{r_2(s+2)}{(s + 2)^2 + 2^2} + \frac{2 r_3}{(s + 2)^2 + 2^2}  $$
 
 expecting the solution
 
@@ -394,7 +394,7 @@ $$\frac{d^2}{dt^2}u_0(t)=u_0''(t)=\delta'(t)$$
 
 Also, by the time differentiation property
 
-$$u_0''(t)=\delta'(t)\Leftrightarrow s^2\mathcal{L}u_0(t) - su_0(0) - \left.\frac{d}{dt}u_0(t)\right|_{t=0} =  s^2\frac{1}{s} = s$$
+$$u_0''(t)=\delta'(t)\Leftrightarrow s^2\mathcal{L}u_0(t) - su_0(t) - \left.\frac{d}{dt}u_0(t)\right|_{t=0} =  s^2\frac{1}{s} = s$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -458,6 +458,7 @@ tags: [remove-output]
 cd ../matlab
 ls
 open ex3_1
+ex3_1
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}

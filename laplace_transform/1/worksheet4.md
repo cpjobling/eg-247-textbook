@@ -4,8 +4,8 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: 0.12
-    jupytext_version: 1.9.1
+    format_version: 0.13
+    jupytext_version: 1.11.5
 kernelspec:
   display_name: MATLAB
   language: matlab
@@ -47,8 +47,24 @@ Without looking it up, which of these integrals represents the Laplace and Inver
 +++ {"slideshow": {"slide_type": "fragment"}}
 
 <table>
-<tr><td>A.</td><td>$$\frac{1}{2\pi j}\int_{\sigma-j\omega}^{\sigma+j\omega}\,F(s)\,e^{st}\,ds$$</td><td>B.</td><td>$$\int_{0}^{\infty}\,f(t)\,e^{-st}\,dt$$</td></tr>
-<tr><td>C.</td><td>$$\int_{-\infty}^{t}\,f(\tau)\,g(t-\tau)\,d\tau$$</td><td>D.</td><td>$$\int_{-j\omega}^{+j\omega}\,f(t)\,e^{-j\omega t}\,dt$$</td></tr>
+<tr><td>A.</td><td>
+    
+$$\frac{1}{2\pi j}\int_{\sigma-j\omega}^{\sigma+j\omega}\,F(s)\,e^{st}\,ds$$
+    
+</td><td>B.</td><td>
+    
+$$\int_{0}^{\infty}\,f(t)\,e^{-st}\,dt$$
+    
+</td></tr>
+<tr><td>C.</td><td>
+    
+$$\int_{-\infty}^{t}\,f(\tau)\,g(t-\tau)\,d\tau$$
+    
+</td><td>D.</td><td>
+    
+$$\int_{-j\omega}^{+j\omega}\,f(t)\,e^{-j\omega t}\,dt$$
+    
+</td></tr>
 </table>
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -62,11 +78,51 @@ Bonus: what are the other two integrals?
 Match the transform to the time-domain operator
 
 <table>
-    <tr><td>1.</td><td>$$\int_{-\infty}^{t}\,f(\tau)\,d\tau$$</td><td>A.</td><td>$$\frac{F(s)}{s}+\frac{f(0^-)}{s}$$</td></tr>
-    <tr><td>2.</td><td>$$\lim_{t\rightarrow 0}\,f(t)$$</td><td>B.</td><td>$$sF(s) - f(0^-)$$</td></tr>
-    <tr><td>3.</td><td>$$\int_0^t\,f_1(\tau)f_2(t-\tau)\,d\tau$$</td><td>C.</td><td>$$\frac{\int_{0}^{T}\,f(t)\,e^{-sT}}{1-e^{-sT}}$$</td></tr>
-    <tr><td>4.</td><td>$$\frac{d}{dt}\,f(t)$$</td><td>D.</td><td>$$F_1(s)\,F_2(s)$$</td></tr>
-    <tr><td>5.</td><td>$$f(t + nT)$$</td><td>E.</td><td>$$\lim_{s\rightarrow \infty}\,sF(s)$$</td></tr>
+<tr><td>1.</td><td>
+        
+$$\int_{-\infty}^{t}\,f(\tau)\,d\tau$$
+        
+</td><td>A.</td><td>
+        
+$$\frac{F(s)}{s}+\frac{f(0^-)}{s}$$
+        
+</td></tr>
+<tr><td>2.</td><td>
+        
+$$\lim_{t\rightarrow 0}\,f(t)$$
+        
+</td><td>B.</td><td>
+        
+$$sF(s) - f(0^-)$$
+        
+</td></tr>
+<tr><td>3.</td><td>
+        
+$$\int_0^t\,f_1(\tau)f_2(t-\tau)\,d\tau$$
+        
+</td><td>C.</td><td>
+        
+$$\frac{\int_{0}^{T}\,f(t)\,e^{-sT}}{1-e^{-sT}}$$
+        
+</td></tr>
+    <tr><td>4.</td><td>
+        
+$$\frac{d}{dt}\,f(t)$$
+        
+</td><td>D.</td><td>
+        
+$$F_1(s)\,F_2(s)$$
+        
+</td></tr>
+    <tr><td>5.</td><td>
+        
+$$f(t + nT)$$
+        
+</td><td>E.</td><td>
+        
+$$\lim_{s\rightarrow \infty}\,sF(s)$$
+        
+</td></tr>
 </table>
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -76,10 +132,26 @@ Match the transform to the time-domain operator
 Match each of these mathematical properties to the associated Laplace transform property.
 
 <table>
-    <tr><td>1.</td><td>Linearity</td><td>A.</td><td>$$f(t - a)\,u_0(t - a) \Leftrightarrow e^{-as} F(s)$$</td></tr>
-    <tr><td>2.</td><td>Time Scaling</td><td>B.</td><td>$$c_1f_1(t) + c_2f_2(t)+ \cdots + c_nf_n(t)\Leftrightarrow c_1F_1(s) + c_2F_2(s) + \cdots + c_nF_n(s)$$</td></tr>
-    <tr><td>3.</td><td>Time-shift</td><td>C.</td><td>$$e^{-at}\, f(t) \Leftrightarrow F(s + a)$$</td></tr>
-    <tr><td>4.</td><td>Frequency Shift</td><td>D.</td><td>$$f(at) \Leftrightarrow (1/a) \, F (s/a)$$</td></tr>
+<tr><td>1.</td><td>Linearity</td><td>A.</td><td>
+    
+$$f(t - a)\,u_0(t - a) \Leftrightarrow e^{-as} F(s)$$
+    
+</td></tr>
+<tr><td>2.</td><td>Time Scaling</td><td>B.</td><td>
+    
+$$c_1f_1(t) + c_2f_2(t)+ \cdots + c_nf_n(t)\Leftrightarrow c_1F_1(s) + c_2F_2(s) + \cdots + c_nF_n(s)$$
+    
+</td></tr>
+<tr><td>3.</td><td>Time-shift</td><td>C.</td><td>
+    
+$$e^{-at}\, f(t) \Leftrightarrow F(s + a)$$
+    
+</td></tr>
+<tr><td>4.</td><td>Frequency Shift</td><td>D.</td><td>
+    
+$$f(at) \Leftrightarrow (1/a) \, F (s/a)$$
+    
+</td></tr>
 </table>
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -107,13 +179,69 @@ E. Integration in the time domain
 Match the elementary signal to its Laplace transform
 
 <table>
-    <tr><td>1.</td><td>Dirac delta (unit impulse)</td><td>$$\delta(t)$$</td><td>A.</td><td>$$e^{-as}$$</td></tr>
-    <tr><td>2.</td><td>Unit step</td><td>$$u_0(t)$$</td><td>B.</td><td>$$\frac{1-e^{-as}}{s}$$</td></tr>
-    <tr><td>3.</td><td>Unit ramp</td><td>$$u_1(t) = t u_0(t)$$</td><td>C.</td><td>$$\frac{1}{s}$$</td></tr>
-    <tr><td>4.</td><td>Exponential decay</td><td>$$e^{-at}u_0(t)$$</td><td>D.</td><td>$$1$$</td></tr>
-    <tr><td>5.</td><td>Damped sinusoid</td><td>$$e^{-at}\,\sin(\omega t)u_0(t)$$</td><td>E.</td><td>$$\frac{1}{s^2}$$</td></tr>
-    <tr><td>6.</td><td>Sampling function</td><td>$$\delta(t-a)$$</td><td>F.</td><td>$$\frac{1}{s+a}$$</td></tr>
-    <tr><td>7.</td><td>Gating function</td><td>$$u_0(t)-u_0(t-a)$$</td><td>G.</td><td>$$\frac{\omega}{(s+a)^2+\omega^2}$$</td></tr>
+<tr><td>1.</td><td>Dirac delta (unit impulse)</td><td>
+    
+$$\delta(t)$$
+    
+</td><td>A.</td><td>
+    
+$$e^{-as}$$
+
+</td></tr>
+<tr><td>2.</td><td>Unit step</td><td>
+    
+$$u_0(t)$$
+    
+</td><td>B.</td><td>
+    
+$$\frac{1-e^{-as}}{s}$$
+
+</td></tr>
+<tr><td>3.</td><td>Unit ramp</td><td>
+    
+$$u_1(t) = t u_0(t)$$
+    
+</td><td>C.</td><td>
+    
+$$\frac{1}{s}$$
+    
+</td></tr>
+<tr><td>4.</td><td>Exponential decay</td><td>
+    
+$$e^{-at}u_0(t)$$
+    
+</td><td>D.</td><td>
+    
+$$1$$
+    
+</td></tr>
+<tr><td>5.</td><td>Damped sinusoid</td><td>
+    
+$$e^{-at}\,\sin(\omega t)u_0(t)$$
+    
+</td><td>E.</td><td>
+    
+$$\frac{1}{s^2}$$
+    
+</td></tr>
+<tr><td>6.</td><td>Sampling function</td><td>
+    
+$$\delta(t-a)$$
+    
+</td><td>F.</td><td>
+    
+$$\frac{1}{s+a}$$
+
+</td></tr>
+<tr><td>7.</td><td>Gating function</td><td>
+
+$$u_0(t)-u_0(t-a)$$
+    
+</td><td>G.</td><td>
+    
+$$\frac{\omega}{(s+a)^2+\omega^2}$$
+    
+</td></tr>
 </table>
 
 +++ {"slideshow": {"slide_type": "subslide"}}

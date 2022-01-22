@@ -4,8 +4,8 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: 0.12
-    jupytext_version: 1.9.1
+    format_version: 0.13
+    jupytext_version: 1.11.5
 kernelspec:
   display_name: MATLAB
   language: matlab
@@ -50,12 +50,60 @@ Inverse laplace transform the following
 
 
 <table>
-    <tr><td>1.</td><td>$$1$$</td><td>A.</td><td>$$e^{-at}$$</td></tr>
-    <tr><td>2.</td><td>$$\frac{1}{s}$$</td><td>B.</td><td>$$\delta'(t)$$</td></tr>
-    <tr><td>3.</td><td>$$\frac{1}{s+a}$$</td><td>C.</td><td>$$u_0(t)$$</td></tr>
-    <tr><td>4.</td><td>$$\frac{\omega}{(s + a)^2 + \omega^2}$$</td><td>D.</td><td>$$e^{-at}\cos\omega t$$</td></tr>
-    <tr><td>5.</td><td>$$\frac{s+a}{(s + a)^2 + \omega^2}$$</td><td>E.</td><td>$$e^{-at}\sin\omega t$$</td></tr>
-    <tr><td>6.</td><td>$$s$$</td><td>F.</td><td>$$\delta(t)$$</td></tr>
+<tr><td>1.</td><td>
+    
+$$1$$
+    
+</td><td>A.</td><td>
+    
+$$e^{-at}$$
+    
+</td></tr>
+<tr><td>2.</td><td>
+    
+$$\frac{1}{s}$$
+    
+</td><td>B.</td><td>
+    
+$$\delta'(t)$$
+    
+</td></tr>
+<tr><td>3.</td><td>
+
+$$\frac{1}{s+a}$$
+    
+</td><td>C.</td><td>
+    
+$$u_0(t)$$
+    
+</td></tr>
+<tr><td>4.</td><td>
+    
+$$\frac{\omega}{(s + a)^2 + \omega^2}$$
+    
+</td><td>D.</td><td>
+    
+$$e^{-at}\cos\omega t$$
+    
+</td></tr>
+<tr><td>5.</td><td>
+    
+$$\frac{s+a}{(s + a)^2 + \omega^2}$$
+    
+</td><td>E.</td><td>
+    
+$$e^{-at}\sin\omega t$$
+    
+</td></tr>
+<tr><td>6.</td><td>
+    
+$$s$$
+    
+</td><td>F.</td><td>
+    
+$$\delta(t)$$
+    
+</td></tr>
 </table>
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -64,10 +112,6 @@ Inverse laplace transform the following
 
 Complete this sentence:
 The [----] of a rational polynomial are the zeros of the numerator. The [----] of a rational polynomial are the zeros of the [-----].
-
-+++ {"slideshow": {"slide_type": "subslide"}}
-
-**-> Break out rooms**
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
