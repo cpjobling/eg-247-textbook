@@ -781,8 +781,8 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-case-of-the-distinct-poles">
-   The case of the distinct poles
+  <a class="reference internal nav-link" href="#the-case-of-the-distinct-real-poles">
+   The case of the distinct real poles
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -792,12 +792,12 @@
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#matlab-solution-numerical">
-       Matlab Solution - Numerical
+       MATLAB Solution - Numerical
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#matlab-solution-symbolic">
-       Matlab solution - symbolic
+       MATLAB solution - symbolic
       </a>
      </li>
     </ul>
@@ -992,7 +992,7 @@
 <h3>Defining the problem<a class="headerlink" href="#defining-the-problem" title="Permalink to this headline">¶</a></h3>
 <p>The nature of the poles governs the best way to tackle the PFE that leads to the solution of the Inverse Laplace Transform. Thus, we need to structure our presentation to cover one of the following cases:</p>
 <ul class="simple">
-<li><p>The case where <span class="math notranslate nohighlight">\(F(s)\)</span> has distinct poles</p></li>
+<li><p>The case where <span class="math notranslate nohighlight">\(F(s)\)</span> has distinct real poles</p></li>
 <li><p>The case where <span class="math notranslate nohighlight">\(F(s)\)</span> has complex poles</p></li>
 <li><p>The case where <span class="math notranslate nohighlight">\(F(s)\)</span> has repeated poles</p></li>
 <li><p>The case where <span class="math notranslate nohighlight">\(F(s)\)</span> is an improper rational polynomial</p></li>
@@ -1000,9 +1000,9 @@
 <p>We will examine each case by means of a worked example. Please refer to Chapter 3 of Karris for full details.</p>
 </div>
 </div>
-<div class="section" id="the-case-of-the-distinct-poles">
-<h2>The case of the distinct poles<a class="headerlink" href="#the-case-of-the-distinct-poles" title="Permalink to this headline">¶</a></h2>
-<p>If the poles <span class="math notranslate nohighlight">\(p_1,\,p_2,\,p_3,\,\ldots,\, p_n\)</span> are <em>distinct</em> we can factor the denominator of F(s) in the form</p>
+<div class="section" id="the-case-of-the-distinct-real-poles">
+<h2>The case of the distinct real poles<a class="headerlink" href="#the-case-of-the-distinct-real-poles" title="Permalink to this headline">¶</a></h2>
+<p>If the poles <span class="math notranslate nohighlight">\(p_1,\,p_2,\,p_3,\,\ldots,\, p_n\)</span> are <em>distinct</em> we can factor the denominator of <span class="math notranslate nohighlight">\(F(s)\)</span> in the form</p>
 <div class="math notranslate nohighlight">
 \[F(s) = \frac{N(s)}{(s-p_1)(s-p_2)(s-p_3)\ldots(s-p_n)}\]</div>
 <p>Next, using <em>partial fraction expansion</em></p>
@@ -1016,9 +1016,9 @@
 <p>Use the PFE method to simplify <span class="math notranslate nohighlight">\(F_1(s)\)</span> below and find the time domain function <span class="math notranslate nohighlight">\(f_1(t)\)</span> corresponding to <span class="math notranslate nohighlight">\(F_1(s)\)</span></p>
 <div class="math notranslate nohighlight">
 \[F_1(s) = \frac{2s+5}{s^2 + 5s + 6}\]</div>
-<p>(Quick solution: <a class="reference external" href="https://www.wolframalpha.com/input/?i=inverse+laplace+transform+%7B(2s+%2B+5)%2F(s%5E2+%2B+5s+%2B+6)%7D">Wolfram Alpha</a></p>
+<p>(Quick solution: <a class="reference external" href="https://www.wolframalpha.com/input/?i=inverse+laplace+transform+%7B(2s+%2B+5)%2F(s%5E2+%2B+5s+%2B+6)%7D">Wolfram Alpha</a>)</p>
 <div class="section" id="matlab-solution-numerical">
-<h4>Matlab Solution - Numerical<a class="headerlink" href="#matlab-solution-numerical" title="Permalink to this headline">¶</a></h4>
+<h4>MATLAB Solution - Numerical<a class="headerlink" href="#matlab-solution-numerical" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">clear</span><span class="w"> </span><span class="nb">all</span><span class="w"></span>
@@ -1060,7 +1060,7 @@
 \[f_1(t) = e^{-3t} + e^{-2t}\]</div>
 </div>
 <div class="section" id="matlab-solution-symbolic">
-<h4>Matlab solution - symbolic<a class="headerlink" href="#matlab-solution-symbolic" title="Permalink to this headline">¶</a></h4>
+<h4>MATLAB solution - symbolic<a class="headerlink" href="#matlab-solution-symbolic" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">s</span><span class="w"> </span><span class="s">t</span><span class="p">;</span><span class="w"></span>
@@ -1086,7 +1086,7 @@
 <p>(Quick solution: <a class="reference external" href="https://www.wolframalpha.com/input/?i=inverse+laplace+transform+%283s%5E2+%2B+2s+%2B+5%29%2F%28s%5E3+%2B+9s%5E2+%2B+23s+%2B+15%29">Wolfram Alpha</a>)</p>
 <div class="section" id="solution-2">
 <h4>Solution 2<a class="headerlink" href="#solution-2" title="Permalink to this headline">¶</a></h4>
-<p>Because the denominator of <span class="math notranslate nohighlight">\(F_2(s)\)</span> is a cubic, it will be difficult to factorise without computer assistance so we use Matlab to factorise <span class="math notranslate nohighlight">\(D(s)\)</span></p>
+<p>Because the denominator of <span class="math notranslate nohighlight">\(F_2(s)\)</span> is a cubic, it will be difficult to factorise without computer assistance so we use MATLAB to factorise <span class="math notranslate nohighlight">\(D(s)\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">s</span><span class="p">;</span><span class="w"></span>
@@ -1104,7 +1104,7 @@
 </div>
 </div>
 <p>In an exam you’d be given the factors</p>
-<p>We can now use the previous technique to find the solution which according to Matlab should be</p>
+<p>We can now use the previous technique to find the solution which according to MATLAB should be</p>
 <div class="math notranslate nohighlight">
 \[f_1(t) = \frac{3}{4}e^{-t} - \frac{13}{2}e^{-3t} + \frac{35}{4}e^{-5t}\]</div>
 <p>We will prove this in class.</p>
@@ -1134,7 +1134,7 @@
 <p>Then comparing this with the desired form <span class="math notranslate nohighlight">\((s - a)^2 + \omega^2\)</span>, we have <span class="math notranslate nohighlight">\(a = -2\)</span> and <span class="math notranslate nohighlight">\(\omega^2 = 4 \to \omega = \sqrt{4} = 2\)</span>.</p>
 <p>To solve this, we need to find the PFE for the assumed solution:</p>
 <div class="math notranslate nohighlight">
-\[F_3(s) = \frac{r_1}{s+1} + \frac{r_2(s+2)}{(s + 2)^2 + 2^2} \frac{2 r_3}{(s + 2)^2 + 2^2}  \]</div>
+\[F_3(s) = \frac{r_1}{s+1} + \frac{r_2(s+2)}{(s + 2)^2 + 2^2} + \frac{2 r_3}{(s + 2)^2 + 2^2}  \]</div>
 <p>expecting the solution</p>
 <div class="math notranslate nohighlight">
 \[f_3(t) = \frac{2}{5}e^{-t} - \frac{2}{5} e^{-2t}\cos 2t + \frac{3}{10} e^{-2t}\sin 2t\]</div>
@@ -1208,7 +1208,7 @@ F(s) = \frac{r_{11}}{(s - {p_1})^m} + \frac{r_{12}}{(s - {p_1})^{m - 1}} + \frac
 \[\frac{d^2}{dt^2}u_0(t)=u_0''(t)=\delta'(t)\]</div>
 <p>Also, by the time differentiation property</p>
 <div class="math notranslate nohighlight">
-\[u_0''(t)=\delta'(t)\Leftrightarrow s^2\mathcal{L}u_0(t) - su_0(0) - \left.\frac{d}{dt}u_0(t)\right|_{t=0} =  s^2\frac{1}{s} = s\]</div>
+\[u_0''(t)=\delta'(t)\Leftrightarrow s^2\mathcal{L}u_0(t) - su_0(t) - \left.\frac{d}{dt}u_0(t)\right|_{t=0} =  s^2\frac{1}{s} = s\]</div>
 </div>
 <div class="section" id="new-transform-pairs">
 <h4>New Transform Pairs<a class="headerlink" href="#new-transform-pairs" title="Permalink to this headline">¶</a></h4>
@@ -1282,6 +1282,7 @@ F(s) = \frac{r_{11}}{(s - {p_1})^m} + \frac{r_{12}}{(s - {p_1})^{m - 1}} + \frac
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="p">.</span><span class="o">./</span><span class="n">matlab</span><span class="w"></span>
 <span class="nb">ls</span><span class="w"></span>
 <span class="nb">open</span><span class="w"> </span><span class="n">ex3_1</span><span class="w"></span>
+<span class="n">ex3_1</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
