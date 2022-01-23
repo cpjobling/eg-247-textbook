@@ -394,7 +394,7 @@ $$\frac{d^2}{dt^2}u_0(t)=u_0''(t)=\delta'(t)$$
 
 Also, by the time differentiation property
 
-$$u_0''(t)=\delta'(t)\Leftrightarrow s^2\mathcal{L}u_0(t) - su_0(t) - \left.\frac{d}{dt}u_0(t)\right|_{t=0} =  s^2\frac{1}{s} = s$$
+$$u_0''(t)=\delta'(t)\Leftrightarrow s^2\mathcal{L}u_0(t) - su_0(0^-) - \left.\frac{d}{dt}u_0(t)\right|_{t=0^-} =  s^2\frac{1}{s} = s$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
