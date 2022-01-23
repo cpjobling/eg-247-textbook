@@ -1,0 +1,988 @@
+1
+00:00:00,270 --> 00:00:11,040
+Hi, this is Chris Jobling. I'm the instructor on EG-247 signals and systems.
+
+2
+00:00:11,040 --> 00:00:24,330
+And this is the first of what I'm calling pre-lectures in a flipped learning model for this course, signals on systems.
+
+3
+00:00:24,330 --> 00:00:34,800
+And what I want to do in this session is to introduce the idea of signals and systems and to go over one or two things in advance of the first class,
+
+4
+00:00:34,800 --> 00:00:43,080
+which will be holding on Monday, the 24th of January.
+
+5
+00:00:43,080 --> 00:00:47,650
+For this presentation, I'm using a tool called Jupyter Notebooks.
+
+6
+00:00:47,650 --> 00:00:50,270
+It's a sort of presentation tool in this mode.
+
+7
+00:00:50,270 --> 00:01:13,890
+And but it's also the basis of the course notes for this module, which I will flip over onto another browser and bring up for you.
+
+8
+00:01:13,890 --> 00:01:32,990
+So if you go to the Internet, to this web site that is linked into the course, you will find that these.
+
+9
+00:01:32,990 --> 00:01:39,680
+These are the notes. So I'm actually working through this chapter of the notes, the first page.
+
+10
+00:01:39,680 --> 00:01:46,010
+But I'm doing it in slide show mode for the benefit of this presentation. But you obviously can read the full thing later.
+
+11
+00:01:46,010 --> 00:01:52,550
+And they're linked into the canvas site for the module.
+
+12
+00:01:52,550 --> 00:01:59,480
+So as I said, I'm going to make a short presentation and I will do this for each of the lectures.
+
+13
+00:01:59,480 --> 00:02:11,960
+So when you go to Canvas, you will find there will be a video, Panopto video that you'll be able to annotate as you watch this back.
+
+14
+00:02:11,960 --> 00:02:18,080
+And hopefully this will set the scene for what we'll do in the active classrooms,
+
+15
+00:02:18,080 --> 00:02:24,590
+which are intended to be more sort of examples, classes, guided activities.
+
+16
+00:02:24,590 --> 00:02:29,100
+But it's very important that when you come to those classes that you have gone through
+
+17
+00:02:29,100 --> 00:02:35,540
+tthese videos perhaps answered the quiz if there is one for this particular video.
+
+18
+00:02:35,540 --> 00:02:40,720
+I don't think there is. But there are certain things, you need to do before coming.
+
+19
+00:02:40,720 --> 00:02:44,540
+For example, skim reading the notes, making notes yourself.
+
+20
+00:02:44,540 --> 00:02:49,160
+And then when you come to class, we will have activities which will help you to practise the material.
+
+21
+00:02:49,160 --> 00:02:58,730
+So this has flipped learning approach. And the idea is that instead of using our precious time together just to deliver a lecture.
+
+22
+00:02:58,730 --> 00:03:06,410
+What I'll do is I'll record, pre-record the lectures. They'll tend to be shorter than a typical lecture would be.
+
+23
+00:03:06,410 --> 00:03:16,160
+And you will then be able to watch those in advance, come along, prepared to take part in class.
+
+24
+00:03:16,160 --> 00:03:26,490
+So let us begin. So as it says there, you can get these notes in various forms.
+
+25
+00:03:26,490 --> 00:03:32,210
+There's going to be a version of it distributed as worksheet one, which
+
+26
+00:03:32,210 --> 00:03:40,950
+We will work through in the class on Monday. You can find this source code for this page here.
+
+27
+00:03:40,950 --> 00:03:46,530
+Obviously, this is a Web site. So this is referring to the actual notes.
+
+28
+00:03:46,530 --> 00:03:50,000
+You can view them as HTML
+
+29
+00:03:50,000 --> 00:04:05,060
+Or as PDF. This actual session is based upon the first chapter of a book called Signals and Systems for Dummies.
+
+30
+00:04:05,060 --> 00:04:11,280
+And don't laugh. This actually turns out to be quite a useful book.
+
+31
+00:04:11,280 --> 00:04:17,050
+And it's a very useful introduction of these to the topics that we are going to be covering in this module
+
+32
+00:04:17,050 --> 00:04:32,790
+And we've got it in the reading list as a recommended text. If I click on there, I should get to the reading list to show you.
+
+33
+00:04:32,790 --> 00:05:14,100
+Hopefully the link is correct. It is very slow this morning.
+
+34
+00:05:14,100 --> 00:05:46,700
+This should have been a link directly to it, so I will have to correct that afterwards.
+
+35
+00:05:46,700 --> 00:05:52,210
+OK, so this is a reading list. Let me get that link.
+
+36
+00:05:52,210 --> 00:06:05,370
+Bring it into the notes so it's
+
+37
+00:06:05,370 --> 00:06:08,890
+correct next time. So it's in the reading list
+
+38
+00:06:08,890 --> 00:06:14,160
+as you can see. And it's one of the texts that is recommended.
+
+39
+00:06:14,160 --> 00:06:21,150
+[the] reason it's in the list is because you can actually access the book from the library.
+
+40
+00:06:21,150 --> 00:06:32,310
+So if you click on that link, you can follow it through to the actual library available ability and is available, I believe, a book from the library.
+
+41
+00:06:32,310 --> 00:06:36,950
+But this particular chapter that I am using is also available as a downloadable PDF.
+
+42
+00:06:36,950 --> 00:06:43,510
+So if you click on that link, it will take you to.
+
+43
+00:06:43,510 --> 00:06:52,890
+This page. Which is the signal system that you can and can download chapter one and the table of contents with this list.
+
+44
+00:06:52,890 --> 00:06:58,200
+So Chapter one is what I base these notes on.
+
+45
+00:06:58,200 --> 00:07:07,710
+So it's if you go to Canvas, you'll see that Chapter one is linked to the notes for this particular pre-lecture.
+
+46
+00:07:07,710 --> 00:07:12,600
+And you should read it beforehand if you can.
+
+47
+00:07:12,600 --> 00:07:15,610
+In this particular session, though, we're going to cover these topics.
+
+48
+00:07:15,610 --> 00:07:25,290
+So we're going to introduce you to what may be some revision for you: the idea of continuous-time signals, continuous-time systems.
+
+49
+00:07:25,290 --> 00:07:31,680
+And then we'll look at discrete-time signals discrete-time systems, signal classifications, domains for signals.
+
+50
+00:07:31,680 --> 00:07:43,450
+and I will say a little bit about systems thinking and system design, but mostly we will point you to the textbook for definitions of those things.
+
+51
+00:07:43,450 --> 00:07:47,140
+So let's begin by looking at continuous time signals.
+
+52
+00:07:47,140 --> 00:07:57,250
+These are probably the signals that are the most familiar to you. They represent what we can hear in the world about us.
+
+53
+00:07:57,250 --> 00:08:06,370
+And basically, the continuous-time signal is represented mathematically by functions which vary continuously with time.
+
+54
+00:08:06,370 --> 00:08:19,630
+So, here's an example of a sinusoidal signal, for example, that signals that you get out of your power supply as AC voltages.
+
+55
+00:08:19,630 --> 00:08:22,990
+They are pretty fundamental, as you can imagine in electrical engineering,
+
+56
+00:08:22,990 --> 00:08:31,780
+particularly in the power distribution field and for driving machines like motors and so on.
+
+57
+00:08:31,780 --> 00:08:35,980
+The mathematical model of a sinusoidal signal is given by this expression.
+
+58
+00:08:35,980 --> 00:08:51,610
+Shown on the slide here, so x of t is equal to A times the cosine of two pi f zero times t minus phi, which is an angle in radians.
+
+59
+00:08:51,610 --> 00:08:56,770
+So what does that mean physically?
+
+60
+00:08:56,770 --> 00:09:06,310
+So what we will do in class is we will get you to think about what each of those symbols represents.
+
+61
+00:09:06,310 --> 00:09:13,780
+And we will basically look to to fill in this table.
+
+62
+00:09:13,780 --> 00:09:18,460
+The symbols here are not in the right order and you may may have noticed.
+
+63
+00:09:18,460 --> 00:09:23,230
+So the idea is to match symbols to the correct signal.
+
+64
+00:09:23,230 --> 00:09:28,300
+But let's see if we can get some insight using some mathematics.
+
+65
+00:09:28,300 --> 00:09:37,960
+So all of the key features of this particular module is going to be that we are going to emphasise the use of computational tools wherever possible.
+
+66
+00:09:37,960 --> 00:09:40,990
+So we're going to take a very engineering or pragmatic approach.
+
+67
+00:09:40,990 --> 00:09:46,660
+We are not going to go deeply into the mathematics, although there will be some mathematical analysis to do.
+
+68
+00:09:46,660 --> 00:09:52,150
+But we will exploit the tools when we can.
+
+69
+00:09:52,150 --> 00:09:54,670
+And one of the things we want to do.
+
+70
+00:09:54,670 --> 00:10:03,070
+And one of the tools that I'm going to recommend we use, first of all, is a tool that's available on the Internet called Wolfram Alpha.
+
+71
+00:10:03,070 --> 00:10:08,530
+You may already have used it, and then we're going to see the same exercise done in the tool.
+
+72
+00:10:08,530 --> 00:10:16,990
+We're gonna be using mostly on this course, which is MATLAB. So let's redefine the problem in the form that we can do some computation on.
+
+73
+00:10:16,990 --> 00:10:22,630
+OK. So we'll we'll replace the symbols by numerical values.
+
+74
+00:10:22,630 --> 00:10:27,850
+So we're now going to look at this particular instance of that previous general equation,
+
+75
+00:10:27,850 --> 00:10:36,460
+which is three cos, two pi times, two t minus three pi over four.
+
+76
+00:10:36,460 --> 00:10:48,370
+And you'll notice that the angle that we use in mathematics is defined in radians rather than degrees.
+
+77
+00:10:48,370 --> 00:10:51,870
+So there's a link in this slides which will take us to Wolfram Alpha dot com.
+
+78
+00:10:51,870 --> 00:11:00,460
+I've already got the window open, so I'm just going to copy this text and I'm going to paste it into the box over here in Wolfram Alpha.
+
+79
+00:11:00,460 --> 00:11:32,720
+And let's see what it tells us about this particular expression.
+
+80
+00:11:32,720 --> 00:11:39,100
+OK, so it's gone away. Thought about it. Come back with some information, it's telling me what it thinks it is.
+
+81
+00:11:39,100 --> 00:11:46,410
+And what I'm asking to do is plot, which is a good guess. And so it's given me two plots.
+
+82
+00:11:46,410 --> 00:11:54,960
+You can see this useful cursor on this. You can see that there is a, it's certainly a sine wave.
+
+83
+00:11:54,960 --> 00:12:02,170
+It starts over here. Zero time at minus two.
+
+84
+00:12:02,170 --> 00:12:07,390
+And then it moves up to three and down to [minus[ three.
+
+85
+00:12:07,390 --> 00:12:11,980
+And then there's a period here of about what will it be.
+
+86
+00:12:11,980 --> 00:12:21,070
+Uh. Right.
+
+87
+00:12:21,070 --> 00:12:27,050
+Simpson, some five. OK, so that's that's a plot in itself.
+
+88
+00:12:27,050 --> 00:12:31,360
+Give me a larger, slightly larger one with a few more things. And of course, you can reason about that.
+
+89
+00:12:31,360 --> 00:12:34,980
+So that's that's a useful visualisation of it.
+
+90
+00:12:34,980 --> 00:12:42,040
+It tells us a few things, I think, straight away. For example, the amplitude you case measure the phase, the phase,
+
+91
+00:12:42,040 --> 00:12:50,380
+which is how this differs from zero at zero time, because obviously this would be a cosine signal.
+
+92
+00:12:50,380 --> 00:12:59,710
+So it would start at, normally start at one or rather at the peak here and then
+
+93
+00:12:59,710 --> 00:13:07,190
+so it's obviously been shifted by some some angle - the face shift.
+
+94
+00:13:07,190 --> 00:13:12,060
+Okay, so that might give us a clue now so we can say first things.
+
+95
+00:13:12,060 --> 00:13:18,970
+So let's do that again in Matlab, which is the tool we're going to mainly use in this course.
+
+96
+00:13:18,970 --> 00:13:24,550
+We need to break it down a little bit. It's not quite as straightforward as Wolfram Alpha.
+
+97
+00:13:24,550 --> 00:13:28,840
+The first thing I need to do is to set things up. So don't worry about these commands.
+
+98
+00:13:28,840 --> 00:13:34,120
+You wouldn't normally use these commands yourself. I just need to use them in this Jupyter notebook.
+
+99
+00:13:34,120 --> 00:13:38,440
+So the first thing we do is define the time.
+
+100
+00:13:38,440 --> 00:13:43,670
+And we're doing that as a linear set of values from zero to one.
+
+101
+00:13:43,670 --> 00:13:49,260
+So we want 100 values in the range of zero to one.
+
+102
+00:13:49,260 --> 00:13:57,070
+We're going to define x. Which, of course, is the expression that we had previously.
+
+103
+00:13:57,070 --> 00:14:03,040
+But we have to write it out, uh, more precisely now or in a form that the computer can understand.
+
+104
+00:14:03,040 --> 00:14:10,050
+So we we need the multiplication signs '*', for example, to represent multiplication.
+
+105
+00:14:10,050 --> 00:14:14,350
+And we have to use those.
+
+106
+00:14:14,350 --> 00:14:19,010
+Whereas for the previous example, for Wolfram Alpha, example, we could be,
+
+107
+00:14:19,010 --> 00:14:28,800
+as you can see, very you think that some more mathematical form that we are more used to writing, or seeing in textbooks and so on.
+
+108
+00:14:28,800 --> 00:14:37,340
+So notice no explicit multiplication in that expression, but we need to put it in MATLAB so we'll do that.
+
+109
+00:14:37,340 --> 00:14:45,970
+So let me define my cosine waveform.
+
+110
+00:14:45,970 --> 00:14:51,240
+And then we're going to plot it. So in MATLAB, it's always nice to, when you plot.
+
+111
+00:14:51,240 --> 00:15:04,150
+Plot is easy. You just plot T against X, but, or  X against T is also very useful to add in the values of the sine wave.
+
+112
+00:15:04,150 --> 00:15:21,020
+So let us do at. We should get a plot in a few minutes appearing on the screen.
+
+113
+00:15:21,020 --> 00:15:30,450
+OK, so after a few seconds, the plot comes up and you can you can see a similar sort of process every zero time.
+
+114
+00:15:30,450 --> 00:15:39,360
+You can see there is a definite face shift because a zero time we'd expect this to be a peak for cosine wave, but it's not.
+
+115
+00:15:39,360 --> 00:15:47,040
+So it's been shifted forward in time or back in time, really, by this amount.
+
+116
+00:15:47,040 --> 00:15:53,050
+Just on the point, just a little point, five point six, seven, something like that.
+
+117
+00:15:53,050 --> 00:15:58,110
+And then the wave form is. It's more than that, isn't it?
+
+118
+00:15:58,110 --> 00:16:05,550
+Because this is a peak. So and then the waveform goes down and the height is three. In MATLAB
+
+119
+00:16:05,550 --> 00:16:24,520
+You can also. Put things into scripts.
+
+120
+00:16:24,520 --> 00:16:33,060
+So here I am. And running a script to edit the sine wave function.
+
+121
+00:16:33,060 --> 00:16:42,600
+And hopefully that's coming up in this window here, so you can see I define that as a script here called sinewave.m
+
+122
+00:16:42,600 --> 00:16:50,080
+And I can run that script. By just typing sinewave.
+
+123
+00:16:50,080 --> 00:16:54,250
+So returning to the question we started with before we did a bit of analysis.
+
+124
+00:16:54,250 --> 00:17:00,360
+What do these symbols mean? Do we think? So clearly
+
+125
+00:17:00,360 --> 00:17:12,170
+Um, the thing that was causing the phase was perhaps this phi. This value here was somehow related to the period.
+
+126
+00:17:12,170 --> 00:17:21,040
+And this is clearly amplitude. So we'll talk more about that in the in the class.
+
+127
+00:17:21,040 --> 00:17:32,770
+So what's the period of that waveform in seconds? That's something you might think about before you come to that class.
+
+128
+00:17:32,770 --> 00:17:38,320
+So that was a continuous time signal, um
+
+129
+00:17:38,320 --> 00:17:43,450
+Of course, the thing we want to do with those is we want to process those signals in some way.
+
+130
+00:17:43,450 --> 00:17:52,750
+And we have continuous-time systems to do that. So a system, in very general terms is just an operator H.
+
+131
+00:17:52,750 --> 00:17:56,710
+That maps an input signal X to an output signal Y.
+
+132
+00:17:56,710 --> 00:18:01,300
+So we could call it y(t) is H
+
+133
+00:18:01,300 --> 00:18:07,930
+operated on x(t). We will say more about what that H is in a little bit.
+
+134
+00:18:07,930 --> 00:18:14,680
+But here's an example. Let's say we have an electronic amplifier with a gain of five and a level shift at two.
+
+135
+00:18:14,680 --> 00:18:21,090
+Then we would define that as 5 x(t) + 2
+
+136
+00:18:21,090 --> 00:18:28,160
+and we can have a block diagram for that in Simulink, and we'll show you this running actually in class.
+
+137
+00:18:28,160 --> 00:18:35,964
+Will actually bring it up and show you it running and the signals you can get.
+
+138
+00:18:35,964 --> 00:18:40,704
+The other kind of signals we deal with in this course are discrete-time signals a very important class of signals,
+
+139
+00:18:40,704 --> 00:18:49,644
+particularly in the modern era where we're using computation for a lot of signal processing these days. For a discrete-time signal.
+
+140
+00:18:49,644 --> 00:18:53,754
+We don't use time. So time is implicit.
+
+141
+00:18:53,754 --> 00:18:59,614
+Instead, we use an index n. So a discrete- time signal is x(n).
+
+142
+00:18:59,614 --> 00:19:08,004
+And notice the square brackets rather than the round brackets to differentiate between continuous-time and discrete-time.
+
+143
+00:19:08,004 --> 00:19:13,074
+So a discrete-time signal is only defined at those interview values of n.
+
+144
+00:19:13,074 --> 00:19:20,454
+And there are only actual signal at specific instants of time.
+
+145
+00:19:20,454 --> 00:19:26,604
+One advantage of discrete-time signals is that it can be stored in computer memory and operated on after the fact.
+
+146
+00:19:26,604 --> 00:19:34,334
+For example, MP3 players, you record some music, encode it as MP3, distribute it across the Internet,
+
+147
+00:19:34,334 --> 00:19:41,994
+and then someone plays it back, and you reconstruct the signal from the data that you've recorded.
+
+148
+00:19:41,994 --> 00:19:50,724
+So here's an example of that. We've got a single response, let's say y[n] = 5, if is less than 10 or zero.
+
+149
+00:19:50,724 --> 00:19:55,494
+otherwise. We can plot that, visualise that as a stem plot.
+
+150
+00:19:55,494 --> 00:20:04,094
+So we defined the function, saved it as something called y.m and we we're going to just run that function.
+
+151
+00:20:04,094 --> 00:20:09,764
+So we're going to define a set of values for n let's say, minus 15 to 18.
+
+152
+00:20:09,764 --> 00:20:17,744
+We are going to make some space for the signal. So it's the same size as n.
+
+153
+00:20:17,744 --> 00:20:25,854
+And then we're just going to compute that signal by using a for-loop.
+
+154
+00:20:25,854 --> 00:20:30,604
+Because you don't need a for-loop actually, you can just say y(n)
+
+155
+00:20:30,604 --> 00:20:42,244
+Anyway. We then plot the results, and for this we use a stem plot, because these are discrete values, they're not a continuous signal.
+
+156
+00:20:42,244 --> 00:20:46,234
+I'll show you that it looks like now.
+
+157
+00:20:46,234 --> 00:20:56,194
+So stem plots is is not going to be a continuous signal it's is going to have a set of values indicating where the value is defined and where it's not.
+
+158
+00:20:56,194 --> 00:21:01,294
+And you can see these are where the signal is zero. This is where the signal is zero.
+
+159
+00:21:01,294 --> 00:21:09,214
+And this is a bit where the signal has got a value of five. And this indicates that these are not continuous.
+
+160
+00:21:09,214 --> 00:21:16,114
+These are discrete values of the sample signal.
+
+161
+00:21:16,114 --> 00:21:25,234
+Of course, you can then have a discrete-time system, which, again, using a similar notation, maps a sequence to another sequence.
+
+162
+00:21:25,234 --> 00:21:30,004
+So here is an example of one of those. This is called a two tap filter.
+
+163
+00:21:30,004 --> 00:21:32,974
+So here we have, it a sort of a moving average thing.
+
+164
+00:21:32,974 --> 00:21:43,324
+We have three-quarters of x[n]: the current value of the sequence and then a quarter of X of the previous value and gives us Y.
+
+165
+00:21:43,324 --> 00:21:56,664
+So again, we can model that in Simulink. And we have the values three-quarters, another quarter when it was that represents x[n-1]
+
+166
+00:21:56,664 --> 00:22:05,674
+a one-sample delay. This is a straightforward [???] thing. Two taps because we've got the signal being split into two parts.
+
+167
+00:22:05,674 --> 00:22:18,564
+And then recombined at the end. And again, in the class, we will show you this, demonstrate this particular model with some real data.
+
+168
+00:22:18,564 --> 00:22:27,714
+So what else have we got? Other classifications. On of the most important ones is periodic signals, signals that repeat over and over again.
+
+169
+00:22:27,714 --> 00:22:33,864
+They are said to be periodic. We define them as x(t + T) is equal x(t).
+
+170
+00:22:33,864 --> 00:22:41,484
+So if there is repetition so that some T times later the signal is the same as it was for for t
+
+171
+00:22:41,484 --> 00:22:47,154
+then we have a periodic signal. For discrete signals.
+
+172
+00:22:47,154 --> 00:22:54,474
+Again, that's discrete signal. Is periodic if it repeats itself after some N samples.
+
+173
+00:22:54,474 --> 00:23:05,764
+So the smallest value of T or N for which standard quality is true is called the signal period.
+
+174
+00:23:05,764 --> 00:23:13,174
+Here is a square wave to the periodic signal, obviously plotted it.
+
+175
+00:23:13,174 --> 00:23:31,584
+So let's move on and plot. You can see the periodic signal getting a square wave.
+
+176
+00:23:31,584 --> 00:23:38,324
+Another class of signals which are important on what are called aperiodic signals.
+
+177
+00:23:38,324 --> 00:23:44,654
+So they're not periodic. They don't repeat themselves.
+
+178
+00:23:44,654 --> 00:23:52,434
+It does matter what the point of view is, because the signal may be periodic but the period may be very large, so it can still
+
+179
+00:23:52,434 --> 00:23:56,474
+be considered to be aperiodic. So here is
+
+180
+00:23:56,474 --> 00:24:05,774
+Let's define an example. This is a rectangular pulse. So it exists only for a short period of time.
+
+181
+00:24:05,774 --> 00:24:28,214
+And again, we can plot it. And there you can see we have a pulse.
+
+182
+00:24:28,214 --> 00:24:34,944
+And then it disappears. And we assume this never comes back.
+
+183
+00:24:34,944 --> 00:24:44,154
+Signals can also be random. This is quite useful. A kind of signal to represent noise wether
+
+184
+00:24:44,154 --> 00:24:48,784
+added or inherent in the system.
+
+185
+00:24:48,784 --> 00:24:54,094
+So let's just plot a random signal and you can see that's sort of typical of a random signal.
+
+186
+00:24:54,094 --> 00:24:57,964
+It looks like it's very noisy.
+
+187
+00:24:57,964 --> 00:25:06,184
+So this thing you might see on a scope if you haven't connected to ground, and these signals are often used for various reasons,
+
+188
+00:25:06,184 --> 00:25:13,564
+for example, to identify a system transfer function from from a signal or for
+
+189
+00:25:13,564 --> 00:25:32,324
+other things. We will be talking a lot in this course about domains. If we go to the Canvas sites for this module.
+
+190
+00:25:32,324 --> 00:25:42,864
+This is a sort of picture of the domains that we'll be dealing with. So we've got time domain, complex frequency domain, frequency domain, z domain.
+
+191
+00:25:42,864 --> 00:25:49,534
+And you've got sample data. You've got sample frequency. And we've got discrete Fourier transform.
+
+192
+00:25:49,534 --> 00:25:52,874
+And there are a few other links that I've missed off this picture.
+
+193
+00:25:52,874 --> 00:25:58,814
+For example, there is a connexion between time and frequency through the Fourier transform.
+
+194
+00:25:58,814 --> 00:26:04,694
+You can go from time (t) to n by sampling and you can go back and forth here.
+
+195
+00:26:04,694 --> 00:26:11,104
+So those those links will be added as we go along. Maybe update this picture at some point.
+
+196
+00:26:11,104 --> 00:26:18,504
+Those are the domains that we'll be dealing with in this course. So that's what we mean by a domain.
+
+197
+00:26:18,504 --> 00:26:23,414
+And we often need to go from one to the other, for example, from time to
+
+198
+00:26:23,414 --> 00:26:28,274
+complex frequency or times to frequency. So these are the domains that we can be looking at.
+
+199
+00:26:28,274 --> 00:26:37,724
+Going to be looking at the frequency domain. f of omega, the Laplace transform, s domain, where s is a complex variable.
+
+200
+00:26:37,724 --> 00:26:40,964
+Omega is an imaginary variable.
+
+201
+00:26:40,964 --> 00:26:52,634
+Similarly, for discrete-time systems, we might go from discrete time domain n to frequency remain omega hat or the Z domain Z.
+
+202
+00:26:52,634 --> 00:26:57,614
+So these are the sort of things well be doing. For example, the frequency domain.
+
+203
+00:26:57,614 --> 00:27:04,514
+Let's consider we've got 2 sinusoids that we want to add together.
+
+204
+00:27:04,514 --> 00:27:13,304
+I've got a function that defines that so let's just run it in this in the interests of time.
+
+205
+00:27:13,304 --> 00:27:22,494
+This is going to run that formula and plot the result.
+
+206
+00:27:22,494 --> 00:27:31,504
+And they could see the two sides signals when they added together, you get this bumpy signal, which doesn't look very much like a sine wave.
+
+207
+00:27:31,504 --> 00:27:35,284
+You can see it's periodic, but it doesn't look much like a sine wave.
+
+208
+00:27:35,284 --> 00:27:45,874
+But if we look at the frequencies in this sine wave by doing a frequency spectrum, putting it through a fast Fourier transfer on an oscilloscope
+
+209
+00:27:45,874 --> 00:27:57,184
+for example, then we get two distinct frequencies and we can see how relatively big they are by the size of these peaks.
+
+210
+00:27:57,184 --> 00:28:03,394
+And we can see where they are by where they are on the frequency axis. So we see that this one is clearly one Hz.
+
+211
+00:28:03,394 --> 00:28:09,064
+And this is clearly two point two Hz.
+
+212
+00:28:09,064 --> 00:28:15,804
+So this is quite useful way of looking at complex signals like this.
+
+213
+00:28:15,804 --> 00:28:19,684
+They are often built up of frequencies and we can look at those frequencies,
+
+214
+00:28:19,684 --> 00:28:27,694
+pick out what's going on, how much energy is in there in the signal, for example, how much bandwidth we need to transmit it.
+
+215
+00:28:27,694 --> 00:28:37,024
+So frequency response or frequency analysis is a very useful way of looking at complex periodic signals.
+
+216
+00:28:37,024 --> 00:28:39,624
+The other thing we can do is a Fourier transform.
+
+217
+00:28:39,624 --> 00:28:49,494
+So if you have aperiodic signals, we can go from the time domain to the frequency domain and we can use the inverse Fourier transform to go back.
+
+218
+00:28:49,494 --> 00:28:53,884
+And we'll have a couple of lectures on that particular issue.
+
+219
+00:28:53,884 --> 00:29:00,694
+We've also got the Laplace and Z-transform domains which are complex frequencies,
+
+220
+00:29:00,694 --> 00:29:07,054
+quite useful for solving differential equations, for example, or for control theory.
+
+221
+00:29:07,054 --> 00:29:11,654
+We have then this variable s, which has a real and imaginary part.
+
+222
+00:29:11,654 --> 00:29:18,094
+And we could describe a location in the s-plane using an imaginary number.
+
+223
+00:29:18,094 --> 00:29:24,314
+And by using s domain, we can actually easily solve differential equations.
+
+224
+00:29:24,314 --> 00:29:33,004
+And we come up with the idea of a transfer function. For discrete-time signals there is an equivalent operator called Z,
+
+225
+00:29:33,004 --> 00:29:42,244
+which does something similar to sequences. The last thing I just wanted to mention, systems thinking and systems design.
+
+226
+00:29:42,244 --> 00:29:53,164
+This is basically, just to point you to the relevant part, part of the handout for the, not the handout,
+
+227
+00:29:53,164 --> 00:29:59,914
+but the first chapter of Signals and Systems for Dummies might be worth reading because this is sort of
+
+228
+00:29:59,914 --> 00:30:05,254
+the approach we are going to be taking : we are going to think in terms of behavioural model.
+
+229
+00:30:05,254 --> 00:30:12,124
+We're gonna rely on abstraction through mathematics. We're going to work top down to solve problems.
+
+230
+00:30:12,124 --> 00:30:20,164
+We're gonna be using mathematics and mathematical software. The reason I'm not using the signals and systems for dummies is the main text for
+
+231
+00:30:20,164 --> 00:30:26,914
+this course is only because the examples given are all using programming language.
+
+232
+00:30:26,914 --> 00:30:31,654
+Python and I wanted to use programming language MATLAB.
+
+233
+00:30:31,654 --> 00:30:34,324
+So Matlab is is the basis of this course.
+
+234
+00:30:34,324 --> 00:30:46,684
+And so I've got a textbook called Karris which will introduce you to next session, which is the book that will be used in this course.
+
+235
+00:30:46,684 --> 00:30:54,804
+So other things to look at, familiar signals or systems or some questions on this that you might want to approach later.
+
+236
+00:30:54,804 --> 00:31:05,364
+Again, some examples of of systems that will be familiar, for example, the mobile phone and what signals are in that. You may want to have a look at that.
+
+237
+00:31:05,364 --> 00:31:11,704
+And we'll talk about that perhaps in the first class. So thank you for watching.
+
+238
+00:31:11,704 --> 00:31:22,714
+Sorry that some of the computation was slow. I'm going to have to make sure that I got everything turned off on my Mac when I go into the classes.
+
+239
+00:31:22,714 --> 00:31:28,054
+But we have now covered everything we need for this particular introduction to the class.
+
+240
+00:31:28,054 --> 00:31:37,874
+I'll go away and edit the video, tidy. ir up a bit and then I'll see you on the 24th of January.
+
+241
+00:31:37,874 --> 00:31:58,374
+12:00 p.m., I think it is, in Y Twyni 002. You can find the link to the lecture in Canvas if you go to the calendar.
+
+242
+00:31:58,374 --> 00:32:03,154
+On the 24th, there it is, integration into the entry, the class.
+
+243
+00:32:03,154 --> 00:32:18,794
+And the other thing to note is that the notes for this particular session.
+
+244
+00:32:18,794 --> 00:32:25,724
+Really, really slow. Sorry about this. This is not the way it should should be.
+
+245
+00:32:25,724 --> 00:32:48,684
+If you go to modules. All the preparation, preparatory reading, etc. for this particular class, you will find starting on this page here.
+
+246
+00:32:48,684 --> 00:32:56,094
+The next class on [also on Monday] will be about elementary signals, and I'll make a video for that in a couple of minutes.
+
+247
+00:32:56,094 --> 00:33:03,941
+Thanks very much for watching. I will see you soon.
+

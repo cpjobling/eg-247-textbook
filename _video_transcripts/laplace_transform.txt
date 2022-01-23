@@ -1,0 +1,484 @@
+1
+00:00:00,420 --> 00:00:12,690
+Hi, this is Chris Jobling, and this is the first of two mini lectures, pre lectures on, for week two of the course signals and systems.
+
+2
+00:00:12,690 --> 00:00:18,450
+And this is a brief introduction to the Laplace transformation,
+
+3
+00:00:18,450 --> 00:00:27,450
+and we're basing this on the textbook, Chapter two of Karris, which you will see if we follow the link.
+
+4
+00:00:27,450 --> 00:00:33,030
+Is this textbook here? I'm not quite sure why it goes to that particular page.
+
+5
+00:00:33,030 --> 00:00:42,300
+I'll correct the link afterwards, but it is Chapter two of Karris, which is all about the Laplace transformation.
+
+6
+00:00:42,300 --> 00:00:46,590
+And as you can see on the slide, it defines the Laplace transformation.
+
+7
+00:00:46,590 --> 00:00:51,720
+It gives the most useful properties of the Laplace transform with proofs;
+
+8
+00:00:51,720 --> 00:01:00,060
+(We won't bother with the proofs in this pre-lecture, or in the course really.) then presents Laplace transforms of the elementary signals
+
+9
+00:01:00,060 --> 00:01:13,170
+that we discussed in the last session; and presents transforms of the more common system response types that we find in signals and systems.
+
+10
+00:01:13,170 --> 00:01:21,030
+in this course. So this is going to be the agenda for this mini lecture.
+
+11
+00:01:21,030 --> 00:01:28,320
+First of all, the definition of the Laplace transform. Then we'll talk about some selected properties.
+
+12
+00:01:28,320 --> 00:01:37,410
+We present some transforms of elementary signals and then we'll talk about common system responses qnd their transforms.
+
+13
+00:01:37,410 --> 00:01:47,080
+And, err, I'll also mention transform tables. And some examples which we will go over in class.
+
+14
+00:01:47,080 --> 00:01:55,920
+So the definition of the Laplace transform is as follows. It's an integral. You can see on the right of this slide.
+
+15
+00:01:55,920 --> 00:02:08,790
+The integral from zero to infinity of f(t), which is a signal times e^(-st) [exp(-st)], integrated with respect to t.
+
+16
+00:02:08,790 --> 00:02:17,880
+And that is a definition of the Laplace transform, which we which we write on the left, the squiggly L of f(t).
+
+17
+00:02:17,880 --> 00:02:23,340
+So it's a function on f(t) and that is given the notation
+
+18
+00:02:23,340 --> 00:02:32,700
+F(s). Notice we use lowercase letters for functions of time and uppercase letters for the transform.
+
+19
+00:02:32,700 --> 00:02:41,820
+And this s is a complex variable and representing the frequency response.
+
+20
+00:02:41,820 --> 00:02:48,960
+in a way, Complex Frequency response has it is sometimes called. The inverse Laplace transform.
+
+21
+00:02:48,960 --> 00:02:59,090
+I'm not going to read this out because it's [deleted], It's a it's a pain to
+
+22
+00:02:59,090 --> 00:03:11,060
+To capture in the captions. Basically the inverse Laplace transform is a function applied to the function of s, F(s), and returns f(t) again it's an integral.
+
+23
+00:03:11,060 --> 00:03:19,240
+This time a complex integral integrating on the complex plane.
+
+24
+00:03:19,240 --> 00:03:25,850
+The informal notation we use, basically is to use what we call transformed pairs.
+
+25
+00:03:25,850 --> 00:03:29,500
+And these are usually tabulated for ease of reference.
+
+26
+00:03:29,500 --> 00:03:39,130
+So for any given function of time, we only need to know it's transform to be able to get the transform of that function.
+
+27
+00:03:39,130 --> 00:03:50,080
+And vice versa. So if we know F(s), we can go back to f(t). so the arrow in the middle there, represents this dual sided relationship.
+
+28
+00:03:50,080 --> 00:03:59,200
+So we can go either direction from f(t) to F(s) and F(s) to f(t).
+
+29
+00:03:59,200 --> 00:04:04,660
+Some selected properties worth mentioning. The first of these is "linearity",
+
+30
+00:04:04,660 --> 00:04:12,640
+which basically says if you have a sum of functions of time and add them together,
+
+31
+00:04:12,640 --> 00:04:19,180
+those time, those functions can also be multiplied by constants, some kind of gain.
+
+32
+00:04:19,180 --> 00:04:24,430
+Then the transform is the transform of the individual functions of time.
+
+33
+00:04:24,430 --> 00:04:31,060
+F1(s), F2(s), and so on multiplied by those same gains, and again, it's a sum.
+
+34
+00:04:31,060 --> 00:04:35,410
+So linearity applies to transforms.
+
+35
+00:04:35,410 --> 00:04:41,260
+If you have a function made up of a complex combination of other functions,
+
+36
+00:04:41,260 --> 00:04:49,180
+you can find the transform by adding together the individual transforms of those functions.
+
+37
+00:04:49,180 --> 00:04:53,470
+Time shift is another useful property.
+
+38
+00:04:53,470 --> 00:04:58,870
+It basically says that if you have a time-delayed signal as indicated by this
+
+39
+00:04:58,870 --> 00:05:06,310
+function here f(t - a) multiplied by the step function u0(t - a),
+
+40
+00:05:06,310 --> 00:05:17,450
+then its transform is exp(-as) times the transform f(t) which is F(s).
+
+41
+00:05:17,450 --> 00:05:22,280
+Frequency shift is a similar function, but in the opposite direction.
+
+42
+00:05:22,280 --> 00:05:27,140
+So if you have a function of time multiplied by an exponential exp(-at)
+
+43
+00:05:27,140 --> 00:05:35,290
+its transform is a shifted frequency response F(s + a).
+
+44
+00:05:35,290 --> 00:05:40,240
+Scaling: If you have f(at), where a is
+
+45
+00:05:40,240 --> 00:05:45,630
+some scaling factor and the transform is 1/s times 
+
+46
+00:05:45,630 --> 00:05:57,180
+F(s/a). Perhaps the most important of the Laplace transform properties is differentiation.
+
+47
+00:05:57,180 --> 00:06:06,120
+This is very useful because it allows us to convert differential equations into algebraic equations into polynomials in s,
+
+48
+00:06:06,120 --> 00:06:16,470
+and that allows us to solve them more easily. So the definition of the derivative f'(t) is d/dt f(t),
+
+49
+00:06:16,470 --> 00:06:30,450
+and its transform is s times the transform of f(t), F(s) minus f(0-), which represents the initial condition.
+
+50
+00:06:30,450 --> 00:06:38,310
+So it's the value of the function of time just before zero time.
+
+51
+00:06:38,310 --> 00:06:44,520
+As it says there, helps us to solve differential equations.
+
+52
+00:06:44,520 --> 00:06:52,610
+If we look at the frequency or complex frequency domain, there's a dual function there.
+
+53
+00:06:52,610 --> 00:07:03,050
+And also integration. Another important property, the integral of some function of time, is equal to that.
+
+54
+00:07:03,050 --> 00:07:11,390
+The transform of that function of time F(s) divided by s with the initial condition
+
+55
+00:07:11,390 --> 00:07:20,590
+f(0-) also divided by s. And again, a dual in the frequency domain
+
+56
+00:07:20,590 --> 00:07:29,210
+exists. We also have this property [not easy to say!] periodicity property if
+
+57
+00:07:29,210 --> 00:07:36,370
+f(t) is a periodic function with period T such that f(t + nT) for all
+
+58
+00:07:36,370 --> 00:07:50,560
+n, then the transform of that is defined as the integral from zero to the period T of f(t) [times] exp(-st),
+
+59
+00:07:50,560 --> 00:07:54,190
+With respect to dt (that's almost the Laplace transform,
+
+60
+00:07:54,190 --> 00:08:11,630
+but notice look, the limits are from zero to the period rather than from zero to infinity) divided by 1 - exp(-sT).
+
+61
+00:08:11,630 --> 00:08:18,620
+There are also some useful properties used for setting up problems and for working out the behaviour of signals.
+
+62
+00:08:18,620 --> 00:08:28,070
+The first of these is called the initial value theorem. It tells us what the initial value of a function f(t) will be.
+
+63
+00:08:28,070 --> 00:08:38,990
+So the limit as f(t) tends to zero is equal to the limit of sF(s) as s tends to infinity.
+
+64
+00:08:38,990 --> 00:08:46,400
+And that's equal to this thing we've been calling the f(0-), which is the initial condition.
+
+65
+00:08:46,400 --> 00:08:55,400
+The final value theoreom is the dual of that, if we want to know what a function of time does as time goes to infinity.
+
+66
+00:08:55,400 --> 00:09:05,360
+We simply need to calculate the limits of sF(s) us as s tends to zero.
+
+67
+00:09:05,360 --> 00:09:10,310
+That's called f(infinity). And you will come across this,
+
+68
+00:09:10,310 --> 00:09:15,170
+those of you doing control systems with Dr. Egwebe, will come across this
+
+69
+00:09:15,170 --> 00:09:24,530
+particular property in control theory when you're looking at steady-state errors.
+
+70
+00:09:24,530 --> 00:09:33,990
+Another very important property is convolution. This is allows us to combine signals of time.
+
+71
+00:09:33,990 --> 00:09:39,830
+So the convolution integral is shown in the middle of this slide.
+
+72
+00:09:39,830 --> 00:09:49,040
+It's written f1(t) convolved with f2(t), the asterisk in that expression represents convolution, not multiplication as
+
+73
+00:09:49,040 --> 00:09:58,430
+it would be, say in a programming language. Convolution of f1(t) and f2(t) is this integral, which is equal,
+
+74
+00:09:58,430 --> 00:10:06,110
+or the transform of that is the product of the two transformed versions of those functions.
+
+75
+00:10:06,110 --> 00:10:27,890
+F1(s) and F2(s). Again, there's a dual talking about convolution in the frequency domain, which we don't use quite so much.
+
+76
+00:10:27,890 --> 00:10:32,690
+The benefit of the Laplace transform, really for us engineers,
+
+77
+00:10:32,690 --> 00:10:39,350
+is that actually we don't really need to know the definitions and the proofs of the Laplace
+
+78
+00:10:39,350 --> 00:10:45,620
+transform because mathematicians over the years have come up with tables of these things.
+
+79
+00:10:45,620 --> 00:10:48,860
+And so we will take a pragmatic view in this course also,
+
+80
+00:10:48,860 --> 00:10:55,640
+and most of the work you'll do with the Laplace transforms, you'll be looking up the transforms from tables.
+
+81
+00:10:55,640 --> 00:11:03,950
+Every textbook that covers Laplace transforms to provide a table of properties and the most common transforms.
+
+82
+00:11:03,950 --> 00:11:13,200
+You'll find them in Karris in tables 2.1 and 2.2 in the textbook.
+
+83
+00:11:13,200 --> 00:11:25,610
+And there's also some online links I can quickly show you. The Wikipedia has a very comprehensive list of transforms of the Laplace tables.
+
+84
+00:11:25,610 --> 00:11:31,490
+It does perhaps use a slightly different notation to what we've been using,
+
+85
+00:11:31,490 --> 00:11:40,260
+but you can see that, the functions that we've described here are already covered in that.
+
+86
+00:11:40,260 --> 00:12:06,920
+And also an awful lot more. And also, Wolfram|Alpha itself provides a fairly nice compact table of functions that you can use to look up these things.
+
+87
+00:12:06,920 --> 00:12:16,420
+And just to let you know, if we do, we assess you on these things, you will have access to the transforms.
+
+88
+00:12:16,420 --> 00:12:26,900
+If we do, if we end up doing an examination in the traditional way, you'll get some tables with the exam paper.
+
+89
+00:12:26,900 --> 00:12:35,280
+So here are some transforms of elementary signals, and we'll just basically point them out.
+
+90
+00:12:35,280 --> 00:12:44,420
+The first function here is a Dirac delta function, delta(t), its Laplace transform is just one.
+
+91
+00:12:44,420 --> 00:12:51,080
+There's a time delayed delta function [delta[t - a]). (Remember, we use this for sampling.) That's defined as
+
+92
+00:12:51,080 --> 00:13:00,550
+exp(-as). The unit step function, u0(t) is 1/s. tu0(t)
+
+93
+00:13:00,550 --> 00:13:17,080
+is 1/s^2 and then t^n u0(t)is defined as n!/s^(n+1).
+
+94
+00:13:17,080 --> 00:13:24,450
+Then we've got the exponential function defined from zero time 
+
+95
+00:13:24,450 --> 00:13:32,370
+So exp(-at) u0(t) is 1/(s + a),
+
+96
+00:13:32,370 --> 00:13:42,450
+a multiple t^n exp(-at) u0(t) is n!/(s + a)^(n+1).
+
+97
+00:13:42,450 --> 00:13:51,210
+Then we've got the sinusoidal function sin(omega t) and cos(omega t) and then the decayed exponential functions
+
+98
+00:13:51,210 --> 00:13:57,570
+exp(-at)sin(omega t) and exp(-at)cos(omega t).
+
+99
+00:13:57,570 --> 00:14:10,830
+Note that in these functions we're using u0(t), the step function, as a way to limit the domain of the signal that we're dealing with.
+
+100
+00:14:10,830 --> 00:14:15,600
+So if we multiply any signal by u0(t)
+
+101
+00:14:15,600 --> 00:14:24,180
+what we're basically doing is making sure that we only considered the signal for time greater than zero because obviously,
+
+102
+00:14:24,180 --> 00:14:30,780
+u0(t) if time less than zero is zero. So that just eliminates the signal from negative time.
+
+103
+00:14:30,780 --> 00:14:35,530
+And we do this because we're usually dealing with signals which are called causal.
+
+104
+00:14:35,530 --> 00:14:43,860
+Now these signals don't have any history, don't have any past. They start basically at zero.
+
+105
+00:14:43,860 --> 00:14:54,270
+And this ensures that the functions we're dealing with, do have, are only defined for positive time.
+
+106
+00:14:54,270 --> 00:15:06,530
+There are the Laplace transforms to deal with negative time as well, but we don't usually worry about those.
+
+107
+00:15:06,530 --> 00:15:12,830
+There are some Laplace transforms of common waveforms, and we'll work through one or two of these in class if
+
+108
+00:15:12,830 --> 00:15:14,630
+We have some time.
+
+109
+00:15:14,630 --> 00:15:28,310
+So things like the pulse, linear segment, triangular waveform, rectangular parodic waveform - square wave hand half rectified sine wave and so on.
+
+110
+00:15:28,310 --> 00:15:33,020
+There is a function in MATLAB, in's in the Symbolic Maths Toolbox,
+
+111
+00:15:33,020 --> 00:15:41,090
+which is called laplace and that can be used to find a Laplace transforms of functions of time.
+
+112
+00:15:41,090 --> 00:15:51,030
+We'll be doing some exercises with that function in the laboratory in a couple of weeks time.
+
+113
+00:15:51,030 --> 00:15:59,110
+And finally, just just to give you a hint that homework is a good thing to do.
+
+114
+00:15:59,110 --> 00:16:09,390
+And there are some end of the chapter exercises which come from Karris, questions 1-7 of Karris. Have a go at those.
+
+115
+00:16:09,390 --> 00:16:14,970
+The answers are given in Karris, but you shouldn't look at the answers until [after] you attempt the problems.
+
+116
+00:16:14,970 --> 00:16:19,290
+Otherwise, you will not really learn anything.
+
+117
+00:16:19,290 --> 00:16:29,670
+If we do have time (we probably won't given the current circumstances) we'll work through one or two of these in class.
+
+118
+00:16:29,670 --> 00:16:38,230
+And then there's references which you find in the bibliography for the textbook.
+
+119
+00:16:38,230 --> 00:16:47,300
+OK, so that's the pre-lecture for Laplace transforms. There's another one inverse Laplace transforms, which follows this one.
+
+120
+00:16:47,300 --> 00:16:53,060
+And you probably need to watch both before coming to class. Thanks a lot.
+
+121
+00:16:53,060 --> 00:16:54,567
+Bye!
+

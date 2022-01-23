@@ -1,0 +1,592 @@
+1
+00:00:02,360 --> 00:00:10,910
+Hi, this is Chris Jobling, and this is the second of week one's pre-lectures. And this one is on elementary signals.
+
+2
+00:00:10,910 --> 00:00:21,720
+If you're interested, you can find the detailed notes for this in Chapter one of textbook Karris [2012].
+
+3
+00:00:21,720 --> 00:00:31,840
+And you will be able to just read a little bit more about the detailed mathematical details, should you be interested?
+
+4
+00:00:31,840 --> 00:00:37,800
+What I'm going to do in this pre-lecture is to talk about what we mean by elementary
+
+5
+00:00:37,800 --> 00:00:44,730
+signals and particularly those signals which can be applied to electrical circuits.
+
+6
+00:00:44,730 --> 00:00:50,320
+We're going to introduce to the unit step ,unit ramp, and the Dirac delta function.
+
+7
+00:00:50,320 --> 00:00:54,870
+We're going to talk about the sampling and sifting properties of the Delta function,
+
+8
+00:00:54,870 --> 00:01:00,740
+and we'll conclude with some examples of how useful signals can be synthesised from these elementary signals.
+
+9
+00:01:00,740 --> 00:01:07,750
+And we will probably do that last bullet point in the class.
+
+10
+00:01:07,750 --> 00:01:12,600
+So let's begin by just doing a little bit of a thought experiment.
+
+11
+00:01:12,600 --> 00:01:18,370
+So let's imagine you've got this circuit, a simple circuit with a voltage supply, a resistor R
+
+12
+00:01:18,370 --> 00:01:28,960
+and a switch and the output across those two terminals illustrated on this picture here.
+
+13
+00:01:28,960 --> 00:01:34,230
+So what happens when we close the switch?
+
+14
+00:01:34,230 --> 00:01:42,780
+Is there a way of expressing that mathematically and drawing the appropriate waveforn representing the behaviour of that circuit?
+
+15
+00:01:42,780 --> 00:01:47,010
+So the switch is closed at some time t = T.
+
+16
+00:01:47,010 --> 00:01:56,770
+And what will happen then? Well, clearly, when the switch is closed, the voltage here will will appear
+
+17
+00:01:56,770 --> 00:02:01,290
+Vs will appear on the output here. Before the switch is closed
+
+18
+00:02:01,290 --> 00:02:05,700
+there'll be nothing on the output: it is zero volts there.
+
+19
+00:02:05,700 --> 00:02:09,930
+So what happens at the time of the switch?
+
+20
+00:02:09,930 --> 00:02:17,190
+That's really the important point. So before the switch is closed, we're going to have an output voltage of zero.
+
+21
+00:02:17,190 --> 00:02:22,560
+And after the switch is closed, we're going to have a voltage of Vs.
+
+22
+00:02:22,560 --> 00:02:28,540
+And the interesting thing is what happens at the moment that the switch is closed. Instantly closed.
+
+23
+00:02:28,540 --> 00:02:32,670
+Well, physically, there can't be a very quick change.
+
+24
+00:02:32,670 --> 00:02:45,600
+But mathematically, we can assume that the voltage is going to jump instantaneously from zero to Vs volts at time t. Physically,
+
+25
+00:02:45,600 --> 00:02:49,440
+in reality, this this won't be correct. There'll be some slope here.
+
+26
+00:02:49,440 --> 00:02:53,830
+But this is a useful mathematical model of the ideal case.
+
+27
+00:02:53,830 --> 00:02:58,410
+And we call this kind of signal a "step function" for obvious reasons.
+
+28
+00:02:58,410 --> 00:03:14,940
+It looks like a step. So the step function is defined as U_0(t) (or U zero of t) and is equal to zero for t less than 0 and 1 for t greater.
+
+29
+00:03:14,940 --> 00:03:18,450
+Than naught. But notice it's not defined up.
+
+30
+00:03:18,450 --> 00:03:27,860
+t equals naught. In Matlab, we have a function called the Heaviside function,
+
+31
+00:03:27,860 --> 00:03:35,700
+and this function is named after this chap Oliver Heaviside who came up with it in his studies.
+
+32
+00:03:35,700 --> 00:03:44,570
+So I'll let you read about Mr. Heaviside. If you're interested. Electrical engineer.
+
+33
+00:03:44,570 --> 00:04:06,990
+So we have a function named after him in Matlab called  the Heaviside function.
+
+34
+00:04:06,990 --> 00:04:13,730
+So let's, so let's have a look at the Heaviside
+
+35
+00:04:13,730 --> 00:04:24,520
+function. So this is what it looks like. To use this
+
+36
+00:04:24,520 --> 00:04:30,500
+we need to be using a feature of MATLAB called the symbolic maths tool box.
+
+37
+00:04:30,500 --> 00:04:35,260
+And this is introduced in this code here by this expression "sims t"
+
+38
+00:04:35,260 --> 00:04:39,340
+So we're defining t to be a symbol as opposed to a number.
+
+39
+00:04:39,340 --> 00:04:47,260
+And then we're gonna plotted using this function ezplot, plotting Heaviside of T from minus one to one.
+
+40
+00:04:47,260 --> 00:05:01,110
+And then we're also going to compute the Heaviside of zero. OK, so that's what it looks like,
+
+41
+00:05:01,110 --> 00:05:10,230
+it looks like a square wave and the Heaviside of zero is given the value of 0.5 or halfway between one and zero.
+
+42
+00:05:10,230 --> 00:05:22,670
+This is not actually mathematically correct. IBut it's a useful value if you need to plot it.
+
+43
+00:05:22,670 --> 00:05:29,740
+So once you've established a function, then we can do various things to it.
+
+44
+00:05:29,740 --> 00:05:35,820
+So, for example. We can scale a function by a positive number or negative number.
+
+45
+00:05:35,820 --> 00:05:44,800
+And we'll do these actually, in class but here is an example.
+
+46
+00:05:44,800 --> 00:05:50,220
+OK, so we define A  to be two. So we can plot it and then we have a plot.
+
+47
+00:05:50,220 --> 00:05:55,770
+You can see that the function goes from zero to two at time equals naught.
+
+48
+00:05:55,770 --> 00:06:04,430
+We've also added a bit of, as is usual, we've added some axes to the to the plot.
+
+49
+00:06:04,430 --> 00:06:12,520
+So let's have a look at the case where A is negative. I can guess, I guess you can guess what happened here.
+
+50
+00:06:12,520 --> 00:06:22,180
+Well, let's just prove it. You can see that now the signal starts at zero and goes down to minus two, a t = 0.
+
+51
+00:06:22,180 --> 00:06:31,310
+So what about if we reverse time? If we sketch u0(t -t), for example, what happens then?
+
+52
+00:06:31,310 --> 00:06:45,420
+Well, again, we can easily plot it. And what we'll see is that the signal is reversed in sense, in that the step happens before time equals zero.
+
+53
+00:06:45,420 --> 00:06:56,530
+And then it goes to zero after time equals zero. What about delays or advances? If we take
+
+54
+00:06:56,530 --> 00:07:06,330
+u0(t - T) for example, or u0(t + T), what happens then?
+
+55
+00:07:06,330 --> 00:07:13,700
+So we will take the first case, u0(t - T)
+
+56
+00:07:13,700 --> 00:07:22,090
+T = 1 in this case, so you can see what happens is that the point of the step is delayed by one second.
+
+57
+00:07:22,090 --> 00:07:28,120
+So it happens one second after zero time for u0(t - T).
+
+58
+00:07:28,120 --> 00:07:38,110
+So what do you think was going to happen if we go u0(t + T)?
+
+59
+00:07:38,110 --> 00:07:43,350
+Hopefully, you've got the right answer.
+
+60
+00:07:43,350 --> 00:07:50,890
+It actually happens earlier or time is advanced so it happens earlier than zero time.
+
+61
+00:07:50,890 --> 00:07:56,830
+So we call this "time advance". We call the previous case "time delay". We will work
+
+62
+00:07:56,830 --> 00:08:00,530
+some some examples of this in the class using work sheet 3.
+
+63
+00:08:00,530 --> 00:08:11,020
+So the unit step is a very useful function to us.
+
+64
+00:08:11,020 --> 00:08:18,430
+We can use it to synthesise various signals. For example, we can synthesise pulses.
+
+65
+00:08:18,430 --> 00:08:25,910
+Triangle waves and so on. And we'll go through some examples of this in class.
+
+66
+00:08:25,910 --> 00:08:35,190
+Another very useful elementary signal is the ramp function. And this, the simplest way to model this is by the circuit shown on this slide.
+
+67
+00:08:35,190 --> 00:08:42,380
+Well, now we have an open circuit after this, which we actually have a capacitor.
+
+68
+00:08:42,380 --> 00:08:47,570
+We have a current source. So when the switch is closed, current will flow in the circuit.
+
+69
+00:08:47,570 --> 00:08:59,090
+This capacitor will charge up and it will charge up linearly because there's a constant current.
+
+70
+00:08:59,090 --> 00:09:05,420
+So we can work out what's going to happen here by solving this equation, the capacitor,
+
+71
+00:09:05,420 --> 00:09:17,730
+the voltage across the capacitor is going to be equal to one over the capacitance times the integral from negative infinity to t.
+
+72
+00:09:17,730 --> 00:09:22,460
+Ic tau with respect to tau
+
+73
+00:09:22,460 --> 00:09:29,990
+Where tau is some kind of dummy variable in this integral. So when the switch closes?
+
+74
+00:09:29,990 --> 00:09:37,070
+The current in the capacitor is going to be equal to current in the source.
+
+75
+00:09:37,070 --> 00:09:41,280
+Multiplied by a u0(t) or u zero of t because it's a step function.
+
+76
+00:09:41,280 --> 00:09:53,030
+So it switches on at zero time. And then if t < 0, obviously there is no voltage supply and so the integral would be zero.
+
+77
+00:09:53,030 --> 00:09:59,430
+So we can change the limits of the integral from minus infinity to zero for is.
+
+78
+00:09:59,430 --> 00:10:04,790
+Of course, that's going to be zero. And we have is/C times the integral of one.
+
+79
+00:10:04,790 --> 00:10:10,490
+And of course, the integral of 1 is going to be t
+
+80
+00:10:10,490 --> 00:10:20,630
+So the voltage across the capacitor can be represented then by an expression is/C times t times u0(t)
+
+81
+00:10:20,630 --> 00:10:28,060
+And in this case, the u0(t) is actually acting as a "gating function" as I call it.
+
+82
+00:10:28,060 --> 00:10:40,360
+So let's plot it. This is the expression that we've just done, so it's going to look like this.
+
+83
+00:10:40,360 --> 00:10:45,780
+See, the signal is flat from zero negative time to zero.
+
+84
+00:10:45,780 --> 00:10:55,440
+And then after the switch is closed. This wraps up at a constant rate effectively until it clips.
+
+85
+00:10:55,440 --> 00:10:59,090
+But theoretically, at least, it will continue forever like that.
+
+86
+00:10:59,090 --> 00:11:06,220
+And we call this function a ramp function. Or u1(t).
+
+87
+00:11:06,220 --> 00:11:13,810
+So we define it as a show here u1(t) the integral of u0(tau) dtau
+
+88
+00:11:13,810 --> 00:11:20,890
+So it's equal to 0 for t less than 0 and t for t greater than or equal to 0.
+
+89
+00:11:20,890 --> 00:11:31,450
+And of course, because this is an integral u0(t) is the derivative of u1(t).
+
+90
+00:11:31,450 --> 00:11:38,430
+And the final function we're going to look at is is a function called a Dirac delta function.
+
+91
+00:11:38,430 --> 00:11:45,840
+This is modelled by this circuit. Again, you've got a constant current source resistor and the switch.
+
+92
+00:11:45,840 --> 00:11:51,150
+This time we're going to drive the current through an inductor. With inductance L.
+
+93
+00:11:51,150 --> 00:12:01,470
+So the voltage across the inductor is the output of this circuit. And when the switch is closed, what's gonna happen?
+
+94
+00:12:01,470 --> 00:12:07,200
+Well, this is going to be defined by a derivative.
+
+95
+00:12:07,200 --> 00:12:15,000
+So the voltage is equal to or proportional to the inductance times, the derivative of the current.
+
+96
+00:12:15,000 --> 00:12:22,140
+So L di/dt. Because the switch closes instantaneously
+
+97
+00:12:22,140 --> 00:12:32,070
+at t = 0 then the current iL = is x u0(t). Or is times the step function.
+
+98
+00:12:32,070 --> 00:12:38,210
+Thus, vL. = is times L times the derivative of the step function.
+
+99
+00:12:38,210 --> 00:12:47,310
+Now the derivative of the step function is an issue because it's discontinuous at t = 0.
+
+100
+00:12:47,310 --> 00:13:00,090
+However, we know it must have these properties integral of this function which we'll call delta(tau) must equal u0(t).
+
+101
+00:13:00,090 --> 00:13:06,540
+And we also need delta(t) to be zero for all [values of] t that aren't t = 0.
+
+102
+00:13:06,540 --> 00:13:17,610
+So what does this function look like? Function as an integral, finite integral equal to the unit step but is undefined elsewhere.
+
+103
+00:13:17,610 --> 00:13:23,490
+Well it looks something like this. So it's just a little sudden step.
+
+104
+00:13:23,490 --> 00:13:34,840
+In fact, this is an infinitely high, big step. But it does have a unit integral (area = 1).
+
+105
+00:13:34,840 --> 00:13:39,940
+So in Matlab, the way we can prove that we can define
+
+106
+00:13:39,940 --> 00:13:46,900
+is and L to be symbols. And then we can compute vL(t) of is = L * diff(u0(t)).
+
+107
+00:13:46,900 --> 00:13:54,640
+And again, we're using a symbolic toolbox here to do algebraic differentiation.
+
+108
+00:13:54,640 --> 00:13:59,440
+So let's run that. And you can see the result is L times is.
+
+109
+00:13:59,440 --> 00:14:11,390
+times this function which matlab called the dirac(t), because the function delta(t) is named after scientist called Dirac.
+
+110
+00:14:11,390 --> 00:14:19,370
+Paul Dirac. So here are some properties of dirac function, which makes it very useful for signal & systems.
+
+111
+00:14:19,370 --> 00:14:27,050
+The first one is the property of sampling. So if we have some function of time, some continuous function of time,
+
+112
+00:14:27,050 --> 00:14:40,680
+when we multiply that function of time by delta delayed by a seconds, then that's equal to the function
+
+113
+00:14:40,680 --> 00:14:44,750
+evaluated at a times
+
+114
+00:14:44,750 --> 00:14:54,250
+delta(t-a). So the continuous function is replaced by a sample of the continuous function at one particular value.
+
+115
+00:14:54,250 --> 00:15:02,210
+t = a. And when t = 0 then f(t)delta(t) = f(0)delta(t).
+
+116
+00:15:02,210 --> 00:15:07,580
+Since t is, a = 0. So f(0) is the result of that.
+
+117
+00:15:07,580 --> 00:15:10,610
+We call that sampling.
+
+118
+00:15:10,610 --> 00:15:21,320
+There's another property that is quite useful, it's called a sifting property, and it comes about because the integral of the delta(t) function is 1
+
+119
+00:15:21,320 --> 00:15:32,790
+So if we take the integral of some function, multiplied by delta(t - alpha), then obviously what we've got then is f(alpha).
+
+120
+00:15:32,790 --> 00:15:37,450
+Inside the integral. And so that's just a constant.
+
+121
+00:15:37,450 --> 00:15:43,350
+And therefore, the. The value of this is f(alpha)
+
+122
+00:15:43,350 --> 00:15:55,840
+So the integral of the delta function is one. And so what we get back is a constant, which is f(alpha) x 1, which is f(alpha).
+
+123
+00:15:55,840 --> 00:16:02,530
+You can take derivatives of delta functions for various other operations in general.
+
+124
+00:16:02,530 --> 00:16:10,690
+The nth derivative of delta is equal to the nth derivative u0(t).
+
+125
+00:16:10,690 --> 00:16:14,590
+And we call the function first derivative of delta.
+
+126
+00:16:14,590 --> 00:16:19,870
+delta'(t). And the second one, delta''(t).
+
+127
+00:16:19,870 --> 00:16:28,920
+And we've got a triplet. We've got doublets and Tippett's. And so. In order to determine the derivative of these,
+
+128
+00:16:28,920 --> 00:16:37,320
+we use the sampling property and you can show that f delta'(a) is equal
+
+129
+00:16:37,320 --> 00:16:45,960
+to f(a) delta'(t-a) minus the derivative of f(t) [f'(t)] times delta(t - a)
+
+130
+00:16:45,960 --> 00:16:53,540
+So a function defined in terms of the root delta minus the derivative of the function.
+
+131
+00:16:53,540 --> 00:17:01,740
+evaluated at t = a
+
+132
+00:17:01,740 --> 00:17:16,380
+Also, we can extend the sifting property to show that in general, the integral of f(t)  times delta^n(t - alpha) =  (-1)^n d^nf(t)/dt^n
+
+133
+00:17:16,380 --> 00:17:27,380
+Ievaluated at t = alpha.
+
+134
+00:17:27,380 --> 00:17:31,700
+We use the previous results sometimes.
+
+135
+00:17:31,700 --> 00:17:35,210
+This one not so much in this course.
+
+136
+00:17:35,210 --> 00:17:42,540
+So in summary, in this chapter, we've looked at some elementary signals in the theoretical circuits that can be used to generate them.
+
+137
+00:17:42,540 --> 00:17:48,410
+And we're gonna do some evaluation of these in Matlab in the lab to come on [Tuesday],
+
+138
+00:17:48,410 --> 00:17:54,770
+but to take away from this module things you should remember.
+
+139
+00:17:54,770 --> 00:18:00,080
+So note the unit step defined as the Heaviside function u0(t)
+
+140
+00:18:00,080 --> 00:18:06,090
+You can synthesise lots of useful signals by using the units step as a gating function
+
+141
+00:18:06,090 --> 00:18:15,630
+The unit ramp function u1(t) is the integral is the step function, and the Dirac Delta function delta(t)is the derivative of the unit step function
+
+142
+00:18:15,630 --> 00:18:19,940
+We sometimes call it the unit impulse function.
+
+143
+00:18:19,940 --> 00:18:28,450
+The Delta function has sampling and sifting properties that will be useful in the development of time convolution and sampling theory.
+
+144
+00:18:28,450 --> 00:18:40,070
+So later in the class to come on [second hour on Monday] we will.
+
+145
+00:18:40,070 --> 00:18:45,940
+We will work through some examples of these signals.
+
+146
+00:18:45,940 --> 00:18:52,430
+And so you get a better feeling for them. And also look at them again in the club laboratory.
+
+147
+00:18:52,430 --> 00:18:59,070
+So thanks for watching. I hope you've managed to take some notes from this.
+
+148
+00:18:59,070 --> 00:19:06,667
+Useful to take into the class and we'll see you on [Monday] for the second lecture in week one.
+
