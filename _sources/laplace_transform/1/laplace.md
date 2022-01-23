@@ -16,7 +16,7 @@ kernelspec:
 
 # The Laplace Transformation
 
-The preparatory reading for this section is [Chapter 2](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=75#ppg=43) of  {cite}`karris` which
+The preparatory reading for this section is [Chapter 2](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=43) of  {cite}`karris` which
 
 * defines the Laplace transformation 
 * gives the most useful properties of the Laplace transform with proofs 
