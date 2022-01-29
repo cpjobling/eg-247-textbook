@@ -186,11 +186,9 @@ versus radian frequency $\omega$ rad/s.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Plot
+* Plot on log-linear "paper":
 
-    $$\left|G(j\omega)\right|$$
-
-  on log-linear "paper".
+$$\left|G(j\omega)\right|$$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
