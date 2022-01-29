@@ -1,0 +1,296 @@
+1
+00:00:00,600 --> 00:00:09,120
+Hi, this is Chris Jobling, and welcome to this introductory lecture to our activities in week three of the course,
+
+2
+00:00:09,120 --> 00:00:15,330
+EG-247 Signals and Systems. Today, I'm going to talk a little bit about using Laplace transforms for circuit analysis,
+
+3
+00:00:15,330 --> 00:00:23,550
+and I believe this may be a reinforcement of some work that you've been doing with Augustine Egwebe in the Control Systems module.
+
+4
+00:00:23,550 --> 00:00:27,810
+So it may be a little bit of revision and we'll probably concentrate in the lecture.
+
+5
+00:00:27,810 --> 00:00:33,330
+on doing a few examples of the sort of things that we want to talk about today.
+
+6
+00:00:33,330 --> 00:00:40,020
+So basically, what I want to cover in this first hour of today's session is, um,
+
+7
+00:00:40,020 --> 00:00:44,760
+using Laplace transforms for circuit transformation from time to frequency,
+
+8
+00:00:44,760 --> 00:00:50,760
+domain, complex frequency domain, complex impedance and complex admittance.
+
+9
+00:00:50,760 --> 00:00:55,860
+At the end of this, we should be in a good position to be able to model electrical circuits.
+
+10
+00:00:55,860 --> 00:01:05,670
+At least simple electrical circuits involving inductors, capacitors and resistors using Laplace transforms.
+
+11
+00:01:05,670 --> 00:01:10,590
+So the first thing we talk about is how we can actually do the transform.
+
+12
+00:01:10,590 --> 00:01:20,940
+And this is relatively straightforward. This picture here shows the resistive network in the time domain.
+
+13
+00:01:20,940 --> 00:01:32,220
+So here we have a resistor connected to a voltage source, and the current flowing through the resistor is given by this equation i_R(t).
+
+14
+00:01:32,220 --> 00:01:43,200
+So from Ohm's law, we know that vR(t) = R times i_R(t) and therefore i_R(t) is vR(t)/R. Very, very straightforward.
+
+15
+00:01:43,200 --> 00:01:47,820
+You'll notice, also notice that there are no dynamic terms in this equation.
+
+16
+00:01:47,820 --> 00:01:56,880
+No integrals, no derivatives. Therefore, in the complex time domain, um, the only thing that gets transformed are the voltages [and the currents].
+
+17
+00:01:56,880 --> 00:02:03,810
+So the voltage supplied becomes the transform of the voltage, a function of time.
+
+18
+00:02:03,810 --> 00:02:13,530
+The current becomes a transform of the current. And VR(s) is sti_Ll R times i_R(s),  i_R(s) is sti_Ll VR(s)/R.
+
+19
+00:02:13,530 --> 00:02:17,730
+So resistors do not change, do not change equations.
+
+20
+00:02:17,730 --> 00:02:22,550
+The only thing that changes is we transform the voltages and the currents.
+
+21
+00:02:22,550 --> 00:02:29,110
+If you look at an inductive circuit in the same kind of configuration, again, we were applying a voltage source,
+
+22
+00:02:29,110 --> 00:02:35,490
+we've got a current flowing through the inductance, with the induction value is L Henrys
+
+23
+00:02:35,490 --> 00:02:44,820
+in the time domain vL(t) = L times the derivative of the current L di_R(t)/dt.
+
+24
+00:02:44,820 --> 00:02:52,020
+So if we look at the reverse relationship, if we were interested in the current flowing through
+
+25
+00:02:52,020 --> 00:03:05,360
+the inductance, i_L(t) is equal to 1/L  times the integral of zero to T of vL(t) by dt.
+
+26
+00:03:05,360 --> 00:03:21,560
+And again, if we take transforms of that. Then Vl(s) = sL i_L(s) minus L times i_L(t) at zero, or just before zero time.
+
+27
+00:03:21,560 --> 00:03:28,500
+This is the initial condition of the current and that's a requirement of the derivative.
+
+28
+00:03:28,500 --> 00:03:36,000
+Remember the transform of the derivative is s L i_L(s) minus the initial condition.
+
+29
+00:03:36,000 --> 00:03:42,610
+So. You can see s appears in this equation, telling you that it's a derivative.
+
+30
+00:03:42,610 --> 00:03:51,650
+And if we were to look, consider the current rearranging this equation in terms of current, we'd get VL(s)/(Ls)
+
+31
+00:03:51,650 --> 00:04:04,770
+plus the initial condition of L i_L(0-), which is, as I said at the time just before zero time over s.
+
+32
+00:04:04,770 --> 00:04:14,910
+And in model terms, and we can replace the equation for the inductor by sL rather than just L,
+
+33
+00:04:14,910 --> 00:04:22,140
+we have transformed variables VL(s) and i_L(s) flowing in this system and we have a voltage source
+
+34
+00:04:22,140 --> 00:04:33,270
+which exists, just initially, providing the initial current in the circuit.
+
+35
+00:04:33,270 --> 00:04:38,730
+In the time domain, um, if you look at the capacitive network, same sort of arrangements,
+
+36
+00:04:38,730 --> 00:04:42,780
+capacitor here, current flowing through the capacitor, voltage across the capacitor,
+
+37
+00:04:42,780 --> 00:04:48,790
+we know that the current is equal to C times the derivative of the voltage across the capacitor.
+
+38
+00:04:48,790 --> 00:04:53,970
+So i_C(t) = C d v_C(t)/dt.
+
+39
+00:04:53,970 --> 00:05:09,270
+And again, if we want to calculate the voltage across the capacitor, it's 1/C times the integral from minus infinity to t of i_C(t) dt.
+
+40
+00:05:09,270 --> 00:05:20,140
+And so again, we take Laplace transforms of those equations i_C(s) = sCV_C(s) - C v_C(0-),
+
+41
+00:05:20,140 --> 00:05:26,050
+which is the initial condition, initial voltage, again because of the derivative rule.
+
+42
+00:05:26,050 --> 00:05:38,050
+And if we rearrange this equation to have v_C(s) as the output, then it's i_C(s)/sC C + v_C(0-)/s.
+
+43
+00:05:38,050 --> 00:05:46,420
+And again, we can model this as as shown here. The transform equation for the capacitor is 1/sC.
+
+44
+00:05:46,420 --> 00:05:52,690
+We have initial condition v_C(0-)/s appearing as an additional voltage source.
+
+45
+00:05:52,690 --> 00:06:07,230
+And of course, the current flowing is going to be sCV_C(s) - Cv_C(0-).
+
+46
+00:06:07,230 --> 00:06:11,350
+So in the class, there will be some examples that we work through.
+
+47
+00:06:11,350 --> 00:06:19,860
+I won't bother showing you those now. The other topic I just wanted to introduce you to is the idea of complex impedance.
+
+48
+00:06:19,860 --> 00:06:32,340
+Once we have, um, our um, resistive values, inductive values and so on represented as transforms rather than derivatives and integrals.
+
+49
+00:06:32,340 --> 00:06:41,910
+Then we can start to think of complex impedance or the equivalent resistance, if you like, of a component defined in the s-domain.
+
+50
+00:06:41,910 --> 00:06:51,240
+So here we've got a simple RLC circuit consisting of resistor, an inductor and a capacitor. The transformed variables of those component values.
+
+51
+00:06:51,240 --> 00:06:59,100
+Impedance is for those are R, sL and 1/sC, and we're ignoring initial conditions in this particular equation.
+
+52
+00:06:59,100 --> 00:07:09,060
+And this the the transform of the source voltage is V_s(s) and the output voltage in this particular case is voltage across the capacitor,
+
+53
+00:07:09,060 --> 00:07:13,460
+which is equal to v_out(s).
+
+54
+00:07:13,460 --> 00:07:20,570
+So the current flowing through the circuit, we've got the voltage going out, we can calculate the impedance of the circuit.
+
+55
+00:07:20,570 --> 00:07:28,790
+So the sum R + sL + 1/sC is the total opposition to the current flow in the circuit.
+
+56
+00:07:28,790 --> 00:07:38,360
+Therefore, the current in the circuit is equal to the supplied voltage divided by this impedance R + sL + 1/sC.
+
+57
+00:07:38,360 --> 00:07:45,580
+And as we know from Ohm's law, the impedance is defined as the ratio of V to I.
+
+58
+00:07:45,580 --> 00:07:51,230
+Therefore, the impedance in the circuit is simply this.
+
+59
+00:07:51,230 --> 00:08:00,340
+This value here, which we derived already R + sL + 1/sC.
+
+60
+00:08:00,340 --> 00:08:08,980
+Now we can find the current in a circuit by dividing the voltage by this impedance.
+
+61
+00:08:08,980 --> 00:08:14,850
+So the impedance is this and we can calculate the currents.
+
+62
+00:08:14,850 --> 00:08:24,880
+And since this is the total resistive force to the current, then this is the circuit input impedance for this particular circuit.
+
+63
+00:08:24,880 --> 00:08:30,490
+Again, we will do some exercises in the, in the class.
+
+64
+00:08:30,490 --> 00:08:38,680
+Another way of looking at impedance is admittance. If we take current as as the input, then we can.
+
+65
+00:08:38,680 --> 00:08:43,390
+It's more often more useful to calculate the impedance, the admittance
+
+66
+00:08:43,390 --> 00:08:53,470
+rather, and certainly for parallel circuit, it's more convenient to to represent the resistance to the 
+
+67
+00:08:53,470 --> 00:09:01,480
+current as as an admittance rather than impedance. So here we've got a parallel connexion of an admittance G,
+
+68
+00:09:01,480 --> 00:09:09,550
+and the equivalent admittance of the inductor is the reciprocal of the impedance, which is one over 1/sL and for the capacitor
+
+69
+00:09:09,550 --> 00:09:23,440
+Again, the reciprocal of 1/sC is sC. And for and admittance we can determine voltage as I/Y and Y is equal to the sum of those
+
+70
+00:09:23,440 --> 00:09:34,440
+admittances so is G + 1/sL + sC. So this Y(s) is called a complex input admittance of this parallel circuit.
+
+71
+00:09:34,440 --> 00:09:47,590
+And again, we'll do an example in the class. So that's been a very quick introduction to the topic to be covered in the first half of week 3's class.
+
+72
+00:09:47,590 --> 00:09:52,810
+Um, as as you can see, it's going to be mostly an example class and hopefully we'll work,
+
+73
+00:09:52,810 --> 00:09:59,530
+We'll get you to work through some some stuff in that class.
+
+74
+00:09:59,530 --> 00:10:02,349
+So I'll see you next week.
+
