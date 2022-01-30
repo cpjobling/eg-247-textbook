@@ -4,8 +4,8 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: 0.12
-    jupytext_version: 1.9.1
+    format_version: 0.13
+    jupytext_version: 1.11.5
 kernelspec:
   display_name: MATLAB
   language: matlab
@@ -30,13 +30,17 @@ You are expected to have at least watched the video presentation of [Chapter 4.1
 
 After class, the lecture recording and the annotated version of the worksheets will be made available through Canvas.
 
++++ {"slideshow": {"slide_type": "notes"}}
+
+## Motivating Examples
+
+This [Fourier Series demo](http://dspfirst.gatech.edu/matlab/#fseriesdemo), developed by Members of the Center for Signal and Image Processing (CSIP) at the [School of Electrical and Computer Engineering](https://www.ece.gatech.edu/) at the [Georgia Institute of Technology](https://www.gatech.edu/), shows how periodic signals can be synthesised by a sum of sinusoidal signals.
+
+It is here used as a motivational example in our introduction to [Fourier Series](https://en.wikipedia.org/wiki/Fourier_series). (See also [Fourier Series](https://mathworld.wolfram.com/FourierSeries.html) from Wolfram MathWorld referenced in the **Quick Reference** on Blackboard.)
+
+To install this example, download the [zip file](http://dspfirst.gatech.edu/matlab/ZipFiles/fseriesdemo-v144.zip) and unpack it somewhere on your MATLAB path.
+
 +++ {"slideshow": {"slide_type": "slide"}}
-
-## Motivating Example
-
-In the class I will demonstrate the Fourier Series demo (see [Notes](trig_fseries)).
-
-+++
 
 ## The Trigonometric Fourier Series
 
@@ -53,7 +57,7 @@ $$f(t) = \frac{1}{2}{a_0} + \sum\limits_{n = 1}^\infty  {({a_n}\cos n\Omega_0 t 
 
 where $\Omega_0$ rad/s is the *fundamental frequency*.
 
-+++
++++ {"slideshow": {"slide_type": "subslide"}}
 
 ### Evaluation of the Fourier series coefficients
 
@@ -64,6 +68,74 @@ $$\frac{1}{2}a_0 = \frac{1}{T_0}\int_{0}^{T_0}f(t)d t = \frac{1}{\pi}\int_{0}^{2
 $$a_n = \frac{1}{T_0}\int_{0}^{T_0}f(t)\cos n\Omega_0 t\,dt = \frac{1}{2\pi}\int_{0}^{2\pi}f(\theta)\cos n\theta\,d\theta$$
 
 $$b_n = \frac{1}{T_0}\int_{0}^{T_0}f(t)\sin n\Omega_0 t\,dt = \frac{1}{2\pi}\int_{0}^{2\pi}f(\theta)\cos n\theta \,d\theta$$
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Demo 1
+
+Building up wave forms from sinusoids.
+
+```{code-cell} matlab
+---
+slideshow:
+  slide_type: fragment
+---
+FourierSeriesDemo
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Demo 2
+
+Actual measurements
+
+Taken by Dr Tim Davies with a Rhode&Schwarz Oscilloscope.
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+Note all spectra shown in these slides are generated numerically from the input signals by sampling and the application of the Fast Fouriemr Transform (FFT).
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+#### 1 kHz Sinewave
+m
+![A 1 kHz sinewave](pictures/1kHz_Sinewave.png "A 1kHz sinewave")
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+#### Spectrum of 1kHz sinewave
+
+Showing one peak at harmonic frequency.
+
+![Spectrum of 1kHz sinewave. Note one line at fundamental frequency.](pictures/fft_of_sinwave.png "Spectrum of 1kHz sinewave. Note one line at fundamental frequency.")
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+#### 1 kHz Squarewave
+
+![A 1 kHz square wave](pictures/1kHz_sqr.png "A 1kHz square wave.")
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+#### Spectrum of 1kHz square wave
+
+Clearly showing peaks at fundamental, 1/3, 1/5, 1/7 and 1/9 at 3rd, 5th and 7th harmonic frequencies. Note for sawtooth, harmonics decline in amplitude as the reciprocal of the of harmonic number $n$.
+
+![Spectrum of 1kHz sinewave. Note only odd harmonics present.](pictures/FFT_sqr.png "Spectrum of 1kHz square wave. Note only odd harmonics present.")
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+#### 1 kHz triangle waveform
+
+![A 1 kHz triangle waveform](pictures/1kHz_saw.png "A 1 kHz triangle waveform")
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+#### Spectrum of 1kHz triangle waveform
+
+Clearly showing peaks at fundamental, 1/9, 1/25, 1/7 and 1/49 at 3rd, 5th and 7th harmonic frequencies. Note for triangle, harmonics decline in amplitude as the reciprocal of the square of $n$.
+
+![Spectrum of 1kHz triangle wavform.](pictures/1kHz_saw_fft.png "Spectrum of 1kHz triangle wavform.")
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
