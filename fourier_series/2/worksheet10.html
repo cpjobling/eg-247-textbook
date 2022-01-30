@@ -661,14 +661,11 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        <a class="dropdown-buttons"
-            href="../../_sources/fourier_series/2/worksheet10.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+        
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/fourier_series/2/worksheet10.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/fourier_series/2/worksheet10.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -689,7 +686,7 @@
             href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Ffourier_series/2/worksheet10.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/cpjobling/eg-247-textbook/edit/master/fourier_series/2/worksheet10.md"><button
+        <a class="edit-button" href="https://github.com/cpjobling/eg-247-textbook/edit/master/fourier_series/2/worksheet10.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -955,27 +952,27 @@
 <p>When <span class="math notranslate nohighlight">\(a\)</span> is real the function <span class="math notranslate nohighlight">\(e^{at}\)</span> will take one of the two forms illustrated below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">clear</span> <span class="nb">all</span>
-<span class="n">cd</span> <span class="o">../</span><span class="n">matlab</span>
-<span class="n">imatlab_export_fig</span><span class="p">(</span><span class="s1">&#39;print-svg&#39;</span><span class="p">)</span>  <span class="o">%</span> <span class="n">Static</span> <span class="n">svg</span> <span class="n">figures</span><span class="o">.</span>
-<span class="nb">format</span> <span class="n">compact</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">clear</span><span class="w"> </span><span class="nb">all</span><span class="w"></span>
+<span class="nb">cd</span><span class="w"> </span><span class="p">.</span><span class="o">./</span><span class="n">matlab</span><span class="w"></span>
+<span class="n">imatlab_export_fig</span><span class="p">(</span><span class="s">&#39;print-svg&#39;</span><span class="p">)</span><span class="w">  </span><span class="c">% Static svg figures.</span><span class="w"></span>
+<span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span> <span class="n">The</span> <span class="n">decaying</span> <span class="n">exponential</span>
-<span class="n">t</span><span class="o">=</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>
-<span class="n">figure</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">exp</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.</span><span class="o">*</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">))</span>
-<span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
-<span class="n">title</span><span class="p">(</span><span class="s1">&#39;exp(at) -- a real&#39;</span><span class="p">)</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t (s)&#39;</span><span class="p">)</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;exp(t) and exp(-t)&#39;</span><span class="p">)</span>
-<span class="n">legend</span><span class="p">(</span><span class="s1">&#39;exp(t)&#39;</span><span class="p">,</span><span class="s1">&#39;exp(0)&#39;</span><span class="p">,</span><span class="s1">&#39;exp(-t)&#39;</span><span class="p">)</span>
-<span class="n">grid</span>
-<span class="n">hold</span> <span class="n">off</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% The decaying exponential</span><span class="w"></span>
+<span class="n">t</span><span class="p">=</span><span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span><span class="w"></span>
+<span class="n">figure</span><span class="w"></span>
+<span class="s">plot(t,exp(t),t,exp(0.*t),t,exp(-t))</span><span class="w"></span>
+<span class="nb">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;exp(at) -- a real&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;t (s)&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;exp(t) and exp(-t)&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;exp(t)&#39;</span><span class="p">,</span><span class="s">&#39;exp(0)&#39;</span><span class="p">,</span><span class="s">&#39;exp(-t)&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"></span>
+<span class="nb">hold</span><span class="w"> </span><span class="n">off</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -1147,7 +1144,7 @@
 <p>Solution: See <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_series/matlab/efs_sqw.m">efs_sqw.m</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span> <span class="n">efs_sqw</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="w"> </span><span class="n">efs_sqw</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -1159,11 +1156,11 @@
 <p>Set up parameters</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span> <span class="n">t</span> <span class="n">A</span><span class="p">;</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">A</span><span class="p">;</span><span class="w"></span>
 
-<span class="n">tau</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="n">T0</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">;</span> <span class="o">%</span> <span class="n">w</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">f</span> <span class="o">-&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="n">omega</span>
-<span class="n">k_vec</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span><span class="mi">5</span><span class="p">];</span>
+<span class="n">tau</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="n">T0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">;</span><span class="w"> </span><span class="c">% w = 2*pi*f -&gt; t = 2*pi/omega</span><span class="w"></span>
+<span class="n">k_vec</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span><span class="mi">5</span><span class="p">];</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -1172,7 +1169,7 @@
 <p><strong>IMPORTANT</strong>: the signal definition must cover [0 to T0]</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xt</span> <span class="o">=</span> <span class="n">A</span><span class="o">*</span><span class="p">(</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">T0</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span> <span class="o">-</span> <span class="n">A</span><span class="o">*</span><span class="p">(</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">T0</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">-</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">T0</span><span class="p">));</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">xt</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="o">*</span><span class="p">(</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">T0</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">A</span><span class="o">*</span><span class="p">(</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">T0</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">-</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">T0</span><span class="p">));</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -1180,7 +1177,7 @@
 <p>Compute EFS</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">X</span><span class="p">,</span> <span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="n">FourierSeries</span><span class="p">(</span><span class="n">xt</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">k_vec</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">FourierSeries</span><span class="p">(</span><span class="n">xt</span><span class="p">,</span><span class="w"> </span><span class="n">T0</span><span class="p">,</span><span class="w"> </span><span class="n">k_vec</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -1189,7 +1186,7 @@
 <p>Convert symbolic to numeric result</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Xw</span> <span class="o">=</span> <span class="n">subs</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Xw</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">subs</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -1197,15 +1194,15 @@
 <p>Plot</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
-<span class="n">stem</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="nb">abs</span><span class="p">(</span><span class="n">Xw</span><span class="p">),</span> <span class="s1">&#39;o-&#39;</span><span class="p">);</span>
-<span class="n">title</span><span class="p">(</span><span class="s1">&#39;Exponential Fourier Series for Square Waveform with Odd Symmetry&#39;</span><span class="p">)</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Hamonic frequencies: k\Omega_0 (rad/sec)&#39;</span><span class="p">);</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;|c_k|&#39;</span><span class="p">);</span>
-<span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
-<span class="n">stem</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">angle</span><span class="p">(</span><span class="n">Xw</span><span class="p">),</span> <span class="s1">&#39;o-&#39;</span><span class="p">);</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Hamonic frequencies: k\Omega_0 (rad/sec)&#39;</span><span class="p">);</span> 
-<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\a</span><span class="s1">ngle c_k [radians]&#39;</span><span class="p">);</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span><span class="w"></span>
+<span class="nb">stem</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="nb">abs</span><span class="p">(</span><span class="n">Xw</span><span class="p">),</span><span class="w"> </span><span class="s">&#39;o-&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Exponential Fourier Series for Square Waveform with Odd Symmetry&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Hamonic frequencies: k\Omega_0 (rad/sec)&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;|c_k|&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span><span class="w"></span>
+<span class="nb">stem</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="nb">angle</span><span class="p">(</span><span class="n">Xw</span><span class="p">),</span><span class="w"> </span><span class="s">&#39;o-&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Hamonic frequencies: k\Omega_0 (rad/sec)&#39;</span><span class="p">);</span><span class="w"> </span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;\angle c_k [radians]&#39;</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
