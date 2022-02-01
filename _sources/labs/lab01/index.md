@@ -86,7 +86,7 @@ Use folder `OneDrive\workspace\signals-and-systems-lab\lab01` for this lab.
 
 ### Download starter script
 
-Right click to save the file [elem_sigs.mlx](https://github.com/cpjobling/eg-247-textbook/blob/master/labs/lab01/elem_sigs.mlx) to your ``lab01`` folder. Open the file from the file browser in MATLAB.
+Right click to save the file [elem_sigs.m](https://github.com/cpjobling/eg-247-textbook/blob/master/labs/lab01/elem_sigs.m) to your ``lab01`` folder. Open the file as a Live Script file in the file browser in MATLAB.
 
 +++
 

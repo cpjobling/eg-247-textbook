@@ -250,7 +250,7 @@ $$\frac{\omega}{(s+a)^2+\omega^2}$$
 
 Is there anything in this quiz that you think we should go over in more detail in class?
 
-Write your answers in the chat or add to the **💬❓Questions and Discussion on the Laplace Transformation and its Applications** board in Canvas after class.
+Add to the **💬❓Questions and Discussion on the Laplace Transformation and its Applications** board in Canvas after class.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -271,6 +271,8 @@ We will work through a few of the following on the board in class
 Compute the Laplace transform of the pulse shown in the figure.
 
 ![pulse](images/pulse.png)
+
+For full solution see [Example 2.4.1](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=63) in Karris.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -307,28 +309,7 @@ Compute the Laplace transform of the line segment shown below.
 
 ![line](images/line.png)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
+For full solution see [Example 2.4.2](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=64) in Karris.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -365,6 +346,8 @@ Compute the Laplace transform of the triangular pulse shown below
 
 ![triangle](images/triangle.png)
 
+For full solution see [Examples in 2.4.3](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=65) in Karris.
+
 +++ {"slideshow": {"slide_type": "notes"}}
 
 <pre style="border: 2px solid blue">
@@ -400,6 +383,8 @@ Compute the Laplace transform of the periodic function shown below.
 
 ![square wave](images/sqare.png)
 
+For full solution see [Example 2.4.4](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=66) in Karris.
+
 +++ {"slideshow": {"slide_type": "notes"}}
 
 <pre style="border: 2px solid blue">
@@ -434,6 +419,8 @@ Compute the Laplace transform of the periodic function shown below.
 Compute the Laplace Transform of the half-rectified sine wave shown below.
 
 ![half-rectified sinewave](images/rectsine.png)
+
+For full solution see [Example 2.4.5](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=67) in Karris.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
