@@ -371,6 +371,10 @@ Note that the transform
 
 $$te^{at} \Leftrightarrow \frac{1}{(s - a)^2}$$
 
+and the derivative of a quotient rule
+
+$$\frac{d}{ds}\left(\frac{N(s)}{D(s)}\right) = \frac{D(s)\frac{dN(s)}{ds} - N(s)\frac{dD(s)}{ds}}{D(s)^2}$$
+
 will be useful.
 
 Quick solution: [Wolfram Alpha](https://www.wolframalpha.com/input/?i=inverse+laplace+transform+%28s%2B3%29%2F%28%28s%2B2%29%28s+%2B+1%29%5E2%29)
