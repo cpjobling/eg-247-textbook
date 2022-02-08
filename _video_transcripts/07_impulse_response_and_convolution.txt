@@ -1,0 +1,512 @@
+1
+00:00:00,750 --> 00:00:02,550
+Hi, this is Chris Jobling again.
+
+2
+00:00:02,550 --> 00:00:14,220
+This is the pre-video for the session which will take place in week four, in which we're going to talk about the impulse response and convolution.
+
+3
+00:00:14,220 --> 00:00:20,220
+So this is the background reading to the course, basically we are going to start off by
+
+4
+00:00:20,220 --> 00:00:27,450
+looking at impulse response of systems and from that develop an idea of time convolution.
+
+5
+00:00:27,450 --> 00:00:36,900
+And then we'll look at how that can be used to determine the linear time invariant system response to any signal.
+
+6
+00:00:36,900 --> 00:00:43,890
+This is going to involve integration by parts. Tricky operation mathematically.
+
+7
+00:00:43,890 --> 00:00:48,510
+But if we use a Laplace transform, it's simply multiplication.
+
+8
+00:00:48,510 --> 00:00:53,520
+So that turns out to be much easier to apply and we'll use
+
+9
+00:00:53,520 --> 00:01:05,230
+We'll show how that works in this in this session. The agenda is to be like this. In the first hour,
+
+10
+00:01:05,230 --> 00:01:13,060
+we'll talk about even and odd functions of time and time convolution. Quickly go through these slides again at the beginning of that session,
+
+11
+00:01:13,060 --> 00:01:23,500
+probably, and then we'll do some examples. And in the second hour, we'll concentrate on on graphical evaluation of convolution integrals.
+
+12
+00:01:23,500 --> 00:01:29,590
+We'll do some examples and we'll look at the system response by Laplace.
+
+13
+00:01:29,590 --> 00:01:38,290
+So we start off by talking about even and odd functions of time. You should have covered this in last year's Signals and Systems course.
+
+14
+00:01:38,290 --> 00:01:47,890
+So I'm just really going to remind you what we mean by even and odd functions because we need to, in order to develop the idea of convolution,
+
+15
+00:01:47,890 --> 00:01:56,800
+we need to know what the what kind of function the delta function is - the Dirac delta function [i.e. Even or Odd].
+
+16
+00:01:56,800 --> 00:02:09,220
+So by definition, an even function of time is one which is symmetrical around the the y axis or zero time axis.
+
+17
+00:02:09,220 --> 00:02:17,440
+So, for example, some function f(t) is even if f(-t) is the same as f(t).
+
+18
+00:02:17,440 --> 00:02:27,070
+So we don't change the function by reflecting the function around the the y axis.
+
+19
+00:02:27,070 --> 00:02:33,010
+Any polynomial [in t] that has even coefficients is going to be an even function.
+
+20
+00:02:33,010 --> 00:02:42,010
+So, for example, cos(t) can be expanded out to 1 - t^2/2! + t^4/4! + t^6/6! + ... 
+
+21
+00:02:42,010 --> 00:02:46,570
+and all the powers of t are even and therefore
+
+22
+00:02:46,570 --> 00:02:50,980
+cos(t) is even and you can easily determine that for yourself by plotting cos(t).
+
+23
+00:02:50,980 --> 00:02:56,290
+of course. Here are some more pictures of even functions.
+
+24
+00:02:56,290 --> 00:03:03,340
+f(t) = t^2 is even; f(t) = t^2 + some constant k is even; 
+
+25
+00:03:03,340 --> 00:03:10,010
+And this weird function here is even, even though it maybe doesn't have a definition that I can write down.
+
+26
+00:03:10,010 --> 00:03:11,180
+Odd functions of time 
+
+27
+00:03:11,180 --> 00:03:22,040
+By the same process are essentially mirrors of each other only if you mirror both about the y axis and the time axis.
+
+28
+00:03:22,040 --> 00:03:29,030
+So for, an odd function of time, the definition is -f(-t) = f(t)
+
+29
+00:03:29,030 --> 00:03:36,410
+So if you think about that function, what you're doing is you're reflecting about the y axis (f(-t))
+
+30
+00:03:36,410 --> 00:03:42,770
+and you're also reflecting about the time axis by multiplying by minus, a negative sign (-f(-t))
+
+31
+00:03:42,770 --> 00:03:46,430
+So you have to go through two mirrors, one around the y axis,
+
+32
+00:03:46,430 --> 00:03:53,180
+one on the x axis to get back to the original function with an odd function of time.
+
+33
+00:03:53,180 --> 00:03:58,760
+So polynomials with odd coefficients and no constants are odd functions, for example,
+
+34
+00:03:58,760 --> 00:04:06,050
+sin(t) can be expanded as t - t^3/3! and so on, and that each.
+
+35
+00:04:06,050 --> 00:04:15,650
+those are all odd powers of t and therefore sin(t) is an odd function and you can easily verify this by plotting the sine function.
+
+36
+00:04:15,650 --> 00:04:18,410
+And here are some more examples.
+
+37
+00:04:18,410 --> 00:04:29,990
+f(t) - the straight line mt is an odd function, as is t^3, because the the negative values are a mirror image of the the positive values.
+
+38
+00:04:29,990 --> 00:04:37,190
+And of course, this function, essentially the sine function is odd.
+
+39
+00:04:37,190 --> 00:04:49,040
+So there are some observations we can carry forth from this for an odd function, f(0) is going to be 0. If f(t) = 0
+
+40
+00:04:49,040 --> 00:04:55,880
+We can't conclude f(t) is and odd function because f(t) = t^2 is even not odd.
+
+41
+00:04:55,880 --> 00:05:01,070
+as, of course, f(t) = 0 if t = zero.
+
+42
+00:05:01,070 --> 00:05:07,940
+So [f(0) = 0] is a condition, but it's not a sufficient condition.
+
+43
+00:05:07,940 --> 00:05:17,210
+Um, if you take two even functions of two odd functions, you multiply them together, you're going to get an even function.
+
+44
+00:05:17,210 --> 00:05:25,000
+And then if you multiply an odd function by an even function, you're going to get an odd function back.
+
+45
+00:05:25,000 --> 00:05:39,410
+So in the following slides, we're going to have f sub e [f_e]) standing for the even function and f subscript o [f_o] standing for odd functions and therefore.
+
+46
+00:05:39,410 --> 00:05:48,140
+We can derive these integrals. It turns out that if you take the time integral over a range for an even function,
+
+47
+00:05:48,140 --> 00:05:56,570
+it's going to be twice the same integral computed over one of the periods from zero to t.
+
+48
+00:05:56,570 --> 00:06:03,590
+So in other words, you can save a calculation [because] you don't have to compute the integral from -T to
+
+49
+00:06:03,590 --> 00:06:10,760
+zero because essentially it's covered by the zero to T function for an odd function.
+
+50
+00:06:10,760 --> 00:06:14,120
+And because the two sides are mirror images of each other.
+
+51
+00:06:14,120 --> 00:06:23,240
+if we take the same integral across the period from -T to T, the integral is going to be zero.
+
+52
+00:06:23,240 --> 00:06:28,010
+We can take this a little bit further if we have some arbitrary function, f(t),
+
+53
+00:06:28,010 --> 00:06:34,490
+which is neither odd nor even we can always represent it as an even function or an odd function
+
+54
+00:06:34,490 --> 00:06:42,350
+by using these two formulae. An even function f_e(t) = (1/2)(f(t) + f(-t)) the even function,
+
+55
+00:06:42,350 --> 00:06:49,690
+The odd function f_o(t) = (1/2)(f(t) - f(-t)).
+
+56
+00:06:49,690 --> 00:06:54,350
+Putting these then we can always represent any signal.
+
+57
+00:06:54,350 --> 00:07:05,200
+Basically, as the sum of an even and an odd function. So the first example, which we won't cover now,
+
+58
+00:07:05,200 --> 00:07:15,220
+which we'll just quickly review in the lecture is the question "is the Dirac delta function (delta(t)) an even on an odd function of time?"?" This is a special function
+
+59
+00:07:15,220 --> 00:07:26,500
+It has infinite height, zero width, defined only at time equals zero. Is it odd or even? There is some analysis in the notes,
+
+60
+00:07:26,500 --> 00:07:30,460
+which we'll quickly run though in the lecture, which will answer that question.
+
+61
+00:07:30,460 --> 00:07:40,060
+But I can tell you, because I need to tell you for the next few slides, that in fact Delta turns out to be an even function of time.
+
+62
+00:07:40,060 --> 00:07:44,170
+So let's move on to time convolution. This is the main topic today.
+
+63
+00:07:44,170 --> 00:07:51,370
+This is what we want to really get our handles on and what I want you to think, think about in your head, if you can,
+
+64
+00:07:51,370 --> 00:07:57,730
+is that we have some kind of system defined by some kind of black box shown here in the block diagram.
+
+65
+00:07:57,730 --> 00:08:06,280
+And we have a output from that system, which we call h(t), which is going to be the impulse response of this system.
+
+66
+00:08:06,280 --> 00:08:21,220
+So I imagine the system is subjected to an impulse delta(t) and h(t) then represents the impulse response of that system.
+
+67
+00:08:21,220 --> 00:08:32,450
+So in general, we can we can basically sweep that delta function across all time values by introducing an extra term -tau here.
+
+68
+00:08:32,450 --> 00:08:43,120
+And so for any value [impulse] delta(t - tau) we're going to get a response, which is h(t - tau).
+
+69
+00:08:43,120 --> 00:08:55,770
+OK, so because of the sampling properties of the impulse, the output response will be defined by h(t - tau).
+
+70
+00:08:55,770 --> 00:09:07,000
+(Or tav, I thing tau is pronounced tav!) So let's add an arbitrary input to this, let's take some signal u(t).
+
+71
+00:09:07,000 --> 00:09:17,530
+And let's just assume that at some value of tau, this value of u(t) is equal to your u(tau).
+
+72
+00:09:17,530 --> 00:09:25,090
+And because of the sampling property of the delta function, if we apply this function to the Delta.
+
+73
+00:09:25,090 --> 00:09:30,040
+Of course, then the output is going to be u(tau).
+
+74
+00:09:30,040 --> 00:09:38,860
+So this this here is going to give us the the sampling of u(tau), which is the value.
+
+75
+00:09:38,860 --> 00:09:53,450
+And so the outputs is going to be u(tau) times the the impulse response for the time delayed delta function.
+
+76
+00:09:53,450 --> 00:10:01,650
+And then if we integrate both sides of that expression for all values of tau from minus infinity to infinity,
+
+77
+00:10:01,650 --> 00:10:09,710
+when we make use of the fact that the delta function is even, that is if we reverse the order of the t in tau values here,
+
+78
+00:10:09,710 --> 00:10:17,420
+we won't change anything and what we can do then is write down expression like this.
+
+79
+00:10:17,420 --> 00:10:24,590
+We can take the integral of the input u(tau) delta(t - tau) d tau.
+
+80
+00:10:24,590 --> 00:10:30,350
+But also we could rewrite that as tau - t and it would give us the same answer.
+
+81
+00:10:30,350 --> 00:10:32,900
+Because this is this is an even function.
+
+82
+00:10:32,900 --> 00:10:43,130
+So we can either either of those two values and they would be equivalent and then we can look at what happens to the integral from both those two cases.
+
+83
+00:10:43,130 --> 00:10:48,410
+So in the first case, we have what we had before on the previous slide.
+
+84
+00:10:48,410 --> 00:10:52,910
+And the second example we reverse the arguments for the u
+
+85
+00:10:52,910 --> 00:11:03,560
+is t - tau and h(tau). And then because of the sifting property, when you integrate a delta function,
+
+86
+00:11:03,560 --> 00:11:13,010
+you just end up with the value of the function at the point at which a delta is defined, and that in both of these cases is going to u(t).
+
+87
+00:11:13,010 --> 00:11:17,090
+So the integral disappears on the left-hand-side of this block diagram,
+
+88
+00:11:17,090 --> 00:11:22,880
+and we're left with the integral on the right-hand-side, which is what we call the convolutional integral.
+
+89
+00:11:22,880 --> 00:11:37,010
+So this represents the response of this system, whose impulse response is given by this value [h(t)] to an arbitrary input u(t).
+
+90
+00:11:37,010 --> 00:11:44,760
+So. That integral, because we're dealing with linear systems is going to be equivalent, these two give
+
+91
+00:11:44,760 --> 00:11:49,020
+us the same answer. Which you use in practice depends really on the problem,
+
+92
+00:11:49,020 --> 00:11:52,410
+which is the easiest to to set up.
+
+93
+00:11:52,410 --> 00:12:00,960
+It will depend on the nature of the two signals that you are multiplying here, the impulse response, or the the input to the system.
+
+94
+00:12:00,960 --> 00:12:07,200
+So if we know the impulse response of a system, we can compute its time response to any input by using either of the integrals.
+
+95
+00:12:07,200 --> 00:12:12,250
+And it turns out that the impulse response of a system is actually quite fundamental.
+
+96
+00:12:12,250 --> 00:12:15,450
+It is basically the dynamics of the system itself,
+
+97
+00:12:15,450 --> 00:12:25,020
+as we'll see in a later demonstration. In order to try to solve these kinds of problems in practice,
+
+98
+00:12:25,020 --> 00:12:30,750
+it's useful to to take on a little bit of graphical knowledge and sort of think about
+
+99
+00:12:30,750 --> 00:12:37,260
+the problem because often we're dealing with piece wise continuous system signals.
+
+100
+00:12:37,260 --> 00:12:43,230
+And so we need perhaps to just split up the integral into parts and we use a graphical method for that.
+
+101
+00:12:43,230 --> 00:12:51,830
+And there's a visualization tool called convolutiondemo, which we will play with in the lab, but I'll show you very quickly now.
+
+102
+00:12:51,830 --> 00:13:02,090
+So if I just execute this command, don't worry about the error messages you see, what we've got here is a sine wave and an exponential term.
+
+103
+00:13:02,090 --> 00:13:12,260
+One input here is exp(-1*t). the other one is sin(2*pi*t), and we're displaying from minus two to five.
+
+104
+00:13:12,260 --> 00:13:19,370
+And what you'll see is as I move this across. we are computing the integral of the convolution integral.
+
+105
+00:13:19,370 --> 00:13:23,420
+So what is what's happening here is that we have reversed one of the signals.
+
+106
+00:13:23,420 --> 00:13:31,610
+So it's mirrored around the y axis and then we move it, we sweep it through the signal.
+
+107
+00:13:31,610 --> 00:13:42,530
+And as we do that we are computing the area of the two signals and building up a
+
+108
+00:13:42,530 --> 00:13:53,380
+waveform down here essentially is the cumulative integral as we go through the whole sweep.
+
+109
+00:13:53,380 --> 00:13:56,200
+But you can also see down here,
+
+110
+00:13:56,200 --> 00:14:05,630
+it may not be very clear up the video, but there is a little dotted line from the edge of this and to go down to show the.
+
+111
+00:14:05,630 --> 00:14:22,050
+point on the output graph. If I go to the peak there, you can see that the integral is growing and then it starts to decrease again.
+
+112
+00:14:22,050 --> 00:14:32,150
+But we will illustrate that in a bit more detail and do some more examples.
+
+113
+00:14:32,150 --> 00:14:38,960
+So, so the graphical method, which will go through in your class will review this slide again in the class,
+
+114
+00:14:38,960 --> 00:14:50,000
+so I won't dwell on it now. And we'll do some examples.
+
+115
+00:14:50,000 --> 00:14:59,290
+Including setting up the system using that demo system I just showed you. We'll also do some of the integrals as well.
+
+116
+00:14:59,290 --> 00:15:07,330
+So final the bit of this this session will look at system response by Laplace and we
+
+117
+00:15:07,330 --> 00:15:14,320
+will recall hopefully from the one of the properties of the Laplace transform.
+
+118
+00:15:14,320 --> 00:15:24,440
+If you take the first transform of the convolution, which is written like this, this represents that integral that I showed you on the previous slides.
+
+119
+00:15:24,440 --> 00:15:30,800
+Then the equivalent Laplace transform is simply the product of the two transforms of the individual signals.
+
+120
+00:15:30,800 --> 00:15:40,900
+So F(s) G(s) gives us the Laplace transform of the convolution f(t) convolved with g(t).
+
+121
+00:15:40,900 --> 00:15:47,140
+This, this can rather simplify the computation and the maths and again I will give an example
+
+122
+00:15:47,140 --> 00:15:58,340
+using that example from the textbook. We also for homework, ask you to do the same thing using
+
+123
+00:15:58,340 --> 00:16:00,380
+The convolution integral,
+
+124
+00:16:00,380 --> 00:16:09,980
+So there will then be a lab where we will explore convolution integral in more detail and you should then have good understanding of convolution,
+
+125
+00:16:09,980 --> 00:16:16,010
+which will be very useful going forward to digital systems later.
+
+126
+00:16:16,010 --> 00:16:25,160
+So that was the pre-lecture, and we will review some of these slides again in the actual session as necessary.
+
+127
+00:16:25,160 --> 00:16:33,410
+But you are now ready, I think, to to explore the idea of convolution and I'll see you on Monday.
+
+128
+00:16:33,410 --> 00:16:34,580
+Thanks.
+
