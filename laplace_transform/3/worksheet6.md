@@ -348,7 +348,7 @@ slideshow:
   slide_type: fragment
 tags: [remove-output]
 ---
-r = roots([1, 8, 10, 4])
+p = roots([1, 8, 10, 4])
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -362,7 +362,7 @@ slideshow:
 tags: [remove-output]
 ---
 syms s t
-y = expand((s - r(2))*(s - r(3)))
+y = expand((s - p(2))*(s - p(3)))
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}

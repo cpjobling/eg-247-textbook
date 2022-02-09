@@ -4,10 +4,10 @@ jupyter:
     text_representation:
       extension: .md
       format_name: markdown
-      format_version: '1.2'
-      jupytext_version: 1.9.1
+      format_version: '1.3'
+      jupytext_version: 1.11.5
   kernelspec:
-    display_name: Python 3
+    display_name: Python 3 (ipykernel)
     language: python
     name: python3
 ---
@@ -38,11 +38,11 @@ It also encourages you to make full use of the documentation features afforded b
 
 ## Assessment criteria
 
-Marks can be claimed according to how many of the parts of Mini-project 2 and Lab Exercises 4 to 6 have been completed.
+Marks can be claimed according to how many of the parts of Lab Exercises 4 to 6 and Mini-project 2 and have been completed.
 
 Your peer assessor is encouraged to give feedback on the quality of the Live Script documentation you include in your submissions.
 
-Detailed marking criteria for this and the other labs and the project are given in the linked [Assessment Criteria](https://docs.google.com/spreadsheets/d/1EQzwSfGMdw8oiQds4bUR8sZTCgb2lMvcJHjmea-8hW4/edit?usp=sharing) [Google sheet].
+Detailed marking criteria for this and the other labs and the project are given in the linked [Assessment Criteria](https://docs.google.com/spreadsheets/d/1Vlzk7ZARG-zLb9a0zDBaidKRltUNgHBO7GDkvPHLPSg/edit?usp=sharing) [Google sheet].
 
 
 ## Setup
@@ -73,23 +73,24 @@ Linked m-file: [tf_matlab.m](https://cpjobling.github.io/eg-247-textbook/labs/la
 <!-- #region -->
 ## Lab Exercises
 
+As an experiment in course development for this laboratory you have the option to complete Lab Exercises 4, 5 and 6 uing the instructions below or by guided assessment using MATLAB Grader. 
+
 In all these exercises you should add sections, headings and explanatory text to document your Live Script files so and help your peer assessor understand your solutions.
 
 ### Lab Exercise 4
 
 Download the linked script file [solution3.m](https://cpjobling.github.io/eg-247-textbook/labs/lab03/solution3.m) for the Solution for Example 3 from Week 3. Open it as a Live Script file and run all the code. Study the file which presents part of the solution to Textbook Example 4.3.
 
+
+
+#### Step 1
+
 Save the Live Script file then save it as `ex4.mlx`. 
 
 At the line that which says
 
 ```matlab
-% In the lecture we showed that after simplification for Example 3
-%
-% $$V_{\mathrm{out}}=\frac{2s(s+3)}{s^3 + 8s^2 + 10s + 4}$$
-%
-% We will use MATLAB to factorize the denominator $D(s)$ of the equation
-% into a linear and a quadratic factor.
+% ADD NEW CODE HERE (1)
 ```
 
 We want you to add code that completes the derivation of the transfer function. 
@@ -100,22 +101,44 @@ So, starting from the simplified circuit ([Fig. 4.9](https://ebookcentral.proque
 
 Add explanatory text and MATLAB commands to do the following:
 
-1. Define equation 4.5 in MATLAB:
+Define equation 4.5 in MATLAB:
 
-    ``
+```
     eq45 = (Vout - 1 - 3/s)/(1/s + 2 + s/2) + Vout/1 + Vout/(s/2) == 0
-    ``
+```
 
-    Now use  `Vout = solve(eq45,Vout)` function to confirm Equation 4.6
+Now use  `Vout = solve(eq45,Vout)` function to confirm Equation 4.6
     
-    $$V_{\mathrm out}(s) = \frac{2s(s+3)}{s^3+8s^2+10s+4}.$$
-2. Use `roots` to find the factors of the denominator $$s^3+8s^2+10s+4$$ and expand the terms with complex roots to find the quadratic factor.
-3. Use the inverse Laplace Transform on the rational polynomial with real and quadratic factors to determine the symbolic expression `vout` as a function of time.
-4. Verify that the response is $$v_{\mathrm out}(t) = \left(1.36e^{-6.57t}+0.64e^{-0.715t}\cos 0.316t -1.84e^{-0.715t}\sin 0.316t\right)u_0(t)$$
-4. Use `ezplot` to plot this result.
-5. Compare your answer with the numerical solution computed in the script.
+$$V_{\mathrm out}(s) = \frac{2s(s+3)}{s^3+8s^2+10s+4}.$$
+
+#### Step 2
+
+The provided code uses `roots` to find the factors of the denominator 
+
+$$s^3+8s^2+10s+4$$
+
+and expands the terms with complex roots to find the quadratic factor.
+
+#### Step 3
+
+Use the inverse Laplace Transform on the rational polynomial with real and quadratic factors to determine the symbolic expression `vout` as a function of time.
+
+#### Step 4
+
+Verify that the response is 
+
+$$v_{\mathrm out}(t) = \left(1.36e^{-6.57t}+0.64e^{-0.715t}\cos 0.316t -1.84e^{-0.715t}\sin 0.316t\right)u_0(t)$$
+
+Use `fplot` to plot this result.
+
+
+#### Step 5
+
+Compare your answer with the numerical solution computed in the script at section **Plot the result**.
 
 Save your solution `ex4.mlx` for upload to Canvas.
+
+Alternatively, take the code you developed and paste it into Exercise 4 of Lab 3 in the MATLAB Grader for parts 4.1 to 4.4 and instant grading and feedback.
 
 
 ### Lab Exercise 5: Problem Solving in MATLAB
