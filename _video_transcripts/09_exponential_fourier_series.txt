@@ -1,0 +1,490 @@
+1
+00:00:00,210 --> 00:00:11,730
+Hi, this is Chris Jobling making a pre-lecture recording for the week five session on Fourier series. Bitterly cold,
+
+2
+00:00:11,730 --> 00:00:14,340
+which is why I'm wrapped up with the scarf and everything.
+
+3
+00:00:14,340 --> 00:00:26,040
+I hope you're nice and warm where you are. It's been terrible weather today, but gives me a chance to catch up on a bit of work, I suppose.
+
+4
+00:00:26,040 --> 00:00:33,270
+Anyway, we're going to talk today about a exponential Fourier series.
+
+5
+00:00:33,270 --> 00:00:43,170
+This is the agenda. There's some background. I've made some notes on the trigonometric Fourier series, so if you follow the link here,
+
+6
+00:00:43,170 --> 00:00:53,850
+it'll take you to this page where eventually you'll see some notes on Fourier series, where it comes from,
+
+7
+00:00:53,850 --> 00:00:57,960
+something on half-wave symmetry and so on,
+
+8
+00:00:57,960 --> 00:01:08,850
+which is preparation for this session. Reminds you how we compute the Fourier series, gives you some MATLAB scripts for doing so.
+
+9
+00:01:08,850 --> 00:01:14,970
+And we'll look at this more in the laboratory, so going to get a feel for how we might do this kind of thing.
+
+10
+00:01:14,970 --> 00:01:19,890
+I'm not going to go into the trigonometrical Fourier series in this session.
+
+11
+00:01:19,890 --> 00:01:26,640
+I'm going to concentrate instead on the Exponential Fourier Series, which leads us to the Fourier transform.
+
+12
+00:01:26,640 --> 00:01:31,890
+So it'll give you a chance to have a look at that background reading in advance.
+
+13
+00:01:31,890 --> 00:01:36,390
+This is what we'll cover in the first hour of two of the Monday's session.
+
+14
+00:01:36,390 --> 00:01:43,380
+I'm going to look at exponents on Euler's equation exponential, Fourier series symmetry, and the exponential Fourier series,
+
+15
+00:01:43,380 --> 00:01:47,970
+and there'll be some examples which we'll work through in class.
+
+16
+00:01:47,970 --> 00:01:56,080
+And then in the second hour, which I'll make a brief video for in a few minutes, we'll talk about line spectra,
+
+17
+00:01:56,080 --> 00:02:09,090
+power in periodic signals, and steady state response of LTI systems to periodic signals, which is the basis of filtering, as we'll see later.
+
+18
+00:02:09,090 --> 00:02:13,630
+We're going to start off by just talking about what we mean by the exponential function.
+
+19
+00:02:13,630 --> 00:02:19,930
+exp(at) which very important function because it appears in the solution of differential equations,
+
+20
+00:02:19,930 --> 00:02:25,450
+it appears in Laplace transforms and it appears, as we'll see later, in the Fourier transforms
+
+21
+00:02:25,450 --> 00:02:30,490
+also. It appears all over the place in the tables and
+00:02:30,490 --> 00:02:38,680
+the properties of Laplace transforms, and we're familiar with it from the examples we've already done on circuits and so on.
+
+23
+00:02:38,680 --> 00:02:47,320
+So there's a number of possibilities, depending on the value of this parameter a in the exponential function.
+
+24
+00:02:47,320 --> 00:02:51,250
+All these functions are a function of time in our context, of course.
+
+25
+00:02:51,250 --> 00:02:58,900
+But what happens and what kind of signals you get depends on the value of a in that expression.
+
+26
+00:02:58,900 --> 00:03:12,130
+So we look at that for a few cases. The first case is when a is a real number. In this situation, we have this issue.
+
+27
+00:03:12,130 --> 00:03:26,770
+This is a plot of a. For particular values. I plotted it in MATLAB and depending on whether a is positive, for example, the blue line.
+
+28
+00:03:26,770 --> 00:03:30,550
+Negative, the Yellow line, or zero.
+
+29
+00:03:30,550 --> 00:03:38,590
+We get these these different types of response. So you can see for a positive value of a, for a real,
+
+30
+00:03:38,590 --> 00:03:44,150
+We get an increasing exponential signal.
+
+31
+00:03:44,150 --> 00:03:48,460
+This will go off to infinity. In systems and signals,
+
+32
+00:03:48,460 --> 00:03:59,590
+This is rarely something we want to see because it would eventually, of course, cause us to reach limits in the circuitry.
+
+33
+00:03:59,590 --> 00:04:03,520
+And we don't, we don't typically design systems to have this kind of response.
+
+34
+00:04:03,520 --> 00:04:14,230
+So we're trying to avoid positive a in control signal systems and lots of other communications work and so on.
+
+35
+00:04:14,230 --> 00:04:18,670
+So you'll see that positive a is considered to be a bad thing.
+
+36
+00:04:18,670 --> 00:04:24,940
+If a is negative, then we get the decaying exponential, which is a signal which will start off infinity,
+
+37
+00:04:24,940 --> 00:04:34,360
+theoretically, at minus minus t, but will eventually settle down to zero value after some time.
+
+38
+00:04:34,360 --> 00:04:38,320
+And this is, this is considered to be a stable response.
+
+39
+00:04:38,320 --> 00:04:49,960
+It is this response typically looking for on so negative values of a what we typically looking to achieve. When a is equal to zero?
+
+40
+00:04:49,960 --> 00:05:01,630
+Of course, it's exp(0) is just one. And so you just get sort of DC value for for that particular situation.
+
+41
+00:05:01,630 --> 00:05:08,470
+We can also have imaginary a, so if a is imaginary, that is, it's got a function, j.
+
+42
+00:05:08,470 --> 00:05:13,150
+Then exp(j omega t) Euler's equation is going to be cos(omega t)
+
+43
+00:05:13,150 --> 00:05:18,100
+plus j*sin(omega t). And this slide illustrates those two cases.
+
+44
+00:05:18,100 --> 00:05:30,580
+So I think the the green line is a sign of a sin(omega t) and the blue line is cos(omega t).
+
+45
+00:05:30,580 --> 00:05:41,050
+You can see cos starting at one at zero and sine going to one at a quarter the period.
+
+46
+00:05:41,050 --> 00:05:48,190
+So those two signals added together basically gives you your j omega t,
+
+47
+00:05:48,190 --> 00:05:53,080
+which is going to be an imaginary, no a complex number, and you might, what
+
+48
+00:05:53,080 --> 00:06:01,750
+you can imagine is it's tracing a point on this phaser plot here, so omega t itself.
+
+49
+00:06:01,750 --> 00:06:09,430
+is the angle. And that's continuously changing because omega t is continually growing.
+
+50
+00:06:09,430 --> 00:06:16,540
+So the rate of spinning of this, if you imagine this is a line spinning around the circle,
+
+51
+00:06:16,540 --> 00:06:26,710
+the rate at which it does that depends on omega and t will just just keep going on and on and on as t goes to infinity.
+
+52
+00:06:26,710 --> 00:06:35,120
+So the actual point traced by this line j omega t represents exp(j omega t).
+
+53
+00:06:35,120 --> 00:06:43,100
+And it will be made up of a sine component and a cosine component. So the sine component is the component in the j on the j-
+
+54
+00:06:43,100 --> 00:06:52,760
+axis, here this is the imaginary axis, and the cos component is the position on the x axis, which is the real part.
+
+55
+00:06:52,760 --> 00:07:00,020
+So this is representing a complex number which is continually changing in a sinusoidal session
+
+56
+00:07:00,020 --> 00:07:11,710
+like this. And this particular case is what we'll typically find when we look at the Fourier transform later on.
+
+57
+00:07:11,710 --> 00:07:21,730
+So some important values of omega t, which we will address in the in the lecture, we'll ask you to look at those in the lecture.
+
+58
+00:07:21,730 --> 00:07:30,670
+And then we've got the case where a is complex, where, which we won't say much about, but effectively the 
+
+59
+00:07:30,670 --> 00:07:34,720
+Laplace transform is the representation of this case.
+
+60
+00:07:34,720 --> 00:07:45,780
+The s in this expression is essentially a complex a and it's a complex exponential.
+
+61
+00:07:45,780 --> 00:07:49,310
+Which has got a real out an imaginary part.
+
+62
+00:07:49,310 --> 00:07:57,740
+This typically leads to damped sinusoidal responses, which you typically see in things like control theory and design.
+
+63
+00:07:57,740 --> 00:08:04,800
+So look out for them in EG-243 as they come into stability.
+
+64
+00:08:04,800 --> 00:08:15,530
+The value of the real part needs to be negative to decay exponentially and so on.
+
+65
+00:08:15,530 --> 00:08:23,420
+So stability boundaries and so on are all governed by this particular relationship where a is complex.
+
+66
+00:08:23,420 --> 00:08:29,540
+Two important properties, we will using these in a few minutes.
+
+67
+00:08:29,540 --> 00:08:38,150
+For example, Euler's equations that cos omega t = (exp(j omeg t) + sin(-j omega t))/2.
+
+68
+00:08:38,150 --> 00:08:40,280
+It's an identity and similarly.
+
+69
+00:08:40,280 --> 00:08:52,190
+sin(omega t) = (exp(j omega t) - j exp(-j omega t))/j2 where i is the imaginary variable, square root of -1.
+
+70
+00:08:52,190 --> 00:09:02,100
+And very important properties as we'll see because they allow us to generate the exponential Fourier series, which I'll go onto to now.
+
+71
+00:09:02,100 --> 00:09:11,120
+Some notes here. again refer to the notes and for the definitions here and the and the maths behind this. Any wave
+
+72
+00:09:11,120 --> 00:09:23,630
+form, any periodic wave form. f(t) can be represented as the sum of terms like a cos Omega 0 t, Omega 0 is
+
+73
+00:09:23,630 --> 00:09:28,610
+the fundamental frequency, and a sin Omega 0.
+
+74
+00:09:28,610 --> 00:09:36,170
+These coefficients a1, a2, b1, b2, etc. depend on the on the periodic signal and can be calculated using integrals,
+
+75
+00:09:36,170 --> 00:09:44,930
+as we'll seen on the next slide, I think. And there's also this term here, which is considered to be the DC value of the expression.
+
+76
+00:09:44,930 --> 00:09:54,960
+So by by making up a sum of exponential, sorry sinusoids cos and sine terms, even and odd terms,
+
+77
+00:09:54,960 --> 00:10:07,440
+we can come up with an expression representing a Fourier approximation of of of any function of time, provided it is periodic using this relationship.
+
+78
+00:10:07,440 --> 00:10:15,960
+If we replace the sine and cos terms with the imaginary exponential equivalents, we would get this expression.
+
+79
+00:10:15,960 --> 00:10:20,730
+And then if we expand that out, gathering termis with the same exponents,
+
+80
+00:10:20,730 --> 00:10:26,760
+we're going to get a term with a2, and another term with b2, one of which is real,
+
+81
+00:10:26,760 --> 00:10:36,690
+the other of which is complex, multiplying by the exponential e to the frequency, omega 0 remember is the fundamental frequency.
+
+82
+00:10:36,690 --> 00:10:45,900
+So we're going to get this kind of relationship appearing for all values of 
+
+83
+00:10:45,900 --> 00:10:55,740
+time and you see, this continues on from negative omega to positive omega.
+
+84
+00:10:55,740 --> 00:10:59,940
+And then we can define some new coefficients.
+
+85
+00:10:59,940 --> 00:11:21,170
+C -k and C k, which are defined like this. Half of that or that (equivalent) and C 0, which is the DC component, which is a half of a0.
+
+86
+00:11:21,170 --> 00:11:25,460
+And this leads us to the what we call the exponential Fourier series,
+
+87
+00:11:25,460 --> 00:11:33,530
+which is a representation of the series as a sequence of exponential terms.
+
+88
+00:11:33,530 --> 00:11:43,550
+All as multiples of the fundamental frequency Omega 0 with coefficients corresponding to the value here.
+
+89
+00:11:43,550 --> 00:11:49,160
+So minus two with minus two, minus one with minus one and so on.
+
+90
+00:11:49,160 --> 00:11:56,830
+And compactly, this can be written down as a sum, an infinite sum from minus n to n.
+
+91
+00:11:56,830 --> 00:12:10,370
+Not infinite, I mean, an approximation from -n to n C k exp j k Omega 0, which is fundamental frequency, of t.
+
+92
+00:12:10,370 --> 00:12:21,910
+And those coefficients themselves are obtained from a integral defined as 1/2pi
+
+93
+00:12:21,910 --> 00:12:32,570
+the integral part in the range zero to 2pi of f(Omega 0 t)exp(-j k Omega 0 t),
+
+94
+00:12:32,570 --> 00:12:50,140
+with respect to Omega 0 t. Or, if we want to express this in terms of time 1/T times the integral from zero to T f(t) exp(-j k Omega 0 t) dt. Where T, capital t
+
+95
+00:12:50,140 --> 00:13:01,840
+here is the period of the periodic waveform. So you can see these two integrals are equivalent: one is looking at the period as an angle from zero to
+
+96
+00:13:01,840 --> 00:13:07,130
+2pi, the other is looking at it a as a time from zero to T.
+
+97
+00:13:07,130 --> 00:13:16,370
+These two, this expression here, f(t)exp(-j Omega 0 t) is typically easier to evaluate than the equivalent expression,
+
+98
+00:13:16,370 --> 00:13:28,650
+which would involve cos and sine terms. So we have both a cos and a sine in the equivalent calculation for the coefficients ak and bk.
+
+99
+00:13:28,650 --> 00:13:35,850
+So the exponential Fourier Series is often easier to compute than the sinusoidal Fourier series.
+
+100
+00:13:35,850 --> 00:13:46,620
+But we can always go back to the sinusoidal Fourier series by recognizing that if we take C k and it's [complex] compliments -k, C -k.
+
+101
+00:13:46,620 --> 00:13:54,250
+that's going to be half this. So ak is C k plus C -k.
+
+102
+00:13:54,250 --> 00:14:00,160
+And similarly, bk is j times C k minus C  -k.
+
+103
+00:14:00,160 --> 00:14:13,330
+So we can always go back from the sinusoidal Fouier series to the exponential Fouier series using these simple, simple, simple operations.
+
+104
+00:14:13,330 --> 00:14:19,690
+When we're computing these things, there are some simplifications we can make, for example,
+
+105
+00:14:19,690 --> 00:14:29,520
+to take account of symmetry in the original signal. All the exponents and coefficients are complex numbers.
+
+106
+00:14:29,520 --> 00:14:35,340
+And this means that some of them disappear if we're dealing with odd numbers.
+
+107
+00:14:35,340 --> 00:14:39,450
+Others disappear for dealing with even numbers and so on.
+
+108
+00:14:39,450 --> 00:14:52,380
+So for example, for even functions, all the coefficient C k will be real and the odd functions, all the coefficients C k are imaginary.
+
+109
+00:14:52,380 --> 00:14:58,260
+This is relatively easy to prove because cos is an and even function, and sine is an odd function.
+
+110
+00:14:58,260 --> 00:15:04,770
+Therefore, you can work out which coefficients will remain if we're dealing with odd or even functions,
+
+111
+00:15:04,770 --> 00:15:14,270
+which will be made up of either cos or sine respectively. By a similar argument, odd functions have no cosine terms.
+
+112
+00:15:14,270 --> 00:15:20,230
+So the ak coefficient are zero, therefore and
+
+113
+00:15:20,230 --> 00:15:34,010
+both C -k and C k are imaginary in that situation. If we have half-wave symmetry, which is expressed in that pre pre-reading on the [trig.] Fourier transform,
+
+114
+00:15:34,010 --> 00:15:41,500
+if there's half-wave symmetry, then the C k are going to be zero for any n
+
+115
+00:15:41,500 --> 00:15:54,090
+which is even. Actually, that should be k is even. Let me correct that.
+
+116
+00:15:54,090 --> 00:16:04,360
+Just to let you know, I'll adjust the notes, I'll update the notes on the website after this.
+
+117
+00:16:04,360 --> 00:16:12,240
+If there's no symmetry, the exponential Fourier series of f(t) is going to be complex.
+
+118
+00:16:12,240 --> 00:16:17,850
+And finally, C -k and C k. These are complex conjugates of each other.
+
+119
+00:16:17,850 --> 00:16:26,600
+So C -k is equal to the complex conjugate of C k for any situation.
+
+120
+00:16:26,600 --> 00:16:36,510
+So that's the end of the pre-class presentation, and they'll are some examples of the work through in the class, but that's the end for now.
+
+121
+00:16:36,510 --> 00:16:44,370
+I'll record another video in a few minutes, which just discusses the second half of this of the class,
+
+122
+00:16:44,370 --> 00:16:50,640
+and I'll put both on the [Canvas] side before the lecture starts. So thanks for watching.
+
+123
+00:16:50,640 --> 00:16:53,333
+I'll see you in the class.
+

@@ -1,0 +1,655 @@
+1
+00:00:00,960 --> 00:00:12,030
+Hi, Chris Jobling here with the first of three recordings, for pre-lectures for week five, where we're going to talk about Fourier series.
+
+2
+00:00:12,030 --> 00:00:18,240
+And we start off with a little bit of revision of the trigonometric Fourier series,
+
+3
+00:00:18,240 --> 00:00:24,180
+which basically allows us to take any periodic wave form and approximate it by
+
+4
+00:00:24,180 --> 00:00:29,550
+a DC component and a summed series of fundamental harmonic sinusoidal waveforms.
+
+5
+00:00:29,550 --> 00:00:38,610
+We have lots of applications of this in many branches of electronics, but it's particularly important for signal processing and communications.
+
+6
+00:00:38,610 --> 00:00:44,790
+I think this is a revision, so I'm not going to spend a lot of time going through the Maths for Fourier series.
+
+7
+00:00:44,790 --> 00:00:48,600
+We will give you an example of how we compute these things in MATLAB.
+
+8
+00:00:48,600 --> 00:00:53,160
+But I did want to give you a motivating example, so that's the first thing I'll do.
+
+9
+00:00:53,160 --> 00:01:02,520
+And then we'll look at wave analysis, the trig. Fourier series in some outline and look at symmetry and how we compute the coefficients.
+
+10
+00:01:02,520 --> 00:01:10,200
+And finally, let's say a few words about the Gibbs phenomenon. Um, and it won't be particularly examined,
+
+11
+00:01:10,200 --> 00:01:15,540
+Any of this, and we'll be looking in more detail at the Exponential Fourier series in the next short video.
+
+12
+00:01:15,540 --> 00:01:21,090
+But as an example, I've got this Fourier series demo, which is available online.
+
+13
+00:01:21,090 --> 00:01:25,410
+So if we go follow this link to the site,
+
+14
+00:01:25,410 --> 00:01:34,920
+you will see on this page there is this application here which I've downloaded and I've unpacked it inside my downloads folder.
+
+15
+00:01:34,920 --> 00:01:44,280
+So if I go to MATLAB, you can see I've got this in downloads and I can run the, run the command by typing "fseriesdemo".
+
+16
+00:01:44,280 --> 00:01:49,020
+And here we've got a square wave with some DC component.
+
+17
+00:01:49,020 --> 00:02:00,870
+We've set the period to 10 seconds and at the moment we've got zero coefficients and we can move this slider to change the number of coefficients,
+
+18
+00:02:00,870 --> 00:02:05,260
+sinusoidal coefficients that we want to represent this signal.
+
+19
+00:02:05,260 --> 00:02:16,290
+And if I make it one, you can see that there is a sine wave that sort of fits the period of the of the square wave.
+
+20
+00:02:16,290 --> 00:02:20,910
+So now that this is essentially the same period at certain points, in fact,
+
+21
+00:02:20,910 --> 00:02:26,670
+they do match up with zero crossing points the same way with the square wave of the same values.
+
+22
+00:02:26,670 --> 00:02:30,750
+These bottom pictures are showing what we call line spectrum,
+
+23
+00:02:30,750 --> 00:02:38,070
+which are the exponential Fourier series coefficients, and we look at those and in detail later.
+
+24
+00:02:38,070 --> 00:02:45,120
+We see that we have a negative and a positive coefficient and that they are in fact, complex conjugates of each other.
+
+25
+00:02:45,120 --> 00:02:49,410
+They can see this because the phase is different in each case.
+
+26
+00:02:49,410 --> 00:03:01,420
+So if I raise the number to two, that doesn't change anything because there are second
+
+27
+00:03:01,420 --> 00:03:10,190
+harmonics that actually can be made to match the signal, so all the even harmonics actually zero for this particular waveform.
+
+28
+00:03:10,190 --> 00:03:20,060
+And uh, if we move up to three, you can see we've introduced another harmonic (the third) at three times the frequency of the original signal.
+
+29
+00:03:20,060 --> 00:03:24,740
+And let's introduced another couple of exponential terms.
+
+30
+00:03:24,740 --> 00:03:34,100
+And if we continue up, we will see the all the even ones are always zero, the odd ones are decreasing amplitude of things.
+
+31
+00:03:34,100 --> 00:03:38,900
+But the phase is always the same in each case.
+
+32
+00:03:38,900 --> 00:03:48,260
+And as we do that you can see you get more and more little waveforms in here and you can keep going until the maximum.
+
+33
+00:03:48,260 --> 00:03:58,460
+This particular value is 15, although we can change that if we want to.
+
+34
+00:03:58,460 --> 00:04:02,210
+(No, it looks like 15 *is* the maximum.)
+
+35
+00:04:02,210 --> 00:04:11,090
+And so we get the original waveform and we look at the error, we can see there is an error in the in the approximation,
+
+36
+00:04:11,090 --> 00:04:16,780
+which doesn't seem to improve, certainly at the crossing points.
+
+37
+00:04:16,780 --> 00:04:20,220
+That's because of Gibbs phenomenon, which we'll talk about a little bit.
+
+38
+00:04:20,220 --> 00:04:28,860
+So the important things from this is that you can approximate a periodic wave from by adding together harmonics of sine waves.
+
+39
+00:04:28,860 --> 00:04:38,700
+And these, these sine waves can be represented by exponential line spectra in the negative and the positive frequency.
+
+40
+00:04:38,700 --> 00:04:45,840
+And we can change that from coefficient number to frequency by switching this little switch here.
+
+41
+00:04:45,840 --> 00:04:49,380
+So quite a useful tool for visualizing wave forms,
+
+42
+00:04:49,380 --> 00:05:00,000
+and you've got a whole bunch of wave forms that you can look at in this tool and we'll look at that in the lab and at the end of the week.
+
+43
+00:05:00,000 --> 00:05:09,270
+So returning to the the presentation then, having sort of motivated ourselves just a few words to say about the wave analysis itself,
+
+44
+00:05:09,270 --> 00:05:18,390
+which is what for the Fourier series is based on the was developed by Jean-Baptiste Joseph Fourier, who had these dates.
+
+45
+00:05:18,390 --> 00:05:24,780
+He discovered that any periodic signal can be represented a series of harmonically related sinusoids,
+
+46
+00:05:24,780 --> 00:05:30,010
+and a harmonic is a frequency whose value is an integer multiple of some fundamental frequency.
+
+47
+00:05:30,010 --> 00:05:42,010
+So in the case of the square wave, the fundamental frequency was the, uh, the wave form that gives a period of 10 seconds and.
+
+48
+00:05:42,010 --> 00:05:46,420
+For a frequency two megahertz, three megahertz, four megahertz are the second,
+
+49
+00:05:46,420 --> 00:05:50,560
+third and fourth harmonic of a sinusoid with a fundamental frequency one megahertz.
+
+50
+00:05:50,560 --> 00:06:00,040
+OK? And we can represent the trigonometric series by then a sum of these cosine and sine terms.
+
+51
+00:06:00,040 --> 00:06:06,490
+The frequency in the cosine and sine terms is the fundamental, or sume integer multiple of the fundamental.
+
+52
+00:06:06,490 --> 00:06:15,990
+And we have these coefficients a1, a2, etc, matching the the multiplier of the harmonic and the cos in the sin terms.
+
+53
+00:06:15,990 --> 00:06:21,460
+And we have a's and b's and we have this half a0, which represents DC,
+
+54
+00:06:21,460 --> 00:06:27,010
+and we can rewrite this in a more compact form, which might be more confusing to people,
+
+55
+00:06:27,010 --> 00:06:30,250
+but is in fact is much easier to write,
+
+56
+00:06:30,250 --> 00:06:39,070
+which basically says f(t) is equal to half of a0 plus a the sum from n = 1 to infinity of terms a_n cos (n omega_0 t).
+
+57
+00:06:39,070 --> 00:06:45,820
+And b_n sin( n omega_0 t), where omega_0 radians
+
+58
+00:06:45,820 --> 00:06:50,780
+per second is the fundamental frequency.
+
+59
+00:06:50,780 --> 00:06:57,910
+So some notation about this. a note a0/2, is a constant represents the DC or average component of the signal f(t),
+
+60
+00:06:57,910 --> 00:07:02,940
+which may be zero, or nonzero. It was zero the example I just showed you.
+
+61
+00:07:02,940 --> 00:07:10,190
+Um, the terms with coefficients a1 and b1 represent the fundamental component pf f((t) [at omega_0]
+
+62
+00:07:10,190 --> 00:07:19,280
+and a2 and b2 are the second harmonic component with a frequency of 2 omega_0 and so on.
+
+63
+00:07:19,280 --> 00:07:21,470
+Since for any periodic function,
+
+64
+00:07:21,470 --> 00:07:30,600
+we can express that as a Fourier series as it follows that the sum of the DC, fundamental, second and so on must produce the waveform f(t).
+
+65
+00:07:30,600 --> 00:07:38,640
+So this is how the sort of thing works, we've got two or more sinusoids, so we've got a fundamental sinusoid here, the red line.
+
+66
+00:07:38,640 --> 00:07:41,820
+We've got one at twice the frequency, the Green Line.
+
+67
+00:07:41,820 --> 00:07:48,330
+And if we add those two together, what results is not a sinusoid but a strangely shaped waveform.
+
+68
+00:07:48,330 --> 00:07:56,250
+By adjusting the amplitude we can get, we can make these waveforms sort of match any, any kind of periodic signal.
+
+69
+00:07:56,250 --> 00:08:09,030
+That's the basic idea. To evaluate the actual coefficients, we need to go turn to mathematics, and we have these expressions here.
+
+70
+00:08:09,030 --> 00:08:13,980
+For example, the DC component a0 is obtained by this integral.
+
+71
+00:08:13,980 --> 00:08:18,780
+1/T0, where T0 is the period, of the integral from 0 to T0 
+72
+00:08:18,780 --> 00:08:26,250
+of f(t) dt. Which is going to be 1/pi integral from zero to 2pi f (theta) d theta is you.
+
+73
+00:08:26,250 --> 00:08:38,620
+wish to do the analysis in terms of [angle] theta. I've just noticed a little mistake there, which I'll just correct.
+
+74
+00:08:38,620 --> 00:08:43,450
+And a_n is given by this integral, 1/T0 integral from 0 to T0 f(t) 
+
+75
+00:08:43,450 --> 00:08:56,440
+cos n omega_0 t dt or 1/2pi integral from 0 to 2pi f(theta0 cos n theta d theta) and b_n has got a similar relationship.
+
+76
+00:08:56,440 --> 00:09:02,830
+Note the the f(t) is the standard function of time which we're trying to synthesize.
+
+77
+00:09:02,830 --> 00:09:05,500
+And of course, that requires us to do this integration,
+
+78
+00:09:05,500 --> 00:09:12,520
+which is a integration by parts of a function of time with cos(t), or f(T) with sin(t).
+
+79
+00:09:12,520 --> 00:09:17,740
+And these these can be clearly complicated expressions you end up with cosine/sine terms appearing.
+
+80
+00:09:17,740 --> 00:09:30,580
+But since we have orthogonal functions, a lot of the terms disappear, but it's still a bit of a pain to compute, unless you've have got a computer.
+
+81
+00:09:30,580 --> 00:09:38,320
+There are some things, some results of symmetry that can make the computation somewhat simpler.
+
+82
+00:09:38,320 --> 00:09:48,400
+So, for example, if f(t) is odd, it's an odd signal, a0 = 0 [f(0 = 0 for an odd function] then all the a_n terms will be zero and there'll be no cosine terms,
+
+83
+00:09:48,400 --> 00:09:52,810
+[cos is an even function] so all the a_n's will be zero for all of n greater than zero.
+
+84
+00:09:52,810 --> 00:09:59,110
+If f(t) is an even function, there'll be no sine terms because sine is an odd functions.
+
+85
+00:09:59,110 --> 00:10:07,060
+So all the b_n's will be zero for all n > 0, and the DC may or may not be zero, depending on the waveform.
+
+86
+00:10:07,060 --> 00:10:11,170
+If f(t) has half way symmetry, only the old harmonics will be present.
+
+87
+00:10:11,170 --> 00:10:17,710
+The values a_n and b_n is zero for all even values of n, 0, 2, 4, ...
+
+88
+00:10:17,710 --> 00:10:21,010
+So that's a useful check. We need to check whether the signal is
+
+89
+00:10:21,010 --> 00:10:28,090
+first of all, odd, whether it's even on if it has half-wave symmetry and that simplifies the computation quite significantly.
+
+90
+00:10:28,090 --> 00:10:34,410
+If we can take those things into account. And in the lecture, we look at some examples to
+
+91
+00:10:34,410 --> 00:10:42,360
+better understand what half-wave symmetry means and how we can determine whether the signal has it not.
+
+92
+00:10:42,360 --> 00:10:54,390
+So just to sort of emphasize this, the odd function we saw last week is defined as (t) = -f(-t) and sin(t) is an odd function,
+
+93
+00:10:54,390 --> 00:10:57,810
+and even function is one for which f(t) = f(-t).
+
+94
+00:10:57,810 --> 00:11:04,200
+And we saw that cos(t) is an even function. And we have this additional idea of halfway symmetry.
+
+95
+00:11:04,200 --> 00:11:09,870
+This basically says that we've got a periodic function with period T 
+
+96
+00:11:09,870 --> 00:11:18,120
+for which f(t) = f(t + T) by definition a periodic function. A periodic function
+
+97
+00:11:18,120 --> 00:11:26,770
+with period T has half-wave symmetry if t(t) = - f(t + T/2). And
+
+98
+00:11:26,770 --> 00:11:35,360
+by removing certain coefficients from the answer can simplify things considerably.
+
+99
+00:11:35,360 --> 00:11:45,720
+So by exploiting these symmetries, we can change the limits of the integrals for a_n and b_n in the Fourier series.
+
+100
+00:11:45,720 --> 00:11:50,390
+Um, we could also we could instead, for example,
+
+101
+00:11:50,390 --> 00:11:59,240
+instead of integrating from zero to 2pi we can choose to integrate from -pi two to +pi. If the function is odd,
+
+102
+00:11:59,240 --> 00:12:05,600
+even, or has half-wavw symmetry compute a_n and b_n integrating from 0 to pi and multiplying by two.
+
+103
+00:12:05,600 --> 00:12:14,150
+And if we have half-wave symmetry, we can compute, a_na nd b_n by integrating between zero and pi/2 and multiplying the result by four.
+
+104
+00:12:14,150 --> 00:12:21,290
+So these things make the computation simpler.
+
+105
+00:12:21,290 --> 00:12:29,940
+So just give you an example to close this introductory lecture, we're going to compute the trigonometrical Fourier series using MATLAB.
+
+106
+00:12:29,940 --> 00:12:35,280
+And I'd like to use capitals for MATLAB, so let me change the slide.
+
+107
+00:12:35,280 --> 00:12:43,760
+Um, so here we've got a square wave. It has amplitude plus and minus A, period of T seconds.
+
+108
+00:12:43,760 --> 00:12:52,820
+So 2pi radians is tTwo seconds, and this signal has half-wave symmetry.
+
+109
+00:12:52,820 --> 00:13:02,840
+Because if you take this first half and multiply it by minus one, it's the same as the second half.
+
+110
+00:13:02,840 --> 00:13:05,700
+So let's do the solution.
+
+111
+00:13:05,700 --> 00:13:19,730
+Well, first of all, let's stop at MATLAB and make it produce nice compact results, and then we'll define some symbols to and apply for this case.
+
+112
+00:13:19,730 --> 00:13:28,510
+t n A and pi going to let n go from one to 11. This is a number of harmonics.
+
+113
+00:13:28,510 --> 00:13:32,650
+So we've defined that.
+
+114
+00:13:32,650 --> 00:13:48,730
+Then we'll compute the DC component, so a 1/2 a0, is 1/(2*pi)*(int(A, t, 0, pi) + int(-A,t,pi,2*pi)).
+
+115
+00:13:48,730 --> 00:13:52,480
+So because it's a square wave, we can we can split that.
+
+116
+00:13:52,480 --> 00:14:01,430
+We could also take account of the half-wave symmetry, which we haven't done in this case.
+
+117
+00:14:01,430 --> 00:14:11,570
+Let me just, uh, temporarily pause this video here and clear all the cells because.
+
+118
+00:14:11,570 --> 00:14:19,570
+We want to do is make sure that we are recomputing these things.
+
+119
+00:14:19,570 --> 00:14:30,520
+So this is what I've just done. So to compute the harmonics then we use the same idea.
+
+120
+00:14:30,520 --> 00:14:40,840
+ai is 1/pi*(int(A*cos(n*t,t,0,pi) + and so on.
+
+121
+00:14:40,840 --> 00:14:49,180
+This will actually give us a, because n is a factor, that will give us a whole set of coefficients.
+
+122
+00:14:49,180 --> 00:14:56,200
+So you can see the a'a are all zero is what we were expecting as sine is 
+
+123
+00:14:56,200 --> 00:15:01,570
+an odd function and the b's are given by these expressions,
+
+124
+00:15:01,570 --> 00:15:14,560
+4A/pi, 4A/3pi, 4A/5pi, 4A/7pi, 4A/9pi [and 4A/11pi] and notice also that the even coefficients are all zero.
+
+125
+00:15:14,560 --> 00:15:24,370
+This is because the signal has half-wave symmetry. So we can reconstruct f(t) from the harmonic sine functions.
+
+126
+00:15:24,370 --> 00:15:28,300
+So f(t) is going to be half the DC value initially.
+
+127
+00:15:28,300 --> 00:15:31,630
+And then for all the values that we've computed,
+
+128
+00:15:31,630 --> 00:15:40,030
+we can add in the coefficient ai times cos of the harmonic frequency and plus bi times sin function
+
+129
+00:15:40,030 --> 00:15:51,570
+remembering that a's were already the zero and then f(t) for the total signal is equal to this expression here.
+
+130
+00:15:51,570 --> 00:15:57,270
+And you can see now we've got a sine term appearing, a sine of some harmonic frequency time appearing.
+
+131
+00:15:57,270 --> 00:16:08,630
+And we can plot we can plot that. First of all, making the coefficients numeric.
+
+132
+00:16:08,630 --> 00:16:15,960
+And then printing them with four significant digits.
+
+133
+00:16:15,960 --> 00:16:32,970
+So that's converted the the symbolic expressions to these numeric expressions, and then with this, we can plot the results.
+
+134
+00:16:32,970 --> 00:16:38,120
+And ezplot is our standard plot function for plotting symbolic functions, as we've seen before.
+
+135
+00:16:38,120 --> 00:16:49,510
+And now you get an approximation of the original square wave made up of 11 [even] harmonics in this particular case.
+
+136
+00:16:49,510 --> 00:16:53,920
+And just to add on the original signal.
+
+137
+00:16:53,920 --> 00:17:00,070
+Um, that's what I've done here, so I've added in a [square-wave made from] Heaviside functions which was our original signal.
+
+138
+00:17:00,070 --> 00:17:11,090
+I've done it in this way though we could have done it with using the Heaviside function as well, and we can see that the approximation is not not great.
+
+139
+00:17:11,090 --> 00:17:19,780
+At 11, these is significant ripple. Um, and if you wish to run this expression yourself, you can.
+
+140
+00:17:19,780 --> 00:17:28,390
+You can use this, I provide this MLX file to to do the same, to give you the same results.
+
+141
+00:17:28,390 --> 00:17:37,380
+So the final result then, confirms a0 is zero, that ai is zero because the time function is odd, the bi is zero for i is
+
+142
+00:17:37,380 --> 00:17:43,270
+even because of half-wave symmetry.
+
+143
+00:17:43,270 --> 00:17:56,470
+And so we end up with just the odd coefficients appearing in the results, and this is the result as a sinusoidal expression.
+
+144
+00:17:56,470 --> 00:18:10,880
+And you can do the same things for the shifted wave-form. We'd need to use a slightly different limit on the integrals and you can see we get a similar match.
+
+145
+00:18:10,880 --> 00:18:23,550
+So that's. That ripple that you see in the, in the result there, that's due to this what's called "Gibbs phenomenon".
+
+146
+00:18:23,550 --> 00:18:37,510
+And I'm just going to adjust that little bit so that.
+
+147
+00:18:37,510 --> 00:18:43,570
+So that we get a better slide show, so
+
+148
+00:18:43,570 --> 00:18:51,040
+let me run that as as slide again, so the Gibbs phenomenon basically says because of this relationship,
+
+149
+00:18:51,040 --> 00:19:01,420
+this is the relationship that we we could have computed. So f(t) is 4A/pi times sine omega0 t plus 1/3 sine 3 omega 0 t, 
+
+150
+00:19:01,420 --> 00:19:08,980
+third harmonic + 1/5 sin 5 omega0 t + 1/7 sin 7 omega0 t and so on, so you can see the pattern.
+
+151
+00:19:08,980 --> 00:19:17,480
+It's 4A/pi times the sum for all n is odd, 1/n  sine omega0 T.
+
+152
+00:19:17,480 --> 00:19:26,170
+But it doesn't matter how many terms we take. Well, this is the approximation for the first 11.
+
+153
+00:19:26,170 --> 00:19:36,910
+We will get more and more like a square wave the more terms we add, but we never get rid of this, this large peak here, and that's sort of ringing.
+
+154
+00:19:36,910 --> 00:19:46,150
+And this is because we can't really compute the integral of of something that's changing as quickly as a step from here to here.
+
+155
+00:19:46,150 --> 00:19:55,040
+And because of this discontinuity, you get this this Gibbs effect of not quite matching the signal.
+
+156
+00:19:55,040 --> 00:20:03,220
+That's something to be aware of when you are synthesizing waveforms from square waves. You'll you have seen this in the first year lab.
+
+157
+00:20:03,220 --> 00:20:09,910
+I think when you tried to take a square wave, integrate it to produce a triangle wave,
+
+158
+00:20:09,910 --> 00:20:18,850
+You got a much better result if you had a triangle wave and then filtered that to get the fundamental back as a sine wave,
+
+159
+00:20:18,850 --> 00:20:32,770
+then you would have done that, had you tried to directly filter the square. We'll come back to that point in a later lecture when we talk about.
+
+160
+00:20:32,770 --> 00:20:42,010
+Power factor correction, that kind of thing. OK, so that's a first introduction to Fourier series. It's meant to be watched sort of independently.
+
+161
+00:20:42,010 --> 00:20:48,370
+We will do a little exercise in the class identifying half-way symmetry.
+
+162
+00:20:48,370 --> 00:20:51,820
+But this is background, really.
+
+163
+00:20:51,820 --> 00:20:59,140
+We're going to talk about the Exponential Fourier series in a bit more detail in the class, and we'll give some examples based on that.
+
+164
+00:20:59,140 --> 00:21:06,137
+And that's to come. So thanks for watching and we'll see you in class the beginning of week five. Bye!
+
