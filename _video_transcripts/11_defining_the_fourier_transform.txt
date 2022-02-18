@@ -1,0 +1,412 @@
+1
+00:00:00,630 --> 00:00:04,950
+Hi, this is Chris Jobling, and this is the first of the pre-lectures for week six,
+
+2
+00:00:04,950 --> 00:00:11,790
+where we're going to start to look at the Fourier transform. The agenda for this free lecture is,
+
+3
+00:00:11,790 --> 00:00:16,950
+we're first of all going to look at the first the Fourier transform as the limit of a Fourier series.
+
+4
+00:00:16,950 --> 00:00:22,320
+Then we're going to have a look at the mathematical derivation in brief.
+
+5
+00:00:22,320 --> 00:00:33,210
+We'll talk about some special forms of the Fourier transform that relate to various issues around odd and even functions and that kind of thing.
+
+6
+00:00:33,210 --> 00:00:36,010
+And finally, we'll look at some properties of the Fourier transform.
+
+7
+00:00:36,010 --> 00:00:44,160
+That's what's going to be covered, and we'll finish off with a quick example of how we can use MATLAB to compute these things.
+
+8
+00:00:44,160 --> 00:00:56,380
+So the Fourier transform, one way of looking at this is it's the limit of a Fourier series for a a periodic function as the period gets very, very long.
+
+9
+00:00:56,380 --> 00:01:05,700
+And to illustrate what I mean by this, we've got an example here where we're using a pulse train,
+
+10
+00:01:05,700 --> 00:01:10,920
+where the pulse is from -T to +T and the height is one.
+
+11
+00:01:10,920 --> 00:01:15,510
+Um, and that occurs every T seconds.
+
+12
+00:01:15,510 --> 00:01:20,190
+So the frequency is 2pi/T.
+
+13
+00:01:20,190 --> 00:01:29,580
+The width of the pulse is T/w, where w is 2t0, which is the time of the transitions.
+
+14
+00:01:29,580 --> 00:01:35,580
+So the idea is that we have this pulse train and we can derive a Fourier series for it because it's periodic.
+
+15
+00:01:35,580 --> 00:01:42,630
+But as we let T go to infinity, we spread out this function more and more.
+
+16
+00:01:42,630 --> 00:01:46,890
+What you end up with then perhaps is the Fourier transform.
+
+17
+00:01:46,890 --> 00:01:54,360
+The Fourier transform is useful for signals that don't have periodicity. 
+
+18
+00:01:54,360 --> 00:01:59,040
+So in the previous lecture we came up with this expression.
+
+19
+00:01:59,040 --> 00:02:03,840
+So we had, for the coefficients of the exponential Fourier series,
+
+20
+00:02:03,840 --> 00:02:12,450
+we could use this integral 1/2pi integral -pi/w to +pi/w A exp(-j k Omega0 t) d Omega0 
+
+21
+00:02:12,450 --> 00:02:24,110
+and that was the same as A/2pi integral -pi/w to +pi/w exp(-j k Omega0 t) d Omega0.
+
+22
+00:02:24,110 --> 00:02:29,950
+And we computed the light spectra from that. If we take this from a time point of view,
+
+23
+00:02:29,950 --> 00:02:35,210
+we let A = 1, then we'll be like completing these coefficients Ck
+
+24
+00:02:35,210 --> 00:02:40,190
+this time is 1/T, and now we're going to compute [the integral] from -t0 to
+
+25
+00:02:40,190 --> 00:02:46,460
++t0 exp(-j k Omega0 t) dt, and again, Omega0 is the fundamental [frequency].
+
+26
+00:02:46,460 --> 00:02:56,350
+So we'll complete the analysis on the whiteboard in class, but I'll show you the solution for the video very quickly.
+
+27
+00:02:56,350 --> 00:03:01,710
+You can, and what you can see is, it's right down at the bottom of the notes here.
+
+28
+00:03:01,710 --> 00:03:26,790
+What you see is. Essentially, that you do some analysis and you end up with this function T/2 t0
+
+29
+00:03:26,790 --> 00:03:33,240
+sinc(pi k 2t0/T) ... I'm going to quickly correct that [slide],
+
+30
+00:03:33,240 --> 00:03:47,220
+so pi wouldn't appear in the sync function because it's there already, that's part of the definition of the sinc function.
+
+31
+00:03:47,220 --> 00:03:58,620
+So. So that's that's basically the analysis, and we'll repeat that in class, so you'll get a feel for it.
+
+32
+00:03:58,620 --> 00:04:14,710
+So not a difficult computation, but you then end up with this.
+
+33
+00:04:14,710 --> 00:04:26,650
+There with this sinc function, which you'll see crops up over and over again in Fourier transforms and.
+
+34
+00:04:26,650 --> 00:04:39,130
+And the Ck's are then scaled samples of the real continuous, normalized sinc function, which we could define as sine pi u / pi u.
+
+35
+00:04:39,130 --> 00:04:49,780
+So the function, is it going to be equal to one at u = 0 you and has zero crossings at u = +/- 1, +/- 2, +/- 3, as shown below.
+
+36
+00:04:49,780 --> 00:05:06,270
+So if we plotted this using MATLAB, excuse me.
+
+37
+00:05:06,270 --> 00:05:11,960
+We'll eventually get a solution, and that's the.
+
+38
+00:05:11,960 --> 00:05:16,230
+And you may have seen this before. A commonly seen function.
+
+39
+00:05:16,230 --> 00:05:24,520
+You notice that it rises to one at u=0 and then we've got these.
+
+40
+00:05:24,520 --> 00:05:32,780
+We've got these terms. So one of the things we can do from that is talk about the duty cycle,
+
+41
+00:05:32,780 --> 00:05:41,680
+so if we define the duty cycle as to be the amount of time the signal is on compared to when it's off and then we can come up with this.
+
+42
+00:05:41,680 --> 00:05:52,590
+This represents eta, which we define as 2t0/T, and that's going to be a percentage that's actually.
+
+43
+00:05:52,590 --> 00:06:07,190
+And if we use that normalized sinc function and the duty cycle, then we can rewrite this expression like this 2t0/T sinc(k 2t0/T).
+
+44
+00:06:07,190 --> 00:06:20,540
+Ck = eta sinc(k eta)
+
+45
+00:06:20,540 --> 00:06:25,020
+So one thing we might be able to do, then, is to normalize the spectral coefficient,
+
+46
+00:06:25,020 --> 00:06:31,910
+so if we multiply them all by T and assume t0 is fixed so the duty cycle
+
+47
+00:06:31,910 --> 00:06:39,420
+2t0/T will decrease as we increase T then TCk is going to be T eta sinc(k eta),
+
+48
+00:06:39,420 --> 00:06:44,910
+which just 2 t0 sinc(k 2t0/T).
+
+49
+00:06:44,910 --> 00:06:56,750
+And we can we can plot that against a normalized sinc function and we get pictures like this.
+
+50
+00:06:56,750 --> 00:07:07,330
+So this is a duty cycle, 50 percent. You can see that the spectra here are samples of the sinc function underneath.
+
+51
+00:07:07,330 --> 00:07:11,230
+If we increase the duty cycle, we have the same sort of range.
+
+52
+00:07:11,230 --> 00:07:14,140
+But now we've got more points.
+
+53
+00:07:14,140 --> 00:07:22,120
+And imagine if we were to continue to increase the duty cycle so that the width of the pulse became larger and larger and larger.
+
+54
+00:07:22,120 --> 00:07:28,300
+So the width of the pulse became narrower, narrower and narrower. As the period of the time signal got longer and longer and longer.
+
+55
+00:07:28,300 --> 00:07:37,860
+These these would get closer and closer and closer, and eventually we could say that we have a continuous function in omega.
+
+56
+00:07:37,860 --> 00:07:44,280
+So this is the intuition that leads us to the Fourier transform,
+
+57
+00:07:44,280 --> 00:07:51,030
+and it turns out that the sinc function is in fact the Fourier transform of the [rectangular] pulse.
+
+58
+00:07:51,030 --> 00:07:59,940
+So if we do the maths, then, we'll use this expression and we'll we'll use x hat(t) exp(-j k Omega0 t),
+
+59
+00:07:59,940 --> 00:08:05,970
+Omega0 should be capital
+
+60
+00:08:05,970 --> 00:08:11,700
+Omega0 is 2pi/Tz
+
+61
+00:08:11,700 --> 00:08:19,500
+And then we define a signal that is equal to x(t) over one period, zero elsewhere.
+
+62
+00:08:19,500 --> 00:08:31,370
+We can then compute this expression to come up with the Ck's.
+
+63
+00:08:31,370 --> 00:08:37,310
+In time domain. And if, and we know that the answer's going to come up with this because we've.
+
+64
+00:08:37,310 --> 00:08:42,410
+This is what we believe it will be, 2t0 sinc(t0/pi omega).
+
+65
+00:08:42,410 --> 00:08:47,690
+And that's going to be, these are going to be samples.
+
+66
+00:08:47,690 --> 00:08:56,960
+And therefore, we get this expression for x(t), in approximation the sum of these values.
+
+67
+00:08:56,960 --> 00:09:13,840
+And since Omega0 = 2pi/T, we can replace, simplify it down to this 1/2pi [sum] X(j k Omega0 t)
+
+68
+00:09:13,840 --> 00:09:26,920
+exp(j k Omega0 t) Omega0. So as we take, as T would go to the limit, then T goes to infinity, and this will essentially go to d Omega.
+
+69
+00:09:26,920 --> 00:09:32,170
+This expression, here will become the integral from minus infinity to plus infinity.
+
+70
+00:09:32,170 --> 00:09:37,000
+This will become, j k Omega will become a continuous function omega.
+
+71
+00:09:37,000 --> 00:09:47,420
+And so we'll end up with this expression. So the inverse Fourier transform is what we actually get by doing this analysis,
+
+72
+00:09:47,420 --> 00:09:56,240
+and it's 1/2pi integral from -infinity to +infinity X(j omega)exp(j Omega t) d omega.
+
+73
+00:09:56,240 --> 00:10:06,180
+And if we want to go from a function of time. Then we would use this version of it, which would be
+
+74
+00:10:06,180 --> 00:10:14,340
+X(j omega) = integral from -infinity to +infinity exp(-j omega t) dt, and that's called the Fourier Transform.
+
+75
+00:10:14,340 --> 00:10:25,680
+And you'll notice that they the two things are duals [of each other].
+
+76
+00:10:25,680 --> 00:10:35,550
+Some properties discussed in the notes, which are just sort of displayed to you the usual things linearity, symmetry, time,
+
+77
+00:10:35,550 --> 00:10:44,610
+frequency scaling, etc., the ones that you will need in the exam will be provided usually unless it's a requirement to derive them.
+
+78
+00:10:44,610 --> 00:10:54,610
+And there's a nice table in the notes for you to to study afterwards.
+
+79
+00:10:54,610 --> 00:11:00,910
+In the class, what we're going to do, we're going to work through some examples of, say,
+
+80
+00:11:00,910 --> 00:11:10,450
+amplitude modulation, impulse response, energy-computation, and we will do these in the classroom later on.
+
+81
+00:11:10,450 --> 00:11:17,080
+But the solutions to these are provided in the in the notes.
+
+82
+00:11:17,080 --> 00:11:27,220
+So I think that's the pre-lecture. Oh no, just a final example is to use the fouier and ifourier
+
+83
+00:11:27,220 --> 00:11:32,410
+functions very similar to the laplace and ilaplace functions that you're already familiar with.
+
+84
+00:11:32,410 --> 00:11:59,300
+And we're going to use these too. In the lab.
+
+85
+00:11:59,300 --> 00:12:10,190
+In fact, we're not going to do it in the lab. We will be using them in class, because there's not actually a lab on this, so I'll take that out.
+
+86
+00:12:10,190 --> 00:12:19,250
+So here's an example. So let's say we wanted to compute the Fourier transform of exp(- 0.5 t^2).
+
+87
+00:12:19,250 --> 00:12:26,270
+Really simple. We define some symbols t, v, omega, x.
+
+88
+00:12:26,270 --> 00:12:35,720
+Um, then we say ft is exp(-t^2/2) and Fw is then fourier of ft. And we use omega here
+
+89
+00:12:35,720 --> 00:12:52,360
+otherwise MATLAB just uses w. So let's compute that and we get the answer 2^(1/2)*pi^(1/2)*exp(-omega^2/2).
+
+90
+00:12:52,360 --> 00:12:59,310
+And we make that look a little bit prettier. It comes out to be the square root of 2.
+
+91
+00:12:59,310 --> 00:13:05,630
+times the square root of pi exp(-omega^2/2).
+
+92
+00:13:05,630 --> 00:13:11,750
+And we can check that that's check correct by going the other direction, and we end up with exp(-x^2/2),
+
+93
+00:13:11,750 --> 00:13:26,640
+which is exp(-x^2/2) where x is t, so I think we should perhaps put t in there to get the right units.
+
+94
+00:13:26,640 --> 00:13:33,990
+OK, so in summary, this chapter is about doing the Fourier transform.
+
+95
+00:13:33,990 --> 00:13:43,900
+And how it is the limit of the Fourier series. It's given you a flavour of the maths, you I wouldn't be expected to be able to reproduce such in an exam,
+
+96
+00:13:43,900 --> 00:13:56,020
+as you'll be pleased to hear. There are some special forms of Fourier transform, which are due to the the oddness of the signals which I haven't shown in this presentation.
+
+97
+00:13:56,020 --> 00:13:59,110
+But they are in the notes and they're worth a read.
+
+98
+00:13:59,110 --> 00:14:07,180
+We've looked at the properties of the transform and come up with a properties table which is familiar to you from the Laplace transform and then we've done some computations.
+
+99
+00:14:07,180 --> 00:14:18,250
+So that's it. And next time we'll be looking at the Fourier transform of commonly occurring signals. In the notes there are one or two worked solutions,
+
+100
+00:14:18,250 --> 00:14:25,770
+and I've also got some additional hand worked solutions for you
+
+101
+00:14:25,770 --> 00:14:32,500
+in OneNote. We're done done the solutions for you by hand.
+
+102
+00:14:32,500 --> 00:14:36,520
+So thanks for watching. This has been Chris Jobling and
+
+103
+00:14:36,520 --> 00:14:41,011
+this is the first of the two pre-lectures for week six.
+
