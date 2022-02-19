@@ -1,0 +1,312 @@
+1
+00:00:13,350 --> 00:00:20,430
+OK. Chris Jobling again, continuing week six pre-lectures, this is the second-hour pre-lecture.
+
+2
+00:00:20,430 --> 00:00:26,550
+We're going to talk about Fourier transforms of commonly occurring signals in this session.
+
+3
+00:00:26,550 --> 00:00:33,640
+So we're going to look at the tables of transform pairs very briefly; we'll do some examples of the computation of some of these;
+
+4
+00:00:33,640 --> 00:00:37,020
+And we'll look at the relationship between Laplace and Fourier [transforms];
+
+5
+00:00:37,020 --> 00:00:44,580
+And finally, we'll look at some Fourier transform of common signals that we've already seen in the Laplace context.
+
+6
+00:00:44,580 --> 00:00:51,000
+So the definitions. Just a reminder of the Fourier transform. We are going to change the notation slightly.
+
+7
+00:00:51,000 --> 00:00:58,890
+So a lot of the notation I've seen omits the j omega, or the j from the j omega.
+
+8
+00:00:58,890 --> 00:01:09,180
+So I f(t) is function of radian frequency F(omega), the j is there, but it's not written explicitly in the transform version.
+
+9
+00:01:09,180 --> 00:01:18,660
+So we've got. An error in that slide, let me just correct that for us.
+
+10
+00:01:18,660 --> 00:01:26,840
+f(t) exp(-jomega t). Let's see if that's corrrect in the worksheet as well while we're here.
+
+11
+00:01:26,840 --> 00:01:33,920
+Yes, it's wrong there too, so we'll make that correction.
+
+12
+00:01:33,920 --> 00:01:42,040
+And. So that's the Fourier transform. The inverse Fourier transform is a dual of that. Notice
+
+13
+00:01:42,040 --> 00:01:46,200
+the sign of this term has changed this is F(omega) and we are integrating with respect to d omega
+
+14
+00:01:46,200 --> 00:01:54,780
+and we are dividing through by 2 pi because we are converting from radians to seconds.
+
+15
+00:01:54,780 --> 00:02:06,570
+So there is a duality between those two things, which has some important consequences when we look at Fourier transforms [not series!] and frequency manipulation generally.
+
+16
+00:02:06,570 --> 00:02:10,230
+There are some tables, lots of tables on the internet.
+
+17
+00:02:10,230 --> 00:02:16,980
+These are a couple linked in here, but this is the table we've, we're going to be using in this course.
+
+18
+00:02:16,980 --> 00:02:29,010
+I'm not sure it's come out very well in the printouts, but this is sort of a minimum set of functions that you need for, for running or computing.
+
+19
+00:02:29,010 --> 00:02:34,440
+I'll give you the most important ones, actually in lectures and in exams.
+
+20
+00:02:34,440 --> 00:02:41,850
+So for some selected ones, the Dirac delta is the first one, delta(t), the transform of this is one.
+
+21
+00:02:41,850 --> 00:02:52,350
+So if this is frequency domain, frequency, if this is time domain, [in] frequency domain is just a sort of DC in frequency for things.
+
+22
+00:02:52,350 --> 00:03:04,080
+That means it's exciting every frequency, which is why you can use it for for computing the frequency response of systems [I should have said!]. In MATLAB
+
+23
+00:03:04,080 --> 00:03:11,420
+we would determine the Fourier transform [not series!] like this, so we use the
+
+24
+00:03:11,420 --> 00:03:15,440
+fourier function, diract(t) as you've seen before, is the delta function.
+
+25
+00:03:15,440 --> 00:03:23,390
+And the answer is we would expect. A related expression is is the sampling property where we have
+
+26
+00:03:23,390 --> 00:03:32,090
+delta(t - t0) and that's equivalent to multiplying the signal by exp(-j omega t0).
+
+27
+00:03:32,090 --> 00:03:46,860
+DC is a dual of this [dirac(t)], so DC and in the time domain corresponds to a delta function with height 2 pi in the frequency domain.
+
+28
+00:03:46,860 --> 00:03:50,850
+And again, we can prove this in MATLAB. So we will run this expression.
+
+29
+00:03:50,850 --> 00:04:01,290
+Notice I'm defining omega here because normally MATLAB just uses w. So if I add no variable then you see it would give you back w.
+
+30
+00:04:01,290 --> 00:04:06,570
+But we've been using omega, and  I think I prefer to see omega,
+
+31
+00:04:06,570 --> 00:04:15,660
+So that's the reason why we've got a second argument there. Again, this is related to this frequency shifting property.
+
+32
+00:04:15,660 --> 00:04:25,560
+So exp(j omega0 t) is the same as 2pi delta(omega - omega0) in the frequency domain.
+
+33
+00:04:25,560 --> 00:04:34,530
+If we have a cosine, a sinewave with even symmetry, then by Euler's relationship get this expression and from the previous result,
+
+34
+00:04:34,530 --> 00:04:39,970
+1/2 exp(j omega0 t) becomes pi delta(omega - omega0) and 1/2 exp(j omega0 t)
+
+35
+00:04:39,970 --> 00:04:45,690
+becomes delta(omega + omega0). So a cosine wave
+
+36
+00:04:45,690 --> 00:04:55,280
+becomes two real values in the frequency domain centred at -omega0 and +omega0.
+
+37
+00:04:55,280 --> 00:05:07,190
+And since f(t) is real, and even so, is f(omega). Ths sine wave has this function 1/(j2)(exp(j omega0 t) - exp(-j omega0 t)) and that
+
+38
+00:05:07,190 --> 00:05:12,860
+comes out out as -j pi delta(omega - omega0) and j pi delta(omega + omega0).
+
+39
+00:05:12,860 --> 00:05:19,730
+So the sine wave becomes this expression,
+
+40
+00:05:19,730 --> 00:05:28,520
+where this is the imaginary part of the frequency response, notice, and the height is is pi at omega0 and -pi at -omega0,
+
+41
+00:05:28,520 --> 00:05:36,080
+f(t) is real and odd, F(omega) imaginary and odd. And the relationship between real and imaginary and so on,
+
+42
+00:05:36,080 --> 00:05:42,770
+they're explained in some of the properties [of the Fourier transform] discussed in the previous lecture, which we didn't actually cover in the video.
+
+43
+00:05:42,770 --> 00:05:51,500
+So you might need to read the notes to find out more. The signum function, sign function as we call it,
+
+44
+00:05:51,500 --> 00:06:04,520
+is defined like this signum(x) is equal to -1 if x < 0; is zero if x = 0;  +1 if x > 0.
+
+45
+00:06:04,520 --> 00:06:15,380
+And the transform of this function is u0(t) - u0(-t), which comes out to be 2/(j omega).
+
+46
+00:06:15,380 --> 00:06:22,310
+And we often use this kind of circuit as a voltage comparator in circuit theory circuits.
+
+47
+00:06:22,310 --> 00:06:33,830
+And from that, we can get to the unit step because the signum function can be used to define what the transform of u0(t) will be.
+
+48
+00:06:33,830 --> 00:06:37,730
+It comes out to be pi delta(omega) + 1/(j omega).
+
+49
+00:06:37,730 --> 00:06:45,080
+and we get to it by using this relationship sign(t) 2 u0(t) - 1, which is illustrated here.
+
+50
+00:06:45,080 --> 00:06:57,770
+This is 2 u0(t) and if you take away one, this will shift down and we'll end up with the unit step.
+
+51
+00:06:57,770 --> 00:07:01,850
+So from that, we get this expression.
+
+52
+00:07:01,850 --> 00:07:12,240
+So the DC value gives us this delta term and half of the signum function gives us this 1/(jomega) term. 
+
+53
+00:07:12,240 --> 00:07:20,500
+So using those results it is relatively easy to show these properties, which we will look at in the class, so exp(j omega0 t) 
+
+54
+00:07:20,500 --> 00:07:28,620
+u0(t) is pi delta(omega - omega0) + 1/(j(omega - omgeg0)).
+
+55
+00:07:28,620 --> 00:07:34,860
+We can also show that sin(omega0 t) u0(t) is given by this expression,
+
+56
+00:07:34,860 --> 00:07:43,020
+and we can use that result  to compute the cos version, which comes out to be this.
+
+57
+00:07:43,020 --> 00:07:50,250
+So we'll do those examples in class. It is also possible to get the Fourier transform from the Laplace transform.
+
+58
+00:07:50,250 --> 00:07:57,720
+So if you've got a function of time, which is 0 for t less than or equal to 0, we can obtain the Fourier transform by substituting s by  j omega.
+
+59
+00:07:57,720 --> 00:08:00,090
+So as an example of that,
+
+60
+00:08:00,090 --> 00:08:08,590
+given that the Laplace transform of exp(-at) u0(t) is 1 /(s + a), Fourier transform of exp(-a t)
+
+61
+00:08:08,590 --> 00:08:20,640
+u0(t) and I'm just going to make this, into a, tidy this up a wee bit. That should be a fragment
+
+62
+00:08:20,640 --> 00:08:38,490
+I think. So we we can do the computation in class, but it comes out to be the answer is one over....
+
+63
+00:08:38,490 --> 00:08:47,670
+I didn't want a fragment, I wanted a sub-slide. Sorry! Sorry for the slight delay.
+
+64
+00:08:47,670 --> 00:08:52,190
+So the answer is this. 1/(j omega + a).
+
+65
+00:08:52,190 --> 00:08:59,740
+Well, that's easy to prove. And we'll show that. And similarly for this one.
+
+66
+00:08:59,740 --> 00:09:07,170
+We can easily show the answer is this.
+
+67
+00:09:07,170 --> 00:09:15,810
+So that's always a useful trick if you know you're dealing with real time functions where the values are zero, before t = 0.
+
+68
+00:09:15,810 --> 00:09:22,290
+You can make that substitution and convert very easily from the Laplace Fourier. In class.
+
+69
+00:09:22,290 --> 00:09:31,380
+we'll look at some other common signals, like the rectangle pulse, the triangular pulse, periodic time function, unit pulse train.
+
+70
+00:09:31,380 --> 00:09:38,070
+But there are also some worked solutions if we don't get through them all on the OneNote.
+
+71
+00:09:38,070 --> 00:09:45,330
+And there are some suggestions for further reading for other interesting things about the Fourier transform,
+
+72
+00:09:45,330 --> 00:09:53,610
+particularly in the book by Boulet rather than Karris. And so I'll leave you to look at those in your own time.
+
+73
+00:09:53,610 --> 00:09:59,580
+So as a brief summary of this pre-lecture, then. We've looked at the tables.
+
+74
+00:09:59,580 --> 00:10:05,280
+We've shown you some examples and the relationship between the Laplace and Fourier [transforms] and we'll
+
+75
+00:10:05,280 --> 00:10:10,500
+be computing some for each some of the common signals in the classroom.
+
+76
+00:10:10,500 --> 00:10:19,830
+So we'll see you there. And then in the next week, week seven, we'll look at Fourier transforms for LTI systems and circuit analysis.
+
+77
+00:10:19,830 --> 00:10:26,700
+And we'll follow that with a look at using Fourier transforms for the design of continuous time filters.
+
+78
+00:10:26,700 --> 00:10:30,677
+So thanks for watching. See you soon. Bye.
+
