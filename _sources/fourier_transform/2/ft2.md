@@ -351,7 +351,7 @@ $$\mathcal{F}\left\{e^{-at}u_0(t)\right\}$$
 
 #### Solution to example 8
 
-$$\frac{1}{j\omega+1}$$
+$$\frac{1}{j\omega+a}$$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
