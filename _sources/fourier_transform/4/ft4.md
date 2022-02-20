@@ -75,7 +75,7 @@ Other applications of the Fourier transform are sampling theory (introduced next
 
 ## Frequency Selective Filters
 
-An ideal frequency-selective filter is a system that let's the frequency components of a signal through undistorted while frequency components at other components are completely cut off.
+An ideal frequency-selective filter is a system that let's the frequency components of a signal through undistorted while frequency components at other frequency are completely cut off.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
