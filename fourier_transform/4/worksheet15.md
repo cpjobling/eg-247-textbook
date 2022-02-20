@@ -32,7 +32,7 @@ After class, the lecture recording and the annotated version of the worksheets w
 
 ## Frequency Selective Filters
 
-An ideal frequency-selective filter is a system that let's the frequency components of a signal through undistorted while frequency components at other components are completely cut off.
+An ideal frequency-selective filter is a system that let's the frequency components of a signal through undistorted while frequency components at other frequencies are completely cut off.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
