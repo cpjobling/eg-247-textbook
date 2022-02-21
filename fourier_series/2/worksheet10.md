@@ -58,7 +58,7 @@ When $a$ is real the function $e^{at}$ will take one of the two forms illustrate
 ```{code-cell} matlab
 ---
 slideshow:
-  slide_type: fragment
+  slide_type: notes
 ---
 clear all
 cd ../matlab
@@ -66,27 +66,17 @@ imatlab_export_fig('print-svg')  % Static svg figures.
 format compact
 ```
 
++++ {"slideshow": {"slide_type": "notes"}}
+
+You can regenerate this image generated with this Matlab script: [expon.m](https://cpjobling.github.io/eg-247-textbook/fourier_series/matlab/expon.m).
+
 ```{code-cell} matlab
 ---
 slideshow:
   slide_type: subslide
 ---
-%% The decaying exponential
-t=linspace(-1,2,1000);
-figure
-plot(t,exp(t),t,exp(0.*t),t,exp(-t))
-axis([-1,2,-1,8])
-title('exp(at) -- a real')
-xlabel('t (s)')
-ylabel('exp(t) and exp(-t)')
-legend('exp(t)','exp(0)','exp(-t)')
-grid
-hold off
+expon
 ```
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-You can regenerate this image generated with this Matlab script: [expon.m](https://cpjobling.github.io/eg-247-textbook/fourier_series/matlab/expon.m).
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -304,7 +294,7 @@ $${C_k \atop {k=\mathrm{even}}} = 0.$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-## Computing coefficients of Exponential Fourier Series in Matlab
+## Computing coefficients of Exponential Fourier Series in MATLAB
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -375,7 +365,7 @@ slideshow:
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-Plot the numerical results from Matlab calculation.
+Plot the numerical results from the MATLAB calculation.
 
 Convert symbolic to numeric result
 

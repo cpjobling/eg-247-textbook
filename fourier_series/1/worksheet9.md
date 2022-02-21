@@ -18,7 +18,7 @@ kernelspec:
 
 ## To accompany Chapter 4.1 Trigonometric Fourier Series
 
-+++ {"slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "notes"}}
 
 ## Colophon
 
@@ -80,7 +80,7 @@ Building up wave forms from sinusoids.
 slideshow:
   slide_type: fragment
 ---
-FourierSeriesDemo
+fseriesdemo
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -98,14 +98,12 @@ Note all spectra shown in these slides are generated numerically from the input 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 #### 1 kHz Sinewave
-m
+
 ![A 1 kHz sinewave](pictures/1kHz_Sinewave.png "A 1kHz sinewave")
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 #### Spectrum of 1kHz sinewave
-
-Showing one peak at harmonic frequency.
 
 ![Spectrum of 1kHz sinewave. Note one line at fundamental frequency.](pictures/fft_of_sinwave.png "Spectrum of 1kHz sinewave. Note one line at fundamental frequency.")
 
@@ -119,9 +117,11 @@ Showing one peak at harmonic frequency.
 
 #### Spectrum of 1kHz square wave
 
-Clearly showing peaks at fundamental, 1/3, 1/5, 1/7 and 1/9 at 3rd, 5th and 7th harmonic frequencies. Note for sawtooth, harmonics decline in amplitude as the reciprocal of the of harmonic number $n$.
-
 ![Spectrum of 1kHz sinewave. Note only odd harmonics present.](pictures/FFT_sqr.png "Spectrum of 1kHz square wave. Note only odd harmonics present.")
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+Clearly showing peaks at fundamental, 1/3, 1/5, 1/7 and 1/9 at 3rd, 5th and 7th harmonic frequencies. Note for sawtooth, harmonics decline in amplitude as the reciprocal of the of harmonic number $n$.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -133,9 +133,11 @@ Clearly showing peaks at fundamental, 1/3, 1/5, 1/7 and 1/9 at 3rd, 5th and 7th 
 
 #### Spectrum of 1kHz triangle waveform
 
-Clearly showing peaks at fundamental, 1/9, 1/25, 1/7 and 1/49 at 3rd, 5th and 7th harmonic frequencies. Note for triangle, harmonics decline in amplitude as the reciprocal of the square of $n$.
-
 ![Spectrum of 1kHz triangle wavform.](pictures/1kHz_saw_fft.png "Spectrum of 1kHz triangle wavform.")
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+Clearly showing peaks at fundamental, 1/9, 1/25, 1/7 and 1/49 at 3rd, 5th and 7th harmonic frequencies. Note for triangle, harmonics decline in amplitude as the reciprocal of the square of $n$.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 

@@ -18,7 +18,7 @@ kernelspec:
 
 ## To accompany Chapter 4.3 Line Spectra and their Applications
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "notes"}}
 
 ## Colophon
 
@@ -167,7 +167,7 @@ Integrate for $k\ne 0$
 
 * Recall pulse width = $T/w$
 
-We will use the provided MATLAB script [sinc.mlx](https://cpjobling.github.io/eg-247-textbook/fourier_series/matlab/sinc.mlx) to explore these in class. You will also need [pulse_fs.m](https://cpjobling.github.io/eg-247-textbook/fourier_series/matlab/pulse_fs.m). See Teams/OneNote for copies of these files.
+We will use the provided MATLAB script [sinc.mlx](https://cpjobling.github.io/eg-247-textbook/fourier_series/matlab/sinc.mlx) to explore these in class. You will also need [pulse_fs.m](https://cpjobling.github.io/eg-247-textbook/fourier_series/matlab/pulse_fs.m). See Canvas/OneNote for copies of these files.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
