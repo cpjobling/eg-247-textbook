@@ -14,21 +14,27 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# Worksheet 16 
+# The Inverse Z-Transform
 
-## To accompany Chapter 6.3 The Inverse Z-Transform
-
-+++ {"slideshow": {"slide_type": "notes"}}
++++
 
 ## Colophon
 
-This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet16.pdf). We will step through this worksheet in class. 
+An annotatable worksheet for this presentation is available as [**Worksheet 16**](worksheet16).
 
-An annotatable copy of the notes for this presentation will be distributed before the second class meeting as **Worksheet 16** in the **Week 9: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **Worksheets** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote. 
+* The source code for this page is [dt_systems/3/i_z_transform.ipynb](https://github.com/cpjobling/eg-247-textbook/blob/master/dt_systems/3/i_z_transform.ipynb).
 
-You are expected to have at least watched the video presentation of [Chapter 6.3](i_z_transform) of the [notes](https://cpjobling.github.io/eg-247-textbook) before coming to class. If you haven't watch it afterwards!
+* You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/i_z_transform.html)). 
 
-After class, the lecture recording and the annotated version of the worksheets will be made available through Canvas.
+* This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/i_z_transform.pdf) file.
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+## Scope and Background Reading
+
+This session we will talk about the Inverse Z-Transform and illustrate its use through an examples class.
+
+The material in this presentation and notes is based on Chapter 9 (Starting at [Section 9.6](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=351)) of {cite}`karris`. 
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -52,7 +58,7 @@ After class, the lecture recording and the annotated version of the worksheets w
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-## The Inverse Z-Transform
+## Performing the Inverse Z-Transform
 
 The inverse Z-Transform enables us to extract a sequence $f[n]$ from $F(z)$. It can be found by any of the following methods:
 
@@ -106,6 +112,12 @@ $$z\frac{F(z)}{z} = F(z) = k + \frac{r_1z}{s-p_1} + \frac{r_2z}{s-p_2} + \cdots$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
+We will work through an example in class.
+
+[Skip next slide in Pre-Lecture]
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
 ### Example 1
 
 Karris Example 9.4: use the partial fraction expansion to compute the inverse z-transform of
@@ -138,7 +150,7 @@ $$F(z) = \frac{1}{(1 - 0.5z^{-1})(1 - 0.75z^{-1})(1 - z^{-1})}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### MATLAB solution
+### MATLAB solution for example 1
 
 See [example1.mlx](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example1.mlx). (Also available as  [example1.m](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example1.m).)
 
@@ -154,7 +166,7 @@ Uses MATLAB functions:
 ```{code-cell} matlab
 ---
 slideshow:
-  slide_type: skip
+  slide_type: fragment
 ---
 clear all
 imatlab_export_fig('print-svg')  % Static svg figures.
@@ -212,7 +224,7 @@ num = [0, 1, 0, 0];
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-$z^3 - 9/4 z^2 - 13/8 z - 3/8$
+$z^3 - 9/4 z^2 - 13/8 z - 3/8$ 
 
 ```{code-cell} matlab
 ---
@@ -285,7 +297,7 @@ iztrans(Fz)
 slideshow:
   slide_type: fragment
 ---
-n = 0:15;
+n = 1:15;
 sequence = subs(fn,n);
 stem(n,sequence)
 title('Discrete Time Sequence f[n] = 2*(1/2)^n-9*(3/4)^n + 8');
@@ -327,7 +339,7 @@ $$F(z) = \frac{12z}{(z+1)(z - 1)^2}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### MATLAB solution
+### MATLAB solution for example 2
 
 See [example2.mlx](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example2.mlx). (Also available as  [example2.m](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example2.m).)
 
@@ -344,6 +356,20 @@ slideshow:
 ---
 open example2
 ```
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+### Results for example 2
+
+#### 'Lollipop' Plot
+
+![Results for example 2 - lollipop plot](./pictures/example2a.png)
+
+#### 'Staircase' Plot
+
+Simulates output of Zero-Order-Hold (ZOH) or Digital Analogue Converter (DAC)
+
+![Results for example 2 - staircase plot](./pictures/example2b.png)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -379,7 +405,7 @@ $$F(z) = \frac{z + 1}{(z-1)(z^2 + 2z + 2)}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### MATLAB solution
+### MATLAB solution for example 3
 
 See [example3.mlx](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example3.mlx). (Also available as [example3.m](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example3.m).)
 
@@ -390,6 +416,18 @@ slideshow:
 ---
 open example3
 ```
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+### Results for example 3
+
+#### Lollipop Plot
+
+![Results for example 3 - lollipop plot](./pictures/example3a.png)
+
+#### Staircase Plot
+
+![Results for example 3 - staircase plot](./pictures/example3b.png)
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -455,7 +493,7 @@ $$F(z) = \frac{1 + z^{-1} + 2z^{-2} + 3z^{-3}}{(1 - 0.25z^{-1})(1 - 0.5z^{-1})(1
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### MATLAB
+### MATLAB solution for example 4
 
 See [example4.mlx](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example4.mlx). (also available as [example4.m](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example4.m).)
 
@@ -466,6 +504,28 @@ slideshow:
 ---
 open example4
 ```
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+### Results for example 4
+
+````
+sym_den =
+ 
+z^3 - (3*z^2)/2 + (11*z)/16 - 3/32
+ 
+
+fn =
+
+    1.0000
+    2.5000
+    5.0625
+    ....
+````
+
+#### Combined Staircase/Lollipop Plot
+
+![Combined Staircase/Lollipop Plot](./pictures/example4.png)
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -486,7 +546,7 @@ open example4
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Inversion Integral
+### Invsersion Integral
 
 *Advantage*
 
@@ -525,3 +585,37 @@ open example4
 *Coming Next*
 
 * DT transfer functions, continuous system equivalents, and modelling DT systems in Matlab and Simulink.
+
++++
+
+## Reference
+
+See [Bibliography](/zbib).
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+## Answers to Examples
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+### Answer to Example 1
+
+$$f[n] = 2\left(\frac{1}{2}\right)^n - 9\left(\frac{3}{4}\right)^n + 8$$
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+### Answer to Example 2
+
+$$f[n] = 3(-1)^n + 6n - 3$$
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+### Answer to Example 3
+
+$$f[n] = -0.5\delta[n] + 0.4 + \frac{(\sqrt{2})^n}{10}\cos \frac{3n\pi}{4} - \frac{3(\sqrt{2})^n}{10}\sin \frac{3n\pi}{4}$$
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+### Answer to Example 4
+
+$f[0] = 1$, $f[1] = 5/2$, $f[2] = 81/16$, ....
