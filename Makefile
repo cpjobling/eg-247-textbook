@@ -11,7 +11,7 @@ help:
 	@echo "  site 		 to build the site HTML, store in _site/, and serve with Jekyll"
 
 runall:
-	jupyter-book build . --all
+	jupyter-book build . --all --keep-going
 
 realclean:
 	jupyter-book clean . --all
@@ -28,7 +28,7 @@ clean:
 
 build:  
 	make assets
-	jupyter-book build .
+	jupyter-book build --keep-going .
 
 site:   
 	make clean
