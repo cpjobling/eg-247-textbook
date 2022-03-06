@@ -16,7 +16,7 @@ kernelspec:
 
 # Models of Discrete-Time Systems
 
-+++
++++ {"slideshow": {"slide_type": "skip"}}
 
 ## Colophon
 

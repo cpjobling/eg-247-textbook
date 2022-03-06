@@ -4,8 +4,8 @@ jupyter:
     text_representation:
       extension: .md
       format_name: markdown
-      format_version: '1.2'
-      jupytext_version: 1.9.1
+      format_version: '1.3'
+      jupytext_version: 1.11.5
   kernelspec:
     display_name: MATLAB
     language: matlab
@@ -97,4 +97,4 @@ You should submit the following to the **Lab 07: Filters** Assignment on Canvas.
 
 ### Deadline
 
-The deadline for claims and submission is **4:00 pm, 21st April 2021**
+The deadline for claims and submission is **4:00 pm, 5th April 2022**
