@@ -1,0 +1,720 @@
+1
+00:00:00,660 --> 00:00:06,960
+Hi, this is Chris Jobling making a pre-lecture recording of what we're going to talk about on Monday
+
+2
+00:00:06,960 --> 00:00:16,470
+about sampling systems. And so hopefully you'll be able to watch this before the lecture so that we can concentrate
+
+3
+00:00:16,470 --> 00:00:26,280
+more on doing some of the examples and demonstrating to some of the some of the MATLAB in the session itself.
+
+4
+00:00:26,280 --> 00:00:34,050
+So this is a background reading. I've taken the notes essentially from Ben book format of signals and systems,
+
+5
+00:00:34,050 --> 00:00:38,580
+from the recommended reading lists of the books that you can read online.
+
+6
+00:00:38,580 --> 00:00:46,980
+And I've used Chapter 15 of that, but you'll also find a little bit in Chapter nine as Congress just putting some of it.
+
+7
+00:00:46,980 --> 00:00:53,820
+So when you've got the background details? You couldn't go quick pretty quickly through this.
+
+8
+00:00:53,820 --> 00:01:00,660
+This is the agenda for the session. We're going to start by talking about sampling of continuous time surveillance and
+
+9
+00:01:00,660 --> 00:01:06,540
+how you want to deal with samples of these historic signals from from sample data.
+
+10
+00:01:06,540 --> 00:01:11,220
+And I want to say a little bit about discrete time processing the continuous time signals,
+
+11
+00:01:11,220 --> 00:01:16,620
+which is essentially the computational part of all of this topic.
+
+12
+00:01:16,620 --> 00:01:28,100
+And then we're going to talk about how we might sample discrete time systems, perhaps to change something from.
+
+13
+00:01:28,100 --> 00:01:37,730
+We're going to be a demonstration in the lecture and just as an acknowledgement, but try to use it, the scripts that I'm going to be using,
+
+14
+00:01:37,730 --> 00:01:46,370
+some have been adapted from some code that was made available by Professor, both of the university.
+
+15
+00:01:46,370 --> 00:01:51,980
+So this course digital signal processing. So we'll be using that to illustrate something.
+
+16
+00:01:51,980 --> 00:01:55,770
+And in this?
+
+17
+00:01:55,770 --> 00:02:06,930
+So as an introduction, just to tell you that something provides a bridge between continuous time or safety and discrete time signals on systems,
+
+18
+00:02:06,930 --> 00:02:13,220
+so sampling records discrete values of a continuous turn signal of periodic instances time.
+
+19
+00:02:13,220 --> 00:02:17,250
+So typically the sort of thing that we are interested in,
+
+20
+00:02:17,250 --> 00:02:25,290
+we can see with something is regular and predictable and as every few seconds of milliseconds.
+
+21
+00:02:25,290 --> 00:02:32,010
+And we can then take that data which has been sampled and it can essentially be stored in the file.
+
+22
+00:02:32,010 --> 00:02:37,230
+If you like or put in some memory in a computer and then it can be used for real time or off-line processing.
+
+23
+00:02:37,230 --> 00:02:46,800
+So you can, you can. You can envisage signals which do that sampling and data manipulation within real time as it happens.
+
+24
+00:02:46,800 --> 00:02:50,640
+So think about doing the mobile phone example to record some audio or video,
+
+25
+00:02:50,640 --> 00:02:56,770
+or you could store some data for offline processing and go back to it later and press.
+
+26
+00:02:56,770 --> 00:03:05,520
+So photography is an example of this when you take a picture and when you go into Photoshop or something and make a picture of it in.
+
+27
+00:03:05,520 --> 00:03:11,270
+By sampling basically every possible, the process of the type signals from various filters,
+
+28
+00:03:11,270 --> 00:03:15,530
+typically finer impulse response, as I say, just an inflated response.
+
+29
+00:03:15,530 --> 00:03:22,070
+Air filters in this course, we don't have time to pursue these very far.
+
+30
+00:03:22,070 --> 00:03:29,650
+But it's worth mentioning that that's so that spectrum. You know, once you've got some persistent and then in.
+
+31
+00:03:29,650 --> 00:03:36,050
+Infiltrated the change agents that we've got in his footprints.
+
+32
+00:03:36,050 --> 00:03:44,090
+In the lecture, we're going to ask for volunteers, and I'm going to basically use a script to sample that volunteers voice.
+
+33
+00:03:44,090 --> 00:03:51,200
+We'll play it back and we've got the data. And then later on in this session, we'll look at alias and not send data.
+
+34
+00:03:51,200 --> 00:03:58,550
+But since since this a pre-election, we won't do that and then we'll do that in class.
+
+35
+00:03:58,550 --> 00:04:04,080
+But having having done that, we will get a sample to six.
+
+36
+00:04:04,080 --> 00:04:09,440
+Second, we really want to explain sort of mathematically, you know, technically what's going on in something.
+
+37
+00:04:09,440 --> 00:04:16,940
+So let's let's use slides, just talk about what's going on in some kind of continuous time signals what's going on.
+
+38
+00:04:16,940 --> 00:04:18,440
+So in the time domain,
+
+39
+00:04:18,440 --> 00:04:32,300
+what we have is essentially we have a continuous time signal emerging that's next to you and that's being passed through this list.
+
+40
+00:04:32,300 --> 00:04:33,530
+Multiply it here.
+
+41
+00:04:33,530 --> 00:04:44,000
+One of the inputs is considered to be a chain of impulses, each one separated by a integer multiple onto something time, which is two.
+
+42
+00:04:44,000 --> 00:04:54,830
+Yes. In this example. So by taking this sample, multiply it by this modulating function, we get this.
+
+43
+00:04:54,830 --> 00:05:05,850
+Response. For the dotted line is the original signal, but the actual output of this operation is these impulses were shown here,
+
+44
+00:05:05,850 --> 00:05:12,830
+the heights representing the value of this, the signal that the point at which it is sampled by the impulse.
+
+45
+00:05:12,830 --> 00:05:17,690
+And one of the impulse operators was this something property to basically take
+
+46
+00:05:17,690 --> 00:05:23,240
+citizens signal in terms of our you think something as the as at the time and to us?
+
+47
+00:05:23,240 --> 00:05:28,610
+So we've got zero two, yes, wanting us to take us through this process and so on.
+
+48
+00:05:28,610 --> 00:05:33,980
+And you can see that. But in mathematical terms, the heights, it's not really a height.
+
+49
+00:05:33,980 --> 00:05:45,750
+It's the area of the impulse which is equal to the value of the signal output at the top of something.
+
+50
+00:05:45,750 --> 00:05:50,190
+So in the frequency domain, what we get is we get this.
+
+51
+00:05:50,190 --> 00:05:56,970
+Let's assume this, we will survive this kind of spectrum. A simple spectrum just for research purposes.
+
+52
+00:05:56,970 --> 00:06:02,340
+And it's band limited between minus omega and plus komakam.
+
+53
+00:06:02,340 --> 00:06:08,790
+And then what's the connexion in the time domain is convolution in the frequency domain.
+
+54
+00:06:08,790 --> 00:06:15,030
+So what we're doing is we're basically putting you through a combination operator,
+
+55
+00:06:15,030 --> 00:06:21,840
+and the alphabet is one of two PI, which is a combination of the police response impulse.
+
+56
+00:06:21,840 --> 00:06:26,190
+And that gives us this results hexadecimal one two.
+
+57
+00:06:26,190 --> 00:06:32,580
+Yes, it's time to some of ex over there, but in this case, yes.
+
+58
+00:06:32,580 --> 00:06:39,690
+And so the omega arrest is a sampling frequency. So what you're getting is a set of spectra sputters,
+
+59
+00:06:39,690 --> 00:06:50,370
+but a set of frequency responses repeating themselves every multiple of something frequency, no duress.
+
+60
+00:06:50,370 --> 00:07:02,370
+So we get the original signal here scaled by one of the tests and then the other a reflection of that a minus omega reflector plus on the.
+
+61
+00:07:02,370 --> 00:07:07,080
+And then we have got to make arrests and over here minus two in the U.S. and so on.
+
+62
+00:07:07,080 --> 00:07:11,820
+So free this this spectrum will be repeated over and over again.
+
+63
+00:07:11,820 --> 00:07:24,600
+Basically infinity theoretically, at least with every all the spectrum repeating itself around frequency multiples of the sampling frequency.
+
+64
+00:07:24,600 --> 00:07:30,840
+So here we have the original signal coming in. This is its representations that we would describe it.
+
+65
+00:07:30,840 --> 00:07:38,970
+The two PI here comes in because of the the flow of the transform of the delta function.
+
+66
+00:07:38,970 --> 00:07:46,290
+And because of the. You have a function to say yes, because the.
+
+67
+00:07:46,290 --> 00:07:52,510
+And this is the result you get, so you basically get this frequency response.
+
+68
+00:07:52,510 --> 00:07:54,840
+I think I show during one of the early lectures.
+
+69
+00:07:54,840 --> 00:08:04,230
+Similarly, when we have a sequence of impulses, we get the sequence of impulses in the sequence of the many separation from the centre frequency.
+
+70
+00:08:04,230 --> 00:08:10,460
+So this is this is essentially what happens when you do something.
+
+71
+00:08:10,460 --> 00:08:16,160
+So mathematical terms, what's going on here is we were basically constructing this function of time,
+
+72
+00:08:16,160 --> 00:08:26,870
+which is the sum of all about Australia's sample, that this frequency, we're converting that in the frequency domain by using convolution.
+
+73
+00:08:26,870 --> 00:08:30,080
+So convolution tells me we will divide by one of two.
+
+74
+00:08:30,080 --> 00:08:38,090
+Yes, we convert X to ascend to X the X new in this case.
+
+75
+00:08:38,090 --> 00:08:47,930
+And then we've got this Delta T minus you're going going on and then by the sampling property, this reduces to this.
+
+76
+00:08:47,930 --> 00:08:52,940
+So basically, the next term becomes only the minus came with this.
+
+77
+00:08:52,940 --> 00:09:01,070
+And then by the second property, we get rid of the integral from the independent of the summation of frequencies,
+
+78
+00:09:01,070 --> 00:09:09,660
+each one of them separated by the solids with a certain frequency.
+
+79
+00:09:09,660 --> 00:09:22,850
+That leads us on to something that we're sampling theorem. And I did not show you sign, but if you go back a couple of slides to the picture,
+
+80
+00:09:22,850 --> 00:09:32,810
+what you should notice here is because of these, these caps, we basically got a value range here.
+
+81
+00:09:32,810 --> 00:09:40,280
+So the limited original signal was a range of gas minus one lying around to omega and also again.
+
+82
+00:09:40,280 --> 00:09:46,220
+And in this particular case, you can see those clearly differentiated the gap between the next one.
+
+83
+00:09:46,220 --> 00:09:53,990
+And so we can recover that signal and we'll see later if we can't guarantee that it was unlimited in this way.
+
+84
+00:09:53,990 --> 00:10:02,850
+Then you get overlap, and that causes some problems. Because they say it will come back to that to connect to the people's time.
+
+85
+00:10:02,850 --> 00:10:09,870
+So my question and some consider and basically tells us that if we have a son connected to time,
+
+86
+00:10:09,870 --> 00:10:18,390
+seemingly someplace using this something time to guess and is an integer, then we can recover the original signal.
+
+87
+00:10:18,390 --> 00:10:32,140
+If Omega X is greater than twice the the bandwidth of the original signal price only ground.
+
+88
+00:10:32,140 --> 00:10:38,290
+You know, my dress is 2.2, yes, which is a certain frequency.
+
+89
+00:10:38,290 --> 00:10:48,530
+So as an example of that, imagine that we had an ideal low pass filter which had this spectacular process
+
+90
+00:10:48,530 --> 00:10:52,520
+and the cut off frequency would minus omega wrestling to pull something,
+
+91
+00:10:52,520 --> 00:11:01,750
+I guess, or to providing that. But the end points of this are in the gap between the four bands in something domain.
+
+92
+00:11:01,750 --> 00:11:06,850
+Then we will be able to get this filter back and if we multiply that filter by two, yes.
+
+93
+00:11:06,850 --> 00:11:16,780
+So we have a bit of gain in this, we will basically try this one over to us by yes and get lucky with this signal.
+
+94
+00:11:16,780 --> 00:11:27,810
+So. You can imagine it all only, although the ghost bands, if you like side buttons, get by the.
+
+95
+00:11:27,810 --> 00:11:35,190
+So. Okay, so theoretically, if we had a low pass filter, was this getting to us?
+
+96
+00:11:35,190 --> 00:11:44,230
+And I do a little cross filter with this cut of three percent or less of the two than then we feed our sample signal, get the bottom of this.
+
+97
+00:11:44,230 --> 00:11:52,310
+Of course, this is set. Have otherwise you couldn't approximate.
+
+98
+00:11:52,310 --> 00:11:59,450
+Well, the real thing we use is a sample of Hold Operator, which is roughly illustrated by this.
+
+99
+00:11:59,450 --> 00:12:04,430
+So here we are actually going to have input voltage switch and a capacitor, of course,
+
+100
+00:12:04,430 --> 00:12:08,630
+the switch to press charges and basically holds up the volume on the switch.
+
+101
+00:12:08,630 --> 00:12:15,800
+But close it opens again close along with the voltage for no time in that zone.
+
+102
+00:12:15,800 --> 00:12:26,000
+So we can take in pulse and we can reproduce a sort of continuous square wave Typekit response because they're on hold.
+
+103
+00:12:26,000 --> 00:12:31,180
+And this is that kind of circuitry.
+
+104
+00:12:31,180 --> 00:12:40,180
+So this is typically we model, but it's done well, and I look at this look better using this kind of representation.
+
+105
+00:12:40,180 --> 00:12:51,160
+And it turns out that the so-called operator is equivalent to the impulse of a way of getting back the data that we need for consumption.
+
+106
+00:12:51,160 --> 00:13:01,690
+The. We'll do an example in the lecture showing showing you this something operating within more detail.
+
+107
+00:13:01,690 --> 00:13:06,820
+But what we're going to go to now is talk about signal reconstruction.
+
+108
+00:13:06,820 --> 00:13:20,670
+So we have this pandemic to signal and sampled at the local Samsung apps like that question, something that frequently goes on to point out to us.
+
+109
+00:13:20,670 --> 00:13:27,360
+And reserve for other districts, time signal, for which we want to be distributing the signal, so we get back to these lots.
+
+110
+00:13:27,360 --> 00:13:33,850
+Well, how do we model if you like the digital to unlock conversion?
+
+111
+00:13:33,850 --> 00:13:42,320
+If we were to use that perfect low pass filter, then we would be using.
+
+112
+00:13:42,320 --> 00:13:44,240
+And the sink function, basically,
+
+113
+00:13:44,240 --> 00:13:55,340
+because the tide response was a rectangle function in the frequency response is if the sink function saw this and further transform lecture.
+
+114
+00:13:55,340 --> 00:14:07,630
+So that's in the demonstrate that there's few boats in which it's we should spend a little bit further.
+
+115
+00:14:07,630 --> 00:14:12,840
+We'll look at the scene in the lecture.
+
+116
+00:14:12,840 --> 00:14:23,230
+I will also look at it and say with the hope of the first one, I hope something as well as some reconstruction using those filters as well.
+
+117
+00:14:23,230 --> 00:14:28,520
+And the next topic will cover this in the pre is is aliasing.
+
+118
+00:14:28,520 --> 00:14:36,920
+The plural hinted at this when we showed the spectrum where the nice gaps between the little triangles in the frequency domain.
+
+119
+00:14:36,920 --> 00:14:43,460
+That was fine. But of course, if we can't guarantee that we have this gap,
+
+120
+00:14:43,460 --> 00:14:50,210
+then we're going to get what's called a so we can't recover the original signal by a low pass filter, in other words.
+
+121
+00:14:50,210 --> 00:14:58,100
+This is illustrated in this slide. Let's assume we have something such that we don't quite meet the shunning theorem.
+
+122
+00:14:58,100 --> 00:15:04,070
+Then what you're going to get is overlap between the spectrum. But then in this region here,
+
+123
+00:15:04,070 --> 00:15:15,930
+you really have no way of reconstructing the frequencies and that's we're going to get some kind of distortion in the signal response.
+
+124
+00:15:15,930 --> 00:15:22,190
+So we will illustrate this in the in the lab by using.
+
+125
+00:15:22,190 --> 00:15:42,710
+The script to a single recorded start. But we will go on to talk about anti-aliasing filters, so we make these filters and do lots of basic,
+
+126
+00:15:42,710 --> 00:15:52,880
+what we need to do is we need to pre process the visual signal so that it is limited such that we can recover it.
+
+127
+00:15:52,880 --> 00:16:00,440
+It's not a perfect solution because we can't have perfect filters and images of the lack of atmosphere or something like that.
+
+128
+00:16:00,440 --> 00:16:06,140
+And of course, they're not going to be some distortions of things that come in.
+
+129
+00:16:06,140 --> 00:16:15,320
+But these occur typically high frequencies, and we can ignore them because some things like audio, we can't hear them for one thing,
+
+130
+00:16:15,320 --> 00:16:24,080
+but we can sort of ignore those because the distortion we get, I think, is in much less of a problem than the distortion.
+
+131
+00:16:24,080 --> 00:16:36,500
+We get a low frequencies because of the ABC. So that's something we will talk about, and some will have examples of that.
+
+132
+00:16:36,500 --> 00:16:49,380
+And then finally, we'll have a practical application, digital audio, and we'll talk about digital audio and basically the idea that if we.
+
+133
+00:16:49,380 --> 00:16:55,700
+For for such seedy quality, as we call it, a $9 million a year.
+
+134
+00:16:55,700 --> 00:17:06,090
+But we can hear of sounds about 20 kilohertz as human beings, but set the limits of the best possible, best here can hear.
+
+135
+00:17:06,090 --> 00:17:15,280
+So we typically battle an entire city about 20 kilohertz recording audio good quality sound for music playback.
+
+136
+00:17:15,280 --> 00:17:26,080
+So for phones and things, much, much lower frequency than what you can get in the same four kilohertz recorded voice, you know,
+
+137
+00:17:26,080 --> 00:17:35,080
+somebody should probably spam with the telephone calls much less than it is for transmitting music, high quality music.
+
+138
+00:17:35,080 --> 00:17:38,560
+Anyway, we're going to have to as a filter.
+
+139
+00:17:38,560 --> 00:17:47,450
+We typically sample that at forty four point one kilohertz and therefore we're going to be announcing that his thoughts are with around 22 kilohertz.
+
+140
+00:17:47,450 --> 00:17:54,580
+So to satisfy that requirement, I have to ask an example question on this.
+
+141
+00:17:54,580 --> 00:18:02,560
+So it'll be worth thinking about what the what the implications are of this in the.
+
+142
+00:18:02,560 --> 00:18:07,040
+So the homework section. Finally,
+
+143
+00:18:07,040 --> 00:18:11,990
+I think in this pre-election just want to talk a little bit about the sort of pipeline
+
+144
+00:18:11,990 --> 00:18:16,130
+and this is how we do digital time processing will continue as planned signals.
+
+145
+00:18:16,130 --> 00:18:21,530
+We typically have this setup where we using a device which converts continuous time,
+
+146
+00:18:21,530 --> 00:18:25,970
+discrete time, more commonly called the government digital converter.
+
+147
+00:18:25,970 --> 00:18:34,250
+The model this is easier to hold, typically quickly, and that changes the original signal.
+
+148
+00:18:34,250 --> 00:18:43,080
+And some experts sample version X to actually into a sequence, text, graphics and.
+
+149
+00:18:43,080 --> 00:18:54,360
+According to the same family system in place to sequence sort of the way, if you like an index equal to the number of the sample,
+
+150
+00:18:54,360 --> 00:19:01,170
+that's the sequence that can be fed through a discrete system that can be done in real time as safely as the microbus is.
+
+151
+00:19:01,170 --> 00:19:12,490
+Ultimately, because in the context of real time processing, oh, it can be stored and processed later so that if you play that.
+
+152
+00:19:12,490 --> 00:19:21,010
+Using the system. And then the largest crypto system processing produces a little sequence,
+
+153
+00:19:21,010 --> 00:19:30,970
+what I do and what you need to come back into some two time, so that needs to be look to my.
+
+154
+00:19:30,970 --> 00:19:33,280
+So we continue to have a digital time to continue as planned.
+
+155
+00:19:33,280 --> 00:19:39,510
+I'm going to make all of the digital analogue converting and the result of that is a continuous time.
+
+156
+00:19:39,510 --> 00:19:49,360
+For was continuous time, plus continuous time. Think from last season, we often welcome this also comes as a Senate vote, Typekit response.
+
+157
+00:19:49,360 --> 00:19:57,430
+And then we've got everything the secret of his desire to see us and some 10 times so in practise,
+
+158
+00:19:57,430 --> 00:20:02,800
+the something time would be related to the processing time of the device you're using.
+
+159
+00:20:02,800 --> 00:20:07,600
+So for example, like massive 70 megahertz is your clock speed.
+
+160
+00:20:07,600 --> 00:20:13,180
+And so if you want to do something about you, you've got to have some.
+
+161
+00:20:13,180 --> 00:20:20,340
+Powers to. Keep a multiple of so, Babcock.
+
+162
+00:20:20,340 --> 00:20:22,220
+To drive to something.
+
+163
+00:20:22,220 --> 00:20:34,610
+Because I'm dropping it's so me to go using some kind of counter timer to count so many seconds and then send out a request to you to convert and,
+
+164
+00:20:34,610 --> 00:20:43,110
+you know, put your signal. And so you can be drunk or.
+
+165
+00:20:43,110 --> 00:20:49,560
+So basically, the final thing just to mention,
+
+166
+00:20:49,560 --> 00:20:59,490
+you can have a digital time signal that you can reach template so you can do something at modulation in discrete time.
+
+167
+00:20:59,490 --> 00:21:05,970
+You can also sample what some call, interpolate or downsample.
+
+168
+00:21:05,970 --> 00:21:12,810
+We get a straight to simply effective, actually. And with the code that we're going to show you.
+
+169
+00:21:12,810 --> 00:21:22,530
+So you can make up something, down something and do all kinds of things with the digital data once you've got it and to play around with it.
+
+170
+00:21:22,530 --> 00:21:27,430
+So the summary, this is what we've covered. We will cover in the session.
+
+171
+00:21:27,430 --> 00:21:34,740
+It'll be a little bit of a mixture of, I think, mostly club examples for the first half.
+
+172
+00:21:34,740 --> 00:21:36,510
+But we'll talk about something we've talked about,
+
+173
+00:21:36,510 --> 00:21:44,970
+something continuous time signals and the signal reconstruction using various types of code, if I think in the home.
+
+174
+00:21:44,970 --> 00:21:52,470
+First of all, the homes with those terms, you've got the screen time processing continuous time signals and or something in discrete time systems.
+
+175
+00:21:52,470 --> 00:21:56,050
+And the next session. Second half of of the section.
+
+176
+00:21:56,050 --> 00:22:05,330
+We'll talk about this at Transform and in the notes you'll find solutions to the problems and unwholesome.
+
+177
+00:22:05,330 --> 00:22:09,290
+That's for you to read and in the wonderful book.
+
+178
+00:22:09,290 --> 00:22:17,510
+So thanks very much for the attention. Hopefully you'll be able to absorb this predilection for them before the actual
+
+179
+00:22:17,510 --> 00:22:22,920
+session or certainly afterwards for some of the gaps that we won't be able to.
+
+180
+00:22:22,920 --> 00:22:33,235
+So thanks very much for watching, and I'll see you on Monday.
+

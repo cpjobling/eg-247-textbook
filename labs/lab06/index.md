@@ -4,8 +4,8 @@ jupyter:
     text_representation:
       extension: .md
       format_name: markdown
-      format_version: '1.2'
-      jupytext_version: 1.9.1
+      format_version: '1.3'
+      jupytext_version: 1.11.5
   kernelspec:
     display_name: MATLAB
     language: matlab
@@ -272,4 +272,4 @@ You should submit the following to the **Lab 06: Audio signals and sampling** As
 
 ### Deadline
 
-The deadline for claims and submission is **4:00 pm, 21st April 2021**
+The deadline for claims and submission is **4:00 pm, 28th March 2022**
