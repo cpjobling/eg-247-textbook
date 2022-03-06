@@ -4,10 +4,10 @@ jupyter:
     text_representation:
       extension: .md
       format_name: markdown
-      format_version: '1.2'
-      jupytext_version: 1.9.1
+      format_version: '1.3'
+      jupytext_version: 1.11.5
   kernelspec:
-    display_name: Python 3
+    display_name: Python 3 (ipykernel)
     language: python
     name: python3
 ---
@@ -141,4 +141,4 @@ You should submit the following to the **Lab 04: Time domain convolution** Assig
 
 ### Deadline
 
-The deadline for claims and submission is **4:00 pm, 17th March 2021**
+The deadline for claims and submission is **4:00 pm, 15th March 2022**

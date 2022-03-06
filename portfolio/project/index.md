@@ -5,10 +5,10 @@ jupyter:
     text_representation:
       extension: .md
       format_name: markdown
-      format_version: '1.2'
-      jupytext_version: 1.9.1
+      format_version: '1.3'
+      jupytext_version: 1.11.5
   kernelspec:
-    display_name: Python 3
+    display_name: Python 3 (ipykernel)
     language: python
     name: python3
 ---
@@ -94,7 +94,7 @@ You should submit the following to the **Project: A Graphic Equalizer** Assignme
 
 ### Deadline
 
-The deadline for claims and submission is **4:00 PM BST, 30th April 2021**
+The deadline for claims and submission is **4:00 PM BST, 5th April 2022**
 
 
 ## References
