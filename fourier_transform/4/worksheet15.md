@@ -279,6 +279,10 @@ Determine the frequency response $H_B(\omega)=Y(\omega)/X(\omega)$
 ### Magnitude of frequency response of a 2nd-order Butterworth Filter
 
 ```{code-cell} matlab
+---
+slideshow:
+  slide_type: skip
+---
 imatlab_export_fig('print-svg')  % Static svg figures.
 ```
 
