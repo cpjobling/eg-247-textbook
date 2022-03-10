@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Introducing Signals and Systems &#8212; EG-247 Signals and Systems</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -32,33 +32,38 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script >let toggleHintShow = 'Click to show';</script>
+    <script >let toggleHintHide = 'Click to hide';</script>
+    <script >let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/introduction/index.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Elementary Signals" href="../elementary_signals/index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -74,6 +79,7 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
+      
       
       
       <h1 class="site-logo" id="site-title">EG-247 Signals and Systems</h1>
@@ -670,7 +676,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -723,7 +729,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -925,10 +931,215 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Introducing Signals and Systems</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#colophon">
+   Colophon
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#signals-and-systems-for-dummies">
+   Signals and Systems for Dummies
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#topics">
+   Topics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#continuous-time-signals">
+   Continuous-time signals
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise">
+     Exercise
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#first-attempt">
+       First attempt
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gaining-insight-using-computers">
+     Gaining insight using computers
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#wolfram-alpha">
+       Wolfram Alpha
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#matlab">
+       MATLAB
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#returning-to-the-question">
+     Returning to the Question
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-second-go-after-gaining-insight-from-your-computer">
+       Exercise – second go after gaining insight from your computer
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#supplementary-question">
+     Supplementary question
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#try-this-yourself">
+     Try This Yourself
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#continuous-time-systems">
+   Continuous-time Systems
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1">
+     Example 1
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#block-diagram-model-in-simulink">
+       Block diagram model in Simulink
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#discrete-time-signals">
+   Discrete-time Signals
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2">
+     Example 2
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#procedure">
+       Procedure
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#discrete-time-systems">
+   Discrete-time Systems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#signal-classifications">
+   Signal Classifications
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#periodic">
+     Periodic
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#square-wave">
+       Square Wave
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#aperiodic">
+     Aperiodic
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#random">
+     Random
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#domains-for-signals-and-systems">
+   Domains for Signals and Systems
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#other-domains-you-will-encounter">
+     Other Domains you will encounter
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#viewing-signals-in-the-frequency-domain">
+     Viewing Signals in the Frequency Domain
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fourier-transform">
+     Fourier Transform
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#laplace-and-z-transform-domains">
+     Laplace and Z-Transform Domains
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#systems-thinking-and-systems-design">
+   Systems Thinking and Systems Design
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#familiar-signals-and-systems">
+   Familiar Signals and Systems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reference">
+   Reference
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
-  <div class="section" id="introducing-signals-and-systems">
+  <div class="tex2jax_ignore mathjax_ignore section" id="introducing-signals-and-systems">
 <h1>Introducing Signals and Systems<a class="headerlink" href="#introducing-signals-and-systems" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="colophon">
 <h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this headline">¶</a></h2>
@@ -941,7 +1152,7 @@
 </div>
 <div class="section" id="signals-and-systems-for-dummies">
 <h2>Signals and Systems for Dummies<a class="headerlink" href="#signals-and-systems-for-dummies" title="Permalink to this headline">¶</a></h2>
-<p>Signals and Systems for Dummies (<strong>SS4D</strong>) <span id="id1">[<a class="reference internal" href="../zbib.html#id8"><span>Wic13</span></a>]</span> provides a useful introduction to the topics that will be covered in this module and it is in the <a class="reference external" href="https://eu.alma.exlibrisgroup.com/leganto/readinglist/searchlists/27328240030002417">Reading List</a> as a <em>recommended text</em>. I have based this presentation on Chapter 1 which is available as a <a class="reference external" href="https://www.dummies.com/store/product/Signals-and-Systems-For-Dummies.productCd-111847581X.html">downloadable PDF</a> from the publishers.</p>
+<p>Signals and Systems for Dummies (<strong>SS4D</strong>) <span id="id1">[<a class="reference internal" href="../zbib.html#id8" title="Mark Wickert. Signals &amp; systems for dummies. Wiley, Hoboken, NJ, 2013. ISBN 111847581X.">Wickert, 2013</a>]</span> provides a useful introduction to the topics that will be covered in this module and it is in the <a class="reference external" href="https://eu.alma.exlibrisgroup.com/leganto/readinglist/searchlists/27328240030002417">Reading List</a> as a <em>recommended text</em>. I have based this presentation on Chapter 1 which is available as a <a class="reference external" href="https://www.dummies.com/store/product/Signals-and-Systems-For-Dummies.productCd-111847581X.html">downloadable PDF</a> from the publishers.</p>
 <p>You should read Chapter 1 of SS4D in conjunction with the notes for this presentation.</p>
 <p>Note that Signals and Systems for Dummies is available as an e-book from the <a class="reference external" href="https://whel-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/dlDisplay.do?vid=44WHELF_SWA_VU1&amp;search_scope=LSCOP_44WHELF_SWA_ALMA_DS&amp;docId=44WHELF_SWA_ALMA_DS5177422270002417&amp;fn=permalink">University Library</a>.</p>
 </div>
@@ -1416,7 +1627,7 @@ Unrecognized function or variable &#39;two_sines&#39;.
 </div>
 <div class="section" id="systems-thinking-and-systems-design">
 <span id="systems-thinking"></span><h2>Systems Thinking and Systems Design<a class="headerlink" href="#systems-thinking-and-systems-design" title="Permalink to this headline">¶</a></h2>
-<p>See section <strong>Testing Product Concepts with Behavioral Level Modeling</strong> from Chapter 1 of <a class="reference external" href="https://www.dummies.com/store/product/Signals-and-Systems-For-Dummies.productCd-111847581X.html">SS4D</a> (<span id="id2">[<a class="reference internal" href="../zbib.html#id8"><span>Wic13</span></a>]</span> pages 18–20) and add some notes to summarize this for yourself.</p>
+<p>See section <strong>Testing Product Concepts with Behavioral Level Modeling</strong> from Chapter 1 of <a class="reference external" href="https://www.dummies.com/store/product/Signals-and-Systems-For-Dummies.productCd-111847581X.html">SS4D</a> (<span id="id2">[<a class="reference internal" href="../zbib.html#id8" title="Mark Wickert. Signals &amp; systems for dummies. Wiley, Hoboken, NJ, 2013. ISBN 111847581X.">Wickert, 2013</a>]</span> pages 18–20) and add some notes to summarize this for yourself.</p>
 <ul class="simple">
 <li><p>We will use <em>behavioural modelling</em></p></li>
 <li><p>We will rely on <em>abstraction</em></p></li>
@@ -1426,7 +1637,7 @@ Unrecognized function or variable &#39;two_sines&#39;.
 </div>
 <div class="section" id="familiar-signals-and-systems">
 <h2>Familiar Signals and Systems<a class="headerlink" href="#familiar-signals-and-systems" title="Permalink to this headline">¶</a></h2>
-<p>See pages 21-23 of the free sample (<a class="reference external" href="https://www.dummies.com/store/product/Signals-and-Systems-For-Dummies.productCd-111847581X.html">Chapter 1</a>) of <span id="id3">[<a class="reference internal" href="../zbib.html#id8"><span>Wic13</span></a>]</span> for notes and details.</p>
+<p>See pages 21-23 of the free sample (<a class="reference external" href="https://www.dummies.com/store/product/Signals-and-Systems-For-Dummies.productCd-111847581X.html">Chapter 1</a>) of <span id="id3">[<a class="reference internal" href="../zbib.html#id8" title="Mark Wickert. Signals &amp; systems for dummies. Wiley, Hoboken, NJ, 2013. ISBN 111847581X.">Wickert, 2013</a>]</span> for notes and details.</p>
 </div>
 <div class="section" id="reference">
 <h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
@@ -1477,36 +1688,28 @@ Unrecognized function or variable &#39;two_sines&#39;.
 
               </div>
               
-        
             
-
-
-
-<div class='prev-next-bottom'>
-    
-     <div id="next">
-        <a class="right-next" href="../elementary_signals/index.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Elementary Signals</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='right-next' id="next-link" href="../elementary_signals/index.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Elementary Signals</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
-        
+            
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Dr Chris P. Jobling<br/>
-        
-            &copy; Copyright Swansea University (2019-2022).<br/>
-          <div class="extra_footer">
-            This page was created by 
+    <footer class="footer">
+  <p>
+    
+      By Dr Chris P. Jobling<br/>
+    
+        &copy; Copyright Swansea University (2019-2022).<br/>
+      <div class="extra_footer">
+        This page was created by 
 <a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
   Dr Chris P. Jobling
 </a> 
@@ -1515,19 +1718,16 @@ for
   Swansea University
 </a>.
 
-          </div>
-      </p>
-    </div>
-  </footer>
+      </div>
+  </p>
+</footer>
 </main>
 
 
       </div>
     </div>
-    
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-
-    
   </body>
 </html>
