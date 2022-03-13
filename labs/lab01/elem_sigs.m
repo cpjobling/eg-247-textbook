@@ -6,6 +6,8 @@
 % 
 % Please note that all citations of the "textbook" refer to <https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=17 
 % Chapter 1 of Karris (2012)> which is accessible by following the link. 
+
+clearvars % reset workspace
 %% The Unit Step Function
 % In the notes we define the unit step function as
 % 
@@ -86,7 +88,7 @@ u2(t)= 2*int(u1(tau),-inf, t)
 %% 
 % This returns a "case" statement which can't be plotted with |ezplot|. 
 % 
-% _*Note*_: 
+% *Note*_: 
 % 
 % $$\frac{\left(\textrm{sign}\left(t\right)+1\right)}{2}=u_0 \left(t\right)\;\ldotp$$
 % 
@@ -99,7 +101,7 @@ u2(t)= 2*int(u1(tau),-inf, t)
 
 ezplot(ans, [0,5]), title('u_2(t)'), grid
 %% 
-% Alternatively, you can use the function |fplot| which is going to replace 
+% Alternatively, you can use the function |fplot| which is going to replace  
 % |ezplot| in the future. This is able to correctly plot the _piecewise continuous_ 
 % function returned in the original computation.
 
@@ -128,7 +130,7 @@ dirac(t)
 
 dirac(1,t)
 %% 
-% $$\delta''(t)$$$
+% $$$\delta''(t)$$
 
 dirac(2,t)
 %% Part 5
