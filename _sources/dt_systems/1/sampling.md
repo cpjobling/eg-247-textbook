@@ -16,7 +16,7 @@ kernelspec:
 
 # Sampling Theory
 
-+++ {"slideshow": {"slide_type": "skip"}}
++++ {"slideshow": {"slide_type": "notes"}}
 
 ## Colophon
 
@@ -26,7 +26,7 @@ kernelspec:
 
 * This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/dt_systems/1/sampling.pdf) file.
 
-+++ {"slideshow": {"slide_type": "skip"}}
++++ {"slideshow": {"slide_type": "notes"}}
 
 ## Scope and Background Reading
 
@@ -69,6 +69,10 @@ We will be using an adaptation of a pair of demo scripts to illustrate *alialisi
 * Sampled data can be used in *real-time* or *off-line* processing
 * Sampling opens up possibility of processing CT signals through *finite impulse response* (FIR) and *infinite impulse response* (IIR) filters.
 
++++ {"slideshow": {"slide_type": "skip"}}
+
+Basic set up
+
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### In Class Demo 1: Sampling
@@ -82,10 +86,20 @@ I need a volunteer to provide a sound sample ....
 ```{code-cell} matlab
 ---
 slideshow:
-  slide_type: subslide
+  slide_type: skip
 ---
-clear all
+clearvars
+imatlab_export_fig('print-svg')  % Static svg figures.
+format compact
 cd matlab
+pwd
+```
+
+```{code-cell} matlab
+---
+slideshow:
+  slide_type: fragment
+---
 open sampling_demo
 ```
 
@@ -224,25 +238,11 @@ This is of course theoretical only!
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-### In Class Demo 2 
+### In Class Demo 2
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
 #### Illustrating Sampling in MATLAB
-
-+++ {"slideshow": {"slide_type": "fragment"}}
-
-Basic set up
-
-```{code-cell} matlab
----
-slideshow:
-  slide_type: skip
----
-clear all
-imatlab_export_fig('print-svg')  % Static svg figures.
-format compact
-```
 
 ```{code-cell} matlab
 ---
@@ -594,7 +594,6 @@ The concepts presented in this session provide a model that allows us to cross t
 The mathematics predicts the nature of the signals that are processed in the ideal case, but we will leave it with you to study these for yourself. (See Boulet pp 552&mdash;557).
 
 In practice, modern digital processing relies on the use of an analogue-to-digital converter (ADC) (which also introduces amplitude quantization), finite-length arithmetic inside the discrete-time system (usually a microprocessor, microcontroller or digital signal processor), followed by conversion back to a step-wise continuous signal via a digital to analogue converter (DAC) that operates like a zero-order-hold.
-
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
