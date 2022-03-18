@@ -4,10 +4,10 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: 0.12
-    jupytext_version: 1.9.1
+    format_version: 0.13
+    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
+  display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
@@ -22,11 +22,9 @@ We will distribute this PDF to the _Homework_ section of your personal section o
 
 1. Show that the waveform shown below can be represented by the function
 
-   $$
-   \begin{equation}
+$$
        v(t) = (2t + 1)u_0(t)-2(t-1)u_0(t-1)-tu_0(t-2)+(t-3)u_0(t-3).
-   \end{equation}
-   $$
+$$
    
    ![The waveform for Question 1](./pictures/example1.png)
     
@@ -46,7 +44,3 @@ We will distribute this PDF to the _Homework_ section of your personal section o
    2. Use this result to compute the time derivative of $v(t)$, and sketch its waveform. 
    
    ![The waveform for Question 3](./pictures/hw1.png)
-
-```{code-cell} ipython3
-
-```
