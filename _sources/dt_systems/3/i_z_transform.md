@@ -166,7 +166,7 @@ Uses MATLAB functions:
 ```{code-cell} matlab
 ---
 slideshow:
-  slide_type: fragment
+  slide_type: skip
 ---
 clear all
 imatlab_export_fig('print-svg')  % Static svg figures.
@@ -250,7 +250,7 @@ slideshow:
 
 ### Print results 
 
-- `fprintf` works like the c-language function
+- `fprintf` works like the c-language function where `"%4.2f"` means print a floating point number with four significant digits and 2 places of decimals.
 
 ```{code-cell} matlab
 ---
@@ -546,7 +546,7 @@ fn =
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Invsersion Integral
+### Inversion Integral
 
 *Advantage*
 

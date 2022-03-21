@@ -163,7 +163,7 @@ $$Y(z) = \left(\frac{b_0 + b_{1}z^{-1} + b_{2}z^{-2} + \cdots b_{k}z^{-k}}{1 + a
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Define transfer function
+### Define the transfer function
 
 We define the *discrete time transfer function* $H(z) := Y(z)/U(z)$ so...
 
@@ -186,7 +186,11 @@ The *discrete-time impulse reponse* $h[n]$ is the response of the DT system to t
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-Last week we showed that $$\mathcal{Z}\left\{\delta[n]\right\}$$ was defined by the transform pair 
+Last week we showed that 
+
+$$\mathcal{Z}\left\{\delta[n]\right\}$$
+
+was defined by the transform pair 
 
 $$\delta[n] \Leftrightarrow 1$$
 
@@ -289,7 +293,7 @@ $$\frac{H(z)}{z} = \frac{z - 1}{z^2 + 0.5 z + 0.125}$$
 ```{code-cell} matlab
 ---
 slideshow:
-  slide_type: fragment
+  slide_type: skip
 ---
 clear all
 imatlab_export_fig('print-svg')  % Static svg figures.
@@ -389,10 +393,10 @@ We will work through this example in class.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-$$\begin{array}{lcl}
+$$\begin{eqnarray*}
 Y(z) = H(z){U_0}(z) &=& \frac{z^2 + z}{z^2 + 0.5z + 0.125}.\frac{z}{z - 1}\\
  & = & \frac{z(z^2 + z)}{(z^2 + 0.5z + 0.125)(z - 1)}
-\end{array}$$
+\end{eqnarray*}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
