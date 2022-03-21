@@ -18,6 +18,7 @@
 %
 % This next command opens the documentation for the |ilaplace| function. You may wish to leave this open for consulation
 % as you work through these exercises.
+clearvars
 doc ilaplace
 %% Residues
 % If you need to find the residues of a partial fraction expansion of a
@@ -119,16 +120,16 @@ d1 = [1, 2, 1]; % Coefficients of (s + 1)^2 =  s^2 + 2*s + 1 term in D(s)
 d2 = [0, 1, 2]; % Coefficients of (s + 2) term in D(s)
 Ds = conv(d1,d2); % Polynomial multiplication: gives expanded D(s)
 [r,p,k] = residue(Ns,Ds)
-%% Problem 1
+%% Problem 9
 % Solve and plot the inverse Laplace Transform of
 %
 % $$F_5(s) \frac{s^2 + 3s + 1}{(s + 1)^3(s + 2)^2}$$
-%% Problem 2
+%% Problem 10
 % use the function |collect| to expand |(s + 1)^3 * (s + 2)^2| to
 % a polynomial. Use this result and |residue| to verify the result of
 % Problem 1.
 %% Non-proper rational polynomials
-%% Problem 3
+%% Problem 11
 % Compute and (if possible) plot the Inverse Laplace Transform of
 %
 % $$F_6(s) = \frac{s^2 + 2s + 2}{s + 1}$$
@@ -136,7 +137,7 @@ Ds = conv(d1,d2); % Polynomial multiplication: gives expanded D(s)
 % Use the |residue| function to validate the result.
 %% Homework
 %
-% (Note assessed.)
+% (Not assessed.)
 %
 % Use the tools developed in this lab to solve and plot the Inverse Laplace
 % Transforms for your own selection of problems from each of Questions 1 to 
