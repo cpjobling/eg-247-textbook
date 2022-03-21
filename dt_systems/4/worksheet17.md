@@ -467,7 +467,13 @@ grid
 
 #### Sampling Frequency
 
-From the bode diagram, the frequency at which $|H(j\omega)|$ is $-80$&nbsp;dB is approx $12.6\times 10^6$&nbsp;rad/s.
+From the bode diagram, the frequency roll-off is -40 dB/decade for frequencies $\omega \gg \omega_c$. So, $|H(j\omega)| = -80$&nbsp;dB  is approximately 2 decades above $\omega_c$. 
+
+```{code-cell} matlab
+w_stop = 100*wc
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
 
 To avoid aliasing, we should choose a sampling frequency twice this = ?
 
@@ -480,14 +486,14 @@ $\omega_s = 2\times 12.6\times 10^6$&nbsp;rad/s.
 slideshow:
   slide_type: fragment
 ---
-ws = 2* 12.6e6
+ws = 2 * w_stop
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 So
 
-$\omega_s = 25.2\times 10^6$&nbsp;rad/s.
+$\omega_s = 25.133\times 10^6$&nbsp;rad/s.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -525,7 +531,7 @@ Ts = 1/fs
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-$$T_s = 1/f_s \approx 0.25\;\mu\mathrm{s}$$
+$$T_s = 1/f_s = 0.25\;\mu\mathrm{s}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -551,21 +557,21 @@ step(Hz)
 
 From previous result:
 
-$$H(z) = \frac{Y(z)}{U(z)} = \frac{486.6\times 10^{-6}z +  476.5\times 10^{-6}}{z^2 - 1.956z + 0.9567}$$
+$$H(z) = \frac{Y(z)}{U(z)} = \frac{486.2\times 10^{-6}z +  479.1\times 10^{-6}}{z^2 - 1.956z + 0.9665}$$
 
 Dividing top and bottom by $z^2$ ...
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-$$H(z) = \frac{Y(z)}{U(z)} = \frac{486.6\times 10^{-6}z^{-1} +  476.5\times 10^{-6}z^{-2}}{1 - 1.956z^{-1} + 0.9567z^{-2}}$$
+$$H(z) = \frac{Y(z)}{U(z)} = \frac{486.2\times 10^{-6}z^{-1} +  479.1\times 10^{-6}z^{-2}}{1 - 1.956z^{-1} + 0.9665z^{-2}}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 expanding out ...
 
 $$\begin{array}{l}
-Y(z) - 1.956{z^{ - 1}}Y(z) + 0.9567{z^{ - 2}}Y(z) = \\
-\quad 486.6 \times {10^{ - 6}}{z^{ - 1}}U(z) + 476.5 \times {10^{ - 6}}{z^{ - 2}}U(z)
+Y(z) - 1.956{z^{ - 1}}Y(z) + 0.9665{z^{ - 2}}Y(z) = \\
+\quad 486.2 \times {10^{ - 6}}{z^{ - 1}}U(z) + 479.1 \times {10^{ - 6}}{z^{ - 2}}U(z)
 \end{array}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -573,8 +579,8 @@ Y(z) - 1.956{z^{ - 1}}Y(z) + 0.9567{z^{ - 2}}Y(z) = \\
 Inverse z-transform gives ...
 
 $$\begin{array}{l}
-y[n] - 1.956y[n - 1] + 0.9567y[n - 2] = \\
-\quad 486.6 \times {10^{ - 6}}u[n - 1] + 476.5 \times {10^{ - 6}}u[n - 2]
+y[n] - 1.956y[n - 1] + 0.9665y[n - 2] = \\
+\quad 486.2 \times {10^{ - 6}}u[n - 1] + 479.1 \times {10^{ - 6}}u[n - 2]
 \end{array}$$
 
 +++ {"slideshow": {"slide_type": "fragment"}}
@@ -582,8 +588,8 @@ y[n] - 1.956y[n - 1] + 0.9567y[n - 2] = \\
 in algorithmic form (compute $y[n]$ from past values of $u$ and $y$) ...
 
 $$\begin{array}{l}
-y[n] = 1.956y[n - 1] - 0.9567y[n - 2] + 486.6 \times {10^{ - 6}}u[n - 1] + ...\\
-\quad 476.5 \times {10^{ - 6}}u[n - 2]
+y[n] = 1.956y[n - 1] - 0.9665y[n - 2] + 486.2 \times {10^{ - 6}}u[n - 1] + ...\\
+\quad 479.1 \times {10^{ - 6}}u[n - 2]
 \end{array}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -612,16 +618,16 @@ open digifilter
 
 To implement:
 
-$$y[n] = 1.956 y[n-1] - 0.9567 y[n - 2] + 486.6\times 10^{-6} u[n-1] + 476.5\times 10^{-6} u[n-2]$$
+$$y[n] = 1.956 y[n-1] - 0.9665 y[n - 2] + 486.2\times 10^{-6} u[n-1] + 479.1\times 10^{-6} u[n-2]$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
     /* Initialize */
-    Ts = 2.4933e-07; /* more probably some fraction of clock speed */
+    Ts = 0.25e-06; /* more probably some fraction of clock speed */
     ynm1 = 0; ynm2 = 0; unm1 = 0; unm2 = 0;
     while (true) {
         un = read_adc;
-        yn = 1.956*ynm1 - 0.9567*ynm2 + 486.6e-6*unm1 + 476.5e-6*unm2;
+        yn = 1.956*ynm1 - 0.9665*ynm2 + 479.1e-6*unm1 + 476.5e-6*unm2;
         write_dac(yn);
         /* store past values */
         ynm2 = ynm1; ynm1 = yn;

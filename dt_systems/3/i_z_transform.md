@@ -108,7 +108,7 @@ $$r_k = \lim_{z\to p_k}(z - p_k)\frac{F(z)}{z} = (z - p_k)\left.\frac{F(z)}{z}\r
 
 * Rewrite $F(z)/z$:
 
-$$z\frac{F(z)}{z} = F(z) = k + \frac{r_1z}{s-p_1} + \frac{r_2z}{s-p_2} + \cdots$$
+$$z\frac{F(z)}{z} = F(z) = k + \frac{r_1z}{z-p_1} + \frac{r_2z}{z-p_2} + \cdots$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -160,7 +160,7 @@ Uses MATLAB functions:
 * `sym2poly` &ndash; converts a polynomial into a numeric polymial (vector of coefficients in descending order of exponents)
 * `residue` &ndash; calculates poles and zeros of a polynomial
 * `ztrans` &ndash; symbolic z-transform
-* `iztrans` &ndash; symbolic inverse ze-transform
+* `iztrans` &ndash; symbolic inverse z-transform
 * `stem` &ndash; plots sequence as a "lollipop" diagram
 
 ```{code-cell} matlab
@@ -297,7 +297,7 @@ iztrans(Fz)
 slideshow:
   slide_type: fragment
 ---
-n = 1:15;
+n = 0:15;
 sequence = subs(fn,n);
 stem(n,sequence)
 title('Discrete Time Sequence f[n] = 2*(1/2)^n-9*(3/4)^n + 8');
