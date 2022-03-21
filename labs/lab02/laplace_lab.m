@@ -20,7 +20,7 @@
 % 
 % This next command opens the documentation for the |laplace| function. You 
 % may wish to leave this open for consulation as you work through these exercises.
-
+clearvars
 doc laplace
 %% Tranform Tables
 % Let's start our exploration by verifying some simple transforms from the tables
@@ -80,7 +80,7 @@ laplace(exp(-a*t)*u0(t))
 %% Problem 3
 % Use MATLAB to compute the Laplace Transform of |exp(-a*t)*sin(omega*t)*u0(t)| 
 % and |exp(-a*t)*cos(omega*t)*u0(t)|
-%% Laplace Transform Properties
+%% Proble 4 - Laplace Transform Properties
 % Give examples to prove each of the following:
 % 
 % # The Linearity Property
@@ -89,21 +89,21 @@ laplace(exp(-a*t)*u0(t))
 % # The Scaling Property
 % # The Transform of First and Second Order Time Derviatives
 % # The Integration in Time Domain Property
-%% Problem 4
+%% Problem 5
 % Calculate the Laplace Transform of a rectangular pulse with a height 2 that 
 % starts at t = 1 seconds and ends at t = 3 seconds. Plot the pulse.
-%% Problem 5
+%% Problem 6
 % Plot a piecewise-linear signal that starts at 0 when t=0, goes to -1 at t 
 % = 1, +1 at t = 2, and returns to 0 at t = 3. Calculate the Laplace Transform 
 % of the waveform.
-%% Problem 6
+%% Problem 7
 % Give the laplace transform of the waveform in Problem 5 assuming that it repeats 
 % every 3 seconds. 
 % 
 % _Hint_: 
 % 
 % $$f(t-nT)\Leftrightarrow \frac{\int_{0}^{T}\,f(t)e^{-st}\,dt}{1-e^{-sT}}$$
-%% Problem 7
+%% Problem 8
 % Use MATLAB to plot a fully rectified sinusoidal signal |abs(sin(omega*t))| 
 % over 3 full cycles. Find the Laplace Transform of this signal.
 %% Homework
