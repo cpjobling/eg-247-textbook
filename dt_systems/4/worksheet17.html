@@ -1286,18 +1286,25 @@ Y(z) = H(z){U_0}(z) &amp;=&amp; \frac{z^2 + z}{z^2 + 0.5z + 0.125}.\frac{z}{z - 
 </div>
 <div class="section" id="sampling-frequency">
 <h4>Sampling Frequency<a class="headerlink" href="#sampling-frequency" title="Permalink to this headline">¶</a></h4>
-<p>From the bode diagram, the frequency at which <span class="math notranslate nohighlight">\(|H(j\omega)|\)</span> is <span class="math notranslate nohighlight">\(-80\)</span> dB is approx <span class="math notranslate nohighlight">\(12.6\times 10^6\)</span> rad/s.</p>
+<p>From the bode diagram, the frequency roll-off is -40 dB/decade for frequencies <span class="math notranslate nohighlight">\(\omega \gg \omega_c\)</span>. So, <span class="math notranslate nohighlight">\(|H(j\omega)| = -80\)</span> dB  is approximately 2 decades above <span class="math notranslate nohighlight">\(\omega_c\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">w_stop</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="n">wc</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>To avoid aliasing, we should choose a sampling frequency twice this = ?</p>
 <p><span class="math notranslate nohighlight">\(\omega_s = 2\times 12.6\times 10^6\)</span> rad/s.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ws</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span> <span class="mf">12.6e6</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ws</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">w_stop</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>So</p>
-<p><span class="math notranslate nohighlight">\(\omega_s = 25.2\times 10^6\)</span> rad/s.</p>
+<p><span class="math notranslate nohighlight">\(\omega_s = 25.133\times 10^6\)</span> rad/s.</p>
 <p>Sampling frequency (<span class="math notranslate nohighlight">\(f_s\)</span>) in Hz  = ?</p>
 <div class="math notranslate nohighlight">
 \[f_s = \omega_s/(2\pi)\;\mathrm{Mhz}\]</div>
@@ -1320,7 +1327,7 @@ Y(z) = H(z){U_0}(z) &amp;=&amp; \frac{z^2 + z}{z^2 + 0.5z + 0.125}.\frac{z}{z - 
 </div>
 </div>
 <div class="math notranslate nohighlight">
-\[T_s = 1/f_s \approx 0.25\;\mu\mathrm{s}\]</div>
+\[T_s = 1/f_s = 0.25\;\mu\mathrm{s}\]</div>
 </div>
 <div class="section" id="digital-butterworth">
 <h4>Digital Butterworth<a class="headerlink" href="#digital-butterworth" title="Permalink to this headline">¶</a></h4>
@@ -1347,27 +1354,27 @@ Y(z) = H(z){U_0}(z) &amp;=&amp; \frac{z^2 + z}{z^2 + 0.5z + 0.125}.\frac{z}{z - 
 <h4>Algorithm<a class="headerlink" href="#algorithm" title="Permalink to this headline">¶</a></h4>
 <p>From previous result:</p>
 <div class="math notranslate nohighlight">
-\[H(z) = \frac{Y(z)}{U(z)} = \frac{486.6\times 10^{-6}z +  476.5\times 10^{-6}}{z^2 - 1.956z + 0.9567}\]</div>
+\[H(z) = \frac{Y(z)}{U(z)} = \frac{486.2\times 10^{-6}z +  479.1\times 10^{-6}}{z^2 - 1.956z + 0.9665}\]</div>
 <p>Dividing top and bottom by <span class="math notranslate nohighlight">\(z^2\)</span> …</p>
 <div class="math notranslate nohighlight">
-\[H(z) = \frac{Y(z)}{U(z)} = \frac{486.6\times 10^{-6}z^{-1} +  476.5\times 10^{-6}z^{-2}}{1 - 1.956z^{-1} + 0.9567z^{-2}}\]</div>
+\[H(z) = \frac{Y(z)}{U(z)} = \frac{486.2\times 10^{-6}z^{-1} +  479.1\times 10^{-6}z^{-2}}{1 - 1.956z^{-1} + 0.9665z^{-2}}\]</div>
 <p>expanding out …</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{l}
-Y(z) - 1.956{z^{ - 1}}Y(z) + 0.9567{z^{ - 2}}Y(z) = \\
-\quad 486.6 \times {10^{ - 6}}{z^{ - 1}}U(z) + 476.5 \times {10^{ - 6}}{z^{ - 2}}U(z)
+Y(z) - 1.956{z^{ - 1}}Y(z) + 0.9665{z^{ - 2}}Y(z) = \\
+\quad 486.2 \times {10^{ - 6}}{z^{ - 1}}U(z) + 479.1 \times {10^{ - 6}}{z^{ - 2}}U(z)
 \end{array}\end{split}\]</div>
 <p>Inverse z-transform gives …</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{l}
-y[n] - 1.956y[n - 1] + 0.9567y[n - 2] = \\
-\quad 486.6 \times {10^{ - 6}}u[n - 1] + 476.5 \times {10^{ - 6}}u[n - 2]
+y[n] - 1.956y[n - 1] + 0.9665y[n - 2] = \\
+\quad 486.2 \times {10^{ - 6}}u[n - 1] + 479.1 \times {10^{ - 6}}u[n - 2]
 \end{array}\end{split}\]</div>
 <p>in algorithmic form (compute <span class="math notranslate nohighlight">\(y[n]\)</span> from past values of <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(y\)</span>) …</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{l}
-y[n] = 1.956y[n - 1] - 0.9567y[n - 2] + 486.6 \times {10^{ - 6}}u[n - 1] + ...\\
-\quad 476.5 \times {10^{ - 6}}u[n - 2]
+y[n] = 1.956y[n - 1] - 0.9665y[n - 2] + 486.2 \times {10^{ - 6}}u[n - 1] + ...\\
+\quad 479.1 \times {10^{ - 6}}u[n - 2]
 \end{array}\end{split}\]</div>
 </div>
 <div class="section" id="block-diagram-of-the-digital-bw-filter">
@@ -1389,13 +1396,13 @@ y[n] = 1.956y[n - 1] - 0.9567y[n - 2] + 486.6 \times {10^{ - 6}}u[n - 1] + ...\\
 <h4>Convert to code<a class="headerlink" href="#convert-to-code" title="Permalink to this headline">¶</a></h4>
 <p>To implement:</p>
 <div class="math notranslate nohighlight">
-\[y[n] = 1.956 y[n-1] - 0.9567 y[n - 2] + 486.6\times 10^{-6} u[n-1] + 476.5\times 10^{-6} u[n-2]\]</div>
+\[y[n] = 1.956 y[n-1] - 0.9665 y[n - 2] + 486.2\times 10^{-6} u[n-1] + 479.1\times 10^{-6} u[n-2]\]</div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>/* Initialize */
-Ts = 2.4933e-07; /* more probably some fraction of clock speed */
+Ts = 0.25e-06; /* more probably some fraction of clock speed */
 ynm1 = 0; ynm2 = 0; unm1 = 0; unm2 = 0;
 while (true) {
     un = read_adc;
-    yn = 1.956*ynm1 - 0.9567*ynm2 + 486.6e-6*unm1 + 476.5e-6*unm2;
+    yn = 1.956*ynm1 - 0.9665*ynm2 + 479.1e-6*unm1 + 476.5e-6*unm2;
     write_dac(yn);
     /* store past values */
     ynm2 = ynm1; ynm1 = yn;
