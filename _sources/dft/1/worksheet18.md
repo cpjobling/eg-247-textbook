@@ -607,7 +607,7 @@ Points to note:
 
 * $X[0] = 12$ is the DC component of the DT sequence.
 * After the $|X[8]| = 1.4872$ term, the magnitude of the frequency values for the range $9 <= m \le 15$ are the mirror image of the values for the range $0 <= m <= 7$.
-* This is not a coincidence, in fact if $x[n]$ is an N-point *real discrete time function*, only $N/2$ of the *frequency components* of $|X[m]|$ *are unique*.
+* This is not a coincidence, in fact if $x[n]$ is an N-point *real discrete-time function*, only $N/2$ of the *frequency components* of $|X[m]|$ *are unique*.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
