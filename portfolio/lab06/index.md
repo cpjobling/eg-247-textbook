@@ -153,7 +153,7 @@ Record your experiments in this part of the lab by saving your Live Script file.
 
 ### Lab Exercise 13: Aliasing and anti-aliasing
 
-Download the example file [eg-247-message.wav](https://cpjobling.github.io/eg-247-textbook/labs/lab06/eg-247-message.wav) that was recorded in the lecture using the file [sampling_demo.m](https://cpjobling.github.io/eg-247-textbook/labs/lab06/sampling_demo.m) (If you have access to a microphone you can use `sampling_demo` to record your own sound file.)
+Download the example file [eg-247-message.wav](https://github.com/cpjobling/eg-247-textbook/blob/master/dt_systems/1/matlab/eg-247-message.wav) that was recorded in the lecture using the file [sampling_demo.m](https://cpjobling.github.io/eg-247-textbook/labs/lab06/sampling_demo.m) (If you have access to a microphone you can use `sampling_demo` to record your own sound file.)
 
 #### Part 5: Aliasing
 

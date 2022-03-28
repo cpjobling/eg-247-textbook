@@ -354,7 +354,7 @@ Karris Example 10.1. To successfully run this script you will need to download t
 slideshow:
   slide_type: fragment
 ---
-xn = [1, 2, 2, 1];
+xn = [2 0 0 8 9 7 5 0];
 ```
 
 ```{code-cell} matlab
@@ -370,7 +370,7 @@ open dft
 slideshow:
   slide_type: fragment
 ---
-Xm = dft(xn,4)
+Xm = dft(xn,8)
 ```
 
 ```{code-cell} matlab
@@ -386,7 +386,7 @@ open idft
 slideshow:
   slide_type: fragment
 ---
-xn = idft(Xm,4)
+xn = idft(Xm,8)
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -397,7 +397,7 @@ The term
 
 $$\exp\left(\frac{-j2\pi}{N}\right)$$
 
-is a rotating vector where the range $0 <= \theta <= 2\pi$ is divided into $360/N$ equal segments.
+is a rotating vector where the range $0 <= \theta <= 2\pi$ is divided into $N$ equal segments where $N$ is usually taken to be a power of 2.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
