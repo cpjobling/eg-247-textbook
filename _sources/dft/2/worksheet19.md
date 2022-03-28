@@ -228,7 +228,7 @@ An equivalent Simulink model in block diagram form is:
 ```{code-cell} matlab
 ---
 slideshow:
-  slide_type: fragment
+  slide_type: skip
 ---
 cd matlab
 clear all

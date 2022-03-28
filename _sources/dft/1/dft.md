@@ -684,7 +684,7 @@ Even and odd properties of the DFT
 
 <table>
 <thead>
-<tr><td>Discrete time sequence $f[n]$ </td><td> Discrete frequency sequence $F[m]$ </td></tr>
+    <tr><td><b>Discrete time sequence <i>f</i>[<i>n</i>]</b> </td><td> <b>Discrete frequency sequence <i>F</i>[<i>m</i>]</b> </td></tr>
 </thead>
 <tbody>
 <tr>
