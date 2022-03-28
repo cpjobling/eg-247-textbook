@@ -397,7 +397,7 @@ The term
 
 $$\exp\left(\frac{-j2\pi}{N}\right)$$
 
-is a rotating vector where the range $0 <= \theta <= 2\pi$ is divided into $360/N$ equal segments.
+is a rotating vector where the range $0 <= \theta <= 2\pi$ is divided into $N$ equal segments where $N$ is usually taken to be a power of 2.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
