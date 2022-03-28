@@ -59,7 +59,7 @@ The material in this presentation and notes is based on [Chapter 10](https://ebo
 ## Introduction
 
 * Fourier series: periodic and continuous time function leads to a non-periodic discrete frequency function.
-* Fourier transform: non-periodic and continuous function leads to a non-periodic continuous frequency function.
+* Fourier transform: non-periodic continuous function leads to a non-periodic continuous frequency function.
 * Z and inverse Z-transforms produce a periodic and continuous frequency function, since they are evaluated on the unit circle.
 
 +++ {"slideshow": {"slide_type": "notes"}}
@@ -344,7 +344,7 @@ $$x[0] = \frac{1}{4}\left[6, -1 - j, 0, -1 + j\right] = \frac{6-2}{4} = 1$$
 
 Repeat for $x[1]$, $x[2]$ and $x[3]$.
 
-$x[1]$: uses $\exp\left(j\frac{\pi}{2}m\right) = \pm j$
+$x[1]$: uses $\exp\left(j\frac{\pi}{2}m\right) = 1,j,-1,-j$
 
 $$
 \begin{eqnarray*}
@@ -362,12 +362,12 @@ x[2] &=& \frac{1}{4}\left(1\times 6 + -1\times (-1-j)+1\times 0-1\times(-1+j)\ri
 \end{eqnarray*}
 $$
 
-$x[3]$: uses $\exp\left(j\frac{3\pi}{2} m\right)$
+$x[3]$: uses $\exp\left(j\frac{3\pi}{2} m\right) = 1, -j, 1, j$
 
 $$
 \begin{eqnarray*}
 x[3] &=& \frac{1}{4}\left(1\times 6 + -j\times (-1-j)+1\times 0+j\times(-1+j)\right)\\
-&=& \frac{1}{4}\left(6 + j-1 +0-j +1 )\right) = \frac{4}{1} = 1\\
+&=& \frac{1}{4}\left(6 + j-1 +0-j -1 )\right) = \frac{4}{1} = 1\\
 \end{eqnarray*}
 $$
 
@@ -616,9 +616,9 @@ $$
 
 Use MATLAB to compute the magnitude of the frequency components of the following DT function:
 
-| $n$ | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 
+| n | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 
 |-----|---|---|---|---|---|---|---|---|---|---|----|----|----|----|----|----|
-| $x[n]$ |1.0 |1.5 |2.0 |2.3 |2.7 |3.0 |3.4 |4.1 |4.7 |4.2 |3.5 | 3.6 | 3.2 | 2.9 | 2.5 | 1.8 |
+| x[n] |1.0 |2 |2 |2.5 |1.5 |0.5 |-0.5 |-1.5 |-2.5 |-0.5 |0.25 | 1.25 | 2 | 1.5 | 1 | 0.5 |
 
 We will compute this in class and make some comments afterwards.
 
@@ -662,7 +662,7 @@ Points to note:
 
 * $X[0] = 12$ is the DC component of the DT sequence.
 * After the $|X[8]| = 1.4872$ term, the magnitude of the frequency values for the range $9 <= m \le 15$ are the mirror image of the values for the range $0 <= m <= 7$.
-* This is not a coincidence, in fact if $x[n]$ is an N-point *real discrete time function*, only $N/2$ of the *frequency components* of $|X[m]|$ *are unique*.
+* This is not a coincidence, in fact if $x[n]$ is an N-point *real discrete-time function*, only $N/2$ of the *frequency components* of $|X[m]|$ *are unique*.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -684,7 +684,7 @@ Even and odd properties of the DFT
 
 <table>
 <thead>
-<tr><td>Discrete time sequence $f[n]$ </td><td> Discrete frequency sequence $F[m]$ </td></tr>
+    <tr><td><b>Discrete time sequence <i>f</i>[<i>n</i>]</b> </td><td> <b>Discrete frequency sequence <i>F</i>[<i>m</i>]</b> </td></tr>
 </thead>
 <tbody>
 <tr>
