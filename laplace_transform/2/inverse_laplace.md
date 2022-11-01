@@ -5,11 +5,11 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.11.5
+    jupytext_version: 1.14.0
 kernelspec:
-  display_name: MATLAB
+  display_name: Matlab (Connection)
   language: matlab
-  name: imatlab
+  name: matlab_connect
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -157,17 +157,16 @@ $$F_1(s) = \frac{2s+5}{s^2 + 5s + 6}$$
 
 #### MATLAB Solution - Numerical
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: notes
 ---
 clear all
 format compact
-imatlab_export_fig('print-svg')  % Static svg figures.
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -190,7 +189,7 @@ $$f_1(t) = e^{-3t} + e^{-2t}$$
 
 #### MATLAB solution - symbolic
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -219,7 +218,7 @@ $$F_2(s) = \frac{3s^2+2s+5}{s^3 + 9s^2 + 23s + 15}$$
 
 Because the denominator of $F_2(s)$ is a cubic, it will be difficult to factorise without computer assistance so we use MATLAB to factorise $D(s)$
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -420,12 +419,12 @@ $$f_6(t) = e^{-t}+\delta(t)+\delta'(t)$$
 
 #### Matlab verification
 
-```{code-cell} matlab
+```{code-cell}
 Ns = [1, 2, 2]; Ds = [1 1];
 [r, p, k] = residue(Ns, Ds)
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -453,7 +452,7 @@ For convenience, single script MATLAB solutions to the examples are provided and
 * Example 4 - Repeated real poles [[ex3_4.m](https://cpjobling.github.io/eg-247-textbook/laplace_transform/matlab/ex3_4.m)]
 * Example 5 - Non proper rational polynomial [[ex3_5.m](https://cpjobling.github.io/eg-247-textbook/laplace_transform/matlab/ex3_5.m)]
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
