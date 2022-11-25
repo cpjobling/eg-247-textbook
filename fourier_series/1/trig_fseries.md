@@ -5,11 +5,11 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.11.5
+    jupytext_version: 1.14.1
 kernelspec:
-  display_name: MATLAB
+  display_name: Matlab
   language: matlab
-  name: imatlab
+  name: matlab
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -274,7 +274,7 @@ As an example let's take a square wave with amplitude $\pm A$ and period $T$.
 
 ### Solution
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -285,7 +285,7 @@ format compact
 imatlab_export_fig('print-svg')  % Static svg figures.
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -298,7 +298,7 @@ n = [1:11];
 
 DC component
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -310,7 +310,7 @@ half_a0 = 1/(2*pi)*(int(A,t,0,pi)+int(-A,t,pi,2*pi))
 
 Compute harmonics
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -323,7 +323,7 @@ bi = 1/pi*(int(A*sin(n*t),t,0,pi)+int(-A*sin(n*t),t,pi,2*pi));
 
 Reconstruct $f(t)$ from harmonic sine functions
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -338,7 +338,7 @@ end;
 
 Make numeric
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -350,7 +350,7 @@ ft_num = subs(ft,A,1.0);
 
 Print using 4 sig digits
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -362,7 +362,7 @@ ft_num = vpa(ft_num, 4)
 
 Plot result
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -374,7 +374,7 @@ ezplot(ft_num),grid
 
 Plot original signal (we could use `heaviside` for this as well)
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -424,7 +424,7 @@ $$f(t) = \frac{4A}{\pi}\left(\sin \Omega_0 t + \frac{1}{3}\sin 3\Omega_0 t + \fr
 
 Calculation of Fourier coefficients for Shifted Square Wave Exploiting half-wave symmetry. This is almost the same procedure as before. You can confirm the results by downloading and executing this file: [shifted_sq_ftrig.mlx](https://cpjobling.github.io/eg-247-textbook/fourier_series/matlab/shifted_sq_ftrig.mlx).
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: notes
@@ -437,7 +437,7 @@ syms t n A pi
 
 Define harmonics
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: notes
@@ -449,7 +449,7 @@ n = [1:11];
 
 DC component
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: notes
@@ -461,7 +461,7 @@ half_a0 = 0
 
 Compute harmonics - use half-wave symmetry
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: notes
@@ -469,7 +469,7 @@ slideshow:
 ai = 4/pi*int(A*cos(n*t),t,0,(sym(pi)/2));
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: notes
@@ -481,7 +481,7 @@ bi = zeros(size(n));
 
 Reconstruct f(t) from harmonic sine functions
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: notes
@@ -496,7 +496,7 @@ end
 
 Make numeric and print to 4 sig. figs.
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: notes
@@ -509,7 +509,7 @@ ft_num = vpa(ft_num, 4)
 
 plot result and overlay original signal (we could use `heaviside` for this as well.
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: notes

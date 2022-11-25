@@ -29,6 +29,9 @@ clean:
 	find ./dft -name '*.ipynb' -exec rm {} \;
 	find ./labs -name '*.ipynb' -exec rm {} \;
 	find ./dt_systems -name '*.ipynb' -exec rm {} \;
+	find ./fourier_transform -name '*.ipynb' -exec rm {} \;
+	find ./fourier_series -name '*.ipynb' -exec rm {} \;
+	find ./homework -name '*.ipynb' -exec rm {} \;
 	jupyter-book clean .
 
 build:  

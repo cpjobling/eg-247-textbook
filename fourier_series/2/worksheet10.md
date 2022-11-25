@@ -5,11 +5,11 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.11.5
+    jupytext_version: 1.14.1
 kernelspec:
-  display_name: MATLAB
+  display_name: Matlab
   language: matlab
-  name: imatlab
+  name: matlab
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -55,7 +55,7 @@ After class, the lecture recording and the annotated version of the worksheets w
 
 When $a$ is real the function $e^{at}$ will take one of the two forms illustrated below:
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: notes
@@ -70,7 +70,7 @@ format compact
 
 You can regenerate this image generated with this Matlab script: [expon.m](https://cpjobling.github.io/eg-247-textbook/fourier_series/matlab/expon.m).
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -308,7 +308,7 @@ Verify the result of Example 1 using MATLAB.
 
 Solution: See [efs_sqw.m](https://cpjobling.github.io/eg-247-textbook/fourier_series/matlab/efs_sqw.m).
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -325,7 +325,7 @@ Calculates the Exponential Fourier for a Square Wave with Odd Symmetry.
 
 Set up parameters
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -343,7 +343,7 @@ Define f(t)
 
 **IMPORTANT**: the signal definition must cover [0 to T0]
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -355,7 +355,7 @@ xt = A*(heaviside(t)-heaviside(t-T0/2)) - A*(heaviside(t-T0/2)-heaviside(t-T0));
 
 Compute EFS
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -369,7 +369,7 @@ Plot the numerical results from the MATLAB calculation.
 
 Convert symbolic to numeric result
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -381,7 +381,7 @@ Xw = subs(X,A,1);
 
 Plot
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
