@@ -32,6 +32,7 @@ clean:
 	find ./fourier_transform -name '*.ipynb' -exec rm {} \;
 	find ./fourier_series -name '*.ipynb' -exec rm {} \;
 	find ./homework -name '*.ipynb' -exec rm {} \;
+	find ./worksheets -name '*.ipynb' -exec rm {} \;
 	jupyter-book clean .
 
 build:  
