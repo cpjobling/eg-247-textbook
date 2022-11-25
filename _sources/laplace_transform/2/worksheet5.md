@@ -5,11 +5,11 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.11.5
+    jupytext_version: 1.14.1
 kernelspec:
-  display_name: MATLAB
+  display_name: Matlab
   language: matlab
-  name: imatlab
+  name: matlab
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -28,14 +28,13 @@ You are expected to have at least watched the video presentation of [Chapter 3.2
 
 After class, the lecture recording and the annotated version of this worksheet will be made available through Canvas.
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: skip
 ---
 clear all
 format compact
-imatlab_export_fig('print-svg')  % Static svg figures.
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -162,7 +161,7 @@ Quick solution: [Wolfram Alpha](https://www.wolframalpha.com/input/?i=inverse+la
 
 #### Matlab Solution - Numerical
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -171,7 +170,7 @@ tags: [remove-output]
 format compact
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -195,7 +194,7 @@ $$f_1(t) = e^{-3t} + e^{-2t}$$
 
 #### Matlab solution - symbolic
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -225,7 +224,7 @@ Quick solution: [Wolfram Alpha](https://www.wolframalpha.com/input/?i=inverse+la
 
 Because the denominator of $F_2(s)$ is a cubic, it will be difficult to factorise without computer assistance so we use MATLAB to factorise $D(s)$
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -446,7 +445,7 @@ See [notes for proof](inverse_laplace).
 
 #### Matlab verification for solition 5
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -456,7 +455,7 @@ Ns = [1, 2, 2]; Ds = [1 1];
 [r, p, k] = residue(Ns, Ds)
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -479,7 +478,7 @@ For convenience, single script MATLAB solutions to the examples are provided and
 * Example 4 - Repeated real poles [[ex3_4.m](https://cpjobling.github.io/eg-247-textbook/laplace_transform/matlab/ex3_4.m)]
 * Example 5 - Non proper rational polynomial [[ex3_5.m](https://cpjobling.github.io/eg-247-textbook/laplace_transform/matlab/ex3_5.m)]
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide

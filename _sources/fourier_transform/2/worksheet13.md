@@ -5,11 +5,11 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.11.5
+    jupytext_version: 1.14.1
 kernelspec:
-  display_name: MATLAB
+  display_name: Matlab
   language: matlab
-  name: imatlab
+  name: matlab
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -104,7 +104,7 @@ $$\delta(t) \Leftrightarrow 1$$
 
 *Matlab*:
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: skip
@@ -112,7 +112,7 @@ slideshow:
 imatlab_export_fig('print-svg')  % Static svg figures.
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -128,7 +128,7 @@ Related:
 
 $$\delta(t-t_0) \Leftrightarrow e^{-j\omega t_0}$$
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -148,7 +148,7 @@ $$1 \Leftrightarrow 2\pi\delta(\omega)$$
 
 *Matlab*:
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -177,7 +177,7 @@ Note: $f(t)$ is real and even. $F(\omega)$ is also real and even.
 
 *Matlab*:
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -201,7 +201,7 @@ Note: $f(t)$ is real and odd. $F(\omega)$ is imaginary and odd.
 
 *Matlab*:
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -225,7 +225,7 @@ $$\operatorname{sgn} t = \left\{ {\begin{array}{*{20}{c}}
 
 *Matlab*:
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -306,7 +306,7 @@ $$u_0(t) \Leftrightarrow \pi\delta(\omega)+\frac{1}{j\omega}$$
 
 *Matlab*:
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment

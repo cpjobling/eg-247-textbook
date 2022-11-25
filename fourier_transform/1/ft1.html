@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Defining the Fourier Transform &#8212; EG-247 Signals and Systems</title>
     
-  <link href="../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,51 +20,67 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/1/ft1.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Fourier transforms of commonly occurring signals" href="../2/ft2.html" />
     <link rel="prev" title="Fourier Transform" href="../index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -71,10 +89,12 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
+      
       
       
       <h1 class="site-logo" id="site-title">EG-247 Signals and Systems</h1>
@@ -85,14 +105,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../introduction/index.html">
-   Introducing Signals and Systems
-  </a>
- </li>
-</ul>
-<p class="caption">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../introduction/index.html">
+                    Introducing Signals and Systems
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Online notes
  </span>
@@ -259,19 +280,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  FAQs
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../FAQS/FAQ.html">
-   Answers to Frequently Asked Questions
-  </a>
- </li>
-</ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   In Class Worksheets
  </span>
@@ -385,7 +394,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Homework problems
  </span>
@@ -454,7 +463,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Lab Exercises
  </span>
@@ -523,7 +532,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Project
  </span>
@@ -535,7 +544,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Appendices
  </span>
@@ -621,116 +630,247 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by 
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by 
  <a href="https://jupyterbook.org">
   Jupyter Book
 </a>
 
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        <a class="dropdown-buttons"
-            href="../../_sources/fourier_transform/1/ft1.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/fourier_transform/1/ft1.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/cpjobling/eg-247-textbook"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Ffourier_transform/1/ft1.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/cpjobling/eg-247-textbook/edit/master/fourier_transform/1/ft1.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/cpjobling/eg-247-textbook/master?urlpath=tree/fourier_transform/1/ft1.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/cpjobling/eg-247-textbook/master?urlpath=tree/fourier_transform/1/ft1.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/cpjobling/eg-247-textbook"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Ffourier_transform/1/ft1.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/cpjobling/eg-247-textbook/edit/master/fourier_transform/1/ft1.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/fourier_transform/1/ft1.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../../_sources/fourier_transform/1/ft1.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#colophon">
    Colophon
@@ -1024,28 +1164,337 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Defining the Fourier Transform</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#colophon">
+   Colophon
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#agenda">
+   Agenda
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fourier-transform-as-the-limit-of-a-fourier-series">
+   Fourier Transform as the Limit of a Fourier Series
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fourier-series">
+     Fourier Series
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#from-the-time-point-of-view">
+       From the Time Point of View
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-sinc-function">
+       The Sinc Function
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#plot-the-sinc-function">
+       Plot the sinc function
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#duty-cycle">
+       Duty cycle
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#normalize-the-spectral-coefficients">
+       Normalize the spectral coefficients
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#durty-cycle-50">
+       Durty cycle 50%
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#duty-cycle-12-5">
+       Duty cycle 12.5%
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#comments">
+       Comments
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#intuition-leading-to-the-fourier-transform">
+       Intuition leading to the Fourier Transform
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#doing-the-maths">
+     Doing the Maths
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#a-rectangular-pulse">
+       A rectangular pulse
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#back-to-the-periodic-signal">
+       Back to the periodic signal
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#now-take-the-limits">
+       Now take the limits
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#define-the-inverse-fourier-and-fourier-transform">
+       Define the Inverse Fourier and Fourier Transform
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#fourier-transform-pair">
+       Fourier Transform Pair
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#special-forms-of-the-fourier-transform">
+   Special Forms of the Fourier Transform
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#time-domain-and-frequecy-domain-correspondence">
+     Time Domain and Frequecy Domain Correspondence
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-useful-consequence-for-f-t-real">
+     A useful consequence for
+     <span class="math notranslate nohighlight">
+      \(f(t)\)
+     </span>
+     real
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#properties-of-the-fourier-transform">
+   Properties of the Fourier Transform
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linearity">
+     Linearity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#symmetry">
+     Symmetry
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#time-frequency-scaling">
+     Time/Frequency Scaling
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#time-shifting">
+     Time Shifting
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#frequency-shifting">
+     Frequency Shifting
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#time-differentiation">
+     Time Differentiation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#frequency-differentiation">
+     Frequency Differentiation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#time-integration">
+     Time Integration
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conjugate-time-and-frequency-functions">
+     Conjugate Time and Frequency Functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#time-convolution">
+     Time Convolution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#frequency-convolution">
+     Frequency Convolution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#area-under-f-t">
+     Area under
+     <span class="math notranslate nohighlight">
+      \(f(t)\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#area-under-f-j-omega">
+     Area under
+     <span class="math notranslate nohighlight">
+      \(F(j\omega)\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#energy-density-spectrum">
+     Energy-Density Spectrum
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#parseval-s-theorem">
+     Parseval’s Theorem
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#table-of-properites-of-the-fourier-transform">
+   Table of Properites of the Fourier Transform
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examples">
+   Examples
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1-amplitude-modulation">
+     Example 1: Amplitude Modulation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2-impulse-response">
+     Example 2: Impulse response
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-3-energy-computation">
+     Example 3: Energy computation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-fourier-transforms-in-matlab">
+   Computing Fourier Transforms in MATLAB
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example">
+     Example
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#worked-solutions">
+   Worked Solutions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#let-s-complete-the-analysis-in-the-notebook">
+     Let’s complete the analysis in the notebook
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-1">
+     Solution 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#remarks">
+     Remarks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-2">
+     Solution 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-3">
+     Solution 3
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="defining-the-fourier-transform">
-<h1>Defining the Fourier Transform<a class="headerlink" href="#defining-the-fourier-transform" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="colophon">
-<h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this headline">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="defining-the-fourier-transform">
+<h1>Defining the Fourier Transform<a class="headerlink" href="#defining-the-fourier-transform" title="Permalink to this headline">#</a></h1>
+<section id="colophon">
+<h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this headline">#</a></h2>
 <p>An annotatable worksheet for this presentation is available as <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/1/worksheet12.html"><strong>Worksheet 12</strong></a>.</p>
 <ul class="simple">
 <li><p>The source code for this page is <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_transform/1/ft1.ipynb">fourier_transform/1/ft1.ipynb</a>.</p></li>
 <li><p>You can view the notes for this presentation as a webpage (<a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/1/ft1.html">HTML</a>).</p></li>
 <li><p>This page is downloadable as a <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/1/ft1.pdf">PDF</a> file.</p></li>
 </ul>
-</div>
-<div class="section" id="agenda">
-<h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="agenda">
+<h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Fourier Transform as the Limit of a Fourier Series</p></li>
 </ul>
@@ -1061,35 +1510,35 @@
 <ul class="simple">
 <li><p>Computing Fourier Transforms in Matlab</p></li>
 </ul>
-</div>
-<div class="section" id="fourier-transform-as-the-limit-of-a-fourier-series">
-<h2>Fourier Transform as the Limit of a Fourier Series<a class="headerlink" href="#fourier-transform-as-the-limit-of-a-fourier-series" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="fourier-transform-as-the-limit-of-a-fourier-series">
+<h2>Fourier Transform as the Limit of a Fourier Series<a class="headerlink" href="#fourier-transform-as-the-limit-of-a-fourier-series" title="Permalink to this headline">#</a></h2>
 <p>We start by considering the pulse train that we used in the last lecture and demonstrate that the discrete line spectra for the Fourier Series becomes a continuous spectrum as the signal becomes aperiodic.</p>
-<p>This analysis is from <span id="id1">[<a class="reference internal" href="../../zbib.html#id9"><span>Bou06</span></a>]</span> pp 142—144 and 176—180.</p>
+<p>This analysis is from <span id="id1">[<a class="reference internal" href="../../zbib.html#id9" title="Benoit Boulet. Fundamentals of signals and systems. Da Vinci Engineering Press, Hingham, Mass., 2006. ISBN 1584503815. Available as an eBook. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3135971.">Boulet, 2006</a>]</span> pp 142—144 and 176—180.</p>
 <p>Let <span class="math notranslate nohighlight">\(\tilde x(t)\)</span> be the Fourier series of the rectangular pulse train shown below:</p>
 <p><img alt="A pulse train" src="../../_images/pulse_train.png" /></p>
-<div class="section" id="fourier-series">
-<h3>Fourier Series<a class="headerlink" href="#fourier-series" title="Permalink to this headline">¶</a></h3>
+<section id="fourier-series">
+<h3>Fourier Series<a class="headerlink" href="#fourier-series" title="Permalink to this headline">#</a></h3>
 <p>In the <a class="reference internal" href="../../fourier_series/3/exp_fs2.html"><span class="doc std std-doc">previous section</span></a> we used</p>
 <div class="math notranslate nohighlight">
 \[C_k = \frac{1}{2\pi}\int_{-\pi/w}^{\pi/w} Ae^{-jk(\Omega_0 t)}\,d(\Omega_0 t) = \frac{A}{2\pi}\int_{-\pi/w}^{\pi/w} e^{-jk(\Omega_0 t)}\,d(\Omega_0 t) \]</div>
 <p>to compute the line spectra.</p>
-<div class="section" id="from-the-time-point-of-view">
-<h4>From the Time Point of View<a class="headerlink" href="#from-the-time-point-of-view" title="Permalink to this headline">¶</a></h4>
+<section id="from-the-time-point-of-view">
+<h4>From the Time Point of View<a class="headerlink" href="#from-the-time-point-of-view" title="Permalink to this headline">#</a></h4>
 <p>If we instead take a time point-of-view and let <span class="math notranslate nohighlight">\(A = 1\)</span></p>
 <div class="math notranslate nohighlight">
 \[C_k = \frac{1}{T}\int_{-t_0}^{t_0} e^{-jk\Omega_0 t}\,dt.\]</div>
 <p>We’ll complete the analysis on the whiteboard in class.</p>
-</div>
-<div class="section" id="the-sinc-function">
-<h4>The Sinc Function<a class="headerlink" href="#the-sinc-function" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="the-sinc-function">
+<h4>The Sinc Function<a class="headerlink" href="#the-sinc-function" title="Permalink to this headline">#</a></h4>
 <p>The function, <span class="math notranslate nohighlight">\(\sin(\pi x)/\pi x\)</span> crops up again and again in Fourier analysis. The Fourier coefficients <span class="math notranslate nohighlight">\(C_k\)</span> are scaled <em>samples</em> of the real continuous <em>normalized sinc</em> function defined as follows:</p>
 <div class="math notranslate nohighlight">
 \[\operatorname{sinc} u: = \frac{\sin \pi u}{\pi u},\;u \in \mathbb{R}.\]</div>
 <p>The function is equal to 1 at <span class="math notranslate nohighlight">\(u=0\)</span><sup>1</sup> and has zero crossings at <span class="math notranslate nohighlight">\(u=\pm n,\; n=1,2,3,\ldots\)</span> as shown below.</p>
-</div>
-<div class="section" id="plot-the-sinc-function">
-<h4>Plot the sinc function<a class="headerlink" href="#plot-the-sinc-function" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="plot-the-sinc-function">
+<h4>Plot the sinc function<a class="headerlink" href="#plot-the-sinc-function" title="Permalink to this headline">#</a></h4>
 <p>Plots:</p>
 <div class="math notranslate nohighlight">
 \[sinc(u) = \frac{\sin \pi u}{\pi u},\; u \in \mathbb{R}\]</div>
@@ -1099,6 +1548,13 @@
 <span class="n">imatlab_export_fig</span><span class="p">(</span><span class="s">&#39;print-svg&#39;</span><span class="p">)</span><span class="w">  </span><span class="c">% Static svg figures.</span><span class="w"></span>
 <span class="nb">cd</span><span class="w"> </span><span class="p">.</span><span class="o">./</span><span class="n">matlab</span><span class="w"></span>
 <span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Error using eval</span>
+<span class=" -Color -Color-Red">Undefined function &#39;imatlab_export_fig&#39; for input arguments of type &#39;char&#39;.</span>
+
 </pre></div>
 </div>
 </div>
@@ -1115,7 +1571,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ft1_16_0.svg" src="../../_images/ft1_16_0.svg" /></div>
+<img alt="../../_images/ft1_16_0.png" src="../../_images/ft1_16_0.png" />
+</div>
 </div>
 <p>Matlab code to reproduce this plot: <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/matlab/plot_sinc.m">plot_sinc.m</a>.</p>
 <ol class="simple">
@@ -1124,9 +1581,9 @@
 <div class="math notranslate nohighlight">
 \[\lim_{u\to 0} \frac{\sin(\pi u)}{\pi u}\]</div>
 <p>which can be shown to be 1. I leave the discovery of the proof to you and the internet.</p>
-</div>
-<div class="section" id="duty-cycle">
-<h4>Duty cycle<a class="headerlink" href="#duty-cycle" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="duty-cycle">
+<h4>Duty cycle<a class="headerlink" href="#duty-cycle" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>We define the duty cycle <span class="math notranslate nohighlight">\(\eta = 2t_0/T\)</span> of the rectangular pulse train as the fraction of the time the signal is “on” (equal to 1) over one period.</p></li>
 <li><p>The duty cycle is often given as a percentage.</p></li>
@@ -1136,25 +1593,25 @@
 \[C_k = \frac{2t_0}{T}\frac{\sin\left(\frac{\pi k2t_0}{T}\right)}{\frac{\pi k2t_0}{T}}=\frac{2t_0}{T}\operatorname{sinc}\left(\frac{k2t_0}{T}\right)\]</div>
 <div class="math notranslate nohighlight">
 \[C_k = \eta \operatorname{sinc}\left(k\eta\right)\]</div>
-</div>
-<div class="section" id="normalize-the-spectral-coefficients">
-<h4>Normalize the spectral coefficients<a class="headerlink" href="#normalize-the-spectral-coefficients" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="normalize-the-spectral-coefficients">
+<h4>Normalize the spectral coefficients<a class="headerlink" href="#normalize-the-spectral-coefficients" title="Permalink to this headline">#</a></h4>
 <p>Let us normalize the spectral coefficients of <span class="math notranslate nohighlight">\(\tilde x(t)\)</span> by mutiplying them by <span class="math notranslate nohighlight">\(T\)</span>, and assume <span class="math notranslate nohighlight">\(t_0\)</span> is fixed so that the duty cycle <span class="math notranslate nohighlight">\(\eta = 2t_0/T\)</span> will decrease as we increase <span class="math notranslate nohighlight">\(T\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[T C_k = T\eta \operatorname{sinc}\left(k\eta\right)=2t_0\operatorname{sinc}\left(k\frac{2t_0}{T}\right)\]</div>
 <p>Then the normalized coefficents <span class="math notranslate nohighlight">\(T C_k\)</span> of the rectangular wave is a sinc envelope with constant amplitude at the origin equal to <span class="math notranslate nohighlight">\(2t_0\)</span>, and a zero crossing at fixed frequency <span class="math notranslate nohighlight">\(\pi/t_0\)</span> rad/s, both independent of <span class="math notranslate nohighlight">\(T\)</span>.</p>
 <p>Plots follow (use <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/matlab/duty_cycle.mlx">duty_cycle.mlx</a> to reproduce).</p>
-</div>
-<div class="section" id="durty-cycle-50">
-<h4>Durty cycle 50%<a class="headerlink" href="#durty-cycle-50" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="durty-cycle-50">
+<h4>Durty cycle 50%<a class="headerlink" href="#durty-cycle-50" title="Permalink to this headline">#</a></h4>
 <p><img alt="Duty cycle 50%" src="../../_images/dc_point5.png" /></p>
-</div>
-<div class="section" id="duty-cycle-12-5">
-<h4>Duty cycle 12.5%<a class="headerlink" href="#duty-cycle-12-5" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="duty-cycle-12-5">
+<h4>Duty cycle 12.5%<a class="headerlink" href="#duty-cycle-12-5" title="Permalink to this headline">#</a></h4>
 <p><img alt="Duty cycle 12.5%" src="../../_images/dc_12point5.png" /></p>
-</div>
-<div class="section" id="comments">
-<h4>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="comments">
+<h4>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>As the fundamental period increases, we get more spectral lines packed into the lobes of the sinc envelope.</p></li>
 <li><p>These normalized spectral coefficients turn out to be samples of the continuous sinc function on the spectrum of <span class="math notranslate nohighlight">\(\tilde{x}(t)\)</span></p></li>
@@ -1162,27 +1619,27 @@
 <li><p>The first zeros of each side of the main lobe are at frequencies <span class="math notranslate nohighlight">\(\omega = \pm \pi/t_0\)</span> rad/s</p></li>
 <li><p>The zero-crossing points of sinc envelope are independent of the period T. They only depend on <span class="math notranslate nohighlight">\(t_0\)</span>.</p></li>
 </ul>
-</div>
-<div class="section" id="intuition-leading-to-the-fourier-transform">
-<h4>Intuition leading to the Fourier Transform<a class="headerlink" href="#intuition-leading-to-the-fourier-transform" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="intuition-leading-to-the-fourier-transform">
+<h4>Intuition leading to the Fourier Transform<a class="headerlink" href="#intuition-leading-to-the-fourier-transform" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>An aperiodic signal that has been made periodic by “repeating” its graph every <span class="math notranslate nohighlight">\(T\)</span> seconds will have a line spectrum that becomes more and more dense as the fundamental period is made longer and longer.</p></li>
 <li><p>The line spectrum has the same continuous envelope.</p></li>
 <li><p>As <span class="math notranslate nohighlight">\(T\)</span> goes to infinity, the line spectrum will become a continuous function of <span class="math notranslate nohighlight">\(\omega\)</span>.</p></li>
 <li><p>The <em>envelope</em> is this function.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="doing-the-maths">
-<h3>Doing the Maths<a class="headerlink" href="#doing-the-maths" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="doing-the-maths">
+<h3>Doing the Maths<a class="headerlink" href="#doing-the-maths" title="Permalink to this headline">#</a></h3>
 <p>Fourier series coefficients for the rectangular wave are computed using:</p>
 <div class="math notranslate nohighlight">
 \[C_k = \frac{1}{T}\int_{-t_0}^{t_0} \tilde{x}(t) e^{-jk(\Omega_0 t)}\,dt \]</div>
 <p>where <span class="math notranslate nohighlight">\(\Omega_0 = 2\pi/T\)</span> as usual.</p>
 <p>Now define a signal <span class="math notranslate nohighlight">\(x(t)\)</span> as a signal equal to <span class="math notranslate nohighlight">\(\tilde{x}(t)\)</span> over one period and zero elsewhere.</p>
 <p><img alt="A pulse" src="../../_images/pulse.png" /></p>
-<div class="section" id="a-rectangular-pulse">
-<h4>A rectangular pulse<a class="headerlink" href="#a-rectangular-pulse" title="Permalink to this headline">¶</a></h4>
+<section id="a-rectangular-pulse">
+<h4>A rectangular pulse<a class="headerlink" href="#a-rectangular-pulse" title="Permalink to this headline">#</a></h4>
 <p>The aperiodic signal, a single rectangular pulse, can be thought of as being periodic with an infinite fundamental period (we will let <span class="math notranslate nohighlight">\(T\to +\infty\)</span> later).</p>
 <p>Since <span class="math notranslate nohighlight">\(\tilde{x}(t)=x(t)\)</span> over <span class="math notranslate nohighlight">\(t \in [-T/2,T/2]\)</span>, the spectral coefficients <span class="math notranslate nohighlight">\(C_k\)</span> of the periodic signal <span class="math notranslate nohighlight">\(\tilde{x}(t)\)</span> can be written in terms of the aperiodic signal <span class="math notranslate nohighlight">\(x(t)\)</span> as follows:</p>
 <div class="math notranslate nohighlight">
@@ -1193,18 +1650,18 @@
 <p>The coefficients <span class="math notranslate nohighlight">\(C_k\)</span> are therefore samples of the continuous envelope <span class="math notranslate nohighlight">\(X(j\omega)\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[C_k = \frac{1}{T}X(jk\Omega_0).\]</div>
-</div>
-<div class="section" id="back-to-the-periodic-signal">
-<h4>Back to the periodic signal<a class="headerlink" href="#back-to-the-periodic-signal" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="back-to-the-periodic-signal">
+<h4>Back to the periodic signal<a class="headerlink" href="#back-to-the-periodic-signal" title="Permalink to this headline">#</a></h4>
 <p><span class="math notranslate nohighlight">\(\tilde{x}(t)\)</span> has the Fourier series representation</p>
 <div class="math notranslate nohighlight">
 \[\tilde{x}(t) = \sum_{k=-\infty}^{\infty}\frac{1}{T}X(jk\Omega_0)e^{jk\Omega_0 t}.\]</div>
 <p>or equivalently, since <span class="math notranslate nohighlight">\(\Omega_0 = 2\pi/T\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\tilde{x}(t) = \frac{1}{2\pi} \sum_{k=-\infty}^{\infty}X(jk\Omega_0)e^{jk\Omega_0 t}\Omega_0.\]</div>
-</div>
-<div class="section" id="now-take-the-limits">
-<h4>Now take the limits<a class="headerlink" href="#now-take-the-limits" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="now-take-the-limits">
+<h4>Now take the limits<a class="headerlink" href="#now-take-the-limits" title="Permalink to this headline">#</a></h4>
 <p>At the limit, as <span class="math notranslate nohighlight">\(T\to \infty\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\tilde{x}(t) = \frac{1}{2\pi} \sum_{k=-\infty}^{\infty} X(jk\Omega_0)e^{jk\Omega_0 t}\Omega_0.\]</div>
@@ -1215,9 +1672,9 @@
 <li><p>The summation becomes an integral.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\tilde{x}(t) \to x(t)\)</span> – the periodic signal tends to the aperiodic signal.</p></li>
 </ul>
-</div>
-<div class="section" id="define-the-inverse-fourier-and-fourier-transform">
-<h4>Define the Inverse Fourier and Fourier Transform<a class="headerlink" href="#define-the-inverse-fourier-and-fourier-transform" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="define-the-inverse-fourier-and-fourier-transform">
+<h4>Define the Inverse Fourier and Fourier Transform<a class="headerlink" href="#define-the-inverse-fourier-and-fourier-transform" title="Permalink to this headline">#</a></h4>
 <p>Putting these elements together we have an expression for the aperiodic signal in terms of its Fourier transform:</p>
 <p><strong>Inverse Fourier Transform</strong>:</p>
 <div class="math notranslate nohighlight">
@@ -1226,9 +1683,9 @@
 <p><strong>Fourier Transform</strong>:</p>
 <div class="math notranslate nohighlight">
 \[X(j\omega) = \int_{-\infty}^{\infty}x(t)e^{-j\omega t}\,dt := \mathcal{F}\left\{x(t)\right\}.\]</div>
-</div>
-<div class="section" id="fourier-transform-pair">
-<h4>Fourier Transform Pair<a class="headerlink" href="#fourier-transform-pair" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="fourier-transform-pair">
+<h4>Fourier Transform Pair<a class="headerlink" href="#fourier-transform-pair" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>The two equations on the previous slide are called the <em>Fourier transform pair</em>.</p></li>
 </ul>
@@ -1237,11 +1694,11 @@
 <li><p>Equation <span class="math notranslate nohighlight">\(X(j\omega) = \int_{-\infty}^{\infty}x(t)e^{-j\omega t}\,dt.\)</span> gives the <em>Fourier transform</em> or the <em>frequency spectrum</em> of the signal <span class="math notranslate nohighlight">\(x(t)\)</span>.</p></li>
 <li><p>Equation <span class="math notranslate nohighlight">\(x(t) = \frac{1}{2\pi} \int_{-\infty}^{\infty} X(j\omega)e^{j\omega t}\,d\omega.\)</span> is the <em>inverse Fourier transform</em>. It gives the function of time that has a given spectrum in the frequency domain.</p></li>
 </ul>
-</div>
-</div>
-</div>
-<div class="section" id="special-forms-of-the-fourier-transform">
-<h2>Special Forms of the Fourier Transform<a class="headerlink" href="#special-forms-of-the-fourier-transform" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="special-forms-of-the-fourier-transform">
+<h2>Special Forms of the Fourier Transform<a class="headerlink" href="#special-forms-of-the-fourier-transform" title="Permalink to this headline">#</a></h2>
 <p>The table on the next slide is developed in Section 8.2 of Karris by assuming that in general both <span class="math notranslate nohighlight">\(f(t)\)</span> and <span class="math notranslate nohighlight">\(F(j\omega)\)</span> are complex. So that:</p>
 <div class="math notranslate nohighlight">
 \[f(t) = \Re\left\{f(t)\right\} + j\Im\left\{f(t)\right\} = f_{\mathrm{Re}}(t) + j\, f_{\mathrm{Im}}(t)\]</div>
@@ -1257,8 +1714,8 @@
 <div class="math notranslate nohighlight">
 \[F_\mathrm{Im}(j\omega) = - \int_{-\infty}^{\infty}\left[f_{\mathrm{Re}}(t)\sin\omega t - f_{\mathrm{Im}}(t)\cos\omega t\right]\,dt\]</div>
 <p>We can do a similar analysis for the inverse Fourier transform.</p>
-<div class="section" id="time-domain-and-frequecy-domain-correspondence">
-<h3>Time Domain and Frequecy Domain Correspondence<a class="headerlink" href="#time-domain-and-frequecy-domain-correspondence" title="Permalink to this headline">¶</a></h3>
+<section id="time-domain-and-frequecy-domain-correspondence">
+<h3>Time Domain and Frequecy Domain Correspondence<a class="headerlink" href="#time-domain-and-frequecy-domain-correspondence" title="Permalink to this headline">#</a></h3>
 <p>By consideration of the Real and Imaginary parts of <span class="math notranslate nohighlight">\(f(t)\)</span> and <span class="math notranslate nohighlight">\(F(j\omega)\)</span> we can construct the following table.</p>
 <html>
 <table>
@@ -1276,10 +1733,10 @@
 </tbody>
 </table>
 </html>
-<p>See <span id="id2">[<a class="reference internal" href="../../zbib.html#id7"><span>Kar12</span></a>]</span> Sections <strong>8.2.1 Real-Time Functions</strong> and <strong>8.2.2 Imaginary Time Functions</strong> which summarizes the <em>nature</em> of the Fourier transform for particular types of the signal.</p>
-</div>
-<div class="section" id="a-useful-consequence-for-f-t-real">
-<h3>A useful consequence for <span class="math notranslate nohighlight">\(f(t)\)</span> real<a class="headerlink" href="#a-useful-consequence-for-f-t-real" title="Permalink to this headline">¶</a></h3>
+<p>See <span id="id2">[<a class="reference internal" href="../../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197.">Karris, 2012</a>]</span> Sections <strong>8.2.1 Real-Time Functions</strong> and <strong>8.2.2 Imaginary Time Functions</strong> which summarizes the <em>nature</em> of the Fourier transform for particular types of the signal.</p>
+</section>
+<section id="a-useful-consequence-for-f-t-real">
+<h3>A useful consequence for <span class="math notranslate nohighlight">\(f(t)\)</span> real<a class="headerlink" href="#a-useful-consequence-for-f-t-real" title="Permalink to this headline">#</a></h3>
 <p>If <span class="math notranslate nohighlight">\(f(t)\)</span> is real (even or odd), the real part of <span class="math notranslate nohighlight">\(F(j\omega)\)</span> is even, and the imaginary part is odd.</p>
 <p>Then, for <span class="math notranslate nohighlight">\(f(t)\)</span> real:</p>
 <div class="math notranslate nohighlight">
@@ -1296,30 +1753,30 @@
 <p>or</p>
 <div class="math notranslate nohighlight">
 \[F(-j\omega) = F^*(j\omega)\]</div>
-</div>
-</div>
-<div class="section" id="properties-of-the-fourier-transform">
-<h2>Properties of the Fourier Transform<a class="headerlink" href="#properties-of-the-fourier-transform" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="properties-of-the-fourier-transform">
+<h2>Properties of the Fourier Transform<a class="headerlink" href="#properties-of-the-fourier-transform" title="Permalink to this headline">#</a></h2>
 <p>Again, we will provide any properties that you might need in the examination.</p>
 <p>You will find a number of these in the accompanying notes.</p>
-<p>For fun, you may like to read and even complete the proofs for these properties guided by the text books <span id="id3">[<a class="reference internal" href="../../zbib.html#id7"><span>Kar12</span></a>]</span> (Section 8.3) or <span id="id4">[<a class="reference internal" href="../../zbib.html#id9"><span>Bou06</span></a>]</span> pp 180—185.</p>
+<p>For fun, you may like to read and even complete the proofs for these properties guided by the text books <span id="id3">[<a class="reference internal" href="../../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197.">Karris, 2012</a>]</span> (Section 8.3) or <span id="id4">[<a class="reference internal" href="../../zbib.html#id9" title="Benoit Boulet. Fundamentals of signals and systems. Da Vinci Engineering Press, Hingham, Mass., 2006. ISBN 1584503815. Available as an eBook. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3135971.">Boulet, 2006</a>]</span> pp 180—185.</p>
 <p>We are more interested in your ability to exploit the properties in problem solving.</p>
 <p>A little more detail is given in the notes available on Blackboard.</p>
-<div class="section" id="linearity">
-<h3>Linearity<a class="headerlink" href="#linearity" title="Permalink to this headline">¶</a></h3>
+<section id="linearity">
+<h3>Linearity<a class="headerlink" href="#linearity" title="Permalink to this headline">#</a></h3>
 <p>The Fourier transform is a linear operation:</p>
 <div class="math notranslate nohighlight">
 \[a_1f_1(t)+a_2f_2(t)+\cdots+a_nf_n(t)\Leftrightarrow a_1F_1(j\omega)+a_2F_2(j\omega)+\cdots+a_nF_n(j\omega)\]</div>
-</div>
-<div class="section" id="symmetry">
-<h3>Symmetry<a class="headerlink" href="#symmetry" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="symmetry">
+<h3>Symmetry<a class="headerlink" href="#symmetry" title="Permalink to this headline">#</a></h3>
 <p>If <span class="math notranslate nohighlight">\(F(j\omega)\)</span> is the Fourier transform of <span class="math notranslate nohighlight">\(f(t)\)</span>, the <em>symmetry property of the Fourier transform</em> states that</p>
 <div class="math notranslate nohighlight">
 \[F(t)\Leftrightarrow2\pi f(-j\omega)\]</div>
 <p>That is if in <span class="math notranslate nohighlight">\(F(j\omega)\)</span> we replace <span class="math notranslate nohighlight">\(j\omega\)</span> with <span class="math notranslate nohighlight">\(t\)</span>, we obtain this pair.</p>
-</div>
-<div class="section" id="time-frequency-scaling">
-<h3>Time/Frequency Scaling<a class="headerlink" href="#time-frequency-scaling" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="time-frequency-scaling">
+<h3>Time/Frequency Scaling<a class="headerlink" href="#time-frequency-scaling" title="Permalink to this headline">#</a></h3>
 <p>Scaling the time variable with <span class="math notranslate nohighlight">\(\alpha  \in \mathbb{R}\)</span> either expands or compresses the Fourier transform:</p>
 <div class="math notranslate nohighlight">
 \[f(\alpha t)\Leftrightarrow \frac{1}{|\alpha|}F\left(j\frac{\omega}{\alpha}\right)\]</div>
@@ -1327,71 +1784,71 @@
 <li><p>For <span class="math notranslate nohighlight">\(\alpha &gt; 0\)</span>, the signal <span class="math notranslate nohighlight">\(f(\alpha t)\)</span> is sped up (or compressed in time), so its frequency components will be expanded to higher frequencies.</p></li>
 <li><p>For <span class="math notranslate nohighlight">\(\alpha &lt; 0\)</span>, the signal <span class="math notranslate nohighlight">\(f(\alpha t)\)</span> is slowed down (or expanded in time), so its frequency components will be compressed to lower frequencies.</p></li>
 </ul>
-</div>
-<div class="section" id="time-shifting">
-<h3>Time Shifting<a class="headerlink" href="#time-shifting" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="time-shifting">
+<h3>Time Shifting<a class="headerlink" href="#time-shifting" title="Permalink to this headline">#</a></h3>
 <p>A time shift results in a phase shift in the Fourier transform</p>
 <div class="math notranslate nohighlight">
 \[f(t-t_0) \Leftrightarrow e^{-j\omega t_0}F(j\omega)\]</div>
-</div>
-<div class="section" id="frequency-shifting">
-<h3>Frequency Shifting<a class="headerlink" href="#frequency-shifting" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="frequency-shifting">
+<h3>Frequency Shifting<a class="headerlink" href="#frequency-shifting" title="Permalink to this headline">#</a></h3>
 <p>Multiplying a time function by a complex exponential resuls in a frequency shift</p>
 <div class="math notranslate nohighlight">
 \[e^{j\omega 0}f(t) \Leftrightarrow X(j\omega-j\omega_0)\]</div>
-</div>
-<div class="section" id="time-differentiation">
-<h3>Time Differentiation<a class="headerlink" href="#time-differentiation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="time-differentiation">
+<h3>Time Differentiation<a class="headerlink" href="#time-differentiation" title="Permalink to this headline">#</a></h3>
 <p>If <span class="math notranslate nohighlight">\(F(j\omega)\)</span> is the Fourier transform of <span class="math notranslate nohighlight">\(f(t)\)</span></p>
 <div class="math notranslate nohighlight">
 \[\frac{d^n}{dt^n}\,f(t)\Leftrightarrow (j\omega)^nF(j\omega)\]</div>
-</div>
-<div class="section" id="frequency-differentiation">
-<h3>Frequency Differentiation<a class="headerlink" href="#frequency-differentiation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="frequency-differentiation">
+<h3>Frequency Differentiation<a class="headerlink" href="#frequency-differentiation" title="Permalink to this headline">#</a></h3>
 <p>If <span class="math notranslate nohighlight">\(F(j\omega)\)</span> is the Fourier transform of <span class="math notranslate nohighlight">\(f(t)\)</span></p>
 <div class="math notranslate nohighlight">
 \[(-jt)^n f(t)\Leftrightarrow \frac{d^n}{d\omega^n}F(j\omega)\]</div>
-</div>
-<div class="section" id="time-integration">
-<h3>Time Integration<a class="headerlink" href="#time-integration" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="time-integration">
+<h3>Time Integration<a class="headerlink" href="#time-integration" title="Permalink to this headline">#</a></h3>
 <p>If <span class="math notranslate nohighlight">\(F(j\omega)\)</span> is the Fourier transform of <span class="math notranslate nohighlight">\(f(t)\)</span></p>
 <div class="math notranslate nohighlight">
 \[\int_{-\infty}^{t}f(\tau)d\tau \Leftrightarrow \frac{F(j\omega)}{j\omega}+\pi F(0)\delta(\omega)\]</div>
-</div>
-<div class="section" id="conjugate-time-and-frequency-functions">
-<h3>Conjugate Time and Frequency Functions<a class="headerlink" href="#conjugate-time-and-frequency-functions" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="conjugate-time-and-frequency-functions">
+<h3>Conjugate Time and Frequency Functions<a class="headerlink" href="#conjugate-time-and-frequency-functions" title="Permalink to this headline">#</a></h3>
 <p>If <span class="math notranslate nohighlight">\(F(j\omega)\)</span> is the Fourier transform of the complex function <span class="math notranslate nohighlight">\(f(t)\)</span></p>
 <div class="math notranslate nohighlight">
 \[f^*(t)\Leftrightarrow F^*(-j\omega)\]</div>
-</div>
-<div class="section" id="time-convolution">
-<h3>Time Convolution<a class="headerlink" href="#time-convolution" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="time-convolution">
+<h3>Time Convolution<a class="headerlink" href="#time-convolution" title="Permalink to this headline">#</a></h3>
 <div class="math notranslate nohighlight">
 \[f_1(t)*f_2(t) \Leftrightarrow F_1(j\omega) F_2(j\omega)\]</div>
 <p>That is convolution in the time domain corresponds to multiplication in the frequency domain.</p>
 <p>(Compare with Laplace Transform)</p>
-</div>
-<div class="section" id="frequency-convolution">
-<h3>Frequency Convolution<a class="headerlink" href="#frequency-convolution" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="frequency-convolution">
+<h3>Frequency Convolution<a class="headerlink" href="#frequency-convolution" title="Permalink to this headline">#</a></h3>
 <div class="math notranslate nohighlight">
 \[f_1(t)f_2(t) \Leftrightarrow \frac{1}{2\pi} F_1(j\omega)*F_2(j\omega)\]</div>
 <p>That is, multiplication in the time domain corresponds to convolution in the frequency domain.</p>
-<p>This also has application to amplitude modulation as shown in <span id="id5">[<a class="reference internal" href="../../zbib.html#id9"><span>Bou06</span></a>]</span> pp 182—183.</p>
-</div>
-<div class="section" id="area-under-f-t">
-<h3>Area under <span class="math notranslate nohighlight">\(f(t)\)</span><a class="headerlink" href="#area-under-f-t" title="Permalink to this headline">¶</a></h3>
+<p>This also has application to amplitude modulation as shown in <span id="id5">[<a class="reference internal" href="../../zbib.html#id9" title="Benoit Boulet. Fundamentals of signals and systems. Da Vinci Engineering Press, Hingham, Mass., 2006. ISBN 1584503815. Available as an eBook. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3135971.">Boulet, 2006</a>]</span> pp 182—183.</p>
+</section>
+<section id="area-under-f-t">
+<h3>Area under <span class="math notranslate nohighlight">\(f(t)\)</span><a class="headerlink" href="#area-under-f-t" title="Permalink to this headline">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\int_{-\infty}^{\infty} f(t)\,dt = F(0)\]</div>
 <p>That is, the area under a time function <span class="math notranslate nohighlight">\(f(t)\)</span> is equal to the value of the Fourier transform of <span class="math notranslate nohighlight">\(f(t)\)</span> evaluated at <span class="math notranslate nohighlight">\(\omega = 0\)</span> rad/s.</p>
-</div>
-<div class="section" id="area-under-f-j-omega">
-<h3>Area under <span class="math notranslate nohighlight">\(F(j\omega)\)</span><a class="headerlink" href="#area-under-f-j-omega" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="area-under-f-j-omega">
+<h3>Area under <span class="math notranslate nohighlight">\(F(j\omega)\)</span><a class="headerlink" href="#area-under-f-j-omega" title="Permalink to this headline">#</a></h3>
 <div class="math notranslate nohighlight">
 \[f(0) = \frac{1}{2\pi}\int_{-\infty}^{\infty} F(j\omega)\,d\omega\]</div>
 <p>That is, the value of a time function, <span class="math notranslate nohighlight">\(f(t)\)</span>, evaluated at <span class="math notranslate nohighlight">\(t=0\)</span> is equal to the area under its Fourier transform <span class="math notranslate nohighlight">\(F(j\omega)\)</span> times <span class="math notranslate nohighlight">\(1/2\pi\)</span>.</p>
-</div>
-<div class="section" id="energy-density-spectrum">
-<h3>Energy-Density Spectrum<a class="headerlink" href="#energy-density-spectrum" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="energy-density-spectrum">
+<h3>Energy-Density Spectrum<a class="headerlink" href="#energy-density-spectrum" title="Permalink to this headline">#</a></h3>
 <p>Recalling that the power spectrum of a periodic signal is defined as the squared magnitudes of its Fourier series coefficients. A plot of the power spectrum of a signal gives us an idea of the power at different frequencies (harmonics).</p>
 <p>By analogy, the <em>energy-density spectrum</em> of an aperiodic signal is defined as the magnitude squared of its spectrum; that is</p>
 <div class="math notranslate nohighlight">
@@ -1401,18 +1858,18 @@
 <div class="math notranslate nohighlight">
 \[E_{[\omega_1,\omega_2]}:=\frac{1}{2\pi}\int_{\omega_1}^{\omega_2}|F(j\omega)|^2\,d\omega.\]</div>
 <p>Note that for real signals, it is customary to include the negative frequency band as well.</p>
-</div>
-<div class="section" id="parseval-s-theorem">
-<h3>Parseval’s Theorem<a class="headerlink" href="#parseval-s-theorem" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="parseval-s-theorem">
+<h3>Parseval’s Theorem<a class="headerlink" href="#parseval-s-theorem" title="Permalink to this headline">#</a></h3>
 <p>Just like the total average power of a periodic signal is equal to the sume of the powers of all the harmonics, the total energy in an aperidic signal is equal to the total energy in its sepctrum.</p>
 <p>This is the Parseval equality for Fourier transforms:</p>
 <div class="math notranslate nohighlight">
 \[\int_{-\infty}^{\infty}|f(t)|^2\,dt=\frac{1}{2\pi}\int_{-\infty}^{\infty}|F(j\omega)|^2\,d\omega.\]</div>
-</div>
-</div>
-<div class="section" id="table-of-properites-of-the-fourier-transform">
-<h2>Table of Properites of the Fourier Transform<a class="headerlink" href="#table-of-properites-of-the-fourier-transform" title="Permalink to this headline">¶</a></h2>
-<p>As was the case of the Laplace Transform, properties of Fourier transforms are usually summarized in Tables of Fourier Transform properties. For example this one: <a class="reference external" href="https://en.wikipedia.org/wiki/Fourier_transform#Properties_of_the_Fourier_transform">Properties of the Fourier Transform (Wikpedia)</a> and Table 8.8 in <span id="id6">[<a class="reference internal" href="../../zbib.html#id7"><span>Kar12</span></a>]</span> (page 8-17).</p>
+</section>
+</section>
+<section id="table-of-properites-of-the-fourier-transform">
+<h2>Table of Properites of the Fourier Transform<a class="headerlink" href="#table-of-properites-of-the-fourier-transform" title="Permalink to this headline">#</a></h2>
+<p>As was the case of the Laplace Transform, properties of Fourier transforms are usually summarized in Tables of Fourier Transform properties. For example this one: <a class="reference external" href="https://en.wikipedia.org/wiki/Fourier_transform#Properties_of_the_Fourier_transform">Properties of the Fourier Transform (Wikpedia)</a> and Table 8.8 in <span id="id6">[<a class="reference internal" href="../../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197.">Karris, 2012</a>]</span> (page 8-17).</p>
 <p>More detail and some commentry is given in the printable version of these notes.</p>
 <table class="colwidths-auto table">
 <thead>
@@ -1517,34 +1974,34 @@
 </tbody>
 </table>
 <p>See also: <a class="reference external" href="https://en.wikibooks.org/wiki/Engineering_Tables/Fourier_Transform_Properties">Wikibooks: Engineering Tables/Fourier Transform Properties</a> and <a class="reference external" href="https://mathworld.wolfram.com/FourierTransform.html">Fourier Transform—WolframMathworld</a> for more complete references.</p>
-</div>
-<div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">#</a></h2>
 <ol class="simple">
 <li><p>Amplitude Modulation</p></li>
 <li><p>Impulse response</p></li>
 <li><p>Energy computation</p></li>
 </ol>
-<div class="section" id="example-1-amplitude-modulation">
-<h3>Example 1: Amplitude Modulation<a class="headerlink" href="#example-1-amplitude-modulation" title="Permalink to this headline">¶</a></h3>
+<section id="example-1-amplitude-modulation">
+<h3>Example 1: Amplitude Modulation<a class="headerlink" href="#example-1-amplitude-modulation" title="Permalink to this headline">#</a></h3>
 <p>Compute the result of multiplying a signal <span class="math notranslate nohighlight">\(f(t)\)</span> by a carrier waveform <span class="math notranslate nohighlight">\(\cos \omega_c t\)</span>.</p>
 <p><em>Hint</em> use Euler’s identity and the frequency shift property</p>
-</div>
-<div class="section" id="example-2-impulse-response">
-<h3>Example 2: Impulse response<a class="headerlink" href="#example-2-impulse-response" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="example-2-impulse-response">
+<h3>Example 2: Impulse response<a class="headerlink" href="#example-2-impulse-response" title="Permalink to this headline">#</a></h3>
 <p>A system has impulse response <span class="math notranslate nohighlight">\(f(t) = e^{-t}u_0(t)\)</span>. Compute the frequency sprectrum of this system.</p>
-</div>
-<div class="section" id="example-3-energy-computation">
-<h3>Example 3: Energy computation<a class="headerlink" href="#example-3-energy-computation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="example-3-energy-computation">
+<h3>Example 3: Energy computation<a class="headerlink" href="#example-3-energy-computation" title="Permalink to this headline">#</a></h3>
 <p>An aperiodic real signal <span class="math notranslate nohighlight">\(f(t)\)</span> has Fourier transform <span class="math notranslate nohighlight">\(F(j\omega)\)</span>. Compute the energy contained the signal between 5kHz and 10kHz.</p>
-</div>
-</div>
-<div class="section" id="computing-fourier-transforms-in-matlab">
-<h2>Computing Fourier Transforms in MATLAB<a class="headerlink" href="#computing-fourier-transforms-in-matlab" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="computing-fourier-transforms-in-matlab">
+<h2>Computing Fourier Transforms in MATLAB<a class="headerlink" href="#computing-fourier-transforms-in-matlab" title="Permalink to this headline">#</a></h2>
 <p>MATLAB has the built-in <strong>fourier</strong> and <strong>ifourier</strong> functions that can be used to compute the Fourier transform and its inverse.</p>
 <p>For now, here’s an example:</p>
-<div class="section" id="example">
-<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h3>
 <p>Use MATLAB to confirm the Fourier transform pair:</p>
 <div class="math notranslate nohighlight">
 \[e^{-\frac{1}{2}t^2}\Leftrightarrow \sqrt{2\pi}e^{-\frac{1}{2}\omega^2}\]</div>
@@ -1560,7 +2017,7 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fw =
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2^(1/2)*pi^(1/2)*exp(-omega^2/2)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.5066*exp(-0.5000*omega^2)
 </pre></div>
 </div>
 </div>
@@ -1572,10 +2029,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                    /        2 \
-                    |   omega  |
-sqrt(2) sqrt(pi) exp| - ------ |
-                    \      2   /
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                 2
+exp(-0.5000 omega ) 2.5066
 </pre></div>
 </div>
 </div>
@@ -1591,16 +2046,16 @@ sqrt(2) sqrt(pi) exp| - ------ |
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ft =
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>exp(-t^2/2)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>exp(-0.5000*t^2)
 </pre></div>
 </div>
 </div>
 </div>
 <p>See script: <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/matlab/ftex1.m">ftex1.m</a>.</p>
-</div>
-</div>
-<div class="section" id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Fourier Transform as the Limit of a Fourier Series</p></li>
 <li><p>Doing the Maths</p></li>
@@ -1612,15 +2067,15 @@ sqrt(2) sqrt(pi) exp| - ------ |
 <ul class="simple">
 <li><p><a class="reference internal" href="../2/ft2.html"><span class="doc std std-doc">Fourier transform of commonly occuring signals</span></a></p></li>
 </ul>
-</div>
-<div class="section" id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
 <p>See <a class="reference internal" href="../../zbib.html"><span class="doc std std-doc">Bibliography</span></a>.</p>
-</div>
-<div class="section" id="worked-solutions">
-<h2>Worked Solutions<a class="headerlink" href="#worked-solutions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="let-s-complete-the-analysis-in-the-notebook">
-<h3>Let’s complete the analysis in the notebook<a class="headerlink" href="#let-s-complete-the-analysis-in-the-notebook" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="worked-solutions">
+<h2>Worked Solutions<a class="headerlink" href="#worked-solutions" title="Permalink to this headline">#</a></h2>
+<section id="let-s-complete-the-analysis-in-the-notebook">
+<h3>Let’s complete the analysis in the notebook<a class="headerlink" href="#let-s-complete-the-analysis-in-the-notebook" title="Permalink to this headline">#</a></h3>
 <div class="math notranslate nohighlight">
 \[C_k = \frac{1}{T}\int_{-t_0}^{t_0} e^{-jk\Omega_0 t}\,dt = -\frac{1}{jk\Omega_0 T}\left[e^{-jk\Omega_0 t}\right]_{-t_0}^{t_0} = -\frac{1}{jk\Omega_0 T}\left(e^{-jk\Omega_0 t_0}-e^{jk\Omega_0 t_0}\right)\]</div>
 <div class="math notranslate nohighlight">
@@ -1628,9 +2083,9 @@ sqrt(2) sqrt(pi) exp| - ------ |
 <p>and since <span class="math notranslate nohighlight">\(\Omega = 2\pi/T\)</span></p>
 <div class="math notranslate nohighlight">
 \[C_k = \frac{\sin\left(\pi k\frac{2t_0}{T}\right)}{k\pi } = \frac{2t_0}{T}{\mathop{\rm sinc}}\left( k\frac{2t_0}{T}\right)\]</div>
-</div>
-<div class="section" id="solution-1">
-<h3>Solution 1<a class="headerlink" href="#solution-1" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="solution-1">
+<h3>Solution 1<a class="headerlink" href="#solution-1" title="Permalink to this headline">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\cos\omega_c t = \frac{e^{j\omega_c t}+e^{-j\omega_c t}}{2}\]</div>
 <p>it follows from the <em>frequency shifting</em> property that</p>
@@ -1639,13 +2094,13 @@ sqrt(2) sqrt(pi) exp| - ------ |
 <p>Similarly</p>
 <div class="math notranslate nohighlight">
 \[f(t)\sin\omega_c t \Leftrightarrow \frac{F(j\omega-j\omega_c)-F(j\omega + j\omega_c)}{j2}.\]</div>
-</div>
-<div class="section" id="remarks">
-<h3>Remarks<a class="headerlink" href="#remarks" title="Permalink to this headline">¶</a></h3>
-<p>We can also tackle this using the Frequency Convolution property. See <span id="id7">[<a class="reference internal" href="../../zbib.html#id9"><span>Bou06</span></a>]</span> pp 182—183.</p>
-</div>
-<div class="section" id="solution-2">
-<h3>Solution 2<a class="headerlink" href="#solution-2" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="remarks">
+<h3>Remarks<a class="headerlink" href="#remarks" title="Permalink to this headline">#</a></h3>
+<p>We can also tackle this using the Frequency Convolution property. See <span id="id7">[<a class="reference internal" href="../../zbib.html#id9" title="Benoit Boulet. Fundamentals of signals and systems. Da Vinci Engineering Press, Hingham, Mass., 2006. ISBN 1584503815. Available as an eBook. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3135971.">Boulet, 2006</a>]</span> pp 182—183.</p>
+</section>
+<section id="solution-2">
+<h3>Solution 2<a class="headerlink" href="#solution-2" title="Permalink to this headline">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\begin{split}
     \begin{eqnarray*}
@@ -1658,15 +2113,15 @@ sqrt(2) sqrt(pi) exp| - ------ |
 <p>Thus</p>
 <div class="math notranslate nohighlight">
 \[e^{ - t}{u_0}(t)\Leftrightarrow \frac{1}{j\omega  + 1}\]</div>
-</div>
-<div class="section" id="solution-3">
-<h3>Solution 3<a class="headerlink" href="#solution-3" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="solution-3">
+<h3>Solution 3<a class="headerlink" href="#solution-3" title="Permalink to this headline">#</a></h3>
 <p>Use the Energy-Density function.</p>
 <div class="math notranslate nohighlight">
 \[E_{[10,000\pi,20,000\pi]}^r=\frac{1}{2\pi}\left[\int_{10,000\pi}^{20,000\pi}|X(j\omega)|^2\,d\omega + \frac{1}{2\pi}\int_{-20,000\pi}^{-10,000\pi}|X(j\omega)|^2\,d\omega\right] = \frac{1}{\pi}\int_{10,000\pi}^{20,000\pi}|X(j\omega)|^2\,d\omega.\]</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1677,58 +2132,50 @@ sqrt(2) sqrt(pi) exp| - ------ |
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "imatlab"
+            mode: "matlab"
         },
         kernelOptions: {
-            kernelName: "imatlab",
+            kernelName: "matlab",
             path: "./fourier_transform/1"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'imatlab'</script>
+    <script>kernelName = 'matlab'</script>
 
               </div>
               
-        
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="../index.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Fourier Transform</p>
-            </div>
-        </a>
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Fourier Transform</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../2/ft2.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Fourier transforms of commonly occurring signals</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="../2/ft2.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Fourier transforms of commonly occurring signals</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Dr Chris P. Jobling<br/>
-        
-            &copy; Copyright Swansea University (2019-2022).<br/>
-          <div class="extra_footer">
-            This page was created by 
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Dr Chris P. Jobling<br/>
+  
+      &copy; Copyright Swansea University (2019-2022).<br/>
+    <div class="extra_footer">
+      This page was created by 
 <a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
   Dr Chris P. Jobling
 </a> 
@@ -1737,19 +2184,20 @@ for
   Swansea University
 </a>.
 
-          </div>
-      </p>
     </div>
-  </footer>
-</main>
+</p>
+        </footer>
+    </div>
+    
+</div>
 
 
       </div>
     </div>
-    
-  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
 
-    
   </body>
 </html>

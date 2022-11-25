@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>The Discrete Fourier Transform &#8212; EG-247 Signals and Systems</title>
     
-  <link href="../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,51 +20,67 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/dft/1/dft.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="The Fast Fourier Transform" href="../2/fft.html" />
     <link rel="prev" title="Discrete Fourier Transforms" href="../index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -71,10 +89,12 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
+      
       
       
       <h1 class="site-logo" id="site-title">EG-247 Signals and Systems</h1>
@@ -85,14 +105,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../introduction/index.html">
-   Introducing Signals and Systems
-  </a>
- </li>
-</ul>
-<p class="caption">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../introduction/index.html">
+                    Introducing Signals and Systems
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Online notes
  </span>
@@ -259,19 +280,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  FAQs
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../FAQS/FAQ.html">
-   Answers to Frequently Asked Questions
-  </a>
- </li>
-</ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   In Class Worksheets
  </span>
@@ -385,7 +394,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Homework problems
  </span>
@@ -454,7 +463,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Lab Exercises
  </span>
@@ -523,7 +532,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Project
  </span>
@@ -535,7 +544,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Appendices
  </span>
@@ -621,116 +630,247 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by 
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by 
  <a href="https://jupyterbook.org">
   Jupyter Book
 </a>
 
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        <a class="dropdown-buttons"
-            href="../../_sources/dft/1/dft.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/dft/1/dft.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/cpjobling/eg-247-textbook"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Fdft/1/dft.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/cpjobling/eg-247-textbook/edit/master/dft/1/dft.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/cpjobling/eg-247-textbook/master?urlpath=tree/dft/1/dft.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/cpjobling/eg-247-textbook/master?urlpath=tree/dft/1/dft.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/cpjobling/eg-247-textbook"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Fdft/1/dft.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/cpjobling/eg-247-textbook/edit/master/dft/1/dft.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/dft/1/dft.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../../_sources/dft/1/dft.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#colophon">
    Colophon
@@ -960,32 +1100,277 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>The Discrete Fourier Transform</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#colophon">
+   Colophon
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scope-and-background-reading">
+   Scope and Background Reading
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#agenda">
+   Agenda
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#note">
+     Note
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#list-of-abbreviations">
+     List of Abbreviations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#notation">
+     Notation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#z-transform">
+   Z-Transform
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-discrete-time-fourier-transform">
+   The Discrete-time Fourier Transform
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-class-example-1">
+     In Class Example 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-1">
+     Solution 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-class-example-2">
+     In Class Example 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-2">
+     Solution 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simulink-model-of-the-dft">
+     Simulink model of the DFT
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#matlab-model-of-the-dft">
+     MATLAB model of the DFT
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-useful-compact-notation">
+     A useful compact notation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-class-example-3">
+     In Class Example 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-3">
+     Solution 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#matlab-implementation-of-dft">
+     MATLAB implementation of DFT
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#notes">
+     Notes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-class-example-4">
+     In Class Example 4
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#even-and-odd-properties-of-the-dft">
+   Even and Odd Properties of the DFT
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#common-properties-and-theorems-of-the-dft">
+   Common Properties and Theorems of the DFT
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linearity">
+     Linearity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#time-shift">
+     Time-shift
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#frequency-shift">
+     Frequency shift
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#time-convolution">
+     Time convolution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#frequency-convolution">
+     Frequency convolution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sampling-theorem-windows-and-the-picket-fence-effect">
+   Sampling Theorem, Windows, and the Picket Fence Effect
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sampling-theorem">
+     Sampling Theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#windowing">
+     Windowing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#picket-fence">
+     Picket fence
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-summary-of-the-important-features-of-sampling-and-the-dft">
+   A summary of the important features of sampling and the DFT
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-4-continued">
+     Example 4 (continued)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-class-example-5">
+     In Class Example 5
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution">
+     Solution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#homework">
+   Homework
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#answers-to-selcted-exercises">
+   Answers to selcted exercises
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1">
+     Example 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-3">
+     Example 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-5">
+     Example 5
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="the-discrete-fourier-transform">
-<h1>The Discrete Fourier Transform<a class="headerlink" href="#the-discrete-fourier-transform" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="colophon">
-<h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this headline">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="the-discrete-fourier-transform">
+<h1>The Discrete Fourier Transform<a class="headerlink" href="#the-discrete-fourier-transform" title="Permalink to this headline">#</a></h1>
+<section id="colophon">
+<h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this headline">#</a></h2>
 <p>An annotatable worksheet for this presentation is available as <a class="reference internal" href="worksheet18.html"><span class="doc std std-doc"><strong>Worksheet 18</strong></span></a>.</p>
 <ul class="simple">
 <li><p>The source code for this page is <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/dft/1/dft.ipynb">dft/1/dft.ipynb</a>.</p></li>
 <li><p>You can view the notes for this presentation as a webpage (<a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dft/1/dft.html">HTML</a>).</p></li>
 <li><p>This page is downloadable as a <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dft/1/dft.pdf">PDF</a> file.</p></li>
 </ul>
-</div>
-<div class="section" id="scope-and-background-reading">
-<h2>Scope and Background Reading<a class="headerlink" href="#scope-and-background-reading" title="Permalink to this headline">¶</a></h2>
-<p>The material in this presentation and notes is based on <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=389">Chapter 10</a> of  <span id="id1">[<a class="reference internal" href="../../zbib.html#id7"><span>Kar12</span></a>]</span> from the <strong>Required Reading List</strong>. Additional coverage is to be found in Chapter 12 of <span id="id2">[<a class="reference internal" href="../../zbib.html#id10"><span>PPR14</span></a>]</span> from the <strong>Recommended Reading List</strong>.</p>
-</div>
-<div class="section" id="agenda">
-<h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="scope-and-background-reading">
+<h2>Scope and Background Reading<a class="headerlink" href="#scope-and-background-reading" title="Permalink to this headline">#</a></h2>
+<p>The material in this presentation and notes is based on <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=389">Chapter 10</a> of  <span id="id1">[<a class="reference internal" href="../../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197.">Karris, 2012</a>]</span> from the <strong>Required Reading List</strong>. Additional coverage is to be found in Chapter 12 of <span id="id2">[<a class="reference internal" href="../../zbib.html#id10" title="Charles L. Phillips, Jason M. Parr, and Eve A. Riskin. Signals, Systems and Transforms. Pearson, Harlow, Essex, UK, 5th edition, 2014. ISBN 978-0-13-350647-1. Available as an eBook. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3135971.">Phillips <em>et al.</em>, 2014</a>]</span> from the <strong>Recommended Reading List</strong>.</p>
+</section>
+<section id="agenda">
+<h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>The discrete time fourier transform (DFT)</p></li>
 </ul>
@@ -998,16 +1383,16 @@
 <ul class="simple">
 <li><p>Sampling Theorem, Windows, and the Picket Fence Effect (Notes only)</p></li>
 </ul>
-</div>
-<div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Fourier series: periodic and continuous time function leads to a non-periodic discrete frequency function.</p></li>
 <li><p>Fourier transform: non-periodic continuous function leads to a non-periodic continuous frequency function.</p></li>
 <li><p>Z and inverse Z-transforms produce a periodic and continuous frequency function, since they are evaluated on the unit circle.</p></li>
 </ul>
-<div class="section" id="note">
-<h3>Note<a class="headerlink" href="#note" title="Permalink to this headline">¶</a></h3>
+<section id="note">
+<h3>Note<a class="headerlink" href="#note" title="Permalink to this headline">#</a></h3>
 <p>The frequency spectrum of a discrete time function <span class="math notranslate nohighlight">\(f[n]\)</span> is obtained from its z-transform by substituting <span class="math notranslate nohighlight">\(z = e^{sT} = e^{j\omega T}\)</span> as we saw from the mapping of the s-plane to the z-plane. This is continuous as there are an infinite number of points in the interval <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(2\pi\)</span>; and it is periodic because for any point <span class="math notranslate nohighlight">\(\omega T\)</span> there is an equivalent point <span class="math notranslate nohighlight">\(\omega T + 2 N \pi\)</span> later.</p>
 <p>In practice, to compute the spectrum for a discrete time (DT) system, we only compute a finite number of equally spaced points.</p>
 <p>For maxium readability, and because the exponent terms we will be using are fairly complex, we shall use the functional notation <span class="math notranslate nohighlight">\(\exp(x)\)</span> rather than exponential notation <span class="math notranslate nohighlight">\(e^x\)</span>.</p>
@@ -1039,9 +1424,9 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="list-of-abbreviations">
-<h3>List of Abbreviations<a class="headerlink" href="#list-of-abbreviations" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="list-of-abbreviations">
+<h3>List of Abbreviations<a class="headerlink" href="#list-of-abbreviations" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>CT – Continous Time</p></li>
 <li><p>DT – Discrete Time</p></li>
@@ -1049,14 +1434,14 @@
 <li><p>DFT – Discrete (Time) Fourier Transform</p></li>
 <li><p>FFT – Fast Fourier Transform</p></li>
 </ul>
-</div>
-<div class="section" id="notation">
-<h3>Notation<a class="headerlink" href="#notation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="notation">
+<h3>Notation<a class="headerlink" href="#notation" title="Permalink to this headline">#</a></h3>
 <p>In the following we shall denote a DT signal as <span class="math notranslate nohighlight">\(x[n]\)</span> and its discrete frequency function as <span class="math notranslate nohighlight">\(X[m]\)</span>.</p>
-</div>
-</div>
-<div class="section" id="z-transform">
-<h2>Z-Transform<a class="headerlink" href="#z-transform" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="z-transform">
+<h2>Z-Transform<a class="headerlink" href="#z-transform" title="Permalink to this headline">#</a></h2>
 <p>Recall that</p>
 <div class="math notranslate nohighlight">
 \[F(z) = \mathcal{Z} f[n] = \sum_{n=0}^{\infty} f[n]z^{-n}.\]</div>
@@ -1064,9 +1449,9 @@
 <div class="math notranslate nohighlight">
 \[F\left(\exp\left({j\omega T}\right)\right) = \sum_{n=0}^{\infty} f[n]\exp\left({-jn \omega T}\right).\]</div>
 <p>This is an infinite sum.  So to compute it, we need to truncate it.</p>
-</div>
-<div class="section" id="the-discrete-time-fourier-transform">
-<h2>The Discrete-time Fourier Transform<a class="headerlink" href="#the-discrete-time-fourier-transform" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="the-discrete-time-fourier-transform">
+<h2>The Discrete-time Fourier Transform<a class="headerlink" href="#the-discrete-time-fourier-transform" title="Permalink to this headline">#</a></h2>
 <p>Let’s assume that instead of an infinite number of points, we have <span class="math notranslate nohighlight">\(N\)</span> points, equally distributed around the unit circle, then the truncated version will be:</p>
 <div class="math notranslate nohighlight">
 \[X[m] =  \sum_{n=0}^{N-1} x[n]\exp\left({-j2\pi \frac{m n}{N}}\right)\]</div>
@@ -1105,14 +1490,14 @@
  \Im \left\{ {X[m]} \right\} = - \sum\limits_{n = 1}^{N - 1} x [n]\sin \left( 2\pi \frac{mn}{N} \right)\quad {\text{for}}\quad m = 0,1,2, \ldots ,N - 1.
 \]</div>
 <p>Note that the summations are from 1 to <span class="math notranslate nohighlight">\(N-1\)</span> because <span class="math notranslate nohighlight">\(n=0\)</span> is covered in the real term, and as <span class="math notranslate nohighlight">\(x[0]\)</span> is real, it is zero in the corresponding imaginary term.</p>
-<div class="section" id="in-class-example-1">
-<h3>In Class Example 1<a class="headerlink" href="#in-class-example-1" title="Permalink to this headline">¶</a></h3>
+<section id="in-class-example-1">
+<h3>In Class Example 1<a class="headerlink" href="#in-class-example-1" title="Permalink to this headline">#</a></h3>
 <p>A discrete time signal is defined by the sequence</p>
 <p><span class="math notranslate nohighlight">\(x[0] = 1\)</span>, <span class="math notranslate nohighlight">\(x[1] = 2\)</span>, <span class="math notranslate nohighlight">\(x[2] = 2\)</span>, <span class="math notranslate nohighlight">\(x[3] = 1\)</span>.</p>
 <p>Compute the frequency components <span class="math notranslate nohighlight">\(X[m]\)</span>.</p>
-</div>
-<div class="section" id="solution-1">
-<h3>Solution 1<a class="headerlink" href="#solution-1" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="solution-1">
+<h3>Solution 1<a class="headerlink" href="#solution-1" title="Permalink to this headline">#</a></h3>
 <p>Compute the <span class="math notranslate nohighlight">\(N=4\)</span> point DFT for <span class="math notranslate nohighlight">\(\Re\left\{X[m]\right\}\)</span>.</p>
 <p><span class="math notranslate nohighlight">\(x[n] = \left[1, 2, 2, 1\right]\)</span> and <span class="math notranslate nohighlight">\(N=4\)</span>.</p>
 <p><span class="math notranslate nohighlight">\(x[0]\)</span>:</p>
@@ -1202,13 +1587,13 @@ X[3] &amp;=&amp; -1 + j
 \end{split}\]</div>
 <div class="math notranslate nohighlight">
 \[X[m] = \left[6, -1 - j, 0, -1 - j\right].\]</div>
-</div>
-<div class="section" id="in-class-example-2">
-<h3>In Class Example 2<a class="headerlink" href="#in-class-example-2" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="in-class-example-2">
+<h3>In Class Example 2<a class="headerlink" href="#in-class-example-2" title="Permalink to this headline">#</a></h3>
 <p>Use the inverse DFT to compute the discrete-time sequence <span class="math notranslate nohighlight">\(x[n]\)</span> from <span class="math notranslate nohighlight">\(X[m]\)</span>.</p>
-</div>
-<div class="section" id="solution-2">
-<h3>Solution 2<a class="headerlink" href="#solution-2" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="solution-2">
+<h3>Solution 2<a class="headerlink" href="#solution-2" title="Permalink to this headline">#</a></h3>
 <div class="math notranslate nohighlight">
 \[
 x[n] = \frac{1}{4}\sum_{m=0}^{3} X[m]\exp\left(j2\pi\frac{mn}{4}\right)
@@ -1241,9 +1626,9 @@ x[3] &amp;=&amp; \frac{1}{4}\left(1\times 6 + -j\times (-1-j)+1\times 0+j\times(
 &amp;=&amp; \frac{1}{4}\left(6 + j-1 +0-j -1 )\right) = \frac{4}{1} = 1\\
 \end{eqnarray*}
 \end{split}\]</div>
-</div>
-<div class="section" id="simulink-model-of-the-dft">
-<h3>Simulink model of the DFT<a class="headerlink" href="#simulink-model-of-the-dft" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="simulink-model-of-the-dft">
+<h3>Simulink model of the DFT<a class="headerlink" href="#simulink-model-of-the-dft" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="n">matlab</span><span class="w"></span>
@@ -1253,8 +1638,9 @@ x[3] &amp;=&amp; \frac{1}{4}\left(1\times 6 + -j\times (-1-j)+1\times 0+j\times(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
-    &#39;/Users/eechris/code/src/github.com/cpjobling/eg-247-textbook/dft/1/matlab&#39;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Error using eval</span>
+<span class=" -Color -Color-Red">Undefined function &#39;imatlab_export_fig&#39; for input arguments of type &#39;char&#39;.</span>
+
 </pre></div>
 </div>
 </div>
@@ -1269,9 +1655,9 @@ x[3] &amp;=&amp; \frac{1}{4}\left(1\times 6 + -j\times (-1-j)+1\times 0+j\times(
 </div>
 <p><img alt="Simulink Model of DFT" src="../../_images/dft_10_1.png" /></p>
 <p>Try inputting your student number.</p>
-</div>
-<div class="section" id="matlab-model-of-the-dft">
-<h3>MATLAB model of the DFT<a class="headerlink" href="#matlab-model-of-the-dft" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="matlab-model-of-the-dft">
+<h3>MATLAB model of the DFT<a class="headerlink" href="#matlab-model-of-the-dft" title="Permalink to this headline">#</a></h3>
 <p>Karris Example 10.1. To successfully run this script you will need to download the functions <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dft/1/matlab/dft.m">dft.m</a> and <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dft/1/matlab/idft.m">idft.m</a> and make them available on your <code class="docutils literal notranslate"><span class="pre">MATLABPATH</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1320,9 +1706,9 @@ x[3] &amp;=&amp; \frac{1}{4}\left(1\times 6 + -j\times (-1-j)+1\times 0+j\times(
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="a-useful-compact-notation">
-<h3>A useful compact notation<a class="headerlink" href="#a-useful-compact-notation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="a-useful-compact-notation">
+<h3>A useful compact notation<a class="headerlink" href="#a-useful-compact-notation" title="Permalink to this headline">#</a></h3>
 <p>The term</p>
 <div class="math notranslate nohighlight">
 \[\exp\left(\frac{-j2\pi}{N}\right)\]</div>
@@ -1333,14 +1719,14 @@ x[3] &amp;=&amp; \frac{1}{4}\left(1\times 6 + -j\times (-1-j)+1\times 0+j\times(
 <p>and consequently,</p>
 <div class="math notranslate nohighlight">
 \[W_N^{-1} = \exp\left({\frac{j2\pi}{N}}\right).\]</div>
-</div>
-<div class="section" id="in-class-example-3">
-<h3>In Class Example 3<a class="headerlink" href="#in-class-example-3" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="in-class-example-3">
+<h3>In Class Example 3<a class="headerlink" href="#in-class-example-3" title="Permalink to this headline">#</a></h3>
 <p>Compute the complex numbers represented by the rotating vector
 <span class="math notranslate nohighlight">\(W_8\)</span></p>
-</div>
-<div class="section" id="solution-3">
-<h3>Solution 3<a class="headerlink" href="#solution-3" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="solution-3">
+<h3>Solution 3<a class="headerlink" href="#solution-3" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Rewrite <span class="math notranslate nohighlight">\(W_8\)</span> in exponential form</p></li>
 </ul>
@@ -1408,9 +1794,9 @@ x[3] &amp;=&amp; \frac{1}{4}\left(1\times 6 + -j\times (-1-j)+1\times 0+j\times(
 \[X[m] =  \sum_{n=0}^{N-1} x[n]W_N^{nm}\]</div>
 <p>and
 $<span class="math notranslate nohighlight">\(x[n] = \frac{1}{N}\sum_{n=0}^{N-1} X[m]W_N^{-nm}\)</span>$</p>
-</div>
-<div class="section" id="matlab-implementation-of-dft">
-<h3>MATLAB implementation of DFT<a class="headerlink" href="#matlab-implementation-of-dft" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="matlab-implementation-of-dft">
+<h3>MATLAB implementation of DFT<a class="headerlink" href="#matlab-implementation-of-dft" title="Permalink to this headline">#</a></h3>
 <p>Using the W notation, it is very easy to write a function to implement the DFT.</p>
 <p>We will demonstrate this in class.</p>
 <p>For example, consider <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dft/1/matlab/dft.m">dft.m</a>:</p>
@@ -1447,9 +1833,9 @@ $<span class="math notranslate nohighlight">\(x[n] = \frac{1}{N}\sum_{n=0}^{N-1}
 <span class="n">xn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">Xm</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">WNnm</span><span class="p">)</span><span class="o">/</span><span class="n">N</span><span class="p">;</span><span class="w">     </span><span class="c">% row vector for IDFT values</span><span class="w"></span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="notes">
-<h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="notes">
+<h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">#</a></h3>
 <p>In the remainder of these notes, the correspondence between <span class="math notranslate nohighlight">\(x[n]\)</span> and <span class="math notranslate nohighlight">\(X[m]\)</span> will be written</p>
 <div class="math notranslate nohighlight">
 \[x[n] \Leftrightarrow X[m]\]</div>
@@ -1461,9 +1847,9 @@ $<span class="math notranslate nohighlight">\(x[n] = \frac{1}{N}\sum_{n=0}^{N-1}
 \[
     \angle X[m].
 \]</div>
-</div>
-<div class="section" id="in-class-example-4">
-<h3>In Class Example 4<a class="headerlink" href="#in-class-example-4" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="in-class-example-4">
+<h3>In Class Example 4<a class="headerlink" href="#in-class-example-4" title="Permalink to this headline">#</a></h3>
 <p>Use MATLAB to compute the magnitude of the frequency components of the following DT function:</p>
 <table class="colwidths-auto table">
 <thead>
@@ -1524,7 +1910,8 @@ $<span class="math notranslate nohighlight">\(x[n] = \frac{1}{N}\sum_{n=0}^{N-1}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/dft_60_0.svg" src="../../_images/dft_60_0.svg" /></div>
+<img alt="../../_images/dft_60_0.png" src="../../_images/dft_60_0.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1540,7 +1927,8 @@ $<span class="math notranslate nohighlight">\(x[n] = \frac{1}{N}\sum_{n=0}^{N-1}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/dft_62_0.svg" src="../../_images/dft_62_0.svg" /></div>
+<img alt="../../_images/dft_62_0.png" src="../../_images/dft_62_0.png" />
+</div>
 </div>
 <p>Points to note:</p>
 <ul class="simple">
@@ -1548,10 +1936,10 @@ $<span class="math notranslate nohighlight">\(x[n] = \frac{1}{N}\sum_{n=0}^{N-1}
 <li><p>After the <span class="math notranslate nohighlight">\(|X[8]| = 1.4872\)</span> term, the magnitude of the frequency values for the range <span class="math notranslate nohighlight">\(9 &lt;= m \le 15\)</span> are the mirror image of the values for the range <span class="math notranslate nohighlight">\(0 &lt;= m &lt;= 7\)</span>.</p></li>
 <li><p>This is not a coincidence, in fact if <span class="math notranslate nohighlight">\(x[n]\)</span> is an N-point <em>real discrete-time function</em>, only <span class="math notranslate nohighlight">\(N/2\)</span> of the <em>frequency components</em> of <span class="math notranslate nohighlight">\(|X[m]|\)</span> <em>are unique</em>.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="even-and-odd-properties-of-the-dft">
-<h2>Even and Odd Properties of the DFT<a class="headerlink" href="#even-and-odd-properties-of-the-dft" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="even-and-odd-properties-of-the-dft">
+<h2>Even and Odd Properties of the DFT<a class="headerlink" href="#even-and-odd-properties-of-the-dft" title="Permalink to this headline">#</a></h2>
 <p>The discrete time and discrete frequency functions are defined as <em>even</em> or <em>odd</em> in according to the following relations:</p>
 <p>Even time function: <span class="math notranslate nohighlight">\(f[N - n] = f[n]\)</span></p>
 <p>Odd time function: <span class="math notranslate nohighlight">\(f[N - n] = -f[n]\)</span></p>
@@ -1586,9 +1974,9 @@ $<span class="math notranslate nohighlight">\(x[n] = \frac{1}{N}\sum_{n=0}^{N-1}
 <div class="math notranslate nohighlight">
 \[X[m] = \sum_{n=0}^{N-1} x[n]W_N^{mn}\]</div>
 <p>into its real and imaginary parts using Euler’s identity and considering the cosine (even) and sine (odd) terms that result.</p>
-</div>
-<div class="section" id="common-properties-and-theorems-of-the-dft">
-<h2>Common Properties and Theorems of the DFT<a class="headerlink" href="#common-properties-and-theorems-of-the-dft" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="common-properties-and-theorems-of-the-dft">
+<h2>Common Properties and Theorems of the DFT<a class="headerlink" href="#common-properties-and-theorems-of-the-dft" title="Permalink to this headline">#</a></h2>
 <p>We denote the DFT and inverse DFT using as follows:</p>
 <div class="math notranslate nohighlight">
 \[X[m] = \mathcal{D}\left\{x[n]\right\}\]</div>
@@ -1596,55 +1984,55 @@ $<span class="math notranslate nohighlight">\(x[n] = \frac{1}{N}\sum_{n=0}^{N-1}
 <div class="math notranslate nohighlight">
 \[x[n] = \mathcal{D}^{-1}\left\{X[m]\right\}\]</div>
 <p>We then state the following useful properties. For proofs, see Karris, 10.3. <strong>Not examined.</strong></p>
-<div class="section" id="linearity">
-<h3>Linearity<a class="headerlink" href="#linearity" title="Permalink to this headline">¶</a></h3>
+<section id="linearity">
+<h3>Linearity<a class="headerlink" href="#linearity" title="Permalink to this headline">#</a></h3>
 <div class="math notranslate nohighlight">
 \[a x_1[n] + b x_2[n] + \cdots \Leftrightarrow a X_1[m] + b X_2[m] + \cdots\]</div>
-</div>
-<div class="section" id="time-shift">
-<h3>Time-shift<a class="headerlink" href="#time-shift" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="time-shift">
+<h3>Time-shift<a class="headerlink" href="#time-shift" title="Permalink to this headline">#</a></h3>
 <div class="math notranslate nohighlight">
 \[x[n-k] \Leftrightarrow W_n^{km} X[m]\]</div>
-</div>
-<div class="section" id="frequency-shift">
-<h3>Frequency shift<a class="headerlink" href="#frequency-shift" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="frequency-shift">
+<h3>Frequency shift<a class="headerlink" href="#frequency-shift" title="Permalink to this headline">#</a></h3>
 <div class="math notranslate nohighlight">
 \[W_n^{-km} x[n] \Leftrightarrow X[m-k]\]</div>
-</div>
-<div class="section" id="time-convolution">
-<h3>Time convolution<a class="headerlink" href="#time-convolution" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="time-convolution">
+<h3>Time convolution<a class="headerlink" href="#time-convolution" title="Permalink to this headline">#</a></h3>
 <div class="math notranslate nohighlight">
 \[x[n]*h[n] \Leftrightarrow X[m] H[m]\]</div>
-</div>
-<div class="section" id="frequency-convolution">
-<h3>Frequency convolution<a class="headerlink" href="#frequency-convolution" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="frequency-convolution">
+<h3>Frequency convolution<a class="headerlink" href="#frequency-convolution" title="Permalink to this headline">#</a></h3>
 <div class="math notranslate nohighlight">
 \[x[n]y[n] \Leftrightarrow \frac{1}{N}\sum_{k=0}^{N-1} X[k] Y[m - k] \Leftrightarrow X[m] * Y[m]\]</div>
-</div>
-</div>
-<div class="section" id="sampling-theorem-windows-and-the-picket-fence-effect">
-<h2>Sampling Theorem, Windows, and the Picket Fence Effect<a class="headerlink" href="#sampling-theorem-windows-and-the-picket-fence-effect" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="sampling-theorem-windows-and-the-picket-fence-effect">
+<h2>Sampling Theorem, Windows, and the Picket Fence Effect<a class="headerlink" href="#sampling-theorem-windows-and-the-picket-fence-effect" title="Permalink to this headline">#</a></h2>
 <p>See notes</p>
-<div class="section" id="sampling-theorem">
-<h3>Sampling Theorem<a class="headerlink" href="#sampling-theorem" title="Permalink to this headline">¶</a></h3>
+<section id="sampling-theorem">
+<h3>Sampling Theorem<a class="headerlink" href="#sampling-theorem" title="Permalink to this headline">#</a></h3>
 <p>The <em>sampling theorem</em> known as <em>Nyquist/Shannon’s Sampling Theorem</em> (see <a class="reference external" href="https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem">wp&gt;Nyquist/Shannon Sampling Theorem</a>), states that *if a continuous time function, <span class="math notranslate nohighlight">\(f(t)\)</span> is band-limited with its highest frequency component less that <span class="math notranslate nohighlight">\(W\)</span>, then <span class="math notranslate nohighlight">\(f(t)\)</span> can be completely recovered from its sampled values, <span class="math notranslate nohighlight">\(f[n]\)</span>, f the sampling frequency is equal or greater than <span class="math notranslate nohighlight">\(2W\)</span>.</p>
 <p>For example, say the highest frequency component in a signal is 18 kHz, this signal must be sampled at <span class="math notranslate nohighlight">\(2 \times 18 = 36\)</span> kHz or higher so that it can be completely specified by its sampled values. If the sampled frequency remains the same, i.e., 36 kHz, and the highest frequency in the signal is increased, to say 25 kHz, this signal cannot be recovered by a Digital to Analogue Converter (DAC).</p>
 <p>Since many real signals are not band limited, a typical digital signal processing system will include a low-pass filter, often called a <em>pre-sampling-filter</em> or simply a <em>pre-filter</em>, to ensure that the highest frequency signal allowed into the system will be equal or less than the sampling frequency so that the signal can be recovered. The highest frequency allowed in the system is referred to as the Nyquist frequency denoted as <span class="math notranslate nohighlight">\(f_n\)</span>.</p>
 <p>If the signal is not band limited, or the sampling frequency is too low, the spectral components of the signal will overlap each other and this is called <em>aliasing</em>. To avoid aliasing, we must increase the sampling rate.</p>
-</div>
-<div class="section" id="windowing">
-<h3>Windowing<a class="headerlink" href="#windowing" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="windowing">
+<h3>Windowing<a class="headerlink" href="#windowing" title="Permalink to this headline">#</a></h3>
 <p>A DT signal may have an infinite length; in this case it must be limited to a finite interval before it is sampled. We can terminate the signal at a defined number of terms by multiplying it by a <em>window function</em>. There are several window functions that are used in practice such as the <em>rectangular</em>, <em>triangular</em>, <em>Hanning</em>, <em>Hamming</em>, <em>Kaiser</em>, etc. Window functions, and their design, are outside the scope of this module, but are discussed in Appendix E of Karris.</p>
 <p>All I will say here is that the window function must be carefully chosen to avoid the signal being terminated too abrubtly and causing <em>leakage</em> – that is a spread of the spectrum outside the bounds imposed by the window.</p>
-</div>
-<div class="section" id="picket-fence">
-<h3>Picket fence<a class="headerlink" href="#picket-fence" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="picket-fence">
+<h3>Picket fence<a class="headerlink" href="#picket-fence" title="Permalink to this headline">#</a></h3>
 <p>A third problem introduced by the DFT is the fact that as the spectrum of the DFT is not continuous, important frequencies may fall between spectrum lines and therefore not be detected. This is called the picket fence effect, named after the white fences seen in the suburbs in US movies. A way round this is to pad the signal with zeros so that the effective period changes and therefore changes the locations of the spectral lines.</p>
 <p>You should remember that the sampling theorem states under what conditions a signal may be recovered. It does not guarantee that all significant frequencies will be present in the sampled signal.</p>
-</div>
-</div>
-<div class="section" id="a-summary-of-the-important-features-of-sampling-and-the-dft">
-<h2>A summary of the important features of sampling and the DFT<a class="headerlink" href="#a-summary-of-the-important-features-of-sampling-and-the-dft" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="a-summary-of-the-important-features-of-sampling-and-the-dft">
+<h2>A summary of the important features of sampling and the DFT<a class="headerlink" href="#a-summary-of-the-important-features-of-sampling-and-the-dft" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(N\)</span> is the number of samples in frequency.</p></li>
 <li><p><span class="math notranslate nohighlight">\(f_s\)</span> sampling frequency, samples per seconds.</p></li>
@@ -1665,13 +2053,13 @@ $<span class="math notranslate nohighlight">\(x[n] = \frac{1}{N}\sum_{n=0}^{N-1}
 <div class="math notranslate nohighlight">
 \[f_f = \frac{1}{T_t}\]</div>
 <p>We will add these quantities to the results of Example 4 in class.</p>
-<div class="section" id="example-4-continued">
-<h3>Example 4 (continued)<a class="headerlink" href="#example-4-continued" title="Permalink to this headline">¶</a></h3>
+<section id="example-4-continued">
+<h3>Example 4 (continued)<a class="headerlink" href="#example-4-continued" title="Permalink to this headline">#</a></h3>
 <p><img alt="Example 4" src="../../_images/repeat.png" /></p>
 <p>To reproduce this plot use <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dft/1/matlab/repeat.m">repeat.m</a>.</p>
-</div>
-<div class="section" id="in-class-example-5">
-<h3>In Class Example 5<a class="headerlink" href="#in-class-example-5" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="in-class-example-5">
+<h3>In Class Example 5<a class="headerlink" href="#in-class-example-5" title="Permalink to this headline">#</a></h3>
 <p>The period of a periodic DT function is 0.125 ms and it is sampled at 1024 equally spaced points. It is assumed that with this number of samples, the sampling theorem is satisfied and thus there will be no aliasing.</p>
 <ol class="simple">
 <li><p>Compute the interval <span class="math notranslate nohighlight">\(t_t\)</span> between samples for the periodic signal</p></li>
@@ -1680,9 +2068,9 @@ $<span class="math notranslate nohighlight">\(x[n] = \frac{1}{N}\sum_{n=0}^{N-1}
 <li><p>Compute the sampling frequency <span class="math notranslate nohighlight">\(f_s\)</span>.</p></li>
 <li><p>Compute the Nyquist frequency <span class="math notranslate nohighlight">\(f_n\)</span>.</p></li>
 </ol>
-</div>
-<div class="section" id="solution">
-<h3>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="solution">
+<h3>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h3>
 <p>To be done in class.</p>
 <ul class="simple">
 <li><p>Compute the interval <span class="math notranslate nohighlight">\(t_t\)</span> between samples for the periodic signal</p></li>
@@ -1753,10 +2141,10 @@ $<span class="math notranslate nohighlight">\(x[n] = \frac{1}{N}\sum_{n=0}^{N-1}
 
 
 
-</pre></div>
-</div>
-<div class="section" id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+</pre></section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>The discrete time fourier transform</p></li>
 <li><p>Even and Odd Properties of the DFT</p></li>
@@ -1768,20 +2156,20 @@ $<span class="math notranslate nohighlight">\(x[n] = \frac{1}{N}\sum_{n=0}^{N-1}
 <li><p>The <a class="reference internal" href="../2/fft.html"><span class="doc std std-doc">Fast Fourier Transform</span></a></p></li>
 </ul>
 <p>(without the mathematics)</p>
-</div>
-<div class="section" id="homework">
-<h2>Homework<a class="headerlink" href="#homework" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="homework">
+<h2>Homework<a class="headerlink" href="#homework" title="Permalink to this headline">#</a></h2>
 <p>Try Exercise 1 and Exercise 2 in Karris 10.8 by hand.</p>
 <p>For the exam, I wouldn’t expect you to compute the whole sequence for a signal with more than 8 samples. A thorough understanding of the <span class="math notranslate nohighlight">\(W_N^nm\)</span> notation is needed and familiarity with the angle wheel (e.g as for <span class="math notranslate nohighlight">\(W_8^n\)</span> in Example 3) will be advantageous.</p>
-</div>
-<div class="section" id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
 <p>See <a class="reference internal" href="../../zbib.html"><span class="doc std std-doc">Bibliography</span></a>.</p>
-</div>
-<div class="section" id="answers-to-selcted-exercises">
-<h2>Answers to selcted exercises<a class="headerlink" href="#answers-to-selcted-exercises" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="example-1">
-<h3>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="answers-to-selcted-exercises">
+<h2>Answers to selcted exercises<a class="headerlink" href="#answers-to-selcted-exercises" title="Permalink to this headline">#</a></h2>
+<section id="example-1">
+<h3>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{eqnarray*}
   X(0) &amp;=&amp; 6 \\ 
@@ -1789,14 +2177,14 @@ $<span class="math notranslate nohighlight">\(x[n] = \frac{1}{N}\sum_{n=0}^{N-1}
   X(2) &amp;=&amp; 0 \\ 
   X(3) &amp;=&amp;  - 1 + j \\ 
 \end{eqnarray*} \end{split}\]</div>
-</div>
-<div class="section" id="example-3">
-<h3>Example 3<a class="headerlink" href="#example-3" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="example-3">
+<h3>Example 3<a class="headerlink" href="#example-3" title="Permalink to this headline">#</a></h3>
 <div class="math notranslate nohighlight">
 \[W_8 = \left[ 1, \frac{1}{\sqrt{2}}+j\frac{1}{\sqrt{2}}, j, -\frac{1}{\sqrt{2}}+j\frac{1}{\sqrt{2}}, -1, -\frac{1}{\sqrt{2}}-j\frac{1}{\sqrt{2}}, -j, \frac{1}{\sqrt{2}}-j\frac{1}{\sqrt{2}} \right]\]</div>
-</div>
-<div class="section" id="example-5">
-<h3>Example 5<a class="headerlink" href="#example-5" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="example-5">
+<h3>Example 5<a class="headerlink" href="#example-5" title="Permalink to this headline">#</a></h3>
 <ol class="simple">
 <li><p><span class="math notranslate nohighlight">\(t_t = 0.122\)</span> <span class="math notranslate nohighlight">\(\mu\)</span>s</p></li>
 <li><p><span class="math notranslate nohighlight">\(T_f = 1/t_t = 8192\)</span> kHz (8.2 Mhz)</p></li>
@@ -1804,9 +2192,9 @@ $<span class="math notranslate nohighlight">\(x[n] = \frac{1}{N}\sum_{n=0}^{N-1}
 <li><p><span class="math notranslate nohighlight">\(f_s = 1/t_t\)</span> = 8.2 Mhz</p></li>
 <li><p><span class="math notranslate nohighlight">\(f_n \le F_s/2 \le 4.1\)</span> Mhz</p></li>
 </ol>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1817,58 +2205,50 @@ $<span class="math notranslate nohighlight">\(x[n] = \frac{1}{N}\sum_{n=0}^{N-1}
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "imatlab"
+            mode: "matlab"
         },
         kernelOptions: {
-            kernelName: "imatlab",
+            kernelName: "matlab",
             path: "./dft/1"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'imatlab'</script>
+    <script>kernelName = 'matlab'</script>
 
               </div>
               
-        
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="../index.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Discrete Fourier Transforms</p>
-            </div>
-        </a>
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Discrete Fourier Transforms</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../2/fft.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">The Fast Fourier Transform</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="../2/fft.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">The Fast Fourier Transform</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Dr Chris P. Jobling<br/>
-        
-            &copy; Copyright Swansea University (2019-2022).<br/>
-          <div class="extra_footer">
-            This page was created by 
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Dr Chris P. Jobling<br/>
+  
+      &copy; Copyright Swansea University (2019-2022).<br/>
+    <div class="extra_footer">
+      This page was created by 
 <a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
   Dr Chris P. Jobling
 </a> 
@@ -1877,19 +2257,20 @@ for
   Swansea University
 </a>.
 
-          </div>
-      </p>
     </div>
-  </footer>
-</main>
+</p>
+        </footer>
+    </div>
+    
+</div>
 
 
       </div>
     </div>
-    
-  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
 
-    
   </body>
 </html>

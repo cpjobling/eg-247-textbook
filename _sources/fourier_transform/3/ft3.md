@@ -5,11 +5,11 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.11.5
+    jupytext_version: 1.14.1
 kernelspec:
-  display_name: MATLAB
+  display_name: Matlab
   language: matlab
-  name: imatlab
+  name: matlab
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -138,11 +138,11 @@ Karris example 8.8: for the linear network shown below, the impulse response is 
 
 #### Matlab verification of example 1
 
-```{code-cell} matlab
+```{code-cell}
 imatlab_export_fig('print-svg')  % Static svg figures.
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -151,7 +151,7 @@ syms t w
 U1 = fourier(2*heaviside(t),t,w)
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -159,7 +159,7 @@ slideshow:
 H = fourier(3*exp(-2*t)*heaviside(t),t,w)
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -167,7 +167,7 @@ slideshow:
 Y1=simplify(H*U1)
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -181,7 +181,7 @@ Get y2
 
 Substitute $t-3$ into $t$.
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -189,7 +189,7 @@ slideshow:
 y2 = subs(y1,t,t-3)
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -201,7 +201,7 @@ y = y1 - y2
 
 Plot result
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -270,7 +270,7 @@ Karris example 8.9: for the circuit shown below, use the Fourier transfrom metho
 
 #### Matlab verification of example 2
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -279,7 +279,7 @@ syms t w
 H = j*w/(j*w + 2)
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -287,7 +287,7 @@ slideshow:
 Vin = fourier(5*exp(-3*t)*heaviside(t),t,w)
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -295,7 +295,7 @@ slideshow:
 Vout=simplify(H*Vin)
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -307,7 +307,7 @@ vout = simplify(ifourier(Vout,w,t))
 
 Plot result
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -380,7 +380,7 @@ where $v_{\mathrm{in}}=3e^{-2t}$. Use the Fourier transform method, and the syst
 
 #### Matlab verification of example 3
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -389,7 +389,7 @@ syms t w
 H = 10/(j*w + 4)
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -397,7 +397,7 @@ slideshow:
 Vin = fourier(3*exp(-2*t)*heaviside(t),t,w)
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -405,7 +405,7 @@ slideshow:
 Vout=simplify(H*Vin)
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -417,7 +417,7 @@ vout = simplify(ifourier(Vout,w,t))
 
 Plot result
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -488,7 +488,7 @@ $$\int\frac{1}{a^2 + x^2}\,dx = \frac{1}{a}\arctan\frac{x}{a}+C.$$
 
 #### Matlab verification of example 4
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -500,7 +500,7 @@ syms t w
 
 Calcuate energy from time function
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -515,7 +515,7 @@ Wr = int(Pr,t,0,inf)
 
 Calculate using Parseval's theorem
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -523,7 +523,7 @@ slideshow:
 Fw = fourier(Vr,t,w)
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -531,7 +531,7 @@ slideshow:
 Fw2 = simplify(abs(Fw)^2)
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide

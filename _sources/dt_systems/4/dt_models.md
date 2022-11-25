@@ -5,11 +5,11 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.11.5
+    jupytext_version: 1.14.1
 kernelspec:
-  display_name: MATLAB
+  display_name: Matlab
   language: matlab
-  name: imatlab
+  name: matlab
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -290,7 +290,7 @@ $$\frac{H(z)}{z} = \frac{z + 1}{z^2 - 0.5 z + 0.125}$$
 
 ##### Matlab Solution
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: skip
@@ -318,7 +318,7 @@ $$y[n] - 0.5 y[n-1] + 0.125 y[n-2] = x[n] + x[n -1]$$
 
 Numerator $z^2 + z$
 
-```{code-cell} matlab
+```{code-cell}
 Nz = [1 1 0];
 ```
 
@@ -326,7 +326,7 @@ Nz = [1 1 0];
 
 Denominator $z^2 - 0.5 z + 0.125$
 
-```{code-cell} matlab
+```{code-cell}
 Dz = [1 -0.5 0.125];
 ```
 
@@ -334,7 +334,7 @@ Dz = [1 -0.5 0.125];
 
 ###### Poles and residues
 
-```{code-cell} matlab
+```{code-cell}
 [r,p,k] = residue(Nz,Dz)
 ```
 
@@ -342,7 +342,7 @@ Dz = [1 -0.5 0.125];
 
 ###### Impulse Response
 
-```{code-cell} matlab
+```{code-cell}
 Hz = tf(Nz,Dz,1)
 hn = impulse(Hz, 15);
 ```
@@ -351,7 +351,7 @@ hn = impulse(Hz, 15);
 
 ###### Plot the response
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: '-'
@@ -367,7 +367,7 @@ ylabel('Impulse response h[n]')
 
 ###### Response as stepwise continuous y(t)
 
-```{code-cell} matlab
+```{code-cell}
 impulse(Hz,15)
 grid
 title('Example 5 - Part 2 - As Analogue Signal')
@@ -436,7 +436,7 @@ Solved by inverse Z-transform.
 
 See [dtm_ex1_3.mlx](https://cpjobling.github.io/eg-247-textbook/dt_systems/4/matlab/dtm_ex1_3.mlx). (Also available as [dtm_ex1_3.m](https://cpjobling.github.io/eg-247-textbook/dt_systems/4/matlab/dtm_ex1_3.m).)
 
-```{code-cell} matlab
+```{code-cell}
 open dtm_ex1_3
 ```
 
@@ -461,7 +461,7 @@ We will consider some examples in class
 
 Code extracted from [dtm_ex1_3.m](https://cpjobling.github.io/eg-247-textbook/dt_systems/4/matlab/dtm_ex1_3.m):
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -470,7 +470,7 @@ Ts = 1;
 z = tf('z', Ts);
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -478,7 +478,7 @@ slideshow:
 Hz = (z^2 + z)/(z^2 - 0.5 * z + 0.125)
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -499,7 +499,7 @@ See [dtm.slx](https://cpjobling.github.io/eg-247-textbook/dt_systems/4/matlab/dt
 
 ![Simulink model](./pictures/simulink_model.png)
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -551,7 +551,7 @@ To achieve this, all we need is to be able to do is to *sample* and *process* th
 
 Let's see what the help function says:
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: notes
@@ -559,7 +559,7 @@ slideshow:
 help c2d
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -588,7 +588,7 @@ First determine the cut-off frequency $\omega_c$
 
 $$\omega_c = 2\pi f_c = 2\times \pi \times 20\times 10^3\;\mathrm{rad/s}$$
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -610,7 +610,7 @@ $$H(s) = \frac{Y(s)}{U(s)} = \frac{\omega _c^2}{s^2 + \omega _c\sqrt 2 \,s + \om
 
 Substituting for $\omega_c = 125.6637\times 10^3 $ this is ...?
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -628,7 +628,7 @@ $$H(s) = \frac{15.79 \times 10^9}{s^2 + 177.7 \times 10^3 s + 15.79 \times 10^9}
 
 MATLAB:
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -644,7 +644,7 @@ grid
 
 From the bode diagram, the frequency roll-off is -40 dB/decade for frequencies $\omega \gg \omega_c$. So, $|H(j\omega)| = -80$&nbsp;dB  is approximately 2 decades above $\omega_c$.
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -660,7 +660,7 @@ To avoid aliasing, we should choose a sampling frequency twice this = ?
 
 $\omega_s = 2\times \omega_\mathrm{stop}$&nbsp;rad/s.
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -676,7 +676,7 @@ Sampling frequency ($f_s$) in Hz  = ?
 
 $$f_s = \omega_s/(2\pi)\;\mathrm{Mhz}$$
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -694,7 +694,7 @@ Sampling time $T_s = ?$
 
 $T_s = 1/fs\;\mathrm{s}$
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -712,7 +712,7 @@ $$T_s = 1/f_s = 0.25\;\mu\mathrm{s}$$
 
 zero-order-hold equivalent
 
-```{code-cell} matlab
+```{code-cell}
 Hz = c2d(Hs, Ts)
 ```
 
@@ -720,7 +720,7 @@ Hz = c2d(Hs, Ts)
 
 #### Step response
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -782,7 +782,7 @@ y[n] = 1.956[n - 1] - 0.9665y[n - 2] + 486.2 \times {10^{ - 6}}u[n - 1] + ...\\
 
 [digifilter.slx](https://cpjobling.github.io/eg-247-textbook/dt_systems/4/matlab/digifilter.slx)
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment

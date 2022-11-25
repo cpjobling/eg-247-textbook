@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Introducing Signals and Systems &#8212; EG-247 Signals and Systems</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,50 +20,66 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/introduction/index.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Elementary Signals" href="../elementary_signals/index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -70,10 +88,12 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
+      
       
       
       <h1 class="site-logo" id="site-title">EG-247 Signals and Systems</h1>
@@ -84,14 +104,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1 current">
-  <a class="reference internal" href="#">
-   Introducing Signals and Systems
-  </a>
- </li>
-</ul>
-<p class="caption">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
+                    Introducing Signals and Systems
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Online notes
  </span>
@@ -258,19 +279,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  FAQs
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../FAQS/FAQ.html">
-   Answers to Frequently Asked Questions
-  </a>
- </li>
-</ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   In Class Worksheets
  </span>
@@ -384,7 +393,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Homework problems
  </span>
@@ -453,7 +462,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Lab Exercises
  </span>
@@ -522,7 +531,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Project
  </span>
@@ -534,7 +543,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Appendices
  </span>
@@ -620,116 +629,247 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by 
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by 
  <a href="https://jupyterbook.org">
   Jupyter Book
 </a>
 
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        <a class="dropdown-buttons"
-            href="../_sources/introduction/index.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/introduction/index.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/cpjobling/eg-247-textbook"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Fintroduction/index.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/cpjobling/eg-247-textbook/edit/master/introduction/index.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/cpjobling/eg-247-textbook/master?urlpath=tree/introduction/index.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/cpjobling/eg-247-textbook/master?urlpath=tree/introduction/index.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/cpjobling/eg-247-textbook"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Fintroduction/index.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/cpjobling/eg-247-textbook/edit/master/introduction/index.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/introduction/index.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../_sources/introduction/index.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#colophon">
    Colophon
@@ -919,34 +1059,239 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Introducing Signals and Systems</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#colophon">
+   Colophon
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#signals-and-systems-for-dummies">
+   Signals and Systems for Dummies
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#topics">
+   Topics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#continuous-time-signals">
+   Continuous-time signals
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise">
+     Exercise
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#first-attempt">
+       First attempt
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gaining-insight-using-computers">
+     Gaining insight using computers
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#wolfram-alpha">
+       Wolfram Alpha
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#matlab">
+       MATLAB
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#returning-to-the-question">
+     Returning to the Question
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-second-go-after-gaining-insight-from-your-computer">
+       Exercise – second go after gaining insight from your computer
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#supplementary-question">
+     Supplementary question
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#try-this-yourself">
+     Try This Yourself
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#continuous-time-systems">
+   Continuous-time Systems
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1">
+     Example 1
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#block-diagram-model-in-simulink">
+       Block diagram model in Simulink
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#discrete-time-signals">
+   Discrete-time Signals
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2">
+     Example 2
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#procedure">
+       Procedure
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#discrete-time-systems">
+   Discrete-time Systems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#signal-classifications">
+   Signal Classifications
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#periodic">
+     Periodic
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#square-wave">
+       Square Wave
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#aperiodic">
+     Aperiodic
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#random">
+     Random
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#domains-for-signals-and-systems">
+   Domains for Signals and Systems
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#other-domains-you-will-encounter">
+     Other Domains you will encounter
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#viewing-signals-in-the-frequency-domain">
+     Viewing Signals in the Frequency Domain
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fourier-transform">
+     Fourier Transform
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#laplace-and-z-transform-domains">
+     Laplace and Z-Transform Domains
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#systems-thinking-and-systems-design">
+   Systems Thinking and Systems Design
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#familiar-signals-and-systems">
+   Familiar Signals and Systems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reference">
+   Reference
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="introducing-signals-and-systems">
-<h1>Introducing Signals and Systems<a class="headerlink" href="#introducing-signals-and-systems" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="colophon">
-<h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this headline">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="introducing-signals-and-systems">
+<h1>Introducing Signals and Systems<a class="headerlink" href="#introducing-signals-and-systems" title="Permalink to this headline">#</a></h1>
+<section id="colophon">
+<h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this headline">#</a></h2>
 <p>An annotatable copy of the notes for this presentation is available as <a class="reference internal" href="worksheet1.html"><span class="doc std std-doc"><strong>Worksheet 1</strong></span></a>.</p>
 <ul class="simple">
 <li><p>The <a class="reference external" href="https://jupytext.readthedocs.io/en/latest/index.html">Jupytext</a> source code for this page is <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/introduction/index.md">introduction/index.md</a>.</p></li>
 <li><p>You can view the notes for this presentation as a webpage (<a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/introduction/index.html">HTML</a>).</p></li>
 <li><p>This page is downloadable as a <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/introduction/introduction.pdf">PDF</a> file.</p></li>
 </ul>
-</div>
-<div class="section" id="signals-and-systems-for-dummies">
-<h2>Signals and Systems for Dummies<a class="headerlink" href="#signals-and-systems-for-dummies" title="Permalink to this headline">¶</a></h2>
-<p>Signals and Systems for Dummies (<strong>SS4D</strong>) <span id="id1">[<a class="reference internal" href="../zbib.html#id8"><span>Wic13</span></a>]</span> provides a useful introduction to the topics that will be covered in this module and it is in the <a class="reference external" href="https://eu.alma.exlibrisgroup.com/leganto/readinglist/searchlists/27328240030002417">Reading List</a> as a <em>recommended text</em>. I have based this presentation on Chapter 1 which is available as a <a class="reference external" href="https://www.dummies.com/store/product/Signals-and-Systems-For-Dummies.productCd-111847581X.html">downloadable PDF</a> from the publishers.</p>
+</section>
+<section id="signals-and-systems-for-dummies">
+<h2>Signals and Systems for Dummies<a class="headerlink" href="#signals-and-systems-for-dummies" title="Permalink to this headline">#</a></h2>
+<p>Signals and Systems for Dummies (<strong>SS4D</strong>) <span id="id1">[<a class="reference internal" href="../zbib.html#id8" title="Mark Wickert. Signals &amp; systems for dummies. Wiley, Hoboken, NJ, 2013. ISBN 111847581X.">Wickert, 2013</a>]</span> provides a useful introduction to the topics that will be covered in this module and it is in the <a class="reference external" href="https://eu.alma.exlibrisgroup.com/leganto/readinglist/searchlists/27328240030002417">Reading List</a> as a <em>recommended text</em>. I have based this presentation on Chapter 1 which is available as a <a class="reference external" href="https://www.dummies.com/store/product/Signals-and-Systems-For-Dummies.productCd-111847581X.html">downloadable PDF</a> from the publishers.</p>
 <p>You should read Chapter 1 of SS4D in conjunction with the notes for this presentation.</p>
 <p>Note that Signals and Systems for Dummies is available as an e-book from the <a class="reference external" href="https://whel-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/dlDisplay.do?vid=44WHELF_SWA_VU1&amp;search_scope=LSCOP_44WHELF_SWA_ALMA_DS&amp;docId=44WHELF_SWA_ALMA_DS5177422270002417&amp;fn=permalink">University Library</a>.</p>
-</div>
-<div class="section" id="topics">
-<h2>Topics<a class="headerlink" href="#topics" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="topics">
+<h2>Topics<a class="headerlink" href="#topics" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="#ctsignals"><span class="std std-ref">Continuous-time Signals</span></a></p></li>
 <li><p><a class="reference internal" href="#ctsystems"><span class="std std-ref">Continuous-time Systems</span></a></p></li>
@@ -956,17 +1301,17 @@
 <li><p><a class="reference internal" href="#domains"><span class="std std-ref">Domains for Signals</span></a></p></li>
 <li><p><a class="reference internal" href="#systems-thinking"><span class="std std-ref">Systems Thinking and Systems Design</span></a></p></li>
 </ul>
-</div>
-<div class="section" id="continuous-time-signals">
-<span id="ctsignals"></span><h2>Continuous-time signals<a class="headerlink" href="#continuous-time-signals" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="continuous-time-signals">
+<span id="ctsignals"></span><h2>Continuous-time signals<a class="headerlink" href="#continuous-time-signals" title="Permalink to this headline">#</a></h2>
 <p>Continuous signals are represented mathematically by functions which vary continuously with time.</p>
 <p>Sinusoidal signals (e.g. AC) are pretty fundamental in electrical engineering. The mathematical model of a sinusoidal signal is:</p>
 <div class="math notranslate nohighlight">
 \[x(t) = A \cos (2\pi f_0 t - \phi).\]</div>
-<div class="section" id="exercise">
-<h3>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="first-attempt">
-<h4>First attempt<a class="headerlink" href="#first-attempt" title="Permalink to this headline">¶</a></h4>
+<section id="exercise">
+<h3>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h3>
+<section id="first-attempt">
+<h4>First attempt<a class="headerlink" href="#first-attempt" title="Permalink to this headline">#</a></h4>
 <p>For this expression, we wish to match each of the symbols to its definition.</p>
 <p>Without computing anything, see if you can complete this table.</p>
 <table class="colwidths-auto table">
@@ -990,24 +1335,24 @@
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="section" id="gaining-insight-using-computers">
-<h3>Gaining insight using computers<a class="headerlink" href="#gaining-insight-using-computers" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="gaining-insight-using-computers">
+<h3>Gaining insight using computers<a class="headerlink" href="#gaining-insight-using-computers" title="Permalink to this headline">#</a></h3>
 <p>To help us answer these questions, let’s use our Mathematical tools to plot a signal like this and explore it. The example we will use is from <em>Signals and Systems for Dummies</em> (SS4D: page 12):</p>
 <div class="math notranslate nohighlight">
 \[3\cos(2\pi\cdot 2t - 3\pi/4)\]</div>
-<div class="section" id="wolfram-alpha">
-<h4>Wolfram Alpha<a class="headerlink" href="#wolfram-alpha" title="Permalink to this headline">¶</a></h4>
+<section id="wolfram-alpha">
+<h4>Wolfram Alpha<a class="headerlink" href="#wolfram-alpha" title="Permalink to this headline">#</a></h4>
 <p>Here’s the link: <a class="reference external" href="https://www.wolframalpha.com">https://www.wolframalpha.com</a></p>
 <p>Paste this into the search box</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>plot 3 cos(2 pi 2 t - 3 pi/4) 
 </pre></div>
 </div>
 <p>Try changing the numbers to gain insight.</p>
-</div>
-<div class="section" id="matlab">
-<h4>MATLAB<a class="headerlink" href="#matlab" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="matlab">
+<h4>MATLAB<a class="headerlink" href="#matlab" title="Permalink to this headline">#</a></h4>
 <p>In MATLAB we would need to tackle this by breaking down the steps.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1015,6 +1360,13 @@
 <span class="nb">clear</span><span class="w"> </span><span class="nb">all</span><span class="w"></span>
 <span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="w"></span>
 <span class="n">imatlab_export_fig</span><span class="p">(</span><span class="s">&#39;print-svg&#39;</span><span class="p">)</span><span class="w">  </span><span class="c">% Static svg figures.</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Error using eval</span>
+<span class=" -Color -Color-Red">Undefined function &#39;imatlab_export_fig&#39; for input arguments of type &#39;char&#39;.</span>
+
 </pre></div>
 </div>
 </div>
@@ -1047,7 +1399,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/index_17_0.svg" src="../_images/index_17_0.svg" /></div>
+<img alt="../_images/index_17_0.png" src="../_images/index_17_0.png" />
+</div>
 </div>
 <p>If you want to execute this in MATLAB, you can create a file by copying this text into an <code class="docutils literal notranslate"><span class="pre">m-file</span></code>:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% SINEWAVE - plot function $x(t) = 3 \cos(2\pi t - 3 \pi/4)$ for $t = 0\ldots 1$</span><span class="w"></span>
@@ -1080,23 +1433,20 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error using eval
-Unrecognized function or variable &#39;sinewave&#39;.
-</pre></div>
-</div>
+<img alt="../_images/index_22_0.png" src="../_images/index_22_0.png" />
 </div>
 </div>
 <p>(Download <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/introduction/sinewave.m">sinewave.m</a>)</p>
 <p>To run this script, just type the filename without the <code class="docutils literal notranslate"><span class="pre">.m</span></code> extension. Try adjusting the values of the numerical constants and see what insights you gain.</p>
-</div>
-</div>
-<div class="section" id="returning-to-the-question">
-<h3>Returning to the Question<a class="headerlink" href="#returning-to-the-question" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="returning-to-the-question">
+<h3>Returning to the Question<a class="headerlink" href="#returning-to-the-question" title="Permalink to this headline">#</a></h3>
 <p>Sinusoidal signals (e.g. AC) are pretty fundamental in electrical engineering. The mathematical model of a sinusoidal signal is:</p>
 <div class="math notranslate nohighlight">
 \[x(t) = A \cos (2\pi f_0 t - \phi).\]</div>
-<div class="section" id="exercise-second-go-after-gaining-insight-from-your-computer">
-<h4>Exercise – second go after gaining insight from your computer<a class="headerlink" href="#exercise-second-go-after-gaining-insight-from-your-computer" title="Permalink to this headline">¶</a></h4>
+<section id="exercise-second-go-after-gaining-insight-from-your-computer">
+<h4>Exercise – second go after gaining insight from your computer<a class="headerlink" href="#exercise-second-go-after-gaining-insight-from-your-computer" title="Permalink to this headline">#</a></h4>
 <p>Using the insight just gained by exploring this function with a computer, match each of the symbols to its definition again.</p>
 <table class="colwidths-auto table">
 <thead>
@@ -1120,10 +1470,10 @@ Unrecognized function or variable &#39;sinewave&#39;.
 </tbody>
 </table>
 <p>Did you get different answers?</p>
-</div>
-</div>
-<div class="section" id="supplementary-question">
-<h3>Supplementary question<a class="headerlink" href="#supplementary-question" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="supplementary-question">
+<h3>Supplementary question<a class="headerlink" href="#supplementary-question" title="Permalink to this headline">#</a></h3>
 <p>What is the period of the waveform in seconds?</p>
 <p><strong>Notes</strong></p>
 <ul class="simple">
@@ -1131,38 +1481,38 @@ Unrecognized function or variable &#39;sinewave&#39;.
 <li><p>In mathematics, the frequency is always expressed in <em>radians per second</em>.</p></li>
 <li><p>In some courses, including later in this one and in EG-243 Control Systems, the frequency <span class="math notranslate nohighlight">\(2\pi f_0\)</span> is often called the <em>natural frequency</em> and is usually written <span class="math notranslate nohighlight">\(\omega_n\)</span>.</p></li>
 </ul>
-</div>
-<div class="section" id="try-this-yourself">
-<h3>Try This Yourself<a class="headerlink" href="#try-this-yourself" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="try-this-yourself">
+<h3>Try This Yourself<a class="headerlink" href="#try-this-yourself" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Use any or all of computing tools that you have access to to explore other sinusoids. Change the values of the variables and explain what happens.</p></li>
 <li><p>Try adding sinusoids of different amplitudes and different frequencies together and see what happens.</p></li>
 <li><p>Change <code class="docutils literal notranslate"><span class="pre">cos</span></code> to <code class="docutils literal notranslate"><span class="pre">sin</span></code> and see what happens.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="continuous-time-systems">
-<span id="ctsystems"></span><h2>Continuous-time Systems<a class="headerlink" href="#continuous-time-systems" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="continuous-time-systems">
+<span id="ctsystems"></span><h2>Continuous-time Systems<a class="headerlink" href="#continuous-time-systems" title="Permalink to this headline">#</a></h2>
 <p>Systems operate on signals. In mathematical terms, a <em>system</em> is a function or an <em>operator</em>, <span class="math notranslate nohighlight">\(H\{\}\)</span> that maps the input signal <span class="math notranslate nohighlight">\(x(t)\)</span> to an output signal <span class="math notranslate nohighlight">\(y(t)\)</span>.</p>
 <p>Mathematically we would write this:</p>
 <div class="math notranslate nohighlight">
 \[y(t) = H\{x(t)\}.\]</div>
-<div class="section" id="example-1">
-<h3>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h3>
+<section id="example-1">
+<h3>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">#</a></h3>
 <p>An example of a continuous-time system is an electronic amplifier with a gain of 5 and level shift of 2: <span class="math notranslate nohighlight">\(y(t) = H\{x(t)\} = 5x(t) + 2\)</span>.</p>
 <p>In this course, we will model such systems as block diagram models in Simulink.</p>
-<div class="section" id="block-diagram-model-in-simulink">
-<h4>Block diagram model in Simulink<a class="headerlink" href="#block-diagram-model-in-simulink" title="Permalink to this headline">¶</a></h4>
+<section id="block-diagram-model-in-simulink">
+<h4>Block diagram model in Simulink<a class="headerlink" href="#block-diagram-model-in-simulink" title="Permalink to this headline">#</a></h4>
 <p><img alt="Simulink model of a Continuous system" src="../_images/css.png" /></p>
 <p>The Similink code can be downloaded from this file <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/introduction/gain_level_shift.slx">gain_level_shift.slx</a>.</p>
-</div>
-</div>
-</div>
-<div class="section" id="discrete-time-signals">
-<span id="dtsignals"></span><h2>Discrete-time Signals<a class="headerlink" href="#discrete-time-signals" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="discrete-time-signals">
+<span id="dtsignals"></span><h2>Discrete-time Signals<a class="headerlink" href="#discrete-time-signals" title="Permalink to this headline">#</a></h2>
 <p>Discrete-time signals are a function of a time index <span class="math notranslate nohighlight">\(n\)</span>. A discrete-time signal <span class="math notranslate nohighlight">\(x[n]\)</span>, unlike a continuous-time signal <span class="math notranslate nohighlight">\(x(t)\)</span>, is only defined at integer values of the independent variable <span class="math notranslate nohighlight">\(n\)</span>. This means that the signal is only active at specific periods of time. Discrete-time signals can be stored in computer memory.</p>
-<div class="section" id="example-2">
-<h3>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h3>
+<section id="example-2">
+<h3>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">#</a></h3>
 <p>Consider the following simple signal, a pulse sequence:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1176,8 +1526,8 @@ Unrecognized function or variable &#39;sinewave&#39;.
   \right.
 \end{split}\]</div>
 <p>We can plot this in MATLAB as a <em>stem plot</em></p>
-<div class="section" id="procedure">
-<h4>Procedure<a class="headerlink" href="#procedure" title="Permalink to this headline">¶</a></h4>
+<section id="procedure">
+<h4>Procedure<a class="headerlink" href="#procedure" title="Permalink to this headline">#</a></h4>
 <p>Define function using this text:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define the function</span><span class="w"></span>
 <span class="k">function</span><span class="w"> </span><span class="nf">[ y ] = x</span><span class="p">(</span> n <span class="p">)</span><span class="w"></span>
@@ -1216,12 +1566,6 @@ Unrecognized function or variable &#39;sinewave&#39;.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error using eval
-Undefined function &#39;y&#39; for input arguments of type &#39;double&#39;.
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1236,13 +1580,14 @@ Undefined function &#39;y&#39; for input arguments of type &#39;double&#39;.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/index_40_0.svg" src="../_images/index_40_0.svg" /></div>
+<img alt="../_images/index_40_0.png" src="../_images/index_40_0.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="discrete-time-systems">
-<span id="dtsystems"></span><h2>Discrete-time Systems<a class="headerlink" href="#discrete-time-systems" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="discrete-time-systems">
+<span id="dtsystems"></span><h2>Discrete-time Systems<a class="headerlink" href="#discrete-time-systems" title="Permalink to this headline">#</a></h2>
 <p>A discrete-time system, like its continuous-time counterpart, is a function, <span class="math notranslate nohighlight">\(H\{\}\)</span>, that maps the input <span class="math notranslate nohighlight">\(x[n]\)</span>￼ ￼to the output <span class="math notranslate nohighlight">\(y[n] = H\{x[n]\}\)</span>. An example of a discrete-time system is the <em>two-tap</em> filter:</p>
 <div class="math notranslate nohighlight">
 \[y[n] = H\{x[n]\} = \frac{3}{4}x[n] + \frac{1}{4}x[n-1]\]</div>
@@ -1250,11 +1595,11 @@ Undefined function &#39;y&#39; for input arguments of type &#39;double&#39;.
 <p><img alt="Simulink model of a discrete-time system" src="../_images/ds.png" /></p>
 <p>This system is available as a Simulink model <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/introduction/discrete_system.slx">discrete_system.slx</a></p>
 <p>In words, this system scales the present input by 3/4 and adds it to the past value of the input scaled by 1/4. The notion of the past input comes about because <span class="math notranslate nohighlight">\(x[n - 1]\)</span> is lagging one sample value behind <span class="math notranslate nohighlight">\(x[n]\)</span>. The term <em>filter</em> describes the output as an <em>averaging</em> of the present input and the previous input. <em>Averaging</em> is a form of filtering.</p>
-</div>
-<div class="section" id="signal-classifications">
-<span id="sigclass"></span><h2>Signal Classifications<a class="headerlink" href="#signal-classifications" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="periodic">
-<h3>Periodic<a class="headerlink" href="#periodic" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="signal-classifications">
+<span id="sigclass"></span><h2>Signal Classifications<a class="headerlink" href="#signal-classifications" title="Permalink to this headline">#</a></h2>
+<section id="periodic">
+<h3>Periodic<a class="headerlink" href="#periodic" title="Permalink to this headline">#</a></h3>
 <p>Signals that repeat over and over are said to be <em>periodic</em>. In mathematical terms, a signal is periodic if:</p>
 <ul class="simple">
 <li><p><em>Continuous signal</em> <span class="math notranslate nohighlight">\(x(t + T) = x(t)\)</span></p></li>
@@ -1262,8 +1607,8 @@ Undefined function &#39;y&#39; for input arguments of type &#39;double&#39;.
 </ul>
 <p>The smallest <span class="math notranslate nohighlight">\(T\)</span> or <span class="math notranslate nohighlight">\(N\)</span> for which the equality holds is the <em>signal period</em>.</p>
 <p>The sinusoidal signal we saw earlier is periodic because of the <span class="math notranslate nohighlight">\(\mod 2\pi\)</span> property of cosines. The signal of the sinusoid has a period 0.5 seconds (s), which turns out to be the reciprocal of the frequency <span class="math notranslate nohighlight">\(1/f_0\)</span> Hz.</p>
-<div class="section" id="square-wave">
-<h4>Square Wave<a class="headerlink" href="#square-wave" title="Permalink to this headline">¶</a></h4>
+<section id="square-wave">
+<h4>Square Wave<a class="headerlink" href="#square-wave" title="Permalink to this headline">#</a></h4>
 <p>This code generates a square wave.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1287,13 +1632,14 @@ Undefined function &#39;y&#39; for input arguments of type &#39;double&#39;.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/index_50_0.svg" src="../_images/index_50_0.svg" /></div>
+<img alt="../_images/index_50_0.png" src="../_images/index_50_0.png" />
+</div>
 </div>
 <p>What is the period <span class="math notranslate nohighlight">\(T\)</span> in milliseconds?</p>
-</div>
-</div>
-<div class="section" id="aperiodic">
-<h3>Aperiodic<a class="headerlink" href="#aperiodic" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="aperiodic">
+<h3>Aperiodic<a class="headerlink" href="#aperiodic" title="Permalink to this headline">#</a></h3>
 <p>Signals that are <em>deterministic</em> (completely determined functions of time) but not periodic are known as <em>aperiodic</em>. Point of view matters. If a signal occurs infrequently, you may view it as aperiodic.</p>
 <p>This is how we generate an aperiodic rectangular pulse of duration <span class="math notranslate nohighlight">\(\tau\)</span> in Matlab:</p>
 <div class="cell docutils container">
@@ -1318,11 +1664,12 @@ Undefined function &#39;y&#39; for input arguments of type &#39;double&#39;.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/index_54_0.svg" src="../_images/index_54_0.svg" /></div>
+<img alt="../_images/index_54_0.png" src="../_images/index_54_0.png" />
 </div>
 </div>
-<div class="section" id="random">
-<h3>Random<a class="headerlink" href="#random" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="random">
+<h3>Random<a class="headerlink" href="#random" title="Permalink to this headline">#</a></h3>
 <p>A signal is random if one or more signal attributes takes on unpredictable
 values in a probability sense.</p>
 <p>Engineers working with communication receivers are concerned with random
@@ -1340,15 +1687,16 @@ signals, especially noise.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/index_56_0.svg" src="../_images/index_56_0.svg" /></div>
+<img alt="../_images/index_56_0.png" src="../_images/index_56_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="domains-for-signals-and-systems">
-<span id="domains"></span><h2>Domains for Signals and Systems<a class="headerlink" href="#domains-for-signals-and-systems" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="domains-for-signals-and-systems">
+<span id="domains"></span><h2>Domains for Signals and Systems<a class="headerlink" href="#domains-for-signals-and-systems" title="Permalink to this headline">#</a></h2>
 <p>Most of the signals we encounter on a daily basis reside in the time domain. They’re functions of independent variable <span class="math notranslate nohighlight">\(t\)</span> or <span class="math notranslate nohighlight">\(n\)</span>. But sometimes when you’re working with continuous-time signals, you may need to transform away from the time domain (<span class="math notranslate nohighlight">\(t\)</span>) to another domain.</p>
-<div class="section" id="other-domains-you-will-encounter">
-<h3>Other Domains you will encounter<a class="headerlink" href="#other-domains-you-will-encounter" title="Permalink to this headline">¶</a></h3>
+<section id="other-domains-you-will-encounter">
+<h3>Other Domains you will encounter<a class="headerlink" href="#other-domains-you-will-encounter" title="Permalink to this headline">#</a></h3>
 <p>The most commonly used domains used when analyzing continuous-time signals are the frequency domain (<span class="math notranslate nohighlight">\(f\)</span> or <span class="math notranslate nohighlight">\(\omega\)</span>) and the Laplace <span class="math notranslate nohighlight">\(s\)</span>-domain (<span class="math notranslate nohighlight">\(s\)</span>).</p>
 <p>Similarly, for discrete-time signals, you may need to transform from the discrete-time domain (<span class="math notranslate nohighlight">\(n\)</span>) to the frequency domain (<span class="math notranslate nohighlight">\(\hat{\omega}\)</span>) or the z-domain (<span class="math notranslate nohighlight">\(z\)</span>).</p>
 <p>This section briefly introduces the world of signals and systems in the frequency, s-, and z-domains. More on these domains will follow.</p>
@@ -1391,52 +1739,50 @@ signals, especially noise.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error using eval
-Unrecognized function or variable &#39;two_sines&#39;.
-</pre></div>
-</div>
+<img alt="../_images/index_64_0.png" src="../_images/index_64_0.png" />
 </div>
 </div>
 <p>(Download <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/introduction/two_sines.m">two_sines.m</a>)</p>
-</div>
-<div class="section" id="viewing-signals-in-the-frequency-domain">
-<h3>Viewing Signals in the Frequency Domain<a class="headerlink" href="#viewing-signals-in-the-frequency-domain" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="viewing-signals-in-the-frequency-domain">
+<h3>Viewing Signals in the Frequency Domain<a class="headerlink" href="#viewing-signals-in-the-frequency-domain" title="Permalink to this headline">#</a></h3>
 <p>The top waveform plot, denoted <span class="math notranslate nohighlight">\(s_1\)</span>, is a single sinusoid at frequency <span class="math notranslate nohighlight">\(f_1\)</span> and peak amplitude <span class="math notranslate nohighlight">\(A_1\)</span>. The waveform repeats every period <span class="math notranslate nohighlight">\(T_1 = 1/f_1\)</span>. The second waveform plot, denoted <span class="math notranslate nohighlight">\(s_2\)</span>, is a single sinusoid at frequency <span class="math notranslate nohighlight">\(f_2 &gt; f_1\)</span> and peak amplitude <span class="math notranslate nohighlight">\(A_2 &lt; A_1\)</span>. The sum signal, <span class="math notranslate nohighlight">\(s_1 + s_2\)</span>, in the time domain is a squiggly line (third waveform plot), but the amplitudes and frequencies (periods) of the sinusoids aren’t clear here as they are in the first two plots. The frequency spectrum (bottom plot) reveals that <span class="math notranslate nohighlight">\(x(t)\)</span> is composed of just two sinusoids, with both the frequencies and amplitudes discernible.</p>
 <p>Think about tuning in a radio station. Stations are located at different center frequencies. The stations don’t interfere with one another because they’re separated from each other in the frequency domain. In the frequency spectrum plot, imagine that <span class="math notranslate nohighlight">\(f_1\)</span> and <span class="math notranslate nohighlight">\(f_2\)</span> are the signals from two radio stations, viewed in the frequency domain. You can design a receiving system to filter <span class="math notranslate nohighlight">\(s_1\)</span> from <span class="math notranslate nohighlight">\(s_1 + s_2\)</span>. The filter is designed to pass <span class="math notranslate nohighlight">\(s_1\)</span> and block <span class="math notranslate nohighlight">\(s_2\)</span>.</p>
-</div>
-<div class="section" id="fourier-transform">
-<h3>Fourier Transform<a class="headerlink" href="#fourier-transform" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="fourier-transform">
+<h3>Fourier Transform<a class="headerlink" href="#fourier-transform" title="Permalink to this headline">#</a></h3>
 <p>We use the <em>Fourier transform</em> to move away from the time domain and into the frequency domain. To get back to the time domain, use the <em>inverse Fourier transform</em>. We will found out more about these transforms in this module.</p>
-</div>
-<div class="section" id="laplace-and-z-transform-domains">
-<h3>Laplace and Z-Transform Domains<a class="headerlink" href="#laplace-and-z-transform-domains" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="laplace-and-z-transform-domains">
+<h3>Laplace and Z-Transform Domains<a class="headerlink" href="#laplace-and-z-transform-domains" title="Permalink to this headline">#</a></h3>
 <p>From the time domain to the frequency domain, only one independent variable, <span class="math notranslate nohighlight">\(t \to f\)</span>, exists. When a signal is transformed to the s-domain, it becomes a function of a complex variable ￼<span class="math notranslate nohighlight">\(s=\sigma + j\omega\)</span>. The two variables (real and imaginary parts) describe a location in the s-plane.</p>
 <p>In addition to visualization properties, the s-domain reduces differential equation solving to algebraic manipulation. For discrete-time signals, the z-transform accomplishes the same thing, except differential equations are replaced by difference equations.</p>
-</div>
-</div>
-<div class="section" id="systems-thinking-and-systems-design">
-<span id="systems-thinking"></span><h2>Systems Thinking and Systems Design<a class="headerlink" href="#systems-thinking-and-systems-design" title="Permalink to this headline">¶</a></h2>
-<p>See section <strong>Testing Product Concepts with Behavioral Level Modeling</strong> from Chapter 1 of <a class="reference external" href="https://www.dummies.com/store/product/Signals-and-Systems-For-Dummies.productCd-111847581X.html">SS4D</a> (<span id="id2">[<a class="reference internal" href="../zbib.html#id8"><span>Wic13</span></a>]</span> pages 18–20) and add some notes to summarize this for yourself.</p>
+</section>
+</section>
+<section id="systems-thinking-and-systems-design">
+<span id="systems-thinking"></span><h2>Systems Thinking and Systems Design<a class="headerlink" href="#systems-thinking-and-systems-design" title="Permalink to this headline">#</a></h2>
+<p>See section <strong>Testing Product Concepts with Behavioral Level Modeling</strong> from Chapter 1 of <a class="reference external" href="https://www.dummies.com/store/product/Signals-and-Systems-For-Dummies.productCd-111847581X.html">SS4D</a> (<span id="id2">[<a class="reference internal" href="../zbib.html#id8" title="Mark Wickert. Signals &amp; systems for dummies. Wiley, Hoboken, NJ, 2013. ISBN 111847581X.">Wickert, 2013</a>]</span> pages 18–20) and add some notes to summarize this for yourself.</p>
 <ul class="simple">
 <li><p>We will use <em>behavioural modelling</em></p></li>
 <li><p>We will rely on <em>abstraction</em></p></li>
 <li><p>We work <em>top-down</em></p></li>
 <li><p>We make use of <em>mathematics</em> and <em>mathematical software</em>.</p></li>
 </ul>
-</div>
-<div class="section" id="familiar-signals-and-systems">
-<h2>Familiar Signals and Systems<a class="headerlink" href="#familiar-signals-and-systems" title="Permalink to this headline">¶</a></h2>
-<p>See pages 21-23 of the free sample (<a class="reference external" href="https://www.dummies.com/store/product/Signals-and-Systems-For-Dummies.productCd-111847581X.html">Chapter 1</a>) of <span id="id3">[<a class="reference internal" href="../zbib.html#id8"><span>Wic13</span></a>]</span> for notes and details.</p>
-</div>
-<div class="section" id="reference">
-<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
-<p id="id4"><dl class="citation">
+</section>
+<section id="familiar-signals-and-systems">
+<h2>Familiar Signals and Systems<a class="headerlink" href="#familiar-signals-and-systems" title="Permalink to this headline">#</a></h2>
+<p>See pages 21-23 of the free sample (<a class="reference external" href="https://www.dummies.com/store/product/Signals-and-Systems-For-Dummies.productCd-111847581X.html">Chapter 1</a>) of <span id="id3">[<a class="reference internal" href="../zbib.html#id8" title="Mark Wickert. Signals &amp; systems for dummies. Wiley, Hoboken, NJ, 2013. ISBN 111847581X.">Wickert, 2013</a>]</span> for notes and details.</p>
+</section>
+<section id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">#</a></h2>
+<div class="docutils container" id="id4">
+<dl class="citation">
 <dt class="label" id="id11"><span class="brackets">Wic13</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>,<a href="#id3">3</a>)</span></dt>
 <dd><p>Mark Wickert. <em>Signals &amp; systems for dummies</em>. Wiley, Hoboken, NJ, 2013. ISBN 111847581X.</p>
 </dd>
 </dl>
-</p>
 </div>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
@@ -1453,7 +1799,7 @@ Unrecognized function or variable &#39;two_sines&#39;.
 </div>
 <div class="toctree-wrapper compound">
 </div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1464,49 +1810,43 @@ Unrecognized function or variable &#39;two_sines&#39;.
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "imatlab"
+            mode: "matlab"
         },
         kernelOptions: {
-            kernelName: "imatlab",
+            kernelName: "matlab",
             path: "./introduction"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'imatlab'</script>
+    <script>kernelName = 'matlab'</script>
 
               </div>
               
-        
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-     <div id="next">
-        <a class="right-next" href="../elementary_signals/index.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Elementary Signals</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='right-next' id="next-link" href="../elementary_signals/index.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Elementary Signals</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Dr Chris P. Jobling<br/>
-        
-            &copy; Copyright Swansea University (2019-2022).<br/>
-          <div class="extra_footer">
-            This page was created by 
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Dr Chris P. Jobling<br/>
+  
+      &copy; Copyright Swansea University (2019-2022).<br/>
+    <div class="extra_footer">
+      This page was created by 
 <a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
   Dr Chris P. Jobling
 </a> 
@@ -1515,19 +1855,20 @@ for
   Swansea University
 </a>.
 
-          </div>
-      </p>
     </div>
-  </footer>
-</main>
+</p>
+        </footer>
+    </div>
+    
+</div>
 
 
       </div>
     </div>
-    
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
 
-    
   </body>
 </html>

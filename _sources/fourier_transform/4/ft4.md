@@ -5,11 +5,11 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.11.5
+    jupytext_version: 1.14.1
 kernelspec:
-  display_name: MATLAB
+  display_name: Matlab
   language: matlab
-  name: imatlab
+  name: matlab
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -321,11 +321,11 @@ Determine the frequency response $H_B(\omega)=Y(\omega)/X(\omega)$
 
 ### Magnitude of frequency response of a 2nd-order Butterworth Filter
 
-```{code-cell} matlab
+```{code-cell}
 imatlab_export_fig('print-svg')  % Static svg figures.
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -337,7 +337,7 @@ wc = 100;
 
 Transfer function
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -349,7 +349,7 @@ H = tf(wc^2,[1, wc*sqrt(2), wc^2])
 
 Magnitude frequency response
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -372,7 +372,7 @@ hold off
 
 Bode plot
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -435,7 +435,7 @@ $$e^{-at}\sin\omega_0 t\;u_0(t) \Leftrightarrow \frac{\omega_0}{(j\omega + a)^2+
 
 Impulse response
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -449,7 +449,7 @@ title('Impulse Response of 2nd-Order Butterworth Low Pass Filter')
 
 Step response
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -530,7 +530,7 @@ Determine the frequency response of a 2nd-order butterworth highpass filter
 
 Magnitude frequency response
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -552,7 +552,7 @@ hold off
 
 High-pass filter
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide

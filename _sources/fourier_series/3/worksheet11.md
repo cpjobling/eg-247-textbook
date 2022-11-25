@@ -5,11 +5,11 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.11.5
+    jupytext_version: 1.14.1
 kernelspec:
-  display_name: MATLAB
+  display_name: Matlab
   language: matlab
-  name: imatlab
+  name: matlab
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -389,14 +389,14 @@ For real periodic signals the power spectrum is a real even sequence as
 
 $$|C_{-k}|^2 = |C_k^*|^2 = |C_k|^2.$$
 
-```{code-cell} matlab
+```{code-cell}
 clear all
 cd ../matlab
 format compact
 imatlab_export_fig('print-svg')  % Static svg figures.
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -406,7 +406,7 @@ A = 1; w = 8; [f,omega] = pulse_fs(A,w,15);
 
 Power spectrum
 
-```{code-cell} matlab
+```{code-cell}
 stem(omega,abs(f).^2)
 title('Power Spectrum for pulse width T/8')
 ylabel('|C_k|^2')

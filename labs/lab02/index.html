@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Lab 2: Laplace and Inverse Laplace Transforms &#8212; EG-247 Signals and Systems</title>
     
-  <link href="../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,38 +20,37 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/labs/lab02/index.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -57,10 +58,27 @@
     <link rel="next" title="Lab 3: Laplace transforms and transfer functions for circuit analysis" href="../lab03/index.html" />
     <link rel="prev" title="Lab 01: Elementary Signals" href="../lab01/index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -69,10 +87,12 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
+      
       
       
       <h1 class="site-logo" id="site-title">EG-247 Signals and Systems</h1>
@@ -83,14 +103,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../introduction/index.html">
-   Introducing Signals and Systems
-  </a>
- </li>
-</ul>
-<p class="caption">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../introduction/index.html">
+                    Introducing Signals and Systems
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Online notes
  </span>
@@ -257,19 +278,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  FAQs
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../FAQS/FAQ.html">
-   Answers to Frequently Asked Questions
-  </a>
- </li>
-</ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   In Class Worksheets
  </span>
@@ -383,7 +392,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Homework problems
  </span>
@@ -452,7 +461,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Lab Exercises
  </span>
@@ -521,7 +530,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Project
  </span>
@@ -533,7 +542,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Appendices
  </span>
@@ -619,96 +628,201 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by 
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by 
  <a href="https://jupyterbook.org">
   Jupyter Book
 </a>
 
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/labs/lab02/index.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/cpjobling/eg-247-textbook"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Flabs/lab02/index.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/cpjobling/eg-247-textbook/edit/master/labs/lab02/index.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/cpjobling/eg-247-textbook"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Flabs/lab02/index.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/cpjobling/eg-247-textbook/edit/master/labs/lab02/index.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/labs/lab02/index.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#preamble">
    Preamble
@@ -841,45 +955,193 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Lab 2: Laplace and Inverse Laplace Transforms</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preamble">
+   Preamble
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#associated-class-notes">
+     Associated Class Notes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#other-formats">
+     Other formats
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#acknowledgements">
+     Acknowledgements
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aims">
+   Aims
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assessment-criteria">
+   Assessment criteria
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#before-you-start">
+     Before you start
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab-exercises">
+   Lab Exercises
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lab-exercise-2-laplace-transforms">
+     Lab Exercise 2: Laplace Transforms
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lab-exercise-3-inverse-laplace-transforms">
+     Lab Exercise 3: Inverse Laplace Transforms
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-to-hand-in">
+   What to Hand In
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#claim">
+     Claim
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#submission">
+     Submission
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deadline">
+     Deadline
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#peer-assessment">
+   Peer Assessment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-do-peer-assessment">
+   How to do Peer Assessment
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#checking-the-submitted-work">
+     Checking the submitted work
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assessment-procedure-for-this-lab">
+     Assessment procedure for this lab
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grading">
+     Grading
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#feedback">
+     Feedback
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#more-information-from-canvas-help">
+     More Information from Canvas Help
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#doing-more">
+   Doing More
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reference">
+   Reference
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="lab-2-laplace-and-inverse-laplace-transforms">
-<h1>Lab 2: Laplace and Inverse Laplace Transforms<a class="headerlink" href="#lab-2-laplace-and-inverse-laplace-transforms" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="preamble">
-<h2>Preamble<a class="headerlink" href="#preamble" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="associated-class-notes">
-<h3>Associated Class Notes<a class="headerlink" href="#associated-class-notes" title="Permalink to this headline">¶</a></h3>
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-2-laplace-and-inverse-laplace-transforms">
+<h1>Lab 2: Laplace and Inverse Laplace Transforms<a class="headerlink" href="#lab-2-laplace-and-inverse-laplace-transforms" title="Permalink to this headline">#</a></h1>
+<section id="preamble">
+<h2>Preamble<a class="headerlink" href="#preamble" title="Permalink to this headline">#</a></h2>
+<section id="associated-class-notes">
+<h3>Associated Class Notes<a class="headerlink" href="#associated-class-notes" title="Permalink to this headline">#</a></h3>
 <p>This lab supports the materials covered in <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/index">Chapter 3 Laplace Transforms</a> of the course notes. You may wish to refer to the Worksheets <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/1/worksheet4">worksheet 4</a> and <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/2/worksheet5">worksheet 5</a> for additional examples to try.</p>
-</div>
-<div class="section" id="other-formats">
-<h3>Other formats<a class="headerlink" href="#other-formats" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="other-formats">
+<h3>Other formats<a class="headerlink" href="#other-formats" title="Permalink to this headline">#</a></h3>
 <p>This document is available in <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/labs/lab02/index">HTML</a> format for online viewing and <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/labs/lab02/lab02.pdf">PDF</a> for printing.</p>
-</div>
-<div class="section" id="acknowledgements">
-<h3>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">¶</a></h3>
-<p>These examples have been adapted from <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197#ppg=17">Chapters 1</a>, <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197#ppg=43">2</a> and <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197#ppg=79">3</a> of Karris<span id="id1">[<a class="reference internal" href="../../zbib.html#id7"><span>Kar12</span></a>]</span>.</p>
-</div>
-</div>
-<div class="section" id="aims">
-<h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="acknowledgements">
+<h3>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">#</a></h3>
+<p>These examples have been adapted from <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197#ppg=17">Chapters 1</a>, <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197#ppg=43">2</a> and <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197#ppg=79">3</a> of Karris<span id="id1">[<a class="reference internal" href="../../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197.">Karris, 2012</a>]</span>.</p>
+</section>
+</section>
+<section id="aims">
+<h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">#</a></h2>
 <p>The purpose of this laboratory is to explore more of the features of the MATLAB <em>Symbolic Math Toolbox</em>, in particular the <code class="docutils literal notranslate"><span class="pre">laplace</span></code> and <code class="docutils literal notranslate"><span class="pre">ilaplace</span></code> functions. These will be used to verify some of the properties of the Laplace transform typically published in textbooks and in tables of properties and transforms and to solve some inverse transform problems.</p>
-</div>
-<div class="section" id="assessment-criteria">
-<h2>Assessment criteria<a class="headerlink" href="#assessment-criteria" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="assessment-criteria">
+<h2>Assessment criteria<a class="headerlink" href="#assessment-criteria" title="Permalink to this headline">#</a></h2>
 <p>Marks will be awarded according to how many of the parts of Lab Exercise 2 and 3 have been completed.</p>
 <p>Detailed marking criteria for this and the other labs and the project are given in the linked <a class="reference external" href="https://docs.google.com/spreadsheets/d/1EQzwSfGMdw8oiQds4bUR8sZTCgb2lMvcJHjmea-8hW4/edit?usp=sharing">Assessment Criteria</a> [Google sheet].</p>
-</div>
-<div class="section" id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="before-you-start">
-<h3>Before you start<a class="headerlink" href="#before-you-start" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
+<section id="before-you-start">
+<h3>Before you start<a class="headerlink" href="#before-you-start" title="Permalink to this headline">#</a></h3>
 <p>If you haven’t already, create a suitable folder structure on your file-store for your labs.</p>
 <p>I suggest</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">OneDrive</span>\<span class="n">workspace</span>
@@ -891,49 +1153,49 @@
 </div>
 <p>Use folder <code class="docutils literal notranslate"><span class="pre">OneDrive:\workspace\signals-and-systems-lab\lab02</span></code> for this lab.</p>
 <!-- #region -->
-</div>
-</div>
-<div class="section" id="lab-exercises">
-<h2>Lab Exercises<a class="headerlink" href="#lab-exercises" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="lab-exercise-2-laplace-transforms">
-<h3>Lab Exercise 2: Laplace Transforms<a class="headerlink" href="#lab-exercise-2-laplace-transforms" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="lab-exercises">
+<h2>Lab Exercises<a class="headerlink" href="#lab-exercises" title="Permalink to this headline">#</a></h2>
+<section id="lab-exercise-2-laplace-transforms">
+<h3>Lab Exercise 2: Laplace Transforms<a class="headerlink" href="#lab-exercise-2-laplace-transforms" title="Permalink to this headline">#</a></h3>
 <p>Use file save as to download the script <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/labs/lab02/laplace_lab.m">laplace_lab.m</a>. Open the script as a Live Script and use the Matlab <code class="docutils literal notranslate"><span class="pre">laplace</span></code> and <code class="docutils literal notranslate"><span class="pre">ezplot</span></code> functions as appropriate to complete the examples given in the comments in the script.</p>
 <p>Save and upload the resulting modified script as a Live Script file <code class="docutils literal notranslate"><span class="pre">laplace_lab.mlx</span></code> to the <strong>Lab 2: Laplace and inverse Laplace transforms</strong> assignment in Canvas.</p>
 <p>3 Marks</p>
-</div>
-<div class="section" id="lab-exercise-3-inverse-laplace-transforms">
-<h3>Lab Exercise 3: Inverse Laplace Transforms<a class="headerlink" href="#lab-exercise-3-inverse-laplace-transforms" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="lab-exercise-3-inverse-laplace-transforms">
+<h3>Lab Exercise 3: Inverse Laplace Transforms<a class="headerlink" href="#lab-exercise-3-inverse-laplace-transforms" title="Permalink to this headline">#</a></h3>
 <p>Use file save as to download the script <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/labs/lab02/ilaplace_lab.m">ilaplace_lab.m</a>. Open the script as a Live Script and use the Matlab <code class="docutils literal notranslate"><span class="pre">laplace</span></code>, <code class="docutils literal notranslate"><span class="pre">ilaplace</span></code> and <code class="docutils literal notranslate"><span class="pre">ezplot</span></code> functions as appropriate to complete the examples given in the comments in the script.</p>
 <p>Save and attach the resulting modified script as a Live Script file <code class="docutils literal notranslate"><span class="pre">ilaplace_lab.mlx</span></code> to the <strong>Lab 2: Laplace and inverse Laplace transforms</strong> assignment in Canvas.</p>
 <p>2 marks</p>
 <!-- #endregion -->
 <!-- #region -->
-</div>
-</div>
-<div class="section" id="what-to-hand-in">
-<h2>What to Hand In<a class="headerlink" href="#what-to-hand-in" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="claim">
-<h3>Claim<a class="headerlink" href="#claim" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="what-to-hand-in">
+<h2>What to Hand In<a class="headerlink" href="#what-to-hand-in" title="Permalink to this headline">#</a></h2>
+<section id="claim">
+<h3>Claim<a class="headerlink" href="#claim" title="Permalink to this headline">#</a></h3>
 <p>Up to three marks can be claimed according to how much of Exercise 2 you have completed and Exercise 3 is worth an additional 2 marks.</p>
 <p>Make your claim by downloading and editing the labwork claim form and declaration: <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/labs/lab02/lab02-claim.docx">lab02-claim.docx</a> [Word].</p>
-</div>
-<div class="section" id="submission">
-<h3>Submission<a class="headerlink" href="#submission" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="submission">
+<h3>Submission<a class="headerlink" href="#submission" title="Permalink to this headline">#</a></h3>
 <p>You should submit the following to the <strong>Lab 02: Laplace and inverse Laplace transforms</strong> Assignment on Canvas.</p>
 <ol class="simple">
 <li><p>The completed labwork claim form and declaration.</p></li>
 <li><p>As evidence for completion of the lab exercises, you should submit your completed versions of the Live Script files <code class="docutils literal notranslate"><span class="pre">laplace_lab.mlx</span></code> and <code class="docutils literal notranslate"><span class="pre">ilaplace_lab.mlx</span></code>.</p></li>
 </ol>
-</div>
-<div class="section" id="deadline">
-<h3>Deadline<a class="headerlink" href="#deadline" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="deadline">
+<h3>Deadline<a class="headerlink" href="#deadline" title="Permalink to this headline">#</a></h3>
 <p>The Deadline for claims and submission is:</p>
 <p><strong>4:00pm, 1st March 2022</strong>.</p>
 <!-- #endregion -->
-</div>
-</div>
-<div class="section" id="peer-assessment">
-<h2>Peer Assessment<a class="headerlink" href="#peer-assessment" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="peer-assessment">
+<h2>Peer Assessment<a class="headerlink" href="#peer-assessment" title="Permalink to this headline">#</a></h2>
 <p>Peer assessment is valuable for the following three reasons:</p>
 <ol class="simple">
 <li><p>You will be able to learn something about the electronic assessment processes being used in the University.</p></li>
@@ -944,31 +1206,31 @@
 </ol>
 <p>The claims on this and the next lab submission will be moderated by <strong>Peer Assessment</strong>. Each one of you will be asked to review two of this second submission, and one of the next.</p>
 <p>For this lab exercise, the peer assessment is worth three marks. There is a total of 10 marks available for your participation in peer assessment.</p>
-</div>
-<div class="section" id="how-to-do-peer-assessment">
-<h2>How to do Peer Assessment<a class="headerlink" href="#how-to-do-peer-assessment" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="how-to-do-peer-assessment">
+<h2>How to do Peer Assessment<a class="headerlink" href="#how-to-do-peer-assessment" title="Permalink to this headline">#</a></h2>
 <p>As a peer assessor, you will be required to review two of these submissions and let me know if you agree with the self-assigned score.</p>
 <p>To complete your peer assessments, you should download and run the MATLAB Live Scripts and check that the results are correct and complete.</p>
-<div class="section" id="checking-the-submitted-work">
-<h3>Checking the submitted work<a class="headerlink" href="#checking-the-submitted-work" title="Permalink to this headline">¶</a></h3>
+<section id="checking-the-submitted-work">
+<h3>Checking the submitted work<a class="headerlink" href="#checking-the-submitted-work" title="Permalink to this headline">#</a></h3>
 <p>On Monday 2nd March, you should receive notification that the submissions of two of your colleagues are available for peer assessment. This notification will arrive by email (if you have your Canvas notifications turned on) or via the inbox on Canvas or the Canvas Student App.</p>
 <p>To perform an assessment, you will need access to MATLAB. If you have problems running any files that are submitted, please note this in your feedback.</p>
 <p>To perform a Peer Assessment you should visit each submission, review the claim form submitted and download the attached files. I would recommend that you create a folder for each submission. I would also recommend that you clear the MATLAB workspace (see command below) before testing each submitted file.</p>
 <p><code class="docutils literal notranslate"><span class="pre">matlab</span> <span class="pre">clear</span> <span class="pre">all</span> </code></p>
-</div>
-<div class="section" id="assessment-procedure-for-this-lab">
-<h3>Assessment procedure for this lab<a class="headerlink" href="#assessment-procedure-for-this-lab" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="assessment-procedure-for-this-lab">
+<h3>Assessment procedure for this lab<a class="headerlink" href="#assessment-procedure-for-this-lab" title="Permalink to this headline">#</a></h3>
 <ol class="simple">
 <li><p>Open the Live Script file <code class="docutils literal notranslate"><span class="pre">laplace_lab.mlx</span></code> and execute <strong>run all</strong>. Check that the results are all present and that there are no errors. Review the formatting of the file and think about how readable and understandable the script is as a record of the experiment.</p></li>
 <li><p>Repeat for <code class="docutils literal notranslate"><span class="pre">ilaplace_lab.mlx</span></code>.</p></li>
 </ol>
-</div>
-<div class="section" id="grading">
-<h3>Grading<a class="headerlink" href="#grading" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="grading">
+<h3>Grading<a class="headerlink" href="#grading" title="Permalink to this headline">#</a></h3>
 <p>Use the grading rubric to confirm your peer’s self assessment. <strong>Note</strong> you may may award a higher mark if you feel that the student has marked themselves too harshly! You should give a reason for your score if it does not agree with the student’s own self-assessment.</p>
-</div>
-<div class="section" id="feedback">
-<h3>Feedback<a class="headerlink" href="#feedback" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="feedback">
+<h3>Feedback<a class="headerlink" href="#feedback" title="Permalink to this headline">#</a></h3>
 <p>You should also provide feedback on the student’s approach to the lab exercise. Your comments might include comments on:</p>
 <ul class="simple">
 <li><p>Any problems you encountered checking your peer’s submission.</p></li>
@@ -978,26 +1240,26 @@
 <li><p>Suggestions on what the student may do next time to clarify their approach.</p></li>
 </ul>
 <p>Note that the instructor will moderate all peer assessments before assigning the final grade.</p>
-</div>
-<div class="section" id="more-information-from-canvas-help">
-<h3>More Information from Canvas Help<a class="headerlink" href="#more-information-from-canvas-help" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="more-information-from-canvas-help">
+<h3>More Information from Canvas Help<a class="headerlink" href="#more-information-from-canvas-help" title="Permalink to this headline">#</a></h3>
 <p>More information on how the <strong>Peer Assessment</strong> feature works in Canvas is given in the <a class="reference external" href="https://community.canvaslms.com/docs/DOC-10701-canvas-student-guide-table-of-contents">Student Guide</a>:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://community.canvaslms.com/docs/DOC-10550-4212103951">How do I know if I have a peer review assignment to complete?</a></p></li>
 <li><p><a class="reference external" href="https://community.canvaslms.com/docs/DOC-10651-421254363">How do I submit a peer review to an assignment?</a></p></li>
 <li><p><a class="reference external" href="https://community.canvaslms.com/docs/DOC-10552-4212103952">Where can I find my peers’ feedback for peer reviewed assignments?</a></p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="doing-more">
-<h2>Doing More<a class="headerlink" href="#doing-more" title="Permalink to this headline">¶</a></h2>
-<p>If you have time remaining, you may wish to work through <a class="reference external" href="http://site.ebrary.com/lib/swansea/reader.action?docID=10547416&amp;ppg=17">Appendix B</a> of the texbook (Karris<span id="id2">[<a class="reference internal" href="../../zbib.html#id7"><span>Kar12</span></a>]</span>). This chapter introduces Simulink in a way that matches the presentation in the rest of the book.</p>
-</div>
-<div class="section" id="reference">
-<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="doing-more">
+<h2>Doing More<a class="headerlink" href="#doing-more" title="Permalink to this headline">#</a></h2>
+<p>If you have time remaining, you may wish to work through <a class="reference external" href="http://site.ebrary.com/lib/swansea/reader.action?docID=10547416&amp;ppg=17">Appendix B</a> of the texbook (Karris<span id="id2">[<a class="reference internal" href="../../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197.">Karris, 2012</a>]</span>). This chapter introduces Simulink in a way that matches the presentation in the rest of the book.</p>
+</section>
+<section id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">#</a></h2>
 <p>See <a class="reference internal" href="../../zbib.html"><span class="doc std std-doc">Bibliography</span></a></p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1021,45 +1283,37 @@
 
               </div>
               
-        
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="../lab01/index.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Lab 01: Elementary Signals</p>
-            </div>
-        </a>
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../lab01/index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Lab 01: Elementary Signals</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../lab03/index.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 3: Laplace transforms and transfer functions for circuit analysis</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="../lab03/index.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Lab 3: Laplace transforms and transfer functions for circuit analysis</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Dr Chris P. Jobling<br/>
-        
-            &copy; Copyright Swansea University (2019-2022).<br/>
-          <div class="extra_footer">
-            This page was created by 
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Dr Chris P. Jobling<br/>
+  
+      &copy; Copyright Swansea University (2019-2022).<br/>
+    <div class="extra_footer">
+      This page was created by 
 <a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
   Dr Chris P. Jobling
 </a> 
@@ -1068,19 +1322,20 @@ for
   Swansea University
 </a>.
 
-          </div>
-      </p>
     </div>
-  </footer>
-</main>
+</p>
+        </footer>
+    </div>
+    
+</div>
 
 
       </div>
     </div>
-    
-  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
 
-    
   </body>
 </html>

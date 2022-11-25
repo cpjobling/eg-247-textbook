@@ -5,11 +5,11 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.11.5
+    jupytext_version: 1.14.1
 kernelspec:
-  display_name: MATLAB
+  display_name: Matlab
   language: matlab
-  name: imatlab
+  name: matlab
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -83,7 +83,7 @@ I need a volunteer to provide a sound sample ....
 2. I will then playback the recording.
 3. I will the plot the data.
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: skip
@@ -95,7 +95,7 @@ cd matlab
 pwd
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -244,7 +244,7 @@ This is of course theoretical only!
 
 #### Illustrating Sampling in MATLAB
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -262,7 +262,7 @@ We will use a system with an underdamped second-order response.
 The transfer function is:
 $$H(s) = \frac{\omega_0^2}{s^2 + 2\zeta\omega_0 s + \omega_0^2}$$
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -276,7 +276,7 @@ H = w0^2/(s^2 + 2*zeta*w0*s + w0^2)
 
 #### Calculate and plot the impulse response
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -284,7 +284,7 @@ slideshow:
 h = ilaplace(H)
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -294,7 +294,7 @@ xc = eval(h); % eval evaluates a symbolic expression as a MATLAB command.
 tc = t;
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -313,7 +313,7 @@ You can generate all the images in this presentation by running the Matlab scrip
 
 #### Calculate and plot the sampled data
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -325,7 +325,7 @@ xs = eval(h);
 td = t;
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -388,7 +388,7 @@ The frequency response of this filter and additional notes are to be found on Pa
 
  #### Reconstruction with sinc function
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -397,7 +397,7 @@ stem(td,xs)
 hold on
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -410,7 +410,7 @@ for k=1:length(td)
 end
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -435,7 +435,7 @@ $$x(t) = \sum\limits_{k =  - \infty }^{ + \infty } {x(n{T_s}){\rm{sinc}}} \left(
 #### Reconstructed signal
 Obtained by summing all the sinc functions
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -457,7 +457,7 @@ In practice, the zero-order-hold is often used in practice and a low-pass filter
 
 #### Signal reconstructed with zero-order hold (ZOH)
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -474,7 +474,7 @@ xlabel('Time t [s]')
 
 #### Signal reconstructed with First-order hold (FOH)
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -513,7 +513,7 @@ We use the recording made at the start and run it through a script that effectiv
 
 Here's the script: [aliaseg1.mlx](https://cpjobling.github.io/eg-247-textbook/dt_systems/1/matlab/aliaseg1.mlx) that I'll be using. (Also available as an m-file [aliaseg1.m](https://cpjobling.github.io/eg-247-textbook/dt_systems/1/matlab/aliaseg1.m))
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -527,7 +527,7 @@ open aliaseg1
 
 Assume signal $x(t)=\cos(\omega_0 t)$ is sampled at a rate of $\omega_s = 1.5\omega_0$, violating the sampling theorem.
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -567,7 +567,7 @@ This example uses anti-aliasing to downsample the audio. You should hear that th
 
 Script: [aliaseg2.mlx](https://cpjobling.github.io/eg-247-textbook/dt_systems/1/matlab/aliaseg2.mlx) (Also available as an m-file [aliaseg2.m](https://cpjobling.github.io/eg-247-textbook/dt_systems/1/matlab/aliaseg2.m))
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment

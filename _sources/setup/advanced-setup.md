@@ -18,7 +18,7 @@ Create and launch EG-247 Textbook environment:
 
 ```shell
 conda update conda
-conda create -n eg-247-textbook python=3.7 anaconda
+conda create -n eg-247-textbook python=3.9 anaconda
 conda activate eg-247-textbook # source activate eg-247 on mac or unix
 ```
 
@@ -47,7 +47,7 @@ This assumes windows.
 First install the Python-MATLAB bridge.
 
 ```shell
-set MATLAB_HOME="C:\Program Files\MATLAB\R2021b"
+set MATLAB_HOME="C:\Program Files\MATLAB\R2022b"
 cd %MATLAB_HOME%\extern\engines\python
 python setup.py install
 ```

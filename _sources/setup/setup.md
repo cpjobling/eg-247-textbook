@@ -5,7 +5,7 @@ jupyter:
       extension: .md
       format_name: markdown
       format_version: '1.3'
-      jupytext_version: 1.11.5
+      jupytext_version: 1.14.1
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python
@@ -190,7 +190,7 @@ I ran this on my Mac. The equivalent Windows and Linux commands are given in the
 ### Mac OS: 
 
 ```python
-matlabroot='/Applications/MATLAB_R2021b.app'
+matlabroot='/Applications/MATLAB_R2022b.app'
 ```
 
 ### Unix
@@ -202,14 +202,14 @@ matlabroot='/Applications/MATLAB_R2021b.app'
 ### Ubuntu running in Windows using WSL
 
 ```python
-matlabroot='/mnt/c/Program\ Files/MATLAB/R2021b'
+matlabroot='/mnt/c/Program\ Files/MATLAB/R2022b'
 %cd {matlabroot}/extern/engines/python
 ```
 
 ### Windows
 
 ```python
-matlabroot='C:\Program Files\MATLAB\R2021b'
+matlabroot='C:\Program Files\MATLAB\R2022b'
 %cd {matlabroot}\extern\engines\python
 ```
 
@@ -232,7 +232,7 @@ matlabroot='C:\Program Files\MATLAB\R2021b'
 
 ## Test Python can now communicate with MATLAB
 
-First start a MATLAB session. You may have to restart your Python kernel first!
+First start a MATLAB session. You will have to restart your Python kernel first!
 
 ```python
 import matlab.engine
@@ -266,8 +266,9 @@ eng.quit()
 Finally we install the `matlab_kernel` using the instructions given here: [github.com/imatlab/imatlab](https://github.com/imatlab/imatlab).
 
 ```python
-!pip install imatlab
-!python -mimatlab install
+!pip install matlab_kernel
+!python -m matlab_kernel install --user
+!jupyter kernelspec list
 ```
 
 To check that the MATLAB kernel is properly installed do the following.

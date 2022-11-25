@@ -5,11 +5,11 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.11.5
+    jupytext_version: 1.14.1
 kernelspec:
-  display_name: MATLAB
+  display_name: Matlab
   language: matlab
-  name: imatlab
+  name: matlab
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -229,7 +229,7 @@ let's see what effect the duty cycle $w$ has on the spectra.
 
 Recall pulse width = $T/w$ and plot the complex line spectra for pulse with width $w$ which repeats every $T$ seconds. We will write a MATLAB function `pulse_fs` to simplify the computation.
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -260,7 +260,7 @@ end
 return
 ```
 
-```{code-cell} matlab
+```{code-cell}
 edit pulse_fs
 ```
 
@@ -274,7 +274,7 @@ $\Omega_0 = 1$ rad/s; $w = 2$; $T = 2\pi$ s; $T/w = \pi$ s.
 
 Compute Fourier Series
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -287,7 +287,7 @@ A = 1; w = 2;
 
 Plot line Spectrum and add add continuous $\mathrm{sinc}(x)$ envelope.
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -309,7 +309,7 @@ hold off
 
 $\Omega_0 = 1$ rad/s; $w = 5$; $T = 2\pi$ s; $T/w = \pi$ s.
 
-```{code-cell} matlab
+```{code-cell}
 A = 1; w = 5; [f,omega] = pulse_fs(A,w,15);
 stem(omega,f)
 title('Line Spectra for pulse with w=2')
@@ -327,7 +327,7 @@ hold off
 
 $\Omega_0 = 1$ rad/s; $w = 10$; $T = 2\pi$ s; $T/w = \pi$ s.
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -551,7 +551,7 @@ For real periodic signals the power spectrum is a real even sequence as
 
 $$|C_{-k}|^2 = |C_k^*|^2 = |C_k|^2.$$
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: notes
@@ -563,7 +563,7 @@ A = 1; w = 8; [f,omega] = pulse_fs(A,w,15);
 
 Power spectrum
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: notes
