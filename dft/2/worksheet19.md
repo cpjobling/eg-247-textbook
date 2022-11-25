@@ -5,11 +5,11 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.11.5
+    jupytext_version: 1.14.1
 kernelspec:
-  display_name: MATLAB
+  display_name: Matlab
   language: matlab
-  name: imatlab
+  name: matlab
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -225,7 +225,7 @@ An equivalent Simulink model in block diagram form is:
 
 [two_point_dft.slx](https://cpjobling.github.io/eg-247-textbook/dft/2/matlab/two_point_dft.slx)
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: skip
@@ -236,7 +236,7 @@ format compact
 imatlab_export_fig('print-svg')  % Static svg figures.
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -379,7 +379,7 @@ $$X[m] = [10, -2+j2, -4, -2-j2].$$
 
 [four_point_dft.slx](https://cpjobling.github.io/eg-247-textbook/dft/2/matlab/four_point_dft.slx)
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -409,7 +409,7 @@ After some manipulation, not reproduced here, it can be shown that the 8-point D
 
 [eight_point_dft.slx](https://cpjobling.github.io/eg-247-textbook/dft/2/matlab/eight_point_dft.slx)
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -453,7 +453,7 @@ Also note that it is frequency $X_n[k]$ that is the input to the DFT stage.
 
 [four_point_dif.slx](https://cpjobling.github.io/eg-247-textbook/dft/2/matlab/four_point_dif.slx)
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -560,7 +560,7 @@ Plot the Fourier transform of the rectangular pulse shown below, using the MATLA
 
 The rectangular pulse can be produced like so
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -574,7 +574,7 @@ stem(x,y)
 
 and the FFT is produced as
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -586,7 +586,7 @@ stem(x, abs(fft(y)))
 
 unwind
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -598,7 +598,7 @@ stem(x, abs(fftshift(fft(y))))
 
 The inverse FFT is obtained with
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -618,7 +618,7 @@ stem(x, ifft(fft(y)))
 
 The triangular pulse is obtained with
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -632,7 +632,7 @@ stem(x,y)
 
 and the FFT is obtained with
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -644,7 +644,7 @@ stem(x, abs(fftshift(fft(y))))
 
 The inverse FFT is obtained with
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment

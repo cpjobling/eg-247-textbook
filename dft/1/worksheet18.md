@@ -5,11 +5,11 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.11.5
+    jupytext_version: 1.14.1
 kernelspec:
-  display_name: MATLAB
+  display_name: Matlab
   language: matlab
-  name: imatlab
+  name: matlab
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -315,7 +315,7 @@ Use the inverse DFT to compute the discrete-time sequence $x[n]$ from $X[m]$.
 
 ### Simulink model of the DFT
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -329,7 +329,7 @@ pwd
 
 See [dft_ex10_1.slx](https://cpjobling.github.io/eg-247-textbook/dft/1/matlab/dft_ex10_1.slx)
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -349,7 +349,7 @@ Try inputting your student number.
 
 Karris Example 10.1. To successfully run this script you will need to download the functions [dft.m](https://cpjobling.github.io/eg-247-textbook/dft/1/matlab/dft.m) and [idft.m](https://cpjobling.github.io/eg-247-textbook/dft/1/matlab/idft.m) and make them available on your `MATLABPATH`.
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -357,7 +357,7 @@ slideshow:
 xn = [2 0 0 8 9 7 5 0];
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -365,7 +365,7 @@ slideshow:
 open dft
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -373,7 +373,7 @@ slideshow:
 Xm = dft(xn,8)
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -381,7 +381,7 @@ slideshow:
 open idft
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -567,7 +567,7 @@ Use MATLAB to compute the magnitude of the frequency components of the following
 
 We will compute this in class and make some comments afterwards.
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -577,7 +577,7 @@ xn = [ 1, 2, 3, 2.5, 1.5, 0.5,...
     0.25, 1.25, 2, 1.5, 1, 0.5];
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -585,7 +585,7 @@ slideshow:
 stem([0:15],xn),xlabel('n'),ylabel('x[n]'),title('Discrete Time Sequence')
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -593,7 +593,7 @@ slideshow:
 Xm = dft(xn,16);
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
