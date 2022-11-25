@@ -5,11 +5,11 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.11.5
+    jupytext_version: 1.14.1
 kernelspec:
-  display_name: MATLAB
+  display_name: Matlab
   language: matlab
-  name: imatlab
+  name: matlab
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -163,7 +163,7 @@ Uses MATLAB functions:
 * `iztrans` &ndash; symbolic inverse z-transform
 * `stem` &ndash; plots sequence as a "lollipop" diagram
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: skip
@@ -174,7 +174,7 @@ cd matlab
 format compact
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -186,7 +186,7 @@ syms z n
 
 The denoninator of $F(z)$
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -198,7 +198,7 @@ Dz = (z - 0.5)*(z - 0.75)*(z - 1);
 
 Multiply the three factors of Dz to obtain a polynomial
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -214,7 +214,7 @@ Dz_poly = collect(Dz)
 
 $z^2$
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -226,7 +226,7 @@ num = [0, 1, 0, 0];
 
 $z^3 - 9/4 z^2 - 13/8 z - 3/8$
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -238,7 +238,7 @@ den = sym2poly(Dz_poly)
 
 ### Compute residues and poles
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -252,7 +252,7 @@ slideshow:
 
 - `fprintf` works like the c-language function where `"%4.2f"` means print a floating point number with four significant digits and 2 places of decimals.
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -269,7 +269,7 @@ fprintf('r3 = %4.2f\t', r(3)); fprintf('p3 = %4.2f\n', p(3));
 
 $$f[n] = 2\left(\frac{1}{2}\right)^n - 9\left(\frac{3}{4}\right)^n + 8$$
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -279,7 +279,7 @@ fn = 2*(1/2)^n-9*(3/4)^n + 8;
 Fz = ztrans(fn)
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -292,7 +292,7 @@ iztrans(Fz)
 
 ### Sequence
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -349,7 +349,7 @@ Uses additional MATLAB functions:
 
 * `dimpulse` &ndash; computes and plots a sequence $f[n]$ for any range of values of $n$
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -409,7 +409,7 @@ $$F(z) = \frac{z + 1}{(z-1)(z^2 + 2z + 2)}$$
 
 See [example3.mlx](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example3.mlx). (Also available as [example3.m](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example3.m).)
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -497,7 +497,7 @@ $$F(z) = \frac{1 + z^{-1} + 2z^{-2} + 3z^{-3}}{(1 - 0.25z^{-1})(1 - 0.5z^{-1})(1
 
 See [example4.mlx](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example4.mlx). (also available as [example4.m](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example4.m).)
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment

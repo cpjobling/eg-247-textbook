@@ -24,6 +24,11 @@ rebuild:
 	make build
 
 clean:
+	find ./FAQS -name '*.ipynb' -exec rm {} \;
+	find ./setup -name '*.ipynb' -exec rm {} \;
+	find ./dft -name '*.ipynb' -exec rm {} \;
+	find ./labs -name '*.ipynb' -exec rm {} \;
+	find ./dt_systems -name '*.ipynb' -exec rm {} \;
 	jupyter-book clean .
 
 build:  
