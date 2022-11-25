@@ -5,11 +5,11 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.11.5
+    jupytext_version: 1.14.1
 kernelspec:
-  display_name: MATLAB
+  display_name: Matlab
   language: matlab
-  name: imatlab
+  name: matlab
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
