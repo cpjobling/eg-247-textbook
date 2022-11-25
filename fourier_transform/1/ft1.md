@@ -5,11 +5,11 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.11.5
+    jupytext_version: 1.14.1
 kernelspec:
-  display_name: MATLAB
+  display_name: Matlab
   language: matlab
-  name: imatlab
+  name: matlab
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -106,7 +106,7 @@ Plots:
  
 $$sinc(u) = \frac{\sin \pi u}{\pi u},\; u \in \mathbb{R}$$
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -117,7 +117,7 @@ cd ../matlab
 format compact
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -348,7 +348,7 @@ By consideration of the Real and Imaginary parts of $f(t)$ and $F(j\omega)$ we c
 
 See {cite}`karris` Sections **8.2.1 Real-Time Functions** and **8.2.2 Imaginary Time Functions** which summarizes the *nature* of the Fourier transform for particular types of the signal.
 
-```{code-cell} matlab
+```{code-cell}
 
 ```
 
@@ -607,7 +607,7 @@ Use MATLAB to confirm the Fourier transform pair:
     
 $$e^{-\frac{1}{2}t^2}\Leftrightarrow \sqrt{2\pi}e^{-\frac{1}{2}\omega^2}$$
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -617,7 +617,7 @@ ft = exp(-t^2/2);
 Fw = fourier(ft,omega)
 ```
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -629,7 +629,7 @@ pretty(Fw)
 
 Check by computing the inverse using ifourier
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
