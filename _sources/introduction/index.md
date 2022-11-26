@@ -367,7 +367,7 @@ grid
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-(dtsystems)=
+(dt_systems)=
 ## Discrete-time Systems
 
 A discrete-time system, like its continuous-time counterpart, is a function, $H\{\}$, that maps the input $x[n]$￼ ￼to the output $y[n] = H\{x[n]\}$. An example of a discrete-time system is the *two-tap* filter:
