@@ -299,7 +299,6 @@ open dtm_ex1_3
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-(simulink)=
 ## Modelling DT systems in MATLAB and Simulink
 
 +++ {"slideshow": {"slide_type": "fragment"}}
@@ -366,7 +365,6 @@ dtm
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-(cse)=
 ## Converting Continuous Time Systems to Discrete Time Systems
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -394,7 +392,6 @@ help c2d
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-(demo)=
 ## Example: Digital Butterworth Filter
 
 * Design a 2nd-order butterworth low-pass anti-aliasing filter with transfer function $H(s)$ for use in sampling music. 
