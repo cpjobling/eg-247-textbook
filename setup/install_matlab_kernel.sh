@@ -13,12 +13,21 @@ conda init zsh
 conda activate eg-247-textbook
 pip install -U jupyter-book
 pip install -U jupytext
+conda install rise
 
 # Set up Python-MATLAB bridge and matlab_kernel
 cd $MATLAB_HOME/extern/engines/python
 python setup.py install
 pip install matlab_kernel
 python -m matlab_kernel install --user
+
+# Add rise
+pip install -U rise
+
+# Add ghp-import
+pip install -U ghp-import
+
+
 
 cd $EG_247
 
