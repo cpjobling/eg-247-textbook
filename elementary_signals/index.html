@@ -690,7 +690,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/cpjobling/eg-247-textbook/master?urlpath=tree/elementary_signals/index.md"
+        <a href="https://mybinder.org/v2/gh/cpjobling/eg-247-textbook/master?urlpath=tree/elementary_signals/index.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -1194,24 +1194,37 @@ V_{\mathrm{out}} = V_s.
 <section id="in-matlab">
 <h3>In Matlab<a class="headerlink" href="#in-matlab" title="Permalink to this headline">#</a></h3>
 <p>In Matlab, we use the <code class="docutils literal notranslate"><span class="pre">heaviside</span></code> function (named after <a class="reference external" href="https://en.wikipedia.org/wiki/Oliver_Heaviside">Oliver Heaviside</a>).</p>
-<p>File <code class="docutils literal notranslate"><span class="pre">plot_heaviside.m</span></code></p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="w"></span>
+<p>syms t
+ezplot(heaviside(t),[-1,1])
+heaviside(0)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%%file plot_heaviside.m </span><span class="w"></span>
+<span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="w"> </span>
 <span class="n">ezplot</span><span class="p">(</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"></span>
 <span class="n">heaviside</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">imatlab_export_fig</span><span class="p">(</span><span class="s1">&#39;print-svg&#39;</span><span class="p">)</span>  <span class="o">%</span> <span class="n">Static</span> <span class="n">svg</span> <span class="n">figures</span><span class="o">.</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Created file &#39;/Users/eechris/code/src/github.com/cpjobling/eg-247-textbook/elementary_signals/plot_heaviside.m&#39;.
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plot_heaviside</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">plot_heaviside</span><span class="w"></span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+    0.5000
+</pre></div>
+</div>
+<img alt="../_images/index_9_1.png" src="../_images/index_9_1.png" />
 </div>
 </div>
 <p>Note that, so that it can be plotted, Matlab defines the <em>heaviside function</em> slightly differently from the mathematically ideal unit step:</p>
@@ -1230,20 +1243,26 @@ V_{\mathrm{out}} = V_s.
 <p>Sketch <span class="math notranslate nohighlight">\(Au_0(t)\)</span> and <span class="math notranslate nohighlight">\(-Au_0(t)\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span> <span class="n">t</span><span class="p">;</span>
-<span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">);</span> <span class="o">%</span> <span class="n">rename</span> <span class="n">heaviside</span> <span class="n">function</span> <span class="k">for</span> <span class="n">ease</span> <span class="n">of</span> <span class="n">use</span>
-<span class="n">A</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="o">%</span> <span class="n">so</span> <span class="n">signal</span> <span class="n">can</span> <span class="n">be</span> <span class="n">plotted</span>
-<span class="n">ezplot</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="n">grid</span><span class="p">,</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Amplitude scaling $$Au_0(t)$$&#39;</span><span class="p">,</span><span class="s1">&#39;interpreter&#39;</span><span class="p">,</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="p">;</span><span class="w"></span>
+<span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">);</span><span class="w"> </span><span class="c">% rename heaviside function for ease of use</span><span class="w"></span>
+<span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c">% so signal can be plotted</span><span class="w"></span>
+<span class="n">ezplot</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="nb">grid</span><span class="p">,</span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;Amplitude scaling $$Au_0(t)$$&#39;</span><span class="p">,</span><span class="s">&#39;interpreter&#39;</span><span class="p">,</span><span class="s">&#39;latex&#39;</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/index_13_0.png" src="../_images/index_13_0.png" />
 </div>
 </div>
 <p>Note that the signal is scaled in the <span class="math notranslate nohighlight">\(y\)</span> direction.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ezplot</span><span class="p">(</span><span class="o">-</span><span class="n">A</span><span class="o">*</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="n">grid</span><span class="p">,</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Amplitude scaling and mirroring $$-Au_0(t)$$&#39;</span><span class="p">,</span><span class="s1">&#39;interpreter&#39;</span><span class="p">,</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ezplot</span><span class="p">(</span><span class="o">-</span><span class="n">A</span><span class="o">*</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="nb">grid</span><span class="p">,</span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;Amplitude scaling and mirroring $$-Au_0(t)$$&#39;</span><span class="p">,</span><span class="s">&#39;interpreter&#39;</span><span class="p">,</span><span class="s">&#39;latex&#39;</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/index_15_0.png" src="../_images/index_15_0.png" />
 </div>
 </div>
 <p>Note that, because of the sign, the signal is mirrored about the <span class="math notranslate nohighlight">\(x\)</span> axis as well as being scaled by 2.</p>
@@ -1253,9 +1272,12 @@ V_{\mathrm{out}} = V_s.
 <p>Sketch <span class="math notranslate nohighlight">\(u_0(-t)\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ezplot</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="n">u0</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="n">grid</span><span class="p">,</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Time reversal $$Au_0(-t)$$&#39;</span><span class="p">,</span><span class="s1">&#39;interpreter&#39;</span><span class="p">,</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ezplot</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="n">u0</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="nb">grid</span><span class="p">,</span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;Time reversal $$Au_0(-t)$$&#39;</span><span class="p">,</span><span class="s">&#39;interpreter&#39;</span><span class="p">,</span><span class="s">&#39;latex&#39;</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/index_18_0.png" src="../_images/index_18_0.png" />
 </div>
 </div>
 <p>The sign on the function argument <span class="math notranslate nohighlight">\(-t\)</span> causes the whole signal to be reversed in time. Note that another way of looking at this is that the signal is mirrored about the <span class="math notranslate nohighlight">\(y\)</span> axis.</p>
@@ -1265,18 +1287,24 @@ V_{\mathrm{out}} = V_s.
 <p>Sketch <span class="math notranslate nohighlight">\(u_0(t-T)\)</span> and <span class="math notranslate nohighlight">\(u_0(t+T)\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="o">%</span> <span class="n">again</span> <span class="n">to</span> <span class="n">make</span> <span class="n">the</span> <span class="n">signal</span> <span class="n">plottable</span><span class="o">.</span>
-<span class="n">ezplot</span><span class="p">(</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">T</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]),</span><span class="n">grid</span><span class="p">,</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Time delay $$u_0(t - T)$$&#39;</span><span class="p">,</span><span class="s1">&#39;interpreter&#39;</span><span class="p">,</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c">% again to make the signal plottable.</span><span class="w"></span>
+<span class="n">ezplot</span><span class="p">(</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">T</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]),</span><span class="nb">grid</span><span class="p">,</span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;Time delay $$u_0(t - T)$$&#39;</span><span class="p">,</span><span class="s">&#39;interpreter&#39;</span><span class="p">,</span><span class="s">&#39;latex&#39;</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/index_21_0.png" src="../_images/index_21_0.png" />
 </div>
 </div>
 <p>This is a <em>time delay</em> … note for <span class="math notranslate nohighlight">\(u_0(t - T)\)</span> the step change occurs T seconds <strong>later</strong> than it does for <span class="math notranslate nohighlight">\(u_o(t)\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ezplot</span><span class="p">(</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="n">T</span><span class="p">),[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="n">grid</span><span class="p">,</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Time advance $$u_0(t + T)$$&#39;</span><span class="p">,</span><span class="s1">&#39;interpreter&#39;</span><span class="p">,</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ezplot</span><span class="p">(</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">T</span><span class="p">),[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="nb">grid</span><span class="p">,</span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;Time advance $$u_0(t + T)$$&#39;</span><span class="p">,</span><span class="s">&#39;interpreter&#39;</span><span class="p">,</span><span class="s">&#39;latex&#39;</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/index_23_0.png" src="../_images/index_23_0.png" />
 </div>
 </div>
 <p>This is a <em>time advance</em> … note for <span class="math notranslate nohighlight">\(u_0(t + T)\)</span> the step change occurs T seconds <strong>earlier</strong> than it does for <span class="math notranslate nohighlight">\(u_o(t)\)</span>.</p>
@@ -1311,11 +1339,14 @@ V_{\mathrm{out}} = V_s.
 <p>To sketch the wave form, let’s arbitrarily let <span class="math notranslate nohighlight">\(C\)</span> and <span class="math notranslate nohighlight">\(i_s\)</span> be one and then plot with MATLAB.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="ow">is</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="n">vc</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">=</span><span class="p">(</span><span class="ow">is</span><span class="o">/</span><span class="n">C</span><span class="p">)</span><span class="o">*</span><span class="n">t</span><span class="o">*</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
-<span class="n">ezplot</span><span class="p">(</span><span class="n">vc</span><span class="p">(</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">]),</span><span class="n">grid</span><span class="p">,</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;A ramp function&#39;</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="n">vc</span><span class="p">(</span><span class="n">t</span><span class="p">)=(</span><span class="n">is</span><span class="o">/</span><span class="n">C</span><span class="p">)</span><span class="o">*</span><span class="n">t</span><span class="o">*</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">);</span><span class="w"></span>
+<span class="n">ezplot</span><span class="p">(</span><span class="n">vc</span><span class="p">(</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">]),</span><span class="nb">grid</span><span class="p">,</span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;A ramp function&#39;</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/index_33_0.png" src="../_images/index_33_0.png" />
 </div>
 </div>
 <p>This type of signal is called a <strong>ramp function</strong>. Note that it is the <em>integral</em> of the step function (the resistor-capacitor circuit implements a simple integrator circuit).</p>
@@ -1371,8 +1402,16 @@ t\ne 0.\]</div>
 <h3>MATLAB Confirmation<a class="headerlink" href="#matlab-confirmation" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span> <span class="ow">is</span> <span class="n">L</span><span class="p">;</span>
-<span class="n">vL</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="ow">is</span> <span class="o">*</span> <span class="n">L</span> <span class="o">*</span> <span class="n">diff</span><span class="p">(</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">is</span><span class="w"> </span><span class="s">L</span><span class="p">;</span><span class="w"></span>
+<span class="n">vL</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">diff</span><span class="p">(</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">))</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>vL(t) =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>L*is*dirac(t)
 </pre></div>
 </div>
 </div>
@@ -1453,16 +1492,16 @@ t\ne 0.\]</div>
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "imatlab"
+            mode: "matlab"
         },
         kernelOptions: {
-            kernelName: "imatlab",
+            kernelName: "matlab",
             path: "./elementary_signals"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'imatlab'</script>
+    <script>kernelName = 'matlab'</script>
 
               </div>
               

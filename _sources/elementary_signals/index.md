@@ -5,11 +5,11 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.11.5
+    jupytext_version: 1.14.0
 kernelspec:
-  display_name: MATLAB
+  display_name: Matlab
   language: matlab
-  name: imatlab
+  name: matlab
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -84,26 +84,24 @@ In Matlab, we use the `heaviside` function (named after [Oliver Heaviside](https
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-File `plot_heaviside.m`
-```matlab
+%%file plot_heaviside.m
 syms t
 ezplot(heaviside(t),[-1,1])
 heaviside(0)
-```
 
-```{code-cell} matlab
----
-slideshow:
-  slide_type: skip
----
-imatlab_export_fig('print-svg')  % Static svg figures.
-```
-
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
 ---
+%%file plot_heaviside.m 
+syms t 
+ezplot(heaviside(t),[-1,1])
+grid
+heaviside(0)
+```
+
+```{code-cell}
 plot_heaviside
 ```
 
@@ -127,7 +125,7 @@ $$\mathrm{heaviside}(t) = \left\{ {\begin{array}{*{20}{c}}
 
 Sketch $Au_0(t)$ and $-Au_0(t)$
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -142,7 +140,7 @@ ezplot(A*u0(t),[-1,1]),grid,title('Amplitude scaling $$Au_0(t)$$','interpreter',
 
 Note that the signal is scaled in the $y$ direction.
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -160,7 +158,7 @@ Note that, because of the sign, the signal is mirrored about the $x$ axis as wel
 
 Sketch $u_0(-t)$
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -178,7 +176,7 @@ The sign on the function argument $-t$ causes the whole signal to be reversed in
 
 Sketch $u_0(t-T)$ and $u_0(t+T)$
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -191,7 +189,7 @@ ezplot(u0(t - T),[-1,2]),grid,title('Time delay $$u_0(t - T)$$','interpreter','l
 
 This is a *time delay* ... note for $u_0(t - T)$ the step change occurs T seconds **later** than it does for $u_o(t)$.
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -255,7 +253,7 @@ $$v_C(t)=\frac{i_s}{C}t u_0(t)$$
 
 To sketch the wave form, let's arbitrarily let $C$ and $i_s$ be one and then plot with MATLAB.
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: subslide
@@ -349,7 +347,7 @@ t\ne 0.$$
 
 ### MATLAB Confirmation
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: '-'
