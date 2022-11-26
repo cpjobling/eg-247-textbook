@@ -662,7 +662,7 @@ This picture below shows the effect of an LTI system on a periodic input in the 
 
 ### Further explanation
 
-I have added some additional notes on [Filter Attenuation](/FAQS/faq.html#Filter-attenuation) in the [FAQs](/FAQS/FAQ).
+I have added some additional notes on [Filter Attenuation](/FAQS/faq.html#Filter-attenuation) in the [FAQs](/FAQS/faq).
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
