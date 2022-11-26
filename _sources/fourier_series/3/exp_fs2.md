@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.1
+    jupytext_version: 1.14.0
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -48,7 +48,7 @@ In this section we show how the Exponential form of the Fourier Series leads us 
 
 ## Harmonic frequencies
 
-In response to a Student query, I have given a little more information on [Harmonic Frequencies](/FAQS/FAQ.html#Harmonic-frequencies) in the FAQs.
+In response to a Student query, I have given a little more information on [Harmonic Frequencies](/FAQS/faq.html#Harmonic-frequencies) in the FAQs.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -662,7 +662,7 @@ This picture below shows the effect of an LTI system on a periodic input in the 
 
 ### Further explanation
 
-I have added some additional notes on [Filter Attenuation](/FAQS/FAQ.html#Filter-attenuation) in the [FAQs](/FAQS/FAQ).
+I have added some additional notes on [Filter Attenuation](/FAQS/faq.html#Filter-attenuation) in the [FAQs](/FAQS/FAQ).
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
