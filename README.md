@@ -1,44 +1,43 @@
-# Textbook for EG-247 Signals and Systems
+# EG-247 Signals and Systems
 
-This is the source code for the course notes for EG-247 Signals and Systems.
+A collection of resources created and distributed by
+Dr Chris Jobling, College of Engineering, Swansea University.
 
-It is a collection of Markdown pages and Jupyter Notebooks. 
+This is a GitHub hosted source code repository. It contains the Jupyter notebooks and Markdown source code for the notes, slides and web pages, Matlab scripts and Simulink models used in the module. If you just want to view the slides, or the printable version of the notes you should visit the GitHub hosted Web Site [EG-247 Signals and Systems](http://cpjobling.github.io/eg-247-textbook) instead. Read-only links to the notes and slides are provided on the Blackboard site for EG-247.
 
-The Jupyter Notebooks can be presented as pages and slides. They use the MATLAB kernel and after some setup the notebooks can be downloaded and they become executable documents.
 
-The published version of the textbook is **[EG-247 Signals and Systems](https://cpjobling.github.io/eg-247-textbook/introduction/index)**.
+## Using this Repository
 
-## Explore this book
+As I am developing the notes, slides and code examples in parallel with delivery, this repository will not be complete until the end. You should therefore *fork* this repository and *clone* it rather than downloding the zip file. You also need to set up a remote *upstream* link so that you can regularly *fetch* my changes and additions and *merge* them with your local copy.
 
-This website is a Jupyter Book. You can explore the chapters of the book
-by clicking on links in the sidebar to the left. Or, you can move linearly forward and
-backwards by clicking the left/right arrow on your computer.
+After logging into your GitHub account and *forking* and *cloning* this repo use the following command (from the GitHub command-line tools) to set up the remote *upstream* repository:
 
-## Contribute or improve the book
+    git add remote upstream https://github.com/cpjobling/eg-247-textbook
 
-Notice a typo in the text? Want to add more information
-and make other improvements to this text book? Don't hesitate to [open an issue or a PR on the
-EG-247 Textbook repo](https://github.com/cpjobling/eg-247-textbook). We'd love your
-help!
+When you want to update to my latest changes:
 
-## About this book
+    git fetch upstream
+    get merge upstream/master
 
-There is a guide and template for hosting your own book using
-Jupyter Notebooks and Jekyll.
+For more on this topic see the GitHub Help Page [Fork a Repo](https://help.github.com/articles/fork-a-repo).
 
-Here are some highlights:
+## Accessing the Course Documents
 
-* All course content is written in markdown and Jupyter Notebooks, stored in `content/`
-* Pages can have [Binder](https://mybinder.org) or JupyterHub links automatically added for interactivity.
-* The website itself is based on Jekyll, and is highly extensible and can be freely-hosted on GitHub.
+I am using [GitHub pages](https://pages.github.com/) to maintain the course slides and notes. To access the online version please visit <https://cpjobling.github.io/eg-247-textbook>.
 
-See **[A short guide to deploying your own textbook](https://jupyterbook.org/guide/01_overview)**.
+The notes are being maintained using [jupyter notebooks](http://jupytor.org).
+To directly access or modify the notes, checkout the `master` branch of this repo. The notes are organized in folders, one per week. The source code for the notes slides and web pages is contained in the [Markdown](http://daringfireball.net/projects/markdown/syntax) files which end in `.md`.
 
-## Acknowledgements
+To rebuild the notes, slides and web pages from source you will need to install [Python](https://www.python.org/) and [Pandoc](http://johnmacfarlane.net/pandoc/). If there is demand, I'll add more details to the `README.md` file in the `gh-pages` branch.
 
-This textbook has been built with the Jupyter Books system originally created by [Sam Lau][sam] and [Chris Holdgraf][chris]
-with support of the **UC Berkeley Data Science Education Program and the Berkeley
-Institute for Data Science**.
+To access the notebooks for editing and/or execution you will need to install Anaconda using the instructions provided by [Hans Fangohr at Southampton University](http://fangohr.github.io/blog/installation-of-python-spyder-numpy-sympy-scipy-pytest-matplotlib-via-anaconda.html).
 
-[sam]: http://www.samlau.me/
-[chris]: https://predictablynoisy.com
+Once you have installed the necessary files, use this code to set yourself up for interactive execution of the files.
+
+    cd ~/dev/eg-247-textbook
+    git co master
+    conda env create -f environment.yml
+    source activate eg-247-textbook
+    jupyter notebook   
+
+The interactive Jupyter notebooks are those with _*.ipynb_ extensions.

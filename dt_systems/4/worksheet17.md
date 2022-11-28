@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.1
+    jupytext_version: 1.14.0
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -154,7 +154,6 @@ slideshow:
   slide_type: fragment
 ---
 clear all
-imatlab_export_fig('print-svg')  % Static svg figures.
 cd matlab
 pwd
 format compact
@@ -300,7 +299,6 @@ open dtm_ex1_3
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-(simulink)=
 ## Modelling DT systems in MATLAB and Simulink
 
 +++ {"slideshow": {"slide_type": "fragment"}}
@@ -367,7 +365,6 @@ dtm
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-(cse)=
 ## Converting Continuous Time Systems to Discrete Time Systems
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -395,7 +392,6 @@ help c2d
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-(demo)=
 ## Example: Digital Butterworth Filter
 
 * Design a 2nd-order butterworth low-pass anti-aliasing filter with transfer function $H(s)$ for use in sampling music. 

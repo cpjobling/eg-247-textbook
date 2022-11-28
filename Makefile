@@ -24,8 +24,10 @@ rebuild:
 	make build
 
 clean:
+	find  . -name zbib.ipynb -exec rm {} \;
 	find ./FAQS -name '*.ipynb' -exec rm {} \;
 	find ./setup -name '*.ipynb' -exec rm {} \;
+	find ./elementary_signals -name '*.ipynb' -exec rm {} \;
 	find ./dft -name '*.ipynb' -exec rm {} \;
 	find ./labs -name '*.ipynb' -exec rm {} \;
 	find ./dt_systems -name '*.ipynb' -exec rm {} \;

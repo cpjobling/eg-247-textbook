@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.1
+    jupytext_version: 1.14.0
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -367,7 +367,7 @@ grid
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-(dtsystems)=
+(dt_systems)=
 ## Discrete-time Systems
 
 A discrete-time system, like its continuous-time counterpart, is a function, $H\{\}$, that maps the input $x[n]$￼ ￼to the output $y[n] = H\{x[n]\}$. An example of a discrete-time system is the *two-tap* filter:

@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.1
+    jupytext_version: 1.14.0
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -376,7 +376,7 @@ The signal $h(t)$ is the straight line $f(t)=-t+1$ but this is defined only betw
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-### convolutiondemo settings
+#### convolutiondemo settings
 
 * Let `f = heaviside(t)-heaviside(t-1) % u(t)`
 * Let `g = (t-1)*(heaviside(t)-heaviside(t-1)) % h(t)`
@@ -400,7 +400,7 @@ $$-t u_0(t) + u_0(t) + (t - 1)u_0(t - 1) \Leftrightarrow - \frac{1}{s^2} + \frac
 
 $$H(s) = \frac{s + e^{-s} - 1}{s^2}$$
 
-##### u(t)
+#### u(t)
 
 The input $u(t)$ is the gating function:
 
@@ -412,7 +412,7 @@ $$U(s) = \frac{1}{s}-\frac{e^{-s}}{s} = \frac{1 - e^{-s}}{s}$$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-##### convolutiondemo settings
+#### convolutiondemo settings
 
 * Let `f = (1 - exp(-s))/s % U(s)`
 * Let `
@@ -421,7 +421,7 @@ g= (s + exp(-s) - 1)/s^2 % H(s)`
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-##### Summary of result
+#### Summary of result
 
 1. For $t < 0$: $$u(t-\tau)h(\tau) = 0$$
 2. For $t = 0$: $u(t-\tau) = u(-\tau)$ and $u(-\tau)h(\tau) = 0$
