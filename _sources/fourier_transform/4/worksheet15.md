@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.1
+    jupytext_version: 1.14.4
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -277,14 +277,6 @@ Determine the frequency response $H_B(\omega)=Y(\omega)/X(\omega)$
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### Magnitude of frequency response of a 2nd-order Butterworth Filter
-
-```{code-cell}
----
-slideshow:
-  slide_type: skip
----
-imatlab_export_fig('print-svg')  % Static svg figures.
-```
 
 ```{code-cell}
 ---

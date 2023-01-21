@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.1
+    jupytext_version: 1.14.4
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -88,7 +88,6 @@ tags: [remove-output]
 %Make sure that we have a clean workspace
 clear all
 format compact
-imatlab_export_fig('print-svg')
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -233,17 +232,17 @@ ylabel('Amplitude')
 grid
 ```
 
-```{code-cell}
-edit sinewave
-```
-
-+++ {"slideshow": {"slide_type": "notes"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 If you want to execute this in MATLAB, you can create a file by copying this text into an `m-file`:
 
-+++ {"slideshow": {"slide_type": "notes"}, "tags": ["remove-output"]}
-
-```matlab
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+tags: [remove-output]
+---
+%%file sinewave.m
 % SINEWAVE - plot function $x(t) = 3 \cos(2\pi t - 3 \pi/4)$ for $t = 0\ldots 1$
 
 %% Set up the problem
@@ -259,7 +258,15 @@ ylabel('Amplitude')
 grid
 ```
 
-+++ {"slideshow": {"slide_type": "notes"}}
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
+edit sinewave
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
 
 To run this script, just type the filename without the `.m` extension.
 
@@ -405,7 +412,13 @@ We can plot this in Matlab as a *stem plot*
 
 Define function using this text:
 
-```matlab
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+tags: [remove-output]
+---
+%%file y.m
 % Define the function
 function [ y ] = x( n )
   if n < 0 | n >= 10 
@@ -415,9 +428,16 @@ function [ y ] = x( n )
   end
 end
 ```
+
++++ {"slideshow": {"slide_type": "fragment"}, "tags": ["remove-output"]}
+
 and save as [y.m](https://cpjobling.github.io/eg-247-textbook/introduction/y.m).
 
 ```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
 edit y
 ```
 
@@ -718,11 +738,17 @@ Consider the sum of a two-sinusoids signal
 
 $$x(t) = \underbrace {A_1\cos(2\pi f_1 t)}_{s_1} + \underbrace {A_2\cos(2\pi f_2 t)}_{s_2}$$
 
-+++ {"slideshow": {"slide_type": "notes"}, "tags": ["remove-output"]}
++++ {"slideshow": {"slide_type": "subslide"}, "tags": ["remove-output"]}
 
 This can be coded as
 
-```matlab
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+tags: [remove-output]
+---
+%%file two_sines.m
 %... plot two sinusoids signal
 A1 = 2; f1 = 1;
 A2 = 1.5;f2 = 2.2;
@@ -751,9 +777,15 @@ tags: [remove-output]
 edit two_sines
 ```
 
++++ {"slideshow": {"slide_type": "fragment"}}
+
 Run
 
 ```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
 two_sines
 ```
 

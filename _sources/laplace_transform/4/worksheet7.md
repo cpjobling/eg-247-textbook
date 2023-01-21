@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.1
+    jupytext_version: 1.14.4
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -412,7 +412,7 @@ slideshow:
   slide_type: subslide
 tags: [remove-output]
 ---
-bode(G)
+bode(G),grid
 ```
 
 ## Matlab Solutions

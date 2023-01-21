@@ -5,7 +5,7 @@ jupyter:
       extension: .md
       format_name: markdown
       format_version: '1.3'
-      jupytext_version: 1.14.1
+      jupytext_version: 1.14.4
   kernelspec:
     display_name: Matlab
     language: matlab
@@ -120,10 +120,6 @@ Karris example 8.8: for the linear network shown below, the impulse response is 
 <!-- #region slideshow={"slide_type": "subslide"} -->
 #### Matlab verification of example 1
 <!-- #endregion -->
-
-```matlab slideshow={"slide_type": "skip"}
-imatlab_export_fig('print-svg')  % Static svg figures.
-```
 
 ```matlab slideshow={"slide_type": "subslide"}
 syms t w

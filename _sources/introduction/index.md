@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.0
+    jupytext_version: 1.14.4
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -116,7 +116,6 @@ slideshow:
 %Make sure that we have a clean workspace
 clear all
 format compact
-imatlab_export_fig('print-svg')  % Static svg figures.
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -163,9 +162,12 @@ grid
 
 If you want to execute this in MATLAB, you can create a file by copying this text into an `m-file`:
 
-+++ {"slideshow": {"slide_type": "notes"}}
-
-```matlab
+```{code-cell}
+---
+slideshow:
+  slide_type: notes
+---
+%%file sinewave.m
 % SINEWAVE - plot function $x(t) = 3 \cos(2\pi t - 3 \pi/4)$ for $t = 0\ldots 1$
 
 %% Set up the problem
@@ -182,8 +184,14 @@ grid
 ```
 
 ```{code-cell}
+---
+slideshow:
+  slide_type: notes
+---
 edit sinewave
 ```
+
++++ {"slideshow": {"slide_type": "notes"}}
 
 To run this script, just type the filename without the .m extension.
 
@@ -309,7 +317,12 @@ We can plot this in MATLAB as a *stem plot*
 
 Define function using this text:
 
-```matlab
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
+%%file y.m
 % Define the function
 function [ y ] = x( n )
   if n < 0 | n >= 10 
@@ -319,7 +332,6 @@ function [ y ] = x( n )
   end
 end
 ```
-and save as [y.m](https://cpjobling.github.io/eg-247-textbook/introduction/y.m).
 
 ```{code-cell}
 ---
@@ -328,6 +340,10 @@ slideshow:
 ---
 edit y
 ```
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+(Open [y.m](https://cpjobling.github.io/eg-247-textbook/introduction/y.m)).
 
 ```{code-cell}
 ---
@@ -345,6 +361,11 @@ xn = zeros(size(n));
 slideshow:
   slide_type: subslide
 ---
+%% Define sample points
+n = -15:18;
+%% Make space for the signal
+xn = zeros(size(n));
+
 %% Compute the signal x[n]
 for i = 1:length(xn)
     xn(i) = y(n(i));
@@ -531,7 +552,12 @@ $$x(t) = \underbrace {A_1\cos(2\pi f_1 t)}_{s_1} + \underbrace {A_2\cos(2\pi f_2
 
 This can be coded as
 
-```matlab
+```{code-cell}
+---
+slideshow:
+  slide_type: notes
+---
+%%file two_sines.m
 %... plot two sinusoids signal
 A1 = 2; f1 = 1;
 A2 = 1.5;f2 = 2.2;

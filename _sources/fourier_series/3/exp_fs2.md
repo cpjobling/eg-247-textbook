@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.0
+    jupytext_version: 1.14.4
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -237,13 +237,14 @@ slideshow:
 clear all
 cd ../matlab
 format compact
-imatlab_export_fig('print-svg')  % Static svg figures.
 ```
 
-+++ {"slideshow": {"slide_type": "notes"}}
-
-Function `pulse_fs`:
-```matlab
+```{code-cell}
+---
+slideshow:
+  slide_type: notes
+---
+%%file ../matlab/pulse_fs.m
 function [f,omega] = pulse_fs(A,w,range)
 % PULSE_FS compute fourier series spectrum in range
 % -range:range for pulse with 
@@ -258,10 +259,6 @@ for mm = 1:length(omega)
     end
 end
 return
-```
-
-```{code-cell}
-edit pulse_fs
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
