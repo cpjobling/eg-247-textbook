@@ -5,25 +5,24 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.11.5
+    jupytext_version: 1.14.4
 kernelspec:
-  display_name: MATLAB
+  display_name: Matlab
   language: matlab
-  name: imatlab
+  name: matlab
 ---
 
 +++ {"slideshow": {"slide_type": "skip"}}
 
 Lecturer: Set up MATLAB
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: skip
 ---
 clear all
 format compact
-imatlab_export_fig('print-svg')  % Static svg figures.
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -128,14 +127,14 @@ $${u_0}(t) = \left\{ {\begin{array}{*{20}{c}}
 
 In Matlab, we use the `heaviside` function (Named after [Oliver Heaviside](https://en.wikipedia.org/wiki/Oliver_Heaviside)).
 
-```{code-cell} matlab
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
 tags: [remove-outlook]
 ---
 syms t
-ezplot(heaviside(t),[-1,1])
+fplot(heaviside(t),[-1,1]),ylim([-0.2,1.2]),grid
 heaviside(0)
 ```
 

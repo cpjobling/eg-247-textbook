@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.1
+    jupytext_version: 1.14.4
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -440,7 +440,7 @@ Let's go a bit further by finding the frequency response:
 slideshow:
   slide_type: subslide
 ---
-bode(G)
+bode(G), grid
 ```
 
 ## Reference 

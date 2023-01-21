@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.0
+    jupytext_version: 1.14.4
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -96,7 +96,7 @@ slideshow:
 ---
 %%file plot_heaviside.m 
 syms t 
-ezplot(heaviside(t),[-1,1])
+fplot(heaviside(t),[-1,1]),ylim([-0.2,1.2])
 grid
 heaviside(0)
 ```
@@ -133,7 +133,7 @@ slideshow:
 syms t;
 u0(t) = heaviside(t); % rename heaviside function for ease of use
 A = 2; % so signal can be plotted
-ezplot(A*u0(t),[-1,1]),grid,title('Amplitude scaling $$Au_0(t)$$','interpreter','latex')
+fplot(A*u0(t),[-1,1]),ylim([-0.2,2.2]),grid,title('Amplitude scaling $$Au_0(t)$$','interpreter','latex')
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}
@@ -145,7 +145,7 @@ Note that the signal is scaled in the $y$ direction.
 slideshow:
   slide_type: subslide
 ---
-ezplot(-A*u0(t),[-1,1]),grid,title('Amplitude scaling and mirroring $$-Au_0(t)$$','interpreter','latex')
+fplot(-A*u0(t),[-1,1]),grid,ylim([-2.2,0.2]),title('Amplitude scaling and mirroring $$-Au_0(t)$$','interpreter','latex')
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}
@@ -163,7 +163,7 @@ Sketch $u_0(-t)$
 slideshow:
   slide_type: subslide
 ---
-ezplot(A*u0(-t),[-1,1]),grid,title('Time reversal $$Au_0(-t)$$','interpreter','latex')
+fplot(A*u0(-t),[-1,1]),ylim([-0.2,2.2]),grid,title('Time reversal $$Au_0(-t)$$','interpreter','latex')
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}
@@ -182,7 +182,7 @@ slideshow:
   slide_type: subslide
 ---
 T = 1; % again to make the signal plottable.
-ezplot(u0(t - T),[-1,2]),grid,title('Time delay $$u_0(t - T)$$','interpreter','latex')
+fplot(u0(t - T),[-1,2]),ylim([-0.2,1.2]),grid,title('Time delay $$u_0(t - T)$$','interpreter','latex')
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}
@@ -194,7 +194,7 @@ This is a *time delay* ... note for $u_0(t - T)$ the step change occurs T second
 slideshow:
   slide_type: subslide
 ---
-ezplot(u0(t + T),[-2,1]),grid,title('Time advance $$u_0(t + T)$$','interpreter','latex')
+fplot(u0(t + T),[-2,1]),ylim([-0.2,1.2]),grid,title('Time advance $$u_0(t + T)$$','interpreter','latex')
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}
@@ -260,7 +260,7 @@ slideshow:
 ---
 C = 1; is = 1;
 vc(t)=(is/C)*t*u0(t);
-ezplot(vc(t),[-1,4]),grid,title('A ramp function')
+fplot(vc(t),[-1,4]),grid,title('A ramp function')
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}
