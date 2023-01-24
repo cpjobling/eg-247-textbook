@@ -41,12 +41,12 @@ clean:
 
 build:  
 	make assets
-	jupyter-book build --keep-going .
+	jupyter-book build -keep-going .
 
 site:   
 	make clean
 	make assets
-	jupyter-book build .
+	jupyter book build --keep-going .
 	make portfolio
 	touch _build/html/.nojekyll
 	ghp-import --no-jekyll -p -f ./_build/html

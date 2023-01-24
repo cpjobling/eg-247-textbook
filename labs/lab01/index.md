@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.1
+    jupytext_version: 1.14.4
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -60,7 +60,7 @@ We will also demonstrate the Live Script feature provided by MATLAB that will be
 
 Up to three marks can be claimed according to how many of parts 1-5 in the lab exercises have been completed. The mini project is worth an additional two marks. There are an additional 5 marks available for participating in the peer assessment. 
 
-Detailed marking criteria for this and the other labs and the project are given in the linked [Assessment Criteria](https://docs.google.com/spreadsheets/d/1HsyBZp4h71DuIj2ris1nP52JdWaWiaT6UsOwQKGnwzI/edit?usp=sharing) [Google sheet].
+Detailed marking criteria for this and the other labs and the project are given in the linked [Assessment Criteria](https://docs.google.com/spreadsheets/d/1m5ttr8WNoXa_yhXRESI4f7fKKmhK9HsTJjRViqP4i2o/edit?usp=sharing) [Google sheet].
 
 +++
 
@@ -141,7 +141,7 @@ You should submit the following to the **Lab 01: Elementary Signals** Assignment
 
 The Deadline for claims and submission is: 
 
-**4:00 pm, 22nd February 2022**.
+**4:00 pm, Monday 20th February 2023**.
 
 ### Important
 
