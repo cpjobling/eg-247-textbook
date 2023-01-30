@@ -522,7 +522,7 @@ $\delta(t) = 0$ for all $t\ne 0$.
 
 ## Important properties of the delta function
 
-See the accompanying [notes](index).
+See the accompanying [notes](https://cpjobling.github.io/eg-247-textbook/elementary_signals/index).
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
