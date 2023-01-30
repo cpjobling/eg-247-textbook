@@ -64,14 +64,15 @@ We will use the worksheets as class whiteboards and the Pingo audience response 
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### After class¶
+### After class
 
-* I will copy my annotated version of this worksheet into the **_Content Library** of the class notebook
+* My annotated version of this worksheet will be visible in the **_Content Library** of the class notebook
 * I will provide a link to the OneNote page on the Whiteboard pages in Canvas.
 * Copies of the lecture recordings will be uploaded to Canvas.
-
 * There will be a lab in which you can learn more about the topics covered using MATLAB.
 * You should attempt the homework.
+
++++ {"slideshow": {"slide_type": "notes"}}
 
 At the end of each week’s activities, you should have a complete record of everything that happened in class and ample opportunities to have made additional notes and practice the techniques shown.
 
@@ -156,7 +157,7 @@ $$x(t) = A \cos (2\pi f_0 t - \phi).$$
 | $A$        |
 | $f_0$      |
 | $1/f_0$      |
-| $\frac{2\pi}{f_0}$ |
+| $\frac{2\pi}{f_0}$|
 | $\phi$ |
 
 +++ {"slideshow": {"slide_type": "fragment"}}
@@ -425,7 +426,7 @@ function [ y ] = x( n )
       y = 0;
   else 
       y = 5;
-  end
+  end|
 end
 ```
 
@@ -797,7 +798,7 @@ two_sines
 
 ### Polling Question
 
-Which analysis method you may have already encountered, would turn the time response shown in this picture to the frequency spectrum shown in the bottom graph? 
+Which analysis method that you may have already encountered would turn the time response shown in this picture to the frequency spectrum shown in the bottom graph? 
 
 * Fourier transform
 * Parseval's theorem 
@@ -808,9 +809,9 @@ Which analysis method you may have already encountered, would turn the time resp
 
 ### Challenge
 
-I used the examples from **Signals and Systems for Dummies** to seed this Padlet collection [Examples of Signals and Systems](https://padlet.com/cpjobling/2f62bgl2q8dp).
+I used the examples from **Signals and Systems for Dummies** to seed this Padlet collection [Examples of Signals and Systems](https://padlet.com/c_p_jobling/examples-of-signals-and-systems-9l00h16u1jl42fb7).
 
-![Examples of Signals and Systems QR Code](https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=https://padlet.com/cpjobling/2f62bgl2q8dp)
+![Examples of Signals and Systems QR Code](https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=https://padlet.com/c_p_jobling/examples-of-signals-and-systems-9l00h16u1jl42fb7)
 
 Can you add to it?
 
