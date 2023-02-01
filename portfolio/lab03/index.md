@@ -5,7 +5,7 @@ jupyter:
       extension: .md
       format_name: markdown
       format_version: '1.3'
-      jupytext_version: 1.14.1
+      jupytext_version: 1.14.4
   kernelspec:
     display_name: Matlab
     language: matlab
@@ -42,7 +42,7 @@ Marks can be claimed according to how many of the parts of Lab Exercises 4 to 6Â
 
 Your peer assessor is encouraged to give feedback on the quality of the Live Script documentation you include in your submissions.
 
-Detailed marking criteria for this and the other labs and the project are given in the linked [Assessment Criteria](https://docs.google.com/spreadsheets/d/1Vlzk7ZARG-zLb9a0zDBaidKRltUNgHBO7GDkvPHLPSg/edit?usp=sharing) [Google sheet].
+Detailed marking criteria for this and the other labs and the project are given in the linked [Assessment Criteria](https://docs.google.com/spreadsheets/d/1m5ttr8WNoXa_yhXRESI4f7fKKmhK9HsTJjRViqP4i2o/edit?usp=sharing) [Google sheet].
 
 
 ## Setup
@@ -238,12 +238,12 @@ You should submit the following to the **Lab 03: Laplace transforms and transfer
 
 The deadline for claims and submission is:
 
-**4:00pm, 8th March 2022**.
+**4:00pm, 6th March 2023**.
 
 
 ## Peer assessment procedure for this lab
 
-On Monday 9th March, you should receive notification that the submission from one of your colleagues is available for peer assessment. This notification will arrive by email (if you have your Canvas notifications turned on) or via the inbox on Canvas or the Canvas Student App. 
+On Monday 6th March, you should receive notification that the submission from one of your colleagues is available for peer assessment. This notification will arrive by email (if you have your Canvas notifications turned on) or via the inbox on Canvas or the Canvas Student App. 
 
 This is the procedure you should follow:
 

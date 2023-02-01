@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.1
+    jupytext_version: 1.14.4
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -48,7 +48,7 @@ If you have problems running any files that are submitted, first check the note 
 To perform a Peer Assessment you should visit each submission, review the claim form submitted and download the attached files. I would recommend that you create a folder for each submission. I would also recommend that you clear the MATLAB workspace (see command below) before testing each set of submitted files.
 
 ``matlab
-clear all
+clear variables
 ``
 
 +++

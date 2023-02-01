@@ -151,7 +151,7 @@ To avoid errors in verification, particularly with Simulink, you should check th
 
 ## Peer assessment procedure for this lab
 
-On Monday 24th February, you should receive notification that the submissions of three of your colleagues are available for peer assessment. This notification will arrive by email (if you have your Canvas notifications turned on) or via the inbox on Canvas or the Canvas Student App. 
+On Monday 20th February, you should receive notification that the submissions of three of your colleagues are available for peer assessment. This notification will arrive by email (if you have your Canvas notifications turned on) or via the inbox on Canvas or the Canvas Student App. 
 
 This is the procedure you should follow:
 

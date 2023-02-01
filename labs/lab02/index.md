@@ -5,7 +5,7 @@ jupyter:
       extension: .md
       format_name: markdown
       format_version: '1.3'
-      jupytext_version: 1.14.1
+      jupytext_version: 1.14.4
   kernelspec:
     display_name: Matlab
     language: matlab
@@ -39,7 +39,7 @@ The purpose of this laboratory is to explore more of the features of the MATLAB 
 
 Marks will be awarded according to how many of the parts of Lab Exercise 2 and 3 have been completed.
 
-Detailed marking criteria for this and the other labs and the project are given in the linked [Assessment Criteria](https://docs.google.com/spreadsheets/d/1EQzwSfGMdw8oiQds4bUR8sZTCgb2lMvcJHjmea-8hW4/edit?usp=sharing) [Google sheet].
+Detailed marking criteria for this and the other labs and the project are given in the linked [Assessment Criteria](https://docs.google.com/spreadsheets/d/1m5ttr8WNoXa_yhXRESI4f7fKKmhK9HsTJjRViqP4i2o/edit?usp=sharing) [Google sheet].
 
 
 ## Setup
@@ -102,7 +102,7 @@ You should submit the following to the **Lab 02: Laplace and inverse Laplace tra
 
 The Deadline for claims and submission is:
 
-**4:00pm, 1st March 2022**.
+**4:00pm, 27th February 2023**.
 <!-- #endregion -->
 
 ## Peer Assessment
@@ -128,7 +128,7 @@ To complete your peer assessments, you should download and run the MATLAB Live S
 
 ### Checking the submitted work
 
-On Monday 2nd March, you should receive notification that the submissions of two of your colleagues are available for peer assessment. This notification will arrive by email (if you have your Canvas notifications turned on) or via the inbox on Canvas or the Canvas Student App. 
+On Monday 27th February, you should receive notification that the submissions of two of your colleagues are available for peer assessment. This notification will arrive by email (if you have your Canvas notifications turned on) or via the inbox on Canvas or the Canvas Student App. 
 
 To perform an assessment, you will need access to MATLAB. If you have problems running any files that are submitted, please note this in your feedback.
 
