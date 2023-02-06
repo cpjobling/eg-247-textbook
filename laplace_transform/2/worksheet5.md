@@ -300,7 +300,13 @@ Quick solution: [Wolfram Alpha](https://www.wolframalpha.com/input/?i=inverse+la
 
 2. Then compare with the desired form $(s - a)^2 + \omega^2$
 
-3. Solve this by finding the PFE for the assumed solution: $$F_3(s) = \frac{r_1}{s+1} + \frac{r_2(s - a)}{(s - a)^2 + \omega^2} + \frac{a r_3}{(s - a)^2 + \omega^2}.  $$ expecting the solution $$f_3(t) = r_1 e^{-t} - r_2 e^{-at}\cos \omega t + r_3 e^{-at}\sin \omega t.$$
+3. Solve this by finding the PFE for the assumed solution: 
+
+$$F_3(s) = \frac{r_1}{s+1} + \frac{r_2(s - a)}{(s - a)^2 + \omega^2} + \frac{a r_3}{(s - a)^2 + \omega^2}.$$ 
+
+expecting the solution 
+
+$$f_3(t) = r_1 e^{-t} - r_2 e^{-at}\cos \omega t + r_3 e^{-at}\sin \omega t.$$
 
 You can use trig. identities to simplify this further if you wish.
 

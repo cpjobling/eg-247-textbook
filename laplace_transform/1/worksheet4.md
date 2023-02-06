@@ -16,7 +16,7 @@ kernelspec:
 
 # Worksheet 4
 
-## To accompany Chapter 3.1 Laplace Transform
+## To accompany Unit 3.1 Laplace Transform
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -73,9 +73,7 @@ Bonus: what are the other two integrals?
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Question 2: Laplace transforms
-
-Match the transform to the time-domain operator
+### Question 2: Match the Laplace transform to the time-domain operator
 
 <table>
 <tr><td>1.</td><td>
@@ -102,7 +100,7 @@ $$\int_0^t\,f_1(\tau)f_2(t-\tau)\,d\tau$$
         
 </td><td>C.</td><td>
         
-$$\frac{\int_{0}^{T}\,f(t)\,e^{-sT}}{1-e^{-sT}}$$
+$$\frac{\int_{0}^{T}\,f(t)\,e^{-st}}{1-e^{-sT}}$$
         
 </td></tr>
     <tr><td>4.</td><td>
@@ -174,9 +172,7 @@ E. Integration in the time domain
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Question 5: Elementary signals
-
-Match the elementary signal to its Laplace transform
+### Question: Match the elementary signal to its Laplace transform
 
 <table>
 <tr><td>1.</td><td>Dirac delta (unit impulse)</td><td>
