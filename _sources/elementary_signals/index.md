@@ -49,15 +49,11 @@ Express the output voltage $V_{\mathrm{out}}$ as a function of the unit step fun
 
 Before the switch is closed at $t < T$:
 
-\begin{equation}
-    V_{\mathrm{out}} = 0.
-\end{equation}
+$$V_{\mathrm{out}} = 0.$$
 
 After the switch is closed for $t > T$: 
 
-\begin{equation}
-    V_{\mathrm{out}} = V_s.
-\end{equation}
+$$V_{\mathrm{out}} = V_s.$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
