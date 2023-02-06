@@ -469,7 +469,7 @@ See [Bibliography](/zbib).
 
 1. $$Au_0(t)-Au_0(t-a)\Leftrightarrow \frac{A\left(1-e^{-as}\right)}{s}.$$
 
-2. $$(t-1)u_0(t-1)\Leftrightarrow \frac{e^{-s}}{s}.$$
+2. $$(t-1)u_0(t-1)\Leftrightarrow \frac{e^{-s}}{s^2}.$$
 
 3. $$f_T(t)\Leftrightarrow \frac{\left(1-e^{-s}\right)^2}{s^2}.$$
 
