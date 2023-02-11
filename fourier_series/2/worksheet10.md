@@ -16,7 +16,7 @@ kernelspec:
 
 # Worksheet 10
 
-## To accompany Chapter 4.2 Exponential Fourier Series
+## To accompany Unit 4.2 Exponential Fourier Series
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 

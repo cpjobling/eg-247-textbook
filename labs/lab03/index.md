@@ -26,7 +26,7 @@ This lab supports the materials covered in [Chapter 3.3](../../laplace_transform
 This document is available in [HTML](index) format for online viewing [PDF](https://cpjobling.github.io/eg-247-textbook/labs/lab03/lab03.pdf) for printing.
 
 ### Acknowledgements
-These examples have been adapted from [Chapter 4](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197#ppg=101) of Karris{cite}`karris`.
+These examples have been adapted from [Chapter 4](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197#ppg=101) of {cite}`karris`.
 
 
 ## Aims
@@ -73,7 +73,7 @@ Linked m-file: [tf_matlab.m](https://cpjobling.github.io/eg-247-textbook/labs/la
 <!-- #region -->
 ## Lab Exercises
 
-As an experiment in course development for this laboratory you have the option to complete Lab Exercises 4, 5 and 6 uing the instructions below or by guided assessment using MATLAB Grader. 
+As an experiment in course development for this laboratory you have the option to complete Lab Exercises 4, 5 and 6 using the instructions below or by guided assessment using MATLAB Grader. 
 
 In all these exercises you should add sections, headings and explanatory text to document your Live Script files so and help your peer assessor understand your solutions.
 

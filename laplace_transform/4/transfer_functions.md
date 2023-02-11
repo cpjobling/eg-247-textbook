@@ -14,7 +14,7 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# Transfer Functions
+# Unit 3.4: Transfer Functions
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -442,6 +442,8 @@ slideshow:
 ---
 bode(G), grid
 ```
+
++++ {"slideshow": {"slide_type": "notes"}}
 
 ## Reference 
 

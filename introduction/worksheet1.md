@@ -16,7 +16,7 @@ kernelspec:
 
 # Worksheet 1
 
-## To accompany Chapter 1 Introduction
+## To accompany Unit 1 Introduction
 
 We will step through this worksheet in class. 
 
@@ -28,7 +28,7 @@ This give us an opportunity to demonstrate the electronic resources, Canvas, One
 
 This worksheet has been designed to be used in Microsoft's OneNote. Should you wish to use another note taking application, a version of this worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet1.pdf).
 
-A copy of this worksheet will be distributed before the first class meeting in the **Week 1: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **Worksheets** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote.
+A copy of this worksheet will be distributed before the first class meeting in the **Week 1: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **In Class Workbooks** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote.
 
 You are expected to have at least watched the video presentation of [Chapter 1](https://cpjobling.github.io/eg-247-textbook/introduction) of the [notes](https://cpjobling.github.io/eg-247-textbook) before coming to the first class.
 

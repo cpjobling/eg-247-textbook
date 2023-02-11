@@ -14,7 +14,7 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# Introducing Signals and Systems
+# Unit 1: Introducing Signals and Systems
 
 +++ {"slideshow": {"slide_type": "slide"}}
 

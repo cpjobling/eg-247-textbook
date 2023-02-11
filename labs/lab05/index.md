@@ -5,7 +5,7 @@ jupyter:
       extension: .md
       format_name: markdown
       format_version: '1.3'
-      jupytext_version: 1.11.5
+      jupytext_version: 1.14.4
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python
@@ -44,7 +44,7 @@ This will be a self-assessed exercise.
 
 Up to 2 marks can be claimed if you complete Exercise 9, 1 mark for Exercise 10 and an addition 2 marks for Exercise 11.
 
-Detailed marking criteria for this and the other labs and the project are given in the linked [Assessment Criteria](https://docs.google.com/spreadsheets/d/1HsyBZp4h71DuIj2ris1nP52JdWaWiaT6UsOwQKGnwzI/edit?usp=sharing) [Google sheet].
+Detailed marking criteria for this and the other labs and the project are given in the linked [Assessment Criteria](https://docs.google.com/spreadsheets/d/1m5ttr8WNoXa_yhXRESI4f7fKKmhK9HsTJjRViqP4i2o/edit?usp=sharing) [Google sheet].
 
 
 ## Setup
@@ -223,7 +223,7 @@ You should submit the following to the **Lab 05: Fourier series** Assignment on 
 
 ### Deadline
 
-The deadline for claims and submission is **4:00 pm, 21st March 2022**
+The deadline for claims and submission is **4:00 pm, 20th March 2023**
 
 
 ## Optional Additional Tasks: Review and Change the Code.

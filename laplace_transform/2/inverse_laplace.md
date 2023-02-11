@@ -14,7 +14,7 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# The Inverse Laplace Transform
+# Unit 3.2: The Inverse Laplace Transform
 
 +++ {"slideshow": {"slide_type": "notes"}}
 

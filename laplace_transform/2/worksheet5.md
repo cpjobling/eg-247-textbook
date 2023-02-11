@@ -16,7 +16,7 @@ kernelspec:
 
 # Worksheet 5
 
-## To accompany Chapter 3.2 Inverse Laplace Transform
+## To accompany Unit 3.2 Inverse Laplace Transform
 
 +++ {"slideshow": {"slide_type": "notes"}}
 

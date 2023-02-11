@@ -1,4 +1,4 @@
-# Laplace Transforms and their Applications
+# Unit 3: Laplace Transforms and their Applications
 
 ## About the Laplace Transformation
 
@@ -18,11 +18,11 @@ The only downside is that time $t$ is a real value whereas the Laplace transform
 
 In this section of the course we will cover:
 
-* The Laplace Transformation
-* The Inverse Laplace Transform
-* Using Laplace Transforms for Circuit Analysis
-* Transfer Functions
-* Impulse Response and Convolution
+* [Unit 3.1 The Laplace Transformation](https://cpjobling.github.io/eg-247-textbook/laplace_transform/1/laplace.html)
+* [Unit 3.2 The Inverse Laplace Transform](https://cpjobling.github.io/eg-247-textbook/laplace_transform/2/inverse_laplace.html)
+* [Unit 3.3 Using Laplace Transforms for Circuit Analysis](https://cpjobling.github.io/eg-247-textbook/laplace_transform/3/circuit_analysis.html)
+* [Unit 3.4 Transfer Functions](https://cpjobling.github.io/eg-247-textbook/laplace_transform/4/transfer_functions.html)
+* [Unit 3.5 Impulse Response and Convolution](https://cpjobling.github.io/eg-247-textbook/laplace_transform/5/convolution.html)
 
 ## Colophon
 

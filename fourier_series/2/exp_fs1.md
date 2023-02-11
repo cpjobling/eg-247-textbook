@@ -14,7 +14,7 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# Exponential Fourier Series
+# Unit 4.2: Exponential Fourier Series
 
 +++ {"slideshow": {"slide_type": "notes"}}
 

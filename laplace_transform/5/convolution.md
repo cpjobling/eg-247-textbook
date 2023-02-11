@@ -14,7 +14,7 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# The Impulse Response and Convolution
+# Unit 3.5: The Impulse Response and Convolution
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -297,7 +297,7 @@ The convolution integral is usually written $u(t)*h(t)$ or $h(t)*u(t)$ where the
 
 ## Graphical Evaluation of the Convolution Integral
 
-The convolution integral is most conveniently evaluated by a graphical evaluation. The text book gives three examples (6.4-6.6) which we will demonstrate in class using a [graphical visualization tool](https://uk.mathworks.com/matlabcentral/fileexchange/25199-graphical-demonstration-of-convolution) developed by Teja Muppirala of the Mathworks.
+The convolution integral is most conveniently evaluated by a graphical evaluation. The text book gives three examples (6.4-6.6) which we will demonstrate in class using a [graphical visualization tool](https://uk.mathworks.com/matlabcentral/fileexchange/25199-graphical-demonstration-of-convolution) developed by Teja Muppirala of the Mathworks and updated by Rory Adams for this module.
 
 The tool: [convolutiondemo.m](https://cpjobling.github.io/eg-247-textbook/laplace_transform/matlab/convolution_demo/convolutiondemo.m) (see [license.txt](https://cpjobling.github.io/eg-247-textbook/laplace_transform/matlab/convolution_demo/license.txt)).
 

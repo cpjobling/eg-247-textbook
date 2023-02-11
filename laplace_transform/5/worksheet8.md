@@ -16,7 +16,7 @@ kernelspec:
 
 # Worksheet 8
 
-## To accompany Chapter 3.5 Convolution and the Impulse Response
+## To accompany Unit 3.5 Convolution and the Impulse Response
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
