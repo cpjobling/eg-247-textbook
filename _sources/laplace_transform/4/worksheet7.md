@@ -16,7 +16,7 @@ kernelspec:
 
 # Worksheet 7
 
-## To accompany Chapter 3.4 Transfer Functions
+## To accompany Unit 3.4 Transfer Functions
 
 +++ {"slideshow": {"slide_type": "notes"}}
 

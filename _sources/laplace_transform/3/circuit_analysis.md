@@ -14,7 +14,7 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# Using Laplace Transforms for Circuit Analysis
+# Unit 3.3: Using Laplace Transforms for Circuit Analysis
 
 +++ {"slideshow": {"slide_type": "notes"}}
 

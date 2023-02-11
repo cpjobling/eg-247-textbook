@@ -16,7 +16,7 @@ kernelspec:
 
 # Worksheet 6
 
-## To accompany Chapter 3.3 Using Laplace Transforms for Circuit Analysis
+## To accompany Unit 3.3 Using Laplace Transforms for Circuit Analysis
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
