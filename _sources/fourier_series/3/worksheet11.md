@@ -16,7 +16,7 @@ kernelspec:
 
 # Worksheet 11
 
-## To accompany Chapter 4.3 Line Spectra and their Applications
+## To accompany Unit 4.3 Line Spectra and their Applications
 
 +++ {"slideshow": {"slide_type": "notes"}}
 

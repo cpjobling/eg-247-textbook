@@ -14,7 +14,7 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# Line Spectra and their Applications
+# Unit 4.3: Line Spectra and their Applications
 
 +++ {"slideshow": {"slide_type": "notes"}}
 

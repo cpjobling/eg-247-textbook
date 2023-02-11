@@ -16,7 +16,7 @@ kernelspec:
 
 # Worksheet 9
 
-## To accompany Chapter 4.1 Trigonometric Fourier Series
+## To accompany Unit 4.1 Trigonometric Fourier Series
 
 +++ {"slideshow": {"slide_type": "notes"}}
 

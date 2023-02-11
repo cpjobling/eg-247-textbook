@@ -14,7 +14,7 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# Trigonometric Fourier Series
+# Unit 4.1: Trigonometric Fourier Series
 
 
 
