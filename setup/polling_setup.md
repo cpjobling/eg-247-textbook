@@ -21,9 +21,9 @@ We will be using Pingo mobile response system polling in this session.
 <!-- #region slideshow={"slide_type": "subslide"} -->
 ## Setup
 
-Browse to: [pingo.coactum.de](https://pingo.coactum.de). 
+Browse to: [pingo.coactum.de/194851](https://pingo.coactum.de/194851). 
 
-<img src="https://chart.googleapis.com/chart?cht=qr&chs=300x300&choe=UTF-8&chld=H&chl=https://pingo.coactum.de" alt="QR Code" />
+<img src="https://chart.googleapis.com/chart?cht=qr&chs=300x300&choe=UTF-8&chld=H&chl=https://pingo.coactum.de/194851" alt="QR Code" />
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "subslide"} -->

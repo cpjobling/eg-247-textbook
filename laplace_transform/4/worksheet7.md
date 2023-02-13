@@ -16,7 +16,7 @@ kernelspec:
 
 # Worksheet 7
 
-## To accompany Unit 3.4 Transfer Functions
+## To accompany Chapter 3.4 Transfer Functions
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -287,7 +287,7 @@ slideshow:
 tags: [remove-output]
 ---
 semilogx(w, abs(Gw))
-xlabel('Radian frequency w (rad/s')
+xlabel('Radian frequency w (rad/s)')
 ylabel('|Vout/Vin|')
 title('Magnitude Vout/Vin vs. Radian Frequency')
 grid
@@ -412,7 +412,9 @@ slideshow:
   slide_type: subslide
 tags: [remove-output]
 ---
-bode(G),grid
+%bode(G)
+nyquist(G)
+%rlocus(G)
 ```
 
 ## Matlab Solutions
