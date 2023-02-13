@@ -1,4 +1,4 @@
-remive%% Week 3: Solution 7
+%% Week 3: Solution 7
 syms s;
 %%
 R1 = 200*10^3; 
