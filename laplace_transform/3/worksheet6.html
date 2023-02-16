@@ -515,13 +515,18 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../labs/lab06/index.html">
-     Lab 6 - Audio Signals and Sampling
+    <a class="reference internal" href="../../labs/lab06/spor.html">
+     Lab 6 Signal Processing OnRamp
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../labs/lab06/tutorial.html">
-     Basic Matlab Functions for Representing Signals
+     Optional Basic Matlab Functions for Representing Signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../labs/lab06/index.html">
+     Optional Lab 7 - Audio Signals and Sampling
     </a>
    </li>
    <li class="toctree-l2">
@@ -889,8 +894,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#to-accompany-unit-3-3-using-laplace-transforms-for-circuit-analysis">
-   To accompany Unit 3.3 Using Laplace Transforms for Circuit Analysis
+  <a class="reference internal nav-link" href="#to-accompany-chapter-3-3-using-laplace-transforms-for-circuit-analysis">
+   To accompany Chapter 3.3 Using Laplace Transforms for Circuit Analysis
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1089,8 +1094,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#to-accompany-unit-3-3-using-laplace-transforms-for-circuit-analysis">
-   To accompany Unit 3.3 Using Laplace Transforms for Circuit Analysis
+  <a class="reference internal nav-link" href="#to-accompany-chapter-3-3-using-laplace-transforms-for-circuit-analysis">
+   To accompany Chapter 3.3 Using Laplace Transforms for Circuit Analysis
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1281,8 +1286,8 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="worksheet-6">
 <h1>Worksheet 6<a class="headerlink" href="#worksheet-6" title="Permalink to this headline">#</a></h1>
-<section id="to-accompany-unit-3-3-using-laplace-transforms-for-circuit-analysis">
-<h2>To accompany Unit 3.3 Using Laplace Transforms for Circuit Analysis<a class="headerlink" href="#to-accompany-unit-3-3-using-laplace-transforms-for-circuit-analysis" title="Permalink to this headline">#</a></h2>
+<section id="to-accompany-chapter-3-3-using-laplace-transforms-for-circuit-analysis">
+<h2>To accompany Chapter 3.3 Using Laplace Transforms for Circuit Analysis<a class="headerlink" href="#to-accompany-chapter-3-3-using-laplace-transforms-for-circuit-analysis" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="colophon">
 <h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this headline">#</a></h2>
@@ -1306,6 +1311,14 @@ title="Print to PDF"
 <h3>Time Domain Model of a Resistive Network<a class="headerlink" href="#time-domain-model-of-a-resistive-network" title="Permalink to this headline">#</a></h3>
 <p><img alt="Resistive Network: Time Domain" src="../../_images/resistive_time.png" /></p>
 <p>For the circuit shown, which of the following equations represent the Laplace transform of the current flowing through, and the voltage across, the resistor <span class="math notranslate nohighlight">\(R\)</span>?</p>
+<div class="math notranslate nohighlight">
+\[V_R(s) = RI_R(s)\]</div>
+<div class="math notranslate nohighlight">
+\[I_R(s) + \frac{V_R(s)}{R}\]</div>
+<div class="math notranslate nohighlight">
+\[V_R(s) = \frac{I_R(s)}{R}\]</div>
+<div class="math notranslate nohighlight">
+\[I_R(s) = RV_R(s)\]</div>
 <p><strong>-&gt; Open poll</strong></p>
 </section>
 <section id="time-domain-model-of-an-inductive-network">
@@ -1317,7 +1330,7 @@ title="Print to PDF"
 <div class="math notranslate nohighlight">
 \[I_L(s)=\frac{V_L(s)}{sL} + \frac{v_L(0^-)}{s}\]</div>
 <div class="math notranslate nohighlight">
-\[VL(s) = sLI_L(s) - Li_L(0^-)\]</div>
+\[V_L(s) = sLI_L(s) - Li_L(0^-)\]</div>
 <div class="math notranslate nohighlight">
 \[V_L(s)=\frac{I_L(s)}{sL} + \frac{i_L(0^-)}{s}\]</div>
 <p><strong>-&gt; Open poll</strong></p>
@@ -1516,7 +1529,7 @@ title="Print to PDF"
 <h4>4. Complete solution in MATLAB<a class="headerlink" href="#complete-solution-in-matlab" title="Permalink to this headline">#</a></h4>
 <p>In the lecture we showed that after simplification for Example 3</p>
 <div class="math notranslate nohighlight">
-\[V_{\mathrm{out}}=\frac{2s(s+3)}{s^3 + 8s^2 + 10s + 4}\]</div>
+\[V_{\mathrm{out}}(s)=\frac{2s(s+3)}{s^3 + 8s^2 + 10s + 4}\]</div>
 <p>We will use MATLAB to factorize the denominator <span class="math notranslate nohighlight">\(D(s)\)</span> of the equation
 into a linear and a quadratic factor.</p>
 <section id="find-roots-of-denominator-d-s">
@@ -1581,8 +1594,11 @@ into a linear and a quadratic factor.</p>
 <h5>Plot result<a class="headerlink" href="#plot-result" title="Permalink to this headline">#</a></h5>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">:</span><span class="mf">0.01</span><span class="p">:</span><span class="mi">10</span><span class="p">;</span>
-<span class="n">Vout</span> <span class="o">=</span> <span class="mf">1.36</span><span class="o">.*</span><span class="n">exp</span><span class="p">(</span><span class="n">r</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.*</span><span class="n">t</span><span class="p">)</span><span class="o">+</span><span class="mf">0.64</span><span class="o">.*</span><span class="n">exp</span><span class="p">(</span><span class="n">real</span><span class="p">(</span><span class="n">r</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">.*</span><span class="n">t</span><span class="p">)</span><span class="o">.*</span><span class="n">cos</span><span class="p">(</span><span class="n">imag</span><span class="p">(</span><span class="n">r</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">.*</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="mf">1.84</span><span class="o">.*</span><span class="n">exp</span><span class="p">(</span><span class="n">real</span><span class="p">(</span><span class="n">r</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span><span class="o">.*</span><span class="n">t</span><span class="p">)</span><span class="o">.*</span><span class="n">sin</span><span class="p">(</span><span class="o">-</span><span class="n">imag</span><span class="p">(</span><span class="n">r</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span><span class="o">.*</span><span class="n">t</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">residue</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">conv</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]),[</span><span class="mi">1</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">yt</span><span class="o">=</span><span class="mi">0</span><span class="p">:</span><span class="mf">0.01</span><span class="p">:</span><span class="mi">10</span><span class="p">;</span>
+<span class="n">Vout</span> <span class="o">=</span> <span class="mf">1.36</span><span class="o">.*</span><span class="n">exp</span><span class="p">(</span><span class="n">r</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.*</span><span class="n">t</span><span class="p">)</span><span class="o">...</span>
+   <span class="o">+</span><span class="mf">0.64</span><span class="o">.*</span><span class="n">exp</span><span class="p">(</span><span class="n">real</span><span class="p">(</span><span class="n">r</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">.*</span><span class="n">t</span><span class="p">)</span><span class="o">.*</span><span class="n">cos</span><span class="p">(</span><span class="n">imag</span><span class="p">(</span><span class="n">r</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">.*</span><span class="n">t</span><span class="p">)</span><span class="o">...</span>
+   <span class="o">-</span><span class="mf">1.84</span><span class="o">.*</span><span class="n">exp</span><span class="p">(</span><span class="n">real</span><span class="p">(</span><span class="n">r</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span><span class="o">.*</span><span class="n">t</span><span class="p">)</span><span class="o">.*</span><span class="n">sin</span><span class="p">(</span><span class="o">-</span><span class="n">imag</span><span class="p">(</span><span class="n">r</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span><span class="o">.*</span><span class="n">t</span><span class="p">);</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vout</span><span class="p">);</span> <span class="n">grid</span>
 <span class="n">title</span><span class="p">(</span><span class="s1">&#39;Plot of Vout(t) for the circuit of Example 3&#39;</span><span class="p">)</span>
 <span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Vout(t) V&#39;</span><span class="p">),</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time t s&#39;</span><span class="p">)</span>

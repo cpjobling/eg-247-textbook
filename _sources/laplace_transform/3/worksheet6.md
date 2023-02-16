@@ -16,7 +16,7 @@ kernelspec:
 
 # Worksheet 6
 
-## To accompany Unit 3.3 Using Laplace Transforms for Circuit Analysis
+## To accompany Chapter 3.3 Using Laplace Transforms for Circuit Analysis
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -51,9 +51,19 @@ format compact
 
 ![Resistive Network: Time Domain](pictures/resistive_time.png)
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 For the circuit shown, which of the following equations represent the Laplace transform of the current flowing through, and the voltage across, the resistor $R$?
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+$$V_R(s) = RI_R(s)$$
+
+$$I_R(s) + \frac{V_R(s)}{R}$$
+
+$$V_R(s) = \frac{I_R(s)}{R}$$
+
+$$I_R(s) = RV_R(s)$$
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -65,17 +75,17 @@ For the circuit shown, which of the following equations represent the Laplace tr
 
 ![Inductive Network - Time Domain](pictures/inductive_time.png)
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 For the circuit shown, which of the following equations represent the Laplace transform of the current flowing through, and the voltage across, the inductor $L$?
 
-+++ {"slideshow": {"slide_type": "notes"}}
++++ {"slideshow": {"slide_type": "fragment"}}
 
 $$I_L(s)=sLV_L(s) - Lv_L(0^-)$$
 
 $$I_L(s)=\frac{V_L(s)}{sL} + \frac{v_L(0^-)}{s}$$
 
-$$VL(s) = sLI_L(s) - Li_L(0^-)$$
+$$V_L(s) = sLI_L(s) - Li_L(0^-)$$
 
 $$V_L(s)=\frac{I_L(s)}{sL} + \frac{i_L(0^-)}{s}$$
 
@@ -89,11 +99,11 @@ $$V_L(s)=\frac{I_L(s)}{sL} + \frac{i_L(0^-)}{s}$$
 
 ![Capacitive Network - Time Domain](pictures/capacitive_time.png)
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 For the circuit shown, which of the following equations represent the Laplace transform of the current flowing through, and the voltage across, the capacitor $C$?
 
-+++ {"slideshow": {"slide_type": "notes"}}
++++ {"slideshow": {"slide_type": "fragment"}}
 
 $$V_c(s)=sCI_C(s) - Ci_C(0^-)$$
 
@@ -332,7 +342,7 @@ Determine equation for $V_{\rm out}(s)$.
 
 In the lecture we showed that after simplification for Example 3
 
-$$V_{\mathrm{out}}=\frac{2s(s+3)}{s^3 + 8s^2 + 10s + 4}$$
+$$V_{\mathrm{out}}(s)=\frac{2s(s+3)}{s^3 + 8s^2 + 10s + 4}$$
 
 We will use MATLAB to factorize the denominator $D(s)$ of the equation
 into a linear and a quadratic factor.
@@ -419,8 +429,11 @@ slideshow:
   slide_type: subslide
 tags: [remove-output]
 ---
-t=0:0.01:10;
-Vout = 1.36.*exp(r(1).*t)+0.64.*exp(real(r(2)).*t).*cos(imag(r(2)).*t)-1.84.*exp(real(r(3)).*t).*sin(-imag(r(3)).*t);
+[r, p, k] = residue(2*conv([1,0],[1,3]),[1 8, 10,4])
+yt=0:0.01:10;
+Vout = 1.36.*exp(r(1).*t)...
+   +0.64.*exp(real(r(2)).*t).*cos(imag(r(2)).*t)...
+   -1.84.*exp(real(r(3)).*t).*sin(-imag(r(3)).*t);
 plot(t, Vout); grid
 title('Plot of Vout(t) for the circuit of Example 3')
 ylabel('Vout(t) V'),xlabel('Time t s')
