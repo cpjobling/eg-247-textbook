@@ -147,9 +147,10 @@ This property facilitates the solution of differential equations
 +++ {"nbpresent": {"id": "94a596bc-4117-4098-8b78-5776baa85cd2"}, "slideshow": {"slide_type": "notes"}}
 
 The differentiation property can be extended to higher-orders as follows
+
 $$f''(t) = \frac{d^2}{dt^2}f(t) \Leftrightarrow s^2F(s) - sf(0^-) - f'(0^-)$$
 
-$$f''(t) = \frac{d^3}{dt^3}f(t) \Leftrightarrow s^3F(s) - s^2f(0) - sf'(0^-) - f''(0^-)$$
+$$f'''(t) = \frac{d^3}{dt^3}f(t) \Leftrightarrow s^3F(s) - s^2f(0) - sf'(0^-) - f''(0^-)$$
 
 and in general
 
