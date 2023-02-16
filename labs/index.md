@@ -9,9 +9,10 @@ If you need a MATLAB refresher, you may wish to work through the [MATLAB Tutoria
 * [Lab 03: Laplace Transforms and Transfer Functions for Circuit Analysis](lab03/index)
 * [Lab 04: Time Domain Convolution](lab04/index)
 * [Lab 05: Fourier Series](lab05/index)
-* [Lab 06: Audio Signals and Sampling](lab06/index)
+* [Lab 06: Signal Processing OnRamp](https://canvas.swansea.ac.uk/courses/36921/assignments/252658) - Canvas
 
-There is an additional lab which may help your preperation for the project.
+There are two optional labs which may help your preperation for the project.
 
-* [Lab 07: Filters](lab07/index)
+* [Optional Lab 07: Audio Signals and Sampling](lab06/index)
+* [Optional Lab 08: Filters](lab07/index)
 

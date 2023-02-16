@@ -5,14 +5,14 @@ jupyter:
       extension: .md
       format_name: markdown
       format_version: '1.3'
-      jupytext_version: 1.14.1
+      jupytext_version: 1.14.4
   kernelspec:
     display_name: Matlab
     language: matlab
     name: matlab
 ---
 
-# Lab 6: Audio Signals and Sampling  
+# Optional Lab 6: Audio Signals and Sampling  
 
 
 ## Preamble
