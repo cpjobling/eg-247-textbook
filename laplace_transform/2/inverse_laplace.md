@@ -43,7 +43,7 @@ An annotatable worksheet for this presentation is available as [**Worksheet 5**]
 
 The formal definition of the Inverse Laplace Transform is
 
-$$\mathcal{L}^{-1}\left\{ F(s) \right\} = \frac{1}{2\pi j}\int_{\sigma-j\omega}^{\sigma+j\omega} f(t)e^{st}ds$$
+$$\mathcal{L}^{-1}\left\{ F(s) \right\} = \frac{1}{2\pi j}\int_{\sigma-j\omega}^{\sigma+j\omega} F(s)e^{st}ds$$
 
 but this is difficult to use in practice because it requires contour integration using complex variable theory.
 
