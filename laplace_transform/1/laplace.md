@@ -186,7 +186,7 @@ $$\lim_{t\to 0} \frac{f(t)}{t}$$
 
 exists
 
-$$\frac{f(t)}{t}\Leftrightarrow \int_s^\infty F(s)ds$$
+$$\frac{f(t)}{t}\Leftrightarrow \int_s^\infty F(\sigma)\,d\sigma$$
 
 +++ {"nbpresent": {"id": "9c3efaa7-edf9-42e1-b35d-302a88719f7b"}, "slideshow": {"slide_type": "subslide"}}
 
