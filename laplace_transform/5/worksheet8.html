@@ -1020,6 +1020,13 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#summary-of-result">
      Summary of result
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#matlab-solution">
+       MATLAB Solution
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-3">
@@ -1243,6 +1250,13 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#summary-of-result">
      Summary of result
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#matlab-solution">
+       MATLAB Solution
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-3">
@@ -1517,7 +1531,7 @@ title="Print to PDF"
 </div>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">cd</span> <span class="o">../</span><span class="n">matlab</span><span class="o">/</span><span class="n">convolution_demo</span>
 <span class="n">convolutiondemo</span> <span class="o">%</span> <span class="n">ignore</span> <span class="n">warnings</span>
 </pre></div>
 </div>
@@ -1568,6 +1582,23 @@ title="Print to PDF"
 <li><p>For <span class="math notranslate nohighlight">\(1 &lt; t \le 2\)</span>: <span class="math notranslate nohighlight">\(h*u = \int_{t-1}^1(-\tau + 1)d\tau = \left.\tau - \tau^2/2\right|_{t-1}^{1} = t^2/2-2t+2\)</span></p></li>
 <li><p>For <span class="math notranslate nohighlight">\(2 \le t\)</span>: <span class="math notranslate nohighlight">\(u(t-\tau)h(\tau) = 0\)</span></p></li>
 </ol>
+<section id="matlab-solution">
+<h4>MATLAB Solution<a class="headerlink" href="#matlab-solution" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span> <span class="n">t</span> <span class="n">tau</span>
+<span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">g</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="n">t</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">int</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">tau</span><span class="p">)</span><span class="o">*</span><span class="n">g</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">tau</span><span class="p">),</span><span class="n">tau</span><span class="p">,</span><span class="o">-</span><span class="n">inf</span><span class="p">,</span><span class="n">inf</span><span class="p">)</span>
+
+<span class="n">fplot</span><span class="p">(</span><span class="n">ans</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="example-3">
 <h3>Example 3<a class="headerlink" href="#example-3" title="Permalink to this headline">#</a></h3>

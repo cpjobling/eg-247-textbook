@@ -341,7 +341,7 @@ slideshow:
   slide_type: subslide
 tags: [remove-output]
 ---
-ls
+% cd ../matlab/convolution_demo
 convolutiondemo % ignore warnings
 ```
 
@@ -410,6 +410,25 @@ The signal $h(t)$ is the straight line $f(t)=-t+1$ but this is defined only betw
 3. For $0 < t \le 1$: $h*u = \int_0^t (1)(-\tau + 1)d\tau = \left.\tau - \tau^2/2\right|_0^t = t-t^2/2$
 4. For $1 < t \le 2$: $h*u = \int_{t-1}^1(-\tau + 1)d\tau = \left.\tau - \tau^2/2\right|_{t-1}^{1} = t^2/2-2t+2$
 5. For $2 \le t$: $u(t-\tau)h(\tau) = 0$
+
++++
+
+#### MATLAB Solution
+
+```{code-cell}
+---
+slideshow:
+  slide_type: slide
+---
+syms t tau
+u0(t) = heaviside(t)
+f(t) = u0(t)-u0(t-1)
+g(t) = f(t)*(-t + 1)
+
+int(f(tau)*g(t-tau),tau,-inf,inf)
+
+fplot(ans)
+```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
