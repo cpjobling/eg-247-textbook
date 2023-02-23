@@ -74,7 +74,7 @@ Save and upload the resulting modified script as a Live Script file ``laplace_la
 
 ### Lab Exercise 3: Inverse Laplace Transforms
 
-Use file save as to download the script [ilaplace_lab.m](https://cpjobling.github.io/eg-247-textbook/labs/lab02/ilaplace_lab.m). Open the script as a Live Script and use the Matlab ``laplace``, ``ilaplace`` and ``ezplot`` functions as appropriate to complete the examples given in the comments in the script.
+Use file save as to download the script [ilaplace_lab.m](https://cpjobling.github.io/eg-247-textbook/labs/lab02/ilaplace_lab.m). Open the script as a Live Script and use the Matlab ``laplace``, ``ilaplace`` and ``fplot`` functions as appropriate to complete the examples given in the comments in the script.
 
 Save and attach the resulting modified script as a Live Script file ``ilaplace_lab.mlx`` to the **Lab 2: Laplace and inverse Laplace transforms** assignment in Canvas.
 

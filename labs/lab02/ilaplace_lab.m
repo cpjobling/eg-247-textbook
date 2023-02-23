@@ -127,7 +127,7 @@ Ds = conv(d1,d2); % Polynomial multiplication: gives expanded D(s)
 %% Problem 10
 % use the function |collect| to expand |(s + 1)^3 * (s + 2)^2| to
 % a polynomial. Use this result and |residue| to verify the result of
-% Problem 1.
+% Problem 9.
 %% Non-proper rational polynomials
 %% Problem 11
 % Compute and (if possible) plot the Inverse Laplace Transform of

@@ -35,15 +35,20 @@ The purpose of this laboratory is to explore the use of MATLAB for circuit analy
 
 It also encourages you to make full use of the documentation features afforded by the Live Script format.
 
-
+<!-- #region -->
 ## Assessment criteria
 
 Marks can be claimed according to how many of the parts of Lab Exercises 4 to 6 and Mini-project 2 and have been completed.
 
+You can take nadvantage of a number of MATLAB Graded assessments that will provide guidance and feedback enabling you to complete exercises 4, 5 and 6. See [Using MATLAB Grader for Lab 3](https://canvas.swansea.ac.uk/courses/36921/pages/using-matlab-grader-for-lab-3?module_item_id=1964755) for details. 
+
+The mini project should be completed with a Live Script and a Simulink file.
+
 Your peer assessor is encouraged to give feedback on the quality of the Live Script documentation you include in your submissions.
 
-Detailed marking criteria for this and the other labs and the project are given in the linked [Assessment Criteria](https://docs.google.com/spreadsheets/d/1m5ttr8WNoXa_yhXRESI4f7fKKmhK9HsTJjRViqP4i2o/edit?usp=sharing) [Google sheet].
 
+Detailed marking criteria for this and the other labs and the project are given in the linked [Assessment Criteria](https://docs.google.com/spreadsheets/d/1m5ttr8WNoXa_yhXRESI4f7fKKmhK9HsTJjRViqP4i2o/edit?usp=sharing) [Google sheet].
+<!-- #endregion -->
 
 ## Setup
 
