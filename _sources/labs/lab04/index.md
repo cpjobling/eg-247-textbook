@@ -37,7 +37,7 @@ In this lab you will:
 * Explore convolution with the aid of an interactive MATLAB "app"
 * Use the `int` and `heaviside` functions from the **Symbolic Toolbox** to perform symbolic computation of convolution integrals.
 * Use `laplace` and `ilaplace` to solve convolution problems.
-* Use `ezplot` to plot symbolic functions.
+* Use `fplot` to plot symbolic functions.
 
 
 ## Assessment criteria
@@ -121,7 +121,7 @@ Note, Parts 2 to 5 should be done in the same Live Script file as the provided P
 In this lab exercise we will demonstrate that time-convolution of a system response can be solved in the complex frequency domain using Laplace and Inverse Laplace transforms.
 
 * Use the inverse Laplace transform function `ilaplace` to solve the step response of the RC circuit given in exercise 7 Part 4 without convolution. You will need the Laplace transform of the circuit's impulse response $h(t)$ and the unit step $u_0(t)$ (MATLAB `heaviside`).
-* Plot the result using `ezplot`
+* Plot the result using `fplot`
 * Confirm the result with a Simulink simulation
 
 
