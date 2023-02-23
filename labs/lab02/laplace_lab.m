@@ -97,7 +97,7 @@ laplace(exp(-a*t)*u0(t))
 % = 1, +1 at t = 2, and returns to 0 at t = 3. Calculate the Laplace Transform 
 % of the waveform.
 %% Problem 7
-% Give the laplace transform of the waveform in Problem 5 assuming that it repeats 
+% Give the laplace transform of the waveform in Problem 6 assuming that it repeats 
 % every 3 seconds. 
 % 
 % _Hint_: 
