@@ -282,7 +282,8 @@ As an example let's take a square wave with amplitude $\pm A$ and period $T$.
 
 ### Solution
 
-Solution: See [square_ftrig.mlx](https://cpjobling.github.io/eg-247-textbook/fourier_series/matlab/square_ftrig.mlx). Script confirms that:
+Solution: See [square_ftrig.mlx](https://cpjobling.github.io/eg-247-t
+extbook/fourier_series/matlab/square_ftrig.mlx). Script confirms that:
 
 * $a_0 = 0$
 * $a_i = 0$: function is odd

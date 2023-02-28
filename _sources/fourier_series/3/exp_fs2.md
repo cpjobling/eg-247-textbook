@@ -309,7 +309,7 @@ $\Omega_0 = 1$ rad/s; $w = 5$; $T = 2\pi$ s; $T/w = \pi$ s.
 ```{code-cell}
 A = 1; w = 5; [f,omega] = pulse_fs(A,w,15);
 stem(omega,f)
-title('Line Spectra for pulse with w=2')
+title('Line Spectra for pulse with w=5')
 hold on
 om = linspace(-15,15,1000);
 xlabel('\Omega_0 [rad/s]')
@@ -445,7 +445,7 @@ The line spectrum of a sequence of unit impulses $\delta(t \pm kT)$ is shown bel
 
 #### Another Interesting Result
 
-Consider the pulse train agin:
+Consider the pulse train again:
 
 <img src="pictures/pulse_train.png">
 
@@ -621,7 +621,7 @@ $$H(s)=\int_{-\infty}^{\infty}h(\tau)e^{-s\tau}\,d\tau.$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-In particular, for $s = j\omega$, the output is simply $y(t)=H(j\omega)e^{j\omega t}$.
+In particular, for $s = j\omega$, the output is simply $y(j\omega t)=H(j\omega)e^{j\omega t}$.
 
 The complex functions $H(s)$ and $H(j\omega)$ are called the system's *transfer function* and *frequency response*, respectively.
 
