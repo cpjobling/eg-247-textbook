@@ -22,7 +22,7 @@ doc heaviside
 
 syms t;
 heaviside(t);
-ezplot(ans,[-1,1]),grid
+fplot(ans,[-1,1]),grid
 %% 
 % If we are only interested in the value of the function at a particular instant 
 % of time we can pass a number as the argument:
@@ -35,10 +35,10 @@ ezplot(ans,[-1,1]),grid
 
 A = 2; T = 2;
 v1 = A * heaviside(t - T);
-ezplot(v1, [-1, 4]), grid
+fplot(v1, [-1, 4]), grid
 %% Part 1
 % To validate Figure 1.8 in the textbook Karris (2012, page 1-4) use the |heaviside| 
-% and |ezplot| functions to plot each of the following:
+% and |fplot| functions to plot each of the following:
 %% 
 % # $-Au_0(t)$
 % # $-Au_0(t-T)$
@@ -50,10 +50,10 @@ ezplot(v1, [-1, 4]), grid
 % # $-Au_0(-t+T)$
 % # $-Au_0(-t-T)$
 %% Part 2
-% Use the |heaviside| and |ezplot| functionshow that $u_0(t) - u_0(t - 1)$ represents 
+% Use the |heaviside| and |fplot| functionshow that $u_0(t) - u_0(t - 1)$ represents 
 % the rectangular pulse shown in Figure 1.9 (a) in the textbook (Karris 2012).
 %% Part 3
-% Use the |heaviside| and |ezplot| functions to validate equations 1.13, 1.14, 
+% Use the |heaviside| and |fplot| functions to validate equations 1.13, 1.14, 
 % 1.17 and 1.18 in the textbook (Karris 2012).
 %% The Ramp Function
 % The integral of the *unit step* function is the *ramp function*
@@ -72,10 +72,10 @@ u1(t)= int(heaviside(tau),-inf, t)
 %% 
 % Plot the ramp function
 
-ezplot(u1(t), [-1,5]), grid
+fplot(u1(t), [-1,5]), grid
 title('u_1(t)')
 %% Part 4
-% Use |ezplot| to plot $u_2(t)$ and $u_3(t)$ as defined on Page 1-10 of the 
+% Use |fplot| to plot $u_2(t)$ and $u_3(t)$ as defined on Page 1-10 of the 
 % textbook (Karris, 2012).
 % 
 % From the definitions
@@ -86,7 +86,7 @@ title('u_1(t)')
 
 u2(t)= 2*int(u1(tau),-inf, t)
 %% 
-% This returns a "case" statement which can't be plotted with |ezplot|. 
+% This returns a "case" statement which can't be plotted with |fplot|. 
 % 
 % *Note*_: 
 % 
@@ -99,10 +99,10 @@ u2(t)= 2*int(u1(tau),-inf, t)
 %% 
 % and plot with zero origin
 
-ezplot(ans, [0,5]), title('u_2(t)'), grid
+fplot(ans, [0,5]), title('u_2(t)'), grid
 %% 
 % Alternatively, you can use the function |fplot| which is going to replace  
-% |ezplot| in the future. This is able to correctly plot the _piecewise continuous_ 
+% |fplot| in the future. This is able to correctly plot the _piecewise continuous_ 
 % function returned in the original computation.
 
  fplot(u2(t),[-1,5]), title('u_2(t) plotted with fplot'), grid

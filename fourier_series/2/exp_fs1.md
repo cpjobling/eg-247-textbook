@@ -566,7 +566,7 @@ ylabel('\angle c_k [radians]');
 * When $\omega t = 3\pi/2$: $e^{j\omega t} = e^{j3\pi/2} = -j$
 * When $\omega t = 2\pi$: $e^{j\omega t} = e^{j2\pi} = e^{j0}= 1$
 
-It is also worth being aware that $n\omega t$, when $n$ is an integer, produces rotations that often map back to the simpler cases given above. For example see $e^{j2\pi}$ above.
+It is also worth being aware that $n\omega t$, when $n$ is an integer, produces rotations that map back to the simpler cases given above. For example see $e^{j2\pi}$ above.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 

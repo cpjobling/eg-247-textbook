@@ -46,10 +46,10 @@ syms t s
 Fs = 4/(s + 2) - 2/(s + 1)
 %%
 % As the function is symbolic, we can use |ilaplace| to find the inverse transform
-% and |ezplot| to plot it
+% and |fplot| to plot it
 syms s t;
 ft = ilaplace(Fs)
-ezplot(ft,[0,4.5])
+fplot(ft,[0,4.5])
 %% Plotting Inverse Laplace Transforms
 % If we have the function in time domain we can plot it using a sequence like:
 t = linspace(0,4.5,1000);
@@ -65,7 +65,7 @@ doc ilaplace
 %
 Fs = (3*s + 2)/(s^2 + 3*s + 2);
 ft = ilaplace(Fs)
-ezplot(ft,[0,4.5])
+fplot(ft,[0,4.5])
 %% Factorising higher-order polynomials
 % When computing Inverse Laplace Transforms of rational polynomials
 % of order 3 or higher by hand, it is useful to be able to factorize the
@@ -103,7 +103,7 @@ roots([1, 4, 8])
 %% |ilaplace| can cope with complex roots too!
 Fs3 = (s + 3)/(s^3 + 5*s^2 + 12*s + 8);
 ft3 = ilaplace(Fs3)
-ezplot(ft3,[0,5])
+fplot(ft3,[0,5])
 %% Repeated Roots? - no problem!
 %
 % Find the inverse Laplace Transform of
@@ -111,7 +111,7 @@ ezplot(ft3,[0,5])
 % $$F_4(s) = \frac{s + 3}{(s + 2)^(s + 1)^2}$$
 Fs4 = (s + 3)/((s + 2)*(s + 1)^2);
 ft4=ilaplace(Fs4)
-ezplot(ft4,[0,10])
+fplot(ft4,[0,10])
 %% 
 % Check this result
 Ns = [1, 3]; % Numerator
