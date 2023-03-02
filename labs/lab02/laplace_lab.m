@@ -3,8 +3,8 @@
 % Simulink Modelling, 5th Edition, Orchard Publications, 2012. Ebook: <http://site.ebrary.com/lib/swansea/docDetail.action?docID=10547416 
 % Karris, Signals and Systems>
 %% The Laplace Transform
-% When the < <http://uk.mathworks.com/products/symbolic/Symbolic http://uk.mathworks.com/products/symbolic/Symbolic> 
-% Toolbox> is installed, MATLAB is able to compute *Laplace transforms* using 
+% When the <http://uk.mathworks.com/products/symbolic/Symbolic Symbolic
+% Math Toolbox> is installed, MATLAB is able to compute *Laplace transforms* using 
 % the |laplace| function.
 % 
 % In this lab exercise we will demonstrate the use of the |laplace| function 
@@ -12,67 +12,68 @@
 % tables and properties of the Laplace Transform. We will then use the |laplace| 
 % function to find the Laplace transform of some typical elementary signals. We 
 % will conclude this exercise by using the laplace function to solve a selection 
-% of problems from  <% Please note that all citations of the "textbook" refer to 
-% <https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=26 Chapter 2 of Karris (2012)> 
-% which is accessible by following the link. 
- 
-% Chapter 2 of the textbook>.
+% of problems from Chapter 2 of the textbook.
 % 
+% Please note that all citations of "the textbook" refer to Chapter 2 of Karris 
+% (2012) which is accessible by following <https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=43 
+% the link>. 
+%% 
 % This next command opens the documentation for the |laplace| function. You 
 % may wish to leave this open for consulation as you work through these exercises.
+
 clearvars
 doc laplace
 %% Tranform Tables
 % Let's start our exploration by verifying some simple transforms from the tables
-%%
+
 syms s t f(t) a b n omega;
 %% 
 % Dirac Delta
 % 
 % $$\delta(t)$$
-%%
+
 delta(t) = dirac(t);
 laplace(delta(t))
 %% 
 % Unit Step
 % 
 % $$u_0(t)$$
-%%
+
 u0(t) = heaviside(t);
 laplace(u0(t))
 %% Unit Ramp
 % $$u_1(t)$$
-%%
+
 u1(t) = t*u0(t);
 laplace(u1(t))
 %% Parabolic function
 % $$u_2(t)$$
-%%
+
 u2(t) = t^2*u0(t);
 laplace(u2(t))
 %% General power of t
 % $$u_n(t)$$
-%%
+
 un(t) = (t^n)*u0(t);
 laplace(un(t))
 %% What is gamma?
 % See the development in Section 2.3.3 of the textbook
 % 
 % $$\Gamma (n + 1) = n!$$
-%%
+
 factorial(5) == gamma(5 + 1) % In MATLAB 1 == TRUE
 %%
 laplace((t^5)*u0(t))
 %% Delayed delta
 % $$\delta(t - a)$$
-%%
+
 laplace(delta(t-a))
 %% Problem 1
-% Use MATLAB to find the laplace transforms of |exp(-a*t)*u0(t)|, |t*exp(a*t)|, 
+% Use MATLAB to find the laplace transforms of |exp(-a*t)*u0(t)|, |t*exp(a*t)|,  
 % |t^3*exp(b*t)*u0(t)|, |cos(b*t)*u0(t)|, |sin(b*t)*u0(t)|
 % 
 % Here's the first example done for you
-%%
+
 laplace(exp(-a*t)*u0(t))
 % Now do the other four!
 %% Problem 2
@@ -82,7 +83,7 @@ laplace(exp(-a*t)*u0(t))
 % and |exp(-a*t)*cos(omega*t)*u0(t)|
 %% Proble 4 - Laplace Transform Properties
 % Give examples to prove each of the following:
-% 
+%% 
 % # The Linearity Property
 % # The Time Shifting Property (use |syms T positive| to give Matlab a hint!)
 % # The Frequency Shifting Property 
@@ -97,10 +98,10 @@ laplace(exp(-a*t)*u0(t))
 % = 1, +1 at t = 2, and returns to 0 at t = 3. Calculate the Laplace Transform 
 % of the waveform.
 %% Problem 7
-% Give the laplace transform of the waveform in Problem 6 assuming that it repeats 
+% Give the laplace transform of the waveform in Problem 5 assuming that it repeats 
 % every 3 seconds. 
 % 
-% _Hint_: 
+% _Hint_: use the periodicity property 
 % 
 % $$f(t-nT)\Leftrightarrow \frac{\int_{0}^{T}\,f(t)e^{-st}\,dt}{1-e^{-sT}}$$
 %% Problem 8
