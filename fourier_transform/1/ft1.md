@@ -719,4 +719,4 @@ $$e^{ - t}{u_0}(t)\Leftrightarrow \frac{1}{j\omega  + 1}$$
 
 Use the Energy-Density function.
 
-$$E_{[10,000\pi,20,000\pi]}^r=\frac{1}{2\pi}\left[\int_{10,000\pi}^{20,000\pi}|X(j\omega)|^2\,d\omega + \frac{1}{2\pi}\int_{-20,000\pi}^{-10,000\pi}|X(j\omega)|^2\,d\omega\right] = \frac{1}{\pi}\int_{10,000\pi}^{20,000\pi}|X(j\omega)|^2\,d\omega.$$
+$$E_{[10,000\pi,20,000\pi]}^r=\frac{1}{2\pi}\left[\int_{10,000\pi}^{20,000\pi}|X(j\omega)|^2\,d\omega + \int_{-20,000\pi}^{-10,000\pi}|X(j\omega)|^2\,d\omega\right] = \frac{1}{\pi}\int_{10,000\pi}^{20,000\pi}|X(j\omega)|^2\,d\omega.$$
