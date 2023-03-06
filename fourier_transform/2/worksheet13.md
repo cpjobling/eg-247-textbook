@@ -102,7 +102,7 @@ $$\delta(t) \Leftrightarrow 1$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-*Matlab*:
+*MATLAB*:
 
 ```{code-cell}
 ---
@@ -138,7 +138,7 @@ $$1 \Leftrightarrow 2\pi\delta(\omega)$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-*Matlab*:
+*MATLAB*:
 
 ```{code-cell}
 ---
@@ -167,7 +167,7 @@ Note: $f(t)$ is real and even. $F(\omega)$ is also real and even.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-*Matlab*:
+*MATLAB*:
 
 ```{code-cell}
 ---
@@ -191,7 +191,7 @@ Note: $f(t)$ is real and odd. $F(\omega)$ is imaginary and odd.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-*Matlab*:
+*MATLAB*:
 
 ```{code-cell}
 ---
@@ -208,14 +208,14 @@ fourier(sin(omega_0*t),omega)
 The signum function is a function whose value is equal to
 
 $$\operatorname{sgn} t = \left\{ {\begin{array}{*{20}{c}}
-  { - 1\;t < 1} \\ 
+  { - 1\;t < 0} \\ 
   {0\;x = 0} \\ 
   { + 1\;t > 0} 
 \end{array}} \right.$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-*Matlab*:
+*MATLAB*:
 
 ```{code-cell}
 ---
@@ -278,25 +278,9 @@ $$\operatorname{sgn} t = 2 u_0(t) - 1$$
 
 </pre>
 
-+++ {"slideshow": {"slide_type": "notes"}}
-
-#### Proof
-
-$$\operatorname{sgn} t = 2u_0(t) - 1$$
-
-so
-
-$$u_0(t) = \frac{1}{2} + \frac{ \operatorname{sgn} t}{2}$$
-
-From previous results $1\Leftrightarrow 2\pi\delta(\omega)$ and $\operatorname{sgn} x = 2/(j\omega)$ so by linearity
-
-$$u_0(t) \Leftrightarrow \pi\delta(\omega)+\frac{1}{j\omega}$$
-
-*QED*
-
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-*Matlab*:
+*MATLAB*:
 
 ```{code-cell}
 ---
@@ -344,7 +328,7 @@ Use the results derived so far to show that
 
 $$\sin \omega_0 t\; u_0(t)\Leftrightarrow \frac{\pi}{j2}\left[\delta(\omega-\omega_0)-\delta(\omega+\omega_0)\right] + \frac{\omega_0}{\omega_0^2 - \omega^2}$$
 
-Hint: Euler's formula plus solution to example 2.
+Hint: Euler's formula plus solution to example 5.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 

@@ -384,9 +384,7 @@ We shall conclude this session by computing as many of the the Fourier transform
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-I will not provide notes for these, but you will find more details in Chapter 8 of Karris and Chapter 5 of Boulet and 
-
-I have created some worked examples (see Blackboard and the OneNote notebook) to help with revision.
+I will not provide notes for these, but you will find more details in Chapter 8 of Karris and Chapter 5 of Boulet and I have created some worked examples (see Canvas and the OneNote notebook) to help with revision.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
