@@ -208,7 +208,7 @@ fourier(sin(omega_0*t),omega)
 The signum function is a function whose value is equal to
 
 $$\operatorname{sgn} t = \left\{ {\begin{array}{*{20}{c}}
-  { - 1\;t < 1} \\ 
+  { - 1\;t < 0} \\ 
   {0\;x = 0} \\ 
   { + 1\;t > 0} 
 \end{array}} \right.$$
