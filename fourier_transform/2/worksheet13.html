@@ -950,11 +950,6 @@ title="Print to PDF"
        Clue
       </a>
      </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#proof">
-       Proof
-      </a>
-     </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -1092,11 +1087,6 @@ title="Print to PDF"
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#clue">
        Clue
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#proof">
-       Proof
       </a>
      </li>
     </ul>
@@ -1278,7 +1268,7 @@ title="Print to PDF"
 \[\delta(t) \Leftrightarrow 1\]</div>
 <p><img alt="Fourier transform of the Dirac delta" src="../../_images/ft_delta.png" /></p>
 <p><em>Proof</em>: uses sampling and sifting properties of <span class="math notranslate nohighlight">\(\delta(t)\)</span>.</p>
-<p><em>Matlab</em>:</p>
+<p><em>MATLAB</em>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span> <span class="n">t</span> <span class="n">omega</span> <span class="n">omega_0</span> <span class="n">t0</span><span class="p">;</span>
@@ -1304,7 +1294,7 @@ title="Print to PDF"
 <div class="math notranslate nohighlight">
 \[1 \Leftrightarrow 2\pi\delta(\omega)\]</div>
 <p><img alt="Fourier transform of a constant (model of DC)" src="../../_images/ft_dc.png" /></p>
-<p><em>Matlab</em>:</p>
+<p><em>MATLAB</em>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">sym</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="o">%</span> <span class="n">take</span> <span class="n">one</span> <span class="n">to</span> <span class="n">be</span> <span class="n">a</span> <span class="n">symbol</span>
@@ -1323,7 +1313,7 @@ title="Print to PDF"
 \[\cos(t) = \frac{1}{2}\left(e^{j\omega_0 t}+e^{-j\omega_0 t}\right) \Leftrightarrow \pi\delta(\omega - \omega_0) + \pi\delta(\omega + \omega_0)\]</div>
 <p><img alt="Fourier transform of a cosine signal" src="../../_images/ft_cos.png" /></p>
 <p>Note: <span class="math notranslate nohighlight">\(f(t)\)</span> is real and even. <span class="math notranslate nohighlight">\(F(\omega)\)</span> is also real and even.</p>
-<p><em>Matlab</em>:</p>
+<p><em>MATLAB</em>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fourier</span><span class="p">(</span><span class="n">cos</span><span class="p">(</span><span class="n">omega_0</span><span class="o">*</span><span class="n">t</span><span class="p">),</span><span class="n">omega</span><span class="p">)</span>
@@ -1338,7 +1328,7 @@ title="Print to PDF"
 \[\sin(t) = \frac{1}{j2}\left(e^{j\omega_0 t}-e^{-j\omega_0 t}\right) \Leftrightarrow -j\pi\delta(\omega - \omega_0) + j\pi\delta(\omega + \omega_0)\]</div>
 <p><img alt="Fourier transform of a sinewave signal" src="../../_images/ft_sin.png" /></p>
 <p>Note: <span class="math notranslate nohighlight">\(f(t)\)</span> is real and odd. <span class="math notranslate nohighlight">\(F(\omega)\)</span> is imaginary and odd.</p>
-<p><em>Matlab</em>:</p>
+<p><em>MATLAB</em>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fourier</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">omega_0</span><span class="o">*</span><span class="n">t</span><span class="p">),</span><span class="n">omega</span><span class="p">)</span>
@@ -1356,7 +1346,7 @@ title="Print to PDF"
   {0\;x = 0} \\ 
   { + 1\;t &gt; 0} 
 \end{array}} \right.\end{split}\]</div>
-<p><em>Matlab</em>:</p>
+<p><em>MATLAB</em>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fourier</span><span class="p">(</span><span class="n">sign</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">omega</span><span class="p">)</span>
@@ -1400,19 +1390,7 @@ title="Print to PDF"
 
 
 
-</pre></section>
-<section id="proof">
-<h4>Proof<a class="headerlink" href="#proof" title="Permalink to this headline">#</a></h4>
-<div class="math notranslate nohighlight">
-\[\operatorname{sgn} t = 2u_0(t) - 1\]</div>
-<p>so</p>
-<div class="math notranslate nohighlight">
-\[u_0(t) = \frac{1}{2} + \frac{ \operatorname{sgn} t}{2}\]</div>
-<p>From previous results <span class="math notranslate nohighlight">\(1\Leftrightarrow 2\pi\delta(\omega)\)</span> and <span class="math notranslate nohighlight">\(\operatorname{sgn} x = 2/(j\omega)\)</span> so by linearity</p>
-<div class="math notranslate nohighlight">
-\[u_0(t) \Leftrightarrow \pi\delta(\omega)+\frac{1}{j\omega}\]</div>
-<p><em>QED</em></p>
-<p><em>Matlab</em>:</p>
+</pre><p><em>MATLAB</em>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fourier</span><span class="p">(</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">omega</span><span class="p">)</span>
@@ -1450,7 +1428,7 @@ title="Print to PDF"
 <p>Use the results derived so far to show that</p>
 <div class="math notranslate nohighlight">
 \[\sin \omega_0 t\; u_0(t)\Leftrightarrow \frac{\pi}{j2}\left[\delta(\omega-\omega_0)-\delta(\omega+\omega_0)\right] + \frac{\omega_0}{\omega_0^2 - \omega^2}\]</div>
-<p>Hint: Euler’s formula plus solution to example 2.</p>
+<p>Hint: Euler’s formula plus solution to example 5.</p>
 <p><strong>Important note</strong>: the equivalent example in Karris (Section 8.4.9 Eq. 8.75 pp 8-23—8-24) is wrong!</p>
 <p>See worked solution in OneNote for corrected proof.</p>
 <pre style="border: 2px solid blue">

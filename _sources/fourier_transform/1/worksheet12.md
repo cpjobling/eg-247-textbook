@@ -64,7 +64,7 @@ If we instead take a time point-of-view and let $A = 1$
 
 $$C_k = \frac{1}{T}\int_{-t_0}^{t_0} e^{-jk\Omega_0 t}\,dt.$$
 
-Let's complete the analysis in the whiteboard.
+Let's complete the analysis on the virtual whiteboard.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -215,13 +215,13 @@ Run duty_cycle with values of:
 * An aperiodic signal that has been made periodic by "repeating" its graph every $T$ seconds will have a line spectrum that becomes more and more dense as the fundamental period is made longer and longer.
 * The line spectrum has the same continuous envelope.
 * As $T$ goes to infinity, the line spectrum will become a continuous function of $\omega$.
-* The *envelope* is this function.
+* The *envelope* is the function that represents the Fourier transform.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ### Doing the Maths
 
-See the [notes](ft1).
+See the [notes](ft1) **Not Examiminable**.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -319,7 +319,7 @@ Compute the result of multiplying a signal $f(t)$ by a carrier waveform $\cos \o
 
 ### Example 2: Impulse response
 
-A system has impulse response $f(t) = e^{-t}u_0(t)$. Compute the frequency sprectrum of this system.
+A system has impulse response $h(t) = e^{-t}u_0(t)$. Compute the frequency sprectrum $H(j\omega)$ of this system.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -371,7 +371,7 @@ An aperiodic real signal $f(t)$ has Fourier transform $F(j\omega)$. Compute the 
 
 ## Computing Fourier Transforms in Matlab
 
-MATLAB has the built-in **fourier** and **ifourier** functions that can be used to compute the Fourier transform and its inverse. We will explore some of thes in the next lab.
+MATLAB has the built-in **fourier** and **ifourier** functions that can be used to compute the Fourier transform and its inverse. We will explore some of these in the next class.
 
 For now, here's an example:
 
@@ -379,7 +379,7 @@ For now, here's an example:
 
 ### Example
 
-Use Matlab to confirm the Fourier transform pair:
+Use MATLAB to confirm the Fourier transform pair:
     
 $$e^{-\frac{1}{2}t^2}\Leftrightarrow \sqrt{2\pi}e^{-\frac{1}{2}\omega^2}$$
 
