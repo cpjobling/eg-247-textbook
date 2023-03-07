@@ -471,4 +471,8 @@ See [Bibliography](/zbib).
 
 4. $$f_R(t)\Leftrightarrow \frac{A\tanh \left(\frac{As}{2}\right)}{s}.$$
 
-5. $$f_{HW}(t) \Leftrightarrow \frac{1}{\left(s^2 + 1\right)\left(1-e^{\pi s}\right)}.$$
+5. $$f_{HW}(t) \Leftrightarrow \frac{1}{\left(s^2 + 1\right)\left(1-e^{-\pi s}\right)}.$$
+
+```{code-cell}
+
+```
