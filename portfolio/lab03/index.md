@@ -243,7 +243,7 @@ You should submit the following to the **Lab 03: Laplace transforms and transfer
 
 The deadline for claims and submission is:
 
-**4:00pm, 6th March 2023**.
+**4:00pm, 13th March 2023**.
 
 
 ## Peer assessment procedure for this lab
