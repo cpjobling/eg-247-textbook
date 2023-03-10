@@ -223,7 +223,7 @@ You should submit the following to the **Lab 05: Fourier series** Assignment on 
 
 ### Deadline
 
-The deadline for claims and submission is **4:00 pm, 20th March 2023**
+The deadline for claims and submission is **4:00 pm, 27th March 2023**
 
 
 ## Optional Additional Tasks: Review and Change the Code.
