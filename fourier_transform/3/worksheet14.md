@@ -157,7 +157,7 @@ Plot result
 <!-- #endregion -->
 
 ```matlab slideshow={"slide_type": "subslide"}
-ezplot(y)
+fplot(y,[0,6])
 title('Solution to Example 1')
 ylabel('y(t)')
 xlabel('t [s]')
@@ -243,7 +243,7 @@ Plot result
 <!-- #endregion -->
 
 ```matlab slideshow={"slide_type": "subslide"}
-ezplot(vout)
+fplot(vout,[0,6])
 title('Solution to Example 2')
 ylabel('v_{out}(t) [V]')
 xlabel('t [s]')
