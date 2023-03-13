@@ -74,7 +74,7 @@ An ideal frequency-selective filter is a system that let's the frequency compone
 
 ### Motivating example
 
-See the video and script on [*Canvas Week 7*](https://canvas.swansea.ac.uk/courses/16097/pages/motivating-example-filter-design-using-matlab?module_item_id=1000013).
+See the video and script on [*Canvas Week 7*](https://canvas.swansea.ac.uk/courses/36921/pages/motivating-example-filter-design-using-matlab?module_item_id=1964845).
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -555,4 +555,4 @@ $$H_{\mathrm{bp}}(\omega) = H_{\mathrm{hp}}(\omega)H_{\mathrm{lp}}(\omega)$$
 
 ## Solutions
 
-Solutions to Examples 5-9 are captured as a PenCast which you will find attached to the Worked Solutions section of the [Week 7 Section](https://canvas.swansea.ac.uk/courses/16097/pages/worked-solutions-to-selected-week-7-problems?module_item_id=939107) of the Canvas course site or here [filters2.pdf](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/filters2.pdf)
+Solutions to Examples 5-9 are captured as a PenCast which you will find attached to the Worked Solutions section of the [Week 7 Section](https://canvas.swansea.ac.uk/courses/36921/pages/worked-solutions-to-selected-week-7-problems?module_item_id=1964855) of the Canvas course site or here [filters2.pdf](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/filters2.pdf)

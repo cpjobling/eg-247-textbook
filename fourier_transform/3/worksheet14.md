@@ -438,5 +438,5 @@ See [ft3_ex4.m](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier
 <!-- #region slideshow={"slide_type": "notes"} -->
 ## Solutions
 
-See Worked Solutions in the [Worked Solutions to Selected Week 6 Problems](https://canvas.swansea.ac.uk/courses/16097/pages/worked-solutions-to-selected-week-6-problems?module_item_id=939087) of the Canvas course site.
+See Worked Solutions in the [Worked Solutions to Selected Week 7 Problems](https://canvas.swansea.ac.uk/courses/36921/pages/worked-solutions-to-selected-week-7-problems?module_item_id=1964855) of the Canvas course site.
 <!-- #endregion -->
