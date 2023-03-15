@@ -6,7 +6,7 @@ jupyter:
       extension: .md
       format_name: markdown
       format_version: '1.3'
-      jupytext_version: 1.14.1
+      jupytext_version: 1.14.4
   kernelspec:
     display_name: Matlab
     language: matlab
@@ -20,7 +20,7 @@ jupyter:
 
 The purpose of this project is to build and test a Simulink model of a single stage peaking filter for a ten-stage graphic equalizer. MATLAB can be employed to design the required filters and then Simulink can be used to simulate the graphic equaliser in real time. Most commercial equalisers use either 1/3 octave or 2/3 octave bandpass filters but to keep this from becoming too large we will employ one octave bandpass filters.
 
-These papers: Bohn and Pennington (1987){cite}`bohn87` and Bohn (2008){cite}`bohn2008` may help to set the scene and have information on how to perform the necessary calculations.
+These papers: {cite:t}`bohn87` and {cite}`bohn2008:t` may help to set the scene and have information on how to perform the necessary calculations.
 
 We will be using peaking filters as described in Mark Wickert's articles: [Signals and Systems Concepts Used to Design an Audio Graphic Equalizer](https://www.dummies.com/education/science/science-engineering/11-signals-and-systems-concepts-used-to-design-an-audio-graphic-equalizer/?keyword=graphic%20equalizer&index=4&isSearch=1) and [How to Characterize the Peaking Filter for an Audio Graphic Equalizer](https://www.dummies.com/education/science/science-engineering/how-to-characterize-the-peaking-filter-for-an-audio-graphic-equalizer/) from the [Engineering for Dummies](https://www.dummies.com/education/science/science-engineering/) resource.
 
@@ -28,7 +28,7 @@ The filter parameters that you will use will be computed based on your student n
 
 We have provided a worksheet for you in the form of a MATLAB Live Script file [graphic_eq.mlx](https://github.com/cpjobling/eg-247-textbook/blob/master/labs/project/graphic_eq.mlx). This worksheet provides full instructions on how to perform the calculations needed to complete the project and a marking scheme which you can use for self assessment. Once you have completed the calculations and answered the questions in the worksheet, you should build the filter in Simulink and test it using the methods similar to those shown in [Conduct Performance Testing on an Audio Graphic Equalizer](https://www.dummies.com/education/science/science-engineering/conduct-performance-testing-on-an-audio-graphic-equalizer/).
 
-You should submit this worksheet and submit it with your claim and the simulink model with test setup by the deadline which is 4:00 pm on 5th April 2022.
+You should submit this worksheet and submit it with your claim and the simulink model with test setup by the deadline which is **4:00 pm on Tuesday 2nd May 2023**.
 
 <!-- #region -->
 ## Assessment criteria
@@ -36,7 +36,7 @@ You should submit this worksheet and submit it with your claim and the simulink 
 The project is worth 25 marks. Marks will be deducted if your submission violates the specification in any way or if I cannot test your submission because the model is incorrect, the gain settings are incorrect, the music file needed is not provided, etc.
 
 
-Detailed marking criteria for this and the other labs and the project are given in the linked [Assessment Criteria](https://docs.google.com/spreadsheets/d/1HsyBZp4h71DuIj2ris1nP52JdWaWiaT6UsOwQKGnwzI/edit?usp=sharing) [Google sheet].
+Detailed marking criteria for this and the other labs and the project are given in the linked [Assessment Criteria](https://docs.google.com/spreadsheets/d/1m5ttr8WNoXa_yhXRESI4f7fKKmhK9HsTJjRViqP4i2o/edit?usp=sharing) [Google sheet].
 <!-- #endregion -->
 
 ## Setup
@@ -94,7 +94,7 @@ You should submit the following to the **Project: A Graphic Equalizer** Assignme
 
 ### Deadline
 
-The deadline for claims and submission is **4:00 PM BST, 5th April 2022**
+The deadline for claims and submission is **4:00 PM BST, Tuesday 2nd May 2023**
 
 
 ## References
