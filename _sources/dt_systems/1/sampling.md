@@ -259,6 +259,7 @@ tmax = 1.5*t0; % plottable range
 We will use a system with an underdamped second-order response.
 
 The transfer function is:
+
 $$H(s) = \frac{\omega_0^2}{s^2 + 2\zeta\omega_0 s + \omega_0^2}$$
 
 ```{code-cell}
@@ -310,7 +311,7 @@ You can generate all the images in this presentation by running the Matlab scrip
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### Calculate and plot the sampled data
+#### Calculate and plot the sampled data|
 
 ```{code-cell}
 ---
@@ -579,6 +580,8 @@ open aliaseg2
 ### Practical application - digital audio
 
 Human beings can hear sounds with frequencies up to around 20 kHz so when recording music in the modern sound studio (or phone or PC for that matter) the audio signal is antialiased with a 22 kHz filter. The signal is then sampled at 44.1 kHz before being stored for later processing and/or playback.
+
+ADCs with 14 bit or higher resolution are used for the sampling operation.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
