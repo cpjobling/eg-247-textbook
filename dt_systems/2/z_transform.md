@@ -185,7 +185,7 @@ a^n&{n = 0,1,2,3, \ldots }
 
 $$F(z) = \sum_{n=0}^{\infty}f[n]z^{-n} = \sum_{n=0}^{\infty}a^n z^{-n} = \sum_{n=0}^{\infty}\left(az^{-1}\right)^n$$
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 After some analysis<sup>1</sup>, this can be shown to have a *closed-form* expression<sup>2</sup>
 
@@ -359,7 +359,7 @@ $$s = \frac{1}{T_s}\ln z$$
 
 ### Mapping of s to z
 
-Since $s$ and $z$ are both complex variables, $z=e^{sT_s}$ is a mapping from the $s$-domain to the $z$-domain and $z = \ln z/T_s$ is a mapping from the $z$ to $s$-domain.
+Since $s$ and $z$ are both complex variables, $z=e^{sT_s}$ is a mapping from the $s$-domain to the $z$-domain and $z = (\ln z)/T_s$ is a mapping from the $z$ to $s$-domain.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
