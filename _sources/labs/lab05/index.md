@@ -156,14 +156,14 @@ Open the script `exp_fseries.m` as a Live Script, run it and examine the results
 
 #### Part 7
 
-Copy the script `exp_fseries.m` and save it as `ex11_1`. Change the copy so that it computes and plots the exponential Fourier series for the square-wave waveform with even symmetry (Section 7.4.1 in the textbook). *Hint*: Use the same definition of f(t) that you used in Exercise 9.
+Copy the script `exp_fseries.m` and save it as `ex11_1`. Change the copy so that it computes and plots the exponential Fourier series for the square-wave waveform with even symmetry (Section 7.4.1 in the textbook). *Hint*: Use the same definition of f(t) that you used in Exercise 9. Repeat with the triangular waveform and save the result as `ex11_2`.
 
 #### Part 8
 
 The Simulink model plots the *Power Spectrum* of the simulated reconstructed signal. To plot the power spectrum of a exponential Fourier series we need to produce a stem plot. Each stem in the power spectrum is computed using $C_k C_k^*$ (see **Parseval's Theorem** in the notes). In MATLAB this would be:
 
 ```matlab
-stem(k,C(k)*conj(C(k)))
+stem(k,Ck_num)*conj(Ck_num)))
 ```
 
 a. Plot the Power Spectrum of the signal from exponential Fourier series coefficients computed in **Part 7**. Compare the computed power spectrum with the simulated power spectrum. *Note*: expect some differences!
@@ -175,7 +175,7 @@ $$P = \sum_{k=-N}^{N}{\left|C_k\right|^2}$$
 MATLAB:
 
 ```matlab
-P = sum(C.*conj(C))
+P = sum(Ck_num.*conj(Ck_num))
 ```
 
 c. Estimate the RMS power in the signal
@@ -186,7 +186,7 @@ $$P_{\mathrm{RMS}} = \sqrt{\sum_{k=-N}^{N}\left|C_k\right|^2}$$
 MATLAB:
 
 ```matlab
-Prms = sqrt(sum(C.*conj(C)))
+Prms = sqrt(sum(Ck_num.*conj(Ck_num)))
 ```
 
 d. Estimate the **Total Harmonic Distortion** in the signal

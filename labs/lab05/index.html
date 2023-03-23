@@ -1315,12 +1315,12 @@ Right-click on the Blue Button labelled <strong>FourierSeriesDemo</strong> and s
 </section>
 <section id="part-7">
 <h4>Part 7<a class="headerlink" href="#part-7" title="Permalink to this headline">#</a></h4>
-<p>Copy the script <code class="docutils literal notranslate"><span class="pre">exp_fseries.m</span></code> and save it as <code class="docutils literal notranslate"><span class="pre">ex11_1</span></code>. Change the copy so that it computes and plots the exponential Fourier series for the square-wave waveform with even symmetry (Section 7.4.1 in the textbook). <em>Hint</em>: Use the same definition of f(t) that you used in Exercise 9.</p>
+<p>Copy the script <code class="docutils literal notranslate"><span class="pre">exp_fseries.m</span></code> and save it as <code class="docutils literal notranslate"><span class="pre">ex11_1</span></code>. Change the copy so that it computes and plots the exponential Fourier series for the square-wave waveform with even symmetry (Section 7.4.1 in the textbook). <em>Hint</em>: Use the same definition of f(t) that you used in Exercise 9. Repeat with the triangular waveform and save the result as <code class="docutils literal notranslate"><span class="pre">ex11_2</span></code>.</p>
 </section>
 <section id="part-8">
 <h4>Part 8<a class="headerlink" href="#part-8" title="Permalink to this headline">#</a></h4>
 <p>The Simulink model plots the <em>Power Spectrum</em> of the simulated reconstructed signal. To plot the power spectrum of a exponential Fourier series we need to produce a stem plot. Each stem in the power spectrum is computed using <span class="math notranslate nohighlight">\(C_k C_k^*\)</span> (see <strong>Parseval’s Theorem</strong> in the notes). In MATLAB this would be:</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">stem</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">C</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">*</span><span class="nb">conj</span><span class="p">(</span><span class="n">C</span><span class="p">(</span><span class="n">k</span><span class="p">)))</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">stem</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">Ck_num</span><span class="p">)</span><span class="o">*</span><span class="nb">conj</span><span class="p">(</span><span class="n">Ck_num</span><span class="p">)))</span><span class="w"></span>
 </pre></div>
 </div>
 <p>a. Plot the Power Spectrum of the signal from exponential Fourier series coefficients computed in <strong>Part 7</strong>. Compare the computed power spectrum with the simulated power spectrum. <em>Note</em>: expect some differences!</p>
@@ -1328,14 +1328,14 @@ Right-click on the Blue Button labelled <strong>FourierSeriesDemo</strong> and s
 <div class="math notranslate nohighlight">
 \[P = \sum_{k=-N}^{N}{\left|C_k\right|^2}\]</div>
 <p>MATLAB:</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">P</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sum</span><span class="p">(</span><span class="n">C</span><span class="o">.*</span><span class="nb">conj</span><span class="p">(</span><span class="n">C</span><span class="p">))</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">P</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sum</span><span class="p">(</span><span class="n">Ck_num</span><span class="o">.*</span><span class="nb">conj</span><span class="p">(</span><span class="n">Ck_num</span><span class="p">))</span><span class="w"></span>
 </pre></div>
 </div>
 <p>c. Estimate the RMS power in the signal</p>
 <div class="math notranslate nohighlight">
 \[P_{\mathrm{RMS}} = \sqrt{\sum_{k=-N}^{N}\left|C_k\right|^2}\]</div>
 <p>MATLAB:</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Prms</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">C</span><span class="o">.*</span><span class="nb">conj</span><span class="p">(</span><span class="n">C</span><span class="p">)))</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Prms</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">Ck_num</span><span class="o">.*</span><span class="nb">conj</span><span class="p">(</span><span class="n">Ck_num</span><span class="p">)))</span><span class="w"></span>
 </pre></div>
 </div>
 <p>d. Estimate the <strong>Total Harmonic Distortion</strong> in the signal</p>
