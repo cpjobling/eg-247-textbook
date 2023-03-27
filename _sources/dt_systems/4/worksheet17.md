@@ -118,7 +118,7 @@ $$H(z) = \frac{Y(z)}{U(z)} = ...?$$
 
 Start with:
 
-$$\frac{H(z)}{z} = \frac{z + 1}{z^2 + 0.5 z + 0.125}$$
+$$\frac{H(z)}{z} = \frac{z + 1}{z^2 - 0.5 z + 0.125}$$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
