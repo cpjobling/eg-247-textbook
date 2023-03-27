@@ -230,7 +230,7 @@ den = sym2poly(Dz_poly)
 slideshow:
   slide_type: fragment
 ---
-[r,p,k] = residue(num,den);
+[r,p,k] = residue(num,den)
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -330,12 +330,6 @@ $$F(z) = \frac{12z}{(z+1)(z - 1)^2}$$
 
 See [example2.mlx](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example2.mlx). (Also available as  [example2.m](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example2.m).)
 
-+++ {"slideshow": {"slide_type": "notes"}}
-
-Uses additional MATLAB functions: 
-
-* `dimpulse` &ndash; computes and plots a sequence $f[n]$ for any range of values of $n$
-
 ```{code-cell}
 ---
 slideshow:
@@ -343,6 +337,12 @@ slideshow:
 ---
 open example2
 ```
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+Uses additional MATLAB functions: 
+
+* `dimpulse` &ndash; computes and plots a sequence $f[n]$ for any range of values of $n$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
