@@ -379,7 +379,7 @@ The signal $h(t)$ is the straight line $f(t)=-t+1$ but this is defined only betw
 #### convolutiondemo settings
 
 * Let `f = heaviside(t)-heaviside(t-1) % u(t)`
-* Let `g = (t-1)*(heaviside(t)-heaviside(t-1)) % h(t)`
+* Let `g = (-t+1)*(heaviside(t)-heaviside(t-1)) % h(t)`
 * Set range $-2 < \tau < -2$
 
 +++ {"slideshow": {"slide_type": "notes"}}
