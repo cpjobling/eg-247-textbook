@@ -974,11 +974,11 @@ title="Print to PDF"
 <section id="aims">
 <h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">#</a></h2>
 <p>The purpose of this project is to build and test a Simulink model of a single stage peaking filter for a ten-stage graphic equalizer. MATLAB can be employed to design the required filters and then Simulink can be used to simulate the graphic equaliser in real time. Most commercial equalisers use either 1/3 octave or 2/3 octave bandpass filters but to keep this from becoming too large we will employ one octave bandpass filters.</p>
-<p>These papers: <span id="id1">Bohn and Pennington [<a class="reference internal" href="../../zbib.html#id12" title="Dennis Bohn and Terry Pennington. Constant q graphic equalizers. Rane Note 101, 1987. URL: https://www.ranecommercial.com/legacy/note101.html.">1987</a>]</span> and <span id="id2">[]</span> may help to set the scene and have information on how to perform the necessary calculations.</p>
+<p>These papers: <span id="id1">Bohn and Pennington [<a class="reference internal" href="../../zbib.html#id12" title="Dennis Bohn and Terry Pennington. Constant q graphic equalizers. Rane Note 101, 1987. URL: https://www.ranecommercial.com/legacy/note101.html.">1987</a>]</span> and <span id="id2">Bohn [<a class="reference internal" href="../../zbib.html#id13" title="Dennis Bohn. Bandwidth in octaves versus q in bandpass filter. Rane Note 170, 2008. URL: https://www.ranecommercial.com/legacy/note170.html.">2008</a>]</span> may help to set the scene and have information on how to perform the necessary calculations.</p>
 <p>We will be using peaking filters as described in Mark Wickert’s articles: <a class="reference external" href="https://www.dummies.com/education/science/science-engineering/11-signals-and-systems-concepts-used-to-design-an-audio-graphic-equalizer/?keyword=graphic%20equalizer&amp;index=4&amp;isSearch=1">Signals and Systems Concepts Used to Design an Audio Graphic Equalizer</a> and <a class="reference external" href="https://www.dummies.com/education/science/science-engineering/how-to-characterize-the-peaking-filter-for-an-audio-graphic-equalizer/">How to Characterize the Peaking Filter for an Audio Graphic Equalizer</a> from the <a class="reference external" href="https://www.dummies.com/education/science/science-engineering/">Engineering for Dummies</a> resource.</p>
 <p>The filter parameters that you will use will be computed based on your student number and will be unique to you. You <em>must</em> use these parameters in your design.</p>
 <p>We have provided a worksheet for you in the form of a MATLAB Live Script file <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/labs/project/graphic_eq.mlx">graphic_eq.mlx</a>. This worksheet provides full instructions on how to perform the calculations needed to complete the project and a marking scheme which you can use for self assessment. Once you have completed the calculations and answered the questions in the worksheet, you should build the filter in Simulink and test it using the methods similar to those shown in <a class="reference external" href="https://www.dummies.com/education/science/science-engineering/conduct-performance-testing-on-an-audio-graphic-equalizer/">Conduct Performance Testing on an Audio Graphic Equalizer</a>.</p>
-<p>You should submit this worksheet and submit it with your claim and the simulink model with test setup by the deadline which is <strong>4:00 pm on Tuesday 2nd May 2023</strong>.</p>
+<p>You should submit this worksheet and submit it with your claim and the simulink model with test setup by the deadline which is <strong>4:00 pm on Friday 5th May 2023</strong>.</p>
 <!-- #region -->
 </section>
 <section id="assessment-criteria">
@@ -991,29 +991,13 @@ title="Print to PDF"
 <h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
 <section id="before-you-start">
 <h3>Before you start<a class="headerlink" href="#before-you-start" title="Permalink to this headline">#</a></h3>
-<p>If you haven’t already, create a suitable folder structure on your file-store for your labs.</p>
-<p>I suggest</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">OneDrive</span>\<span class="n">workspace</span>
-    <span class="n">signals</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">systems</span><span class="o">-</span><span class="n">lab</span>
-	    <span class="n">lab01</span>
-		<span class="n">lab02</span>
-		<span class="n">lab03</span>
-        <span class="n">lab04</span>
-        <span class="n">lab05</span>
-        <span class="n">lab06</span>
-        <span class="n">lab07</span>
-        <span class="n">project</span>
-</pre></div>
-</div>
-<p>Use folder <code class="docutils literal notranslate"><span class="pre">OneDrive\workspace\signals-and-systems-lab\project</span></code> for this project.</p>
-<p>You should download the content of the <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/tree/master/labs/project">project folder</a> from GitHub into your project workspace.</p>
+<p>If you haven’t already, create a suitable folder structure on your file-store for your project.</p>
 </section>
 <section id="files-needed">
 <h3>Files Needed<a class="headerlink" href="#files-needed" title="Permalink to this headline">#</a></h3>
 <p>The files you will need for the project are:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/labs/project/graphic_eq.mlx">graphic_eq.mlx</a> - the worksheet that you need to complete your calculations.</p></li>
-<li><p><a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/labs/project/personalize.m">personalize.m</a> - a function that generates unique values for <span class="math notranslate nohighlight">\(f_c\)</span> and <span class="math notranslate nohighlight">\(G_\mathrm{dB}\)</span> from a student number. Required by <code class="docutils literal notranslate"><span class="pre">graphic_eq</span></code>.</p></li>
 <li><p><a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/labs/project/Three_Band_EQ.m">Three_Band_EQ.m</a> - a script that can be used to validate filter designs.</p></li>
 <li><p>A function <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/labs/project/peaking_filter.m">peaking_filter.m</a> which <code class="docutils literal notranslate"><span class="pre">Three_Band_EQ</span></code> uses to design graphic equalizer band filters.</p></li>
 <li><p><a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/labs/project/Three_Band_EQ_Model.slx">Three_Band_EQ_Model.slx</a> which uses the results of <code class="docutils literal notranslate"><span class="pre">Three_Band_EQ</span></code> to simulate a three-stage graphic equalizer. You can use this as a testbed for your filter.</p></li>
@@ -1039,7 +1023,7 @@ title="Print to PDF"
 </section>
 <section id="deadline">
 <h3>Deadline<a class="headerlink" href="#deadline" title="Permalink to this headline">#</a></h3>
-<p>The deadline for claims and submission is <strong>4:00 PM BST, Tuesday 2nd May 2023</strong></p>
+<p>The deadline for claims and submission is <strong>4:00 PM BST, Friday 5th May 2023</strong></p>
 </section>
 </section>
 <section id="references">
