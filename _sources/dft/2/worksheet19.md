@@ -233,7 +233,7 @@ slideshow:
 cd matlab
 clear all
 format compact
-imatlab_export_fig('print-svg')  % Static svg figures.
+%imatlab_export_fig('print-svg')  % Static svg figures.
 ```
 
 ```{code-cell}
