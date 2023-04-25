@@ -479,7 +479,9 @@ $W_8$
 Using this notation, the DFT and inverse DFT pairs are represented as:
 
 $$X[m] =  \sum_{n=0}^{N-1} x[n]W_N^{nm}$$ 
+
 and
+
 $$x[n] = \frac{1}{N}\sum_{n=0}^{N-1} X[m]W_N^{-nm}$$
 
 +++ {"slideshow": {"slide_type": "slide"}}
