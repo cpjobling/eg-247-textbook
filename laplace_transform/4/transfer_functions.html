@@ -1,50 +1,62 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Unit 3.4: Transfer Functions &#8212; EG-247 Signals and Systems</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -54,57 +66,99 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'laplace_transform/4/transfer_functions';</script>
     <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/4/transfer_functions.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Unit 3.5: The Impulse Response and Convolution" href="../5/convolution.html" />
     <link rel="prev" title="Using Laplace Transforms for Circuit Analysis" href="../3/circuit_analysis.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">EG-247 Signals and Systems</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="../../introduction/index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">EG-247 Signals and Systems</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -113,1021 +167,382 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Online notes
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Online notes</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../elementary_signals/index.html">
-   Elementary Signals
-  </a>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../index.html">
-   Laplace Transforms and their Applications
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../1/laplace.html">
-     The Laplace Transformation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../2/inverse_laplace.html">
-     The Inverse Laplace Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../3/circuit_analysis.html">
-     Using Laplace Transforms for Circuit Analysis
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Transfer Functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../5/convolution.html">
-     The Impulse Response and Convolution
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../fourier_series/index.html">
-   Fourier Series
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_series/1/trig_fseries.html">
-     Trigonometric Fourier Series
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_series/2/exp_fs1.html">
-     Exponential Fourier Series
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_series/3/exp_fs2.html">
-     Line Spectra and their Applications
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../fourier_transform/index.html">
-   Fourier Transform
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_transform/1/ft1.html">
-     Defining the Fourier Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_transform/2/ft2.html">
-     Fourier transforms of commonly occuring signals
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_transform/3/ft3.html">
-     Fourier Transforms for Circuit and LTI Systems Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_transform/4/ft4.html">
-     Introduction to Filters
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../dt_systems/index.html">
-   Sampled Data Systems
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../dt_systems/1/sampling.html">
-     Sampling Theory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../dt_systems/2/z_transform.html">
-     The Z-Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../dt_systems/3/i_z_transform.html">
-     The Inverse Z-Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../dt_systems/4/dt_models.html">
-     Models of Discrete Time Systems
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../dft/index.html">
-   Discrete Fourier Transform
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../dft/1/dft.html">
-     The Discrete Fourier Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../dft/2/fft.html">
-     The Fast-Fourier Transform
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../zbib.html">
-   Bibliography
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../elementary_signals/index.html">Elementary Signals</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Laplace Transforms and their Applications</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../1/laplace.html">The Laplace Transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2/inverse_laplace.html">The Inverse Laplace Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3/circuit_analysis.html">Using Laplace Transforms for Circuit Analysis</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Transfer Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../5/convolution.html">The Impulse Response and Convolution</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  In Class Worksheets
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../worksheets/index.html">
-   Worksheets
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../introduction/worksheet1.html">
-     Worksheet 1 Introduction
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../introduction/worksheet2.html">
-     Worksheet 2
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../elementary_signals/worksheet3.html">
-     Worksheet 3 Elementary Signals
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../1/worksheet4.html">
-     Worksheet 4 Laplace Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../2/worksheet5.html">
-     Worksheet 5 Inverse Laplace Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../3/worksheet6.html">
-     Worksheet 6 Using Laplace Transforms for Circuit Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="worksheet7.html">
-     Worksheet 7 Transfer Functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../5/worksheet8.html">
-     Worksheet 8 Impulse Response and Time Convolution
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_series/1/worksheet9.html">
-     Worksheet 9 Trigonometric Fourier Series
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_series/2/worksheet10.html">
-     Worksheet 10 Exponential Fourier Series
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_series/3/worksheet11.html">
-     Worksheet 11 Line Spectra and their Applications
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_transform/1/worksheet12.html">
-     Worksheet 12 Defining the Fourier Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_transform/2/worksheet13.html">
-     Worksheet 13 Fourier transforms of commonly occuring signals
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_transform/3/worksheet14.html">
-     Worksheet 14 Fourier Transforms for Circuit and LTI Systems Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_transform/4/worksheet15.html">
-     Worksheet 15 Introduction to Filters
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../dt_systems/3/worksheet16.html">
-     Worksheet 16 The Inverse Z-Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../dt_systems/4/worksheet17.html">
-     Worksheet 17 Models of DT Systems
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../dft/1/worksheet18.html">
-     Worksheet 18 The Discrete-time Fourier Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../dft/2/worksheet19.html">
-     Worksheet 19 The Fast Fourier Transform
-    </a>
-   </li>
-  </ul>
- </li>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_series/index.html">Fourier Series</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/trig_fseries.html">Trigonometric Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/2/exp_fs1.html">Exponential Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/3/exp_fs2.html">Line Spectra and their Applications</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Homework problems
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../homework/index.html">
-   Homework
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw1.html">
-     Homework 1 Elementary Signals
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw2.html">
-     Homework 2 Laplace and Inverse Laplace Transforms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw3.html">
-     Homework 3 Laplace Transforms for Ciruit Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw4.html">
-     Homework 4 Impulse Response and Convolution
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw5.html">
-     Homework 5 Fourier Series
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw6.html">
-     Homework 6
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw7.html">
-     Homework 7 Applications of the Fourier Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw8.html">
-     Homework 8 Sampling Theory and the Z-Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw9.html">
-     Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw10.html">
-     Homework 10 Discrete Fourier Transform and the Fast-Fourier Transform
-    </a>
-   </li>
-  </ul>
- </li>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_transform/index.html">Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/1/ft1.html">Defining the Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/2/ft2.html">Fourier transforms of commonly occuring signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/3/ft3.html">Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/4/ft4.html">Introduction to Filters</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Lab Exercises
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../labs/index.html">
-   Laboratory Exercises
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../labs/tutorial/matlab-tutorial.html">
-     MATLAB Tutorial
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../labs/peer-assessment.html">
-     Peer Assessment
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../labs/lab01/index.html">
-     Lab 1 - Elemementary Signals
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../labs/lab02/index.html">
-     Lab 2 - Laplace and Inverse Laplace Transforms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../labs/lab03/index.html">
-     Lab 3 -  Laplace Transforms and Transfer Functions for Circuit Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../labs/lab04/index.html">
-     Lab 4 - Time Domain Convolution
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../labs/lab05/index.html">
-     Lab 5 - Fourier Series
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../labs/lab06/spor.html">
-     Lab 6 Signal Processing OnRamp
-    </a>
-   </li>
-  </ul>
- </li>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dt_systems/index.html">Sampled Data Systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/1/sampling.html">Sampling Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/2/z_transform.html">The Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/3/i_z_transform.html">The Inverse Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/4/dt_models.html">Models of Discrete Time Systems</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Project
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../labs/project/index.html">
-   Project
-  </a>
- </li>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dft/index.html">Discrete Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../dft/1/dft.html">The Discrete Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dft/2/fft.html">The Fast-Fourier Transform</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Answers to Selected Problems
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../introduction/answers.html">
-   Worksheet 2
-  </a>
- </li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../zbib.html">Bibliography</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Appendices
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">In Class Worksheets</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../1/lt_props.html">
-   Properties of the Laplace Transform
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../1/lt_table.html">
-   Common Laplace Transform Pairs
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../fourier_transform/1/ft_props.html">
-   Properties of the Fourier Transform
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../fourier_transform/1/ft_table.html">
-   Common Fourier Transform Pairs
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../dt_systems/2/zt_props.html">
-   Properties of the Z-Transform
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../dt_systems/2/zt_table.html">
-   Table of Z-Transforms
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../setup/polling_setup.html">
-   Set Up In-Class Polling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../todo.html">
-   List of Planned Enhancements
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../setup/index.html">
-   Setting up your own version of this book
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../setup/jupyter.html">
-     About Jupyter notebooks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../setup/python.html">
-     Installing Python
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../setup/setup.html">
-     Setting up your Own Jupyter-MATLAB Computing Environment
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../setup/matlab_kernel.html">
-     Testing the Jupyter Matlab Kernel
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../setup/advanced-setup.html">
-     Quick Start - For Experienced Users
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../setup/jupyter-book.html">
-     Setting up jupyter-book
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../worksheets/index.html">Worksheets</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/worksheet1.html">Worksheet 1 Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/worksheet2.html">Worksheet 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../elementary_signals/worksheet3.html">Worksheet 3 Elementary Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1/worksheet4.html">Worksheet 4 Laplace Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2/worksheet5.html">Worksheet 5 Inverse Laplace Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3/worksheet6.html">Worksheet 6 Using Laplace Transforms for Circuit Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="worksheet7.html">Worksheet 7 Transfer Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../5/worksheet8.html">Worksheet 8 Impulse Response and Time Convolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/worksheet9.html">Worksheet 9 Trigonometric Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/2/worksheet10.html">Worksheet 10 Exponential Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/3/worksheet11.html">Worksheet 11 Line Spectra and their Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/1/worksheet12.html">Worksheet 12 Defining the Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/2/worksheet13.html">Worksheet 13 Fourier transforms of commonly occuring signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/3/worksheet14.html">Worksheet 14 Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/4/worksheet15.html">Worksheet 15 Introduction to Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/3/worksheet16.html">Worksheet 16 The Inverse Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/4/worksheet17.html">Worksheet 17 Models of DT Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dft/1/worksheet18.html">Worksheet 18 The Discrete-time Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dft/2/worksheet19.html">Worksheet 19 The Fast Fourier Transform</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework problems</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../homework/index.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw1.html">Homework 1 Elementary Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw2.html">Homework 2 Laplace and Inverse Laplace Transforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw3.html">Homework 3 Laplace Transforms for Ciruit Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw4.html">Homework 4 Impulse Response and Convolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw5.html">Homework 5 Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw6.html">Homework 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw7.html">Homework 7 Applications of the Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw8.html">Homework 8 Sampling Theory and the Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw9.html">Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw10.html">Homework 10 Discrete Fourier Transform and the Fast-Fourier Transform</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab Exercises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../labs/index.html">Laboratory Exercises</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../labs/tutorial/matlab-tutorial.html">MATLAB Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../labs/peer-assessment.html">Peer Assessment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../labs/lab01/index.html">Lab 1 - Elemementary Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../labs/lab02/index.html">Lab 2 - Laplace and Inverse Laplace Transforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../labs/lab03/index.html">Lab 3 -  Laplace Transforms and Transfer Functions for Circuit Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../labs/lab04/index.html">Lab 4 - Time Domain Convolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../labs/lab05/index.html">Lab 5 - Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../labs/lab06/spor.html">Lab 6 Signal Processing OnRamp</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/project/index.html">Project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Answers to Selected Problems</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/answers.html">Worksheet 2</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1/lt_props.html">Properties of the Laplace Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1/lt_table.html">Common Laplace Transform Pairs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fourier_transform/1/ft_props.html">Properties of the Fourier Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fourier_transform/1/ft_table.html">Common Fourier Transform Pairs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dt_systems/2/zt_props.html">Properties of the Z-Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dt_systems/2/zt_table.html">Table of Z-Transforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../setup/polling_setup.html">Set Up In-Class Polling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../todo.html">List of Planned Enhancements</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup/index.html">Setting up your own version of this book</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter.html">About Jupyter notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/python.html">Installing Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/setup.html">Setting up your Own Jupyter-MATLAB Computing Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/matlab_kernel.html">Testing the Jupyter Matlab Kernel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/advanced-setup.html">Quick Start - For Experienced Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter-book.html">Setting up jupyter-book</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by 
- <a href="https://jupyterbook.org">
-  Jupyter Book
-</a>
-
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/cpjobling/eg-247-textbook/master?urlpath=tree/laplace_transform/4/transfer_functions.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-247-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-247-textbook/edit/master/laplace_transform/4/transfer_functions.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Flaplace_transform/4/transfer_functions.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/laplace_transform/4/transfer_functions.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/cpjobling/eg-247-textbook"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
 
-      </li>
-      
-      <li>
-        <a href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Flaplace_transform/4/transfer_functions.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/cpjobling/eg-247-textbook/edit/master/laplace_transform/4/transfer_functions.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../../_sources/laplace_transform/4/transfer_functions.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download notebook file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="../../_sources/laplace_transform/4/transfer_functions.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#colophon">
-   Colophon
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#agenda">
-   Agenda
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#transfer-functions-for-circuits">
-   Transfer Functions for Circuits
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#examples">
-   Examples
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-6">
-     Example 6
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sketch-of-solution">
-     Sketch of Solution
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#worked-solution">
-     Worked solution.
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#answer">
-     Answer
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-7">
-     Example 7
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     Sketch of Solution
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     Worked solution.
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     Answer
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-matlab-bit">
-     The Matlab Bit
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#week-3-solution-7">
-       Week 3: Solution 7
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-transfer-functions-in-matlab-for-system-analysis">
-   Using Transfer Functions in MATLAB for System Analysis
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-transfer-functions-in-simulink-for-system-simulation">
-   Using Transfer Functions in Simulink for System Simulation
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example">
-     Example
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#matlab-solution">
-       MATLAB Solution
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#simulink-model">
-       Simulink model
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reference">
-   Reference
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Unit 3.4: Transfer Functions</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#colophon">
-   Colophon
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#agenda">
-   Agenda
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#transfer-functions-for-circuits">
-   Transfer Functions for Circuits
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#examples">
-   Examples
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-6">
-     Example 6
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sketch-of-solution">
-     Sketch of Solution
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#worked-solution">
-     Worked solution.
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#answer">
-     Answer
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-7">
-     Example 7
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     Sketch of Solution
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     Worked solution.
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     Answer
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-matlab-bit">
-     The Matlab Bit
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#week-3-solution-7">
-       Week 3: Solution 7
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-transfer-functions-in-matlab-for-system-analysis">
-   Using Transfer Functions in MATLAB for System Analysis
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-transfer-functions-in-simulink-for-system-simulation">
-   Using Transfer Functions in Simulink for System Simulation
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example">
-     Example
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#matlab-solution">
-       MATLAB Solution
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#simulink-model">
-       Simulink model
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reference">
-   Reference
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Unit 3.4: Transfer Functions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colophon">Colophon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">Agenda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transfer-functions-for-circuits">Transfer Functions for Circuits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6">Example 6</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sketch-of-solution">Sketch of Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#worked-solution">Worked solution.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#answer">Answer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7">Example 7</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Sketch of Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Worked solution.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Answer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-matlab-bit">The Matlab Bit</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#week-3-solution-7">Week 3: Solution 7</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-transfer-functions-in-matlab-for-system-analysis">Using Transfer Functions in MATLAB for System Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-transfer-functions-in-simulink-for-system-simulation">Using Transfer Functions in Simulink for System Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-solution">MATLAB Solution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#simulink-model">Simulink model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="unit-3-4-transfer-functions">
-<h1>Unit 3.4: Transfer Functions<a class="headerlink" href="#unit-3-4-transfer-functions" title="Permalink to this headline">#</a></h1>
+<h1>Unit 3.4: Transfer Functions<a class="headerlink" href="#unit-3-4-transfer-functions" title="Permalink to this heading">#</a></h1>
 <p>The preparatory reading for this section is <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=75#ppg=113">Chapter 4.4</a> <span id="id1">[<a class="reference internal" href="../../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197.">Karris, 2012</a>]</span> which discusses transfer function models of electrical circuits.</p>
 <section id="colophon">
-<h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this headline">#</a></h2>
+<h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this heading">#</a></h2>
 <p>An annotatable worksheet for this presentation is available as <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/4/worksheet7.html"><strong>Worksheet 7</strong></a>.</p>
 <ul class="simple">
 <li><p>The source code for this page is <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/laplace_transform/4/transfer_functions.ipynb">laplace_transform/4/transfer_functions.ipynb</a>.</p></li>
@@ -1136,7 +551,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="agenda">
-<h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this headline">#</a></h2>
+<h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Transfer Functions</p></li>
 </ul>
@@ -1151,11 +566,11 @@ title="Print to PDF"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Matlab setup</span><span class="w"></span>
-<span class="nb">clear</span><span class="w"> </span><span class="nb">all</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Matlab setup</span>
+<span class="nb">clear</span><span class="w"> </span><span class="nb">all</span>
 <span class="nb">cd</span><span class="w"> </span><span class="p">.</span><span class="o">./</span><span class="n">matlab</span><span class="w"> </span>
-<span class="nb">pwd</span><span class="w"></span>
-<span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="w"></span>
+<span class="nb">pwd</span>
+<span class="nb">format</span><span class="w"> </span><span class="n">compact</span>
 </pre></div>
 </div>
 </div>
@@ -1169,7 +584,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="transfer-functions-for-circuits">
-<h2>Transfer Functions for Circuits<a class="headerlink" href="#transfer-functions-for-circuits" title="Permalink to this headline">#</a></h2>
+<h2>Transfer Functions for Circuits<a class="headerlink" href="#transfer-functions-for-circuits" title="Permalink to this heading">#</a></h2>
 <p>When doing circuit analysis with components defined in the complex frequency domain, the ratio of the output voltage <span class="math notranslate nohighlight">\(V_{\mathrm{out}}(s)\)</span> to the input voltage <span class="math notranslate nohighlight">\(V_{\mathrm{in}}(s)\)</span> <em>under zero initial conditions</em> is of great interest.</p>
 <p>This ratio is known as the <em>voltage transfer function</em> denoted <span class="math notranslate nohighlight">\(G_v(s)\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -1182,14 +597,14 @@ title="Print to PDF"
 \[G(s) = \frac{V_{\mathrm{out}}(s)}{V_{\mathrm{in}}(s)}\]</div>
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">#</a></h2>
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h2>
 <p>See <a class="reference internal" href="worksheet7.html"><span class="doc std std-doc">Worksheet 7</span></a> for the worked solutions to the examples. We will work through these in class. Here I’ll demonstrate the MATLAB solutions.</p>
 <section id="example-6">
-<h3>Example 6<a class="headerlink" href="#example-6" title="Permalink to this headline">#</a></h3>
+<h3>Example 6<a class="headerlink" href="#example-6" title="Permalink to this heading">#</a></h3>
 <p>Derive an expression for the transfer function <span class="math notranslate nohighlight">\(G(s)\)</span> for the circuit below. In this circuit <span class="math notranslate nohighlight">\(R_g\)</span> represents the internal resistance of the applied (voltage) source <span class="math notranslate nohighlight">\(v_s\)</span>, and <span class="math notranslate nohighlight">\(R_L\)</span> represents the resistance of the load that consists of <span class="math notranslate nohighlight">\(R_L\)</span>, <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(C\)</span>.</p>
 <img title="Circuit for Example 6" src="pictures/example6.png" width="50%" /></section>
 <section id="sketch-of-solution">
-<h3>Sketch of Solution<a class="headerlink" href="#sketch-of-solution" title="Permalink to this headline">#</a></h3>
+<h3>Sketch of Solution<a class="headerlink" href="#sketch-of-solution" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Replace <span class="math notranslate nohighlight">\(v_s(t)\)</span>, <span class="math notranslate nohighlight">\(R_g\)</span>, <span class="math notranslate nohighlight">\(R_L\)</span>, <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(C\)</span> by their transformed (<em>complex frequency</em>) equivalents: <span class="math notranslate nohighlight">\(V_s(s)\)</span>, <span class="math notranslate nohighlight">\(R_g\)</span>, <span class="math notranslate nohighlight">\(R_L\)</span>, <span class="math notranslate nohighlight">\(sL\)</span> and <span class="math notranslate nohighlight">\(1/(sC)\)</span></p></li>
 </ul>
@@ -1201,16 +616,16 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="worked-solution">
-<h3>Worked solution.<a class="headerlink" href="#worked-solution" title="Permalink to this headline">#</a></h3>
+<h3>Worked solution.<a class="headerlink" href="#worked-solution" title="Permalink to this heading">#</a></h3>
 <p>Pencast: <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/worked_examples/ex6.pdf">ex6.pdf</a> - open in Adobe Acrobat Reader.</p>
 </section>
 <section id="answer">
-<h3>Answer<a class="headerlink" href="#answer" title="Permalink to this headline">#</a></h3>
+<h3>Answer<a class="headerlink" href="#answer" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[G(s) = \frac{V_\mathrm{out}(s)}{V_s(s)} = \frac{R_L + sL + 1/sC}{R_g + R_L + sL + 1/sC}.\]</div>
 </section>
 <section id="example-7">
-<h3>Example 7<a class="headerlink" href="#example-7" title="Permalink to this headline">#</a></h3>
+<h3>Example 7<a class="headerlink" href="#example-7" title="Permalink to this heading">#</a></h3>
 <p>Compute the transfer function for the op-amp circuit shown below in terms of the circuit constants <span class="math notranslate nohighlight">\(R_1\)</span>, <span class="math notranslate nohighlight">\(R_2\)</span>, <span class="math notranslate nohighlight">\(R_3\)</span>, <span class="math notranslate nohighlight">\(C_1\)</span> and <span class="math notranslate nohighlight">\(C_2\)</span>.</p>
 <img alt="Circuit for Example 7" src="pictures/example7.png" width="50%" /><p>Then replace the complex variable <span class="math notranslate nohighlight">\(s\)</span> with <span class="math notranslate nohighlight">\(j\omega\)</span>, and the circuit constants with their numerical values and plot the magnitude</p>
 <div class="math notranslate nohighlight">
@@ -1218,7 +633,7 @@ title="Print to PDF"
 <p>versus radian frequency <span class="math notranslate nohighlight">\(\omega\)</span> rad/s.</p>
 </section>
 <section id="id2">
-<h3>Sketch of Solution<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<h3>Sketch of Solution<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Replace the components and voltages in the circuit diagram with their complex frequency equivalents</p></li>
 </ul>
@@ -1244,22 +659,22 @@ title="Print to PDF"
 \[\left|G(j\omega)\right|\]</div>
 </section>
 <section id="id3">
-<h3>Worked solution.<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<h3>Worked solution.<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <p>Pencast: <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/worked_examples/ex7.pdf">ex7.pdf</a> - open in Adobe Acrobat Reader.</p>
 </section>
 <section id="id4">
-<h3>Answer<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<h3>Answer<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[G(s) = \frac{V_\mathrm{out}(s)}{V_\mathrm{in}(s)} = \frac{-1}{R_1\left(\left(1/R_1 + 1/R_2 + 1/R_3 + sC_1\right)\left(sC_2R_3\right)+1/R_2\right)}.\]</div>
 </section>
 <section id="the-matlab-bit">
-<h3>The Matlab Bit<a class="headerlink" href="#the-matlab-bit" title="Permalink to this headline">#</a></h3>
+<h3>The Matlab Bit<a class="headerlink" href="#the-matlab-bit" title="Permalink to this heading">#</a></h3>
 <p>See attached script: <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/matlab/solution7.m">solution7.m</a>.</p>
 <section id="week-3-solution-7">
-<h4>Week 3: Solution 7<a class="headerlink" href="#week-3-solution-7" title="Permalink to this headline">#</a></h4>
+<h4>Week 3: Solution 7<a class="headerlink" href="#week-3-solution-7" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">s</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">s</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
@@ -1267,19 +682,19 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">R1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">200</span><span class="o">*</span><span class="mi">10</span>^<span class="mi">3</span><span class="p">;</span><span class="w"> </span>
-<span class="n">R2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">40</span><span class="o">*</span><span class="mi">10</span>^<span class="mi">3</span><span class="p">;</span><span class="w"></span>
-<span class="n">R3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">50</span><span class="o">*</span><span class="mi">10</span>^<span class="mi">3</span><span class="p">;</span><span class="w"></span>
+<span class="n">R2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">40</span><span class="o">*</span><span class="mi">10</span>^<span class="mi">3</span><span class="p">;</span>
+<span class="n">R3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">50</span><span class="o">*</span><span class="mi">10</span>^<span class="mi">3</span><span class="p">;</span>
 
-<span class="n">C1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">25</span><span class="o">*</span><span class="mi">10</span>^<span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">);</span><span class="w"></span>
-<span class="n">C2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">10</span><span class="o">*</span><span class="mi">10</span>^<span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">);</span><span class="w"></span>
+<span class="n">C1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">25</span><span class="o">*</span><span class="mi">10</span>^<span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">);</span>
+<span class="n">C2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">10</span><span class="o">*</span><span class="mi">10</span>^<span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">den</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">R1</span><span class="o">*</span><span class="p">((</span><span class="mi">1</span><span class="o">/</span><span class="n">R1</span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="n">R2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="n">R3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="o">*</span><span class="n">C1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="o">*</span><span class="n">R3</span><span class="o">*</span><span class="n">C2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="n">R2</span><span class="p">);</span><span class="w"></span>
-<span class="nb">simplify</span><span class="p">(</span><span class="n">den</span><span class="p">)</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">den</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">R1</span><span class="o">*</span><span class="p">((</span><span class="mi">1</span><span class="o">/</span><span class="n">R1</span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="n">R2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="n">R3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="o">*</span><span class="n">C1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="o">*</span><span class="n">R3</span><span class="o">*</span><span class="n">C2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="n">R2</span><span class="p">);</span>
+<span class="nb">simplify</span><span class="p">(</span><span class="n">den</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1295,8 +710,8 @@ title="Print to PDF"
 <p>Simplify coefficients of s in denominator</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">long</span><span class="w"></span>
-<span class="n">denG</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sym2poly</span><span class="p">(</span><span class="nb">ans</span><span class="p">)</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">long</span>
+<span class="n">denG</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sym2poly</span><span class="p">(</span><span class="nb">ans</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1309,7 +724,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">numG</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">numG</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
@@ -1318,8 +733,8 @@ title="Print to PDF"
 <p>For convenience, define coefficients <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">denG</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
-<span class="n">b</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">denG</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">denG</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">b</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">denG</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1328,8 +743,8 @@ title="Print to PDF"
 \[G(j\omega) = \frac{-1}{a\omega^2 - jb\omega + 5}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">w</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">10000</span><span class="p">;</span><span class="w"></span>
-<span class="n">Gs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="o">./</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">w</span><span class="o">.^</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">j</span><span class="o">.*</span><span class="n">b</span><span class="o">.*</span><span class="n">w</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">denG</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">w</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">10000</span><span class="p">;</span>
+<span class="n">Gs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="o">./</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">w</span><span class="o">.^</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">j</span><span class="o">.*</span><span class="n">b</span><span class="o">.*</span><span class="n">w</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">denG</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>
@@ -1337,27 +752,27 @@ title="Print to PDF"
 <p>Plot</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">semilogx</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">Gs</span><span class="p">))</span><span class="w"></span>
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Radian frequency w (rad/s&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;|Vout/Vin|&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Magnitude Vout/Vin vs. Radian Frequency&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="nb">grid</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">semilogx</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">Gs</span><span class="p">))</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Radian frequency w (rad/s&#39;</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;|Vout/Vin|&#39;</span><span class="p">)</span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Magnitude Vout/Vin vs. Radian Frequency&#39;</span><span class="p">)</span>
+<span class="nb">grid</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/transfer_functions_50_0.png" src="../../_images/transfer_functions_50_0.png" />
+<img alt="../../_images/3e9528e71a38d9afa14dd62d16d32a78330d1d47d30cdc0b5c97579e95b07b61.png" src="../../_images/3e9528e71a38d9afa14dd62d16d32a78330d1d47d30cdc0b5c97579e95b07b61.png" />
 </div>
 </div>
 </section>
 </section>
 </section>
 <section id="using-transfer-functions-in-matlab-for-system-analysis">
-<h2>Using Transfer Functions in MATLAB for System Analysis<a class="headerlink" href="#using-transfer-functions-in-matlab-for-system-analysis" title="Permalink to this headline">#</a></h2>
+<h2>Using Transfer Functions in MATLAB for System Analysis<a class="headerlink" href="#using-transfer-functions-in-matlab-for-system-analysis" title="Permalink to this heading">#</a></h2>
 <p>Please use the file <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/matlab/tf_matlab.m">tf_matlab.m</a> to explore the Transfer Function features provide by MATLAB. Open the file as a Live Script to see a nicely formatted document.</p>
 </section>
 <section id="using-transfer-functions-in-simulink-for-system-simulation">
-<h2>Using Transfer Functions in Simulink for System Simulation<a class="headerlink" href="#using-transfer-functions-in-simulink-for-system-simulation" title="Permalink to this headline">#</a></h2>
+<h2>Using Transfer Functions in Simulink for System Simulation<a class="headerlink" href="#using-transfer-functions-in-simulink-for-system-simulation" title="Permalink to this heading">#</a></h2>
 <p><img alt="Using Transfer Functions in Simulink for System Simulation" src="../../_images/sim_tf.png" /></p>
 <p>The Simulink transfer function (<strong><code class="docutils literal notranslate"><span class="pre">Transfer</span> <span class="pre">Fcn</span></code></strong>) block implements a transfer function</p>
 <p>The transfer function block represents a general input output function</p>
@@ -1366,14 +781,14 @@ title="Print to PDF"
 <p>and is not specific nor restricted to circuit analysis.</p>
 <p>It can, however be used in modelling and simulation studies.</p>
 <section id="example">
-<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h3>
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h3>
 <p>Recast Example 7 as a MATLAB problem using the LTI Transfer Function block.</p>
 <p>For simplicity use parameters <span class="math notranslate nohighlight">\(R_1 = R_2 = R_3 = 1\; \Omega\)</span>, and <span class="math notranslate nohighlight">\(C_1 = C_2 = 1\)</span> F.</p>
 <p>Calculate the step response using the LTI functions.</p>
 <p>Verify the result with Simulink.</p>
 <p>The Matlab solution: <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/matlab/example8.m">example8.m</a></p>
 <section id="matlab-solution">
-<h4>MATLAB Solution<a class="headerlink" href="#matlab-solution" title="Permalink to this headline">#</a></h4>
+<h4>MATLAB Solution<a class="headerlink" href="#matlab-solution" title="Permalink to this heading">#</a></h4>
 <p>From a previous analysis the transfer function is:</p>
 <div class="math notranslate nohighlight">
 \[G(s) = \frac{V_\mathrm{out}}{V_\mathrm{in}} = \frac{-1}{R_1\left[(1/R_1 + 1/R_2 + 1/R_3 + sC_1)(sR_3C_2) + 1/R_2\right]}\]</div>
@@ -1390,7 +805,7 @@ as is done in the text book with the help of MATLAB’s <code class="docutils li
 <p>Define the circuit as a transfer function</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">1</span><span class="p">])</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1421,22 +836,22 @@ as is done in the text book with the help of MATLAB’s <code class="docutils li
 <p>step response is then:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">step</span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">step</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/transfer_functions_66_0.png" src="../../_images/transfer_functions_66_0.png" />
+<img alt="../../_images/912c3ecd7636d053ca69de4c799bb95521bd224e3ae84da42bffed40975a1b13.png" src="../../_images/912c3ecd7636d053ca69de4c799bb95521bd224e3ae84da42bffed40975a1b13.png" />
 </div>
 </div>
 <p>Simples!</p>
 </section>
 <section id="simulink-model">
-<h4>Simulink model<a class="headerlink" href="#simulink-model" title="Permalink to this headline">#</a></h4>
+<h4>Simulink model<a class="headerlink" href="#simulink-model" title="Permalink to this heading">#</a></h4>
 <p>See <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/matlab/example_8.slx">example_8.slx</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="w"> </span><span class="n">example_8</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="w"> </span><span class="n">example_8</span>
 </pre></div>
 </div>
 </div>
@@ -1447,19 +862,19 @@ as is done in the text book with the help of MATLAB’s <code class="docutils li
 <p>Let’s go a bit further by finding the frequency response:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">bode</span><span class="p">(</span><span class="n">G</span><span class="p">),</span><span class="w"> </span><span class="nb">grid</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">bode</span><span class="p">(</span><span class="n">G</span><span class="p">),</span><span class="w"> </span><span class="nb">grid</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/transfer_functions_73_0.png" src="../../_images/transfer_functions_73_0.png" />
+<img alt="../../_images/637ec60a27b20c6752d68d93c12d6667521fc20bf4139fc24a48e7ad116ec0a6.png" src="../../_images/637ec60a27b20c6752d68d93c12d6667521fc20bf4139fc24a48e7ad116ec0a6.png" />
 </div>
 </div>
 </section>
 </section>
 </section>
 <section id="reference">
-<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">#</a></h2>
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this heading">#</a></h2>
 <p>See <a class="reference internal" href="../../zbib.html"><span class="doc std std-doc">Bibliography</span></a>.</p>
 </section>
 </section>
@@ -1476,7 +891,7 @@ as is done in the text book with the help of MATLAB’s <code class="docutils li
             mode: "matlab"
         },
         kernelOptions: {
-            kernelName: "matlab",
+            name: "matlab",
             path: "./laplace_transform/4"
         },
         predefinedOutput: true
@@ -1484,39 +899,116 @@ as is done in the text book with the help of MATLAB’s <code class="docutils li
     </script>
     <script>kernelName = 'matlab'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../3/circuit_analysis.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Using Laplace Transforms for Circuit Analysis</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../3/circuit_analysis.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Using Laplace Transforms for Circuit Analysis</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="../5/convolution.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="../5/convolution.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Unit 3.5: The Impulse Response and Convolution</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colophon">Colophon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">Agenda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transfer-functions-for-circuits">Transfer Functions for Circuits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6">Example 6</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sketch-of-solution">Sketch of Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#worked-solution">Worked solution.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#answer">Answer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7">Example 7</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Sketch of Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Worked solution.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Answer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-matlab-bit">The Matlab Bit</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#week-3-solution-7">Week 3: Solution 7</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-transfer-functions-in-matlab-for-system-analysis">Using Transfer Functions in MATLAB for System Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-transfer-functions-in-simulink-for-system-simulation">Using Transfer Functions in Simulink for System Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-solution">MATLAB Solution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#simulink-model">Simulink model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Dr Chris P. Jobling<br/>
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Chris P. Jobling
+</p>
+
+  </div>
   
-      &copy; Copyright Swansea University (2019-2022).<br/>
-    <div class="extra_footer">
-      This page was created by 
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Swansea University (2019-2022).
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  This page was created by 
 <a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
   Dr Chris P. Jobling
 </a> 
@@ -1525,20 +1017,22 @@ for
   Swansea University
 </a>.
 
-    </div>
-</p>
-        </footer>
-    </div>
-    
 </div>
+  </div>
+  
+</div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

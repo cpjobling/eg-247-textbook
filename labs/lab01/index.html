@@ -1,50 +1,62 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Lab 01: Elementary Signals &#8212; EG-247 Signals and Systems</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -54,57 +66,99 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'labs/lab01/index';</script>
     <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/labs/lab01/index.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Lab 2: Laplace and Inverse Laplace Transforms" href="../lab02/index.html" />
     <link rel="prev" title="Peer Assessment" href="../peer-assessment.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">EG-247 Signals and Systems</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="../../introduction/index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">EG-247 Signals and Systems</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -113,1063 +167,406 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Online notes
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Online notes</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../elementary_signals/index.html">
-   Elementary Signals
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../laplace_transform/index.html">
-   Laplace Transforms and their Applications
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../laplace_transform/1/laplace.html">
-     The Laplace Transformation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../laplace_transform/2/inverse_laplace.html">
-     The Inverse Laplace Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../laplace_transform/3/circuit_analysis.html">
-     Using Laplace Transforms for Circuit Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../laplace_transform/4/transfer_functions.html">
-     Transfer Functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../laplace_transform/5/convolution.html">
-     The Impulse Response and Convolution
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../fourier_series/index.html">
-   Fourier Series
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_series/1/trig_fseries.html">
-     Trigonometric Fourier Series
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_series/2/exp_fs1.html">
-     Exponential Fourier Series
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_series/3/exp_fs2.html">
-     Line Spectra and their Applications
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../fourier_transform/index.html">
-   Fourier Transform
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_transform/1/ft1.html">
-     Defining the Fourier Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_transform/2/ft2.html">
-     Fourier transforms of commonly occuring signals
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_transform/3/ft3.html">
-     Fourier Transforms for Circuit and LTI Systems Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_transform/4/ft4.html">
-     Introduction to Filters
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../dt_systems/index.html">
-   Sampled Data Systems
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../dt_systems/1/sampling.html">
-     Sampling Theory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../dt_systems/2/z_transform.html">
-     The Z-Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../dt_systems/3/i_z_transform.html">
-     The Inverse Z-Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../dt_systems/4/dt_models.html">
-     Models of Discrete Time Systems
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../dft/index.html">
-   Discrete Fourier Transform
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../dft/1/dft.html">
-     The Discrete Fourier Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../dft/2/fft.html">
-     The Fast-Fourier Transform
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../zbib.html">
-   Bibliography
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../elementary_signals/index.html">Elementary Signals</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../laplace_transform/index.html">Laplace Transforms and their Applications</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../laplace_transform/1/laplace.html">The Laplace Transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../laplace_transform/2/inverse_laplace.html">The Inverse Laplace Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../laplace_transform/3/circuit_analysis.html">Using Laplace Transforms for Circuit Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../laplace_transform/4/transfer_functions.html">Transfer Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../laplace_transform/5/convolution.html">The Impulse Response and Convolution</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  In Class Worksheets
- </span>
-</p>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_series/index.html">Fourier Series</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/trig_fseries.html">Trigonometric Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/2/exp_fs1.html">Exponential Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/3/exp_fs2.html">Line Spectra and their Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_transform/index.html">Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/1/ft1.html">Defining the Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/2/ft2.html">Fourier transforms of commonly occuring signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/3/ft3.html">Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/4/ft4.html">Introduction to Filters</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dt_systems/index.html">Sampled Data Systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/1/sampling.html">Sampling Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/2/z_transform.html">The Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/3/i_z_transform.html">The Inverse Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/4/dt_models.html">Models of Discrete Time Systems</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dft/index.html">Discrete Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../dft/1/dft.html">The Discrete Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dft/2/fft.html">The Fast-Fourier Transform</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../zbib.html">Bibliography</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">In Class Worksheets</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../worksheets/index.html">
-   Worksheets
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../introduction/worksheet1.html">
-     Worksheet 1 Introduction
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../introduction/worksheet2.html">
-     Worksheet 2
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../elementary_signals/worksheet3.html">
-     Worksheet 3 Elementary Signals
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../laplace_transform/1/worksheet4.html">
-     Worksheet 4 Laplace Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../laplace_transform/2/worksheet5.html">
-     Worksheet 5 Inverse Laplace Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../laplace_transform/3/worksheet6.html">
-     Worksheet 6 Using Laplace Transforms for Circuit Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../laplace_transform/4/worksheet7.html">
-     Worksheet 7 Transfer Functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../laplace_transform/5/worksheet8.html">
-     Worksheet 8 Impulse Response and Time Convolution
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_series/1/worksheet9.html">
-     Worksheet 9 Trigonometric Fourier Series
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_series/2/worksheet10.html">
-     Worksheet 10 Exponential Fourier Series
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_series/3/worksheet11.html">
-     Worksheet 11 Line Spectra and their Applications
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_transform/1/worksheet12.html">
-     Worksheet 12 Defining the Fourier Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_transform/2/worksheet13.html">
-     Worksheet 13 Fourier transforms of commonly occuring signals
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_transform/3/worksheet14.html">
-     Worksheet 14 Fourier Transforms for Circuit and LTI Systems Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_transform/4/worksheet15.html">
-     Worksheet 15 Introduction to Filters
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../dt_systems/3/worksheet16.html">
-     Worksheet 16 The Inverse Z-Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../dt_systems/4/worksheet17.html">
-     Worksheet 17 Models of DT Systems
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../dft/1/worksheet18.html">
-     Worksheet 18 The Discrete-time Fourier Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../dft/2/worksheet19.html">
-     Worksheet 19 The Fast Fourier Transform
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../worksheets/index.html">Worksheets</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/worksheet1.html">Worksheet 1 Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/worksheet2.html">Worksheet 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../elementary_signals/worksheet3.html">Worksheet 3 Elementary Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../laplace_transform/1/worksheet4.html">Worksheet 4 Laplace Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../laplace_transform/2/worksheet5.html">Worksheet 5 Inverse Laplace Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../laplace_transform/3/worksheet6.html">Worksheet 6 Using Laplace Transforms for Circuit Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../laplace_transform/4/worksheet7.html">Worksheet 7 Transfer Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../laplace_transform/5/worksheet8.html">Worksheet 8 Impulse Response and Time Convolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/worksheet9.html">Worksheet 9 Trigonometric Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/2/worksheet10.html">Worksheet 10 Exponential Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/3/worksheet11.html">Worksheet 11 Line Spectra and their Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/1/worksheet12.html">Worksheet 12 Defining the Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/2/worksheet13.html">Worksheet 13 Fourier transforms of commonly occuring signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/3/worksheet14.html">Worksheet 14 Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/4/worksheet15.html">Worksheet 15 Introduction to Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/3/worksheet16.html">Worksheet 16 The Inverse Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/4/worksheet17.html">Worksheet 17 Models of DT Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dft/1/worksheet18.html">Worksheet 18 The Discrete-time Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dft/2/worksheet19.html">Worksheet 19 The Fast Fourier Transform</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Homework problems
- </span>
-</p>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework problems</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../homework/index.html">
-   Homework
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw1.html">
-     Homework 1 Elementary Signals
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw2.html">
-     Homework 2 Laplace and Inverse Laplace Transforms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw3.html">
-     Homework 3 Laplace Transforms for Ciruit Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw4.html">
-     Homework 4 Impulse Response and Convolution
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw5.html">
-     Homework 5 Fourier Series
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw6.html">
-     Homework 6
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw7.html">
-     Homework 7 Applications of the Fourier Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw8.html">
-     Homework 8 Sampling Theory and the Z-Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw9.html">
-     Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw10.html">
-     Homework 10 Discrete Fourier Transform and the Fast-Fourier Transform
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../homework/index.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw1.html">Homework 1 Elementary Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw2.html">Homework 2 Laplace and Inverse Laplace Transforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw3.html">Homework 3 Laplace Transforms for Ciruit Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw4.html">Homework 4 Impulse Response and Convolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw5.html">Homework 5 Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw6.html">Homework 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw7.html">Homework 7 Applications of the Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw8.html">Homework 8 Sampling Theory and the Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw9.html">Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw10.html">Homework 10 Discrete Fourier Transform and the Fast-Fourier Transform</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Lab Exercises
- </span>
-</p>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab Exercises</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../index.html">
-   Laboratory Exercises
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../tutorial/matlab-tutorial.html">
-     MATLAB Tutorial
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../peer-assessment.html">
-     Peer Assessment
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Lab 1 - Elemementary Signals
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../lab02/index.html">
-     Lab 2 - Laplace and Inverse Laplace Transforms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../lab03/index.html">
-     Lab 3 -  Laplace Transforms and Transfer Functions for Circuit Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../lab04/index.html">
-     Lab 4 - Time Domain Convolution
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../lab05/index.html">
-     Lab 5 - Fourier Series
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../lab06/spor.html">
-     Lab 6 Signal Processing OnRamp
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Laboratory Exercises</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/matlab-tutorial.html">MATLAB Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peer-assessment.html">Peer Assessment</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lab 1 - Elemementary Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab02/index.html">Lab 2 - Laplace and Inverse Laplace Transforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab03/index.html">Lab 3 -  Laplace Transforms and Transfer Functions for Circuit Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab04/index.html">Lab 4 - Time Domain Convolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab05/index.html">Lab 5 - Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab06/spor.html">Lab 6 Signal Processing OnRamp</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Project
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../project/index.html">
-   Project
-  </a>
- </li>
+</li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Answers to Selected Problems
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../introduction/answers.html">
-   Worksheet 2
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../project/index.html">Project</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Appendices
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Answers to Selected Problems</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../laplace_transform/1/lt_props.html">
-   Properties of the Laplace Transform
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../laplace_transform/1/lt_table.html">
-   Common Laplace Transform Pairs
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../fourier_transform/1/ft_props.html">
-   Properties of the Fourier Transform
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../fourier_transform/1/ft_table.html">
-   Common Fourier Transform Pairs
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../dt_systems/2/zt_props.html">
-   Properties of the Z-Transform
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../dt_systems/2/zt_table.html">
-   Table of Z-Transforms
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../setup/polling_setup.html">
-   Set Up In-Class Polling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../todo.html">
-   List of Planned Enhancements
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../setup/index.html">
-   Setting up your own version of this book
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../setup/jupyter.html">
-     About Jupyter notebooks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../setup/python.html">
-     Installing Python
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../setup/setup.html">
-     Setting up your Own Jupyter-MATLAB Computing Environment
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../setup/matlab_kernel.html">
-     Testing the Jupyter Matlab Kernel
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../setup/advanced-setup.html">
-     Quick Start - For Experienced Users
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../setup/jupyter-book.html">
-     Setting up jupyter-book
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/answers.html">Worksheet 2</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../laplace_transform/1/lt_props.html">Properties of the Laplace Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../laplace_transform/1/lt_table.html">Common Laplace Transform Pairs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fourier_transform/1/ft_props.html">Properties of the Fourier Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fourier_transform/1/ft_table.html">Common Fourier Transform Pairs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dt_systems/2/zt_props.html">Properties of the Z-Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dt_systems/2/zt_table.html">Table of Z-Transforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../setup/polling_setup.html">Set Up In-Class Polling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../todo.html">List of Planned Enhancements</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup/index.html">Setting up your own version of this book</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter.html">About Jupyter notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/python.html">Installing Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/setup.html">Setting up your Own Jupyter-MATLAB Computing Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/matlab_kernel.html">Testing the Jupyter Matlab Kernel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/advanced-setup.html">Quick Start - For Experienced Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter-book.html">Setting up jupyter-book</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by 
- <a href="https://jupyterbook.org">
-  Jupyter Book
-</a>
-
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/cpjobling/eg-247-textbook/master?urlpath=tree/labs/lab01/index.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-247-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-247-textbook/edit/master/labs/lab01/index.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Flabs/lab01/index.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/labs/lab01/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/cpjobling/eg-247-textbook"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
 
-      </li>
-      
-      <li>
-        <a href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Flabs/lab01/index.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/cpjobling/eg-247-textbook/edit/master/labs/lab01/index.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../../_sources/labs/lab01/index.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download notebook file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="../../_sources/labs/lab01/index.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#keeping-lab-records">
-   Keeping Lab Records
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#preamble-to-this-lab">
-   Preamble to this Lab
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#associated-class-notes">
-     Associated Class Notes
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#other-formats">
-     Other formats
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#acknowledgement">
-     Acknowledgement
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#aims">
-   Aims
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#assessment-criteria">
-   Assessment criteria
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#set-up">
-   Set up
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#before-you-start">
-     Before you start
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#download-starter-script">
-     Download starter script
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lab-exercises">
-   Lab Exercises
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lab-exercise-1-1">
-     Lab Exercise 1.1
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lab-exercise-1-2">
-     Lab Exercise 1.2
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mini-project-1">
-     Mini Project 1
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-to-hand-in">
-   What to Hand In
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#claim">
-     Claim
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#submission">
-     Submission
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#deadline">
-     Deadline
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#important">
-     Important
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#peer-assessment-procedure-for-this-lab">
-   Peer assessment procedure for this lab
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#doing-more">
-   Doing More
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reference">
-   Reference
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Lab 01: Elementary Signals</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#keeping-lab-records">
-   Keeping Lab Records
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#preamble-to-this-lab">
-   Preamble to this Lab
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#associated-class-notes">
-     Associated Class Notes
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#other-formats">
-     Other formats
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#acknowledgement">
-     Acknowledgement
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#aims">
-   Aims
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#assessment-criteria">
-   Assessment criteria
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#set-up">
-   Set up
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#before-you-start">
-     Before you start
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#download-starter-script">
-     Download starter script
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lab-exercises">
-   Lab Exercises
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lab-exercise-1-1">
-     Lab Exercise 1.1
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lab-exercise-1-2">
-     Lab Exercise 1.2
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mini-project-1">
-     Mini Project 1
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-to-hand-in">
-   What to Hand In
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#claim">
-     Claim
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#submission">
-     Submission
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#deadline">
-     Deadline
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#important">
-     Important
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#peer-assessment-procedure-for-this-lab">
-   Peer assessment procedure for this lab
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#doing-more">
-   Doing More
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reference">
-   Reference
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 01: Elementary Signals</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keeping-lab-records">Keeping Lab Records</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preamble-to-this-lab">Preamble to this Lab</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#associated-class-notes">Associated Class Notes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-formats">Other formats</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgement">Acknowledgement</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aims">Aims</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assessment-criteria">Assessment criteria</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up">Set up</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#before-you-start">Before you start</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-starter-script">Download starter script</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-exercises">Lab Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-exercise-1-1">Lab Exercise 1.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-exercise-1-2">Lab Exercise 1.2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-project-1">Mini Project 1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-hand-in">What to Hand In</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#claim">Claim</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deadline">Deadline</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#important">Important</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peer-assessment-procedure-for-this-lab">Peer assessment procedure for this lab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#doing-more">Doing More</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="lab-01-elementary-signals">
-<h1>Lab 01: Elementary Signals<a class="headerlink" href="#lab-01-elementary-signals" title="Permalink to this headline">#</a></h1>
+<h1>Lab 01: Elementary Signals<a class="headerlink" href="#lab-01-elementary-signals" title="Permalink to this heading">#</a></h1>
 <section id="keeping-lab-records">
-<h2>Keeping Lab Records<a class="headerlink" href="#keeping-lab-records" title="Permalink to this headline">#</a></h2>
+<h2>Keeping Lab Records<a class="headerlink" href="#keeping-lab-records" title="Permalink to this heading">#</a></h2>
 <p>The lab component will be assessed based on a portfolio of the MATLAB scripts, Simulink models and publishable MATLAB Live Scripts. You should therefore aim to keep all the files from each lab session in a suitable folder in your workspace on your OneDrive. I would suggest a structure like <strong>eg-247-textbook\portfolio\lab01</strong> which matches the layout of the files on this <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/tree/master/portfolio">GitHub repository</a>.</p>
 <p>One elegant way to do this would be to fork this GitHub repository (<a class="reference external" href="https://github.com/cpjobling/eg-247-textbook">cpjobling/eg-247-textbook</a>) and then build on from there, but that is not necessary.</p>
 <p>If you do not use GitHub as the master repository of your portfolio, please ensure that you backup your work files regularly. You will be required to submit some or all of them for assessment.</p>
 </section>
 <section id="preamble-to-this-lab">
-<h2>Preamble to this Lab<a class="headerlink" href="#preamble-to-this-lab" title="Permalink to this headline">#</a></h2>
+<h2>Preamble to this Lab<a class="headerlink" href="#preamble-to-this-lab" title="Permalink to this heading">#</a></h2>
 <section id="associated-class-notes">
-<h3>Associated Class Notes<a class="headerlink" href="#associated-class-notes" title="Permalink to this headline">#</a></h3>
+<h3>Associated Class Notes<a class="headerlink" href="#associated-class-notes" title="Permalink to this heading">#</a></h3>
 <p>This lab supports the materials covered in <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/elementary_signals/">Chapter 2 Elementary Signals</a> of the course notes. You may wish to refer to the Worksheets <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/introduction/worksheet2">worksheet 2</a> and <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/elementary_signals/worksheet3">worksheet 3</a> for additional examples to try.</p>
 </section>
 <section id="other-formats">
-<h3>Other formats<a class="headerlink" href="#other-formats" title="Permalink to this headline">#</a></h3>
+<h3>Other formats<a class="headerlink" href="#other-formats" title="Permalink to this heading">#</a></h3>
 <p>This document is available in <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/labs/lab01/index">HTML</a> format for online viewing and as <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/labs/lab01/lab01.pdf">PDF</a> for printing.</p>
 </section>
 <section id="acknowledgement">
-<h3>Acknowledgement<a class="headerlink" href="#acknowledgement" title="Permalink to this headline">#</a></h3>
+<h3>Acknowledgement<a class="headerlink" href="#acknowledgement" title="Permalink to this heading">#</a></h3>
 <p>These examples have been adapted from <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197#ppg=17">Chapter 1</a> of Karris<span id="id1">[<a class="reference internal" href="../../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197.">Karris, 2012</a>]</span>.</p>
 </section>
 </section>
 <section id="aims">
-<h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">#</a></h2>
+<h2>Aims<a class="headerlink" href="#aims" title="Permalink to this heading">#</a></h2>
 <p>The purposes of this laboratory are to</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Explore the properties of the unit step and Dirac delta functions using the analysis and plotting tools  provided by MATLAB in the <em>Symbolic Math Toolbox</em>.</p></li>
 <li><p>Synthesise a generalised signal in Simulink and plot it and its derivative.</p></li>
 <li><p>Experience <strong>Peer Assessment</strong> as a coursework moderation and feedback process.</p></li>
@@ -1178,14 +575,14 @@ title="Print to PDF"
 <p>We will also demonstrate the Live Script feature provided by MATLAB that will be useful for recording lab results for this module.</p>
 </section>
 <section id="assessment-criteria">
-<h2>Assessment criteria<a class="headerlink" href="#assessment-criteria" title="Permalink to this headline">#</a></h2>
+<h2>Assessment criteria<a class="headerlink" href="#assessment-criteria" title="Permalink to this heading">#</a></h2>
 <p>Up to three marks can be claimed according to how many of parts 1-5 in the lab exercises have been completed. The mini project is worth an additional two marks. There are an additional 5 marks available for participating in the peer assessment.</p>
 <p>Detailed marking criteria for this and the other labs and the project are given in the linked <a class="reference external" href="https://docs.google.com/spreadsheets/d/1m5ttr8WNoXa_yhXRESI4f7fKKmhK9HsTJjRViqP4i2o/edit?usp=sharing">Assessment Criteria</a> [Google sheet].</p>
 </section>
 <section id="set-up">
-<h2>Set up<a class="headerlink" href="#set-up" title="Permalink to this headline">#</a></h2>
+<h2>Set up<a class="headerlink" href="#set-up" title="Permalink to this heading">#</a></h2>
 <section id="before-you-start">
-<h3>Before you start<a class="headerlink" href="#before-you-start" title="Permalink to this headline">#</a></h3>
+<h3>Before you start<a class="headerlink" href="#before-you-start" title="Permalink to this heading">#</a></h3>
 <p>Create a suitable folder structure on your file-store for your labs.</p>
 <p>I suggest:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">OneDrive</span>\<span class="n">workspace</span>
@@ -1198,22 +595,22 @@ title="Print to PDF"
 <p>Use folder <code class="docutils literal notranslate"><span class="pre">OneDrive\workspace\signals-and-systems-lab\lab01</span></code> for this lab.</p>
 </section>
 <section id="download-starter-script">
-<h3>Download starter script<a class="headerlink" href="#download-starter-script" title="Permalink to this headline">#</a></h3>
+<h3>Download starter script<a class="headerlink" href="#download-starter-script" title="Permalink to this heading">#</a></h3>
 <p>Right click to save the file <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/labs/lab01/elem_sigs.m">elem_sigs.m</a> to your <code class="docutils literal notranslate"><span class="pre">lab01</span></code> folder. Open the file as a Live Script file in the file browser in MATLAB.</p>
 </section>
 </section>
 <section id="lab-exercises">
-<h2>Lab Exercises<a class="headerlink" href="#lab-exercises" title="Permalink to this headline">#</a></h2>
+<h2>Lab Exercises<a class="headerlink" href="#lab-exercises" title="Permalink to this heading">#</a></h2>
 <section id="lab-exercise-1-1">
-<h3>Lab Exercise 1.1<a class="headerlink" href="#lab-exercise-1-1" title="Permalink to this headline">#</a></h3>
+<h3>Lab Exercise 1.1<a class="headerlink" href="#lab-exercise-1-1" title="Permalink to this heading">#</a></h3>
 <p>For Lab Exercise 1 you are required to complete parts 1 to 2 of the provided script (1 mark).</p>
 </section>
 <section id="lab-exercise-1-2">
-<h3>Lab Exercise 1.2<a class="headerlink" href="#lab-exercise-1-2" title="Permalink to this headline">#</a></h3>
+<h3>Lab Exercise 1.2<a class="headerlink" href="#lab-exercise-1-2" title="Permalink to this heading">#</a></h3>
 <p>For Lab Exercise 2 you are required to complete parts 3 to 5 of the provided script (2 marks).</p>
 </section>
 <section id="mini-project-1">
-<h3>Mini Project 1<a class="headerlink" href="#mini-project-1" title="Permalink to this headline">#</a></h3>
+<h3>Mini Project 1<a class="headerlink" href="#mini-project-1" title="Permalink to this heading">#</a></h3>
 <p>Work through the procedures given between <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?ppg=34&amp;docID=3384197&amp;tm=1518436444996">pages 1-18 and 1-19</a> of Karris<span id="id2">[<a class="reference internal" href="../../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197.">Karris, 2012</a>]</span> to construct the piecewise signal generator first shown in <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?ppg=31&amp;docID=3384197&amp;tm=1518436492450">Figure 1.21</a> inside Simulink.</p>
 <p><img alt="Signal Synthesis Example" src="../../_images/fig21.png" /></p>
 <p><em>Signal to be synthesised (Reproduction of Fig 1.21 of Karris)</em></p>
@@ -1223,48 +620,48 @@ title="Print to PDF"
 </section>
 </section>
 <section id="what-to-hand-in">
-<h2>What to Hand In<a class="headerlink" href="#what-to-hand-in" title="Permalink to this headline">#</a></h2>
+<h2>What to Hand In<a class="headerlink" href="#what-to-hand-in" title="Permalink to this heading">#</a></h2>
 <section id="claim">
-<h3>Claim<a class="headerlink" href="#claim" title="Permalink to this headline">#</a></h3>
+<h3>Claim<a class="headerlink" href="#claim" title="Permalink to this heading">#</a></h3>
 <p>Up to three marks can be claimed according to how many of parts 1-5 in the lab exercises have been completed. The mini project is worth an additional 2 marks.</p>
 <p>Make your claim by downloading and editing the labwork claim form and declaration: <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/labs/lab01/lab01-claim.docx">lab01-claim.docx</a> [Word].</p>
 </section>
 <section id="submission">
-<h3>Submission<a class="headerlink" href="#submission" title="Permalink to this headline">#</a></h3>
+<h3>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h3>
 <p>You should submit the following to the <strong>Lab 01: Elementary Signals</strong> Assignment on Canvas.</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>The completed labwork claim form and declaration.</p></li>
 <li><p>As evidence for completion of the lab exercises, your completed version of the Live Script file <code class="docutils literal notranslate"><span class="pre">elem_signals.mlx</span></code>.</p></li>
 <li><p>As evidence of completion of the Miniproject, the Simulink model of the piecewise linear signal <code class="docutils literal notranslate"><span class="pre">signal.slx</span></code>.</p></li>
 </ol>
 </section>
 <section id="deadline">
-<h3>Deadline<a class="headerlink" href="#deadline" title="Permalink to this headline">#</a></h3>
+<h3>Deadline<a class="headerlink" href="#deadline" title="Permalink to this heading">#</a></h3>
 <p>The Deadline for claims and submission is:</p>
 <p><strong>4:00 pm, Monday 20th February 2023</strong>.</p>
 </section>
 <section id="important">
-<h3>Important<a class="headerlink" href="#important" title="Permalink to this headline">#</a></h3>
+<h3>Important<a class="headerlink" href="#important" title="Permalink to this heading">#</a></h3>
 <p>To avoid errors in verification, particularly with Simulink, you should check that your script and simulations work on the version of MATLAB that is installed in the shared desktop (Version 2019a when I last checked). If you have installed a more recent version of MATLAB, or are using MATLAB online, you should note the version of MATLAB that you ahve used in the the submission comment. You can also save your Simulink model using the older version (use <strong>File</strong> &gt; <strong>Export Model to</strong> &gt; <strong>Previous Version</strong>).</p>
 </section>
 </section>
 <section id="peer-assessment-procedure-for-this-lab">
-<h2>Peer assessment procedure for this lab<a class="headerlink" href="#peer-assessment-procedure-for-this-lab" title="Permalink to this headline">#</a></h2>
+<h2>Peer assessment procedure for this lab<a class="headerlink" href="#peer-assessment-procedure-for-this-lab" title="Permalink to this heading">#</a></h2>
 <p>On Monday 20th February, you should receive notification that the submissions of three of your colleagues are available for peer assessment. This notification will arrive by email (if you have your Canvas notifications turned on) or via the inbox on Canvas or the Canvas Student App.</p>
 <p>This is the procedure you should follow:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Carefully read the document on <a class="reference internal" href="../peer-assessment.html"><span class="doc std std-doc">Peer Assessment</span></a> (<a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/labs/peer-assessment.pdf">PDF</a>) before starting your assessment.</p></li>
-<li><p>Check that the files are downloaded and named correctly as per the note on <a class="reference external" href="../peer-assessment#Important-note-about-file-names">Filenaming Conventions</a> in the peer-assessment document.</p></li>
+<li><p>Check that the files are downloaded and named correctly as per the note on <span class="xref myst">Filenaming Conventions</span> in the peer-assessment document.</p></li>
 <li><p>Open the Live Script file <code class="docutils literal notranslate"><span class="pre">elem_signals.mlx</span></code> and execute <strong>run all</strong>. Check that the results are all present and that there are no errors. Review the formatting of the file and think about how readable and understandable the script is as a record of the experiment.</p></li>
 <li><p>Open and run the Simulink model <code class="docutils literal notranslate"><span class="pre">signal.slx</span></code> and confirm that the results match the figure given above.</p></li>
 </ol>
 </section>
 <section id="doing-more">
-<h2>Doing More<a class="headerlink" href="#doing-more" title="Permalink to this headline">#</a></h2>
+<h2>Doing More<a class="headerlink" href="#doing-more" title="Permalink to this heading">#</a></h2>
 <p>If you have time remaining, you may wish to confirm some of the results covered in class from <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/introduction/worksheet2">worksheet 2</a> and <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/elementary_signals/worksheet3">worksheet 3</a>. You can also work through Appendix A of the textbook: that chapter introduces MATLAB in a way that matches the presentation in the rest of the book. There are also additional tutorial and video introductions to <em>MATLAB</em>, <em>Simulink</em> and the <em>Signal Processing Toolbox</em> in the <strong>Getting Started with MATLAB</strong> section of the <strong>Useful Additional Resources</strong> module of the Canvas site for Signals and Systems.</p>
 </section>
 <section id="reference">
-<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">#</a></h2>
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this heading">#</a></h2>
 <p>See <a class="reference internal" href="../../zbib.html"><span class="doc std std-doc">Bibliography</span></a>.</p>
 </section>
 </section>
@@ -1281,7 +678,7 @@ title="Print to PDF"
             mode: "matlab"
         },
         kernelOptions: {
-            kernelName: "matlab",
+            name: "matlab",
             path: "./labs/lab01"
         },
         predefinedOutput: true
@@ -1289,39 +686,118 @@ title="Print to PDF"
     </script>
     <script>kernelName = 'matlab'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../peer-assessment.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Peer Assessment</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../peer-assessment.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Peer Assessment</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="../lab02/index.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="../lab02/index.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Lab 2: Laplace and Inverse Laplace Transforms</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keeping-lab-records">Keeping Lab Records</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preamble-to-this-lab">Preamble to this Lab</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#associated-class-notes">Associated Class Notes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-formats">Other formats</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgement">Acknowledgement</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aims">Aims</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assessment-criteria">Assessment criteria</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up">Set up</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#before-you-start">Before you start</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-starter-script">Download starter script</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-exercises">Lab Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-exercise-1-1">Lab Exercise 1.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-exercise-1-2">Lab Exercise 1.2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-project-1">Mini Project 1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-hand-in">What to Hand In</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#claim">Claim</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deadline">Deadline</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#important">Important</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peer-assessment-procedure-for-this-lab">Peer assessment procedure for this lab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#doing-more">Doing More</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Dr Chris P. Jobling<br/>
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Chris P. Jobling
+</p>
+
+  </div>
   
-      &copy; Copyright Swansea University (2019-2022).<br/>
-    <div class="extra_footer">
-      This page was created by 
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Swansea University (2019-2022).
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  This page was created by 
 <a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
   Dr Chris P. Jobling
 </a> 
@@ -1330,20 +806,22 @@ for
   Swansea University
 </a>.
 
-    </div>
-</p>
-        </footer>
-    </div>
-    
 </div>
+  </div>
+  
+</div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

@@ -1,50 +1,62 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Sampling Theory &#8212; EG-247 Signals and Systems</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -54,57 +66,99 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'dt_systems/1/sampling';</script>
     <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/1/sampling.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Discrete-Time Systems and the Z-Transform" href="../2/z_transform.html" />
     <link rel="prev" title="Sampled Data Systems" href="../index.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">EG-247 Signals and Systems</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="../../introduction/index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">EG-247 Signals and Systems</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -113,1294 +167,418 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Online notes
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Online notes</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../elementary_signals/index.html">
-   Elementary Signals
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../laplace_transform/index.html">
-   Laplace Transforms and their Applications
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../laplace_transform/1/laplace.html">
-     The Laplace Transformation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../laplace_transform/2/inverse_laplace.html">
-     The Inverse Laplace Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../laplace_transform/3/circuit_analysis.html">
-     Using Laplace Transforms for Circuit Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../laplace_transform/4/transfer_functions.html">
-     Transfer Functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../laplace_transform/5/convolution.html">
-     The Impulse Response and Convolution
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../fourier_series/index.html">
-   Fourier Series
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_series/1/trig_fseries.html">
-     Trigonometric Fourier Series
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_series/2/exp_fs1.html">
-     Exponential Fourier Series
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_series/3/exp_fs2.html">
-     Line Spectra and their Applications
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../fourier_transform/index.html">
-   Fourier Transform
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_transform/1/ft1.html">
-     Defining the Fourier Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_transform/2/ft2.html">
-     Fourier transforms of commonly occuring signals
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_transform/3/ft3.html">
-     Fourier Transforms for Circuit and LTI Systems Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_transform/4/ft4.html">
-     Introduction to Filters
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../index.html">
-   Sampled Data Systems
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Sampling Theory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../2/z_transform.html">
-     The Z-Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../3/i_z_transform.html">
-     The Inverse Z-Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../4/dt_models.html">
-     Models of Discrete Time Systems
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../dft/index.html">
-   Discrete Fourier Transform
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../dft/1/dft.html">
-     The Discrete Fourier Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../dft/2/fft.html">
-     The Fast-Fourier Transform
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../zbib.html">
-   Bibliography
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../elementary_signals/index.html">Elementary Signals</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../laplace_transform/index.html">Laplace Transforms and their Applications</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../laplace_transform/1/laplace.html">The Laplace Transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../laplace_transform/2/inverse_laplace.html">The Inverse Laplace Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../laplace_transform/3/circuit_analysis.html">Using Laplace Transforms for Circuit Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../laplace_transform/4/transfer_functions.html">Transfer Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../laplace_transform/5/convolution.html">The Impulse Response and Convolution</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  In Class Worksheets
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../worksheets/index.html">
-   Worksheets
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../introduction/worksheet1.html">
-     Worksheet 1 Introduction
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../introduction/worksheet2.html">
-     Worksheet 2
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../elementary_signals/worksheet3.html">
-     Worksheet 3 Elementary Signals
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../laplace_transform/1/worksheet4.html">
-     Worksheet 4 Laplace Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../laplace_transform/2/worksheet5.html">
-     Worksheet 5 Inverse Laplace Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../laplace_transform/3/worksheet6.html">
-     Worksheet 6 Using Laplace Transforms for Circuit Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../laplace_transform/4/worksheet7.html">
-     Worksheet 7 Transfer Functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../laplace_transform/5/worksheet8.html">
-     Worksheet 8 Impulse Response and Time Convolution
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_series/1/worksheet9.html">
-     Worksheet 9 Trigonometric Fourier Series
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_series/2/worksheet10.html">
-     Worksheet 10 Exponential Fourier Series
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_series/3/worksheet11.html">
-     Worksheet 11 Line Spectra and their Applications
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_transform/1/worksheet12.html">
-     Worksheet 12 Defining the Fourier Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_transform/2/worksheet13.html">
-     Worksheet 13 Fourier transforms of commonly occuring signals
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_transform/3/worksheet14.html">
-     Worksheet 14 Fourier Transforms for Circuit and LTI Systems Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../fourier_transform/4/worksheet15.html">
-     Worksheet 15 Introduction to Filters
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../3/worksheet16.html">
-     Worksheet 16 The Inverse Z-Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../4/worksheet17.html">
-     Worksheet 17 Models of DT Systems
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../dft/1/worksheet18.html">
-     Worksheet 18 The Discrete-time Fourier Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../dft/2/worksheet19.html">
-     Worksheet 19 The Fast Fourier Transform
-    </a>
-   </li>
-  </ul>
- </li>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_series/index.html">Fourier Series</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/trig_fseries.html">Trigonometric Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/2/exp_fs1.html">Exponential Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/3/exp_fs2.html">Line Spectra and their Applications</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Homework problems
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../homework/index.html">
-   Homework
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw1.html">
-     Homework 1 Elementary Signals
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw2.html">
-     Homework 2 Laplace and Inverse Laplace Transforms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw3.html">
-     Homework 3 Laplace Transforms for Ciruit Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw4.html">
-     Homework 4 Impulse Response and Convolution
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw5.html">
-     Homework 5 Fourier Series
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw6.html">
-     Homework 6
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw7.html">
-     Homework 7 Applications of the Fourier Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw8.html">
-     Homework 8 Sampling Theory and the Z-Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw9.html">
-     Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../homework/hw10.html">
-     Homework 10 Discrete Fourier Transform and the Fast-Fourier Transform
-    </a>
-   </li>
-  </ul>
- </li>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_transform/index.html">Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/1/ft1.html">Defining the Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/2/ft2.html">Fourier transforms of commonly occuring signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/3/ft3.html">Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/4/ft4.html">Introduction to Filters</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Lab Exercises
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../labs/index.html">
-   Laboratory Exercises
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../labs/tutorial/matlab-tutorial.html">
-     MATLAB Tutorial
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../labs/peer-assessment.html">
-     Peer Assessment
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../labs/lab01/index.html">
-     Lab 1 - Elemementary Signals
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../labs/lab02/index.html">
-     Lab 2 - Laplace and Inverse Laplace Transforms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../labs/lab03/index.html">
-     Lab 3 -  Laplace Transforms and Transfer Functions for Circuit Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../labs/lab04/index.html">
-     Lab 4 - Time Domain Convolution
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../labs/lab05/index.html">
-     Lab 5 - Fourier Series
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../labs/lab06/spor.html">
-     Lab 6 Signal Processing OnRamp
-    </a>
-   </li>
-  </ul>
- </li>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Sampled Data Systems</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Sampling Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2/z_transform.html">The Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3/i_z_transform.html">The Inverse Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../4/dt_models.html">Models of Discrete Time Systems</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Project
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../labs/project/index.html">
-   Project
-  </a>
- </li>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dft/index.html">Discrete Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../dft/1/dft.html">The Discrete Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dft/2/fft.html">The Fast-Fourier Transform</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Answers to Selected Problems
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../introduction/answers.html">
-   Worksheet 2
-  </a>
- </li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../zbib.html">Bibliography</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Appendices
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">In Class Worksheets</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../laplace_transform/1/lt_props.html">
-   Properties of the Laplace Transform
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../laplace_transform/1/lt_table.html">
-   Common Laplace Transform Pairs
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../fourier_transform/1/ft_props.html">
-   Properties of the Fourier Transform
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../fourier_transform/1/ft_table.html">
-   Common Fourier Transform Pairs
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../2/zt_props.html">
-   Properties of the Z-Transform
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../2/zt_table.html">
-   Table of Z-Transforms
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../setup/polling_setup.html">
-   Set Up In-Class Polling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../todo.html">
-   List of Planned Enhancements
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../setup/index.html">
-   Setting up your own version of this book
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../setup/jupyter.html">
-     About Jupyter notebooks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../setup/python.html">
-     Installing Python
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../setup/setup.html">
-     Setting up your Own Jupyter-MATLAB Computing Environment
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../setup/matlab_kernel.html">
-     Testing the Jupyter Matlab Kernel
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../setup/advanced-setup.html">
-     Quick Start - For Experienced Users
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../setup/jupyter-book.html">
-     Setting up jupyter-book
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../worksheets/index.html">Worksheets</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/worksheet1.html">Worksheet 1 Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/worksheet2.html">Worksheet 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../elementary_signals/worksheet3.html">Worksheet 3 Elementary Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../laplace_transform/1/worksheet4.html">Worksheet 4 Laplace Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../laplace_transform/2/worksheet5.html">Worksheet 5 Inverse Laplace Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../laplace_transform/3/worksheet6.html">Worksheet 6 Using Laplace Transforms for Circuit Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../laplace_transform/4/worksheet7.html">Worksheet 7 Transfer Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../laplace_transform/5/worksheet8.html">Worksheet 8 Impulse Response and Time Convolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/worksheet9.html">Worksheet 9 Trigonometric Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/2/worksheet10.html">Worksheet 10 Exponential Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/3/worksheet11.html">Worksheet 11 Line Spectra and their Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/1/worksheet12.html">Worksheet 12 Defining the Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/2/worksheet13.html">Worksheet 13 Fourier transforms of commonly occuring signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/3/worksheet14.html">Worksheet 14 Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/4/worksheet15.html">Worksheet 15 Introduction to Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3/worksheet16.html">Worksheet 16 The Inverse Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../4/worksheet17.html">Worksheet 17 Models of DT Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dft/1/worksheet18.html">Worksheet 18 The Discrete-time Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dft/2/worksheet19.html">Worksheet 19 The Fast Fourier Transform</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework problems</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../homework/index.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw1.html">Homework 1 Elementary Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw2.html">Homework 2 Laplace and Inverse Laplace Transforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw3.html">Homework 3 Laplace Transforms for Ciruit Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw4.html">Homework 4 Impulse Response and Convolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw5.html">Homework 5 Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw6.html">Homework 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw7.html">Homework 7 Applications of the Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw8.html">Homework 8 Sampling Theory and the Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw9.html">Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw10.html">Homework 10 Discrete Fourier Transform and the Fast-Fourier Transform</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab Exercises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../labs/index.html">Laboratory Exercises</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../labs/tutorial/matlab-tutorial.html">MATLAB Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../labs/peer-assessment.html">Peer Assessment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../labs/lab01/index.html">Lab 1 - Elemementary Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../labs/lab02/index.html">Lab 2 - Laplace and Inverse Laplace Transforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../labs/lab03/index.html">Lab 3 -  Laplace Transforms and Transfer Functions for Circuit Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../labs/lab04/index.html">Lab 4 - Time Domain Convolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../labs/lab05/index.html">Lab 5 - Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../labs/lab06/spor.html">Lab 6 Signal Processing OnRamp</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/project/index.html">Project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Answers to Selected Problems</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/answers.html">Worksheet 2</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../laplace_transform/1/lt_props.html">Properties of the Laplace Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../laplace_transform/1/lt_table.html">Common Laplace Transform Pairs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fourier_transform/1/ft_props.html">Properties of the Fourier Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fourier_transform/1/ft_table.html">Common Fourier Transform Pairs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2/zt_props.html">Properties of the Z-Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2/zt_table.html">Table of Z-Transforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../setup/polling_setup.html">Set Up In-Class Polling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../todo.html">List of Planned Enhancements</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup/index.html">Setting up your own version of this book</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter.html">About Jupyter notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/python.html">Installing Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/setup.html">Setting up your Own Jupyter-MATLAB Computing Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/matlab_kernel.html">Testing the Jupyter Matlab Kernel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/advanced-setup.html">Quick Start - For Experienced Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter-book.html">Setting up jupyter-book</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by 
- <a href="https://jupyterbook.org">
-  Jupyter Book
-</a>
-
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/cpjobling/eg-247-textbook/master?urlpath=tree/dt_systems/1/sampling.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-247-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-247-textbook/edit/master/dt_systems/1/sampling.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Fdt_systems/1/sampling.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/dt_systems/1/sampling.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/cpjobling/eg-247-textbook"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
 
-      </li>
-      
-      <li>
-        <a href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Fdt_systems/1/sampling.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/cpjobling/eg-247-textbook/edit/master/dt_systems/1/sampling.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../../_sources/dt_systems/1/sampling.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download notebook file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="../../_sources/dt_systems/1/sampling.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#colophon">
-   Colophon
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#scope-and-background-reading">
-   Scope and Background Reading
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#agenda">
-   Agenda
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#acknowledgements">
-   Acknowledgements
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   Introduction
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#in-class-demo-1-sampling">
-     In Class Demo 1: Sampling
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#technical-details">
-       Technical Details
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#question">
-       Question
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sampling-ct-signals">
-   Sampling CT Signals
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#time-domain">
-     Time domain
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#frequency-domain">
-     Frequency domain
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-mathematics">
-     The Mathematics
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#nyquist-shannon-sampling-theorem">
-     Nyquist-Shannon Sampling Theorem
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#recovery-of-signal-by-filtering">
-     Recovery of signal by filtering
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#recovered-signal">
-     Recovered signal
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ideal-lowpass-filter-for-ct-recovery-from-dt-sampled-signal">
-     Ideal Lowpass Filter for CT Recovery from DT Sampled Signal
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sample-and-hold">
-     Sample-and-hold
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sample-and-hold-operator">
-     Sample-and-hold operator
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#in-class-demo-2">
-     In Class Demo 2
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#illustrating-sampling-in-matlab">
-       Illustrating Sampling in MATLAB
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#define-a-suitable-signal">
-       Define a suitable signal
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#calculate-and-plot-the-impulse-response">
-       Calculate and plot the impulse response
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#calculate-and-plot-the-sampled-data">
-       Calculate and plot the sampled data|
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#notes">
-       Notes
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#signal-reconstruction">
-   Signal Reconstruction
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#perfect-signal-interpolation-using-sinc-functions">
-     Perfect Signal Interpolation Using sinc Functions
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#in-class-demo-3-matlab-demonstrations-of-signal-reconstruction">
-     In Class Demo 3: MATLAB Demonstrations of signal reconstruction
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#reconstruction-with-sinc-function">
-       Reconstruction with sinc function
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#reconstructed-signal">
-       Reconstructed signal
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#signal-reconstructed-with-zero-order-hold-zoh">
-       Signal reconstructed with zero-order hold (ZOH)
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#signal-reconstructed-with-first-order-hold-foh">
-       Signal reconstructed with First-order hold (FOH)
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#aliasing">
-   Aliasing
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#an-aliased-signal">
-     An Aliased Signal
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#in-class-demo-4">
-     In Class Demo 4
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#demo-4-1">
-       Demo 4.1
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#demo-4-2">
-       Demo  4.2
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#antialising-filters">
-     Antialising Filters
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#demo-4-3">
-       Demo 4.3
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#practical-application-digital-audio">
-     Practical application - digital audio
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dt-processing-of-ct-signals">
-   DT Processing of CT Signals
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sampling-of-dt-signals">
-   Sampling of DT Signals
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#answer-to-question">
-     Answer to Question
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#matlab-functions-used">
-   Matlab Functions used
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Sampling Theory</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#colophon">
-   Colophon
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#scope-and-background-reading">
-   Scope and Background Reading
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#agenda">
-   Agenda
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#acknowledgements">
-   Acknowledgements
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   Introduction
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#in-class-demo-1-sampling">
-     In Class Demo 1: Sampling
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#technical-details">
-       Technical Details
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#question">
-       Question
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sampling-ct-signals">
-   Sampling CT Signals
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#time-domain">
-     Time domain
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#frequency-domain">
-     Frequency domain
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-mathematics">
-     The Mathematics
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#nyquist-shannon-sampling-theorem">
-     Nyquist-Shannon Sampling Theorem
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#recovery-of-signal-by-filtering">
-     Recovery of signal by filtering
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#recovered-signal">
-     Recovered signal
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ideal-lowpass-filter-for-ct-recovery-from-dt-sampled-signal">
-     Ideal Lowpass Filter for CT Recovery from DT Sampled Signal
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sample-and-hold">
-     Sample-and-hold
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sample-and-hold-operator">
-     Sample-and-hold operator
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#in-class-demo-2">
-     In Class Demo 2
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#illustrating-sampling-in-matlab">
-       Illustrating Sampling in MATLAB
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#define-a-suitable-signal">
-       Define a suitable signal
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#calculate-and-plot-the-impulse-response">
-       Calculate and plot the impulse response
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#calculate-and-plot-the-sampled-data">
-       Calculate and plot the sampled data|
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#notes">
-       Notes
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#signal-reconstruction">
-   Signal Reconstruction
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#perfect-signal-interpolation-using-sinc-functions">
-     Perfect Signal Interpolation Using sinc Functions
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#in-class-demo-3-matlab-demonstrations-of-signal-reconstruction">
-     In Class Demo 3: MATLAB Demonstrations of signal reconstruction
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#reconstruction-with-sinc-function">
-       Reconstruction with sinc function
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#reconstructed-signal">
-       Reconstructed signal
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#signal-reconstructed-with-zero-order-hold-zoh">
-       Signal reconstructed with zero-order hold (ZOH)
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#signal-reconstructed-with-first-order-hold-foh">
-       Signal reconstructed with First-order hold (FOH)
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#aliasing">
-   Aliasing
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#an-aliased-signal">
-     An Aliased Signal
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#in-class-demo-4">
-     In Class Demo 4
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#demo-4-1">
-       Demo 4.1
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#demo-4-2">
-       Demo  4.2
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#antialising-filters">
-     Antialising Filters
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#demo-4-3">
-       Demo 4.3
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#practical-application-digital-audio">
-     Practical application - digital audio
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dt-processing-of-ct-signals">
-   DT Processing of CT Signals
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sampling-of-dt-signals">
-   Sampling of DT Signals
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#answer-to-question">
-     Answer to Question
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#matlab-functions-used">
-   Matlab Functions used
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Sampling Theory</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colophon">Colophon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope-and-background-reading">Scope and Background Reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">Agenda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-demo-1-sampling">In Class Demo 1: Sampling</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-details">Technical Details</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question">Question</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-ct-signals">Sampling CT Signals</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-domain">Time domain</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#frequency-domain">Frequency domain</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mathematics">The Mathematics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nyquist-shannon-sampling-theorem">Nyquist-Shannon Sampling Theorem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recovery-of-signal-by-filtering">Recovery of signal by filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recovered-signal">Recovered signal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ideal-lowpass-filter-for-ct-recovery-from-dt-sampled-signal">Ideal Lowpass Filter for CT Recovery from DT Sampled Signal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-and-hold">Sample-and-hold</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-and-hold-operator">Sample-and-hold operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-demo-2">In Class Demo 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#illustrating-sampling-in-matlab">Illustrating Sampling in MATLAB</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#define-a-suitable-signal">Define a suitable signal</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-and-plot-the-impulse-response">Calculate and plot the impulse response</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-and-plot-the-sampled-data">Calculate and plot the sampled data|</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-reconstruction">Signal Reconstruction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perfect-signal-interpolation-using-sinc-functions">Perfect Signal Interpolation Using sinc Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-demo-3-matlab-demonstrations-of-signal-reconstruction">In Class Demo 3: MATLAB Demonstrations of signal reconstruction</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reconstruction-with-sinc-function">Reconstruction with sinc function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reconstructed-signal">Reconstructed signal</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-reconstructed-with-zero-order-hold-zoh">Signal reconstructed with zero-order hold (ZOH)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-reconstructed-with-first-order-hold-foh">Signal reconstructed with First-order hold (FOH)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aliasing">Aliasing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-aliased-signal">An Aliased Signal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-demo-4">In Class Demo 4</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#demo-4-1">Demo 4.1</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#demo-4-2">Demo  4.2</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#antialising-filters">Antialising Filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#demo-4-3">Demo 4.3</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-application-digital-audio">Practical application - digital audio</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dt-processing-of-ct-signals">DT Processing of CT Signals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-of-dt-signals">Sampling of DT Signals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#answer-to-question">Answer to Question</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-functions-used">Matlab Functions used</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="sampling-theory">
-<h1>Sampling Theory<a class="headerlink" href="#sampling-theory" title="Permalink to this headline">#</a></h1>
+<h1>Sampling Theory<a class="headerlink" href="#sampling-theory" title="Permalink to this heading">#</a></h1>
 <section id="colophon">
-<h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this headline">#</a></h2>
+<h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>The source code for this page is <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/dt_systems/1/sampling.ipynb">dt_systems/1/sampling.ipynb</a>.</p></li>
 <li><p>You can view the notes for this presentation as a webpage (<a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/1/sampling.html">HTML</a>).</p></li>
@@ -1408,12 +586,12 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="scope-and-background-reading">
-<h2>Scope and Background Reading<a class="headerlink" href="#scope-and-background-reading" title="Permalink to this headline">#</a></h2>
+<h2>Scope and Background Reading<a class="headerlink" href="#scope-and-background-reading" title="Permalink to this heading">#</a></h2>
 <p>This session is an introduction to sampling theory. It reviews the important ideas that pertain to sampling but leaves the detailed mathematics for your further study.</p>
 <p>The material in this presentation and notes is based on Chapter 15 of <span id="id1">[<a class="reference internal" href="../../zbib.html#id9" title="Benoit Boulet. Fundamentals of signals and systems. Da Vinci Engineering Press, Hingham, Mass., 2006. ISBN 1584503815. Available as an eBook. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3135971.">Boulet, 2006</a>]</span> from the <strong>Recommended Reading List</strong> and you’ll find the mathematical treatments there. There is much more detail in <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=329">Chapter 9</a> of <span id="id2">[<a class="reference internal" href="../../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197.">Karris, 2012</a>]</span> from the <strong>Required Reading List</strong>.</p>
 </section>
 <section id="agenda">
-<h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this headline">#</a></h2>
+<h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Sampling of Continuous-Time Signals</p></li>
 </ul>
@@ -1428,11 +606,11 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="acknowledgements">
-<h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">#</a></h2>
+<h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this heading">#</a></h2>
 <p>We will be using an adaptation of a pair of demo scripts to illustrate <em>alialising</em>. These scripts were published by Prof. Charles A. Bouman, School of Electrical and Computer Engineering, Purdue University as part of the course materials for <a class="reference external" href="https://engineering.purdue.edu/VISE/ee438/demos/">ECE438: Digital Signal Processing</a>.</p>
 </section>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>The <em>sampling process</em> provides the bridge between continuous-time (CT) and discrete-time (DT) signals</p></li>
 <li><p>Sampling records discrete values of a CT signal at periodic instants of time.</p></li>
@@ -1441,19 +619,19 @@ title="Print to PDF"
 </ul>
 <p>Basic set up</p>
 <section id="in-class-demo-1-sampling">
-<h3>In Class Demo 1: Sampling<a class="headerlink" href="#in-class-demo-1-sampling" title="Permalink to this headline">#</a></h3>
+<h3>In Class Demo 1: Sampling<a class="headerlink" href="#in-class-demo-1-sampling" title="Permalink to this heading">#</a></h3>
 <p>I need a volunteer to provide a sound sample ….</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>I will use this <a class="reference external" href="https://uk.mathworks.com/help/matlab/matlab_prog/what-is-a-live-script-or-function.html">Live Script</a> <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/1/matlab/sampling_demo.mlx">sampling_demo.mlx</a> to sample your voice.</p></li>
 <li><p>I will then playback the recording.</p></li>
 <li><p>I will the plot the data.</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">clearvars</span><span class="w"></span>
-<span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="w"></span>
-<span class="nb">cd</span><span class="w"> </span><span class="n">matlab</span><span class="w"></span>
-<span class="nb">pwd</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">clearvars</span>
+<span class="nb">format</span><span class="w"> </span><span class="n">compact</span>
+<span class="nb">cd</span><span class="w"> </span><span class="n">matlab</span>
+<span class="nb">pwd</span>
 </pre></div>
 </div>
 </div>
@@ -1466,13 +644,13 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="w"> </span><span class="n">sampling_demo</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="w"> </span><span class="n">sampling_demo</span>
 </pre></div>
 </div>
 </div>
 </div>
 <section id="technical-details">
-<h4>Technical Details<a class="headerlink" href="#technical-details" title="Permalink to this headline">#</a></h4>
+<h4>Technical Details<a class="headerlink" href="#technical-details" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p><strong>Sampling rate</strong>: 8000 samples per second (fs = 8 kHz)</p></li>
 <li><p><strong>Resolution</strong>: 8 bits per sample</p></li>
@@ -1481,7 +659,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="question">
-<h4>Question<a class="headerlink" href="#question" title="Permalink to this headline">#</a></h4>
+<h4>Question<a class="headerlink" href="#question" title="Permalink to this heading">#</a></h4>
 <p>What will the bit-rate be for playback?</p>
 <pre style="border: 2px solid blue">
 
@@ -1493,23 +671,23 @@ title="Print to PDF"
 </section>
 </section>
 <section id="sampling-ct-signals">
-<h2>Sampling CT Signals<a class="headerlink" href="#sampling-ct-signals" title="Permalink to this headline">#</a></h2>
+<h2>Sampling CT Signals<a class="headerlink" href="#sampling-ct-signals" title="Permalink to this heading">#</a></h2>
 <p>What is going on here?</p>
 <section id="time-domain">
-<h3>Time domain<a class="headerlink" href="#time-domain" title="Permalink to this headline">#</a></h3>
+<h3>Time domain<a class="headerlink" href="#time-domain" title="Permalink to this heading">#</a></h3>
 <p>Sampling can be modelled as the multiplication of a continuous-time signal by a sequence of periodic impulses as illustrated here.</p>
 <p><img alt="Time domain view of sampling" src="../../_images/sampling.png" /></p>
 <p>This is a form of <strong>modulation</strong></p>
 <p><span class="math notranslate nohighlight">\(T_s\)</span> is the period of the periodic sampling function.</p>
 </section>
 <section id="frequency-domain">
-<h3>Frequency domain<a class="headerlink" href="#frequency-domain" title="Permalink to this headline">#</a></h3>
+<h3>Frequency domain<a class="headerlink" href="#frequency-domain" title="Permalink to this heading">#</a></h3>
 <p>Multiplication in the time domain is <em>convolution</em> in the frequency domain</p>
 <p><img alt="Frequency domain view of sampling" src="../../_images/sampling_fr.png" /></p>
 <p><span class="math notranslate nohighlight">\(\omega_s\)</span> is the frequency of the periodic sampling function = <span class="math notranslate nohighlight">\(2\pi/T_s\)</span>.</p>
 </section>
 <section id="the-mathematics">
-<h3>The Mathematics<a class="headerlink" href="#the-mathematics" title="Permalink to this headline">#</a></h3>
+<h3>The Mathematics<a class="headerlink" href="#the-mathematics" title="Permalink to this heading">#</a></h3>
 <p><strong>The Sampled signal</strong>:</p>
 <div class="math notranslate nohighlight">
 \[{x_s}(t) = \sum\limits_{k =  - \infty }^{ + \infty } {x(k{T_s})\delta (t - k{T_s})} \]</div>
@@ -1526,7 +704,7 @@ title="Print to PDF"
 \[{X_s}(\omega ) = \frac{1}{T_s}\sum\limits_{n =  - \infty }^{ + \infty } {X(\omega  - k{\omega _s})}\]</div>
 </section>
 <section id="nyquist-shannon-sampling-theorem">
-<h3>Nyquist-Shannon Sampling Theorem<a class="headerlink" href="#nyquist-shannon-sampling-theorem" title="Permalink to this headline">#</a></h3>
+<h3>Nyquist-Shannon Sampling Theorem<a class="headerlink" href="#nyquist-shannon-sampling-theorem" title="Permalink to this heading">#</a></h3>
 <p>Gives a sufficient condition to recover a continuous time signal from its samples <span class="math notranslate nohighlight">\(x(nT_s)\)</span>, <span class="math notranslate nohighlight">\(n\)</span> is an integer.</p>
 <p><strong>Sampling Theoreom</strong></p>
 <p>Let <span class="math notranslate nohighlight">\(x(t)\)</span> be a band-limited signal with <span class="math notranslate nohighlight">\(X(\omega) = 0\)</span> for <span class="math notranslate nohighlight">\(|\omega|&gt;\omega_M\)</span>.</p>
@@ -1536,51 +714,51 @@ title="Print to PDF"
 <p>where <span class="math notranslate nohighlight">\(\omega_s = 2\pi/T_s\)</span> is the sampling frequency.</p>
 </section>
 <section id="recovery-of-signal-by-filtering">
-<h3>Recovery of signal by filtering<a class="headerlink" href="#recovery-of-signal-by-filtering" title="Permalink to this headline">#</a></h3>
+<h3>Recovery of signal by filtering<a class="headerlink" href="#recovery-of-signal-by-filtering" title="Permalink to this heading">#</a></h3>
 <p><img alt="Recovery of signal by filtering" src="../../_images/recovery.png" /></p>
 </section>
 <section id="recovered-signal">
-<h3>Recovered signal<a class="headerlink" href="#recovered-signal" title="Permalink to this headline">#</a></h3>
+<h3>Recovered signal<a class="headerlink" href="#recovered-signal" title="Permalink to this heading">#</a></h3>
 <p><img alt="Recovered signal" src="../../_images/recovered.png" /></p>
 </section>
 <section id="ideal-lowpass-filter-for-ct-recovery-from-dt-sampled-signal">
-<h3>Ideal Lowpass Filter for CT Recovery from DT Sampled Signal<a class="headerlink" href="#ideal-lowpass-filter-for-ct-recovery-from-dt-sampled-signal" title="Permalink to this headline">#</a></h3>
+<h3>Ideal Lowpass Filter for CT Recovery from DT Sampled Signal<a class="headerlink" href="#ideal-lowpass-filter-for-ct-recovery-from-dt-sampled-signal" title="Permalink to this heading">#</a></h3>
 <p><img alt="Ideal Lowpass Filter for CT Recovery from DT Sampled Signal" src="../../_images/recover-lp.png" /></p>
 <p>This is of course theoretical only!</p>
 </section>
 <section id="sample-and-hold">
-<h3>Sample-and-hold<a class="headerlink" href="#sample-and-hold" title="Permalink to this headline">#</a></h3>
+<h3>Sample-and-hold<a class="headerlink" href="#sample-and-hold" title="Permalink to this heading">#</a></h3>
 <p><img alt="Sample and hold" src="../../_images/sandh.png" /></p>
 </section>
 <section id="sample-and-hold-operator">
-<h3>Sample-and-hold operator<a class="headerlink" href="#sample-and-hold-operator" title="Permalink to this headline">#</a></h3>
+<h3>Sample-and-hold operator<a class="headerlink" href="#sample-and-hold-operator" title="Permalink to this heading">#</a></h3>
 <p><img alt="Sample-and-hold operator" src="../../_images/zoh.png" /></p>
 </section>
 <section id="in-class-demo-2">
-<h3>In Class Demo 2<a class="headerlink" href="#in-class-demo-2" title="Permalink to this headline">#</a></h3>
+<h3>In Class Demo 2<a class="headerlink" href="#in-class-demo-2" title="Permalink to this heading">#</a></h3>
 <section id="illustrating-sampling-in-matlab">
-<h4>Illustrating Sampling in MATLAB<a class="headerlink" href="#illustrating-sampling-in-matlab" title="Permalink to this headline">#</a></h4>
+<h4>Illustrating Sampling in MATLAB<a class="headerlink" href="#illustrating-sampling-in-matlab" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">w0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">        </span><span class="c">% fundamental frequency rad/s</span><span class="w"></span>
-<span class="n">t0</span><span class="p">=</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="n">w0</span><span class="p">;</span><span class="w">    </span><span class="c">% period s</span><span class="w"></span>
-<span class="n">tmax</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1.5</span><span class="o">*</span><span class="n">t0</span><span class="p">;</span><span class="w"> </span><span class="c">% plottable range</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">w0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">        </span><span class="c">% fundamental frequency rad/s</span>
+<span class="n">t0</span><span class="p">=</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="n">w0</span><span class="p">;</span><span class="w">    </span><span class="c">% period s</span>
+<span class="n">tmax</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1.5</span><span class="o">*</span><span class="n">t0</span><span class="p">;</span><span class="w"> </span><span class="c">% plottable range</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="define-a-suitable-signal">
-<h4>Define a suitable signal<a class="headerlink" href="#define-a-suitable-signal" title="Permalink to this headline">#</a></h4>
+<h4>Define a suitable signal<a class="headerlink" href="#define-a-suitable-signal" title="Permalink to this heading">#</a></h4>
 <p>We will use a system with an underdamped second-order response.</p>
 <p>The transfer function is:</p>
 <div class="math notranslate nohighlight">
 \[H(s) = \frac{\omega_0^2}{s^2 + 2\zeta\omega_0 s + \omega_0^2}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">s</span><span class="w"> </span><span class="s">t</span><span class="w"></span>
-<span class="n">zeta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.3</span><span class="p">;</span><span class="w"></span>
-<span class="n">H</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">w0</span>^<span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">zeta</span><span class="o">*</span><span class="n">w0</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">w0</span>^<span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">s</span><span class="w"> </span><span class="s">t</span>
+<span class="n">zeta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.3</span><span class="p">;</span>
+<span class="n">H</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">w0</span>^<span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">zeta</span><span class="o">*</span><span class="n">w0</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">w0</span>^<span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1595,10 +773,10 @@ title="Print to PDF"
 </div>
 </section>
 <section id="calculate-and-plot-the-impulse-response">
-<h4>Calculate and plot the impulse response<a class="headerlink" href="#calculate-and-plot-the-impulse-response" title="Permalink to this headline">#</a></h4>
+<h4>Calculate and plot the impulse response<a class="headerlink" href="#calculate-and-plot-the-impulse-response" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ilaplace</span><span class="p">(</span><span class="n">H</span><span class="p">)</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ilaplace</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1613,60 +791,60 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">tmax</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span><span class="w"></span>
-<span class="n">xc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">eval</span><span class="p">(</span><span class="n">h</span><span class="p">);</span><span class="w"> </span><span class="c">% eval evaluates a symbolic expression as a MATLAB command.</span><span class="w"></span>
-<span class="n">tc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">tmax</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
+<span class="n">xc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">eval</span><span class="p">(</span><span class="n">h</span><span class="p">);</span><span class="w"> </span><span class="c">% eval evaluates a symbolic expression as a MATLAB command.</span>
+<span class="n">tc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">plot</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="n">xc</span><span class="p">)</span><span class="w"></span>
-<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Fig 1: Continuous Time Signal x(t)&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;x(t)&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Time t [s]&#39;</span><span class="p">)</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">plot</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="n">xc</span><span class="p">)</span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Fig 1: Continuous Time Signal x(t)&#39;</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;x(t)&#39;</span><span class="p">)</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Time t [s]&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/sampling_40_0.png" src="../../_images/sampling_40_0.png" />
+<img alt="../../_images/dd583c56e642b9ecc872df4e36af46d50ea66330df2a678c0a82eceff3726db3.png" src="../../_images/dd583c56e642b9ecc872df4e36af46d50ea66330df2a678c0a82eceff3726db3.png" />
 </div>
 </div>
 <p>You can generate all the images in this presentation by running the Matlab script: <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/1/matlab/sampling.m">sampling.m</a> which is also available as a Live Script <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/1/matlab/sampling.mlx">sampling.mlx</a>.</p>
 </section>
 <section id="calculate-and-plot-the-sampled-data">
-<h4>Calculate and plot the sampled data|<a class="headerlink" href="#calculate-and-plot-the-sampled-data" title="Permalink to this headline">#</a></h4>
+<h4>Calculate and plot the sampled data|<a class="headerlink" href="#calculate-and-plot-the-sampled-data" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ws</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">4</span><span class="o">*</span><span class="n">w0</span><span class="p">;</span><span class="w"> </span><span class="c">% twice minimum!</span><span class="w"></span>
-<span class="n">Ts</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">)</span><span class="o">/</span><span class="n">ws</span><span class="p">;</span><span class="w"></span>
-<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="n">Ts</span><span class="p">:</span><span class="n">tmax</span><span class="p">;</span><span class="w"></span>
-<span class="n">xs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">eval</span><span class="p">(</span><span class="n">h</span><span class="p">);</span><span class="w"></span>
-<span class="n">td</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ws</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">4</span><span class="o">*</span><span class="n">w0</span><span class="p">;</span><span class="w"> </span><span class="c">% twice minimum!</span>
+<span class="n">Ts</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">)</span><span class="o">/</span><span class="n">ws</span><span class="p">;</span>
+<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="n">Ts</span><span class="p">:</span><span class="n">tmax</span><span class="p">;</span>
+<span class="n">xs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">eval</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="n">td</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">stem</span><span class="p">(</span><span class="n">td</span><span class="p">,</span><span class="n">xs</span><span class="p">)</span><span class="w"></span>
-<span class="nb">hold</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
-<span class="nb">plot</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="n">xc</span><span class="p">,</span><span class="s">&#39;r:&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="nb">hold</span><span class="w"> </span><span class="n">off</span><span class="w"></span>
-<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Fig 2: Sampled Signal x_s(t)&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;x_s(t)&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Time t [s]&#39;</span><span class="p">)</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">stem</span><span class="p">(</span><span class="n">td</span><span class="p">,</span><span class="n">xs</span><span class="p">)</span>
+<span class="nb">hold</span><span class="w"> </span><span class="n">on</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="n">xc</span><span class="p">,</span><span class="s">&#39;r:&#39;</span><span class="p">)</span>
+<span class="nb">hold</span><span class="w"> </span><span class="n">off</span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Fig 2: Sampled Signal x_s(t)&#39;</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;x_s(t)&#39;</span><span class="p">)</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Time t [s]&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/sampling_44_0.png" src="../../_images/sampling_44_0.png" />
+<img alt="../../_images/1ff8918299f3f79aaacca975ee2c3608b256f196453092a38dbf1ec7ab8db2b5.png" src="../../_images/1ff8918299f3f79aaacca975ee2c3608b256f196453092a38dbf1ec7ab8db2b5.png" />
 </div>
 </div>
 </section>
 <section id="notes">
-<h4>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">#</a></h4>
+<h4>Notes<a class="headerlink" href="#notes" title="Permalink to this heading">#</a></h4>
 <p>The sampled signal <span class="math notranslate nohighlight">\(x_0(t)\)</span> carries the same information as the samples themselves, so we should be able to recover the entire signal <span class="math notranslate nohighlight">\(x(t)\)</span>.</p>
 <p>From the block diagram of the sample-and-hold operator, what we would need to do is find the inverse of the ZOH system with impulse response <span class="math notranslate nohighlight">\(h_0(t)\)</span> and then use a perfect lowpass filter.</p>
 <p>The frequency response <span class="math notranslate nohighlight">\(H_0(\omega)\)</span> is given by the usual sinc function for an even rectangular pulse signal, multiplied by <span class="math notranslate nohighlight">\(e^{-j\omega T_s/2}\)</span> because we need a time delay of <span class="math notranslate nohighlight">\(T_s/2\)</span> to make the signal causal:</p>
@@ -1684,58 +862,58 @@ title="Print to PDF"
 </section>
 </section>
 <section id="signal-reconstruction">
-<h2>Signal Reconstruction<a class="headerlink" href="#signal-reconstruction" title="Permalink to this headline">#</a></h2>
+<h2>Signal Reconstruction<a class="headerlink" href="#signal-reconstruction" title="Permalink to this heading">#</a></h2>
 <p><strong>Problem</strong></p>
 <ul class="simple">
 <li><p>We have a bandlimited signal that is sampled at the Nyquist-Shannon sampling frequency <span class="math notranslate nohighlight">\(\omega_s = 2\pi/T_s\)</span>.</p></li>
 <li><p>We therefore have a discrete-time (DT) signal <span class="math notranslate nohighlight">\(x(nT_s)\)</span> from which we want to reconstruct the original signal.</p></li>
 </ul>
 <section id="perfect-signal-interpolation-using-sinc-functions">
-<h3>Perfect Signal Interpolation Using sinc Functions<a class="headerlink" href="#perfect-signal-interpolation-using-sinc-functions" title="Permalink to this headline">#</a></h3>
+<h3>Perfect Signal Interpolation Using sinc Functions<a class="headerlink" href="#perfect-signal-interpolation-using-sinc-functions" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>In the <em>frequency domain</em>, the ideal way to reconstruct the signal would be to construct a chain of impulses <span class="math notranslate nohighlight">\(x_s(t)\)</span> and then to filter this signal with an ideal lowpass filter.</p></li>
 <li><p>In the <em>time domain</em>, this is equivalent to interpolating the samples using time-shifted sinc functions with zeros at <span class="math notranslate nohighlight">\(nT_s\)</span> for <span class="math notranslate nohighlight">\(\omega_c = \omega_s\)</span>.</p></li>
 </ul>
 </section>
 <section id="in-class-demo-3-matlab-demonstrations-of-signal-reconstruction">
-<h3>In Class Demo 3: MATLAB Demonstrations of signal reconstruction<a class="headerlink" href="#in-class-demo-3-matlab-demonstrations-of-signal-reconstruction" title="Permalink to this headline">#</a></h3>
+<h3>In Class Demo 3: MATLAB Demonstrations of signal reconstruction<a class="headerlink" href="#in-class-demo-3-matlab-demonstrations-of-signal-reconstruction" title="Permalink to this heading">#</a></h3>
 <section id="reconstruction-with-sinc-function">
-<h4>Reconstruction with sinc function<a class="headerlink" href="#reconstruction-with-sinc-function" title="Permalink to this headline">#</a></h4>
+<h4>Reconstruction with sinc function<a class="headerlink" href="#reconstruction-with-sinc-function" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">stem</span><span class="p">(</span><span class="n">td</span><span class="p">,</span><span class="n">xs</span><span class="p">)</span><span class="w"></span>
-<span class="nb">hold</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">stem</span><span class="p">(</span><span class="n">td</span><span class="p">,</span><span class="n">xs</span><span class="p">)</span>
+<span class="nb">hold</span><span class="w"> </span><span class="n">on</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/sampling_50_0.png" src="../../_images/sampling_50_0.png" />
+<img alt="../../_images/68f6278a28b4926bcdfa35cf5e79ef1f353c9b00ca0dc7ed68ca8d0ccf18e677.png" src="../../_images/68f6278a28b4926bcdfa35cf5e79ef1f353c9b00ca0dc7ed68ca8d0ccf18e677.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">td</span><span class="p">),</span><span class="nb">length</span><span class="p">(</span><span class="n">tc</span><span class="p">));</span><span class="w"></span>
-<span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="p">=</span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">td</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">xk</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">xs</span><span class="p">(</span><span class="n">k</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">sincx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">xk</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="nb">pi</span><span class="o">*</span><span class="p">(</span><span class="n">tc</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">td</span><span class="p">(</span><span class="n">k</span><span class="p">))</span><span class="o">/</span><span class="n">Ts</span><span class="p">)</span><span class="o">./</span><span class="p">(</span><span class="nb">pi</span><span class="o">*</span><span class="p">(</span><span class="n">tc</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">td</span><span class="p">(</span><span class="n">k</span><span class="p">))</span><span class="o">/</span><span class="n">Ts</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">x</span><span class="p">(</span><span class="n">k</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sincx</span><span class="p">;</span><span class="w"></span>
-<span class="k">end</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">td</span><span class="p">),</span><span class="nb">length</span><span class="p">(</span><span class="n">tc</span><span class="p">));</span>
+<span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="p">=</span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">td</span><span class="p">)</span>
+<span class="w">    </span><span class="n">xk</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">xs</span><span class="p">(</span><span class="n">k</span><span class="p">);</span>
+<span class="w">    </span><span class="n">sincx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">xk</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="nb">pi</span><span class="o">*</span><span class="p">(</span><span class="n">tc</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">td</span><span class="p">(</span><span class="n">k</span><span class="p">))</span><span class="o">/</span><span class="n">Ts</span><span class="p">)</span><span class="o">./</span><span class="p">(</span><span class="nb">pi</span><span class="o">*</span><span class="p">(</span><span class="n">tc</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">td</span><span class="p">(</span><span class="n">k</span><span class="p">))</span><span class="o">/</span><span class="n">Ts</span><span class="p">);</span>
+<span class="w">    </span><span class="n">x</span><span class="p">(</span><span class="n">k</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sincx</span><span class="p">;</span>
+<span class="k">end</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">plot</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="s">&#39;-.&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="nb">hold</span><span class="w"> </span><span class="n">off</span><span class="w"></span>
-<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Fig 5: Signal x(t) reconstructed with sinc functions&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;x(t)&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Time t [s]&#39;</span><span class="p">)</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">plot</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="s">&#39;-.&#39;</span><span class="p">)</span>
+<span class="nb">hold</span><span class="w"> </span><span class="n">off</span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Fig 5: Signal x(t) reconstructed with sinc functions&#39;</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;x(t)&#39;</span><span class="p">)</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Time t [s]&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/sampling_52_0.png" src="../../_images/sampling_52_0.png" />
+<img alt="../../_images/d481f79751d500a3e89b04f0ebcd73129660e7de19b62b3f213b06f9adeebd61.png" src="../../_images/d481f79751d500a3e89b04f0ebcd73129660e7de19b62b3f213b06f9adeebd61.png" />
 </div>
 </div>
 <p>Each impulse in <span class="math notranslate nohighlight">\(x_s(t)\)</span> triggers the impulse reponse of the lowpass filter (the sinc signal), the resulting signal <span class="math notranslate nohighlight">\(x(t)\)</span> at the output of the filter is the sum of all these time-shifted sinc signals with amplitudes equal to the samples <span class="math notranslate nohighlight">\(x(nT_s)\)</span>.</p>
@@ -1744,18 +922,18 @@ title="Print to PDF"
 <p>(Note we have defined <span class="math notranslate nohighlight">\({\rm{sinc}}(x)\)</span> as <span class="math notranslate nohighlight">\(\sin(\pi x)/(\pi x)\)</span>.)</p>
 </section>
 <section id="reconstructed-signal">
-<h4>Reconstructed signal<a class="headerlink" href="#reconstructed-signal" title="Permalink to this headline">#</a></h4>
+<h4>Reconstructed signal<a class="headerlink" href="#reconstructed-signal" title="Permalink to this heading">#</a></h4>
 <p>Obtained by summing all the sinc functions</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">plot</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">tc</span><span class="p">,</span><span class="n">xc</span><span class="p">,</span><span class="s">&#39;r:&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Fig 6: Reconstruction with sinc functions&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;x(t)&#39;</span><span class="p">)</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">plot</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">tc</span><span class="p">,</span><span class="n">xc</span><span class="p">,</span><span class="s">&#39;r:&#39;</span><span class="p">)</span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Fig 6: Reconstruction with sinc functions&#39;</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;x(t)&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/sampling_55_0.png" src="../../_images/sampling_55_0.png" />
+<img alt="../../_images/728e0b67a159b74e8f0c374929b8498fcf7a516e4a426960a96e1e0df5ba054c.png" src="../../_images/728e0b67a159b74e8f0c374929b8498fcf7a516e4a426960a96e1e0df5ba054c.png" />
 </div>
 </div>
 <p>This is clearly unfeasible, at least in real-time, so we have to resort to approximations of the ideal low-pass filter.</p>
@@ -1763,72 +941,72 @@ title="Print to PDF"
 <p>In practice, the zero-order-hold is often used in practice and a low-pass filter with a flat passband (such as the Butterworth filter discussed in the last lecture) would be used. In audio applications, for example, the low-pass nature of speakers and the human ear add additional smoothing. For non HiFi applications (e.g. an MP3 player), this may be all that is actually used!</p>
 </section>
 <section id="signal-reconstructed-with-zero-order-hold-zoh">
-<h4>Signal reconstructed with zero-order hold (ZOH)<a class="headerlink" href="#signal-reconstructed-with-zero-order-hold-zoh" title="Permalink to this headline">#</a></h4>
+<h4>Signal reconstructed with zero-order hold (ZOH)<a class="headerlink" href="#signal-reconstructed-with-zero-order-hold-zoh" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">stairs</span><span class="p">(</span><span class="n">td</span><span class="p">,</span><span class="n">xs</span><span class="p">)</span><span class="w"></span>
-<span class="nb">hold</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
-<span class="nb">plot</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="n">xc</span><span class="p">,</span><span class="s">&#39;r:&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Fig 3: Signal x(t) reconstructed with zero-order-hold&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;x(t)&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Time t [s]&#39;</span><span class="p">)</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">stairs</span><span class="p">(</span><span class="n">td</span><span class="p">,</span><span class="n">xs</span><span class="p">)</span>
+<span class="nb">hold</span><span class="w"> </span><span class="n">on</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="n">xc</span><span class="p">,</span><span class="s">&#39;r:&#39;</span><span class="p">)</span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Fig 3: Signal x(t) reconstructed with zero-order-hold&#39;</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;x(t)&#39;</span><span class="p">)</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Time t [s]&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/sampling_58_0.png" src="../../_images/sampling_58_0.png" />
+<img alt="../../_images/8baabc09255b733873f3f50d363d9c777a59b7fef0c93ac43e99fbb5f88d1e3b.png" src="../../_images/8baabc09255b733873f3f50d363d9c777a59b7fef0c93ac43e99fbb5f88d1e3b.png" />
 </div>
 </div>
 </section>
 <section id="signal-reconstructed-with-first-order-hold-foh">
-<h4>Signal reconstructed with First-order hold (FOH)<a class="headerlink" href="#signal-reconstructed-with-first-order-hold-foh" title="Permalink to this headline">#</a></h4>
+<h4>Signal reconstructed with First-order hold (FOH)<a class="headerlink" href="#signal-reconstructed-with-first-order-hold-foh" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">plot</span><span class="p">(</span><span class="n">td</span><span class="p">,</span><span class="n">xs</span><span class="p">,</span><span class="s">&#39;bo-&#39;</span><span class="p">,</span><span class="n">tc</span><span class="p">,</span><span class="n">xc</span><span class="p">,</span><span class="s">&#39;r:&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Fig 4: Signal x(t) reconstructed with first-order-hold&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;x(t)&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Time t [s]&#39;</span><span class="p">)</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">plot</span><span class="p">(</span><span class="n">td</span><span class="p">,</span><span class="n">xs</span><span class="p">,</span><span class="s">&#39;bo-&#39;</span><span class="p">,</span><span class="n">tc</span><span class="p">,</span><span class="n">xc</span><span class="p">,</span><span class="s">&#39;r:&#39;</span><span class="p">)</span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Fig 4: Signal x(t) reconstructed with first-order-hold&#39;</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;x(t)&#39;</span><span class="p">)</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Time t [s]&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/sampling_60_0.png" src="../../_images/sampling_60_0.png" />
+<img alt="../../_images/f518d43771c803f2d05947ce2b3a5a2678a3673f95621ad9b095522c3ca40e15.png" src="../../_images/f518d43771c803f2d05947ce2b3a5a2678a3673f95621ad9b095522c3ca40e15.png" />
 </div>
 </div>
 </section>
 </section>
 </section>
 <section id="aliasing">
-<h2>Aliasing<a class="headerlink" href="#aliasing" title="Permalink to this headline">#</a></h2>
+<h2>Aliasing<a class="headerlink" href="#aliasing" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Aliasing Occurs when the sampling frequency is too low to ovoid overlapping between the spectra.</p></li>
 <li><p>When aliasing occours, we have violated the sampling theorem: that is <span class="math notranslate nohighlight">\(\omega_s &lt; 2\omega_m\)</span>.</p></li>
 <li><p>When aliasing occurs, the original signal cannot be recovered by lowpass filtering.</p></li>
 </ul>
 <section id="an-aliased-signal">
-<h3>An Aliased Signal<a class="headerlink" href="#an-aliased-signal" title="Permalink to this headline">#</a></h3>
+<h3>An Aliased Signal<a class="headerlink" href="#an-aliased-signal" title="Permalink to this heading">#</a></h3>
 <p><img alt="An aliased signal" src="../../_images/aliasing.png" /></p>
 </section>
 <section id="in-class-demo-4">
-<h3>In Class Demo 4<a class="headerlink" href="#in-class-demo-4" title="Permalink to this headline">#</a></h3>
+<h3>In Class Demo 4<a class="headerlink" href="#in-class-demo-4" title="Permalink to this heading">#</a></h3>
 <section id="demo-4-1">
-<h4>Demo 4.1<a class="headerlink" href="#demo-4-1" title="Permalink to this headline">#</a></h4>
+<h4>Demo 4.1<a class="headerlink" href="#demo-4-1" title="Permalink to this heading">#</a></h4>
 <p>We use the recording made at the start and run it through a script that effectively aliases the original signal be reducing the sampling frequency to less than half the original sampling frequency.</p>
 <p>Here’s the script: <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/1/matlab/aliaseg1.mlx">aliaseg1.mlx</a> that I’ll be using. (Also available as an m-file <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/1/matlab/aliaseg1.m">aliaseg1.m</a>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="w"> </span><span class="n">aliaseg1</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="w"> </span><span class="n">aliaseg1</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="demo-4-2">
-<h4>Demo  4.2<a class="headerlink" href="#demo-4-2" title="Permalink to this headline">#</a></h4>
+<h4>Demo  4.2<a class="headerlink" href="#demo-4-2" title="Permalink to this heading">#</a></h4>
 <p>Assume signal <span class="math notranslate nohighlight">\(x(t)=\cos(\omega_0 t)\)</span> is sampled at a rate of <span class="math notranslate nohighlight">\(\omega_s = 1.5\omega_0\)</span>, violating the sampling theorem.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="w"> </span><span class="n">aliasing</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="w"> </span><span class="n">aliasing</span>
 </pre></div>
 </div>
 </div>
@@ -1840,7 +1018,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="antialising-filters">
-<h3>Antialising Filters<a class="headerlink" href="#antialising-filters" title="Permalink to this headline">#</a></h3>
+<h3>Antialising Filters<a class="headerlink" href="#antialising-filters" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Most real signals are not band-limited so we have to artificially make them bandlimited  using an <em>anti-aliasing filter</em>.</p></li>
 <li><p>An anti-aliasing filter is a low-pass filter whose cutoff frequency is lower than half the sampling frequency.</p></li>
@@ -1848,12 +1026,12 @@ title="Print to PDF"
 <li><p>For more on this topic see Pages 551—552 of Boulet.</p></li>
 </ul>
 <section id="demo-4-3">
-<h4>Demo 4.3<a class="headerlink" href="#demo-4-3" title="Permalink to this headline">#</a></h4>
+<h4>Demo 4.3<a class="headerlink" href="#demo-4-3" title="Permalink to this heading">#</a></h4>
 <p>This example uses anti-aliasing to downsample the audio. You should hear that the sound is less distorted as we sample below the sampling frequency of 8 kHz.</p>
 <p>Script: <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/1/matlab/aliaseg2.mlx">aliaseg2.mlx</a> (Also available as an m-file <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/1/matlab/aliaseg2.m">aliaseg2.m</a>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="w"> </span><span class="n">aliaseg2</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="w"> </span><span class="n">aliaseg2</span>
 </pre></div>
 </div>
 </div>
@@ -1861,20 +1039,20 @@ title="Print to PDF"
 </section>
 </section>
 <section id="practical-application-digital-audio">
-<h3>Practical application - digital audio<a class="headerlink" href="#practical-application-digital-audio" title="Permalink to this headline">#</a></h3>
+<h3>Practical application - digital audio<a class="headerlink" href="#practical-application-digital-audio" title="Permalink to this heading">#</a></h3>
 <p>Human beings can hear sounds with frequencies up to around 20 kHz so when recording music in the modern sound studio (or phone or PC for that matter) the audio signal is antialiased with a 22 kHz filter. The signal is then sampled at 44.1 kHz before being stored for later processing and/or playback.</p>
 <p>ADCs with 14 bit or higher resolution are used for the sampling operation.</p>
 </section>
 </section>
 <section id="dt-processing-of-ct-signals">
-<h2>DT Processing of CT Signals<a class="headerlink" href="#dt-processing-of-ct-signals" title="Permalink to this headline">#</a></h2>
+<h2>DT Processing of CT Signals<a class="headerlink" href="#dt-processing-of-ct-signals" title="Permalink to this heading">#</a></h2>
 <p><img alt="DT Processing of CT Signals" src="../../_images/ct-to-dt.png" /></p>
 <p>The concepts presented in this session provide a model that allows us to cross the bridge between the theoretical concept of impulse chain sampling through to a representation of a signal as discrete sequence <span class="math notranslate nohighlight">\(x[n]\)</span> (to be introduced next lecture) and back to a continuous-time signal via reconstruction.</p>
 <p>The mathematics predicts the nature of the signals that are processed in the ideal case, but we will leave it with you to study these for yourself. (See Boulet pp 552—557).</p>
 <p>In practice, modern digital processing relies on the use of an analogue-to-digital converter (ADC) (which also introduces amplitude quantization), finite-length arithmetic inside the discrete-time system (usually a microprocessor, microcontroller or digital signal processor), followed by conversion back to a step-wise continuous signal via a digital to analogue converter (DAC) that operates like a zero-order-hold.</p>
 </section>
 <section id="sampling-of-dt-signals">
-<h2>Sampling of DT Signals<a class="headerlink" href="#sampling-of-dt-signals" title="Permalink to this headline">#</a></h2>
+<h2>Sampling of DT Signals<a class="headerlink" href="#sampling-of-dt-signals" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>In modern signal processing and digital communications many of the operations that were once done in continuous time are now done entirely in discrete time.</p></li>
 <li><p>For example, we can implement sampling and modulation in discrete time.</p></li>
@@ -1883,7 +1061,7 @@ title="Print to PDF"
 <p>These topics are left to you for further study.</p>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Sampling of Continuous-Time Signals</p></li>
 <li><p>Signal Reconstruction</p></li>
@@ -1896,18 +1074,18 @@ title="Print to PDF"
 <li><p>The Z-Transform</p></li>
 </ul>
 <section id="answer-to-question">
-<h3>Answer to Question<a class="headerlink" href="#answer-to-question" title="Permalink to this headline">#</a></h3>
+<h3>Answer to Question<a class="headerlink" href="#answer-to-question" title="Permalink to this heading">#</a></h3>
 <p>bit rate = [number of samples per second] x [number of bits per sample] x [number of channels]</p>
 <p>bit rate = <span class="math notranslate nohighlight">\(8192 \times 8 \times 1\)</span> bits/second [baud]</p>
 <p>bit rate = <span class="math notranslate nohighlight">\(65,536\)</span> bits/second</p>
 </section>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <p>See <a class="reference internal" href="../../zbib.html"><span class="doc std std-doc">Bibliography</span></a>.</p>
 </section>
 <section id="matlab-functions-used">
-<h2>Matlab Functions used<a class="headerlink" href="#matlab-functions-used" title="Permalink to this headline">#</a></h2>
+<h2>Matlab Functions used<a class="headerlink" href="#matlab-functions-used" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>The matlab recorder command is: <code class="docutils literal notranslate"><span class="pre">recorder</span> <span class="pre">=</span> <span class="pre">audiorecorder(Fs,nBits,nChannels);</span></code></p></li>
 <li><p>Sound is recorded using: <code class="docutils literal notranslate"><span class="pre">recordblocking(recObj,</span> <span class="pre">time);</span></code></p></li>
@@ -1936,7 +1114,7 @@ title="Print to PDF"
             mode: "matlab"
         },
         kernelOptions: {
-            kernelName: "matlab",
+            name: "matlab",
             path: "./dt_systems/1"
         },
         predefinedOutput: true
@@ -1944,39 +1122,153 @@ title="Print to PDF"
     </script>
     <script>kernelName = 'matlab'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../index.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Sampled Data Systems</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Sampled Data Systems</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="../2/z_transform.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="../2/z_transform.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Discrete-Time Systems and the Z-Transform</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colophon">Colophon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope-and-background-reading">Scope and Background Reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">Agenda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-demo-1-sampling">In Class Demo 1: Sampling</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-details">Technical Details</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question">Question</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-ct-signals">Sampling CT Signals</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-domain">Time domain</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#frequency-domain">Frequency domain</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mathematics">The Mathematics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nyquist-shannon-sampling-theorem">Nyquist-Shannon Sampling Theorem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recovery-of-signal-by-filtering">Recovery of signal by filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recovered-signal">Recovered signal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ideal-lowpass-filter-for-ct-recovery-from-dt-sampled-signal">Ideal Lowpass Filter for CT Recovery from DT Sampled Signal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-and-hold">Sample-and-hold</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-and-hold-operator">Sample-and-hold operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-demo-2">In Class Demo 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#illustrating-sampling-in-matlab">Illustrating Sampling in MATLAB</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#define-a-suitable-signal">Define a suitable signal</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-and-plot-the-impulse-response">Calculate and plot the impulse response</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-and-plot-the-sampled-data">Calculate and plot the sampled data|</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-reconstruction">Signal Reconstruction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perfect-signal-interpolation-using-sinc-functions">Perfect Signal Interpolation Using sinc Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-demo-3-matlab-demonstrations-of-signal-reconstruction">In Class Demo 3: MATLAB Demonstrations of signal reconstruction</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reconstruction-with-sinc-function">Reconstruction with sinc function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reconstructed-signal">Reconstructed signal</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-reconstructed-with-zero-order-hold-zoh">Signal reconstructed with zero-order hold (ZOH)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-reconstructed-with-first-order-hold-foh">Signal reconstructed with First-order hold (FOH)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aliasing">Aliasing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-aliased-signal">An Aliased Signal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-demo-4">In Class Demo 4</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#demo-4-1">Demo 4.1</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#demo-4-2">Demo  4.2</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#antialising-filters">Antialising Filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#demo-4-3">Demo 4.3</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-application-digital-audio">Practical application - digital audio</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dt-processing-of-ct-signals">DT Processing of CT Signals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-of-dt-signals">Sampling of DT Signals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#answer-to-question">Answer to Question</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-functions-used">Matlab Functions used</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Dr Chris P. Jobling<br/>
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Chris P. Jobling
+</p>
+
+  </div>
   
-      &copy; Copyright Swansea University (2019-2022).<br/>
-    <div class="extra_footer">
-      This page was created by 
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Swansea University (2019-2022).
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  This page was created by 
 <a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
   Dr Chris P. Jobling
 </a> 
@@ -1985,20 +1277,22 @@ for
   Swansea University
 </a>.
 
-    </div>
-</p>
-        </footer>
-    </div>
-    
 </div>
+  </div>
+  
+</div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
