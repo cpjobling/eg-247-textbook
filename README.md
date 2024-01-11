@@ -1,4 +1,4 @@
-# EG-247 Signals and Systems
+# EG-247 Digital Signal Processing
 
 A collection of resources created and distributed by
 Dr Chris Jobling, College of Engineering, Swansea University.
