@@ -14,7 +14,7 @@ jupyter:
 
 # Setup
 
-I have used Jupyter notebooks for **EG-247 Signals and Systems** for a number of reasons:
+I have used Jupyter notebooks for **EG-247 Digital Signal Processing** for a number of reasons:
 
 1. I can easily produce maths-rich textbook quality notes using the Markdown system provided for documentation blocks.
 1. I can generate a slide-show from my notes but also print them as PDF files for your convenience.

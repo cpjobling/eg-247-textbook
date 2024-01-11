@@ -3,7 +3,7 @@
 % recorded sample is effectively sampled at four different rates and played back. 
 % Lowpass 'antialias' filtering is done prior to decimation to avert aliasing.
 % 
-% Adapted for EG-247 Signals and Systems by Dr Chris P. Jobling from an example 
+% Adapted for EG-247 Digital Signal Processing by Dr Chris P. Jobling from an example 
 % by Prof. Charles A. Bouman, School of Electrical and Computer Engineering, Purdue 
 % University, West Lafayette.
 % 

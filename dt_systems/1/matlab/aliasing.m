@@ -6,7 +6,7 @@
 % $\omega_0$ = 10 rad/s at a sampling rate $\omega_s = 1.5\omega_0$.
 % That is less than the minimum $\omega_s = 2\omega_0$.
 %
-% Prepared for EG-247 Signals and Systems
+% Prepared for EG-247 Digital Signal Processing
 % by Dr Chris Jobling.
 %
 A = 2;

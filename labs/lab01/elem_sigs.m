@@ -1,4 +1,4 @@
-%% EG-247 Signals and Systems: Lab 01: Elementary Signals
+%% EG-247 Digital Signal Processing: Lab 01: Elementary Signals
 % This script file demonstrates the use of the |heaviside| and |dirac| functions. 
 % To run the code select the commands in the cells.
 % 

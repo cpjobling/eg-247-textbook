@@ -1,6 +1,6 @@
 %% Example 4
 %
-% Prepared for EG-247 Signals and Systems by 
+% Prepared for EG-247 Digital Signal Processing by 
 % Dr C.P. Jobling
 %
 syms t w

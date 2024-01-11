@@ -9,7 +9,7 @@
 % of the Electrical Engineerin Department of Coumbia University.
 % See: <http://www.ee.columbia.edu/~dpwe/sounds/>
 %
-% Script adapted for EG-247 Signals and Systems
+% Script adapted for EG-247 Digital Signal Processing
 % by Chris P. Jobling.
 %
 %% Read in the sound data

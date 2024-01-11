@@ -1,4 +1,4 @@
-# EG-247 Signals and Systems
+# EG-247 Digital Signal Processing
 
 ## Lab Portfolio
 

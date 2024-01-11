@@ -1,7 +1,7 @@
 %% Calculation of Fourier coefficients for Shifted Square Wave
 % Exploiting half-wave symmetry
 % 
-% Prepared for EG-247 Signals and Systems by Chris Jobling
+% Prepared for EG-247 Digital Signal Processing by Chris Jobling
 %% Initialize problem
 
 syms t n A pi

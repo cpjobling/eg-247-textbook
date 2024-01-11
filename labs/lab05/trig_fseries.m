@@ -4,7 +4,7 @@
 % Note the Fourier Series coefficients are computed using the period and fundamental 
 % frequency rather than the radian measures given in the lecture.
 % 
-% Prepared for EG-247 Signals and Systems by Chris Jobling
+% Prepared for EG-247 Digital Signal Processing by Chris Jobling
 
 clear all
 %

@@ -2,7 +2,7 @@
 %
 % PFE for a z-transfer function when there are repeated poles.
 %
-% Prepared for EG-247 Signals and Systems
+% Prepared for EG-247 Digital Signal Processing
 % by Dr Chris P. Jobling
 %
 %% Problem

@@ -14,4 +14,4 @@ jupyter:
 
 # About Jupyter Book
 
-**TODO**: write installation instructions for the **EG-247 Signals and Systems** textbook.
+**TODO**: write installation instructions for the **EG-247 Digital Signal Processing** textbook.
