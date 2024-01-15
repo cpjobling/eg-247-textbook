@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Worksheet 8 &#8212; EG-247 Digital Signal Processing</title>
+    <title>Unit 3.5: The Impulse Response and Convolution &#8212; EG-247 Digital Signal Processing</title>
   
   
   
@@ -66,12 +66,10 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'laplace_transform/5/worksheet8';</script>
-    <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/5/worksheet8.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'transfer_functions/5/convolution';</script>
+    <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/transfer_functions/5/convolution.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Worksheet 9" href="../../fourier_series/1/worksheet9.html" />
-    <link rel="prev" title="Worksheet 7" href="../4/worksheet7.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -169,36 +167,27 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Online notes</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../elementary_signals/index.html">Elementary Signals</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../index.html">Laplace Transforms and their Applications</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../1/laplace.html">The Laplace Transformation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../2/inverse_laplace.html">The Inverse Laplace Transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../3/circuit_analysis.html">Using Laplace Transforms for Circuit Analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../4/transfer_functions.html">Transfer Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="convolution.html">The Impulse Response and Convolution</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_series/index.html">Fourier Series</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_series/index.html">Fourier Series</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/trig_fseries.html">Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/2/exp_fs1.html">Exponential Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/3/exp_fs2.html">Line Spectra and their Applications</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_transform/index.html">Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_transform/index.html">Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/1/ft1.html">Defining the Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/2/ft2.html">Fourier transforms of commonly occuring signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/3/ft3.html">Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/4/ft4.html">Introduction to Filters</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../dt_systems/index.html">Sampled Data Systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dt_systems/index.html">Sampled Data Systems</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/1/sampling.html">Sampling Theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/2/z_transform.html">The Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/3/i_z_transform.html">The Inverse Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/4/dt_models.html">Models of Discrete Time Systems</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../dft/index.html">Discrete Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dft/index.html">Discrete Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../dft/1/dft.html">The Discrete Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dft/2/fft.html">The Fast-Fourier Transform</a></li>
 </ul>
@@ -206,16 +195,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../zbib.html">Bibliography</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">In Class Worksheets</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../worksheets/index.html">Worksheets</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../worksheets/index.html">Worksheets</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../introduction/worksheet1.html">Worksheet 1 Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../introduction/worksheet2.html">Worksheet 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../elementary_signals/worksheet3.html">Worksheet 3 Elementary Signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../1/worksheet4.html">Worksheet 4 Laplace Transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../2/worksheet5.html">Worksheet 5 Inverse Laplace Transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../3/worksheet6.html">Worksheet 6 Using Laplace Transforms for Circuit Analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../4/worksheet7.html">Worksheet 7 Transfer Functions</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Worksheet 8 Impulse Response and Time Convolution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/worksheet9.html">Worksheet 9 Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/2/worksheet10.html">Worksheet 10 Exponential Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/3/worksheet11.html">Worksheet 11 Line Spectra and their Applications</a></li>
@@ -232,7 +216,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework problems</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../homework/index.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../homework/index.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw1.html">Homework 1 Elementary Signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw2.html">Homework 2 Laplace and Inverse Laplace Transforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw3.html">Homework 3 Laplace Transforms for Ciruit Analysis</a></li>
@@ -248,7 +232,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab Exercises</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../labs/index.html">Laboratory Exercises</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../labs/index.html">Laboratory Exercises</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../labs/tutorial/matlab-tutorial.html">MATLAB Tutorial</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../labs/peer-assessment.html">Peer Assessment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../labs/lab01/index.html">Lab 1 - Elemementary Signals</a></li>
@@ -270,15 +254,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../1/lt_props.html">Properties of the Laplace Transform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../1/lt_table.html">Common Laplace Transform Pairs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../fourier_transform/1/ft_props.html">Properties of the Fourier Transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../fourier_transform/1/ft_table.html">Common Fourier Transform Pairs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../dt_systems/2/zt_props.html">Properties of the Z-Transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../dt_systems/2/zt_table.html">Table of Z-Transforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../setup/polling_setup.html">Set Up In-Class Polling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../todo.html">List of Planned Enhancements</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup/index.html">Setting up your own version of this book</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup/index.html">Setting up your own version of this book</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter.html">About Jupyter notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../setup/python.html">Installing Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../setup/setup.html">Setting up your Own Jupyter-MATLAB Computing Environment</a></li>
@@ -358,7 +340,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/cpjobling/eg-247-textbook/edit/master/laplace_transform/5/worksheet8.md" target="_blank"
+      <li><a href="https://github.com/cpjobling/eg-247-textbook/edit/master/transfer_functions/5/convolution.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -375,7 +357,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Flaplace_transform/5/worksheet8.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Ftransfer_functions/5/convolution.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -405,7 +387,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/laplace_transform/5/worksheet8.md" target="_blank"
+      <li><a href="../../_sources/transfer_functions/5/convolution.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -489,7 +471,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Worksheet 8</h1>
+    <h1>Unit 3.5: The Impulse Response and Convolution</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -499,24 +481,22 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-accompany-unit-3-5-convolution-and-the-impulse-response">To accompany Unit 3.5 Convolution and the Impulse Response</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colophon">Colophon</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">Agenda</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-hour">First Hour</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope-and-background-reading">Scope and Background Reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">Agenda</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#even-and-odd-functions-of-time">Even and Odd Functions of Time</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#even-functions-of-time">Even Functions of Time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-examples-of-even-functions">Other Examples of Even Functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#odd-functions-of-time">Odd Functions of Time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-examples-of-odd-functions">Other Examples of Odd Functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observations">Observations</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-about-even-and-odd-functions">More about Even and Odd Functions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-integrals-of-even-and-odd-functions">Time integrals of even and odd functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#even-odd-representation-of-an-arbitrary-function">Even/Odd Representation of an Arbitrary Function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#even-or-odd">Even or odd?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-to-example-1">Solution to example 1</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#even-or-odd">Even or odd?</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-convolution">Time Convolution</a><ul class="nav section-nav flex-column">
@@ -525,33 +505,47 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrate-both-sides">Integrate both sides</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-sifting-property-of-delta">Use the sifting property of delta</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-convolution-integral">The Convolution Integral</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#second-hour">Second Hour</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graphical-evaluation-of-the-convolution-integral">Graphical Evaluation of the Convolution Integral</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convolution-by-graphical-method-summary-of-steps">Convolution by Graphical Method - Summary of Steps</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#h-t">h(t)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convolutiondemo-settings">convolutiondemo settings</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-result">Summary of result</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-solution">MATLAB Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#h-t">h(t)</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#answer-3">Answer 3</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-with-matlab">Check with MATLAB</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#convolutiondemo-settings">convolutiondemo settings</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4">Example 4</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#answer-4">Answer 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-solution">Alternative solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#u-t">u(t)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">convolutiondemo settings</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-result">Summary of result</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#answer-3">Answer 3</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#check-with-matlab">Check with MATLAB</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4">Example 4</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#answer-4">Answer 4</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-response-by-laplace">System Response by Laplace</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impulse-response-and-transfer-functions">Impulse Response and Transfer Functions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5">Example 5</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-5a-impulse-response">Solution 5a - Impulse response</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-5b-step-response">Solution  5b - Step response</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-examples">More Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5">Example 5</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-5a-impulse-response">Solution 5a - Impulse response</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-5b-step-response">Solution  5b - Step response</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">Homework</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
 </ul>
 </li>
 </ul>
@@ -565,86 +559,80 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="worksheet-8">
-<h1>Worksheet 8<a class="headerlink" href="#worksheet-8" title="Permalink to this heading">#</a></h1>
-<section id="to-accompany-unit-3-5-convolution-and-the-impulse-response">
-<h2>To accompany Unit 3.5 Convolution and the Impulse Response<a class="headerlink" href="#to-accompany-unit-3-5-convolution-and-the-impulse-response" title="Permalink to this heading">#</a></h2>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="unit-3-5-the-impulse-response-and-convolution">
+<h1>Unit 3.5: The Impulse Response and Convolution<a class="headerlink" href="#unit-3-5-the-impulse-response-and-convolution" title="Permalink to this heading">#</a></h1>
 <section id="colophon">
 <h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this heading">#</a></h2>
-<p>This worksheet can be downloaded as a <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet8.pdf">PDF file</a>. We will step through this worksheet in class.</p>
-<p>An annotatable copy of the notes for this presentation will be distributed before the second class meeting as <strong>Worksheet 7</strong> in the <strong>Week 3: Classroom Activities</strong> section of the Canvas site. I will also distribute a copy to your personal <strong>Worksheets</strong> section of the <strong>OneNote Class Notebook</strong> so that you can add your own notes using OneNote.</p>
-<p>You are expected to have at least watched the video presentation of <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/5/convolution">Chapter 3.5</a> of the <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook">notes</a> before coming to class. If you haven’t watch it afterwards!</p>
-<p>After class, the lecture recording and the annotated version of the worksheets will be made available through Canvas.</p>
+<p>An annotatable worksheet for this presentation is available as <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/5/worksheet8.html"><strong>Worksheet 8</strong></a>.</p>
+<ul class="simple">
+<li><p>The source code for this page is <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/laplace_transform/5/convolution.ipynb">laplace_transform/5/convolution.ipynb</a>.</p></li>
+<li><p>You can view the notes for this presentation as a webpage (<a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/5/convolution.html">HTML</a>).</p></li>
+<li><p>This page is downloadable as a <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/5/convolution.pdf">PDF</a> file.</p></li>
+</ul>
+</section>
+<section id="scope-and-background-reading">
+<h2>Scope and Background Reading<a class="headerlink" href="#scope-and-background-reading" title="Permalink to this heading">#</a></h2>
+<p>This section is an introduction to the impulse response of a system and time convolution. Together, these can be used to determine a Linear Time Invariant (LTI) system’s time response to any signal.</p>
+<p>As we shall see, in the determination of a system’s response to a signal input, time convolution involves integration by parts and is a tricky operation. But time convolution becomes multiplication in the Laplace Transform domain, and is much easier to apply.</p>
+<p>The material in this presentation and notes is based on <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?ppg=185&amp;docID=3384197&amp;tm=1518698533541">Chapter 6</a> of Karris<span id="id1">[<a class="reference internal" href="../../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197.">Karris, 2012</a>]</span>.</p>
 </section>
 <section id="agenda">
 <h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this heading">#</a></h2>
 <p>The material to be presented is:</p>
-<section id="first-hour">
-<h3>First Hour<a class="headerlink" href="#first-hour" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Even and Odd Functions of Time</p></li>
 <li><p>Time Convolution</p></li>
 </ul>
-</section>
+<ul class="simple">
+<li><p>Graphical Evaluation of the Convolution Integral</p></li>
+<li><p>System Response by Laplace</p></li>
+</ul>
 </section>
 <section id="even-and-odd-functions-of-time">
 <h2>Even and Odd Functions of Time<a class="headerlink" href="#even-and-odd-functions-of-time" title="Permalink to this heading">#</a></h2>
-<p>Fill in the Blanks Quiz.</p>
+<p>(<strong>This should be revision!</strong>)</p>
+<p>We need to be reminded of <em>even</em> and <em>odd</em> functions so that we can develop the idea of time convolution which is a means of determining the time response of any system for which we know its <em>impulse response</em> to any signal.</p>
+<p>The development requires us to find out if the Dirac delta function (<span class="math notranslate nohighlight">\(\delta(t)\)</span>) is an <em>even</em> or an <em>odd</em> function of time.</p>
 <section id="even-functions-of-time">
 <h3>Even Functions of Time<a class="headerlink" href="#even-functions-of-time" title="Permalink to this heading">#</a></h3>
 <p>A function <span class="math notranslate nohighlight">\(f(t)\)</span> is said to be an <em>even function</em> of time if the following relation holds</p>
-<pre style="border: 2px solid blue">
-
-
-
-
-</pre>
-<p>Polynomials with even exponents only, and with or without constants, are even functions. For example:</p>
-<p>Write down the Taylor-series polynomial expansion of <span class="math notranslate nohighlight">\(\cos t\)</span>. Is <span class="math notranslate nohighlight">\(\cos t\)</span> even or odd?</p>
-<pre style="border: 2px solid blue">
-
-
-
-
-</pre>
-<p>Odd/Even?</p>
+<div class="math notranslate nohighlight">
+\[f(-t) = f(t)\]</div>
+<p>that is, if we relace <span class="math notranslate nohighlight">\(t\)</span> with <span class="math notranslate nohighlight">\(-t\)</span> the function <span class="math notranslate nohighlight">\(f(t)\)</span> does not change.</p>
+<p>Polynomials with even exponents only, and with or without constants, are even functions.</p>
+<p>For example:</p>
+<div class="math notranslate nohighlight">
+\[\cos t = 1 - \frac{t^2}{2!} + \frac{t^4}{4!} - \frac{t^6}{6!} + \ldots\]</div>
+<p>is even.</p>
 </section>
+<section id="other-examples-of-even-functions">
+<h3>Other Examples of Even Functions<a class="headerlink" href="#other-examples-of-even-functions" title="Permalink to this heading">#</a></h3>
+<img src="pictures/even_funcs.png" width="75%"></section>
 <section id="odd-functions-of-time">
 <h3>Odd Functions of Time<a class="headerlink" href="#odd-functions-of-time" title="Permalink to this heading">#</a></h3>
 <p>A function <span class="math notranslate nohighlight">\(f(t)\)</span> is said to be an <em>odd function</em> of time if the following relation holds</p>
-<pre style="border: 2px solid blue">
-
-
-
-
-</pre>
-<p>Polynomials with even exponents only, and with or without constants, are even functions.</p>
-<p>Write down the Taylor-series polynomial expansion of <span class="math notranslate nohighlight">\(\sin t\)</span>. Is <span class="math notranslate nohighlight">\(\sin t\)</span> even or odd?</p>
-<pre style="border: 2px solid blue">
-
-
-
-
-</pre>
-<p>Odd/Even?</p>
+<div class="math notranslate nohighlight">
+\[-f(-t) = f(t)\]</div>
+<p>that is, if we relace <span class="math notranslate nohighlight">\(t\)</span> with <span class="math notranslate nohighlight">\(-t\)</span>, we obtain the negative of the function <span class="math notranslate nohighlight">\(f(t)\)</span>.</p>
+<p>Polynomials with odd exponents only, and no constants, are odd functions.</p>
+<p>For example:</p>
+<div class="math notranslate nohighlight">
+\[\sin t = t - \frac{t^3}{3!} + \frac{t^5}{5!} - \frac{t^7}{7!} + \ldots\]</div>
+<p>is odd.</p>
 </section>
+<section id="other-examples-of-odd-functions">
+<h3>Other Examples of Odd Functions<a class="headerlink" href="#other-examples-of-odd-functions" title="Permalink to this heading">#</a></h3>
+<img src="pictures/odd_funcs.png" width="75%"></section>
 <section id="observations">
 <h3>Observations<a class="headerlink" href="#observations" title="Permalink to this heading">#</a></h3>
-<p>For odd functions <span class="math notranslate nohighlight">\(f(0) =\)</span></p>
-<pre style="border: 2px solid blue">
-
-
-
-
-</pre>
-<p>The product of <em>two even</em> or <em>two odd</em> functions is an [Even/Odd] function.</p>
-<p>The product of an even and an odd function, is an [Even/Odd] function.</p>
-</section>
-</section>
-<section id="more-about-even-and-odd-functions">
-<h2>More about Even and Odd Functions<a class="headerlink" href="#more-about-even-and-odd-functions" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>For odd functions <span class="math notranslate nohighlight">\(f(0) = 0\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(f(0) = 0\)</span> we should not conclude that <span class="math notranslate nohighlight">\(f(t)\)</span> is an odd function. <em>c.f.</em> <span class="math notranslate nohighlight">\(f(t) = t^2\)</span> is even, not odd.</p></li>
+<li><p>The product of <em>two even</em> or <em>two odd</em> functions is an even function.</p></li>
+<li><p>The product of an even and an odd function, is an odd function.</p></li>
+</ul>
 <p>In the following <span class="math notranslate nohighlight">\(f_e(t)\)</span> will denote an even function and <span class="math notranslate nohighlight">\(f_o(t)\)</span> an odd function.</p>
+</section>
 <section id="time-integrals-of-even-and-odd-functions">
 <h3>Time integrals of even and odd functions<a class="headerlink" href="#time-integrals-of-even-and-odd-functions" title="Permalink to this heading">#</a></h3>
 <p>For an even function <span class="math notranslate nohighlight">\(f_e(t)\)</span></p>
@@ -669,37 +657,25 @@ document.write(`
 </section>
 <section id="example-1">
 <h3>Example 1<a class="headerlink" href="#example-1" title="Permalink to this heading">#</a></h3>
-<p>Is the Dirac delta <span class="math notranslate nohighlight">\(\delta(t)\)</span> an even or an odd function of time?</p>
-</section>
-<section id="solution">
-<h3>Solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h3>
+<p>Is the Dirac delta <span class="math notranslate nohighlight">\(\delta(t)\)</span> an <em>even</em> or an <em>odd</em> function of time?</p>
+<p>We’ll decide in class.</p>
+<section id="solution-to-example-1">
+<h4>Solution to example 1<a class="headerlink" href="#solution-to-example-1" title="Permalink to this heading">#</a></h4>
 <p>Let <span class="math notranslate nohighlight">\(f(t)\)</span> be an arbitrary function of time that is continous at <span class="math notranslate nohighlight">\(t=t_0\)</span>. Then by the sifting property of the delta function</p>
-<pre style="border: 2px solid blue">
-
-
-
-
-</pre><p>and for <span class="math notranslate nohighlight">\(t_0 = 0\)</span></p>
-<pre style="border: 2px solid blue">
-
-
-
-
-</pre><p>Also for an even function <span class="math notranslate nohighlight">\(f_e(t)\)</span></p>
-<pre style="border: 2px solid blue">
-
-
-
-
-</pre><p>and for an odd function <span class="math notranslate nohighlight">\(f_o(t)\)</span></p>
-<pre style="border: 2px solid blue">
-
-
-
-
-</pre></section>
+<div class="math notranslate nohighlight">
+\[\int_{-\infty}^{\infty} f(t)\delta(t-t_0) dt = f(t_0)\]</div>
+<p>and for <span class="math notranslate nohighlight">\(t_0 = 0\)</span></p>
+<div class="math notranslate nohighlight">
+\[\int_{-\infty}^{\infty} f(t)\delta(t) dt = f(0)\]</div>
+<p>Also for an even function <span class="math notranslate nohighlight">\(f_e(t)\)</span></p>
+<div class="math notranslate nohighlight">
+\[\int_{-\infty}^{\infty} f_e(t)\delta(t) dt = f_e(0)\]</div>
+<p>and for an odd function <span class="math notranslate nohighlight">\(f_o(t)\)</span></p>
+<div class="math notranslate nohighlight">
+\[\int_{-\infty}^{\infty} f_o(t)\delta(t) dt = f_o(0)\]</div>
+</section>
 <section id="even-or-odd">
-<h3>Even or odd?<a class="headerlink" href="#even-or-odd" title="Permalink to this heading">#</a></h3>
+<h4>Even or odd?<a class="headerlink" href="#even-or-odd" title="Permalink to this heading">#</a></h4>
 <p>An odd function <span class="math notranslate nohighlight">\(f_o(t)\)</span> evaluated at <span class="math notranslate nohighlight">\(t=0\)</span> is zero, that is <span class="math notranslate nohighlight">\(f_o(0) = 0\)</span>.</p>
 <p>Hence</p>
 <div class="math notranslate nohighlight">
@@ -709,9 +685,11 @@ document.write(`
 <p>(Even times even or odd times odd produces an even function. See earlier slide)</p>
 </section>
 </section>
+</section>
 <section id="time-convolution">
 <h2>Time Convolution<a class="headerlink" href="#time-convolution" title="Permalink to this heading">#</a></h2>
-<p>Consider a system whose input is the Dirac delta (<span class="math notranslate nohighlight">\(\delta(t)\)</span>), and its output is the <em><strong>impulse response</strong></em> <span class="math notranslate nohighlight">\(h(t)\)</span>. We can represent the input-output relationship as a block diagram</p>
+<p>Consider a system whose input is the Dirac delta (<span class="math notranslate nohighlight">\(\delta(t)\)</span>), and its output is the <em><strong>impulse response</strong></em> <span class="math notranslate nohighlight">\(h(t)\)</span>.</p>
+<p>We can represent the input-output relationship as a block diagram</p>
 <img src="pictures/conv1.png" width="50%"><section id="in-general">
 <h3>In general<a class="headerlink" href="#in-general" title="Permalink to this heading">#</a></h3>
 <img src="pictures/conv2.png" width="50%"></section>
@@ -743,32 +721,30 @@ document.write(`
 <p>is known as the <em>convolution integral</em>; it states that if we know the impulse response of a system, we can compute its time response to any input by using either of the integrals.</p>
 <p>The convolution integral is usually written <span class="math notranslate nohighlight">\(u(t)*h(t)\)</span> or <span class="math notranslate nohighlight">\(h(t)*u(t)\)</span> where the asterisk (<span class="math notranslate nohighlight">\(*\)</span>) denotes convolution.</p>
 </section>
-<section id="second-hour">
-<h3>Second Hour<a class="headerlink" href="#second-hour" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Graphical Evaluation of the Convolution Integral</p></li>
-<li><p>System Response by Laplace</p></li>
-</ul>
-</section>
 </section>
 <section id="graphical-evaluation-of-the-convolution-integral">
 <h2>Graphical Evaluation of the Convolution Integral<a class="headerlink" href="#graphical-evaluation-of-the-convolution-integral" title="Permalink to this heading">#</a></h2>
-<p>The convolution integral is most conveniently evaluated by a graphical evaluation. The text book gives three examples (6.4-6.6) which we will demonstrate using a <a class="reference external" href="https://uk.mathworks.commatlabcentral/fileexchange/25199-graphical-demonstration-of-convolution">graphical visualization tool</a> developed by Teja Muppirala of the Mathworks.</p>
-<p>The tool: <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/laplace_transform/matlab/convolution_demo/convolutiondemo.m">convolutiondemo.m</a> (see <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/laplace_transform/matlab/convolution_demo/license.txt">license.txt</a>).</p>
-<div class="cell tag_remove-output docutils container">
+<p>The convolution integral is most conveniently evaluated by a graphical evaluation. The text book gives three examples (6.4-6.6) which we will demonstrate in class using a <a class="reference external" href="https://uk.mathworks.com/matlabcentral/fileexchange/25199-graphical-demonstration-of-convolution">graphical visualization tool</a> developed by Teja Muppirala of the Mathworks and updated by Rory Adams for this module.</p>
+<p>The tool: <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/matlab/convolution_demo/convolutiondemo.m">convolutiondemo.m</a> (see <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/matlab/convolution_demo/license.txt">license.txt</a>).</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">clear</span><span class="w"> </span><span class="nb">all</span>
 <span class="nb">cd</span><span class="w"> </span><span class="p">.</span><span class="o">./</span><span class="n">matlab</span><span class="o">/</span><span class="n">convolution_demo</span>
 <span class="nb">pwd</span>
-<span class="nb">format</span><span class="w"> </span><span class="n">compact</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+    &#39;/Users/eechris/code/src/github.com/cpjobling/eg-247-textbook/laplace_transform/matlab/convolution_demo&#39;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% cd ../matlab/convolution_demo</span>
-<span class="n">convolutiondemo</span><span class="w"> </span><span class="s">%</span><span class="w"> </span><span class="s">ignore</span><span class="w"> </span><span class="s">warnings</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">convolutiondemo</span><span class="w"> </span><span class="s">%</span><span class="w"> </span><span class="s">ignore</span><span class="w"> </span><span class="s">warnings</span>
 </pre></div>
 </div>
 </div>
@@ -792,95 +768,127 @@ document.write(`
 <li><p>Integrate the product over all <span class="math notranslate nohighlight">\(\tau\)</span> from <span class="math notranslate nohighlight">\(-\infty\)</span> to <span class="math notranslate nohighlight">\(\infty\)</span>.</p></li>
 </ol>
 </section>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h3>
+<p>We will do these live in class.</p>
 <section id="example-2">
-<h3>Example 2<a class="headerlink" href="#example-2" title="Permalink to this heading">#</a></h3>
-<p>(This is example 6.4 in the Karris)</p>
+<h4>Example 2<a class="headerlink" href="#example-2" title="Permalink to this heading">#</a></h4>
+<p>(This is example 6.4 in the textbook)</p>
 <p>The signals <span class="math notranslate nohighlight">\(h(t)\)</span> and <span class="math notranslate nohighlight">\(u(t)\)</span> are shown below. Compute <span class="math notranslate nohighlight">\(h(t)*u(t)\)</span> using the graphical technique.</p>
-<img src="pictures/conv_ex1.png"></section>
-<section id="h-t">
-<h3>h(t)<a class="headerlink" href="#h-t" title="Permalink to this heading">#</a></h3>
+<img src="pictures/conv_ex1.png"><section id="h-t">
+<h5>h(t)<a class="headerlink" href="#h-t" title="Permalink to this heading">#</a></h5>
 <p>The signal <span class="math notranslate nohighlight">\(h(t)\)</span> is the straight line <span class="math notranslate nohighlight">\(f(t)=-t+1\)</span> but this is defined only between <span class="math notranslate nohighlight">\(t = 0\)</span> and <span class="math notranslate nohighlight">\(t = 1\)</span>. We thus need to gate the function by multiplying it by <span class="math notranslate nohighlight">\(u_0(t)-u_0(t-1)\)</span> as illustrated below:</p>
 <img src="pictures/gate_h.png"></section>
+</section>
 <section id="convolutiondemo-settings">
-<h3>convolutiondemo settings<a class="headerlink" href="#convolutiondemo-settings" title="Permalink to this heading">#</a></h3>
+<h4>convolutiondemo settings<a class="headerlink" href="#convolutiondemo-settings" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Let <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">=</span> <span class="pre">heaviside(t)-heaviside(t-1)</span> <span class="pre">%</span> <span class="pre">u(t)</span></code></p></li>
-<li><p>Let <code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">=</span> <span class="pre">(t-1)*(heaviside(t)-heaviside(t-1))</span> <span class="pre">%</span> <span class="pre">h(t)</span></code></p></li>
+<li><p>Let <code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">=</span> <span class="pre">(-t+1)*(heaviside(t)-heaviside(t-1))</span> <span class="pre">%</span> <span class="pre">h(t)</span></code></p></li>
+<li><p>Set range <span class="math notranslate nohighlight">\(-2 &lt; \tau &lt; -2\)</span></p></li>
+</ul>
+</section>
+</section>
+<section id="alternative-solution">
+<h3>Alternative solution<a class="headerlink" href="#alternative-solution" title="Permalink to this heading">#</a></h3>
+<p>The original version of <code class="docutils literal notranslate"><span class="pre">convolutiondemo</span></code> didn’t support the <code class="docutils literal notranslate"><span class="pre">heaviside</span></code> function so to prepare this problem for evaluation in the <code class="docutils literal notranslate"><span class="pre">convolutiondemo</span></code> tool, we needed to determine the Laplace Transforms of <span class="math notranslate nohighlight">\(h(t)\)</span> and <span class="math notranslate nohighlight">\(u(t)\)</span>.</p>
+<p>Thus</p>
+<div class="math notranslate nohighlight">
+\[h(t) \Leftrightarrow H(s)\]</div>
+<div class="math notranslate nohighlight">
+\[h(t) = (-t + 1)(u_0(t)-u_0(t-1)) = (-t + 1)u_0(t) - (-(t - 1)u_0(t - 1)) = -t u_0(t) + u_0(t) + (t - 1)u_0(t - 1)\]</div>
+<div class="math notranslate nohighlight">
+\[-t u_0(t) + u_0(t) + (t - 1)u_0(t - 1) \Leftrightarrow - \frac{1}{s^2} + \frac{1}{s} +\frac{e^{-s}}{s^2}\]</div>
+<div class="math notranslate nohighlight">
+\[H(s) = \frac{s + e^{-s} - 1}{s^2}\]</div>
+<section id="u-t">
+<h4>u(t)<a class="headerlink" href="#u-t" title="Permalink to this heading">#</a></h4>
+<p>The input <span class="math notranslate nohighlight">\(u(t)\)</span> is the gating function:</p>
+<div class="math notranslate nohighlight">
+\[u(t) = u_0(t)-u_0(t-1)\]</div>
+<p>so</p>
+<div class="math notranslate nohighlight">
+\[U(s) = \frac{1}{s}-\frac{e^{-s}}{s} = \frac{1 - e^{-s}}{s}\]</div>
+</section>
+<section id="id2">
+<h4>convolutiondemo settings<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Let <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">=</span> <span class="pre">(1</span> <span class="pre">-</span> <span class="pre">exp(-s))/s</span> <span class="pre">%</span> <span class="pre">U(s)</span></code></p></li>
+<li><p>Let <code class="docutils literal notranslate"> <span class="pre">g=</span> <span class="pre">(s</span> <span class="pre">+</span> <span class="pre">exp(-s)</span> <span class="pre">-</span> <span class="pre">1)/s^2</span> <span class="pre">%</span> <span class="pre">H(s)</span></code></p></li>
 <li><p>Set range <span class="math notranslate nohighlight">\(-2 &lt; \tau &lt; -2\)</span></p></li>
 </ul>
 </section>
 <section id="summary-of-result">
-<h3>Summary of result<a class="headerlink" href="#summary-of-result" title="Permalink to this heading">#</a></h3>
+<h4>Summary of result<a class="headerlink" href="#summary-of-result" title="Permalink to this heading">#</a></h4>
 <ol class="arabic simple">
 <li><p>For <span class="math notranslate nohighlight">\(t &lt; 0\)</span>: <span class="math notranslate nohighlight">\(u(t-\tau)h(\tau) = 0\)</span></p></li>
 <li><p>For <span class="math notranslate nohighlight">\(t = 0\)</span>: <span class="math notranslate nohighlight">\(u(t-\tau) = u(-\tau)\)</span> and <span class="math notranslate nohighlight">\(u(-\tau)h(\tau) = 0\)</span></p></li>
 <li><p>For <span class="math notranslate nohighlight">\(0 &lt; t \le 1\)</span>: <span class="math notranslate nohighlight">\(h*u = \int_0^t (1)(-\tau + 1)d\tau = \left.\tau - \tau^2/2\right|_0^t = t-t^2/2\)</span></p></li>
 <li><p>For <span class="math notranslate nohighlight">\(1 &lt; t \le 2\)</span>: <span class="math notranslate nohighlight">\(h*u = \int_{t-1}^1(-\tau + 1)d\tau = \left.\tau - \tau^2/2\right|_{t-1}^{1} = t^2/2-2t+2\)</span></p></li>
-<li><p>For <span class="math notranslate nohighlight">\(2 \le t\)</span>: <span class="math notranslate nohighlight">\(u(t-\tau)h(\tau) = 0\)</span></p></li>
+<li><p>For <span class="math notranslate nohighlight">\(2 \le t\)</span>: $<span class="math notranslate nohighlight">\(u(t-\tau)h(\tau) = 0\)</span>$</p></li>
 </ol>
-<section id="matlab-solution">
-<h4>MATLAB Solution<a class="headerlink" href="#matlab-solution" title="Permalink to this heading">#</a></h4>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">tau</span>
-<span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-<span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">g</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
-
-<span class="n">int</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">tau</span><span class="p">)</span><span class="o">*</span><span class="n">g</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">tau</span><span class="p">),</span><span class="n">tau</span><span class="p">,</span><span class="o">-</span><span class="n">inf</span><span class="p">,</span><span class="n">inf</span><span class="p">)</span>
-
-<span class="nb">fplot</span><span class="p">(</span><span class="nb">ans</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 </section>
 <section id="example-3">
-<h3>Example 3<a class="headerlink" href="#example-3" title="Permalink to this heading">#</a></h3>
-<p>This is example 6.5 from Karris.</p>
+<h4>Example 3<a class="headerlink" href="#example-3" title="Permalink to this heading">#</a></h4>
+<p>This is example 6.5 from the text book.</p>
 <div class="math notranslate nohighlight">
 \[h(t) = e^{-t}\]</div>
 <div class="math notranslate nohighlight">
 \[u(t) = u_0(t)-u_0(t-1)\]</div>
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre></section>
 <section id="answer-3">
-<h3>Answer 3<a class="headerlink" href="#answer-3" title="Permalink to this heading">#</a></h3>
+<h5>Answer 3<a class="headerlink" href="#answer-3" title="Permalink to this heading">#</a></h5>
 <div class="math notranslate nohighlight">
 \[\begin{split}y(t) = \left\{ {\begin{array}{*{20}{l}}
 {0:t \le 0}\\
 1 - e^{ - t}:\;0 &lt; t \le 1\\
 e^{ - t}\left( {e - 1} \right):\;1 &lt; t \lt \infty
 \end{array}} \right.\end{split}\]</div>
+</section>
 <section id="check-with-matlab">
-<h4>Check with MATLAB<a class="headerlink" href="#check-with-matlab" title="Permalink to this heading">#</a></h4>
-<div class="cell tag_remove-output docutils container">
+<h5>Check with MATLAB<a class="headerlink" href="#check-with-matlab" title="Permalink to this heading">#</a></h5>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">tau</span>
 <span class="n">x1</span><span class="p">=</span><span class="n">int</span><span class="p">(</span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">tau</span><span class="p">),</span><span class="n">tau</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
 </div>
-<div class="cell tag_remove-output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x1 =
+ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 - exp(-t)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">x2</span><span class="p">=</span><span class="n">int</span><span class="p">(</span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">tau</span><span class="p">),</span><span class="n">tau</span><span class="p">,</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x2 =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>exp(-t)*(exp(1) - 1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
 </pre></div>
 </div>
 </div>
@@ -888,31 +896,14 @@ e^{ - t}\left( {e - 1} \right):\;1 &lt; t \lt \infty
 </section>
 </section>
 <section id="example-4">
-<h3>Example 4<a class="headerlink" href="#example-4" title="Permalink to this heading">#</a></h3>
+<h4>Example 4<a class="headerlink" href="#example-4" title="Permalink to this heading">#</a></h4>
 <p>This is example 6.6 from the text book.</p>
 <div class="math notranslate nohighlight">
 \[h(t) = 2(u_0(t)-u_0(t-1))\]</div>
 <div class="math notranslate nohighlight">
 \[u(t) = u_0(t)-u_0(t-2)\]</div>
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre></section>
 <section id="answer-4">
-<h3>Answer 4<a class="headerlink" href="#answer-4" title="Permalink to this heading">#</a></h3>
+<h5>Answer 4<a class="headerlink" href="#answer-4" title="Permalink to this heading">#</a></h5>
 <div class="math notranslate nohighlight">
 \[\begin{split}y(t) = \left\{ {\begin{array}{*{20}{l}}
 {0:t \le 0}\\
@@ -921,6 +912,8 @@ e^{ - t}\left( {e - 1} \right):\;1 &lt; t \lt \infty
 {-2t+6:\;2 &lt; t \le 3}\\
 {0:\;3 \le t}\\
 \end{array}} \right.\end{split}\]</div>
+</section>
+</section>
 </section>
 </section>
 <section id="system-response-by-laplace">
@@ -954,63 +947,51 @@ e^{ - t}\left( {e - 1} \right):\;1 &lt; t \lt \infty
 \[y(t) = \mathcal{L}^{-1} \left\{ H(s) U(s) \right\}\]</div>
 <p>Using tables, solution of a convolution problem by Laplace is usually simpler than using convolution directly.</p>
 </section>
+<section id="more-examples">
+<h3>More Examples<a class="headerlink" href="#more-examples" title="Permalink to this heading">#</a></h3>
+<p>We will work through these in class</p>
 <section id="example-5">
-<h3>Example 5<a class="headerlink" href="#example-5" title="Permalink to this heading">#</a></h3>
-<p>This is example 6.7 from Karris.</p>
+<h4>Example 5<a class="headerlink" href="#example-5" title="Permalink to this heading">#</a></h4>
+<p>This is example 6.7 from the textbook.</p>
 <img src="pictures/example4.jpg" width="75%"><p>For the circuit shown above, show that the transfer function of the circuit is:</p>
 <div class="math notranslate nohighlight">
 \[ H(s) = \frac{V_c(s)}{V_s(s)} = \frac{1/RC}{s + 1/RC} \]</div>
-<p>Determine the impulse respone <span class="math notranslate nohighlight">\(h(t)\)</span> of the circuit and the response of the capacitor voltage when the input is the unit step function <span class="math notranslate nohighlight">\(u_0(t)\)</span> and <span class="math notranslate nohighlight">\(v_c(0^-)=0\)</span>.</p>
+<p>Hence determine the impulse respone <span class="math notranslate nohighlight">\(h(t)\)</span> of the circuit and the response of the capacitor voltage when the input is the unit step function <span class="math notranslate nohighlight">\(u_0(t)\)</span> and <span class="math notranslate nohighlight">\(v_c(0^-)=0\)</span>.</p>
 <p>Assume <span class="math notranslate nohighlight">\(C=1\; \mathrm{F}\)</span> and <span class="math notranslate nohighlight">\(R=1\;\Omega\)</span>.</p>
-</section>
 <section id="solution-5a-impulse-response">
-<h3>Solution 5a - Impulse response<a class="headerlink" href="#solution-5a-impulse-response" title="Permalink to this heading">#</a></h3>
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre></section>
+<h5>Solution 5a - Impulse response<a class="headerlink" href="#solution-5a-impulse-response" title="Permalink to this heading">#</a></h5>
+<div class="math notranslate nohighlight">
+\[h(t)=\frac{1}{RC}e^{-t/RC}u_0(t)\]</div>
+<p>which when <span class="math notranslate nohighlight">\(C=1\; \mathrm{F}\)</span> and <span class="math notranslate nohighlight">\(R=1\;\Omega\)</span> reduces to</p>
+<div class="math notranslate nohighlight">
+\[h(t)=e^{-t}u_0(t).\]</div>
+</section>
 <section id="solution-5b-step-response">
-<h3>Solution  5b - Step response<a class="headerlink" href="#solution-5b-step-response" title="Permalink to this heading">#</a></h3>
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre></section>
+<h5>Solution  5b - Step response<a class="headerlink" href="#solution-5b-step-response" title="Permalink to this heading">#</a></h5>
+<div class="math notranslate nohighlight">
+\[h(t) = e^{−t}u_0(t) \Leftrightarrow H(s) = \frac{1}{s+1}\]</div>
+<div class="math notranslate nohighlight">
+\[u(t) = u_0(t) \Leftrightarrow U(s) = \frac{1}{s}\]</div>
+<div class="math notranslate nohighlight">
+\[y(t) = h(t)*u(t) \Leftrightarrow Y(s) = H(s)U(s) = \left(\frac{1}{s+1}\right)\times\left(\frac{1}{s}\right)\]</div>
+<p>By PFE</p>
+<div class="math notranslate nohighlight">
+\[Y(s) = \frac{r_1}{s+1} + \frac{r_2}{s}\]</div>
+<p>The residues are <span class="math notranslate nohighlight">\(r_1=-1\)</span>, <span class="math notranslate nohighlight">\(r_2=1\)</span>, so</p>
+<div class="math notranslate nohighlight">
+\[Y(s) = -\frac{1}{s+1} + \frac{1}{s} \Leftrightarrow y(t) = \left(1-e^{-t}\right)u_0(t)\]</div>
+</section>
+</section>
+</section>
 <section id="homework">
 <h3>Homework<a class="headerlink" href="#homework" title="Permalink to this heading">#</a></h3>
 <p>Verify this result using the convolution integral</p>
 <div class="math notranslate nohighlight">
 \[h(t)*u(t) = {\int_{-\infty}^{\infty} u(\tau)h(t-\tau)d\tau}\]</div>
+</section>
+<section id="reference">
+<h3>Reference<a class="headerlink" href="#reference" title="Permalink to this heading">#</a></h3>
+<p>See <a class="reference internal" href="../../zbib.html"><span class="doc std std-doc">Bibliography</span></a>.</p>
 </section>
 </section>
 </section>
@@ -1028,7 +1009,7 @@ e^{ - t}\left( {e - 1} \right):\;1 &lt; t \lt \infty
         },
         kernelOptions: {
             name: "matlab",
-            path: "./laplace_transform/5"
+            path: "./transfer_functions/5"
         },
         predefinedOutput: true
     }
@@ -1045,24 +1026,6 @@ e^{ - t}\left( {e - 1} \right):\;1 &lt; t \lt \infty
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="../4/worksheet7.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Worksheet 7</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../../fourier_series/1/worksheet9.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Worksheet 9</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -1078,24 +1041,22 @@ e^{ - t}\left( {e - 1} \right):\;1 &lt; t \lt \infty
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-accompany-unit-3-5-convolution-and-the-impulse-response">To accompany Unit 3.5 Convolution and the Impulse Response</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colophon">Colophon</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">Agenda</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-hour">First Hour</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope-and-background-reading">Scope and Background Reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">Agenda</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#even-and-odd-functions-of-time">Even and Odd Functions of Time</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#even-functions-of-time">Even Functions of Time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-examples-of-even-functions">Other Examples of Even Functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#odd-functions-of-time">Odd Functions of Time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-examples-of-odd-functions">Other Examples of Odd Functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observations">Observations</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-about-even-and-odd-functions">More about Even and Odd Functions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-integrals-of-even-and-odd-functions">Time integrals of even and odd functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#even-odd-representation-of-an-arbitrary-function">Even/Odd Representation of an Arbitrary Function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#even-or-odd">Even or odd?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-to-example-1">Solution to example 1</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#even-or-odd">Even or odd?</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-convolution">Time Convolution</a><ul class="nav section-nav flex-column">
@@ -1104,33 +1065,47 @@ e^{ - t}\left( {e - 1} \right):\;1 &lt; t \lt \infty
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrate-both-sides">Integrate both sides</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-sifting-property-of-delta">Use the sifting property of delta</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-convolution-integral">The Convolution Integral</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#second-hour">Second Hour</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graphical-evaluation-of-the-convolution-integral">Graphical Evaluation of the Convolution Integral</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convolution-by-graphical-method-summary-of-steps">Convolution by Graphical Method - Summary of Steps</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#h-t">h(t)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convolutiondemo-settings">convolutiondemo settings</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-result">Summary of result</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-solution">MATLAB Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#h-t">h(t)</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#answer-3">Answer 3</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-with-matlab">Check with MATLAB</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#convolutiondemo-settings">convolutiondemo settings</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4">Example 4</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#answer-4">Answer 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-solution">Alternative solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#u-t">u(t)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">convolutiondemo settings</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-result">Summary of result</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#answer-3">Answer 3</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#check-with-matlab">Check with MATLAB</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4">Example 4</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#answer-4">Answer 4</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-response-by-laplace">System Response by Laplace</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impulse-response-and-transfer-functions">Impulse Response and Transfer Functions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5">Example 5</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-5a-impulse-response">Solution 5a - Impulse response</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-5b-step-response">Solution  5b - Step response</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-examples">More Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5">Example 5</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-5a-impulse-response">Solution 5a - Impulse response</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-5b-step-response">Solution  5b - Step response</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">Homework</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
 </ul>
 </li>
 </ul>
