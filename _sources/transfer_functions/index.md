@@ -11,9 +11,9 @@ This will install a project called `Repositories/Transfer-Function-Analysis-of-D
 
 Run the project by finding and opening the file `TransferFunctions.prj`.
 
-The notes and the lab that follow are based on this resource and need it to be available.
+The notes and the lab that follow are based on this project and some of the exercises, activities and homework problems need it to be available.
 
 * {ref}`tf_concepts`
-* [Unit 2.2: Transfer Function Basics]()
-* [Unit 2.3: Pole Zero Analysis]()
+* {ref}`tf_basics`
+* {ref}`pz_analysis`
 * [Lab 2: Frequency Domain Analysis]()
