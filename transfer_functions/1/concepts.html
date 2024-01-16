@@ -1,0 +1,1372 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Unit 2.1 Laplace transforms and LTI systems &#8212; EG-247 Digital Signal Processing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystyles.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'transfer_functions/1/concepts';</script>
+    <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/transfer_functions/1/concepts.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Unit 2.2: Transfer Function Basics" href="../2/transfer_function_basics.html" />
+    <link rel="prev" title="Unit 2: Transfer Function Analysis of Dynamic Systems" href="../index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../introduction/index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">EG-247 Digital Signal Processing</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../introduction/index.html">
+                    Unit 1: Introducing Digital Signal Processing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Online notes</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Transfer Function Analysis of Dynamic Systems</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Concept Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2/transfer_function_basics.html">Transfer Function Basics</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_series/index.html">Fourier Series</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/trig_fseries.html">Trigonometric Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/2/exp_fs1.html">Exponential Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/3/exp_fs2.html">Line Spectra and their Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_transform/index.html">Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/1/ft1.html">Defining the Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/2/ft2.html">Fourier transforms of commonly occuring signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/3/ft3.html">Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/4/ft4.html">Introduction to Filters</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dt_systems/index.html">Sampled Data Systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/1/sampling.html">Sampling Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/2/z_transform.html">The Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/3/i_z_transform.html">The Inverse Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/4/dt_models.html">Models of Discrete Time Systems</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dft/index.html">Discrete Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../dft/1/dft.html">The Discrete Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dft/2/fft.html">The Fast-Fourier Transform</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../zbib.html">Bibliography</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">In Class Worksheets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../worksheets/index.html">Worksheets</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/worksheet1.html">Worksheet 1 Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/worksheet2.html">Worksheet 2 Trigonometric Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/2/worksheet13.html">Worksheet 13 Fourier transforms of commonly occuring signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/3/worksheet14.html">Worksheet 14 Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/4/worksheet15.html">Worksheet 15 Introduction to Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/3/worksheet16.html">Worksheet 16 The Inverse Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/4/worksheet17.html">Worksheet 17 Models of DT Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dft/1/worksheet18.html">Worksheet 18 The Discrete-time Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dft/2/worksheet19.html">Worksheet 19 The Fast Fourier Transform</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework problems</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../homework/index.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw1.html">Homework 1 Elementary Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw2.html">Homework 2 Laplace and Inverse Laplace Transforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw3.html">Homework 3 Laplace Transforms for Ciruit Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw4.html">Homework 4 Impulse Response and Convolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw5.html">Homework 5 Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw6.html">Homework 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw7.html">Homework 7 Applications of the Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw8.html">Homework 8 Sampling Theory and the Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw9.html">Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw10.html">Homework 10 Discrete Fourier Transform and the Fast-Fourier Transform</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/project/index.html">Project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Answers to Selected Problems</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/answers.html">Worksheet 2</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lt_props.html">Properties of the Laplace Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fourier_transform/1/ft_props.html">Properties of the Fourier Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fourier_transform/1/ft_table.html">Common Fourier Transform Pairs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dt_systems/2/zt_props.html">Properties of the Z-Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dt_systems/2/zt_table.html">Table of Z-Transforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../setup/polling_setup.html">Set Up In-Class Polling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../todo.html">List of Planned Enhancements</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup/index.html">Setting up your own version of this book</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="LICENSE.html">MathWorks License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter.html">About Jupyter notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/python.html">Installing Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/setup.html">Setting up your Own Jupyter-MATLAB Computing Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/matlab_kernel.html">Testing the Jupyter Matlab Kernel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/advanced-setup.html">Quick Start - For Experienced Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter-book.html">Setting up jupyter-book</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-247-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-247-textbook/edit/master/transfer_functions/1/concepts.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Ftransfer_functions/1/concepts.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/transfer_functions/1/concepts.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Unit 2.1 Laplace transforms and LTI systems</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">Learning Outcomes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-laplace-transform">The Laplace Transform</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">Definition</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1-a">Solution 1 (a).</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1-b">Solution 1 (b).</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1-c">Solution 1 (c).</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1-d">Solution 1 (d).</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1-e">Solution 1 (e).</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1-f">Solution 1 (f).</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1-g">Solution 1 (g).</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-laplace-transforms">Visualize Laplace transforms</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reflect">Reflect</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#laplace-transform-properties">Laplace transform properties</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#try-this">Try this</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#a">2 (a).</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#b">2(b).</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pro-tip">Pro-tip:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-2-b">Solution 2(b)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-laplace-transform-properties">Visualize Laplace transform properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-differential-equations-using-the-laplace-transform">Solving differential equations using the Laplace transform</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#derive-the-equations-of-motion">1. Derive the equations of motion.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-laplace-transform-of-the-dynamic-system-ode-and-solve-for-x">2. Compute the Laplace transform of the dynamic system ODE and solve for <span class="math notranslate nohighlight">\(X\)</span></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#use-partial-fraction-decomposition-to-separate-the-expression-for-into-terms-where-the-inverse-laplace-transform-x-is-known">3. Use partial fraction decomposition to separate the expression for  into terms where the inverse Laplace transform <span class="math notranslate nohighlight">\(X\)</span> is known</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#take-the-inverse-laplace-transform">4. Take the inverse Laplace transform</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-solution">5. Plot the solution</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4">Exercise 4</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4(a)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4(b)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-time-invariant-systems">Linear Time-invariant Systems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linearity">1. Linearity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-invariance">2. Time invariance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5">Exercise 5.</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="unit-2-1-laplace-transforms-and-lti-systems">
+<span id="tf-concepts"></span><h1>Unit 2.1 Laplace transforms and LTI systems<a class="headerlink" href="#unit-2-1-laplace-transforms-and-lti-systems" title="Permalink to this heading">#</a></h1>
+<section id="learning-outcomes">
+<h2>Learning Outcomes<a class="headerlink" href="#learning-outcomes" title="Permalink to this heading">#</a></h2>
+<p>In this unit, students will…</p>
+<ul class="simple">
+<li><p>Compute Laplace transforms by hand and using symbolic math</p></li>
+<li><p>Describe the properties of the Laplace transform</p></li>
+<li><p>Apply Laplace transforms to solve initial value problems</p></li>
+<li><p>Recall the definition of a linear time-invariant (LTI) operator</p></li>
+</ul>
+<p>This unit is based on the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">ConceptReview.mlx</span></code> from the curriculum module <a class="reference external" href="https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems">Transfer Function Analysis of Dynamic Systems</a>.</p>
+<p>Some of the examples rely on interactive features of MATLAB that are not readily reproduced in these notes. To make use of these facilities, you are advised to access the script directly from the project in MATLAB online.</p>
+<p>These materials © Copyright 2023 The MathWorks™, Inc. (See <a class="reference internal" href="LICENSE.html#mathworks-license"><span class="std std-ref">MathWorks License</span></a>).</p>
+<p>Transfer functions are derived by computing the <strong>Laplace transform</strong> of <strong>linear time-invariant (LTI)</strong> dynamic systems. In these notes, the basics of Laplace transforms and LTI systems are reviewed.</p>
+</section>
+<section id="the-laplace-transform">
+<span id="laplace-xform"></span><h2>The Laplace Transform<a class="headerlink" href="#the-laplace-transform" title="Permalink to this heading">#</a></h2>
+<section id="definition">
+<h3>Definition<a class="headerlink" href="#definition" title="Permalink to this heading">#</a></h3>
+<p>The Laplace transform of a locally integrable function <span class="math notranslate nohighlight">\(f\)</span>  is</p>
+<div class="math notranslate nohighlight">
+\[F(s) = \mathcal{L}\{f(t)\} =\int_{0}^{\infty} f(t) e^{-st} \ dt\]</div>
+<p>The corresponding inverse Laplace transform is denoted as</p>
+<div class="math notranslate nohighlight">
+\[f(t) = \mathcal{L}^{-1} \{ F(s) \}\]</div>
+<p>Inverse Laplace transforms (and forward Laplace transforms, for that matter) are usually found by appealing to a transform table. The formal definition of the inverse Laplace transform is rarely used and so is not discussed here.</p>
+<section id="example">
+<h4>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h4>
+<p><img alt="example" src="../../_images/write.png" /></p>
+<p>(a)  Compute the Laplace transform of <span class="math notranslate nohighlight">\(f(t) = u_0(t - a)\)</span> by hand, where <span class="math notranslate nohighlight">\(u_o(t)\)</span> is the Heaviside step function with <span class="math notranslate nohighlight">\(a &gt; 0\)</span>.</p>
+<p>(b) Compute the analytic Laplace transform of <span class="math notranslate nohighlight">\(f\)</span> using the <a class="reference external" href="https://www.mathworks.com/products/symbolic.html">Symbolic Math Toolbox</a>.</p>
+</section>
+<section id="solution">
+<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h4>
+<p>(a)</p>
+<div class="math notranslate nohighlight">
+\[\begin{array}{rl}
+F(s) = \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt
+ = \int_{a}^{\infty}  e^{-st} \ dt
+= \left. -\frac{1}{s} e^{-st} \ \right\vert_a^\infty
+= \frac{1}{s} e^{-as}
+\end{array}\]</div>
+<p>(b) The <a class="reference external" href="https://www.mathworks.com/help/symbolic/laplace.html">laplace</a> function computes the analytic transform of a symbolic expression <span class="math notranslate nohighlight">\(f\)</span>. You can use the syntax:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">laplace</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="nb">var</span><span class="p">,</span><span class="n">transformVar</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p>Start by declaring symbolic variables</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="w"> </span><span class="c">% use less white space in outputs</span>
+<span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">s</span>
+<span class="n">syms</span><span class="w"> </span><span class="s">a</span><span class="w"> </span><span class="s">positive</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Then, define the function <span class="math notranslate nohighlight">\(f\)</span>. You can find a list of mathematical functions present in the Symbolic Math Toolbox in <a class="reference external" href="https://www.mathworks.com">the documentation</a>.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>heaviside(t - a)
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Finally, compute the Laplace transform with the input variable <code class="docutils literal notranslate"><span class="pre">t</span></code> and transform variable <code class="docutils literal notranslate"><span class="pre">s</span></code>.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">laplace</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fs =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>exp(-a*s)/s
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-1">
+<h4>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h4>
+<p><img alt="example" src="../../_images/write.png" /></p>
+<ol class="arabic simple">
+<li><p>Compute the Laplace transform of some standard functions listed below on paper. Assume <span class="math notranslate nohighlight">\(a\)</span> is real and <span class="math notranslate nohighlight">\(a &gt; 0\)</span></p></li>
+</ol>
+<p><strong>a.</strong> <span class="math notranslate nohighlight">\(f(t) = 1\)</span> <strong>b.</strong> <span class="math notranslate nohighlight">\(f(t) = e^{-at}\)</span> <strong>c.</strong> <span class="math notranslate nohighlight">\(f(t) = t\)</span> <strong>d.</strong> <span class="math notranslate nohighlight">\(f(t) = \delta(t - a)\)</span></p>
+<p><strong>e.</strong> <span class="math notranslate nohighlight">\(f(t) = \cos(t)\)</span> <strong>f.</strong> <span class="math notranslate nohighlight">\(f(t) = t^2 e^{-at}\)</span> <strong>g.</strong> <span class="math notranslate nohighlight">\(f(t) = e^{-at}\sin(t)\)</span></p>
+<p><strong>Hints: a/b.</strong> substitution, <strong>c.</strong> integration by parts, <strong>d.</strong> <a class="reference external" href="https://www.mathworks.com/help/symbolic/sym.dirac.html">dirac</a> for the symbolic computation), <strong>e/g</strong> integrate by parts and rearrange terms, <strong>f.</strong> multiple integration by parts.</p>
+<ol class="arabic simple" start="2">
+<li><p>Verify your answers by computing the Laplace transforms in the space provided below using symbolic math.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Symbolic variable declarations</span>
+<span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">s</span>
+<span class="n">syms</span><span class="w"> </span><span class="s">a</span><span class="w"> </span><span class="s">positive</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="solution-1-a">
+<h5>Solution 1 (a).<a class="headerlink" href="#solution-1-a" title="Permalink to this heading">#</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">Fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">laplace</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f =
+     1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fs =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/s
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-1-b">
+<h5>Solution 1 (b).<a class="headerlink" href="#solution-1-b" title="Permalink to this heading">#</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+<span class="n">Fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">laplace</span><span class="p">(</span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>exp(-a*t)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fs =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/(a + s)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-1-c">
+<h5>Solution 1 (c).<a class="headerlink" href="#solution-1-c" title="Permalink to this heading">#</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">t</span>
+<span class="n">Fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">laplace</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fs =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/s^2
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-1-d">
+<h5>Solution 1 (d).<a class="headerlink" href="#solution-1-d" title="Permalink to this heading">#</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">dirac</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="p">)</span>
+<span class="n">Fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">laplace</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dirac(a - t)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fs =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>exp(-a*s)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-1-e">
+<h5>Solution 1 (e).<a class="headerlink" href="#solution-1-e" title="Permalink to this heading">#</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">Fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">laplace</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cos(t)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fs =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s/(s^2 + 1)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-1-f">
+<h5>Solution 1 (f).<a class="headerlink" href="#solution-1-f" title="Permalink to this heading">#</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">t</span>^<span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+<span class="n">Fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">laplace</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t^2*exp(-a*t)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fs =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2/(a + s)^3
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-1-g">
+<h5>Solution 1 (g).<a class="headerlink" href="#solution-1-g" title="Permalink to this heading">#</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">Fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">laplace</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>exp(-a*t)*sin(t)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fs =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/((a + s)^2 + 1)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="visualize-laplace-transforms">
+<h3>Visualize Laplace transforms<a class="headerlink" href="#visualize-laplace-transforms" title="Permalink to this heading">#</a></h3>
+<p><img alt="Try" src="../../_images/try.png" /></p>
+<p>See the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">ConceptReview.mlx</span></code>.</p>
+<section id="reflect">
+<h4>Reflect<a class="headerlink" href="#reflect" title="Permalink to this heading">#</a></h4>
+<p><img alt="reflect" src="../../_images/reflect.png" /></p>
+<ul class="simple">
+<li><p>What class of functions is most commonly observed in the Laplace transform?</p></li>
+<li><p>How do the poles of the Laplace transform reflect the behavior of the time domain function <span class="math notranslate nohighlight">\(f(t)\)</span>?</p></li>
+</ul>
+<p>Laplace transforms and their inverses are also commonly found using a table, like <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_Laplace_transforms#Table">this one</a>.</p>
+<p>See also <a class="reference internal" href="lt_table.html#lxf-table"><span class="std std-ref">Common Laplace Transform Pairs</span></a> in this textbook.</p>
+</section>
+</section>
+<section id="laplace-transform-properties">
+<h3>Laplace transform properties<a class="headerlink" href="#laplace-transform-properties" title="Permalink to this heading">#</a></h3>
+<p>Laplace transforms have several important properties that can be derived from the definition. A few essential properties are reviewed below.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left.
+\begin{array}{lll}
+\textbf{Name} &amp; \mathbf{f(t)} &amp; \mathbf{F(s)}
+\\
+\text{Time derivative} \quad&amp; \dot{f}(t) \quad &amp; sF(s) - f(0)
+\\
+\text{Time integral} \quad&amp; \int_0^t f(\tau) d\tau \quad &amp; \frac{F(s)}{s}
+\\
+\text{Frequency shift} \quad&amp; e^{at} f(t) \quad &amp; F(s-a)
+\\
+\text{Time shift} \quad&amp; f(t-a)u_0(t-a) \quad &amp; e^{-as} F(s)
+\\
+\text{Time scaling} \quad&amp; f(at) \quad &amp; \frac{1}{a}F\left( \frac{s}{a}\right)
+\\
+\text{Time domain convolution} \quad &amp;  (f*g)(t) &amp; F(s) G(s)
+\end{array}
+\right.
+\end{split}\]</div>
+<p>A more complete list of Laplace transform properties is to be found in <a class="reference internal" href="lt_props.html#lxf-props"><span class="std std-ref">Laplace Transform Properties</span></a> in this textbook.</p>
+<p>For example, the Laplace transform of a time derivative can be computed through integration by parts:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{rl}
+\mathcal{L}\{f'(t)\} &amp;= \int_{0}^{\infty} \dot{f}(t) e^{-st} \ dt
+\\
+&amp;= \left. f(t) e^{-st} \ \right\vert_0^\infty - \int_{0}^{\infty}  f(t) \left( -s  e^{-st}\right) \ dt
+\\
+&amp;= - f(0) + sF(s)
+\end{array}
+\end{split}\]</div>
+<section id="try-this">
+<h4>Try this<a class="headerlink" href="#try-this" title="Permalink to this heading">#</a></h4>
+<p><img alt="try" src="../../_images/try.png" /></p>
+<p>The symbolic derivative of <span class="math notranslate nohighlight">\(f\)</span> is defined below by declaring a symbolic function using the syntax</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">f(t)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The derivative is then computed using the <a class="reference external" href="https://uk.mathworks.com/help/matlab/ref/diff.html">diff</a> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">f(t)</span>
+<span class="n">dfdt</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">diff</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dfdt(t) =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>diff(f(t), t)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Use the <a class="reference external" href="https://uk.mathworks.com/help/symbolic/sym.laplace.html">laplace</a> function to compute the Laplace transform of <code class="docutils literal notranslate"><span class="pre">dfdt</span></code> in the space below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">laplace</span><span class="p">(</span><span class="n">dfdt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fs =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s*laplace(f(t), t, s) - f(0)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-2">
+<h4>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h4>
+<p><img alt="exercise" src="../../_images/write.png" /></p>
+<section id="a">
+<h5>2 (a).<a class="headerlink" href="#a" title="Permalink to this heading">#</a></h5>
+<p>Find the formula for the Laplace transform of the second time derivative \ddot{f}(t) by hand, using integration by parts twice.</p>
+</section>
+<section id="b">
+<h5>2(b).<a class="headerlink" href="#b" title="Permalink to this heading">#</a></h5>
+<p>Verify your answer by computing the Laplace transform using symbolic math.</p>
+</section>
+<section id="pro-tip">
+<h5>Pro-tip:<a class="headerlink" href="#pro-tip" title="Permalink to this heading">#</a></h5>
+<p><img alt="pro-tip" src="../../_images/pro-tip.png" /></p>
+<p>To compute the second derivative, use the <a class="reference external" href="https://uk.mathworks.com/help/matlab/ref/diff.html">diff</a> function with the syntax: <code class="docutils literal notranslate"><span class="pre">diff(f,n)</span></code>, where <code class="docutils literal notranslate"><span class="pre">n</span></code> is the order of the derivative.</p>
+</section>
+<section id="solution-2-b">
+<h5>Solution 2(b)<a class="headerlink" href="#solution-2-b" title="Permalink to this heading">#</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">f(t)</span><span class="w"> </span><span class="s">%</span><span class="w"> </span><span class="s">Definitions</span><span class="w"> </span><span class="s">of</span><span class="w"> </span><span class="s">the</span><span class="w"> </span><span class="s">symbolic</span><span class="w"> </span><span class="s">variables</span>
+<span class="c">% Perform your symbolic computations here</span>
+<span class="n">d2fdt2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">diff</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>d2fdt2(t) =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>diff(f(t), t, t)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">laplace</span><span class="p">(</span><span class="n">d2fdt2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fs =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s^2*laplace(f(t), t, s) - subs(diff(f(t), t), t, 0) - s*f(0)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="visualize-laplace-transform-properties">
+<h3>Visualize Laplace transform properties<a class="headerlink" href="#visualize-laplace-transform-properties" title="Permalink to this heading">#</a></h3>
+<p><img alt="try" src="../../_images/try.png" /></p>
+<p>See the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">ConceptReview.mlx</span></code></p>
+</section>
+<section id="solving-differential-equations-using-the-laplace-transform">
+<h3>Solving differential equations using the Laplace transform<a class="headerlink" href="#solving-differential-equations-using-the-laplace-transform" title="Permalink to this heading">#</a></h3>
+<p>You can solve initial value problems analytically using Laplace transforms. In general, this is accomplished by:</p>
+<ol class="arabic simple">
+<li><p>taking the Laplace transform,</p></li>
+<li><p>solving for the solution variable in the Laplace domain (<span class="math notranslate nohighlight">\(X(s)\)</span>), and</p></li>
+<li><p>taking the inverse Laplace transform by referring to a Laplace transform table.</p></li>
+</ol>
+<section id="example-3">
+<h4>Example 3<a class="headerlink" href="#example-3" title="Permalink to this heading">#</a></h4>
+<p><img alt="example" src="../../_images/write.png" /></p>
+<p>Use the Laplace transform to solve for the dynamics of the mass-spring-damper with</p>
+<ul class="simple">
+<li><p>constant forcing <span class="math notranslate nohighlight">\(F = 10\)</span> N</p></li>
+<li><p>physical parameters: <span class="math notranslate nohighlight">\(m = 1\)</span> kg, <span class="math notranslate nohighlight">\(c = 2\)</span> Ns/m, and <span class="math notranslate nohighlight">\(k = 10\)</span> N/m</p></li>
+<li><p>zero initial conditions: <span class="math notranslate nohighlight">\(x(0) = 0\)</span> and <span class="math notranslate nohighlight">\(x'(0) = 0\)</span></p></li>
+</ul>
+<p><img alt="A spring mass-damper-system" src="../../_images/smd.png" /></p>
+</section>
+<section id="id1">
+<h4>Solution<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<section id="derive-the-equations-of-motion">
+<h5>1. Derive the equations of motion.<a class="headerlink" href="#derive-the-equations-of-motion" title="Permalink to this heading">#</a></h5>
+<p>You can draw a free body diagram and apply Newton’s second law to derive the equations of motion.</p>
+<p><img alt="Free Body Diagram of Spring-Mass-Damper signal" src="../../_images/fbd.png" /></p>
+</section>
+<section id="compute-the-laplace-transform-of-the-dynamic-system-ode-and-solve-for-x">
+<h5>2. Compute the Laplace transform of the dynamic system ODE and solve for <span class="math notranslate nohighlight">\(X\)</span><a class="headerlink" href="#compute-the-laplace-transform-of-the-dynamic-system-ode-and-solve-for-x" title="Permalink to this heading">#</a></h5>
+<p>Note <span class="math notranslate nohighlight">\(\mathcal{L}\{x(t)\} = X(s)\)</span></p>
+<div class="math notranslate nohighlight">
+\[\mathcal{L} \left\{ m \ddot{x} + c\dot{x} + kx = F \right\} \rightarrow\]</div>
+<div class="math notranslate nohighlight">
+\[m[s^2 X - sx(0) - x'(0)] + c [s X - x(0)] + kX = \frac{F}{s}\]</div>
+<p>Applying the zero initial conditions and the values of the physical parameters implies</p>
+<div class="math notranslate nohighlight">
+\[s^2 X + 2 s X  + 10X = \frac{10}{s}\]</div>
+<p>Solving for  yields</p>
+<div class="math notranslate nohighlight">
+\[X = \frac{10}{s^3 + 2  s^2   + 10s }\]</div>
+</section>
+<section id="use-partial-fraction-decomposition-to-separate-the-expression-for-into-terms-where-the-inverse-laplace-transform-x-is-known">
+<h5>3. Use partial fraction decomposition to separate the expression for  into terms where the inverse Laplace transform <span class="math notranslate nohighlight">\(X\)</span> is known<a class="headerlink" href="#use-partial-fraction-decomposition-to-separate-the-expression-for-into-terms-where-the-inverse-laplace-transform-x-is-known" title="Permalink to this heading">#</a></h5>
+<p>Try performing the partial fraction decomposition on paper and comparing your result to the symbolic solution found below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define X(s)</span>
+<span class="n">syms</span><span class="w"> </span><span class="s">s</span><span class="w"> </span>
+<span class="n">X</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">10</span><span class="o">/</span><span class="p">(</span><span class="n">s</span>^<span class="mi">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">10</span><span class="o">*</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10/(s^3 + 2*s^2 + 10*s)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Compute the partial fraction decomposition</span>
+<span class="n">Xdecomp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">partfrac</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Xdecomp =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/s - (s + 2)/(s^2 + 2*s + 10)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="take-the-inverse-laplace-transform">
+<h5>4. Take the inverse Laplace transform<a class="headerlink" href="#take-the-inverse-laplace-transform" title="Permalink to this heading">#</a></h5>
+<p>You can take the inverse Laplace transform by rewriting  as a sum of terms in forms found on a <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_Laplace_transforms#Table">transform table</a>.</p>
+<div class="math notranslate nohighlight">
+\[X(s) = \frac{1}{s}-\frac{s+2}{s^2 +2 \ s+10} =  \frac{1}{s}-\frac{s+2}{(s + 1)^2 + 9}  =  \frac{1}{s}-\frac{s+1}{(s + 1)^2 + 3^2}  -\frac{1}{3}\frac{3}{(s + 1)^2 + 3^2}\]</div>
+<p>The solution is then constructed by taking the inverse transform:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{rl}
+x(t) &amp;= \mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1)^2 + 3^2}  -\frac{1}{3}\frac{3}{(s + 1)^2 + 3^2} \right\}
+\\
+  &amp;= u_0(t) - u_0(t) e^{-t} \cos( 3 t) - \frac{1}{3} u_0(t) e^{-t} \sin(3t)
+\\
+  &amp;= \left( 1  - e^{-t} \cos( 3 t) - \frac{1}{3} e^{-t} \sin(3t)\right)u_0(t)
+\end{array}
+\end{split}\]</div>
+<p>Alternatively, you can use the symbolic function <a class="reference external" href="https://uk.mathworks.com/help/symbolic/sym.ilaplace.html">ilaplace</a> to find the inverse Laplace transform of <span class="math notranslate nohighlight">\(X(s)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">x</span>
+<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ilaplace</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 - exp(-t)*(cos(3*t) + sin(3*t)/3)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-the-solution">
+<h5>5. Plot the solution<a class="headerlink" href="#plot-the-solution" title="Permalink to this heading">#</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Create solution array</span>
+<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">150</span><span class="p">);</span>
+<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">-</span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">)</span><span class="o">.*</span><span class="p">(</span><span class="nb">cos</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">t</span><span class="p">));</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/f825747471e5919d7e1608d5e9a7f148836d108854a9a80616338aded0d73b11.png" src="../../_images/f825747471e5919d7e1608d5e9a7f148836d108854a9a80616338aded0d73b11.png" />
+</div>
+</div>
+<p>There is an animated version of the solution to this spring-mass-damper system in the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">ConceptReview.mlx</span></code>.</p>
+</section>
+</section>
+<section id="exercise-4">
+<h4>Exercise 4<a class="headerlink" href="#exercise-4" title="Permalink to this heading">#</a></h4>
+<p><img alt="exercise" src="../../_images/write.png" /></p>
+<p>In this exercise, you will solve for the dynamics of the simple pendulum using the Laplace transform.</p>
+<p><img alt="A simple pendulum" src="../../_images/pendulum.png" /></p>
+<section id="id2">
+<h5>4(a)<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h5>
+<p>Draw a free-body diagram for the simple pendulum shown above and derive the equation of motion for a pendulum with length <span class="math notranslate nohighlight">\(l = 0.5\)</span> m and a gravitational constant of 9.8 m/s. Linearize the equation near <span class="math notranslate nohighlight">\(\theta = 0\)</span> and show that it is equivalent to</p>
+<div class="math notranslate nohighlight">
+\[\ddot \theta + 19.6 \theta = 0\]</div>
+</section>
+<section id="id3">
+<h5>4(b)<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h5>
+<p>Use the Laplace transform to solve the linearized equations of motion:</p>
+<div class="math notranslate nohighlight">
+\[\ddot \theta + 19.6 \theta = 0\]</div>
+<p>with initial conditions <span class="math notranslate nohighlight">\(\theta(0) = \pi/6\)</span>, <span class="math notranslate nohighlight">\(\dot{\theta}(0) = 0\)</span>.</p>
+<p>Write your solution in the variable <code class="docutils literal notranslate"><span class="pre">theta</span></code> in terms of the symbolic variable <code class="docutils literal notranslate"><span class="pre">t</span></code>. Then click the checkbox to plot your solution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">t</span>
+<span class="c">% Replace NaN with your symbolic solution and run the section</span>
+<span class="n">theta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span><span class="p">;</span><span class="w"> </span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>There is an animated version of the solution to this simple pendulum system in the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">ConceptReview.mlx</span></code>.</p>
+</section>
+</section>
+</section>
+</section>
+<section id="linear-time-invariant-systems">
+<h2>Linear Time-invariant Systems<a class="headerlink" href="#linear-time-invariant-systems" title="Permalink to this heading">#</a></h2>
+<p>Linear time-invariant (LTI) systems are characterized by the two properties stated in the name: linearity and time-invariance.</p>
+<p><img alt="Block diagram of a system" src="../../_images/system.png" /></p>
+<p>Consider an operator <span class="math notranslate nohighlight">\(g\)</span> that maps an input <span class="math notranslate nohighlight">\(u(t)\)</span> to an output <span class="math notranslate nohighlight">\(y(t)\)</span>.</p>
+<section id="linearity">
+<h3>1. Linearity<a class="headerlink" href="#linearity" title="Permalink to this heading">#</a></h3>
+<p>The operator <span class="math notranslate nohighlight">\(g\)</span> is linear if it has two properties:</p>
+<ul class="simple">
+<li><p>Superposition: <span class="math notranslate nohighlight">\(g[u_1(t) + u_2(t)]\)</span> = <span class="math notranslate nohighlight">\(y_1(t)\)</span> + <span class="math notranslate nohighlight">\(y_2(t)\)</span></p></li>
+<li><p>Homogeneity: <span class="math notranslate nohighlight">\(g[au(t)] = ay(t)\)</span></p></li>
+</ul>
+<p>Often these two properties are written together as</p>
+<div class="math notranslate nohighlight">
+\[g[a u_1(t) + bu_2(t)] = ay_1(t) + by_2(t)\]</div>
+</section>
+<section id="time-invariance">
+<h3>2. Time invariance<a class="headerlink" href="#time-invariance" title="Permalink to this heading">#</a></h3>
+<p>The operator <span class="math notranslate nohighlight">\(g\)</span> is time-invariant if a time-shifted input produces an output with the same time shift:</p>
+<div class="math notranslate nohighlight">
+\[g[u(t - \tau)]= y(t - \tau)\]</div>
+</section>
+<section id="exercise-5">
+<h3>Exercise 5.<a class="headerlink" href="#exercise-5" title="Permalink to this heading">#</a></h3>
+<p><img alt="reflect" src="../../_images/reflect.png" /></p>
+<p>Consider the simple operators listed below. Which operators are linear? Which are time-invariant?</p>
+<p>Use the interactive tool in the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">ConceptReview.mlx</span></code> to explore these and reflect on the results.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(g\)</span>: <span class="math notranslate nohighlight">\(y(t) = g[u(t)]\)</span> with <span class="math notranslate nohighlight">\(g = \frac{d}{dt}  + \frac{d^2}{dt^2}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(h\)</span>: <span class="math notranslate nohighlight">\(y(t) = 4\sin^2[u(t)]\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(i\)</span>: <span class="math notranslate nohighlight">\(y(t) = \int_{t - 1}^{t + 1} 3u(\tau) d\tau\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(j\)</span>: <span class="math notranslate nohighlight">\(y(t) = t \frac{d}{dt} u(t)\)</span></p></li>
+</ul>
+<p>Use the interactive tool in the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">ConceptReview.mlx</span></code>.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "matlab"
+        },
+        kernelOptions: {
+            name: "matlab",
+            path: "./transfer_functions/1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'matlab'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Unit 2: Transfer Function Analysis of Dynamic Systems</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../2/transfer_function_basics.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unit 2.2: Transfer Function Basics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">Learning Outcomes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-laplace-transform">The Laplace Transform</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">Definition</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1-a">Solution 1 (a).</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1-b">Solution 1 (b).</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1-c">Solution 1 (c).</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1-d">Solution 1 (d).</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1-e">Solution 1 (e).</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1-f">Solution 1 (f).</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1-g">Solution 1 (g).</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-laplace-transforms">Visualize Laplace transforms</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reflect">Reflect</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#laplace-transform-properties">Laplace transform properties</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#try-this">Try this</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#a">2 (a).</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#b">2(b).</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pro-tip">Pro-tip:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-2-b">Solution 2(b)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-laplace-transform-properties">Visualize Laplace transform properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-differential-equations-using-the-laplace-transform">Solving differential equations using the Laplace transform</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#derive-the-equations-of-motion">1. Derive the equations of motion.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-laplace-transform-of-the-dynamic-system-ode-and-solve-for-x">2. Compute the Laplace transform of the dynamic system ODE and solve for <span class="math notranslate nohighlight">\(X\)</span></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#use-partial-fraction-decomposition-to-separate-the-expression-for-into-terms-where-the-inverse-laplace-transform-x-is-known">3. Use partial fraction decomposition to separate the expression for  into terms where the inverse Laplace transform <span class="math notranslate nohighlight">\(X\)</span> is known</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#take-the-inverse-laplace-transform">4. Take the inverse Laplace transform</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-solution">5. Plot the solution</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4">Exercise 4</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4(a)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4(b)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-time-invariant-systems">Linear Time-invariant Systems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linearity">1. Linearity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-invariance">2. Time invariance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5">Exercise 5.</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Chris P. Jobling
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Swansea University (2023-2024).
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  This page was created by 
+<a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
+  Dr Chris P. Jobling
+</a> 
+for 
+<a href="https://www.swansea.ac.uk">
+  Swansea University
+</a>.
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

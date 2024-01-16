@@ -1,0 +1,1297 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Worksheet 18 &#8212; EG-247 Digital Signal Processing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystyles.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'dft/1/worksheet18';</script>
+    <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/dft/1/worksheet18.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Worksheet 19" href="../2/worksheet19.html" />
+    <link rel="prev" title="Worksheet 17" href="../../dt_systems/4/worksheet17.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../introduction/index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">EG-247 Digital Signal Processing</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../introduction/index.html">
+                    Unit 1: Introducing Digital Signal Processing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Online notes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../transfer_functions/index.html">Transfer Function Analysis of Dynamic Systems</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../transfer_functions/1/concepts.html">Concept Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../transfer_functions/2/transfer_function_basics.html">Transfer Function Basics</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_series/index.html">Fourier Series</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/trig_fseries.html">Trigonometric Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/2/exp_fs1.html">Exponential Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/3/exp_fs2.html">Line Spectra and their Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_transform/index.html">Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/1/ft1.html">Defining the Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/2/ft2.html">Fourier transforms of commonly occuring signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/3/ft3.html">Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/4/ft4.html">Introduction to Filters</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dt_systems/index.html">Sampled Data Systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/1/sampling.html">Sampling Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/2/z_transform.html">The Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/3/i_z_transform.html">The Inverse Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/4/dt_models.html">Models of Discrete Time Systems</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../index.html">Discrete Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="dft.html">The Discrete Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2/fft.html">The Fast-Fourier Transform</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../zbib.html">Bibliography</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">In Class Worksheets</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../worksheets/index.html">Worksheets</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/worksheet1.html">Worksheet 1 Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/worksheet2.html">Worksheet 2 Trigonometric Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/2/worksheet13.html">Worksheet 13 Fourier transforms of commonly occuring signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/3/worksheet14.html">Worksheet 14 Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/4/worksheet15.html">Worksheet 15 Introduction to Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/3/worksheet16.html">Worksheet 16 The Inverse Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/4/worksheet17.html">Worksheet 17 Models of DT Systems</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Worksheet 18 The Discrete-time Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2/worksheet19.html">Worksheet 19 The Fast Fourier Transform</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework problems</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../homework/index.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw1.html">Homework 1 Elementary Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw2.html">Homework 2 Laplace and Inverse Laplace Transforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw3.html">Homework 3 Laplace Transforms for Ciruit Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw4.html">Homework 4 Impulse Response and Convolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw5.html">Homework 5 Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw6.html">Homework 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw7.html">Homework 7 Applications of the Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw8.html">Homework 8 Sampling Theory and the Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw9.html">Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw10.html">Homework 10 Discrete Fourier Transform and the Fast-Fourier Transform</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/project/index.html">Project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Answers to Selected Problems</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/answers.html">Worksheet 2</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../transfer_functions/1/lt_props.html">Properties of the Laplace Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fourier_transform/1/ft_props.html">Properties of the Fourier Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fourier_transform/1/ft_table.html">Common Fourier Transform Pairs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dt_systems/2/zt_props.html">Properties of the Z-Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dt_systems/2/zt_table.html">Table of Z-Transforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../setup/polling_setup.html">Set Up In-Class Polling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../todo.html">List of Planned Enhancements</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup/index.html">Setting up your own version of this book</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../transfer_functions/1/LICENSE.html">MathWorks License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter.html">About Jupyter notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/python.html">Installing Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/setup.html">Setting up your Own Jupyter-MATLAB Computing Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/matlab_kernel.html">Testing the Jupyter Matlab Kernel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/advanced-setup.html">Quick Start - For Experienced Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter-book.html">Setting up jupyter-book</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-247-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-247-textbook/edit/master/dft/1/worksheet18.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Fdft/1/worksheet18.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/dft/1/worksheet18.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Worksheet 18</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-accompany-chapter-7-1-the-discrete-fourier-transform">To accompany Chapter 7.1 The Discrete Fourier Transform</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-of-abbreviations">List of Abbreviations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notation">Notation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#z-transform">Z-Transform</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-discrete-time-fourier-transform">The Discrete-time Fourier Transform</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-example-1">In Class Example 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1">Solution 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-example-2">In Class Example 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-2">Solution 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulink-model-of-the-dft">Simulink model of the DFT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-model-of-the-dft">MATLAB model of the DFT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-useful-compact-notation">A useful compact notation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-example-3">In Class Example 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-3">Solution 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-implementation-of-dft">MATLAB implementation of DFT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-example-4">In Class Example 4</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-summary-of-the-important-features-of-sampling-and-the-dft">A summary of the important features of sampling and the DFT</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-continued">Example 4 (continued)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-example-5">In Class Example 5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="worksheet-18">
+<h1>Worksheet 18<a class="headerlink" href="#worksheet-18" title="Permalink to this heading">#</a></h1>
+<section id="to-accompany-chapter-7-1-the-discrete-fourier-transform">
+<h2>To accompany Chapter 7.1 The Discrete Fourier Transform<a class="headerlink" href="#to-accompany-chapter-7-1-the-discrete-fourier-transform" title="Permalink to this heading">#</a></h2>
+<p>We will step through this worksheet in class.</p>
+<p>You are expected to have at least watched the video presentation of <a class="reference internal" href="dft.html"><span class="doc std std-doc">Chapter 7.1</span></a> of the <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/">notes</a> before coming to class.</p>
+<p>If you haven’t watch it afterwards!</p>
+<section id="list-of-abbreviations">
+<h3>List of Abbreviations<a class="headerlink" href="#list-of-abbreviations" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>CT – Continuous Time</p></li>
+<li><p>DT – Discrete Time</p></li>
+<li><p>DF - Discrete frequency</p></li>
+<li><p>DFT – Discrete (Time) Fourier Transform</p></li>
+<li><p>FFT – Fast Fourier Transform</p></li>
+</ul>
+</section>
+<section id="notation">
+<h3>Notation<a class="headerlink" href="#notation" title="Permalink to this heading">#</a></h3>
+<p>In the following we shall denote a DT signal as <span class="math notranslate nohighlight">\(x[n]\)</span> and its discrete frequency function as <span class="math notranslate nohighlight">\(X[m]\)</span>.</p>
+</section>
+</section>
+<section id="z-transform">
+<h2>Z-Transform<a class="headerlink" href="#z-transform" title="Permalink to this heading">#</a></h2>
+<p>Recall that</p>
+<div class="math notranslate nohighlight">
+\[F(z) = \mathcal{Z} f[n] = \sum_{n=0}^{\infty} f[n]z^{-n}.\]</div>
+<p>The value of this function on the unit circle in the Z-plane will be</p>
+<div class="math notranslate nohighlight">
+\[F\left(\exp\left({j\omega T}\right)\right) = \sum_{n=0}^{\infty} f[n]\exp\left({-jn \omega T}\right).\]</div>
+<p>This is an infinite sum.  So to compute it, we need to truncate it.</p>
+</section>
+<section id="the-discrete-time-fourier-transform">
+<h2>The Discrete-time Fourier Transform<a class="headerlink" href="#the-discrete-time-fourier-transform" title="Permalink to this heading">#</a></h2>
+<p>Let’s assume that instead of an infinite number of points, we have <span class="math notranslate nohighlight">\(N\)</span> points, equally distributed around the unit circle, then the truncated version will be:</p>
+<div class="math notranslate nohighlight">
+\[X[m] =  \sum_{n=0}^{N-1} x[n]\exp\left({-j2\pi \frac{m n}{N}}\right)\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\omega  = \left( {\frac{2\pi}{N}} \right)nm\]</div>
+<p>and <span class="math notranslate nohighlight">\(m = 0,1,2,\ldots, N-1\)</span> and <span class="math notranslate nohighlight">\(n = 0,1,2,\ldots, N-1\)</span>.</p>
+<p>We refer to the equation</p>
+<div class="math notranslate nohighlight">
+\[X[m] =  \sum_{n=0}^{N-1} x[n]\exp\left({-j2\pi \frac{m n}{N}}\right)\]</div>
+<p>as the N-point Discrete-time Fourier Transform (DFT) of <span class="math notranslate nohighlight">\(x[n]\)</span>.</p>
+<p>The inverse DFT is defined as</p>
+<div class="math notranslate nohighlight">
+\[x[n] =  \frac{1}{N} \sum_{m=0}^{N-1} X[m]\exp\left({j2\pi \frac{m n}{N}}\right)\]</div>
+<p>for <span class="math notranslate nohighlight">\(n = 0,1,2,\ldots, N-1\)</span>.</p>
+<p>Note the symmetry of the DFT and the Inverse DFT!</p>
+<p>In general, the DFT is complex, and thus it can be expressed as</p>
+<div class="math notranslate nohighlight">
+\[X[m] = \Re\left\{X[m]\right\} + \Im\left\{X[m]\right\}\]</div>
+<p>for <span class="math notranslate nohighlight">\(m = 0,1,2,\ldots,N-1\)</span>.</p>
+<p>Since</p>
+<div class="math notranslate nohighlight">
+\[\exp\left({-j2\pi \frac{m n}{N}}\right) = \cos\left(2\pi\frac{m n}{N}\right) - j\sin\left(2\pi \frac{m n}{N}\right)\]</div>
+<p>the DFT can be expresssed as</p>
+<div class="math notranslate nohighlight">
+\[X[m] =  \sum_{n=0}^{N-1} x[n]\exp\left({-j2\pi \frac{m n}{N}}\right) = \sum_{n=0}^{N-1}x[n]\cos\left(2\pi \frac{m n}{N}\right) - j\sum_{n=0}^{N-1}x[n]\sin\left(2\pi\frac{ m n}{N}\right).\]</div>
+<p>For <span class="math notranslate nohighlight">\(n=0\)</span> this reduces to</p>
+<div class="math notranslate nohighlight">
+\[X[m] = x[0].\]</div>
+<p>Then the real part of <span class="math notranslate nohighlight">\(X[m]\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\Re \left\{ {X[m]} \right\} = x[0] + \sum\limits_{n = 1}^{N - 1} x [n]\cos \left( 2\pi \frac{mn}{N} \right)\quad {\text{for}}\quad m = 0,1,2, \ldots ,N - 1\]</div>
+<p>and the imaginary part is</p>
+<div class="math notranslate nohighlight">
+\[
+ \Im \left\{ {X[m]} \right\} = - \sum\limits_{n = 1}^{N - 1} x [n]\sin \left( 2\pi \frac{mn}{N} \right)\quad  {\text{for}}\quad m = 0,1,2, \ldots ,N - 1.
+\]</div>
+<p>Note that the summations are from 1 to <span class="math notranslate nohighlight">\(N-1\)</span> because <span class="math notranslate nohighlight">\(n=0\)</span> is covered in the real term, and as <span class="math notranslate nohighlight">\(x[0]\)</span> is real, it is zero in the corresponding imaginary term.</p>
+<section id="in-class-example-1">
+<h3>In Class Example 1<a class="headerlink" href="#in-class-example-1" title="Permalink to this heading">#</a></h3>
+<p>A discrete time signal is defined by the sequence</p>
+<p><span class="math notranslate nohighlight">\(x[0] = 1\)</span>, <span class="math notranslate nohighlight">\(x[1] = 2\)</span>, <span class="math notranslate nohighlight">\(x[2] = 2\)</span>, <span class="math notranslate nohighlight">\(x[3] = 1\)</span>,
+and <span class="math notranslate nohighlight">\(x[n]=0\)</span> for all other values of <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>Compute the frequency components <span class="math notranslate nohighlight">\(X[m]\)</span>.</p>
+</section>
+<section id="solution-1">
+<h3>Solution 1<a class="headerlink" href="#solution-1" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Compute the <span class="math notranslate nohighlight">\(N\)</span> point DFT for <span class="math notranslate nohighlight">\(\Re\left\{X[m]\right\}\)</span>.</p></li>
+</ul>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+<ul class="simple">
+<li><p>Compute the four point DFT for <span class="math notranslate nohighlight">\(\Im\left\{X[m]\right\}\)</span>.</p></li>
+</ul>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+<ul class="simple">
+<li><p>Add these together to find <span class="math notranslate nohighlight">\(X[m]\)</span>.</p></li>
+</ul>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></section>
+<section id="in-class-example-2">
+<h3>In Class Example 2<a class="headerlink" href="#in-class-example-2" title="Permalink to this heading">#</a></h3>
+<p>Use the inverse DFT to compute the discrete-time sequence <span class="math notranslate nohighlight">\(x[n]\)</span> from <span class="math notranslate nohighlight">\(X[m]\)</span>.</p>
+</section>
+<section id="solution-2">
+<h3>Solution 2<a class="headerlink" href="#solution-2" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Write down the expression <span class="math notranslate nohighlight">\(x[n]\)</span> in terms of <span class="math notranslate nohighlight">\(X[m]\)</span>.</p></li>
+</ul>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+<ul class="simple">
+<li><p>Compute <span class="math notranslate nohighlight">\(x[0]\)</span> from this result.</p></li>
+</ul>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+<ul class="simple">
+<li><p>Repeat for <span class="math notranslate nohighlight">\(x[1]\)</span>, <span class="math notranslate nohighlight">\(x[2]\)</span> and <span class="math notranslate nohighlight">\(x[3]\)</span>.</p></li>
+</ul>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></section>
+<section id="simulink-model-of-the-dft">
+<h3>Simulink model of the DFT<a class="headerlink" href="#simulink-model-of-the-dft" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="n">matlab</span>
+<span class="nb">pwd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>See <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dft/1/matlab/dft_ex10_1.slx">dft_ex10_1.slx</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">dft_ex10_1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="Simulink Model of DFT" src="../../_images/dft_10_1.png" /></p>
+<p>Try inputting your student number.</p>
+</section>
+<section id="matlab-model-of-the-dft">
+<h3>MATLAB model of the DFT<a class="headerlink" href="#matlab-model-of-the-dft" title="Permalink to this heading">#</a></h3>
+<p>Karris Example 10.1. To successfully run this script you will need to download the functions <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dft/1/matlab/dft.m">dft.m</a> and <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dft/1/matlab/idft.m">idft.m</a> and make them available on your <code class="docutils literal notranslate"><span class="pre">MATLABPATH</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">xn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">0</span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="w"> </span><span class="n">dft</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Xm</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">dft</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="w"> </span><span class="n">idft</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">xn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">idft</span><span class="p">(</span><span class="n">Xm</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="a-useful-compact-notation">
+<h3>A useful compact notation<a class="headerlink" href="#a-useful-compact-notation" title="Permalink to this heading">#</a></h3>
+<p>The term</p>
+<div class="math notranslate nohighlight">
+\[\exp\left(\frac{-j2\pi}{N}\right)\]</div>
+<p>is a rotating vector where the range <span class="math notranslate nohighlight">\(0 &lt;= \theta &lt;= 2\pi\)</span> is divided into <span class="math notranslate nohighlight">\(N\)</span> equal segments where <span class="math notranslate nohighlight">\(N\)</span> is usually taken to be a power of 2.</p>
+<p>It is convenient to represent this as <span class="math notranslate nohighlight">\(W_N\)</span>, that is</p>
+<div class="math notranslate nohighlight">
+\[W_N = \exp\left({\frac{-j2\pi}{N}}\right)\]</div>
+<p>and consequently,</p>
+<div class="math notranslate nohighlight">
+\[W_N^{-1} = \exp\left({\frac{j2\pi}{N}}\right).\]</div>
+</section>
+<section id="in-class-example-3">
+<h3>In Class Example 3<a class="headerlink" href="#in-class-example-3" title="Permalink to this heading">#</a></h3>
+<p>Compute the complex numbers represented by the rotating vector
+<span class="math notranslate nohighlight">\(W_8\)</span></p>
+</section>
+<section id="solution-3">
+<h3>Solution 3<a class="headerlink" href="#solution-3" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Rewrite <span class="math notranslate nohighlight">\(W_8\)</span> in exponential form</p></li>
+</ul>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+</pre><ul class="simple">
+<li><p>Visualize on unit circle</p></li>
+</ul>
+<p><img alt="Visualization of the function unction " src="../../_images/circle.png" /></p>
+<ul class="simple">
+<li><p>Complete this table</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(n\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\theta\)</span></p></th>
+<th class="head"><p>Real</p></th>
+<th class="head"><p>Imaginary</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(W_8^n\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre><p>Using this notation, the DFT and inverse DFT pairs are represented as:</p>
+<div class="math notranslate nohighlight">
+\[X[m] =  \sum_{n=0}^{N-1} x[n]W_N^{nm}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[x[n] = \frac{1}{N}\sum_{n=0}^{N-1} X[m]W_N^{-nm}\]</div>
+</section>
+<section id="matlab-implementation-of-dft">
+<h3>MATLAB implementation of DFT<a class="headerlink" href="#matlab-implementation-of-dft" title="Permalink to this heading">#</a></h3>
+<p>Using the W notation, it is very easy to write a function to implement the DFT.</p>
+<p>We will demonstrate this in class.</p>
+<p>For example, consider <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dft/1/matlab/dft.m">dft.m</a>:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="nf">[ Xm ] = dft</span><span class="p">(</span> xn, N <span class="p">)</span>
+<span class="c">% Computes Discrete Fourier Transform</span>
+<span class="c">% -----------------------------------</span>
+<span class="c">% [Xm]  = dft(xn, N)</span>
+<span class="c">% Xm = DFT coeff. array over 0 &lt;= m &lt;= N-1</span>
+<span class="c">% xn = N-point finite-duration sequence</span>
+<span class="c">%  N = length of DFT</span>
+<span class="c">%</span>
+<span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span><span class="w">          </span><span class="c">% row vector for n</span>
+<span class="n">m</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span><span class="w">          </span><span class="c">% row vector for m</span>
+<span class="n">WN</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="nb">j</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="n">N</span><span class="p">);</span><span class="w">    </span><span class="c">% Wn factor</span>
+<span class="n">nm</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">n</span><span class="o">&#39;*</span><span class="n">m</span><span class="p">;</span><span class="w">              </span><span class="c">% creates an N by N matrix of nm values</span>
+<span class="n">WNnm</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">WN</span><span class="w"> </span><span class="o">.^</span><span class="w"> </span><span class="n">nm</span><span class="p">;</span><span class="w">        </span><span class="c">% DFT matrix</span>
+<span class="n">Xm</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">xn</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">WNnm</span><span class="p">;</span><span class="w">         </span><span class="c">% row vector of DFT coefficients</span>
+</pre></div>
+</div>
+<p>Similarly for the inverse DFT <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dft/1/matlab/idft.m">idft.m</a>:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="nf">[ xn ] = idft</span><span class="p">(</span> Xm, N <span class="p">)</span>
+<span class="c">% Computes Inverse Discrete Fourier Transform</span>
+<span class="c">% -------------------------------------------</span>
+<span class="c">% [xn]  = idft(Xm, N)</span>
+<span class="c">% xn = N-point sequence over 0 &lt;= n &lt;= N-1</span>
+<span class="c">% Xm = DFT coeff. array over 0 &lt;= m &lt;= N-1</span>
+<span class="c">%  N = length of DFT</span>
+<span class="c">%</span>
+<span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span><span class="w">          </span><span class="c">% row vector for n</span>
+<span class="n">m</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span><span class="w">          </span><span class="c">% row vector for m</span>
+<span class="n">WN</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="nb">j</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="n">N</span><span class="p">);</span><span class="w">    </span><span class="c">% Wn factor</span>
+<span class="n">nm</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">n</span><span class="o">&#39;*</span><span class="n">m</span><span class="p">;</span><span class="w">              </span><span class="c">% creates an N by N matrix of nm values</span>
+<span class="n">WNnm</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">WN</span><span class="w"> </span><span class="o">.^</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">nm</span><span class="p">);</span><span class="w">     </span><span class="c">% DFT matrix</span>
+<span class="n">xn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">Xm</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">WNnm</span><span class="p">)</span><span class="o">/</span><span class="n">N</span><span class="p">;</span><span class="w">     </span><span class="c">% row vector for IDFT values</span>
+</pre></div>
+</div>
+</section>
+<section id="notes">
+<h3>Notes<a class="headerlink" href="#notes" title="Permalink to this heading">#</a></h3>
+<p>In the remainder of these notes, the correspondence between <span class="math notranslate nohighlight">\(x[n]\)</span> and <span class="math notranslate nohighlight">\(X[m]\)</span> will be written</p>
+<div class="math notranslate nohighlight">
+\[x[n] \Leftrightarrow X[m]\]</div>
+<p>In Example 2, we found that, although the DT sequence <span class="math notranslate nohighlight">\(x[n]\)</span> was real, the discrete frequency (DF) sequence was complex. However, in most applications we are interested in the magnitude and phase of the DF, that is</p>
+<div class="math notranslate nohighlight">
+\[|X[m]|\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+ \angle X[m].
+\]</div>
+</section>
+<section id="in-class-example-4">
+<h3>In Class Example 4<a class="headerlink" href="#in-class-example-4" title="Permalink to this heading">#</a></h3>
+<p>Use MATLAB to compute the magnitude of the frequency components of the following DT function:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(n\)</span></p></th>
+<th class="head"><p>0</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+<th class="head"><p>7</p></th>
+<th class="head"><p>8</p></th>
+<th class="head"><p>9</p></th>
+<th class="head"><p>10</p></th>
+<th class="head"><p>11</p></th>
+<th class="head"><p>12</p></th>
+<th class="head"><p>13</p></th>
+<th class="head"><p>14</p></th>
+<th class="head"><p>15</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(x[n]\)</span></p></td>
+<td><p>1.0</p></td>
+<td><p>2</p></td>
+<td><p>2</p></td>
+<td><p>2.5</p></td>
+<td><p>1.5</p></td>
+<td><p>0.5</p></td>
+<td><p>-0.5</p></td>
+<td><p>-1.5</p></td>
+<td><p>-2.5</p></td>
+<td><p>-0.5</p></td>
+<td><p>0.25</p></td>
+<td><p>1.25</p></td>
+<td><p>2</p></td>
+<td><p>1.5</p></td>
+<td><p>1</p></td>
+<td><p>0.5</p></td>
+</tr>
+</tbody>
+</table>
+<p>We will compute this in class and make some comments afterwards.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">xn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mf">2.5</span><span class="p">,</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="k">...</span>
+<span class="w">    </span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="k">...</span>
+<span class="w">    </span><span class="mf">0.25</span><span class="p">,</span><span class="w"> </span><span class="mf">1.25</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">stem</span><span class="p">([</span><span class="mi">0</span><span class="p">:</span><span class="mi">15</span><span class="p">],</span><span class="n">xn</span><span class="p">),</span><span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;n&#39;</span><span class="p">),</span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;x[n]&#39;</span><span class="p">),</span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;Discrete Time Sequence&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Xm</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">dft</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span><span class="mi">16</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">stem</span><span class="p">([</span><span class="mi">0</span><span class="p">:</span><span class="mi">15</span><span class="p">],</span><span class="nb">abs</span><span class="p">(</span><span class="n">Xm</span><span class="p">)),</span><span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;m&#39;</span><span class="p">),</span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;|X[m]|&#39;</span><span class="p">),</span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;Discrete Frequency Sequence&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Points to note:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X[0] = 12\)</span> is the DC component of the DT sequence.</p></li>
+<li><p>After the <span class="math notranslate nohighlight">\(|X[8]| = 1.4872\)</span> term, the magnitude of the frequency values for the range <span class="math notranslate nohighlight">\(9 &lt;= m \le 15\)</span> are the mirror image of the values for the range <span class="math notranslate nohighlight">\(0 &lt;= m &lt;= 7\)</span>.</p></li>
+<li><p>This is not a coincidence, in fact if <span class="math notranslate nohighlight">\(x[n]\)</span> is an N-point <em>real discrete-time function</em>, only <span class="math notranslate nohighlight">\(N/2\)</span> of the <em>frequency components</em> of <span class="math notranslate nohighlight">\(|X[m]|\)</span> <em>are unique</em>.</p></li>
+</ul>
+</section>
+</section>
+<section id="a-summary-of-the-important-features-of-sampling-and-the-dft">
+<h2>A summary of the important features of sampling and the DFT<a class="headerlink" href="#a-summary-of-the-important-features-of-sampling-and-the-dft" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(N\)</span> is the number of samples in frequency.</p></li>
+<li><p><span class="math notranslate nohighlight">\(f_s\)</span> sampling frequency, samples per second.</p></li>
+<li><p><span class="math notranslate nohighlight">\(T_t\)</span> period of a periodic DT function.</p></li>
+<li><p><span class="math notranslate nohighlight">\(t_s\)</span> interval between the <span class="math notranslate nohighlight">\(N\)</span> samples in time period <span class="math notranslate nohighlight">\(T_t\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(f_f\)</span> period of a periodic DF function.</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_s\)</span> interval between the <span class="math notranslate nohighlight">\(N\)</span> samples in frequency period <span class="math notranslate nohighlight">\(T_f\)</span>.</p></li>
+</ul>
+<p>The relationships between these quantities are:</p>
+<div class="math notranslate nohighlight">
+\[t_t = \frac{T_t}{N}\]</div>
+<div class="math notranslate nohighlight">
+\[f_s = \frac{1}{t_t}\]</div>
+<div class="math notranslate nohighlight">
+\[t_f = \frac{T_f}{N}\]</div>
+<div class="math notranslate nohighlight">
+\[t_t = \frac{1}{T_f}\]</div>
+<div class="math notranslate nohighlight">
+\[f_f = \frac{1}{T_t}\]</div>
+<p>We will add these quantities to the results of Example 4 in class.</p>
+<section id="example-4-continued">
+<h3>Example 4 (continued)<a class="headerlink" href="#example-4-continued" title="Permalink to this heading">#</a></h3>
+<p><img alt="Example 4" src="../../_images/repeat.png" /></p>
+<p>To reproduce this plot use <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dft/1/matlab/repeat.m">repeat.m</a>.</p>
+</section>
+<section id="in-class-example-5">
+<h3>In Class Example 5<a class="headerlink" href="#in-class-example-5" title="Permalink to this heading">#</a></h3>
+<p>The period of a periodic DT function is 0.125 ms and it is sampled at 1024 equally spaced points. It is assumed that with this number of samples, the sampling theorem is satisfied and thus there will be no aliasing.</p>
+<ol class="arabic simple">
+<li><p>Compute the interval <span class="math notranslate nohighlight">\(t_t\)</span> between samples for the periodic signal</p></li>
+<li><p>Compute the period <span class="math notranslate nohighlight">\(T_f\)</span> of the frequency spectrum in kHz</p></li>
+<li><p>Compute the interval <span class="math notranslate nohighlight">\(t_f\)</span> between frequency components in kHz</p></li>
+<li><p>Compute the sampling frequency <span class="math notranslate nohighlight">\(f_s\)</span>.</p></li>
+<li><p>Compute the Nyquist frequency <span class="math notranslate nohighlight">\(f_n\)</span>.</p></li>
+</ol>
+</section>
+<section id="solution">
+<h3>Solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h3>
+<p>To be done in class.</p>
+<ul class="simple">
+<li><p>Compute the interval <span class="math notranslate nohighlight">\(t_t\)</span> between samples for the periodic signal</p></li>
+</ul>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+</pre>
+<ul class="simple">
+<li><p>Compute the period of the frequency spectrum <span class="math notranslate nohighlight">\(T_f\)</span> in kHz</p></li>
+</ul>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+</pre>
+<ul class="simple">
+<li><p>Compute the interval <span class="math notranslate nohighlight">\(t_f\)</span> between frequency components in kHz</p></li>
+</ul>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+</pre>
+<ul class="simple">
+<li><p>Compute the sampling frequency <span class="math notranslate nohighlight">\(f_s\)</span>.</p></li>
+</ul>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+</pre>
+<ul class="simple">
+<li><p>Compute the Nyquist frequency <span class="math notranslate nohighlight">\(f_n\)</span>.</p></li>
+</ul>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+</pre></section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "matlab"
+        },
+        kernelOptions: {
+            name: "matlab",
+            path: "./dft/1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'matlab'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../dt_systems/4/worksheet17.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Worksheet 17</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../2/worksheet19.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Worksheet 19</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-accompany-chapter-7-1-the-discrete-fourier-transform">To accompany Chapter 7.1 The Discrete Fourier Transform</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-of-abbreviations">List of Abbreviations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notation">Notation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#z-transform">Z-Transform</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-discrete-time-fourier-transform">The Discrete-time Fourier Transform</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-example-1">In Class Example 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1">Solution 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-example-2">In Class Example 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-2">Solution 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulink-model-of-the-dft">Simulink model of the DFT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-model-of-the-dft">MATLAB model of the DFT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-useful-compact-notation">A useful compact notation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-example-3">In Class Example 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-3">Solution 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-implementation-of-dft">MATLAB implementation of DFT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-example-4">In Class Example 4</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-summary-of-the-important-features-of-sampling-and-the-dft">A summary of the important features of sampling and the DFT</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-continued">Example 4 (continued)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-example-5">In Class Example 5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Chris P. Jobling
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Swansea University (2023-2024).
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  This page was created by 
+<a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
+  Dr Chris P. Jobling
+</a> 
+for 
+<a href="https://www.swansea.ac.uk">
+  Swansea University
+</a>.
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

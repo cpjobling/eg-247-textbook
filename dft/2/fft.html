@@ -1,0 +1,1421 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>The Fast Fourier Transform &#8212; EG-247 Digital Signal Processing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystyles.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'dft/2/fft';</script>
+    <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/dft/2/fft.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="References" href="../../zbib.html" />
+    <link rel="prev" title="The Discrete Fourier Transform" href="../1/dft.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../introduction/index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">EG-247 Digital Signal Processing</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../introduction/index.html">
+                    Unit 1: Introducing Digital Signal Processing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Online notes</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../transfer_functions/index.html">Transfer Function Analysis of Dynamic Systems</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../transfer_functions/1/concepts.html">Concept Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../transfer_functions/2/transfer_function_basics.html">Transfer Function Basics</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_series/index.html">Fourier Series</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/trig_fseries.html">Trigonometric Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/2/exp_fs1.html">Exponential Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/3/exp_fs2.html">Line Spectra and their Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_transform/index.html">Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/1/ft1.html">Defining the Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/2/ft2.html">Fourier transforms of commonly occuring signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/3/ft3.html">Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/4/ft4.html">Introduction to Filters</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dt_systems/index.html">Sampled Data Systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/1/sampling.html">Sampling Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/2/z_transform.html">The Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/3/i_z_transform.html">The Inverse Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/4/dt_models.html">Models of Discrete Time Systems</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Discrete Fourier Transform</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../1/dft.html">The Discrete Fourier Transform</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">The Fast-Fourier Transform</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../zbib.html">Bibliography</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">In Class Worksheets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../worksheets/index.html">Worksheets</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/worksheet1.html">Worksheet 1 Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/worksheet2.html">Worksheet 2 Trigonometric Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/2/worksheet13.html">Worksheet 13 Fourier transforms of commonly occuring signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/3/worksheet14.html">Worksheet 14 Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/4/worksheet15.html">Worksheet 15 Introduction to Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/3/worksheet16.html">Worksheet 16 The Inverse Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/4/worksheet17.html">Worksheet 17 Models of DT Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1/worksheet18.html">Worksheet 18 The Discrete-time Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="worksheet19.html">Worksheet 19 The Fast Fourier Transform</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework problems</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../homework/index.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw1.html">Homework 1 Elementary Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw2.html">Homework 2 Laplace and Inverse Laplace Transforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw3.html">Homework 3 Laplace Transforms for Ciruit Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw4.html">Homework 4 Impulse Response and Convolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw5.html">Homework 5 Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw6.html">Homework 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw7.html">Homework 7 Applications of the Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw8.html">Homework 8 Sampling Theory and the Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw9.html">Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw10.html">Homework 10 Discrete Fourier Transform and the Fast-Fourier Transform</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/project/index.html">Project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Answers to Selected Problems</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/answers.html">Worksheet 2</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../transfer_functions/1/lt_props.html">Properties of the Laplace Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fourier_transform/1/ft_props.html">Properties of the Fourier Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fourier_transform/1/ft_table.html">Common Fourier Transform Pairs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dt_systems/2/zt_props.html">Properties of the Z-Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dt_systems/2/zt_table.html">Table of Z-Transforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../setup/polling_setup.html">Set Up In-Class Polling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../todo.html">List of Planned Enhancements</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup/index.html">Setting up your own version of this book</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../transfer_functions/1/LICENSE.html">MathWorks License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter.html">About Jupyter notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/python.html">Installing Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/setup.html">Setting up your Own Jupyter-MATLAB Computing Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/matlab_kernel.html">Testing the Jupyter Matlab Kernel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/advanced-setup.html">Quick Start - For Experienced Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter-book.html">Setting up jupyter-book</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-247-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-247-textbook/edit/master/dft/2/fft.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Fdft/2/fft.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/dft/2/fft.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The Fast Fourier Transform</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colophon">Colophon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope-and-background-reading">Scope and Background Reading</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">Agenda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-inefficiency-of-the-dft">The inefficiency of the DFT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-fast-fourier-transform-fft">The Fast Fourier Transform (FFT)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decomposition-in-time-fft-algorithm">Decomposition-in-Time FFT Algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#point-dft">2-Point DFT</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-see-it-in-matlab">Let’s See it in MATLAB</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4-point DFT</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#simulink-model-of-4-point-dft">SIMULINK Model of 4-Point DFT</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-example-1">In Class Example 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">8-point DFT</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-flow-graph-of-8-point-dft">Signal flow graph of 8-point DFT</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#simulink-model-of-8-point-dft">SIMULINK Model of 8-Point DFT</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#n-point-radix-2-dit-fft">N-Point, radix-2 DIT FFT</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decomposition-in-frequency-fft">Decomposition-in-Frequency FFT</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-flow-graph-for-4-point-dif-fft">Signal flow graph for 4-point DIF FFT</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-example-2">In Class Example 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#simulink-model-of-4-point-dif-fft">SIMULINK Model of 4-Point DIF FFT</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-dif-fft">8-Point DIF FFT</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">SIMULINK Model of 4-Point DIF FFT</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#efficiency-of-the-fft">Efficiency of the FFT</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dft-and-fft-comparisons">DFT and FFT Comparisons</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-demonstrations">In Class Demonstrations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fft-in-matlab">FFT in MATLAB</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fft-for-example-3">FFT for Example 3</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4">Example 4</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fft-example-4">FFT Example 4</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">Homework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-end">The End?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes">Footnotes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Example 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Example 4</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="the-fast-fourier-transform">
+<h1>The Fast Fourier Transform<a class="headerlink" href="#the-fast-fourier-transform" title="Permalink to this heading">#</a></h1>
+<section id="colophon">
+<h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this heading">#</a></h2>
+<p>An annotatable worksheet for this presentation is available as <a class="reference internal" href="worksheet19.html"><span class="doc std std-doc"><strong>Worksheet 19</strong></span></a>.</p>
+<ul class="simple">
+<li><p>The source code for this page is <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/dft/2/fft.ipynb">dft/1/dft.ipynb</a>.</p></li>
+<li><p>You can view the notes for this presentation as a webpage (<a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dft/2/fft.html">HTML</a>).</p></li>
+<li><p>This page is downloadable as a <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dft/2/fft.pdf">PDF</a> file.</p></li>
+</ul>
+</section>
+<section id="scope-and-background-reading">
+<h2>Scope and Background Reading<a class="headerlink" href="#scope-and-background-reading" title="Permalink to this heading">#</a></h2>
+<p>This session introduces the fast fourier transform (FFT) which is one of the most widely used numerical algorithms in the world. It exploits some features of the symmetry of the computation of the DFT to reduce the complexity from something that takes order <span class="math notranslate nohighlight">\(N^2\)</span> (<span class="math notranslate nohighlight">\(O(N^2)\)</span>) complex operations to something that takes order <span class="math notranslate nohighlight">\(N \log N\)</span> (<span class="math notranslate nohighlight">\(O(N \log N)\)</span>) operations.</p>
+<p>The FFT is to be found in all manner of signal and image processing algorithms, and because it is more efficient than the DFT, you will find it exploited in hundreds of signal processing applications.</p>
+<p>As one example, it turns out that the computation of the convolution of two long DT sequences is more efficient if the FFT of the two signals is taken, the product of the frequency spectra is computed, and the Inverse DFT of the result is computed.</p>
+<p>In this presentation, we will not go through the mathematical development of the FFT, please read section 10.6 of Karris if you want the details. Here we will concentrate on the benefits to be gained by using the FFT and give some examples of its use in MATLAB.</p>
+<section id="acknowledgements">
+<h3>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this heading">#</a></h3>
+<p>The material in this presentation and notes is based on <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=405">Chapter 10</a> of <span id="id1">[<a class="reference internal" href="../../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197.">Karris, 2012</a>]</span> from the <strong>Required Reading List</strong>. The models of the FFT signal flow graphs and Simulink block diagrams are based on the presentation given in Section 12.5 of <span id="id2">[<a class="reference internal" href="../../zbib.html#id10" title="Charles L. Phillips, Jason M. Parr, and Eve A. Riskin. Signals, Systems and Transforms. Pearson, Harlow, Essex, UK, 5th edition, 2014. ISBN 978-0-13-350647-1. Available as an eBook. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3135971.">Phillips <em>et al.</em>, 2014</a>]</span>.</p>
+</section>
+</section>
+<section id="agenda">
+<h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The inefficiency of the DFT</p></li>
+</ul>
+<ul class="simple">
+<li><p>The FFT - a sketch of its development</p></li>
+</ul>
+<ul class="simple">
+<li><p>An illustration of part of the FFT algorithm</p></li>
+</ul>
+<ul class="simple">
+<li><p>FFT v DFT</p></li>
+</ul>
+<ul class="simple">
+<li><p>Two examples</p></li>
+</ul>
+</section>
+<section id="the-inefficiency-of-the-dft">
+<h2>The inefficiency of the DFT<a class="headerlink" href="#the-inefficiency-of-the-dft" title="Permalink to this heading">#</a></h2>
+<p>Consider a signal whose highest frequency is 18 kHz, the sampling frequency is 50 kHz, and 1024 samples are taken, i.e., <span class="math notranslate nohighlight">\(N=1024\)</span>.</p>
+<p>The time required to compute the entire DFT would be:</p>
+<div class="math notranslate nohighlight">
+\[t = \frac{1024\,\mathrm{samples}}{50\times 10^3\,\mathrm{samples\ per\ second}} = 20.48\,\mathrm{ms}\]</div>
+<p>To compute the number of operations required to complete this task, let us expand the N-point DFT defined as:</p>
+<div class="math notranslate nohighlight">
+\[X[m] = \sum_{n=0}^{N-1} x[n] W_N^{mn}\]</div>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+  X[0] &amp;=&amp; x[0]W_N^0 + x[1]W_N^0 + x[1]W_N^0 +  \cdots  + x[N - 1]W_N^0 \hfill \\
+  X[1] &amp;=&amp; x[0]W_N^0 + x[1]W_N^1 + x[1]W_N^2 +  \cdots  + x[N - 1]W_N^{N - 1} \hfill \\
+  X[2] &amp;=&amp; x[0]W_N^0 + x[1]W_N^2 + x[1]W_N^4 +  \cdots  + x[N - 1]W_N^{2(N - 1)} \hfill \\
+  \hfil &amp;\cdots&amp;  \hfill \\
+  X[N - 1] &amp;=&amp; x[0]W_N^0 + x[1]W_N^{N - 1} + x[1]W_N^{2(N - 1)} +  \cdots  + x[N - 1]W_N^{(N - 1)^2} \hfill \\ 
+\end{eqnarray*}\end{split}\]</div>
+<ul class="simple">
+<li><p>It is worth remembering that</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[W_N^0 = \exp\left(-j\frac{2\pi}{N}(0)\right) = 1.\]</div>
+<ul class="simple">
+<li><p>Since <span class="math notranslate nohighlight">\(W_N^i\)</span> is a complex number, the computation of any frequency component <span class="math notranslate nohighlight">\(X[k]\)</span> requires <span class="math notranslate nohighlight">\(N\)</span> complex multiplications and <span class="math notranslate nohighlight">\(N\)</span> complex additions</p></li>
+</ul>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(2N\)</span> complex arithmetic operations are required to compute any frequency component of <span class="math notranslate nohighlight">\(X[k].\)</span><sup>1</sup></p></li>
+</ul>
+<ul class="simple">
+<li><p>If we assume that <span class="math notranslate nohighlight">\(x[n]\)</span> is real, then only <span class="math notranslate nohighlight">\(N/2\)</span> of the <span class="math notranslate nohighlight">\(X[m]\)</span> components are unique.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Therefore we would require <span class="math notranslate nohighlight">\(2N\times N/2 = N^2\)</span> complex operations to compute the entire frequency spectrum.<sup>2</sup></p></li>
+</ul>
+<ul class="simple">
+<li><p>For our example, the <span class="math notranslate nohighlight">\(N=1024\)</span>-point DFT, would require <span class="math notranslate nohighlight">\(1024^2 = 1,048,576\)</span> complex operations</p></li>
+</ul>
+<ul class="simple">
+<li><p>These would have to be completed in 20.48 ms.</p></li>
+</ul>
+<ul class="simple">
+<li><p>This may be possible with modern computing hardware, perhaps even in a mobile phone, but it seems impractical.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fortunately, many of the <span class="math notranslate nohighlight">\(W_N\)</span> terms in the computation are unity (<span class="math notranslate nohighlight">\(=\pm 1\)</span>).</p></li>
+</ul>
+<ul class="simple">
+<li><p>Moreover, because the <span class="math notranslate nohighlight">\(W_N^i\)</span> points are equally spaced points on the unit circle;</p></li>
+</ul>
+<ul class="simple">
+<li><p>And because <span class="math notranslate nohighlight">\(N\)</span> is a power of 2, the points on the upper-half plane (range <span class="math notranslate nohighlight">\(0 &lt; \theta &lt; \pi\)</span> are the mirror image of the points on the lower-half plane range <span class="math notranslate nohighlight">\(\pi &lt; \theta &lt; 2\pi\)</span>;</p></li>
+</ul>
+<ul class="simple">
+<li><p>Thus, there is a great deal of symmetry in the computation that can be exploited to simplify the computation and reduce the number of operations considerably to a much more manageable <span class="math notranslate nohighlight">\(N\log_2 N\)</span> operations<sup>3</sup>.</p></li>
+</ul>
+<p>This is possible with the algorithm called the <a class="reference external" href="https://en.wikipedia.org/wiki/Fast_Fourier_transform">FTT</a> (fast Fourier transform) that was originally developed by <a class="reference external" href="https://en.wikipedia.org/wiki/James_Cooley">James Cooley</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/John_Tukey">John Tukey</a> and has been considerably refined since.</p>
+</section>
+<section id="the-fast-fourier-transform-fft">
+<h2>The Fast Fourier Transform (FFT)<a class="headerlink" href="#the-fast-fourier-transform-fft" title="Permalink to this heading">#</a></h2>
+<p>The FFT is very well documented, including in Karris, so we will only sketch its development and present its main result. However, we will illustrate part of the algorithm to make concrete an idea of the efficiency advantage that the FFT has over the DFT that we have already seen.</p>
+<p>Much of the development follows from the properties of the rotating vector.<sup>4</sup></p>
+<div class="math notranslate nohighlight">
+\[W_N=\exp\left(-\frac{j2\pi}{N}\right)\]</div>
+<p>which results in some simplifications and mathematical short-cuts when <span class="math notranslate nohighlight">\(N\)</span> is a power of 2.</p>
+<p>The most useful properties are:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+  W_N^N &amp;=&amp; \exp\left(-j\frac{2\pi}{N}N\right) = \exp\left(-j2\pi\right) = 1.\\
+  W_N^{N/2} &amp;=&amp;  \exp\left(-j\frac{2\pi}{N}\frac{N}{2}\right) = \exp\left(-j\pi\right) = -1.\\
+  W_N^{N/4} &amp;=&amp;  \exp\left(-j\frac{2\pi}{N}\frac{N}{4}\right) = \exp\left(-j\pi/2\right) = -j.\\
+  W_N^{3N/4} &amp;=&amp;  \exp\left(-j\frac{2\pi}{N}\frac{3N}{4}\right) = \exp\left(-j3\pi/2\right) = j.\end{eqnarray*}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+  W_N^{kN} &amp;=&amp;  \exp\left(-j\frac{2\pi}{N}kN\right) = \exp\left(-j2\pi\right) = 1,\,k=0,1,2,\ldots\\
+  W_N^{kN+r} &amp;=&amp;  \exp\left(-j\frac{2\pi}{N}kN\right)\exp\left(-j\frac{2\pi}{N}r\right) = 1.W_N^r=W_N^r.\\
+  W_{2N}^{k} &amp;=&amp;  \exp\left(-j\frac{2\pi}{2N}k\right) = \exp\left(-j\frac{2\pi}{N}\frac{k}{2}\right) = W_N^{k/2}.
+\end{eqnarray*}\end{split}\]</div>
+<p>Representing</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+  X[0] &amp;=&amp; x[0]W_N^0 + x[1]W_N^0 + x[2]W_N^0 +  \cdots  + x[N - 1]W_N^0 \hfill \\
+  X[1] &amp;=&amp; x[0]W_N^0 + x[1]W_N^1 + x[2]W_N^2 +  \cdots  + x[N - 1]W_N^{N - 1} \hfill \\
+  X[2] &amp;=&amp; x[0]W_N^0 + x[1]W_N^2 + x[2]W_N^4 +  \cdots  + x[N - 1]W_N^{2(N - 1)} \hfill \\
+  \hfil &amp;\cdots&amp;  \hfill \\
+  X[N - 1] &amp;=&amp; x[0]W_N^0 + x[1]W_N^{N - 1} + x[2]W_N^{2(N - 1)} +  \cdots  + x[N - 1]W_N^{(N - 1)^2} \hfill \\ 
+\end{eqnarray*}\end{split}\]</div>
+<p>in matrix form:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[ {\begin{array}{*{20}{c}}
+{X[0]}\\
+{X[1]}\\
+{X[2]}\\
+ \vdots \\
+{X[N - 1]}\end{array}} \right] = \left[ {\begin{array}{*{20}{c}}
+{W_N^0}&amp;{W_N^0}&amp;{W_N^0}&amp;\cdots&amp;{W_N^0}\\
+{W_N^0}&amp;{W_N^1}&amp;{W_N^2}&amp;\cdots&amp;{W_N^{N - 1}}\\
+{W_N^0}&amp;{W_N^2}&amp;{W_N^4}&amp;\cdots&amp;{W_N^{2(N - 1)}}\\
+\cdots&amp;\cdots&amp;\cdots&amp;\cdots&amp;\cdots\\
+{W_N^0}&amp;{W_N^{N - 1}}&amp;{W_N^{2(N - 1)}}&amp;\cdots&amp;W_N^{(N - 1)^2}\\
+\end{array}} \right]\left[ {\begin{array}{*{20}{c}}
+{x[0]}\\
+{x[1]}\\
+{x[2]}\\
+ \vdots \\
+{x[N - 1]}
+\end{array}} \right].
+\end{split}\]</div>
+<p>This is a complex <a class="reference external" href="https://en.wikipedia.org/wiki/Vandermonde_matrix">Vandemonde matrix</a> and it is more compactly expressed as:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{X}[m] = \mathbf{W_N} \mathbf{x}[n]\]</div>
+<p>The algorithm developed by Cooley and Tukey is based on <em>matrix decomposition</em> methods, where the matrix <span class="math notranslate nohighlight">\(\mathbf{W_N}\)</span> is factored into <span class="math notranslate nohighlight">\(L\)</span> smaller matrices, that is:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{W_N} = \mathbf{W_1} \mathbf{W_2} \mathbf{W_3} \cdots \mathbf{W_L}\]</div>
+<p>where <span class="math notranslate nohighlight">\(L\)</span> is chosen as <span class="math notranslate nohighlight">\(L = \log_2N\)</span> or <span class="math notranslate nohighlight">\(N=2^L\)</span>.</p>
+<p>Each row of the matrices on the right side of the decomposition, contains only two, non-zero terms, unity and <span class="math notranslate nohighlight">\(W_N^k\)</span>.</p>
+<p>And the DFT sequence is:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{X}[m] = \mathbf{W_1} \mathbf{W_2} \mathbf{W_3} \cdots \mathbf{W_L} \mathbf{x}[n].\]</div>
+<p>The FFT computation starts with matrix <span class="math notranslate nohighlight">\(\mathbf{W}_L\)</span>. It operates on <span class="math notranslate nohighlight">\(\mathbf{x}[n]\)</span> producing a row vector, and each component of the row vector is obtained by one multiplication and one addition. This is because there are only two non-zero elements on a given row, and one of those elements is unity. Since there are <span class="math notranslate nohighlight">\(N\)</span> components of <span class="math notranslate nohighlight">\(\mathbf{x}[n]\)</span>, there will be <span class="math notranslate nohighlight">\(N\)</span> complex multiplications and <span class="math notranslate nohighlight">\(N\)</span> complex additions.</p>
+<p>This new vector is then operated on by the <span class="math notranslate nohighlight">\(\mathbf{W}_{L-1}\)</span> matrix, then on <span class="math notranslate nohighlight">\(\mathbf{W}_{L-2}\)</span> and so on, until the entire operation is completed.</p>
+<p>It appears that the entire operation would require <span class="math notranslate nohighlight">\(NL= N\log_2N\)</span> complex additions and also <span class="math notranslate nohighlight">\(N\log_2N\)</span> complex additions.</p>
+<p>However, since <span class="math notranslate nohighlight">\(W_N^0 = 1\)</span>, <span class="math notranslate nohighlight">\(W_N^{N/2}=-1\)</span>, and other simplifications, it is estimated that only about half of these, that is, <span class="math notranslate nohighlight">\(N\log_2 N\)</span> total complex arithmetic operations are required by the FFT versus the <span class="math notranslate nohighlight">\(N^2\)</span> required by the DFT<sup>5</sup>.</p>
+<section id="decomposition-in-time-fft-algorithm">
+<h3>Decomposition-in-Time FFT Algorithm<a class="headerlink" href="#decomposition-in-time-fft-algorithm" title="Permalink to this heading">#</a></h3>
+<p>This development follows (Philips, <em>et al.</em>, 2015). It is called the <em>decomposition-in-time (DIT), radix-2, FFT</em>.</p>
+<p>It allows us to visualize the FFT as a block diagram (for simulation) or a signal flow graph (for ease of drawing).</p>
+<p>We start from a 2-point FFT (<span class="math notranslate nohighlight">\(N=2\)</span>), and work up to an 8-point FFT (<span class="math notranslate nohighlight">\(N=8\)</span>) before generalizing the result.</p>
+<p>We have implemented each algorithm in Simulink so we are able illustrate these structures with executable examples as we go.</p>
+<section id="point-dft">
+<h4>2-Point DFT<a class="headerlink" href="#point-dft" title="Permalink to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[X[k] = \sum_{n=0}^1 x[n]W^{nk}_2 = x[0]W_2^{0k} + X[1]W_2^{1k},\,k=0,1.\]</div>
+<p>Because <span class="math notranslate nohighlight">\(W_2^{0k}=\exp\left(j0\right)=1\)</span> and <span class="math notranslate nohighlight">\(W_2^{1k}=\exp\left(-j\pi k\right)=(-1)^k\)</span>, we write</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+X[0] &amp;=&amp; x[0]+x[1];\\
+X[1] &amp;=&amp; x[0]-x[1].
+\end{eqnarray*}\end{split}\]</div>
+<p>In general for the 2-point DFT, we have</p>
+<div class="math notranslate nohighlight">
+\[X[k]=x[0]+(-1)^kx[1].\]</div>
+<p><img alt="Signal flow graph of 2-point DFT" src="../../_images/2-point-dft-sfg.png" /></p>
+<p>An equivalent Simulink model in block diagram form is:</p>
+<p><img alt="2-point dft" src="../../_images/2-point-dft.png" /></p>
+</section>
+<section id="let-s-see-it-in-matlab">
+<h4>Let’s See it in MATLAB<a class="headerlink" href="#let-s-see-it-in-matlab" title="Permalink to this heading">#</a></h4>
+<p><a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dft/2/matlab/two_point_dft.slx">two_point_dft.slx</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="n">matlab</span>
+<span class="nb">clear</span><span class="w"> </span><span class="nb">all</span>
+<span class="nb">format</span><span class="w"> </span><span class="n">compact</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="w"> </span><span class="n">two_point_dft</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h4>4-point DFT<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
+<p>The 4-point DFT is given by</p>
+<div class="math notranslate nohighlight">
+\[X[k] = \sum_{n=0}^3 x[n]W_4^{nk}= x[0]W_4^{0k} + x[1]W_4^{1k} + x[2]W_4^{2k} + x[3]W_4^{3k}.\]</div>
+<p>As a result of the periodicity of the weighting factor, we can simplify this expression:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+W_N^{nk} &amp;=&amp; \exp\left(-j(2\pi/N)nk\right);\\
+W_4^{0k} &amp;=&amp; 1;\\
+W_4^{1k} &amp;=&amp; \exp\left(-j(\pi/2)k\right) = (-j)^k;\\
+W_4^{2k} &amp;=&amp; \exp\left(-j\pi k\right) = (-1)^k;\\
+W_4^{3k} &amp;=&amp; W_4^{2k}W_4^{1k}=(-1)^k W_4^{1k}.
+\end{eqnarray*}\end{split}\]</div>
+<p>Using these results, we write</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+X[k] &amp;=&amp;  x[0] + x[1]W_4^{1k} + x[2](-1)^k + x[3](-1)^kW_4^{1k},\\
+X[k] &amp;=&amp;  \left[x[0] + x[2](-1)^k\right] \left[x[1] +  x[3](-1)^k\right]W_4^{1k}.
+\end{eqnarray*}\end{split}\]</div>
+<p>To clarify the next step, we define two new variables</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+x_e[n]&amp;=&amp;x[2n],\,n=0,1;\\
+x_o[n]&amp;=&amp;x[2n+1],\,n=0,1.
+\end{eqnarray*}\end{split}\]</div>
+<p>Then,</p>
+<div class="math notranslate nohighlight">
+\[X[k] =  \left[x_e[0] + x_e[1](-1)^k\right] + \left[x_o[0] + x_o[1](-1)^k\right]W_4^{1k}.\]</div>
+<p>The factors in brackets in this equation can be recognized as 2-point DFTs:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+X_e[m] &amp;=&amp; x_e[0] + x_e[1](-1)^m,\;m=0,1;\\
+X_o[m] &amp;=&amp; x_o[0] + x_o[1](-1)^m,\;m=0,1.
+\end{eqnarray*}\end{split}\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(X_e[k]\)</span> and <span class="math notranslate nohighlight">\(X_o[k]\)</span> are periodic; for example,</p>
+<div class="math notranslate nohighlight">
+\[X_e[2]= x_e[0]+ x_e[1](-1)^2 = X_e[0]\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[X_o[3]= x_o[0]+ x_o[1](-1)^3 = X_o[1]\]</div>
+<p>The 4-point DFT then is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+X[0] &amp;=&amp; X_e[0] + X_o[0]W_4^{1(0)} = X_e[0] + X_o[0];\\
+X[1] &amp;=&amp; X_e[1] + X_o[1]W_4^{1(1)} = X_e[1] + X_o[1]W_4^1;\\
+X[2] &amp;=&amp; X_e[0] - X_o[0]W_4^{1(2)} = X_e[0] - X_o[0];\\
+X[3] &amp;=&amp; X_e[1] - X_o[1]W_4^{1(3)} = X_e[1] + X_o[1]W_4^1.
+\end{eqnarray*}\end{split}\]</div>
+<p>We see that the 4-point DFT can be computed by the generation of two 2-point DFTs, followed by a <em>recomposition</em> of terms as shown in the signal flow graph below:</p>
+<p><img alt="Signal flow graph of 4-point DFT" src="../../_images/4-point-dft-sfg.png" /></p>
+<p>In other words,</p>
+<p>[4-point DFT of <span class="math notranslate nohighlight">\(x[n]\)</span>] = [2-point DFT of <span class="math notranslate nohighlight">\(x_e[n]\)</span>] + <span class="math notranslate nohighlight">\(W_4^{1k}\)</span>[2-point DFT of <span class="math notranslate nohighlight">\(x_o[n]\)</span>].</p>
+</section>
+<section id="simulink-model-of-4-point-dft">
+<h4>SIMULINK Model of 4-Point DFT<a class="headerlink" href="#simulink-model-of-4-point-dft" title="Permalink to this heading">#</a></h4>
+<p><a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dft/2/matlab/four_point_dft.slx">four_point_dft.slx</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="w"> </span><span class="n">four_point_dft</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="in-class-example-1">
+<h3>In Class Example 1<a class="headerlink" href="#in-class-example-1" title="Permalink to this heading">#</a></h3>
+<p>Use four-point DIT FFT to confirm that the DFT of the sequence</p>
+<div class="math notranslate nohighlight">
+\[x[n] = [1, 2, 3, 4]\]</div>
+<p>is</p>
+<div class="math notranslate nohighlight">
+\[X[m] = [10, -2+j2, -4, -2-j2].\]</div>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre><section id="id4">
+<h4>8-point DFT<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[X[k] = \sum_{n=0}^{7}x[n]W_8^{nk}.\]</div>
+<p>After some manipulation, not reproduced here, it can be shown that the 8-point DFT is the recombination of two, 4-point DFTs that operate on the even and odd numbered values in the sequence <span class="math notranslate nohighlight">\(x[n]\)</span> respectively.</p>
+</section>
+<section id="signal-flow-graph-of-8-point-dft">
+<h4>Signal flow graph of 8-point DFT<a class="headerlink" href="#signal-flow-graph-of-8-point-dft" title="Permalink to this heading">#</a></h4>
+<p><img alt="Signal flow graph of 8-point DFT" src="../../_images/8-point-dft-sfg.png" /></p>
+</section>
+<section id="simulink-model-of-8-point-dft">
+<h4>SIMULINK Model of 8-Point DFT<a class="headerlink" href="#simulink-model-of-8-point-dft" title="Permalink to this heading">#</a></h4>
+<p><a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dft/2/matlab/eight_point_dft.slx">eight_point_dft.slx</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="w"> </span><span class="n">eight_point_dft</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="n-point-radix-2-dit-fft">
+<h4>N-Point, radix-2 DIT FFT<a class="headerlink" href="#n-point-radix-2-dit-fft" title="Permalink to this heading">#</a></h4>
+<p>In general, the <span class="math notranslate nohighlight">\(N\)</span>-point, radix-2 DIT FFT is computed as the recomposition of two <span class="math notranslate nohighlight">\((N/2)\)</span>-point FFTs) as shown in the buterfly diagram below</p>
+<p><img alt="N-point FFT" src="../../_images/n-point-fft.png" /></p>
+</section>
+</section>
+<section id="decomposition-in-frequency-fft">
+<h3>Decomposition-in-Frequency FFT<a class="headerlink" href="#decomposition-in-frequency-fft" title="Permalink to this heading">#</a></h3>
+<p>Another approach to forming the FFT is the so-called decomposition in frequency (DIF) FFT.</p>
+<p>We will not cover it’s development in detail (see Karris and Phillips <em>et al.</em>) if you want to follow it through.</p>
+<p>We instead illustrate the final result for the four-point DIF FFT.</p>
+<section id="signal-flow-graph-for-4-point-dif-fft">
+<h4>Signal flow graph for 4-point DIF FFT<a class="headerlink" href="#signal-flow-graph-for-4-point-dif-fft" title="Permalink to this heading">#</a></h4>
+<p><img alt="Signal flow chart for 4-point DIF FFT" src="../../_images/4-point-dif-fft.png" /></p>
+<p>Note that the structure is a 4-point decompostion followed by two 2-point FFTs.</p>
+<p>Also note that it is frequency <span class="math notranslate nohighlight">\(X_n[k]\)</span> that is the input to the DFT stage.</p>
+</section>
+</section>
+<section id="in-class-example-2">
+<h3>In Class Example 2<a class="headerlink" href="#in-class-example-2" title="Permalink to this heading">#</a></h3>
+<p>Use four two-point DIF FFT to confirm that the DFT of the sequence</p>
+<div class="math notranslate nohighlight">
+\[x[n] = [1, 2, 3, 4]\]</div>
+<p>is</p>
+<div class="math notranslate nohighlight">
+\[X[m] = [10, -2+j2, -4, -2-j2].\]</div>
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre><section id="simulink-model-of-4-point-dif-fft">
+<h4>SIMULINK Model of 4-Point DIF FFT<a class="headerlink" href="#simulink-model-of-4-point-dif-fft" title="Permalink to this heading">#</a></h4>
+<p><a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dft/2/matlab/four_point_dif.slx">four_point_dif.slx</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="w"> </span><span class="n">four_point_dif</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="point-dif-fft">
+<h3>8-Point DIF FFT<a class="headerlink" href="#point-dif-fft" title="Permalink to this heading">#</a></h3>
+<p>I have created a Simulink model of the 8-point DIF FFT. I will create a signal flow graph to go with it at some point in the future.</p>
+<section id="id5">
+<h4>SIMULINK Model of 4-Point DIF FFT<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
+<p><a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dft/2/matlab/eight_point_dif.slx">eight_point_dif.slx</a></p>
+</section>
+</section>
+</section>
+<section id="efficiency-of-the-fft">
+<h2>Efficiency of the FFT<a class="headerlink" href="#efficiency-of-the-fft" title="Permalink to this heading">#</a></h2>
+<p>Wether we implement it as a Decomposition-in-Time (DIT) or a Decomposition-in-Frequency (DIF), the FFT ends up having approximately <span class="math notranslate nohighlight">\((N/2)\log_2(N)\)</span> multiplications and a similar number of complex additions or subtractions.</p>
+<p>In other words, <span class="math notranslate nohighlight">\((N)\log_2(N)\)</span> complex arithmetic operations.</p>
+<p>As complex arithmetic, particularly multiplication, is very expensive, this is a great saving over the DFT which has of order <span class="math notranslate nohighlight">\(N^2\)</span> operations.</p>
+<section id="dft-and-fft-comparisons">
+<h3>DFT and FFT Comparisons<a class="headerlink" href="#dft-and-fft-comparisons" title="Permalink to this heading">#</a></h3>
+<p>Under the assumptions about the relative efficiency of the DFT and FFT we can create a table like that shown below:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p> </p></th>
+<th class="head"><p> </p></th>
+<th class="head"><p>DFT</p></th>
+<th class="head"><p>FFT</p></th>
+<th class="head"><p>FFT/DFT</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>N</p></td>
+<td><p><span class="math notranslate nohighlight">\(\log_2 N\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(N^2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(N\log_2 N\)</span></p></td>
+<td><p>%</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>3</p></td>
+<td><p>64</p></td>
+<td><p>24</p></td>
+<td><p>37.5</p></td>
+</tr>
+<tr class="row-even"><td><p>16</p></td>
+<td><p>4</p></td>
+<td><p>256</p></td>
+<td><p>64</p></td>
+<td><p>25</p></td>
+</tr>
+<tr class="row-odd"><td><p>32</p></td>
+<td><p>5</p></td>
+<td><p>1,024</p></td>
+<td><p>160</p></td>
+<td><p>15.6</p></td>
+</tr>
+<tr class="row-even"><td><p>64</p></td>
+<td><p>6</p></td>
+<td><p>4,096</p></td>
+<td><p>384</p></td>
+<td><p>9.4</p></td>
+</tr>
+<tr class="row-odd"><td><p>128</p></td>
+<td><p>7</p></td>
+<td><p>16,384</p></td>
+<td><p>896</p></td>
+<td><p>5.5</p></td>
+</tr>
+<tr class="row-even"><td><p>256</p></td>
+<td><p>8</p></td>
+<td><p>65,536</p></td>
+<td><p>2,048</p></td>
+<td><p>3.1</p></td>
+</tr>
+<tr class="row-odd"><td><p>512</p></td>
+<td><p>9</p></td>
+<td><p>261,144</p></td>
+<td><p>4,608</p></td>
+<td><p>1.8</p></td>
+</tr>
+<tr class="row-even"><td><p>1024</p></td>
+<td><p>10</p></td>
+<td><p>1,048,576</p></td>
+<td><p>10,240</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>2048</p></td>
+<td><p>11</p></td>
+<td><p>4,194,304</p></td>
+<td><p>22,528</p></td>
+<td><p>0.5</p></td>
+</tr>
+</tbody>
+</table>
+<p>As you can see, the efficiency of the FFT actual gets better as the number of samples go up!</p>
+<p>However, there are other costs, such as the data storage needed for intermediate steps, that need to be taken into account as well. For example, an 8-point FFT requires only a 3 stage decomposition, with each stage needing storage for 8 complex numbers. That is 24 in all. Whereas a 2048 sequence will require 11 stages, storing 2048 values each. That is a total of 22,528 complex values<sup>6</sup>.</p>
+</section>
+</section>
+<section id="in-class-demonstrations">
+<h2>In Class Demonstrations<a class="headerlink" href="#in-class-demonstrations" title="Permalink to this heading">#</a></h2>
+<section id="fft-in-matlab">
+<h3>FFT in MATLAB<a class="headerlink" href="#fft-in-matlab" title="Permalink to this heading">#</a></h3>
+<p>The FFT algorithm is implemented, in MATLAB, as the function <code class="docutils literal notranslate"><span class="pre">fft</span></code>. We will conclude the class by working through Exercises 6 and 7 from section 10.8 of Karris.</p>
+</section>
+<section id="example-3">
+<h3>Example 3<a class="headerlink" href="#example-3" title="Permalink to this heading">#</a></h3>
+<p>Plot the Fourier transform of the rectangular pulse shown below, using the MATLAB <code class="docutils literal notranslate"><span class="pre">fft</span></code> func-tion. Then, use the <code class="docutils literal notranslate"><span class="pre">ifft</span></code> function to verify that the inverse transformation produces the rectangular pulse.</p>
+<p><img alt="Example 3" src="../../_images/fft_example1.png" /></p>
+<section id="fft-for-example-3">
+<h4>FFT for Example 3<a class="headerlink" href="#fft-for-example-3" title="Permalink to this heading">#</a></h4>
+<p>The rectangular pulse can be produced like so</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">50</span><span class="p">)];</span>
+<span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">)];</span>
+<span class="nb">stem</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/00f7200f9c713128ec4745a74526d6e4763102397068028ec9df1715177404c4.png" src="../../_images/00f7200f9c713128ec4745a74526d6e4763102397068028ec9df1715177404c4.png" />
+</div>
+</div>
+<p>and the FFT is produced as</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">stem</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="nb">fft</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/df9c317f2b14faac800fdc60574017748f0221d4fc359773d2e4324ebb50873f.png" src="../../_images/df9c317f2b14faac800fdc60574017748f0221d4fc359773d2e4324ebb50873f.png" />
+</div>
+</div>
+<p>unwind</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">stem</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="nb">fftshift</span><span class="p">(</span><span class="nb">fft</span><span class="p">(</span><span class="n">y</span><span class="p">))))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/560aa119241d0addce3043655b599c39211b90608f2ccc4fb8c05b55b0878d1c.png" src="../../_images/560aa119241d0addce3043655b599c39211b90608f2ccc4fb8c05b55b0878d1c.png" />
+</div>
+</div>
+<p>The inverse FFT is obtained with</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">stem</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="nb">ifft</span><span class="p">(</span><span class="nb">fft</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/f77cb546a6e224d50febacccd87794c908666c6b299fabc9ef278461fbaa2c58.png" src="../../_images/f77cb546a6e224d50febacccd87794c908666c6b299fabc9ef278461fbaa2c58.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="example-4">
+<h3>Example 4<a class="headerlink" href="#example-4" title="Permalink to this heading">#</a></h3>
+<p><img alt="Example 4" src="../../_images/fft_example2.png" /></p>
+<section id="fft-example-4">
+<h4>FFT Example 4<a class="headerlink" href="#fft-example-4" title="Permalink to this heading">#</a></h4>
+<p>The triangular pulse is obtained with</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
+<span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">)];</span>
+<span class="nb">stem</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/b001f61fb786be8c38705d75d7d3c927d9af327685876011b051addd8e4b9a08.png" src="../../_images/b001f61fb786be8c38705d75d7d3c927d9af327685876011b051addd8e4b9a08.png" />
+</div>
+</div>
+<p>and the FFT is obtained with</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">stem</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="nb">fftshift</span><span class="p">(</span><span class="nb">fft</span><span class="p">(</span><span class="n">y</span><span class="p">))))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/d49ee45e64519235dee5d121958ca6c33e7366ee33dd85bfd819bd8a5009fc2e.png" src="../../_images/d49ee45e64519235dee5d121958ca6c33e7366ee33dd85bfd819bd8a5009fc2e.png" />
+</div>
+</div>
+<p>The inverse FFT is obtained with</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">stem</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="nb">ifft</span><span class="p">(</span><span class="nb">fft</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/231d16e5ca3fffe688e393188c90fe7282f840e8a19a5326a433c8b02a7d5bec.png" src="../../_images/231d16e5ca3fffe688e393188c90fe7282f840e8a19a5326a433c8b02a7d5bec.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The inefficiency of the DFT</p></li>
+<li><p>The FFT - a sketch of its development</p></li>
+<li><p>An illustration of part of the FFT algorithm</p></li>
+<li><p>FFT v DFT</p></li>
+<li><p>Two examples</p></li>
+</ul>
+</section>
+<section id="homework">
+<h2>Homework<a class="headerlink" href="#homework" title="Permalink to this heading">#</a></h2>
+<p>Read the rest of Chapter 10 of Karris from page 10.9 and make your own notes on the implementation of the FFT.</p>
+</section>
+<section id="the-end">
+<h2>The End?<a class="headerlink" href="#the-end" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>This concludes this module.</p></li>
+<li><p>There is some material that I have not covered, most notably is a significant amount of additional information about <strong>Filter Design</strong> (including the use of MATLAB for this) in Chapter 11 of Karris.</p></li>
+</ul>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<p>See <a class="reference internal" href="../../zbib.html"><span class="doc std std-doc">Bibliography</span></a>.</p>
+<section id="footnotes">
+<h3>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this heading">#</a></h3>
+<ol class="arabic">
+<li><p><em>Note</em>: addition of two complex numbers <span class="math notranslate nohighlight">\((a + jb) + (c + jd) = (a+b) + j(b + d)\)</span> so requires 2 floating-point additions; multiplication <span class="math notranslate nohighlight">\((a + jb)(c + jd) = (ac - bd)+j(ad + bc)\)</span> requires four floating-point multiplications and two additions.</p>
+<p>In MATLAB, complex numbers are represented internally as two 64 bit floating point operations so each complex operation is expensive both in terms of computing time and working memory space. And the result of an N-point DFT will require twice the memory of the original sequence, assuming that it is stored as floating point real numbers, considerably 16 times the storage is needed if the original sequence is the result of sampling by, say, an 8 bit ADC.</p>
+<p>Of course, modern 64 bit mirocprocessers have hardware support for floating point operations and so these operations take a minumum number of machine cycles. Digital Signal Processors and Graphic Processing Units, probably have hardware support for complex arithmetic too. Nonethess, complex arithmetic is an expensive operation, so any simplifications we can make will be valuable.</p>
+</li>
+<li><p>Even if we do not have a real sequence, we only need to compute the first <span class="math notranslate nohighlight">\(N/2\)</span> values of the spectrum because the sequence for <span class="math notranslate nohighlight">\(X[k]\)</span> from <span class="math notranslate nohighlight">\(N/2 + 1 &lt; k \le N-1\)</span> are complex conjugates, in the reverse order, of the sequence of <span class="math notranslate nohighlight">\(X[k]\)</span> for <span class="math notranslate nohighlight">\(0 \le k &lt; N/2\)</span>. This is easy to prove by looking at the geometry of the unit circle in the z-plane.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(N=1024\)</span>, <span class="math notranslate nohighlight">\(N\log_2 N = 1024\times 10 = 10,240\)</span> complex operations.</p></li>
+<li><p>The Inverse FFT (IFFT) follows by noting that the rotation vector used in its computation is the complex conjugate
+$<span class="math notranslate nohighlight">\(W_N^{-1}.\)</span>$</p></li>
+<li><p>Karris goes further in showing how the decomposition used to implement the FFT can be further be understood by considering even and odd decompositions. This is also the approach taken by Phillips <em>et al.</em> reproduced here.
+You’ll also find that most text books on Digital Signal Processing will cover the FFT and give more or less understandable presentations of the way the algorithm works.</p></li>
+<li><p>A complex number in MATLAB is 2 floating point doubles or 128 bits. So a 2048 “bin” FFT needs storage in RAM for approximately <span class="math notranslate nohighlight">\(22,528\times 128 = 2.9\)</span> Mbit (<span class="math notranslate nohighlight">\(260\)</span> kByte) of data.</p></li>
+</ol>
+</section>
+</section>
+<section id="solutions">
+<h2>Solutions<a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h2>
+<section id="example-1">
+<h3>Example 1<a class="headerlink" href="#example-1" title="Permalink to this heading">#</a></h3>
+<p>From the mathematical development and signal flow graph shown earlier:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+X_e[0] &amp;=&amp; x[0] + x[2] = 1 + 3 = 4;\\
+X_e[1] &amp;=&amp; x[0] - x[2] = 1 - 3 = -2;\\
+X_o[0] &amp;=&amp; x[1] + x[3] = 2 + 4 = 6;\\
+X_o[1] &amp;=&amp; x[1] - x[3] = 2 - 4 = -2.
+\end{eqnarray*}\end{split}\]</div>
+<p>Thus,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+X[0] &amp;=&amp; X_e[0] + X_o[0] = 4 + 6 = 10,\\
+X[1] &amp;=&amp; X_e[1] + W_4^1 X_o[1] = -2 + (-j)(-2) = -2 - j2,\\
+X[2] &amp;=&amp; X_e[0] - X_o[0] = 4 - 6 = -2,\\
+X[3] &amp;=&amp; X_e[1] - W_4^1 X_o[1] = -2 - (-j)(-2) = -2 + j2.
+\end{eqnarray*}\end{split}\]</div>
+<p>Q.E.D.</p>
+</section>
+<section id="example-2">
+<h3>Example 2<a class="headerlink" href="#example-2" title="Permalink to this heading">#</a></h3>
+<p>After decomposition we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+X_1[0] &amp;=&amp; x[0] + x[2] = 1 + 3 = 4;\\
+X_1[1] &amp;=&amp; W_4^0\left[x[1] - x[3]\right] = 2 + 4 = 6;\\
+X_2[0] &amp;=&amp; x[0] - x[2] = 1 - 3 = -2;\\
+X_2[1] &amp;=&amp; W_4^1\left[x[1] - x[3]\right] = -j[2 - 4] = -j2.
+\end{eqnarray*}\end{split}\]</div>
+<p>Hence, after 2-point FFT:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+X[0] &amp;=&amp; X_1[0] + X_1[1] = 4 + 6 = 10,\\
+X[1] &amp;=&amp; X_2[0] + X_2[1] = -2 - j2,\\
+X[2] &amp;=&amp; X_1[0] - X_1[1] = 4 - 6 = -2,\\
+X[3] &amp;=&amp; X_2[0] - X_2[1] = -2 + j2.
+\end{eqnarray*}\end{split}\]</div>
+<p>Q.E.D.</p>
+</section>
+<section id="id6">
+<h3>Example 3<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<p>See script <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dft/2/matlab/fft_ex1.m">fft_ex1.m</a>.</p>
+</section>
+<section id="id7">
+<h3>Example 4<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<p>See script <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dft/2/matlab/fft_ex2.m">fft_ex2.m</a>.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "matlab"
+        },
+        kernelOptions: {
+            name: "matlab",
+            path: "./dft/2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'matlab'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../1/dft.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">The Discrete Fourier Transform</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../zbib.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">References</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colophon">Colophon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope-and-background-reading">Scope and Background Reading</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">Agenda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-inefficiency-of-the-dft">The inefficiency of the DFT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-fast-fourier-transform-fft">The Fast Fourier Transform (FFT)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decomposition-in-time-fft-algorithm">Decomposition-in-Time FFT Algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#point-dft">2-Point DFT</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-see-it-in-matlab">Let’s See it in MATLAB</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4-point DFT</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#simulink-model-of-4-point-dft">SIMULINK Model of 4-Point DFT</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-example-1">In Class Example 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">8-point DFT</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-flow-graph-of-8-point-dft">Signal flow graph of 8-point DFT</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#simulink-model-of-8-point-dft">SIMULINK Model of 8-Point DFT</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#n-point-radix-2-dit-fft">N-Point, radix-2 DIT FFT</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decomposition-in-frequency-fft">Decomposition-in-Frequency FFT</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-flow-graph-for-4-point-dif-fft">Signal flow graph for 4-point DIF FFT</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-example-2">In Class Example 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#simulink-model-of-4-point-dif-fft">SIMULINK Model of 4-Point DIF FFT</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-dif-fft">8-Point DIF FFT</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">SIMULINK Model of 4-Point DIF FFT</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#efficiency-of-the-fft">Efficiency of the FFT</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dft-and-fft-comparisons">DFT and FFT Comparisons</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-demonstrations">In Class Demonstrations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fft-in-matlab">FFT in MATLAB</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fft-for-example-3">FFT for Example 3</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4">Example 4</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fft-example-4">FFT Example 4</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">Homework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-end">The End?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes">Footnotes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Example 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Example 4</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Chris P. Jobling
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Swansea University (2023-2024).
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  This page was created by 
+<a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
+  Dr Chris P. Jobling
+</a> 
+for 
+<a href="https://www.swansea.ac.uk">
+  Swansea University
+</a>.
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1604 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Unit 2.2: Transfer Function Basics &#8212; EG-247 Digital Signal Processing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystyles.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'transfer_functions/2/transfer_function_basics';</script>
+    <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/transfer_functions/2/transfer_function_basics.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Unit 4: Fourier Series" href="../../fourier_series/index.html" />
+    <link rel="prev" title="Unit 2.1 Laplace transforms and LTI systems" href="../1/concepts.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../introduction/index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">EG-247 Digital Signal Processing</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../introduction/index.html">
+                    Unit 1: Introducing Digital Signal Processing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Online notes</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Transfer Function Analysis of Dynamic Systems</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../1/concepts.html">Concept Review</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Transfer Function Basics</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_series/index.html">Fourier Series</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/trig_fseries.html">Trigonometric Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/2/exp_fs1.html">Exponential Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/3/exp_fs2.html">Line Spectra and their Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_transform/index.html">Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/1/ft1.html">Defining the Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/2/ft2.html">Fourier transforms of commonly occuring signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/3/ft3.html">Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/4/ft4.html">Introduction to Filters</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dt_systems/index.html">Sampled Data Systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/1/sampling.html">Sampling Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/2/z_transform.html">The Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/3/i_z_transform.html">The Inverse Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/4/dt_models.html">Models of Discrete Time Systems</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dft/index.html">Discrete Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../dft/1/dft.html">The Discrete Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dft/2/fft.html">The Fast-Fourier Transform</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../zbib.html">Bibliography</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">In Class Worksheets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../worksheets/index.html">Worksheets</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/worksheet1.html">Worksheet 1 Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/worksheet2.html">Worksheet 2 Trigonometric Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/2/worksheet13.html">Worksheet 13 Fourier transforms of commonly occuring signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/3/worksheet14.html">Worksheet 14 Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/4/worksheet15.html">Worksheet 15 Introduction to Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/3/worksheet16.html">Worksheet 16 The Inverse Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dt_systems/4/worksheet17.html">Worksheet 17 Models of DT Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dft/1/worksheet18.html">Worksheet 18 The Discrete-time Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dft/2/worksheet19.html">Worksheet 19 The Fast Fourier Transform</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework problems</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../homework/index.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw1.html">Homework 1 Elementary Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw2.html">Homework 2 Laplace and Inverse Laplace Transforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw3.html">Homework 3 Laplace Transforms for Ciruit Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw4.html">Homework 4 Impulse Response and Convolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw5.html">Homework 5 Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw6.html">Homework 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw7.html">Homework 7 Applications of the Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw8.html">Homework 8 Sampling Theory and the Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw9.html">Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw10.html">Homework 10 Discrete Fourier Transform and the Fast-Fourier Transform</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/project/index.html">Project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Answers to Selected Problems</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/answers.html">Worksheet 2</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1/lt_props.html">Properties of the Laplace Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fourier_transform/1/ft_props.html">Properties of the Fourier Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fourier_transform/1/ft_table.html">Common Fourier Transform Pairs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dt_systems/2/zt_props.html">Properties of the Z-Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dt_systems/2/zt_table.html">Table of Z-Transforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../setup/polling_setup.html">Set Up In-Class Polling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../todo.html">List of Planned Enhancements</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup/index.html">Setting up your own version of this book</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1/LICENSE.html">MathWorks License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter.html">About Jupyter notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/python.html">Installing Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/setup.html">Setting up your Own Jupyter-MATLAB Computing Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/matlab_kernel.html">Testing the Jupyter Matlab Kernel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/advanced-setup.html">Quick Start - For Experienced Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter-book.html">Setting up jupyter-book</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-247-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-247-textbook/edit/master/transfer_functions/2/transfer_function_basics.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Ftransfer_functions/2/transfer_function_basics.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/transfer_functions/2/transfer_function_basics.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Unit 2.2: Transfer Function Basics</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">Learning Outcomes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electric-vehicles-the-wave-of-the-future">Electric vehicles: the wave of the future?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transfer-function-definition">Transfer Function Definition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electric-vehicle-dynamic-system">Electric vehicle dynamic system</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transfer-function-representation-of-simple-vehicle-motion">Transfer function representation of simple vehicle motion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Example.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-differential-equation">(a) Differential equation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#b-transfer-function">(b) Transfer function</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impulse-response">Impulse response</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflect">Reflect.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Solution.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Reflect.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Exercise 1.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Reflect.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Reflect.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-response">Step response</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Reflect.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Reflect.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">Reflection</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analytic-computation-of-the-impulse-and-step-responses">Analytic computation of the impulse and step responses</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Example.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a">(a)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#b">(b)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Solution.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">(a)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">(b)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-exercise-1">Homework Exercise 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">4(a)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">4(b)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forced-response">Forced response</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-activity">Homework Activity.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-response">Example response</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-familiarize-yourself-with-the-activity">Part 1. Familiarize yourself with the activity.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-find-the-resonant-frequency">Part 2. Find the resonant frequency.</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-exercise-2">Homework Exercise 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">(a)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">(b)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c">(c)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#d">(d)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-exploration">Further exploration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions-to-matlab-examples">Solutions to MATLAB examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-to-exercise-1-impulse-response">Solution to Exercise 1: Impulse response</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-to-exercise-2-step-response">Solution to Exercise 2: Step response</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-to-exercise-3-step-velocity-response">Solution to Exercise 3: Step velocity response</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="unit-2-2-transfer-function-basics">
+<span id="tf-basics"></span><h1>Unit 2.2: Transfer Function Basics<a class="headerlink" href="#unit-2-2-transfer-function-basics" title="Permalink to this heading">#</a></h1>
+<section id="learning-outcomes">
+<h2>Learning Outcomes<a class="headerlink" href="#learning-outcomes" title="Permalink to this heading">#</a></h2>
+<p>In this unit, students will…</p>
+<ul class="simple">
+<li><p>Derive transfer functions by hand</p></li>
+<li><p>Derive transfer functions using symbolic math</p></li>
+<li><p>Numerically evaluate and plot the impulse, step, and forced responses of a system</p></li>
+<li><p>Analytically derive the step and forced responses of a system</p></li>
+<li><p>Explain the physical significance of time responses</p></li>
+</ul>
+<p>This unit is based on the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">TransferFunctionBasics.mlx</span></code> from the curriculum module <a class="reference external" href="https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems">Transfer Function Analysis of Dynamic Systems</a>.</p>
+<p>Some of the examples rely on interactive features of MATLAB that are not readily reproduced in these notes. To make use of these facilities, you are advised to access the script directly from the project in MATLAB online.</p>
+<p>These materials © Copyright 2023 The MathWorks™, Inc. (See <a class="reference internal" href="../1/LICENSE.html#mathworks-license"><span class="std std-ref">MathWorks License</span></a>).</p>
+</section>
+<section id="electric-vehicles-the-wave-of-the-future">
+<h2>Electric vehicles: the wave of the future?<a class="headerlink" href="#electric-vehicles-the-wave-of-the-future" title="Permalink to this heading">#</a></h2>
+<p><img alt="Essential components of an electric vehicle" src="../../_images/car1.png" /></p>
+<p>Essential components of an electric vehicle</p>
+<p>Electric vehicles (EV) may well be the future of environmentally sustainable travel. But what makes it possible for an EV to be more efficient than a gas vehicle while still providing enough power to accelerate to and maintain high speeds? The answer lies in efficient power electronics. In this unit, you will learn about transfer functions and use them to analyze the dynamics of several essential components of an electric vehicle.</p>
+</section>
+<section id="transfer-function-definition">
+<h2>Transfer Function Definition<a class="headerlink" href="#transfer-function-definition" title="Permalink to this heading">#</a></h2>
+<p>Consider a dynamic system with a single input function  and a single output function:</p>
+<p><img alt="A dynamic system represented as a block diagram in the time domain" src="../../_images/bdt.png" /></p>
+<p>This is known as a <strong>SISO</strong> (Single Input Single Output) system. In general, the system <span class="math notranslate nohighlight">\(g\)</span> is defined through a differential equation: <span class="math notranslate nohighlight">\(g(u, x, \dot{x}, \ddot{x},\ldots) = 0\)</span>.</p>
+<p>The <strong>transfer function</strong> is defined as</p>
+<div class="math notranslate nohighlight">
+\[G(s) = \frac{Y(s)}{U(s)},\]</div>
+<p>the ratio of the Laplace transform of the output <span class="math notranslate nohighlight">\(Y(s) = \mathcal{L}\{y(t)\}\)</span> to the Laplace transform of the input <span class="math notranslate nohighlight">\(U(s) = \mathcal{L}\{u(t)\}\)</span>. The transfer function <span class="math notranslate nohighlight">\(G(s)\)</span> maps inputs <span class="math notranslate nohighlight">\(U\)</span> to outputs <span class="math notranslate nohighlight">\(Y\)</span>:</p>
+<p><img alt="A dynamic system represented as a block diagram in the complex frequency domain" src="../../_images/bds.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you need to brush up on Laplace transforms, review them in: <a class="reference internal" href="../1/concepts.html#tf-concepts"><span class="std std-ref">Unit 2.1 Laplace transforms and LTI systems</span></a>.</p>
+</div>
+<section id="example">
+<h3>Example.<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h3>
+<p><img alt="example" src="../../_images/write1.png" /></p>
+<p>Find the transfer function of a mass-spring-damper that is dynamically forced by an arbitrary function <span class="math notranslate nohighlight">\(u(t)\)</span>. Assume that the system is initially at rest (<span class="math notranslate nohighlight">\(x(0)=0\)</span> and <span class="math notranslate nohighlight">\(\dot{x}(0) = 0\)</span>).</p>
+<p><img alt="Mass-spring-damper diagram" src="../../_images/smd1.png" />
+Mass-spring-damper diagram</p>
+</section>
+<section id="solution">
+<h3>Solution.<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h3>
+<p>The equation of motion for a mass-spring-damper is</p>
+<div class="math notranslate nohighlight">
+\[m \ddot{x} + c \dot{x} + k x = u\]</div>
+<p>Using the properties of the Laplace transform for derivatives, the Laplace transform is</p>
+<div class="math notranslate nohighlight">
+\[m[s^2 X - sx(0) - \dot{x}(0)] + c [s X - x(0)] + kX = U\]</div>
+<p>Applying <span class="math notranslate nohighlight">\(x(0) = 0\)</span> and <span class="math notranslate nohighlight">\(\dot{x}(0) = 0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ms^2 X  + c s X  + kX = U\]</div>
+<p>Solving for the ratio of the input to the output yields the transfer function:</p>
+<div class="math notranslate nohighlight">
+\[G(s) = \frac{X(s)}{U(s)} = \frac{1}{m s^2 + cs + k}\]</div>
+</section>
+<section id="exercise-1">
+<h3>Exercise 1.<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h3>
+<p><img alt="example" src="../../_images/write1.png" /></p>
+<p>Find the transfer function of a simple pendulum with zero initial conditions using the linearized equations of motion. Consider that the pendulum is being driven by an arbitrary forcing function <span class="math notranslate nohighlight">\(u(t)\)</span> (note that any angle dependence of the forcing would be baked into <span class="math notranslate nohighlight">\(u(t0\)</span>). The equations of motion are:</p>
+<div class="math notranslate nohighlight">
+\[\ddot{\theta} + \frac{g}{l} \theta = u\]</div>
+<p>where <span class="math notranslate nohighlight">\(g\)</span> is acceleration due to gravity and <span class="math notranslate nohighlight">\(l\)</span> is the length of the pendulum.</p>
+<p>Record your answer below in variable <code class="docutils literal notranslate"><span class="pre">pendulumTF</span></code> in terms of the symbolic variables <code class="docutils literal notranslate"><span class="pre">g</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, and <code class="docutils literal notranslate"><span class="pre">s</span></code>.</p>
+<p>format compact % remove extra white space
+syms g l s</p>
+<p>pendulumTF = NaN;</p>
+<p>To check your solution enter your answer in the appropriate place in the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">TransferFunctionBasics.mlx</span></code> and run <code class="docutils literal notranslate"><span class="pre">checkPendulumTF(pendulumTF)</span></code>.</p>
+</section>
+</section>
+<section id="electric-vehicle-dynamic-system">
+<h2>Electric vehicle dynamic system<a class="headerlink" href="#electric-vehicle-dynamic-system" title="Permalink to this heading">#</a></h2>
+<p>In this module, you’ll investigate the dynamics of components of an electric vehicle’s electrical and mechanical systems (EV) using transfer functions. The major components of the EV system are represented in the diagram below.</p>
+<p><img alt="Simplified EV power system" src="../../_images/ev_power_system.png" />
+Simplified EV power system</p>
+<p>There are two domains represented in this diagram: the electrical and physical domains. The DC motor couples the domains by converting electrical energy to mechanical. Inside the electrical domain, there are two essential conversions.</p>
+<ul class="simple">
+<li><p>The AC power source (120/240V) is converted to a high voltage DC source (200-800V) used to charge the battery pack.</p></li>
+<li><p>The battery’s high voltage DC (200-800V) is converted to a low voltage (12V or 48V) by a buck converter for use by low voltage systems.</p></li>
+</ul>
+<p>In this unit, you will investigate several paradigmatic components present (or like those present) in EVs.</p>
+</section>
+<section id="transfer-function-representation-of-simple-vehicle-motion">
+<h2>Transfer function representation of simple vehicle motion<a class="headerlink" href="#transfer-function-representation-of-simple-vehicle-motion" title="Permalink to this heading">#</a></h2>
+<p>The most intuitive part of the electric vehicle system is the motion of the vehicle itself.</p>
+<p><img alt="A focus on modeling the motion of the vehicle" src="../../_images/car_motion.png" />
+In this unit, we’ll focus on modeling the motion of the vehicle.</p>
+<p>In a straightforward model, an EV (and indeed, any vehicle) can be modeled as a simple mass with two forces acting on it: a traction force and a frictional force. The traction force results from the motor applying torque to the wheels.</p>
+<p><img alt="A simple vehicle model" src="transfer_functions/2/images/vehical_model.png" />
+A simple vehicle model</p>
+<section id="id1">
+<h3>Example.<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>(a) Derive the equation of motion for the simple vehicle model and (b) compute the transfer function of the displacement <span class="math notranslate nohighlight">\(x(t)\)</span> using the traction force as the input function <span class="math notranslate nohighlight">\(u(t)\)</span>.</p>
+</section>
+<section id="id2">
+<h3>Solution.<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<section id="a-differential-equation">
+<h4>(a) Differential equation<a class="headerlink" href="#a-differential-equation" title="Permalink to this heading">#</a></h4>
+<p>The displacement of the vehicle is <span class="math notranslate nohighlight">\(x(t)\)</span>. For simplicity, the frictional force is assumed to be proportional to the velocity <span class="math notranslate nohighlight">\(\dot{x}(t)\)</span> with a constant of proportionality <span class="math notranslate nohighlight">\(k\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[F_\mathrm{friction} = k \dot{x}\]</div>
+<p>The traction force varies depending on the output of the motor (among other considerations), so it is treated as an arbitrary function:</p>
+<div class="math notranslate nohighlight">
+\[F_\mathrm{traction} = u(t)\]</div>
+<p>With these two forces, Newton’s second law implies:</p>
+<div class="math notranslate nohighlight">
+\[m\ddot{x} = -k\dot{x}  + u(t)\]</div>
+</section>
+<section id="b-transfer-function">
+<h4>(b) Transfer function<a class="headerlink" href="#b-transfer-function" title="Permalink to this heading">#</a></h4>
+<p>Computing the Laplace transform of the equation of motion yields</p>
+<div class="math notranslate nohighlight">
+\[m[s^2 X - sx(0) - x'(0)] = - k [s X - x(0)] + U\]</div>
+<p>Applying the zero initial conditions and solving for <span class="math notranslate nohighlight">\(X/U\)</span> yields</p>
+<div class="math notranslate nohighlight">
+\[G(s) = \frac{X(s)}{U(s)} = \frac{1}{ms^2 + ks}\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are many simplifications present in this vehicle model (especially in the way the frictional forces are modeled). The model is intended to help illustrate the essential concepts of transfer functions, rather than accurately account for the forces present in the true mechanical system.</p>
+</div>
+</section>
+</section>
+<section id="exercise">
+<h3>Exercise.<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h3>
+<p>It may be the case that you want to analyze the velocity <span class="math notranslate nohighlight">\(v(t)=\dot{x}(t)\)</span> rather than the position <span class="math notranslate nohighlight">\(x\)</span>. Rewrite the equation of motion</p>
+<div class="math notranslate nohighlight">
+\[m\ddot{x} = -k\dot{x} + f(t)\]</div>
+<p>in terms of the velocity, <span class="math notranslate nohighlight">\(v(t)=\dot{x}(t)\)</span>, and then solve for the transfer function of <span class="math notranslate nohighlight">\(v\)</span>: <span class="math notranslate nohighlight">\(H(s) = V(s)/F(s)\)</span>. Record your answer below in <code class="docutils literal notranslate"><span class="pre">Vtf</span></code> in terms of the symbolic variables <code class="docutils literal notranslate"><span class="pre">s</span></code>, <code class="docutils literal notranslate"><span class="pre">m</span></code>, and <code class="docutils literal notranslate"><span class="pre">k</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">m</span><span class="w"> </span><span class="s">s</span><span class="w"> </span><span class="s">k</span><span class="w"> </span><span class="s">%</span><span class="w"> </span><span class="s">Symbolic</span><span class="w"> </span><span class="s">variable</span><span class="w"> </span><span class="s">declarations</span>
+<span class="c">% Record your answer here</span>
+<span class="n">Vtf</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To check your solution enter your answer in the appropriate place in the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">TransferFunctionBasics.mlx</span></code> and run <code class="docutils literal notranslate"><span class="pre">checkVTF(Vtf)</span></code>.</p>
+</section>
+</section>
+<section id="impulse-response">
+<h2>Impulse response<a class="headerlink" href="#impulse-response" title="Permalink to this heading">#</a></h2>
+<p>The impulse response of a system is the output generated from an impulse input. This is also commonly referred to as the natural response.</p>
+<p><img alt="Response of a system to an impulse" src="../../_images/impulse_response.png" />
+Response of a system to an impulse. While the response may be computed in the <span class="math notranslate nohighlight">\(s\)</span>-domain, it is shown in the time domain.</p>
+<p>Here <span class="math notranslate nohighlight">\(\delta(t)\)</span> is the Dirac delta function which has the properties:</p>
+<p><span class="math notranslate nohighlight">\(\int_{-\infty}^{\infty} \delta(t) dt = 1 \)</span> and <span class="math notranslate nohighlight">\(\delta(t) = 0 \text{ for } t \neq 0\)</span></p>
+<p>Think of the unit impulse as giving the system a (very) quick shove at time <span class="math notranslate nohighlight">\(t = 0\)</span>. The impulse response shows how the system will respond to that shove.</p>
+<section id="reflect">
+<h3>Reflect.<a class="headerlink" href="#reflect" title="Permalink to this heading">#</a></h3>
+<p><img alt="reflect" src="../../_images/reflect1.png" /></p>
+<p>Consider the simple vehicle motion model. The input function is the traction force <span class="math notranslate nohighlight">\(u(t) = F_\mathrm{traction}(t)\)</span>. An impulse input corresponds to an instantaneous force at time <span class="math notranslate nohighlight">\(t = 0\)</span>.</p>
+<p><img alt="A model of a simple vehicle" src="../../_images/vehicle_model.png" /></p>
+<ul class="simple">
+<li><p>Try drawing a plot of the impulse response of the position transfer function <span class="math notranslate nohighlight">\(X(s)/F(s)\)</span> in the time domain.</p></li>
+<li><p>Try drawing a plot of the impulse response of the velocity transfer function <span class="math notranslate nohighlight">\(V(s)/F(s)\)</span> in the time domain.</p></li>
+</ul>
+</section>
+<section id="id3">
+<h3>Example<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>Plot the impulse response of a mass-spring-damper with zero initial conditions and parameters <span class="math notranslate nohighlight">\(m=1\)</span>, <span class="math notranslate nohighlight">\(c=0.1\)</span>, and <span class="math notranslate nohighlight">\(k=0.5\)</span>.</p>
+<p><img alt="Mass-spring-damper diagram" src="../../_images/smd1.png" />
+Mass-spring-damper diagram</p>
+<p>Recall the transfer function of the mass-spring-damper:</p>
+<div class="math notranslate nohighlight">
+\[G(s) = \frac{X(s)}{U(s)} = \frac{1}{m s^2 + cs + k}\]</div>
+</section>
+<section id="id4">
+<h3>Solution.<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>You can compute the impulse response in MATLAB by defining a transfer function using <a class="reference external" href="https://www.mathworks.com/help/control/ref/tf.html"><code class="docutils literal notranslate"><span class="pre">tf</span></code></a> and then evaluating its response using the <a class="reference external" href="https://www.mathworks.com/help/control/ref/lti.impulse.html"><code class="docutils literal notranslate"><span class="pre">impulse</span></code></a> function.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">tf</span></code> function has the syntax</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">tf</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">denom</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">num</span></code> represents the coefficients of the numerator and denom represents those of the denominator in descending order. Note that a transfer function created using the <code class="docutils literal notranslate"><span class="pre">tf</span></code> function is not a symbolic function and cannot be manipulated with the Symbolic Math Toolbox.</p>
+<p>The numerator and denominator of <span class="math notranslate nohighlight">\(G\)</span> are defined below<a class="footnote-reference brackets" href="#refer-to-livescript" id="id5">1</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span><span class="w"> </span>
+<span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.4</span><span class="p">;</span><span class="w"> </span>
+<span class="n">num</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span>
+<span class="n">denom</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">m</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="n">k</span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Call<code class="docutils literal notranslate"> <span class="pre">tf</span></code> to build the transfer function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">denom</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>G =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -----------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  s^2 + 0.1 s + 0.4
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
+</pre></div>
+</div>
+</div>
+</div>
+<p>To plot the impulse response, call the impulse function with the syntax:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">impulse</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">tFinal</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">H</span></code> is the transfer function and <code class="docutils literal notranslate"><span class="pre">tFinal</span></code> is the duration of the simulation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">impulse</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&quot;x [m]&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/a963738471ffc63c6e05f80ef06ec40a4c120ac0bf5da0a07483fc332e97f425.png" src="../../_images/a963738471ffc63c6e05f80ef06ec40a4c120ac0bf5da0a07483fc332e97f425.png" />
+</div>
+</div>
+</section>
+<section id="id6">
+<h3>Reflect.<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<p><img alt="reflect" src="../../_images/reflect1.png" /></p>
+<ul class="simple">
+<li><p>How are the damping  and spring stiffness  reflected in the impulse response?</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(c\)</span> is increased to 0.5, how will the response change?</p></li>
+<li><p>Try setting <span class="math notranslate nohighlight">\(c = 0.5\)</span> and recompute the impulse response.</p></li>
+<li><p>Try setting <span class="math notranslate nohighlight">\(k = 1\)</span> and recompute the impulse response.</p></li>
+</ul>
+</section>
+<section id="id7">
+<h3>Exercise 1.<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<p>Consider a simple vehicle with a mass of 1300 kg and a frictional constant of proportionality of <span class="math notranslate nohighlight">\(k = 100\)</span>  N.s/m. Recall that the simple vehicle motion model has a transfer function:</p>
+<div class="math notranslate nohighlight">
+\[G(s) = \frac{X(s)}{U(s)} = \frac{1}{ms^2 + ks}\]</div>
+<p>Plot the impulse response of  for the first 100 seconds using MATLAB commands by</p>
+<ol class="arabic simple">
+<li><p>creating the transfer function using the <code class="docutils literal notranslate"><span class="pre">tf</span></code> function</p></li>
+<li><p>plotting the impulse response using <code class="docutils literal notranslate"><span class="pre">impulse</span></code> function<a class="footnote-reference brackets" href="#solutions" id="id8">2</a></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id9">
+<h3>Reflect.<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<p><img alt="reflect" src="../../_images/reflect1.png" /></p>
+<ul class="simple">
+<li><p>How does the impulse response compare to your prediction for the impulse response?</p></li>
+<li><p>Physically, what does the long-term behavior of the impulse response represent?</p></li>
+<li><p>Define the velocity transfer function <span class="math notranslate nohighlight">\(\displaystyle{H(s) = \frac{1}{ms + k}}\)</span> and compute the impulse response in the space below. Physically, what does the limiting behavior represent?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id10">
+<h3>Exercise 1<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<p>Consider a simple vehicle with a mass of 1300 kg and a frictional constant of proportionality of <span class="math notranslate nohighlight">\(k = 100\)</span> N⋅s/m. Recall that the simple vehicle motion model has a transfer function:</p>
+<div class="math notranslate nohighlight">
+\[G(s) = \frac{X(s)}{U(s)} = \frac{1}{ms^2 + ks}\]</div>
+<p>Define the transfer function <code class="docutils literal notranslate"><span class="pre">G</span></code> in MATLAB using the <code class="docutils literal notranslate"><span class="pre">tf</span></code> function and then plot the step response for the first 30 seconds using the <code class="docutils literal notranslate"><span class="pre">step</span></code> function. The step function has the syntax</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">step</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span><span class="n">Tfinal</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">sys</span></code> is a dynamic system (here, that’s the transfer function <code class="docutils literal notranslate"><span class="pre">G</span></code>) and <code class="docutils literal notranslate"><span class="pre">Tfinal</span></code> is the time to stop the simulation<a class="footnote-reference brackets" href="#solutions" id="id11">2</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id12">
+<h3>Reflect.<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
+<p><img alt="reflect" src="../../_images/reflect1.png" /></p>
+<ul class="simple">
+<li><p>How does the step response compare to your prediction?</p></li>
+<li><p>What physical action does the initial transient behavior reflect?</p></li>
+<li><p>What does the long-term behavior of the step response reflect?</p></li>
+</ul>
+</section>
+</section>
+<section id="step-response">
+<h2>Step response<a class="headerlink" href="#step-response" title="Permalink to this heading">#</a></h2>
+<p>The output generated from a step input is known as the step response.</p>
+<p><img alt="Response of a system to a step input" src="../../_images/step_resp.png" />
+Response of a system to a step input.</p>
+<p>The step response is plotted in the time domain. Think of the step response as the system’s response to a sustained constant forcing. In the vehicle model, this would result from continuously running the motor (with the assumption that it produced a constant traction force output).</p>
+<section id="id13">
+<h3>Reflect.<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<p><img alt="reflect" src="../../_images/reflect1.png" /></p>
+<p>Consider the simple vehicle motion model. The input function is the traction force <span class="math notranslate nohighlight">\(u(t) = F_\mathrm{traction}(t)\)</span>.</p>
+<p><img alt="A model of a simple vehicle" src="../../_images/vehicle_model.png" /></p>
+<ul class="simple">
+<li><p>Try drawing a plot of the step response of the position transfer function <span class="math notranslate nohighlight">\(G(s) = X(s)/F(s)\)</span> in the time domain.</p></li>
+<li><p>Try drawing a plot of the step response of the velocity transfer function <span class="math notranslate nohighlight">\(H(s) = V(s)/F(s)\)</span> in the time domain.</p></li>
+</ul>
+</section>
+<section id="exercise-2">
+<h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h3>
+<p>Consider a simple vehicle with a mass of 1300 kg and a frictional constant of proportionality of <span class="math notranslate nohighlight">\(k = 100\)</span> N.s/m. Recall that the simple vehicle motion model has a transfer function:</p>
+<div class="math notranslate nohighlight">
+\[G(s) = \frac{X(s)}{F(s)} = \frac{1}{ms^2 + ks}\]</div>
+<p>Define the transfer function <code class="docutils literal notranslate"><span class="pre">G</span></code> in MATLAB using the <code class="docutils literal notranslate"><span class="pre">tf</span></code> function and then plot the step response for the first 30 seconds using the <code class="docutils literal notranslate"><span class="pre">step</span></code> function. The step function has the syntax</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">step</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span><span class="n">Tfinal</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">sys</span></code> is a dynamic system (here, that’s the transfer function <code class="docutils literal notranslate"><span class="pre">G</span></code>) and <code class="docutils literal notranslate"><span class="pre">Tfinal</span></code> is the time to stop the simulation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id14">
+<h3>Reflect.<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
+<p><img alt="reflect" src="../../_images/reflect1.png" /></p>
+<ul class="simple">
+<li><p>How does the step response compare to your prediction?</p></li>
+<li><p>What physical action does the initial transient behavior reflect?</p></li>
+<li><p>What does the long-term behavior of the step response reflect?</p></li>
+</ul>
+</section>
+<section id="exercise-3">
+<h3>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this heading">#</a></h3>
+<p>Consider the same simple vehicle with a mass of 1300 kg and a frictional constant of proportionality of <span class="math notranslate nohighlight">\(k = 100\)</span> N.s/m. This time, however, analyze the vehicle’s velocity  <span class="math notranslate nohighlight">\(v(t)\)</span> instead of its position <span class="math notranslate nohighlight">\(x(t)\)</span>. Recall that the velocity transfer function is</p>
+<div class="math notranslate nohighlight">
+\[H(s) = \frac{1}{ms + k}\]</div>
+<p>Compute the step response of the velocity transfer function and use it to determine the vehicle’s maximum velocity undergoing a unit step forcing.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="reflection">
+<h3>Reflection<a class="headerlink" href="#reflection" title="Permalink to this heading">#</a></h3>
+<p><img alt="reflect" src="../../_images/reflect1.png" /></p>
+<ul class="simple">
+<li><p>As you probably noticed, the vehicle’s maximum speed under the unit step forcing is only 0.01 m/s, which is about 0.022 mph. That happens because the unit step only applies a traction force of 1 N, which is not nearly enough for a 1300 kg vehicle.</p></li>
+<li><p>To create a more realistic response, you can add gain to the system by multiplying the transfer function by a constant and then recomputing the step response. What value of the gain constant will produce a maximum speed of 50 m/s (or 112 mph)?</p></li>
+<li><p>Compute the step response of H*gain in the space below, where gain is the gain constant that will produce a maximum velocity of 50m/s.</p></li>
+<li><p>How long does it take for the vehicle to accelerate from 0 to 60 mph (0 to 26.8m/s)?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="analytic-computation-of-the-impulse-and-step-responses">
+<h2>Analytic computation of the impulse and step responses<a class="headerlink" href="#analytic-computation-of-the-impulse-and-step-responses" title="Permalink to this heading">#</a></h2>
+<p>At this point, you be wondering: “how are the impulse and step responses calculated?”</p>
+<p>In MATLAB, they are numerically estimated.</p>
+<p>In many common cases, it is also possible to derive the response analytically.</p>
+<p>While in practice solving for the analytic response is typically unnecessary, it is a valuable exercise to develop further intuition.</p>
+<p>To analytically solve for the impulse or step response:</p>
+<ol class="arabic simple">
+<li><p>take the Laplace transform of the input function</p></li>
+<li><p>solve for <span class="math notranslate nohighlight">\(X(s)\)</span></p></li>
+<li><p>back-transform <span class="math notranslate nohighlight">\(X(s)\)</span> to obtain the time-domain response <span class="math notranslate nohighlight">\(x(t)\)</span></p></li>
+</ol>
+<p>If you don’t want to perform Step 1 by hand, you can simply use a table or the <code class="docutils literal notranslate"><span class="pre">laplace</span></code> function. You can complete Step 3 using a transform table or the <a class="reference external" href="https://www.mathworks.com/help/symbolic/ilaplace.html"><code class="docutils literal notranslate"><span class="pre">ilaplace</span></code></a> function from the Symbolic Math Toolbox.</p>
+<section id="id15">
+<h3>Example.<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h3>
+<section id="a">
+<h4>(a)<a class="headerlink" href="#a" title="Permalink to this heading">#</a></h4>
+<p>Compute the analytic impulse response for the simple vehicle model using its position transfer function.</p>
+</section>
+<section id="b">
+<h4>(b)<a class="headerlink" href="#b" title="Permalink to this heading">#</a></h4>
+<p>Set <span class="math notranslate nohighlight">\(m = 1300\)</span> and <span class="math notranslate nohighlight">\(k = 100\)</span>. Then plot the analytic impulse result and compare it to the solution found using the <code class="docutils literal notranslate"><span class="pre">impulse</span></code> function.</p>
+</section>
+</section>
+<section id="id16">
+<h3>Solution.<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h3>
+<section id="id17">
+<h4>(a)<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h4>
+<p>Recall that the position transfer function for the simple vehicle model was:</p>
+<div class="math notranslate nohighlight">
+\[G(s) = \frac{X(s)}{U(s)} = \frac{1}{ms^2 + ks}\]</div>
+<p>Start by computing the Laplace transform of the input forcing function <span class="math notranslate nohighlight">\(\delta(t)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[U(s) = \int_{0}^\infty \delta(t) e^{-st} dt = e^{-st}|_{t = 0} = 1\]</div>
+<p>This implies that</p>
+<div class="math notranslate nohighlight">
+\[X(s)= \frac{1}{ms^2 + ks}\]</div>
+<p>At this point, you can refer to a table or use the <code class="docutils literal notranslate"><span class="pre">ilaplace</span></code> function to evaluate the inverse Laplace transform.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">m</span><span class="w"> </span><span class="s">k</span><span class="w"> </span><span class="s">positive</span>
+<span class="n">syms</span><span class="w"> </span><span class="s">s</span><span class="w"> </span><span class="s">x</span>
+<span class="n">X</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">m</span><span class="o">*</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k</span><span class="o">*</span><span class="n">s</span><span class="p">)</span>
+<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ilaplace</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X =
+ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/(m*s^2 + k*s)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/k - exp(-(k*t)/m)/k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id18">
+<h4>(b)<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h4>
+<p>First define the transfer function using <code class="docutils literal notranslate"><span class="pre">tf</span></code> and then compute the impulse response.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1300</span><span class="p">;</span>
+<span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<span class="n">Xs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="p">],[</span><span class="n">m</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="mi">0</span><span class="p">]);</span>
+<span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">t</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">impulse</span><span class="p">(</span><span class="n">Xs</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now compute the analytic solution on the same interval and plot the comparison.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">xAnalytic</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="o">*</span><span class="n">t</span><span class="o">/</span><span class="n">m</span><span class="p">)</span><span class="o">/</span><span class="n">k</span><span class="p">;</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">xAnalytic</span><span class="p">,</span><span class="s">&#39;--&#39;</span><span class="p">)</span>
+<span class="nb">grid</span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&quot;result of impulse&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;analytic&quot;</span><span class="p">)</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&quot;t [s]&quot;</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&quot;x [m]&quot;</span><span class="p">)</span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;Step response&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/91ec08f2ab20b1df3193ac3a5bf2694e878fac971af93c048864a897794f5aad.png" src="../../_images/91ec08f2ab20b1df3193ac3a5bf2694e878fac971af93c048864a897794f5aad.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="homework-exercise-1">
+<h3>Homework Exercise 1<a class="headerlink" href="#homework-exercise-1" title="Permalink to this heading">#</a></h3>
+<p>Complete this exercise for homework using the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">TransferFunctionBasics.mlx</span></code> from the curriculum module <a class="reference external" href="https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems">Transfer Function Analysis of Dynamic Systems</a>.</p>
+<section id="id19">
+<h4>4(a)<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h4>
+<p>Compute the analytic <strong>step</strong> response for the vehicle position transfer function. Recall that the position transfer function for the simple vehicle model was:</p>
+<div class="math notranslate nohighlight">
+\[G(s) = \frac{X(s)}{U(s)} = \frac{1}{ms^2 + ks}\]</div>
+<p>Store the output in symbolic variable <code class="docutils literal notranslate"><span class="pre">x</span></code> using the pre-defined symbolic variables.</p>
+</section>
+<section id="id20">
+<h4>4(b)<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h4>
+<p>Set <span class="math notranslate nohighlight">\(m = 1300\)</span> and <span class="math notranslate nohighlight">\(k = 100\)</span>. Then plot the analytic step result you computed in (a). Also, plot the step response calculated using the <code class="docutils literal notranslate"><span class="pre">step</span></code> function.</p>
+</section>
+</section>
+</section>
+<section id="forced-response">
+<h2>Forced response<a class="headerlink" href="#forced-response" title="Permalink to this heading">#</a></h2>
+<p>It is also possible to compute the response of a system to an arbitrary input function .</p>
+<p><img alt="Forced response of a system" src="../../_images/forced_response.png" />
+Response of a system to a square wave.</p>
+<p>Analytically, this can be accomplished by computing <span class="math notranslate nohighlight">\(U(s)\)</span> and subsequently finding the inverse Laplace transform of <span class="math notranslate nohighlight">\(X(s)\)</span>. In cases where the analytic expression does not exist, you can estimate the response numerically using the <a class="reference external" href="https://www.mathworks.com/help/control/ref/lti.lsim.html"><code class="docutils literal notranslate"><span class="pre">lsim</span></code></a> function.</p>
+<section id="homework-activity">
+<h3>Homework Activity.<a class="headerlink" href="#homework-activity" title="Permalink to this heading">#</a></h3>
+<p><img alt="activity" src="../../_images/activity.png" /></p>
+<p>As this activity contains interactive elements, you should complete it in the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">TransferFunctionBasics.mlx</span></code>. Here we present one example plot and have documented the activity so you can do for homework.</p>
+<p>In this activity, you will analyze the response of the mass-spring-damper system</p>
+<div class="math notranslate nohighlight">
+\[G(s) = \frac{X(s)}{U(s)} = \frac{1}{m s^2 + cs + k}\]</div>
+<p>The mass-spring-damper is assumed to start at rest and is driven by an input function <span class="math notranslate nohighlight">\(u(t)\)</span>.</p>
+<section id="example-response">
+<h4>Example response<a class="headerlink" href="#example-response" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span>
+<span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">freq</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.25</span><span class="p">;</span><span class="w"> </span><span class="c">% Frequency in Hz.</span>
+<span class="n">tfinal</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">30</span><span class="p">;</span><span class="w"> </span><span class="c">% Simulation duration. </span>
+<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">tfinal</span><span class="p">,</span><span class="mi">500</span><span class="p">);</span>
+<span class="n">u</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">freq</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">.^</span><span class="mi">2</span><span class="p">;</span>
+
+<span class="c">% Compute and plot the response</span>
+<span class="n">G</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="p">],[</span><span class="n">m</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="n">k</span><span class="p">]);</span><span class="w"> </span><span class="c">% The transfer function</span>
+<span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">t</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">lsim</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">t</span><span class="p">);</span><span class="w"> </span><span class="c">% Simulate the response using lsim</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/d2d9c4a1c57b2dee91ef9554fa14748d03affaf793c7e5dd5f1f9cc1bb889a50.png" src="../../_images/d2d9c4a1c57b2dee91ef9554fa14748d03affaf793c7e5dd5f1f9cc1bb889a50.png" />
+</div>
+</div>
+</section>
+<section id="part-1-familiarize-yourself-with-the-activity">
+<h4>Part 1. Familiarize yourself with the activity.<a class="headerlink" href="#part-1-familiarize-yourself-with-the-activity" title="Permalink to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>Adjust the input function u using the dropdown and observe the responses.</p></li>
+<li><p>Adjust the mass-spring-damper parameters and the input frequency to observe the changes to the response.</p></li>
+<li><p>Check the “animate” box to show an animation of the mass-spring-damper. You can turn this on or off during the remainder of the activity as you prefer.</p></li>
+</ol>
+</section>
+<section id="part-2-find-the-resonant-frequency">
+<h4>Part 2. Find the resonant frequency.<a class="headerlink" href="#part-2-find-the-resonant-frequency" title="Permalink to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>It is a well-known phenomenon that systems will become unstable if they are driven at their resonant frequency. Try extending the simulation time by increasing tfinal. Is the system being driven at the resonant frequency?</p></li>
+<li><p>You should notice that the transient response is characterized by two frequencies: the driving frequency and the mass-spring-damper’s natural frequency. Is the natural frequency of the oscillator larger or smaller than the driving (input) frequency?</p></li>
+<li><p>Adjust the input frequency so that it matches the natural frequency of the mass-spring-damper. Do you observe resonant oscillations?</p></li>
+<li><p>Set the damping to zero. If you are at (or very close to) the resonant frequency, you should observe that the response will grow without bound.</p></li>
+<li><p>Try driving the oscillator with a different input function. Does the function choice affect the resonant oscillations?</p></li>
+</ol>
+</section>
+</section>
+<section id="homework-exercise-2">
+<h3>Homework Exercise 2<a class="headerlink" href="#homework-exercise-2" title="Permalink to this heading">#</a></h3>
+<p><img alt="exercise" src="../../_images/write1.png" /></p>
+<p>In this exercise, you will compute the analytic response of the mass-spring-damper to a sine wave input function and compare the result to the numerical values computed by <code class="docutils literal notranslate"><span class="pre">lsim</span></code>. For this exercise, assume the mass-spring-damper parameters are <span class="math notranslate nohighlight">\(m = 1\)</span>, <span class="math notranslate nohighlight">\(c = 0\)</span>, and <span class="math notranslate nohighlight">\(k = 1\)</span>. The transfer function is therefore</p>
+<div class="math notranslate nohighlight">
+\[G(s) = \frac{X(s)}{U(s)} = \frac{1}{s^2 + 1}\]</div>
+<p>You can perform your analytic computations by hand or in MATLAB using the Symbolic Math Toolbox. When using symbolic math, make sure to declare your symbolic variables before using them. For example:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">f</span><span class="w"> </span><span class="s">real</span><span class="w">   </span><span class="s">%</span><span class="w"> </span><span class="s">Real</span><span class="w"> </span><span class="s">symbolic</span><span class="w"> </span><span class="s">variable</span><span class="w"> </span><span class="s">f</span>
+<span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">s</span><span class="w">      </span><span class="s">%</span><span class="w"> </span><span class="s">Symbolic</span><span class="w"> </span><span class="s">variables</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">and</span><span class="w"> </span><span class="s">s</span>
+</pre></div>
+</div>
+<p>Complete the exercise in the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">TransferFunctionBasics.mlx</span></code>.</p>
+<section id="id21">
+<h4>(a)<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h4>
+<p>Compute the Laplace transform of the input function:</p>
+<div class="math notranslate nohighlight">
+\[u(t) = \sin(2\pi f t)\]</div>
+<p>where  is a constant (the frequency in Hz).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id22">
+<h4>(b)<a class="headerlink" href="#id22" title="Permalink to this heading">#</a></h4>
+<p>Find the expression for the response in the Laplace domain: <span class="math notranslate nohighlight">\(X(s)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="c">
+<h4>(c)<a class="headerlink" href="#c" title="Permalink to this heading">#</a></h4>
+<p>Compute the inverse Laplace transform of <span class="math notranslate nohighlight">\(X(s)\)</span> to identify the time-domain response <span class="math notranslate nohighlight">\(x(t)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="d">
+<h4>(d)<a class="headerlink" href="#d" title="Permalink to this heading">#</a></h4>
+<p>Evaluate the analytic response for <span class="math notranslate nohighlight">\(f = 0.16\)</span> on the interval <span class="math notranslate nohighlight">\([0, 50]\)</span> and plot it.</p>
+<p><strong>Hint</strong>: If you computed  symbolically in MATLAB, you can convert it to a function handle using <a class="reference external" href="https://www.mathworks.com/help/symbolic/matlabfunction.html"><code class="docutils literal notranslate"><span class="pre">matlabFunction</span></code></a> and evaluate that instead of writing out the expression yourself. For example:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">xfunc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">matlabFunction</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">    </span><span class="c">% Create a function handle for a symbolic expression x</span>
+<span class="n">xeval</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">xfunc</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span><span class="n">t</span><span class="p">);</span><span class="w">       </span><span class="c">% Evaluate the function handle based on its input arguments</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>(e) Use the <a class="reference external" href="https://www.mathworks.com/help/control/ref/lti.lsim.html"><code class="docutils literal notranslate"><span class="pre">lsim</span></code></a> function to compute the same response and plot it together with the analytic response.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="further-exploration">
+<h2>Further exploration<a class="headerlink" href="#further-exploration" title="Permalink to this heading">#</a></h2>
+<p><img alt="explore" src="../../_images/navigation.png" /></p>
+<ul class="simple">
+<li><p>You can find more information about using transfer functions in MATLAB<a class="footnote-reference brackets" href="#eg243" id="id23">3</a> in the video: <a class="reference external" href="https://uk.mathworks.com/videos/transfer-functions-in-matlab-100912.html">Transfer Functions in MATLAB</a>.</p></li>
+<li><p>Want to learn more about mass-spring-damper systems? Check out the <a class="reference external" href="https://uk.mathworks.com/matlabcentral/fileexchange/94585-mass-spring-damper-systems?s_tid=FX_rc2_behav">Mass-Spring-Damper Systems courseware</a> module.</p></li>
+<li><p>Learn more about responses in the <a class="reference external" href="https://uk.mathworks.com/videos/control-systems-in-practice-part-9-the-step-response-1593067191882.html">MATLAB Tech Talk: Control Systems in Practice, Part 9: The Step Response</a><a class="footnote-reference brackets" href="#eg243" id="id24">3</a>.
+Want a little more of the theory? Check out Brian Douglas’ video: <a class="reference external" href="https://www.youtube.com/watch?v=RJleGwXorUk&amp;ab_channel=BrianDouglas">Control Systems Lectures - Transfer Functions</a><a class="footnote-reference brackets" href="#eg243" id="id25">3</a>.</p></li>
+</ul>
+</section>
+<section id="solutions-to-matlab-examples">
+<h2>Solutions to MATLAB examples<a class="headerlink" href="#solutions-to-matlab-examples" title="Permalink to this heading">#</a></h2>
+<section id="solution-to-exercise-1-impulse-response">
+<h3>Solution to Exercise 1: Impulse response<a class="headerlink" href="#solution-to-exercise-1-impulse-response" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1300</span><span class="p">;</span><span class="w">    </span><span class="c">% kg</span>
+<span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w">     </span><span class="c">% N.s/m</span>
+<span class="n">Tfinal</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="c">% seconds</span>
+<span class="n">num</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">den</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">];</span>
+<span class="n">G</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">den</span><span class="p">)</span>
+
+<span class="n">impulse</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="w"> </span><span class="n">Tfinal</span><span class="p">),</span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;x(t) [metres]&#39;</span><span class="p">),</span><span class="nb">grid</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>G =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ----------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1300 s^2 + 100 s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
+</pre></div>
+</div>
+<img alt="../../_images/1fe2cd4fbd46a43893c6d3c82d0bbc291c11bfd7fdac6f024bde4121053d35a8.png" src="../../_images/1fe2cd4fbd46a43893c6d3c82d0bbc291c11bfd7fdac6f024bde4121053d35a8.png" />
+</div>
+</div>
+<p>Repeat for velocity response</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">numV</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">denV</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">];</span>
+<span class="n">H</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">numV</span><span class="p">,</span><span class="n">denV</span><span class="p">)</span>
+
+<span class="n">impulse</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="w"> </span><span class="n">Tfinal</span><span class="p">),</span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;v(t) [metres/s]&#39;</span><span class="p">),</span><span class="nb">grid</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>H =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1300 s + 100
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
+</pre></div>
+</div>
+<img alt="../../_images/b4086f8d555fe0c02054918ab78b844fd424fc7994df3ac140c637e6e90a6301.png" src="../../_images/b4086f8d555fe0c02054918ab78b844fd424fc7994df3ac140c637e6e90a6301.png" />
+</div>
+</div>
+</section>
+<section id="solution-to-exercise-2-step-response">
+<h3>Solution to Exercise 2: Step response<a class="headerlink" href="#solution-to-exercise-2-step-response" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1300</span><span class="p">;</span><span class="w">    </span><span class="c">% kg</span>
+<span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w">     </span><span class="c">% N.s/m</span>
+<span class="n">Tfinal</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">30</span><span class="p">;</span><span class="w"> </span><span class="c">% seconds</span>
+
+<span class="n">num</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">den</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">];</span>
+<span class="n">G</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">den</span><span class="p">)</span>
+
+<span class="nb">step</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="w"> </span><span class="n">Tfinal</span><span class="p">),</span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;x(t) [metres]&#39;</span><span class="p">),</span><span class="nb">grid</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>G =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ----------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1300 s^2 + 100 s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
+</pre></div>
+</div>
+<img alt="../../_images/ea9089a29fd9d0c483c9f73d6401caf98fab55b789f62b15e8a0b799300baf5e.png" src="../../_images/ea9089a29fd9d0c483c9f73d6401caf98fab55b789f62b15e8a0b799300baf5e.png" />
+</div>
+</div>
+</section>
+<section id="solution-to-exercise-3-step-velocity-response">
+<h3>Solution to Exercise 3: Step velocity response<a class="headerlink" href="#solution-to-exercise-3-step-velocity-response" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">numV</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">denV</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">];</span>
+<span class="n">Tfinal</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<span class="n">H</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">numV</span><span class="p">,</span><span class="n">denV</span><span class="p">)</span>
+
+<span class="nb">step</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="w"> </span><span class="n">Tfinal</span><span class="p">),</span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;v(t) [m/s]&#39;</span><span class="p">),</span><span class="nb">grid</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>H =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1300 s + 100
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
+</pre></div>
+</div>
+<img alt="../../_images/64bfd69b649c4b69eb1ef6d843d3e814b2153aea276e057c15bb327c5144ff0e.png" src="../../_images/64bfd69b649c4b69eb1ef6d843d3e814b2153aea276e057c15bb327c5144ff0e.png" />
+</div>
+</div>
+<p>The extra gain needed to reach 50 m/s would be 5000. In this case an acceleration from 0-60 mph is achieved in about 10 seconds.</p>
+<p>Check using</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">gain</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5000</span><span class="p">;</span>
+<span class="nb">step</span><span class="p">(</span><span class="n">gain</span><span class="o">*</span><span class="n">H</span><span class="p">,</span><span class="w"> </span><span class="n">Tfinal</span><span class="p">),</span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;v(t) [m/s]&#39;</span><span class="p">),</span><span class="nb">grid</span>
+</pre></div>
+</div>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="refer-to-livescript"><span class="brackets"><a class="fn-backref" href="#id5">1</a></span></dt>
+<dd><p>The MATLAB live script <code class="docutils literal notranslate"><span class="pre">TransferFunctionBasics.mlx</span></code> has sliders to make the interactive adjustment of the parameters <code class="docutils literal notranslate"><span class="pre">m</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">k</span></code> possible.</p>
+</dd>
+<dt class="label" id="solutions"><span class="brackets">2</span><span class="fn-backref">(<a href="#id8">1</a>,<a href="#id11">2</a>)</span></dt>
+<dd><p>MATLAB solutions are provided in the online notes.</p>
+</dd>
+<dt class="label" id="eg243"><span class="brackets">3</span><span class="fn-backref">(<a href="#id23">1</a>,<a href="#id24">2</a>,<a href="#id25">3</a>)</span></dt>
+<dd><p>These resources are useful for those of you also studying control systems this semester.</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "matlab"
+        },
+        kernelOptions: {
+            name: "matlab",
+            path: "./transfer_functions/2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'matlab'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../1/concepts.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Unit 2.1 Laplace transforms and LTI systems</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../fourier_series/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unit 4: Fourier Series</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">Learning Outcomes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electric-vehicles-the-wave-of-the-future">Electric vehicles: the wave of the future?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transfer-function-definition">Transfer Function Definition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electric-vehicle-dynamic-system">Electric vehicle dynamic system</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transfer-function-representation-of-simple-vehicle-motion">Transfer function representation of simple vehicle motion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Example.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-differential-equation">(a) Differential equation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#b-transfer-function">(b) Transfer function</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impulse-response">Impulse response</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflect">Reflect.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Solution.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Reflect.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Exercise 1.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Reflect.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Reflect.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-response">Step response</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Reflect.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Reflect.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">Reflection</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analytic-computation-of-the-impulse-and-step-responses">Analytic computation of the impulse and step responses</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Example.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a">(a)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#b">(b)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Solution.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">(a)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">(b)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-exercise-1">Homework Exercise 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">4(a)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">4(b)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forced-response">Forced response</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-activity">Homework Activity.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-response">Example response</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-familiarize-yourself-with-the-activity">Part 1. Familiarize yourself with the activity.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-find-the-resonant-frequency">Part 2. Find the resonant frequency.</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-exercise-2">Homework Exercise 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">(a)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">(b)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c">(c)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#d">(d)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-exploration">Further exploration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions-to-matlab-examples">Solutions to MATLAB examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-to-exercise-1-impulse-response">Solution to Exercise 1: Impulse response</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-to-exercise-2-step-response">Solution to Exercise 2: Step response</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-to-exercise-3-step-velocity-response">Solution to Exercise 3: Step velocity response</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Chris P. Jobling
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Swansea University (2023-2024).
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  This page was created by 
+<a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
+  Dr Chris P. Jobling
+</a> 
+for 
+<a href="https://www.swansea.ac.uk">
+  Swansea University
+</a>.
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
