@@ -169,7 +169,7 @@ In this unit, we'll focus on modeling the motion of the vehicle.
 
 In a straightforward model, an EV (and indeed, any vehicle) can be modeled as a simple mass with two forces acting on it: a traction force and a frictional force. The traction force results from the motor applying torque to the wheels.
 
-![A simple vehicle model](images/vehical_model.png)
+![A simple vehicle model](images/vehicle_model.png)
 A simple vehicle model
 
 +++ {"slideshow": {"slide_type": "subslide"}}
