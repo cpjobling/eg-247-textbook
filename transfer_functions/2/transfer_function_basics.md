@@ -75,7 +75,7 @@ the ratio of the Laplace transform of the output $Y(s) = \mathcal{L}\{y(t)\}$ to
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-### Example. 
+### Example 1
 
 ![example](images/write.png)
 
@@ -86,7 +86,7 @@ Mass-spring-damper diagram
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Solution. 
+### Solution to Example 1 
 
 The equation of motion for a mass-spring-damper is
     
@@ -112,7 +112,7 @@ $$G(s) = \frac{X(s)}{U(s)} = \frac{1}{m s^2 + cs + k}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Exercise 1. 
+### Exercise 1 
 
 ![example](images/write.png)
 
@@ -124,12 +124,16 @@ where $g$ is acceleration due to gravity and $l$ is the length of the pendulum.
 
 Record your answer below in variable `pendulumTF` in terms of the symbolic variables `g`, `l`, and `s`.
 
-+++ {"slideshow": {"slide_type": "subslide"}}
-
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
 format compact % remove extra white space
 syms g l s 
 % Record your answer in pendulumTF
 pendulumTF = NaN;
+```
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -151,7 +155,7 @@ There are two domains represented in this diagram: the electrical and physical d
 * The AC power source (120/240V) is converted to a high voltage DC source (200-800V) used to charge the battery pack.
 * The battery's high voltage DC (200-800V) is converted to a low voltage (12V or 48V) by a buck converter for use by low voltage systems.
 
-In this unit, you will investigate several paradigmatic components present (or like those present) in EVs. 
+In this unit, you will investigate several paradigmatic components present (or like those present) in EVs.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -170,13 +174,13 @@ A simple vehicle model
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Example. 
+### Example 2 
 
 (a) Derive the equation of motion for the simple vehicle model and (b) compute the transfer function of the displacement $x(t)$ using the traction force as the input function $u(t)$.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Solution. 
+### Solution to Example 2
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -219,7 +223,7 @@ $$G(s) = \frac{X(s)}{U(s)} = \frac{1}{ms^2 + ks}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Exercise. 
+### Exercise 2
 
 It may be the case that you want to analyze the velocity $v(t)=\dot{x}(t)$ rather than the position $x$. Rewrite the equation of motion 
     
@@ -259,7 +263,7 @@ Think of the unit impulse as giving the system a (very) quick shove at time $t =
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-###  Reflect. 
+###  Reflect
 
 ![reflect](images/reflect.png)
 
@@ -272,7 +276,7 @@ Consider the simple vehicle motion model. The input function is the traction for
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Example
+### Example 3
 
 Plot the impulse response of a mass-spring-damper with zero initial conditions and parameters $m=1$, $c=0.1$, and $k=0.5$. 
       
@@ -287,7 +291,7 @@ $$G(s) = \frac{X(s)}{U(s)} = \frac{1}{m s^2 + cs + k}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Solution.
+### Solution to Example 3
 
 You can compute the impulse response in MATLAB by defining a transfer function using [`tf`](https://www.mathworks.com/help/control/ref/tf.html) and then evaluating its response using the [`impulse`](https://www.mathworks.com/help/control/ref/lti.impulse.html) function.
 
@@ -350,7 +354,7 @@ ylabel("x [m]")
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-### Reflect. 
+### Reflect
 
 ![reflect](images/reflect.png)
 
@@ -361,7 +365,7 @@ ylabel("x [m]")
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Exercise 1. 
+### Exercise 3
 
 Consider a simple vehicle with a mass of 1300 kg and a frictional constant of proportionality of $k = 100$  N.s/m. Recall that the simple vehicle motion model has a transfer function:
 
@@ -379,12 +383,11 @@ slideshow:
   slide_type: notes
 ---
 % Write your code here
-
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-### Reflect. 
+### Reflect
 
 ![reflect](images/reflect.png)
 
@@ -398,12 +401,11 @@ slideshow:
   slide_type: notes
 ---
 % Write your code here
-
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-### Exercise 1
+### Exercise 4
 
 Consider a simple vehicle with a mass of 1300 kg and a frictional constant of proportionality of $k = 100$ N⋅s/m. Recall that the simple vehicle motion model has a transfer function:
 
@@ -429,7 +431,7 @@ slideshow:
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-### Reflect. 
+### Reflect 
 
 ![reflect](images/reflect.png)
 
@@ -450,7 +452,7 @@ The step response is plotted in the time domain. Think of the step response as t
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Reflect. 
+### Reflect 
 
 ![reflect](images/reflect.png)
 
@@ -464,12 +466,11 @@ Consider the simple vehicle motion model. The input function is the traction for
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Exercise 2
+### Exercise 5
 
 Consider a simple vehicle with a mass of 1300 kg and a frictional constant of proportionality of $k = 100$ N.s/m. Recall that the simple vehicle motion model has a transfer function:
 
 $$G(s) = \frac{X(s)}{F(s)} = \frac{1}{ms^2 + ks}$$
-    
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -487,12 +488,11 @@ slideshow:
   slide_type: slide
 ---
 % Write your code here
-
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-###  Reflect. 
+###  Reflect 
 
 ![reflect](images/reflect.png)
 
@@ -502,7 +502,7 @@ slideshow:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-### Exercise 3
+### Exercise 6
 
 Consider the same simple vehicle with a mass of 1300 kg and a frictional constant of proportionality of $k = 100$ N.s/m. This time, however, analyze the vehicle's velocity  $v(t)$ instead of its position $x(t)$. Recall that the velocity transfer function is
     
@@ -516,7 +516,6 @@ slideshow:
   slide_type: slide
 ---
 % Write your code here
-
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -536,7 +535,6 @@ slideshow:
   slide_type: slide
 ---
 % Write your code here
-
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -570,7 +568,7 @@ If you don't want to perform Step 1 by hand, you can simply use a table or the `
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Example. 
+### Example 4
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -584,7 +582,7 @@ Set $m = 1300$ and $k = 100$. Then plot the analytic impulse result and compare 
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Solution. 
+### Solution to Example 4
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -691,7 +689,7 @@ Analytically, this can be accomplished by computing $U(s)$ and subsequently find
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Homework Activity.
+### Homework Activity
 
 ![activity](images/activity.png)
 
@@ -763,7 +761,7 @@ syms t s      % Symbolic variables t and s
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-Complete the exercise in the MATLAB LiveScript `TransferFunctionBasics.mlx`. 
+Complete the exercise in the MATLAB LiveScript `TransferFunctionBasics.mlx`.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -773,7 +771,7 @@ Compute the Laplace transform of the input function:
 
 $$u(t) = \sin(2\pi f t)$$
 
-where  is a constant (the frequency in Hz). 
+where  is a constant (the frequency in Hz).
 
 ```{code-cell}
 ---
@@ -781,7 +779,6 @@ slideshow:
   slide_type: notes
 ---
 % Write your code here
-
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -796,7 +793,6 @@ slideshow:
   slide_type: notes
 ---
 % Write your code here
-
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -811,7 +807,6 @@ slideshow:
   slide_type: notes
 ---
 % Write your code here
-
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -835,7 +830,6 @@ slideshow:
   slide_type: notes
 ---
 % Write your code here
-
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -848,7 +842,6 @@ slideshow:
   slide_type: notes
 ---
 % Write your code here
-
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -872,7 +865,7 @@ Want a little more of the theory? Check out Brian Douglas' video: [Control Syste
 
 ## Solutions to MATLAB examples
 
-### Solution to Exercise 1: Impulse response
+### Solution to Exercise 3: Impulse response
 
 ```{code-cell}
 ---
@@ -907,7 +900,7 @@ impulse(H, Tfinal),ylabel('v(t) [metres/s]'),grid
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-### Solution to Exercise 2: Step response
+### Solution to Exercise 4: Step response
 
 ```{code-cell}
 ---
@@ -927,7 +920,7 @@ step(G, Tfinal),ylabel('x(t) [metres]'),grid
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-### Solution to Exercise 3: Step velocity response
+### Solution to Exercise 5: Step velocity response
 
 ```{code-cell}
 ---
