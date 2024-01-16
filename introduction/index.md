@@ -14,7 +14,7 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# Unit 1: Introducing Signals and Systems
+# Unit 1: Introducing Digital Signal Processing
 
 +++ {"slideshow": {"slide_type": "slide"}}
 

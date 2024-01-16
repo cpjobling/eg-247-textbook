@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.4
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -887,6 +887,6 @@ What do you think of Pingo so far? Please give a one word or short sentence answ
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-### Answers to Exercise 2
+### Answer to Exercise 2
 
 For the waveform given, $f_0 = 2$ Hz so the sampling frequency is $f_s = 20\times 2 = 40$ Hz. The sampling period will be $t_s = 1/f_s = 1/40 = 0.025$ s [$25$ ms]. The waveform shown is 1 second so $N = 1/t_s = 40$.

@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.4
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -14,9 +14,9 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# Worksheet 9
+# Worksheet 2
 
-## To accompany Unit 4.1 Trigonometric Fourier Series
+## To accompany Unit 3.1 Trigonometric Fourier Series
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -282,8 +282,7 @@ As an example let's take a square wave with amplitude $\pm A$ and period $T$.
 
 ### Solution
 
-Solution: See [square_ftrig.mlx](https://cpjobling.github.io/eg-247-t
-extbook/fourier_series/matlab/square_ftrig.mlx). Script confirms that:
+Solution: See [square_ftrig.mlx](https://cpjobling.github.io/eg-247-textbook/fourier_series/matlab/square_ftrig.mlx). Script confirms that:
 
 * $a_0 = 0$
 * $a_i = 0$: function is odd
