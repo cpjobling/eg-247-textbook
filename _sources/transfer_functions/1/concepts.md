@@ -30,11 +30,13 @@ In this unit, students will...
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
+:::{note}
 This unit is based on the MATLAB LiveScript `ConceptReview.mlx` from the curriculum module [Transfer Function Analysis of Dynamic Systems](https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems). 
 
 Some of the examples rely on interactive features of MATLAB that are not readily reproduced in these notes. To make use of these facilities, you are advised to access the script directly from the project in MATLAB online.
 
 These materials © Copyright 2023 The MathWorks™, Inc. (See {ref}`mathworks_license`).
+:::
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -578,7 +580,6 @@ In this exercise, you will solve for the dynamics of the simple pendulum using t
 Draw a free-body diagram for the simple pendulum shown above and derive the equation of motion for a pendulum with length $l = 0.5$ m and a gravitational constant of 9.8 m/s. Linearize the equation near $\theta = 0$ and show that it is equivalent to
 
 $$\ddot \theta + 19.6 \theta = 0$$
-      
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -615,7 +616,7 @@ Linear time-invariant (LTI) systems are characterized by the two properties stat
 
 ![Block diagram of a system](images/system.png)
 
-Consider an operator $g$ that maps an input $u(t)$ to an output $y(t)$. 
+Consider an operator $g$ that maps an input $u(t)$ to an output $y(t)$.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 

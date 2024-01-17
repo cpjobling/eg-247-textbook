@@ -64,6 +64,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'transfer_functions/3/pole_zero_analysis';</script>
     <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/transfer_functions/3/pole_zero_analysis.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -468,7 +470,100 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">Learning Outcomes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transfer-function-representation-of-a-dc-motor">Transfer function representation of a DC motor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transfer-function-representation-of-a-dc-motor">Transfer function representation of a DC motor</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-dc-motor-differential-equations">Derivation of the DC motor differential equations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a">1(a)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pro-tip">Pro-tip</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#b">1(b)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c">1(c)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#d">1(d)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pole-analysis">Pole analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stability">Stability</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-1">Activity 1</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reflect">Reflect.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-exercise-1">Homework Exercise 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-exercise-1-a">Homework Exercise 1(a)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-exercise-1-b">Homework Exercise 1(b)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-exercise-1-c">Homework Exercise 1(c)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Reflect.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-frequency">Natural frequency</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-2">Activity 2</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Reflect</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-a">Exercise 2(a)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-b">Exercise 2(b)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Reflect</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-a-second-order-system">Analysis of a second-order system</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Pole analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-frequency-omega-n">Natural frequency <span class="math notranslate nohighlight">\(\omega_n\)</span></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#damping-ratio-zeta">Damping ratio <span class="math notranslate nohighlight">\(\zeta\)</span></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#gain-coefficient-k">Gain coefficient <span class="math notranslate nohighlight">\(K\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-response">Natural response</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-3">Activity 3</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Reflect.</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-exercise-2-mass-spring-damper-analysis">Homework Exercise 2: Mass-spring-damper analysis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-exercise-2-a">Homework Exercise 2(a)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-exercise-2-b">Homework Exercise 2(b)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-exercise-2-c">Homework Exercise 2(c)</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Reflect.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zero-analysis">Zero analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-4">Activity 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Reflect.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-5">Activity 5</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Reflect</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-exercise-3">Homework Exercise 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-exercise-3-a">Homework Exercise 3(a)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-exercise-3-b">Homework Exercise 3(b)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-exercise-3-c">Homework Exercise 3(c)</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Reflect.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-exploration">Further exploration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#answers-to-selected-exercises">Answers to Selected Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions-to-exercise-1">Solutions to Exercise 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-a">Exercise 1(a)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-b">Exercise 1(b)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-c">Exercise 1(c)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-d">Exercise 1(d)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions-to-exercise-2">Solutions to Exercise 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Exercise 2(a)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Exercise 2(a)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes">Footnotes</a></li>
 </ul>
             </nav>
         </div>
@@ -489,454 +584,715 @@ document.write(`
 <li><p>Describe how the transfer function of a DC motor is derived</p></li>
 <li><p>Identify the poles and zeros of a transfer function</p></li>
 <li><p>Assess the stability of an LTI system based on the transfer function poles</p></li>
+</ul>
+<ul class="simple">
 <li><p>Relate the position of poles in the s-plane to the damping and natural frequency of a system</p></li>
 <li><p>Explain how poles of a second-order system relate to its dynamics</p></li>
 <li><p>Examine how transfer function zeros affect the dynamics of a system</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>This unit is based on the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">PoleZeroAnalysis.mlx</span></code> from the curriculum module <a class="reference external" href="https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems">Transfer Function Analysis of Dynamic Systems</a>.</p>
 <p>Some of the examples rely on interactive features of MATLAB that are not readily reproduced in these notes. To make use of these facilities, you are advised to access the script directly from the project in MATLAB online.</p>
 <p>These materials © Copyright 2023 The MathWorks™, Inc. (See <a class="reference internal" href="../1/LICENSE.html#mathworks-license"><span class="std std-ref">MathWorks License</span></a>).</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Lecturer: set up the TransferFunctions project for in class execution of exercise tests and activities.</span>
+
+<span class="c">% Setup MATLAB to use the PoleZeroAnalysis.mlx LiveScript and the polesApp.mlapp app in class.</span>
+<span class="c">% I am assuming that this is on the MATLAB Drive</span>
+
+<span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="w"> </span>
+<span class="c">% Change this to local set up where this Jupyter book is run</span>
+<span class="nb">cd</span><span class="w"> </span><span class="s">&#39;/Users/eechris/MATLAB-Drive/Repositories/Transfer-Function-Analysis-of-Dynamic-Systems&#39;</span>
+<span class="nb">open</span><span class="p">(</span><span class="s">&#39;TransferFunctions.prj&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="transfer-function-representation-of-a-dc-motor">
 <h2>Transfer function representation of a DC motor<a class="headerlink" href="#transfer-function-representation-of-a-dc-motor" title="Permalink to this heading">#</a></h2>
 <p>Another essential electric vehicle (EV) component is the DC motor.
-engineFocus.png
-Simplified EV schematic
-The purpose of the DC motor is to convert electrical energy to mechanical. The mechanical energy is manifested as a torque on the drive shaft. This torque is converted to a traction force by the wheels, which causes the vehicle to move.
-EVSimpleSystemMotorHighlight.png
-The DC motor bridges the electrical and physical domains.
-A DC motor works by conducting a current through an armature that can rotate freely. The fixed brushes transmit the current to the rotating commutators. The current flowing through the armature passes through a magnetic field generated by the stator magnets, resulting in a Lorentz force in the perpendicular direction (\mathbf{F} = i\mathbf{\ell} \times \mathbf{B}, where \mathbf{\ell} points in the wire direction). The two sides of the armature each produce a force, resulting in a net torque on the rotor T. If sufficient torque is applied, the shaft rotates, changing the angular position θ.
-motorDiagram.png
-DC motor schematic. A net torque T is generated on the armature by Lorentz forces. In the electrical domain, the motor is represented by a series of three circuit elements.
-Derivation of the DC motor differential equations
-Under typical operating conditions, the torque generated by a DC motor is directly proportional to the current passing through it:
-T = k_mi
-where k_m is a proportionality constant determined by the characteristics of the specific motor. This relationship fails for large values of i.
-When the armature rotates, it generates a back electromotive force (back EMF) that opposes the applied voltage. In the circuit diagram, this is represented by a motor symbol. The voltage drop due to the back EMF, denoted e, is proportional to the rotational velocity of the armature:
-e =k_e \dot{\theta}
-where k_e is a constant of proportionality. To derive the relationship between the current i and the motor shaft angular position θ, you can apply Kirchhoff’s voltage law and Newton’s second law in terms of torques acting on the motor shaft. Kirchhoff’s voltage law implies that the sum of the voltage drops across the circuit must equal the applied voltage:
-iR + L \frac{di}{dt} + k_e \dot{\theta} = v         (1)
-where v is the electric potential applied to the motor. In the absence of other applied torques, the equation of motion can be derived by balancing the inertia of the motor shaft (J \ddot{\theta}) with the applied torque (T) and frictional resistance (B \dot{\theta}).
+<img alt="Simplified EV schematic" src="../../_images/engineFocus.png" />
+Simplified EV schematic</p>
+<p>The purpose of the DC motor is to convert electrical energy to mechanical. The mechanical energy is manifested as a torque on the drive shaft. This torque is converted to a traction force by the wheels, which causes the vehicle to move.</p>
+<p><img alt="Motor highlighted in a simple EV systemt" src="../../_images/EVSimpleSystemMotorHighlight.png" />
+The DC motor bridges the electrical and physical domains.</p>
+<p>A DC motor works by conducting a current through an armature that can rotate freely. The fixed brushes transmit the current to the rotating commutators. The current flowing through the armature passes through a magnetic field generated by the stator magnets, resulting in a Lorentz force in the perpendicular direction (<span class="math notranslate nohighlight">\(\mathbf{F} = i\mathbf{\ell} \times \mathbf{B}\)</span>, where <span class="math notranslate nohighlight">\(\mathbf{\ell}\)</span> points in the wire direction). The two sides of the armature each produce a force, resulting in a net torque on the rotor <span class="math notranslate nohighlight">\(T\)</span>. If sufficient torque is applied, the shaft rotates, changing the angular position <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
+<p><img alt="A schematic diagram of a DC motor" src="../../_images/motorDiagram.png" />
+DC motor schematic. A net torque <span class="math notranslate nohighlight">\(T\)</span> is generated on the armature by Lorentz forces. In the electrical domain, the motor is represented by a series of three circuit elements.</p>
+<section id="derivation-of-the-dc-motor-differential-equations">
+<h3>Derivation of the DC motor differential equations<a class="headerlink" href="#derivation-of-the-dc-motor-differential-equations" title="Permalink to this heading">#</a></h3>
+<p>Under typical operating conditions, the torque generated by a DC motor is directly proportional to the current passing <span class="math notranslate nohighlight">\(i\)</span> through it:</p>
+<div class="math notranslate nohighlight">
+\[T = k_mi\]</div>
+<p>where <span class="math notranslate nohighlight">\(k_m\)</span> is a proportionality constant determined by the characteristics of the specific motor. This relationship fails for large values of <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>When the armature rotates, it generates a back electromotive force (<a class="reference external" href="https://en.wikipedia.org/wiki/Counter-electromotive_force">back EMF</a>) that opposes the applied voltage. In the circuit diagram, this is represented by a motor symbol. The voltage drop due to the back EMF, denoted <span class="math notranslate nohighlight">\(e\)</span>, is proportional to the rotational velocity of the armature:</p>
+<div class="math notranslate nohighlight">
+\[e =k_e \dot{\theta}\]</div>
+<p>where <span class="math notranslate nohighlight">\(k_e\)</span> is a constant of proportionality. To derive the relationship between the current <span class="math notranslate nohighlight">\(i\)</span> and the motor shaft angular position <span class="math notranslate nohighlight">\(\theta\)</span>, you can apply Kirchhoff’s voltage law and Newton’s second law in terms of torques acting on the motor shaft.</p>
+<p>Kirchhoff’s voltage law implies that the sum of the voltage drops across the circuit must equal the applied voltage:</p>
+<div class="math notranslate nohighlight" id="equation-eq1">
+<span class="eqno">(1)<a class="headerlink" href="#equation-eq1" title="Permalink to this equation">#</a></span>\[
+iR + L \frac{di}{dt} + k_e \dot{\theta} = v
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(v\)</span> is the electric potential applied to the motor.</p>
+<p>In the absence of other applied torques, the equation of motion can be derived by balancing the inertia of the motor shaft (<span class="math notranslate nohighlight">\(J \ddot{\theta}\)</span>) with the applied torque (<span class="math notranslate nohighlight">\(T\)</span>) and frictional resistance (<span class="math notranslate nohighlight">\(B \dot{\theta}\)</span>).</p>
+<div class="math notranslate nohighlight">
+\[
 J \ddot{\theta}  = T - B \dot{\theta}
-Using the linear relationship between torque and current, this is equivalent to:
-J \ddot{\theta} + B \dot{\theta}  = k_m i                 (2)
-write.png Exercise. In this exercise, you will compute transfer functions of the DC motor system. Assume that the system starts at rest (i = i’ = \theta = \dot{\theta} = 0). Also, assume that the applied voltage is a function of time v = v(t).
-(a) Compute the Laplace transform of the voltage conservation equation (1) and apply the initial conditions. Type your result below in terms of the defined symbolic variables.
-matlab.png Pro-tip: When you write a symbolic equation, you assign the whole equation to a MATLAB variable using the assignment operator “=” (single equals). The equals sign in the symbolic equation is written using “==” (double equals). For example:
-syms y m x b
-linearEq = y == m*x + b</p>
-<p>syms L R k_e J B k_m    % Constants
-syms Theta I s V        % Laplace domain variables</p>
-<p>eqn1 = NaN;</p>
-<p>checkEqn1(eqn1)
-(b) Compute the Laplace transform of the equation of motion (2) and apply the initial conditions. Type your answer below in terms of the defined symbolic variables.</p>
-<p>eqn2 = NaN;</p>
-<p>checkEqn2(eqn2)
-(c) Solve for the angular displacement transfer function G(s) = \frac{ \Theta(s) }{V(s)} using your results from (a) and (b).</p>
-<p>ThetaOverV = NaN;</p>
-<p>checkThetaOverV(ThetaOverV)
-(d) Solve for the angular velocity transfer function H(s) = \frac{\Omega(s)}{V(s)} where Ω is the Laplace transform of the angular velocity \omega(t) = \dot{\theta}(t).</p>
-<p>OmegaOverV = NaN;</p>
-<p>checkOmegaOverV(OmegaOverV)
-Pole analysis
-You can gain insight into the characteristics of a dynamic system without actually solving it by analyzing the form of its transfer function. The poles of the transfer function offer the most insight.
-Definition. The poles of a rational transfer function occur where the denominator is zero. Consider a rational transfer function in factored form:
+\]</div>
+<p>Using the linear relationship between torque and current, this is equivalent to:</p>
+<div class="math notranslate nohighlight" id="equation-eq2">
+<span class="eqno">(2)<a class="headerlink" href="#equation-eq2" title="Permalink to this equation">#</a></span>\[
+J \ddot{\theta} + B \dot{\theta}  = k_m i
+\]</div>
+</section>
+<section id="exercise-1">
+<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h3>
+<p><img alt="exercise" src="../../_images/write2.png" /></p>
+<p>In this exercise, you will compute transfer functions of the DC motor system. Assume that the system starts at rest (<span class="math notranslate nohighlight">\(i = i' = \theta = \dot{\theta} = 0\)</span>). Also, assume that the applied voltage is a function of time <span class="math notranslate nohighlight">\(v = v(t)\)</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We will do some of these calculations in class. To revise this material, we recommend that you use the the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">PoleZeroAnalysis.mlx</span></code> from the curriculum module <a class="reference external" href="https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems">Transfer Function Analysis of Dynamic Systems</a> and fill in your answers there. The LiveScript provides checking functions with which you can validate your answers<a href="#id16"><span class="problematic" id="id1">[^answers]</span></a>.</p>
+</div>
+<section id="a">
+<span id="ex1a"></span><h4>1(a)<a class="headerlink" href="#a" title="Permalink to this heading">#</a></h4>
+<p>Compute the Laplace transform of the voltage conservation equation <a class="reference internal" href="#equation-eq1">(1)</a> and apply the initial conditions. Type your result below in terms of the defined symbolic variables.</p>
+</section>
+<section id="pro-tip">
+<h4>Pro-tip<a class="headerlink" href="#pro-tip" title="Permalink to this heading">#</a></h4>
+<p><img alt="matlab" src="../../_images/matlab.png" /></p>
+<p>When you write a symbolic equation, you assign the whole equation to a MATLAB variable using the assignment operator “<code class="docutils literal notranslate"><span class="pre">=</span></code>” (single equals). The equals sign in the symbolic equation is written using “<code class="docutils literal notranslate"><span class="pre">==</span></code>” (double equals). For example:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">y</span><span class="w"> </span><span class="s">m</span><span class="w"> </span><span class="s">x</span><span class="w"> </span><span class="s">b</span>
+<span class="n">linearEq</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">m</span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span>
+<span class="c">% Use these symbolic variables</span>
+<span class="n">syms</span><span class="w"> </span><span class="s">L</span><span class="w"> </span><span class="s">R</span><span class="w"> </span><span class="s">k_e</span><span class="w"> </span><span class="s">J</span><span class="w"> </span><span class="s">B</span><span class="w"> </span><span class="s">k_m</span><span class="w">    </span><span class="s">%</span><span class="w"> </span><span class="s">Constants</span>
+<span class="n">syms</span><span class="w"> </span><span class="s">Theta</span><span class="w"> </span><span class="s">I</span><span class="w"> </span><span class="s">s</span><span class="w"> </span><span class="s">V</span><span class="w">        </span><span class="s">%</span><span class="w"> </span><span class="s">Laplace</span><span class="w"> </span><span class="s">domain</span><span class="w"> </span><span class="s">variables</span>
+<span class="c">% Write your laplace transform equation here</span>
+<span class="n">eqn1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="b">
+<span id="ex1b"></span><h4>1(b)<a class="headerlink" href="#b" title="Permalink to this heading">#</a></h4>
+<p>Compute the Laplace transform of the equation of motion <a class="reference internal" href="#equation-eq2">(2)</a> and apply the initial conditions. Type your answer below in terms of the defined symbolic variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your laplace transform equation here</span>
+<span class="n">eqn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="c">
+<span id="ex1c"></span><h4>1(c)<a class="headerlink" href="#c" title="Permalink to this heading">#</a></h4>
+<p>Solve for the angular displacement transfer function</p>
+<div class="math notranslate nohighlight">
+\[G(s) = \frac{ \Theta(s) }{V(s)}\]</div>
+<p>using your results from <a class="reference internal" href="#ex1a"><span class="std std-ref">1(a)</span></a> and <a class="reference internal" href="#ex1b"><span class="std std-ref">1(b)</span></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your transfer function here</span>
+<span class="n">ThetaOverV</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="d">
+<span id="ex1d"></span><h4>1(d)<a class="headerlink" href="#d" title="Permalink to this heading">#</a></h4>
+<p>Solve for the angular velocity transfer function</p>
+<div class="math notranslate nohighlight">
+\[H(s) = \frac{\Omega(s)}{V(s)}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Omega\)</span> is the Laplace transform of the angular velocity <span class="math notranslate nohighlight">\(\omega(t) = \dot{\theta}(t)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your transfer function here</span>
+<span class="n">OmegaOverV</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="pole-analysis">
+<h2>Pole analysis<a class="headerlink" href="#pole-analysis" title="Permalink to this heading">#</a></h2>
+<p>You can gain insight into the characteristics of a dynamic system without actually solving it by analyzing the form of its transfer function. The poles of the transfer function offer the most insight.</p>
+<p><strong>Definition</strong>. The <strong>poles</strong> of a rational transfer function occur where the denominator is zero. Consider a rational transfer function in factored form:</p>
+<div class="math notranslate nohighlight">
+\[
 G(s) = K \frac{ (s-z_1)(s-z_2) \ldots (s-z_m) }{ (s-p_1)(s-p_2) \ldots (s-p_n)}
-The poles are p_1, p_2, …, p_n.
-Stability
-The real parts of the poles determine the stability of the system.
-A pole with a positive real part (\text{Re}(p_i) &gt; 0) characterizes an exponential growth component of the solution.
-A pole with a negative real part (\text{Re}(p_i) &lt; 0) characterizes an exponential decay component of the solution.
-A pole with a zero real part (\text{Re}(p_i) = 0) characterizes a steady component of the solution.
-Poles with an imaginary component (\text{Im}(p_i) \neq 0) generate oscillatory behavior. Such poles necessarily come in conjugate pairs (so that their product is real).
-polePlaneV4.png
-Impulse responses characterized by the position of poles in the complex s-plane. Poles in the left-half plane (where \text{Re}(p) &lt; 0) are stable. The poles in the bottom-half plane are the conjugate poles required for the imaginary poles.
-interact.png  Activity. In this activity, you will visually explore the relationship between transfer function poles and time-domain responses.
-Part 1. Use the app
-Begin the activity by running the attached app: polesApp.mlapp. Note that this link will only work if polesApp.mlapp is in the current folder or on the MATLAB Search Path.
-Show the impulse response of the default system by clicking the compute response button.
-Click and drag the poles to different locations in the s-plane and recompute the response.
-Part 2. Transfer function poles
-You can change the transfer function by adjusting the number and location of the poles and zeros. Set the number of poles to two and change the location of the poles to p = -1, -2. The transfer function should be F(s) = 1/[(s+1)(s+2)]. Is the system stable or unstable?
-Adjust the number of poles and their locations to reproduce the transfer functions shown below.
-a. F(s) = \frac{1}{s^2 + 1}            b. F(s) = \frac{1}{(s-1)(s^2+2s+2)}            c.  F(s) = \frac{1}{(s-1)(s+2)(s^2+4s+8)}
-3.  Which of the transfer functions are stable? Which are unstable?
-Part 3. Single pole system responses
-Change the number of poles (/pole pairs) to 1. Also, adjust the stop time of the response simulation to ~20 seconds using the slider.
-Adjust the position of the pole (or pole pair, when the pole is complex) to produce graphs similar to the various impulse responses shown below.
-sinlepoleplots.png
-showAnswers = false; % Click the checkbox to show the answers
-showSinglePoleAnswers(showAnswers)
-Part 4. Two pole system responses
-Change the number of poles (/pole pairs) to 2. Continue to observe the impulse responses with a final time of 20 seconds.
-Adjust the pole positions to reproduce the behaviors shown in the plots below.
-doublepoleplots.png
-showAnswers = false; % Click the checkbox to show the answers
-showDoublePoleAnswers(showAnswers)
-brightbulb.png  Reflect.
-What effect does increasing the magnitude of the imaginary component of a pole have?
-What effect does increasing the magnitude of the real component of a pole have?
-In a system with one stable pole and one unstable pole, is it possible for a stable pole to “balance out” an unstable pole, leading to an overall stable system?
-write.png Exercise. You can write the DC motor angular velocity transfer function as
-\frac{\Omega}{V} = \frac{g}{ s^2 + bs + c}
-(a) Suppose that a DC motor has constants g =60, b = 2.3, and c = 11. Define the transfer function in MATLAB using the tf function.</p>
-<p>(b) Is the system stable? You can plot the poles in the s-plane using the pzmap function. For example, to plot the poles of a transfer function G, use:
-pzmap(G)</p>
-<p>(c) What are the poles of the transfer function? You can use the pole function to compute the poles of a dynamic system in MATLAB. For example, to identify the poles of a transfer function R, use:
-pole(R)</p>
-<p>brightbulb.png  Reflect.
-What response would you expect for a brief (impulse) applied voltage in a physical DC motor?
-Based on the poles identified in this exercise, what impulse response do you expect?
-Does the behavior suggested by the poles match your intuition for a physical DC motor? Does the pole analysis suggest any unexpected behaviors?
-Natural frequency
-The locations of the poles in the s-plane determine the natural oscillation frequencies present in the system.
-The natural (undamped) frequency (in rad/s) contributed by a pole p is the pole magnitude, r = |p|.
-The phase, \phi = \arg p, determines the relative strength of the oscillatory component.
-complexPhaseMag.png
-Phase ϕ and magnitude r of pole p shown in the complex plane
-interact.png  Activity. In this activity, you will explore how poles relate to the natural frequency response.
-Consider the transfer function:
-H(s) = \frac{1}{s^2 -2,\mathrm{cos}\left(\phi \right),r,s+r^2},  which is constructed with poles: p = r(\cos \phi \pm i\sin \phi).
-The transfer function poles are plotted below. Change the slider values to (r,\phi) = (1,135^\circ). Are oscillations present in the impulse response?
-Set (r,\phi) = (1,100^\circ) and then (r,\phi) = (1,90^\circ). Does the frequency of the oscillation change? Are the oscillations more prominent?
-Set (r,\phi) = (1.5,90^\circ) and then (r,\phi) = (2,90^\circ). Does the frequency of the oscillation change? Are the oscillations more prominent?
-r = 1;        % Default: 1
-phiDeg = 45;     % Default: 45
-plotPoles(r,phiDeg) % Plot the poles using a helper function
-brightbulb.png  Reflect.
-Does the conjugate pole p = r(\cos \phi - i\sin \phi) contribute a different natural frequency than the first pole p = r(\cos \phi + i\sin \phi)? Why or why not?
-As r increases, does the frequency increase or decrease?
-As ϕ approaches 180^\circ, does the oscillation become more or less prominent?
-write.png Exercise. A specific example of the DC motor angular velocity transfer function is
-G = tf([0 0 60],[1 2.3 11])
-(a) Compute the poles of the system and then use the poles to compute the system’s natural frequencies in rad/s.</p>
-<p>(b) You can also use the damp function to analyze the natural frequencies of the system. Validate your solution in (a) by calling the damp function.</p>
-<p>brightbulb.png  Reflect.
-What physical interactions cause the oscillatory behavior in the DC motor system?
-The damp function offers an additional output: damping. What does this value represent?
-Analysis of a second-order system
-Second-order systems with a pair of conjugate poles and no zeros are useful for illustrating the natural frequency response analytically. It is helpful to write this type of system in the form:
-G(s) = \frac{ K }{s^2 + 2 \zeta \omega_n s  + \omega_n^2
-where
-K is the gain coefficient
-ζ is the damping ratio
-and \omega_n is the (undamped) natural frequency.
-These parameters are helpful for drawing a connection between the natural response of the system and the properties of the poles. In this section, the poles of the second-order system will be analytically computed and related to the natural response of the system.
-Pole analysis
-The poles of the system occur when the denominator is zero:
-p = - \zeta \omega_n \pm \omega_n \sqrt{\zeta^2 - 1 }
-For simplicity, consider \zeta \in [0,1). In this case, the poles are
-p = - \zeta \omega_n \pm i \omega_n \sqrt{1 - \zeta^2}
-As stated above, the natural frequency is defined as the magnitude of the pole. The magnitude is computed as \sqrt{ Re^2 + Im^2}:
-\begin{array}{rl} |p|  &amp;= \sqrt{ (-\zeta \omega_n)^2 + ( \pm \omega_n \sqrt{1-\zeta^2})^2 } \   &amp;= \sqrt{ \zeta^2 \omega_n^2 + \omega_n^2 (1-\zeta^2) } \   &amp;= |\omega_n|\  \end{array}
-This illustrates why this form of the equation is used: the natural frequency is the parameter \omega_n.
-The damping ratio ζ determines the relative strength of the exponential part of the response. As \zeta \rightarrow 1, the complex part of the pole tends to zero, implying less oscillatory and stronger exponential behavior. For stable systems, that implies greater damping. The gain coefficient K affects the magnitude of the response, not the time-dependent behavior.
-Natural response
-The impulse response is also called the natural response. The natural response x(t) is computed by taking the inverse Laplace transform of
-\frac{X(s)}{U(s)} = \frac{X(s)}{1} = \frac{ K }{s^2 + 2 \zeta \omega_n s  + \omega_n^2
-because the impulse u(t) = \delta(t) has a Laplace transform U(s) = 1. You can find the response’s analytic form by referring to a table or using the ilaplace function.
-syms s zeta omega_n K X(s) x(t)
-X(s) = K/(s^2 + 2<em>zeta</em>omega_n*s + omega_n^2)
-x(t) = ilaplace(X) % The impulse response in the time domain
-Notice that the impulse response is a product of an exponential and sine function. From these functions observe that:
-The sine function frequency (in rads/s) is \omega_n \sqrt{1-\zeta^2}. If the damping \zeta = 0, then the frequency is \omega_n. This is the reason \omega_n is often referred to as the undamped natural frequency.
-The rate of decay of the exponential damping function is \omega_n \zeta.
-The gain parameter K only contributes as a constant multiplier to the magnitude of the response.
-interact.png  Activity. Adjust the sliders to view different time-domain responses for the classical second-order system:
-G(s) = \frac{ K }{s^2 + 2 \zeta \omega_n s  + \omega_n^2
-K = 3;
-zeta = 0.2;
-omega_n = 2;</p>
-<p>plotNaturalResponse(zeta,omega_n,K) % Helper function that plots the response for the second order system
-brightbulb.png  Reflect.
-Does the carrier frequency of the solution change with the damping coefficient ζ?
-Does the exponential envelope change with \omega_n?
-How does the gain K affect the response?
-write.png Exercise.  Mass-spring-damper analysis
-You can analyze a mass-spring-damper by looking at the poles of its transfer function.
-mass_spring_damper2-flipped.png
-Mass-spring-damper diagram
-Consider a mass-spring-damper that
-is dynamically forced by an arbitrary function u(t)
-has zero initial conditions: x(0) = 0 and x’(0)=0
-The position transfer function is
-G(s) = \frac{X(s)}{U(s)} = \frac{1}{ m s^2 + cs + k}
-(a) Write the mass-spring-damper transfer function in the form
-G(s) = \frac{ K }{s^2 + 2 \zeta \omega_n s  + \omega_n^2
-and solve for the expressions of the gain K, damping ratio ζ, and natural frequency \omega_n in terms of the mass-spring-damper parameters. Write your answers using the symbolic variables c, m, and k.</p>
-<p>syms m c k</p>
-<p>K = NaN;
-omega_n = NaN;
-zeta = NaN;</p>
-<p>checkMSDExpressions(K,omega_n,zeta) % Checks your answers
-(b)  Solve for the symbolic expressions of the poles of G in terms of the mass-spring-damper parameters m, c, and k. Store the expressions below in pplus and pminus where pplus stores the positive root.</p>
-<p>poles = NaN;
-pplus = NaN;
-pminus = NaN;</p>
-<p>checkMSDPoles(pplus,pminus) % Checks the answers
-(c) You can gain insight into the dynamics of the system by examining how the poles change in the s-plane when parameters are varied.
-The graph below shows the pole locations under variations of a parameter starting with k = m = 1 and c = 0.
-Adjust the dropdown to change which parameter is varied.
-The curves plot the pole locations between the specified parameter’s starting value and maximum value. Try changing the dropdown and the maxValue to observe changes to the poles.
-Use the plot to answer the reflection questions.
-variation = “m”;
-maxValue = 2;</p>
-<p>plotPoleVariation(variation,maxValue) % Helper function to generate the plot
-brightbulb.png  Reflect.
-What happens to the poles when c = 2? Physically, what does this represent?
-If any of the parameters are (individually) negative, what happens to the poles? What are the physical implications of negative parameters?
-As k is increased, what happens to the poles? How does this relate to the natural frequency expression that you solved for in part (a) (\omega_n = \sqrt{k/m})?
-Zero analysis
-The analysis of zeros is less straight-forward than the analysis of the poles of the system, because their effects are less pronounced. Zeros contribute to
-the transient behavior of the response,
-the magnitude of the response, and
-the response to different input frequencies.
-interact.png  Activity. Consider the simple system:
-G(s) = \frac{ s-z_0}{s+1}
-Adjust the location of the zero using the slider and observe the changes to the response.
-z0 = 0; % Position of the zero
-G = tf([1 -z0],[1 1]);           % The transfer function G(s)
-axlim1 = [-3 3 -3 3];            % Axis limits for the first graph
-axlim2 = [0 10 -5 5];            % Axis limits for the second graph
-pzmapAndImpulse(G,axlim1,axlim2) % Generates the plot
-brightbulb.png  Reflect.
-Is the stability or long-term behavior of the system affected by the zero location?
-How is the transient response affected by the zero?
-Does the system become unstable when the zero is in the right-half plane?
-What happens as the zero approaches the pole?
-interact.png  Activity. In this activity, you will visually explore the relationship between transfer function zeros and time-domain responses. You will inspect the step responses of
-G = \frac{s-z_0}{s^2 + 2s + 2}
-Begin the activity by running the attached app, polesApp.mlapp. Note that this link will only work if polesApp.mlapp is in the current folder or on the MATLAB Search Path.
-Set the number of poles/pole pairs to 1
-Place the pole pair at p = -1 \pm i.
-View the step response by selecting Step in the Response type menu.
-Add a zero to the plot. Adjust the position of the zero to generate the step responses shown below.
-zeroPlotPart1.png
-showAnswers = false;
-showZeroPart1Answers(showAnswers)
-brightbulb.png  Reflect.
-The transient of the step response that exceeds the steady value (y = 1, in this case) is known as the overshoot. As the zero moves further in the negative direction along the real axis, what happens to the overshoot?
-The time it takes to reach the steady value (y = 1, in this case) is known as the rise time. How is the rise time affected by changes to the zero, z_0?
-Try other values of the poles and zero, do you observe similar changes to the overshoot and rise time?
-write.png Exercise.  In this exercise, you will examine the changes to the analytic step response of a transfer function with a single zero.
-Consider the transfer function used in the previous activity:
-G = \frac{s-z_0}{s^2 + 2s + 2}
-(a) Compute the symbolic form of the step response of the transfer function, x(t). You can perform the analytic computations by hand or using the Symbolic Math Toolbox.</p>
-<p>syms s z_0 t positive</p>
-<p>x = NaN
-(b) Plot the analytic step response with z_0 = -1 on the interval t \in [0, 10]. If you computed the step response function with the Symbolic Math Toolbox, you can use the matlabFunction command to convert it to a function handle that you can evaluate.</p>
-<p>(c) Using the analytic form of the transfer function, compute the limit of the function as t \to \infty.</p>
-<p>tlim = NaN
-brightbulb.png  Reflect.
-Vary the location of the zero (z_0) and observe how the step response changes.
-How does the location of the zero (z_0) affect the overall magnitude of the step response? Where does this show up in the analytic solution?
-How does the location of the zero (z_0) affect the rise time and overshoot? Where does this show up in the analytic solution?
-compass_edit.pngFurther exploration
-You can interactively explore transfer functions, their poles, time-domain response, and more using the Control System Designer app.
-Helper functions
-Plots
-function plotPoleVariation(variation,maxValue)</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>% Create transfer function
-k = 1;
-m = 1;
-c = 0;
-H = tf([0 0 1],[1 0 1]);
-
-% Compute pole trajectories
-if(variation == &quot;k&quot;)
-    k = linspace(k,maxValue,400);
-elseif(variation ==&quot;m&quot;)
-    m = linspace(m,maxValue,400);
-elseif(variation ==&quot;c&quot;)
-    c = linspace(c,maxValue,400);
-end
-p1 = -(c - sqrt(c.^2 - 4*k*m))./(2*m);
-p2 = -(c + sqrt(c.^2 - 4*k*m))./(2*m);    
-
-% Create plot
-figure(&quot;Position&quot;,[0 0 650 600])
-pzmap(H,&quot;b&quot;)
-grid on
-axis([-5 5 -5 5])
-hold on
-plot(real(p1),imag(p1),&quot;b&quot;)
-plot(real(p2),imag(p2),&quot;b&quot;)
-plot(real(p1(end)),imag(p1(end)),&quot;b.&quot;,&quot;markersize&quot;,8)
-plot(real(p2(end)),imag(p2(end)),&quot;b.&quot;,&quot;markersize&quot;,8)
-text(real(p1(end)),imag(p1(end)),&quot;  &quot; +variation+ &quot;_m_a_x = &quot; + num2str(maxValue))
-text(real(p2(end)),imag(p2(end)),&quot;  &quot; +variation+ &quot;_m_a_x = &quot; + num2str(maxValue))
-hold off
-axis equal
+\]</div>
+<p>The poles are <span class="math notranslate nohighlight">\(p_1\)</span>, <span class="math notranslate nohighlight">\(p_2\)</span>, <span class="math notranslate nohighlight">\(\ldots\)</span>, <span class="math notranslate nohighlight">\(p_n\)</span>.</p>
+<section id="stability">
+<h3>Stability<a class="headerlink" href="#stability" title="Permalink to this heading">#</a></h3>
+<p>The real parts of the poles determine the stability of the system.</p>
+<ol class="arabic simple">
+<li><p>A pole with a positive real part (<span class="math notranslate nohighlight">\(\text{Re}(p_i) &gt; 0\)</span>) characterizes an exponential growth component of the solution.</p></li>
+</ol>
+<ol class="arabic simple" start="2">
+<li><p>A pole with a negative real part (<span class="math notranslate nohighlight">\(\text{Re}(p_i) &lt; 0\)</span>) characterizes an exponential decay component of the solution.</p></li>
+</ol>
+<ol class="arabic simple" start="3">
+<li><p>A pole with a zero real part (<span class="math notranslate nohighlight">\(\text{Re}(p_i) = 0\)</span>) characterizes a steady component of the solution.</p></li>
+</ol>
+<p>Poles with an imaginary component (<span class="math notranslate nohighlight">\(\text{Im}(p_i) \neq 0\)</span>) generate oscillatory behavior. Such poles necessarily come in conjugate pairs (so that their product is real).</p>
+<p><img alt="" src="../../_images/polePlaneV4.png" />
+Impulse responses characterized by the position of poles in the complex s-plane.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Poles in the left-half plane (where <span class="math notranslate nohighlight">\(\text{Re}(p) &lt; 0\)</span>) are stable. The poles in the bottom-half plane are the conjugate poles required for the imaginary poles.</p>
+</div>
+<section id="activity-1">
+<h4>Activity 1<a class="headerlink" href="#activity-1" title="Permalink to this heading">#</a></h4>
+<p><img alt="" src="../../_images/activity1.png" /></p>
+<p>In this activity, you will visually explore the relationship between transfer function poles and time-domain responses.</p>
+<p><strong>Part 1</strong>. Use the app</p>
+<ol class="arabic simple">
+<li><p>Begin the activity by running the attached app: <code class="docutils literal notranslate"><span class="pre">polesApp.mlapp</span></code></p></li>
+<li><p>Show the impulse response of the default system by clicking the compute response button.</p></li>
+<li><p>Click and drag the poles to different locations in the s-plane and recompute the response.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;polesApp.mlapp&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>end</p>
-<p>function plotNaturalResponse(zeta,omega_n,K)</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>b = 2*zeta*omega_n;
-c = omega_n^2;
-H = tf([0 0 K],[1 b c]);
-
-syms s X x t
-X = K/(s^2 + b*s + c);
-x = ilaplace(X);
-envelope = K*exp(-omega_n*t*zeta)/(omega_n*sqrt(1-zeta^2));
-
-% Plot the poles and impulse response
-figure(&quot;Position&quot;,[0 0 1600 450])
-
-subplot(1,3,1)
-pzmap(H,&quot;b&quot;)
-grid on
-axis equal
-lineObjs = findobj(gca,&quot;Type&quot;,&quot;Line&quot;);   
-axis([-10 10 -10 10])
-set(lineObjs(3),&quot;MarkerSize&quot;,10,&quot;LineWidth&quot;,2,&quot;Color&quot;,[0.8500 0.3250 0.0980]);           
-
-subplot(1,3,2)
-[y,t] = impulse(H,10);
-ev = K*exp(-omega_n*zeta*t)/(omega_n*sqrt(1-zeta^2));
-plot(t,y)
-hold on
-plot(t,ev,&quot;Color&quot;,[0.8500 0.3250 0.0980])
-plot(t,-ev,&quot;Color&quot;,[0.8500 0.3250 0.0980])
-hold off
-xlabel(&#39;$t$&#39;,&quot;Interpreter&quot;,&quot;latex&quot;)
-ylabel(&#39;$x$&#39;,&quot;Interpreter&quot;,&quot;latex&quot;)
-
-subplot(1,3,3)
-axis([-0.1 1 0 1])
-text(0,0.75,&quot;$X(s) = &quot; +latex(X)+&quot;$&quot;,&quot;Interpreter&quot;,&quot;latex&quot;,&quot;FontSize&quot;,20)
-text(0,0.5,&quot;$x(t) = &quot; +latex(x)+&quot;$&quot;,&quot;Interpreter&quot;,&quot;latex&quot;,&quot;FontSize&quot;,20,&quot;Color&quot;,[0 0.4470 0.7410])
-if(zeta &lt; 1)
-    text(0,0.25,&quot;envelope = $&quot; +latex(envelope)+&quot;$&quot;,&quot;Interpreter&quot;,&quot;latex&quot;,&quot;FontSize&quot;,20,&quot;Color&quot;,[0.8500 0.3250 0.0980])
-end
-axis off 
+</div>
+</div>
+<p><strong>Part 2</strong>. Transfer function poles</p>
+<ol class="arabic">
+<li><p>You can change the transfer function by adjusting the number and location of the poles and zeros. Set the number of poles to two and change the location of the poles to <span class="math notranslate nohighlight">\(p = -1, -2\)</span>. The transfer function should be <span class="math notranslate nohighlight">\(F(s) = 1/[(s+1)(s+2)]\)</span>. Is the system stable or unstable?</p></li>
+<li><p>Adjust the number of poles and their locations to reproduce the transfer functions shown below.</p>
+<p>a. <span class="math notranslate nohighlight">\(F(s) = \frac{1}{s^2 + 1}\)</span><br />
+b. <span class="math notranslate nohighlight">\(F(s) = \frac{1}{(s-1)(s^2+2s+2)}\)</span><br />
+c.  <span class="math notranslate nohighlight">\(F(s) = \frac{1}{(s-1)(s+2)(s^2+4s+8)}\)</span></p>
+</li>
+<li><p>Which of the transfer functions are stable? Which are unstable?</p></li>
+</ol>
+<p><strong>Part 3</strong>. Single pole system responses</p>
+<ol class="arabic simple">
+<li><p>Change the number of poles (/pole pairs) to 1. Also, adjust the stop time of the response simulation to ~20 seconds using the slider.</p></li>
+<li><p>Adjust the position of the pole (or pole pair, when the pole is complex) to produce graphs similar to the various impulse responses shown below.</p></li>
+</ol>
+<p><img alt="Single pole plots" src="../../_images/singlepoleplots.png" /></p>
+<p><strong>Part 4</strong>. Two pole system responses</p>
+<ol class="arabic simple">
+<li><p>Change the number of poles (/pole pairs) to 2. Continue to observe the impulse responses with a final time of 20 seconds.</p></li>
+<li><p>Adjust the pole positions to reproduce the behaviors shown in the plots below.</p></li>
+</ol>
+<p><img alt="Double pole plots" src="../../_images/doublepoleplots.png" /></p>
+</section>
+<section id="reflect">
+<h4>Reflect.<a class="headerlink" href="#reflect" title="Permalink to this heading">#</a></h4>
+<p><img alt="reflect" src="../../_images/reflect2.png" /></p>
+<ul class="simple">
+<li><p>What effect does increasing the magnitude of the imaginary component of a pole have?</p></li>
+<li><p>What effect does increasing the magnitude of the real component of a pole have?</p></li>
+<li><p>In a system with one stable pole and one unstable pole, is it possible for a stable pole to “balance out” an unstable pole, leading to an overall stable system?</p></li>
+</ul>
+</section>
+<section id="homework-exercise-1">
+<h4>Homework Exercise 1<a class="headerlink" href="#homework-exercise-1" title="Permalink to this heading">#</a></h4>
+<p><img alt="exercise" src="../../_images/write2.png" /></p>
+<p>You can write the DC motor angular velocity transfer function as</p>
+<div class="math notranslate nohighlight">
+\[\frac{\Omega}{V} = \frac{g}{ s^2 + bs + c}\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Complete the homework exercises in the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">PoleZeroAnalysis.mlx</span></code>.</p>
+</div>
+<section id="homework-exercise-1-a">
+<h5>Homework Exercise 1(a)<a class="headerlink" href="#homework-exercise-1-a" title="Permalink to this heading">#</a></h5>
+<p>Suppose that a DC motor has constants <span class="math notranslate nohighlight">\(g =60\)</span>, <span class="math notranslate nohighlight">\(b = 2.3\)</span>, and <span class="math notranslate nohighlight">\(c = 11\)</span>. Define the transfer function in MATLAB using the <a class="reference external" href="https://uk.mathworks.com/help/control/ref/tf.html"><code class="docutils literal notranslate"><span class="pre">tf</span></code></a> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
 </pre></div>
 </div>
-<p>end</p>
-<p>function plotPoles(r,phiDeg)</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>b = -2*cosd(phiDeg)*r;
-c = r^2;
-H = tf([0 0 1],[1 b c]);
-H % Display H
-disp(&quot;poles: &quot; + num2str(r*cosd(phiDeg),3) + &quot; ± &quot; + num2str(r*sind(phiDeg),3) + &quot;i&quot; )
-
-% Plot the poles using pzmap
-figure(&quot;Position&quot;,[0 0 1200 500])
-subplot(1,2,1)
-pzmap(H,&quot;b&quot;)
-grid on
-axis([-3 3 -3 3])
-axis equal
-lineObjs = findobj(gca,&quot;Type&quot;,&quot;Line&quot;);   
-set(lineObjs(3),&quot;MarkerSize&quot;,10,&quot;LineWidth&quot;,2,&quot;Color&quot;,[0.8500 0.3250 0.0980]);           
-
-% Impulse response plot
-subplot(1,2,2)
-impulse(H,20)   
+</div>
+</div>
+</section>
+<section id="homework-exercise-1-b">
+<h5>Homework Exercise 1(b)<a class="headerlink" href="#homework-exercise-1-b" title="Permalink to this heading">#</a></h5>
+<p>Is the system stable? You can plot the poles in the s-plane using the <a class="reference external" href="https://www.mathworks.com/help/control/ref/lti.pzmap.html"><code class="docutils literal notranslate"><span class="pre">pzmap</span></code></a> function. For example, to plot the poles of a transfer function G, use:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">pzmap</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>end</p>
-<p>function pzmapAndImpulse(G,axlim1,axlim2)</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>figure(&quot;Position&quot;,[0 0 1200 500])    
-
-% Pole-zero map plot
-subplot(1,2,1)
-pzmap(G,&quot;b&quot;)
-grid on
-axis(axlim1)
-axis equal
-syms s
-Htex = newline + &quot;\ &quot; + newline + &quot;$G = &quot; + latex(poly2sym(G.num{1},s)/poly2sym(G.denom{1},s)) + &quot;$ \quad&quot;;
-text(axlim1(2),axlim1(4),Htex,&quot;Interpreter&quot;,&quot;Latex&quot;,&quot;HorizontalAlignment&quot;,&quot;right&quot;,...
-    &quot;FontSize&quot;,18,&quot;VerticalAlignment&quot;,&quot;top&quot;)
-lineObjs = findobj(gca,&quot;Type&quot;,&quot;Line&quot;);   
-set(lineObjs(3),&quot;MarkerSize&quot;,10,&quot;LineWidth&quot;,2,&quot;Color&quot;,[0.8500 0.3250 0.0980]);           
-set(lineObjs(2),&quot;MarkerSize&quot;,7,&quot;LineWidth&quot;,1.5,&quot;Color&quot;,[0 0.4470 0.7410]);   
-
-% Impulse-response plot
-subplot(1,2,2)
-impulse(G,10) 
-axis(axlim2)
-ylabel(&quot;x&quot;)
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
 </pre></div>
 </div>
-<p>end</p>
-<p>Checks
-function isEqualCheck(userSubmission,correctAnswer)</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if( isequal(userSubmission, correctAnswer) )
-    disp(&quot;Correct!&quot;)
-else
-    warning(&quot;Your answer does not match the expected result.&quot;)
-end
+</div>
+</div>
+</section>
+<section id="homework-exercise-1-c">
+<h5>Homework Exercise 1(c)<a class="headerlink" href="#homework-exercise-1-c" title="Permalink to this heading">#</a></h5>
+<p>What are the poles of the transfer function? You can use the <a class="reference external" href="https://www.mathworks.com/help/control/ref/lti.pole.html"><code class="docutils literal notranslate"><span class="pre">pole</span></code></a> function to compute the poles of a dynamic system in MATLAB. For example, to identify the poles of a transfer function R, use:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">pole</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>end</p>
-<p>function isEqualCheckSimplify(userSubmission,correctAnswer)
-isEqualCheck(simplify(sym(userSubmission)), simplify(sym(correctAnswer)))
-end</p>
-<p>function checkEqn1(userSubmission)
-syms L R k_e<br />
-syms Theta I s V
-eqn = R<em>I + L</em>s<em>I + s</em>k_e*Theta == V;
-isEqualCheckSimplify(userSubmission,eqn);
-end</p>
-<p>function checkEqn2(userSubmission)
-syms L R k_e J B k_m<br />
-syms Theta I s V
-eqn = J<em>s^2</em>Theta + B<em>s</em>Theta == k_m*I;
-isEqualCheckSimplify(userSubmission,eqn);
-end</p>
-<p>function checkThetaOverV(userSubmission)
-syms L R k_e J B k_m<br />
-syms Theta I s V
-ThetaOverV = k_m/(s*(L<em>J</em>s^2 + (R<em>J+L</em>B)<em>s + B</em>R + k_m*k_e));
-isEqualCheckSimplify(userSubmission,ThetaOverV);
-end</p>
-<p>function checkOmegaOverV(userSubmission)
-syms L R k_e J B k_m<br />
-syms Theta I s V
-soln = k_m/(L<em>J</em>s^2 + (R<em>J+L</em>B)<em>s + B</em>R + k_m*k_e);
-isEqualCheckSimplify(userSubmission,soln);
-end</p>
-<p>function showSinglePoleAnswers(showAnswer)
-if(showAnswer)
-disp(“Poles used to generate the plots: ” + newline +…
-“a: -2.5,  b: ±2i,  c: 1.4,  d: 1±2i,  e: -4±2i,  f: ±0.6i”)
-end
-end</p>
-<p>function showDoublePoleAnswers(showAnswer)
-if(showAnswer)
-disp(“Poles used to generate the plots: ” + newline +…
-“a: -2.5,±i,  b: ±i,±0.3i,  c:-1,-2”)
-end
-end</p>
-<p>function showZeroPart1Answers(showAnswer)
-if(showAnswer)
-disp(“Zeros used to generate the plots: ” + newline +…
-“a: 0,  b: -2,  c: 1.5”)
-end
-end</p>
-<p>function checkMSDExpressions(K_user,omega_n_user,zeta_user)
-syms m c k;
-K = 1/m;
-omega_n = sqrt(k/m);
-zeta = c/(2<em>sqrt(m</em>k));
-disp(“K:”)
-isEqualCheckSimplify(K,K_user)
-disp(newline+ “omega_n:”)
-isEqualCheckSimplify(omega_n,omega_n_user)
-disp(newline+ “zeta:”)
-isEqualCheckSimplify(zeta,zeta_user)
-end</p>
-<p>function checkMSDPoles(pplusUser,pminusUser)
-syms c k m
-pplus = -(c - sqrt(c^2 - 4<em>k</em>m))/(2<em>m);
-pminus =  -(c + sqrt(c^2 - 4</em>k<em>m))/(2</em>m);
-disp(“pplus:”)
-isEqualCheckSimplify(pplus,pplusUser)
-disp(newline+ “pminus:”)
-isEqualCheckSimplify(pminus,pminusUser)
-end</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h5>Reflect.<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h5>
+<p><img alt="reflect" src="../../_images/reflect2.png" /></p>
+<ul class="simple">
+<li><p>What response would you expect for a brief (impulse) applied voltage in a physical DC motor?</p></li>
+<li><p>Based on the poles identified in this exercise, what impulse response do you expect?</p></li>
+<li><p>Does the behavior suggested by the poles match your intuition for a physical DC motor? Does the pole analysis suggest any unexpected behaviors?</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="natural-frequency">
+<h3>Natural frequency<a class="headerlink" href="#natural-frequency" title="Permalink to this heading">#</a></h3>
+<p>The locations of the poles in the s-plane determine the natural oscillation frequencies present in the system.</p>
+<ul class="simple">
+<li><p>The natural (undamped) frequency (in rad/s) contributed by a pole <span class="math notranslate nohighlight">\(p\)</span> is the pole magnitude, <span class="math notranslate nohighlight">\(r = |p|\)</span>.</p></li>
+<li><p>The phase, <span class="math notranslate nohighlight">\(\phi = \arg p\)</span>, determines the relative strength of the oscillatory component.</p></li>
+</ul>
+<p><img alt="" src="../../_images/complexPhaseMag.png" />
+Phase <span class="math notranslate nohighlight">\(\phi\)</span> and magnitude <span class="math notranslate nohighlight">\(r\)</span> of pole <span class="math notranslate nohighlight">\(p\)</span> shown in the complex plane</p>
+<section id="activity-2">
+<h4>Activity 2<a class="headerlink" href="#activity-2" title="Permalink to this heading">#</a></h4>
+<p><img alt="activity" src="../../_images/activity1.png" /></p>
+<p>In this activity you will explore how poles relate to the natural frequency response.</p>
+<p>Consider the transfer function:</p>
+<div class="math notranslate nohighlight">
+\[H(s) = \frac{1}{s^2 -2\,\mathrm{cos}\left(\phi \right)\,r\,s+r^2},\]</div>
+<p>which is constructed with poles: <span class="math notranslate nohighlight">\(p = r(\cos \phi \pm i\sin \phi)\)</span>.</p>
+<ol class="arabic simple">
+<li><p>The transfer function poles are plotted below. Change the slider values to <span class="math notranslate nohighlight">\((r,\phi) = (1,135^\circ)\)</span>. Are oscillations present in the impulse response?</p></li>
+<li><p>Set <span class="math notranslate nohighlight">\((r,\phi) = (1,100^\circ)\)</span> and then <span class="math notranslate nohighlight">\((r,\phi) = (1,90^\circ)\)</span>. Does the frequency of the oscillation change? Are the oscillations more prominent?</p></li>
+<li><p>Set <span class="math notranslate nohighlight">\((r,\phi) = (1.5,90^\circ)\)</span> and then <span class="math notranslate nohighlight">\((r,\phi) = (2,90^\circ)\)</span>. Does the frequency of the oscillation change? Are the oscillations more prominent?</p></li>
+</ol>
+<p>The activity needs to be done in the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">PoleZeroAnalysis.mlx</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;PoleZeroAnalysis.mlx&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h4>Reflect<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
+<p><img alt="reflect" src="../../_images/reflect2.png" /></p>
+<ul class="simple">
+<li><p>Does the conjugate pole <span class="math notranslate nohighlight">\(p = r(\cos \phi - i\sin \phi)\)</span> contribute a different natural frequency than the first pole <span class="math notranslate nohighlight">\(p = r(\cos \phi + i\sin \phi)\)</span>? Why or why not?</p></li>
+<li><p>As <span class="math notranslate nohighlight">\(r\)</span> increases, does the frequency increase or decrease?</p></li>
+<li><p>As <span class="math notranslate nohighlight">\(\phi\)</span> approaches <span class="math notranslate nohighlight">\(180^\circ\)</span>, does the oscillation become more or less prominent?</p></li>
+</ul>
+</section>
+<section id="exercise-2">
+<h4>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h4>
+<p>A specific example of the DC motor angular velocity transfer function is</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">60</span><span class="p">],[</span><span class="mi">1</span><span class="w"> </span><span class="mf">2.3</span><span class="w"> </span><span class="mi">11</span><span class="p">])</span>
+</pre></div>
+</div>
+<section id="exercise-2-a">
+<h5>Exercise 2(a)<a class="headerlink" href="#exercise-2-a" title="Permalink to this heading">#</a></h5>
+<p>Compute the poles of the system and then use the poles to compute the system’s natural frequencies in rad/s.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-2-b">
+<h5>Exercise 2(b)<a class="headerlink" href="#exercise-2-b" title="Permalink to this heading">#</a></h5>
+<p>You can also use the <code class="docutils literal notranslate"><span class="pre">damp</span></code> function to analyze the natural frequencies of the system. Validate your solution in (a) by calling the <code class="docutils literal notranslate"><span class="pre">damp</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id4">
+<h5>Reflect<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h5>
+<p><img alt="reflect" src="../../_images/reflect2.png" /></p>
+<ul class="simple">
+<li><p>What physical interactions cause the oscillatory behavior in the DC motor system?</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">damp</span></code> function offers an additional output: damping. What does this value represent?</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="analysis-of-a-second-order-system">
+<h3>Analysis of a second-order system<a class="headerlink" href="#analysis-of-a-second-order-system" title="Permalink to this heading">#</a></h3>
+<p>Second-order systems with a pair of conjugate poles and no zeros are useful for illustrating the natural frequency response analytically. It is helpful to write this type of system in the form:</p>
+<div class="math notranslate nohighlight">
+\[G(s) = \frac{ K }{s^2 + 2 \zeta \omega_n s  + \omega_n^2}\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(K\)</span> is the gain coefficient</p></li>
+<li><p><span class="math notranslate nohighlight">\(\zeta\)</span> is the damping ratio</p></li>
+<li><p>and <span class="math notranslate nohighlight">\(\omega_n\)</span> is the (undamped) natural frequency.</p></li>
+</ul>
+<p>These parameters are helpful for drawing a connection between the natural response of the system and the properties of the poles. In this section, the poles of the second-order system will be analytically computed and related to the natural response of the system.</p>
+<section id="id5">
+<h4>Pole analysis<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
+<p>The poles of the system occur when the denominator is zero:</p>
+<div class="math notranslate nohighlight">
+\[p = - \zeta \omega_n \pm \omega_n \sqrt{\zeta^2 - 1 }\]</div>
+<p>For simplicity, consider <span class="math notranslate nohighlight">\(\zeta \in [0,1)\)</span>. In this case, the poles are</p>
+<div class="math notranslate nohighlight">
+\[p = - \zeta \omega_n \pm i \omega_n \sqrt{1 - \zeta^2}\]</div>
+<p>As stated above, the natural frequency is defined as the magnitude of the pole. The magnitude is computed as <span class="math notranslate nohighlight">\(\sqrt{ Re^2 + Im^2}\)</span>:</p>
+<p>\begin{array}{rl} |p|  &amp;= \sqrt{ (-\zeta \omega_n)^2 + ( \pm \omega_n \sqrt{1-\zeta^2})^2 } \   &amp;= \sqrt{ \zeta^2 \omega_n^2 + \omega_n^2 (1-\zeta^2) } \   &amp;= |\omega_n|\<br />
+\end{array}</p>
+<section id="natural-frequency-omega-n">
+<h5>Natural frequency <span class="math notranslate nohighlight">\(\omega_n\)</span><a class="headerlink" href="#natural-frequency-omega-n" title="Permalink to this heading">#</a></h5>
+<p>This illustrates why this form of the equation is used: the natural frequency is the parameter <span class="math notranslate nohighlight">\(\omega_n\)</span>.</p>
+</section>
+<section id="damping-ratio-zeta">
+<h5>Damping ratio <span class="math notranslate nohighlight">\(\zeta\)</span><a class="headerlink" href="#damping-ratio-zeta" title="Permalink to this heading">#</a></h5>
+<p>The damping ratio <span class="math notranslate nohighlight">\(\zeta\)</span> determines the relative strength of the exponential part of the response.</p>
+<p>As <span class="math notranslate nohighlight">\(\zeta \rightarrow 1\)</span>, the complex part of the pole tends to zero, implying less oscillatory and stronger exponential behavior.</p>
+<p>For stable systems, that implies greater damping.</p>
+</section>
+<section id="gain-coefficient-k">
+<h5>Gain coefficient <span class="math notranslate nohighlight">\(K\)</span><a class="headerlink" href="#gain-coefficient-k" title="Permalink to this heading">#</a></h5>
+<p>The gain coefficient <span class="math notranslate nohighlight">\(K\)</span> affects the magnitude of the response, not the time-dependent behavior.</p>
+</section>
+</section>
+<section id="natural-response">
+<h4>Natural response<a class="headerlink" href="#natural-response" title="Permalink to this heading">#</a></h4>
+<p>The impulse response is also called the <em>natural response</em>. The natural response <span class="math notranslate nohighlight">\(x(t)\)</span> is computed by taking the inverse Laplace transform of</p>
+<div class="math notranslate nohighlight">
+\[\frac{X(s)}{U(s)} = \frac{X(s)}{1} = \frac{ K }{s^2 + 2 \zeta \omega_n s  + \omega_n^2}\]</div>
+<p>because the impulse <span class="math notranslate nohighlight">\(u(t) = \delta(t)\)</span> has a Laplace transform <span class="math notranslate nohighlight">\(U(s) = 1\)</span>. You can find the response’s analytic form by referring to a table or using the <a class="reference external" href="https://www.mathworks.com/help/symbolic/sym.ilaplace.html"><code class="docutils literal notranslate"><span class="pre">ilaplace</span></code></a> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">s</span><span class="w"> </span><span class="s">zeta</span><span class="w"> </span><span class="s">omega_n</span><span class="w"> </span><span class="s">K</span><span class="w"> </span><span class="s">X(s)</span><span class="w"> </span><span class="s">x(t)</span>
+<span class="n">X</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">K</span><span class="o">/</span><span class="p">(</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">zeta</span><span class="o">*</span><span class="n">omega_n</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">omega_n</span>^<span class="mi">2</span><span class="p">)</span><span class="w"> </span>
+<span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ilaplace</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="w"> </span><span class="c">% The impulse response in the time domain</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X(s) =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>K/(omega_n^2 + 2*zeta*omega_n*s + s^2)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x(t) =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(K*exp(-omega_n*t*zeta)*sin(omega_n*t*(1 - zeta^2)^(1/2)))/(omega_n*(1 - zeta^2)^(1/2))
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that the impulse response is a product of an exponential and sine function. From these functions observe that:</p>
+<ul class="simple">
+<li><p>The sine function frequency (in rads/s) is <span class="math notranslate nohighlight">\(\omega_n \sqrt{1-\zeta^2}\)</span>. If the damping <span class="math notranslate nohighlight">\(\zeta = 0\)</span>, then the frequency is <span class="math notranslate nohighlight">\(\omega_n\)</span>. This is the reason <span class="math notranslate nohighlight">\(\omega_n\)</span> is often referred to as the undamped natural frequency.</p></li>
+<li><p>The rate of decay of the exponential damping function is <span class="math notranslate nohighlight">\(\omega_n \zeta\)</span>.</p></li>
+<li><p>The gain parameter <span class="math notranslate nohighlight">\(K\)</span> only contributes as a constant multiplier to the magnitude of the response.</p></li>
+</ul>
+<section id="activity-3">
+<h5>Activity 3<a class="headerlink" href="#activity-3" title="Permalink to this heading">#</a></h5>
+<p><img alt="activity" src="../../_images/activity1.png" /></p>
+<p>Open the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">PoleZeroAnalysis.mlx</span></code> and find this activity there. Adjust the sliders to view different time-domain responses for the classical second-order system:</p>
+<div class="math notranslate nohighlight">
+\[G(s) = \frac{ K }{s^2 + 2 \zeta \omega_n s  + \omega_n^2}\]</div>
+</section>
+<section id="id6">
+<h5>Reflect.<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h5>
+<ul class="simple">
+<li><p>Does the carrier frequency of the solution change with the damping coefficient <span class="math notranslate nohighlight">\(\zeta\)</span>?</p></li>
+<li><p>Does the exponential envelope change with <span class="math notranslate nohighlight">\(\omega_n\)</span>?</p></li>
+<li><p>How does the gain <span class="math notranslate nohighlight">\(K\)</span> affect the response?</p></li>
+</ul>
+</section>
+</section>
+<section id="homework-exercise-2-mass-spring-damper-analysis">
+<h4>Homework Exercise 2: Mass-spring-damper analysis<a class="headerlink" href="#homework-exercise-2-mass-spring-damper-analysis" title="Permalink to this heading">#</a></h4>
+<p><img alt="exercise" src="../../_images/write2.png" /></p>
+<p>You can analyze a mass-spring-damper by looking at the poles of its transfer function.</p>
+<p><img alt="Mass-spring damper system" src="../../_images/mass_spring_damper2-flipped.png" />
+Mass-spring-damper diagram</p>
+<p>Consider a mass-spring-damper that</p>
+<ul class="simple">
+<li><p>is dynamically forced by an arbitrary function <span class="math notranslate nohighlight">\(u(t)\)</span></p></li>
+<li><p>has zero initial conditions: <span class="math notranslate nohighlight">\(x(0) = 0\)</span> and <span class="math notranslate nohighlight">\(x'(0)=0\)</span></p></li>
+</ul>
+<p>The position transfer function is
+$<span class="math notranslate nohighlight">\(G(s) = \frac{X(s)}{U(s)} = \frac{1}{ m s^2 + cs + k}\)</span>$</p>
+</section>
+<section id="homework-exercise-2-a">
+<h4>Homework Exercise 2(a)<a class="headerlink" href="#homework-exercise-2-a" title="Permalink to this heading">#</a></h4>
+<p>Write the mass-spring-damper transfer function in the form</p>
+<div class="math notranslate nohighlight">
+\[G(s) = \frac{ K }{s^2 + 2 \zeta \omega_n s  + \omega_n^2}\]</div>
+<p>and solve for the expressions of the gain <span class="math notranslate nohighlight">\(K\)</span>, damping ratio <span class="math notranslate nohighlight">\(\zeta\)</span>, and natural frequency <span class="math notranslate nohighlight">\(\omega_n\)</span> in terms of the mass-spring-damper parameters. Write your answers using the symbolic variables <code class="docutils literal notranslate"><span class="pre">c</span></code>, <code class="docutils literal notranslate"><span class="pre">m</span></code>, and <code class="docutils literal notranslate"><span class="pre">k</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Use these symbolic variables</span>
+<span class="n">syms</span><span class="w"> </span><span class="s">m</span><span class="w"> </span><span class="s">c</span><span class="w"> </span><span class="s">k</span>
+<span class="c">% Replace the NaNs with your expressions</span>
+<span class="n">K</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span><span class="p">;</span>
+<span class="n">omega_n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span><span class="p">;</span>
+<span class="n">zeta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="homework-exercise-2-b">
+<h4>Homework Exercise 2(b)<a class="headerlink" href="#homework-exercise-2-b" title="Permalink to this heading">#</a></h4>
+<p>Solve for the symbolic expressions of the poles of <code class="docutils literal notranslate"><span class="pre">G</span></code> in terms of the mass-spring-damper parameters <code class="docutils literal notranslate"><span class="pre">m</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code>, and <code class="docutils literal notranslate"><span class="pre">k</span></code>. Store the expressions below in <code class="docutils literal notranslate"><span class="pre">pplus</span></code> and <code class="docutils literal notranslate"><span class="pre">pminus</span></code> where <code class="docutils literal notranslate"><span class="pre">pplus</span></code> stores the positive root.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your answers here</span>
+<span class="n">poles</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span><span class="p">;</span>
+<span class="n">pplus</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span><span class="p">;</span>
+<span class="n">pminus</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="homework-exercise-2-c">
+<h4>Homework Exercise 2(c)<a class="headerlink" href="#homework-exercise-2-c" title="Permalink to this heading">#</a></h4>
+<p>You can gain insight into the dynamics of the system by examining how the poles change in the <span class="math notranslate nohighlight">\(s\)</span>-plane when parameters are varied.</p>
+<ul class="simple">
+<li><p>The graph given in the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">PoleZeroAnalysis.mlx</span></code> shows the pole locations under variations of a parameter starting with <span class="math notranslate nohighlight">\(k = m = 1\)</span> and <span class="math notranslate nohighlight">\(c = 0\)</span>.</p></li>
+<li><p>Adjust the dropdown to change which parameter is varied.</p></li>
+<li><p>The curves plot the pole locations between the specified parameter’s starting value and maximum value. Try changing the dropdown and the <code class="docutils literal notranslate"><span class="pre">maxValue</span></code> to observe changes to the poles.</p></li>
+<li><p>Use the plot to answer the reflection questions.</p></li>
+</ul>
+<section id="id7">
+<h5>Reflect.<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h5>
+<p><img alt="reflection" src="../../_images/reflect2.png" /></p>
+<ul class="simple">
+<li><p>What happens to the poles when <span class="math notranslate nohighlight">\(c = 2\)</span>? Physically, what does this represent?</p></li>
+<li><p>If any of the parameters are (individually) negative, what happens to the poles? What are the physical implications of negative parameters?</p></li>
+<li><p>As <span class="math notranslate nohighlight">\(k\)</span> is increased, what happens to the poles? How does this relate to the natural frequency expression that you solved for in part (a) (<span class="math notranslate nohighlight">\(\omega_n = \sqrt{k/m}\)</span>)?</p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+<section id="zero-analysis">
+<h2>Zero analysis<a class="headerlink" href="#zero-analysis" title="Permalink to this heading">#</a></h2>
+<p>The analysis of zeros is less straight-forward than the analysis of the poles of the system, because their effects are less pronounced. Zeros contribute to</p>
+<ul class="simple">
+<li><p>the transient behavior of the response,</p></li>
+<li><p>the magnitude of the response, and</p></li>
+<li><p>the response to different input frequencies.</p></li>
+</ul>
+<section id="activity-4">
+<h3>Activity 4<a class="headerlink" href="#activity-4" title="Permalink to this heading">#</a></h3>
+<p><img alt="activity" src="../../_images/activity1.png" /></p>
+<p>Consider the simple system:</p>
+<div class="math notranslate nohighlight">
+\[G(s) = \frac{ s-z_0}{s+1}\]</div>
+<p>Adjust the location of the zero using the slider and observe the changes to the response.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use the MATLAB LiveScript PoleZeroAnalysis.mlx and the <code class="docutils literal notranslate"><span class="pre">polesApp</span></code> app to complete these Activities.</p>
+</div>
+</section>
+<section id="id8">
+<h3>Reflect.<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<p><img alt="reflection" src="../../_images/reflect2.png" /></p>
+<ul class="simple">
+<li><p>Is the stability or long-term behavior of the system affected by the zero location?</p></li>
+<li><p>How is the transient response affected by the zero?</p></li>
+<li><p>Does the system become unstable when the zero is in the right-half plane?</p></li>
+<li><p>What happens as the zero approaches the pole?</p></li>
+</ul>
+</section>
+<section id="activity-5">
+<h3>Activity 5<a class="headerlink" href="#activity-5" title="Permalink to this heading">#</a></h3>
+<p><img alt="activity" src="../../_images/activity1.png" /></p>
+<p>In this activity, you will visually explore the relationship between transfer function zeros and time-domain responses. You will inspect the step responses of</p>
+<div class="math notranslate nohighlight">
+\[G = \frac{s-z_0}{s^2 + 2s + 2}\]</div>
+<ul class="simple">
+<li><p>Begin the activity by running the attached app, <code class="docutils literal notranslate"><span class="pre">polesApp.mlapp</span></code>. Note that this link will only work if <code class="docutils literal notranslate"><span class="pre">polesApp.mlapp</span></code> is in the current folder or on the MATLAB Search Path.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;polesApp.mlapp&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Set the number of poles/pole pairs to 1</p></li>
+<li><p>Place the pole pair at <span class="math notranslate nohighlight">\(p = -1 \pm i\)</span>.</p></li>
+<li><p>View the step response by selecting Step in the Response type menu.</p></li>
+<li><p>Add a zero to the plot. Adjust the position of the zero to generate the step responses shown below.</p></li>
+</ul>
+<p><img alt="Zero pole plots" src="../../_images/zeroPlotPart1.png" /></p>
+<section id="id9">
+<h4>Reflect<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>The transient of the step response that exceeds the steady value (y = 1, in this case) is known as the overshoot. As the zero moves further in the negative direction along the real axis, what happens to the overshoot?</p></li>
+<li><p>The time it takes to reach the steady value (y = 1, in this case) is known as the rise time. How is the rise time affected by changes to the zero, z_0?</p></li>
+<li><p>Try other values of the poles and zero, do you observe similar changes to the overshoot and rise time?</p></li>
+</ul>
+</section>
+</section>
+<section id="homework-exercise-3">
+<h3>Homework Exercise 3<a class="headerlink" href="#homework-exercise-3" title="Permalink to this heading">#</a></h3>
+<p><img alt="homework" src="../../_images/write2.png" /></p>
+<p>In this exercise, you will examine the changes to the analytic step response of a transfer function with a single zero.</p>
+<p>Consider the transfer function used in the previous activity:</p>
+<div class="math notranslate nohighlight">
+\[G = \frac{s-z_0}{s^2 + 2s + 2}\]</div>
+<section id="homework-exercise-3-a">
+<h4>Homework Exercise 3(a)<a class="headerlink" href="#homework-exercise-3-a" title="Permalink to this heading">#</a></h4>
+<p>Compute the symbolic form of the step response of the transfer function, <span class="math notranslate nohighlight">\(x(t\)</span>). You can perform the analytic computations by hand or using the Symbolic Math Toolbox.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Use these symbolic variables</span>
+<span class="n">syms</span><span class="w"> </span><span class="s">s</span><span class="w"> </span><span class="s">z_0</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">positive</span><span class="w"> </span>
+<span class="c">% Write your solution here</span>
+<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x =
+   NaN
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="homework-exercise-3-b">
+<h4>Homework Exercise 3(b)<a class="headerlink" href="#homework-exercise-3-b" title="Permalink to this heading">#</a></h4>
+<p>Plot the analytic step response with <span class="math notranslate nohighlight">\(z_0 = -1\)</span> on the interval <span class="math notranslate nohighlight">\(t \in [0, 10]\)</span>. If you computed the step response function with the Symbolic Math Toolbox, you can use the <a class="reference external" href="https://www.mathworks.com/help/symbolic/matlabfunction.html"><code class="docutils literal notranslate"><span class="pre">matlabFunction</span></code></a> command to convert it to a function handle that you can evaluate.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Create your plot here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="homework-exercise-3-c">
+<h4>Homework Exercise 3(c)<a class="headerlink" href="#homework-exercise-3-c" title="Permalink to this heading">#</a></h4>
+<p>Using the analytic form of the transfer function, compute the limit of the function as <span class="math notranslate nohighlight">\(t \to \infty\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your solution here</span>
+<span class="n">tlim</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tlim =
+   NaN
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id10">
+<h5>Reflect.<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h5>
+<p><img alt="reflect" src="../../_images/reflect2.png" /></p>
+<ul class="simple">
+<li><p>Vary the location of the zero (<span class="math notranslate nohighlight">\(z_0\)</span>) and observe how the step response changes.</p></li>
+<li><p>How does the location of the zero (<span class="math notranslate nohighlight">\(z_0\)</span>) affect the overall magnitude of the step response? Where does this show up in the analytic solution?</p></li>
+<li><p>How does the location of the zero (<span class="math notranslate nohighlight">\(z_0\)</span>) affect the rise time and overshoot? Where does this show up in the analytic solution?</p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+<section id="further-exploration">
+<h2>Further exploration<a class="headerlink" href="#further-exploration" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>You can interactively explore transfer functions, their poles, time-domain response, and more using the <a class="reference external" href="https://www.mathworks.com/help/control/ref/controlsystemdesigner-app.html">Control System Designer</a> app<a class="footnote-reference brackets" href="#eg-243" id="id11">2</a>.</p></li>
+</ul>
+</section>
+<section id="answers-to-selected-exercises">
+<span id="answers"></span><h2>Answers to Selected Exercises<a class="headerlink" href="#answers-to-selected-exercises" title="Permalink to this heading">#</a></h2>
+<section id="solutions-to-exercise-1">
+<h3>Solutions to Exercise 1<a class="headerlink" href="#solutions-to-exercise-1" title="Permalink to this heading">#</a></h3>
+<section id="exercise-1-a">
+<h4>Exercise 1(a)<a class="headerlink" href="#exercise-1-a" title="Permalink to this heading">#</a></h4>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">eqn1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">R</span><span class="o">*</span><span class="n">I</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">L</span><span class="o">*</span><span class="n">s</span><span class="o">*</span><span class="n">I</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="o">*</span><span class="n">k_e</span><span class="o">*</span><span class="n">Theta</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">V</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="exercise-1-b">
+<h4>Exercise 1(b)<a class="headerlink" href="#exercise-1-b" title="Permalink to this heading">#</a></h4>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">eqn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">J</span><span class="o">*</span><span class="n">s</span>^<span class="mi">2</span><span class="o">*</span><span class="n">Theta</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="o">*</span><span class="n">s</span><span class="o">*</span><span class="n">Theta</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">k_m</span><span class="o">*</span><span class="n">I</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="exercise-1-c">
+<h4>Exercise 1(c)<a class="headerlink" href="#exercise-1-c" title="Permalink to this heading">#</a></h4>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ThetaOverV</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">k_m</span><span class="o">/</span><span class="p">(</span><span class="n">s</span><span class="o">*</span><span class="p">(</span><span class="n">L</span><span class="o">*</span><span class="n">J</span><span class="o">*</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">J</span><span class="o">+</span><span class="n">L</span><span class="o">*</span><span class="n">B</span><span class="p">)</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="o">*</span><span class="n">R</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k_m</span><span class="o">*</span><span class="n">k_e</span><span class="p">));</span>
+</pre></div>
+</div>
+</section>
+<section id="exercise-1-d">
+<h4>Exercise 1(d)<a class="headerlink" href="#exercise-1-d" title="Permalink to this heading">#</a></h4>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">soln</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">k_m</span><span class="o">/</span><span class="p">(</span><span class="n">L</span><span class="o">*</span><span class="n">J</span><span class="o">*</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">J</span><span class="o">+</span><span class="n">L</span><span class="o">*</span><span class="n">B</span><span class="p">)</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="o">*</span><span class="n">R</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k_m</span><span class="o">*</span><span class="n">k_e</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="solutions-to-exercise-2">
+<h3>Solutions to Exercise 2<a class="headerlink" href="#solutions-to-exercise-2" title="Permalink to this heading">#</a></h3>
+<section id="id12">
+<h4>Exercise 2(a)<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h4>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">60</span><span class="p">],[</span><span class="mi">1</span><span class="w"> </span><span class="mf">2.3</span><span class="w"> </span><span class="mi">11</span><span class="p">])</span>
+<span class="n">p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">pole</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="n">r</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">p</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="c">% p(2) will be the same</span>
+<span class="n">phi</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">angle</span><span class="p">(</span><span class="n">p</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="mi">180</span><span class="o">/</span><span class="nb">pi</span><span class="p">)</span><span class="w"> </span><span class="c">% degrees</span>
+</pre></div>
+</div>
+</section>
+<section id="id13">
+<h4>Exercise 2(a)<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h4>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">damp</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="footnotes">
+<h2>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this heading">#</a></h2>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="id14"><span class="brackets">1</span></dt>
+<dd><p>We provide some of the solutions in <span class="xref std std-ref">answers</span>.</p>
+</dd>
+<dt class="label" id="eg-243"><span class="brackets"><a class="fn-backref" href="#id11">2</a></span></dt>
+<dd><p>This will provide additional insights useful for EG-243 Control Systems.</p>
+</dd>
+</dl>
 </section>
 </section>
 
@@ -1004,7 +1360,100 @@ end</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">Learning Outcomes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transfer-function-representation-of-a-dc-motor">Transfer function representation of a DC motor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transfer-function-representation-of-a-dc-motor">Transfer function representation of a DC motor</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-dc-motor-differential-equations">Derivation of the DC motor differential equations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a">1(a)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pro-tip">Pro-tip</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#b">1(b)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c">1(c)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#d">1(d)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pole-analysis">Pole analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stability">Stability</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-1">Activity 1</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reflect">Reflect.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-exercise-1">Homework Exercise 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-exercise-1-a">Homework Exercise 1(a)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-exercise-1-b">Homework Exercise 1(b)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-exercise-1-c">Homework Exercise 1(c)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Reflect.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-frequency">Natural frequency</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-2">Activity 2</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Reflect</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-a">Exercise 2(a)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-b">Exercise 2(b)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Reflect</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-a-second-order-system">Analysis of a second-order system</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Pole analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-frequency-omega-n">Natural frequency <span class="math notranslate nohighlight">\(\omega_n\)</span></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#damping-ratio-zeta">Damping ratio <span class="math notranslate nohighlight">\(\zeta\)</span></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#gain-coefficient-k">Gain coefficient <span class="math notranslate nohighlight">\(K\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-response">Natural response</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-3">Activity 3</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Reflect.</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-exercise-2-mass-spring-damper-analysis">Homework Exercise 2: Mass-spring-damper analysis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-exercise-2-a">Homework Exercise 2(a)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-exercise-2-b">Homework Exercise 2(b)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-exercise-2-c">Homework Exercise 2(c)</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Reflect.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zero-analysis">Zero analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-4">Activity 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Reflect.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-5">Activity 5</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Reflect</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-exercise-3">Homework Exercise 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-exercise-3-a">Homework Exercise 3(a)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-exercise-3-b">Homework Exercise 3(b)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-exercise-3-c">Homework Exercise 3(c)</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Reflect.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-exploration">Further exploration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#answers-to-selected-exercises">Answers to Selected Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions-to-exercise-1">Solutions to Exercise 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-a">Exercise 1(a)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-b">Exercise 1(b)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-c">Exercise 1(c)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-d">Exercise 1(d)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions-to-exercise-2">Solutions to Exercise 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Exercise 2(a)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Exercise 2(a)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes">Footnotes</a></li>
 </ul>
   </nav></div>
 

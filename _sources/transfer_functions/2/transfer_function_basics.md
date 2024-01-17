@@ -31,11 +31,13 @@ In this unit, students will...
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
+:::{note}
 This unit is based on the MATLAB LiveScript `TransferFunctionBasics.mlx` from the curriculum module [Transfer Function Analysis of Dynamic Systems](https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems). 
 
 Some of the examples rely on interactive features of MATLAB that are not readily reproduced in these notes. To make use of these facilities, you are advised to access the script directly from the project in MATLAB online.
 
 These materials © Copyright 2023 The MathWorks™, Inc. (See {ref}`mathworks_license`).
+:::
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -184,7 +186,7 @@ A simple vehicle model
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### (a) Differential equation
+#### Example 2(a) Differential equation
 
 The displacement of the vehicle is $x(t)$. For simplicity, the frictional force is assumed to be proportional to the velocity $\dot{x}(t)$ with a constant of proportionality $k$:
     
@@ -204,7 +206,7 @@ $$m\ddot{x} = -k\dot{x}  + u(t)$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### (b) Transfer function
+#### Example 2(b) Transfer function
 
 Computing the Laplace transform of the equation of motion yields
     
@@ -572,12 +574,12 @@ If you don't want to perform Step 1 by hand, you can simply use a table or the `
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-#### (a) 
+#### 4(a) 
 Compute the analytic impulse response for the simple vehicle model using its position transfer function.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-#### (b) 
+#### 4(b) 
 Set $m = 1300$ and $k = 100$. Then plot the analytic impulse result and compare it to the solution found using the `impulse` function.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -586,7 +588,7 @@ Set $m = 1300$ and $k = 100$. Then plot the analytic impulse result and compare 
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### (a) 
+#### Solution to Example 4(a) 
 
 Recall that the position transfer function for the simple vehicle model was:
     
@@ -621,7 +623,7 @@ x = ilaplace(X)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### (b) 
+#### Solution to Example 4(b) 
 
 First define the transfer function using `tf` and then compute the impulse response.
 
@@ -662,7 +664,7 @@ Complete this exercise for homework using the MATLAB LiveScript `TransferFunctio
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### 4(a)
+#### Homework 1(a)
 
 Compute the analytic **step** response for the vehicle position transfer function. Recall that the position transfer function for the simple vehicle model was:
     
@@ -672,7 +674,7 @@ Store the output in symbolic variable `x` using the pre-defined symbolic variabl
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### 4(b) 
+#### Homework 1(b) 
 
 Set $m = 1300$ and $k = 100$. Then plot the analytic step result you computed in (a). Also, plot the step response calculated using the `step` function.
 
@@ -765,7 +767,7 @@ Complete the exercise in the MATLAB LiveScript `TransferFunctionBasics.mlx`.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-##### (a) 
+#### Homework Exercise 2(a) 
 
 Compute the Laplace transform of the input function:
 
@@ -783,7 +785,7 @@ slideshow:
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### (b)  
+#### Homework Exercise 2(b)  
 
 Find the expression for the response in the Laplace domain: $X(s)$.
 
@@ -797,7 +799,7 @@ slideshow:
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### (c) 
+#### Homework Exercise 2(c) 
 
 Compute the inverse Laplace transform of $X(s)$ to identify the time-domain response $x(t)$.
 
@@ -811,7 +813,7 @@ slideshow:
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### (d) 
+#### Homework Exercise 2(d) 
 
 Evaluate the analytic response for $f = 0.16$ on the interval $[0, 50]$ and plot it.
 
@@ -948,4 +950,4 @@ step(gain*H, Tfinal),ylabel('v(t) [m/s]'),grid
 
 [^eg243]: These resources are useful for those of you also studying control systems this semester.
 
-[^solutions]: MATLAB solutions are provided in the online notes.
+[^solutions]: MATLAB solutions to selected exercises are provided in the online notes.
