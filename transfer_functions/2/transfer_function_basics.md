@@ -857,12 +857,6 @@ Want a little more of the theory? Check out Brian Douglas' video: [Control Syste
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-[^refer_to_livescript]: The MATLAB live script `TransferFunctionBasics.mlx` has sliders to make the interactive adjustment of the parameters `m`, `c` and `k` possible.
-
-[^eg243]: These resources are useful for those of you also studying control systems this semester.
-
-[^solutions]: MATLAB solutions are provided in the online notes.
-
 ## Solutions to MATLAB examples
 
 ### Solution to Exercise 3: Impulse response
@@ -945,3 +939,13 @@ Check using
 gain = 5000;
 step(gain*H, Tfinal),ylabel('v(t) [m/s]'),grid
 ```
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+## Footnotes
+
+[^refer_to_livescript]: The MATLAB live script `TransferFunctionBasics.mlx` has sliders to make the interactive adjustment of the parameters `m`, `c` and `k` possible.
+
+[^eg243]: These resources are useful for those of you also studying control systems this semester.
+
+[^solutions]: MATLAB solutions to selected exercises are provided in the online notes.
