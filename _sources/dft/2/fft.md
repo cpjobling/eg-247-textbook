@@ -46,7 +46,7 @@ In this presentation, we will not go through the mathematical development of the
 
 ### Acknowledgements
 
-The material in this presentation and notes is based on [Chapter 10](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=405) of {cite}`karris` from the **Required Reading List**. The models of the FFT signal flow graphs and Simulink block diagrams are based on the presentation given in Section 12.5 of {cite}`phillips`.
+The material in this presentation and notes is based on [Chapter 10](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853&ppg=405) of {cite}`karris` from the **Required Reading List**. The models of the FFT signal flow graphs and Simulink block diagrams are based on the presentation given in Section 12.5 of {cite}`phillips`.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 

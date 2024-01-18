@@ -34,7 +34,7 @@ An annotatable worksheet for this presentation is available as [**Worksheet 15**
 
 This section is Based on the section **Filtering** from Chapter 5 of [Benoit Boulet, Fundamentals of Signals and Systems](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?ppg=221&docID=3135971&tm=1518715953782){cite}`boulet` from the **Recommended Reading List**.
 
-This material is an introduction to analogue filters. You will find much more in-depth coverage on [Pages 11-1&mdash;11-48](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?ppg=429&docID=3384197&tm=1518716026573) of {cite}`karris`.
+This material is an introduction to analogue filters. You will find much more in-depth coverage on [Pages 11-1&mdash;11-48](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?ppg=429&docID=44853&tm=1518716026573) of {cite}`karris`.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 

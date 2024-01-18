@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Homework 9 &#8212; EG-247 Digital Signal Processing</title>
+    <title>Homework 9: Discrete Fourier Transform and the Fast-Fourier Transform &#8212; EG-247 Digital Signal Processing</title>
   
   
   
@@ -64,12 +64,14 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'homework/hw9';</script>
     <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/homework/hw9.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Homework 10" href="hw10.html" />
-    <link rel="prev" title="Homework 8" href="hw8.html" />
+    <link rel="next" title="Project - Design and Implementation of a 10-band Graphic Equaliser" href="../labs/project/index.html" />
+    <link rel="prev" title="Homework 8: Inverse Z-Transform and Models of Discrete-Time Systems" href="hw8.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -218,13 +220,11 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework problems</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Homework</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="hw1.html">Howework 1 Transfer Function Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hw5.html">Homework 5 Fourier Series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hw6.html">Homework 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw6.html">Homework 6: Fourier Transforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hw7.html">Homework 7 Applications of the Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hw8.html">Homework 8 Sampling Theory and the Z-Transform</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hw10.html">Homework 10 Discrete Fourier Transform and the Fast-Fourier Transform</a></li>
 </ul>
 </li>
 </ul>
@@ -458,7 +458,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Homework 9</h1>
+    <h1>Homework 9: Discrete Fourier Transform and the Fast-Fourier Transform</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -468,12 +468,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-z-transform-and-models-of-discrete-time-systems">Inverse Z-Transform and Models of Discrete-Time Systems</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-inverse-z-transform">The Inverse Z-Transform</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#models-of-discrete-time-systems">Models of Discrete-Time Systems</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-fourier-transform">Discrete Fourier Transform</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
 </ul>
             </nav>
@@ -486,28 +482,61 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <!-- #region -->
-<section class="tex2jax_ignore mathjax_ignore" id="homework-9">
-<h1>Homework 9<a class="headerlink" href="#homework-9" title="Permalink to this heading">#</a></h1>
-<section id="inverse-z-transform-and-models-of-discrete-time-systems">
-<h2>Inverse Z-Transform and Models of Discrete-Time Systems<a class="headerlink" href="#inverse-z-transform-and-models-of-discrete-time-systems" title="Permalink to this heading">#</a></h2>
-<section id="the-inverse-z-transform">
-<h3>The Inverse Z-Transform<a class="headerlink" href="#the-inverse-z-transform" title="Permalink to this heading">#</a></h3>
-<p>Attempt the end of the chapter exercises 4-7 (<a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=377">Section 9.10</a>) from Karris<span id="id1">[<a class="reference internal" href="../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197.">Karris, 2012</a>]</span>.</p>
-</section>
-<section id="models-of-discrete-time-systems">
-<h3>Models of Discrete-Time Systems<a class="headerlink" href="#models-of-discrete-time-systems" title="Permalink to this heading">#</a></h3>
-<p>You should be able to tackle the remaining end of chapter exercises 8-11 (<a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=377">Section 9.10</a>) from Karris<span id="id2">[<a class="reference internal" href="../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197.">Karris, 2012</a>]</span>.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="homework-9-discrete-fourier-transform-and-the-fast-fourier-transform">
+<span id="homework9"></span><h1>Homework 9: Discrete Fourier Transform and the Fast-Fourier Transform<a class="headerlink" href="#homework-9-discrete-fourier-transform-and-the-fast-fourier-transform" title="Permalink to this heading">#</a></h1>
+<section id="discrete-fourier-transform">
+<h2>Discrete Fourier Transform<a class="headerlink" href="#discrete-fourier-transform" title="Permalink to this heading">#</a></h2>
+<ol>
+    <li>Try Exercise 1 and Exercise 2 in section <a href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=421">10.8</a> of Karris{cite}`karris` by hand.</li>
+<li>The eight-point	Discrete Fourier Transform (DFT) of the	function:
+<div class="math notranslate nohighlight">
+\[\begin{split}
+     x[n] = \left\{
+         \begin{array}{r&#64;{\quad}l}
+             n &amp; 0 \le n \le 4\\
+             0 &amp; \mathrm{otherwise}
+         \end{array}
+     \right.
+\end{split}\]</div>
+<p>is given by</p>
+<div class="math notranslate nohighlight">
+\[
+      X[m] = \left[ 10,-5.41-j4.83, 2 + j2, -2.59-j0.83, 2, -2.59+j0.83, 2-j2, -5.41+j4.83\right].
+\]</div>
+<ol>
+<li>Sketch the time sequence $x[n]$.</li>
+<li>Use the DFT formula 
+<div class="math notranslate nohighlight">
+\[
+           X[m] = \sum_{n=0}^{7}\,x[n]\exp{\left(-j\left(\frac{2\pi m}{8}\right)n\right)} = \sum_{n=0}^{7}\,x[n]W_8^{nm}
+\]</div>
+<p>to confirm that the value of <span class="math notranslate nohighlight">\(X[4]=2\)</span>.</li></p>
+<li>Use the	DFT	formula	given to confirm the DC value of the signal.</li>
+<li>Confirm that the correct value of $x[1]$ is returned by the inverse DFT
+<p>$<span class="math notranslate nohighlight">\(
+        x[n] = \frac{1}{8}\sum_{m=0}^{7}\,X[m]\exp{\left(j\left(\frac{2\pi n}{8}\right)m\right)} = \frac{1}{8}\sum_{m=0}^{7}\,X[m]W_{8}^{-nm}.
+\)</span>$</li></ol></p>
+<li>If	we	wanted	to	compute	a 1024 point DFT from a	sampled-data signal, how much	speed-up could we expect to achieve	using the FFT rather than the standard formula for the	DFT?</li>
+<li>Given that direct convolution of two	digital	sequences takes order $n^2$ floating point operations, is taking the FFT of the two 1024 point signals, multiplying them and taking	the	inverse	FFT	more efficient than direct convolution?	If not, for how	many samples,	would using	the	FFT	be more efficient than direct convolution?</li></ol>
 </section>
 <section id="solutions">
-<h3>Solutions<a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h3>
-<p>Don’t look at the answers in <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=389">section 9.11</a> of Karris<span id="id3">[<a class="reference internal" href="../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197.">Karris, 2012</a>]</span> until you have attempted the problems.</p>
-</section>
+<h2>Solutions<a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>See section <a href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=421">10.9</a> of Karris<span id="id1">[<a class="reference internal" href="../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853.">Karris, 2012</a>]</span></p></li>
+<li><p><em>Hints</em>:</p>
+<ol class="arabic simple">
+<li><p>Sketch a point or stem plot with x-axis <span class="math notranslate nohighlight">\(n\)</span> and y-axis <span class="math notranslate nohighlight">\(x[n]\)</span>.</p></li>
+<li><p>Compute <span class="math notranslate nohighlight">\(X[4]\)</span> noting that the exponential term for <span class="math notranslate nohighlight">\(m = 4\)</span> is <span class="math notranslate nohighlight">\(-1\)</span>.</p></li>
+<li><p>Compute <span class="math notranslate nohighlight">\(X[0]\)</span> but note that the exponential term is <span class="math notranslate nohighlight">\(1\)</span> for all <span class="math notranslate nohighlight">\(n\)</span> so this is simply the sum of <span class="math notranslate nohighlight">\(x[n]\)</span>.</p></li>
+</ol>
+</li>
+<li><p>FFT takes 9.8% of the time or is 102	times faster than DFT.</p></li>
+<li><p>Convolution of two 1024 real sequences takes 1,048,576 real	operations.	FFT	of each	signal takes 10,240 complex	operations,	multiplication of two signals in complex domain	takes 1,024	complex	multiplications, inverse FFT is	10,240 more. So	 FFT method	is around 31,000 complex operations. Even if taking	into account difference	between complex	and	real arithmetic, FFT is	order 10 times faster (and needs less memory) than convolution.</p></li>
+</ol>
 </section>
 <section id="reference">
 <h2>Reference<a class="headerlink" href="#reference" title="Permalink to this heading">#</a></h2>
-<p>See <a class="reference internal" href="../zbib.html"><span class="doc std std-doc">Bibliography</span></a>.</p>
-<!-- #endregion -->
+<p>See <a class="reference internal" href="../zbib.html"><span class="doc std std-doc">Bibliograhy</span></a>.</p>
 </section>
 </section>
 
@@ -547,15 +576,15 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Homework 8</p>
+        <p class="prev-next-title">Homework 8: Inverse Z-Transform and Models of Discrete-Time Systems</p>
       </div>
     </a>
     <a class="right-next"
-       href="hw10.html"
+       href="../labs/project/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Homework 10</p>
+        <p class="prev-next-title">Project - Design and Implementation of a 10-band Graphic Equaliser</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -574,12 +603,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-z-transform-and-models-of-discrete-time-systems">Inverse Z-Transform and Models of Discrete-Time Systems</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-inverse-z-transform">The Inverse Z-Transform</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#models-of-discrete-time-systems">Models of Discrete-Time Systems</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-fourier-transform">Discrete Fourier Transform</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
 </ul>
   </nav></div>

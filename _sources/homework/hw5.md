@@ -5,23 +5,15 @@ jupyter:
       extension: .md
       format_name: markdown
       format_version: '1.3'
-      jupytext_version: 1.14.1
+      jupytext_version: 1.15.2
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python
     name: python3
 ---
 
-<!-- #region slideshow={"slide_type": "slide"} -->
-# Homework 5
+(homework5)=
+# Homework 5: Fourier Transforms
 
-
-## Fourier Series
-
-
-1. Compute the exponential Fourier series for the wave forms shown in [Worksheet 9](../fourier_series/1/worksheet9).
-2. Compute the exponential Fourier series of a full-wave rectified sinusoid. 
-    a. Give the power spectrum for this signal 
-    b. estimate the total harmonic distortion for the first 7 harmonics. 
-
-<!-- #endregion -->
+* Review the worked solutions that you will find as a number of "PenCasts" in the [Worked Solutions to Selected Week 6 Problems](https://canvas.swansea.ac.uk/courses/44853/pages/worked-solutions-to-selected-week-6-problems) page on Canvas. 
+* Attempt Questions 1—6 of the End of Chapter Problems ([Section 8.10](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853&ppg=315)) in Karris{cite}`karris`.

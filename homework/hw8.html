@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Homework 8 &#8212; EG-247 Digital Signal Processing</title>
+    <title>Homework 8: Inverse Z-Transform and Models of Discrete-Time Systems &#8212; EG-247 Digital Signal Processing</title>
   
   
   
@@ -68,8 +68,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/homework/hw8.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Homework 9" href="hw9.html" />
-    <link rel="prev" title="Homework 7" href="hw7.html" />
+    <link rel="next" title="Homework 9: Discrete Fourier Transform and the Fast-Fourier Transform" href="hw9.html" />
+    <link rel="prev" title="Homework 7: Sampling Theory and the Z-Transform" href="hw7.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -218,13 +218,11 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework problems</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Homework</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="hw1.html">Howework 1 Transfer Function Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hw5.html">Homework 5 Fourier Series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hw6.html">Homework 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw6.html">Homework 6: Fourier Transforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hw7.html">Homework 7 Applications of the Fourier Transform</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Homework 8 Sampling Theory and the Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hw9.html">Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hw10.html">Homework 10 Discrete Fourier Transform and the Fast-Fourier Transform</a></li>
 </ul>
 </li>
 </ul>
@@ -458,7 +456,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Homework 8</h1>
+    <h1>Homework 8: Inverse Z-Transform and Models of Discrete-Time Systems</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -468,11 +466,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-theory-and-the-z-transform">Sampling Theory and the Z-Transform</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-theory">Sampling Theory</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#z-transform">Z-Transform</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-inverse-z-transform">The Inverse Z-Transform</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#models-of-discrete-time-systems">Models of Discrete-Time Systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
 </ul>
             </nav>
         </div>
@@ -484,22 +481,25 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="homework-8">
-<h1>Homework 8<a class="headerlink" href="#homework-8" title="Permalink to this heading">#</a></h1>
-<section id="sampling-theory-and-the-z-transform">
-<h2>Sampling Theory and the Z-Transform<a class="headerlink" href="#sampling-theory-and-the-z-transform" title="Permalink to this heading">#</a></h2>
-<section id="sampling-theory">
-<h3>Sampling Theory<a class="headerlink" href="#sampling-theory" title="Permalink to this heading">#</a></h3>
-<p>You should take the scripts home (<a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/tree/master/dt_systems/1/matlab">to be found here</a>) and play with them.</p>
-<ul class="simple">
-<li><p>Try increasing the sampling frequency: 8000 Hz, 11025 Hz, 22050 Hz, 44100 Hz, 48000 Hz, and 96000 Hz are supported by most PC sound cards.</p></li>
-<li><p>Try increasing the bits per sample: 8, 16, 24 are available.</p></li>
-</ul>
+  <!-- #region -->
+<section class="tex2jax_ignore mathjax_ignore" id="homework-8-inverse-z-transform-and-models-of-discrete-time-systems">
+<span id="homework8"></span><h1>Homework 8: Inverse Z-Transform and Models of Discrete-Time Systems<a class="headerlink" href="#homework-8-inverse-z-transform-and-models-of-discrete-time-systems" title="Permalink to this heading">#</a></h1>
+<section id="the-inverse-z-transform">
+<h2>The Inverse Z-Transform<a class="headerlink" href="#the-inverse-z-transform" title="Permalink to this heading">#</a></h2>
+<p>Attempt the end of the chapter exercises 4-7 (<a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853&amp;ppg=377">Section 9.10</a>) from Karris<span id="id1">[<a class="reference internal" href="../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853.">Karris, 2012</a>]</span>.</p>
 </section>
-<section id="z-transform">
-<h3>Z-Transform<a class="headerlink" href="#z-transform" title="Permalink to this heading">#</a></h3>
-<p>Problems 1 to 3 in <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=329">Section 9.10 Exercises</a> of Karris<span id="id1">[<a class="reference internal" href="../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197.">Karris, 2012</a>]</span> explore the z-Transform.</p>
+<section id="models-of-discrete-time-systems">
+<h2>Models of Discrete-Time Systems<a class="headerlink" href="#models-of-discrete-time-systems" title="Permalink to this heading">#</a></h2>
+<p>You should be able to tackle the remaining end of chapter exercises 8-11 (<a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853&amp;ppg=377">Section 9.10</a>) from Karris<span id="id2">[<a class="reference internal" href="../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853.">Karris, 2012</a>]</span>.</p>
 </section>
+<section id="solutions">
+<h2>Solutions<a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h2>
+<p>Don’t look at the answers in <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853&amp;ppg=389">section 9.11</a> of Karris<span id="id3">[<a class="reference internal" href="../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853.">Karris, 2012</a>]</span> until you have attempted the problems.</p>
+</section>
+<section id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this heading">#</a></h2>
+<p>See <a class="reference internal" href="../zbib.html"><span class="doc std std-doc">Bibliography</span></a>.</p>
+<!-- #endregion -->
 </section>
 </section>
 
@@ -539,7 +539,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Homework 7</p>
+        <p class="prev-next-title">Homework 7: Sampling Theory and the Z-Transform</p>
       </div>
     </a>
     <a class="right-next"
@@ -547,7 +547,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Homework 9</p>
+        <p class="prev-next-title">Homework 9: Discrete Fourier Transform and the Fast-Fourier Transform</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -566,11 +566,10 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-theory-and-the-z-transform">Sampling Theory and the Z-Transform</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-theory">Sampling Theory</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#z-transform">Z-Transform</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-inverse-z-transform">The Inverse Z-Transform</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#models-of-discrete-time-systems">Models of Discrete-Time Systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
 </ul>
   </nav></div>
 

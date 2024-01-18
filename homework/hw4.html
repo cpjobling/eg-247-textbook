@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Homework 4 &#8212; EG-247 Digital Signal Processing</title>
+    <title>Homework 4: Fourier Series &#8212; EG-247 Digital Signal Processing</title>
   
   
   
@@ -64,8 +64,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'homework/hw4';</script>
     <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/homework/hw4.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -218,13 +216,11 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework problems</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="index.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="hw1.html">Howework 1 Transfer Function Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hw5.html">Homework 5 Fourier Series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hw6.html">Homework 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw6.html">Homework 6: Fourier Transforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hw7.html">Homework 7 Applications of the Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hw8.html">Homework 8 Sampling Theory and the Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hw9.html">Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hw10.html">Homework 10 Discrete Fourier Transform and the Fast-Fourier Transform</a></li>
 </ul>
 </li>
 </ul>
@@ -445,9 +441,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -458,23 +452,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Homework 4</h1>
+    <h1>Homework 4: Fourier Series</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-impulse-response-and-convolution">The Impulse Response and Convolution</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#answers-to-selected-problems">Answers to selected problems</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
-</ul>
-</li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -485,129 +467,15 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <!-- #region slideshow={"slide_type": "slide"} -->
-<section class="tex2jax_ignore mathjax_ignore" id="homework-4">
-<h1>Homework 4<a class="headerlink" href="#homework-4" title="Permalink to this heading">#</a></h1>
-<section id="the-impulse-response-and-convolution">
-<h2>The Impulse Response and Convolution<a class="headerlink" href="#the-impulse-response-and-convolution" title="Permalink to this heading">#</a></h2>
-<p>The questions for Homework 4 are based on the examples given in <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=207">Section 6.8</a> of <span id="id1">[<a class="reference internal" href="../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197.">Karris, 2012</a>]</span>.</p>
-<ol class="arabic">
-<li><p>Confirm the result of <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/5/convolution.html#Example-5">Example 5</a> from the notes using the convolution integral</p>
-<div class="math notranslate nohighlight">
-\[h(t) * u_0(t) = \int_{-\infty}^{\infty}\,u_0(\tau)h(t-\tau)\,d\tau\]</div>
-</li>
-<li><p>Compute the impulse response <span class="math notranslate nohighlight">\(h(t) = i_s(t)\)</span> (where <span class="math notranslate nohighlight">\(i_s(t) = \delta(t)\)</span>) in terms of <span class="math notranslate nohighlight">\(R\)</span> and <span class="math notranslate nohighlight">\(L\)</span> for the circuit shown in Fig. Q2 below. Use this result to compute the voltage <span class="math notranslate nohighlight">\(v_L(t)\)</span> across the inductor.</p>
-<p><img alt="RL Circuit" src="../_images/rl_circ.jpeg" /></p>
-<p><strong>Fig. Q2: An RL Circuit</strong></p>
-</li>
-<li><p>Redo the graphical convolution <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/5/convolution.html#Example-2">Example 2</a> from the notes by forming <span class="math notranslate nohighlight">\(h(t - \tau)\)</span> instead of <span class="math notranslate nohighlight">\(u(t - \tau)\)</span>. That is, use the convolution integral</p>
-<p>\begin{equation}
-\int_{-\infty}^{\infty} u(\tau)h(t-\tau),d\tau.
-\end{equation}</p>
-<p>Confirm the result in MATLAB.</p>
-</li>
-<li><p>Redo the graphical convolution <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/5/convolution.html#Example-3">Example 3</a> from the notes by forming <span class="math notranslate nohighlight">\(h(t-\tau)\)</span> instead of <span class="math notranslate nohighlight">\(u(t-\tau)\)</span>. Confirm the result in MATLAB.</p></li>
-<li><p>Derive the transfer function</p>
-<p>\begin{equation}
-H(s) = \frac{V_L(s)}{I_s(s)}
-\end{equation}</p>
-<p>for the circuit of Fig. Q2.</p>
-<p>Use this result to</p>
-<ol class="arabic">
-<li><p>Confirm the impulse response of this circuit <span class="math notranslate nohighlight">\(V_L(t)\)</span>.</p></li>
-<li><p>Compute the step response</p>
-<div class="math notranslate nohighlight">
-\[
-            V_L(t) = \mathcal L^{-1}\left\{ H(s) U_0(s) \right\}.
-        \]</div>
-</li>
-<li><p>Validate this result in MATLAB.</p></li>
-</ol>
-</li>
-<li><p>For the network show in Fig. Q6 compute:</p>
-<ol class="arabic">
-<li><p>The transfer function</p>
-<p>\begin{equation}
-H(s) = \frac{V_{\mathrm{out}}(s)}{V_{\mathrm{in}}(s)};
-\end{equation}</p>
-</li>
-<li><p>The response of this circuit to the input <span class="math notranslate nohighlight">\(v_{\mathrm{in}}(t) = u_0(t) - u_0(t - 1).\)</span></p></li>
-<li><p>Validate this result in MATLAB.</p>
-<p><img alt="L R Circuit" src="../_images/lr_circ.png" /></p>
-<p><strong>Fig. Q6: An LR Network</strong></p>
-</li>
-</ol>
-</li>
-<li><p>For the network shown in Fig. Q7 compute:</p>
-<ol class="arabic">
-<li><p>The transfer function</p>
-<p>\begin{equation}
-H(s) = \frac{V_{\mathrm{out}}(s)}{V_{\mathrm{in}}(s)};
-\end{equation}</p>
-</li>
-<li><p>Determine the step response of the network.</p></li>
-<li><p>State the time constant of the network.</p></li>
-<li><p>Validate this result in MATLAB.</p></li>
-</ol>
-<p><img alt="R C Network" src="../_images/rc_circ.png" /></p>
-<p><strong>Fig. Q7: An RC Network</strong></p>
-</li>
+<section class="tex2jax_ignore mathjax_ignore" id="homework-4-fourier-series">
+<span id="homework4"></span><h1>Homework 4: Fourier Series<a class="headerlink" href="#homework-4-fourier-series" title="Permalink to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p>Compute the exponential Fourier series for the wave forms shown in <span class="xref myst">Worksheet 9</span>.</p></li>
+<li><p>Compute the exponential Fourier series of a full-wave rectified sinusoid.
+a. Give the power spectrum for this signal
+b. estimate the total harmonic distortion for the first 7 harmonics.</p></li>
 </ol>
 <!-- #endregion -->
-<!-- #region slideshow={"slide_type": "slide"} -->
-<section id="answers-to-selected-problems">
-<h3>Answers to selected problems<a class="headerlink" href="#answers-to-selected-problems" title="Permalink to this heading">#</a></h3>
-<ul>
-<li><p>For question 2:</p>
-<div class="math notranslate nohighlight">
-\[
-      h(t) = i_s(t) = \left(\frac{1}{L}\right)e^{-\left(\frac{R}{L}\right)t}\,u_0(t);
-  \]</div>
-<div class="math notranslate nohighlight">
-\[
-      v_L(t)=-\left(\frac{R}{L}\right)e^{-\left(\frac{R}{L}\right)t}u_0(t) +\delta(t).
-  \]</div>
-</li>
-<li><p>For question 5 the transfer function is
-$<span class="math notranslate nohighlight">\(
-    H(s) = \frac{s}{s + R/L}
-\)</span>$</p>
-<p>and the step response is:</p>
-<div class="math notranslate nohighlight">
-\[
-      v_L(t) = Le^{-\left(\frac{R}{L}\right)t}u_0(t).
-  \]</div>
-</li>
-<li><p>For question 6 the transfer function is</p>
-<div class="math notranslate nohighlight">
-\[
-      H(s) = \frac{3/2}{s + 3/2}
-  \]</div>
-<p>and the impulse response is:</p>
-<div class="math notranslate nohighlight">
-\[
-      v_L(t) = \left(1 - e^{-1.5t}\right)u_0(t) - \left(1 - e^{-1.5(t-1)}\right)u_0(t-1).
-  \]</div>
-</li>
-<li><p>For question 7 the transfer function is</p>
-<div class="math notranslate nohighlight">
-\[
-    H(s) = \frac{50}{s + 50};
-  \]</div>
-<p>the step response is</p>
-<div class="math notranslate nohighlight">
-\[
-      \left(1 - e^{-50t}\right)u_0(t)
-  \]</div>
-<p>and the time constant is: <span class="math notranslate nohighlight">\(T = RC = 1/50\)</span> s.</p>
-</li>
-</ul>
-<!-- #endregion -->
-</section>
-<section id="reference">
-<h3>Reference<a class="headerlink" href="#reference" title="Permalink to this heading">#</a></h3>
-<p>See <a class="reference internal" href="../zbib.html"><span class="doc std std-doc">Bibliography</span></a>.</p>
-</section>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -646,24 +514,6 @@ $<span class="math notranslate nohighlight">\(
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-impulse-response-and-convolution">The Impulse Response and Convolution</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#answers-to-selected-problems">Answers to selected problems</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
-</ul>
-</li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

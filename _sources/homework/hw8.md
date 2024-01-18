@@ -5,24 +5,31 @@ jupyter:
       extension: .md
       format_name: markdown
       format_version: '1.3'
-      jupytext_version: 1.14.1
+      jupytext_version: 1.15.2
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python
     name: python3
 ---
 
-# Homework 8
+<!-- #region -->
+(homework8)=
+# Homework 8: Inverse Z-Transform and Models of Discrete-Time Systems
 
-## Sampling Theory and the Z-Transform
+### The Inverse Z-Transform
 
-### Sampling Theory
+Attempt the end of the chapter exercises 4-7 ([Section 9.10](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853&ppg=377)) from Karris{cite}`karris`.
 
-You should take the scripts home ([to be found here](https://github.com/cpjobling/eg-247-textbook/tree/master/dt_systems/1/matlab)) and play with them.
+### Models of Discrete-Time Systems
 
-* Try increasing the sampling frequency: 8000 Hz, 11025 Hz, 22050 Hz, 44100 Hz, 48000 Hz, and 96000 Hz are supported by most PC sound cards.
-* Try increasing the bits per sample: 8, 16, 24 are available.
+You should be able to tackle the remaining end of chapter exercises 8-11 ([Section 9.10](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853&ppg=377)) from Karris{cite}`karris`. 
 
-### Z-Transform
+### Solutions
 
-Problems 1 to 3 in [Section 9.10 Exercises](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=329) of Karris{cite}`karris` explore the z-Transform.
+Don't look at the answers in [section 9.11](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853&ppg=389) of Karris{cite}`karris` until you have attempted the problems.
+
+
+## Reference
+
+See [Bibliography](/zbib).
+<!-- #endregion -->

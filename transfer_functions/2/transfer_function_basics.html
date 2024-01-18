@@ -220,13 +220,11 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework problems</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../homework/index.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../homework/hw1.html">Howework 1 Transfer Function Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw5.html">Homework 5 Fourier Series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../homework/hw6.html">Homework 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework/hw6.html">Homework 6: Fourier Transforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw7.html">Homework 7 Applications of the Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw8.html">Homework 8 Sampling Theory and the Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw9.html">Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../homework/hw10.html">Homework 10 Discrete Fourier Transform and the Fast-Fourier Transform</a></li>
 </ul>
 </li>
 </ul>
@@ -542,6 +540,7 @@ document.write(`
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-2-transfer-function-basics">Homework 2: Transfer Function Basics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-exploration">Further exploration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions-to-matlab-examples">Solutions to MATLAB examples</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-to-exercise-3-impulse-response">Solution to Exercise 3: Impulse response</a></li>
@@ -578,6 +577,21 @@ document.write(`
 <p>This unit is based on the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">TransferFunctionBasics.mlx</span></code> from the curriculum module <a class="reference external" href="https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems">Transfer Function Analysis of Dynamic Systems</a>.</p>
 <p>Some of the examples rely on interactive features of MATLAB that are not readily reproduced in these notes. To make use of these facilities, you are advised to access the script directly from the project in MATLAB online.</p>
 <p>These materials © Copyright 2023 The MathWorks™, Inc. (See <a class="reference internal" href="../1/LICENSE.html#mathworks-license"><span class="std std-ref">MathWorks License</span></a>).</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Lecturer: set up the TransferFunctions project for in class execution of exercise tests and activities.</span>
+
+<span class="c">% Setup MATLAB to use the TransferFunctionBasics.mlx LiveScript in class.</span>
+<span class="c">% I am assuming that this is on the MATLAB Drive</span>
+
+<span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="w"> </span>
+<span class="c">% Change this to local set up where this Jupyter book is run</span>
+<span class="nb">cd</span><span class="w"> </span><span class="s">&#39;/Users/eechris/MATLAB-Drive/Repositories/Transfer-Function-Analysis-of-Dynamic-Systems&#39;</span>
+<span class="nb">open</span><span class="p">(</span><span class="s">&#39;TransferFunctions.prj&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="electric-vehicles-the-wave-of-the-future">
@@ -636,6 +650,7 @@ Mass-spring-damper diagram</p>
 <span class="n">syms</span><span class="w"> </span><span class="s">g</span><span class="w"> </span><span class="s">l</span><span class="w"> </span><span class="s">s</span><span class="w"> </span>
 <span class="c">% Record your answer in pendulumTF</span>
 <span class="n">pendulumTF</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span><span class="p">;</span>
+<span class="nb">open</span><span class="p">(</span><span class="s">&#39;TransferFunctionBasics.mlx&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -706,6 +721,7 @@ A simple vehicle model</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">m</span><span class="w"> </span><span class="s">s</span><span class="w"> </span><span class="s">k</span><span class="w"> </span><span class="s">%</span><span class="w"> </span><span class="s">Symbolic</span><span class="w"> </span><span class="s">variable</span><span class="w"> </span><span class="s">declarations</span>
 <span class="c">% Record your answer here</span>
 <span class="n">Vtf</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span><span class="p">;</span>
+<span class="nb">open</span><span class="p">(</span><span class="s">&#39;TransferFunctionBasics.mlx&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -804,7 +820,7 @@ Mass-spring-damper diagram</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7cafa36646c91aa10aea0800ee73e5d38e8455a94e31814c487b0317f7b8bb5d.png" src="../../_images/7cafa36646c91aa10aea0800ee73e5d38e8455a94e31814c487b0317f7b8bb5d.png" />
+<img alt="../../_images/f1d18800acc764d358808af2159f1eb221ef0208905682c516d58155fb7d306f.png" src="../../_images/f1d18800acc764d358808af2159f1eb221ef0208905682c516d58155fb7d306f.png" />
 </div>
 </div>
 </section>
@@ -1045,13 +1061,13 @@ Response of a system to a step input.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/521452619b0df77640ff016be4c013220370cb1388f75ad585f17a864697a665.png" src="../../_images/521452619b0df77640ff016be4c013220370cb1388f75ad585f17a864697a665.png" />
+<img alt="../../_images/30401fe298b170bea10e03acbb2d8c79415a89cf54ea0e62934224cc9ef6cd88.png" src="../../_images/30401fe298b170bea10e03acbb2d8c79415a89cf54ea0e62934224cc9ef6cd88.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="homework-exercise-1">
-<h3>Homework Exercise 1<a class="headerlink" href="#homework-exercise-1" title="Permalink to this heading">#</a></h3>
+<span id="hw2-exercise-1"></span><h3>Homework Exercise 1<a class="headerlink" href="#homework-exercise-1" title="Permalink to this heading">#</a></h3>
 <p>Complete this exercise for homework using the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">TransferFunctionBasics.mlx</span></code> from the curriculum module <a class="reference external" href="https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems">Transfer Function Analysis of Dynamic Systems</a>.</p>
 <section id="homework-1-a">
 <h4>Homework 1(a)<a class="headerlink" href="#homework-1-a" title="Permalink to this heading">#</a></h4>
@@ -1073,7 +1089,7 @@ Response of a system to a step input.</p>
 Response of a system to a square wave.</p>
 <p>Analytically, this can be accomplished by computing <span class="math notranslate nohighlight">\(U(s)\)</span> and subsequently finding the inverse Laplace transform of <span class="math notranslate nohighlight">\(X(s)\)</span>. In cases where the analytic expression does not exist, you can estimate the response numerically using the <a class="reference external" href="https://www.mathworks.com/help/control/ref/lti.lsim.html"><code class="docutils literal notranslate"><span class="pre">lsim</span></code></a> function.</p>
 <section id="homework-activity">
-<h3>Homework Activity<a class="headerlink" href="#homework-activity" title="Permalink to this heading">#</a></h3>
+<span id="hw2-activity-1"></span><h3>Homework Activity<a class="headerlink" href="#homework-activity" title="Permalink to this heading">#</a></h3>
 <p><img alt="activity" src="../../_images/activity.png" /></p>
 <p>As this activity contains interactive elements, you should complete it in the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">TransferFunctionBasics.mlx</span></code>. Here we present one example plot and have documented the activity so you can do for homework.</p>
 <p>In this activity, you will analyze the response of the mass-spring-damper system</p>
@@ -1100,7 +1116,7 @@ Response of a system to a square wave.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8bb01322bc0b6f5c485d74f01728c35046644c6a3dc13c86c3886441f5b275a6.png" src="../../_images/8bb01322bc0b6f5c485d74f01728c35046644c6a3dc13c86c3886441f5b275a6.png" />
+<img alt="../../_images/b1021543777fc42cce6dfe2c9686ddac24aa2258b620af8af758ec9548afa1bd.png" src="../../_images/b1021543777fc42cce6dfe2c9686ddac24aa2258b620af8af758ec9548afa1bd.png" />
 </div>
 </div>
 </section>
@@ -1124,7 +1140,7 @@ Response of a system to a square wave.</p>
 </section>
 </section>
 <section id="homework-exercise-2">
-<h3>Homework Exercise 2<a class="headerlink" href="#homework-exercise-2" title="Permalink to this heading">#</a></h3>
+<span id="hw2-exercise-2"></span><h3>Homework Exercise 2<a class="headerlink" href="#homework-exercise-2" title="Permalink to this heading">#</a></h3>
 <p><img alt="exercise" src="../../_images/write1.png" /></p>
 <p>In this exercise, you will compute the analytic response of the mass-spring-damper to a sine wave input function and compare the result to the numerical values computed by <code class="docutils literal notranslate"><span class="pre">lsim</span></code>. For this exercise, assume the mass-spring-damper parameters are <span class="math notranslate nohighlight">\(m = 1\)</span>, <span class="math notranslate nohighlight">\(c = 0\)</span>, and <span class="math notranslate nohighlight">\(k = 1\)</span>. The transfer function is therefore</p>
 <div class="math notranslate nohighlight">
@@ -1197,6 +1213,19 @@ Response of a system to a square wave.</p>
 </section>
 </section>
 </section>
+<section id="homework-2-transfer-function-basics">
+<span id="homework2"></span><h2>Homework 2: Transfer Function Basics<a class="headerlink" href="#homework-2-transfer-function-basics" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Register with the MathWorks (if you haven’t already) using your Swansea University email and install your own copy of the curriculum module <a class="reference external" href="https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems">Transfer Function Analysis of Dynamic Systems</a> into the online MATLAB version[^installation].</p></li>
+<li><p>Open the <code class="docutils literal notranslate"><span class="pre">TransferFunctionBasics.mlx</span></code> activity.</p></li>
+<li><p>Complete the Exercises and Activities and add your own notes to the LiveScript file in response to the Reflection prompts given above.</p></li>
+</ol>
+<ul class="simple">
+<li><p><a class="reference internal" href="#hw2-exercise-1"><span class="std std-ref">Homework Exercise 1</span></a></p></li>
+<li><p><a class="reference internal" href="#hw2-activity-1"><span class="std std-ref">Homework Activity</span></a></p></li>
+<li><p><a class="reference internal" href="#hw2-exercise-2"><span class="std std-ref">Homework Exercise 2</span></a></p></li>
+</ul>
+</section>
 <section id="further-exploration">
 <h2>Further exploration<a class="headerlink" href="#further-exploration" title="Permalink to this heading">#</a></h2>
 <p><img alt="explore" src="../../_images/navigation.png" /></p>
@@ -1235,9 +1264,7 @@ Want a little more of the theory? Check out Brian Douglas’ video: <a class="re
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ----------------
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1300 s^2 + 100 s
+  1300 s^2 + 100 s
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
@@ -1246,7 +1273,7 @@ Want a little more of the theory? Check out Brian Douglas’ video: <a class="re
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
 </pre></div>
 </div>
-<img alt="../../_images/b21d1b899f25b017a606c92df71f04a66e4612c95bfa34318f80385df9551105.png" src="../../_images/b21d1b899f25b017a606c92df71f04a66e4612c95bfa34318f80385df9551105.png" />
+<img alt="../../_images/e1a8d62bc52d4e388575f8be5dbcc317b77dd777505444127ffa3ddb67f4a40e.png" src="../../_images/e1a8d62bc52d4e388575f8be5dbcc317b77dd777505444127ffa3ddb67f4a40e.png" />
 </div>
 </div>
 <p>Repeat for velocity response</p>
@@ -1282,7 +1309,7 @@ Want a little more of the theory? Check out Brian Douglas’ video: <a class="re
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
 </pre></div>
 </div>
-<img alt="../../_images/a8dfb65d8db076e7067bb8d8d92e30f844c0fc515d5233b25361588be2e710d8.png" src="../../_images/a8dfb65d8db076e7067bb8d8d92e30f844c0fc515d5233b25361588be2e710d8.png" />
+<img alt="../../_images/2ce9060fee211ab24307c976663322a556dc1fb1d1bf61e3ba912daaf9f7f86d.png" src="../../_images/2ce9060fee211ab24307c976663322a556dc1fb1d1bf61e3ba912daaf9f7f86d.png" />
 </div>
 </div>
 </section>
@@ -1324,7 +1351,7 @@ Want a little more of the theory? Check out Brian Douglas’ video: <a class="re
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
 </pre></div>
 </div>
-<img alt="../../_images/c66705b129788fe3e15e6f8259625e2c207e6cf56f1bcf0fec76f6889847b8cc.png" src="../../_images/c66705b129788fe3e15e6f8259625e2c207e6cf56f1bcf0fec76f6889847b8cc.png" />
+<img alt="../../_images/e907989ef07105cc194ebc5e5cba4395734b181adaf20e7cead605683adfd357.png" src="../../_images/e907989ef07105cc194ebc5e5cba4395734b181adaf20e7cead605683adfd357.png" />
 </div>
 </div>
 </section>
@@ -1363,7 +1390,7 @@ Want a little more of the theory? Check out Brian Douglas’ video: <a class="re
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
 </pre></div>
 </div>
-<img alt="../../_images/a408103735b07a30c93e44d46b5b3a95bb56cca6b2e69b796634cd50c14c4ab8.png" src="../../_images/a408103735b07a30c93e44d46b5b3a95bb56cca6b2e69b796634cd50c14c4ab8.png" />
+<img alt="../../_images/76bb8b24116efa0c15723f084760753bd1b36276f197b7cb383287e37000dfe8.png" src="../../_images/76bb8b24116efa0c15723f084760753bd1b36276f197b7cb383287e37000dfe8.png" />
 </div>
 </div>
 <p>The extra gain needed to reach 50 m/s would be 5000. In this case an acceleration from 0-60 mph is achieved in about 10 seconds.</p>
@@ -1526,6 +1553,7 @@ Want a little more of the theory? Check out Brian Douglas’ video: <a class="re
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-2-transfer-function-basics">Homework 2: Transfer Function Basics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-exploration">Further exploration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions-to-matlab-examples">Solutions to MATLAB examples</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-to-exercise-3-impulse-response">Solution to Exercise 3: Impulse response</a></li>

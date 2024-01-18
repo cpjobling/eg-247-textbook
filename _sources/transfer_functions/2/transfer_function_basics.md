@@ -39,6 +39,22 @@ Some of the examples rely on interactive features of MATLAB that are not readily
 These materials © Copyright 2023 The MathWorks™, Inc. (See {ref}`mathworks_license`).
 :::
 
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
+%% Lecturer: set up the TransferFunctions project for in class execution of exercise tests and activities.
+
+% Setup MATLAB to use the TransferFunctionBasics.mlx LiveScript in class.
+% I am assuming that this is on the MATLAB Drive
+
+format compact 
+% Change this to local set up where this Jupyter book is run
+cd '/Users/eechris/MATLAB-Drive/Repositories/Transfer-Function-Analysis-of-Dynamic-Systems'
+open('TransferFunctions.prj')
+```
+
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## Electric vehicles: the wave of the future?
@@ -135,6 +151,7 @@ format compact % remove extra white space
 syms g l s 
 % Record your answer in pendulumTF
 pendulumTF = NaN;
+open('TransferFunctionBasics.mlx')
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}
@@ -241,6 +258,7 @@ slideshow:
 syms m s k % Symbolic variable declarations
 % Record your answer here
 Vtf = NaN;
+open('TransferFunctionBasics.mlx')
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}
@@ -658,6 +676,7 @@ title("Step response")
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
+(hw2-exercise-1)=
 ### Homework Exercise 1
 
 Complete this exercise for homework using the MATLAB LiveScript `TransferFunctionBasics.mlx` from the curriculum module [Transfer Function Analysis of Dynamic Systems](https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems).
@@ -691,6 +710,7 @@ Analytically, this can be accomplished by computing $U(s)$ and subsequently find
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
+(hw2-activity-1)=
 ### Homework Activity
 
 ![activity](images/activity.png)
@@ -746,6 +766,7 @@ plot(t,x)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
+(hw2-exercise-2)=
 ### Homework Exercise 2
 
 ![exercise](images/write.png)
@@ -845,6 +866,19 @@ slideshow:
 ---
 % Write your code here
 ```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+(homework2)=
+## Homework 2: Transfer Function Basics
+
+1. Register with the MathWorks (if you haven't already) using your Swansea University email and install your own copy of the curriculum module [Transfer Function Analysis of Dynamic Systems](https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems) into the online MATLAB version[^installation].
+2. Open the `TransferFunctionBasics.mlx` activity.
+3. Complete the Exercises and Activities and add your own notes to the LiveScript file in response to the Reflection prompts given above. 
+
+* {ref}`hw2-exercise-1`
+* {ref}`hw2-activity-1`
+* {ref}`hw2-exercise-2`
 
 +++ {"slideshow": {"slide_type": "slide"}}
 

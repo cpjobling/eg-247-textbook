@@ -246,7 +246,7 @@ $$C_k = \frac{1}{T}\int_{0}^{T}f(t)e^{-jk\Omega_0 t}\,dt$$
 These are much easier to derive and compute than the equivalent Trigonemetric Fourier Series coefficients. 
 
 
-<sup>*</sup> The analysis that leads to this result is provided between pages [7-31 and 7-32](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?ppg=243&docID=3384197&tm=1518704101461) of the text book {cite}`karris`. It is not a difficult proof, but we are more interested in the result.
+<sup>*</sup> The analysis that leads to this result is provided between pages [7-31 and 7-32](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?ppg=243&docID=44853&tm=1518704101461) of the text book {cite}`karris`. It is not a difficult proof, but we are more interested in the result.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 

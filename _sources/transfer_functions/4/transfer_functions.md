@@ -18,7 +18,7 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-The preparatory reading for this section is [Chapter 4.4](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=75#ppg=113) {cite}`karris` which discusses transfer function models of electrical circuits.
+The preparatory reading for this section is [Chapter 4.4](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853&ppg=75#ppg=113) {cite}`karris` which discusses transfer function models of electrical circuits.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 

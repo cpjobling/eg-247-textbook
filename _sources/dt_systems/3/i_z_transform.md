@@ -34,7 +34,7 @@ An annotatable worksheet for this presentation is available as [**Worksheet 16**
 
 This session we will talk about the Inverse Z-Transform and illustrate its use through an examples class.
 
-The material in this presentation and notes is based on Chapter 9 (Starting at [Section 9.6](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=351)) of {cite}`karris`.
+The material in this presentation and notes is based on Chapter 9 (Starting at [Section 9.6](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853&ppg=351)) of {cite}`karris`.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
