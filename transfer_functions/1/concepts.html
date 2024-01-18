@@ -504,7 +504,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-laplace-transform-properties">Visualize Laplace transform properties</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-differential-equations-using-the-laplace-transform">Solving differential equations using the Laplace transform</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Solution</a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#derive-the-equations-of-motion">1. Derive the equations of motion.</a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-laplace-transform-of-the-dynamic-system-ode-and-solve-for-x">2. Compute the Laplace transform of the dynamic system ODE and solve for <span class="math notranslate nohighlight">\(X\)</span></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#use-partial-fraction-decomposition-to-separate-the-expression-for-into-terms-where-the-inverse-laplace-transform-x-is-known">3. Use partial fraction decomposition to separate the expression for  into terms where the inverse Laplace transform <span class="math notranslate nohighlight">\(X\)</span> is known</a></li>
@@ -513,8 +513,8 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4">Exercise 4</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4(a)</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4(b)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4(a)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4(b)</a></li>
 </ul>
 </li>
 </ul>
@@ -527,6 +527,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5">Exercise 5.</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">Homework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footonotes">Footonotes</a></li>
 </ul>
             </nav>
         </div>
@@ -554,6 +556,21 @@ document.write(`
 <p>This unit is based on the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">ConceptReview.mlx</span></code> from the curriculum module <a class="reference external" href="https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems">Transfer Function Analysis of Dynamic Systems</a>.</p>
 <p>Some of the examples rely on interactive features of MATLAB that are not readily reproduced in these notes. To make use of these facilities, you are advised to access the script directly from the project in MATLAB online.</p>
 <p>These materials © Copyright 2023 The MathWorks™, Inc. (See <a class="reference internal" href="LICENSE.html#mathworks-license"><span class="std std-ref">MathWorks License</span></a>).</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Lecturer: set up the TransferFunctions project for in class execution of exercise tests and activities.</span>
+
+<span class="c">% Setup MATLAB to use the ConceptReview.mlx LiveScript in class.</span>
+<span class="c">% I am assuming that this is on the MATLAB Drive</span>
+
+<span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="w"> </span>
+<span class="c">% Change this to local set up where this Jupyter book is run</span>
+<span class="nb">cd</span><span class="w"> </span><span class="s">&#39;/Users/eechris/MATLAB-Drive/Repositories/Transfer-Function-Analysis-of-Dynamic-Systems&#39;</span>
+<span class="nb">open</span><span class="p">(</span><span class="s">&#39;TransferFunctions.prj&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 <p>Transfer functions are derived by computing the <strong>Laplace transform</strong> of <strong>linear time-invariant (LTI)</strong> dynamic systems. In these notes, the basics of Laplace transforms and LTI systems are reviewed.</p>
 </section>
@@ -641,7 +658,7 @@ F(s) = \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt
 <h4>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h4>
 <p><img alt="example" src="../../_images/write.png" /></p>
 <ol class="arabic simple">
-<li><p>Compute the Laplace transform of some standard functions listed below on paper. Assume <span class="math notranslate nohighlight">\(a\)</span> is real and <span class="math notranslate nohighlight">\(a &gt; 0\)</span></p></li>
+<li><p>Compute the Laplace transform of some standard functions listed below on paper<a class="footnote-reference brackets" href="#examples" id="id1">1</a>. Assume <span class="math notranslate nohighlight">\(a\)</span> is real and <span class="math notranslate nohighlight">\(a &gt; 0\)</span></p></li>
 </ol>
 <p><strong>a.</strong> <span class="math notranslate nohighlight">\(f(t) = 1\)</span> <strong>b.</strong> <span class="math notranslate nohighlight">\(f(t) = e^{-at}\)</span> <strong>c.</strong> <span class="math notranslate nohighlight">\(f(t) = t\)</span> <strong>d.</strong> <span class="math notranslate nohighlight">\(f(t) = \delta(t - a)\)</span></p>
 <p><strong>e.</strong> <span class="math notranslate nohighlight">\(f(t) = \cos(t)\)</span> <strong>f.</strong> <span class="math notranslate nohighlight">\(f(t) = t^2 e^{-at}\)</span> <strong>g.</strong> <span class="math notranslate nohighlight">\(f(t) = e^{-at}\sin(t)\)</span></p>
@@ -837,6 +854,13 @@ F(s) = \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt
 <h3>Visualize Laplace transforms<a class="headerlink" href="#visualize-laplace-transforms" title="Permalink to this heading">#</a></h3>
 <p><img alt="Try" src="../../_images/try.png" /></p>
 <p>See the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">ConceptReview.mlx</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;ConceptReview.mlx&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <section id="reflect">
 <h4>Reflect<a class="headerlink" href="#reflect" title="Permalink to this heading">#</a></h4>
 <p><img alt="reflect" src="../../_images/reflect.png" /></p>
@@ -932,7 +956,7 @@ F(s) = \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt
 <p><img alt="exercise" src="../../_images/write.png" /></p>
 <section id="a">
 <h5>2 (a).<a class="headerlink" href="#a" title="Permalink to this heading">#</a></h5>
-<p>Find the formula for the Laplace transform of the second time derivative \ddot{f}(t) by hand, using integration by parts twice.</p>
+<p>Find the formula for the Laplace transform of the second time derivative <span class="math notranslate nohighlight">\(\ddot{f}(t)\)</span> by hand, using integration by parts twice<a class="footnote-reference brackets" href="#examples" id="id2">1</a>.</p>
 </section>
 <section id="b">
 <h5>2(b).<a class="headerlink" href="#b" title="Permalink to this heading">#</a></h5>
@@ -1004,8 +1028,8 @@ F(s) = \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt
 </ul>
 <p><img alt="A spring mass-damper-system" src="../../_images/smd.png" /></p>
 </section>
-<section id="id1">
-<h4>Solution<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<section id="id3">
+<h4>Solution<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
 <section id="derive-the-equations-of-motion">
 <h5>1. Derive the equations of motion.<a class="headerlink" href="#derive-the-equations-of-motion" title="Permalink to this heading">#</a></h5>
 <p>You can draw a free body diagram and apply Newton’s second law to derive the equations of motion.</p>
@@ -1108,10 +1132,17 @@ x(t) &amp;= \mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1)^2 + 3^2}  -\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f825747471e5919d7e1608d5e9a7f148836d108854a9a80616338aded0d73b11.png" src="../../_images/f825747471e5919d7e1608d5e9a7f148836d108854a9a80616338aded0d73b11.png" />
+<img alt="../../_images/f4a4062c07f8e4aa88bb2716061f5e6bb70ac0568748d9d0191421893e36e453.png" src="../../_images/f4a4062c07f8e4aa88bb2716061f5e6bb70ac0568748d9d0191421893e36e453.png" />
 </div>
 </div>
 <p>There is an animated version of the solution to this spring-mass-damper system in the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">ConceptReview.mlx</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;ConceptReview.mlx&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="exercise-4">
@@ -1119,14 +1150,14 @@ x(t) &amp;= \mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1)^2 + 3^2}  -\
 <p><img alt="exercise" src="../../_images/write.png" /></p>
 <p>In this exercise, you will solve for the dynamics of the simple pendulum using the Laplace transform.</p>
 <p><img alt="A simple pendulum" src="../../_images/pendulum.png" /></p>
-<section id="id2">
-<h5>4(a)<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h5>
+<section id="id4">
+<h5>4(a)<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h5>
 <p>Draw a free-body diagram for the simple pendulum shown above and derive the equation of motion for a pendulum with length <span class="math notranslate nohighlight">\(l = 0.5\)</span> m and a gravitational constant of 9.8 m/s. Linearize the equation near <span class="math notranslate nohighlight">\(\theta = 0\)</span> and show that it is equivalent to</p>
 <div class="math notranslate nohighlight">
 \[\ddot \theta + 19.6 \theta = 0\]</div>
 </section>
-<section id="id3">
-<h5>4(b)<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h5>
+<section id="id5">
+<h5>4(b)<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h5>
 <p>Use the Laplace transform to solve the linearized equations of motion:</p>
 <div class="math notranslate nohighlight">
 \[\ddot \theta + 19.6 \theta = 0\]</div>
@@ -1142,6 +1173,13 @@ x(t) &amp;= \mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1)^2 + 3^2}  -\
 </div>
 </div>
 <p>There is an animated version of the solution to this simple pendulum system in the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">ConceptReview.mlx</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;ConceptReview.mlx&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -1179,8 +1217,34 @@ x(t) &amp;= \mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1)^2 + 3^2}  -\
 <li><p><span class="math notranslate nohighlight">\(i\)</span>: <span class="math notranslate nohighlight">\(y(t) = \int_{t - 1}^{t + 1} 3u(\tau) d\tau\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(j\)</span>: <span class="math notranslate nohighlight">\(y(t) = t \frac{d}{dt} u(t)\)</span></p></li>
 </ul>
-<p>Use the interactive tool in the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">ConceptReview.mlx</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;ConceptReview.mlx&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
+</section>
+<section id="homework">
+<h2>Homework<a class="headerlink" href="#homework" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Register with the MathWorks (if you haven’t already) using your Swansea University email and install your own copy of the curriculum module <a class="reference external" href="https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems">Transfer Function Analysis of Dynamic Systems</a> into the online MATLAB version<a class="footnote-reference brackets" href="#installation" id="id6">2</a>.</p></li>
+<li><p>Open the <code class="docutils literal notranslate"><span class="pre">ConceptsReview.mlx</span></code> activity.</p></li>
+<li><p>Complete the Exercises and Activities and add your own notes to the LiveScript file in response to the Reflection prompts given above.</p></li>
+</ol>
+</section>
+<section id="footonotes">
+<h2>Footonotes<a class="headerlink" href="#footonotes" title="Permalink to this heading">#</a></h2>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="examples"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
+<dd><p>We will tackle some of the paper-based exercises in the examples class.</p>
+</dd>
+<dt class="label" id="installation"><span class="brackets"><a class="fn-backref" href="#id6">2</a></span></dt>
+<dd><p>Installation details are given in Canvas here: <a class="reference external" href="https://canvas.swansea.ac.uk/courses/44853/pages/prepare-the-matlab-curriculum-module-used-in-unit-2-and-lab-2">Prepare the MATLAB Curriculum Module used in Unit 2 and Lab 2</a>.</p>
+</dd>
+</dl>
 </section>
 </section>
 
@@ -1282,7 +1346,7 @@ x(t) &amp;= \mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1)^2 + 3^2}  -\
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-laplace-transform-properties">Visualize Laplace transform properties</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-differential-equations-using-the-laplace-transform">Solving differential equations using the Laplace transform</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Solution</a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#derive-the-equations-of-motion">1. Derive the equations of motion.</a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-laplace-transform-of-the-dynamic-system-ode-and-solve-for-x">2. Compute the Laplace transform of the dynamic system ODE and solve for <span class="math notranslate nohighlight">\(X\)</span></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#use-partial-fraction-decomposition-to-separate-the-expression-for-into-terms-where-the-inverse-laplace-transform-x-is-known">3. Use partial fraction decomposition to separate the expression for  into terms where the inverse Laplace transform <span class="math notranslate nohighlight">\(X\)</span> is known</a></li>
@@ -1291,8 +1355,8 @@ x(t) &amp;= \mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1)^2 + 3^2}  -\
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4">Exercise 4</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4(a)</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4(b)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4(a)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4(b)</a></li>
 </ul>
 </li>
 </ul>
@@ -1305,6 +1369,8 @@ x(t) &amp;= \mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1)^2 + 3^2}  -\
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5">Exercise 5.</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">Homework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footonotes">Footonotes</a></li>
 </ul>
   </nav></div>
 
