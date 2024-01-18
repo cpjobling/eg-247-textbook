@@ -32,7 +32,7 @@ kernelspec:
 
 This session is an introduction to sampling theory. It reviews the important ideas that pertain to sampling but leaves the detailed mathematics for your further study.
 
-The material in this presentation and notes is based on Chapter 15 of {cite}`boulet` from the **Recommended Reading List** and you'll find the mathematical treatments there. There is much more detail in [Chapter 9](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=329) of {cite}`karris` from the **Required Reading List**.
+The material in this presentation and notes is based on Chapter 15 of {cite}`boulet` from the **Recommended Reading List** and you'll find the mathematical treatments there. There is much more detail in [Chapter 9](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853&ppg=329) of {cite}`karris` from the **Required Reading List**.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 

@@ -32,7 +32,7 @@ An annotatable worksheet for this presentation is available as [**Worksheet 18**
 
 ## Scope and Background Reading
 
-The material in this presentation and notes is based on [Chapter 10](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=389) of  {cite}`karris` from the **Required Reading List**. Additional coverage is to be found in Chapter 12 of {cite}`phillips` from the **Recommended Reading List**.
+The material in this presentation and notes is based on [Chapter 10](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853&ppg=389) of  {cite}`karris` from the **Required Reading List**. Additional coverage is to be found in Chapter 12 of {cite}`phillips` from the **Recommended Reading List**.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 

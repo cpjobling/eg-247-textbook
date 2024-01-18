@@ -15,7 +15,7 @@
 % of problems from Chapter 2 of the textbook.
 % 
 % Please note that all citations of "the textbook" refer to Chapter 2 of Karris 
-% (2012) which is accessible by following <https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=43 
+% (2012) which is accessible by following <https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853&ppg=43 
 % the link>. 
 %% 
 % This next command opens the documentation for the |laplace| function. You 

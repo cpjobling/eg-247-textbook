@@ -16,7 +16,7 @@ kernelspec:
 
 # Unit 2: Elementary Signals
 
-The preparatory reading for this section is [Chapter 1](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=75#ppg=17) of {cite}`karris` which
+The preparatory reading for this section is [Chapter 1](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853&ppg=75#ppg=17) of {cite}`karris` which
 
 * begins with a discussion of the elementary signals that may be applied to electrical circuits
 * introduces the unit step, unit ramp and dirac delta functions

@@ -34,7 +34,7 @@ An annotatable worksheet for this presentation is available as [**Worksheet 17**
 
 In this section we will explore digital systems and learn more about the z-transfer function model.
 
-The material in this presentation and notes is based on Chapter 9 (Starting at [Section 9.7](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=363)) of {cite}`karris`. I have skipped the section on digital state-space models.
+The material in this presentation and notes is based on Chapter 9 (Starting at [Section 9.7](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853&ppg=363)) of {cite}`karris`. I have skipped the section on digital state-space models.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 

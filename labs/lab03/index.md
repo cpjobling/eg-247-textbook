@@ -26,7 +26,7 @@ This lab supports the materials covered in [Chapter 3.3](../../laplace_transform
 This document is available in [HTML](index) format for online viewing [PDF](https://cpjobling.github.io/eg-247-textbook/labs/lab03/lab03.pdf) for printing.
 
 ### Acknowledgements
-These examples have been adapted from [Chapter 4](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197#ppg=101) of {cite}`karris`.
+These examples have been adapted from [Chapter 4](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853#ppg=101) of {cite}`karris`.
 
 
 ## Aims
@@ -100,7 +100,7 @@ At the line that which says
 
 We want you to add code that completes the derivation of the transfer function. 
 
-So, starting from the simplified circuit ([Fig. 4.9](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=101#ppg=101) from Karris{cite}`karris`: p4-5):
+So, starting from the simplified circuit ([Fig. 4.9](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853&ppg=101#ppg=101) from Karris{cite}`karris`: p4-5):
 
 ![Transformed circuit of Example 4.3](fig4_9.png)
 
@@ -148,7 +148,7 @@ Alternatively, take the code you developed and paste it into Exercise 4 of Lab 3
 
 ### Lab Exercise 5: Problem Solving in MATLAB
 
-Choose one of the Problems Q1-Q3 from [Section 4.7](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197#ppg=121) of {cite}`karris` (page 4-21) and use MATLAB to adapt the methods used to solve the problem in **Lab Exercise 4** to determine the required solution.
+Choose one of the Problems Q1-Q3 from [Section 4.7](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853#ppg=121) of {cite}`karris` (page 4-21) and use MATLAB to adapt the methods used to solve the problem in **Lab Exercise 4** to determine the required solution.
 
 Save your chosen solution as a Live Script file with the name `ex5.mlx` for upload to Canvas.
 
@@ -170,7 +170,7 @@ Save your solution to a Live Script file with the name `ex6.mlx` for upload to C
 
 ### Mini Project 2: Transfer Functions
 
-Download the linked MATLAB script which computes the solution to [Example 4.7](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197) 
+Download the linked MATLAB script which computes the solution to [Example 4.7](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853) 
 from {cite}`karris` ([Example 7](https://cpjobling.github.io/eg-247-textbook/laplace_transform/4/transfer_functions.html#example-7) from the notes). This script computes the 
 transfer function of the Op-Amp circuit shown below:
 

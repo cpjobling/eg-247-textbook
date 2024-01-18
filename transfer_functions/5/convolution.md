@@ -38,7 +38,7 @@ As we shall see, in the determination of a system's response to a signal input, 
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-The material in this presentation and notes is based on [Chapter 6](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?ppg=185&docID=3384197&tm=1518698533541) of Karris{cite}`karris`.
+The material in this presentation and notes is based on [Chapter 6](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?ppg=185&docID=44853&tm=1518698533541) of Karris{cite}`karris`.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 

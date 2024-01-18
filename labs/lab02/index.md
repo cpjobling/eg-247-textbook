@@ -27,7 +27,7 @@ This document is available in [HTML](https://cpjobling.github.io/eg-247-textbook
 
 ### Acknowledgements
 
-These examples have been adapted from [Chapters 1](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197#ppg=17), [2](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197#ppg=43) and [3](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197#ppg=79) of Karris{cite}`karris`.
+These examples have been adapted from [Chapters 1](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853#ppg=17), [2](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853#ppg=43) and [3](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853#ppg=79) of Karris{cite}`karris`.
 
 
 ## Aims

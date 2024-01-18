@@ -5,16 +5,23 @@ jupyter:
       extension: .md
       format_name: markdown
       format_version: '1.3'
-      jupytext_version: 1.14.1
+      jupytext_version: 1.15.2
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python
     name: python3
 ---
 
-# Homework 7
+(homework7)=
+# Homework 7: Sampling Theory and the Z-Transform
 
-## Fourier Transforms
+### Sampling Theory
 
-* Review the worked solutions that you will find as a number of "PenCasts" in the [Worked Solutions to Selected Week 7 Problems](https://canvas.swansea.ac.uk/courses/646/pages/worked-solutions-to-selected-week-7-problems?module_item_id=403389) page on Canvas. 
-* Attempt Questions 7—11 of the End of Chapter Problems ([Section 8.10](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=315)) in Karris{cite}`karris`.
+You should take the scripts home ([to be found here](https://github.com/cpjobling/eg-247-textbook/tree/master/dt_systems/1/matlab)) and play with them.
+
+* Try increasing the sampling frequency: 8000 Hz, 11025 Hz, 22050 Hz, 44100 Hz, 48000 Hz, and 96000 Hz are supported by most PC sound cards.
+* Try increasing the bits per sample: 8, 16, 24 are available.
+
+### Z-Transform
+
+Problems 1 to 3 in [Section 9.10 Exercises](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853&ppg=329) of Karris{cite}`karris` explore the z-Transform.

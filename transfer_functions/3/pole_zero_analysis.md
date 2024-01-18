@@ -356,6 +356,7 @@ A screenshot of the `polesApp.mlapp` app
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
+(hw3-exercise-1)=
 #### Homework Exercise 1
 
 ![exercise](images/write.png)
@@ -637,6 +638,7 @@ $$G(s) = \frac{ K }{s^2 + 2 \zeta \omega_n s  + \omega_n^2}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
+(hw3-exercise-2)=
 #### Homework Exercise 2: Mass-spring-damper analysis
 
 ![exercise](images/write.png)
@@ -798,7 +800,8 @@ open('polesApp.mlapp')
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Homework Exercise 3  
+(hw3-exercise-3)=
+### Homework Exercise 3 : Transfer Function with a Single Zero
 
 ![homework](images/write.png)
 
@@ -863,6 +866,19 @@ tlim = NaN
 * Vary the location of the zero ($z_0$) and observe how the step response changes.
 * How does the location of the zero ($z_0$) affect the overall magnitude of the step response? Where does this show up in the analytic solution?
 * How does the location of the zero ($z_0$) affect the rise time and overshoot? Where does this show up in the analytic solution?
+
++++
+
+(homework3)=
+## Homework 3: Pole-Zero Analysis
+
+1. Register with the MathWorks (if you haven't already) using your Swansea University email and install your own copy of the curriculum module [Transfer Function Analysis of Dynamic Systems](https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems) into the online MATLAB version[^installation].
+2. Open the `TransferFunctionBasics.mlx` activity.
+3. Complete the Exercises and Activities and add your own notes to the LiveScript file in response to the Reflection prompts given above. 
+
+* {ref}`hw3-exercise-1`
+* {ref}`hw3-activity-2`
+* {ref}`hw3-exercise-3`
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
