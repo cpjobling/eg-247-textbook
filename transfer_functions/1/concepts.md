@@ -38,6 +38,18 @@ Some of the examples rely on interactive features of MATLAB that are not readily
 These materials © Copyright 2023 The MathWorks™, Inc. (See {ref}`mathworks_license`).
 :::
 
+```{code-cell}
+%% Lecturer: set up the TransferFunctions project for in class execution of exercise tests and activities.
+
+% Setup MATLAB to use the ConceptReview.mlx LiveScript in class.
+% I am assuming that this is on the MATLAB Drive
+
+format compact 
+% Change this to local set up where this Jupyter book is run
+cd '/Users/eechris/MATLAB-Drive/Repositories/Transfer-Function-Analysis-of-Dynamic-Systems'
+open('TransferFunctions.prj')
+```
+
 +++ {"slideshow": {"slide_type": "fragment"}}
 
 Transfer functions are derived by computing the **Laplace transform** of **linear time-invariant (LTI)** dynamic systems. In these notes, the basics of Laplace transforms and LTI systems are reviewed.
@@ -141,7 +153,7 @@ Fs = laplace(f, t, s)
 
 ![example](images/write.png) 
 
-1. Compute the Laplace transform of some standard functions listed below on paper. Assume $a$ is real and $a > 0$
+1. Compute the Laplace transform of some standard functions listed below on paper[^examples]. Assume $a$ is real and $a > 0$
 
 **a.** $f(t) = 1$ **b.** $f(t) = e^{-at}$ **c.** $f(t) = t$ **d.** $f(t) = \delta(t - a)$ 
 
@@ -264,6 +276,14 @@ Fs = laplace(f, t, s)
 
 See the MATLAB LiveScript `ConceptReview.mlx`.
 
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
+open('ConceptReview.mlx')
+```
+
 +++ {"slideshow": {"slide_type": "notes"}}
 
 #### Reflect
@@ -375,7 +395,7 @@ Fs = laplace(dfdt)
 
 ##### 2 (a).
 
-Find the formula for the Laplace transform of the second time derivative \ddot{f}(t) by hand, using integration by parts twice.
+Find the formula for the Laplace transform of the second time derivative $\ddot{f}(t)$ by hand, using integration by parts twice[^examples].
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -559,9 +579,17 @@ x = 1-exp(-t).*(cos(3*t) + 1/3*sin(3*t));
 plot(t, x)
 ```
 
-+++ {"slideshow": {"slide_type": "notes"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 There is an animated version of the solution to this spring-mass-damper system in the MATLAB LiveScript `ConceptReview.mlx`.
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+open('ConceptReview.mlx')
+```
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -604,9 +632,17 @@ syms t
 theta = NaN; 
 ```
 
-+++ {"slideshow": {"slide_type": "notes"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 There is an animated version of the solution to this simple pendulum system in the MATLAB LiveScript `ConceptReview.mlx`.
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+open('ConceptReview.mlx')
+```
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -652,4 +688,30 @@ Use the interactive tool in the MATLAB LiveScript `ConceptReview.mlx` to explore
 * $i$: $y(t) = \int_{t - 1}^{t + 1} 3u(\tau) d\tau$
 * $j$: $y(t) = t \frac{d}{dt} u(t)$
 
-Use the interactive tool in the MATLAB LiveScript `ConceptReview.mlx`.
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+open('ConceptReview.mlx')
+```
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+## Homework
+
+1. Register with the MathWorks (if you haven't already) using your Swansea University email and install your own copy of the curriculum module [Transfer Function Analysis of Dynamic Systems](https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems) into the online MATLAB version[^installation].
+2. Open the `ConceptsReview.mlx` activity.
+3. Complete the Exercises and Activities and add your own notes to the LiveScript file in response to the Reflection prompts given above. 
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+## Footonotes
+
+[^examples]: We will tackle some of the paper-based exercises in the examples class.
+
+[^installation]: Installation details are given in Canvas here: [Prepare the MATLAB Curriculum Module used in Unit 2 and Lab 2](https://canvas.swansea.ac.uk/courses/44853/pages/prepare-the-matlab-curriculum-module-used-in-unit-2-and-lab-2).
+
+```{code-cell}
+
+```
