@@ -815,63 +815,9 @@ I used the examples from **Signals and Systems for Dummies** to seed this Padlet
 
 Can you add to it?
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
-## Concluding Example: Some Basic Signal Operations
-
-Consider a signal 
-
-$$x = f(t) = \left\{ {\begin{array}{*{20}{c}}
-{0\;:\;t <  - 1}\\
-{t + 1\;:\; - 1 \le t \le 1}\\
-{0\;:\;t > 1}
-\end{array}} \right.$$
-
-Sketch this signal.
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-## Answers to Selected Exercises
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
-### Problem
-
-Think about the effect on this signal of applying the following basic signal operations:
-
-* $2 f(t)$
-* $0.5 f(t)$
-* $f(2t)$
-* $f(0.5 t)$
-* $-f(t)$
-* $f(-t)$
-* $-f(-t)$
-* $f(t - 1)$
-* $f(t + 1)$
-* $-2f(-t+2)$
-
-We will work through these after the break together then you will do some exercises based on [Chapter 1](https://site.ebrary.com/lib/swansea/reader.action?docID=10547416&ppg=17) of {cite}`karris`.
-
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-## Short Break
+## Wrap up
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 

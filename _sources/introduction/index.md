@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.4
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -635,7 +635,7 @@ See section **Testing Product Concepts with Behavioral Level Modeling** from Cha
 
 See pages 21-23 of the free sample ([Chapter 1](https://www.dummies.com/store/product/Signals-and-Systems-For-Dummies.productCd-111847581X.html)) of {cite}`ss4d` for notes and details.
 
-+++ {"slideshow": {"slide_type": "notes"}, "tags": []}
++++ {"slideshow": {"slide_type": "notes"}}
 
 ## Reference
 
