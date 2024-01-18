@@ -401,10 +401,14 @@ Discrete-time signals are a function of a time index $n$. A discrete-time signal
 
 ### Demonstration
 
-Consider the following simple signal, a pulse sequence:$$y[n] = \left\{ {\begin{array}{*{20}{c}}
+Consider the following simple signal, a pulse sequence:
+
+$$y[n] = \left\{ {\begin{array}{*{20}{c}}
 {5,\;0 \le n < 10}\\
 {0,\;{\rm{otherwise}}\quad \;}
-\end{array}} \right.$$
+\end{array}} \right.
+$$
+
 We can plot this in Matlab as a *stem plot*
 
 +++ {"slideshow": {"slide_type": "subslide"}, "tags": ["remove-output"]}
