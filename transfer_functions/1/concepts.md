@@ -703,16 +703,12 @@ open('ConceptReview.mlx')
 
 1. Register with the MathWorks (if you haven't already) using your Swansea University email and install your own copy of the curriculum module [Transfer Function Analysis of Dynamic Systems](https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems) into the online MATLAB version[^installation].
 2. Open the `ConceptsReview.mlx` activity.
-3. Complete the Exercises and Activities and add your own notes to the LiveScript file in response to the Reflection prompts given above. 
+3. Complete the Exercises and Activities and add your own notes to the LiveScript file in response to the Reflection prompts given above.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-## Footonotes
+## Footnotes
 
 [^examples]: We will tackle some of the paper-based exercises in the examples class.
 
 [^installation]: Installation details are given in Canvas here: [Prepare the MATLAB Curriculum Module used in Unit 2 and Lab 2](https://canvas.swansea.ac.uk/courses/44853/pages/prepare-the-matlab-curriculum-module-used-in-unit-2-and-lab-2).
-
-```{code-cell}
-
-```
