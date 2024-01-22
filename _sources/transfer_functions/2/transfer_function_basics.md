@@ -23,11 +23,11 @@ kernelspec:
 
 In this unit, students will...
 
-* Derive transfer functions by hand
-* Derive transfer functions using symbolic math
-* Numerically evaluate and plot the impulse, step, and forced responses of a system
-* Analytically derive the step and forced responses of a system
-* Explain the physical significance of time responses
+* Derive transfer functions by hand.
+* Derive transfer functions using symbolic math.
+* Numerically evaluate and plot the impulse, step, and forced responses of a system.
+* Analytically derive the step and forced responses of a system.
+* Explain the physical significance of time responses.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
