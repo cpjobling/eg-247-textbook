@@ -17,7 +17,7 @@ jupyter:
 # Homework 4: Fourier Series
 
 
-1. Compute the exponential Fourier series for the wave forms shown in [Worksheet 9](../fourier_series/1/worksheet9).
+1. Compute the exponential Fourier series for the wave forms shown in [Worksheet 2](../fourier_series/1/worksheet2).
 2. Compute the exponential Fourier series of a full-wave rectified sinusoid. 
     a. Give the power spectrum for this signal 
     b. estimate the total harmonic distortion for the first 7 harmonics. 
