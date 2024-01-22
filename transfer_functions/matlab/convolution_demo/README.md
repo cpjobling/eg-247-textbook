@@ -1,1 +1,0 @@
-The file `convolution.m` is a corrected version of the  <a href="https://uk.mathworks.commatlabcentral/fileexchange/25199-graphical-demonstration-of-convolution" target="_blank">Graphical demonstration of convolution app</a> written by <a href="https://uk.mathworks.com/matlabcentral/profile/authors/1905880-teja-muppirala" target="_blank">Teja Muppirala</a>.
