@@ -140,7 +140,7 @@ In this exercise, you will compute transfer functions of the DC motor system. As
 +++ {"slideshow": {"slide_type": "notes"}}
 
 :::{note}
-We will do some of these calculations in class. To revise this material, we recommend that you use the the MATLAB LiveScript `PoleZeroAnalysis.mlx` from the curriculum module [Transfer Function Analysis of Dynamic Systems](https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems) and fill in your answers there. The LiveScript provides checking functions with which you can validate your answers[^answers]. 
+We will do some of these calculations in class. To revise this material, we recommend that you use the the MATLAB LiveScript `PoleZeroAnalysis.mlx` from the curriculum module [Transfer Function Analysis of Dynamic Systems](https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems) and fill in your answers there. The LiveScript provides checking functions with which you can validate your answers[^fn_answers]. 
 :::
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -936,6 +936,6 @@ damp(G)
 
 ## Footnotes
 
-[^answers]: We provide some of the solutions in {ref}`answers`.
+[^fn_answers]: We provide some of the solutions in {ref}`answers`.
 
 [^eg-243]: This will provide additional insights useful for EG-243 Control Systems.

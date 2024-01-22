@@ -9,28 +9,15 @@ This is an index to the files arranged by module week.
 ## Week 1
 
 * [Worksheet 1](../introduction/worksheet1) for [Chapter 1: Introduction](../introduction/index) [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet1.pdf)].
-* [Worksheet 2](../introduction/worksheet2) for end of introduction example [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet2.pdf)].
-* [Worksheet 3](../elementary_signals/worksheet3) for [Chapter 2: Elementary Signals](../elementary_signals/index) [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet2.pdf)].
-
-## Week 2
-
-* [Worksheet 4](../laplace_transform/1/worksheet4) for [Chapter 3.1: The Laplace Transformation](../laplace_transform/1/laplace) [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet4.pdf)]
-* [Worksheet 5](../laplace_transform/2/worksheet5) for [Chapter 3.2: The Inverse Laplace Transformation](../laplace_transform/2/inverse_laplace) [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet5.pdf)]
 
 ## Week 3
 
-* [Worksheet 6](../laplace_transform/3/worksheet6) for [Chapter 3.3: Using Laplace Transforms for Circuit Analysis](../laplace_transform/3/circuit_analysis) [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet6.pdf)]
-* [Worksheet 7](../laplace_transform/4/worksheet7) for [Chapter 3.4: Transfer Functions](../laplace_transform/4/transfer_functions) [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet7.pdf)]
+* [Worksheet 2](../fourier_series/1/worksheet3) for [Chapter 3.1: Trig. Fourier Series](../fourier_series/1/trig_fseries) [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet9.pdf)]
+* [Worksheet 3](../fourier_series/2/worksheet4) for [Chapter 3.2: Exponential Fourier Series](../fourier_series/2/exp_fs1) [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet10.pdf)]
 
 ## Week 4
 
-* [Worksheet 8](../laplace_transform/5/worksheet8) for [Chapter 3.5: The Impulse Response and Convolution](../laplace_transform/5/convolution) [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet8.pdf)]
-
-## Week 5
-
-* [Worksheet 9](../fourier_series/1/worksheet9) for [Chapter 4.1: Trig. Fourier Series](../fourier_series/1/trig_fseries) [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet9.pdf)]
-* [Worksheet 10](../fourier_series/2/worksheet10) for [Chapter 4.2: Exponential Fourier Series](../fourier_series/2/exp_fs1) [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet10.pdf)]
-* [Worksheet 11](../fourier_series/3/worksheet11) for [Chapter 4.3: Line Spectra and thier Applications](../fourier_series/3/exp_fs2) [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet11.pdf)]
+* [Worksheet 4](../fourier_series/3/worksheet5) for [Chapter 3.3: Line Spectra and their Applications](../fourier_series/3/exp_fs2) [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet11.pdf)]
 
 ## Week 6
 
