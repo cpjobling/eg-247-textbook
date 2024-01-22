@@ -23,10 +23,10 @@ kernelspec:
 
 In this unit, students will...
 
-* Compute Laplace transforms by hand and using symbolic math
-* Describe the properties of the Laplace transform
-* Apply Laplace transforms to solve initial value problems
-* Recall the definition of a linear time-invariant (LTI) operator
+* Compute Laplace transforms by hand and using symbolic math.
+* Describe the properties of the Laplace transform.
+* Apply Laplace transforms to solve initial value problems.
+* Recall the definition of a linear time-invariant (LTI) operator.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
