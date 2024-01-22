@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.4
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -14,7 +14,8 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# Unit 4.1: Trigonometric Fourier Series
+(trig_fseries)=
+# Unit 3.1: Trigonometric Fourier Series
 
 
 
@@ -24,19 +25,13 @@ Any periodic waveform can be approximated by a DC component (which may be 0) and
 
 ## Colophon
 
-An annotatable worksheet for this presentation is available as [**Worksheet 9**](https://cpjobling.github.io/eg-247-textbook/fourier_series/1/worksheet9.html).
+An annotatable worksheet for this presentation is available as [**Worksheet 2**](https://cpjobling.github.io/eg-247-textbook/fourier_series/1/worksheet2.html).
 
 * The source code for this page is [fourier_series/1/trig_fseries.md](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_series/1/trig_fseries.md).
 
 * You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/fourier_series/1/trig_fseries.html)). 
 
 * This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/fourier_series/1/trig_fseries.pdf) file.
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-## Revision?
-
-I believe that this subject has been covered in EG-150 Signals and Systems and so we present the notes as background for the Fourier transform.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 

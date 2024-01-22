@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.4
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -14,19 +14,19 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# Worksheet 11
+# Worksheet 4
 
-## To accompany Unit 4.3 Line Spectra and their Applications
+## To accompany Unit 3.3 Line Spectra and their Applications
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
 ## Colophon
 
-This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet11.pdf). We will step through this worksheet in class. 
+This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet4.pdf). We will step through this worksheet in class. 
 
-An annotatable copy of the notes for this presentation will be distributed before the second class meeting as **Worksheet 9** in the **Week 5: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **Worksheets** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote. 
+An annotatable copy of the notes for this presentation will be distributed before the second class meeting as **Worksheet 4** in the **Week 4: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **Worksheets** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote. 
 
-You are expected to have at least watched the video presentation of [Chapter 4.3](https://cpjobling.github.io/eg-247-textbook/fourier_series/3/exp_fs2) of the [notes](https://cpjobling.github.io/eg-247-textbook/) before coming to class. If you haven't watch it afterwards!
+You are expected to have at least watched the video presentation of {ref}`exp_fs2` of the [notes](https://cpjobling.github.io/eg-247-textbook/) before coming to class. If you haven't watch it afterwards!
 
 After class, the lecture recording and the annotated version of the worksheets will be made available through Canvas.
 

@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.4
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -14,20 +14,20 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# Worksheet 10
+# Worksheet 3
 
-## To accompany Unit 4.2 Exponential Fourier Series
+## To accompany Unit 3.2 Exponential Fourier Series
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ## Colophon
 
-This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet10.pdf). We will step through this worksheet in class. 
+This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet3.pdf). We will step through this worksheet in class. 
 
-An annotatable copy of the notes for this presentation will be distributed before the second class meeting as **Worksheet 10** in the **Week 5: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **Worksheets** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote. 
+An annotatable copy of the notes for this presentation will be distributed before the second class meeting as **Worksheet 3** in the **Week 3: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **Worksheets** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote. 
 
 
-You are expected to have at least watched the video presentation of [Chapter 4.2](https://cpjobling.github.io/eg-247-textbook/fourier_series/2/exp_fs1) of the [notes](https://cpjobling.github.io/eg-247-textbook) before coming to class. If you haven't watch it afterwards!
+You are expected to have at least watched the video presentation of [Chapter 3.2](https://cpjobling.github.io/eg-247-textbook/fourier_series/2/exp_fs1) of the [notes](https://cpjobling.github.io/eg-247-textbook) before coming to class. If you haven't watch it afterwards!
 
 
 After class, the lecture recording and the annotated version of the worksheets will be made available through Canvas.

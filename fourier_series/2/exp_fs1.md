@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.4
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -14,15 +14,16 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# Unit 4.2: Exponential Fourier Series
+(exp_fs1)=
+# Unit 3.2: Exponential Fourier Series
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
 ## Colophon
 
-An annotatable worksheet for this presentation is available as [**Worksheet 10**](https://cpjobling.github.io/eg-247-textbook/fourier_series/2/worksheet10.html).
+An annotatable worksheet for this presentation is available as [**Worksheet 3**](https://cpjobling.github.io/eg-247-textbook/fourier_series/2/worksheet3.html).
 
-* The source code for this page is [fourier_series/2/exp_fs1.ipynb](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_series/2/exp_fs1.ipynb).
+* The source code for this page is [fourier_series/2/exp_fs1.md](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_series/2/exp_fs1.md).
 
 * You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/fourier_series/2/exp_fs1.html)). 
 
@@ -30,7 +31,7 @@ An annotatable worksheet for this presentation is available as [**Worksheet 10**
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-This section builds on our [Revision of the to Trigonometrical Fourier Series](../1/trig_fseries).
+This section builds on our study of {ref}`trig_fseries`.
 
 Trigonometric Fourier series uses integration of a periodic signal multiplied by sines and cosines at the fundamental and harmonic frequencies. If performed by hand, this can a painstaking process. Even with the simplifications made possible by exploiting waveform symmetries, there is still a need to integrate cosine and sine terms, be aware of and able to exploit the trigonometrc identities, and the properties of *orthogonal functions* before we can arrive at the simplified solutions. This is why I concentrated on the properties and left the computation to a computer.
 
@@ -62,6 +63,10 @@ The result is called the *Exponential Fourier Series*.
 When $a$ is real the function $e^{at}$ will take one of the two forms illustrated below:
 
 ```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
 clear all
 ```
 

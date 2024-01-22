@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.4
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -14,15 +14,16 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# Unit 4.3: Line Spectra and their Applications
+(exp_fs2)=
+# Unit 3.3: Line Spectra and their Applications
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
 ## Colophon
 
-An annotatable worksheet for this presentation is available as [**Worksheet 11**](https://cpjobling.github.io/eg-247-textbook/fourier_series/3/worksheet11.html).
+An annotatable worksheet for this presentation is available as [**Worksheet 4**](https://cpjobling.github.io/eg-247-textbook/fourier_series/3/worksheet4.html).
 
-* The source code for this page is [fourier_series/3/exp_fs2.ipynb](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_series/3/exp_fs2.ipynb).
+* The source code for this page is [fourier_series/3/exp_fs2.md](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_series/3/exp_fs2.md).
 
 * You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/fourier_series/3/exp_fs2.html)). 
 
@@ -32,7 +33,7 @@ An annotatable worksheet for this presentation is available as [**Worksheet 11**
 
 This section concludes our introduction to Fourier Series.
 
-In the [last section](../2/exp_fs1) we saw that we could exploit the complex exponential $e^{j\omega t}$ to redefine trigonometric Fourier Series into the Exponential Fourier Series and in so doing we eliminate one integration and at the same time simplify the calculation of the coefficients of the Fourier series.
+In {ref}`exp_fs1` we saw that we could exploit the complex exponential $e^{j\omega t}$ to redefine trigonometric Fourier Series into the Exponential Fourier Series and in so doing we eliminate one integration and at the same time simplify the calculation of the coefficients of the Fourier series.
 
 In this section we show how the Exponential form of the Fourier Series leads us to the ability to present waveforms as line spectra which simplifies the calculation of power for systems with harmonics and leads in the limit as 𝑇 approaches infinity to the Fourier Transform.
 
