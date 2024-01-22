@@ -5,14 +5,14 @@ jupyter:
       extension: .md
       format_name: markdown
       format_version: '1.3'
-      jupytext_version: 1.14.4
+      jupytext_version: 1.15.2
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python
     name: python3
 ---
 
-# Unit 4: Fourier Series
+# Unit 3: Fourier Series
 
 This chapter launches our Introduction to Fourier Transforms with a look at Wave Analysis and Trigonometric Fourier Series. We will then go on to consider the Exponential Fourier Series and its Applications.
 
@@ -20,9 +20,9 @@ The material in this chapter is based on Chapter 7 (Starting at [Section 7.8](ht
 
 In this section of the course we will cover:
 
-* Unit 4.1: [Trigonometric Fourier Series](https://cpjobling.github.io/eg-247-textbook/fourier_series/1/trig_fseries.html)
-* Unit 4.2: [Exponential Fourier Series](https://cpjobling.github.io/eg-247-textbook/fourier_series/2/exp_fs1.html)
-* Unit 4.3: [Line Spectra and their Applications](https://cpjobling.github.io/eg-247-textbook/fourier_series/3/exp_fs2.html)
+* Unit 3.1: [Trigonometric Fourier Series](https://cpjobling.github.io/eg-247-textbook/fourier_series/1/trig_fseries.html)
+* Unit 3.2: [Exponential Fourier Series](https://cpjobling.github.io/eg-247-textbook/fourier_series/2/exp_fs1.html)
+* Unit 3.3: [Line Spectra and their Applications](https://cpjobling.github.io/eg-247-textbook/fourier_series/3/exp_fs2.html)
 
 ## References
 
