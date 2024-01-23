@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.4
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -14,17 +14,18 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# Defining the Fourier Transform
+(ft1)=
+# Unit 4.1: Defining the Fourier Transform
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
 ## Colophon
 
-An annotatable worksheet for this presentation is available as [**Worksheet 12**](https://cpjobling.github.io/eg-247-textbook/fourier_transform/1/worksheet12.html).
+An annotatable worksheet for this presentation is available as {ref}`ws5`.
 
-* The source code for this page is [fourier_transform/1/ft1.ipynb](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_transform/1/ft1.ipynb).
+* The source code for this page is [fourier_transform/1/ft1.md](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_transform/1/ft1.md).
 
-* You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/fourier_transform/1/ft1.html)). 
+* You can view the notes for this presentation as a webpage ({ref}`ft1`). 
 
 * This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/fourier_transform/1/ft1.pdf) file.
 

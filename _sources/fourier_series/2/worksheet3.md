@@ -14,6 +14,7 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
+(ws3)=
 # Worksheet 3
 
 ## To accompany Unit 3.2 Exponential Fourier Series
@@ -27,7 +28,7 @@ This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-
 An annotatable copy of the notes for this presentation will be distributed before the second class meeting as **Worksheet 3** in the **Week 3: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **Worksheets** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote. 
 
 
-You are expected to have at least watched the video presentation of [Chapter 3.2](https://cpjobling.github.io/eg-247-textbook/fourier_series/2/exp_fs1) of the [notes](https://cpjobling.github.io/eg-247-textbook) before coming to class. If you haven't watch it afterwards!
+You are expected to have at least watched the video presentation of {ref}`exp_fseries`) of the [notes](https://cpjobling.github.io/eg-247-textbook) before coming to class. If you haven't watch it afterwards!
 
 
 After class, the lecture recording and the annotated version of the worksheets will be made available through Canvas.

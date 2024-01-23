@@ -5,7 +5,7 @@ jupyter:
       extension: .md
       format_name: markdown
       format_version: '1.3'
-      jupytext_version: 1.14.4
+      jupytext_version: 1.15.2
   kernelspec:
     display_name: Matlab
     language: matlab
@@ -13,17 +13,18 @@ jupyter:
 ---
 
 <!-- #region slideshow={"slide_type": "slide"} -->
-# Worksheet 14
+(ws7)=
+# Worksheet 7
 
-## To accompany Chapter 5.3 Fourier Transforms for Circuit and LTI Systems Analysis
+## To accompany Chapter 4.3 Fourier Transforms for Circuit and LTI Systems Analysis
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "skip"} -->
-This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet14.pdf). We will step through this worksheet in class. 
+This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet7.pdf). We will step through this worksheet in class. 
 
-An annotatable copy of the notes for this presentation will be distributed before the second class meeting as **Worksheet 14** in the **Week 7: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **Worksheets** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote. 
+An annotatable copy of the notes for this presentation will be distributed before the second class meeting as **Worksheet 7** in the **Week 5: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **Worksheets** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote. 
 
-You are expected to have at least watched the video presentation of [Chapter 5.3](https://cpjobling.github.io/eg-247-textbook/fourier_transform/3/ft3) of the [notes](https://cpjobling.github.io/eg-247-textbook/) before coming to class. If you haven't watch it afterwards!
+You are expected to have at least watched the video presentation of {ref}`ft3` of the [notes](https://cpjobling.github.io/eg-247-textbook/) before coming to class. If you haven't watch it afterwards!
 
 After class, the lecture recording and the annotated version of the worksheets will be made available through Canvas.
 <!-- #endregion -->
@@ -438,5 +439,5 @@ See [ft3_ex4.m](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier
 <!-- #region slideshow={"slide_type": "notes"} -->
 ## Solutions
 
-See Worked Solutions in the [Worked Solutions to Selected Week 7 Problems](https://canvas.swansea.ac.uk/courses/36921/pages/worked-solutions-to-selected-week-7-problems?module_item_id=1964855) of the Canvas course site.
+See Worked Solutions in the [Worked Solutions to Selected Week 5 Problems](https://canvas.swansea.ac.uk/courses/44853/pages/worked-solutions-to-selected-week-5-problems?module_item_id=2484101) of the Canvas course site.
 <!-- #endregion -->

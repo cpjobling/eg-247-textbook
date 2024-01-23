@@ -21,11 +21,11 @@ kernelspec:
 
 ## Colophon
 
-An annotatable worksheet for this presentation is available as [**Worksheet 4**](https://cpjobling.github.io/eg-247-textbook/fourier_series/3/worksheet4.html).
+An annotatable worksheet for this presentation is available as {ref}`ws4`.
 
 * The source code for this page is [fourier_series/3/exp_fs2.md](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_series/3/exp_fs2.md).
 
-* You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/fourier_series/3/exp_fs2.html)). 
+* You can view the notes for this presentation as a webpage ({ref}`exp_fs2`). 
 
 * This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/fourier_series/3/exp_fs2.pdf) file.
 
@@ -45,11 +45,11 @@ In this section we show how the Exponential form of the Fourier Series leads us 
 * Power in periodic signals
 * Steady-state response of an LTI system to a periodic signal
 
-+++
++++ {"slideshow": {"slide_type": "notes"}}
 
 ## Harmonic frequencies
 
-In response to a Student query, I have given a little more information on [Harmonic Frequencies](/FAQS/faq.html#Harmonic-frequencies) in the FAQs.
+In response to a Student query, I have given a little more information on {ref}`Harmonic-frequencies` in the FAQs.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
