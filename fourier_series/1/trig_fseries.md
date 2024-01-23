@@ -25,11 +25,11 @@ Any periodic waveform can be approximated by a DC component (which may be 0) and
 
 ## Colophon
 
-An annotatable worksheet for this presentation is available as [**Worksheet 2**](https://cpjobling.github.io/eg-247-textbook/fourier_series/1/worksheet2.html).
+An annotatable worksheet for this presentation is available as {ref}`ws2`.
 
 * The source code for this page is [fourier_series/1/trig_fseries.md](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_series/1/trig_fseries.md).
 
-* You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/fourier_series/1/trig_fseries.html)). 
+* You can view the notes for this presentation as a webpage ({ref}`trig_fseries`). 
 
 * This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/fourier_series/1/trig_fseries.pdf) file.
 

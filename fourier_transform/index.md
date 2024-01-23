@@ -5,14 +5,14 @@ jupyter:
       extension: .md
       format_name: markdown
       format_version: '1.3'
-      jupytext_version: 1.14.1
+      jupytext_version: 1.15.2
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python
     name: python3
 ---
 
-# Fourier Transform
+# Unit 4: Fourier Transform
 
 This chapter continues our coverage of **Fourier Analysis** with an introduction to the **Fourier Transform**.
 
@@ -28,6 +28,15 @@ This is the basis of the **Fourier Transform** which is very important as the ba
 
 ## Scope and Background Reading
 
-The material in this presentation and notes is based on Chapter 8 (Starting at Section 8.1) of Karris {cite}`karris`. I also used Chapter 5 of {cite}`boulet` from the **Recommended Reading List**.
+The material in this presentation and notes is based on Chapter 8 (Starting at Section 8.1) of Karris {cite}`karris`. I also used Chapter 5 of {cite}`boulet` which unfortunately is no longer available as an e-book from the library.
+
+## Contents
+
+In this section of the course we will cover:
+
+{ref}`ft1`
+{ref}`ft2`
+{ref}`ft3`
+{ref}`ft4`
 
 

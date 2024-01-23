@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.4
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -14,17 +14,18 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# Fourier Transforms for Circuit and LTI Systems Analysis
+(ft3)=
+# Unit 4.3: Fourier Transforms for Circuit and LTI Systems Analysis
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
 ## Colophon
 
-An annotatable worksheet for this presentation is available as [**Worksheet 14**](https://cpjobling.github.io/eg-247-textbook/fourier_transform/3/worksheet14.html).
+An annotatable worksheet for this presentation is available as {ref}`ws7`.
 
-* The source code for this page is [fourier_transform/3/ft3.ipynb](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_transform/3/ft3.ipynb).
+* The source code for this page is [fourier_transform/3/ft3.md](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_transform/3/ft3.md).
 
-* You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/fourier_transform/3/ft3.html)). 
+* You can view the notes for this presentation as a webpage ({ref}`ft3`). 
 
 * This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/fourier_transform/3/ft3.pdf) file.
 
