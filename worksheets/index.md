@@ -14,7 +14,7 @@ This is an index to the files arranged by module week.
 ## Week 3
 
 * {ref}`ws2` for {ref}`trig_fseries` [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet2.pdf)]
-* {ref}`ws3` for {ref}`exp_fseries` [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet3.pdf)]
+* {ref}`ws3` for {ref}`exp_fs1` [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet3.pdf)]
 
 ## Week 4
 
