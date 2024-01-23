@@ -21,11 +21,11 @@ kernelspec:
 
 ## Colophon
 
-An annotatable worksheet for this presentation is available as [**Worksheet 5**](https://cpjobling.github.io/eg-247-textbook/fourier_transform/1/worksheet5.html).
+An annotatable worksheet for this presentation is available as {ref}`ws5`.
 
 * The source code for this page is [fourier_transform/1/ft1.md](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_transform/1/ft1.md).
 
-* You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/fourier_transform/1/ft1.html)). 
+* You can view the notes for this presentation as a webpage ({ref}`ft1`). 
 
 * This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/fourier_transform/1/ft1.pdf) file.
 
