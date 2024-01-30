@@ -14,6 +14,10 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
+**-> Start recording**
+
++++ {"slideshow": {"slide_type": "slide"}}
+
 # Worksheet 1
 
 ## To accompany Unit 1 Introduction
@@ -133,10 +137,6 @@ When prompted: enter the **session ID**
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### End of setup
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
-**-> Start recording**
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -370,7 +370,7 @@ The Simulink code can be downloaded from this file [gain_level_shift.slx](https:
 
 #### Demonstration
 
-If the input to this system is replaced with a sinewave $x(t)=\sin(t)$ and the output with a scope, what do you think the output will be? Sketch it in your notebook.
+If the input to this system is a sinewave $x(t)=\sin(t)$ and the output with a scope, what do you think the output will be? Sketch it in your notebook.
 
 <pre style="border: 2px solid blue">
 
@@ -601,7 +601,7 @@ tags: [remove-output]
 ---
 plot(t, x);
 ylim([-2, 2]);
-grid()
+grid
 title('A Periodic Signal')
 xlabel('Time t (s)')
 ylabel('Amplitude')
@@ -631,7 +631,7 @@ Write your answer here
 
 Signals that are *deterministic* (completely determined functions of time) but not periodic are known as *aperiodic*. Point of view matters. If a signal occurs infrequently, you may view it as aperiodic. 
 
-This is how we generate an aperiodic rectangular pulse of duration $\tau$ in Matlab:
+This is how we generate an aperiodic rectangular pulse of duration $\tau$ in MATLAB:
 
 ```{code-cell}
 ---
@@ -728,7 +728,7 @@ Tell me what domain is this?
 
 The most commonly used domains used when analysing continuous time signals are the frequency domain ($f$ or $\omega$) and the Laplace $s$-domain ($s$). 
 
-Similarly, for discrete-time signals, you may need to transform from the discrete-time domain ($n$) to the frequency domain ($\hat{\omega}$￼) or the z-domain ($z$).
+Similarly, for discrete-time signals, you may need to transform from the discrete-time domain ($n$) to the frequency domain ($\hat{\omega}$) or the z-domain ($z$).
 
 
 This section briefly introduces the world of signals and systems in the frequency, s-, and z-domains. More on these domains will follow.
@@ -779,7 +779,7 @@ slideshow:
   slide_type: subslide
 tags: [remove-output]
 ---
-edit two_sines
+open two_sines
 ```
 
 +++ {"slideshow": {"slide_type": "fragment"}}
