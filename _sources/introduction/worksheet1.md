@@ -418,6 +418,11 @@ We can plot this in Matlab as a *stem plot*
 Define function using this text:
 
 ```{code-cell}
+pwd
+dir
+```
+
+```{code-cell}
 ---
 slideshow:
   slide_type: fragment
@@ -430,7 +435,7 @@ function [ y ] = x( n )
       y = 0;
   else 
       y = 5;
-  end|
+  end
 end
 ```
 
@@ -457,10 +462,13 @@ n = -15:18;
 %% Make space for the signal
 xn = zeros(size(n));
 
+y(0)
+
 %% Compute the signal x[n]
 for i = 1:length(xn)
     xn(i) = y(n(i));
 end
+xn
 ```
 
 ```{code-cell}
