@@ -1,5 +1,5 @@
 %% Waves and Symmetry
-% Prepared for EG-247 Signals and Systems by Chris Jobling
+% Prepared for EG-247 Digital Signal Processing by Chris Jobling
 %% Square wave
 
 t = [-3*pi,-2*pi,-2*pi,-2*pi,-pi,-pi,-pi,0,0,0,pi,pi,pi,2*pi,2*pi,2*pi,3*pi];

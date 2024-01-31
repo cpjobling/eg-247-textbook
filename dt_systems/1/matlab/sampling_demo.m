@@ -1,7 +1,7 @@
 %% Simple Voice Recorder
 % Records your voice for 5 seconds using your PC's audio input device.
 % 
-% Prepared for EG-247 Signals and Systems by Dr Chris P. Jobling
+% Prepared for EG-247 Digital Signal Processing by Dr Chris P. Jobling
 %% Set up audio recorder
 
 recObj = audiorecorder;

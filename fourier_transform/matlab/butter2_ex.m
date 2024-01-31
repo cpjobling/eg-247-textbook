@@ -1,6 +1,6 @@
 %% 2nd-Order LP Butterworth responses
 %
-% Prepared for EG-247 Signals and Systems
+% Prepared for EG-247 Digital Signal Processing
 % by Dr Chris P. Jobling
 wc = 100;
 % Transfer function

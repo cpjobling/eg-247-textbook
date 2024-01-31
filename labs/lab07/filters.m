@@ -4,7 +4,7 @@
 % The original script is available at <http://dadorran.wordpress.com>.
 % Search for "filtering matlab demo".
 %
-% Adapted for EG-247 Signals and Systems
+% Adapted for EG-247 Digital Signal Processing
 % by Chris P. Jobling
 %
 %% Basic parameters

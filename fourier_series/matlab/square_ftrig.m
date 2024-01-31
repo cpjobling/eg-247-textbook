@@ -1,5 +1,5 @@
 %% Calculation of Fourier coefficients for Square Wave
-% Prepared for EG-247 Signals and Systems by Chris Jobling
+% Prepared for EG-247 Digital Signal Processing by Chris Jobling
 
 syms t n A pi
 

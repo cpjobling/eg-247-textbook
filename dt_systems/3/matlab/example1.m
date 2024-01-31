@@ -1,5 +1,5 @@
 %% Example 1 from Session on Inverse Z-Transform
-% Prepared for EG-247 Signals and Systems by Dr Chris P. Jobling
+% Prepared for EG-247 Digital Signal Processing by Dr Chris P. Jobling
 %% Problem
 % Use the partial fraction expansion to compute the inverse z-transform of
 % 

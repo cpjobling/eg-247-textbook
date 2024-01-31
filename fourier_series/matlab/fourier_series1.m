@@ -1,6 +1,6 @@
 % Introduction to Fourier Series
 %
-% Prepared for EG-247 Signals and Systems
+% Prepared for EG-247 Digital Signal Processing
 % by Chris Jobling
 %
 %% Illustrates Development of a Signal from Harmonics

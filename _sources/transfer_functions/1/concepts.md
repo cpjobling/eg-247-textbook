@@ -39,6 +39,10 @@ These materials © Copyright 2023 The MathWorks™, Inc. (See {ref}`mathworks_li
 :::
 
 ```{code-cell}
+---
+slideshow:
+  slide_type: notes
+---
 %% Lecturer: set up the TransferFunctions project for in class execution of exercise tests and activities.
 
 % Setup MATLAB to use the ConceptReview.mlx LiveScript in class.
@@ -50,7 +54,9 @@ cd '/Users/eechris/MATLAB-Drive/Repositories/Transfer-Function-Analysis-of-Dynam
 open('TransferFunctions.prj')
 ```
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "slide"}}
+
+## Introduction
 
 Transfer functions are derived by computing the **Laplace transform** of **linear time-invariant (LTI)** dynamic systems. In these notes, the basics of Laplace transforms and LTI systems are reviewed.
 
@@ -100,10 +106,10 @@ Inverse Laplace transforms (and forward Laplace transforms, for that matter) are
 +++ {"slideshow": {"slide_type": "fragment"}}
 
 $$\begin{array}{rl}
-F(s) = \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt
- = \int_{a}^{\infty}  e^{-st} \ dt
-= \left. -\frac{1}{s} e^{-st} \ \right\vert_a^\infty
-= \frac{1}{s} e^{-as}
+F(s) &= \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
+ &= \int_{a}^{\infty}  e^{-st} \ dt \\
+&= \left. -\frac{1}{s} e^{-st} \ \right\vert_a^\infty \\
+&= \frac{1}{s} e^{-as} \\
 \end{array}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -395,7 +401,7 @@ Fs = laplace(dfdt)
 
 ##### 2 (a).
 
-Find the formula for the Laplace transform of the second time derivative $\ddot{f}(t)$ by hand, using integration by parts twice[^examples].
+Find the formula for the Laplace transform of the second time derivative $\ddot{f}(t)$ by hand[^examples].
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 

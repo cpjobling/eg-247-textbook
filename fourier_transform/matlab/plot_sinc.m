@@ -4,7 +4,7 @@
 % 
 % $$sinc(u) = \frac{\sin \pi u}{\pi u},\; u \in \mathbb{R}$$
 %
-% Prepared for EG-247 Signals and Systems by
+% Prepared for EG-247 Digital Signal Processing by
 % Chris P. Jobling
 %
 x = linspace(-5,5,1000);

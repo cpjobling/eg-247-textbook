@@ -1,10 +1,10 @@
-%% EG-247 Signals and Systems: Lab 01: Elementary Signals
+%% EG-247 Digital Signal Processing: Lab 01: Elementary Signals
 % This script file demonstrates the use of the |heaviside| and |dirac| functions. 
 % To run the code select the commands in the cells.
 % 
 % This is also an example of the use of the publishing feature of MATLAB.
 % 
-% Please note that all citations of the "textbook" refer to <https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=17 
+% Please note that all citations of the "textbook" refer to <https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853&ppg=17 
 % Chapter 1 of Karris (2012)> which is accessible by following the link. 
 
 clearvars % reset workspace

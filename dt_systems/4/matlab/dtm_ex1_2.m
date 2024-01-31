@@ -1,7 +1,7 @@
 %% Example 5 Part 2 from Session on DT Models
 % Impulse response of a transfer function
 % 
-% Prepared for EG-247 Signals and Systems by Dr Chris P. Jobling
+% Prepared for EG-247 Digital Signal Processing by Dr Chris P. Jobling
 %% Problem
 % The difference equation describing the input-output relationship of a DT system 
 % with zero initial conditions, is:

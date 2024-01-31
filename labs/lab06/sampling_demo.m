@@ -2,14 +2,14 @@
 %
 % Records your voice for 5 seconds using your PC's audio input device.
 %
-% Prepared for EG-247 Signals and Systems
+% Prepared for EG-247 Digital Signal Processing
 % by Dr Chris P. Jobling
 %
 %% Set up audio recorder
 recObj = audiorecorder;
 %% Record something
 disp('Start speaking: say "Hello, My name is [say your name]')
-disp('and this is EG-247 Signals and Systems"')
+disp('and this is EG-247 Digital Signal Processing"')
 disp('Press any key when you are ready...')
 pause
 recordblocking(recObj, 5);

@@ -1,7 +1,7 @@
 %% Sampling Theory
 % Matlab script to illustrate sampling and reconstruction.
 % 
-% Prepared for EG-247 Signals and Systems by Dr Chris Jobling.
+% Prepared for EG-247 Digital Signal Processing by Dr Chris Jobling.
 %% Basic set up
 
 clear all
