@@ -63,7 +63,7 @@ open('TransferFunctions.prj')
 
 Essential components of an electric vehicle
 
-+++ {"slideshow": {"slide_type": "notes"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 Electric vehicles (EV) may well be the future of environmentally sustainable travel. But what makes it possible for an EV to be more efficient than a gas vehicle while still providing enough power to accelerate to and maintain high speeds? The answer lies in efficient power electronics. In this unit, you will learn about transfer functions and use them to analyze the dynamics of several essential components of an electric vehicle.
 
@@ -134,7 +134,7 @@ $$G(s) = \frac{X(s)}{U(s)} = \frac{1}{m s^2 + cs + k}$$
 
 ![example](images/write.png)
 
-Find the transfer function of a simple pendulum with zero initial conditions using the linearized equations of motion. Consider that the pendulum is being driven by an arbitrary forcing function $u(t)$ (note that any angle dependence of the forcing would be baked into $u(t0$). The equations of motion are: 
+Find the transfer function of a simple pendulum with zero initial conditions using the linearized equations of motion. Consider that the pendulum is being driven by an arbitrary forcing function $u(t)$ (note that any angle dependence of the forcing would be baked into $u(t)$. The equations of motion are: 
 
 $$\ddot{\theta} + \frac{g}{l} \theta = u$$
     
@@ -425,42 +425,6 @@ slideshow:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-### Exercise 4
-
-Consider a simple vehicle with a mass of 1300 kg and a frictional constant of proportionality of $k = 100$ N⋅s/m. Recall that the simple vehicle motion model has a transfer function:
-
-$$G(s) = \frac{X(s)}{U(s)} = \frac{1}{ms^2 + ks}$$
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
-Define the transfer function `G` in MATLAB using the `tf` function and then plot the step response for the first 30 seconds using the `step` function. The step function has the syntax
-    
-```matlab
-step(sys,Tfinal)
-```
-
-where `sys` is a dynamic system (here, that's the transfer function `G`) and `Tfinal` is the time to stop the simulation[^solutions].
-
-```{code-cell}
----
-slideshow:
-  slide_type: slide
----
-% Write your code here
-```
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-### Reflect 
-
-![reflect](images/reflect.png)
-
-* How does the step response compare to your prediction?
-* What physical action does the initial transient behavior reflect?
-* What does the long-term behavior of the step response reflect?
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ## Step response
 
 The output generated from a step input is known as the step response.
@@ -486,7 +450,7 @@ Consider the simple vehicle motion model. The input function is the traction for
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Exercise 5
+### Exercise 4
 
 Consider a simple vehicle with a mass of 1300 kg and a frictional constant of proportionality of $k = 100$ N.s/m. Recall that the simple vehicle motion model has a transfer function:
 
@@ -522,7 +486,7 @@ slideshow:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-### Exercise 6
+### Exercise 5
 
 Consider the same simple vehicle with a mass of 1300 kg and a frictional constant of proportionality of $k = 100$ N.s/m. This time, however, analyze the vehicle's velocity  $v(t)$ instead of its position $x(t)$. Recall that the velocity transfer function is
     

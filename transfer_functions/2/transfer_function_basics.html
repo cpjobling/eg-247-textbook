@@ -498,15 +498,13 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Reflect</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Reflect</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4">Exercise 4</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Reflect</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-response">Step response</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Reflect</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Reflect</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4">Exercise 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Reflect</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5">Exercise 5</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Reflect</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6">Exercise 6</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">Reflection</a></li>
 </ul>
 </li>
@@ -643,7 +641,7 @@ Mass-spring-damper diagram</p>
 <section id="exercise-1">
 <h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h3>
 <p><img alt="example" src="../../_images/write1.png" /></p>
-<p>Find the transfer function of a simple pendulum with zero initial conditions using the linearized equations of motion. Consider that the pendulum is being driven by an arbitrary forcing function <span class="math notranslate nohighlight">\(u(t)\)</span> (note that any angle dependence of the forcing would be baked into <span class="math notranslate nohighlight">\(u(t0\)</span>). The equations of motion are:</p>
+<p>Find the transfer function of a simple pendulum with zero initial conditions using the linearized equations of motion. Consider that the pendulum is being driven by an arbitrary forcing function <span class="math notranslate nohighlight">\(u(t)\)</span> (note that any angle dependence of the forcing would be baked into <span class="math notranslate nohighlight">\(u(t)\)</span>. The equations of motion are:</p>
 <div class="math notranslate nohighlight">
 \[\ddot{\theta} + \frac{g}{l} \theta = u\]</div>
 <p>where <span class="math notranslate nohighlight">\(g\)</span> is acceleration due to gravity and <span class="math notranslate nohighlight">\(l\)</span> is the length of the pendulum.</p>
@@ -824,7 +822,7 @@ Mass-spring-damper diagram</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f1d18800acc764d358808af2159f1eb221ef0208905682c516d58155fb7d306f.png" src="../../_images/f1d18800acc764d358808af2159f1eb221ef0208905682c516d58155fb7d306f.png" />
+<img alt="../../_images/1ad6679c80c8b2aa9eafe6802b135b421f36eb003f9c02d4ecc7b238284918d5.png" src="../../_images/1ad6679c80c8b2aa9eafe6802b135b421f36eb003f9c02d4ecc7b238284918d5.png" />
 </div>
 </div>
 </section>
@@ -872,16 +870,33 @@ Mass-spring-damper diagram</p>
 </div>
 </div>
 </section>
+</section>
+<section id="step-response">
+<h2>Step response<a class="headerlink" href="#step-response" title="Permalink to this heading">#</a></h2>
+<p>The output generated from a step input is known as the step response.</p>
+<p><img alt="Response of a system to a step input" src="../../_images/step_resp.png" />
+Response of a system to a step input.</p>
+<p>The step response is plotted in the time domain. Think of the step response as the system’s response to a sustained constant forcing. In the vehicle model, this would result from continuously running the motor (with the assumption that it produced a constant traction force output).</p>
+<section id="id5">
+<h3>Reflect<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<p><img alt="reflect" src="../../_images/reflect1.png" /></p>
+<p>Consider the simple vehicle motion model. The input function is the traction force <span class="math notranslate nohighlight">\(u(t) = F_\mathrm{traction}(t)\)</span>.</p>
+<p><img alt="A model of a simple vehicle" src="../../_images/vehicle_model.png" /></p>
+<ul class="simple">
+<li><p>Try drawing a plot of the step response of the position transfer function <span class="math notranslate nohighlight">\(G(s) = X(s)/F(s)\)</span> in the time domain.</p></li>
+<li><p>Try drawing a plot of the step response of the velocity transfer function <span class="math notranslate nohighlight">\(H(s) = V(s)/F(s)\)</span> in the time domain.</p></li>
+</ul>
+</section>
 <section id="exercise-4">
 <h3>Exercise 4<a class="headerlink" href="#exercise-4" title="Permalink to this heading">#</a></h3>
-<p>Consider a simple vehicle with a mass of 1300 kg and a frictional constant of proportionality of <span class="math notranslate nohighlight">\(k = 100\)</span> N⋅s/m. Recall that the simple vehicle motion model has a transfer function:</p>
+<p>Consider a simple vehicle with a mass of 1300 kg and a frictional constant of proportionality of <span class="math notranslate nohighlight">\(k = 100\)</span> N.s/m. Recall that the simple vehicle motion model has a transfer function:</p>
 <div class="math notranslate nohighlight">
-\[G(s) = \frac{X(s)}{U(s)} = \frac{1}{ms^2 + ks}\]</div>
+\[G(s) = \frac{X(s)}{F(s)} = \frac{1}{ms^2 + ks}\]</div>
 <p>Define the transfer function <code class="docutils literal notranslate"><span class="pre">G</span></code> in MATLAB using the <code class="docutils literal notranslate"><span class="pre">tf</span></code> function and then plot the step response for the first 30 seconds using the <code class="docutils literal notranslate"><span class="pre">step</span></code> function. The step function has the syntax</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">step</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span><span class="n">Tfinal</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>where <code class="docutils literal notranslate"><span class="pre">sys</span></code> is a dynamic system (here, that’s the transfer function <code class="docutils literal notranslate"><span class="pre">G</span></code>) and <code class="docutils literal notranslate"><span class="pre">Tfinal</span></code> is the time to stop the simulation<a class="footnote-reference brackets" href="#solutions" id="id5">2</a>.</p>
+<p>where <code class="docutils literal notranslate"><span class="pre">sys</span></code> is a dynamic system (here, that’s the transfer function <code class="docutils literal notranslate"><span class="pre">G</span></code>) and <code class="docutils literal notranslate"><span class="pre">Tfinal</span></code> is the time to stop the simulation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
@@ -899,52 +914,8 @@ Mass-spring-damper diagram</p>
 <li><p>What does the long-term behavior of the step response reflect?</p></li>
 </ul>
 </section>
-</section>
-<section id="step-response">
-<h2>Step response<a class="headerlink" href="#step-response" title="Permalink to this heading">#</a></h2>
-<p>The output generated from a step input is known as the step response.</p>
-<p><img alt="Response of a system to a step input" src="../../_images/step_resp.png" />
-Response of a system to a step input.</p>
-<p>The step response is plotted in the time domain. Think of the step response as the system’s response to a sustained constant forcing. In the vehicle model, this would result from continuously running the motor (with the assumption that it produced a constant traction force output).</p>
-<section id="id7">
-<h3>Reflect<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
-<p><img alt="reflect" src="../../_images/reflect1.png" /></p>
-<p>Consider the simple vehicle motion model. The input function is the traction force <span class="math notranslate nohighlight">\(u(t) = F_\mathrm{traction}(t)\)</span>.</p>
-<p><img alt="A model of a simple vehicle" src="../../_images/vehicle_model.png" /></p>
-<ul class="simple">
-<li><p>Try drawing a plot of the step response of the position transfer function <span class="math notranslate nohighlight">\(G(s) = X(s)/F(s)\)</span> in the time domain.</p></li>
-<li><p>Try drawing a plot of the step response of the velocity transfer function <span class="math notranslate nohighlight">\(H(s) = V(s)/F(s)\)</span> in the time domain.</p></li>
-</ul>
-</section>
 <section id="exercise-5">
 <h3>Exercise 5<a class="headerlink" href="#exercise-5" title="Permalink to this heading">#</a></h3>
-<p>Consider a simple vehicle with a mass of 1300 kg and a frictional constant of proportionality of <span class="math notranslate nohighlight">\(k = 100\)</span> N.s/m. Recall that the simple vehicle motion model has a transfer function:</p>
-<div class="math notranslate nohighlight">
-\[G(s) = \frac{X(s)}{F(s)} = \frac{1}{ms^2 + ks}\]</div>
-<p>Define the transfer function <code class="docutils literal notranslate"><span class="pre">G</span></code> in MATLAB using the <code class="docutils literal notranslate"><span class="pre">tf</span></code> function and then plot the step response for the first 30 seconds using the <code class="docutils literal notranslate"><span class="pre">step</span></code> function. The step function has the syntax</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">step</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span><span class="n">Tfinal</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>where <code class="docutils literal notranslate"><span class="pre">sys</span></code> is a dynamic system (here, that’s the transfer function <code class="docutils literal notranslate"><span class="pre">G</span></code>) and <code class="docutils literal notranslate"><span class="pre">Tfinal</span></code> is the time to stop the simulation.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="id8">
-<h3>Reflect<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
-<p><img alt="reflect" src="../../_images/reflect1.png" /></p>
-<ul class="simple">
-<li><p>How does the step response compare to your prediction?</p></li>
-<li><p>What physical action does the initial transient behavior reflect?</p></li>
-<li><p>What does the long-term behavior of the step response reflect?</p></li>
-</ul>
-</section>
-<section id="exercise-6">
-<h3>Exercise 6<a class="headerlink" href="#exercise-6" title="Permalink to this heading">#</a></h3>
 <p>Consider the same simple vehicle with a mass of 1300 kg and a frictional constant of proportionality of <span class="math notranslate nohighlight">\(k = 100\)</span> N.s/m. This time, however, analyze the vehicle’s velocity  <span class="math notranslate nohighlight">\(v(t)\)</span> instead of its position <span class="math notranslate nohighlight">\(x(t)\)</span>. Recall that the velocity transfer function is</p>
 <div class="math notranslate nohighlight">
 \[H(s) = \frac{1}{ms + k}\]</div>
@@ -1065,7 +1036,7 @@ Response of a system to a step input.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/30401fe298b170bea10e03acbb2d8c79415a89cf54ea0e62934224cc9ef6cd88.png" src="../../_images/30401fe298b170bea10e03acbb2d8c79415a89cf54ea0e62934224cc9ef6cd88.png" />
+<img alt="../../_images/cc1b6ae517bb34b5d5bf8cdcad9cae700dcbbdb63138ad18981b430bc8f39d9b.png" src="../../_images/cc1b6ae517bb34b5d5bf8cdcad9cae700dcbbdb63138ad18981b430bc8f39d9b.png" />
 </div>
 </div>
 </section>
@@ -1120,7 +1091,7 @@ Response of a system to a square wave.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b1021543777fc42cce6dfe2c9686ddac24aa2258b620af8af758ec9548afa1bd.png" src="../../_images/b1021543777fc42cce6dfe2c9686ddac24aa2258b620af8af758ec9548afa1bd.png" />
+<img alt="../../_images/8a5cd49ac383a443d8635d677c996d103a23e518d8eb5ed36da9f885d8409e57.png" src="../../_images/8a5cd49ac383a443d8635d677c996d103a23e518d8eb5ed36da9f885d8409e57.png" />
 </div>
 </div>
 </section>
@@ -1234,10 +1205,10 @@ Response of a system to a square wave.</p>
 <h2>Further exploration<a class="headerlink" href="#further-exploration" title="Permalink to this heading">#</a></h2>
 <p><img alt="explore" src="../../_images/navigation.png" /></p>
 <ul class="simple">
-<li><p>You can find more information about using transfer functions in MATLAB<a class="footnote-reference brackets" href="#eg243" id="id9">3</a> in the video: <a class="reference external" href="https://uk.mathworks.com/videos/transfer-functions-in-matlab-100912.html">Transfer Functions in MATLAB</a>.</p></li>
+<li><p>You can find more information about using transfer functions in MATLAB<a class="footnote-reference brackets" href="#eg243" id="id7">3</a> in the video: <a class="reference external" href="https://uk.mathworks.com/videos/transfer-functions-in-matlab-100912.html">Transfer Functions in MATLAB</a>.</p></li>
 <li><p>Want to learn more about mass-spring-damper systems? Check out the <a class="reference external" href="https://uk.mathworks.com/matlabcentral/fileexchange/94585-mass-spring-damper-systems?s_tid=FX_rc2_behav">Mass-Spring-Damper Systems courseware</a> module.</p></li>
-<li><p>Learn more about responses in the <a class="reference external" href="https://uk.mathworks.com/videos/control-systems-in-practice-part-9-the-step-response-1593067191882.html">MATLAB Tech Talk: Control Systems in Practice, Part 9: The Step Response</a><a class="footnote-reference brackets" href="#eg243" id="id10">3</a>.
-Want a little more of the theory? Check out Brian Douglas’ video: <a class="reference external" href="https://www.youtube.com/watch?v=RJleGwXorUk&amp;ab_channel=BrianDouglas">Control Systems Lectures - Transfer Functions</a><a class="footnote-reference brackets" href="#eg243" id="id11">3</a>.</p></li>
+<li><p>Learn more about responses in the <a class="reference external" href="https://uk.mathworks.com/videos/control-systems-in-practice-part-9-the-step-response-1593067191882.html">MATLAB Tech Talk: Control Systems in Practice, Part 9: The Step Response</a><a class="footnote-reference brackets" href="#eg243" id="id8">3</a>.
+Want a little more of the theory? Check out Brian Douglas’ video: <a class="reference external" href="https://www.youtube.com/watch?v=RJleGwXorUk&amp;ab_channel=BrianDouglas">Control Systems Lectures - Transfer Functions</a><a class="footnote-reference brackets" href="#eg243" id="id9">3</a>.</p></li>
 </ul>
 </section>
 <section id="solutions-to-matlab-examples">
@@ -1268,7 +1239,9 @@ Want a little more of the theory? Check out Brian Douglas’ video: <a class="re
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ----------------
-  1300 s^2 + 100 s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1300 s^2 + 100 s
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
@@ -1277,7 +1250,7 @@ Want a little more of the theory? Check out Brian Douglas’ video: <a class="re
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
 </pre></div>
 </div>
-<img alt="../../_images/e1a8d62bc52d4e388575f8be5dbcc317b77dd777505444127ffa3ddb67f4a40e.png" src="../../_images/e1a8d62bc52d4e388575f8be5dbcc317b77dd777505444127ffa3ddb67f4a40e.png" />
+<img alt="../../_images/7256a5335417ca04ac96462f38701736f4591cc575b2f830012d5c2dc16980f1.png" src="../../_images/7256a5335417ca04ac96462f38701736f4591cc575b2f830012d5c2dc16980f1.png" />
 </div>
 </div>
 <p>Repeat for velocity response</p>
@@ -1305,15 +1278,13 @@ Want a little more of the theory? Check out Brian Douglas’ video: <a class="re
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1300 s + 100
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+ 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
 </pre></div>
 </div>
-<img alt="../../_images/2ce9060fee211ab24307c976663322a556dc1fb1d1bf61e3ba912daaf9f7f86d.png" src="../../_images/2ce9060fee211ab24307c976663322a556dc1fb1d1bf61e3ba912daaf9f7f86d.png" />
+<img alt="../../_images/7988cf84c40cda5c5bbf35863dfaa43f95943896c6e95ed5724d506f66865ae8.png" src="../../_images/7988cf84c40cda5c5bbf35863dfaa43f95943896c6e95ed5724d506f66865ae8.png" />
 </div>
 </div>
 </section>
@@ -1344,9 +1315,7 @@ Want a little more of the theory? Check out Brian Douglas’ video: <a class="re
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ----------------
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1300 s^2 + 100 s
+  1300 s^2 + 100 s
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
@@ -1355,7 +1324,7 @@ Want a little more of the theory? Check out Brian Douglas’ video: <a class="re
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
 </pre></div>
 </div>
-<img alt="../../_images/e907989ef07105cc194ebc5e5cba4395734b181adaf20e7cead605683adfd357.png" src="../../_images/e907989ef07105cc194ebc5e5cba4395734b181adaf20e7cead605683adfd357.png" />
+<img alt="../../_images/1209d5ad319db20792254cacc33d89a7c3872c34c7a135473eba03529d60f5b8.png" src="../../_images/1209d5ad319db20792254cacc33d89a7c3872c34c7a135473eba03529d60f5b8.png" />
 </div>
 </div>
 </section>
@@ -1394,7 +1363,7 @@ Want a little more of the theory? Check out Brian Douglas’ video: <a class="re
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
 </pre></div>
 </div>
-<img alt="../../_images/76bb8b24116efa0c15723f084760753bd1b36276f197b7cb383287e37000dfe8.png" src="../../_images/76bb8b24116efa0c15723f084760753bd1b36276f197b7cb383287e37000dfe8.png" />
+<img alt="../../_images/a7911978fe9abc6a591df2fd1f8b9f76b2d20a79b09e9f3b9c6ef4b86e254f95.png" src="../../_images/a7911978fe9abc6a591df2fd1f8b9f76b2d20a79b09e9f3b9c6ef4b86e254f95.png" />
 </div>
 </div>
 <p>The extra gain needed to reach 50 m/s would be 5000. In this case an acceleration from 0-60 mph is achieved in about 10 seconds.</p>
@@ -1412,10 +1381,10 @@ Want a little more of the theory? Check out Brian Douglas’ video: <a class="re
 <dt class="label" id="refer-to-livescript"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>The MATLAB live script <code class="docutils literal notranslate"><span class="pre">TransferFunctionBasics.mlx</span></code> has sliders to make the interactive adjustment of the parameters <code class="docutils literal notranslate"><span class="pre">m</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">k</span></code> possible.</p>
 </dd>
-<dt class="label" id="solutions"><span class="brackets">2</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id5">2</a>)</span></dt>
+<dt class="label" id="solutions"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
 <dd><p>MATLAB solutions to selected exercises are provided in the online notes.</p>
 </dd>
-<dt class="label" id="eg243"><span class="brackets">3</span><span class="fn-backref">(<a href="#id9">1</a>,<a href="#id10">2</a>,<a href="#id11">3</a>)</span></dt>
+<dt class="label" id="eg243"><span class="brackets">3</span><span class="fn-backref">(<a href="#id7">1</a>,<a href="#id8">2</a>,<a href="#id9">3</a>)</span></dt>
 <dd><p>These resources are useful for those of you also studying control systems this semester.</p>
 </dd>
 </dl>
@@ -1511,15 +1480,13 @@ Want a little more of the theory? Check out Brian Douglas’ video: <a class="re
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Reflect</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Reflect</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4">Exercise 4</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Reflect</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-response">Step response</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Reflect</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Reflect</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4">Exercise 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Reflect</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5">Exercise 5</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Reflect</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6">Exercise 6</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">Reflection</a></li>
 </ul>
 </li>
