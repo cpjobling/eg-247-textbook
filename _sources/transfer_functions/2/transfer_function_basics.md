@@ -368,7 +368,8 @@ where `H` is the transfer function and `tFinal` is the duration of the simulatio
 slideshow:
   slide_type: subslide
 ---
-impulse(G,100)
+tFinal = 100
+impulse(G,tFinal)
 ylabel("x [m]")
 ```
 
