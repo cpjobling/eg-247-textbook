@@ -66,7 +66,9 @@ open('TransferFunctions.prj')
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 Another essential electric vehicle (EV) component is the DC motor. 
+
 ![Simplified EV schematic](images/engineFocus.png)
+
 Simplified EV schematic
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -74,6 +76,7 @@ Simplified EV schematic
 The purpose of the DC motor is to convert electrical energy to mechanical. The mechanical energy is manifested as a torque on the drive shaft. This torque is converted to a traction force by the wheels, which causes the vehicle to move.
 
 ![Motor highlighted in a simple EV systemt](images/EVSimpleSystemMotorHighlight.png)
+
 The DC motor bridges the electrical and physical domains.
 
 +++ {"slideshow": {"slide_type": "notes"}}
@@ -83,10 +86,10 @@ A DC motor works by conducting a current through an armature that can rotate fre
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ![A schematic diagram of a DC motor](images/motorDiagram.png)
+
 DC motor schematic. A net torque $T$ is generated on the armature by Lorentz forces. In the electrical domain, the motor is represented by a series of three circuit elements.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
-
 
 ### Derivation of the DC motor differential equations
 
@@ -115,7 +118,6 @@ $$ (eq1)
 where $v$ is the electric potential applied to the motor.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
-
 
 In the absence of other applied torques, the equation of motion can be derived by balancing the inertia of the motor shaft ($J \ddot{\theta}$) with the applied torque ($T$) and frictional resistance ($B \dot{\theta}$).
 
@@ -386,6 +388,8 @@ slideshow:
   slide_type: subslide
 ---
 % Write your code here
+g = 60; b = 2.3; c = 11;
+G = tf([0 0 g],[1 b c])
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -404,6 +408,7 @@ slideshow:
   slide_type: subslide
 ---
 % Write your code here
+pzmap(G)
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -421,6 +426,7 @@ slideshow:
   slide_type: notes
 ---
 % Write your code here
+pole(G)
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}
@@ -505,6 +511,8 @@ slideshow:
   slide_type: subslide
 ---
 % Write your code here
+p = pole(G)
+wn = abs(p) % rad/s
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -520,6 +528,7 @@ slideshow:
   slide_type: subslide
 ---
 % Write your code here
+damp(G)
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}
@@ -562,7 +571,7 @@ $$p = - \zeta \omega_n \pm \omega_n \sqrt{\zeta^2 - 1 }$$
 
 For simplicity, consider $\zeta \in [0,1)$. In this case, the poles are
 
-$$p = - \zeta \omega_n \pm i \omega_n \sqrt{1 - \zeta^2}$$
+$$p = - \zeta \omega_n \pm j \omega_n \sqrt{1 - \zeta^2}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 

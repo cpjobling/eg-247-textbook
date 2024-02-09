@@ -85,7 +85,7 @@ Inverse Laplace transforms (and forward Laplace transforms, for that matter) are
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### Example
+#### Example 1
 
 ![example](images/write.png)
 
@@ -307,6 +307,7 @@ See also {ref}`lxf_table` in this textbook.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
+(ltp)=
 ### Laplace transform properties
 
 Laplace transforms have several important properties that can be derived from the definition. A few essential properties are reviewed below.
@@ -633,14 +634,15 @@ Write your solution in the variable `theta` in terms of the symbolic variable `t
 slideshow:
   slide_type: subslide
 ---
-syms t
+syms t s
 % Replace NaN with your symbolic solution and run the section
-theta = NaN; 
+Theta = (pi/6)*s/(s^2 + 19.6);
+theta = ilaplace(Theta)
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-There is an animated version of the solution to this simple pendulum system in the MATLAB LiveScript `ConceptReview.mlx`.
+There is an animated version of the solution to this simple pendulum system in the MATLAB LiveScript `ConceptReview.mlx`. Open the LiveScript file and paste your solution into the appropriate place to see the animation. 
 
 ```{code-cell}
 ---
@@ -713,8 +715,161 @@ open('ConceptReview.mlx')
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
+## Solutions to Selected Exercises
+
+### Solution to Exercise 1
+
+We have made use of the resource [Laplace Transforms](https://www.lboro.ac.uk/departments/mlsc/student-resources/helm-workbooks/) from the [HELM project](https://www.lboro.ac.uk/media/media/schoolanddepartments/mlsc/downloads/HELM%20Workbook%2020%20Laplace%20Transforms.pdf) {cite}`HELM,HELM-Laplace` hosted at Loughborough University. We have made the [HELM resource available in the Canvas site](https://canvas.swansea.ac.uk/courses/44853/modules/items/2565502) for this module. 
+
+Compute the Laplace transform of some standard functions listed below:
+
+**a.** $f(t) = 1$
+
+
+$$
+\begin{align}
+F(s) &= \mathcal{L}\left\{f(t)\right\} = \int_0^\infty 1.e^{-st}\,dt\\
+     &= -\frac{1}{s}\left. e^{-st}\right|_0^\infty\\
+     &= -\frac{1}{s}\left[ e^{-s\infty} - e^{s.0}\right]\\
+     &= -\frac{1}{s}\left[0 - 1\right]\\
+     &= \frac{1}{s}
+\end{align}
+$$
+
+```{note}
+We have given all the steps here: in the remaining exercises we will omit some of the details but the results would be much the same. We will also demonstrate pragmatism by using the provided Laplace transform properties and transform tables ({ref}`lxf_props`, {ref}`lxf_table`) when they simplify the analysis. This is generally the approach you should take too.
+```
+
+**b.** $f(t) = e^{-at}$ 
+
+$$
+\begin{align}
+F(s) &= \int_0^\infty e^{-at}.e^{-st}\,dt\\
+     &= \int_0^\infty e^{-(a + s)t}\,dt\\
+     &= -\frac{1}{a + s}\left. e^{-(a + s)t}\right|_0^\infty\\
+     &= \frac{1}{s + a}
+\end{align}
+$$
+
+**c.** $f(t) = t$ 
+
+$$
+F(s) \int_0^\infty t.e^{-st}\,dt
+$$
+Using integration by parts
+
+$$
+\begin{align}
+\mathcal{L}\left\{t\right\} & = \left[\frac{t.e^{-st}}{-s}\right]_0^\infty - \int_0^\infty \left(\frac{e^{-st}}{-s}\right)\,dt\\
+     &= \left[\frac{t.e^{-st}}{-s}\right]_0^\infty - \left[\frac{e^{-st}}{-s^2}\right]_0^\infty
+\end{align}
+$$
+
+Now we have the difficulty of substituting in the limits of integration. The only problem arises with the upper limit ($t = \infty$). We shall always assume that the parameter $s$ is so chosen that no contribution ever arises from the upper limit ($t = \infty$). In this particular case we need only demand that $s$ is real and positive. Using this 'rule of thumb':
+
+$$
+\begin{align}
+\mathcal{L}\left\{t\right\} & = \left[0 - 0\right] - \left[0 - \left(\frac{1}{-s^2}\right)\right]\\
+     &= \frac{1}{s^2}
+\end{align}
+$$
+
+**d.** $f(t) = \delta(t - a)$ 
+
+The solution uses the sampling property $f(t)\delta(t-a) = f(a)\delta(t-a)$ and the sifting property 
+
+$$
+\int_0^\infty f(t)\delta(t - a)\,dt = f(a). See 
+$$
+
+(see [Important Properties of the Delta Function](https://cpjobling.github.io/eg-150-textbook/signals_and_systems/elementary_signals/index.html#important-properties-of-the-delta-function) in {cite}`jobling-eg-150`).
+
+$$
+\begin{align}
+F(s) &= \int_0^\infty e^{-st}\delta(t-a)\,dt\\
+     &= e^{-as}
+\end{align}
+$$
+
+**e.** $f(t) = \cos(t)$ 
+
+Using the identity
+
+$$\cos(t) = \frac{e^{j t} + e^{-jt}}{2}$$
+
+and applying the result of (b)
+
+$$
+\begin{align}
+\mathcal{L}\left\{\cos(t)\right\} &= \frac{1}{2}\left(\mathcal{L}\left\{e^{j t}\right\} + \mathcal{L}\left\{e^{-j t}\right\}\right) \\
+   &= \frac{1}{2}\left(\frac{1}{s + j} + \frac{1}{s - j}\right) \\
+   &= \frac{1}{2}\left(\frac{s - j + s + j}{(s + j)(s - j)}\right) \\
+   &= \frac{1}{2}\left(\frac{2s}{s^2 + 1}\right) \\
+   &= \frac{s}{s^2 + 1}
+\end{align}
+$$
+
+**f.** $f(t) = t^2 e^{-at}$ 
+
+From transform tables (e.g. {ref}`lxf_table`)
+
+$$
+\begin{align}
+  \mathcal{L}\left\{t^n\right\} &= \frac{n!}{s^{n+1}} \\
+  \mathcal{L}\left\{t^2\right\} &= \frac{2!}{s^{2+1}} \\
+  & = \frac{1\times 2}{s^3} \\
+  & = \frac{2}{s^3}
+\end{align}
+$$
+
+From the frequency shift property (see {ref}`ltp`)
+
+$$\mathcal{L}\left\{e^{-at}\right\} = F(s + a)$$
+
+so 
+
+$$
+\mathcal{L}\left\{e^{-at} t^2\right\} = \frac{2}{\left(s + a\right)^3}
+$$
+
+**g.** $f(t) = e^{-at}\sin(t)$
+
+To complete this from first principles you can use the approach we used to solve (e). If you want to do this you should note that 
+
+$$\sin(t) = \frac{1}{j2}\left(e^{jt} - e^{-jt}\right).$$
+
+It is easy to show that 
+
+$$\mathcal{L}\left\{\sin(\omega t)\right\} = \frac{\omega}{s^2 + \omega^2}$$
+
+An in this case $\omega = 1$ so
+
+$$\mathcal{L}\left\{\sin(t)\right\} = \frac{1}{s^2 + 1}$$
+
+By the frequency shift property (see previous solution)
+
+$$
+\begin{align}
+  \mathcal{L}\left\{e^{-at} \sin(t)\right\} = \frac{1}{(s + a)^2 + 1}
+\end{align}
+$$
+
++++
+
+## References for this Unit
+
+```{bibliography}
+:filter: docname in docnames
+```
+
++++ {"slideshow": {"slide_type": "notes"}}
+
 ## Footnotes
 
 [^examples]: We will tackle some of the paper-based exercises in the examples class.
 
 [^installation]: Installation details are given in Canvas here: [Prepare the MATLAB Curriculum Module used in Unit 2 and Lab 2](https://canvas.swansea.ac.uk/courses/44853/pages/prepare-the-matlab-curriculum-module-used-in-unit-2-and-lab-2).
+
+```{code-cell}
+
+```
