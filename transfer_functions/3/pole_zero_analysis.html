@@ -824,6 +824,31 @@ c.  <span class="math notranslate nohighlight">\(F(s) = \frac{1}{(s-1)(s+2)(s^2+
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
+<span class="n">g</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">2.3</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">11</span><span class="p">;</span>
+<span class="n">G</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="n">g</span><span class="p">],[</span><span class="mi">1</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">c</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>G =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         60
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ----------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  s^2 + 2.3 s + 11
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
 </pre></div>
 </div>
 </div>
@@ -838,8 +863,12 @@ c.  <span class="math notranslate nohighlight">\(F(s) = \frac{1}{(s-1)(s+2)(s^2+
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
+<span class="n">pzmap</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/6811ec24523564b7998e56965c8b9d2d7d8962a11e7fce9557608e6bde3a45ea.png" src="../../_images/6811ec24523564b7998e56965c8b9d2d7d8962a11e7fce9557608e6bde3a45ea.png" />
 </div>
 </div>
 </section>
@@ -852,6 +881,14 @@ c.  <span class="math notranslate nohighlight">\(F(s) = \frac{1}{(s-1)(s+2)(s^2+
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
+<span class="n">pole</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+  -1.1500 + 3.1109i
+  -1.1500 - 3.1109i
 </pre></div>
 </div>
 </div>
@@ -920,6 +957,20 @@ Phase <span class="math notranslate nohighlight">\(\phi\)</span> and magnitude <
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
+<span class="n">p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">pole</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="n">wn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="c">% rad/s</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p =
+  -1.1500 + 3.1109i
+  -1.1500 - 3.1109i
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>wn =
+    3.3166
+    3.3166
 </pre></div>
 </div>
 </div>
@@ -931,6 +982,17 @@ Phase <span class="math notranslate nohighlight">\(\phi\)</span> and magnitude <
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
+<span class="n">damp</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                       
+         Pole              Damping       Frequency      Time Constant  
+                                       (rad/seconds)      (seconds)    
+                                                                       
+ -1.15e+00 + 3.11e+00i     3.47e-01       3.32e+00         8.70e-01    
+ -1.15e+00 - 3.11e+00i     3.47e-01       3.32e+00         8.70e-01    
 </pre></div>
 </div>
 </div>
@@ -965,7 +1027,7 @@ Phase <span class="math notranslate nohighlight">\(\phi\)</span> and magnitude <
 \[p = - \zeta \omega_n \pm \omega_n \sqrt{\zeta^2 - 1 }\]</div>
 <p>For simplicity, consider <span class="math notranslate nohighlight">\(\zeta \in [0,1)\)</span>. In this case, the poles are</p>
 <div class="math notranslate nohighlight">
-\[p = - \zeta \omega_n \pm i \omega_n \sqrt{1 - \zeta^2}\]</div>
+\[p = - \zeta \omega_n \pm j \omega_n \sqrt{1 - \zeta^2}\]</div>
 <p>As stated above, the natural frequency is defined as the magnitude of the pole. The magnitude is computed as <span class="math notranslate nohighlight">\(\sqrt{ Re^2 + Im^2}\)</span>:</p>
 <p>\begin{array}{rl} |p|  &amp;= \sqrt{ (-\zeta \omega_n)^2 + ( \pm \omega_n \sqrt{1-\zeta^2})^2 } \   &amp;= \sqrt{ \zeta^2 \omega_n^2 + \omega_n^2 (1-\zeta^2) } \   &amp;= |\omega_n|\<br />
 \end{array}</p>

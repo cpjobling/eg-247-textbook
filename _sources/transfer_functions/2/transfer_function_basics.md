@@ -759,7 +759,7 @@ Compute the Laplace transform of the input function:
 
 $$u(t) = \sin(2\pi f t)$$
 
-where  is a constant (the frequency in Hz).
+where $f$ is a constant (the frequency in Hz).
 
 ```{code-cell}
 ---

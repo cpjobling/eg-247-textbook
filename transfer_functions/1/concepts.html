@@ -476,7 +476,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-laplace-transform">The Laplace Transform</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">Definition</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1-a">Solution 1 (a).</a></li>
@@ -532,6 +532,11 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-1-laplace-transform-and-lti-systems">Homework 1: Laplace Transform and LTI Systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions-to-selected-exercises">Solutions to Selected Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-to-exercise-1">Solution to Exercise 1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-for-this-unit">References for this Unit</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes">Footnotes</a></li>
 </ul>
             </nav>
@@ -592,8 +597,8 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[f(t) = \mathcal{L}^{-1} \{ F(s) \}\]</div>
 <p>Inverse Laplace transforms (and forward Laplace transforms, for that matter) are usually found by appealing to a transform table. The formal definition of the inverse Laplace transform is rarely used and so is not discussed here.</p>
-<section id="example">
-<h4>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h4>
+<section id="example-1">
+<h4>Example 1<a class="headerlink" href="#example-1" title="Permalink to this heading">#</a></h4>
 <p><img alt="example" src="../../_images/write.png" /></p>
 <p>(a)  Compute the Laplace transform of <span class="math notranslate nohighlight">\(f(t) = u_0(t - a)\)</span> by hand, where <span class="math notranslate nohighlight">\(u_o(t)\)</span> is the Heaviside step function with <span class="math notranslate nohighlight">\(a &gt; 0\)</span>.</p>
 <p>(b) Compute the analytic Laplace transform of <span class="math notranslate nohighlight">\(f\)</span> using the <a class="reference external" href="https://www.mathworks.com/products/symbolic.html">Symbolic Math Toolbox</a>.</p>
@@ -880,7 +885,7 @@ F(s) &amp;= \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
 </section>
 </section>
 <section id="laplace-transform-properties">
-<h3>Laplace transform properties<a class="headerlink" href="#laplace-transform-properties" title="Permalink to this heading">#</a></h3>
+<span id="ltp"></span><h3>Laplace transform properties<a class="headerlink" href="#laplace-transform-properties" title="Permalink to this heading">#</a></h3>
 <p>Laplace transforms have several important properties that can be derived from the definition. A few essential properties are reviewed below.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\left.
@@ -1139,7 +1144,7 @@ x(t) &amp;= \mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1)^2 + 3^2}  -\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8a2b8a8a6f7538eb741f605d9418b6288fa974bc7fb2fb2c2e593a0a46d4310e.png" src="../../_images/8a2b8a8a6f7538eb741f605d9418b6288fa974bc7fb2fb2c2e593a0a46d4310e.png" />
+<img alt="../../_images/98e9a44e1ee0e86d1cb173b8ea296595c349789d66115319dbc7a4e82ba0edab.png" src="../../_images/98e9a44e1ee0e86d1cb173b8ea296595c349789d66115319dbc7a4e82ba0edab.png" />
 </div>
 </div>
 <p>There is an animated version of the solution to this spring-mass-damper system in the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">ConceptReview.mlx</span></code>.</p>
@@ -1172,14 +1177,23 @@ x(t) &amp;= \mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1)^2 + 3^2}  -\
 <p>Write your solution in the variable <code class="docutils literal notranslate"><span class="pre">theta</span></code> in terms of the symbolic variable <code class="docutils literal notranslate"><span class="pre">t</span></code>. Then click the checkbox to plot your solution.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">t</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">s</span>
 <span class="c">% Replace NaN with your symbolic solution and run the section</span>
-<span class="n">theta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span><span class="p">;</span><span class="w"> </span>
+<span class="n">Theta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="nb">pi</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span><span class="o">*</span><span class="n">s</span><span class="o">/</span><span class="p">(</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">19.6</span><span class="p">);</span>
+<span class="n">theta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ilaplace</span><span class="p">(</span><span class="n">Theta</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>theta =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(pi*cos((7*2^(1/2)*5^(1/2)*t)/5))/6
 </pre></div>
 </div>
 </div>
 </div>
-<p>There is an animated version of the solution to this simple pendulum system in the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">ConceptReview.mlx</span></code>.</p>
+<p>There is an animated version of the solution to this simple pendulum system in the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">ConceptReview.mlx</span></code>. Open the LiveScript file and paste your solution into the appropriate place to see the animation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;ConceptReview.mlx&#39;</span><span class="p">)</span>
@@ -1240,6 +1254,141 @@ x(t) &amp;= \mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1)^2 + 3^2}  -\
 <li><p>Open the <code class="docutils literal notranslate"><span class="pre">ConceptsReview.mlx</span></code> activity.</p></li>
 <li><p>Complete the Exercises and Activities and add your own notes to the LiveScript file in response to the Reflection prompts given above.</p></li>
 </ol>
+</section>
+<section id="solutions-to-selected-exercises">
+<h2>Solutions to Selected Exercises<a class="headerlink" href="#solutions-to-selected-exercises" title="Permalink to this heading">#</a></h2>
+<section id="solution-to-exercise-1">
+<h3>Solution to Exercise 1<a class="headerlink" href="#solution-to-exercise-1" title="Permalink to this heading">#</a></h3>
+<p>We have made use of the resource <a class="reference external" href="https://www.lboro.ac.uk/departments/mlsc/student-resources/helm-workbooks/">Laplace Transforms</a> from the <a class="reference external" href="https://www.lboro.ac.uk/media/media/schoolanddepartments/mlsc/downloads/HELM%20Workbook%2020%20Laplace%20Transforms.pdf">HELM project</a> <span id="id7">[<a class="reference internal" href="../../zbib.html#id16" title="Loughborough University. Helping engineers learn mathematics workbooks (helm). 2008. URL: https://www.lboro.ac.uk/departments/mlsc/student-resources/helm-workbooks/ (visited on 2024-08-02).">University, 2008</a>, <a class="reference internal" href="../../zbib.html#id17" title="Loughborough University. Laplace transforms (helm). 2008. URL: https://www.lboro.ac.uk/media/media/schoolanddepartments/mlsc/downloads/HELM%20Workbook%2020%20Laplace%20Transforms.pdf (visited on 2024-08-02).">University, 2008</a>]</span> hosted at Loughborough University. We have made the <a class="reference external" href="https://canvas.swansea.ac.uk/courses/44853/modules/items/2565502">HELM resource available in the Canvas site</a> for this module.</p>
+<p>Compute the Laplace transform of some standard functions listed below:</p>
+<p><strong>a.</strong> <span class="math notranslate nohighlight">\(f(t) = 1\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+F(s) &amp;= \mathcal{L}\left\{f(t)\right\} = \int_0^\infty 1.e^{-st}\,dt\\
+     &amp;= -\frac{1}{s}\left. e^{-st}\right|_0^\infty\\
+     &amp;= -\frac{1}{s}\left[ e^{-s\infty} - e^{s.0}\right]\\
+     &amp;= -\frac{1}{s}\left[0 - 1\right]\\
+     &amp;= \frac{1}{s}
+\end{align}
+\end{split}\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We have given all the steps here: in the remaining exercises we will omit some of the details but the results would be much the same. We will also demonstrate pragmatism by using the provided Laplace transform properties and transform tables (<a class="reference internal" href="lt_props.html#lxf-props"><span class="std std-ref">Laplace Transform Properties</span></a>, <a class="reference internal" href="lt_table.html#lxf-table"><span class="std std-ref">Common Laplace Transform Pairs</span></a>) when they simplify the analysis. This is generally the approach you should take too.</p>
+</div>
+<p><strong>b.</strong> <span class="math notranslate nohighlight">\(f(t) = e^{-at}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+F(s) &amp;= \int_0^\infty e^{-at}.e^{-st}\,dt\\
+     &amp;= \int_0^\infty e^{-(a + s)t}\,dt\\
+     &amp;= -\frac{1}{a + s}\left. e^{-(a + s)t}\right|_0^\infty\\
+     &amp;= \frac{1}{s + a}
+\end{align}
+\end{split}\]</div>
+<p><strong>c.</strong> <span class="math notranslate nohighlight">\(f(t) = t\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+F(s) \int_0^\infty t.e^{-st}\,dt
+\]</div>
+<p>Using integration by parts</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\mathcal{L}\left\{t\right\} &amp; = \left[\frac{t.e^{-st}}{-s}\right]_0^\infty - \int_0^\infty \left(\frac{e^{-st}}{-s}\right)\,dt\\
+     &amp;= \left[\frac{t.e^{-st}}{-s}\right]_0^\infty - \left[\frac{e^{-st}}{-s^2}\right]_0^\infty
+\end{align}
+\end{split}\]</div>
+<p>Now we have the difficulty of substituting in the limits of integration. The only problem arises with the upper limit (<span class="math notranslate nohighlight">\(t = \infty\)</span>). We shall always assume that the parameter <span class="math notranslate nohighlight">\(s\)</span> is so chosen that no contribution ever arises from the upper limit (<span class="math notranslate nohighlight">\(t = \infty\)</span>). In this particular case we need only demand that <span class="math notranslate nohighlight">\(s\)</span> is real and positive. Using this ‘rule of thumb’:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\mathcal{L}\left\{t\right\} &amp; = \left[0 - 0\right] - \left[0 - \left(\frac{1}{-s^2}\right)\right]\\
+     &amp;= \frac{1}{s^2}
+\end{align}
+\end{split}\]</div>
+<p><strong>d.</strong> <span class="math notranslate nohighlight">\(f(t) = \delta(t - a)\)</span></p>
+<p>The solution uses the sampling property <span class="math notranslate nohighlight">\(f(t)\delta(t-a) = f(a)\delta(t-a)\)</span> and the sifting property</p>
+<div class="math notranslate nohighlight">
+\[
+\int_0^\infty f(t)\delta(t - a)\,dt = f(a). See 
+\]</div>
+<p>(see <a class="reference external" href="https://cpjobling.github.io/eg-150-textbook/signals_and_systems/elementary_signals/index.html#important-properties-of-the-delta-function">Important Properties of the Delta Function</a> in <span id="id8">[<a class="reference internal" href="../../zbib.html#id15" title="Christopher P. Jobling. EG-150: Signals and Systems. Swansea University, 2024. URL: https://cpjobling.github.io/eg-150-textbook.">Jobling, 2024</a>]</span>).</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+F(s) &amp;= \int_0^\infty e^{-st}\delta(t-a)\,dt\\
+     &amp;= e^{-as}
+\end{align}
+\end{split}\]</div>
+<p><strong>e.</strong> <span class="math notranslate nohighlight">\(f(t) = \cos(t)\)</span></p>
+<p>Using the identity</p>
+<div class="math notranslate nohighlight">
+\[\cos(t) = \frac{e^{j t} + e^{-jt}}{2}\]</div>
+<p>and applying the result of (b)</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\mathcal{L}\left\{\cos(t)\right\} &amp;= \frac{1}{2}\left(\mathcal{L}\left\{e^{j t}\right\} + \mathcal{L}\left\{e^{-j t}\right\}\right) \\
+   &amp;= \frac{1}{2}\left(\frac{1}{s + j} + \frac{1}{s - j}\right) \\
+   &amp;= \frac{1}{2}\left(\frac{s - j + s + j}{(s + j)(s - j)}\right) \\
+   &amp;= \frac{1}{2}\left(\frac{2s}{s^2 + 1}\right) \\
+   &amp;= \frac{s}{s^2 + 1}
+\end{align}
+\end{split}\]</div>
+<p><strong>f.</strong> <span class="math notranslate nohighlight">\(f(t) = t^2 e^{-at}\)</span></p>
+<p>From transform tables (e.g. <a class="reference internal" href="lt_table.html#lxf-table"><span class="std std-ref">Common Laplace Transform Pairs</span></a>)</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+  \mathcal{L}\left\{t^n\right\} &amp;= \frac{n!}{s^{n+1}} \\
+  \mathcal{L}\left\{t^2\right\} &amp;= \frac{2!}{s^{2+1}} \\
+  &amp; = \frac{1\times 2}{s^3} \\
+  &amp; = \frac{2}{s^3}
+\end{align}
+\end{split}\]</div>
+<p>From the frequency shift property (see <a class="reference internal" href="#ltp"><span class="std std-ref">Laplace transform properties</span></a>)</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{L}\left\{e^{-at}\right\} = F(s + a)\]</div>
+<p>so</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L}\left\{e^{-at} t^2\right\} = \frac{2}{\left(s + a\right)^3}
+\]</div>
+<p><strong>g.</strong> <span class="math notranslate nohighlight">\(f(t) = e^{-at}\sin(t)\)</span></p>
+<p>To complete this from first principles you can use the approach we used to solve (e). If you want to do this you should note that</p>
+<div class="math notranslate nohighlight">
+\[\sin(t) = \frac{1}{j2}\left(e^{jt} - e^{-jt}\right).\]</div>
+<p>It is easy to show that</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{L}\left\{\sin(\omega t)\right\} = \frac{\omega}{s^2 + \omega^2}\]</div>
+<p>An in this case <span class="math notranslate nohighlight">\(\omega = 1\)</span> so</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{L}\left\{\sin(t)\right\} = \frac{1}{s^2 + 1}\]</div>
+<p>By the frequency shift property (see previous solution)</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+  \mathcal{L}\left\{e^{-at} \sin(t)\right\} = \frac{1}{(s + a)^2 + 1}
+\end{align}
+\]</div>
+</section>
+</section>
+<section id="references-for-this-unit">
+<h2>References for this Unit<a class="headerlink" href="#references-for-this-unit" title="Permalink to this heading">#</a></h2>
+<div class="docutils container" id="id9">
+<dl class="citation">
+<dt class="label" id="id23"><span class="brackets"><a class="fn-backref" href="#id8">Job24</a></span></dt>
+<dd><p>Christopher P. Jobling. <em>EG-150: Signals and Systems</em>. Swansea University, 2024. URL: <a class="reference external" href="https://cpjobling.github.io/eg-150-textbook">https://cpjobling.github.io/eg-150-textbook</a>.</p>
+</dd>
+<dt class="label" id="id24"><span class="brackets"><a class="fn-backref" href="#id7">Uni08a</a></span></dt>
+<dd><p>Loughborough University. Helping engineers learn mathematics workbooks (helm). 2008. URL: <a class="reference external" href="https://www.lboro.ac.uk/departments/mlsc/student-resources/helm-workbooks/">https://www.lboro.ac.uk/departments/mlsc/student-resources/helm-workbooks/</a> (visited on 2024-08-02).</p>
+</dd>
+<dt class="label" id="id25"><span class="brackets"><a class="fn-backref" href="#id7">Uni08b</a></span></dt>
+<dd><p>Loughborough University. Laplace transforms (helm). 2008. URL: <a class="reference external" href="https://www.lboro.ac.uk/media/media/schoolanddepartments/mlsc/downloads/HELM%20Workbook%2020%20Laplace%20Transforms.pdf">https://www.lboro.ac.uk/media/media/schoolanddepartments/mlsc/downloads/HELM%20Workbook%2020%20Laplace%20Transforms.pdf</a> (visited on 2024-08-02).</p>
+</dd>
+</dl>
+</div>
 </section>
 <section id="footnotes">
 <h2>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this heading">#</a></h2>
@@ -1322,7 +1471,7 @@ x(t) &amp;= \mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1)^2 + 3^2}  -\
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-laplace-transform">The Laplace Transform</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">Definition</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1-a">Solution 1 (a).</a></li>
@@ -1378,6 +1527,11 @@ x(t) &amp;= \mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1)^2 + 3^2}  -\
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-1-laplace-transform-and-lti-systems">Homework 1: Laplace Transform and LTI Systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions-to-selected-exercises">Solutions to Selected Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-to-exercise-1">Solution to Exercise 1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-for-this-unit">References for this Unit</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes">Footnotes</a></li>
 </ul>
   </nav></div>

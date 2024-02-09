@@ -388,6 +388,8 @@ slideshow:
   slide_type: subslide
 ---
 % Write your code here
+g = 60; b = 2.3; c = 11;
+G = tf([0 0 g],[1 b c])
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -406,6 +408,7 @@ slideshow:
   slide_type: subslide
 ---
 % Write your code here
+pzmap(G)
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -423,6 +426,7 @@ slideshow:
   slide_type: notes
 ---
 % Write your code here
+pole(G)
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}
@@ -507,6 +511,8 @@ slideshow:
   slide_type: subslide
 ---
 % Write your code here
+p = pole(G)
+wn = abs(p) % rad/s
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -522,6 +528,7 @@ slideshow:
   slide_type: subslide
 ---
 % Write your code here
+damp(G)
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}
@@ -564,7 +571,7 @@ $$p = - \zeta \omega_n \pm \omega_n \sqrt{\zeta^2 - 1 }$$
 
 For simplicity, consider $\zeta \in [0,1)$. In this case, the poles are
 
-$$p = - \zeta \omega_n \pm i \omega_n \sqrt{1 - \zeta^2}$$
+$$p = - \zeta \omega_n \pm j \omega_n \sqrt{1 - \zeta^2}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
