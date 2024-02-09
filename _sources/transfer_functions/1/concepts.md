@@ -511,7 +511,7 @@ $$X = \frac{10}{s^3 + 2  s^2   + 10s }$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-##### 3. Use partial fraction decomposition to separate the expression for  into terms where the inverse Laplace transform $X$ is known
+##### 3. Use partial fraction decomposition to separate the expression for $X(s)$ into terms where the inverse Laplace transform $X$ is known
 
 Try performing the partial fraction decomposition on paper and comparing your result to the symbolic solution found below.
 
@@ -568,7 +568,7 @@ slideshow:
   slide_type: fragment
 ---
 syms x
-x = ilaplace(X)
+x = ilaplace(Xdecomp)
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -582,7 +582,7 @@ slideshow:
 ---
 % Create solution array
 t = linspace(0,5,150);
-x = 1-exp(-t).*(cos(3*t) + 1/3*sin(3*t));
+x = 1-exp(-t).*(cos(3*t) + sin(3*t)/3);
 plot(t, x)
 ```
 
@@ -869,7 +869,3 @@ $$
 [^examples]: We will tackle some of the paper-based exercises in the examples class.
 
 [^installation]: Installation details are given in Canvas here: [Prepare the MATLAB Curriculum Module used in Unit 2 and Lab 2](https://canvas.swansea.ac.uk/courses/44853/pages/prepare-the-matlab-curriculum-module-used-in-unit-2-and-lab-2).
-
-```{code-cell}
-
-```

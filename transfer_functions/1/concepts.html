@@ -511,7 +511,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Solution</a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#derive-the-equations-of-motion">1. Derive the equations of motion.</a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-laplace-transform-of-the-dynamic-system-ode-and-solve-for-x">2. Compute the Laplace transform of the dynamic system ODE and solve for <span class="math notranslate nohighlight">\(X\)</span></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#use-partial-fraction-decomposition-to-separate-the-expression-for-into-terms-where-the-inverse-laplace-transform-x-is-known">3. Use partial fraction decomposition to separate the expression for  into terms where the inverse Laplace transform <span class="math notranslate nohighlight">\(X\)</span> is known</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#use-partial-fraction-decomposition-to-separate-the-expression-for-x-s-into-terms-where-the-inverse-laplace-transform-x-is-known">3. Use partial fraction decomposition to separate the expression for <span class="math notranslate nohighlight">\(X(s)\)</span> into terms where the inverse Laplace transform <span class="math notranslate nohighlight">\(X\)</span> is known</a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#take-the-inverse-laplace-transform">4. Take the inverse Laplace transform</a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-solution">5. Plot the solution</a></li>
 </ul>
@@ -1061,8 +1061,8 @@ F(s) &amp;= \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
 <div class="math notranslate nohighlight">
 \[X = \frac{10}{s^3 + 2  s^2   + 10s }\]</div>
 </section>
-<section id="use-partial-fraction-decomposition-to-separate-the-expression-for-into-terms-where-the-inverse-laplace-transform-x-is-known">
-<h5>3. Use partial fraction decomposition to separate the expression for  into terms where the inverse Laplace transform <span class="math notranslate nohighlight">\(X\)</span> is known<a class="headerlink" href="#use-partial-fraction-decomposition-to-separate-the-expression-for-into-terms-where-the-inverse-laplace-transform-x-is-known" title="Permalink to this heading">#</a></h5>
+<section id="use-partial-fraction-decomposition-to-separate-the-expression-for-x-s-into-terms-where-the-inverse-laplace-transform-x-is-known">
+<h5>3. Use partial fraction decomposition to separate the expression for <span class="math notranslate nohighlight">\(X(s)\)</span> into terms where the inverse Laplace transform <span class="math notranslate nohighlight">\(X\)</span> is known<a class="headerlink" href="#use-partial-fraction-decomposition-to-separate-the-expression-for-x-s-into-terms-where-the-inverse-laplace-transform-x-is-known" title="Permalink to this heading">#</a></h5>
 <p>Try performing the partial fraction decomposition on paper and comparing your result to the symbolic solution found below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1118,7 +1118,7 @@ x(t) &amp;= \mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1)^2 + 3^2}  -\
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">x</span>
-<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ilaplace</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ilaplace</span><span class="p">(</span><span class="n">Xdecomp</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1138,13 +1138,13 @@ x(t) &amp;= \mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1)^2 + 3^2}  -\
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Create solution array</span>
 <span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">150</span><span class="p">);</span>
-<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">-</span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">)</span><span class="o">.*</span><span class="p">(</span><span class="nb">cos</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">t</span><span class="p">));</span>
+<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">-</span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">)</span><span class="o">.*</span><span class="p">(</span><span class="nb">cos</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span><span class="p">);</span>
 <span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/98e9a44e1ee0e86d1cb173b8ea296595c349789d66115319dbc7a4e82ba0edab.png" src="../../_images/98e9a44e1ee0e86d1cb173b8ea296595c349789d66115319dbc7a4e82ba0edab.png" />
+<img alt="../../_images/670237dd653f9d63ea88d7ec862b5455cbef5565c4678050f890ee6f642f692e.png" src="../../_images/670237dd653f9d63ea88d7ec862b5455cbef5565c4678050f890ee6f642f692e.png" />
 </div>
 </div>
 <p>There is an animated version of the solution to this spring-mass-damper system in the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">ConceptReview.mlx</span></code>.</p>
@@ -1506,7 +1506,7 @@ F(s) &amp;= \int_0^\infty e^{-st}\delta(t-a)\,dt\\
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Solution</a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#derive-the-equations-of-motion">1. Derive the equations of motion.</a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-laplace-transform-of-the-dynamic-system-ode-and-solve-for-x">2. Compute the Laplace transform of the dynamic system ODE and solve for <span class="math notranslate nohighlight">\(X\)</span></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#use-partial-fraction-decomposition-to-separate-the-expression-for-into-terms-where-the-inverse-laplace-transform-x-is-known">3. Use partial fraction decomposition to separate the expression for  into terms where the inverse Laplace transform <span class="math notranslate nohighlight">\(X\)</span> is known</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#use-partial-fraction-decomposition-to-separate-the-expression-for-x-s-into-terms-where-the-inverse-laplace-transform-x-is-known">3. Use partial fraction decomposition to separate the expression for <span class="math notranslate nohighlight">\(X(s)\)</span> into terms where the inverse Laplace transform <span class="math notranslate nohighlight">\(X\)</span> is known</a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#take-the-inverse-laplace-transform">4. Take the inverse Laplace transform</a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-solution">5. Plot the solution</a></li>
 </ul>
