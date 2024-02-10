@@ -142,21 +142,47 @@ where $g$ is acceleration due to gravity and $l$ is the length of the pendulum.
 
 Record your answer below in variable `pendulumTF` in terms of the symbolic variables `g`, `l`, and `s`.
 
++++ {"slideshow": {"slide_type": "subslide"}}
+
+#### Solution to Exercise 1
+$$
+\mathcal{L}\left\{\ddot{\theta} + \frac{g}{l} \theta = u\right\} = \left(s^2\Theta(s) - sf(0) - f'(0)\right) + \frac{g}{l}\Theta(s) = U(s)
+$$
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+Assuming zero initial conditions, $f(0) = f'(0) = 0$, then
+
+$$
+\begin{align}
+s^2\Theta(s) + \frac{g}{l}\Theta(s) &= U(s) \\
+\left(s^2 + \frac{g}{l}\right)\Theta(s) &= U(s)
+\end{align}
+$$
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+From this the transfer function $G(s)$ is
+
+$$
+\begin{align}
+G(s) &= \frac{\Theta(s)}{U(s)}\\
+&= \frac{1}{s^2 + \left(g/l\right)}
+\end{align}
+$$
+
+We can now enter this result into the code below.
+
 ```{code-cell}
 ---
 slideshow:
   slide_type: subslide
 ---
 format compact % remove extra white space
-syms g l s 
+syms g l s
 % Record your answer in pendulumTF
-pendulumTF = NaN;
-open('TransferFunctionBasics.mlx')
+pendulumTF = 1/(s^2 + (g/l));
 ```
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-To check your solution enter your answer in the appropriate place in the MATLAB LiveScript `TransferFunctionBasics.mlx` and run `checkPendulumTF(pendulumTF)`.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -250,6 +276,35 @@ $$m\ddot{x} = -k\dot{x} + f(t)$$
 
 in terms of the velocity, $v(t)=\dot{x}(t)$, and then solve for the transfer function of $v$: $H(s) = V(s)/F(s)$. Record your answer below in `Vtf` in terms of the symbolic variables `s`, `m`, and `k`.
 
++++ {"slideshow": {"slide_type": "subslide"}}
+
+#### Solution to Exercise 2
+
+Let $v = \dot{x}$ then
+
+$$m\ddot{x} = -k\dot{x} + f(t) \rightarrow m\dot{v} = -kv + f(t)$$
+
+So
+
+$$m\dot{v} + kv = f(t)$$ 
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+Taking Laplace transform and ignoring initial conditions
+
+$$
+\begin{align}
+msV(s) + kV(s) &= F(s) \\
+\left(ms + k\right)V(s) &= F(s)
+\end{align}
+$$
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+Then the transfer function is
+
+$$G(s) = \frac{V(s)}{F(s)} = \frac{1}{ms + k}$$
+
 ```{code-cell}
 ---
 slideshow:
@@ -257,13 +312,8 @@ slideshow:
 ---
 syms m s k % Symbolic variable declarations
 % Record your answer here
-Vtf = NaN;
-open('TransferFunctionBasics.mlx')
+Vtf = 1/(m*s + k);
 ```
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-To check your solution enter your answer in the appropriate place in the MATLAB LiveScript `TransferFunctionBasics.mlx` and run `checkVTF(Vtf)`.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -368,8 +418,8 @@ where `H` is the transfer function and `tFinal` is the duration of the simulatio
 slideshow:
   slide_type: subslide
 ---
-tFinal = 100
-impulse(G,tFinal)
+tFinal = 100;
+impulse(G,tFinal);
 ylabel("x [m]")
 ```
 
@@ -396,14 +446,23 @@ $$G(s) = \frac{X(s)}{U(s)} = \frac{1}{ms^2 + ks}$$
 
 Plot the impulse response of  for the first 100 seconds using MATLAB commands by
 1. creating the transfer function using the `tf` function
-2. plotting the impulse response using `impulse` function[^solutions]
+2. plotting the impulse response using `impulse` function
 
 ```{code-cell}
 ---
 slideshow:
   slide_type: notes
 ---
-% Write your code here
+% Parameters
+m = 1300;     % kg
+k = 100;      % N.s/m
+Tfinal = 100; % seconds
+% Transfer function
+num = 1;
+den = [m, k, 0];
+G = tf(num,den);
+% Impulse response
+impulse(G, Tfinal),ylabel('x(t) [metres]'),grid
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}
@@ -414,14 +473,19 @@ slideshow:
 
 * How does the impulse response compare to your prediction for the impulse response?
 * Physically, what does the long-term behavior of the impulse response represent?
-* Define the velocity transfer function $\displaystyle{H(s) = \frac{1}{ms + k}}$ and compute the impulse response in the space below. Physically, what does the limiting behavior represent?
+* Define the velocity transfer function $\displaystyle{H(s) = \frac{1}{ms + k}}$ and compute the impulse response in the space below. Physically, what does the limiting behaviour represent?
 
 ```{code-cell}
 ---
 slideshow:
   slide_type: notes
 ---
-% Write your code here
+% Velocity TF
+num = 1;
+den = [m, k];
+G2 = tf(num,den);
+
+impulse(G2, Tfinal),ylabel('v(t) [metres/s]'),grid
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -470,9 +534,18 @@ where `sys` is a dynamic system (here, that's the transfer function `G`) and `Tf
 ```{code-cell}
 ---
 slideshow:
-  slide_type: slide
+  slide_type: subslide
 ---
-% Write your code here
+% parameters
+m = 1300;    % kg
+k = 100;     % N.s/m
+Tfinal = 30; % seconds
+% transfer function
+num = 1;
+den = [m, k, 0];
+G = tf(num,den);
+% step response
+step(G, Tfinal),ylabel('x(t) [metres]'),grid
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}
@@ -485,7 +558,7 @@ slideshow:
 * What physical action does the initial transient behavior reflect?
 * What does the long-term behavior of the step response reflect?
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 ### Exercise 5
 
@@ -498,12 +571,18 @@ Compute the step response of the velocity transfer function and use it to determ
 ```{code-cell}
 ---
 slideshow:
-  slide_type: slide
+  slide_type: subslide
 ---
-% Write your code here
+Tfinal = 100
+% Velocity transfer function
+num = 1;
+den = [m k];
+G = tf(num,den);
+% step response
+step(G, Tfinal),ylabel('v(t) [metres/s]'),grid
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 ### Reflection
 
@@ -514,13 +593,23 @@ slideshow:
 * Compute the step response of H*gain in the space below, where gain is the gain constant that will produce a maximum velocity of 50m/s. 
 * How long does it take for the vehicle to accelerate from 0 to 60 mph (0 to 26.8m/s)?
 
++++ {"slideshow": {"slide_type": "subslide"}}
+
+The extra gain needed to reach 50 m/s would be $50/0.01 = 5000$.
+
 ```{code-cell}
 ---
 slideshow:
-  slide_type: slide
+  slide_type: subslide
 ---
-% Write your code here
+gain = 50/0.01;
+% new step response
+step(gain*G, Tfinal),ylabel('v(t) [metres/s]'),grid
 ```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+ In this case an acceleration from 0-60 mph is achieved in about 10 seconds.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -661,6 +750,30 @@ Store the output in symbolic variable `x` using the pre-defined symbolic variabl
 #### Homework 1(b) 
 
 Set $m = 1300$ and $k = 100$. Then plot the analytic step result you computed in (a). Also, plot the step response calculated using the `step` function.
+
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
+% This computes the step response 
+m = 1300;
+k = 100;
+Xs = tf([0 0 1],[m k 0]);
+[x,t] = step(Xs,20);
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+Evaluate your analytic solution here in terms of the array `t` using the constant values of `k` and `m`. Plot the result together with the output of the step function.
+
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
+% Create your plot here
+```
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -855,91 +968,6 @@ slideshow:
 * Want to learn more about mass-spring-damper systems? Check out the [Mass-Spring-Damper Systems courseware](https://uk.mathworks.com/matlabcentral/fileexchange/94585-mass-spring-damper-systems?s_tid=FX_rc2_behav) module.
 * Learn more about responses in the [MATLAB Tech Talk: Control Systems in Practice, Part 9: The Step Response](https://uk.mathworks.com/videos/control-systems-in-practice-part-9-the-step-response-1593067191882.html)[^eg243].
 Want a little more of the theory? Check out Brian Douglas' video: [Control Systems Lectures - Transfer Functions](https://www.youtube.com/watch?v=RJleGwXorUk&ab_channel=BrianDouglas)[^eg243].
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-## Solutions to MATLAB examples
-
-### Solution to Exercise 3: Impulse response
-
-```{code-cell}
----
-slideshow:
-  slide_type: notes
----
-m = 1300;    % kg
-k = 100;     % N.s/m
-Tfinal = 100; % seconds
-num = 1;
-den = [m, k, 0];
-G = tf(num,den)
-
-impulse(G, Tfinal),ylabel('x(t) [metres]'),grid
-```
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-Repeat for velocity response
-
-```{code-cell}
----
-slideshow:
-  slide_type: notes
----
-numV = 1;
-denV = [m, k];
-H = tf(numV,denV)
-
-impulse(H, Tfinal),ylabel('v(t) [metres/s]'),grid
-```
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-### Solution to Exercise 4: Step response
-
-```{code-cell}
----
-slideshow:
-  slide_type: notes
----
-m = 1300;    % kg
-k = 100;     % N.s/m
-Tfinal = 30; % seconds
-
-num = 1;
-den = [m, k, 0];
-G = tf(num,den)
-
-step(G, Tfinal),ylabel('x(t) [metres]'),grid
-```
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-### Solution to Exercise 5: Step velocity response
-
-```{code-cell}
----
-slideshow:
-  slide_type: notes
----
-numV = 1;
-denV = [m, k];
-Tfinal = 100;
-H = tf(numV,denV)
-
-step(H, Tfinal),ylabel('v(t) [m/s]'),grid
-```
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-The extra gain needed to reach 50 m/s would be 5000. In this case an acceleration from 0-60 mph is achieved in about 10 seconds.
-
-Check using
-
-```matlab
-gain = 5000;
-step(gain*H, Tfinal),ylabel('v(t) [m/s]'),grid
-```
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
