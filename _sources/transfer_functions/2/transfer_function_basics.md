@@ -181,7 +181,7 @@ slideshow:
 format compact % remove extra white space
 syms g l s
 % Record your answer in pendulumTF
-pendulumTF = 1/(s^2 + (g/l))
+pendulumTF = 1/(s^2 + (g/l));
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -418,8 +418,8 @@ where `H` is the transfer function and `tFinal` is the duration of the simulatio
 slideshow:
   slide_type: subslide
 ---
-tFinal = 100
-impulse(G,tFinal)
+tFinal = 100;
+impulse(G,tFinal);
 ylabel("x [m]")
 ```
 
@@ -460,7 +460,7 @@ Tfinal = 100; % seconds
 % Transfer function
 num = 1;
 den = [m, k, 0];
-G = tf(num,den)
+G = tf(num,den);
 % Impulse response
 impulse(G, Tfinal),ylabel('x(t) [metres]'),grid
 ```
@@ -483,7 +483,7 @@ slideshow:
 % Velocity TF
 num = 1;
 den = [m, k];
-G2 = tf(num,den)
+G2 = tf(num,den);
 
 impulse(G2, Tfinal),ylabel('v(t) [metres/s]'),grid
 ```
@@ -543,7 +543,7 @@ Tfinal = 30; % seconds
 % transfer function
 num = 1;
 den = [m, k, 0];
-G = tf(num,den)
+G = tf(num,den);
 % step response
 step(G, Tfinal),ylabel('x(t) [metres]'),grid
 ```
@@ -577,7 +577,7 @@ Tfinal = 100
 % Velocity transfer function
 num = 1;
 den = [m k];
-G = tf(num,den)
+G = tf(num,den);
 % step response
 step(G, Tfinal),ylabel('v(t) [metres/s]'),grid
 ```

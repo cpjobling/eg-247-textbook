@@ -674,15 +674,7 @@ G(s) &amp;= \frac{\Theta(s)}{U(s)}\\
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="w"> </span><span class="c">% remove extra white space</span>
 <span class="n">syms</span><span class="w"> </span><span class="s">g</span><span class="w"> </span><span class="s">l</span><span class="w"> </span><span class="s">s</span>
 <span class="c">% Record your answer in pendulumTF</span>
-<span class="n">pendulumTF</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">g</span><span class="o">/</span><span class="n">l</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pendulumTF =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/(s^2 + g/l)
+<span class="n">pendulumTF</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">g</span><span class="o">/</span><span class="n">l</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>
@@ -864,18 +856,14 @@ Mass-spring-damper diagram</p>
 <p>where <code class="docutils literal notranslate"><span class="pre">H</span></code> is the transfer function and <code class="docutils literal notranslate"><span class="pre">tFinal</span></code> is the duration of the simulation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">tFinal</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span>
-<span class="n">impulse</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">tFinal</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">tFinal</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<span class="n">impulse</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">tFinal</span><span class="p">);</span>
 <span class="nb">ylabel</span><span class="p">(</span><span class="s">&quot;x [m]&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tFinal =
-   100
-</pre></div>
-</div>
-<img alt="../../_images/79d34fcf8cac50e2f333409312b462dc51264d3b0d56200fe60a63b665e6b727.png" src="../../_images/79d34fcf8cac50e2f333409312b462dc51264d3b0d56200fe60a63b665e6b727.png" />
+<img alt="../../_images/98009b479ae4b46fe59cafae1df040386ec3d3821e4ccd7511dfe90a3963f832.png" src="../../_images/98009b479ae4b46fe59cafae1df040386ec3d3821e4ccd7511dfe90a3963f832.png" />
 </div>
 </div>
 </section>
@@ -908,33 +896,14 @@ Mass-spring-damper diagram</p>
 <span class="c">% Transfer function</span>
 <span class="n">num</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="n">den</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">];</span>
-<span class="n">G</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">den</span><span class="p">)</span>
+<span class="n">G</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">den</span><span class="p">);</span>
 <span class="c">% Impulse response</span>
 <span class="n">impulse</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="w"> </span><span class="n">Tfinal</span><span class="p">),</span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;x(t) [metres]&#39;</span><span class="p">),</span><span class="nb">grid</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>G =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ----------------
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1300 s^2 + 100 s
- 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
-</pre></div>
-</div>
-<img alt="../../_images/b176c9b9246ae56e4d83dc8cedaf10c0cbb1bfd3360bf79f6b3518976fdad127.png" src="../../_images/b176c9b9246ae56e4d83dc8cedaf10c0cbb1bfd3360bf79f6b3518976fdad127.png" />
+<img alt="../../_images/9cdad001e2070e1b8ff989aac15ff06bd94c08ff92a1db3f007be48d1a66271b.png" src="../../_images/9cdad001e2070e1b8ff989aac15ff06bd94c08ff92a1db3f007be48d1a66271b.png" />
 </div>
 </div>
 </section>
@@ -951,35 +920,14 @@ Mass-spring-damper diagram</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Velocity TF</span>
 <span class="n">num</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="n">den</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">];</span>
-<span class="n">G2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">den</span><span class="p">)</span>
+<span class="n">G2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">den</span><span class="p">);</span>
 
 <span class="n">impulse</span><span class="p">(</span><span class="n">G2</span><span class="p">,</span><span class="w"> </span><span class="n">Tfinal</span><span class="p">),</span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;v(t) [metres/s]&#39;</span><span class="p">),</span><span class="nb">grid</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>G2 =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ------------
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1300 s + 100
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
-</pre></div>
-</div>
-<img alt="../../_images/5b1b77861d9656eba13517b91340ddf78c663260907786ca8b0e41648ec32b67.png" src="../../_images/5b1b77861d9656eba13517b91340ddf78c663260907786ca8b0e41648ec32b67.png" />
+<img alt="../../_images/539b9e42c612afef8a29defc7c86ca8f18c57e85b5af4255d7700c26700d7619.png" src="../../_images/539b9e42c612afef8a29defc7c86ca8f18c57e85b5af4255d7700c26700d7619.png" />
 </div>
 </div>
 </section>
@@ -1019,33 +967,14 @@ Response of a system to a step input.</p>
 <span class="c">% transfer function</span>
 <span class="n">num</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="n">den</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">];</span>
-<span class="n">G</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">den</span><span class="p">)</span>
+<span class="n">G</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">den</span><span class="p">);</span>
 <span class="c">% step response</span>
 <span class="nb">step</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="w"> </span><span class="n">Tfinal</span><span class="p">),</span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;x(t) [metres]&#39;</span><span class="p">),</span><span class="nb">grid</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>G =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ----------------
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1300 s^2 + 100 s
- 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
-</pre></div>
-</div>
-<img alt="../../_images/4dfb6958464bf46008dab44a4d3bd204c60cdca113779c4a3073cea55a3c1e3f.png" src="../../_images/4dfb6958464bf46008dab44a4d3bd204c60cdca113779c4a3073cea55a3c1e3f.png" />
+<img alt="../../_images/addf03551bc5e774fd6afe75fce970c67a79a5943ad2554ccd187e02a09988ac.png" src="../../_images/addf03551bc5e774fd6afe75fce970c67a79a5943ad2554ccd187e02a09988ac.png" />
 </div>
 </div>
 </section>
@@ -1070,7 +999,7 @@ Response of a system to a step input.</p>
 <span class="c">% Velocity transfer function</span>
 <span class="n">num</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="n">den</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">m</span><span class="w"> </span><span class="n">k</span><span class="p">];</span>
-<span class="n">G</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">den</span><span class="p">)</span>
+<span class="n">G</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">den</span><span class="p">);</span>
 <span class="c">% step response</span>
 <span class="nb">step</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="w"> </span><span class="n">Tfinal</span><span class="p">),</span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;v(t) [metres/s]&#39;</span><span class="p">),</span><span class="nb">grid</span>
 </pre></div>
@@ -1081,28 +1010,7 @@ Response of a system to a step input.</p>
    100
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>G =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ------------
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1300 s + 100
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
-</pre></div>
-</div>
-<img alt="../../_images/341a37c47a776a2689a3b0c47e81188b5dd6b6d83355ababbc3c1fd852fe06c0.png" src="../../_images/341a37c47a776a2689a3b0c47e81188b5dd6b6d83355ababbc3c1fd852fe06c0.png" />
+<img alt="../../_images/f8bb3280709aaa5476896cfd616063c351646722b4af096189a95dc918ff6626.png" src="../../_images/f8bb3280709aaa5476896cfd616063c351646722b4af096189a95dc918ff6626.png" />
 </div>
 </div>
 </section>
@@ -1125,7 +1033,7 @@ Response of a system to a step input.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/13bf77eec04551b0c6d119a58f44d77aa83980482ff66d1ad35343dc7afb18c9.png" src="../../_images/13bf77eec04551b0c6d119a58f44d77aa83980482ff66d1ad35343dc7afb18c9.png" />
+<img alt="../../_images/759e94ea96e9faf6bb00107b84dc969cc8c205c6ecc407354c936e0ee0b759b4.png" src="../../_images/759e94ea96e9faf6bb00107b84dc969cc8c205c6ecc407354c936e0ee0b759b4.png" />
 </div>
 </div>
 <p>In this case an acceleration from 0-60 mph is achieved in about 10 seconds.</p>
@@ -1221,7 +1129,7 @@ Response of a system to a step input.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/2435e25a994e78452ddc8a2f19bfd9d32e17397af553f5e5e74eca25233bbe3e.png" src="../../_images/2435e25a994e78452ddc8a2f19bfd9d32e17397af553f5e5e74eca25233bbe3e.png" />
+<img alt="../../_images/67a0af96936ada03215b9c9a5f521daf3c03899f9631b0d1e06cd0ab6739ccb2.png" src="../../_images/67a0af96936ada03215b9c9a5f521daf3c03899f9631b0d1e06cd0ab6739ccb2.png" />
 </div>
 </div>
 </section>
@@ -1295,7 +1203,7 @@ Response of a system to a square wave.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3ea2033b774230cd77f6b6bd947738aac068fca25cd54fb8ce0c73743ade9ff8.png" src="../../_images/3ea2033b774230cd77f6b6bd947738aac068fca25cd54fb8ce0c73743ade9ff8.png" />
+<img alt="../../_images/09ad3a4b189360e3a861d26dba8e5ebd4fedff29b8d5c24897d91ba758228be8.png" src="../../_images/09ad3a4b189360e3a861d26dba8e5ebd4fedff29b8d5c24897d91ba758228be8.png" />
 </div>
 </div>
 </section>
