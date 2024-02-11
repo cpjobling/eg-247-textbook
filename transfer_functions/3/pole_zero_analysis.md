@@ -144,7 +144,7 @@ In this exercise, you will compute transfer functions of the DC motor system. As
 +++ {"slideshow": {"slide_type": "notes"}}
 
 :::{note}
-We will do some of these calculations in class. To revise this material, we recommend that you use the the MATLAB LiveScript `PoleZeroAnalysis.mlx` from the curriculum module [Transfer Function Analysis of Dynamic Systems](https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems) and fill in your answers there. The LiveScript provides checking functions with which you can validate your answers[^fn_answers]. 
+We will do some of these calculations in class. To revise this material, we recommend that you use the the MATLAB LiveScript `PoleZeroAnalysis.mlx` from the curriculum module [Transfer Function Analysis of Dynamic Systems](https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems) and fill in your answers there. The LiveScript provides checking functions with which you can validate your answers. 
 :::
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -177,7 +177,7 @@ format compact
 syms L R k_e J B k_m    % Constants
 syms Theta I s V        % Laplace domain variables
 % Write your laplace transform equation here
-eqn1 = NaN;
+eqn1 = R*I + L*s*I + s*k_e*Theta == V
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -193,7 +193,7 @@ slideshow:
   slide_type: subslide
 ---
 % Write your laplace transform equation here
-eqn2 = NaN;
+eqn2 = J*s^2*Theta + B*s*Theta == k_m*I
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -213,7 +213,7 @@ slideshow:
   slide_type: subslide
 ---
 % Write your transfer function here
-ThetaOverV = NaN;
+ThetaOverV = k_m/(s*(L*J*s^2 + (R*J+L*B)*s + B*R + k_m*k_e))
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -233,7 +233,7 @@ slideshow:
   slide_type: subslide
 ---
 % Write your transfer function here
-OmegaOverV = NaN;
+OmegaOverV = k_m/(L*J*s^2 + (R*J+L*B)*s + B*R + k_m*k_e)
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -511,6 +511,7 @@ slideshow:
   slide_type: subslide
 ---
 % Write your code here
+G = tf([0 0 60],[1 2.3 11])
 p = pole(G)
 wn = abs(p) % rad/s
 ```
@@ -897,56 +898,6 @@ tlim = NaN
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-(answers)=
-## Answers to Selected Exercises
-
-### Solutions to Exercise 1
-
-#### Exercise 1(a)
-
-```matlab
-eqn1 = R*I + L*s*I + s*k_e*Theta == V;
-```
-
-#### Exercise 1(b)
-
-```matlab
-eqn2 = J*s^2*Theta + B*s*Theta == k_m*I;
-```
-
-#### Exercise 1(c)
-
-```matlab
-ThetaOverV = k_m/(s*(L*J*s^2 + (R*J+L*B)*s + B*R + k_m*k_e));
-```
-
-#### Exercise 1(d)
-
-```matlab
-soln = k_m/(L*J*s^2 + (R*J+L*B)*s + B*R + k_m*k_e);
-```
-
-### Solutions to Exercise 2
-
-#### Exercise 2(a)
-
-```matlab
-G = tf([0 0 60],[1 2.3 11])
-p = pole(G)
-r = abs(p(1)) % p(2) will be the same
-phi = angle(p(1))*(180/pi) % degrees
-```
-
-#### Exercise 2(a)
-
-```matlab
-damp(G)
-```
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
 ## Footnotes
-
-[^fn_answers]: We provide some of the solutions in {ref}`answers`.
 
 [^eg-243]: This will provide additional insights useful for EG-243 Control Systems.
