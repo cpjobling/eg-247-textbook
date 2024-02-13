@@ -128,11 +128,11 @@ To generate this picture use [fourier_series1.m](https://cpjobling.github.io/eg-
 
 The coefficients are obtained from the following expressions (valid for any periodic waveform with fundamental frequency $\Omega_0$ so long as we integrate over one period $0\to T_0$ where $T_0 = 2\pi/\Omega_0$), and $\theta = \Omega_0 t$:
 
-$$\frac{1}{2}a_0 = \frac{1}{T_0}\int_{0}^{T_0}f(t)d t = \frac{1}{\pi}\int_{0}^{2\pi}f(\theta )d \theta$$
+$$\frac{1}{2}a_0 = \frac{1}{T_0}\int_{0}^{T_0}f(t)d t = \frac{1}{2\pi}\int_{0}^{2\pi}f(\theta )d \theta$$
 
-$$a_n = \frac{1}{T_0}\int_{0}^{T_0}f(t)\cos n\Omega_0 t\,dt = \frac{1}{2\pi}\int_{0}^{2\pi}f(\theta)\cos n\theta\,d\theta$$
+$$a_n = \frac{2}{T_0}\int_{0}^{T_0}f(t)\cos n\Omega_0 t\,dt = \frac{1}{\pi}\int_{0}^{2\pi}f(\theta)\cos n\theta\,d\theta$$
 
-$$b_n = \frac{1}{T_0}\int_{0}^{T_0}f(t)\sin n\Omega_0 t\,dt = \frac{1}{2\pi}\int_{0}^{2\pi}f(\theta)\sin n\theta \,d\theta$$
+$$b_n = \frac{2}{T_0}\int_{0}^{T_0}f(t)\sin n\Omega_0 t\,dt = \frac{1}{\pi}\int_{0}^{2\pi}f(\theta)\sin n\theta \,d\theta$$
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -284,7 +284,7 @@ format compact
 slideshow:
   slide_type: fragment
 ---
-syms t n A pi
+syms t n A pi theta
 n = [1:11];
 ```
 
@@ -297,7 +297,7 @@ DC component
 slideshow:
   slide_type: fragment
 ---
-half_a0 = 1/(2*pi)*(int(A,t,0,pi)+int(-A,t,pi,2*pi))
+half_a0 = (1/(2*pi))*(int(A,theta,0,pi)+int(-A,theta,pi,2*pi))
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -309,8 +309,8 @@ Compute harmonics
 slideshow:
   slide_type: fragment
 ---
-ai = 1/pi*(int(A*cos(n*t),t,0,pi)+int(-A*cos(n*t),t,pi,2*pi));
-bi = 1/pi*(int(A*sin(n*t),t,0,pi)+int(-A*sin(n*t),t,pi,2*pi));
+ai = (1/pi)*((int(A*cos(n*theta),theta,0,pi) + int(-A*cos(n*theta),theta,pi,2*pi)));
+bi = (1/pi)*((int(A*sin(n*theta),theta,0,pi)+int(-A*sin(n*theta),theta,pi,2*pi)));
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -424,7 +424,8 @@ slideshow:
   slide_type: notes
 ---
 clear all
-syms t n A pi
+syms theta n A pi
+assume(n, 'integer')
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}
@@ -460,7 +461,7 @@ Compute harmonics - use half-wave symmetry
 slideshow:
   slide_type: notes
 ---
-ai = 4/pi*int(A*cos(n*t),t,0,(sym(pi)/2));
+ai = (4/pi)*int(A*cos(n*theta),theta,0,(sym(pi)/2));
 ```
 
 ```{code-cell}
@@ -480,6 +481,7 @@ Reconstruct f(t) from harmonic sine functions
 slideshow:
   slide_type: notes
 ---
+syms t
 ft = half_a0;
 for k=1:length(n)
     ft = ft + ai(k)*cos(k*t) + bi(k)*sin(k*t);
@@ -511,9 +513,9 @@ slideshow:
 clear pi
 ezplot(ft_num)
 hold on
-t = [-3,-2,-2,-2,-1,-1,-1,0,0,0,1,1,1,2,2,2,3]*pi;
+th = [-3,-2,-2,-2,-1,-1,-1,0,0,0,1,1,1,2,2,2,3]*pi;
 f = [-1,-1,0,1,1,0,-1,-1,0,1,1,0,-1,-1,0,1,1];
-plot(t-pi/2,f,'r-')
+plot(th-pi/2,f,'r-')
 axis([-10,10,-1.5,1.5])
 grid
 title('Shifted Square Waveform Reconstructed from Cosines')

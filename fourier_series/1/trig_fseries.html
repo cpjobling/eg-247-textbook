@@ -601,11 +601,11 @@ f(t) = \frac{1}{2}{a_0} + \sum\limits_{n = 1}^\infty  {({a_n}\cos n\Omega_0 t + 
 <h3>Evaluation of the Fourier series coefficients<a class="headerlink" href="#evaluation-of-the-fourier-series-coefficients" title="Permalink to this heading">#</a></h3>
 <p>The coefficients are obtained from the following expressions (valid for any periodic waveform with fundamental frequency <span class="math notranslate nohighlight">\(\Omega_0\)</span> so long as we integrate over one period <span class="math notranslate nohighlight">\(0\to T_0\)</span> where <span class="math notranslate nohighlight">\(T_0 = 2\pi/\Omega_0\)</span>), and <span class="math notranslate nohighlight">\(\theta = \Omega_0 t\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[\frac{1}{2}a_0 = \frac{1}{T_0}\int_{0}^{T_0}f(t)d t = \frac{1}{\pi}\int_{0}^{2\pi}f(\theta )d \theta\]</div>
+\[\frac{1}{2}a_0 = \frac{1}{T_0}\int_{0}^{T_0}f(t)d t = \frac{1}{2\pi}\int_{0}^{2\pi}f(\theta )d \theta\]</div>
 <div class="math notranslate nohighlight">
-\[a_n = \frac{1}{T_0}\int_{0}^{T_0}f(t)\cos n\Omega_0 t\,dt = \frac{1}{2\pi}\int_{0}^{2\pi}f(\theta)\cos n\theta\,d\theta\]</div>
+\[a_n = \frac{2}{T_0}\int_{0}^{T_0}f(t)\cos n\Omega_0 t\,dt = \frac{1}{\pi}\int_{0}^{2\pi}f(\theta)\cos n\theta\,d\theta\]</div>
 <div class="math notranslate nohighlight">
-\[b_n = \frac{1}{T_0}\int_{0}^{T_0}f(t)\sin n\Omega_0 t\,dt = \frac{1}{2\pi}\int_{0}^{2\pi}f(\theta)\sin n\theta \,d\theta\]</div>
+\[b_n = \frac{2}{T_0}\int_{0}^{T_0}f(t)\sin n\Omega_0 t\,dt = \frac{1}{\pi}\int_{0}^{2\pi}f(\theta)\sin n\theta \,d\theta\]</div>
 </section>
 </section>
 <section id="odd-even-and-half-wave-symmetry">
@@ -731,7 +731,7 @@ f(t) = \frac{1}{2}{a_0} + \sum\limits_{n = 1}^\infty  {({a_n}\cos n\Omega_0 t + 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">n</span><span class="w"> </span><span class="s">A</span><span class="w"> </span><span class="s">pi</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">n</span><span class="w"> </span><span class="s">A</span><span class="w"> </span><span class="s">pi</span><span class="w"> </span><span class="s">theta</span>
 <span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">11</span><span class="p">];</span>
 </pre></div>
 </div>
@@ -740,7 +740,7 @@ f(t) = \frac{1}{2}{a_0} + \sum\limits_{n = 1}^\infty  {({a_n}\cos n\Omega_0 t + 
 <p>DC component</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">half_a0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">int</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">pi</span><span class="p">)</span><span class="o">+</span><span class="n">int</span><span class="p">(</span><span class="o">-</span><span class="n">A</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="nb">pi</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">))</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">half_a0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="n">int</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">theta</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">pi</span><span class="p">)</span><span class="o">+</span><span class="n">int</span><span class="p">(</span><span class="o">-</span><span class="n">A</span><span class="p">,</span><span class="n">theta</span><span class="p">,</span><span class="nb">pi</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -756,8 +756,8 @@ f(t) = \frac{1}{2}{a_0} + \sum\limits_{n = 1}^\infty  {({a_n}\cos n\Omega_0 t + 
 <p>Compute harmonics</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ai</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="nb">pi</span><span class="o">*</span><span class="p">(</span><span class="n">int</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">pi</span><span class="p">)</span><span class="o">+</span><span class="n">int</span><span class="p">(</span><span class="o">-</span><span class="n">A</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="nb">pi</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">));</span>
-<span class="n">bi</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="nb">pi</span><span class="o">*</span><span class="p">(</span><span class="n">int</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">pi</span><span class="p">)</span><span class="o">+</span><span class="n">int</span><span class="p">(</span><span class="o">-</span><span class="n">A</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="nb">pi</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">));</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ai</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="nb">pi</span><span class="p">)</span><span class="o">*</span><span class="p">((</span><span class="n">int</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">theta</span><span class="p">),</span><span class="n">theta</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">pi</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">int</span><span class="p">(</span><span class="o">-</span><span class="n">A</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">theta</span><span class="p">),</span><span class="n">theta</span><span class="p">,</span><span class="nb">pi</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">)));</span>
+<span class="n">bi</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="nb">pi</span><span class="p">)</span><span class="o">*</span><span class="p">((</span><span class="n">int</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">theta</span><span class="p">),</span><span class="n">theta</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">pi</span><span class="p">)</span><span class="o">+</span><span class="n">int</span><span class="p">(</span><span class="o">-</span><span class="n">A</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">theta</span><span class="p">),</span><span class="n">theta</span><span class="p">,</span><span class="nb">pi</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">)));</span>
 </pre></div>
 </div>
 </div>
@@ -808,7 +808,7 @@ f(t) = \frac{1}{2}{a_0} + \sum\limits_{n = 1}^\infty  {({a_n}\cos n\Omega_0 t + 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f10235c78bd412ca805e91bebe6d88f45ab8f59ece98282c1d29b66a54268844.png" src="../../_images/f10235c78bd412ca805e91bebe6d88f45ab8f59ece98282c1d29b66a54268844.png" />
+<img alt="../../_images/c5506e3fb84bf3cdc01b684c10b8df1bc45797e328206cde2e2fcc867c70fb17.png" src="../../_images/c5506e3fb84bf3cdc01b684c10b8df1bc45797e328206cde2e2fcc867c70fb17.png" />
 </div>
 </div>
 <p>Plot original signal (we could use <code class="docutils literal notranslate"><span class="pre">heaviside</span></code> for this as well)</p>
@@ -827,7 +827,7 @@ f(t) = \frac{1}{2}{a_0} + \sum\limits_{n = 1}^\infty  {({a_n}\cos n\Omega_0 t + 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/0d648b29641efb9ec4962ee30b43a4aa5e52c9c6d6326387e86b3b702f98ef77.png" src="../../_images/0d648b29641efb9ec4962ee30b43a4aa5e52c9c6d6326387e86b3b702f98ef77.png" />
+<img alt="../../_images/03200b960cac6e19c47920692fb5c89747b5c9f6b4d38bc2878d783376c75c12.png" src="../../_images/03200b960cac6e19c47920692fb5c89747b5c9f6b4d38bc2878d783376c75c12.png" />
 </div>
 </div>
 <p>To run the full solution yourself download and run <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_series/matlab/square_ftrig.mlx">square_ftrig.mlx</a>.</p>
@@ -852,7 +852,8 @@ f(t) = \frac{1}{2}{a_0} + \sum\limits_{n = 1}^\infty  {({a_n}\cos n\Omega_0 t + 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">clear</span><span class="w"> </span><span class="nb">all</span>
-<span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">n</span><span class="w"> </span><span class="s">A</span><span class="w"> </span><span class="s">pi</span>
+<span class="n">syms</span><span class="w"> </span><span class="s">theta</span><span class="w"> </span><span class="s">n</span><span class="w"> </span><span class="s">A</span><span class="w"> </span><span class="s">pi</span>
+<span class="n">assume</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;integer&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -882,7 +883,7 @@ f(t) = \frac{1}{2}{a_0} + \sum\limits_{n = 1}^\infty  {({a_n}\cos n\Omega_0 t + 
 <p>Compute harmonics - use half-wave symmetry</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ai</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">4</span><span class="o">/</span><span class="nb">pi</span><span class="o">*</span><span class="n">int</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="mi">0</span><span class="p">,(</span><span class="n">sym</span><span class="p">(</span><span class="nb">pi</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">));</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ai</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="o">/</span><span class="nb">pi</span><span class="p">)</span><span class="o">*</span><span class="n">int</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">theta</span><span class="p">),</span><span class="n">theta</span><span class="p">,</span><span class="mi">0</span><span class="p">,(</span><span class="n">sym</span><span class="p">(</span><span class="nb">pi</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>
@@ -897,7 +898,8 @@ f(t) = \frac{1}{2}{a_0} + \sum\limits_{n = 1}^\infty  {({a_n}\cos n\Omega_0 t + 
 <p>Reconstruct f(t) from harmonic sine functions</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ft</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">half_a0</span><span class="p">;</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">t</span>
+<span class="n">ft</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">half_a0</span><span class="p">;</span>
 <span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="p">=</span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 <span class="w">    </span><span class="n">ft</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ft</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ai</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">bi</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
 <span class="k">end</span>
@@ -928,9 +930,9 @@ f(t) = \frac{1}{2}{a_0} + \sum\limits_{n = 1}^\infty  {({a_n}\cos n\Omega_0 t + 
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">clear</span><span class="w"> </span><span class="nb">pi</span>
 <span class="n">ezplot</span><span class="p">(</span><span class="n">ft_num</span><span class="p">)</span>
 <span class="nb">hold</span><span class="w"> </span><span class="n">on</span>
-<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span><span class="o">*</span><span class="nb">pi</span><span class="p">;</span>
+<span class="n">th</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span><span class="o">*</span><span class="nb">pi</span><span class="p">;</span>
 <span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">];</span>
-<span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="nb">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="s">&#39;r-&#39;</span><span class="p">)</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">th</span><span class="o">-</span><span class="nb">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="s">&#39;r-&#39;</span><span class="p">)</span>
 <span class="nb">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">1.5</span><span class="p">])</span>
 <span class="nb">grid</span>
 <span class="nb">title</span><span class="p">(</span><span class="s">&#39;Shifted Square Waveform Reconstructed from Cosines&#39;</span><span class="p">)</span>
@@ -939,7 +941,7 @@ f(t) = \frac{1}{2}{a_0} + \sum\limits_{n = 1}^\infty  {({a_n}\cos n\Omega_0 t + 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/132a2861779b3db3a7c970a04464abb2559fe46228225a069831ea85310f71cf.png" src="../../_images/132a2861779b3db3a7c970a04464abb2559fe46228225a069831ea85310f71cf.png" />
+<img alt="../../_images/36154950483c0e18fc8b8560d5f095fb1614b8e354564992159f297d03efeedd.png" src="../../_images/36154950483c0e18fc8b8560d5f095fb1614b8e354564992159f297d03efeedd.png" />
 </div>
 </div>
 <ul class="simple">

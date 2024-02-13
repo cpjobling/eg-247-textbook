@@ -561,18 +561,25 @@ document.write(`
 <h3>Evaluation of the Fourier series coefficients<a class="headerlink" href="#evaluation-of-the-fourier-series-coefficients" title="Permalink to this heading">#</a></h3>
 <p>The coefficients are obtained from the following expressions (valid for any periodic waveform with fundamental frequency <span class="math notranslate nohighlight">\(\Omega_0\)</span> so long as we integrate over one period <span class="math notranslate nohighlight">\(0\to T_0\)</span> where <span class="math notranslate nohighlight">\(T_0 = 2\pi/\Omega_0\)</span>), and <span class="math notranslate nohighlight">\(\theta = \Omega_0 t\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[\frac{1}{2}a_0 = \frac{1}{T_0}\int_{0}^{T_0}f(t)d t = \frac{1}{\pi}\int_{0}^{2\pi}f(\theta )d \theta\]</div>
+\[\frac{1}{2}a_0 = \frac{1}{T_0}\int_{0}^{T_0}f(t)d t = \frac{1}{2\pi}\int_{0}^{2\pi}f(\theta )d \theta\]</div>
 <div class="math notranslate nohighlight">
-\[a_n = \frac{1}{T_0}\int_{0}^{T_0}f(t)\cos n\Omega_0 t\,dt = \frac{1}{2\pi}\int_{0}^{2\pi}f(\theta)\cos n\theta\,d\theta\]</div>
+\[a_n = \frac{2}{T_0}\int_{0}^{T_0}f(t)\cos n\Omega_0 t\,dt = \frac{1}{\pi}\int_{0}^{2\pi}f(\theta)\cos n\theta\,d\theta\]</div>
 <div class="math notranslate nohighlight">
-\[b_n = \frac{1}{T_0}\int_{0}^{T_0}f(t)\sin n\Omega_0 t\,dt = \frac{1}{2\pi}\int_{0}^{2\pi}f(\theta)\cos n\theta \,d\theta\]</div>
+\[b_n = \frac{2}{T_0}\int_{0}^{T_0}f(t)\sin n\Omega_0 t\,dt = \frac{1}{\pi}\int_{0}^{2\pi}f(\theta)\cos n\theta \,d\theta\]</div>
 </section>
 <section id="demo-1">
 <h3>Demo 1<a class="headerlink" href="#demo-1" title="Permalink to this heading">#</a></h3>
 <p>Building up wave forms from sinusoids.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">fseriesdemo</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Setup working directory</span>
+<span class="nb">clear</span><span class="w"> </span><span class="n">vars</span>
+<span class="nb">cd</span><span class="w"> </span><span class="p">.</span><span class="o">./</span><span class="n">matlab</span>
+<span class="nb">format</span><span class="w"> </span><span class="n">compact</span>
+<span class="c">% Add install directory to path</span>
+<span class="nb">path</span><span class="p">(</span><span class="s">&#39;/Users/eechris/MATLAB-Drive/EG-247-Examples/fseriesdemo&#39;</span><span class="p">,</span><span class="nb">path</span><span class="p">)</span>
+<span class="c">% Run demo</span>
+<span class="n">fseriesdemo</span>
 </pre></div>
 </div>
 </div>
@@ -582,7 +589,7 @@ document.write(`
 <h3>Demo 2<a class="headerlink" href="#demo-2" title="Permalink to this heading">#</a></h3>
 <p>Actual measurements</p>
 <p>Taken by Dr Tim Davies with a Rhode&amp;Schwarz Oscilloscope.</p>
-<p>Note all spectra shown in these slides are generated numerically from the input signals by sampling and the application of the Fast Fouriemr Transform (FFT).</p>
+<p>Note all spectra shown in these slides are generated numerically from the input signals by sampling and the application of the Fast Fourier Transform (FFT).</p>
 <section id="khz-sinewave">
 <h4>1 kHz Sinewave<a class="headerlink" href="#khz-sinewave" title="Permalink to this heading">#</a></h4>
 <p><img alt="A 1 kHz sinewave" src="../../_images/1kHz_Sinewave.png" /></p>
@@ -635,7 +642,7 @@ document.write(`
 <li><p>If <span class="math notranslate nohighlight">\(f(t)\)</span> is odd, <span class="math notranslate nohighlight">\(a_0=0\)</span> and there will be no cosine terms so <span class="math notranslate nohighlight">\({a_n} = 0\; \forall n &gt; 0\)</span></p></li>
 </ul>
 <ul class="simple">
-<li><p>If <span class="math notranslate nohighlight">\(f(t)\)</span> is even, there will be no sine terms and <span class="math notranslate nohighlight">\({b_n} = 0\; \forall n &gt; 0\)</span>. The DC may or may not be zero.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(f(t)\)</span> is even, there will be no sine terms and <span class="math notranslate nohighlight">\({b_n} = 0\; \forall n &gt; 0\)</span>. The DC term (<span class="math notranslate nohighlight">\(a_0\)</span>) may or may not be zero.</p></li>
 </ul>
 <ul class="simple">
 <li><p>If <span class="math notranslate nohighlight">\(f(t)\)</span> has <em>half-wave symmetry</em> only the odd harmonics will be present. That is <span class="math notranslate nohighlight">\(a_n\)</span> and <span class="math notranslate nohighlight">\(b_n\)</span> is zero for all even values of <span class="math notranslate nohighlight">\(n\)</span> (0, 2, 4, …)</p></li>
@@ -740,10 +747,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">clear</span><span class="w"> </span><span class="nb">all</span>
-<span class="nb">cd</span><span class="w"> </span><span class="p">.</span><span class="o">./</span><span class="n">matlab</span>
-<span class="nb">format</span><span class="w"> </span><span class="n">compact</span>
-<span class="nb">open</span><span class="w"> </span><span class="n">square_ftrig</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="w"> </span><span class="n">square_ftrig</span>
 </pre></div>
 </div>
 </div>
