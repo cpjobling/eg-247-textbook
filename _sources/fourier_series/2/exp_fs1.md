@@ -35,7 +35,7 @@ This section builds on our study of {ref}`trig_fseries`.
 
 Trigonometric Fourier series uses integration of a periodic signal multiplied by sines and cosines at the fundamental and harmonic frequencies. If performed by hand, this can a painstaking process. Even with the simplifications made possible by exploiting waveform symmetries, there is still a need to integrate cosine and sine terms, be aware of and able to exploit the trigonometrc identities, and the properties of *orthogonal functions* before we can arrive at the simplified solutions. This is why I concentrated on the properties and left the computation to a computer.
 
-However, by exploiting the exponential function $e^{at}$, we can derive a method for calculating the coefficients of the harmonics that is much easier to calculate by hand and convert into an algorithm that can be executed by computer. 
+However, by exploiting the exponential function $e^{at}$, we can derive a method for calculating the coefficients of the harmonics that is much easier to calculate by hand and converted into an algorithm that can be executed by computer. 
 
 The result is called the *Exponential Fourier Series*.
 
@@ -107,7 +107,7 @@ You can regenerate this image generated with this Matlab script: [expon.m](https
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-This is the case that helps us simplify the computation of sinusoidal Fourier series.
+This is the case that helps us to simplify the computation of sinusoidal Fourier series.
 
 It was [Leonhard Euler](https://en.wikipedia.org/wiki/Leonhard_Euler) who discovered the [formula](https://en.wikipedia.org/wiki/Euler%27s_formula) visualized above.
 
@@ -191,7 +191,7 @@ $$\begin{gathered}
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-If we replace the $\cos$ and $\sin$ terms with their imaginary expontial equivalents:
+If we replace the $\cos$ and $\sin$ terms with their imaginary exponential equivalents:
 
 $$\begin{gathered}
   f(t) = \frac{1}{2}{a_0} + {a_1}\left(\frac{e^{j\Omega_0 t} + e^{-j\Omega_0 t}}{2}\right) + {a_2}\left(\frac{e^{j2\Omega_0 t} + e^{-j2\Omega_0 t}}{2}\right) +  \cdots  \\ 
@@ -248,10 +248,10 @@ $$C_k = \frac{1}{T}\int_{0}^{T}f(t)e^{-jk\Omega_0 t}\,dt$$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-These are much easier to derive and compute than the equivalent Trigonemetric Fourier Series coefficients. 
+These are much easier to derive and compute than the equivalent Trigonemetric Fourier Series coefficients[^footnt]. 
 
 
-<sup>*</sup> The analysis that leads to this result is provided between pages [7-31 and 7-32](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?ppg=243&docID=44853&tm=1518704101461) of the text book {cite}`karris`. It is not a difficult proof, but we are more interested in the result.
+[^footnt]: The analysis that leads to this result is provided between pages [7-31 and 7-32](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?ppg=243&docID=44853&tm=1518704101461) of the text book {cite}`karris`. It is not a difficult proof, but we are more interested in the result.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -275,19 +275,19 @@ so
 
 $$b_k = j\left(C_k - C_{-k}\right)$$
 
-Thus we can easily go back to the Trigonetric Fourier series if we want to.
+Thus we can easily go back to the trigonometric Fourier series if we need to.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-## Symmetry in Exponential Fourier Series
+## Symmetry in exponential Fourier series
 
-Since the coefficients of the Exponential Fourier Series are complex numbers, we can use symmetry to determine the form of the coefficients and thereby simplify the computation of series for wave forms that have symmetry.
+Since the coefficients of the exponential Fourier series are complex numbers, we can use symmetry to determine the form of the coefficients and thereby simplify the computation of series for wave forms that have symmetry.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### Even Functions
 
-For even functions, all coefficients $C_k$ are real.
+For even functions, all the coefficients $C_k$ are real.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -319,19 +319,17 @@ By a similar argument, all odd functions have no cosine terms so the $a_k$ coeff
 
 If there is *half-wave symmetry*, $C_k = 0$ for $k$ even.
 
-For proof see notes
-
 +++ {"slideshow": {"slide_type": "notes"}}
 
 **Proof**
 
-From Trigonometric Fourier Series, if there is half-wave symmetry, all even harnonics are zero, thus both $a_k$ and $b_k$ are zero for $k$ even. Hence $C_{-k}$ and $C_k$ are also zero when $k$ is even.
+From trigonometric Fourier series, if there is half-wave symmetry, all even harnonics are zero, thus both $a_k$ and $b_k$ are zero for $k$ even. Hence $C_{-k}$ and $C_k$ are also zero when $k$ is even.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### No symmetry
 
-If there is no symmetry the Exponential Fourier Series of $f(t)$ is complex.
+If there is no symmetry the exponential Fourier series of $f(t)$ is complex.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -349,7 +347,7 @@ Compute the Exponential Fourier Series for the square wave shown below assuming 
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Solved in in Class
+### Will be solved by hand in Class
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -370,42 +368,28 @@ Hence
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
 #### Solution to example 1
 
-$$\frac{1}{2\pi}\left[\int_{0}^{\pi} Ae^{-jk(\Omega_0 t)}\, d(\Omega_0 t) + \int_{\pi}^{2\pi} (-A)e^{-jk(\Omega_0 t)}\, d(\Omega_0 t)\right] = \frac{1}{2\pi}\left[\left.\frac{A}{-jk}e^{-jk(\Omega_0 t)}\right|_0^\pi+\left.\frac{-A}{-jk}e^{-jk(\Omega_0 t)}\right|_\pi^{2\pi}\right]$$
+The integral is 
+
+$$C_k = \frac{1}{2\pi}\int_{0}^{2\pi} f(\Omega_0 t)e^{-jk(\Omega_0 t)}\, d(\Omega_0 t) = \frac{1}{2\pi}\left[\int_{0}^{\pi} Ae^{-jk(\Omega_0 t)}\, d(\Omega_0 t) + \int_{\pi}^{2\pi} (-A)e^{-jk(\Omega_0 t)}\, d(\Omega_0 t)\right]$$
+
+For simplicity let $\theta = \Omega_0t$.
+
+$$\frac{1}{2\pi}\left[\int_{0}^{\pi} Ae^{-jk\theta}\, d\theta + \int_{\pi}^{2\pi} (-A)e^{-jk\theta}\, d\theta\right] = \frac{1}{2\pi}\left[\left.\frac{A}{-jk}e^{-jk\theta}\right|_0^\pi+\left.\frac{-A}{-jk}e^{-jk\theta}\right|_\pi^{2\pi}\right]$$
 
 $$ = \frac{1}{2\pi}\left[\frac{A}{-jk}\left(e^{-jk\pi} - 1\right)+\frac{A}{jk}\left(e^{-j2k \pi}-e^{-jk\pi}\right)\right] =
 \frac{A}{2j\pi k}\left(1 - e^{-jk\pi}+ e^{-j2k \pi}-e^{-jk\pi}\right)$$
 
 $$\frac{A}{2j\pi k}\left(e^{-j2k \pi} - 2e^{-jk\pi} -1 \right) = \frac{A}{2j\pi k}\left(e^{-jk\pi}-1\right)^2$$
 
-For $n$ odd*, $e^{-jk\pi} = -1$. Therefore
+For $n$ odd[^fn2], $e^{-jk\pi} = -1$. Therefore
 
 $${C_k \atop {k=\mathrm{odd}}} = \frac{A}{2j\pi k}\left(e^{-jk\pi}-1\right)^2 = \frac{A}{2j\pi k}\left(-1-1\right)^2 = \frac{A}{2j\pi k}\left(-2\right)^2 = \frac{2A}{j\pi k}$$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-<sup>*</sup> You may want to verify that $C_0 = 0$ and 
+[^fn2]: You may wish to verify that $C_0 = 0$ and 
 
 $${C_k \atop {k=\mathrm{even}}} = 0.$$
 
@@ -423,13 +407,13 @@ $$f(t) = \frac{2A}{j\pi}\left(\cdots - \frac{1}{3}e^{-j3\Omega_0 t} - e^{-j\Omeg
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-Note sign change in first two terms. This is due to the fact that $C_{-k} = C_k^*$. 
+Note the sign change in first two terms. This is due to the fact that $C_{-k} = C_k^*$. 
 
 E.g. since $C_3 = 2A/j3\pi$, $C_{-3} = C_3^* = -2A/j3\pi$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-## Trig. Fourier Series from Exponential Fourier Series
+## Trig. Fourier series from exponential Fourier series
 
 Since
 

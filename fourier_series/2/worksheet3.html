@@ -489,7 +489,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-of-the-complex-coefficients">Evaluation of the complex coefficients</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#symmetry-in-exponential-fourier-series">Symmetry in Exponential Fourier Series</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#symmetry-in-exponential-fourier-series">Symmetry in exponential Fourier series</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#even-functions">Even Functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#odd-functions">Odd Functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#half-wave-symmetry">Half-wave symmetry</a></li>
@@ -499,22 +499,16 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-questions-for-you">Some questions for you</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-coefficients-of-exponential-fourier-series-in-matlab">Computing coefficients of Exponential Fourier Series in MATLAB</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#efs-sqw">EFS_SQW</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-trig-fourier-series-from-exp-fourier-series">Computing Trig. Fourier Series from Exp. Fourier Series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-trig-fourier-series-from-exp-fourier-series">Computing trig. Fourier series from exp. Fourier series</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#answers-to-in-class-problems">Answers to in-class problems</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-important-values-of-omega-t-solution">Some important values of <span class="math notranslate nohighlight">\(\omega t\)</span> - Solution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-answers-for-you">Some answers for you</a></li>
-</ul>
-</li>
 </ul>
             </nav>
         </div>
@@ -629,7 +623,7 @@ document.write(`
 <p>and</p>
 <div class="math notranslate nohighlight">
 \[\sin \omega t = \frac{e^{j\omega t} - e^{-j\omega t}}{j2}\]</div>
-<p>We can use this result to convert the <em>Trigonometric Fourier Series</em> into an <em>Exponential Fourier Series</em> which has only one integral term to solve per harmonic.</p>
+<p>We can use this result to convert the <em>trigonometric Fourier series</em> into an <em>exponential Fourier series</em> which has only one integral term to solve per harmonic.</p>
 </section>
 </section>
 <section id="the-exponential-fourier-series">
@@ -647,15 +641,16 @@ document.write(`
 <h3>Evaluation of the complex coefficients<a class="headerlink" href="#evaluation-of-the-complex-coefficients" title="Permalink to this heading">#</a></h3>
 <p>The coefficients are obtained from the following expressions<sup>*</sup>:</p>
 <div class="math notranslate nohighlight">
-\[C_k = \frac{1}{2\pi}\int_{0}^{2\pi}f(\Omega_0 t)e^{-jk(\Omega_0 t)}\,d(\Omega_0 t)\]</div>
-<p>or</p>
+\[C_k = \frac{1}{2\pi}\int_{0}^{2\pi}f(\Omega_0 t)e^{-jk(\Omega_0 t)}\,d(\Omega_0 t) = \frac{1}{2\pi}\int_{0}^{2\pi}f(\theta)e^{-jk\theta}\,d\theta\]</div>
+<p>where <span class="math notranslate nohighlight">\(\theta = \Omega_0 t\)</span>.</p>
+<p>Alternatively</p>
 <div class="math notranslate nohighlight">
 \[C_k = \frac{1}{T}\int_{0}^{T}f(t)e^{-jk\Omega_0 t}\,dt\]</div>
 </section>
 </section>
 <section id="symmetry-in-exponential-fourier-series">
-<h2>Symmetry in Exponential Fourier Series<a class="headerlink" href="#symmetry-in-exponential-fourier-series" title="Permalink to this heading">#</a></h2>
-<p>Since the coefficients of the Exponential Fourier Series are complex numbers, we can use symmetry to determine the form of the coefficients and thereby simplify the computation of series for wave forms that have symmetry.</p>
+<h2>Symmetry in exponential Fourier series<a class="headerlink" href="#symmetry-in-exponential-fourier-series" title="Permalink to this heading">#</a></h2>
+<p>Since the coefficients of the exponential Fourier series are complex numbers, we can use symmetry to determine the form of the coefficients and thereby simplify the computation of series for wave forms that have symmetry.</p>
 <section id="even-functions">
 <h3>Even Functions<a class="headerlink" href="#even-functions" title="Permalink to this heading">#</a></h3>
 <p>For even functions, all coefficients <span class="math notranslate nohighlight">\(C_k\)</span> are real.</p>
@@ -694,6 +689,7 @@ document.write(`
 <li><p>Coefficients <span class="math notranslate nohighlight">\(C_k\)</span> are [<strong>real/imaginary/complex</strong>]?</p></li>
 <li><p>Subscripts <span class="math notranslate nohighlight">\(k\)</span> are [<strong>odd only/even only/both odd and even</strong>]?</p></li>
 <li><p>What is the integral that needs to be solved for <span class="math notranslate nohighlight">\(C_k\)</span>?</p></li>
+<li><p>Find the coefficients</p></li>
 </ul>
 <pre style="border: 2px solid blue">
 
@@ -712,22 +708,6 @@ document.write(`
 
 
 </pre></section>
-<section id="solution">
-<h3>Solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h3>
-<div class="math notranslate nohighlight">
-\[\frac{1}{2\pi}\left[\int_{0}^{\pi} Ae^{-jk(\Omega_0 t)}\, d(\Omega_0 t) + \int_{\pi}^{2\pi} (-A)e^{-jk(\Omega_0 t)}\, d(\Omega_0 t)\right] = \frac{1}{2\pi}\left[\left.\frac{A}{-jk}e^{-jk(\Omega_0 t)}\right|_0^\pi+\left.\frac{-A}{-jk}e^{-jk(\Omega_0 t)}\right|_\pi^{2\pi}\right]\]</div>
-<div class="math notranslate nohighlight">
-\[ = \frac{1}{2\pi}\left[\frac{A}{-jk}\left(e^{-jk\pi} - 1\right)+\frac{A}{jk}\left(e^{-j2k \pi}-e^{-jk\pi}\right)\right] =
-\frac{A}{2j\pi k}\left(1 - e^{-jk\pi}+ e^{-j2k \pi}-e^{-jk\pi}\right)\]</div>
-<div class="math notranslate nohighlight">
-\[\frac{A}{2j\pi k}\left(e^{-j2k \pi} - 2e^{-jk\pi} -1 \right) = \frac{A}{2j\pi k}\left(e^{-jk\pi}-1\right)^2\]</div>
-<p>For <span class="math notranslate nohighlight">\(n\)</span> odd*, <span class="math notranslate nohighlight">\(e^{-jk\pi} = -1\)</span>. Therefore</p>
-<div class="math notranslate nohighlight">
-\[{C_n \atop {k=\mathrm{odd}}} = \frac{A}{2j\pi k}\left(e^{-jk\pi}-1\right)^2 = \frac{A}{2j\pi k}\left(-1-1\right)^2 = \frac{A}{2j\pi k}\left(-2\right)^2 = \frac{2A}{j\pi k}\]</div>
-<p><sup>*</sup> You may want to verify that <span class="math notranslate nohighlight">\(C_0 = 0\)</span> and</p>
-<div class="math notranslate nohighlight">
-\[{C_k \atop {k=\mathrm{even}}} = 0.\]</div>
-</section>
 </section>
 <section id="computing-coefficients-of-exponential-fourier-series-in-matlab">
 <h2>Computing coefficients of Exponential Fourier Series in MATLAB<a class="headerlink" href="#computing-coefficients-of-exponential-fourier-series-in-matlab" title="Permalink to this heading">#</a></h2>
@@ -735,8 +715,8 @@ document.write(`
 <h3>Example 2<a class="headerlink" href="#example-2" title="Permalink to this heading">#</a></h3>
 <p>Verify the result of Example 1 using MATLAB.</p>
 </section>
-<section id="id1">
-<h3>Solution<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<section id="solution">
+<h3>Solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h3>
 <p>Solution: See <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_series/matlab/efs_sqw.m">efs_sqw.m</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -806,7 +786,7 @@ document.write(`
 </section>
 </section>
 <section id="computing-trig-fourier-series-from-exp-fourier-series">
-<h2>Computing Trig. Fourier Series from Exp. Fourier Series<a class="headerlink" href="#computing-trig-fourier-series-from-exp-fourier-series" title="Permalink to this heading">#</a></h2>
+<h2>Computing trig. Fourier series from exp. Fourier series<a class="headerlink" href="#computing-trig-fourier-series-from-exp-fourier-series" title="Permalink to this heading">#</a></h2>
 <p>Refer to the <a class="reference internal" href="exp_fs1.html#exp-fs1"><span class="std std-ref">notes</span></a>.</p>
 </section>
 <section id="summary">
@@ -817,37 +797,6 @@ document.write(`
 <li><p>Symmetry in Exponential Fourier Series</p></li>
 <li><p>Example</p></li>
 </ul>
-</section>
-<section id="answers-to-in-class-problems">
-<h2>Answers to in-class problems<a class="headerlink" href="#answers-to-in-class-problems" title="Permalink to this heading">#</a></h2>
-<section id="some-important-values-of-omega-t-solution">
-<h3>Some important values of <span class="math notranslate nohighlight">\(\omega t\)</span> - Solution<a class="headerlink" href="#some-important-values-of-omega-t-solution" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>When <span class="math notranslate nohighlight">\(\omega t = 0\)</span>: <span class="math notranslate nohighlight">\(e^{j\omega t} = e^{j0} = 1\)</span></p></li>
-<li><p>When <span class="math notranslate nohighlight">\(\omega t = \pi/2\)</span>: <span class="math notranslate nohighlight">\(e^{j\omega t} = e^{j\pi/2} = j\)</span></p></li>
-<li><p>When <span class="math notranslate nohighlight">\(\omega t = \pi\)</span>: <span class="math notranslate nohighlight">\(e^{j\omega t} = e^{j\pi} = -1\)</span></p></li>
-<li><p>When <span class="math notranslate nohighlight">\(\omega t = 3\pi/2\)</span>: <span class="math notranslate nohighlight">\(e^{j\omega t} = e^{j3\pi/2} = -j\)</span></p></li>
-<li><p>When <span class="math notranslate nohighlight">\(\omega t = 2\pi\)</span>: <span class="math notranslate nohighlight">\(e^{j\omega t} = e^{j2\pi} = e^{j0}= 1\)</span></p></li>
-</ul>
-<p>It is also worth being aware that <span class="math notranslate nohighlight">\(n\omega t\)</span>, when <span class="math notranslate nohighlight">\(n\)</span> is an integer, produces rotations that map back to the simpler cases given above. For example see <span class="math notranslate nohighlight">\(e^{j2\pi}\)</span> above.</p>
-</section>
-<section id="some-answers-for-you">
-<h3>Some answers for you<a class="headerlink" href="#some-answers-for-you" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Square wave is an <strong>odd</strong> function!</p></li>
-<li><p>DC component is <strong>zero</strong>!</p></li>
-<li><p>Square wave <strong>has</strong> half-wave symmetry!</p></li>
-</ul>
-<p>Hence</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(C_0 = 0\)</span></p></li>
-<li><p>Coefficients <span class="math notranslate nohighlight">\(C_k\)</span> are <strong>imaginary</strong>!</p></li>
-<li><p>Subscripts <span class="math notranslate nohighlight">\(k\)</span> are <strong>odd only</strong>!</p></li>
-<li><p>What is the integral that needs to be solved for <span class="math notranslate nohighlight">\(C_k\)</span>?</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[C_k = \frac{1}{2\pi}\int_{0}^{2\pi} f(\Omega_0 t)e^{-jk(\Omega_0 t)}\, d(\Omega_0 t) = \frac{1}{2\pi}\left[\int_{0}^{\pi} Ae^{-jk(\Omega_0 t)}\, d(\Omega_0 t) + \int_{\pi}^{2\pi} (-A)e^{-jk(\Omega_0 t)}\, d(\Omega_0 t)\right]\]</div>
-</section>
 </section>
 </section>
 
@@ -931,7 +880,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-of-the-complex-coefficients">Evaluation of the complex coefficients</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#symmetry-in-exponential-fourier-series">Symmetry in Exponential Fourier Series</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#symmetry-in-exponential-fourier-series">Symmetry in exponential Fourier series</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#even-functions">Even Functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#odd-functions">Odd Functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#half-wave-symmetry">Half-wave symmetry</a></li>
@@ -941,22 +890,16 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-questions-for-you">Some questions for you</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-coefficients-of-exponential-fourier-series-in-matlab">Computing coefficients of Exponential Fourier Series in MATLAB</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#efs-sqw">EFS_SQW</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-trig-fourier-series-from-exp-fourier-series">Computing Trig. Fourier Series from Exp. Fourier Series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-trig-fourier-series-from-exp-fourier-series">Computing trig. Fourier series from exp. Fourier series</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#answers-to-in-class-problems">Answers to in-class problems</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-important-values-of-omega-t-solution">Some important values of <span class="math notranslate nohighlight">\(\omega t\)</span> - Solution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-answers-for-you">Some answers for you</a></li>
-</ul>
-</li>
 </ul>
   </nav></div>
 
