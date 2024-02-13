@@ -64,11 +64,11 @@ where $\Omega_0$ rad/s is the *fundamental frequency*.
 
 The coefficients are obtained from the following expressions (valid for any periodic waveform with fundamental frequency $\Omega_0$ so long as we integrate over one period $0\to T_0$ where $T_0 = 2\pi/\Omega_0$), and $\theta = \Omega_0 t$:
 
-$$\frac{1}{2}a_0 = \frac{1}{T_0}\int_{0}^{T_0}f(t)d t = \frac{1}{\pi}\int_{0}^{2\pi}f(\theta )d \theta$$
+$$\frac{1}{2}a_0 = \frac{1}{T_0}\int_{0}^{T_0}f(t)d t = \frac{1}{2\pi}\int_{0}^{2\pi}f(\theta )d \theta$$
 
-$$a_n = \frac{1}{T_0}\int_{0}^{T_0}f(t)\cos n\Omega_0 t\,dt = \frac{1}{2\pi}\int_{0}^{2\pi}f(\theta)\cos n\theta\,d\theta$$
+$$a_n = \frac{2}{T_0}\int_{0}^{T_0}f(t)\cos n\Omega_0 t\,dt = \frac{1}{\pi}\int_{0}^{2\pi}f(\theta)\cos n\theta\,d\theta$$
 
-$$b_n = \frac{1}{T_0}\int_{0}^{T_0}f(t)\sin n\Omega_0 t\,dt = \frac{1}{2\pi}\int_{0}^{2\pi}f(\theta)\cos n\theta \,d\theta$$
+$$b_n = \frac{2}{T_0}\int_{0}^{T_0}f(t)\sin n\Omega_0 t\,dt = \frac{1}{\pi}\int_{0}^{2\pi}f(\theta)\cos n\theta \,d\theta$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -81,6 +81,13 @@ Building up wave forms from sinusoids.
 slideshow:
   slide_type: fragment
 ---
+% Setup working directory
+clear vars
+cd ../matlab
+format compact
+% Add install directory to path
+path('/Users/eechris/MATLAB-Drive/EG-247-Examples/fseriesdemo',path)
+% Run demo
 fseriesdemo
 ```
 
@@ -94,7 +101,7 @@ Taken by Dr Tim Davies with a Rhode&Schwarz Oscilloscope.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-Note all spectra shown in these slides are generated numerically from the input signals by sampling and the application of the Fast Fouriemr Transform (FFT).
+Note all spectra shown in these slides are generated numerically from the input signals by sampling and the application of the Fast Fourier Transform (FFT).
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -170,7 +177,7 @@ There are simplifications we can make if the original periodic properties has ce
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* If $f(t)$ is even, there will be no sine terms and ${b_n} = 0\; \forall n > 0$. The DC may or may not be zero.
+* If $f(t)$ is even, there will be no sine terms and ${b_n} = 0\; \forall n > 0$. The DC term ($a_0$) may or may not be zero.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -300,9 +307,6 @@ ft =
 slideshow:
   slide_type: fragment
 ---
-clear all
-cd ../matlab
-format compact
 open square_ftrig
 ```
 
