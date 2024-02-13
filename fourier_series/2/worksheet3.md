@@ -156,7 +156,7 @@ $$\sin \omega t = \frac{e^{j\omega t} - e^{-j\omega t}}{j2}$$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-We can use this result to convert the *Trigonometric Fourier Series* into an *Exponential Fourier Series* which has only one integral term to solve per harmonic.
+We can use this result to convert the *trigonometric Fourier series* into an *exponential Fourier series* which has only one integral term to solve per harmonic.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -182,17 +182,19 @@ $$C_{-k} = C_k^*$$
 
 The coefficients are obtained from the following expressions<sup>*</sup>:
 
-$$C_k = \frac{1}{2\pi}\int_{0}^{2\pi}f(\Omega_0 t)e^{-jk(\Omega_0 t)}\,d(\Omega_0 t)$$
+$$C_k = \frac{1}{2\pi}\int_{0}^{2\pi}f(\Omega_0 t)e^{-jk(\Omega_0 t)}\,d(\Omega_0 t) = \frac{1}{2\pi}\int_{0}^{2\pi}f(\theta)e^{-jk\theta}\,d\theta$$
 
-or
+where $\theta = \Omega_0 t$.
+
+Alternatively
 
 $$C_k = \frac{1}{T}\int_{0}^{T}f(t)e^{-jk\Omega_0 t}\,dt$$
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-## Symmetry in Exponential Fourier Series
+## Symmetry in exponential Fourier series
 
-Since the coefficients of the Exponential Fourier Series are complex numbers, we can use symmetry to determine the form of the coefficients and thereby simplify the computation of series for wave forms that have symmetry.
+Since the coefficients of the exponential Fourier series are complex numbers, we can use symmetry to determine the form of the coefficients and thereby simplify the computation of series for wave forms that have symmetry.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -250,6 +252,7 @@ Hence
 * Coefficients $C_k$ are [**real/imaginary/complex**]?
 * Subscripts $k$ are [**odd only/even only/both odd and even**]?
 * What is the integral that needs to be solved for $C_k$?
+* Find the coefficients
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -270,27 +273,6 @@ Hence
 
 
 </pre>
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-### Solution
-
-$$\frac{1}{2\pi}\left[\int_{0}^{\pi} Ae^{-jk(\Omega_0 t)}\, d(\Omega_0 t) + \int_{\pi}^{2\pi} (-A)e^{-jk(\Omega_0 t)}\, d(\Omega_0 t)\right] = \frac{1}{2\pi}\left[\left.\frac{A}{-jk}e^{-jk(\Omega_0 t)}\right|_0^\pi+\left.\frac{-A}{-jk}e^{-jk(\Omega_0 t)}\right|_\pi^{2\pi}\right]$$
-
-$$ = \frac{1}{2\pi}\left[\frac{A}{-jk}\left(e^{-jk\pi} - 1\right)+\frac{A}{jk}\left(e^{-j2k \pi}-e^{-jk\pi}\right)\right] =
-\frac{A}{2j\pi k}\left(1 - e^{-jk\pi}+ e^{-j2k \pi}-e^{-jk\pi}\right)$$
-
-$$\frac{A}{2j\pi k}\left(e^{-j2k \pi} - 2e^{-jk\pi} -1 \right) = \frac{A}{2j\pi k}\left(e^{-jk\pi}-1\right)^2$$
-
-For $n$ odd*, $e^{-jk\pi} = -1$. Therefore
-
-$${C_n \atop {k=\mathrm{odd}}} = \frac{A}{2j\pi k}\left(e^{-jk\pi}-1\right)^2 = \frac{A}{2j\pi k}\left(-1-1\right)^2 = \frac{A}{2j\pi k}\left(-2\right)^2 = \frac{2A}{j\pi k}$$
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-<sup>*</sup> You may want to verify that $C_0 = 0$ and 
-
-$${C_k \atop {k=\mathrm{even}}} = 0.$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -399,7 +381,7 @@ ylabel('\angle c_k [radians]');
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-## Computing Trig. Fourier Series from Exp. Fourier Series
+## Computing trig. Fourier series from exp. Fourier series
 
 Refer to the [notes](exp_fs1).
 
@@ -411,36 +393,3 @@ Refer to the [notes](exp_fs1).
 * The exponential Fourier series
 * Symmetry in Exponential Fourier Series
 * Example
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-## Answers to in-class problems
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-### Some important values of $\omega t$ - Solution
-
-* When $\omega t = 0$: $e^{j\omega t} = e^{j0} = 1$
-* When $\omega t = \pi/2$: $e^{j\omega t} = e^{j\pi/2} = j$
-* When $\omega t = \pi$: $e^{j\omega t} = e^{j\pi} = -1$
-* When $\omega t = 3\pi/2$: $e^{j\omega t} = e^{j3\pi/2} = -j$
-* When $\omega t = 2\pi$: $e^{j\omega t} = e^{j2\pi} = e^{j0}= 1$
-
-It is also worth being aware that $n\omega t$, when $n$ is an integer, produces rotations that map back to the simpler cases given above. For example see $e^{j2\pi}$ above.
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-### Some answers for you
-
-* Square wave is an **odd** function!
-* DC component is **zero**!
-* Square wave **has** half-wave symmetry!
-
-Hence
-
-* $C_0 = 0$
-* Coefficients $C_k$ are **imaginary**!
-* Subscripts $k$ are **odd only**!
-* What is the integral that needs to be solved for $C_k$?
-
-$$C_k = \frac{1}{2\pi}\int_{0}^{2\pi} f(\Omega_0 t)e^{-jk(\Omega_0 t)}\, d(\Omega_0 t) = \frac{1}{2\pi}\left[\int_{0}^{\pi} Ae^{-jk(\Omega_0 t)}\, d(\Omega_0 t) + \int_{\pi}^{2\pi} (-A)e^{-jk(\Omega_0 t)}\, d(\Omega_0 t)\right]$$
