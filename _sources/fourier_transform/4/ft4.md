@@ -15,7 +15,7 @@ kernelspec:
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (ft4)=
-# Introduction to Filters
+# Unit 4.4: Introduction to Filters
 
 +++ {"slideshow": {"slide_type": "skip"}}
 
