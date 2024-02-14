@@ -67,6 +67,7 @@ The **fundamental frequency** is $\omega = \Omega_0 = 2 \pi f_0$ or, equivalentl
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
+(fs3:harmonics)=
 ## Harmonic frequencies
 
 *Harmonic frquencies* (or *Harmonics*) are simply integer multiples of the fundamental frequency $\Omega_0$.
@@ -93,7 +94,7 @@ In general, we can express the $k$-th harmonic as $k\Omega_0,\; k\in \mathbb{Z}$
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-fs3:line-spectra)=
+(fs3:line-spectra)=
 ## Line Spectra
 
 The use of line spectra diagrams is a useful way to visualize the harmonic frequency components of a peiodic signal. 
@@ -540,7 +541,7 @@ What happens when the pulses to the left and right of the centre pulse become le
 * The frequency difference between harmonics also becomes smaller.
 * Line spectrum becomes a continous function.
 
-This result is the basis of the *Fourier Transform* which is coming next.
+This result is the basis of the *Fourier Transform* which is coming soon.
 
 +++
 

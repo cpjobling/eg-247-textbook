@@ -302,4 +302,4 @@ What happens when the pulses to the left and right of the centre pulse become le
 * The frequency difference between harmonics also becomes smaller.
 * Line spectrum becomes a continous function.
 
-This result is the basis of the *Fourier Transform* which is coming next.
+This result is the basis of the *Fourier Transform* which is coming soon.
