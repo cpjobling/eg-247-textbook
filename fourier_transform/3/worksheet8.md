@@ -13,16 +13,16 @@ jupyter:
 ---
 
 <!-- #region slideshow={"slide_type": "slide"} -->
-(ws7)=
-# Worksheet 7
+(ws8)=
+# Worksheet 8
 
 ## To accompany Chapter 4.3 Fourier Transforms for Circuit and LTI Systems Analysis
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "skip"} -->
-This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet7.pdf). We will step through this worksheet in class. 
+This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet8.pdf). We will step through this worksheet in class. 
 
-An annotatable copy of the notes for this presentation will be distributed before the second class meeting as **Worksheet 7** in the **Week 5: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **Worksheets** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote. 
+An annotatable copy of the notes for this presentation will be distributed before the second class meeting as **Worksheet 8** in the **Week 6: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **Worksheets** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote. 
 
 You are expected to have at least watched the video presentation of {ref}`ft3` of the [notes](https://cpjobling.github.io/eg-247-textbook/) before coming to class. If you haven't watch it afterwards!
 
