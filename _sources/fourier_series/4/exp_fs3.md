@@ -27,6 +27,18 @@ In {ref}`exp_fs2` we saw that we could represent continuous-time periodic wavefo
 
 In this section we discuss how we can use these line spectra for the calculation of power for signals with harmonics, computation of total harmanic distortion and we conclude with an introduction to filters.
 
++++
+
+## Colophon
+
+An annotatable worksheet for this presentation is available as {ref}`ws5`.
+
+* The source code for this page is [fourier_series/4/exp_fs3.md](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_series/4/exp_fs3.md).
+
+* You can view the notes for this presentation as a webpage ({ref}`unit3.4`). 
+
+* This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/fourier_series/4/exp_fs3.pdf) file.
+
 +++ {"slideshow": {"slide_type": "notes"}}
 
 ## Agenda
