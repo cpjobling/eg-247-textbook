@@ -34,9 +34,8 @@ The material in this presentation and notes is based on Chapter 8 (Starting at S
 
 In this section of the course we will cover:
 
-{ref}`ft1`
-{ref}`ft2`
-{ref}`ft3`
-{ref}`ft4`
-
+* {ref}`ft1`
+* {ref}`ft2`
+* {ref}`ft3`
+* {ref}`ft4`
 
