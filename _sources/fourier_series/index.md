@@ -25,6 +25,7 @@ In this section of the course we will cover:
 * {ref}`trig_fseries`
 * {ref}`exp_fs1`
 * {ref}`exp_fs2`
+* {ref}`unit3.4`
 
 ## References
 
