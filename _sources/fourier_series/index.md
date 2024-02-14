@@ -22,9 +22,9 @@ The material in this chapter is based on Chapter 7 (Starting at [Section 7.8](ht
 
 In this section of the course we will cover:
 
-* Unit 3.1: [Trigonometric Fourier Series](https://cpjobling.github.io/eg-247-textbook/fourier_series/1/trig_fseries.html)
-* Unit 3.2: [Exponential Fourier Series](https://cpjobling.github.io/eg-247-textbook/fourier_series/2/exp_fs1.html)
-* Unit 3.3: [Line Spectra and their Applications](https://cpjobling.github.io/eg-247-textbook/fourier_series/3/exp_fs2.html)
+* {ref}`trig_fseries`
+* {ref}`exp_fs1`
+* {ref}`exp_fs2`
 
 ## References
 

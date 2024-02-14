@@ -428,9 +428,11 @@ f(t) &=& \frac{4A}{\pi}\left(\cdots + \left(\frac{e^{j\Omega_0 t} - e^{-j\Omega_
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
+(fs2:matlab=
 ## Computing coefficients of Exponential Fourier Series in MATLAB
 
 +++ {"slideshow": {"slide_type": "subslide"}}
+
 
 ### Example 2
 

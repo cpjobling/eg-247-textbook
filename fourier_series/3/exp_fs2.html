@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Unit 3.3: Line Spectra and their Applications &#8212; EG-247 Digital Signal Processing</title>
+    <title>Unit 3.3: Computing Line Spectra &#8212; EG-247 Digital Signal Processing</title>
   
   
   
@@ -70,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/fourier_series/3/exp_fs2.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Unit 4: Fourier Transform" href="../../fourier_transform/index.html" />
+    <link rel="next" title="Unit 3.4: Applications of Line Spectra" href="../4/exp_fs3.html" />
     <link rel="prev" title="Unit 3.2: Exponential Fourier Series" href="../2/exp_fs1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -178,7 +178,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Fourier Series</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../1/trig_fseries.html">Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2/exp_fs1.html">Exponential Fourier Series</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Line Spectra and their Applications</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Computing Line Spectra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../4/exp_fs3.html">Applications of Line Spectra</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_transform/index.html">Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -462,7 +463,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Unit 3.3: Line Spectra and their Applications</h1>
+    <h1>Unit 3.3: Computing Line Spectra</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -475,9 +476,14 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colophon">Colophon</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">Agenda</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#harmonic-frequencies">Harmonic frequencies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamental-frequency">Fundamental frequency</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Harmonic frequencies</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#line-spectra">Line Spectra</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#line-spectra-for-exp-fs">Line Spectra for Exp. FS</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#line-spectra-for-trig-fs">Line Spectra for Trig. FS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#coefficients-of-the-exponential-fourier-series">Coefficients of the Exponential Fourier Series?</a></li>
@@ -486,15 +492,15 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-fourier-series">Exponential Fourier Series?</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-pulse-width-on-frequency-spectra">Effect of pulse width on frequency spectra</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-effect-of-pulse-width-on-frequency-spectra">Example 4: Effect of pulse width on frequency spectra</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#w-2">w = 2</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#w-5">w = 5</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#w-10">w = 10</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#implications">Implications</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4">Example 4</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5">Example 5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#proof">Proof!</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pulse-with-unit-area">Pulse with unit area</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#new-coefficents">New coefficents</a></li>
@@ -505,36 +511,16 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-in-periodic-signals">Power in Periodic Signals</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parseval-s-theorem">Parseval’s Theorem</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rms-power">RMS Power</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5">Example 5</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#power-spectrum">Power Spectrum</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#total-harmonic-distortion">Total Harmonic Distortion</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#thd-defined">THD Defined</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#computation-of-thd">Computation of THD</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steady-state-response-of-an-lti-system-to-a-periodic-signal">Steady-State Response of an LTI System to a Periodic Signal</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#by-superposition">By superposition</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implications-of-this-important-result">Implications of this important result</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#illustration">Illustration</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#further-explanation">Further explanation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering">Filtering</a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#answers">Answers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-3-3-takeways">Unit 3.3: Takeways</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-time">Next Time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#answer-to-example-3">Answer to example 3</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-dc-component">Solution: DC component!</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Harmonic coefficients!</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Exponential Fourier Series!</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-5">Solution 5</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p">P</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p-for-k-odd">P for k odd</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p-after-eliminating-sine">P after eliminating sine</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-p-from-f-t">Check P from f(t)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Harmonic coefficients!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Exponential Fourier Series!</a></li>
 </ul>
 </li>
 </ul>
@@ -548,41 +534,71 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="unit-3-3-line-spectra-and-their-applications">
-<span id="exp-fs2"></span><h1>Unit 3.3: Line Spectra and their Applications<a class="headerlink" href="#unit-3-3-line-spectra-and-their-applications" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="unit-3-3-computing-line-spectra">
+<span id="exp-fs2"></span><h1>Unit 3.3: Computing Line Spectra<a class="headerlink" href="#unit-3-3-computing-line-spectra" title="Permalink to this heading">#</a></h1>
+<p>In <a class="reference internal" href="../2/exp_fs1.html#exp-fs1"><span class="std std-ref">Unit 3.2: Exponential Fourier Series</span></a> we saw that we could exploit the complex exponential <span class="math notranslate nohighlight">\(e^{j\omega t}\)</span> to redefine trigonometric Fourier series into the exponential Fourier series and in so doing we eliminate one integration and at the same time simplify the calculation of the coefficients of the Fourier series.</p>
+<p>In this section we show how the exponential form of the Fourier series leads us to the ability to present waveforms as line spectra which simplifies the calculation of power for systems with harmonics and leads in the limit as 𝑇 approaches infinity to the Fourier Transform.</p>
 <section id="colophon">
 <h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this heading">#</a></h2>
 <p>An annotatable worksheet for this presentation is available as <a class="reference internal" href="worksheet4.html#ws4"><span class="std std-ref">Worksheet 4</span></a>.</p>
 <ul class="simple">
 <li><p>The source code for this page is <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_series/3/exp_fs2.md">fourier_series/3/exp_fs2.md</a>.</p></li>
-<li><p>You can view the notes for this presentation as a webpage (<a class="reference internal" href="#exp-fs2"><span class="std std-ref">Unit 3.3: Line Spectra and their Applications</span></a>).</p></li>
+<li><p>You can view the notes for this presentation as a webpage (<a class="reference internal" href="#exp-fs2"><span class="std std-ref">Unit 3.3: Computing Line Spectra</span></a>).</p></li>
 <li><p>This page is downloadable as a <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_series/3/exp_fs2.pdf">PDF</a> file.</p></li>
 </ul>
-<p>This section concludes our introduction to Fourier Series.</p>
-<p>In <a class="reference internal" href="../2/exp_fs1.html#exp-fs1"><span class="std std-ref">Unit 3.2: Exponential Fourier Series</span></a> we saw that we could exploit the complex exponential <span class="math notranslate nohighlight">\(e^{j\omega t}\)</span> to redefine trigonometric Fourier Series into the Exponential Fourier Series and in so doing we eliminate one integration and at the same time simplify the calculation of the coefficients of the Fourier series.</p>
-<p>In this section we show how the Exponential form of the Fourier Series leads us to the ability to present waveforms as line spectra which simplifies the calculation of power for systems with harmonics and leads in the limit as 𝑇 approaches infinity to the Fourier Transform.</p>
 </section>
 <section id="agenda">
 <h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Line spectra</p></li>
-<li><p>Power in periodic signals</p></li>
-<li><p>Steady-state response of an LTI system to a periodic signal</p></li>
+<li><p><a class="reference internal" href="#fs3-fundamental"><span class="std std-ref">Fundamental frequency</span></a></p></li>
+<li><p><span class="xref std std-ref">fs3:harmonics</span></p></li>
+<li><p><span class="xref std std-ref">fs3:line-spectra</span></p></li>
+<li><p><a class="reference internal" href="#examples18"><span class="std std-ref">Examples</span></a></p></li>
 </ul>
 </section>
 <section id="harmonic-frequencies">
 <h2>Harmonic frequencies<a class="headerlink" href="#harmonic-frequencies" title="Permalink to this heading">#</a></h2>
 <p>In response to a Student query, I have given a little more information on <a class="reference internal" href="../../FAQS/FAQ.html#harmonic-frequencies"><span class="std std-ref">Harmonic frequencies</span></a> in the FAQs.</p>
 </section>
+<section id="fundamental-frequency">
+<span id="fs3-fundamental"></span><h2>Fundamental frequency<a class="headerlink" href="#fundamental-frequency" title="Permalink to this heading">#</a></h2>
+<p><em>Fundamental frequency</em> – A periodic signal <span class="math notranslate nohighlight">\(f(t) = f(t + nT),\; n\in \mathbb{Z}\)</span> has period <span class="math notranslate nohighlight">\(T\)</span> s and a fundamental frequency <span class="math notranslate nohighlight">\(f_0 = 1/T\)</span> Hz.</p>
+<p>When used in Fourier series and Fourier transforms, frequencies are expressed as <span class="math notranslate nohighlight">\(\omega\)</span> in radians/second.</p>
+<p>The <strong>fundamental frequency</strong> is <span class="math notranslate nohighlight">\(\omega = \Omega_0 = 2 \pi f_0\)</span> or, equivalently, <span class="math notranslate nohighlight">\(\Omega_0 = 2 \pi /T\)</span> rad/s.</p>
+</section>
+<section id="id1">
+<h2>Harmonic frequencies<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p><em>Harmonic frquencies</em> (or <em>Harmonics</em>) are simply integer multiples of the fundamental frequency <span class="math notranslate nohighlight">\(\Omega_0\)</span>.</p>
+<ul class="simple">
+<li><p>The zero-th harmonic is <span class="math notranslate nohighlight">\(\Omega_0 = 0\)</span> rad/s or DC.</p></li>
+</ul>
+<ul class="simple">
+<li><p>The first harmonic is <span class="math notranslate nohighlight">\(1.\Omega_0 = \Omega_0\)</span>, is the fundamental frequency,</p></li>
+</ul>
+<ul class="simple">
+<li><p>The second harmonic is <span class="math notranslate nohighlight">\(2 \Omega_0\)</span>,</p></li>
+</ul>
+<ul class="simple">
+<li><p>The third harmonic is <span class="math notranslate nohighlight">\(3 \Omega_0\)</span>, etc.</p></li>
+</ul>
+<p>In general, we can express the <span class="math notranslate nohighlight">\(k\)</span>-th harmonic as <span class="math notranslate nohighlight">\(k\Omega_0,\; k\in \mathbb{Z}\)</span>.</p>
+<p>fs3:line-spectra)=</p>
+</section>
 <section id="line-spectra">
 <h2>Line Spectra<a class="headerlink" href="#line-spectra" title="Permalink to this heading">#</a></h2>
 <p>The use of line spectra diagrams is a useful way to visualize the harmonic frequency components of a peiodic signal.</p>
-<p>In MATLAB, the easiest way to plot this is using a <em>stem plot</em> of the lines, representing the FS coefficients, plotted against <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>In MATLAB, the easiest way to plot this is using a <em>stem plot</em> of the lines, representing the Fourier series (FS) coefficients, plotted against <span class="math notranslate nohighlight">\(k\)</span>.</p>
 <section id="line-spectra-for-exp-fs">
 <h3>Line Spectra for Exp. FS<a class="headerlink" href="#line-spectra-for-exp-fs" title="Permalink to this heading">#</a></h3>
-<p>When the Exponential Fourier series are known it is useful to plot the amplitude and phase of the harmonics on a frequency scale.</p>
-<p>This is the spectrum of the Exponential Fourier Series calculated last time</p>
-<img src="pictures/efs_sqw.png"></section>
+<p>When the exponential Fourier series are known it is useful to plot the amplitude and phase of the harmonics on a frequency scale.</p>
+<p>This is the spectrum of the Exponential Fourier Series calculated in <span class="xref std std-ref">fs2:matlab</span> is reproduced in <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig:5.3.1</span></code></p>
+<figure class="align-default" id="fig-5-3-1">
+<a class="reference internal image-reference" href="../../_images/efs_sqw1.png"><img alt="Exponential Fourier Series spectrum for a square wave." src="../../_images/efs_sqw1.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Exponential Fourier Series spectrum for the square wave calculated in <code class="xref std std-numref docutils literal notranslate"><span class="pre">fs2:eg</span></code>.</span><a class="headerlink" href="#fig-5-3-1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
 <section id="line-spectra-for-trig-fs">
 <h3>Line Spectra for Trig. FS<a class="headerlink" href="#line-spectra-for-trig-fs" title="Permalink to this heading">#</a></h3>
 <p>If we take the results for the Exponential Fourier Series and gather terms, the amplitudes for the Trig. Fourier Series are given by:</p>
@@ -592,12 +608,27 @@ document.write(`
 \[a_k = (C_k + C_{-k})\]</div>
 <div class="math notranslate nohighlight">
 \[b_k = j(C_k - C_{-k})\]</div>
-<p>Applying this to the previous result we get</p>
-<img src="pictures/line-spec.png"></section>
+<p>Applying this to the previous result we get the spectrum shown in <a class="reference internal" href="#fig-tfs"><span class="std std-numref">Fig. 2</span></a></p>
+<figure class="align-default" id="fig-tfs">
+<a class="reference internal image-reference" href="../../_images/line-spec1.png"><img alt="Trigonometric Fourier series for a square wave" src="../../_images/line-spec1.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Trigonometric Fourier series for a square wave</span><a class="headerlink" href="#fig-tfs" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="examples">
+<span id="examples18"></span><h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h2>
 <section id="example-3">
 <h3>Example 3<a class="headerlink" href="#example-3" title="Permalink to this heading">#</a></h3>
-<p>Compute the exponential Fourier series for the waveform shown below and plot its line spectra.</p>
-<img src="pictures/pulse_train.png"></section>
+<p id="ex-18-1">Compute the exponential Fourier series for the waveform shown below and plot its line spectra.</p>
+<figure class="align-default" id="fig-ex-18-1">
+<a class="reference internal image-reference" href="../../_images/pulse_train.png"><img alt="" src="../../_images/pulse_train.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">A pulse train</span><a class="headerlink" href="#fig-ex-18-1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
 <section id="solution">
 <h3>Solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h3>
 <p>The recurrent rectangular pulse is used extensively in digital communication systems. To determine how faithfully such pulses will be transmitted, it is necessary to know the frequency components.</p>
@@ -611,7 +642,7 @@ document.write(`
 <h4>Coefficients of the Exponential Fourier Series?<a class="headerlink" href="#coefficients-of-the-exponential-fourier-series" title="Permalink to this heading">#</a></h4>
 <p>Given</p>
 <div class="math notranslate nohighlight">
-\[C_k = \frac{1}{2\pi}\int_{-\pi}^{\pi} f(\Omega_0 t)e^{-jk(\Omega_0 t)}\,d(\Omega_0 t)\]</div>
+\[C_k = \frac{1}{2\pi}\int_{-\pi}^{\pi} f(\theta)e^{-jk\theta}\,d\theta\]</div>
 <ul class="simple">
 <li><p>Is the function <strong>even</strong> or <strong>odd</strong>?</p></li>
 <li><p>Does the signal have <strong>half-wave symmetry</strong>?</p></li>
@@ -696,8 +727,8 @@ document.write(`
 
 </pre></section>
 </section>
-<section id="effect-of-pulse-width-on-frequency-spectra">
-<h3>Effect of pulse width on frequency spectra<a class="headerlink" href="#effect-of-pulse-width-on-frequency-spectra" title="Permalink to this heading">#</a></h3>
+<section id="example-4-effect-of-pulse-width-on-frequency-spectra">
+<span id="ex-18-2"></span><h3>Example 4: Effect of pulse width on frequency spectra<a class="headerlink" href="#example-4-effect-of-pulse-width-on-frequency-spectra" title="Permalink to this heading">#</a></h3>
 <p>let’s see what effect the duty cycle <span class="math notranslate nohighlight">\(w\)</span> has on the spectra.</p>
 <p>Recall pulse width = <span class="math notranslate nohighlight">\(T/w\)</span> and plot the complex line spectra for pulse with width <span class="math notranslate nohighlight">\(w\)</span> which repeats every <span class="math notranslate nohighlight">\(T\)</span> seconds. We will write a MATLAB function <code class="docutils literal notranslate"><span class="pre">pulse_fs</span></code> to simplify the computation.</p>
 <div class="cell docutils container">
@@ -738,7 +769,7 @@ document.write(`
 <section id="w-2">
 <h4>w = 2<a class="headerlink" href="#w-2" title="Permalink to this heading">#</a></h4>
 <p><span class="math notranslate nohighlight">\(\Omega_0 = 1\)</span> rad/s; <span class="math notranslate nohighlight">\(w = 2\)</span>; <span class="math notranslate nohighlight">\(T = 2\pi\)</span> s; <span class="math notranslate nohighlight">\(T/w = \pi\)</span> s.</p>
-<p>Compute Fourier Series</p>
+<p>Compute Fourier series</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
@@ -763,7 +794,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/92c2f37eea45c7f2daa4ff2efd6f41ef86ed124b5f094d697a21189233dfb312.png" src="../../_images/92c2f37eea45c7f2daa4ff2efd6f41ef86ed124b5f094d697a21189233dfb312.png" />
+<img alt="../../_images/1527d29891ae1a5f363bfa9ed73a026421bb0115a0f2f2ec3c2e02f47d4a2e78.png" src="../../_images/1527d29891ae1a5f363bfa9ed73a026421bb0115a0f2f2ec3c2e02f47d4a2e78.png" />
 </div>
 </div>
 </section>
@@ -785,7 +816,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5c81dda534edf942933b2f46cdbcc67860a4bac4e931655a8be6572561bdd23a.png" src="../../_images/5c81dda534edf942933b2f46cdbcc67860a4bac4e931655a8be6572561bdd23a.png" />
+<img alt="../../_images/6eaa15f5628e01214babeb166d26cd09f63db4f9d804be6d7a60bb42819cb664.png" src="../../_images/6eaa15f5628e01214babeb166d26cd09f63db4f9d804be6d7a60bb42819cb664.png" />
 </div>
 </div>
 </section>
@@ -807,7 +838,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/515027f87a1b2398cbe7fb25938658b9203c736c0d7ba5f0ffc3e29e030522c4.png" src="../../_images/515027f87a1b2398cbe7fb25938658b9203c736c0d7ba5f0ffc3e29e030522c4.png" />
+<img alt="../../_images/0d82da637f952302910b72a78710c237ceaa43459b9421f951d72905f3996a2f.png" src="../../_images/0d82da637f952302910b72a78710c237ceaa43459b9421f951d72905f3996a2f.png" />
 </div>
 </div>
 </section>
@@ -822,12 +853,18 @@ document.write(`
 <p>However, if you view <span class="math notranslate nohighlight">\(\sin(wx)/wx\)</span> as in indication of the bandwidth needed to transmit a pulse of width <span class="math notranslate nohighlight">\(T/w\)</span> the plots Karris gives make more sense.</p>
 </section>
 </section>
-<section id="example-4">
-<h3>Example 4<a class="headerlink" href="#example-4" title="Permalink to this heading">#</a></h3>
-<p>Use the result of Example 1 to compute the exponential Fourier series of the impulse train <span class="math notranslate nohighlight">\(\delta(t\pm 2\pi k)\)</span> shown below</p>
-<img src="pictures/impulse_train.png"></section>
-<section id="id1">
-<h3>Solution<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<section id="example-5">
+<h3>Example 5<a class="headerlink" href="#example-5" title="Permalink to this heading">#</a></h3>
+<p>Use the result of <span class="xref std std-ref">ex:18.1</span> to compute the exponential Fourier series of the impulse train <span class="math notranslate nohighlight">\(\delta(t\pm 2\pi k)\)</span> shown in {numref}`</p>
+<figure class="align-default" id="fig-ex-18-3">
+<a class="reference internal image-reference" href="../../_images/impulse_train.png"><img alt="An impulse train" src="../../_images/impulse_train.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">An impulse train</span><a class="headerlink" href="#fig-ex-18-3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id2">
+<h3>Solution<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <p>To solve this we take the previous result and choose amplitude (height) <span class="math notranslate nohighlight">\(A\)</span> so that area of pulse is unity. Then we let width go to zero while maintaining the area of unity. This creates a train of impulses <span class="math notranslate nohighlight">\(\delta(t\pm 2\pi k)\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[C_k  = \frac{1}{2\pi}\]</div>
@@ -852,8 +889,14 @@ document.write(`
 <p>The area of each pulse is then</p>
 <div class="math notranslate nohighlight">
 \[\frac{2\pi}{w}\times\frac{w}{2\pi} = 1\]</div>
-<p>and the pulse train is as shown below:</p>
-<img src="pictures/unit_area_pulses.png"></section>
+<p>and the pulse train is as shown in <a class="reference internal" href="#fig-ex-18-3-1"><span class="std std-numref">Fig. 5</span></a> below:</p>
+<figure class="align-default" id="fig-ex-18-3-1">
+<a class="reference internal image-reference" href="../../_images/unit_area_pulses.png"><img alt="" src="../../_images/unit_area_pulses.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Pulse train with unit-area pulses</span><a class="headerlink" href="#fig-ex-18-3-1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
 <section id="new-coefficents">
 <h4>New coefficents<a class="headerlink" href="#new-coefficents" title="Permalink to this heading">#</a></h4>
 <p>The coefficients of the Exponential Fourier Series are now:</p>
@@ -877,7 +920,12 @@ document.write(`
 <section id="another-interesting-result">
 <h4>Another Interesting Result<a class="headerlink" href="#another-interesting-result" title="Permalink to this heading">#</a></h4>
 <p>Consider the pulse train again:</p>
-<img src="pictures/pulse_train.png">
+<figure class="align-default" id="fig-ex-18-3-3">
+<a class="reference internal image-reference" href="../../_images/pulse_train.png"><img alt="Pulse train signal" src="../../_images/pulse_train.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Pulse train signal</span><a class="headerlink" href="#fig-ex-18-3-3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>What happens when the pulses to the left and right of the centre pulse become less and less frequent? That is what happens when <span class="math notranslate nohighlight">\(T \to \infty\)</span>?</p>
 </section>
 <section id="well">
@@ -892,154 +940,36 @@ document.write(`
 </section>
 </section>
 </section>
-<section id="power-in-periodic-signals">
-<h2>Power in Periodic Signals<a class="headerlink" href="#power-in-periodic-signals" title="Permalink to this heading">#</a></h2>
-<p>In your previous courses you may have come across the definitions of Signal Energy, Average Signal Power and Root Mean Square Power:</p>
-<div class="math notranslate nohighlight">
-\[E = \int_0^T |f(t)|^2 dt\]</div>
-<div class="math notranslate nohighlight">
-\[P_{\mathrm{av}} = \frac{1}{T}\int_0^T |f(t)|^2 dt\]</div>
-<div class="math notranslate nohighlight">
-\[P_{\mathrm{RMS}} = \sqrt{\frac{1}{T}\int_0^T |f(t)|^2 dt}\]</div>
-<section id="parseval-s-theorem">
-<h3>Parseval’s Theorem<a class="headerlink" href="#parseval-s-theorem" title="Permalink to this heading">#</a></h3>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Parseval's_theorem">Parseval’s Theorem</a> states that the total average power of a periodic signal <span class="math notranslate nohighlight">\(f(t)\)</span> is equal to the sum of the average powers of all its harmonic components.</p>
-<p>The power in the <span class="math notranslate nohighlight">\(k\)</span>th harmonic <span class="math notranslate nohighlight">\(C_ke^{jk\Omega_0 t}\)</span> is given by</p>
-<div class="math notranslate nohighlight">
-\[P_k = \frac{1}{T}\int_0^T\left|C_ke^{jk\Omega_0 t}\right|^2\,dt = \frac{1}{T}\int_0^T\left|C_k\right|^2\,dt=\left|C_k\right|^2\]</div>
-<p>Since <span class="math notranslate nohighlight">\(P_k = P_{-k}\)</span>, the total power of the <span class="math notranslate nohighlight">\(k\)</span>th harmomic is <span class="math notranslate nohighlight">\(2P_k\)</span>.</p>
-<p>You should note that <span class="math notranslate nohighlight">\(|C_k| = \sqrt{C_k C_k^*}\)</span> so <span class="math notranslate nohighlight">\(|C_k|^2 = C_k C_k^*\)</span>.</p>
-<p>Parseval’s theorem states that</p>
-<div class="math notranslate nohighlight">
-\[P = \frac{1}{T}\int_0^T \left|f(t)\right|^2\,dt = \sum_{k=-\infty}^{\infty}\left|C_k\right|^2.\]</div>
-</section>
-<section id="rms-power">
-<h3>RMS Power<a class="headerlink" href="#rms-power" title="Permalink to this heading">#</a></h3>
-<p>By a similar argument:</p>
-<div class="math notranslate nohighlight">
-\[P_{\mathrm{RMS}} = \sqrt{\frac{1}{T}\int_0^T \left|f(t)\right|^2\,dt} = \sqrt{\sum_{k=-\infty}^{\infty}\left|C_k\right|^2}.\]</div>
-</section>
-<section id="example-5">
-<h3>Example 5<a class="headerlink" href="#example-5" title="Permalink to this heading">#</a></h3>
-<p>Compute the average power of a pulse train for which the pulse width is <span class="math notranslate nohighlight">\(T/2\)</span> (duty cycle 50%). Use the previous result:</p>
-<div class="math notranslate nohighlight">
-\[C_n = \frac{A}{w}.\frac{\sin(k\pi/w)}{k\pi/w}\]</div>
-<p>as your starting point.</p>
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre></section>
-<section id="power-spectrum">
-<h3>Power Spectrum<a class="headerlink" href="#power-spectrum" title="Permalink to this heading">#</a></h3>
-<p>The <em>power spectrum</em> of signal is the sequence of average powers in each complex harmonic:</p>
-<div class="math notranslate nohighlight">
-\[|C_k|^2.\]</div>
-<p>For real periodic signals the power spectrum is a real even sequence as</p>
-<div class="math notranslate nohighlight">
-\[|C_{-k}|^2 = |C_k^*|^2 = |C_k|^2.\]</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w"> </span><span class="p">[</span><span class="n">f</span><span class="p">,</span><span class="n">omega</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">pulse_fs</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="mi">15</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Power spectrum</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">stem</span><span class="p">(</span><span class="n">omega</span><span class="p">,</span><span class="nb">abs</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.^</span><span class="mi">2</span><span class="p">)</span>
-<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Power Spectrum for pulse width T/8&#39;</span><span class="p">)</span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;|C_k|^2&#39;</span><span class="p">)</span>
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;\Omega_0 [rad/s]&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/4c7407f1905e505419dc5f8c914367566e39b96d858a4d8273788b2643faaa70.png" src="../../_images/4c7407f1905e505419dc5f8c914367566e39b96d858a4d8273788b2643faaa70.png" />
-</div>
-</div>
-<p>Note that most of the power is concentrated at DC and in the first seven harmonic components. That is in the frequency range <span class="math notranslate nohighlight">\([-14\pi/T,+14\pi/T]\)</span> rad/s.</p>
-</section>
-<section id="total-harmonic-distortion">
-<h3>Total Harmonic Distortion<a class="headerlink" href="#total-harmonic-distortion" title="Permalink to this heading">#</a></h3>
-<p>Suppose that a signal that is supposed to be a pure sine wave of amplitude A is distorted as shown below</p>
-<img src="pictures/thd.png"><p>This can occur in the line voltages of an industrial plant that makes heavy use of nonlineear loads such as electric arc furnaces, solid state relays, motor drives, etc (E.g. Tata Steel!)</p>
-<section id="thd-defined">
-<h4>THD Defined<a class="headerlink" href="#thd-defined" title="Permalink to this heading">#</a></h4>
-<p>Clearly, some of the harmonics for <span class="math notranslate nohighlight">\(k\ne \pm 1\)</span> are nonzero. One way to characterize the distortion is to compute the ratio of average power in all the harmonics that “should not be present”, that is for <span class="math notranslate nohighlight">\(k &gt; 1\)</span>, to the total average power of the distorted sine wave. The square-root of this ratio is called the <em>total harmonic distortion</em> (THD) of the signal.</p>
-<p>If the signal is real and based on a sine wave (that is <em>odd</em>), then <span class="math notranslate nohighlight">\(C_k=0\)</span> and</p>
-<div class="math notranslate nohighlight">
-\[f_{\mathrm{RMS}}=\sqrt{\sum_{k=1}^{\infty}2|C_k|^2}\]</div>
-<p>and we can define the THD as the ratio of the RMS value for all the harmonics for <span class="math notranslate nohighlight">\(K&gt;1\)</span> (the distortion) to the RMS of the fundamental which is $<span class="math notranslate nohighlight">\(\sqrt{2\left|C_1\right|^2}:\)</span>$</p>
-<div class="math notranslate nohighlight">
-\[{\rm{THD}} = 100\sqrt {\frac{\sum\limits_{k = 2}^\infty  {\left| C_k \right|^2}} {\left| C_1 \right|^2}} \% \]</div>
-</section>
-<section id="computation-of-thd">
-<h4>Computation of THD<a class="headerlink" href="#computation-of-thd" title="Permalink to this heading">#</a></h4>
-<img src="pictures/thd_ps.png"></section>
-</section>
-</section>
-<section id="steady-state-response-of-an-lti-system-to-a-periodic-signal">
-<h2>Steady-State Response of an LTI System to a Periodic Signal<a class="headerlink" href="#steady-state-response-of-an-lti-system-to-a-periodic-signal" title="Permalink to this heading">#</a></h2>
-<p>The response of an LTI system with impulse response <span class="math notranslate nohighlight">\(h(t)\)</span> to a complex exponential signal <span class="math notranslate nohighlight">\(e^{st}\)</span> is the same complex exponential multiplied by a complex gain: <span class="math notranslate nohighlight">\(y(t) = H(s)e^{st}\)</span>, where:</p>
-<div class="math notranslate nohighlight">
-\[H(s)=\int_{-\infty}^{\infty}h(\tau)e^{-s\tau}\,d\tau.\]</div>
-<p>In particular, for <span class="math notranslate nohighlight">\(s = j\omega\)</span>, the output is simply <span class="math notranslate nohighlight">\(y(j\omega t)=H(j\omega)e^{j\omega t}\)</span>.</p>
-<p>The complex functions <span class="math notranslate nohighlight">\(H(s)\)</span> and <span class="math notranslate nohighlight">\(H(j\omega)\)</span> are called the system’s <em>transfer function</em> and <em>frequency response</em>, respectively.</p>
-<section id="by-superposition">
-<h3>By superposition<a class="headerlink" href="#by-superposition" title="Permalink to this heading">#</a></h3>
-<p>The output of an LTI system to a periodic function with period <span class="math notranslate nohighlight">\(T\)</span> represented by a Fourier series is given by:</p>
-<div class="math notranslate nohighlight">
-\[y(t)=\sum_{k=-\infty}^{\infty} C_kH(jk\Omega_0)e^{jk\Omega_0 t}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\Omega_0 = T/2\pi\)</span> is the fundamental frequency.</p>
-<p>Thus <span class="math notranslate nohighlight">\(y(t)\)</span> is a Fourier series itself with coefficients <span class="math notranslate nohighlight">\(D_k\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[D_k = C_kH(jk\Omega_0)\]</div>
-</section>
-<section id="implications-of-this-important-result">
-<h3>Implications of this important result<a class="headerlink" href="#implications-of-this-important-result" title="Permalink to this heading">#</a></h3>
-<p>The effect of an LTI system on a periodic input signal is to modify its Fourier series through a multiplication by its frequency response evaluated at the harmonic frequencies.</p>
-</section>
-<section id="illustration">
-<h3>Illustration<a class="headerlink" href="#illustration" title="Permalink to this heading">#</a></h3>
-<p>This picture below shows the effect of an LTI system on a periodic input in the frequency domain.</p>
-<img src="pictures/filter.png"></section>
-<section id="further-explanation">
-<h3>Further explanation<a class="headerlink" href="#further-explanation" title="Permalink to this heading">#</a></h3>
-<p>I have added some additional notes on <span class="xref myst">Filter Attenuation</span> in the <span class="xref myst">FAQs</span>.</p>
-</section>
-<section id="filtering">
-<h3>Filtering<a class="headerlink" href="#filtering" title="Permalink to this heading">#</a></h3>
-<p>A consequence of the previous result is that we can design a system that has a desirable frequency spectrum <span class="math notranslate nohighlight">\(H(jk\Omega_0)\)</span> that retains certain frequencies and cuts off others.</p>
-<p>We will return to this idea later.</p>
-</section>
-</section>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
-<p><em>Summary</em></p>
 <ul class="simple">
-<li><p>Line spectra</p></li>
-<li><p>Power in periodic signals</p></li>
-<li><p>Steady-state response of an LTI system to a periodic signal</p></li>
+<li><p><a class="reference internal" href="#fs3-fundamental"><span class="std std-ref">Fundamental frequency</span></a></p></li>
+<li><p><span class="xref std std-ref">fs3:harmonics</span></p></li>
+<li><p><span class="xref std std-ref">fs3:line-spectra</span></p></li>
+<li><p><a class="reference internal" href="#examples18"><span class="std std-ref">Examples</span></a></p></li>
 </ul>
-<section id="answers">
-<h3>Answers<a class="headerlink" href="#answers" title="Permalink to this heading">#</a></h3>
+<section id="unit-3-3-takeways">
+<span id="unit3-3-takeaways"></span><h3>Unit 3.3: Takeways<a class="headerlink" href="#unit-3-3-takeways" title="Permalink to this heading">#</a></h3>
+<p>The exponential and trigonometric Fourier series coefficients can be plotted as lines on the frequency axis.</p>
+<p>These line-spectra are useful for reasoning about the frequency components that are present in a periodic signal.</p>
+<p>This is useful for e.g. computing the bandwidth needed on a medium that is to transmit a signal without loss.</p>
+<p>We will see next, that we can also use these line spectra to compute power in a signal, the total harmonic distortion present in a signal, and in the design of filters.</p>
+</section>
+</section>
+<section id="next-time">
+<h2>Next Time<a class="headerlink" href="#next-time" title="Permalink to this heading">#</a></h2>
+<p>We move on to consider</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../4/exp_fs3.html#unit3-4"><span class="std std-ref">Unit 3.4: Applications of Line Spectra</span></a></p></li>
+</ul>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<span class="target" id="id3"></span><section id="answer-to-example-3">
+<span id="answer-ex6"></span><h3>Answer to example 3<a class="headerlink" href="#answer-to-example-3" title="Permalink to this heading">#</a></h3>
 <p>Given</p>
 <div class="math notranslate nohighlight">
-\[C_k = \frac{1}{2\pi}\int_{-\pi}^{\pi} f(t)e^{-jk(\Omega_0 t)}\,d(\Omega_0 t)\]</div>
+\[C_k = \frac{1}{2\pi}\int_{-\pi}^{\pi} f(t)e^{-jk\theta}\,d\theta\]</div>
 <ul class="simple">
 <li><p>Is the function <strong>even</strong> or <strong>odd</strong>? <strong>even</strong> <span class="math notranslate nohighlight">\(f(t) = f(-t)\)</span>!</p></li>
 <li><p>Does the signal have <strong>half-wave symmetry</strong>? No!</p></li>
@@ -1057,48 +987,17 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[C_0 = \frac{A}{w}\]</div>
 </section>
-<section id="id2">
-<h3>Harmonic coefficients!<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<section id="id20">
+<h3>Harmonic coefficients!<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[C_k = \left.\frac{A}{-jk2\pi}\,e^{-jk(\omega t)}\,\right|_{-\pi/w}^{\pi/w} = \frac{A}{k\pi}\left(\frac{e^{jk\pi/w}-e^{-jk\pi/w}}{j2}\right) = \frac{A}{k\pi}\sin\left(\frac{k\pi}{w}\right)\]</div>
 <div class="math notranslate nohighlight">
 \[C_k = \frac{A}{w}\frac{sin\left(k\pi/w\right)}{k\pi/w}\]</div>
 </section>
-<section id="id3">
-<h3>Exponential Fourier Series!<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<section id="id21">
+<h3>Exponential Fourier Series!<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[f(t)=\sum_{k=-\infty}^{\infty}\;\frac{A}{w}\,\frac{\sin\left(k\pi/w\right)}{k\pi/w} e^{-k\Omega_0 t}\]</div>
-</section>
-<section id="solution-5">
-<h3>Solution 5<a class="headerlink" href="#solution-5" title="Permalink to this heading">#</a></h3>
-<p><span class="math notranslate nohighlight">\(w = 2\)</span> so:</p>
-<div class="math notranslate nohighlight">
-\[C_n = \frac{A}{2}.\frac{\sin(k\pi/2)}{k\pi/2}\]</div>
-<p>Write down an expression for <span class="math notranslate nohighlight">\(P\)</span> using Parseval’s Theorem</p>
-</section>
-<section id="p">
-<h3>P<a class="headerlink" href="#p" title="Permalink to this heading">#</a></h3>
-<div class="math notranslate nohighlight">
-\[P = \sum\limits_{k =  - \infty }^\infty  \left| C_k \right|^2  = \sum\limits_{k =  - \infty }^\infty  \left| \frac{A}{2}{\mathop{\rm sinc}\nolimits} \frac{k\pi }{2} \right|^2  = {A^2}\left( \frac{1}{4} + 2\sum\limits_{k = 1}^\infty  \left| \frac{1}{4}\mathop{\rm sinc}\nolimits \frac{k\pi }{2} \right|^2  \right)\]</div>
-<p>sinc<span class="math notranslate nohighlight">\((k\pi/2) = 0\)</span> for <span class="math notranslate nohighlight">\(k\)</span> even (<span class="math notranslate nohighlight">\(k=0,2,4,6,\ldots\)</span>) so…?</p>
-</section>
-<section id="p-for-k-odd">
-<h3>P for k odd<a class="headerlink" href="#p-for-k-odd" title="Permalink to this heading">#</a></h3>
-<div class="math notranslate nohighlight">
-\[P = A^2\left( \frac{1}{4} + \frac{1}{2}\sum\limits_{k = 1,3,5, \ldots }^\infty  \left| \rm{sinc}\frac{k\pi }{2} \right| ^2 \right) = A^2\left( \frac{1}{4} + \frac{1}{2}\sum\limits_{k = 1,3,5, \ldots }^\infty  \left| \frac{\sin \left( \frac{k\pi }{2} \right)}{\frac{k\pi }{2}} \right|^2  \right)\]</div>
-<p><span class="math notranslate nohighlight">\(\sin(k\pi/2) = 1\)</span> for <span class="math notranslate nohighlight">\(k\)</span> odd (<span class="math notranslate nohighlight">\(k=1,3,5,7,\ldots\)</span>) so…?</p>
-</section>
-<section id="p-after-eliminating-sine">
-<h3>P after eliminating sine<a class="headerlink" href="#p-after-eliminating-sine" title="Permalink to this heading">#</a></h3>
-<div class="math notranslate nohighlight">
-\[P = {A^2}\left( \frac{1}{4} + \frac{2}{\pi ^2}\left[ 1 + \frac{1}{9} + \frac{1}{25} +  \ldots  \right]  \right) = {A^2}\left( \frac{1}{4} + \frac{2}{\pi ^2}\left[ \frac{\pi ^2}{8} \right] \right)\]</div>
-<div class="math notranslate nohighlight">
-\[P = \frac{A^2}{2}\]</div>
-</section>
-<section id="check-p-from-f-t">
-<h3>Check P from f(t)<a class="headerlink" href="#check-p-from-f-t" title="Permalink to this heading">#</a></h3>
-<div class="math notranslate nohighlight">
-\[P = \frac{1}{2\pi}\int_{-\pi/2}^{\pi/2}|f(t)|^2\,d\omega t = \frac{1}{2\pi}\int_{-\pi/2}^{\pi/2}|A|^2\,d\omega t = \frac{A^2}{2\pi}\left(\frac{\pi}{2}+\frac{\pi}{2}\right) = \frac{A^2}{2}.\]</div>
 </section>
 </section>
 </section>
@@ -1143,11 +1042,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="../../fourier_transform/index.html"
+       href="../4/exp_fs3.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Unit 4: Fourier Transform</p>
+        <p class="prev-next-title">Unit 3.4: Applications of Line Spectra</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1169,9 +1068,14 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colophon">Colophon</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">Agenda</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#harmonic-frequencies">Harmonic frequencies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamental-frequency">Fundamental frequency</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Harmonic frequencies</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#line-spectra">Line Spectra</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#line-spectra-for-exp-fs">Line Spectra for Exp. FS</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#line-spectra-for-trig-fs">Line Spectra for Trig. FS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#coefficients-of-the-exponential-fourier-series">Coefficients of the Exponential Fourier Series?</a></li>
@@ -1180,15 +1084,15 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-fourier-series">Exponential Fourier Series?</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-pulse-width-on-frequency-spectra">Effect of pulse width on frequency spectra</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-effect-of-pulse-width-on-frequency-spectra">Example 4: Effect of pulse width on frequency spectra</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#w-2">w = 2</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#w-5">w = 5</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#w-10">w = 10</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#implications">Implications</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4">Example 4</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5">Example 5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#proof">Proof!</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pulse-with-unit-area">Pulse with unit area</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#new-coefficents">New coefficents</a></li>
@@ -1199,36 +1103,16 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-in-periodic-signals">Power in Periodic Signals</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parseval-s-theorem">Parseval’s Theorem</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rms-power">RMS Power</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5">Example 5</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#power-spectrum">Power Spectrum</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#total-harmonic-distortion">Total Harmonic Distortion</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#thd-defined">THD Defined</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#computation-of-thd">Computation of THD</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steady-state-response-of-an-lti-system-to-a-periodic-signal">Steady-State Response of an LTI System to a Periodic Signal</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#by-superposition">By superposition</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implications-of-this-important-result">Implications of this important result</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#illustration">Illustration</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#further-explanation">Further explanation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering">Filtering</a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#answers">Answers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-3-3-takeways">Unit 3.3: Takeways</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-time">Next Time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#answer-to-example-3">Answer to example 3</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-dc-component">Solution: DC component!</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Harmonic coefficients!</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Exponential Fourier Series!</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-5">Solution 5</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p">P</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p-for-k-odd">P for k odd</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p-after-eliminating-sine">P after eliminating sine</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-p-from-f-t">Check P from f(t)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Harmonic coefficients!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Exponential Fourier Series!</a></li>
 </ul>
 </li>
 </ul>
