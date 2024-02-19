@@ -44,12 +44,6 @@ An annotatable worksheet for this presentation is available as {ref}`ws4`.
 * {ref}`fs3:line-spectra`
 * {ref}`examples18`
 
-+++ {"slideshow": {"slide_type": "notes"}}
-
-## Harmonic frequencies
-
-In response to a Student query, I have given a little more information on {ref}`Harmonic-frequencies` in the FAQs.
-
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (fs3:fundamental)=
@@ -70,7 +64,7 @@ The **fundamental frequency** is $\omega = \Omega_0 = 2 \pi f_0$ or, equivalentl
 (fs3:harmonics)=
 ## Harmonic frequencies
 
-*Harmonic frquencies* (or *Harmonics*) are simply integer multiples of the fundamental frequency $\Omega_0$.
+*Harmonic frquencies* (or *harmonics*) are simply integer multiples of the fundamental frequency $\Omega_0$.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
