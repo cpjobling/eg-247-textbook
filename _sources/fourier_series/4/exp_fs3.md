@@ -304,7 +304,7 @@ as your starting point.
 (ex19.2)=
 ### Example 7: Power Spectrum
 
-Compute and display the power spectrum for the signal of {ref}`ex19.1`.
+Compute and display the power spectrum for the signal of {ref}`ex:19.1`.
 
 ```{code-cell}
 ---
