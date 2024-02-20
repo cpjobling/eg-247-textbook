@@ -461,7 +461,7 @@ cd ../matlab
 R = 8.2e3; % 8.2 kOhm
 C = 10e-9; % 10 nF
 a = (1/(R*C)); % filter coefficient
-K = 1 % replace wthis value with the value computed in Ex 19.5(b)(iv)
+K = 1 % replace wthis value with the value computed in Exercise 10(b)(iv)
 Hs = tf(a^2,[1 3*a a^2])
 bode(Hs),grid
 ex19_5
