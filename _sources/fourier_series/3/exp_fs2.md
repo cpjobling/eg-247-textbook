@@ -64,7 +64,7 @@ The **fundamental frequency** is $\omega = \Omega_0 = 2 \pi f_0$ or, equivalentl
 (fs3:harmonics)=
 ## Harmonic frequencies
 
-*Harmonic frquencies* (or *harmonics*) are simply integer multiples of the fundamental frequency $\Omega_0$.
+*Harmonic frequencies* (or *harmonics*) are simply integer multiples of the fundamental frequency $\Omega_0$.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -591,7 +591,7 @@ $$C_k = \frac{1}{2\pi}\int_{-\pi/w}^{\pi/w} Ae^{-jk\theta}\,d\theta = \frac{A}{2
 
 ### Solution: DC component!
 
-$$C_0 = \left.\frac{A}{2\pi}\,\Omega_0 t\,\right|_{-\pi/w}^{\pi/w} = \frac{A}{2\pi}\left(\frac{\pi}{w}+\frac{\pi}{w}\right)$$
+$$C_0 = \left.\frac{A}{2\pi}\,\theta\,\right|_{-\pi/w}^{\pi/w} = \frac{A}{2\pi}\left(\frac{\pi}{w}+\frac{\pi}{w}\right)$$
 
 or
 
