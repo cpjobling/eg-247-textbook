@@ -59,11 +59,11 @@ The recurrent rectangular pulse is used extensively in digital communication sys
 
 Given
 
-$$C_k = \frac{1}{2\pi}\int_{-\pi}^{\pi} f(\Omega_0 t)e^{-jk(\Omega_0 t)}\,d(\Omega_0 t)$$
+$$C_k = \frac{1}{2\pi}\int_{-\pi}^{\pi} f(\theta) e^{-jk\theta}\,d\theta$$
 
 * Is the function **even** or **odd**?
 * Does the signal have **half-wave symmetry**?
-* What are the cosequencies of symmetry on the form of the coefficients $C_k$?
+* What are the consequencies of symmetry on the form of the coefficients $C_k$?
 * What function do we actually need to integrate to compute $C_k$?
 
 +++ {"slideshow": {"slide_type": "notes"}}

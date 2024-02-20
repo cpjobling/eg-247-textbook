@@ -65,7 +65,7 @@ assets: FORCE
 	homework \
 	introduction \
 	labs \
-	laplace_transform \
+	transfer_functions \
 	setup \
 	worksheets \
 	_assets

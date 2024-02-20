@@ -44,12 +44,6 @@ An annotatable worksheet for this presentation is available as {ref}`ws4`.
 * {ref}`fs3:line-spectra`
 * {ref}`examples18`
 
-+++ {"slideshow": {"slide_type": "notes"}}
-
-## Harmonic frequencies
-
-In response to a Student query, I have given a little more information on {ref}`Harmonic-frequencies` in the FAQs.
-
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (fs3:fundamental)=
@@ -70,7 +64,7 @@ The **fundamental frequency** is $\omega = \Omega_0 = 2 \pi f_0$ or, equivalentl
 (fs3:harmonics)=
 ## Harmonic frequencies
 
-*Harmonic frquencies* (or *Harmonics*) are simply integer multiples of the fundamental frequency $\Omega_0$.
+*Harmonic frequencies* (or *harmonics*) are simply integer multiples of the fundamental frequency $\Omega_0$.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -186,7 +180,7 @@ $$C_k = \frac{1}{2\pi}\int_{-\pi}^{\pi} f(\theta)e^{-jk\theta}\,d\theta$$
 
 * Is the function **even** or **odd**?
 * Does the signal have **half-wave symmetry**?
-* What are the cosequencies of symmetry on the form of the coefficients $C_k$?
+* What are the consequencies of symmetry on the form of the coefficients $C_k$?
 * What function do we actually need to integrate to compute $C_k$?
 
 +++ {"slideshow": {"slide_type": "notes"}}
@@ -591,13 +585,13 @@ $$C_k = \frac{1}{2\pi}\int_{-\pi}^{\pi} f(t)e^{-jk\theta}\,d\theta$$
 * What are the cosequencies of symmetry on the form of the coefficients $C_k$? $C_k$ will be real values. Trig. equivalent no sine terms.
 * What function do we actually need to integrate to compute $C_k$? We only need to integrate between the limits $-\pi/w \to \pi/w$
 
-$$C_k = \frac{1}{2\pi}\int_{-\pi/w}^{\pi/w} Ae^{-jk(\Omega_0 t)}\,d(\Omega_0 t) = \frac{A}{2\pi}\int_{-\pi/w}^{\pi/w} e^{-jk(\Omega_0 t)}\,d(\Omega_0 t) $$
+$$C_k = \frac{1}{2\pi}\int_{-\pi/w}^{\pi/w} Ae^{-jk\theta}\,d\theta = \frac{A}{2\pi}\int_{-\pi/w}^{\pi/w} e^{-jk\theta}\,d\theta $$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
 ### Solution: DC component!
 
-$$C_0 = \left.\frac{A}{2\pi}\,\Omega_0 t\,\right|_{-\pi/w}^{\pi/w} = \frac{A}{2\pi}\left(\frac{\pi}{w}+\frac{\pi}{w}\right)$$
+$$C_0 = \left.\frac{A}{2\pi}\,\theta\,\right|_{-\pi/w}^{\pi/w} = \frac{A}{2\pi}\left(\frac{\pi}{w}+\frac{\pi}{w}\right)$$
 
 or
 
