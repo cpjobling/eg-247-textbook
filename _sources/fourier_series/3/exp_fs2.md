@@ -585,7 +585,7 @@ $$C_k = \frac{1}{2\pi}\int_{-\pi}^{\pi} f(t)e^{-jk\theta}\,d\theta$$
 * What are the cosequencies of symmetry on the form of the coefficients $C_k$? $C_k$ will be real values. Trig. equivalent no sine terms.
 * What function do we actually need to integrate to compute $C_k$? We only need to integrate between the limits $-\pi/w \to \pi/w$
 
-$$C_k = \frac{1}{2\pi}\int_{-\pi/w}^{\pi/w} Ae^{-jk(\Omega_0 t)}\,d(\Omega_0 t) = \frac{A}{2\pi}\int_{-\pi/w}^{\pi/w} e^{-jk(\Omega_0 t)}\,d(\Omega_0 t) $$
+$$C_k = \frac{1}{2\pi}\int_{-\pi/w}^{\pi/w} Ae^{-jk\theta}\,d\theta = \frac{A}{2\pi}\int_{-\pi/w}^{\pi/w} e^{-jk\theta}\,d\theta $$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
