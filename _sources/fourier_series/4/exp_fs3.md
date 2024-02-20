@@ -232,6 +232,7 @@ $$H(j\omega) = \frac{\omega_c}{j\omega + \omega_c}.$$
 Let us say that we wish to compute the attenuation and phase of this filter at $\omega = \Omega_0$.
 
 To compute the *magnitude*:
+
 $$\begin{eqnarray*}
 \left|H(j\Omega_0)\right| &=& \left|\frac{\omega_c}{j\Omega_0 + \omega_c}\right| \\
 & = & \frac{\omega_c}{\sqrt{\Omega_0^2 + \omega_c^2}}
@@ -242,7 +243,9 @@ We note that is $\left|H(j\Omega_0\right| \lt 1$ so the filter will *attenuate* 
 $$D_k = C_k\left|H(jk\Omega_0)\right|   < C_k.$$
 
 The phase will be given by 
+
 $$\phi = \angle H(j\omega) = \tan^{-1}\left(\frac{\Im \left( H(j\omega)\right)}{\Re \left(H(j(\omega)\right)}\right)$$
+
 where
 $$\begin{eqnarray*}
 H(jk\Omega_0) &=& \frac{\omega_c^2}{(k\Omega_0)^2 + \omega_c^2} - j\frac{k\Omega_0\omega_c}{(k\Omega_0)^2 + \omega_c^2}\\
@@ -252,6 +255,7 @@ H(jk\Omega_0) &=& \frac{\omega_c^2}{(k\Omega_0)^2 + \omega_c^2} - j\frac{k\Omega
 $$
 
 Phases are additive so
+
 $$\angle D_k = \angle C_k + \phi_k.$$
 
 By doing such analysis, we can examine the effect of a filter on a periodic signal, just by considering how the coefficients of the harmonic terms are changed (attenuated in magnitude and shifted in phase) by the filter.
