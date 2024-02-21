@@ -169,7 +169,7 @@ Computation of THD from the signal power spectrum
 (fse4:ss_resp)=
 ## Steady-State Response of a Continuous-Time LTI System to a Periodic Signal
 
-As shown in [](https://cpjobling.github.io/eg-150-textbook/lti_systems/lti2.html#eigenfunctions-of-continuous-time-lti-systems, the response of a continuous-time LTI system with impulse response $h(t)$ to a complex exponential signal $e^{st}$ is the same complex exponential multiplied by a complex gain: $y(t) = H(s)e^{st}$, where:
+As shown in [Eigenfunctions of Continuous-Time LTI Systems](https://cpjobling.github.io/eg-150-textbook/lti_systems/lti2.html#eigenfunctions-of-continuous-time-lti-systems), the response of a continuous-time LTI system with impulse response $h(t)$ to a complex exponential signal $e^{st}$ is the same complex exponential multiplied by a complex gain: $y(t) = H(s)e^{st}$, where:
 
 $$H(s)=\int_{-\infty}^{\infty}h(\tau)e^{-s\tau}\,d\tau.$$ (fse4:h_s)
 
