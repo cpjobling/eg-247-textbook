@@ -597,7 +597,8 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w"> </span><span class="p">[</span><span class="n">f</span><span class="p">,</span><span class="n">omega</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">pulse_fs</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="mi">15</span><span class="p">);</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span>
+<span class="p">[</span><span class="n">f</span><span class="p">,</span><span class="n">omega</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">pulse_fs</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="mi">15</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -606,14 +607,14 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">stem</span><span class="p">(</span><span class="n">omega</span><span class="p">,</span><span class="nb">abs</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.^</span><span class="mi">2</span><span class="p">)</span>
-<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Power Spectrum for pulse width T/8&#39;</span><span class="p">)</span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Power Spectrum for pulse width T/2&#39;</span><span class="p">)</span>
 <span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;|C_k|^2&#39;</span><span class="p">)</span>
 <span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;\Omega_0 [rad/s]&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Note that most of the power is concentrated at DC and in the first seven harmonic components. That is in the frequency range <span class="math notranslate nohighlight">\([-14\pi/T,+14\pi/T]\)</span> rad/s.</p>
+<p>Note that most of the power is concentrated at DC and in the first five harmonic components. That is in the frequency range <span class="math notranslate nohighlight">\([-14\pi/T,+14\pi/T]\)</span> rad/s.</p>
 </section>
 <section id="total-harmonic-distortion">
 <h3>Total Harmonic Distortion<a class="headerlink" href="#total-harmonic-distortion" title="Permalink to this heading">#</a></h3>
@@ -677,7 +678,7 @@ document.write(`
 </section>
 <section id="steady-state-response-of-an-lti-system-to-a-periodic-signal">
 <h2>Steady-State Response of an LTI System to a Periodic Signal<a class="headerlink" href="#steady-state-response-of-an-lti-system-to-a-periodic-signal" title="Permalink to this heading">#</a></h2>
-<p>The response of an LTI system with impulse response <span class="math notranslate nohighlight">\(h(t)\)</span> to a complex exponential signal <span class="math notranslate nohighlight">\(e^{st}\)</span> is the same complex exponential multiplied by a complex gain: <span class="math notranslate nohighlight">\(y(t) = H(s)e^{st}\)</span>, where:</p>
+<p>As shown in <a class="reference external" href="https://cpjobling.github.io/eg-150-textbook/lti_systems/lti2.html#eigenfunctions-of-continuous-time-lti-systems">Eigenfunctions of Continuous-Time LTI Systems</a>, the response of a continuous-time LTI system with impulse response <span class="math notranslate nohighlight">\(h(t)\)</span> to a complex exponential signal <span class="math notranslate nohighlight">\(e^{st}\)</span> is the same complex exponential multiplied by a complex gain: <span class="math notranslate nohighlight">\(y(t) = H(s)e^{st}\)</span>, where:</p>
 <div class="math notranslate nohighlight">
 \[H(s)=\int_{-\infty}^{\infty}h(\tau)e^{-s\tau}\,d\tau.\]</div>
 <p>In particular, for <span class="math notranslate nohighlight">\(s = j\omega\)</span>, the output is simply <span class="math notranslate nohighlight">\(y(t)=H(j\omega)e^{j\omega t}\)</span>.</p>

@@ -127,21 +127,22 @@ format compact
 slideshow:
   slide_type: subslide
 ---
-A = 1; w = 8; [f,omega] = pulse_fs(A,w,15);
+A = 1; w = 2; 
+[f,omega] = pulse_fs(A,w,15);
 ```
 
 Power spectrum
 
 ```{code-cell}
 stem(omega,abs(f).^2)
-title('Power Spectrum for pulse width T/8')
+title('Power Spectrum for pulse width T/2')
 ylabel('|C_k|^2')
 xlabel('\Omega_0 [rad/s]')
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-Note that most of the power is concentrated at DC and in the first seven harmonic components. That is in the frequency range $[-14\pi/T,+14\pi/T]$ rad/s.
+Note that most of the power is concentrated at DC and in the first five harmonic components. That is in the frequency range $[-14\pi/T,+14\pi/T]$ rad/s.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -231,7 +232,7 @@ compute the total harmonic distortion represented by the first 7 harmonics of th
 
 ## Steady-State Response of an LTI System to a Periodic Signal
 
-The response of an LTI system with impulse response $h(t)$ to a complex exponential signal $e^{st}$ is the same complex exponential multiplied by a complex gain: $y(t) = H(s)e^{st}$, where:
+As shown in [Eigenfunctions of Continuous-Time LTI Systems](https://cpjobling.github.io/eg-150-textbook/lti_systems/lti2.html#eigenfunctions-of-continuous-time-lti-systems), the response of a continuous-time LTI system with impulse response $h(t)$ to a complex exponential signal $e^{st}$ is the same complex exponential multiplied by a complex gain: $y(t) = H(s)e^{st}$, where:
 
 $$H(s)=\int_{-\infty}^{\infty}h(\tau)e^{-s\tau}\,d\tau.$$
 

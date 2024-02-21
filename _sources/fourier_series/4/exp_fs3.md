@@ -27,7 +27,7 @@ In {ref}`exp_fs2` we saw that we could represent continuous-time periodic wavefo
 
 In this section we discuss how we can use these line spectra for the calculation of power for signals with harmonics, computation of total harmanic distortion and we conclude with an introduction to filters.
 
-+++
++++ {"slideshow": {"slide_type": "notes"}}
 
 ## Colophon
 
@@ -169,7 +169,7 @@ Computation of THD from the signal power spectrum
 (fse4:ss_resp)=
 ## Steady-State Response of a Continuous-Time LTI System to a Periodic Signal
 
-As shown in {ref}`eigenfunctions_of_continuous_time_LTI_systems`, the response of a continuous-time LTI system with impulse response $h(t)$ to a complex exponential signal $e^{st}$ is the same complex exponential multiplied by a complex gain: $y(t) = H(s)e^{st}$, where:
+As shown in [Eigenfunctions of Continuous-Time LTI Systems](https://cpjobling.github.io/eg-150-textbook/lti_systems/lti2.html#eigenfunctions-of-continuous-time-lti-systems), the response of a continuous-time LTI system with impulse response $h(t)$ to a complex exponential signal $e^{st}$ is the same complex exponential multiplied by a complex gain: $y(t) = H(s)e^{st}$, where:
 
 $$H(s)=\int_{-\infty}^{\infty}h(\tau)e^{-s\tau}\,d\tau.$$ (fse4:h_s)
 
@@ -261,7 +261,7 @@ $$\angle D_k = \angle C_k + \phi_k.$$
 
 By doing such analysis, we can examine the effect of a filter on a periodic signal, just by considering how the coefficients of the harmonic terms are changed (attenuated in magnitude and shifted in phase) by the filter.
 
-+++
++++ {"slideshow": {"slide_type": "slide"}}
 
 (examples19)=
 ## Examples
@@ -321,7 +321,7 @@ format compact
 slideshow:
   slide_type: subslide
 ---
-A = 1; w = 8; [f,omega] = pulse_fs(A,w,15);
+A = 1; w = 2; [f,omega] = pulse_fs(A,w,15);
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -350,14 +350,14 @@ slideshow:
   slide_type: subslide
 ---
 stem(omega,abs(f).^2)
-title('Power Spectrum for pulse width T/8')
+title('Power Spectrum for pulse width T/2')
 ylabel('|C_k|^2')
 xlabel('\Omega_0 [rad/s]')
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-Note that most of the power is concentrated at DC and in the first seven harmonic components. That is in the frequency range $[-14\pi/T,+14\pi/T]$ rad/s.
+Note that most of the power is concentrated at DC and in the first five harmonic components.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -399,7 +399,7 @@ Use MATLAB to complete this example.
 
 
 
-a) A triangle waveform $x(t)$ with frequency $\Omega_0 = 2\pi/T$ is shown in {numref}`fig_ex19.1a`. 
+a) A triangle waveform $x(t)$ with frequency $\Omega_0 = 2\pi/T$ is shown below 
 
 :::{figure-md} fig_ex19.1a
 <img src="pictures/ex19_5.png" alt="A triangle waveform" width="60%">
