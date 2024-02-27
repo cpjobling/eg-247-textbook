@@ -75,7 +75,7 @@ Let $\tilde x(t)$ be the Fourier series of the rectangular pulse train shown bel
 
 In the [previous section](../../fourier_series/3/exp_fs2) we used
 
-$$C_k = \frac{1}{2\pi}\int_{-\pi/w}^{\pi/w} Ae^{-jk(\Omega_0 t)}\,d(\Omega_0 t) = \frac{A}{2\pi}\int_{-\pi/w}^{\pi/w} e^{-jk(\Omega_0 t)}\,d(\Omega_0 t) $$
+$$C_k = \frac{1}{2\pi}\int_{-\pi/w}^{\pi/w} Ae^{-jk(\Omega_0 t)}\,d(\Omega_0 t) = \frac{A}{2\pi}\int_{-\pi/w}^{\pi/w} e^{-jk(\Omega_0 t)}\,d(\Omega_0 t) = \frac{A}{2\pi}\int_{-\pi/w}^{\pi/w} e^{-jk\theta}\,d\theta$$
 
 to compute the line spectra.
 
@@ -168,6 +168,14 @@ $$T C_k = T\eta \operatorname{sinc}\left(k\eta\right)=2t_0\operatorname{sinc}\le
 Then the normalized coefficents $T C_k$ of the rectangular wave is a sinc envelope with constant amplitude at the origin equal to $2t_0$, and a zero crossing at fixed frequency $\pi/t_0$ rad/s, both independent of $T$.
 
 Plots follow (use [duty_cycle.mlx](https://cpjobling.github.io/eg-247-textbook/fourier_transform/matlab/duty_cycle.mlx) to reproduce).
+
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
+open duty_cycle
+```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
