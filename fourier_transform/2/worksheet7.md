@@ -110,6 +110,7 @@ $$\delta(t) \Leftrightarrow 1$$
 slideshow:
   slide_type: fragment
 ---
+format compact 
 syms t omega omega_0 t0;
 u0(t) = heaviside(t); % useful utility function
 fourier(dirac(t))

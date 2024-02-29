@@ -154,6 +154,7 @@ $$\delta(t) \Leftrightarrow 1$$
 slideshow:
   slide_type: subslide
 ---
+format compact
 syms t;
 fourier(dirac(t))
 ```
