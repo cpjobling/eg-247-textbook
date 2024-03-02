@@ -21,7 +21,7 @@ kernelspec:
 
 ## Colophon
 
-An annotatable worksheet for this presentation is available as {ref}`ws7`.
+An annotatable worksheet for this presentation is available as {ref}`ws8`.
 
 * The source code for this page is [fourier_transform/3/ft3.md](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_transform/3/ft3.md).
 
@@ -51,7 +51,7 @@ In this section we will apply what we have learned about Fourier transforms to s
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### System response from system impulse response
+### System response from the system impulse response
 
 Recall that the convolution integral of a system with impulse response $h(t)$ and input $u(t)$ is
 
@@ -144,6 +144,7 @@ Karris example 8.8: for the linear network shown below, the impulse response is 
 slideshow:
   slide_type: subslide
 ---
+format compact; % reduce whitesace for textbook presentation
 syms t w
 U1 = fourier(2*heaviside(t),t,w)
 ```

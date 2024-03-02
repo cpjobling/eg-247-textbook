@@ -21,7 +21,7 @@ kernelspec:
 
 ## Colophon
 
-An annotatable worksheet for this presentation is available as {ref}`ws8`.
+An annotatable worksheet for this presentation is available as {ref}`ws9`.
 
 * The source code for this page is [fourier_transform/4/ft4.md](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_transform/4/ft4.md).
 
@@ -118,7 +118,7 @@ An ideal frequency-selective filter is a system that let's the frequency compone
 
 ### Motivating example
 
-See the video and script on [*Canvas Week 7*](https://canvas.swansea.ac.uk/courses/25319/pages/motivating-example-filter-design-using-matlab?module_item_id=1418941).
+See the video and script on [*Canvas Week 6*](https://canvas.swansea.ac.uk/courses/44853/pages/motivating-example-filter-design-using-matlab?module_item_id=2484097).
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
