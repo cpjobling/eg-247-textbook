@@ -154,7 +154,7 @@ $$\left| H_B(\omega ) \right| = \frac{1}{\left(1 + \left(\frac{\omega }{\omega _
   
   for any $N$
 
-More about the Butterworth filter: [Wikipedia Article](https://en.wikipedia.org/wiki/Butterworth_filter)
+More about the Butterworth filter: [Wikipedia Article](https://en.wikipedia.org/wiki/Butterworth_filter).
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -556,4 +556,4 @@ $$H_{\mathrm{bp}}(\omega) = H_{\mathrm{hp}}(\omega)H_{\mathrm{lp}}(\omega)$$
 
 ## Solutions
 
-Solutions to Examples 5-9 are captured as a PenCast which you will find attached to the Worked Solutions section of the [Week 7 Section](https://canvas.swansea.ac.uk/courses/36921/pages/worked-solutions-to-selected-week-7-problems?module_item_id=1964855) of the Canvas course site or here [filters2.pdf](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/filters2.pdf)
+Solutions to Examples 5-9 are captured as a PenCast which you will find attached to the Worked Solutions section of the [Week 6 Section](https://canvas.swansea.ac.uk/courses/44853/pages/worked-solutions-to-selected-week-6-problems-2?module_item_id=2484101) of the Canvas course site or here [filters2.pdf](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/filters2.pdf)
