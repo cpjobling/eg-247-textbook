@@ -104,36 +104,7 @@ Karris example 8.8: for the linear network shown below, the impulse response is 
 
 ![Example 1](./pictures/example1.png)
 
-+++ {"slideshow": {"slide_type": "notes"}}
-
-#### Solution to example 1
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
+Solutions see: {ref}`solutions_ft3`
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -233,37 +204,6 @@ Karris example 8.9: for the circuit shown below, use the Fourier transfrom metho
 
 ![Example 2](./pictures/example2-small.png)
 
-+++ {"slideshow": {"slide_type": "notes"}}
-
-#### Solution of example 2
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 #### Matlab verification of example 2
@@ -343,37 +283,6 @@ where $v_{\mathrm{in}}=3e^{-2t}$. Use the Fourier transform method, and the syst
 
 ![Example 3](./pictures/example3-small.png)
 
-+++ {"slideshow": {"slide_type": "notes"}}
-
-#### Solution to example 3
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 #### Matlab verification of example 3
@@ -451,37 +360,6 @@ $$\int\frac{1}{a^2 + x^2}\,dx = \frac{1}{a}\arctan\frac{x}{a}+C.$$
 
 ![Example 4](./pictures/example4-small.png)
 
-+++ {"slideshow": {"slide_type": "notes"}}
-
-#### Solution to example 4
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 #### Matlab verification of example 4
@@ -543,7 +421,9 @@ See [ft3_ex4.m](https://cpjobling.github.io/eg-247-textbook/fourier_transform/ma
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-## Solutions
+(solutions_ft3)=
+
+## Worked Solutions
 
 * Example 1: [ft3-ex1.pdf](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/ft3-ex1.pdf)
 
@@ -552,3 +432,13 @@ See [ft3_ex4.m](https://cpjobling.github.io/eg-247-textbook/fourier_transform/ma
 * Example 3: [ft3-ex3.pdf](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/ft3-ex4.pdf)
 
 * Example 3: [ft3-ex4.pdf](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/ft3-ex4.pdf)
+
+## MATLAB Solutions
+
+* Example 1: [ft3_ex1.mlx](https://cpjobling.github.io/eg-247-textbook/fourier_transform/matlab/ft3_ex1.mlx)
+
+* Example 2:
+
+* Example 3:
+
+* Example 4:
