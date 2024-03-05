@@ -85,6 +85,11 @@ If we know the impulse resonse $h(t)$, we can compute the system response $g(t)$
 Karris example 8.8: for the linear network shown below, the impulse response is $h(t)=3e^{-2t}$. Use the Fourier transform to compute the response $y(t)$ when the input $u(t)=2[u_0(t)-u_0(t-3)]$. Verify the result with MATLAB.
 
 ![Example 1](./pictures/example1.png)
+
+Worked solution: [ft3-ex1.pdf](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/ft3-ex1.pdf).
+
+MATLAB solution: [ft3_ex1.mlx](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/ft3_ex1.mlx).
+
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "notes"} -->
@@ -121,6 +126,12 @@ Karris example 8.8: for the linear network shown below, the impulse response is 
 <!-- #region slideshow={"slide_type": "subslide"} -->
 #### Matlab verification of example 1
 <!-- #endregion -->
+
+```matlab slideshow={"slide_type": "subslide"}
+format compact
+cd ../matlab
+open ft3_ex1
+```
 
 ```matlab slideshow={"slide_type": "subslide"}
 syms t w
@@ -166,7 +177,7 @@ grid
 ```
 
 <!-- #region slideshow={"slide_type": "notes"} -->
-See [ft3_ex1.m](https://cpjobling.github.io/eg-247-textbook/fourier_transform/matlab/ft3_ex1.m)
+See [ft3_ex1.mlx](https://cpjobling.github.io/eg-247-textbook/fourier_transform/matlab/ft3_ex1.mlx)
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "notes"} -->
