@@ -484,11 +484,11 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-verification-of-example-1">Matlab verification of example 1</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-verification-of-example-1">MATLAB verification of example 1</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-verification-of-example-2">Matlab verification of example 2</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-verification-of-example-2">MATLAB verification of example 2</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3</a><ul class="nav section-nav flex-column">
@@ -496,7 +496,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4">Example 4</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-verification-of-example-4">Matlab verification of example 4</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-verification-of-example-4">MATLAB verification of example 4</a></li>
 </ul>
 </li>
 </ul>
@@ -571,11 +571,11 @@ document.write(`
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h2>
 <section id="example-1">
 <h3>Example 1<a class="headerlink" href="#example-1" title="Permalink to this heading">#</a></h3>
-<p>Karris example 8.8: for the linear network shown below, the impulse response is <span class="math notranslate nohighlight">\(h(t)=3e^{-2t}\)</span>. Use the Fourier transform to compute the response <span class="math notranslate nohighlight">\(y(t)\)</span> when the input <span class="math notranslate nohighlight">\(u(t)=2[u_0(t)-u_0(t-3)]\)</span>. Verify the result with MATLAB.</p>
+<p>Karris example 8.8: for the linear network shown below, the impulse response is <span class="math notranslate nohighlight">\(h(t)=3e^{-2t}u_0(t)\)</span>. Use the Fourier transform to compute the response <span class="math notranslate nohighlight">\(y(t)\)</span> when the input <span class="math notranslate nohighlight">\(u(t)=2[u_0(t)-u_0(t-3)]\)</span>. Verify the result with MATLAB.</p>
 <p><img alt="Example 1" src="../../_images/example1.png" /></p>
 <p>Solutions see: <a class="reference internal" href="#solutions-ft3"><span class="std std-ref">Worked Solutions</span></a></p>
 <section id="matlab-verification-of-example-1">
-<h4>Matlab verification of example 1<a class="headerlink" href="#matlab-verification-of-example-1" title="Permalink to this heading">#</a></h4>
+<h4>MATLAB verification of example 1<a class="headerlink" href="#matlab-verification-of-example-1" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"> </span><span class="c">% reduce whitesace for textbook presentation</span>
@@ -670,29 +670,28 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Plot result</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ezplot</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Solution to Example 1&#39;</span><span class="p">)</span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;y(y)&#39;</span><span class="p">)</span>
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;t [s]&#39;</span><span class="p">)</span>
-<span class="nb">grid</span><span class="w"> </span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/a14208426bfe585188de54445566a3e303749493745284968f02ae408a80f9bf.png" src="../../_images/a14208426bfe585188de54445566a3e303749493745284968f02ae408a80f9bf.png" />
-</div>
-</div>
-<p>See <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/matlab/ft3_ex1.m">ft3_ex1.m</a></p>
-<p>Result is equivalent to:</p>
+<p>The result is equivalent to:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>y = 3*heaviside(t) - 3*heaviside(t - 3) + 3*heaviside(t - 3)*exp(6 - 2*t) - 3*exp(-2*t)*heaviside(t)
 </pre></div>
 </div>
 <p>Which after gathering terms gives</p>
 <div class="math notranslate nohighlight">
 \[y(t) = 3(1 - 3e^{-2t})u_0(t) - 3(1 - 3e^{-2(t-3)})u_0(t-3)\]</div>
+<p>Plot result</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">fplot</span><span class="p">(</span><span class="n">y</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Solution to Example 1&#39;</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;y(t)&#39;</span><span class="p">)</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;t [s]&#39;</span><span class="p">)</span>
+<span class="nb">grid</span><span class="w"> </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/85d750835935be82d92283d860373147585ccea848c00309d61f7f78d4547bbf.png" src="../../_images/85d750835935be82d92283d860373147585ccea848c00309d61f7f78d4547bbf.png" />
+</div>
+</div>
 </section>
 </section>
 <section id="example-2">
@@ -700,7 +699,7 @@ document.write(`
 <p>Karris example 8.9: for the circuit shown below, use the Fourier transfrom method, and the system function <span class="math notranslate nohighlight">\(H(\omega)\)</span> to compute <span class="math notranslate nohighlight">\(V_L(t)\)</span>. Assume <span class="math notranslate nohighlight">\(i_L(0^-)=0\)</span>. Verify the result with Matlab.</p>
 <p><img alt="Example 2" src="../../_images/example2-small.png" /></p>
 <section id="matlab-verification-of-example-2">
-<h4>Matlab verification of example 2<a class="headerlink" href="#matlab-verification-of-example-2" title="Permalink to this heading">#</a></h4>
+<h4>MATLAB verification of example 2<a class="headerlink" href="#matlab-verification-of-example-2" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">w</span>
@@ -734,12 +733,12 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Vout</span><span class="p">=</span><span class="nb">simplify</span><span class="p">(</span><span class="n">H</span><span class="o">*</span><span class="n">Vin</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">V_L</span><span class="p">=</span><span class="nb">simplify</span><span class="p">(</span><span class="n">H</span><span class="o">*</span><span class="n">Vin</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vout =
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>V_L =
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(w*5i)/((2 + w*1i)*(3 + w*1i))
@@ -749,12 +748,12 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">vout</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">simplify</span><span class="p">(</span><span class="n">ifourier</span><span class="p">(</span><span class="n">Vout</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">t</span><span class="p">))</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">v_L</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">simplify</span><span class="p">(</span><span class="n">ifourier</span><span class="p">(</span><span class="n">V_L</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">t</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>vout =
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>v_L =
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-(5*exp(-3*t)*(sign(t) + 1)*(2*exp(t) - 3))/2
@@ -762,29 +761,28 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Plot result</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ezplot</span><span class="p">(</span><span class="n">vout</span><span class="p">)</span>
-<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Solution to Example 2&#39;</span><span class="p">)</span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;v_{out}(t) [V]&#39;</span><span class="p">)</span>
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;t [s]&#39;</span><span class="p">)</span>
-<span class="nb">grid</span><span class="w"> </span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/528392f20696cf69667e918878f66154472fc2986d70ba20f946a01c7d698105.png" src="../../_images/528392f20696cf69667e918878f66154472fc2986d70ba20f946a01c7d698105.png" />
-</div>
-</div>
-<p>See <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/matlab/ft3_ex2.m">ft3_ex2.m</a></p>
-<p>Result is equivalent to:</p>
+<p>The result is equivalent to:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>vout = -5*exp(-3*t)*heaviside(t)*(2*exp(t) - 3)
 </pre></div>
 </div>
 <p>Which after gathering terms gives</p>
 <div class="math notranslate nohighlight">
 \[v_{\mathrm{out}} = 5\left(3e^{-3t} - 2e^{-2t}\right)u_0(t)\]</div>
+<p>Plot result</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">fplot</span><span class="p">(</span><span class="n">v_L</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Solution to Example 2&#39;</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;v_L(t) [V]&#39;</span><span class="p">)</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;t [s]&#39;</span><span class="p">)</span>
+<span class="nb">grid</span><span class="w"> </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/9ee3f33f6d0d68adc23396dea1032f1baba5f9fc01229dd082d79d3cb0c47290.png" src="../../_images/9ee3f33f6d0d68adc23396dea1032f1baba5f9fc01229dd082d79d3cb0c47290.png" />
+</div>
+</div>
 </section>
 </section>
 <section id="example-3">
@@ -857,29 +855,28 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Plot result</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ezplot</span><span class="p">(</span><span class="n">vout</span><span class="p">)</span>
-<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Solution to Example 3&#39;</span><span class="p">)</span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;v_{out}(t) [V]&#39;</span><span class="p">)</span>
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;t [s]&#39;</span><span class="p">)</span>
-<span class="nb">grid</span><span class="w"> </span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/109359c9611f40aacbebfa3445a2bc8789cf4b3d6cbb66413ba228646fba6470.png" src="../../_images/109359c9611f40aacbebfa3445a2bc8789cf4b3d6cbb66413ba228646fba6470.png" />
-</div>
-</div>
-<p>See <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/matlab/ft3_ex3.m">ft3_ex3.m</a></p>
-<p>Result is equiavlent to:</p>
+<p>The result is equiavlent to:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>15*exp(-4*t)*heaviside(t)*(exp(2*t) - 1)
 </pre></div>
 </div>
 <p>Which after gathering terms gives</p>
 <div class="math notranslate nohighlight">
 \[v_{\mathrm{out}}(t) = 15\left(e^{-2t} - e^{-4t}\right)u_0(t)\]</div>
+<p>Plot result</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">fplot</span><span class="p">(</span><span class="n">vout</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Solution to Example 3&#39;</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;vout(t) [V]&#39;</span><span class="p">)</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;t [s]&#39;</span><span class="p">)</span>
+<span class="nb">grid</span><span class="w"> </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/091d8e92890ede69fe29e559adb18691214ac49047e981a2bf56449b579467a6.png" src="../../_images/091d8e92890ede69fe29e559adb18691214ac49047e981a2bf56449b579467a6.png" />
+</div>
+</div>
 </section>
 </section>
 <section id="example-4">
@@ -890,7 +887,7 @@ document.write(`
 \[\int\frac{1}{a^2 + x^2}\,dx = \frac{1}{a}\arctan\frac{x}{a}+C.\]</div>
 <p><img alt="Example 4" src="../../_images/example4-small.png" /></p>
 <section id="matlab-verification-of-example-4">
-<h4>Matlab verification of example 4<a class="headerlink" href="#matlab-verification-of-example-4" title="Permalink to this heading">#</a></h4>
+<h4>MATLAB verification of example 4<a class="headerlink" href="#matlab-verification-of-example-4" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">w</span>
@@ -898,13 +895,14 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Calcuate energy from time function</p>
+<p>Calcuate energy from the time function</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Vr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">3</span><span class="o">*</span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
 <span class="n">R</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="n">Pr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Vr</span>^<span class="mi">2</span><span class="o">/</span><span class="n">R</span>
 <span class="n">Wr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">int</span><span class="p">(</span><span class="n">Pr</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">inf</span><span class="p">)</span>
+<span class="nb">double</span><span class="p">(</span><span class="n">Wr</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -921,9 +919,13 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9/4
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+    2.2500
+</pre></div>
 </div>
 </div>
-<p>Calculate using Parseval’s theorem</p>
+</div>
+<p>Calculate the energy using Parseval’s theorem</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Fw</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">fourier</span><span class="p">(</span><span class="n">Vr</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
@@ -957,6 +959,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Wr</span><span class="p">=</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">)</span><span class="o">*</span><span class="n">int</span><span class="p">(</span><span class="n">Fw2</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">inf</span><span class="p">)</span>
+<span class="nb">double</span><span class="p">(</span><span class="n">Wr</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -965,6 +968,10 @@ document.write(`
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(51607450253003931*pi)/72057594037927936
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+    2.2500
 </pre></div>
 </div>
 </div>
@@ -986,9 +993,9 @@ document.write(`
 <h2>MATLAB Solutions<a class="headerlink" href="#matlab-solutions" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Example 1: <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/matlab/ft3_ex1.mlx">ft3_ex1.mlx</a></p></li>
-<li><p>Example 2:</p></li>
-<li><p>Example 3:</p></li>
-<li><p>Example 4:</p></li>
+<li><p>Example 2: <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/matlab/ft3_ex2.mlx">ft3_ex2.mlx</a></p></li>
+<li><p>Example 3: <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/matlab/ft3_ex3.mlx">ft3_ex3.mlx</a></p></li>
+<li><p>Example 4: <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/matlab/ft3_ex4.mlx">ft3_ex4.mlx</a></p></li>
 </ul>
 </section>
 </section>
@@ -1066,11 +1073,11 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-verification-of-example-1">Matlab verification of example 1</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-verification-of-example-1">MATLAB verification of example 1</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-verification-of-example-2">Matlab verification of example 2</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-verification-of-example-2">MATLAB verification of example 2</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3</a><ul class="nav section-nav flex-column">
@@ -1078,7 +1085,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4">Example 4</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-verification-of-example-4">Matlab verification of example 4</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-verification-of-example-4">MATLAB verification of example 4</a></li>
 </ul>
 </li>
 </ul>

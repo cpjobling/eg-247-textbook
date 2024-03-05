@@ -16,7 +16,7 @@ jupyter:
 (ws8)=
 # Worksheet 8
 
-## To accompany Chapter 4.3 Fourier Transforms for Circuit and LTI Systems Analysis
+## To accompany Unit 4.3 Fourier Transforms for Circuit and LTI Systems Analysis
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "skip"} -->
@@ -82,7 +82,7 @@ If we know the impulse resonse $h(t)$, we can compute the system response $g(t)$
 <!-- #region slideshow={"slide_type": "subslide"} -->
 ### Example 1
 
-Karris example 8.8: for the linear network shown below, the impulse response is $h(t)=3e^{-2t}$. Use the Fourier transform to compute the response $y(t)$ when the input $u(t)=2[u_0(t)-u_0(t-3)]$. Verify the result with MATLAB.
+Karris example 8.8: for the linear network shown below, the impulse response is $h(t)=3e^{-2t}u_0(t)$. Use the Fourier transform to compute the response $y(t)$ when the input $u(t)=2[u_0(t)-u_0(t-3)]$. Verify the result with MATLAB.
 
 ![Example 1](./pictures/example1.png)
 
@@ -124,7 +124,7 @@ MATLAB solution: [ft3_ex1.mlx](https://cpjobling.github.io/eg-247-textbook/fouri
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "subslide"} -->
-#### Matlab verification of example 1
+#### MATLAB verification of example 1
 <!-- #endregion -->
 
 ```matlab slideshow={"slide_type": "subslide"}
@@ -164,8 +164,18 @@ y2 = subs(y1,t,t-3)
 y = y1 - y2
 ```
 
+<!-- #region slideshow={"slide_type": "notes"} -->
+The result is equivalent to:
+    
+    y = 3*heaviside(t) - 3*heaviside(t - 3) + 3*heaviside(t - 3)*exp(6 - 2*t) - 3*exp(-2*t)*heaviside(t)
+
+Which after gathering terms gives
+
+$$y(t) = 3(1 - 3e^{-2t})u_0(t) - 3(1 - 3e^{-2(t-3)})u_0(t-3)$$
+<!-- #endregion -->
+
 <!-- #region slideshow={"slide_type": "subslide"} -->
-Plot result
+Plot the result
 <!-- #endregion -->
 
 ```matlab slideshow={"slide_type": "subslide"}
@@ -180,22 +190,17 @@ grid
 See [ft3_ex1.mlx](https://cpjobling.github.io/eg-247-textbook/fourier_transform/matlab/ft3_ex1.mlx)
 <!-- #endregion -->
 
-<!-- #region slideshow={"slide_type": "notes"} -->
-Result is equivalent to:
-    
-    y = 3*heaviside(t) - 3*heaviside(t - 3) + 3*heaviside(t - 3)*exp(6 - 2*t) - 3*exp(-2*t)*heaviside(t)
-
-Which after gathering terms gives
-
-$$y(t) = 3(1 - 3e^{-2t})u_0(t) - 3(1 - 3e^{-2(t-3)})u_0(t-3)$$
-<!-- #endregion -->
-
 <!-- #region slideshow={"slide_type": "subslide"} -->
 ### Example 2
 
-Karris example 8.9: for the circuit shown below, use the Fourier transfrom method, and the system function $H(\omega)$ to compute $V_L(t)$. Assume $i_L(0^-)=0$. Verify the result with Matlab.
+Karris example 8.9: for the circuit shown below, use the Fourier transfrom method, and the system function $H(\omega)$ to compute $v_L(t)$. Assume $i_L(0^-)=0$. Verify the result with MATLAB.
 
 ![Example 2](./pictures/example2-small.png)
+
+Worked solution: [ft3-ex2.pdf](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/ft3-ex2.pdf).
+
+MATLAB solution: [ft3_ex2.mlx](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/ft3_ex2.mlx).
+
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "notes"} -->
@@ -230,7 +235,7 @@ Karris example 8.9: for the circuit shown below, use the Fourier transfrom metho
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "subslide"} -->
-#### Matlab verification of example 2
+#### MATLAB verification of example 2
 <!-- #endregion -->
 
 ```matlab slideshow={"slide_type": "subslide"}
@@ -243,39 +248,35 @@ Vin = fourier(5*exp(-3*t)*heaviside(t),t,w)
 ```
 
 ```matlab slideshow={"slide_type": "subslide"}
-Vout=simplify(H*Vin)
+V_L=simplify(H*Vin)
 ```
 
 ```matlab slideshow={"slide_type": "subslide"}
-vout = simplify(ifourier(Vout,w,t))
-```
-
-<!-- #region slideshow={"slide_type": "subslide"} -->
-Plot result
-<!-- #endregion -->
-
-```matlab slideshow={"slide_type": "subslide"}
-fplot(vout,[0,6])
-title('Solution to Example 2')
-ylabel('v_{out}(t) [V]')
-xlabel('t [s]')
-grid 
+v_L = simplify(ifourier(V_L,w,t))
 ```
 
 <!-- #region slideshow={"slide_type": "notes"} -->
-See [ft3_ex2.m](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_transform/matlab/ft3_ex2.m)
-<!-- #endregion -->
-
-<!-- #region slideshow={"slide_type": "notes"} -->
-Result is equivalent to:
+The result is equivalent to:
     
-    vout = -5*exp(-3*t)*heaviside(t)*(2*exp(t) - 3)
+    v_L = -5*exp(-3*t)*heaviside(t)*(2*exp(t) - 3)
 
 Which after gathering terms gives
 
-$$v_{\mathrm{out}} = 5\left(3e^{-3t} - 2e^{-2t}\right)u_0(t)$$
+$$v_{L} = 5\left(3e^{-3t} - 2e^{-2t}\right)u_0(t)$$
 
 <!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+Plot the result
+<!-- #endregion -->
+
+```matlab slideshow={"slide_type": "subslide"}
+fplot(v_l,[0,6])
+title('Solution to Example 2')
+ylabel('v_{L}(t) [V]')
+xlabel('t [s]')
+grid 
+```
 
 <!-- #region slideshow={"slide_type": "subslide"} -->
 ### Example 3
@@ -284,9 +285,14 @@ Karris example 8.10: for the linear network shown below, the input-output relati
 
 $$\frac{d}{dt}v_{\mathrm{out}}+4v_{\mathrm{out}}=10v_{\mathrm{in}}$$
 
-where $v_{\mathrm{in}}=3e^{-2t}$. Use the Fourier transform method, and the system function $H(\omega)$ to compute the output $v_{\mathrm{out}}$. Verify the result with Matlab.
+where $v_{\mathrm{in}}=3e^{-2t}$. Use the Fourier transform method, and the system function $H(\omega)$ to compute the output $v_{\mathrm{out}}$. Verify the result with MATLAB.
 
 ![Example 3](./pictures/example3-small.png)
+
+Worked solution: [ft3-ex3.pdf](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/ft3-ex3.pdf).
+
+MATLAB solution: [ft3_ex3.mlx](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/ft3_ex3.mlx).
+
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "notes"} -->
@@ -321,7 +327,7 @@ where $v_{\mathrm{in}}=3e^{-2t}$. Use the Fourier transform method, and the syst
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "subslide"} -->
-#### Matlab verification of example 3
+#### MATLAB verification of example 3
 <!-- #endregion -->
 
 ```matlab slideshow={"slide_type": "subslide"}
@@ -341,6 +347,16 @@ Vout=simplify(H*Vin)
 vout = simplify(ifourier(Vout,w,t))
 ```
 
+<!-- #region slideshow={"slide_type": "notes"} -->
+The result is equiavlent to:
+    
+    15*exp(-4*t)*heaviside(t)*(exp(2*t) - 1)
+
+Which after gathering terms gives
+
+$$v_{\mathrm{out}}(t) = 15\left(e^{-2t} - e^{-4t}\right)u_0(t)$$
+<!-- #endregion -->
+
 <!-- #region slideshow={"slide_type": "subslide"} -->
 Plot result
 <!-- #endregion -->
@@ -353,28 +369,21 @@ xlabel('t [s]')
 grid 
 ```
 
-<!-- #region slideshow={"slide_type": "notes"} -->
-See [ft3_ex3.m](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_transform/matlab/ft3_ex3.m)
-
-Result is equiavlent to:
-    
-    15*exp(-4*t)*heaviside(t)*(exp(2*t) - 1)
-
-Which after gathering terms gives
-
-$$v_{\mathrm{out}}(t) = 15\left(e^{-2t} - e^{-4t}\right)u_0(t)$$
-<!-- #endregion -->
-
 <!-- #region slideshow={"slide_type": "subslide"} -->
 ### Example 4
 
-Karris example 8.11: the voltage across a 1 $\Omega$ resistor is known to be $V_{R}(t)=3e^{-2t} u_0(t)$. Compute the energy dissipated in the resistor for $0\lt t\lt\infty$, and verify the result using Parseval's theorem. Verify the result with Matlab.
+Karris example 8.11: the voltage across a 1 $\Omega$ resistor is known to be $V_{R}(t)=3e^{-2t} u_0(t)$. Compute the energy dissipated in the resistor for $0\lt t\lt\infty$, and verify the result using Parseval's theorem. Verify the result with MATLAB.
 
 Note from [tables of integrals](https://en.wikipedia.org/wiki/Lists_of_integrals) 
 
 $$\int\frac{1}{a^2 + x^2}\,dx = \frac{1}{a}\arctan\frac{x}{a}+C.$$
 
 ![Example 4](./pictures/example4-small.png)
+
+Worked solution: [ft3-ex4.pdf](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/ft3-ex4.pdf).
+
+MATLAB solution: [ft3_ex4.mlx](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/ft3_ex4.mlx).
+
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "notes"} -->
@@ -409,7 +418,7 @@ $$\int\frac{1}{a^2 + x^2}\,dx = \frac{1}{a}\arctan\frac{x}{a}+C.$$
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "subslide"} -->
-#### Matlab verification of example 4
+#### MATLAB verification of example 4
 <!-- #endregion -->
 
 ```matlab slideshow={"slide_type": "subslide"}
@@ -417,7 +426,7 @@ syms t w
 ```
 
 <!-- #region slideshow={"slide_type": "subslide"} -->
-Calcuate energy from time function
+Calcuate the energy from the time function
 <!-- #endregion -->
 
 ```matlab slideshow={"slide_type": "subslide"}
@@ -425,6 +434,7 @@ Vr = 3*exp(-2*t)*heaviside(t);
 R = 1;
 Pr = Vr^2/R
 Wr = int(Pr,t,0,inf)
+double(Wr)
 ```
 
 <!-- #region slideshow={"slide_type": "subslide"} -->
@@ -441,14 +451,5 @@ Fw2 = simplify(abs(Fw)^2)
 
 ```matlab slideshow={"slide_type": "subslide"}
 Wr=2/(2*pi)*int(Fw2,w,0,inf)
+double(Wr)
 ```
-
-<!-- #region slideshow={"slide_type": "notes"} -->
-See [ft3_ex4.m](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_transform/matlab/ft3_ex4.m)
-<!-- #endregion -->
-
-<!-- #region slideshow={"slide_type": "notes"} -->
-## Solutions
-
-See Worked Solutions in the [Worked Solutions to Selected Week 6 Problems](https://canvas.swansea.ac.uk/courses/44853/pages/worked-solutions-to-selected-week-6-problems-2?module_item_id=2484101) of the Canvas course site.
-<!-- #endregion -->
