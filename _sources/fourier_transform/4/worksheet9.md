@@ -304,11 +304,45 @@ Transfer function
 ```{code-cell}
 ---
 slideshow:
-  slide_type: subslide
+  slide_type: fragment
 ---
 H = tf(wc^2,[1, wc*sqrt(2), wc^2])
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+Poles of $H(s)$
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
 [poles] = pole(H)
-[mag,phase] = damp(H)
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+Natural frequency $\omega_n$ and damping ratio $\zeta$ of the poles
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+[wn,zeta] = damp(H)
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+Phase of the poles
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+phase = angle(poles)*pi/180 % degrees
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
