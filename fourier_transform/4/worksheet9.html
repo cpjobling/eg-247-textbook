@@ -474,7 +474,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-accompany-section-4-4-introduction-to-filters">To accompany Section 4.4 Introduction to Filters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-accompany-unit-4-4-introduction-to-filters">To accompany Unit 4.4 Introduction to Filters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frequency-selective-filters">Frequency Selective Filters</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-filtering-problem">Typical filtering problem</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#signal">Signal</a></li>
@@ -539,8 +539,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="worksheet-9">
 <span id="ws9"></span><h1>Worksheet 9<a class="headerlink" href="#worksheet-9" title="Permalink to this heading">#</a></h1>
-<section id="to-accompany-section-4-4-introduction-to-filters">
-<h2>To accompany Section 4.4 Introduction to Filters<a class="headerlink" href="#to-accompany-section-4-4-introduction-to-filters" title="Permalink to this heading">#</a></h2>
+<section id="to-accompany-unit-4-4-introduction-to-filters">
+<h2>To accompany Unit 4.4 Introduction to Filters<a class="headerlink" href="#to-accompany-unit-4-4-introduction-to-filters" title="Permalink to this heading">#</a></h2>
 <p>This worksheet can be downloaded as a <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet9.pdf">PDF file</a>. We will step through this worksheet in class.</p>
 <p>An annotatable copy of the notes for this presentation will be distributed before the second class meeting as <strong>Worksheet 9</strong> in the <strong>Week 6: Classroom Activities</strong> section of the Canvas site. I will also distribute a copy to your personal <strong>Worksheets</strong> section of the <strong>OneNote Class Notebook</strong> so that you can add your own notes using OneNote.</p>
 <p>You are expected to have at least watched the video presentation of <a class="reference internal" href="ft4.html#ft4"><span class="std std-ref">Unit 4.4: Introduction to Filters</span></a> of the <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/">notes</a> before coming to class. If you haven’t watch it afterwards!</p>
@@ -576,7 +576,7 @@ document.write(`
 </section>
 <section id="motivating-example">
 <h3>Motivating example<a class="headerlink" href="#motivating-example" title="Permalink to this heading">#</a></h3>
-<p>See the video and script on <a class="reference external" href="https://canvas.swansea.ac.uk/courses/36921/pages/motivating-example-filter-design-using-matlab?module_item_id=1964845"><em>Canvas Week 7</em></a>.</p>
+<p>See the video and script on <a class="reference external" href="https://canvas.swansea.ac.uk/courses/44853/pages/motivating-example-filter-design-using-matlab?module_item_id=2484097">Motivating Example: Filter Design Using MATLAB</a> on Canvas.</p>
 </section>
 </section>
 <section id="ideal-low-pass-filter-lpf">
@@ -739,6 +739,15 @@ document.write(`
 <h3>Magnitude of frequency response of a 2nd-order Butterworth Filter<a class="headerlink" href="#magnitude-of-frequency-response-of-a-2nd-order-butterworth-filter" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="p">.</span><span class="o">./</span><span class="n">matlab</span>
+<span class="nb">format</span><span class="w"> </span><span class="n">compact</span>
+<span class="nb">open</span><span class="w"> </span><span class="n">butter2_ex</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">wc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -748,6 +757,8 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">H</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">wc</span>^<span class="mi">2</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">wc</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">wc</span>^<span class="mi">2</span><span class="p">])</span>
+<span class="p">[</span><span class="n">poles</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">pole</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+<span class="p">[</span><span class="n">mag</span><span class="p">,</span><span class="n">phase</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">damp</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1019,7 +1030,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-accompany-section-4-4-introduction-to-filters">To accompany Section 4.4 Introduction to Filters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-accompany-unit-4-4-introduction-to-filters">To accompany Unit 4.4 Introduction to Filters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frequency-selective-filters">Frequency Selective Filters</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-filtering-problem">Typical filtering problem</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#signal">Signal</a></li>

@@ -17,7 +17,7 @@ kernelspec:
 (ws9)=
 # Worksheet 9
 
-## To accompany Section 4.4 Introduction to Filters
+## To accompany Unit 4.4 Introduction to Filters
 
 +++ {"slideshow": {"slide_type": "skip"}}
 
@@ -75,7 +75,7 @@ An ideal frequency-selective filter is a system that let's the frequency compone
 
 ### Motivating example
 
-See the video and script on [*Canvas Week 7*](https://canvas.swansea.ac.uk/courses/36921/pages/motivating-example-filter-design-using-matlab?module_item_id=1964845).
+See the video and script on [Motivating Example: Filter Design Using MATLAB](https://canvas.swansea.ac.uk/courses/44853/pages/motivating-example-filter-design-using-matlab?module_item_id=2484097) on Canvas.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -284,6 +284,16 @@ Determine the frequency response $H_B(\omega)=Y(\omega)/X(\omega)$
 slideshow:
   slide_type: subslide
 ---
+cd ../matlab
+format compact
+open butter2_ex
+```
+
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
 wc = 100;
 ```
 
@@ -297,6 +307,8 @@ slideshow:
   slide_type: subslide
 ---
 H = tf(wc^2,[1, wc*sqrt(2), wc^2])
+[poles] = pole(H)
+[mag,phase] = damp(H)
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}

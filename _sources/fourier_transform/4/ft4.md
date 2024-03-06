@@ -213,110 +213,17 @@ Calculate the roots of $p(s)$ (the poles of the filter transfer function) in bot
 
 **Note**: This has the same characteristic as a control system with damping ratio $\zeta = 1/\sqrt{2}$ and $\omega_n = \omega_c$!
 
-+++ {"slideshow": {"slide_type": "notes"}}
-
-#### Solution to example 5
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ### Example 6
 
 Derive the differential equation relating the input $x(t)$ to output $y(t)$ of the 2nd-Order Butterworth Low-Pass Filter with cutoff frequency $\omega_c$.
 
-+++ {"slideshow": {"slide_type": "notes"}}
-
-#### Solution to example 6
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ### Example 7
 
 Determine the frequency response $H_B(\omega)=Y(\omega)/X(\omega)$
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-#### Solution to example 7
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -340,6 +247,8 @@ slideshow:
   slide_type: subslide
 ---
 H = tf(wc^2,[1, wc*sqrt(2), wc^2])
+[poles] = pole(H)
+[mag,phase] = damp(H)
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -396,37 +305,6 @@ Determine the impulse and step response of a butterworth low-pass filter.
 You will find this Fourier transform pair useful:
 
 $$e^{-at}\sin\omega_0 t\;u_0(t) \Leftrightarrow \frac{\omega_0}{(j\omega + a)^2+\omega_0^2}$$
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-#### Solution to example 8
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -491,37 +369,6 @@ $$h_{\mathrm{hp}}(t)=\delta(t)-h_{\mathrm{lp}}(t)$$
 ### Example 9
 
 Determine the frequency response of a 2nd-order butterworth highpass filter
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-#### Solution to example 9
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -595,10 +442,6 @@ $$H_{\mathrm{bp}}(\omega) = H_{\mathrm{hp}}(\omega)H_{\mathrm{lp}}(\omega)$$
 
 * The lowpass filter should have cut-off frequency of $\omega_{c2}$
 
-+++ {"slideshow": {"slide_type": "notes"}}
-
-To generate all the plots shown in this presentation, you can use [butter2_ex.mlx](https://cpjobling.github.io/eg-247-textbook/fourier_transform/matlab/butter2_ex.mlx)
-
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## Summary
@@ -609,8 +452,14 @@ To generate all the plots shown in this presentation, you can use [butter2_ex.ml
 * High-pass filter
 * Bandpass filter
 
-+++
++++ {"slideshow": {"slide_type": "notes"}}
 
 ## Solutions
 
+### Handwritten 
+
 Solutions to Examples 5-9 are captured as a PenCast in [filters.pdf](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/filters2.pdf).
+
+### MATLAB 
+
+To generate all the plots shown in this presentation, you can use [butter2_ex.mlx](https://cpjobling.github.io/eg-247-textbook/fourier_transform/matlab/butter2_ex.mlx)
