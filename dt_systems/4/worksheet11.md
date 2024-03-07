@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.4
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -14,9 +14,10 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# Worksheet 17 
+(ws11)=
+# Worksheet 11 
 
-## To accompany [Models of Discrete-Time Systems](https://cpjobling.github.io/eg-247-textbook/dt_systems/4/dt_models.html)
+## To accompany Unit 5.4: Models of Discrete-Time Systems
 
 +++ {"slideshow": {"slide_type": "notes"}}
 

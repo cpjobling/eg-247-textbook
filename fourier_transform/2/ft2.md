@@ -15,7 +15,7 @@ kernelspec:
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (ft2)=
-# 4.2: Fourier transforms of commonly occurring signals
+# Unit 4.2: Fourier transforms of commonly occurring signals
 
 +++ {"slideshow": {"slide_type": "notes"}}
 

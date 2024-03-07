@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.4
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -14,13 +14,14 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# The Inverse Z-Transform
+(unit5.3)=
+# Unit 5.3: The Inverse Z-Transform
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
 ## Colophon
 
-An annotatable worksheet for this presentation is available as [**Worksheet 16**](worksheet16).
+An annotatable worksheet for this presentation is available as [**Worksheet 10**](worksheet10).
 
 * The source code for this page is [dt_systems/3/i_z_transform.ipynb](https://github.com/cpjobling/eg-247-textbook/blob/master/dt_systems/3/i_z_transform.ipynb).
 
