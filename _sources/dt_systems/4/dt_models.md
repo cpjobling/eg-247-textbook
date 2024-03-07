@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.4
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -14,13 +14,14 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
+(unit5.4)=
 # Models of Discrete-Time Systems
 
 +++ {"slideshow": {"slide_type": "skip"}}
 
 ## Colophon
 
-An annotatable worksheet for this presentation is available as [**Worksheet 17**](worksheet17).
+An annotatable worksheet for this presentation is available as [**Worksheet 11**](worksheet11).
 
 * The [Jupytext](https://jupytext.readthedocs.io/en/latest/index.html) source code for this page is [dt_systems/4/dt_models.md](https://github.com/cpjobling/eg-247-textbook/blob/master/dt_systems/4/dt_models.ipynb).
 

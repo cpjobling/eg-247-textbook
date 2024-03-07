@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.4
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -14,9 +14,10 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# Worksheet 16 
+(ws10)=
+# Worksheet 10 
 
-## To accompany Chapter 6.3 The Inverse Z-Transform
+## To accompany Unit 5.3 The Inverse Z-Transform
 
 +++ {"slideshow": {"slide_type": "notes"}}
 

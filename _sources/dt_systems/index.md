@@ -5,14 +5,15 @@ jupyter:
       extension: .md
       format_name: markdown
       format_version: '1.3'
-      jupytext_version: 1.14.4
+      jupytext_version: 1.15.2
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python
     name: python3
 ---
 
-# Sampled Data Systems
+(unit4)=
+# Unit 5: Sampled Data Systems
 
 We set the scene for this chapter with a useful definition from Wikipedia
 
@@ -30,4 +31,12 @@ We set the scene for this chapter with a useful definition from Wikipedia
 
 In this chapter we will cover Sampling Theory, the Z-Transform, the inverse Z-Transform and Models of Digital Systems.
 
+## Contents
+
+In this section of the course we will cover:
+
+* {ref}`unit5.1`
+* {ref}`unit5.2`
+* {ref}`unit5.3`
+* {ref}`unit5.4`
 

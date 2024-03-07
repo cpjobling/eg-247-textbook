@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.4
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -14,9 +14,10 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# Discrete-Time Systems and the Z-Transform
+(unit5.2)=
+# Unit 5.2: Discrete-Time Systems and the Z-Transform
 
-+++
++++ {"slideshow": {"slide_type": "notes"}}
 
 ## Colophon
 

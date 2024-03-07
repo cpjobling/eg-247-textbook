@@ -19,17 +19,18 @@ This is an index to the files arranged by module week.
 ## Week 4
 
 * {ref}`ws4` for {ref}`exp_fs2` [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet4.pdf)]
-* {ref}`ws5` for {ref}`ft1` [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet5.pdf)]
+* {ref}`ws5` for {ref}`exp_fs3` [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet5.pdf)]
 
 ## Week 5
 
-* {ref}`ws6` for {ref}`ft2` [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet6.pdf)]
-* {ref}`ws7` for {ref}`ft3` for [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet7.pdf)]
+* {ref}`ws6` for {ref}`ft1` [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet6.pdf)]
+* {ref}`ws7` for {ref}`ft2` for [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet7.pdf)]
 
 
 ## Week 6
 
-* {ref}`ws8` {ref}`ft4` [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet8.pdf)]
+* {ref}`ws8` for {ref}`ft3` [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet8.pdf)]
+* {ref}`ws9` for {ref}`ft4` [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet9.pdf)]
 
 ## Week 7
 
@@ -37,8 +38,8 @@ No worksheets this week.
 
 ## Week 8
 
-* [Worksheet 17](../dt_systems/4/worksheet17) for [Chapter 6.4: Models of Discrete-time Systems](../dt_systems/4/dt_models) [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet17.pdf)]
-* [Worksheet 18](../dft/1/worksheet18) for [Chapter 7.1: The Discrete-time Fourier Transform](../dft/1/dft) [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet18.pdf)]
+* {ref}`ws10` for {ref}`unit5.3` [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet10.pdf)]
+* {ref}`ws11` for {ref}`unit5.4` [[PDF](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet11.pdf)]
 
 
 ## Week 9

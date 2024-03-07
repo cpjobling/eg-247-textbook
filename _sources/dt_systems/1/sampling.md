@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.4
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -14,7 +14,8 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# Sampling Theory
+(unit5.1)=
+# Unit 5.1: Sampling Theory
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -116,16 +117,6 @@ open sampling_demo
 #### Question
 
 What will the bit-rate be for playback?
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-</pre>
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -243,6 +234,14 @@ This is of course theoretical only!
 
 #### Illustrating Sampling in MATLAB
 
++++ {"slideshow": {"slide_type": "subslide"}}
+
+You can generate all the images in this presentation by running the MATLAB Live Script: [sampling.mlx](https://cpjobling.github.io/eg-247-textbook/dt_systems/1/matlab/sampling.mlx).
+
+```{code-cell}
+open sampling
+```
+
 ```{code-cell}
 ---
 slideshow:
@@ -251,6 +250,10 @@ slideshow:
 w0 = 1;        % fundamental frequency rad/s
 t0=2*pi/w0;    % period s
 tmax = 1.5*t0; % plottable range
+```
+
+```{code-cell}
+
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -304,10 +307,6 @@ title('Fig 1: Continuous Time Signal x(t)')
 ylabel('x(t)')
 xlabel('Time t [s]')
 ```
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-You can generate all the images in this presentation by running the Matlab script: [sampling.m](https://cpjobling.github.io/eg-247-textbook/dt_systems/1/matlab/sampling.m) which is also available as a Live Script [sampling.mlx](https://cpjobling.github.io/eg-247-textbook/dt_systems/1/matlab/sampling.mlx).
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
