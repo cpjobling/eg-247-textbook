@@ -110,7 +110,7 @@ open sampling_demo
 * **Sampling rate**: 8000 samples per second (fs = 8 kHz)
 * **Resolution**: 8 bits per sample
 * **Channels**: 1 channel. 
-* **Reconstruction**: Matlab plays the audio back at 8192 samples per second.
+* **Reconstruction**: MATLAB plays the audio back at 8192 samples per second.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -148,7 +148,7 @@ Multiplication in the time domain is *convolution* in the frequency domain
 
 $\omega_s$ is the frequency of the periodic sampling function = $2\pi/T_s$.
 
-+++ {"slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "notes"}}
 
 ### The Mathematics
 
@@ -156,7 +156,7 @@ $\omega_s$ is the frequency of the periodic sampling function = $2\pi/T_s$.
 
 $${x_s}(t) = \sum\limits_{k =  - \infty }^{ + \infty } {x(k{T_s})\delta (t - k{T_s})} $$
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "notes"}}
 
 **Frequency convolution**:
 
@@ -164,13 +164,13 @@ $$
   {X_s}(\omega ) = \frac{1}{T_s}\int_{ - \infty }^{ + \infty } {X(\upsilon )} \sum\limits_{k =  - \infty }^{ + \infty } {\delta (t - \upsilon  - k{\omega _s})} \,d\upsilon
 $$
 
-+++ {"slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "notes"}}
 
 **Sampling property**:
 
 $${X_s}(\omega ) = \frac{1}{T_s}\int_{ - \infty }^{ + \infty } {\sum\limits_{k =  - \infty }^{ + \infty } {X(\omega  - k{\omega _s})} } \delta (t - \upsilon  - k{\omega _s})\,d\upsilon $$
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "notes"}}
 
 **Sifting property**:
 
@@ -239,6 +239,10 @@ This is of course theoretical only!
 You can generate all the images in this presentation by running the MATLAB Live Script: [sampling.mlx](https://cpjobling.github.io/eg-247-textbook/dt_systems/1/matlab/sampling.mlx).
 
 ```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
 open sampling
 ```
 
@@ -250,10 +254,6 @@ slideshow:
 w0 = 1;        % fundamental frequency rad/s
 t0=2*pi/w0;    % period s
 tmax = 1.5*t0; % plottable range
-```
-
-```{code-cell}
-
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -646,7 +646,7 @@ See [Bibliography](/zbib).
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-## Matlab Functions used
+## MATLAB Functions used
 
 * The matlab recorder command is: `recorder = audiorecorder(Fs,nBits,nChannels);`
 * Sound is recorded using: `recordblocking(recObj, time);`
