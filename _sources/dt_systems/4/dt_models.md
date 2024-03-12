@@ -15,7 +15,7 @@ kernelspec:
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (unit5.4)=
-# Models of Discrete-Time Systems
+# Unit 5.4: Models of Discrete-Time Systems
 
 +++ {"slideshow": {"slide_type": "skip"}}
 
