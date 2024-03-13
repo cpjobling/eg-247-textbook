@@ -15,7 +15,7 @@ kernelspec:
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (unit5.4)=
-# Models of Discrete-Time Systems
+# Unit 5.4: Models of Discrete-Time Systems
 
 +++ {"slideshow": {"slide_type": "skip"}}
 
@@ -300,6 +300,7 @@ clear all
 cd matlab
 pwd
 format compact
+open dtm_ex1_2
 ```
 
 +++ {"slideshow": {"slide_type": "fragment"}}
