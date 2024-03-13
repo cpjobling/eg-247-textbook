@@ -280,7 +280,9 @@ $$\mathcal{Z}\left\{e^{-naT_s}{u_0}[n]\right\} = \frac{1}{1-e^{-aT_s}z^{-1}} = \
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-Region of convergence is $$|e^{-aT_s}z^{-1}| < 1$$
+Region of convergence is 
+
+$$|e^{-aT_s}z^{-1}| < 1$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -295,6 +297,7 @@ $$\mathcal{Z}\left\{nu_0[n]\right\}=\sum_{n=0}^{\infty} nz^{-n} = 0 + z^{-1}+2z^
 +++ {"slideshow": {"slide_type": "fragment"}}
 
 We recognize this as a signal $u_0[n]$ multiplied by $n$ for which we have the property 
+
 $$nf[n] \Leftrightarrow -z\frac{d}{dz}F(z)$$
 
 +++ {"slideshow": {"slide_type": "fragment"}}

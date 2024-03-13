@@ -300,6 +300,7 @@ clear all
 cd matlab
 pwd
 format compact
+open dtm_ex1_2
 ```
 
 +++ {"slideshow": {"slide_type": "fragment"}}
