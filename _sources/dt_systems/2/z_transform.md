@@ -90,9 +90,21 @@ A sequence can be obtained in real-time, e.g. as the output of a ADC, or can be 
 ### Nature of the systems
 
 * The input to a discrete time system is a squence of values $x[n]$
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
 * The output is also a sequence $y[n]$
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
 * The block represents the operations that convert $x[n]$ into $y[n]$. 
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
 * This processing takes the form of a *difference equation* 
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
 * This is analogous to the representation of continuous-time operations by differential equations.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -100,8 +112,17 @@ A sequence can be obtained in real-time, e.g. as the output of a ADC, or can be 
 ### Transfer function model of a DT system
 
 * In CT systems we use the Laplace transform to simplify the analysis of the *differential equations*
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
 * In DT systems the z-Transform allows us to simplify the analysis of the *difference equations*
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
 * In CT systems application of the Laplace transform allows us to represent systems as transfer functions and solve convolution problems by multiplication
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
 * The z-transform provides [analogous](https://www.google.co.uk/search?q=define:analogous) tools for the analysis of DT systems.
 
 +++ {"slideshow": {"slide_type": "slide"}}

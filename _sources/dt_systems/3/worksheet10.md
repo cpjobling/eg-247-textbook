@@ -167,7 +167,16 @@ format compact
 slideshow:
   slide_type: fragment
 ---
+open example1
+```
+
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
 syms z n
+assume(n,'integer')
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
