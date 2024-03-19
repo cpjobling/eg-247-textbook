@@ -628,3 +628,14 @@ $$f[n] = -0.5\delta[n] + 0.4 + \frac{(\sqrt{2})^n}{10}\cos \left(\frac{3n\pi}{4}
 ### Answer to Example 4
 
 $f[0] = 1$, $f[1] = 5/2$, $f[2] = 81/16$, ....
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+## Worked solutions
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+* Solution to [example1.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example1.pdf)
+* Solution to [example2.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example2.pdf)
+* Solution to [example3.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example3.pdf)
+* Solution to [example4.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example4.pdf)

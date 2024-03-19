@@ -137,6 +137,10 @@ $$F(z) = \frac{1}{(1 - 0.5z^{-1})(1 - 0.75z^{-1})(1 - z^{-1})}$$
 
 </pre>
 
++++ {"slideshow": {"slide_type": "fragment"}}
+
+Solution [example1.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example1.pdf)
+
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### MATLAB solution
@@ -334,6 +338,10 @@ $$F(z) = \frac{12z}{(z+1)(z - 1)^2}$$
 
 </pre>
 
++++ {"slideshow": {"slide_type": "fragment"}}
+
+Solution [example2.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example2.pdf)
+
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### MATLAB solution
@@ -385,6 +393,10 @@ $$F(z) = \frac{z + 1}{(z-1)(z^2 + 2z + 2)}$$
 
 
 </pre>
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+Solution [example3.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example3.pdf)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -461,6 +473,10 @@ $$F(z) = \frac{1 + z^{-1} + 2z^{-2} + 3z^{-3}}{(1 - 0.25z^{-1})(1 - 0.5z^{-1})(1
 
 
 </pre>
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+Solution [example4.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example4.pdf)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
