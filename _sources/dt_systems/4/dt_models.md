@@ -51,7 +51,7 @@ The material in this presentation and notes is based on Chapter 9 (Starting at [
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* [Modelling digital systems in Matlab/Simulink](simulink)
+* [Modelling digital systems in MATLAB/Simulink](simulink)
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -289,7 +289,7 @@ $$\frac{H(z)}{z} = \frac{z + 1}{z^2 - 0.5 z + 0.125}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-##### Matlab Solution
+##### MATLAB Solution
 
 ```{code-cell}
 ---
@@ -433,7 +433,7 @@ Solved by inverse Z-transform.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-##### Matlab Solution
+##### MATLAB Solution
 
 See [dtm_ex1_3.mlx](https://cpjobling.github.io/eg-247-textbook/dt_systems/4/matlab/dtm_ex1_3.mlx). (Also available as [dtm_ex1_3.m](https://cpjobling.github.io/eg-247-textbook/dt_systems/4/matlab/dtm_ex1_3.m).)
 
@@ -847,7 +847,7 @@ You might wish to find out what order butterworth filter would be needed to have
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-### Solution to 5.1.
+### Answer to 5.1.
 
 The transfer function is
 
@@ -855,7 +855,7 @@ $$H(z) = \frac{Y(z)}{X(z)} = \frac{z^2 + z}{z^2 - 0.5z + 0.125}$$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-### Solution to 5.2.
+### Answer to 5.2.
 
 The DT impulse response:
 
@@ -863,8 +863,16 @@ $$h[n] = \left( \frac{\sqrt 2}{4} \right)^n{\left( \cos \left( \frac{n\pi}{4} \r
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-### Solution to 5.3.
+### Answer to 5.3.
 
 Step response:
 
 $$y[n] = \left(3.2 - \left( \frac{\sqrt 2}{4} \right)^n\left( 2.2 \cos \left( \frac{n\pi}{4} \right) + 0.6\sin \left(\frac{n\pi}{4} \right) \right)\right) u_0[n]$$
+
++++
+
+## Worked solutions
+
+* Solution [example5.1.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example5.1.pdf)
+* Solution [example5.2.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example5.2.pdf)
+* Solution [example5.3.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example5.3.pdf)
