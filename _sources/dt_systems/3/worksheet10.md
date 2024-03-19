@@ -103,7 +103,7 @@ $$r_k = \lim_{z\to p_k}(z - p_k)\frac{F(z)}{z} = (z - p_k)\left.\frac{F(z)}{z}\r
 
 * Rewrite $F(z)/z$:
 
-$$z\frac{F(z)}{z} = F(z) = k + \frac{r_1z}{s-p_1} + \frac{r_2z}{s-p_2} + \cdots$$
+$$z\frac{F(z)}{z} = F(z) = k + \frac{r_1z}{z-p_1} + \frac{r_2z}{z-p_2} + \cdots$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
