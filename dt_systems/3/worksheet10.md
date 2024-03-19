@@ -103,7 +103,7 @@ $$r_k = \lim_{z\to p_k}(z - p_k)\frac{F(z)}{z} = (z - p_k)\left.\frac{F(z)}{z}\r
 
 * Rewrite $F(z)/z$:
 
-$$z\frac{F(z)}{z} = F(z) = k + \frac{r_1z}{s-p_1} + \frac{r_2z}{s-p_2} + \cdots$$
+$$z\frac{F(z)}{z} = F(z) = k + \frac{r_1z}{z-p_1} + \frac{r_2z}{z-p_2} + \cdots$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -137,6 +137,10 @@ $$F(z) = \frac{1}{(1 - 0.5z^{-1})(1 - 0.75z^{-1})(1 - z^{-1})}$$
 
 </pre>
 
++++ {"slideshow": {"slide_type": "fragment"}}
+
+Solution [example1.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example1.pdf)
+
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### MATLAB solution
@@ -167,7 +171,16 @@ format compact
 slideshow:
   slide_type: fragment
 ---
+open example1
+```
+
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
 syms z n
+assume(n,'integer')
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -325,6 +338,10 @@ $$F(z) = \frac{12z}{(z+1)(z - 1)^2}$$
 
 </pre>
 
++++ {"slideshow": {"slide_type": "fragment"}}
+
+Solution [example2.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example2.pdf)
+
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### MATLAB solution
@@ -376,6 +393,10 @@ $$F(z) = \frac{z + 1}{(z-1)(z^2 + 2z + 2)}$$
 
 
 </pre>
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+Solution [example3.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example3.pdf)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -452,6 +473,10 @@ $$F(z) = \frac{1 + z^{-1} + 2z^{-2} + 3z^{-3}}{(1 - 0.25z^{-1})(1 - 0.5z^{-1})(1
 
 
 </pre>
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+Solution [example4.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example4.pdf)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 

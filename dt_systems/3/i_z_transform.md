@@ -179,7 +179,16 @@ format compact
 slideshow:
   slide_type: fragment
 ---
+open example1
+```
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
 syms z n
+assume(n,'integer')
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -612,10 +621,21 @@ $$f[n] = 3(-1)^n + 6n - 3$$
 
 ### Answer to Example 3
 
-$$f[n] = -0.5\delta[n] + 0.4 + \frac{(\sqrt{2})^n}{10}\cos \frac{3n\pi}{4} - \frac{3(\sqrt{2})^n}{10}\sin \frac{3n\pi}{4}$$
+$$f[n] = -0.5\delta[n] + 0.4 + \frac{(\sqrt{2})^n}{10}\cos \left(\frac{3n\pi}{4}\right) - \frac{3(\sqrt{2})^n}{10}\sin\left( \frac{3n\pi}{4}\right)$$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
 ### Answer to Example 4
 
 $f[0] = 1$, $f[1] = 5/2$, $f[2] = 81/16$, ....
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+## Worked solutions
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+* Solution to [example1.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example1.pdf)
+* Solution to [example2.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example2.pdf)
+* Solution to [example3.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example3.pdf)
+* Solution to [example4.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example4.pdf)
