@@ -113,6 +113,10 @@ $$H(z) = \frac{Y(z)}{U(z)} = ...?$$
 
 </pre>
 
++++ {"slideshow": {"slide_type": "fragment"}}
+
+Solution [example5.1.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example5.1.pdf)
+
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 #### 5.2. The DT impulse response
@@ -144,6 +148,10 @@ $$\frac{H(z)}{z} = \frac{z + 1}{z^2 - 0.5 z + 0.125}$$
 
 
 </pre>
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+Solution [example5.2.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example5.2.pdf)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -281,6 +289,10 @@ Solved by inverse Z-transform.
 
 
 </pre>
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+Solution [example5.3.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example5.3.pdf)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
