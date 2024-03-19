@@ -510,7 +510,7 @@ Sampling frequency ($f_s$) in Hz  = ?
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-$$f_s = \omega_s/(2\pi)\;\mathrm{Mhz}$$
+$$f_s = \omega_s/(2\pi)\;\mathrm{Hz}$$
 
 ```{code-cell}
 ---
@@ -521,8 +521,6 @@ fs = ws/(2*pi)
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
-
-$$f_s = 40.11\;\mathrm{Mhz}$$
 
 Sampling time $T_s = ?$
 
@@ -537,10 +535,6 @@ slideshow:
 ---
 Ts = 1/fs
 ```
-
-+++ {"slideshow": {"slide_type": "subslide"}}
-
-$$T_s = 1/f_s = 0.25\;\mu\mathrm{s}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -564,7 +558,7 @@ step(Hz)
 
 #### Algorithm
 
-From previous result:
+From final result:
 
 $$H(z) = \frac{Y(z)}{U(z)} = \frac{486.2\times 10^{-6}z +  479.1\times 10^{-6}}{z^2 - 1.956z + 0.9665}$$
 
