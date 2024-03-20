@@ -76,7 +76,7 @@ In this session, we want to explore the contents of the central block.
 
 ### DT System as a Sequence Processor
 
-* As noted in the previous slide, the discrete time system (DTS) `takes as an input the sequence $x_d[n]$<sup>1</sup> which in a physical signal would be obtained by sampling the continuous time signal $x(t)$ using an analogue to digital converter (ADC).
+* As noted in the previous slide, the discrete time system (DTS) takes as an input the sequence $x_d[n]$<sup>1</sup> which in a physical signal would be obtained by sampling the continuous time signal $x(t)$ using an analogue to digital converter (ADC).
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -86,13 +86,13 @@ In this session, we want to explore the contents of the central block.
 
 * The output sequence is converted into an analogue signal $y(t)$ by a digital to analogue converter (DAC).
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 ![DT System as a Sequence Processor](./pictures/sigs.png)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### What is the nature of the DTS?
+### What is the nature of the discrete time system?
 
 * The discrete time system (DTS) is a block that converts a sequence $x_d[n]$ into another sequence $y_d[n]$
 
