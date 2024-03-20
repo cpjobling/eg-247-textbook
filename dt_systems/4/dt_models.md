@@ -76,7 +76,7 @@ In this session, we want to explore the contents of the central block.
 
 ### DT System as a Sequence Processor
 
-* As noted in the previous slide, the discrete time system (DTS) `takes as an input the sequence $x_d[n]$<sup>1</sup> which in a physical signal would be obtained by sampling the continuous time signal $x(t)$ using an analogue to digital converter (ADC).
+* As noted in the previous slide, the discrete time system (DTS) takes as an input the sequence $x_d[n]$<sup>1</sup> which in a physical signal would be obtained by sampling the continuous time signal $x(t)$ using an analogue to digital converter (ADC).
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -86,13 +86,13 @@ In this session, we want to explore the contents of the central block.
 
 * The output sequence is converted into an analogue signal $y(t)$ by a digital to analogue converter (DAC).
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 ![DT System as a Sequence Processor](./pictures/sigs.png)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### What is the nature of the DTS?
+### What is the nature of the discrete time system?
 
 * The discrete time system (DTS) is a block that converts a sequence $x_d[n]$ into another sequence $y_d[n]$
 
@@ -231,30 +231,6 @@ Compute:
 
 $$H(z) = \frac{Y(z)}{U(z)} = ...?$$
 
-+++ {"slideshow": {"slide_type": "notes"}}
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
-
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 #### 5.2. The DT impulse response
@@ -262,30 +238,6 @@ $$H(z) = \frac{Y(z)}{U(z)} = ...?$$
 Start with:
 
 $$\frac{H(z)}{z} = \frac{z + 1}{z^2 - 0.5 z + 0.125}$$
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -406,30 +358,6 @@ $$\frac{Y(z)}{z} = \frac{z^2 + z}{(z^2 + 0.5 z + 0.125)(z - 1)}$$
 +++ {"slideshow": {"slide_type": "fragment"}}
 
 Solved by inverse Z-transform.
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-<pre style="border: 2px solid blue">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -675,7 +603,7 @@ Sampling frequency ($f_s$) in Hz  = ?
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-$$f_s = \omega_s/(2\pi)\;\mathrm{Mhz}$$
+$$f_s = \omega_s/(2\pi)\;\mathrm{Hz}$$
 
 ```{code-cell}
 ---
@@ -687,7 +615,7 @@ fs = ws/(2*pi)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-$$f_s = 4\;\mathrm{Mhz}$$
+$$f_s = 4\;\mathrm{MHz}$$
 
 Sampling time $T_s = ?$
 
@@ -798,7 +726,7 @@ open digifilter
 To implement:
 
 
-$$y[n] = y[n] = 1.956[n - 1] - 0.9665y[n - 2] + 486.2 \times {10^{ - 6}}u[n - 1] + 479.1 \times {10^{ - 6}}u[n - 2]$$
+$$y[n] = y[n] = 1.956y[n - 1] - 0.9665y[n - 2] + 486.2 \times {10^{ - 6}}u[n - 1] + 479.1 \times {10^{ - 6}}u[n - 2]$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
