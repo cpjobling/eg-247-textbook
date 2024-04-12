@@ -7,17 +7,14 @@ In {ref}`unit7.1` the aim is for you to be able to recognise the frequency respo
 
 In {ref}`unit7.2` we will demonstrate the various analogue and digital filter design tools provided by MATLAB and the filter design tool and filter comparison tools provided by the Signal Processing Toolbox ({cite}`matlab_spt`. We will also look at the options that MATLAB provides for simulating digital signal processing applications in Simulink and using code generation for filter designs implimentation.
 
+## Scope and Background Reading
+
 This is a very large topic and we will give a fairly high-level overview. Much more detail is available in the references for this Unit which are Chapter 11 of {cite}`karris` and {cite}`matlab_filter_design`.
 
-## Table of contents
+## Contents
 
 * {ref}`unit7.1`
 * {ref}`unit7.2`
-
-## References
-
-See [Bibliography](/zbib).
-
 
 
 ```python

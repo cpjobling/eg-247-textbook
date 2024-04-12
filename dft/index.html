@@ -64,6 +64,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'dft/index';</script>
     <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/dft/index.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -473,7 +475,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-discrete-fourier-transform-and-the-fft">Understanding the Discrete Fourier Transform and the FFT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope-and-background-reading">Scope and Background Reading</a></li>
 </ul>
             </nav>
         </div>
@@ -485,12 +488,31 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="unit-6-discrete-fourier-transforms">
+  <!-- #region -->
+<section class="tex2jax_ignore mathjax_ignore" id="unit-6-discrete-fourier-transforms">
 <span id="unit6"></span><h1>Unit 6: Discrete Fourier Transforms<a class="headerlink" href="#unit-6-discrete-fourier-transforms" title="Permalink to this heading">#</a></h1>
-<p>Need to write something here to introduce this section.</p>
-<section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
-<p>See <a class="reference internal" href="../zbib.html"><span class="doc std std-doc">Bibliography</span></a>.</p>
+<p>As discussed in <a class="reference internal" href="../fourier_transform/index.html#unit4"><span class="std std-ref">Unit 4: Fourier Transform</span></a>, for continuous-time (CT) signals, the Fourier transform is used to analyse the behaviour of signals and systems in the frequency domain <span class="math notranslate nohighlight">\(j\omega\)</span>.</p>
+<p>For discrete-time (DT) signals and systems we derive and use a discrete Fourier transform (DTFT) to analysis the behaviour of sampled-data systems in frequency domain.</p>
+<blockquote>
+<div><p>The discrete Fourier transform (DFT) converts a finite sequence of equally-spaced samples of a CT signal into a same-length sequence of equally-spaced samples of the discrete-time Fourier transform (DTFT), which is a complex-valued function of frequency. The interval at which the DTFT is sampled is the reciprocal of the duration of the input sequence. An inverse DFT (IDFT) is a Fourier series, using the DTFT samples as coefficients of complex sinusoids at the corresponding DTFT frequencies. It has the same sample-values as the original input sequence. The DFT is therefore said to be a frequency domain representation of the original input sequence. If the original sequence spans all the non-zero values of a function, its DTFT is continuous (and periodic), and the DFT provides discrete samples of one cycle. If the original sequence is one cycle of a periodic function, the DFT provides all the non-zero values of one DTFT cycle.</p>
+</div></blockquote>
+<blockquote>
+<div><p>The DFT is arguably one of the most important discrete transform, and is used to perform Fourier analysis in many practical applications. In digital signal processing, the function is any quantity or signal that varies over time, such as the pressure of a sound wave, a radio signal, or daily temperature readings, sampled over a finite time interval (often defined by a window function. In image processing, the samples can be the values of pixels along a row or column of a raster image. The DFT is also used to efficiently solve partial differential equations, and to perform other operations such as convolutions or multiplying large integers.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Since it deals with a finite amount of data, it can be implemented in computers by numerical algorithms or even dedicated hardware. These implementations usually employ efficient fast Fourier transform (FFT) algorithms; so much so that the terms “FFT” and “DFT” are often used interchangeably.</p>
+</div></blockquote>
+<p>– Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/Discrete_Fourier_transform">Discrete Fourier transform</a></p>
+<p>In this unit we will define the DFT and then show how the FFT is derived and implemented.</p>
+<section id="understanding-the-discrete-fourier-transform-and-the-fft">
+<h2>Understanding the Discrete Fourier Transform and the FFT<a class="headerlink" href="#understanding-the-discrete-fourier-transform-and-the-fft" title="Permalink to this heading">#</a></h2>
+<p>This video, published on YouTube on 29th November 2023 by Brian Douglas (<span id="id1">[<a class="reference internal" href="../zbib.html#id20" title="Brian Douglas. Understanding the discrete fourier transform and the fft. URL: https://youtu.be/QmgJmh2I3Fw?si=FtRk66gaqKYubOjk (visited on 2024-04-12).">Douglas, n.d.</a>]</span>) for the MathWorks as a MATLAB Tech Talk, is a nice gentle introduction to the DFT. It would be useful to watch this video in advance of the first class on this topic</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QmgJmh2I3Fw?si=prIcb-xXCrDPN3U5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</section>
+<section id="scope-and-background-reading">
+<h2>Scope and Background Reading<a class="headerlink" href="#scope-and-background-reading" title="Permalink to this heading">#</a></h2>
+<p>The primary source for the content of this unit is Chapter 10 of <span id="id2">[<a class="reference internal" href="../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853.">Karris, 2012</a>]</span> but there are many other places online where you can find out more about the DFT and FFT. A good starting point is the Wikipedia article <a class="reference external" href="https://en.wikipedia.org/wiki/Discrete_Fourier_transform">Discrete Fourier Transform</a> quoted above. We also recommend the video from Brian Douglas, <strong>Understanding the Discrete Fourier Transform and the FFT</strong> embedded above. The MathWorks article <em>Discrete Fourier Transform</em>* <span id="id3">[<a class="reference internal" href="../zbib.html#id21" title="The MathWorks. Discrete fourier transform. URL: https://uk.mathworks.com/help/signal/ug/discrete-fourier-transform.html (visited on 2024-04-12).">MathWorks, n.d.</a>]</span> is a useful introduction to the <span class="xref myst"><code class="docutils literal notranslate"><span class="pre">fft</span></code></span> function used in MATLAb for FFT analysis.</p>
+<!-- #endregion -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
@@ -562,7 +584,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-discrete-fourier-transform-and-the-fft">Understanding the Discrete Fourier Transform and the FFT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope-and-background-reading">Scope and Background Reading</a></li>
 </ul>
   </nav></div>
 
