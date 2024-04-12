@@ -25,7 +25,7 @@ This video, published on YouTube on 29th November 2023 by Brian Douglas ({cite}`
 
 ## Scope and Background Reading
 
-The primary source for the content of this unit is Chapter 10 of {cite}`karris` but there are many other places online where you can find out more about the DFT and FFT. A good starting point is the Wikipedia article [Discrete Fourier Transform](https://en.wikipedia.org/wiki/Discrete_Fourier_transform) quoted above. We also recommend the video from Brian Douglas, **Understanding the Discrete Fourier Transform and the FFT** embedded above. The MathWorks article *Discrete Fourier Transform** {cite}`matlab_dft` is a useful introduction to the [`fft`]() function used in MATLAb for FFT analysis.
+The primary source for the content of this unit is Chapter 10 of {cite}`karris` but there are many other places online where you can find out more about the DFT and FFT. A good starting point is the Wikipedia article [Discrete Fourier Transform](https://en.wikipedia.org/wiki/Discrete_Fourier_transform) quoted above. We also recommend the video from Brian Douglas, **Understanding the Discrete Fourier Transform and the FFT** embedded above. The MathWorks article *Discrete Fourier Transform* ({cite}`matlab_dft`) is a useful introduction to the [`fft`]() function used in MATLAb for FFT analysis.
 
 ## Contents
 
@@ -38,3 +38,7 @@ See [Bibliography](/zbib).
 
 
 <!-- #endregion -->
+
+```python
+
+```
