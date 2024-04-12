@@ -759,9 +759,35 @@ stem(x, ifft(fft(y)))
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-## Time and Amplitude Scaling
+## Frequency and Amplitude Scaling
 
-Add some notes and examples about this
+Let's assume that you have a DT sequence $x[n]$ sampled from a CT signal $x(t)$ at some period $T_s = 1/f_s$. When you apply the `fft` function to $x[n]$, the absoloute values of the frequency terms $X[K]$ will have the distribution shown in {numref}`fig:fft:1`.
+
+:::{figure-md} fig:fft:1
+<img src="pictures/fft_dist.png" alt="" width="" />
+
+Distribution of the terms $X[K]$ in the fft of DT signal $x[n]$. From video {cite}`douglasdft` [9 minutes 20 seconds] (c) The MathWorks 2023.
+:::
+
+DC is at $K = 0$, and the frequency terms for $K = 1 \to N/2$ on the left of the plot represent the positive frequencies. That is the frequencies computed on the unit circle from $\theta = 0 \to -\pi$ radians. 
+
+The component that corresponds to the Nyquist frequency $f_s/2$ is at the centre of the plot at $\theta = -\pi$ radians or $k = N/2$[^fft:footnote1]
+
+[^fft:footnote1]: The Nyquist frequency will only appear on the frequency plot if there are an even number of samples.
+
+The frequency terms plotted on the right of the plot, from $K = N/2 \to N$, correspond to the negative frequencies and, for real signals, will be the complex conjugates of their positive frequency terms. Thus the frequency plot will always be symmetric around the Nyquist frequency.
+
+As demonstrated above, we normally expect the frequecy response to be symmetric around $f = 0$ and the `fftshift` function achieves that for us by shifting $X[0]$ to $K = N/2$, reversing the sequence of negative frequencies, and plotting them between $K = 0$ and $N/2 -1$.
+
+However, even when shifted in this way, the $x$-axis of the FFT plot only represents the sequence number $K$ not frequency. Furthermore, the amplitude of the frequency terms is related to the FFT algorithm rather than the physical size of the frequency components in the original signal. Also, we often only care about the postive frequencies and so usually present the FFT data as a single-sided plot.
+
+To achieve a single sided FFT plot against frequency, with realistic amplitudes, and valid values of power and power spectral density for power plots, we need to make some adjustments to the FFT data. This is called *frequency and amplitude scaling*.
+
+What follows is extracted from the two MATLAB Tech Talks {cite}`douglasdft` and {cite}`douglaspsd`.
+
+We have already shown you {cite}`douglasdft` in {ref}`unit6`. You may which to watch {cite}`douglaspsd` now.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pfjiwxhqd1M?si=BA_C6_GrOA54ayEj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
