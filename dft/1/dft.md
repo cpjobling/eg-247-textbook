@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.4
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -14,13 +14,14 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# The Discrete Fourier Transform
+(unit61.)=
+# Unit 6.1: The Discrete Fourier Transform
 
 +++ {"slideshow": {"slide_type": "skip"}}
 
 ## Colophon
 
-An annotatable worksheet for this presentation is available as [**Worksheet 18**](worksheet18).
+An annotatable worksheet for this presentation is available as [**Worksheet 12**](worksheet12).
 
 * The source code for this page is [dft/1/dft.ipynb](https://github.com/cpjobling/eg-247-textbook/blob/master/dft/1/dft.ipynb).
 
@@ -64,13 +65,14 @@ The material in this presentation and notes is based on [Chapter 10](https://ebo
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-### Note
+```{note}
 
 The frequency spectrum of a discrete time function $f[n]$ is obtained from its z-transform by substituting $z = e^{sT} = e^{j\omega T}$ as we saw from the mapping of the s-plane to the z-plane. This is continuous as there are an infinite number of points in the interval $0$ to $2\pi$; and it is periodic because for any point $\omega T$ there is an equivalent point $\omega T + 2 N \pi$ later. 
 
 In practice, to compute the spectrum for a discrete time (DT) system, we only compute a finite number of equally spaced points.
 
 For maxium readability, and because the exponent terms we will be using are fairly complex, we shall use the functional notation $\exp(x)$ rather than exponential notation $e^x$.
+```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 

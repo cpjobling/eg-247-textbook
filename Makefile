@@ -66,6 +66,7 @@ assets: FORCE
 	introduction \
 	labs \
 	transfer_functions \
+	filter_design \
 	setup \
 	worksheets \
 	_assets

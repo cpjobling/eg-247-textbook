@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.4
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -14,7 +14,8 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# The Fast Fourier Transform
+(unit6.2)=
+# Unit 6.2: The Fast Fourier Transform
 
 +++ {"slideshow": {"slide_type": "skip"}}
 
@@ -28,7 +29,7 @@ An annotatable worksheet for this presentation is available as [**Worksheet 19**
 
 * This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/dft/2/fft.pdf) file.
 
-+++ {"slideshow": {"slide_type": "subslide"}, "tags": []}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 ## Scope and Background Reading
 
@@ -755,6 +756,12 @@ slideshow:
 ---
 stem(x, ifft(fft(y)))
 ```
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+## Time and Amplitude Scaling
+
+Add some notes and examples about this
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
