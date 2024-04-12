@@ -759,6 +759,12 @@ stem(x, ifft(fft(y)))
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
+## Time and Amplitude Scaling
+
+Add some notes and examples about this
+
++++ {"slideshow": {"slide_type": "slide"}}
+
 ## Summary
 
 * The inefficiency of the DFT

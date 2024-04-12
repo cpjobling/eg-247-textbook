@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.4
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Matlab
   language: matlab
@@ -14,15 +14,15 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# Worksheet 19 
+# Worksheet 13 
 
-## To accompany Chapter 7.2 The Fast Fourier Transform
+## To accompany Unit 6.2 The Fast Fourier Transform
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
 We will step through this worksheet in class. 
 
-You are expected to have at least watched the video presentation of [Chapter 7.2](https://cpjobling.github.io/eg-247-textbook/dft/2/fft) of the [notes](https://cpjobling.github.io/eg-247-textbook/) before coming to class. 
+You are expected to have at least watched the video presentation of {ref}`unit6.2` before coming to class. 
 
 If you haven't watch it afterwards!
 
@@ -651,6 +651,12 @@ slideshow:
 ---
 stem(x, ifft(fft(y)))
 ```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+## Time and Amplitude Scaling
+
+Add some notes and examples about this
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
