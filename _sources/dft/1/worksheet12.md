@@ -320,6 +320,7 @@ Use the inverse DFT to compute the discrete-time sequence $x[n]$ from $X[m]$.
 slideshow:
   slide_type: fragment
 ---
+format compact
 cd matlab
 pwd
 ```

@@ -656,7 +656,7 @@ stem(x, ifft(fft(y)))
 
 ## Time and Amplitude Scaling
 
-Add some notes and examples about this
+This is covered in the notes for this section.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
