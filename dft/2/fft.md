@@ -73,6 +73,10 @@ The material in this presentation and notes is based on [Chapter 10](https://ebo
 
 * Two examples
 
++++ {"slideshow": {"slide_type": "fragment"}}
+
+* Frequency and Amplitude Scaling
+
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## The inefficiency of the DFT
@@ -759,9 +763,12 @@ stem(x, ifft(fft(y)))
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
+(fas)=
 ## Frequency and Amplitude Scaling
 
-Let's assume that you have a DT sequence $x[n]$ sampled from a CT signal $x(t)$ at some period $T_s = 1/f_s$. When you apply the `fft` function to $x[n]$, the absoloute values of the frequency terms $X[K]$ will have the distribution shown in {numref}`fig:fft:1`.
+Let's assume that you have a DT sequence $x[n]$ sampled from a CT signal $x(t)$ at some period $T_s = 1/f_s$. When you apply the `fft` function to $x[n]$, the absolute values of the frequency terms $X[K]$ will have the distribution shown in {numref}`fig:fft:1` starting at $K=0$ on the left and going up to $K=N-1$ at the right.
+
++++ {"slideshow": {"slide_type": "subslide"}}
 
 :::{figure-md} fig:fft:1
 <img src="pictures/fft_dist.png" alt="" width="" />
@@ -769,25 +776,269 @@ Let's assume that you have a DT sequence $x[n]$ sampled from a CT signal $x(t)$ 
 Distribution of the terms $X[K]$ in the fft of DT signal $x[n]$. From video {cite}`douglasdft` [9 minutes 20 seconds] (c) The MathWorks 2023.
 :::
 
-DC is at $K = 0$, and the frequency terms for $K = 1 \to N/2$ on the left of the plot represent the positive frequencies. That is the frequencies computed on the unit circle from $\theta = 0 \to -\pi$ radians. 
++++ {"slideshow": {"slide_type": "subslide"}}
 
-The component that corresponds to the Nyquist frequency $f_s/2$ is at the centre of the plot at $\theta = -\pi$ radians or $k = N/2$[^fft:footnote1]
+DC is at $K = 0$, and the frequency terms for $K = 1 \to N/2$ on the left of the plot represent the positive frequencies. That is the frequencies computed on the unit circle from $\theta = 0 \to -\pi$ radians.
 
-[^fft:footnote1]: The Nyquist frequency will only appear on the frequency plot if there are an even number of samples.
++++ {"slideshow": {"slide_type": "fragment"}}
 
-The frequency terms plotted on the right of the plot, from $K = N/2 \to N$, correspond to the negative frequencies and, for real signals, will be the complex conjugates of their positive frequency terms. Thus the frequency plot will always be symmetric around the Nyquist frequency.
+The component that corresponds to the Nyquist frequency $f_n = f_s/2$ is at the centre of the plot at $\theta = -\pi$ radians or $K = N/2$[^fft:footnote1]
 
-As demonstrated above, we normally expect the frequecy response to be symmetric around $f = 0$ and the `fftshift` function achieves that for us by shifting $X[0]$ to $K = N/2$, reversing the sequence of negative frequencies, and plotting them between $K = 0$ and $N/2 -1$.
++++ {"slideshow": {"slide_type": "notes"}}
 
-However, even when shifted in this way, the $x$-axis of the FFT plot only represents the sequence number $K$ not frequency. Furthermore, the amplitude of the frequency terms is related to the FFT algorithm rather than the physical size of the frequency components in the original signal. Also, we often only care about the postive frequencies and so usually present the FFT data as a single-sided plot.
+[^fft:footnote1]: The Nyquist frequency will only appear on the frequency plot if there are an even number of samples. If that is the case, we construct the positive frquencies from $K = 1$ to ceil $N/2$
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+The FFT terms plotted on the right of the plot, from $K = N/2 + 1 \to N - 1$, correspond to the negative frequencies and, for real signals, will be the complex conjugates of their positive frequency terms. Thus the frequency plot will always be symmetric around the Nyquist frequency.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+As demonstrated above, we normally expect the frequency response to be symmetric around $f = 0$ and the `fftshift` function achieves that for us by shifting $X[0]$ to $K = N/2$, reversing the sequence of negative frequencies, and plotting them between $K = 0$ and $N/2 -1$.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+* However, even when shifted in this way, the $x$-axis of the FFT plot only represents the sequence number $K$ not frequency. 
+* Furthermore, the amplitude of the frequency terms is related to the FFT algorithm rather than the physical size of the frequency components in the original signal. 
+* Also, we often only care about the postive frequencies and so usually present the FFT data as a single-sided plot.
+
++++ {"slideshow": {"slide_type": "subslide"}}
 
 To achieve a single sided FFT plot against frequency, with realistic amplitudes, and valid values of power and power spectral density for power plots, we need to make some adjustments to the FFT data. This is called *frequency and amplitude scaling*.
+
++++ {"slideshow": {"slide_type": "notes"}}
 
 What follows is extracted from the two MATLAB Tech Talks {cite}`douglasdft` and {cite}`douglaspsd`.
 
 We have already shown you {cite}`douglasdft` in {ref}`unit6`. You may which to watch {cite}`douglaspsd` now.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/pfjiwxhqd1M?si=BA_C6_GrOA54ayEj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Frequency scaling
+
+How does $K$ relate to the frequency?
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+When $K=0$, the equivalent frequency is 0 Hz or DC.
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+When $K=1$ the frequency is equal to the length of the time sequence.
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+When $K = 2$ there are two complete cycles of a sinusoid in the length of the time signal, ... and so on up to the Nyquist frequency at $K = N/2 + 1$ for a signal with an even number of samples.
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+Frequency corresponding to a particular $K$ is therefore given by frequency = $K$/(length of the time signal) or
+
+$$f = \frac{K\times f_s}{N} $$
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+### Bin width
+
+The bin width is the distance (in frequency) between samples in the FFT. It is given by
+
+$$f_s/N$$
+
+To reduce the bin width, and increase the frequency resolution of the FFT, we take more samples, or equivalently reduce the sampling period.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Example 5
+
+Use MATLAB to find the one-sided FFT of a sinusoidal signal with frequency 3 Hz, sampled at $f_s = 40$ Hz. Present the frequency response in Hz.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+#### Solution
+
+##### Create time-domain signal
+
+```{code-cell}
+---
+slideshow:
+  slide_type: '-'
+---
+fs = 40;              % Sampling frequency
+T = 1/fs;             % Sampling period
+N = 40;               % Length of signal
+t = (0:N-1)*T';        % Time vector
+
+xn = sin(2*pi*3*t);   % 3 Hz signal
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+##### Plot the signal
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+plot(t, xn, '.-', 'MarkerSize', 20')
+title('Signal')
+xlabel('t')
+ylabel('xn(t)')
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+##### FFT
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+Xn = fft(xn);
+
+figure
+plot(Xn)
+```
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+This plot doesn't make sense as Xn is complex.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+##### Plot absolute value
+
+```{code-cell}
+Xn = fft(xn);
+
+figure
+stem(abs(Xn));
+title('Absolute Value of the FFT of xn');
+```
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+Now we see the peaks in the postive and negative frequency. But they are plotted at bin number $K$ not frequency.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+##### One-sided FFT plotted against frequency
+Just plot half of the frequency by plotting absolute values only for $K = 0 \to N/2$<sup>7</sup>.
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+Xn = fft(xn);
+
+figure
+stem(abs(Xn(1:(N/2)+1)));
+title('One-Sided Absolute Value of the FFT of xn');
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+##### Plot against real frequency
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+Xn = fft(xn);
+```
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+K = 0:N/2;       % K starts at 0 so the length here is N/2 + 1
+freq = K*fs/N;   % Cycles per length of the signal in seconds
+```
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+figure
+stem(freq, abs(Xn(1:(N/2)+1)));
+title('One-Sided Absolute Value of the FFT of xn');
+xlabel('Frequencty (Hz)')
+```
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+Now we can clearly see the peak at 3 Hz, but the amplitude is 20, which has no real physical value. 
+
+we will see how to scale the amplitude of the FFT in the next section.
+
+The actual Live Script can be obtained from [aerojunkie/control-tools/FFT MATLAB App](https://github.com/aerojunkie/control-tools/tree/master/FFT%20MATLAB%20App)
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+#### Amplitude Scaling
+
+If you only need to know that a peak occurs at a particular frequency then you only need to scale the frequency. If you need to know the *amplitude* or *power* of the sinusoidal frequencies that are present in the FFT, then we also need to scale the magnitudes.
+
+The detail of how this is done is covered in {cite}`douglaspsd` (see video in the notes) and we will only summarize it here and give an example. 
+
+The example is available on [GitHub](https://github.com/aerojunkie/control-tools/tree/master/PSD) and can be loaded into MATLAB online (we will do this in class).
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+##### Amplitude scaling
+
+For a double-sided FFT, the amplitudes are scaled by the number of samples, that is:
+
+$$X'[m] = \frac{\left|X[m]\right|}{N}$$ 
+
+For a single sided FFT, we use double this value and ignore the DC and Nyquist frequency.
+
+$$X'[m]_{m \gt 0; m \ne 0; m \ne N/2} = \frac{2\left|X[m]\right|}{N}$$ 
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+##### Power
+
+By analysis of the terms. it can be shown that the power in each term pf the single-sided FFT is
+
+$$P = 2\frac{\left|X[m]\right|^2}{N^2}$$
+
+We can thus compute the power using a similar method to that used for the amplitude.
+
+The power is often expressed in dB so we can use the `pow2db` function to get power in dB.
+
+There is also a function [`periodigram`](https://uk.mathworks.com/help/signal/ref/periodogram.html) that will compute the power spectrum in dB from the sampled data:
+
+```matlab
+periodogram(xn, rectwin(length(xn)), length(xn), fs, 'power')
+````
+
++++
+
+##### Power Spectral Density
+
+A full explanation of this is beyond the scope of this presentation (and will not be formally assessed). View the video for details. We will demonstrate this in class.
+
+The function [`periodigram`](https://uk.mathworks.com/help/signal/ref/periodogram.html) also computes the power spectral density in dB from the sampled data:
+
+```matlab
+periodogram(xn, rectwin(length(xn)), length(xn), fs, 'psd')
+````
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+#### Exercise
+
+Redo Examples 3 and 4 as single-sided FFT plots using amplitude and frequency scaling.
+
+Compute the power spectrum and power-spectral desity.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -798,6 +1049,7 @@ We have already shown you {cite}`douglasdft` in {ref}`unit6`. You may which to w
 * An illustration of part of the FFT algorithm
 * FFT v DFT
 * Two examples
+* Frequency and Amplitude Scaling
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -807,10 +1059,9 @@ Read the rest of Chapter 10 of Karris from page 10.9 and make your own notes on 
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-## The End?
+## Coming next
 
-* This concludes this module. 
-* There is some material that I have not covered, most notably is a significant amount of additional information about **Filter Design** (including the use of MATLAB for this) in Chapter 11 of Karris.
+* **Filter Design** (including the use of MATLAB for this) from Chapter 11 of Karris and other resources.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -839,6 +1090,8 @@ $$W_N^{-1}.$$
 You'll also find that most text books on Digital Signal Processing will cover the FFT and give more or less understandable presentations of the way the algorithm works.
 
 6. A complex number in MATLAB is 2 floating point doubles or 128 bits. So a 2048 "bin" FFT needs storage in RAM for approximately $22,528\times 128 = 2.9$ Mbit ($260$ kByte) of data.
+
+7. In MATLAB arrays start at 1 so we actually use 1 - N/2 + 1 as our range of values for K.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
