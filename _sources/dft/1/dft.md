@@ -14,7 +14,7 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-(unit61.)=
+(unit6.1)=
 # Unit 6.1: The Discrete Fourier Transform
 
 +++ {"slideshow": {"slide_type": "skip"}}

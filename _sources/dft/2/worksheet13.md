@@ -50,6 +50,10 @@ If you haven't watch it afterwards!
 
 * Two examples
 
++++ {"slideshow": {"slide_type": "fragment"}}
+
+* Amplitude and frequency scaling the FFT
+
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## The inefficiency of the DFT
@@ -544,7 +548,7 @@ However, there are other costs, such as the data storage needed for intermediate
 
 ### FFT in MATLAB
 
-The FFT algorithm is implemented, in MATLAB, as the function `fft`. We will conclude the class by working through Exercises 6 and 7 from section 10.8 of Karris.
+The FFT algorithm is implemented, in MATLAB, as the function `fft`. We will work through Exercises 6 and 7 from section 10.8 of Karris.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
