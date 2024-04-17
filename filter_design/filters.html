@@ -64,6 +64,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'filter_design/filters';</script>
     <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/filter_design/filters.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -201,9 +203,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Analogue and Digital Filter Design</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Unit 7.1: Designing Digital Filters</a></li>
-
 <li class="toctree-l2"><a class="reference internal" href="filter_design_tools.html">Unit 7.2: Designing Filters in MATLAB</a></li>
-
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../zbib.html">Bibliography</a></li>
@@ -475,10 +475,30 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Unit 7.1: Designing Digital Filters</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colophon">Colophon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope-and-background-reading">Scope and Background Reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">Agenda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#low-pass-analogue-filter-prototypes">Low-pass analogue filter prototypes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#magnitude-square-function">Magnitude-square function</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
 </ul>
-
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#general-form-of-magnitude-square-function">General form of magnitude-square function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-magnitude-square-filter">Analysis of magnitude-square filter</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#butterworth-analogue-low-pass-filter-design">Butterworth Analogue Low-Pass Filter Design</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes">Footnotes</a></li>
+</ul>
             </nav>
         </div>
     </div>
@@ -489,15 +509,193 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="unit-7-1-designing-digital-filters">
-<h1>Unit 7.1: Designing Digital Filters<a class="headerlink" href="#unit-7-1-designing-digital-filters" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="unit-7-1-designing-digital-filters">
+<span id="unit7-1"></span><h1>Unit 7.1: Designing Digital Filters<a class="headerlink" href="#unit-7-1-designing-digital-filters" title="Permalink to this heading">#</a></h1>
+<section id="colophon">
+<h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this heading">#</a></h2>
+<p>An annotatable worksheet for this presentation is available as <span class="xref myst"><strong>Worksheet 14</strong></span>.</p>
+<ul class="simple">
+<li><p>The source code for this page is <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/digital_filters/1/filters.md">digital_filters/1/filters.md</a>.</p></li>
+<li><p>You can view the notes for this presentation as a webpage (<a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/digital_filters/filters.html">HTML</a>).</p></li>
+<li><p>This page is downloadable as a <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/digital_filters/filters.pdf">PDF</a> file.</p></li>
+</ul>
 </section>
-<section id="references">
-<h1>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h1>
-<p>See <a class="reference internal" href="../zbib.html"><span class="doc std std-doc">Bibliography</span></a>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<section id="scope-and-background-reading">
+<h2>Scope and Background Reading<a class="headerlink" href="#scope-and-background-reading" title="Permalink to this heading">#</a></h2>
+<p>We introduced the idea of filters in <a class="reference internal" href="../fourier_transform/4/ft4.html#ft4"><span class="std std-ref">Unit 4.4: Introduction to Filters</span></a> and examined in some detail the idea of an ideal low-pass filter and an approximation to the ideal filter known and the <em>Butterworth</em> filter. We also showed how a high-pass filter, stop-band filter and and pass-band filter could be implemented by simple manipulations of the frequency response (or transfer functions) of a low-pass filter.</p>
+<p>An advantage of the Butterworth filter is that it has a flat response in the pass band, a consistent attenuation of -3 dB at the cut-off frequency, and a steady roll-off in the stop band. A disadvantage is that you need a high-order filter to get a fast transition between the pass-band and the stop-band.</p>
+<p>In <a class="reference internal" href="../dt_systems/4/dt_models.html#demo"><span class="std std-ref">Example: Digital Butterworth Filter</span></a>, we showed how an analogue 2nd-order Butterworth filter could be translated into a discrete-time (DT) system using the MATLAB function <code class="docutils literal notranslate"><span class="pre">c2d</span></code>, and we demonstrated the architecture and code that might be used to implement the digital filter.</p>
+<p>In this unit we will explore further some of the concepts of what is called <em>filter design by analogue prototype</em>. This Unit is based on Chapter 11 of <span id="id1">[<a class="reference internal" href="../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853.">Karris, 2012</a>]</span>. We will illustrate the concepts using MATLAB and Simulink as appropriate on the understanding that you should be able to manually design a digital filter from a 2nd-order analogue proptotype.</p>
+</section>
+<section id="agenda">
+<h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#unit7-1-introduction"><span class="std std-ref">Introduction</span></a></p></li>
+<li><p><a class="reference internal" href="#unit7-1-afp"><span class="std std-ref">Low-pass analogue filter prototypes</span></a></p></li>
+</ul>
+</section>
+<section id="introduction">
+<span id="unit7-1-introduction"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p><strong>Analogue filters</strong> are defined in continuous range of frequencies. They are classified as <em>low-pass</em>, <em>high-pass</em>, <em>band-pass</em> and <em>band-elimination</em> (<em>stop-band</em>) filters.</p>
+<p>The ideal mangnitude characteristics of each are illustrated in <a class="reference internal" href="#fig-7-1-mag-chars"><span class="std std-numref">Fig. 11</span></a></p>
+<figure class="align-default" id="fig-7-1-mag-chars">
+<a class="reference internal image-reference" href="../_images/mag_chars.png"><img alt="illustration of the magnitude characteristics of ideal filters" src="../_images/mag_chars.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Magnitude characteristics of ideal filters (reproduced from Figure 11.1 <span id="id2">[<a class="reference internal" href="../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853.">Karris, 2012</a>]</span>).</span><a class="headerlink" href="#fig-7-1-mag-chars" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>As we saw in <a class="reference internal" href="../fourier_transform/4/ft4.html#ft4-ideal-lp-filter"><span class="std std-ref">Ideal Low-Pass Filter (LPF)</span></a>, filters with ideal characteristics are not physicaly realizable (they are not <em>causal</em> systems). Instead we design practical filters that approximate these characteristics.</p>
+<p>A <strong>digital filter</strong>, in general, is a computational process, or algorithm, that converts one sequence of numbers representing the input signal into another sequence of numbers representing the output signal.</p>
+<p>Analogue filter functions have been used extensively as prototype models for designing digital filters, and that is the approach we will present here.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In Section 11.2 of <span id="id3">Karris [<a class="reference internal" href="../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853.">2012</a>]</span> examples of analogue low-pass and high-pass filters made from RC circuits and band-pass and stop band filters made from RLC circuits are given. We will pass over these as our interest is in digital filters, and in any case, filters made from passive components are only practical in a limited range of applications. Instead, we will look at the idea of analogue filter porotypes.</p>
+</div>
+</section>
+<section id="low-pass-analogue-filter-prototypes">
+<span id="unit7-1-afp"></span><h2>Low-pass analogue filter prototypes<a class="headerlink" href="#low-pass-analogue-filter-prototypes" title="Permalink to this heading">#</a></h2>
+<p>In this section, we will use the analogue low-pass filter as a basis. Using transformations, we can derive high-pass and other types of filter from the low-pass filter.</p>
+<p>We will discuss the <em>Butterworth</em>, <em>Chebyshev Type 1</em>, <em>Chebyshev Type II</em> and <em>Elliptic</em> filters.</p>
+<p>As through MATLAB and the Signal Processing Toolbox, we have access to sophisticated design tools, we will gloss over some of the mathematical details. If you are interested in such detail, please refer to Section 11.3 and following sections of <span id="id4">[<a class="reference internal" href="../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853.">Karris, 2012</a>]</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>From the point of view of assessment, you are only required to be able to recognise the filter types presented here and their key properties. Although you can design a filter of virtually any order, we will limit ourselves to second-order filters and provide the actual transfer function coefficients that you need to be able to convert the analogue filter into a digital filter using the <em>bilinear transform</em>. If you need access to the filter formulae, you will be given them in the question.</p>
+</div>
+<section id="magnitude-square-function">
+<span id="unit7-1-msf"></span><h3>Magnitude-square function<a class="headerlink" href="#magnitude-square-function" title="Permalink to this heading">#</a></h3>
+<p>To facilitate the design of filters we use a so-called <em>magnitude-squared function</em><a class="footnote-reference brackets" href="#u71-note1" id="id5">1</a> <span class="math notranslate nohighlight">\(A^2(\omega)\)</span>, and from it derive a <span class="math notranslate nohighlight">\(G(s)\)</span> function such that</p>
+<div class="math notranslate nohighlight" id="equation-eq-7-1-1">
+<span class="eqno">(16)<a class="headerlink" href="#equation-eq-7-1-1" title="Permalink to this equation">#</a></span>\[A^2(\omega) = \left.G(s).G(-s)\right|_{s = j\omega}\]</div>
+<p>Since <span class="math notranslate nohighlight">\((j\omega)^* = (-j\omega)\)</span>, the square of a complex number can be expressed as that complex number and its complex conjugate. Thus, if the magnitude is <span class="math notranslate nohighlight">\(A\)</span>, then</p>
+<div class="math notranslate nohighlight" id="equation-eq-7-1-2">
+<span class="eqno">(17)<a class="headerlink" href="#equation-eq-7-1-2" title="Permalink to this equation">#</a></span>\[A^2(\omega) = \left|G(j\omega)\right| = G(j\omega)G^*(j\omega) = G(j\omega).G(-j\omega)\]</div>
+<p>Now, <span class="math notranslate nohighlight">\(G(j\omega)\)</span> can be considered as <span class="math notranslate nohighlight">\(G(s)\)</span> evaluated at <span class="math notranslate nohighlight">\(s = j\omega\)</span>, and this <a class="reference internal" href="#equation-eq-7-1-1">(16)</a> is justified.</p>
+<p>Also, since <span class="math notranslate nohighlight">\(A\)</span> is understood to represent the magnitude, it needs not to be enclosed in vertical lines.</p>
+<p>Not all magnitude-square functions can be decomposed to <span class="math notranslate nohighlight">\(G(s)\)</span> and <span class="math notranslate nohighlight">\(G(-s)\)</span> rational functions; only even functions of <span class="math notranslate nohighlight">\(\omega\)</span>, positive for all <span class="math notranslate nohighlight">\(\omega\)</span>, and <em>proper-rational functions</em><a class="footnote-reference brackets" href="#u71-note2" id="id6">2</a> can satisfy <a class="reference internal" href="#equation-eq-7-1-1">(16)</a>.</p>
+<section id="example-1">
+<h4>Example 1<a class="headerlink" href="#example-1" title="Permalink to this heading">#</a></h4>
+<p>It is known that</p>
+<div class="math notranslate nohighlight">
+\[G(s) = \frac{3s^2 + 5s + 7}{s^2 + 4s + 6} \]</div>
+<p>Compute <span class="math notranslate nohighlight">\(A^2(\omega)\)</span>.</p>
+<section id="solution">
+<h5>Solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h5>
+<p>Since</p>
+<div class="math notranslate nohighlight">
+\[G(s) = \frac{3s^2 + 5s + 7}{s^2 + 4s + 6} \]</div>
+<p>it follows that</p>
+<div class="math notranslate nohighlight">
+\[G(-s) = \frac{3s^2 - 5s + 7}{s^2 - 4s + 6} \]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[G(s).G(-s) = \frac{3s^2 + 5s + 7}{s^2 + 4s + 6}.\frac{3s^2 - 5s + 7}{s^2 - 4s + 6} = \frac{9s^4 + 17s^2 + 49}{s^4 - 4s^2 + 36}  \]</div>
+<p>Therefore</p>
+<div class="math notranslate nohighlight">
+\[A^2(\omega) = \left.\frac{9s^4 + 17s^2 + 49}{s^4 - 4s^s + 36}\right|_{s = j\omega} = \frac{9\omega^4 - 17\omega^2 + 49}{\omega^4 + 4\omega^2 + 36}\]</div>
+</section>
+</section>
+<section id="general-form-of-magnitude-square-function">
+<h4>General form of magnitude-square function<a class="headerlink" href="#general-form-of-magnitude-square-function" title="Permalink to this heading">#</a></h4>
+<p>The general form of magnitude-square function <span class="math notranslate nohighlight">\(A^2(\omega)\)</span> is</p>
+<div class="math notranslate nohighlight" id="equation-eq-7-1-3">
+<span class="eqno">(18)<a class="headerlink" href="#equation-eq-7-1-3" title="Permalink to this equation">#</a></span>\[A^2(\omega) = \frac{C\left(b_k\omega^{2k}+b_{k-1}\omega^{2k-2}+\cdots+ b_0\right)}{a_k\omega^{2k}+a_{k-1}\omega^{2k-2}+\cdots+ a_0} \]</div>
+<p>where <span class="math notranslate nohighlight">\(C\)</span> is the DC gain, <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are constant coefficients, and <span class="math notranslate nohighlight">\(k\)</span> is a psotive integer denoting the order of the filter.</p>
+<p>Once the magnitude-square function <span class="math notranslate nohighlight">\(A^2(\omega)\)</span> is known, we can derive <span class="math notranslate nohighlight">\(G(s)\)</span> from <a class="reference internal" href="#equation-eq-7-1-1">(16)</a> with the substitution <span class="math notranslate nohighlight">\(\left(j\omega\right)^2 = -\omega^2 = - s^2\)</span>,</p>
+<p>that is</p>
+<div class="math notranslate nohighlight" id="equation-eq-7-1-4">
+<span class="eqno">(19)<a class="headerlink" href="#equation-eq-7-1-4" title="Permalink to this equation">#</a></span>\[G(s).G(-s) = \left. A^2(\omega)\right|_{\omega^2 = -s^2}\]</div>
+</section>
+<section id="analysis-of-magnitude-square-filter">
+<h4>Analysis of magnitude-square filter<a class="headerlink" href="#analysis-of-magnitude-square-filter" title="Permalink to this heading">#</a></h4>
+<p>In the simplest low-pass filter, the DC gain of the magnitude-square function is unity. In this case <a class="reference internal" href="#equation-eq-7-1-3">(18)</a> reduces to</p>
+<div class="math notranslate nohighlight" id="equation-eq-7-1-5">
+<span class="eqno">(20)<a class="headerlink" href="#equation-eq-7-1-5" title="Permalink to this equation">#</a></span>\[A^2(\omega) = \frac{b_0}{a_k\omega^{2k}+a_{k-1}\omega^{2k-2}+\cdots+ a_0} \]</div>
+<p>and at high frequencies (i.e. in the stop-band) can be approximated as</p>
+<div class="math notranslate nohighlight" id="equation-eq-7-1-6">
+<span class="eqno">(21)<a class="headerlink" href="#equation-eq-7-1-6" title="Permalink to this equation">#</a></span>\[A^2(\omega) = \frac{b_0/a_k}{\omega^{2k}} \]</div>
+<p>The <em>attenuation rate</em> of this approximation is <span class="math notranslate nohighlight">\(20k\)</span> dB/decade.</p>
+</section>
+<section id="example-2">
+<h4>Example 2<a class="headerlink" href="#example-2" title="Permalink to this heading">#</a></h4>
+<p>Given the magnitude-square function</p>
+<div class="math notranslate nohighlight" id="equation-eq-7-1-7">
+<span class="eqno">(22)<a class="headerlink" href="#equation-eq-7-1-7" title="Permalink to this equation">#</a></span>\[A^2(\omega) = \frac{16\left(-\omega^2 + 1\right)}{\left(\omega^2+4\right)\left(\omega^2+ 9\right)}\]</div>
+<p>derive a suitable transfer function <span class="math notranslate nohighlight">\(G(s)\)</span>.</p>
+<section id="id7">
+<h5>Solution<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h5>
+<p>From relation <a class="reference internal" href="#equation-eq-7-1-4">(19)</a></p>
+<div class="math notranslate nohighlight" id="equation-eq-7-1-8">
+<span class="eqno">(23)<a class="headerlink" href="#equation-eq-7-1-8" title="Permalink to this equation">#</a></span>\[G(s).G(-s) = \left. A^2(\omega)\right|_{\omega^2 = -s^2} = \frac{16\left(s^2 + 1\right)}{\left(-s^2 + 4\right)\left(-s^2 + 9\right)} \]</div>
+<p>This function has zeros at <span class="math notranslate nohighlight">\(s = \pm j\)</span>, and poles at <span class="math notranslate nohighlight">\(s = \pm 2\)</span> and <span class="math notranslate nohighlight">\(s = \pm 3\)</span>.</p>
+<p>There is no restriction on the zeros, but for stability<a class="footnote-reference brackets" href="#u71-note3" id="id8">3</a>, we select the left-half <span class="math notranslate nohighlight">\(s\)</span>-plane poles.</p>
+<p>Let</p>
+<div class="math notranslate nohighlight" id="equation-eq-7-1-9">
+<span class="eqno">(24)<a class="headerlink" href="#equation-eq-7-1-9" title="Permalink to this equation">#</a></span>\[G(s) = \frac{K\left(s^2 + 1\right)}{\left(s + 2\right)\left(s+3\right)} \]</div>
+<p>We must find <span class="math notranslate nohighlight">\(K\)</span> such that <span class="math notranslate nohighlight">\(G(0) = A(0)\)</span>. From <a class="reference internal" href="#equation-eq-7-1-7">(22)</a></p>
+<div class="math notranslate nohighlight">
+\[A^2(0) = 16/36 = 4/9\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[A(0) = 2/3\]</div>
+<p>From <a class="reference internal" href="#equation-eq-7-1-9">(24)</a>,</p>
+<div class="math notranslate nohighlight">
+\[G(0) = K/6\]</div>
+<p>and for <span class="math notranslate nohighlight">\(G(0) = A(0)\)</span> we must have,</p>
+<div class="math notranslate nohighlight">
+\[K/6 = 2/3\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[K = 12/3 = 4\]</div>
+<p>By subsitution into <a class="reference internal" href="#equation-eq-7-1-9">(24)</a>, we obtain</p>
+<div class="math notranslate nohighlight">
+\[G(s) = \frac{4\left(s^2 + 1\right)}{\left(s + 2\right)\left(s+3\right)} \]</div>
+</section>
+</section>
+</section>
+<section id="butterworth-analogue-low-pass-filter-design">
+<span id="unit7-1-butter"></span><h3>Butterworth Analogue Low-Pass Filter Design<a class="headerlink" href="#butterworth-analogue-low-pass-filter-design" title="Permalink to this heading">#</a></h3>
+<p>Consider the <em>Butterworth low-pass filter</em><a class="footnote-reference brackets" href="#u71-note5" id="id9">4</a> whose magnitude-squared function is</p>
+<div class="math notranslate nohighlight" id="equation-eq-7-1-10">
+<span class="eqno">(25)<a class="headerlink" href="#equation-eq-7-1-10" title="Permalink to this equation">#</a></span>\[A^2(\omega) = \frac{1}{\left(\omega/\omega_c\right)^{2k}+1} \]</div>
+<p>where <span class="math notranslate nohighlight">\(k\)</span> is a positive integer, and <span class="math notranslate nohighlight">\(\omega_c\)</span> is the cutoff (-3 dB) frequency.</p>
+<p>We can use MATLAB to plot the frequency response of this relation for <span class="math notranslate nohighlight">\(k = 1,2,4,8\)</span></p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">w_w0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mf">0.02</span><span class="p">:</span><span class="mi">3</span><span class="p">;</span><span class="w"> </span>
+<span class="n">Aw2k1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">./</span><span class="p">(</span><span class="n">w_w0</span><span class="o">.^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span><span class="w"> </span><span class="n">Aw2k2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">./</span><span class="p">(</span><span class="n">w_w0</span><span class="o">.^</span><span class="mi">4</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span>
+<span class="n">Aw2k4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">./</span><span class="p">(</span><span class="n">w_w0</span><span class="o">.^</span><span class="mi">8</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span><span class="w"> </span><span class="n">Aw2k8</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">./</span><span class="p">(</span><span class="n">w_w0</span><span class="o">.^</span><span class="mi">16</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">w_w0</span><span class="p">,</span><span class="n">Aw2k1</span><span class="p">,</span><span class="n">w_w0</span><span class="p">,</span><span class="n">Aw2k2</span><span class="p">,</span><span class="n">w_w0</span><span class="p">,</span><span class="n">Aw2k4</span><span class="p">,</span><span class="n">w_w0</span><span class="p">,</span><span class="n">Aw2k8</span><span class="p">),</span><span class="nb">grid</span><span class="w"> </span><span class="n">on</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Normalized Frequency Ratio (ratio of actual to cut-off)&#39;</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Magnitude A (square root of A^2(omega))&#39;</span><span class="p">)</span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Butterworh Analogue Low-Pass Filter characteritics for k = 1, 2, 4 and 8&#39;</span><span class="p">)</span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;k=1&#39;</span><span class="p">,</span><span class="s">&#39;k=2&#39;</span><span class="p">,</span><span class="s">&#39;k=4&#39;</span><span class="p">,</span><span class="s">&#39;k=8&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<p>See <a class="reference internal" href="../zbib.html"><span class="doc std std-doc">Bibliography</span></a>.</p>
+</section>
+<section id="footnotes">
+<h2>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this heading">#</a></h2>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="u71-note1"><span class="brackets"><a class="fn-backref" href="#id5">1</a></span></dt>
+<dd><p>This avoids having to deal with complex magnitudes which use the square-root operator.</p>
+</dd>
+<dt class="label" id="u71-note2"><span class="brackets"><a class="fn-backref" href="#id6">2</a></span></dt>
+<dd><p>A rational function is said to be <em>proper</em> if the largest power in the denominator is equal to or larger than that of the numerator.</p>
+</dd>
+<dt class="label" id="u71-note3"><span class="brackets"><a class="fn-backref" href="#id8">3</a></span></dt>
+<dd><p>A system is said to be stable if a finite input produces a finite output. Alternatively, a system is stable if its impulse response <span class="math notranslate nohighlight">\(h(t)\)</span> vanishes after a sufficiently long time. For linear time-invariant systems, a system will be stable <em>only if</em> all the real-parts of the poles have negative sign. That is, they lie in the left-half of the <span class="math notranslate nohighlight">\(s\)</span>-plane.</p>
+</dd>
+<dt class="label" id="u71-note5"><span class="brackets"><a class="fn-backref" href="#id9">4</a></span></dt>
+<dd><p>The frequency response of the Butterworth filter is <em>maximally flat</em> (has no ripples) in the passband, and rolls off towards zero in the stopband. When viewed on a logarithmic Bode plot, the response slopes off linearly at a rate of <span class="math notranslate nohighlight">\(-20k\)</span> dB/decade towards negative infinity.</p>
+</dd>
+</dl>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -563,10 +761,30 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Unit 7.1: Designing Digital Filters</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colophon">Colophon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope-and-background-reading">Scope and Background Reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">Agenda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#low-pass-analogue-filter-prototypes">Low-pass analogue filter prototypes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#magnitude-square-function">Magnitude-square function</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
 </ul>
-
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#general-form-of-magnitude-square-function">General form of magnitude-square function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-magnitude-square-filter">Analysis of magnitude-square filter</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#butterworth-analogue-low-pass-filter-design">Butterworth Analogue Low-Pass Filter Design</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes">Footnotes</a></li>
+</ul>
   </nav></div>
 
 </div></div>

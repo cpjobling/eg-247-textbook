@@ -16,7 +16,3 @@ This is a very large topic and we will give a fairly high-level overview. Much m
 * {ref}`unit7.1`
 * {ref}`unit7.2`
 
-
-```python
-
-```
