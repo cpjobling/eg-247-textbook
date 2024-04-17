@@ -656,7 +656,7 @@ stem(x, ifft(fft(y)))
 
 ## Time and Amplitude Scaling
 
-This is covered in the notes for this section.
+This is covered in the <a href="https://cpjobling.github.io/eg-247-textbook/dft/2/fft.html#frequency-and-amplitude-scaling">notes for this section</a>.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
