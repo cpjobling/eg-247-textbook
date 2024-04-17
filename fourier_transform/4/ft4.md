@@ -122,6 +122,7 @@ See the video and script on [*Canvas Week 6*](https://canvas.swansea.ac.uk/cours
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
+(ft4:ideal_lp_filter)=
 ## Ideal Low-Pass Filter (LPF)
 
 An ideal low pass filter cuts-off frequencies higher than its *cut-off frequency*, $\omega_c$.
