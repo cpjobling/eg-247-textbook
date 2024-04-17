@@ -1,5 +1,5 @@
 (unit7.1)=
-## Unit 7.1: Designing Digital Filters
+# Unit 7.1: Designing Digital Filters
 
 ## References
 

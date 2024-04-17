@@ -50,6 +50,10 @@ If you haven't watch it afterwards!
 
 * Two examples
 
++++ {"slideshow": {"slide_type": "fragment"}}
+
+* Amplitude and frequency scaling the FFT
+
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## The inefficiency of the DFT
@@ -344,7 +348,7 @@ $$x[n] = [1, 2, 3, 4]$$
 
 is 
 
-$$X[m] = [10, -2+j2, -4, -2-j2].$$
+$$X[m] = [10, -2+j2, -2, -2-j2].$$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -471,7 +475,7 @@ $$x[n] = [1, 2, 3, 4]$$
 
 is 
 
-$$X[m] = [10, -2+j2, -4, -2-j2].$$
+$$X[m] = [10, -2+j2, -2, -2-j2].$$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -544,7 +548,7 @@ However, there are other costs, such as the data storage needed for intermediate
 
 ### FFT in MATLAB
 
-The FFT algorithm is implemented, in MATLAB, as the function `fft`. We will conclude the class by working through Exercises 6 and 7 from section 10.8 of Karris.
+The FFT algorithm is implemented, in MATLAB, as the function `fft`. We will work through Exercises 6 and 7 from section 10.8 of Karris.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -567,7 +571,8 @@ slideshow:
 ---
 x = [linspace(-2,-1,50) linspace(-1,1,100) linspace(1,2,50)];
 y = [linspace(0,0,50) linspace(1,1,100) linspace(0,0,50)];
-stem(x,y)
+stem(x,y);
+N = length(x);
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -579,7 +584,9 @@ and the FFT is produced as
 slideshow:
   slide_type: fragment
 ---
-stem(x, abs(fft(y)))
+stem(abs(fft(y)))
+stem(-N/2+1:N/2,abs(fftshift(fft(y)))) % Note change in x index to get axis labels correct
+xlabel('k'),ylabel('abs(fft)')
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -591,7 +598,8 @@ unwind
 slideshow:
   slide_type: fragment
 ---
-stem(x, abs(fftshift(fft(y))))
+stem(-N/2+1:N/2, abs(fftshift(fft(y)))) % Note change in x index for index $k$ into positive/negative frequency bins
+xlabel('k'),ylabel('abs(fft)')
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -626,6 +634,7 @@ slideshow:
 x = linspace(-1,1,100);
 y = [linspace(0,1,50) linspace(1,0,50)];
 stem(x,y)
+N = length(y);
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -637,7 +646,8 @@ and the FFT is obtained with
 slideshow:
   slide_type: subslide
 ---
-stem(x, abs(fftshift(fft(y))))
+stem(-N/2 + 1:N/2, abs(fftshift(fft(y))))
+xlabel('k'),ylabel('abs(fft)')
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -656,7 +666,7 @@ stem(x, ifft(fft(y)))
 
 ## Time and Amplitude Scaling
 
-This is covered in the notes for this section.
+This is covered in the <a href="https://cpjobling.github.io/eg-247-textbook/dft/2/fft.html#frequency-and-amplitude-scaling">notes for this section</a>.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
