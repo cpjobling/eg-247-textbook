@@ -861,7 +861,7 @@ X[3] &amp;=&amp; X_e[1] - X_o[1]W_4^{1(3)} = X_e[1] + X_o[1]W_4^1.
 \[x[n] = [1, 2, 3, 4]\]</div>
 <p>is</p>
 <div class="math notranslate nohighlight">
-\[X[m] = [10, -2+j2, -4, -2-j2].\]</div>
+\[X[m] = [10, -2+j2, -2, -2-j2].\]</div>
 <pre style="border: 2px solid blue">
 
 
@@ -931,7 +931,7 @@ X[3] &amp;=&amp; X_e[1] - X_o[1]W_4^{1(3)} = X_e[1] + X_o[1]W_4^1.
 \[x[n] = [1, 2, 3, 4]\]</div>
 <p>is</p>
 <div class="math notranslate nohighlight">
-\[X[m] = [10, -2+j2, -4, -2-j2].\]</div>
+\[X[m] = [10, -2+j2, -2, -2-j2].\]</div>
 <pre style="border: 2px solid blue">
 
 
@@ -1077,34 +1077,36 @@ X[3] &amp;=&amp; X_e[1] - X_o[1]W_4^{1(3)} = X_e[1] + X_o[1]W_4^1.
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">50</span><span class="p">)];</span>
 <span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">)];</span>
-<span class="nb">stem</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">stem</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
+<span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/999809fe4347a1fda64cd1052cc24be8f206b59dfadcc518fd7bf921c1a432e7.png" src="../../_images/999809fe4347a1fda64cd1052cc24be8f206b59dfadcc518fd7bf921c1a432e7.png" />
+<img alt="../../_images/111c9dbfadb075136e0eb4635faad29c5345b924311f56b601eb14cfbf94a36b.png" src="../../_images/111c9dbfadb075136e0eb4635faad29c5345b924311f56b601eb14cfbf94a36b.png" />
 </div>
 </div>
 <p>and the FFT is produced as</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">stem</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="nb">fft</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">stem</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="nb">fft</span><span class="p">(</span><span class="n">y</span><span class="p">))),</span><span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;k&#39;</span><span class="p">),</span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;abs(fft)&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/06f000b64952d0f88f9d6ac915dcfce3568a9341f404a1bde4678fb0435452d7.png" src="../../_images/06f000b64952d0f88f9d6ac915dcfce3568a9341f404a1bde4678fb0435452d7.png" />
+<img alt="../../_images/9f7e68409bf3ed49f27bcf624d03cdb7b5e3904ef9520e68f3e32d294fa7a0df.png" src="../../_images/9f7e68409bf3ed49f27bcf624d03cdb7b5e3904ef9520e68f3e32d294fa7a0df.png" />
 </div>
 </div>
 <p>unwind</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">stem</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="nb">fftshift</span><span class="p">(</span><span class="nb">fft</span><span class="p">(</span><span class="n">y</span><span class="p">))))</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">stem</span><span class="p">(</span><span class="o">-</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="nb">abs</span><span class="p">(</span><span class="nb">fftshift</span><span class="p">(</span><span class="nb">fft</span><span class="p">(</span><span class="n">y</span><span class="p">))))</span><span class="w"> </span><span class="c">% Note change in x index to get axis labels correct</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;k&#39;</span><span class="p">),</span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;abs(fft)&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8ba8e503a4190340ea926e27db3e9ea2404fc616a926c311365bfd41b40d39e3.png" src="../../_images/8ba8e503a4190340ea926e27db3e9ea2404fc616a926c311365bfd41b40d39e3.png" />
+<img alt="../../_images/3c4f69107808e2a0ce33d47dded41da7ed5989edb9e89763793d187874a6aab6.png" src="../../_images/3c4f69107808e2a0ce33d47dded41da7ed5989edb9e89763793d187874a6aab6.png" />
 </div>
 </div>
 <p>The inverse FFT is obtained with</p>
@@ -1115,7 +1117,7 @@ X[3] &amp;=&amp; X_e[1] - X_o[1]W_4^{1(3)} = X_e[1] + X_o[1]W_4^1.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/181550c1ead3a63270667a294662aae5e5de7a41357c60db81caff4032aec854.png" src="../../_images/181550c1ead3a63270667a294662aae5e5de7a41357c60db81caff4032aec854.png" />
+<img alt="../../_images/4291dd7ca23b1581050ec7a422e94d16918ce60e3cc8578fc0237a590209c440.png" src="../../_images/4291dd7ca23b1581050ec7a422e94d16918ce60e3cc8578fc0237a590209c440.png" />
 </div>
 </div>
 </section>
@@ -1131,33 +1133,35 @@ X[3] &amp;=&amp; X_e[1] - X_o[1]W_4^{1(3)} = X_e[1] + X_o[1]W_4^1.
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
 <span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">)];</span>
 <span class="nb">stem</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e44c5a40630f31f8bbfb26e370f262187cbdc6a279e24d03f043ab1b07ff584a.png" src="../../_images/e44c5a40630f31f8bbfb26e370f262187cbdc6a279e24d03f043ab1b07ff584a.png" />
+<img alt="../../_images/943c7d5e91bcdc6d60cd2a8ee861312b318c03a400f19582da7aea6633a0058f.png" src="../../_images/943c7d5e91bcdc6d60cd2a8ee861312b318c03a400f19582da7aea6633a0058f.png" />
 </div>
 </div>
 <p>and the FFT is obtained with</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">stem</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="nb">fftshift</span><span class="p">(</span><span class="nb">fft</span><span class="p">(</span><span class="n">y</span><span class="p">))))</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">stem</span><span class="p">(</span><span class="o">-</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="nb">fftshift</span><span class="p">(</span><span class="nb">fft</span><span class="p">(</span><span class="n">y</span><span class="p">))))</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;k&#39;</span><span class="p">),</span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;abs(fft)&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6478ccb0abb4b6e3aef53bea1297474d72f706c673513aef72cf26fbbe408819.png" src="../../_images/6478ccb0abb4b6e3aef53bea1297474d72f706c673513aef72cf26fbbe408819.png" />
+<img alt="../../_images/445e597266aaccf680fd800f96002f62c97741a26569264cf4ab60aacf7f3a1c.png" src="../../_images/445e597266aaccf680fd800f96002f62c97741a26569264cf4ab60aacf7f3a1c.png" />
 </div>
 </div>
 <p>The inverse FFT is obtained with</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">stem</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="nb">ifft</span><span class="p">(</span><span class="nb">fft</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">stem</span><span class="p">(</span><span class="nb">ifft</span><span class="p">(</span><span class="nb">fft</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/527464ce383d2daccf7cadcb37a21faa7105b64d5f35b505b33622b61fd40eaa.png" src="../../_images/527464ce383d2daccf7cadcb37a21faa7105b64d5f35b505b33622b61fd40eaa.png" />
+<img alt="../../_images/998392c41e40c364669d661199c4a0dc93cf9a068adee894c7279434282719af.png" src="../../_images/998392c41e40c364669d661199c4a0dc93cf9a068adee894c7279434282719af.png" />
 </div>
 </div>
 </section>
@@ -1227,7 +1231,7 @@ X[3] &amp;=&amp; X_e[1] - X_o[1]W_4^{1(3)} = X_e[1] + X_o[1]W_4^1.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/2d97e5a5b51ee4f0c280fe771760b7a86dffba3764cc1c2607214fe27e70a937.png" src="../../_images/2d97e5a5b51ee4f0c280fe771760b7a86dffba3764cc1c2607214fe27e70a937.png" />
+<img alt="../../_images/50ed9f6ca33ffba00a3628bd6cd8986f1e02868e8f540bf73a12ca4f91c86f24.png" src="../../_images/50ed9f6ca33ffba00a3628bd6cd8986f1e02868e8f540bf73a12ca4f91c86f24.png" />
 </div>
 </div>
 </section>
@@ -1243,7 +1247,7 @@ X[3] &amp;=&amp; X_e[1] - X_o[1]W_4^{1(3)} = X_e[1] + X_o[1]W_4^1.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/38e442135077c0a3fbec2f93c96fffd31276195819246f955fbbe0fcab76da12.png" src="../../_images/38e442135077c0a3fbec2f93c96fffd31276195819246f955fbbe0fcab76da12.png" />
+<img alt="../../_images/09109f168cae89dae4fdf9f1aca71de8ca87e1c94023d4326cce86476c0d7b1a.png" src="../../_images/09109f168cae89dae4fdf9f1aca71de8ca87e1c94023d4326cce86476c0d7b1a.png" />
 </div>
 </div>
 <p>This plot doesn’t make sense as Xn is complex.</p>
@@ -1261,7 +1265,7 @@ X[3] &amp;=&amp; X_e[1] - X_o[1]W_4^{1(3)} = X_e[1] + X_o[1]W_4^1.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/859bf501024c59a371b75c262ed00673deea77c57a335396b6ba70a042ec2249.png" src="../../_images/859bf501024c59a371b75c262ed00673deea77c57a335396b6ba70a042ec2249.png" />
+<img alt="../../_images/b559f38efa3c2bc927e6ed9abcae30ecc7c068599c10eb6d34ae507e746dec31.png" src="../../_images/b559f38efa3c2bc927e6ed9abcae30ecc7c068599c10eb6d34ae507e746dec31.png" />
 </div>
 </div>
 <p>Now we see the peaks in the postive and negative frequency. But they are plotted at bin number <span class="math notranslate nohighlight">\(K\)</span> not frequency.</p>
@@ -1280,7 +1284,7 @@ X[3] &amp;=&amp; X_e[1] - X_o[1]W_4^{1(3)} = X_e[1] + X_o[1]W_4^1.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/33b75248802481aff9bcf056252999cdd468eb290da0fdc707e5611d5d500310.png" src="../../_images/33b75248802481aff9bcf056252999cdd468eb290da0fdc707e5611d5d500310.png" />
+<img alt="../../_images/6393c54da7671a5631312b5a314d5d9e3db35a1cbbd4189cd204beec798a7bf5.png" src="../../_images/6393c54da7671a5631312b5a314d5d9e3db35a1cbbd4189cd204beec798a7bf5.png" />
 </div>
 </div>
 </section>
@@ -1311,7 +1315,7 @@ X[3] &amp;=&amp; X_e[1] - X_o[1]W_4^{1(3)} = X_e[1] + X_o[1]W_4^1.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3a495fd4acae156bada126298697dc01f52f257fb27a910ff1ba8a1d7e32728a.png" src="../../_images/3a495fd4acae156bada126298697dc01f52f257fb27a910ff1ba8a1d7e32728a.png" />
+<img alt="../../_images/16a9bf34e86f127adca914b14986fa8fa9b72437071b7ce5e6fd643900e65667.png" src="../../_images/16a9bf34e86f127adca914b14986fa8fa9b72437071b7ce5e6fd643900e65667.png" />
 </div>
 </div>
 <p>Now we can clearly see the peak at 3 Hz, but the amplitude is 20, which has no real physical value.</p>
