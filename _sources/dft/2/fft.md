@@ -1020,7 +1020,11 @@ There is also a function [`periodigram`](https://uk.mathworks.com/help/signal/re
 periodogram(xn, rectwin(length(xn)), length(xn), fs, 'power')
 ````
 
-+++
++++ {"slideshow": {"slide_type": "notes"}}
+
+The second argument is a windowing function that is applied to the sequence to select, and possibly prescale, the samples to reduce *spectral leakage*. This is explained by Brian Douglas in the video {cite}`douglaspsd` and we will not persue it further here.
+
++++ {"slideshow": {"slide_type": "subslide"}}
 
 ##### Power Spectral Density
 
