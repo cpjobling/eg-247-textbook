@@ -48,7 +48,7 @@ An advantage of the Butterworth filter is that it has a flat response in the pas
 
 In {ref}`demo`, we showed how an analogue 2nd-order Butterworth filter could be translated into a discrete-time (DT) system using the MATLAB function `c2d`, and we demonstrated the architecture and code that might be used to implement the digital filter.
 
-In this unit we will explore further some of the concepts of what is called *filter design by analogue prototype*. This Unit is based on Chapter 11 of {cite}`karris`. We will illustrate the concepts using MATLAB and Simulink as appropriate on the understanding that you should be able to manually design a digital filter from a 2nd-order analogue proptotype.
+In this unit we will explore further some of the concepts of what is called *filter design by analogue prototype*. This Unit is based on Chapter 11 of {cite}`karris`. We will illustrate the concepts using MATLAB and Simulink as appropriate on the understanding that you should be able to use the bilinear transform to convert a 2nd-order analogue proptotype into a digital filter.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -676,19 +676,17 @@ grid
 
 Figure {numref}`fig:u71:comparison` shows the Butterworth, Chebyshev and Elliptic filters for a fifth-order prototype analogue low-pass filter.
 
-![Frequency response curves of four linear analog filters: Butterworth filter, Chebyshev filter of type 1 and 2 and Elliptic filter, each one as 5th order filter.](pictures/Filters_order5.png)
-
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 :::{figure-md} fig:u71:comparison
-<img src="pictures/Filters_order5.png" alt="Frequency response curves of four linear analog filters: Butterworth filter, Chebyshev filter of type 1 and 2 and Elliptic filter, each one as 5th order filter." with="100%" />
+![Frequency response curves of four linear analog filters: Butterworth filter, Chebyshev filter of type 1 and 2 and Elliptic filter, each one as 5th order filter.](pictures/Filters_order5.svg)
 
-Frequency response curves of four linear analog filters: Butterworth filter, Chebyshev filter of type 1 and 2 and Elliptic filter, each one as 5th order filter. (Published as [Filters_order5.svg](https://en.wikipedia.org/wiki/Chebyshev_filter#/media/File:Filters_order5.svg) on page [Chebyshev filter](https://en.wikipedia.org/wiki/Chebyshev_filter). CC BY [Geek2](https://commons.wikimedia.org/wiki/User:Geek3))
+Frequency response curves of four linear analog filters: Butterworth filter, Chebyshev filter of type 1 and 2 and Elliptic filter, each one as 5th order filter. (Originally published as [Filters_order5.svg](https://en.wikipedia.org/wiki/Chebyshev_filter#/media/File:Filters_order5.svg) on WikiPedia article [Chebyshev filter](https://en.wikipedia.org/wiki/Chebyshev_filter). Image CC BY [Geek2](https://commons.wikimedia.org/wiki/User:Geek3))
 :::
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-As you can seem Chebyshev filters are sharper than the Butterworth filter; they are not as sharp as the elliptic one, but they show fewer ripples over the bandwidth.
+As you can see, the Chebyshev filters are sharper than the Butterworth filter; they are not as sharp as the elliptic one, but they show fewer ripples over the bandwidth.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
