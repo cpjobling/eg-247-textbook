@@ -680,16 +680,6 @@ document.write(`
 <span class="eqno">(26)<a class="headerlink" href="#equation-eq-7-1-10" title="Permalink to this equation">#</a></span>\[A^2(\omega) = \frac{1}{\left(\omega/\omega_c\right)^{2k}+1} \]</div>
 <p>where <span class="math notranslate nohighlight">\(k\)</span> is a positive integer, and <span class="math notranslate nohighlight">\(\omega_c\)</span> is the cutoff (-3 dB) frequency.</p>
 <p>We can use MATLAB to plot the frequency response of this relation for <span class="math notranslate nohighlight">\(k = 1,2,4,8\)</span></p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">w_w0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mf">0.02</span><span class="p">:</span><span class="mi">3</span><span class="p">;</span><span class="w"> </span>
-<span class="n">Aw2k1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">./</span><span class="p">(</span><span class="n">w_w0</span><span class="o">.^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span><span class="w"> </span><span class="n">Aw2k2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">./</span><span class="p">(</span><span class="n">w_w0</span><span class="o">.^</span><span class="mi">4</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span>
-<span class="n">Aw2k4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">./</span><span class="p">(</span><span class="n">w_w0</span><span class="o">.^</span><span class="mi">8</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span><span class="w"> </span><span class="n">Aw2k8</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">./</span><span class="p">(</span><span class="n">w_w0</span><span class="o">.^</span><span class="mi">16</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span>
-<span class="nb">plot</span><span class="p">(</span><span class="n">w_w0</span><span class="p">,</span><span class="n">Aw2k1</span><span class="p">,</span><span class="n">w_w0</span><span class="p">,</span><span class="n">Aw2k2</span><span class="p">,</span><span class="n">w_w0</span><span class="p">,</span><span class="n">Aw2k4</span><span class="p">,</span><span class="n">w_w0</span><span class="p">,</span><span class="n">Aw2k8</span><span class="p">),</span><span class="nb">grid</span><span class="w"> </span><span class="n">on</span>
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Normalized Frequency Ratio (ratio of actual to cut-off)&#39;</span><span class="p">)</span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Magnitude A (square root of A^2(omega))&#39;</span><span class="p">)</span>
-<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Butterworh Analogue Low-Pass Filter characteritics for k = 1, 2, 4 and 8&#39;</span><span class="p">)</span>
-<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;k=1&#39;</span><span class="p">,</span><span class="s">&#39;k=2&#39;</span><span class="p">,</span><span class="s">&#39;k=4&#39;</span><span class="p">,</span><span class="s">&#39;k=8&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
 <p>All Butterworth filters have the property that all poles of the transfer function that describes them lie on the circumference of a circle with radius <span class="math notranslate nohighlight">\(\omega_c\)</span>, and they are <span class="math notranslate nohighlight">\(2\pi/2k\)</span> radians apart. Thus, if <span class="math notranslate nohighlight">\(k\)</span> is odd, the poles start at zero radians, and if <span class="math notranslate nohighlight">\(k\)</span> is even, they start at <span class="math notranslate nohighlight">\(2\pi/2k\)</span> radians. But regardless wether <span class="math notranslate nohighlight">\(k\)</span> is odd or even, the poles are distributed with symmetry with respect to the <span class="math notranslate nohighlight">\(j\omega\)</span> axis. For stability, we chose the left half-plave poles to form <span class="math notranslate nohighlight">\(G(s)\)</span>.</p>
 <p>We can find the nth roots of the complex number <span class="math notranslate nohighlight">\(s\)</span> by <em>De Moirvre’s theorem</em>. This states that</p>
 <div class="math notranslate nohighlight">
@@ -727,12 +717,6 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 <div class="math notranslate nohighlight" id="equation-eq-7-1-12">
 <span class="eqno">(28)<a class="headerlink" href="#equation-eq-7-1-12" title="Permalink to this equation">#</a></span>\[G(s) = \frac{K}{\left(s + 1\right)\left(s + \frac{1}{2} -j\frac{\sqrt{3}}{2}\right)\left(s + \frac{1}{2} +j\frac{\sqrt{3}}{2}\right)} \]</div>
 <p>We use MATLAB to express the denominator as a polynomial</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">s</span><span class="p">;</span><span class="w"> </span><span class="n">den</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">j</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">j</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">expand</span><span class="p">(</span><span class="n">den</span><span class="p">)</span>
-</pre></div>
-</div>
 <p>Thereform <a class="reference internal" href="#equation-eq-7-1-12">(28)</a> simplifies to</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-1-13">
 <span class="eqno">(29)<a class="headerlink" href="#equation-eq-7-1-13" title="Permalink to this equation">#</a></span>\[G(s) = \frac{K}{s^3 + 2s^2 + 2s + 1} \]</div>
@@ -756,15 +740,6 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 <p>Use MATLAB to derive the numerator <code class="docutils literal notranslate"><span class="pre">b</span></code> and denominator <code class="docutils literal notranslate"><span class="pre">a</span></code> coefficients for the third-order Butterworth low-pass filter prototype with normalized cutoff frequency. Plot the Bode plot of the filter.</p>
 <section id="id11">
 <h5>Solution<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h5>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">z</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">buttap</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span><span class="w"> </span>
-<span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zp2tf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
-<span class="n">bode</span><span class="p">(</span><span class="n">G</span><span class="p">),</span><span class="w"> </span><span class="nb">grid</span><span class="w"> </span><span class="n">on</span>
-<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Bode diagram for a 3rd order Butterworth filter with wc = 1 rad/s&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
 <p>Note that the roll-off is -60 dB/decade above the normalized cut-off <span class="math notranslate nohighlight">\(\omega_c = 1\)</span> rad/s. Also note that the phase changes fron <span class="math notranslate nohighlight">\(0^\circ\)</span> to <span class="math notranslate nohighlight">\(-270^\circ\)</span> from low to high frequency.</p>
 </section>
 </section>
@@ -781,18 +756,6 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 <p>Redesign the filter designed in Example 4 so that it has a a cut-off frequency of <span class="math notranslate nohighlight">\(1\)</span> kHz.</p>
 <section id="id12">
 <h5>Solution<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h5>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">z</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">buttap</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span><span class="w"> </span>
-<span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zp2tf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">);</span>
-<span class="n">fc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e3</span><span class="p">;</span><span class="w"> </span><span class="c">% 1 kHz</span>
-<span class="n">wc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">fc</span><span class="p">;</span><span class="w"> </span><span class="c">% rad/s</span>
-<span class="nb">format</span><span class="w"> </span><span class="n">long</span>
-<span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">lp2lp</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">wc</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">bodeplot</span><span class="p">(</span><span class="n">tf</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">));</span><span class="w"> </span><span class="n">setoptions</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="s">&#39;FreqUnits&#39;</span><span class="p">,</span><span class="s">&#39;kHz&#39;</span><span class="p">),</span><span class="nb">grid</span><span class="w"> </span><span class="n">on</span>
-<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Butterworth 3rd Order Low-Pass Filter: fc = 1 kHz&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>We have used several new MATLAB commands in <span class="xref std std-ref">unit7.1:ex5</span>. These are summarized below.</p>
@@ -835,9 +798,6 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 </section>
 <section id="footnotes">
 <h2>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this heading">#</a></h2>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="u71-note1"><span class="brackets"><a class="fn-backref" href="#id5">1</a></span></dt>
