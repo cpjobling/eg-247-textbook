@@ -144,6 +144,7 @@ Not all magnitude-square functions can be decomposed to $G(s)$ and $G(-s)$ ratio
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
+(unut7.1:ex1)=
 #### Example 1
 
 It is known that
@@ -220,6 +221,7 @@ The *attenuation rate* of this approximation is $20k$ dB/decade.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
+(unit7.1:ex2)=
 #### Example 2
 
 Given the magnitude-square function
@@ -282,7 +284,7 @@ $$K = 12/3 = 4$$
 
 By subsitution into {eq}`eq:7.1:9`, we obtain
 
-$$G(s) = \frac{4\left(s^2 + 1\right)}{\left(s + 2\right)\left(s+3\right)} $$
+$$G(s) = \frac{4\left(s^2 + 1\right)}{\left(s + 2\right)\left(s+3\right)} $$ (eq:7.1:10a)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -328,6 +330,7 @@ $$\sqrt[n]{r e^{j\theta}} = \sqrt[n]{r} {e}^{j\left(\frac{\theta + 2k\pi}{N} \ri
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
+(unit7.1:ex3)=
 #### Example 3
 
 Derive the transfer function $G(s)$ for the third-order ($k=3$) Butterworth low-pass filter with *normalized cut-off frequency* $\omega_c = 1$ rad/s.
@@ -338,13 +341,13 @@ Derive the transfer function $G(s)$ for the third-order ($k=3$) Butterworth low-
 
 With $k = 3$ and $\omega_c = 1$ rad/s, {eq}`eq:7.1:10` simplifies to 
 
-$$A^2(\omega) = \frac{1}{\omega^6 + 1} $$ (eq:7.1:10)
+$$A^2(\omega) = \frac{1}{\omega^6 + 1} $$ (eq:7.1:11)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 With the substitution $\omega^2 = -s^2$, {eq}`eq:7.1:10` becomes
 
-$$G(s).G(-s) = \frac{1}{-s^6 + 1} $$ (eq:7.1:11)
+$$G(s).G(-s) = \frac{1}{-s^6 + 1} $$ (eq:7.1:12)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -377,7 +380,7 @@ Location of the poles for the transfer function for the transfer function of Exa
 
 The transfer function $G(s)$ is formed with the left half-plane poles $s_3$, $s_4$ and $s_5$. Then
 
-$$G(s) = \frac{K}{\left(s + 1\right)\left(s + \frac{1}{2} -j\frac{\sqrt{3}}{2}\right)\left(s + \frac{1}{2} +j\frac{\sqrt{3}}{2}\right)} $$ (eq:7.1:12)
+$$G(s) = \frac{K}{\left(s + 1\right)\left(s + \frac{1}{2} -j\frac{\sqrt{3}}{2}\right)\left(s + \frac{1}{2} +j\frac{\sqrt{3}}{2}\right)} $$ (eq:7.1:13)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -403,19 +406,19 @@ expand(den)
 
 Thereform {eq}`eq:7.1:12` simplifies to
 
-$$G(s) = \frac{K}{s^3 + 2s^2 + 2s + 1} $$ (eq:7.1:13)
+$$G(s) = \frac{K}{s^3 + 2s^2 + 2s + 1} $$ (eq:7.1:14)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-The gain $K$ is fornd from $A^2(0) = 1$ and $G(0) = K$. Thus, K = 1 and
+The gain $K$ is found from $A^2(0) = 1$ and $G(0) = K$. Thus, K = 1 and
 
-$$G(s) = \frac{1}{s^3 + 2s^2 + 2s + 1} $$ (eq:7.1:14)
+$$G(s) = \frac{1}{s^3 + 2s^2 + 2s + 1} $$ (eq:7.1:15)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 The generalized form of any analogue low-pass filter (Butterworth, Chebyshev, Elliptic, etc) is
 
-$$\left.G(s)\right|_{\mathrm{lp}} = \frac{b_0}{a_ks^k + \cdots a_2 s^2 + a_1 s + a_0} $$ (eq:7.1:15)
+$$\left.G(s)\right|_{\mathrm{lp}} = \frac{b_0}{a_ks^k + \cdots a_2 s^2 + a_1 s + a_0} $$ (eq:7.1:16)
 
 The pole locations and coefficients of the corresponding denominator polynomials have been derived and tabulated and easily found on the internet: for example [Normalized Butterworth polynomials](https://en.wikipedia.org/wiki/Butterworth_filter#Normalized_Butterworth_polynomials) in Wikipedia.
 
@@ -433,6 +436,7 @@ The `buttap` function returns the zeros, poles and gain for an Nth order normali
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
+(unit7.1:ex4)=
 #### Example 4
 
 Use MATLAB to derive the numerator `b` and denominator `a` coefficients for the third-order Butterworth low-pass filter prototype with normalized cutoff frequency. Plot the Bode plot of the filter.
@@ -478,9 +482,10 @@ As you might expect, MATLAB provides a function for that: [`lp2lp`](https://uk.m
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
+(unit7.1:ex5)=
 #### Example 5
 
-Redesign the filter designed in Example 4 so that it has a a cut-off frequency of $1$ kHz.
+Redesign the filter designed in {ref}`unit7.1:ex4` so that it has a a cut-off frequency of $1$ kHz.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -520,7 +525,7 @@ We have used several new MATLAB commands in {ref}`unit7.1:ex5`. These are summar
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-Karris {cite:t}`karris` goes on to give more details of the Butterworth filter, including how to chose the filter order $N$ to match a specific requirement on the stop-band attenuation, and how such a filter might be implemented with Op-Amp circuits. We leave you to explore these topics on your own.
+{cite:t}`karris` goes on to give more details of the Butterworth filter, including how to chose the filter order $N$ to match a specific requirement on the stop-band attenuation, and how such a filter might be implemented with Op-Amp circuits. We leave you to explore these topics on your own.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -534,21 +539,132 @@ The Chebyshev analogue low-pass filter is such a design.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-A Chebyshev filter has the same transfer function structure as {eq}`eq:7.1:15`, but the poles are located differently.
+The model transfer function for a Type I Chebyshev filter is
 
-We will not present the formulae used to define the poles of this filter type, as MATLAB provides the design tool [`cheb1ap`](https://uk.mathworks.com/help/signal/ref/cheb1ap.html) that will do this for us.
+$$ A^2(\omega) = \frac{\alpha}{1 + \epsilon^2C_k^2(\omega/\omega_c)}  $$ (eq:7.1:16)
+
+Where $C_k$ is the Chebyshev polynomial[^chebyshev_poly] of degree $k$, and $\epsilon^2$ is a parameter that is used to set the pass-band ripple.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-If you want the details, please consult Section 11.2.2 of {cite}`karris`.
+[^chebyshev_poly]: The derivation of the Chebyshev polynomials is outside the scope of this unit, but if you are interested you can review one of the many online resources: e.g. [Chebyshev polynomials](https://en.wikipedia.org/wiki/Chebyshev_polynomials) [WikiPedia]. The [Chebyshev polynomials of the first kind](https://en.wikipedia.org/wiki/Chebyshev_polynomials#Examples) are used in the design of filters. If you want the details, please consult Section 11.2.2 of {cite:t}`karris`. See also [Chebyshev filter](https://en.wikipedia.org/wiki/Chebyshev_filter) [WikiPedia]
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-Example 11.9 from Karris
+A Chebyshev filter has the same transfer function structure as {eq}`eq:7.1:16`, but the poles are located on an elipse rather than a circle.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+We will not present the formulae used to define the poles of this filter type, as MATLAB provides the design tool [`cheb1ap`](https://uk.mathworks.com/help/signal/ref/cheb1ap.html) that will do this for us.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+(unit7.1:ex6)=
+#### Example 6
+
+Use the MATLAB function [`cheb1ap`](https://uk.mathworks.com/help/signal/ref/cheb1ap.html) to design a second-order Chebysehv Type I low-pass filter with 3 dB ripple in the pass-band.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+##### Solution
+
+The `cheb1ap` function takes two arguments, the order $N$ and the pass-band ripple (in dB). It returns the zero-pole-gain values as vectors.
+
+To solve the problem, we use the script:
+
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
+w = 0:0.05:400; % Range of frequencies to plot.
+[z,p,k] = cheb1ap(2, 3);
+[b, a] = zp2tf(z, p, k) % Convert zeros and poles of G(s) to polynomial form
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+Now, with the known values of `a` and `b`, we can use the `bode` function to produce the magnitude and phase plots as follows.
+
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
+bode(b, a)
+title('Bode plot for Type | Second-Order Chebyshev Low-Pass Filter')
+grid on
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+On the Bode plots shown, the ripple is not so obvious. The reason is that the Magnitude is in Db so the plot is essentially a linear approximation. To see the ripple we plot magnitude: 
+
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
+w = 0:0.01:10; 
+Gs = freqs(b, a, w); % returns response as complex values
+semilogx(w,abs(Gs)),grid on
+xlabel('Frequency in rad/s'),ylabel('Magnitude of G(s)')
+title('Type I Chebyshev Low-Pass Filter')
+```
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+The function [`freqs`](https://uk.mathworks.com/help/signal/ref/freqs.html) computes the complex frequency response $H(j\omega)$ of an analogue filter $H(s) = b(s)/a(s)$.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### Chebyshev Type II Analogue Low-Pass Filter Design
+
+A Type II Chebyshev filter has ripple in the stop-band. It is defined by the magnitude squared expression:
+
+$$ A^2(\omega) = \frac{\epsilon^2C_k^2(\omega/\omega_c)}{1 + \epsilon^2C_k^2(\omega/\omega_c)}  $$ (eq:7.1:17)
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+We can design Chebyshev Type II low-pass filters with the MATLAB [`cheb2ap`](https://uk.mathworks.com/help/signal/ref/cheb2ap.html) function.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+(unit7.1:ex7)=
+#### Example 7
+Using the MATLAB `cheb2ap` function, design a third-order Chebyshev analogue filter with 3 dB ripple in the stop band. 
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+##### Solution
+
+We begin with the MATLAB script reporoduced below.
+
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
+w = 0:0.01:1000; 
+[z,p,k] = cheb2ap(3,3);
+[b, a] = zp2tf(z,p,k)
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+Plot this response
+
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
+Gs = freqs(b, a, w); semilogx(w,abs(Gs))
+xlabel('Frequency in rad/s - log scale')
+ylabel('Magnitude of G(s) (absolute values)')
+title('Type 2 Chebyshev Low-Pass Filter: k = 3, 3 dB ripple in stop band')
+grid
+```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
