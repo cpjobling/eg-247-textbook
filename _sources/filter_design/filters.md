@@ -676,11 +676,12 @@ grid
 
 Figure {numref}`fig:u71:comparison` shows the Butterworth, Chebyshev and Elliptic filters for a fifth-order prototype analogue low-pass filter.
 
+![Frequency response curves of four linear analog filters: Butterworth filter, Chebyshev filter of type 1 and 2 and Elliptic filter, each one as 5th order filter.](pictures/Filters_order5.png)
+
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 :::{figure-md} fig:u71:comparison
-<img src="pictures/Filters_order5.png" alt="More details
-Frequency response curves of four linear analog filters: Butterworth filter, Chebyshev filter of type 1 and 2 and Elliptic filter, each one as 5th order filter." with="100%" />
+<img src="pictures/Filters_order5.png" alt="Frequency response curves of four linear analog filters: Butterworth filter, Chebyshev filter of type 1 and 2 and Elliptic filter, each one as 5th order filter." with="100%" />
 
 Frequency response curves of four linear analog filters: Butterworth filter, Chebyshev filter of type 1 and 2 and Elliptic filter, each one as 5th order filter. (Published as [Filters_order5.svg](https://en.wikipedia.org/wiki/Chebyshev_filter#/media/File:Filters_order5.svg) on page [Chebyshev filter](https://en.wikipedia.org/wiki/Chebyshev_filter). CC BY [Geek2](https://commons.wikimedia.org/wiki/User:Geek3))
 :::
