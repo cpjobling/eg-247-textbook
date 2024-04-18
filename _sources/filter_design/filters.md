@@ -672,6 +672,25 @@ grid
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
+### Comparison of analogue low-pass filter designs
+
+Figure {numref}`fig:u71:comparison` shows the Butterworth, Chebyshev and Elliptic filters for a fifth-order prototype analogue low-pass filter.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+:::{figure-md} fig:u71:comparison
+<img src="pictures/Filters_order5.png" alt="More details
+Frequency response curves of four linear analog filters: Butterworth filter, Chebyshev filter of type 1 and 2 and Elliptic filter, each one as 5th order filter." with="100%" />
+
+Frequency response curves of four linear analog filters: Butterworth filter, Chebyshev filter of type 1 and 2 and Elliptic filter, each one as 5th order filter. (Published as [Filters_order5.svg](https://en.wikipedia.org/wiki/Chebyshev_filter#/media/File:Filters_order5.svg) on page [Chebyshev filter](https://en.wikipedia.org/wiki/Chebyshev_filter). CC BY [Geek2](https://commons.wikimedia.org/wiki/User:Geek3))
+:::
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+As you can seem Chebyshev filters are sharper than the Butterworth filter; they are not as sharp as the elliptic one, but they show fewer ripples over the bandwidth.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
 (unit7.1:other)=
 ### High-Pass, Band-Pass and Band-Elimination Filter Design
 
