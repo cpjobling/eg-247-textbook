@@ -46,7 +46,7 @@ Magnitude characteristics of ideal filters (reproduced from Figure 11.1 {cite}`k
 :::
 
 
-As we saw in {ref}`ft4:ideal_lp_filter`, filters with ideal characteristics are not physicaly realizable (they are not *causal* systems). Instead we design practical filters that approximate these characteristics.
+As we saw in {ref}`ft4:ideal_lp_filter`, filters with ideal characteristics are not physically realizable (they are not *causal* systems). Instead we design practical filters that approximate these characteristics.
 
 
 A **digital filter**, in general, is a computational process, or algorithm, that converts one sequence of numbers representing the input signal into another sequence of numbers representing the output signal.
@@ -64,7 +64,7 @@ In Section 11.2 of {cite:t}`karris` examples of analogue low-pass and high-pass 
 
 In this section, we will use the analogue low-pass filter as a basis. Using transformations, we can derive high-pass and other types of filter from the low-pass filter.
 
-We will discuss the *Butterworth*, *Chebyshev Type 1*, *Chebyshev Type II* and *Elliptic* filters.
+We will discuss the *Butterworth*, *Chebyshev Type I*, *Chebyshev Type II* and *Elliptic* filters.
 
 As through MATLAB and the Signal Processing Toolbox, we have access to sophisticated design tools, we will gloss over some of the mathematical details. If you are interested in such detail, please refer to Section 11.3 and following sections of {cite}`karris`.
 
@@ -92,7 +92,7 @@ $$A^2(\omega) = \left|G(j\omega)\right| = G(j\omega)G^*(j\omega) = G(j\omega).G(
 
 Now, $G(j\omega)$ can be considered as $G(s)$ evaluated at $s = j\omega$, and this {eq}`eq:7.1:1` is justified.
 
-Also, since $A$ is understood to represent the magnitude, it needs not to be enclosed in vertical lines.
+Also, since $A$ is understood to represent the magnitude, it does not need to be enclosed in vertical lines.
 
 
 Not all magnitude-square functions can be decomposed to $G(s)$ and $G(-s)$ rational functions; only even functions of $\omega$, positive for all $\omega$, and *proper-rational functions*[^u71:note2] can satisfy {eq}`eq:7.1:1`.
@@ -139,7 +139,7 @@ The general form of magnitude-square function $A^2(\omega)$ is
 $$A^2(\omega) = \frac{C\left(b_k\omega^{2k}+b_{k-1}\omega^{2k-2}+\cdots+ b_0\right)}{a_k\omega^{2k}+a_{k-1}\omega^{2k-2}+\cdots+ a_0} $$ (eq:7.1:3)
 
 
-where $C$ is the DC gain, $a$ and $b$ are constant coefficients, and $k$ is a psotive integer denoting the order of the filter.
+where $C$ is the DC gain, $a$ and $b$ are constant coefficients, and $k$ is a positive integer denoting the order of the filter.
 
 
 Once the magnitude-square function $A^2(\omega)$ is known, we can derive $G(s)$ from {eq}`eq:7.1:1` with the substitution $\left(j\omega\right)^2 = -\omega^2 = - s^2$, 
@@ -248,12 +248,205 @@ title('Butterworh Analogue Low-Pass Filter characteritics for k = 1, 2, 4 and 8'
 legend('k=1','k=2','k=4','k=8')
 ```
 
+All Butterworth filters have the property that all poles of the transfer function that describes them lie on the circumference of a circle with radius $\omega_c$, and they are $2\pi/2k$ radians apart. Thus, if $k$ is odd, the poles start at zero radians, and if $k$ is even, they start at $2\pi/2k$ radians. But regardless wether $k$ is odd or even, the poles are distributed with symmetry with respect to the $j\omega$ axis. For stability, we chose the left half-plave poles to form $G(s)$.
+
+We can find the nth roots of the complex number $s$ by *De Moirvre's theorem*. This states that
+
+$$\sqrt[n]{r e^{j\theta}} = \sqrt[n]{r} {e}^{j\left(\frac{\theta + 2k\pi}{N} \right)}\,k=1,\pm 1,\pm 2,\ldots$$
+
+
+#### Example 3
+
+Derive the transfer function $G(s)$ for the third-order ($k=3$) Butterworth low-pass filter with *normalized cut-off frequency* $\omega_c = 1$ rad/s.
+
+
+##### Solution
+
+With $k = 3$ and $\omega_c = 1$ rad/s, {eq}`eq:7.1:10` simplifies to 
+
+$$A^2(\omega) = \frac{1}{\omega^6 + 1} $$ (eq:7.1:10)
+
+
+With the substitution $\omega^2 = -s^2$, {eq}`eq:7.1:10` becomes
+
+$$G(s).G(-s) = \frac{1}{-s^6 + 1} $$ (eq:7.1:11)
+
+
+The $s = \sqrt[6]{1}\angle 0 ^\circ$ and by De Moivre's theorem, with $n = 6$,
+
+$$\sqrt[6]{1e^{j0}} = \sqrt[6]{1}e^{j\left(\frac{0 + 2k\pi}{6} \right)},\,k=0,1,2,3,4,5$$
+
+
+Thus
+
+$$
+\begin{array}{lll}
+s_1 = 1\angle 0^\circ & s_2 = 1\angle 60^\circ = \frac{1}{2} + j\frac{\sqrt{3}}{2} & s_3 = 1\angle 120^\circ = -\frac{1}{2} + j\frac{\sqrt{3}}{2} \\
+s_4 = 1\angle 180^\circ = -1 &  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\frac{\sqrt{3}}{2} & s_6 = 1\angle 300^\circ = \frac{1}{2} - j\frac{\sqrt{3}}{2}
+\end{array}
+$$
+
+
+As expected, these six poles lie on the circumference of the circle with radius $\omega_c = 1$ as shown in {numref}`fig:7.1:2`.
+
+:::{figure-md} fig:7.1:2
+<img src="pictures/butter6.png" alt = "Location of the poles for the transfer function for the transfer function of Example 3" width="50%" />
+
+Location of the poles for the transfer function for the transfer function of Example 3
+:::
+
+
+The transfer function $G(s)$ is formed with the left half-plane poles $s_3$, $s_4$ and $s_5$. Then
+
+$$G(s) = \frac{K}{\left(s + 1\right)\left(s + \frac{1}{2} -j\frac{\sqrt{3}}{2}\right)\left(s + \frac{1}{2} +j\frac{\sqrt{3}}{2}\right)} $$ (eq:7.1:12)
+
+
+We use MATLAB to express the denominator as a polynomial
+
+```matlab
+syms s; den = (s + 1)*(s + 1/2 - j*sqrt(3)/2)*(s + 1/2 + j*sqrt(3)/2)
+```
+
+```matlab
+expand(den)
+```
+
+Thereform {eq}`eq:7.1:12` simplifies to
+
+$$G(s) = \frac{K}{s^3 + 2s^2 + 2s + 1} $$ (eq:7.1:13)
+
+
+The gain $K$ is fornd from $A^2(0) = 1$ and $G(0) = K$. Thus, K = 1 and
+
+$$G(s) = \frac{1}{s^3 + 2s^2 + 2s + 1} $$ (eq:7.1:14)
+
+
+The generalized form of any analogue low-pass filter (Butterworth, Chebyshev, Elliptic, etc) is
+
+$$\left.G(s)\right|_{\mathrm{lp}} = \frac{b_0}{a_ks^k + \cdots a_2 s^2 + a_1 s + a_0} $$ (eq:7.1:15)
+
+The pole locations and coefficients of the corresponding denominator polynomials have been derived and tabulated and easily found on the internet: for example [Normalized Butterworth polynomials](https://en.wikipedia.org/wiki/Butterworth_filter#Normalized_Butterworth_polynomials) in Wikipedia.
+
+For brevity, we will not reproduce these tables here.
+
+
+#### Designing Butterworth filters in MATLAB
+
+The MATLAB functions [`buttap`](https://uk.mathworks.com/help/signal/ref/buttap.html) and [`zp2tf`](https://uk.mathworks.com/help/signal/ref/zp2tf.html) can also be used to derive the coefficients. 
+
+
+The `buttap` function returns the zeros, poles and gain for an Nth order normalized prototyoe Butterworth low-pass filter. The resulting filter has $N$ poles around the unit circle in the left half plane, and no zeros. The `zp2tf` function performs the zero-pole-gain to transfer function conversion.
+
+
+#### Example 4
+
+Use MATLAB to derive the numerator `b` and denominator `a` coefficients for the third-order Butterworth low-pass filter prototype with normalized cutoff frequency. Plot the Bode plot of the filter.
+
+
+##### Solution
+
+```matlab
+[z,p,k] = buttap(3); 
+[b,a] = zp2tf(z,p,k)
+```
+
+```matlab
+G = tf(b,a)
+bode(G), grid on
+title('Bode diagram for a 3rd order Butterworth filter with wc = 1 rad/s')
+```
+
+Note that the roll-off is -60 dB/decade above the normalized cut-off $\omega_c = 1$ rad/s. Also note that the phase changes fron $0^\circ$ to $-270^\circ$ from low to high frequency.
+
+
+#### Denormalizing a prototype filter
+
+The examples given so far, and the MATLAB function `buttap` (and the others we will meet later) give the coefficents assuming that the cut-off frequency $\omega_c$ is 1 rad/s. To *denormalize* the filter coefficients, we need to change the radius of the circle shown e.g in {numref}`fig:7.1:2` from $\omega_c = 1$ to $\omega_c = \omega_\mathrm{actual}$ .
+
+To do this we make the subsitution
+
+$$G(s)_\mathrm{actual} = G\left(\frac{s}{\omega_\mathrm{actual}} \right) $$ (eq:7.1:15)
+
+As you might expect, MATLAB provides a function for that: [`lp2lp`](https://uk.mathworks.com/help/signal/ref/lp2lp.html).
+
+
+#### Example 5
+
+Redesign the filter designed in Example 4 so that it has a a cut-off frequency of $1$ kHz.
+
+
+##### Solution
+
+```matlab
+[z,p,k] = buttap(3); 
+[b,a] = zp2tf(z,p,k);
+fc = 1e3; % 1 kHz
+wc = 2*pi*fc; % rad/s
+format long
+[b, a] = lp2lp(b, a, wc)
+```
+
+```matlab
+h = bodeplot(tf(b, a)); setoptions(h,'FreqUnits','kHz'),grid on
+title('Butterworth 3rd Order Low-Pass Filter: fc = 1 kHz')
+```
+
+```{note}
+We have used several new MATLAB commands in {ref}`unit7.1:ex5`. These are summarized below.
+
+* [`lp2lp`](https://uk.mathworks.com/help/signal/ref/lp2lp.html) - change cutoff frequency for lowpass analogue filter.
+* [`bodeplot`]() - plot Bode frequency response with additional plot customization options.
+* option [`FreqUnits`](https://uk.mathworks.com/help/ident/ref/frdmodel.chgfrequnit.html) - changes the units for frequency response data.
+```
+
+
+Karris ({cite}`karris`) goes on to give more details of the Butterworth filter, including how to chose the filter order $N$ to match a specific requirement on the stop-band attenuation, and how such a filter might be implemented with Op-Amp circuits. We leave you to explore these topics on your own.
+
+
+### Chebyshev Analogue Low-Pass Filter Design
+
+An issue with the Butterworth filter is that the stop-band attenuation rate may not be high enough for some applications unless a very large value of $N$ is used.
+
+If we allow some ripple in the pass-band we can obtain a sharper cut-off for smaller values of $N$.
+
+The Chebyshev analogue low-pass filter is such a design. 
+
+
+A Chebyshev filter has the same transfer function structure as {eq}`eq:7.1:15`, but the poles are located differently.
+
+We will not present the formulae used to define the poles of this filter type, as MATLAB provides the design tool [`cheb1ap`](https://uk.mathworks.com/help/signal/ref/cheb1ap.html) that will do this for us.
+
+
+If you want the details, please consult Section 11.2.2 of {cite}`karris`.
+
+
+Example 11.9 from Karris
+
+
+### Chebyshev Type II Analogue Low-Pass Filter Design
+
+
+### Elliptic Analogue Low-Pass Filter Design
+
+
+(unit7.1:other)=
+### High-Pass, Band-Pass and Band-Elimination Filter Design
+
+
+(unit7.1:digital)=
+## Digital filter design
+
+
 ## References
 
 See [Bibliography](/zbib).
 
 
 ## Footnotes
+
+```matlab
+
+```
 
 ```matlab
 
