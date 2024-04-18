@@ -17,6 +17,15 @@ kernelspec:
 (unit7.1)=
 # Unit 7.1: Designing Digital Filters
 
+```{code-cell}
+---
+slideshow:
+  slide_type: notes
+---
+format compact
+cd matlab
+```
+
 +++ {"slideshow": {"slide_type": "notes"}}
 
 ## Colophon
@@ -511,7 +520,7 @@ We have used several new MATLAB commands in {ref}`unit7.1:ex5`. These are summar
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-Karris ({cite}`karris`) goes on to give more details of the Butterworth filter, including how to chose the filter order $N$ to match a specific requirement on the stop-band attenuation, and how such a filter might be implemented with Op-Amp circuits. We leave you to explore these topics on your own.
+Karris {cite:t}`karris` goes on to give more details of the Butterworth filter, including how to chose the filter order $N$ to match a specific requirement on the stop-band attenuation, and how such a filter might be implemented with Op-Amp circuits. We leave you to explore these topics on your own.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
