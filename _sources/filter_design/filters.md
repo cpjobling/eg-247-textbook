@@ -56,6 +56,14 @@ In this unit we will explore further some of the concepts of what is called *fil
 
 * {ref}`unit7.1:introduction`
 * {ref}`unit7.1:afp`
+  * {ref}`unit7.1:msf`
+  * {ref}`unit7.1:butter`
+  * {ref}`unit7.1:cheby1`
+  * {ref}`unit7.1:cheby2`  
+  * {ref}`unit7.1:ellip`  
+  * {ref}`unit7.1:comparison`  
+* {ref}`unit7.1:other`
+* {ref}`unit7.1:digital`
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -529,7 +537,8 @@ We have used several new MATLAB commands in {ref}`unit7.1:ex5`. These are summar
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Chebyshev Analogue Low-Pass Filter Design
+(unit7.1:cheby1)=
+### Chebyshev Type I Analogue Low-Pass Filter Design
 
 An issue with the Butterworth filter is that the stop-band attenuation rate may not be high enough for some applications unless a very large value of $N$ is used.
 
@@ -618,6 +627,7 @@ The function [`freqs`](https://uk.mathworks.com/help/signal/ref/freqs.html) comp
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
+(unit7.1:cheby2)=
 ### Chebyshev Type II Analogue Low-Pass Filter Design
 
 A Type II Chebyshev filter has ripple in the stop-band. It is defined by the magnitude squared expression:
@@ -668,6 +678,7 @@ grid
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
+(unit7.1:ellip)=
 ### Elliptic Analogue Low-Pass Filter Design
 
 The *elliptic*, also known as *Cauer* filter, are characterized by the low-pass magnutude-squared function
@@ -719,6 +730,7 @@ title('Five Pole Elliptic Low-Pass Filter ')
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
+(unit7.1:comparison)=
 ### Comparison of analogue low-pass filter designs
 
 Figure {numref}`fig:u71:comparison` shows the Butterworth, Chebyshev and Elliptic filters for a fifth-order prototype analogue low-pass filter.
@@ -738,7 +750,7 @@ As you can see, the Chebyshev filters are sharper than the Butterworth filter; t
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (unit7.1:other)=
-### High-Pass, Band-Pass and Band-Elimination Filter Design
+## High-Pass, Band-Pass and Band-Elimination Filter Design
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
