@@ -670,6 +670,53 @@ grid
 
 ### Elliptic Analogue Low-Pass Filter Design
 
+The *elliptic*, also known as *Cauer* filter, are characterized by the low-pass magnutude-squared function
+
+$$ A^2(\omega) = \frac{1}{1 + R_k^2(\omega/\omega_c}  $$ (7.1.18)
+
+where $R_k(x)$ represents a rational elliptic function used with eliptic integrals. Elliptic filters have ripple in both the pass-bad and stop-band, but have a very steep transiition between these bands.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+We can design elliptic low-pass filters with the [`ellip`](https://uk.mathworks.com/help/signal/ref/ellip.html) function. The statement
+
+```matlab
+[z,p,k] = ellip(N,Rp,Rs,W0,'s')
+```
+returns the pole-zero-gain values for an alliptical low-pass filter of order `N`, with a maximum passband ripple of `Rp` dB, a stop-band ripple of `Rs` dB, cut-off frequency of `W0` rad/s. The argument 's' returns tye poles and zeros of an analogue filter. If ommitted, the function designs a discrete-time filter.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+(uni7.1:ex8)=
+#### Example 8
+
+Use the MATLAB function `ellip` to design a fifth-order analogue eliptic low-pass filter with $\omega_c = 200$ rad/s, pass-band ripple of $0.6$ dB and stop-band ripple of $20$ dB. Plot the magnitude frequency response of the filter.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+##### Solution
+
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
+w = 0:0.05:500;
+[z,p,k] = ellip(5, 0.6, 20, 200, 's');
+[b,a] = zp2tf(z,p,k);
+```
+
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
+Gs = freqs(b,a,w);
+semilogx(w,abs(Gs)),grid on
+xlabel('Frequency in rad/s - log scale'),ylabel('Magnitude of G(s) (absolute values)')
+title('Five Pole Elliptic Low-Pass Filter ')
+```
+
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### Comparison of analogue low-pass filter designs
