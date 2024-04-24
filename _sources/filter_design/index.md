@@ -17,9 +17,11 @@ jupyter:
 
 In this final section we will present a brief overview of filters and filter design. 
 
-In {ref}`unit7.1` the aim is for you to be able to recognise the frequency response of the commonly used filter types; to be able to discuss the approach taken for analogue model filter design; to be able to apply the bilinear transform to convert a continuous-time (analogue) filter to a discete-time infinite impulse response (IIR) filter; and the be able to explain how such a filter would be represented in Simulink.
+In {ref}`unit7.1` the aim is for you to be able to recognise the frequency response of the commonly used filter types; to be able to discuss the approach taken for analogue model filter design. We will demonstrate the magitude-squared representation used to design the poles and zeros of a low-pass filter and we will examine the Butterworth, Chebyshev and Elliptical filters. We will also demonstrate the analogue low-pass filter design tools, and filter transformation tools provided by MATLAB.
 
-In {ref}`unit7.2` we will demonstrate the various analogue and digital filter design tools provided by MATLAB and the filter design tool and filter comparison tools provided by the Signal Processing Toolbox ({cite}`matlab_spt`. We will also look at the options that MATLAB provides for simulating digital signal processing applications in Simulink and using code generation for filter designs implimentation.
+In {ref}`unit7.2` we will discuss the architecture of finite-impulse response (FIR) and infinite-impulse response (IIR) digital filters. We will demonstrate the bilinear transform which is used to convert a continuous-time (analogue) filter to a discete-time filter; and we will demonstrate how such a filter can be represented in Simulink.
+
+We will also demonstrate the filter design tool and filter comparison tools provided by the Signal Processing Toolbox ({cite}`matlab_spt`. We will also look at the options that MATLAB provides for simulating digital signal processing applications in Simulink and using code generation for the implementation of filter designs.
 
 ## Scope and Background Reading
 
@@ -30,3 +32,7 @@ This is a very large topic and we will give a fairly high-level overview. Much m
 * {ref}`unit7.1`
 * {ref}`unit7.2`
 
+
+```python
+
+```

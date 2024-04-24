@@ -12,12 +12,27 @@ jupyter:
     name: python3
 ---
 
+<!-- #region slideshow={"slide_type": "slide"} -->
 (unit7.2)=
-# Unit 7.2: Designing Filters in MATLAB
+# Unit 7.2: Designing Digital Filters in MATLAB
+<!-- #endregion -->
 
+<!-- #region slideshow={"slide_type": "notes"} -->
+## Agenda
+
+* {ref}`unit7.2:digital`
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "slide"} -->
+(unit7.2:digital)=
+## Digital filter design
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "notes"} -->
 ## References
 
 See [Bibliography](/zbib).
+<!-- #endregion -->
 
 ```python
 

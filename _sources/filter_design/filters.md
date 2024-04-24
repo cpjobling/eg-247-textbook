@@ -15,7 +15,7 @@ kernelspec:
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (unit7.1)=
-# Unit 7.1: Designing Digital Filters
+# Unit 7.1: Designing Analogue Filters
 
 ```{code-cell}
 ---
@@ -63,7 +63,6 @@ In this unit we will explore further some of the concepts of what is called *fil
   * {ref}`unit7.1:ellip`  
   * {ref}`unit7.1:comparison`  
 * {ref}`unit7.1:other`
-* {ref}`unit7.1:digital`
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -751,11 +750,6 @@ As you can see, the Chebyshev filters are sharper than the Butterworth filter; t
 
 (unit7.1:other)=
 ## High-Pass, Band-Pass and Band-Elimination Filter Design
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
-(unit7.1:digital)=
-## Digital filter design
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
