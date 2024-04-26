@@ -488,9 +488,17 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#digital-filter-design-methods">Digital filter design methods</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-impulse-invariant-method">1. The <em>impulse invariant method</em></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-step-invariant-method">2. The <em>step invariant method</em></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bilnear-transform-method">3. The <em>bilnear transform method</em></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bilinear-transform-method">3. The <em>bilinear transform method</em></a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bilinear-transformation">The Bilinear Transformation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#digital-frequency-response">Digital frequency response</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-2-1">Exercise 7.2.1</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
@@ -534,6 +542,7 @@ document.write(`
 <h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="#unit7-2-digital"><span class="std std-ref">Digital filters</span></a></p></li>
+<li><p><a class="reference internal" href="#unit7-2-bilinear"><span class="std std-ref">The Bilinear Transformation</span></a></p></li>
 </ul>
 <!-- #endregion -->
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span>
@@ -653,19 +662,96 @@ document.write(`
 <!-- #region slideshow={"slide_type": "subslide"} -->
 <section id="the-impulse-invariant-method">
 <h4>1. The <em>impulse invariant method</em><a class="headerlink" href="#the-impulse-invariant-method" title="Permalink to this heading">#</a></h4>
+<p>Produces a digital filter <span class="math notranslate nohighlight">\(H(z)\)</span> whose impulse response consists of the sampled values of the impulse response of the equivalent analogue filter <span class="math notranslate nohighlight">\(H(s)\)</span>.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "notes"} -->
+<p>This is implemented in MATLAB by the system transformation function: <code class="docutils literal notranslate"><span class="pre">Hz</span> <span class="pre">=</span> <span class="pre">c2d(Hs,Ts,'impulse')</span></code> where <code class="docutils literal notranslate"><span class="pre">Hs</span></code> is the analogue transfer function <span class="math notranslate nohighlight">\(H(s)\)</span>, <code class="docutils literal notranslate"><span class="pre">Ts</span></code> is the sampling period, and <code class="docutils literal notranslate"><span class="pre">Hz</span></code> is the equivalent <span class="math notranslate nohighlight">\(H(z)\)</span>.</p>
 <!-- #endregion -->
 <!-- #region slideshow={"slide_type": "subslide"} -->
 </section>
 <section id="the-step-invariant-method">
 <h4>2. The <em>step invariant method</em><a class="headerlink" href="#the-step-invariant-method" title="Permalink to this heading">#</a></h4>
+<p>Produces a digital filter <span class="math notranslate nohighlight">\(H(z)\)</span> whose step response consists of the sampled values of the step response of the equivalent analogue filter <span class="math notranslate nohighlight">\(H(s)\)</span>.</p>
 <!-- #endregion -->
 <!-- #region slideshow={"slide_type": "subslide"} -->
 </section>
-<section id="the-bilnear-transform-method">
-<h4>3. The <em>bilnear transform method</em><a class="headerlink" href="#the-bilnear-transform-method" title="Permalink to this heading">#</a></h4>
+<section id="the-bilinear-transform-method">
+<h4>3. The <em>bilinear transform method</em><a class="headerlink" href="#the-bilinear-transform-method" title="Permalink to this heading">#</a></h4>
+<p>This uses the transformation<a class="footnote-reference brackets" href="#u72-note-3" id="id4">3</a></p>
+<div class="math notranslate nohighlight" id="equation-eq-7-2-3">
+<span class="eqno">(39)<a class="headerlink" href="#equation-eq-7-2-3" title="Permalink to this equation">#</a></span>\[s = \frac{2}{T_s}\cdot\frac{z-1}{z+1}\]</div>
+<p>to transform the left-half of the <span class="math notranslate nohighlight">\(s\)</span>-plane into the interior of the unit circle in the <span class="math notranslate nohighlight">\(z\)</span>-plane.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "notes"} -->
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
+<p>In this unit, we will discuss, <em>and assess</em>, only the use of the blinear transformation.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "slide"} -->
+</section>
+</section>
+</section>
+<section id="the-bilinear-transformation">
+<span id="unit7-2-bilinear"></span><h2>The Bilinear Transformation<a class="headerlink" href="#the-bilinear-transformation" title="Permalink to this heading">#</a></h2>
+<p>We recall from <a class="reference internal" href="../dt_systems/2/z_transform.html#s-to-z"><span class="std std-ref">Relationship Between the Laplace and Z-Transform</span></a> that since <span class="math notranslate nohighlight">\(z = e^{sT_s}\)</span>, <span class="math notranslate nohighlight">\(s = 1/T_s \log_e z\)</span>, then a DT transfor function <span class="math notranslate nohighlight">\(H(sz)\)</span> can be determined from a CT transfer function <span class="math notranslate nohighlight">\(H(s)\)</span> using the mapping:</p>
+<div class="math notranslate nohighlight" id="equation-eq-7-2-4">
+<span class="eqno">(40)<a class="headerlink" href="#equation-eq-7-2-4" title="Permalink to this equation">#</a></span>\[H(z) = \left.H(s)\right|_{s = \frac{1}{T_s} \log_e z}\]</div>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "fragment"} -->
+<p>But the relation <span class="math notranslate nohighlight">\(s = 1/T_s \log_e z\)</span> is a multi-valued transformation, and as such, cannot be used to derive a rational polynomial in <span class="math notranslate nohighlight">\(z\)</span>.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "fragment"} -->
+<p>It can be approximated as</p>
+<div class="math notranslate nohighlight" id="equation-eq-7-2-5">
+<span class="eqno">(41)<a class="headerlink" href="#equation-eq-7-2-5" title="Permalink to this equation">#</a></span>\[s = \frac{1}{T_s} \log_e z = \frac{2}{T_s} \left[\frac{z-1}{z+1}  + \frac{1}{3} \left(\frac{z-1}{z+1} \right)^3 + \frac{1}{5} \left(\frac{z-1}{z+1} \right)^5 + \frac{1}{7} \left(\frac{z-1}{z+1} \right)^7 + \cdots\right] \approx \frac{2}{T_s} \cdot \frac{z-1}{z+1} \]</div>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
+<p>Substitution of <a class="reference internal" href="#equation-eq-7-2-5">(41)</a> into <a class="reference internal" href="#equation-eq-7-2-4">(40)</a> yields</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "fragment"} -->
+<div class="math notranslate nohighlight" id="equation-eq-7-2-6">
+<span class="eqno">(42)<a class="headerlink" href="#equation-eq-7-2-6" title="Permalink to this equation">#</a></span>\[H(z) = \left.G(s)\right|_{s = \frac{2}{T_s} \cdot \frac{z-1}{z+1}} \]</div>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
+<section id="digital-frequency-response">
+<span id="unit7-2-freqz"></span><h3>Digital frequency response<a class="headerlink" href="#digital-frequency-response" title="Permalink to this heading">#</a></h3>
+<p>The digital frequency response (using <span class="math notranslate nohighlight">\(\omega_d\)</span> on the unit circle in the <span class="math notranslate nohighlight">\(z-plane) is obtained by the substitution \)</span>z = e^{j\omega_d T_s}$, giving</p>
+<div class="math notranslate nohighlight" id="equation-eq-7-2-7">
+<span class="eqno">(43)<a class="headerlink" href="#equation-eq-7-2-7" title="Permalink to this equation">#</a></span>\[H\left(e^{j\omega_d T_s}\right) = G\left(\frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s } + 1} \right) \]</div>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
+<p>Since the <span class="math notranslate nohighlight">\(z\to s\)</span> transformation maps the unit circle on the <span class="math notranslate nohighlight">\(z\)</span>-plane into the <span class="math notranslate nohighlight">\(j\omega\)</span> axis on the <span class="math notranslate nohighlight">\(s\)</span>-plane, the quantity</p>
+<div class="math notranslate nohighlight">
+\[\frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s} + 1}\]</div>
+<p>and <span class="math notranslate nohighlight">\(j\omega\)</span> must be equal to some point <span class="math notranslate nohighlight">\(\omega = \omega_a\)</span> on the <span class="math notranslate nohighlight">\(j\omega\)</span> axis.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "fragment"} -->
+<p>That is,</p>
+<div class="math notranslate nohighlight">
+\[j\omega_a = \frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s } + 1}\]</div>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "fragment"} -->
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\omega_a = \frac{1}{J} \cdot \frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s } + 1} = \frac{2}{T_s}\cdot \frac{1/(j2)}{1/2} \cdot \frac{e^{j\omega_d T_s/2} - e^{-j\omega_d T_s/2}}{e^{j\omega_d T_s/2} + e^{-j\omega_d T_s/2}} = \frac{2}{T_s} \cdot \frac{\sin\left(\omega_d T_s\right)/2}{\cos\left(\omega_d T_s\right)/2} \]</div>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "fragment"} -->
+<p>or</p>
+<div class="math notranslate nohighlight" id="equation-eq-7-2-8">
+<span class="eqno">(44)<a class="headerlink" href="#equation-eq-7-2-8" title="Permalink to this equation">#</a></span>\[\omega_a = \frac{2}{T_s} \cdot \tan\left(\frac{\omega_d T_s}{2} \right)\]</div>
 <!-- #endregion -->
 <!-- #region slideshow={"slide_type": "notes"} -->
 </section>
+</section>
+<section id="exercises">
+<span id="u72-exercises"></span><h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "notes"} -->
+<section id="exercise-7-2-1">
+<span id="u72-ex-1"></span><h3>Exercise 7.2.1<a class="headerlink" href="#exercise-7-2-1" title="Permalink to this heading">#</a></h3>
+<p>Use the block diagram shown in <a class="reference internal" href="#fig-u72-1"><span class="std std-numref">Fig. 14</span></a> to validate <code class="xref eq docutils literal notranslate"><span class="pre">eq:u71:2</span></code> and eq}<code class="docutils literal notranslate"><span class="pre">eq:u71:1</span></code>.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "notes"} -->
 </section>
 </section>
 <section id="references">
@@ -682,6 +768,9 @@ document.write(`
 </dd>
 <dt class="label" id="u72-note-2"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
 <dd><p>It is obvious from this figure that <span class="math notranslate nohighlight">\(y[n] = b_0 x[n] + b_1 x[n-1] + b_2 x[n-2] + b_3 x[n-3]\)</span>.</p>
+</dd>
+<dt class="label" id="u72-note-3"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
+<dd><p><span class="math notranslate nohighlight">\(T_s\)</span> is the sampling period, that is the reciprocal of the sampling frequency <span class="math notranslate nohighlight">\(f_s\)</span> Hz.</p>
 </dd>
 </dl>
 </section>
@@ -763,9 +852,17 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#digital-filter-design-methods">Digital filter design methods</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-impulse-invariant-method">1. The <em>impulse invariant method</em></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-step-invariant-method">2. The <em>step invariant method</em></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bilnear-transform-method">3. The <em>bilnear transform method</em></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bilinear-transform-method">3. The <em>bilinear transform method</em></a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bilinear-transformation">The Bilinear Transformation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#digital-frequency-response">Digital frequency response</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-2-1">Exercise 7.2.1</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>

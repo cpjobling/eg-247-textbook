@@ -97,11 +97,11 @@ A sequence can be obtained in real-time, e.g. as the output of a ADC, or can be 
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* The block represents the operations that convert $x[n]$ into $y[n]$. 
+* The block represents the operations that convert $x[n]$ into $y[n]$.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* This processing takes the form of a *difference equation* 
+* This processing takes the form of a *difference equation*
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -354,6 +354,7 @@ As usual, we can rely on this and similar analysis to have been tabulated for us
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
+(s-to-z)=
 ## Relationship Between the Laplace and Z-Transform
 
 +++ {"slideshow": {"slide_type": "fragment"}}

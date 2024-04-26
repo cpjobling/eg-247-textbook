@@ -45,6 +45,7 @@ In this unit we will explore further some of the concepts of what is called *fil
 ## Agenda
 
 * {ref}`unit7.2:digital`
+* {ref}`unit7.2:bilinear`
 <!-- #endregion -->
 
 ```matlab
@@ -186,14 +187,110 @@ Three commonly used transformation methods are
 
 <!-- #region slideshow={"slide_type": "subslide"} -->
 #### 1. The *impulse invariant method*
+
+Produces a digital filter $H(z)$ whose impulse response consists of the sampled values of the impulse response of the equivalent analogue filter $H(s)$.
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "notes"} -->
+This is implemented in MATLAB by the system transformation function: `Hz = c2d(Hs,Ts,'impulse')` where `Hs` is the analogue transfer function $H(s)$, `Ts` is the sampling period, and `Hz` is the equivalent $H(z)$.
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "subslide"} -->
 #### 2. The *step invariant method*
+
+Produces a digital filter $H(z)$ whose step response consists of the sampled values of the step response of the equivalent analogue filter $H(s)$.
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "subslide"} -->
-#### 3. The *bilnear transform method*
+#### 3. The *bilinear transform method*
+
+This uses the transformation[^u72:note:3]
+
+$$s = \frac{2}{T_s}\cdot\frac{z-1}{z+1}$$ (eq:7.2:3)
+
+to transform the left-half of the $s$-plane into the interior of the unit circle in the $z$-plane.
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "notes"} -->
+[^u72:note:3]: $T_s$ is the sampling period, that is the reciprocal of the sampling frequency $f_s$ Hz.
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+In this unit, we will discuss, *and assess*, only the use of the blinear transformation.
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "slide"} -->
+(unit7.2:bilinear)=
+## The Bilinear Transformation
+
+We recall from {ref}`s-to-z` that since $z = e^{sT_s}$, $s = 1/T_s \log_e z$, then a DT transfor function $H(sz)$ can be determined from a CT transfer function $H(s)$ using the mapping:
+
+$$H(z) = \left.H(s)\right|_{s = \frac{1}{T_s} \log_e z}$$ (eq:7.2:4)
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "fragment"} -->
+But the relation $s = 1/T_s \log_e z$ is a multi-valued transformation, and as such, cannot be used to derive a rational polynomial in $z$.
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "fragment"} -->
+It can be approximated as
+
+$$s = \frac{1}{T_s} \log_e z = \frac{2}{T_s} \left[\frac{z-1}{z+1}  + \frac{1}{3} \left(\frac{z-1}{z+1} \right)^3 + \frac{1}{5} \left(\frac{z-1}{z+1} \right)^5 + \frac{1}{7} \left(\frac{z-1}{z+1} \right)^7 + \cdots\right] \approx \frac{2}{T_s} \cdot \frac{z-1}{z+1} $$ (eq:7.2:5)
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+Substitution of {eq}`eq:7.2:5` into {eq}`eq:7.2:4` yields
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "fragment"} -->
+$$H(z) = \left.G(s)\right|_{s = \frac{2}{T_s} \cdot \frac{z-1}{z+1}} $$ (eq:7.2:6)
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+(unit7.2:freqz)=
+### Digital frequency response
+
+The digital frequency response (using $\omega_d$ on the unit circle in the $z-plane) is obtained by the substitution $z = e^{j\omega_d T_s}$, giving
+
+$$H\left(e^{j\omega_d T_s}\right) = G\left(\frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s } + 1} \right) $$ (eq:7.2:7)
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+Since the $z\to s$ transformation maps the unit circle on the $z$-plane into the $j\omega$ axis on the $s$-plane, the quantity
+
+$$\frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s} + 1}$$
+
+and $j\omega$ must be equal to some point $\omega = \omega_a$ on the $j\omega$ axis.
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "fragment"} -->
+That is,
+
+$$j\omega_a = \frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s } + 1}$$ 
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "fragment"} -->
+or
+
+$$\omega_a = \frac{1}{J} \cdot \frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s } + 1} = \frac{2}{T_s}\cdot \frac{1/(j2)}{1/2} \cdot \frac{e^{j\omega_d T_s/2} - e^{-j\omega_d T_s/2}}{e^{j\omega_d T_s/2} + e^{-j\omega_d T_s/2}} = \frac{2}{T_s} \cdot \frac{\sin\left(\omega_d T_s\right)/2}{\cos\left(\omega_d T_s\right)/2} $$
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "fragment"} -->
+or
+
+$$\omega_a = \frac{2}{T_s} \cdot \tan\left(\frac{\omega_d T_s}{2} \right)$$ (eq:7.2:8)
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "notes"} -->
+(u72:exercises)=
+## Exercises
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "notes"} -->
+(u72:ex:1)=
+### Exercise 7.2.1
+
+Use the block diagram shown in {numref}`fig:u72:1` to validate {eq}`eq:u71:2` and eq}`eq:u71:1`.
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "notes"} -->
