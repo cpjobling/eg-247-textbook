@@ -154,7 +154,7 @@ Download Simulink model [recursive.slx](matlab/nonrecursive.slx)
 nonrecursive
 ```
 
-<!-- #region slideshow={"slide_type": "subslide"} -->
+<!-- #region slideshow={"slide_type": "notes"} -->
 :::{figure-md} fig:u72:2
 <img src="pictures/nonrecursive.png" alt="Picture of a digital filter realization in Simulink" width="100%" />
 
@@ -162,7 +162,7 @@ Non-recursive digital filter realization in Simulink
 :::
 <!-- #endregion -->
 
-<!-- #region slideshow={"slide_type": "subslide"} -->
+<!-- #region slideshow={"slide_type": "notes"} -->
 Download Simulink model [nonrecursive.slx](matlab/nonrecursive.slx)
 <!-- #endregion -->
 
