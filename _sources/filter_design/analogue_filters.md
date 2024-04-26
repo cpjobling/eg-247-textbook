@@ -67,11 +67,11 @@ In this unit we will explore further some of the concepts of what is called *fil
 (unit7.1:introduction)=
 ## Introduction
 
-**Analogue filters** are defined in continuous range of frequencies. They are classified as *low-pass*, *high-pass*, *band-pass* and *band-elimination* (*stop-band*) filters.
+**Analogue filters** are defined in continuous range of frequencies. They are classified as *low-pass*, *high-pass*, *band-pass* and *band-elimination* (*band-stope*) filters.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-The ideal mangnitude characteristics of each are illustrated in {numref}`fig:7.1:mag_chars`
+The ideal magnitude characteristics of each are illustrated in {numref}`fig:7.1:mag_chars`
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
