@@ -30,11 +30,11 @@ cd matlab
 
 ## Colophon
 
-* The source code for this page is [digital_filters/1/filters.md](https://github.com/cpjobling/eg-247-textbook/blob/master/digital_filters/1/filters.md).
+* The source code for this page is [filter_design/analogue_filters.md](https://github.com/cpjobling/eg-247-textbook/blob/master/filter_design/analogue_filters.md).
 
-* You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/digital_filters/filters.html)). 
+* You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/filter_design/analogue_filters.html)). 
 
-* This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/digital_filters/filters.pdf) file.
+* This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/filter_design/analogue_filters.pdf) file.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -67,11 +67,11 @@ In this unit we will explore further some of the concepts of what is called *fil
 (unit7.1:introduction)=
 ## Introduction
 
-**Analogue filters** are defined in continuous range of frequencies. They are classified as *low-pass*, *high-pass*, *band-pass* and *band-elimination* (*stop-band*) filters.
+**Analogue filters** are defined in continuous range of frequencies. They are classified as *low-pass*, *high-pass*, *band-pass* and *band-elimination* (*band-stope*) filters.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-The ideal mangnitude characteristics of each are illustrated in {numref}`fig:7.1:mag_chars`
+The ideal magnitude characteristics of each are illustrated in {numref}`fig:7.1:mag_chars`
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
