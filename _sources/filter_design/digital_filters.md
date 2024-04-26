@@ -250,7 +250,7 @@ $$H(z) = \left.G(s)\right|_{s = \frac{2}{T_s} \cdot \frac{z-1}{z+1}} $$ (eq:7.2:
 (unit7.2:freqz)=
 ### Digital frequency response
 
-The digital frequency response (using $\omega_d$ on the unit circle in the $z-plane) is obtained by the substitution $z = e^{j\omega_d T_s}$, giving
+The digital frequency response (using $\omega_d$ on the unit circle in the $z$-plane) is obtained by the substitution $z = e^{j\omega_d T_s}$, giving
 
 $$H\left(e^{j\omega_d T_s}\right) = G\left(\frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s } + 1} \right) $$ (eq:7.2:7)
 <!-- #endregion -->
