@@ -248,7 +248,7 @@ $$H(z) = \left.G(s)\right|_{s = \frac{2}{T_s} \cdot \frac{z-1}{z+1}} $$ (eq:7.2:
 
 <!-- #region slideshow={"slide_type": "subslide"} -->
 (unit7.2:freqz)=
-### Digital frequency response
+### Digital frequency response of the bilinear transformation
 
 The digital frequency response (using $\omega_d$ on the unit circle in the $z$-plane) is obtained by the substitution $z = e^{j\omega_d T_s}$, giving
 
@@ -275,10 +275,15 @@ or
 $$\omega_a = \frac{1}{J} \cdot \frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s } + 1} = \frac{2}{T_s}\cdot \frac{1/(j2)}{1/2} \cdot \frac{e^{j\omega_d T_s/2} - e^{-j\omega_d T_s/2}}{e^{j\omega_d T_s/2} + e^{-j\omega_d T_s/2}} = \frac{2}{T_s} \cdot \frac{\sin\left(\omega_d T_s\right)/2}{\cos\left(\omega_d T_s\right)/2} $$
 <!-- #endregion -->
 
-<!-- #region slideshow={"slide_type": "fragment"} -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
 or
 
 $$\omega_a = \frac{2}{T_s} \cdot \tan\left(\frac{\omega_d T_s}{2} \right)$$ (eq:7.2:8)
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+(u72:warping)=
+### Frequency warping of the bilinear transformation
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "notes"} -->
