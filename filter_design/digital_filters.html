@@ -64,6 +64,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'filter_design/digital_filters';</script>
     <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/filter_design/digital_filters.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -473,8 +475,24 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colophon">Colophon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope-and-background-reading">Scope and Background Reading</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">Agenda</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digital-filter-design">Digital filter design</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digital-filters">Digital filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-of-digital-filters">Classification of digital filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#impulse-response-duration">1. Impulse response duration</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#realization">2. Realization</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-of-digital-filters">Implementation of digital filters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#digital-filter-design-methods">Digital filter design methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-impulse-invariant-method">1. The <em>impulse invariant method</em></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-step-invariant-method">2. The <em>step invariant method</em></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bilnear-transform-method">3. The <em>bilnear transform method</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
@@ -492,24 +510,171 @@ document.write(`
 <span id="unit7-2"></span><h1>Unit 7.2: Designing Digital Filters in MATLAB<a class="headerlink" href="#unit-7-2-designing-digital-filters-in-matlab" title="Permalink to this heading">#</a></h1>
 <!-- #endregion -->
 <!-- #region slideshow={"slide_type": "notes"} -->
+<section id="colophon">
+<h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The source code for this page is <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/filter_design/digital_filters.md">filters/1/filters.md</a>.</p></li>
+<li><p>You can view the notes for this presentation as a webpage (<a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/filter_design/digital_filters.html">HTML</a>).</p></li>
+<li><p>This page is downloadable as a <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/filter_design/digital_filters.pdf">PDF</a> file.</p></li>
+</ul>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "notes"} -->
+</section>
+<section id="scope-and-background-reading">
+<h2>Scope and Background Reading<a class="headerlink" href="#scope-and-background-reading" title="Permalink to this heading">#</a></h2>
+<p><strong>[TODO] Write this properly</strong></p>
+<p>We introduced the idea of filters in <a class="reference internal" href="../fourier_transform/4/ft4.html#ft4"><span class="std std-ref">Unit 4.4: Introduction to Filters</span></a> and examined in some detail the idea of an ideal low-pass filter and an approximation to the ideal filter known and the <em>Butterworth</em> filter. We also showed how a high-pass filter, stop-band filter and and pass-band filter could be implemented by simple manipulations of the frequency response (or transfer functions) of a low-pass filter.</p>
+<p>An advantage of the Butterworth filter is that it has a flat response in the pass band, a consistent attenuation of -3 dB at the cut-off frequency, and a steady roll-off in the stop band. A disadvantage is that you need a high-order filter to get a fast transition between the pass-band and the stop-band.</p>
+<p>In <a class="reference internal" href="../dt_systems/4/dt_models.html#demo"><span class="std std-ref">Example: Digital Butterworth Filter</span></a>, we showed how an analogue 2nd-order Butterworth filter could be translated into a discrete-time (DT) system using the MATLAB function <code class="docutils literal notranslate"><span class="pre">c2d</span></code>, and we demonstrated the architecture and code that might be used to implement the digital filter.</p>
+<p>In this unit we will explore further some of the concepts of what is called <em>filter design by analogue prototype</em>. This Unit is based on Chapter 11 of <span id="id1">[<a class="reference internal" href="../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., fifth edition, 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3384197&amp;pq-origsite=primo.">Karris, 2012</a>]</span>. We will illustrate the concepts using MATLAB and Simulink as appropriate on the understanding that you should be able to use the bilinear transform to convert a 2nd-order analogue proptotype into a digital filter.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "notes"} -->
+</section>
 <section id="agenda">
 <h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="#unit7-2-digital"><span class="std std-ref">Digital filter design</span></a></p></li>
+<li><p><a class="reference internal" href="#unit7-2-digital"><span class="std std-ref">Digital filters</span></a></p></li>
 </ul>
 <!-- #endregion -->
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span>
+<span class="nb">cd</span><span class="w"> </span><span class="n">matlab</span>
+</pre></div>
+</div>
 <!-- #region slideshow={"slide_type": "slide"} -->
 </section>
-<section id="digital-filter-design">
-<span id="unit7-2-digital"></span><h2>Digital filter design<a class="headerlink" href="#digital-filter-design" title="Permalink to this heading">#</a></h2>
+<section id="digital-filters">
+<span id="unit7-2-digital"></span><h2>Digital filters<a class="headerlink" href="#digital-filters" title="Permalink to this heading">#</a></h2>
+<p>A <em>digital filter</em> is a computational process (algorithm) that converts one sequence of numbers <span class="math notranslate nohighlight">\(x[n]\)</span> representing the input, to another sequence <span class="math notranslate nohighlight">\(y[n]\)</span> that represents the output.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "fragment"} -->
+<p>A digital filter can be used to filter out desired bands of frequency.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "fragment"} -->
+<p>Digital filters can also be used to perform other functions, such as integration, differentiation, and estimation.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
+<p>The input-output <em>difference equation</em> that relates the output and input can be expressed in the discrete-time (DT) domain as a summation of the form</p>
+<div class="math notranslate nohighlight" id="equation-eq-7-2-1">
+<span class="eqno">(37)<a class="headerlink" href="#equation-eq-7-2-1" title="Permalink to this equation">#</a></span>\[y[n] = \sum_{i=0}^{k}b_i y[n - i]-\sum_{i=0}^{k}a_i y[n - i]\]</div>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "fragment"} -->
+<p>or, as a Z-transform as</p>
+<div class="math notranslate nohighlight" id="equation-eq-7-2-2">
+<span class="eqno">(38)<a class="headerlink" href="#equation-eq-7-2-2" title="Permalink to this equation">#</a></span>\[G(z) = \frac{N(z)}{D(z)} = \frac{\displaystyle\sum_{i=0}^{k}b_i z^{-i}}{1 + \displaystyle\sum_{i=0}^{k}a_i z^{-i}}\]</div>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
+<p>Therefore, the design of a digital filter ro perform a desired function, entails the determination of the coefficients <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(a_i\)</span>.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
+<section id="classification-of-digital-filters">
+<span id="unit7-2-classification"></span><h3>Classification of digital filters<a class="headerlink" href="#classification-of-digital-filters" title="Permalink to this heading">#</a></h3>
+<p>Digital filters are classified in terms of the duration of the impulse response, and in terms of realization.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
+<section id="impulse-response-duration">
+<h4>1. Impulse response duration<a class="headerlink" href="#impulse-response-duration" title="Permalink to this heading">#</a></h4>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "fragment"} -->
+<p>a). An <em>infinite impulse response</em> (IIR) filter as an infinite number of samples in its impulse response <span class="math notranslate nohighlight">\(h[n]\)</span>.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "fragment"} -->
+<p>b). A <em>finite impulse response</em> (FIR) filter as an finite number of samples in its impulse response <span class="math notranslate nohighlight">\(h[n]\)</span>.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
+</section>
+<section id="realization">
+<h4>2. Realization<a class="headerlink" href="#realization" title="Permalink to this heading">#</a></h4>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "fragment"} -->
+<p>a). In a <em>recursive realization</em> digital filter, the output depends on the input and the <em>previous</em> values of the output. In a recursive digital filter, both the coefficients <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(a_i\)</span> are present.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "fragment"} -->
+<p>b). In a <em>non-recursive realization</em> digital filter, the output depends on present and past value of the input only. In a non-recursive digital filter, only the coefficients <span class="math notranslate nohighlight">\(b_i\)</span> are present, i.e. <span class="math notranslate nohighlight">\(a_i=0\)</span>.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
+</section>
+</section>
+<section id="implementation-of-digital-filters">
+<h3>Implementation of digital filters<a class="headerlink" href="#implementation-of-digital-filters" title="Permalink to this heading">#</a></h3>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "fragment"} -->
+<p><a class="reference internal" href="#fig-u72-1"><span class="std std-numref">Fig. 14</span></a> shows a Simulink model of a third-order (3-delay element or 3-tap) recursive realization of a digital filter[^u72:note:1]</p>
 <!-- #endregion -->
 <!-- #region slideshow={"slide_type": "notes"} -->
+<p>[u72:note:1]: Note that the block labelled <span class="math notranslate nohighlight">\(z^{-1}\)</span> is a one unit delay <span class="math notranslate nohighlight">\(y[n] = x[n - 1]\)</span>; the triangular blocks are gains <span class="math notranslate nohighlight">\(y[n] = k x[n]\)</span>; and the circular blocks are summing points. Following the equations we have <span class="math notranslate nohighlight">\(w[n] = x[n] - a_1 w[n-1] - a_2 w[n-2] - a_3 w[n-3]\)</span> and <span class="math notranslate nohighlight">\(y[n] = b_0 w[n] + b_1 w[n-1] + b_2 w[n-2] + b_3 w[n-3]\)</span>. It is left as an exercise for the reader to show that combining these two equations and eliminating <span class="math notranslate nohighlight">\(w\)</span> results in <a class="reference internal" href="#equation-eq-7-2-1">(37)</a> and <a class="reference internal" href="#equation-eq-7-2-2">(38)</a>.</p>
+<!-- #endregion -->
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">recursive</span>
+</pre></div>
+</div>
+<!-- #region slideshow={"slide_type": "notes"} -->
+<figure class="align-default" id="fig-u72-1">
+<a class="reference internal image-reference" href="../_images/recursive.png"><img alt="Picture of a digital filter realization in Simulink" src="../_images/recursive.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Recursive digital filter realization in Simulink</span><a class="headerlink" href="#fig-u72-1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
+<p>Download Simulink model <a class="reference download internal" download="" href="../_downloads/30da42faf2ff15d17921d08610eaf622/nonrecursive.slx"><span class="xref download myst">recursive.slx</span></a></p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
+<p><a class="reference internal" href="#fig-u72-2"><span class="std std-numref">Fig. 15</span></a> shows a Simulink model of a third-order non-recursive realization of a digital filter[^u72:note:2]</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
+<p>[u72:note:2]: It is obvious from this figure that <span class="math notranslate nohighlight">\(y[n] = b_0 x[n] + b_1 x[n-1] + b_2 x[n-2] + b_3 x[n-3]\)</span>.</p>
+<!-- #endregion -->
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">nonrecursive</span>
+</pre></div>
+</div>
+<!-- #region slideshow={"slide_type": "subslide"} -->
+<figure class="align-default" id="fig-u72-2">
+<a class="reference internal image-reference" href="../_images/nonrecursive.png"><img alt="Picture of a digital filter realization in Simulink" src="../_images/nonrecursive.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Non-recursive digital filter realization in Simulink</span><a class="headerlink" href="#fig-u72-2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
+<p>Download Simulink model <a class="reference download internal" download="" href="../_downloads/30da42faf2ff15d17921d08610eaf622/nonrecursive.slx"><span class="xref download myst">nonrecursive.slx</span></a></p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "notes"} -->
+<p>Generally, IIR filters are implemented by a recursive realization, and FIR filters are implemented by a non-recursive implementation.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
+</section>
+<section id="digital-filter-design-methods">
+<h3>Digital filter design methods<a class="headerlink" href="#digital-filter-design-methods" title="Permalink to this heading">#</a></h3>
+<p>As demonstrated in <a class="reference internal" href="analogue_filters.html#unit7-1"><span class="std std-ref">Unit 7.1: Designing Analogue Filters</span></a>, filter-design methods have been established and analogue prototypes have been published. Thus, we can choose an appropriate analogue prototype to satisfy the requirements.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "fragment"} -->
+<p>Transformation methods are also available to transform analogue prototypes into an equivalent digital filter.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "fragment"} -->
+<p>Three commonly used transformation methods are</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
+<section id="the-impulse-invariant-method">
+<h4>1. The <em>impulse invariant method</em><a class="headerlink" href="#the-impulse-invariant-method" title="Permalink to this heading">#</a></h4>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
+</section>
+<section id="the-step-invariant-method">
+<h4>2. The <em>step invariant method</em><a class="headerlink" href="#the-step-invariant-method" title="Permalink to this heading">#</a></h4>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
+</section>
+<section id="the-bilnear-transform-method">
+<h4>3. The <em>bilnear transform method</em><a class="headerlink" href="#the-bilnear-transform-method" title="Permalink to this heading">#</a></h4>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "notes"} -->
+</section>
+</section>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <p>See <a class="reference internal" href="../zbib.html"><span class="doc std std-doc">Bibliography</span></a>.</p>
 <!-- #endregion -->
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </section>
@@ -578,8 +743,24 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colophon">Colophon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope-and-background-reading">Scope and Background Reading</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">Agenda</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digital-filter-design">Digital filter design</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digital-filters">Digital filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-of-digital-filters">Classification of digital filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#impulse-response-duration">1. Impulse response duration</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#realization">2. Realization</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-of-digital-filters">Implementation of digital filters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#digital-filter-design-methods">Digital filter design methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-impulse-invariant-method">1. The <em>impulse invariant method</em></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-step-invariant-method">2. The <em>step invariant method</em></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bilnear-transform-method">3. The <em>bilnear transform method</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>

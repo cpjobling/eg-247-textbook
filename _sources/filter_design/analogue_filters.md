@@ -30,11 +30,11 @@ cd matlab
 
 ## Colophon
 
-* The source code for this page is [digital_filters/1/filters.md](https://github.com/cpjobling/eg-247-textbook/blob/master/digital_filters/1/filters.md).
+* The source code for this page is [filter_design/analogue_filters.md](https://github.com/cpjobling/eg-247-textbook/blob/master/filter_design/analogue_filters.md).
 
-* You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/digital_filters/filters.html)). 
+* You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/filter_design/analogue_filters.html)). 
 
-* This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/digital_filters/filters.pdf) file.
+* This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/filter_design/analogue_filters.pdf) file.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
