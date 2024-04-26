@@ -123,7 +123,7 @@ b). In a *non-recursive realization* digital filter, the output depends on prese
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "notes"} -->
-[u72:note:1]: Note that the block labelled $z^{-1}$ is a one unit delay $y[n] = x[n - 1]$; the triangular blocks are gains $y[n] = k x[n]$; and the circular blocks are summing points. Following the equations we have $w[n] = x[n] - a_1 w[n-1] - a_2 w[n-2] - a_3 w[n-3]$ and $y[n] = b_0 w[n] + b_1 w[n-1] + b_2 w[n-2] + b_3 w[n-3]$. It is left as an exercise for the reader to show that combining these two equations and eliminating $w$ results in {eq}`eq:7.2:1` and {eq}`eq:7.2:2`.
+[^u72:note:1]: Note that the block labelled $z^{-1}$ is a one unit delay $y[n] = x[n - 1]$; the triangular blocks are gains $y[n] = k x[n]$; and the circular blocks are summing points. Following the equations we have $w[n] = x[n] - a_1 w[n-1] - a_2 w[n-2] - a_3 w[n-3]$ and $y[n] = b_0 w[n] + b_1 w[n-1] + b_2 w[n-2] + b_3 w[n-3]$. It is left as an exercise for the reader to show that combining these two equations, taking Z-transforms, and eliminating $W(z)$, results in the transfer function $H(z) = Y(z)/X(z)$ given in {eq}`eq:7.2:2` and hence the difference equation of {eq}`eq:7.2:1`.
 <!-- #endregion -->
 
 ```matlab slideshow={"slide_type": "fragment"}
@@ -147,7 +147,7 @@ Download Simulink model [recursive.slx](matlab/nonrecursive.slx)
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "subslide"} -->
-[u72:note:2]: It is obvious from this figure that $y[n] = b_0 x[n] + b_1 x[n-1] + b_2 x[n-2] + b_3 x[n-3]$.
+[^u72:note:2]: It is obvious from this figure that $y[n] = b_0 x[n] + b_1 x[n-1] + b_2 x[n-2] + b_3 x[n-3]$.
 <!-- #endregion -->
 
 ```matlab slideshow={"slide_type": "subslide"}
