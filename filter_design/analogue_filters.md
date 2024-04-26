@@ -15,7 +15,7 @@ kernelspec:
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (unit7.1)=
-# Unit 7.1: Designing Digital Filters
+# Unit 7.1: Designing Analogue Filters
 
 ```{code-cell}
 ---
@@ -29,8 +29,6 @@ cd matlab
 +++ {"slideshow": {"slide_type": "notes"}}
 
 ## Colophon
-
-An annotatable worksheet for this presentation is available as [**Worksheet 14**](worksheet14).
 
 * The source code for this page is [digital_filters/1/filters.md](https://github.com/cpjobling/eg-247-textbook/blob/master/digital_filters/1/filters.md).
 
@@ -56,6 +54,13 @@ In this unit we will explore further some of the concepts of what is called *fil
 
 * {ref}`unit7.1:introduction`
 * {ref}`unit7.1:afp`
+  * {ref}`unit7.1:msf`
+  * {ref}`unit7.1:butter`
+  * {ref}`unit7.1:cheby1`
+  * {ref}`unit7.1:cheby2`  
+  * {ref}`unit7.1:ellip`  
+  * {ref}`unit7.1:comparison`  
+* {ref}`unit7.1:other`
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -193,7 +198,7 @@ where $C$ is the DC gain, $a$ and $b$ are constant coefficients, and $k$ is a po
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-Once the magnitude-square function $A^2(\omega)$ is known, we can derive $G(s)$ from {eq}`eq:7.1:1` with the substitution $\left(j\omega\right)^2 = -\omega^2 = - s^2$, 
+Once the magnitude-square function $A^2(\omega)$ is known, we can derive $G(s)$ from {eq}`eq:7.1:1` with the substitution $\left(j\omega\right)^2 = -\omega^2 = - s^2$,
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -428,7 +433,7 @@ For brevity, we will not reproduce these tables here.
 
 #### Designing Butterworth filters in MATLAB
 
-The MATLAB functions [`buttap`](https://uk.mathworks.com/help/signal/ref/buttap.html) and [`zp2tf`](https://uk.mathworks.com/help/signal/ref/zp2tf.html) can also be used to derive the coefficients. 
+The MATLAB functions [`buttap`](https://uk.mathworks.com/help/signal/ref/buttap.html) and [`zp2tf`](https://uk.mathworks.com/help/signal/ref/zp2tf.html) can also be used to derive the coefficients.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -470,6 +475,7 @@ Note that the roll-off is -60 dB/decade above the normalized cut-off $\omega_c =
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
+(unit6.1:denormalize)=
 #### Denormalizing a prototype filter
 
 The examples given so far, and the MATLAB function `buttap` (and the others we will meet later) give the coefficents assuming that the cut-off frequency $\omega_c$ is 1 rad/s. To *denormalize* the filter coefficients, we need to change the radius of the circle shown e.g in {numref}`fig:7.1:2` from $\omega_c = 1$ to $\omega_c = \omega_\mathrm{actual}$ .
@@ -513,6 +519,34 @@ h = bodeplot(tf(b, a)); setoptions(h,'FreqUnits','kHz'),grid on
 title('Butterworth 3rd Order Low-Pass Filter: fc = 1 kHz')
 ```
 
++++ {"slideshow": {"slide_type": "subslide"}}
+
+#### Defining the stop-band attenuation in a Butterworth filter
+
+Quite often, we require that in the stop-band of the filter, that is when $\omega \ge \omega_c$, the attenuation is larger than $-20$ dB/decade. That is, we require a sharper cut-off. As can be seen from the plots of {ref}`unit7.1:butter`, the Butterworth becomes sharper for larger values of $k$. To see this more clearly, we generate a family of attenuation curves using the MATLAB script given below:
+
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
+w_w0 = 1:0.01:10; dBk1 = 20.*log10(sqrt(1./(w_w0.^2 + 1)));
+dBk2 = 20.*log10(sqrt(1./(w_w0.^4 + 1))); dBk3 = 20.*log10(sqrt(1./(w_w0.^6 + 1)));
+dBk4 = 20.*log10(sqrt(1./(w_w0.^8 + 1))); dBk5 = 20.*log10(sqrt(1./(w_w0.^10 + 1)));
+dBk6 = 20.*log10(sqrt(1./(w_w0.^12 + 1))); dBk7 = 20.*log10(sqrt(1./(w_w0.^14 + 1)));
+dBk8 = 20.*log10(sqrt(1./(w_w0.^16 + 1)));
+semilogx(w_w0,dBk1,w_w0,dBk2,w_w0,dBk3,w_w0,dBk4,...
+         w_w0,dBk5,w_w0,dBk6,w_w0,dBk7,w_w0,dBk8)
+xlabel('Normalized Frequency (rad/sec)'),ylabel('Magnitude Response (dB)')
+title('Magnitude Attenuation ad a Fuction of Noramized Frequency')
+set(gca, 'XTick',[1:10]),grid
+legend('k = 1','k = 2','k = 3','k = 4','k = 5','k = 6','k = 7','k = 8')
+```
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+This plot indicates that for $k = 1$ the attenuation is $-20$ dB/decade, for $k=2$, the attenuation is $-40$ dB/decade, and so on. In general, the attenuation is $-20k$ dB/decade for a Butterworth filter.
+
 +++ {"slideshow": {"slide_type": "notes"}}
 
 ```{note}
@@ -529,13 +563,14 @@ We have used several new MATLAB commands in {ref}`unit7.1:ex5`. These are summar
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Chebyshev Analogue Low-Pass Filter Design
+(unit7.1:cheby1)=
+### Chebyshev Type I Analogue Low-Pass Filter Design
 
 An issue with the Butterworth filter is that the stop-band attenuation rate may not be high enough for some applications unless a very large value of $N$ is used.
 
 If we allow some ripple in the pass-band we can obtain a sharper cut-off for smaller values of $N$.
 
-The Chebyshev analogue low-pass filter is such a design. 
+The Chebyshev analogue low-pass filter is such a design.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -598,7 +633,7 @@ grid on
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-On the Bode plots shown, the ripple is not so obvious. The reason is that the Magnitude is in Db so the plot is essentially a linear approximation. To see the ripple we plot magnitude: 
+On the Bode plots shown, the ripple is not so obvious. The reason is that the Magnitude is in Db so the plot is essentially a linear approximation. To see the ripple we plot magnitude:
 
 ```{code-cell}
 ---
@@ -618,6 +653,7 @@ The function [`freqs`](https://uk.mathworks.com/help/signal/ref/freqs.html) comp
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
+(unit7.1:cheby2)=
 ### Chebyshev Type II Analogue Low-Pass Filter Design
 
 A Type II Chebyshev filter has ripple in the stop-band. It is defined by the magnitude squared expression:
@@ -632,7 +668,7 @@ We can design Chebyshev Type II low-pass filters with the MATLAB [`cheb2ap`](htt
 
 (unit7.1:ex7)=
 #### Example 7
-Using the MATLAB `cheb2ap` function, design a third-order Chebyshev analogue filter with 3 dB ripple in the stop band. 
+Using the MATLAB `cheb2ap` function, design a third-order Chebyshev analogue filter with 3 dB ripple in the stop band.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -668,6 +704,7 @@ grid
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
+(unit7.1:ellip)=
 ### Elliptic Analogue Low-Pass Filter Design
 
 The *elliptic*, also known as *Cauer* filter, are characterized by the low-pass magnutude-squared function
@@ -719,6 +756,7 @@ title('Five Pole Elliptic Low-Pass Filter ')
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
+(unit7.1:comparison)=
 ### Comparison of analogue low-pass filter designs
 
 Figure {numref}`fig:u71:comparison` shows the Butterworth, Chebyshev and Elliptic filters for a fifth-order prototype analogue low-pass filter.
@@ -737,13 +775,238 @@ As you can see, the Chebyshev filters are sharper than the Butterworth filter; t
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
+### Advantages and disadvantages of different types of filters
+
+| **Filter Type**    | **Advantages** | Disadvantages |
+|--------------------|----------------|---------------|
+| Butterworth        | Simplest design; Flat pass band | Slow rate of attenuation for order 4 or less |             
+| Chebyshev Type I   | Sharp cuttoff rate in transition (pass to stop) band | Ripple in pass band. Bad (non-linear) phase response           |
+| Chebyshev Type II  | Sharp cuttoff rate in transition (pass to stop) band | Ripple in stop band. Bad (non-linear) phase response           |               |               |
+| Elliptic (Cauer)   | Sharpest cutoff rate among all other types of filters | Ripple in both pass and stop band. Worst (most non-linear) phase response among the other types of filters. |
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
 (unit7.1:other)=
-### High-Pass, Band-Pass and Band-Elimination Filter Design
+## High-Pass, Band-Pass and Band-Elimination Filter Design
 
-+++ {"slideshow": {"slide_type": "slide"}}
+Prototype analogue filters can be converted to high-pass, band-pass and band-elimination (band-stop filters) by the application of frequency transformations on $s$ in $G(s)$. These transformations are listed in Table 11.5 on Page 11-40 of {cite}`karris` and will not be reproduced here. Instead we will introduce the MATLAB transformation functions and give some examples of their use.
 
-(unit7.1:digital)=
-## Digital filter design
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Low-pass to low-pass
+
+As already seen in {ref}`unit6.1:denormalize`, the function `lp2lp` will convert a normalised low-pass analogue filter with cut-off frequency $\omega_c = 1$ to $\omega_c = \omega_\mathrm{actual}$.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Low-pass to high-pass
+
+The MATLAB function [`lp2hp`](https://uk.mathworks.com/help/signal/ref/lp2hp.html) will convert a low-pass analogue filter to a high-pass analogue filter.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+#### Example 9
+
+Use the MATLAB commands `cheb1ap` and `lp2hp` to derive the transfer function of a 3-pole Chebyshev Type I analogue high-pass filter with cutoff frequency $f_c = 5$ kHz.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+##### Solution
+
+We will use the `cheb1ap` command to derive the transfer function $G(s)$ of the low-pass filter with normalized cutoff frequency at $\omega_c = 1$ rad/s. Then we will use the command `lp2hp` to transform $G(s)$ to another transfer function $G'(s)$ with cut-off frequency at $f_c = 5$ kHz or $\omega_c = 2\pi\times 5\times 10^3$ rad/s.
+
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
+% design 3 pole Type I Chebyshev low-pass filter, wc = 1 rad/s
+[z,p,k] = cheb1ap(3,3);    % 3 pole, 3dB ripple in pass band
+[b,a] = zp2tf(z,p,k);      % Compute numerator and denoninator coefficents with wcn = 1 rad/s
+f = 1000:100:100000;       % Define frequency range to plot
+fc = 5000;                 % Define actual cutoff frequency at 5 kHz
+wc = 2*pi*fc;              % Convert desired cut-off frequency to rad/s       
+[bn,an] = lp2hp(b, a, wc); % Compute numerator and denoninator coefficents of high-pass filter with fc = 5 kHz
+```
+
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
+% Compute and plot frequency response of high-pass filter
+Gsn = freqs(bn, an, 2*pi*f);
+semilogx(f, 20*log10(abs(Gsn))), grid
+xlabel('Frequency (Hz) - log scale'),ylabel('Magnitude of Transfer Function (dB)')
+title('3-Pole Type 1 Chebyshev high-pass filter with fc = 5 kHz')
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Low-pass to band-pass
+
+The MATLAB function [`lp2bp`](https://uk.mathworks.com/help/signal/ref/lp2bp.html) will convert a normalized low-pass analogue filter to a band-pass analogue filter.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+#### Example 10
+
+Use the MATLAB commands `buttap` and `lp2bp` to derive the transfer function of a 3-pole Butterworth analogue band-pass filter with the pass band frequency centred at $f_0 = 4$ kHz, and bandwidth $\mathrm{BW} = 2$ kHz.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+##### Solution
+
+We will use the `buttap` function to derive the transfer function $G(s)$ of the low-pass analogue filter with normalized cutoff frequency at $\omega_c = 1$ rad/s. Then we will use the command `lp2bp` to transform $G(s)$ to another transfer function $G'(s)$ with centred frequency at $f_0 = 4$ kHz and bandwith $\mathrm{BW} = 2$ hHz.
+
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
+format short;
+% design 3 pole Butterworth low-pass filter, wc = 1 rad/s
+[z,p,k] = buttap(3);       % 3 pole
+[b,a] = zp2tf(z,p,k);      % Compute numerator and denoninator coefficents with wcn = 1 rad/s
+f = 100:100:100000;        % Define frequency range to plot
+f0 = 4000;                 % Define center frequency at 4 kHz
+W0 = 2*pi*f0;              % Convert desired centre frequency to rad/s    
+fbw = 2000;                % Define bandwidth
+Bw = 2*pi*fbw;             % Convert desired bandwidth to rad/s
+[bn,an] = lp2bp(b, a, W0, Bw); % Compute numerator and denoninator coefficents of band-pass filter
+```
+
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
+% Compute and plot frequency response of band-pass filter
+Gsn = freqs(bn, an, 2*pi*f);
+semilogx(f, 20*log10(abs(Gsn))), grid
+xlabel('Frequency (Hz) - log scale'),ylabel('Magnitude of Transfer Function (dB)')
+title('3-Pole Butterworth band-pass filter with f0 = 4 kHz, BW = 2 kHz')
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Low-pass to band-stop
+
+The MATLAB function [`lp2bs`](https://uk.mathworks.com/help/signal/ref/lp2bs.html) will convert a low-pass normalized analogue filter to a band-stop analogue filter.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+#### Example 11
+
+Use the MATLAB commands `buttap` and `lp2bs` to derive the transfer function of a 3-pole Butterworth analogue band-elimination (band-stop) filter with the stop band frequency centred at $f_0 = 5$ kHz, and bandwidth $\mathrm{BW} = 2$ kHz.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Low-pass to band-pass
+
+The MATLAB function [`lp2bp`](https://uk.mathworks.com/help/signal/ref/lp2bp.html) will convert a low-pass filter to a band-pass filter.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+##### Solution
+
+We will use the `buttap` function to derive the transfer function $G(s)$ of the low-pass analogue filter with normalized cutoff frequency at $\omega_c = 1$ rad/s. Then we will use the command `lp2bs` to transform $G(s)$ to another transfer function $G'(s)$ with centred frequency at $f_0 = 5$ kHz and bandwith $\mathrm{BW} = 2$ hHz.
+
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
+format short;
+% design 3 pole Butterworth low-pass filter, wc = 1 rad/s
+[z,p,k] = buttap(3);       % 3 pole
+[b,a] = zp2tf(z,p,k);      % Compute numerator and denoninator coefficents with wcn = 1 rad/s
+f = 1000:100:10000;        % Define frequency range to plot
+f0 = 5000;                 % Define center frequency at 4 kHz
+W0 = 2*pi*f0;              % Convert desired centre frequency to rad/s    
+fbw = 2000;                % Define bandwidth
+Bw = 2*pi*fbw;             % Convert desired bandwidth to rad/s
+[bn,an] = lp2bs(b, a, W0, Bw); % Compute numerator and denoninator coefficents of band-pass filter
+```
+
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
+% Compute and plot frequency response of band-pass filter
+Gsn = freqs(bn, an, 2*pi*f);
+semilogx(f, 20*log10(abs(Gsn))), grid
+xlabel('Frequency (Hz) - log scale'),ylabel('Magnitude of Transfer Function (dB)')
+title('3-Pole Butterworth band-stop filter with f0 = 5 kHz, BW = 2 kHz')
+```
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+(unit7.1:summary)=
+## Unit 7.1 Summary
+
+In this unit we have looked at the design of prototype analogue low-pass filters which is a basis for filter design in general. We have demonstrated how the analogue-squared function $A^2(\omega) = G(s)G(-s)$ can be used to design an analogue filter $G(s)$ with particular properties, we then looked at the Butterworth filter, Chebyshev Type I and Type II filters and the elliptic filter. We explored the MATLAB tools provided by the Signal Processing Toolbox that can used to these design these prototype filters and the functions that can be used to denormalize the cutoff frequency and design high-pass, band-pass and band-stop filters.
+
+These are the topics we covered:
+
+* {ref}`unit7.1:introduction`
+* {ref}`unit7.1:afp`
+  * {ref}`unit7.1:msf`
+  * {ref}`unit7.1:butter`
+  * {ref}`unit7.1:cheby1`
+  * {ref}`unit7.1:cheby2`  
+  * {ref}`unit7.1:ellip`  
+  * {ref}`unit7.1:comparison`  
+* {ref}`unit7.1:other`
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+(unit7.1:takeaways)=
+### Unit 7.1 Takeaways
+
++++
+
+(unit7.1:next)=
+### Coming Next
+
+We will conclude this module in {ref}`unit7.1` with a look at how analogue prototype filters can be digitized, how the digitized filters can be implemented and a demonstration of the interactive filter-design tools provided by MATLAB.
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+(unit7.1:matlab)=
+### MATLAB functions introduced in Unit 7.1
+
+#### Analogue prototype designers
+
+Used to design an analogue prototype low-pass filter $G(s)$ with normalized cutoff frequency $\omega_c = 1$ rad/s. The examples in this unit show the functions returning the zeros, poles and gain of the equivalent transfer function $G(s)$. They can all return the numerator and denominator polynomial coeffiecients of $G(s) = b(s)/a(s)$ directly.
+
+* [`buttap`](https://uk.mathworks.com/help/signal/ref/buttap.html) - $N$-pole Butterworth analogue prototype low-pass filter.
+* [`cheb1ap`](https://uk.mathworks.com/help/signal/ref/cheb1ap.html) - $N$-pole Chebyshev Type I analogue prototype low-pass filter with defined pass-band ripple.
+* [`cheb2ap`](https://uk.mathworks.com/help/signal/ref/cheb2ap.html) - $N$-pole Chebyshev Type II analogue prototype low-pass filter with defined stop-band ripple.
+* [`ellipap`](https://uk.mathworks.com/help/signal/ref/ellipap.html) - $N$-pole Elliptic analogue prototype low-pass filter with defined pass-band and stop-band ripple.
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+#### Filter transformation functions
+
+These functions convert the analogue low-pass filter $G(s)$ with normalized cutoff frequency $\omega_c = 1$ \rad/s and convert it to a new filter $G'(s)$.
+
+* [`lp2lp`](https://uk.mathworks.com/help/signal/ref/lp2lp.html) - converts an analogue low-pass filter with $\omega_c = 1$ to one with $\omega_c = \omega_\mathrm{actual}$.
+* [`lp2hp`](https://uk.mathworks.com/help/signal/ref/lp2hp.html) - converts an analogue low-pass filter with $\omega_c = 1$ to a high-pass filter with $\omega_c = \omega_\mathrm{actual}$.
+* [`lp2bp`](https://uk.mathworks.com/help/signal/ref/lp2bp.html) - converts an analogue low-pass filter with $\omega_c = 1$ to a band-pass filter with defined centre frequency $f_0$ and bandwidth $\mathrm{BW}$.
+* [`lp2lp`](https://uk.mathworks.com/help/signal/ref/lp2lp.html) - converts an analogue low-pass filter with $\omega_c = 1$ to a band-stop filter with defined centre frequency $f_0$ and bandwidth $\mathrm{BW}$.
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+#### Utility functions
+
+* [`zp2tf`](https://uk.mathworks.com/help/signal/ref/zp2tf.html) - return the numerator and denominator polynomial coeffiecients of $G(s) = b(s)/a(s)$ from the zeros, poles and gain returned by the design functions.
+* [`fregs`](https://uk.mathworks.com/support/search.html) - return the CT frequency response of an analogue filter
+* [`semilogx`](https://uk.mathworks.com/help/matlab/ref/semilogx.html) - plot y against the log of x.
+* [`tf`](https://uk.mathworks.com/help/control/ref/tf.html) - create an LTI system object
+* [`bode`](https://uk.mathworks.com/help/control/ref/dynamicsystem.bode.html) - Bode ploto of an LTI system:  magnitude in dB, phase in degrees plotted against log frequency. 
+* [`mag2db`](https://uk.mathworks.com/help/signal/ref/mag2db.html) - Converts magnitude into dB using $20\log_{10} M$.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
