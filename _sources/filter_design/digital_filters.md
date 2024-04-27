@@ -46,6 +46,7 @@ In this unit we will explore further some of the concepts of what is called *fil
 
 * {ref}`unit7.2:digital`
 * {ref}`unit7.2:bilinear`
+* {ref}`u72:matlab_fd_tools`
 <!-- #endregion -->
 
 ```matlab
@@ -329,20 +330,213 @@ $$\omega_d \approx \frac{\omega_a T_s}{\pi} $$ (eq:7.2:11)
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "subslide"} -->
-The effect of warping can be eliminated by *pre-warping* the analogue filter prior to the application of the bilinear transformation. This is acomplished with the use of {eq}`eq:7.2:8`
+(u72:pre-warping)=
+### Pre-warping
+
+The effect of warping can be eliminated by *pre-warping* the analogue filter prior to the application of the bilinear transformation. This is acomplished with the use of {eq}`eq:7.2:8`. 
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "subslide"} -->
-### Example 12
+(u72:ex:12)=
+#### Example 12
 
 Compute the transfer function $H(z)$ of a low-pass filter with $3$ dB cutoff frequency at $20$ Hz, and attenuation of at least $10$ dB for frequencies greater than $40$ Hz. The sampling frequency $f_s = 200$ Hz. Compare the magnitude plot with that obtained by a low-pass analogue filter with the same specifications.
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "subslide"} -->
-#### Solution
+##### Solution
 
 We will apply the bilinear transformation. We arbitrarily choose a second-order Butterworth filter which will meet the stop-band specification.
 <!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "fragment"} -->
+The transfer function $H(s)$ of the analogue low-pass filter with normalized frequency at $\omega_c = 1$ rad/s is found with the MATLAB `buttap` function as follows:
+<!-- #endregion -->
+
+```matlab slideshow={"slide_type": "fragment"}
+ [z,p,k] = buttap(2); [b,a] = zp2tf(z,p,k)
+```
+
+<!-- #region slideshow={"slide_type": "fragment"} -->
+Thus, the transfer function with noramlized frequency, denoted as $H_n(s)$, is
+
+$$H_n(s) = \frac{1}{s^2 + 1.414 s + 1} $$ (eq:7.2:12)
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+Now, we must transform this transfer function to another with actual cuttoff frequency at $20$ Hz. We donote it as $H_a(s)$.
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+We will first pre-warp the analogue frequency which by relation {eq}`eq:7.2:8`, us related to the digital frequency as
+
+$$\omega_a = \frac{2}{T_s}\tan\left(\frac{\omega_d T_s}{2} \right)$$
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "fragment"} -->
+where
+
+$$T_s = \frac{1}{f_s} = \frac{1}{200}.$$
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "fragment"} -->
+Denoting the analogue cuttoff (3 dB) frequency as $\omega_{ac}$, we obtain
+
+$$\omega_{ac} = 400 \tan \left(\frac{2\pi\times 20}{2\times 200} \right) = 400\tan\left(0.1\pi\right) \approx 130\,\mathrm{rad/s}$$
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "fragment"} -->
+or
+
+$$f_{ac} = \frac{130}{2\pi} \approx 20.69\,\mathrm{Hz}.$$
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+As expected from relation {eq}`eq:7.2:10`, this frequency is very close to the discrete-time frequency $f_{dc} = 20$ Hz, and thus from {eq}`eq:7.2:12`,
+
+$$H_a(s) \approx H_n(s) = \frac{1}{s^2 + 1.414 s + 1} $$ (eq:7.2:12)
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+Relation {eq}`eq:7.2:12` applies only when the cutoff frequency is normalized to $\omega_c = 1$ rad/s.
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "fragment"} -->
+If $\omega_c \ne 1$, we must scale the transfer function in accordance with relation {eq}`eq:7.1:15`, that is,
+
+$$H(s)_\mathrm{actual} = H\left(\frac{s}{\omega_\mathrm{actual}} \right) $$
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "fragment"} -->
+For this example, $\omega_\mathrm{actual} = 130$ rad/s, and thus we replace $s$ with $s/130$ and we obtain
+
+$$H_a(s) = \frac{1}{\left(s/130\right)^2 + 1.414s/130 + 1} $$
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+We will use MATLAB to simplify this expression
+<!-- #endregion -->
+
+```matlab slideshow={"slide_type": "fragment"}
+syms s; simplifyFraction(1/((s/130)^2 + 1.414*s/130 + 1))
+845000/50
+9191/50
+```
+
+<!-- #region slideshow={"slide_type": "fragment"} -->
+Then,
+
+$$H_a(s) = \frac{845000}{50s^2 + 9191s + 845000} = \frac{16900}{s^2 + 183.82s + 16900} $$ (eq:7.2:13)
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "fragment"} -->
+and making the substitution of $s = (2/T_s)(z -1)/(z + 1) = 400(z-1)/(z + 1)$ we obtain
+
+$$H(z) = \frac{16900}{\left(400\cdot \frac{z-1}{z + 1}\right)^2 + \frac{183.82\times 400(z-1)}{(z + 1)} + 16900} $$
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+We use the MATLAB code below to simplify this expression
+<!-- #endregion -->
+
+```matlab slideshow={"slide_type": "fragment"}
+syms z; simplify(16900/((400*(z-1)/(z+1))^2 + 183.82*400*(z - 1)/(z + 1) + 16900))
+```
+
+```matlab slideshow={"slide_type": "fragment"}
+expand(4225*(z + 1)^2)
+```
+
+<!-- #region slideshow={"slide_type": "fragment"} -->
+and thus
+
+$$H(z) = \frac{4225z^2 + 8450z + 4225}{62607z^2 - 71550z + 25843} $$ (eq:7.2:14)
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+We will used the MATLAB [`freqz`](https://uk.mathworks.com/help/signal/ref/freqz.html) function to plot the magnitude of $H(z)$, but we must first express it in negative powers of $z$.
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "fragment"} -->
+ Dividing each term of {eq}`eq:7.2:14` by $62607z^2$, we obtain
+ 
+ $$\frac{0.0675 + 0.1350z^{-1} + 0.0675z^{-2}}{1 - 1.1428z^{-1} + 0.4128 z^{-2}}$$ (eq:7.2:15)
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+The MATLAB script below will generate $H(z)$ and will plot the magnitude of this transfer function.
+<!-- #endregion -->
+
+```matlab slideshow={"slide_type": "fragment"}
+az = [1,  -1.1428, 0.4128]; bz = [0.0675, 0.1350, 0.0675]; fs = 200; fc = 20;
+[Hz, wT] = freqz(bz,az,fc,fs);
+semilogx(wT,20*log10(abs(Hz))); xlabel('Frequency in Hz - log scale')
+ylabel('Magnitude (dB)'), title('Digital Low-Pass Filter. Example 12'),grid
+```
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+We now plot the analogue equivalent to compare the digital to the analogue frequency response.
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "fragment"} -->
+The MATLAB script below produces the desired plot.
+<!-- #endregion -->
+
+```matlab slideshow={"slide_type": "fragment"}
+[z,p,k] = buttap(2); [b, a] = zp2tf(z,p,k); f = 1:1:100; fc = 20; [bn,an] = lp2lp(b,a,fc);
+Hs = freqs(bn,an,f);
+semilogx(f, 20*log10(abs(Hs))), xlabel('Frequency in Hz - log scale')
+ylabel('Magnitude (dB)'), title('Analogue Low-Pass Filter. Example 12'),grid
+```
+
+<!-- #region slideshow={"slide_type": "notes"} -->
+Comparing the digital filter plot with the equivalent analogue filter plot, we observe that the magnitude is greater than $-3$ dB for frequencies less than $20$ rad/s, and is smaller than $-10$ dB for frequencies greater than $40$ Hz. Therefore, both the digital and analogue low-pass filters meet the specified requirements.[^u72:note:4]
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "notes"} -->
+[^u72:note:4]: Note the significant distortion of the digital filter response at high frequencies.
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "notes"} -->
+(u72:matlab_bilinear)=
+### MATLAB bilinear function
+
+An analogue filter transfer function can be mapped to a digital transfer function directly with the MATLAB [`bilinear`](https://uk.mathworks.com/help/signal/ref/bilinear.html) function. The procedure is illustrated with the following example.
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+(u72:ex:13)=
+#### Example 13
+
+Use the MATLAB `bilinear` function to derive the low-pass digital transfer function $H(z)$ from a second-order Butterworth analogue filter with a $3$ dB cutoff frequency at $50$ Hz, ans sample rate $f_s = 500$ Hz.
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+##### Solution
+
+We will use the following MATLAB script to produce the desired digital filter function:
+<!-- #endregion -->
+
+```matlab slideshow={"slide_type": "fragment"}
+[z,p,k] = buttap(2); [num,den] = zp2tf(z,p,k); fc = 50; wc = 2*pi*fc;
+```
+
+```matlab slideshow={"slide_type": "fragment"}
+[num1,den1] = lp2lp(num,den,wc);
+```
+
+```matlab slideshow={"slide_type": "fragment"}
+fs = 500; [numd,dend] = bilinear(num1, den1, fs)
+```
+
+<!-- #region slideshow={"slide_type": "fragment"} -->
+Therefore, the transfer function $H(z)$ for this filter is
+
+$$H(z) = \frac{0.0640 z^2  +  0.1279 z +   0.0640}{z^2   -1.1683 z +    0.4241} = \frac{0.0640  +  0.1279 z^{-1} +   0.0640 z^{-2}}{1   -1.1683 z^{-1} +    0.4241 z^{-2}}$$ (eq:7.2:16)
+<!-- #endregion -->
+
+(u72:matlab_fd_tools)=
+## MATLAB Functions for direct digital filter design
 
 <!-- #region slideshow={"slide_type": "notes"} -->
 (u72:exercises)=
