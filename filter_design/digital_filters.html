@@ -529,11 +529,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <!-- #region slideshow={"slide_type": "slide"} -->
-<section class="tex2jax_ignore mathjax_ignore" id="unit-7-2-designing-digital-filters-in-matlab">
+  <section class="tex2jax_ignore mathjax_ignore" id="unit-7-2-designing-digital-filters-in-matlab">
 <span id="unit7-2"></span><h1>Unit 7.2: Designing Digital Filters in MATLAB<a class="headerlink" href="#unit-7-2-designing-digital-filters-in-matlab" title="Permalink to this heading">#</a></h1>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "notes"} -->
 <section id="colophon">
 <h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
@@ -541,8 +538,6 @@ document.write(`
 <li><p>You can view the notes for this presentation as a webpage (<a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/filter_design/digital_filters.html">HTML</a>).</p></li>
 <li><p>This page is downloadable as a <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/filter_design/digital_filters.pdf">PDF</a> file.</p></li>
 </ul>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "notes"} -->
 </section>
 <section id="scope-and-background-reading">
 <h2>Scope and Background Reading<a class="headerlink" href="#scope-and-background-reading" title="Permalink to this heading">#</a></h2>
@@ -551,8 +546,6 @@ document.write(`
 <p>An advantage of the Butterworth filter is that it has a flat response in the pass band, a consistent attenuation of -3 dB at the cut-off frequency, and a steady roll-off in the stop band. A disadvantage is that you need a high-order filter to get a fast transition between the pass-band and the stop-band.</p>
 <p>In <a class="reference internal" href="../dt_systems/4/dt_models.html#demo"><span class="std std-ref">Example: Digital Butterworth Filter</span></a>, we showed how an analogue 2nd-order Butterworth filter could be translated into a discrete-time (DT) system using the MATLAB function <code class="docutils literal notranslate"><span class="pre">c2d</span></code>, and we demonstrated the architecture and code that might be used to implement the digital filter.</p>
 <p>In this unit we will explore further some of the concepts of what is called <em>filter design by analogue prototype</em>. This Unit is based on Chapter 11 of <span id="id1">[<a class="reference internal" href="../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., fifth edition, 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3384197&amp;pq-origsite=primo.">Karris, 2012</a>]</span>. We will illustrate the concepts using MATLAB and Simulink as appropriate on the understanding that you should be able to use the bilinear transform to convert a 2nd-order analogue proptotype into a digital filter.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "notes"} -->
 </section>
 <section id="agenda">
 <h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this heading">#</a></h2>
@@ -561,136 +554,88 @@ document.write(`
 <li><p><a class="reference internal" href="#unit7-2-bilinear"><span class="std std-ref">The Bilinear Transformation</span></a></p></li>
 <li><p><a class="reference internal" href="#u72-matlab-fd-tools"><span class="std std-ref">MATLAB Functions for direct digital filter design</span></a></p></li>
 </ul>
-<!-- #endregion -->
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span>
 <span class="nb">cd</span><span class="w"> </span><span class="n">matlab</span>
 </pre></div>
 </div>
-<!-- #region slideshow={"slide_type": "slide"} -->
+</div>
+</div>
 </section>
 <section id="digital-filters">
 <span id="unit7-2-digital"></span><h2>Digital filters<a class="headerlink" href="#digital-filters" title="Permalink to this heading">#</a></h2>
 <p>A <em>digital filter</em> is a computational process (algorithm) that converts one sequence of numbers <span class="math notranslate nohighlight">\(x[n]\)</span> representing the input, to another sequence <span class="math notranslate nohighlight">\(y[n]\)</span> that represents the output.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "fragment"} -->
 <p>A digital filter can be used to filter out desired bands of frequency.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "fragment"} -->
 <p>Digital filters can also be used to perform other functions, such as integration, differentiation, and estimation.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 <p>The input-output <em>difference equation</em> that relates the output and input can be expressed in the discrete-time (DT) domain as a summation of the form</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-1">
 <span class="eqno">(37)<a class="headerlink" href="#equation-eq-7-2-1" title="Permalink to this equation">#</a></span>\[y[n] = \sum_{i=0}^{k}b_i y[n - i]-\sum_{i=0}^{k}a_i y[n - i]\]</div>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "fragment"} -->
 <p>or, as a Z-transform as</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-2">
 <span class="eqno">(38)<a class="headerlink" href="#equation-eq-7-2-2" title="Permalink to this equation">#</a></span>\[G(z) = \frac{N(z)}{D(z)} = \frac{\displaystyle\sum_{i=0}^{k}b_i z^{-i}}{1 + \displaystyle\sum_{i=0}^{k}a_i z^{-i}}\]</div>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 <p>Therefore, the design of a digital filter ro perform a desired function, entails the determination of the coefficients <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(a_i\)</span>.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 <section id="classification-of-digital-filters">
 <span id="unit7-2-classification"></span><h3>Classification of digital filters<a class="headerlink" href="#classification-of-digital-filters" title="Permalink to this heading">#</a></h3>
 <p>Digital filters are classified in terms of the duration of the impulse response, and in terms of realization.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 <section id="impulse-response-duration">
 <h4>1. Impulse response duration<a class="headerlink" href="#impulse-response-duration" title="Permalink to this heading">#</a></h4>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "fragment"} -->
 <p>a). An <em>infinite impulse response</em> (IIR) filter as an infinite number of samples in its impulse response <span class="math notranslate nohighlight">\(h[n]\)</span>.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "fragment"} -->
 <p>b). A <em>finite impulse response</em> (FIR) filter as an finite number of samples in its impulse response <span class="math notranslate nohighlight">\(h[n]\)</span>.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 </section>
 <section id="realization">
 <h4>2. Realization<a class="headerlink" href="#realization" title="Permalink to this heading">#</a></h4>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "fragment"} -->
 <p>a). In a <em>recursive realization</em> digital filter, the output depends on the input and the <em>previous</em> values of the output. In a recursive digital filter, both the coefficients <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(a_i\)</span> are present.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "fragment"} -->
 <p>b). In a <em>non-recursive realization</em> digital filter, the output depends on present and past value of the input only. In a non-recursive digital filter, only the coefficients <span class="math notranslate nohighlight">\(b_i\)</span> are present, i.e. <span class="math notranslate nohighlight">\(a_i=0\)</span>.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 </section>
 </section>
 <section id="implementation-of-digital-filters">
 <h3>Implementation of digital filters<a class="headerlink" href="#implementation-of-digital-filters" title="Permalink to this heading">#</a></h3>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "fragment"} -->
 <p><a class="reference internal" href="#fig-u72-1"><span class="std std-numref">Fig. 14</span></a> shows a Simulink model of a third-order (3-delay element or 3-tap) recursive realization of a digital filter<a class="footnote-reference brackets" href="#u72-note-1" id="id2">1</a></p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "notes"} -->
-<!-- #endregion -->
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">recursive</span>
 </pre></div>
 </div>
-<!-- #region slideshow={"slide_type": "notes"} -->
+</div>
+</div>
 <figure class="align-default" id="fig-u72-1">
 <a class="reference internal image-reference" href="../_images/recursive.png"><img alt="Picture of a digital filter realization in Simulink" src="../_images/recursive.png" style="width: 100%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 14 </span><span class="caption-text">Recursive digital filter realization in Simulink</span><a class="headerlink" href="#fig-u72-1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 <p>Download Simulink model <a class="reference download internal" download="" href="../_downloads/30da42faf2ff15d17921d08610eaf622/nonrecursive.slx"><span class="xref download myst">recursive.slx</span></a></p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 <p><a class="reference internal" href="#fig-u72-2"><span class="std std-numref">Fig. 15</span></a> shows a Simulink model of a third-order non-recursive realization of a digital filter<a class="footnote-reference brackets" href="#u72-note-2" id="id3">2</a></p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
-<!-- #endregion -->
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">nonrecursive</span>
 </pre></div>
 </div>
-<!-- #region slideshow={"slide_type": "notes"} -->
+</div>
+</div>
 <figure class="align-default" id="fig-u72-2">
 <a class="reference internal image-reference" href="../_images/nonrecursive.png"><img alt="Picture of a digital filter realization in Simulink" src="../_images/nonrecursive.png" style="width: 100%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 15 </span><span class="caption-text">Non-recursive digital filter realization in Simulink</span><a class="headerlink" href="#fig-u72-2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "notes"} -->
 <p>Download Simulink model <a class="reference download internal" download="" href="../_downloads/30da42faf2ff15d17921d08610eaf622/nonrecursive.slx"><span class="xref download myst">nonrecursive.slx</span></a></p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "notes"} -->
 <p>Generally, IIR filters are implemented by a recursive realization, and FIR filters are implemented by a non-recursive implementation.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 </section>
 <section id="digital-filter-design-methods">
 <h3>Digital filter design methods<a class="headerlink" href="#digital-filter-design-methods" title="Permalink to this heading">#</a></h3>
 <p>As demonstrated in <a class="reference internal" href="analogue_filters.html#unit7-1"><span class="std std-ref">Unit 7.1: Designing Analogue Filters</span></a>, filter-design methods have been established and analogue prototypes have been published. Thus, we can choose an appropriate analogue prototype to satisfy the requirements.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "fragment"} -->
 <p>Transformation methods are also available to transform analogue prototypes into an equivalent digital filter.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "fragment"} -->
 <p>Three commonly used transformation methods are</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 <section id="the-impulse-invariant-method">
 <h4>1. The <em>impulse invariant method</em><a class="headerlink" href="#the-impulse-invariant-method" title="Permalink to this heading">#</a></h4>
 <p>Produces a digital filter <span class="math notranslate nohighlight">\(H(z)\)</span> whose impulse response consists of the sampled values of the impulse response of the equivalent analogue filter <span class="math notranslate nohighlight">\(H(s)\)</span>.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "notes"} -->
 <p>This is implemented in MATLAB by the system transformation function: <code class="docutils literal notranslate"><span class="pre">Hz</span> <span class="pre">=</span> <span class="pre">c2d(Hs,Ts,'impulse')</span></code> where <code class="docutils literal notranslate"><span class="pre">Hs</span></code> is the analogue transfer function <span class="math notranslate nohighlight">\(H(s)\)</span>, <code class="docutils literal notranslate"><span class="pre">Ts</span></code> is the sampling period, and <code class="docutils literal notranslate"><span class="pre">Hz</span></code> is the equivalent <span class="math notranslate nohighlight">\(H(z)\)</span>.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 </section>
 <section id="the-step-invariant-method">
 <h4>2. The <em>step invariant method</em><a class="headerlink" href="#the-step-invariant-method" title="Permalink to this heading">#</a></h4>
 <p>Produces a digital filter <span class="math notranslate nohighlight">\(H(z)\)</span> whose step response consists of the sampled values of the step response of the equivalent analogue filter <span class="math notranslate nohighlight">\(H(s)\)</span>.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 </section>
 <section id="the-bilinear-transform-method">
 <h4>3. The <em>bilinear transform method</em><a class="headerlink" href="#the-bilinear-transform-method" title="Permalink to this heading">#</a></h4>
@@ -698,13 +643,7 @@ document.write(`
 <div class="math notranslate nohighlight" id="equation-eq-7-2-3">
 <span class="eqno">(39)<a class="headerlink" href="#equation-eq-7-2-3" title="Permalink to this equation">#</a></span>\[s = \frac{2}{T_s}\cdot\frac{z-1}{z+1}\]</div>
 <p>to transform the left-half of the <span class="math notranslate nohighlight">\(s\)</span>-plane into the interior of the unit circle in the <span class="math notranslate nohighlight">\(z\)</span>-plane.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "notes"} -->
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 <p>In this unit, we will discuss, <em>and assess</em>, only the use of the blinear transformation.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "slide"} -->
 </section>
 </section>
 </section>
@@ -713,277 +652,259 @@ document.write(`
 <p>We recall from <a class="reference internal" href="../dt_systems/2/z_transform.html#s-to-z"><span class="std std-ref">Relationship Between the Laplace and Z-Transform</span></a> that since <span class="math notranslate nohighlight">\(z = e^{sT_s}\)</span>, <span class="math notranslate nohighlight">\(s = 1/T_s \log_e z\)</span>, then a DT transfor function <span class="math notranslate nohighlight">\(H(sz)\)</span> can be determined from a CT transfer function <span class="math notranslate nohighlight">\(H(s)\)</span> using the mapping:</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-4">
 <span class="eqno">(40)<a class="headerlink" href="#equation-eq-7-2-4" title="Permalink to this equation">#</a></span>\[H(z) = \left.H(s)\right|_{s = \frac{1}{T_s} \log_e z}\]</div>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "fragment"} -->
 <p>But the relation <span class="math notranslate nohighlight">\(s = 1/T_s \log_e z\)</span> is a multi-valued transformation, and as such, cannot be used to derive a rational polynomial in <span class="math notranslate nohighlight">\(z\)</span>.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "fragment"} -->
 <p>It can be approximated as</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-5">
 <span class="eqno">(41)<a class="headerlink" href="#equation-eq-7-2-5" title="Permalink to this equation">#</a></span>\[s = \frac{1}{T_s} \log_e z = \frac{2}{T_s} \left[\frac{z-1}{z+1}  + \frac{1}{3} \left(\frac{z-1}{z+1} \right)^3 + \frac{1}{5} \left(\frac{z-1}{z+1} \right)^5 + \frac{1}{7} \left(\frac{z-1}{z+1} \right)^7 + \cdots\right] \approx \frac{2}{T_s} \cdot \frac{z-1}{z+1} \]</div>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 <p>Substitution of <a class="reference internal" href="#equation-eq-7-2-5">(41)</a> into <a class="reference internal" href="#equation-eq-7-2-4">(40)</a> yields</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "fragment"} -->
 <div class="math notranslate nohighlight" id="equation-eq-7-2-6">
 <span class="eqno">(42)<a class="headerlink" href="#equation-eq-7-2-6" title="Permalink to this equation">#</a></span>\[H(z) = \left.G(s)\right|_{s = \frac{2}{T_s} \cdot \frac{z-1}{z+1}} \]</div>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 <section id="digital-frequency-response-of-the-bilinear-transformation">
 <span id="unit7-2-freqz"></span><h3>Digital frequency response of the bilinear transformation<a class="headerlink" href="#digital-frequency-response-of-the-bilinear-transformation" title="Permalink to this heading">#</a></h3>
 <p>The digital frequency response (using <span class="math notranslate nohighlight">\(\omega_d\)</span> on the unit circle in the <span class="math notranslate nohighlight">\(z\)</span>-plane) is obtained by the substitution <span class="math notranslate nohighlight">\(z = e^{j\omega_d T_s}\)</span>, giving</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-7">
 <span class="eqno">(43)<a class="headerlink" href="#equation-eq-7-2-7" title="Permalink to this equation">#</a></span>\[H\left(e^{j\omega_d T_s}\right) = G\left(\frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s } + 1} \right) \]</div>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 <p>Since the <span class="math notranslate nohighlight">\(z\to s\)</span> transformation maps the unit circle on the <span class="math notranslate nohighlight">\(z\)</span>-plane into the <span class="math notranslate nohighlight">\(j\omega\)</span> axis on the <span class="math notranslate nohighlight">\(s\)</span>-plane, the quantity</p>
 <div class="math notranslate nohighlight">
 \[\frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s} + 1}\]</div>
 <p>and <span class="math notranslate nohighlight">\(j\omega\)</span> must be equal to some point <span class="math notranslate nohighlight">\(\omega = \omega_a\)</span> on the <span class="math notranslate nohighlight">\(j\omega\)</span> axis.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "fragment"} -->
 <p>That is,</p>
 <div class="math notranslate nohighlight">
 \[j\omega_a = \frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s } + 1}\]</div>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "fragment"} -->
 <p>or</p>
 <div class="math notranslate nohighlight">
 \[\omega_a = \frac{1}{J} \cdot \frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s } + 1} = \frac{2}{T_s}\cdot \frac{1/(j2)}{1/2} \cdot \frac{e^{j\omega_d T_s/2} - e^{-j\omega_d T_s/2}}{e^{j\omega_d T_s/2} + e^{-j\omega_d T_s/2}} = \frac{2}{T_s} \cdot \frac{\sin\left(\omega_d T_s\right)/2}{\cos\left(\omega_d T_s\right)/2} \]</div>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 <p>or</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-8">
 <span class="eqno">(44)<a class="headerlink" href="#equation-eq-7-2-8" title="Permalink to this equation">#</a></span>\[\omega_a = \frac{2}{T_s} \tan\left(\frac{\omega_d T_s}{2} \right)\]</div>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 </section>
 <section id="frequency-warping-of-the-bilinear-transformation">
 <span id="u72-warping"></span><h3>Frequency warping of the bilinear transformation<a class="headerlink" href="#frequency-warping-of-the-bilinear-transformation" title="Permalink to this heading">#</a></h3>
 <p>We see that the analogue frequency to digital frequency transformation results in a non-linear mapping; this condition is know as <em>warping</em>.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "fragment"} -->
 <p>For instance, the frequency range <span class="math notranslate nohighlight">\(0 \lt \omega_a \le \infty\)</span> the analogue frequency is warped into the range <span class="math notranslate nohighlight">\(0 \le \omega_d \le \pi/T_s\)</span> in digital frequency.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 <p>To express <span class="math notranslate nohighlight">\(\omega_d\)</span> in terms of <span class="math notranslate nohighlight">\(\omega_a\)</span>, we rewrite <a class="reference internal" href="#equation-eq-7-2-8">(44)</a> as</p>
 <div class="math notranslate nohighlight">
 \[\tan\left(\frac{\omega_d T_s}{2} \right) = \frac{\omega_a T_s}{2} \]</div>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "fragment"} -->
 <p>Then,</p>
 <div class="math notranslate nohighlight">
 \[\omega_d T_s  = 2 \tan^{-1}\left(\frac{\omega_a T_s}{2}\right) \]</div>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "fragment"} -->
 <p>and for small <span class="math notranslate nohighlight">\(\omega_a T_s/2\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[\tan^{-1}\left(\frac{\omega_a T_s}{2}\right) \approx \frac{\omega_a T_s}{2}\]</div>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 <p>Therefore,</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-9">
 <span class="eqno">(45)<a class="headerlink" href="#equation-eq-7-2-9" title="Permalink to this equation">#</a></span>\[\omega_d T_s \approx 2 \left(\frac{\omega_a T_s}{2}\right) \approx \omega_a T_s\]</div>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "fragment"} -->
 <p>that is, for small frequencies,</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-10">
 <span class="eqno">(46)<a class="headerlink" href="#equation-eq-7-2-10" title="Permalink to this equation">#</a></span>\[\omega_d \approx \omega_a\]</div>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 <p>In MATLAB, <span class="math notranslate nohighlight">\(z\)</span> is a function of normalized frequency and thus the range of frequencies in <span class="math notranslate nohighlight">\(H(z)\)</span> is from <span class="math notranslate nohighlight">\(0 \to \pi\)</span>. Then <a class="reference internal" href="#equation-eq-7-2-9">(45)</a>, when used with MATLAB, becomes</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-11">
 <span class="eqno">(47)<a class="headerlink" href="#equation-eq-7-2-11" title="Permalink to this equation">#</a></span>\[\omega_d \approx \frac{\omega_a T_s}{\pi} \]</div>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 </section>
 <section id="pre-warping">
 <span id="u72-pre-warping"></span><h3>Pre-warping<a class="headerlink" href="#pre-warping" title="Permalink to this heading">#</a></h3>
 <p>The effect of warping can be eliminated by <em>pre-warping</em> the analogue filter prior to the application of the bilinear transformation. This is acomplished with the use of <a class="reference internal" href="#equation-eq-7-2-8">(44)</a>.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 <section id="example-12">
 <span id="u72-ex-12"></span><h4>Example 12<a class="headerlink" href="#example-12" title="Permalink to this heading">#</a></h4>
 <p>Compute the transfer function <span class="math notranslate nohighlight">\(H(z)\)</span> of a low-pass filter with <span class="math notranslate nohighlight">\(3\)</span> dB cutoff frequency at <span class="math notranslate nohighlight">\(20\)</span> Hz, and attenuation of at least <span class="math notranslate nohighlight">\(10\)</span> dB for frequencies greater than <span class="math notranslate nohighlight">\(40\)</span> Hz. The sampling frequency <span class="math notranslate nohighlight">\(f_s = 200\)</span> Hz. Compare the magnitude plot with that obtained by a low-pass analogue filter with the same specifications.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 <section id="solution">
 <h5>Solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h5>
 <p>We will apply the bilinear transformation. We arbitrarily choose a second-order Butterworth filter which will meet the stop-band specification.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "fragment"} -->
 <p>The transfer function <span class="math notranslate nohighlight">\(H(s)\)</span> of the analogue low-pass filter with normalized frequency at <span class="math notranslate nohighlight">\(\omega_c = 1\)</span> rad/s is found with the MATLAB <code class="docutils literal notranslate"><span class="pre">buttap</span></code> function as follows:</p>
-<!-- #endregion -->
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="p">[</span><span class="n">z</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">buttap</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zp2tf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">)</span>
 </pre></div>
 </div>
-<!-- #region slideshow={"slide_type": "fragment"} -->
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b =
+     0     0     1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a =
+    1.0000    1.4142    1.0000
+</pre></div>
+</div>
+</div>
+</div>
 <p>Thus, the transfer function with noramlized frequency, denoted as <span class="math notranslate nohighlight">\(H_n(s)\)</span>, is</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-12">
 <span class="eqno">(49)<a class="headerlink" href="#equation-eq-7-2-12" title="Permalink to this equation">#</a></span>\[H_n(s) = \frac{1}{s^2 + 1.414 s + 1} \]</div>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 <p>Now, we must transform this transfer function to another with actual cuttoff frequency at <span class="math notranslate nohighlight">\(20\)</span> Hz. We donote it as <span class="math notranslate nohighlight">\(H_a(s)\)</span>.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 <p>We will first pre-warp the analogue frequency which by relation <a class="reference internal" href="#equation-eq-7-2-8">(44)</a>, us related to the digital frequency as</p>
 <div class="math notranslate nohighlight">
 \[\omega_a = \frac{2}{T_s}\tan\left(\frac{\omega_d T_s}{2} \right)\]</div>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "fragment"} -->
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[T_s = \frac{1}{f_s} = \frac{1}{200}.\]</div>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "fragment"} -->
 <p>Denoting the analogue cuttoff (3 dB) frequency as <span class="math notranslate nohighlight">\(\omega_{ac}\)</span>, we obtain</p>
 <div class="math notranslate nohighlight">
 \[\omega_{ac} = 400 \tan \left(\frac{2\pi\times 20}{2\times 200} \right) = 400\tan\left(0.1\pi\right) \approx 130\,\mathrm{rad/s}\]</div>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "fragment"} -->
 <p>or</p>
 <div class="math notranslate nohighlight">
 \[f_{ac} = \frac{130}{2\pi} \approx 20.69\,\mathrm{Hz}.\]</div>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 <p>As expected from relation <a class="reference internal" href="#equation-eq-7-2-10">(46)</a>, this frequency is very close to the discrete-time frequency <span class="math notranslate nohighlight">\(f_{dc} = 20\)</span> Hz, and thus from <a class="reference internal" href="#equation-eq-7-2-12">(49)</a>,</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-12">
 <span class="eqno">(49)<a class="headerlink" href="#equation-eq-7-2-12" title="Permalink to this equation">#</a></span>\[H_a(s) \approx H_n(s) = \frac{1}{s^2 + 1.414 s + 1} \]</div>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 <p>Relation <a class="reference internal" href="#equation-eq-7-2-12">(49)</a> applies only when the cutoff frequency is normalized to <span class="math notranslate nohighlight">\(\omega_c = 1\)</span> rad/s.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "fragment"} -->
 <p>If <span class="math notranslate nohighlight">\(\omega_c \ne 1\)</span>, we must scale the transfer function in accordance with relation <a class="reference internal" href="analogue_filters.html#equation-eq-7-1-15">(33)</a>, that is,</p>
 <div class="math notranslate nohighlight">
 \[H(s)_\mathrm{actual} = H\left(\frac{s}{\omega_\mathrm{actual}} \right) \]</div>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "fragment"} -->
 <p>For this example, <span class="math notranslate nohighlight">\(\omega_\mathrm{actual} = 130\)</span> rad/s, and thus we replace <span class="math notranslate nohighlight">\(s\)</span> with <span class="math notranslate nohighlight">\(s/130\)</span> and we obtain</p>
 <div class="math notranslate nohighlight">
 \[H_a(s) = \frac{1}{\left(s/130\right)^2 + 1.414s/130 + 1} \]</div>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 <p>We will use MATLAB to simplify this expression</p>
-<!-- #endregion -->
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">s</span><span class="p">;</span><span class="w"> </span><span class="n">simplifyFraction</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">((</span><span class="n">s</span><span class="o">/</span><span class="mi">130</span><span class="p">)</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1.414</span><span class="o">*</span><span class="n">s</span><span class="o">/</span><span class="mi">130</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
 <span class="mi">845000</span><span class="o">/</span><span class="mi">50</span>
 <span class="mi">9191</span><span class="o">/</span><span class="mi">50</span>
 </pre></div>
 </div>
-<!-- #region slideshow={"slide_type": "fragment"} -->
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>845000/(50*s^2 + 9191*s + 845000)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+       16900
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+  183.8200
+</pre></div>
+</div>
+</div>
+</div>
 <p>Then,</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-13">
 <span class="eqno">(50)<a class="headerlink" href="#equation-eq-7-2-13" title="Permalink to this equation">#</a></span>\[H_a(s) = \frac{845000}{50s^2 + 9191s + 845000} = \frac{16900}{s^2 + 183.82s + 16900} \]</div>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "fragment"} -->
 <p>and making the substitution of <span class="math notranslate nohighlight">\(s = (2/T_s)(z -1)/(z + 1) = 400(z-1)/(z + 1)\)</span> we obtain</p>
 <div class="math notranslate nohighlight">
 \[H(z) = \frac{16900}{\left(400\cdot \frac{z-1}{z + 1}\right)^2 + \frac{183.82\times 400(z-1)}{(z + 1)} + 16900} \]</div>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 <p>We use the MATLAB code below to simplify this expression</p>
-<!-- #endregion -->
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">z</span><span class="p">;</span><span class="w"> </span><span class="nb">simplify</span><span class="p">(</span><span class="mi">16900</span><span class="o">/</span><span class="p">((</span><span class="mi">400</span><span class="o">*</span><span class="p">(</span><span class="n">z</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">z</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">183.82</span><span class="o">*</span><span class="mi">400</span><span class="o">*</span><span class="p">(</span><span class="n">z</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">z</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">16900</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4225*(z + 1)^2)/(62607*z^2 - 71550*z + 25843)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">expand</span><span class="p">(</span><span class="mi">4225</span><span class="o">*</span><span class="p">(</span><span class="n">z</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>^<span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<!-- #region slideshow={"slide_type": "fragment"} -->
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4225*z^2 + 8450*z + 4225
+</pre></div>
+</div>
+</div>
+</div>
 <p>and thus</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-14">
 <span class="eqno">(51)<a class="headerlink" href="#equation-eq-7-2-14" title="Permalink to this equation">#</a></span>\[H(z) = \frac{4225z^2 + 8450z + 4225}{62607z^2 - 71550z + 25843} \]</div>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 <p>We will used the MATLAB <a class="reference external" href="https://uk.mathworks.com/help/signal/ref/freqz.html"><code class="docutils literal notranslate"><span class="pre">freqz</span></code></a> function to plot the magnitude of <span class="math notranslate nohighlight">\(H(z)\)</span>, but we must first express it in negative powers of <span class="math notranslate nohighlight">\(z\)</span>.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "fragment"} -->
 <p>Dividing each term of <a class="reference internal" href="#equation-eq-7-2-14">(51)</a> by <span class="math notranslate nohighlight">\(62607z^2\)</span>, we obtain</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-15">
 <span class="eqno">(52)<a class="headerlink" href="#equation-eq-7-2-15" title="Permalink to this equation">#</a></span>\[\frac{0.0675 + 0.1350z^{-1} + 0.0675z^{-2}}{1 - 1.1428z^{-1} + 0.4128 z^{-2}}\]</div>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 <p>The MATLAB script below will generate <span class="math notranslate nohighlight">\(H(z)\)</span> and will plot the magnitude of this transfer function.</p>
-<!-- #endregion -->
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">az</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w">  </span><span class="o">-</span><span class="mf">1.1428</span><span class="p">,</span><span class="w"> </span><span class="mf">0.4128</span><span class="p">];</span><span class="w"> </span><span class="n">bz</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0.0675</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1350</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0675</span><span class="p">];</span><span class="w"> </span><span class="n">fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">200</span><span class="p">;</span><span class="w"> </span><span class="n">fc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
 <span class="p">[</span><span class="n">Hz</span><span class="p">,</span><span class="w"> </span><span class="n">wT</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">freqz</span><span class="p">(</span><span class="n">bz</span><span class="p">,</span><span class="n">az</span><span class="p">,</span><span class="n">fc</span><span class="p">,</span><span class="n">fs</span><span class="p">);</span>
 <span class="nb">semilogx</span><span class="p">(</span><span class="n">wT</span><span class="p">,</span><span class="mi">20</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">Hz</span><span class="p">)));</span><span class="w"> </span><span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Frequency in Hz - log scale&#39;</span><span class="p">)</span>
 <span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Magnitude (dB)&#39;</span><span class="p">),</span><span class="w"> </span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;Digital Low-Pass Filter. Example 12&#39;</span><span class="p">),</span><span class="nb">grid</span>
 </pre></div>
 </div>
-<!-- #region slideshow={"slide_type": "subslide"} -->
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/913a27bdd4e63613f060fed876bfae2b7ac3f957ad432a9419ca83d13aa41922.png" src="../_images/913a27bdd4e63613f060fed876bfae2b7ac3f957ad432a9419ca83d13aa41922.png" />
+</div>
+</div>
 <p>We now plot the analogue equivalent to compare the digital to the analogue frequency response.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "fragment"} -->
 <p>The MATLAB script below produces the desired plot.</p>
-<!-- #endregion -->
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">z</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">buttap</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zp2tf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">);</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="n">fc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w"> </span><span class="p">[</span><span class="n">bn</span><span class="p">,</span><span class="n">an</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">lp2lp</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">fc</span><span class="p">);</span>
 <span class="n">Hs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">freqs</span><span class="p">(</span><span class="n">bn</span><span class="p">,</span><span class="n">an</span><span class="p">,</span><span class="n">f</span><span class="p">);</span>
 <span class="nb">semilogx</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">Hs</span><span class="p">))),</span><span class="w"> </span><span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Frequency in Hz - log scale&#39;</span><span class="p">)</span>
 <span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Magnitude (dB)&#39;</span><span class="p">),</span><span class="w"> </span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;Analogue Low-Pass Filter. Example 12&#39;</span><span class="p">),</span><span class="nb">grid</span>
 </pre></div>
 </div>
-<!-- #region slideshow={"slide_type": "notes"} -->
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/b8f5290e8f6ccdfa261006d9686e71b6bf9c04ed0570fad3ca6c14b41331360f.png" src="../_images/b8f5290e8f6ccdfa261006d9686e71b6bf9c04ed0570fad3ca6c14b41331360f.png" />
+</div>
+</div>
 <p>Comparing the digital filter plot with the equivalent analogue filter plot, we observe that the magnitude is greater than <span class="math notranslate nohighlight">\(-3\)</span> dB for frequencies less than <span class="math notranslate nohighlight">\(20\)</span> rad/s, and is smaller than <span class="math notranslate nohighlight">\(-10\)</span> dB for frequencies greater than <span class="math notranslate nohighlight">\(40\)</span> Hz. Therefore, both the digital and analogue low-pass filters meet the specified requirements.<a class="footnote-reference brackets" href="#u72-note-4" id="id5">4</a></p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "notes"} -->
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "notes"} -->
 </section>
 </section>
 </section>
 <section id="matlab-bilinear-function">
 <span id="u72-matlab-bilinear"></span><h3>MATLAB bilinear function<a class="headerlink" href="#matlab-bilinear-function" title="Permalink to this heading">#</a></h3>
 <p>An analogue filter transfer function can be mapped to a digital transfer function directly with the MATLAB <a class="reference external" href="https://uk.mathworks.com/help/signal/ref/bilinear.html"><code class="docutils literal notranslate"><span class="pre">bilinear</span></code></a> function. The procedure is illustrated with the following example.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 <section id="example-13">
 <span id="u72-ex-13"></span><h4>Example 13<a class="headerlink" href="#example-13" title="Permalink to this heading">#</a></h4>
 <p>Use the MATLAB <code class="docutils literal notranslate"><span class="pre">bilinear</span></code> function to derive the low-pass digital transfer function <span class="math notranslate nohighlight">\(H(z)\)</span> from a second-order Butterworth analogue filter with a <span class="math notranslate nohighlight">\(3\)</span> dB cutoff frequency at <span class="math notranslate nohighlight">\(50\)</span> Hz, ans sample rate <span class="math notranslate nohighlight">\(f_s = 500\)</span> Hz.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "subslide"} -->
 <section id="id6">
 <h5>Solution<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h5>
 <p>We will use the following MATLAB script to produce the desired digital filter function:</p>
-<!-- #endregion -->
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">z</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">buttap</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="p">[</span><span class="n">num</span><span class="p">,</span><span class="n">den</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zp2tf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">);</span><span class="w"> </span><span class="n">fc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span><span class="w"> </span><span class="n">wc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">fc</span><span class="p">;</span>
 <span class="p">[</span><span class="n">num1</span><span class="p">,</span><span class="n">den1</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">lp2lp</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">den</span><span class="p">,</span><span class="n">wc</span><span class="p">);</span>
 <span class="n">fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">500</span><span class="p">;</span><span class="w"> </span><span class="p">[</span><span class="n">numd</span><span class="p">,</span><span class="n">dend</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">bilinear</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span><span class="w"> </span><span class="n">den1</span><span class="p">,</span><span class="w"> </span><span class="n">fs</span><span class="p">)</span>
 </pre></div>
 </div>
-<!-- #region slideshow={"slide_type": "fragment"} -->
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numd =
+    0.0640    0.1279    0.0640
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dend =
+    1.0000   -1.1683    0.4241
+</pre></div>
+</div>
+</div>
+</div>
 <p>Therefore, the transfer function <span class="math notranslate nohighlight">\(H(z)\)</span> for this filter is</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-16">
 <span class="eqno">(53)<a class="headerlink" href="#equation-eq-7-2-16" title="Permalink to this equation">#</a></span>\[H(z) = \frac{0.0640 z^2  +  0.1279 z +   0.0640}{z^2   -1.1683 z +    0.4241} = \frac{0.0640  +  0.1279 z^{-1} +   0.0640 z^{-2}}{1   -1.1683 z^{-1} +    0.4241 z^{-2}}\]</div>
-<!-- #endregion -->
 </section>
 </section>
 </section>
 </section>
 <section id="matlab-functions-for-direct-digital-filter-design">
 <span id="u72-matlab-fd-tools"></span><h2>MATLAB Functions for direct digital filter design<a class="headerlink" href="#matlab-functions-for-direct-digital-filter-design" title="Permalink to this heading">#</a></h2>
-<!-- #region slideshow={"slide_type": "notes"} -->
 </section>
 <section id="exercises">
 <span id="u72-exercises"></span><h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "notes"} -->
 <section id="exercise-7-2-1">
 <span id="u72-ex-1"></span><h3>Exercise 7.2.1<a class="headerlink" href="#exercise-7-2-1" title="Permalink to this heading">#</a></h3>
 <p>Use the block diagram shown in <a class="reference internal" href="#fig-u72-1"><span class="std std-numref">Fig. 14</span></a> to validate <code class="xref eq docutils literal notranslate"><span class="pre">eq:u71:2</span></code> and eq}<code class="docutils literal notranslate"><span class="pre">eq:u71:1</span></code>.</p>
-<!-- #endregion -->
-<!-- #region slideshow={"slide_type": "notes"} -->
 </section>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <p>See <a class="reference internal" href="../zbib.html"><span class="doc std std-doc">Bibliography</span></a>.</p>
-<!-- #endregion -->
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="u72-note-1"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
@@ -1011,16 +932,16 @@ document.write(`
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "matlab"
         },
         kernelOptions: {
-            name: "python3",
+            name: "matlab",
             path: "./filter_design"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'matlab'</script>
 
                 </article>
               
