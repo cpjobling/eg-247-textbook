@@ -496,6 +496,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bilinear-transformation">The Bilinear Transformation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#digital-frequency-response-of-the-bilinear-transformation">Digital frequency response of the bilinear transformation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#frequency-warping-of-the-bilinear-transformation">Frequency warping of the bilinear transformation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-12">Example 12</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
@@ -739,14 +743,63 @@ document.write(`
 <!-- #region slideshow={"slide_type": "subslide"} -->
 <p>or</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-8">
-<span class="eqno">(44)<a class="headerlink" href="#equation-eq-7-2-8" title="Permalink to this equation">#</a></span>\[\omega_a = \frac{2}{T_s} \cdot \tan\left(\frac{\omega_d T_s}{2} \right)\]</div>
+<span class="eqno">(44)<a class="headerlink" href="#equation-eq-7-2-8" title="Permalink to this equation">#</a></span>\[\omega_a = \frac{2}{T_s} \tan\left(\frac{\omega_d T_s}{2} \right)\]</div>
 <!-- #endregion -->
 <!-- #region slideshow={"slide_type": "subslide"} -->
 </section>
 <section id="frequency-warping-of-the-bilinear-transformation">
 <span id="u72-warping"></span><h3>Frequency warping of the bilinear transformation<a class="headerlink" href="#frequency-warping-of-the-bilinear-transformation" title="Permalink to this heading">#</a></h3>
+<p>We see that the analogue frequency to digital frequency transformation results in a non-linear mapping; this condition is know as <em>warping</em>.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "fragment"} -->
+<p>For instance, the frequency range <span class="math notranslate nohighlight">\(0 \lt \omega_a \le \infty\)</span> the analogue frequency is warped into the range <span class="math notranslate nohighlight">\(0 \le \omega_d \le \pi/T_s\)</span> in digital frequency.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
+<p>To express <span class="math notranslate nohighlight">\(\omega_d\)</span> in terms of <span class="math notranslate nohighlight">\(\omega_a\)</span>, we rewrite <a class="reference internal" href="#equation-eq-7-2-8">(44)</a> as</p>
+<div class="math notranslate nohighlight">
+\[\tan\left(\frac{\omega_d T_s}{2} \right) = \frac{\omega_a T_s}{2} \]</div>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "fragment"} -->
+<p>Then,</p>
+<div class="math notranslate nohighlight">
+\[\omega_d T_s  = 2 \tan^{-1}\left(\frac{\omega_a T_s}{2}\right) \]</div>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "fragment"} -->
+<p>and for small <span class="math notranslate nohighlight">\(\omega_a T_s/2\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\tan^{-1}\left(\frac{\omega_a T_s}{2}\right) \approx \frac{\omega_a T_s}{2}\]</div>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
+<p>Therefore,</p>
+<div class="math notranslate nohighlight" id="equation-eq-7-2-9">
+<span class="eqno">(45)<a class="headerlink" href="#equation-eq-7-2-9" title="Permalink to this equation">#</a></span>\[\omega_d T_s \approx 2 \left(\frac{\omega_a T_s}{2}\right) \approx \omega_a T_s\]</div>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "fragment"} -->
+<p>that is, for small frequencies,</p>
+<div class="math notranslate nohighlight" id="equation-eq-7-2-10">
+<span class="eqno">(46)<a class="headerlink" href="#equation-eq-7-2-10" title="Permalink to this equation">#</a></span>\[\omega_d \approx \omega_a\]</div>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
+<p>In MATLAB, <span class="math notranslate nohighlight">\(z\)</span> is a function of normalized frequency and thus the range of frequencies in <span class="math notranslate nohighlight">\(H(z)\)</span> is from <span class="math notranslate nohighlight">\(0 \to \pi\)</span>. Then <a class="reference internal" href="#equation-eq-7-2-9">(45)</a>, when used with MATLAB, becomes</p>
+<div class="math notranslate nohighlight" id="equation-eq-7-2-11">
+<span class="eqno">(47)<a class="headerlink" href="#equation-eq-7-2-11" title="Permalink to this equation">#</a></span>\[\omega_d \approx \frac{\omega_a T_s}{\pi} \]</div>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
+<p>The effect of warping can be eliminated by <em>pre-warping</em> the analogue filter prior to the application of the bilinear transformation. This is acomplished with the use of <a class="reference internal" href="#equation-eq-7-2-8">(44)</a></p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
+</section>
+<section id="example-12">
+<h3>Example 12<a class="headerlink" href="#example-12" title="Permalink to this heading">#</a></h3>
+<p>Compute the transfer function <span class="math notranslate nohighlight">\(H(z)\)</span> of a low-pass filter with <span class="math notranslate nohighlight">\(3\)</span> dB cutoff frequency at <span class="math notranslate nohighlight">\(20\)</span> Hz, and attenuation of at least <span class="math notranslate nohighlight">\(10\)</span> dB for frequencies greater than <span class="math notranslate nohighlight">\(40\)</span> Hz. The sampling frequency <span class="math notranslate nohighlight">\(f_s = 200\)</span> Hz. Compare the magnitude plot with that obtained by a low-pass analogue filter with the same specifications.</p>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
+<section id="solution">
+<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h4>
+<p>We will apply the bilinear transformation. We arbitrarily choose a second-order Butterworth filter which will meet the stop-band specification.</p>
 <!-- #endregion -->
 <!-- #region slideshow={"slide_type": "notes"} -->
+</section>
 </section>
 </section>
 <section id="exercises">
@@ -866,6 +919,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bilinear-transformation">The Bilinear Transformation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#digital-frequency-response-of-the-bilinear-transformation">Digital frequency response of the bilinear transformation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#frequency-warping-of-the-bilinear-transformation">Frequency warping of the bilinear transformation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-12">Example 12</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">

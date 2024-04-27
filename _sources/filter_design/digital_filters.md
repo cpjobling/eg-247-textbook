@@ -278,12 +278,70 @@ $$\omega_a = \frac{1}{J} \cdot \frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}
 <!-- #region slideshow={"slide_type": "subslide"} -->
 or
 
-$$\omega_a = \frac{2}{T_s} \cdot \tan\left(\frac{\omega_d T_s}{2} \right)$$ (eq:7.2:8)
+$$\omega_a = \frac{2}{T_s} \tan\left(\frac{\omega_d T_s}{2} \right)$$ (eq:7.2:8)
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "subslide"} -->
 (u72:warping)=
 ### Frequency warping of the bilinear transformation
+
+We see that the analogue frequency to digital frequency transformation results in a non-linear mapping; this condition is know as *warping*.
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "fragment"} -->
+For instance, the frequency range $0 \lt \omega_a \le \infty$ the analogue frequency is warped into the range $0 \le \omega_d \le \pi/T_s$ in digital frequency.
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+ To express $\omega_d$ in terms of $\omega_a$, we rewrite {eq}`eq:7.2:8` as
+ 
+ $$\tan\left(\frac{\omega_d T_s}{2} \right) = \frac{\omega_a T_s}{2} $$
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "fragment"} -->
+Then,
+
+ $$\omega_d T_s  = 2 \tan^{-1}\left(\frac{\omega_a T_s}{2}\right) $$
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "fragment"} -->
+and for small $\omega_a T_s/2$,
+
+$$\tan^{-1}\left(\frac{\omega_a T_s}{2}\right) \approx \frac{\omega_a T_s}{2}$$
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+Therefore,
+
+$$\omega_d T_s \approx 2 \left(\frac{\omega_a T_s}{2}\right) \approx \omega_a T_s$$  (eq:7.2:9)
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "fragment"} -->
+that is, for small frequencies,
+
+$$\omega_d \approx \omega_a$$ (eq:7.2:10)
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+In MATLAB, $z$ is a function of normalized frequency and thus the range of frequencies in $H(z)$ is from $0 \to \pi$. Then {eq}`eq:7.2:9`, when used with MATLAB, becomes
+
+$$\omega_d \approx \frac{\omega_a T_s}{\pi} $$ (eq:7.2:11)
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+The effect of warping can be eliminated by *pre-warping* the analogue filter prior to the application of the bilinear transformation. This is acomplished with the use of {eq}`eq:7.2:8`
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+### Example 12
+
+Compute the transfer function $H(z)$ of a low-pass filter with $3$ dB cutoff frequency at $20$ Hz, and attenuation of at least $10$ dB for frequencies greater than $40$ Hz. The sampling frequency $f_s = 200$ Hz. Compare the magnitude plot with that obtained by a low-pass analogue filter with the same specifications.
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+#### Solution
+
+We will apply the bilinear transformation. We arbitrarily choose a second-order Butterworth filter which will meet the stop-band specification.
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "notes"} -->
