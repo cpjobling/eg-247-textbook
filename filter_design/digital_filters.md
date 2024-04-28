@@ -897,7 +897,7 @@ Download this model as [series_form_2nd.slx](matlab/series_form_2nd.slx).
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (u72:ex:15)=
-### Example 15
+#### Example 15
 
 The transfer function of the series form Realization of a certian second-order digital filter is
 
@@ -916,6 +916,30 @@ $$H(z) = \frac{0.5\left(1+0.6z^{-1}\right)\left(1-0.6z^{-1}\right)}{\left(1+0.9z
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 The Simulink model and the input and output waveforms are shown in {numref}`fig:u72:6`.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+fig15
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+:::{figure-md} fig:u72:5
+<img src="pictures/ex15.png" alt="Series Form Realization of the digital filter of Example 14" width="100%" />
+
+Model for Example 15
+:::
+
+Download this model as [ex15.slx](matlab/ex15.slx).
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+(u72:fd:parallel)=
+
+### The Parallel Form Realization of a Digital Filter
+
+The general form of the transfer function of a Parallel Form Realization is 
+
+$$H(z) = K + H_1(z) + H_2(z) + \cdots + H_R(z)$$ (eq:u72:22)
 
 +++
 
