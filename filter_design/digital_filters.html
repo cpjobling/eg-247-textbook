@@ -512,7 +512,23 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-functions-for-direct-digital-filter-design">MATLAB Functions for direct digital filter design</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-functions-for-direct-digital-filter-design">MATLAB Functions for direct digital filter design</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-low-pass-filters">For Low-Pass Filters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-high-pass-filters">For High-Pass Filters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-band-pass-filters">For Band-Pass Filters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-band-elimination-filters">For Band-Elimination Filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Example 13</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digital-filter-design-with-simulink">Digital Filter Design with Simulink</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-direct-form-i-realization-of-a-digital-filter">The Direct Form I Realization of a Digital Filter</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-2-1">Exercise 7.2.1</a></li>
 </ul>
@@ -553,6 +569,7 @@ document.write(`
 <li><p><a class="reference internal" href="#unit7-2-digital"><span class="std std-ref">Digital filters</span></a></p></li>
 <li><p><a class="reference internal" href="#unit7-2-bilinear"><span class="std std-ref">The Bilinear Transformation</span></a></p></li>
 <li><p><a class="reference internal" href="#u72-matlab-fd-tools"><span class="std std-ref">MATLAB Functions for direct digital filter design</span></a></p></li>
+<li><p><a class="reference internal" href="#u72-simulink"><span class="std std-ref">Digital Filter Design with Simulink</span></a></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -835,7 +852,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/913a27bdd4e63613f060fed876bfae2b7ac3f957ad432a9419ca83d13aa41922.png" src="../_images/913a27bdd4e63613f060fed876bfae2b7ac3f957ad432a9419ca83d13aa41922.png" />
+<img alt="../_images/4857e27ec00806250c1cd904ac440440b5b407b4f7384d7d416bfab993bc5c85.png" src="../_images/4857e27ec00806250c1cd904ac440440b5b407b4f7384d7d416bfab993bc5c85.png" />
 </div>
 </div>
 <p>We now plot the analogue equivalent to compare the digital to the analogue frequency response.</p>
@@ -850,7 +867,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b8f5290e8f6ccdfa261006d9686e71b6bf9c04ed0570fad3ca6c14b41331360f.png" src="../_images/b8f5290e8f6ccdfa261006d9686e71b6bf9c04ed0570fad3ca6c14b41331360f.png" />
+<img alt="../_images/748a05453accc9535b619052d26c90e57e15c166c5742fc12c847d96d4a4ea4e.png" src="../_images/748a05453accc9535b619052d26c90e57e15c166c5742fc12c847d96d4a4ea4e.png" />
 </div>
 </div>
 <p>Comparing the digital filter plot with the equivalent analogue filter plot, we observe that the magnitude is greater than <span class="math notranslate nohighlight">\(-3\)</span> dB for frequencies less than <span class="math notranslate nohighlight">\(20\)</span> rad/s, and is smaller than <span class="math notranslate nohighlight">\(-10\)</span> dB for frequencies greater than <span class="math notranslate nohighlight">\(40\)</span> Hz. Therefore, both the digital and analogue low-pass filters meet the specified requirements.<a class="footnote-reference brackets" href="#u72-note-4" id="id5">4</a></p>
@@ -887,19 +904,168 @@ document.write(`
 </div>
 <p>Therefore, the transfer function <span class="math notranslate nohighlight">\(H(z)\)</span> for this filter is</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-16">
-<span class="eqno">(53)<a class="headerlink" href="#equation-eq-7-2-16" title="Permalink to this equation">#</a></span>\[H(z) = \frac{0.0640 z^2  +  0.1279 z +   0.0640}{z^2   -1.1683 z +    0.4241} = \frac{0.0640  +  0.1279 z^{-1} +   0.0640 z^{-2}}{1   -1.1683 z^{-1} +    0.4241 z^{-2}}\]</div>
+<span class="eqno">(54)<a class="headerlink" href="#equation-eq-7-2-16" title="Permalink to this equation">#</a></span>\[H(z) = \frac{0.0640 z^2  +  0.1279 z +   0.0640}{z^2   -1.1683 z +    0.4241} = \frac{0.0640  +  0.1279 z^{-1} +   0.0640 z^{-2}}{1   -1.1683 z^{-1} +    0.4241 z^{-2}}\]</div>
 </section>
 </section>
 </section>
 </section>
 <section id="matlab-functions-for-direct-digital-filter-design">
 <span id="u72-matlab-fd-tools"></span><h2>MATLAB Functions for direct digital filter design<a class="headerlink" href="#matlab-functions-for-direct-digital-filter-design" title="Permalink to this heading">#</a></h2>
+<p>MATLAB provides us with a suite of functions that we need to design gigital filters using analogue prototypes. These are listed below.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">N</span></code> = order of the filter</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Wn</span></code> = normalized cutoff frequency</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Rp</span></code> = pass band ripple</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Rs</span></code> = stop band ripple</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">B</span></code> = <span class="math notranslate nohighlight">\(B(z)\)</span>, i.e. the numerator of the discrete transfer function <span class="math notranslate nohighlight">\(H(z) = B(z)/A(z)\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">A</span></code> = <span class="math notranslate nohighlight">\(A(z)\)</span>, i.e. the denominator of the discrete transfer function <span class="math notranslate nohighlight">\(H(z)\)</span></p></li>
+</ul>
+<p>The MathWorks also provides a catalogue of filter design tools with examples in the <a class="reference external" href="https://uk.mathworks.com/help/signal/ug/filter-design-gallery.html">Filter Design Gallery</a>.</p>
+<section id="for-low-pass-filters">
+<span id="u72-fd-lp"></span><h3>For Low-Pass Filters<a class="headerlink" href="#for-low-pass-filters" title="Permalink to this heading">#</a></h3>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">B</span><span class="p">,</span><span class="n">A</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">butter</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">Wn</span><span class="p">)</span>
+<span class="p">[</span><span class="n">B</span><span class="p">,</span><span class="n">A</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cheb1</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">Wn</span><span class="p">)</span>
+<span class="p">[</span><span class="n">B</span><span class="p">,</span><span class="n">A</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cheb2</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">Wn</span><span class="p">)</span>
+<span class="p">[</span><span class="n">B</span><span class="p">,</span><span class="n">A</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ellip</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">Wn</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="for-high-pass-filters">
+<span id="u72-fd-hp"></span><h3>For High-Pass Filters<a class="headerlink" href="#for-high-pass-filters" title="Permalink to this heading">#</a></h3>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">B</span><span class="p">,</span><span class="n">A</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">butter</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">Wn</span><span class="p">,</span><span class="s">&#39;high&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="n">B</span><span class="p">,</span><span class="n">A</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cheb1</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">Wn</span><span class="p">,</span><span class="s">&#39;high&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="n">B</span><span class="p">,</span><span class="n">A</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cheb2</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">Wn</span><span class="p">,</span><span class="s">&#39;high&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="n">B</span><span class="p">,</span><span class="n">A</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ellip</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">Wn</span><span class="p">,</span><span class="s">&#39;high&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="for-band-pass-filters">
+<span id="u72-fd-bp"></span><h3>For Band-Pass Filters<a class="headerlink" href="#for-band-pass-filters" title="Permalink to this heading">#</a></h3>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">B</span><span class="p">,</span><span class="n">A</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">butter</span><span class="p">(</span><span class="n">N</span><span class="p">,[</span><span class="n">Wn1</span><span class="p">,</span><span class="n">Wn2</span><span class="p">])</span>
+<span class="p">[</span><span class="n">B</span><span class="p">,</span><span class="n">A</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cheb1</span><span class="p">(</span><span class="n">N</span><span class="p">,[</span><span class="n">Wn1</span><span class="p">,</span><span class="n">Wn2</span><span class="p">])</span>
+<span class="p">[</span><span class="n">B</span><span class="p">,</span><span class="n">A</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cheb2</span><span class="p">(</span><span class="n">N</span><span class="p">,[</span><span class="n">Wn1</span><span class="p">,</span><span class="n">Wn2</span><span class="p">])</span>
+<span class="p">[</span><span class="n">B</span><span class="p">,</span><span class="n">A</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ellip</span><span class="p">(</span><span class="n">N</span><span class="p">,[</span><span class="n">Wn1</span><span class="p">,</span><span class="n">Wn2</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="for-band-elimination-filters">
+<span id="u72-fd-sb"></span><h3>For Band-Elimination Filters<a class="headerlink" href="#for-band-elimination-filters" title="Permalink to this heading">#</a></h3>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">B</span><span class="p">,</span><span class="n">A</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">butter</span><span class="p">(</span><span class="n">N</span><span class="p">,[</span><span class="n">Wn1</span><span class="p">,</span><span class="n">Wn2</span><span class="p">],</span><span class="s">&#39;stop&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="n">B</span><span class="p">,</span><span class="n">A</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cheb1</span><span class="p">(</span><span class="n">N</span><span class="p">,[</span><span class="n">Wn1</span><span class="p">,</span><span class="n">Wn2</span><span class="p">],</span><span class="s">&#39;stop&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="n">B</span><span class="p">,</span><span class="n">A</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cheb2</span><span class="p">(</span><span class="n">N</span><span class="p">,[</span><span class="n">Wn1</span><span class="p">,</span><span class="n">Wn2</span><span class="p">],</span><span class="s">&#39;stop&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="n">B</span><span class="p">,</span><span class="n">A</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ellip</span><span class="p">(</span><span class="n">N</span><span class="p">,[</span><span class="n">Wn1</span><span class="p">,</span><span class="n">Wn2</span><span class="p">],</span><span class="s">&#39;stop&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="id7">
+<span id="id8"></span><h4>Example 13<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h4>
+<p>The transfer functions <a class="reference internal" href="#equation-eq-7-2-16">(54)</a> through <a class="reference internal" href="#equation-eq-7-2-19">(57)</a>, describe differet types of digital filters. Use the MATLAB <code class="docutils literal notranslate"><span class="pre">freqz</span></code> commmand to plot the magnitude versus radian frequency. What types of filter does each transfer function represent? What classes of filter are they?</p>
+<div class="math notranslate nohighlight" id="equation-eq-7-2-16">
+<span class="eqno">(54)<a class="headerlink" href="#equation-eq-7-2-16" title="Permalink to this equation">#</a></span>\[H_1(z) = \frac{\left(2.8982 + 8.6946z^{-1} + 8.6946z^{-2} + 2.8982z^{-3}\right)\cdot 10^{-3}}{1 - 2.3741z^{-1} + 1.9294z^{-2} - 0.5321z^{-3}} \]</div>
+<div class="math notranslate nohighlight" id="equation-eq-7-2-17">
+<span class="eqno">(55)<a class="headerlink" href="#equation-eq-7-2-17" title="Permalink to this equation">#</a></span>\[H_2(z) = \frac{0.5276 - 1.5828z^{-1} + 1.5828z^{-2} - 0.5276z^{-3}}{1 - 1.7600z^{-1} + 1.1829z^{-2} - 0.2781z^{-3}} \]</div>
+<div class="math notranslate nohighlight" id="equation-eq-7-2-18">
+<span class="eqno">(56)<a class="headerlink" href="#equation-eq-7-2-18" title="Permalink to this equation">#</a></span>\[H_3(z) = \frac{\left(6.8482 - 13.6964z^{-2} + 6.8482z^{-4}\right)\cdot 10^{-4}}{1 + 3.3033z^{-1} + 4.5244z^{-2} + 3.1390z^{-3} + 0.9603z^{-4}}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-7-2-19">
+<span class="eqno">(57)<a class="headerlink" href="#equation-eq-7-2-19" title="Permalink to this equation">#</a></span>\[H_4(z) = \frac{0.9270-1.2079z^{-1}+0.9270z^{-2}}{1-1.2079z^{-1}+0.8541z^{-2}} \]</div>
+<section id="id9">
+<h5>Solution<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h5>
+<p>The MATLAB script to plot each of the transfer functions of <a class="reference internal" href="#equation-eq-7-2-16">(54)</a> through <a class="reference internal" href="#equation-eq-7-2-19">(57)</a>, is given below where N = 512, i.e. the default value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">b1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mf">2.8982</span><span class="p">,</span><span class="w"> </span><span class="mf">8.6946</span><span class="p">,</span><span class="w"> </span><span class="mf">8.6946</span><span class="p">,</span><span class="w"> </span><span class="mf">2.8982</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span>^<span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span><span class="w"> </span><span class="n">a1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">2.3741</span><span class="p">,</span><span class="w"> </span><span class="mf">1.9294</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.5321</span><span class="p">];</span>
+<span class="p">[</span><span class="n">H1z</span><span class="p">,</span><span class="n">w1T</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">freqz</span><span class="p">(</span><span class="n">b1</span><span class="p">,</span><span class="w"> </span><span class="n">a1</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">b2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0.5276</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.5828</span><span class="p">,</span><span class="w"> </span><span class="mf">1.5828</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.5276</span><span class="p">];</span><span class="w"> </span><span class="n">a2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.7600</span><span class="p">,</span><span class="w"> </span><span class="mf">1.1829</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.2781</span><span class="p">];</span>
+<span class="p">[</span><span class="n">H2z</span><span class="p">,</span><span class="n">w2T</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">freqz</span><span class="p">(</span><span class="n">b2</span><span class="p">,</span><span class="w"> </span><span class="n">a2</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">b3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mf">6.8482</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">13.6964</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">6.8482</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span>^<span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">);</span><span class="w"> </span><span class="n">a3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">3.2033</span><span class="p">,</span><span class="w"> </span><span class="mf">4.5244</span><span class="p">,</span><span class="w"> </span><span class="mf">3.1390</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9603</span><span class="p">];</span>
+<span class="p">[</span><span class="n">H3z</span><span class="p">,</span><span class="n">w3T</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">freqz</span><span class="p">(</span><span class="n">b3</span><span class="p">,</span><span class="w"> </span><span class="n">a3</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">b4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0.9270</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.2079</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9270</span><span class="p">];</span><span class="w"> </span><span class="n">a4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.2079</span><span class="p">,</span><span class="w"> </span><span class="mf">0.8541</span><span class="p">];</span>
+<span class="p">[</span><span class="n">H4z</span><span class="p">,</span><span class="n">w4T</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">freqz</span><span class="p">(</span><span class="n">b4</span><span class="p">,</span><span class="w"> </span><span class="n">a4</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now do the plots</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">clf</span><span class="p">;</span><span class="w"> </span><span class="c">% clear the current figure</span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">),</span><span class="w"> </span><span class="nb">semilogx</span><span class="p">(</span><span class="n">w1T</span><span class="p">,</span><span class="nb">abs</span><span class="p">(</span><span class="n">H1z</span><span class="p">)),</span><span class="nb">axis</span><span class="p">([</span><span class="mf">0.1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="p">]),</span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;Filter for H1(z)&#39;</span><span class="p">)</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">),</span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Magnitude&#39;</span><span class="p">),</span><span class="nb">grid</span>
+<span class="c">%</span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">),</span><span class="w"> </span><span class="nb">semilogx</span><span class="p">(</span><span class="n">w2T</span><span class="p">,</span><span class="nb">abs</span><span class="p">(</span><span class="n">H2z</span><span class="p">)),</span><span class="nb">axis</span><span class="p">([</span><span class="mf">0.1</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="p">]),</span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;Filter for H2(z)&#39;</span><span class="p">)</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">),</span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Magnitude&#39;</span><span class="p">),</span><span class="nb">grid</span>
+<span class="c">%</span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">223</span><span class="p">),</span><span class="w"> </span><span class="nb">semilogx</span><span class="p">(</span><span class="n">w3T</span><span class="p">,</span><span class="nb">abs</span><span class="p">(</span><span class="n">H3z</span><span class="p">)),</span><span class="nb">axis</span><span class="p">([</span><span class="mi">1</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="p">]),</span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;Filter for H3(z)&#39;</span><span class="p">)</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">),</span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Magnitude&#39;</span><span class="p">),</span><span class="nb">grid</span>
+<span class="c">%</span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">224</span><span class="p">),</span><span class="w"> </span><span class="nb">semilogx</span><span class="p">(</span><span class="n">w4T</span><span class="p">,</span><span class="nb">abs</span><span class="p">(</span><span class="n">H4z</span><span class="p">)),</span><span class="nb">axis</span><span class="p">([</span><span class="mf">0.1</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="p">]),</span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;Filter for H4(z)&#39;</span><span class="p">)</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">),</span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Magnitude&#39;</span><span class="p">),</span><span class="nb">grid</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/b9fad4927066e9db955d80a4b3359c366dc9fb6ab280139b182c7e3c887bf6db.png" src="../_images/b9fad4927066e9db955d80a4b3359c366dc9fb6ab280139b182c7e3c887bf6db.png" />
+</div>
+</div>
+<p>It is clear that the filters are low-pass, high-pass, band-pass and band-stop. There is now ripple in the pass-band or stop band so they are all Butterworth filters.</p>
+</section>
+</section>
+</section>
+</section>
+<section id="digital-filter-design-with-simulink">
+<span id="u72-simulink"></span><h2>Digital Filter Design with Simulink<a class="headerlink" href="#digital-filter-design-with-simulink" title="Permalink to this heading">#</a></h2>
+<p>As stated earlier in this unit, a digital filter is a computational process, or algorithm, that converts one sequence of numbers representing the input signal into another sequence of numbers representing the outpit signal.</p>
+<p>To close out this unit and the module, we will explore Simulink models that can be used to implement digital filters, and present the <em>Digital Filter Design</em> block included in the <a class="reference external" href="https://uk.mathworks.com/help/dsp/index.html">Simulink DSP System Toolbox</a>, which can generate these models automatically.</p>
+<section id="the-direct-form-i-realization-of-a-digital-filter">
+<span id="u72-fd-direct-i"></span><h3>The Direct Form I Realization of a Digital Filter<a class="headerlink" href="#the-direct-form-i-realization-of-a-digital-filter" title="Permalink to this heading">#</a></h3>
+<p>The <strong>Direct Form I Realization</strong> of a second-order digital filter is shown in <a class="reference internal" href="#fig-u72-3"><span class="std std-numref">Fig. 16</span></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">dfir_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<figure class="align-default" id="fig-u72-3">
+<a class="reference internal image-reference" href="../_images/dfir_df.png"><img alt="Direct Form I Realization of a second-order digital filter" src="../_images/dfir_df.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Direct Form I Realization of a second-order digital filter</span><a class="headerlink" href="#fig-u72-3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Download this model as <a class="reference download internal" download="" href="../_downloads/cc11377491744efd0fbab600c3966605/dfir_df.slx"><span class="xref download myst">dfir_df</span></a>.</p>
+<p>At the summing junction of <a class="reference internal" href="#fig-u72-3"><span class="std std-numref">Fig. 16</span></a> we obtain</p>
+<div class="math notranslate nohighlight">
+\[b_0X(z)+b_1z^{-1}X(z)+b_2z^{-2}X(z) + \left(-a_1\right)z^{-1}Y(z) + \left(-a_1\right)z^{-2}Y(z) = Y(z)\]</div>
+<div class="math notranslate nohighlight">
+\[X(z)\left(b_0 + b_1z^{-1} + b_2z^{-2}\right) = Y(s)\left(1 + a_1z^{-1} + a_2z^{-2}\right)\]</div>
+<p>And thus, the transfer function of the Direct Form I Realization of the second-order digital filter of <a class="reference internal" href="#fig-u72-3"><span class="std std-numref">Fig. 16</span></a> is</p>
+<div class="math notranslate nohighlight">
+\[H(z) = \frac{Y(z)}{X(z)} = \frac{b_0 + b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}} \]</div>
+<p>A disadvantage of the Direct Form I Realization digital filter is that it requires <span class="math notranslate nohighlight">\(2k\)</span> registers where <span class="math notranslate nohighlight">\(k\)</span> represents the order of the filter. We observe that the second-order (<span class="math notranslate nohighlight">\(k=2\)</span>) digital filter of <a class="reference internal" href="#fig-u72-3"><span class="std std-numref">Fig. 16</span></a> requires 4 delay (register) elements denoted as <span class="math notranslate nohighlight">\(z^{-1}\)</span>. However, this form of realization has the advantage that there is no possibility of internal filter overflow.</p>
+</section>
 </section>
 <section id="exercises">
 <span id="u72-exercises"></span><h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <section id="exercise-7-2-1">
 <span id="u72-ex-1"></span><h3>Exercise 7.2.1<a class="headerlink" href="#exercise-7-2-1" title="Permalink to this heading">#</a></h3>
-<p>Use the block diagram shown in <a class="reference internal" href="#fig-u72-1"><span class="std std-numref">Fig. 14</span></a> to validate <code class="xref eq docutils literal notranslate"><span class="pre">eq:u71:2</span></code> and eq}<code class="docutils literal notranslate"><span class="pre">eq:u71:1</span></code>.</p>
+<p>Use the block diagram shown in <a class="reference internal" href="#fig-u72-1"><span class="std std-numref">Fig. 14</span></a> to validate <code class="xref eq docutils literal notranslate"><span class="pre">eq:u72:2</span></code> and eq}<code class="docutils literal notranslate"><span class="pre">eq:u72:1</span></code>.</p>
 </section>
 </section>
 <section id="references">
@@ -1023,7 +1189,23 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-functions-for-direct-digital-filter-design">MATLAB Functions for direct digital filter design</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-functions-for-direct-digital-filter-design">MATLAB Functions for direct digital filter design</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-low-pass-filters">For Low-Pass Filters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-high-pass-filters">For High-Pass Filters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-band-pass-filters">For Band-Pass Filters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-band-elimination-filters">For Band-Elimination Filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Example 13</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digital-filter-design-with-simulink">Digital Filter Design with Simulink</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-direct-form-i-realization-of-a-digital-filter">The Direct Form I Realization of a Digital Filter</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-2-1">Exercise 7.2.1</a></li>
 </ul>
