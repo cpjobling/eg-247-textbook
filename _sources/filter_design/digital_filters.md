@@ -277,7 +277,7 @@ and $j\omega$ must be equal to some point $\omega = \omega_a$ on the $j\omega$ a
 
 That is,
 
-$$j\omega_a = \frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s } + 1}$$ 
+$$j\omega_a = \frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s } + 1}$$
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -343,7 +343,7 @@ $$\omega_d \approx \frac{\omega_a T_s}{\pi} $$ (eq:7.2:11)
 (u72:pre-warping)=
 ### Pre-warping
 
-The effect of warping can be eliminated by *pre-warping* the analogue filter prior to the application of the bilinear transformation. This is acomplished with the use of {eq}`eq:7.2:8`. 
+The effect of warping can be eliminated by *pre-warping* the analogue filter prior to the application of the bilinear transformation. This is acomplished with the use of {eq}`eq:7.2:8`.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -771,11 +771,81 @@ $$X(z)\left(b_0 + b_1z^{-1} + b_2z^{-2}\right) = Y(s)\left(1 + a_1z^{-1} + a_2z^
 
 And thus, the transfer function of the Direct Form I Realization of the second-order digital filter of {numref}`fig:u72:3` is
 
-$$H(z) = \frac{Y(z)}{X(z)} = \frac{b_0 + b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}} $$
+$$H(z) = \frac{Y(z)}{X(z)} = \frac{b_0 + b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}} $$ (eq:7.2:17)
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-A disadvantage of the Direct Form I Realization digital filter is that it requires $2k$ registers where $k$ represents the order of the filter. We observe that the second-order ($k=2$) digital filter of {numref}`fig:u72:3` requires 4 delay (register) elements denoted as $z^{-1}$. However, this form of realization has the advantage that there is no possibility of internal filter overflow.
+A disadvantage of the Direct Form I Realization digital filter is that it requires $2k$ registers where $k$ represents the order of the filter. We observe that the second-order ($k=2$) digital filter of {numref}`fig:u72:3` requires 4 delay (register) elements denoted as $z^{-1}$. However, this form of realization has the advantage that there is no possibility of internal filter overflow[^u72:notes:5].
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+[^u72:notes:5]: For a detailed discussion on overflow cinditions please refer to Section 10.5, Chapter 10, Page 10-6 of {cite}`karris_2005`.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+(u72:fd:direct_i)=
+### The Direct Form II Realization of a Digital Filter
+
+The **Direct Form II Realization**[^u72:notes:6] of a second-order digital filter is shown in {numref}`fig:u72:4`. The Simulink [**Transfer Fcn Direct Form II**](https://uk.mathworks.com/help/simulink/slref/transferfcndirectformii.html) block implements the transfer function of this filter.
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+[^u72:notes:6]: The Direct Form-II is also known as the **Canonical** Form.
+
+```{code-cell}
+---
+slideshow:
+  slide_type: slide
+---
+dfiir_df
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+::: {figure-md} fig:u72:4
+<img src="pictures/dfiir_df.png" alt="Direct Form II Realization of a second-order digital filter" width="100%" />
+
+Direct Form II Realization of a second-order digital filter
+:::
+
+Download this model as [dfiir_df.slx](matlab/dfiir_df.slx).
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+The transfer function for the Direct Form-II second-order digital filter of {numref}`fig:u72:4` is the same as for a Direct Form-I second-order filter of {numref}`fig:u72:4`, that is,
+
+$$H(z) = \frac{b_0 + b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}} $$ (eq:7.2:18)
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+A camparison of {numref}`eq:7.2:17` and {numref}`eq:7.2:18` shows that whereas a Direct Form-I second-order digital filter requires $2k$ registers, where $k$ represents the order of the filter, a Direct Type-II second-order digital filter requires only $k$ register elements denoted as $z^{-1}$. This is because the register ($z^{-1}$) elements of the Direct Form-II realization are shared between the zeros section and the poles section.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+(u72:ex:14)=
+#### Example 14
+
+{numref}`u72:fig:5` shows a Direct Form-II second-order digital filter whose transfer function is
+
+$$H(z) = \frac{1+1.5z^{-1}+1.02z^{-2}}{1 - 0.25 z^{-1} -0.75 z^{-2}} $$ (eq:u72:19)
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+ex14
+```
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+::: {figure-md} fig:u72:4
+<img src="pictures/ex14.png" alt="Direct Form II Realization of the Simulink implementation of Example 14" width="100%" />
+
+Model for Example 14
+:::
+
+Download this model as [ex14.slx](matlab/ex14.slx).
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -788,6 +858,13 @@ A disadvantage of the Direct Form I Realization digital filter is that it requir
 ### Exercise 7.2.1
 
 Use the block diagram shown in {numref}`fig:u72:1` to validate {eq}`eq:u72:2` and eq}`eq:u72:1`.
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+(u72:ex:2)=
+### Exercise 7.2.2
+
+Use the block diagram shown in {numref}`fig:u72:4` to validate {eq}`eq:u72:18`. Write down the equivalent difference equation.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
