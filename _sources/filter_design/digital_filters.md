@@ -783,7 +783,7 @@ A disadvantage of the Direct Form I Realization digital filter is that it requir
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-(u72:fd:direct_i)=
+(u72:fd:direct_ii)=
 ### The Direct Form II Realization of a Digital Filter
 
 The **Direct Form II Realization**[^u72:notes:6] of a second-order digital filter is shown in {numref}`fig:u72:4`. The Simulink [**Transfer Fcn Direct Form II**](https://uk.mathworks.com/help/simulink/slref/transferfcndirectformii.html) block implements the transfer function of this filter.
@@ -846,6 +846,69 @@ Model for Example 14
 :::
 
 Download this model as [ex14.slx](matlab/ex14.slx).
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+(u72:fd:series)=
+
+### The Series Form Realization of a Digital Filter
+
+For the Series Form Realization, the transfer function is expressed as a product of first-order and second-orer transefer functions as shown in {eq}`eq:u72:20` below. 
+
+$$H(z) = H_1(z)\cdot H_2(z)\cdots H_R(z)$$ (eq:u72:20)
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+Relation {eq}`eq:u72:20` is implemented as the cascaded blocks shown in {numref}`fig:u72:5`
+
+:::{figure-md} fig:u72:5
+<img src="pictures/series.png" alth="Series Form Realization as cascaded blocks" width="100%" />
+
+Series Form Realization
+:::
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+{numref}`fig:u72:6` shows the Series Form Realization of a second-order digital filter.
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+series_form_2nd
+```
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+:::{figure-md} fig:u72:5
+<img src="pictures/series_2nd.png" alth="Series Form Realization of a second-order digital filter" width="100%" />
+
+Series Form Realization of a second-order digital filter
+:::
+
+Download this model as [series_form_2nd.slx](matlab/series_form_2nd.slx).
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+(u72:ex:15)=
+### Example 15
+
+The transfer function of the series form Realization of a certian second-order digital filter is
+
+$$H(z) = \frac{0.5\left(1-0.36z^{-2}\right)}{1 + 0.1 z^{-1} - 0.72 z^{-2}} $$
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+To implement this filter, we factor the numerator and denominator polynomials as[^u72:note:7]
+
+$$H(z) = \frac{0.5\left(1+0.6z^{-1}\right)\left(1-0.6z^{-1}\right)}{\left(1+0.9z^{-1}\right)\left(1-0.8z^{-1}\right)} $$ (eq:u72:21)
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+[^u72:note:7]: The way we combine the numerator and denominator factors is immaterial. For example we could group the factors as $\left(1 + 0.6z^{-1}\right)/\left(1+0.9z^{-1}\right)$ and $\left(1 - 0.6z^{-1}\right)/\left(1-0.8z^{-1}\right)$, or as $\left(1 + 0.6z^{-1}\right)/\left(1-0.8z^{-1}\right)$ and $\left(1 - 0.6z^{-1}\right)/\left(1+0.9z^{-1}\right)$.
+
+The Simulink model and the input and output waveforms are shown in {numref}`fig:u72:6`.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 

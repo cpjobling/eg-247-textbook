@@ -531,6 +531,8 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-14">Example 14</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-series-form-realization-of-a-digital-filter">The Series Form Realization of a Digital Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-15">Example 15</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
@@ -857,7 +859,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02f68b28ede611d3870b4a273a1f5ffaf29e703e4649020fe84543ba56129d91.png" src="../_images/02f68b28ede611d3870b4a273a1f5ffaf29e703e4649020fe84543ba56129d91.png" />
+<img alt="../_images/58b94ddb38aa59bb4c1a72852a1552f5e13c5d3a8afca7d155ab40b66d8352fb.png" src="../_images/58b94ddb38aa59bb4c1a72852a1552f5e13c5d3a8afca7d155ab40b66d8352fb.png" />
 </div>
 </div>
 <p>We now plot the analogue equivalent to compare the digital to the analogue frequency response.</p>
@@ -872,7 +874,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bed6f321e8abf34f5d1146cf68d7a698bd94463c29c08054ee853091329ad5cf.png" src="../_images/bed6f321e8abf34f5d1146cf68d7a698bd94463c29c08054ee853091329ad5cf.png" />
+<img alt="../_images/87338605489dee2a862e1c757400908b23b5a101278bd778f8f87707195f26ac.png" src="../_images/87338605489dee2a862e1c757400908b23b5a101278bd778f8f87707195f26ac.png" />
 </div>
 </div>
 <p>Comparing the digital filter plot with the equivalent analogue filter plot, we observe that the magnitude is greater than <span class="math notranslate nohighlight">\(-3\)</span> dB for frequencies less than <span class="math notranslate nohighlight">\(20\)</span> rad/s, and is smaller than <span class="math notranslate nohighlight">\(-10\)</span> dB for frequencies greater than <span class="math notranslate nohighlight">\(40\)</span> Hz. Therefore, both the digital and analogue low-pass filters meet the specified requirements.<a class="footnote-reference brackets" href="#u72-note-4" id="id5">4</a></p>
@@ -1026,7 +1028,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e170c949dd88bb9baeef6eadbfb0e880dcc911fc1c01b96c899c96f9b2d73217.png" src="../_images/e170c949dd88bb9baeef6eadbfb0e880dcc911fc1c01b96c899c96f9b2d73217.png" />
+<img alt="../_images/fdd566af960a8b19409f5ad263f728916ac9c64b59695a2ce42e2064a6cda054.png" src="../_images/fdd566af960a8b19409f5ad263f728916ac9c64b59695a2ce42e2064a6cda054.png" />
 </div>
 </div>
 <p>It is clear that the filters are low-pass, high-pass, band-pass and band-stop. There is now ripple in the pass-band or stop band so they are all Butterworth filters.</p>
@@ -1066,8 +1068,8 @@ document.write(`
 <p>A disadvantage of the Direct Form I Realization digital filter is that it requires <span class="math notranslate nohighlight">\(2k\)</span> registers where <span class="math notranslate nohighlight">\(k\)</span> represents the order of the filter. We observe that the second-order (<span class="math notranslate nohighlight">\(k=2\)</span>) digital filter of <a class="reference internal" href="#fig-u72-3"><span class="std std-numref">Fig. 16</span></a> requires 4 delay (register) elements denoted as <span class="math notranslate nohighlight">\(z^{-1}\)</span>. However, this form of realization has the advantage that there is no possibility of internal filter overflow<a class="footnote-reference brackets" href="#u72-notes-5" id="id10">5</a>.</p>
 </section>
 <section id="the-direct-form-ii-realization-of-a-digital-filter">
-<span id="id11"></span><h3>The Direct Form II Realization of a Digital Filter<a class="headerlink" href="#the-direct-form-ii-realization-of-a-digital-filter" title="Permalink to this heading">#</a></h3>
-<p>The <strong>Direct Form II Realization</strong><a class="footnote-reference brackets" href="#u72-notes-6" id="id12">6</a> of a second-order digital filter is shown in <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig:u72:4</span></code>. The Simulink <a class="reference external" href="https://uk.mathworks.com/help/simulink/slref/transferfcndirectformii.html"><strong>Transfer Fcn Direct Form II</strong></a> block implements the transfer function of this filter.</p>
+<span id="u72-fd-direct-ii"></span><h3>The Direct Form II Realization of a Digital Filter<a class="headerlink" href="#the-direct-form-ii-realization-of-a-digital-filter" title="Permalink to this heading">#</a></h3>
+<p>The <strong>Direct Form II Realization</strong><a class="footnote-reference brackets" href="#u72-notes-6" id="id11">6</a> of a second-order digital filter is shown in <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig:u72:4</span></code>. The Simulink <a class="reference external" href="https://uk.mathworks.com/help/simulink/slref/transferfcndirectformii.html"><strong>Transfer Fcn Direct Form II</strong></a> block implements the transfer function of this filter.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">dfiir_df</span>
@@ -1098,14 +1100,52 @@ document.write(`
 </div>
 </div>
 </div>
-<figure class="align-default" id="id13">
+<figure class="align-default" id="id12">
 <a class="reference internal image-reference" href="../_images/ex14.png"><img alt="Direct Form II Realization of the Simulink implementation of Example 14" src="../_images/ex14.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Model for Example 14</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Model for Example 14</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Download this model as <a class="reference download internal" download="" href="../_downloads/db9bd56d8213eea9cd080fd5f59d5da5/ex14.slx"><span class="xref download myst">ex14.slx</span></a>.</p>
 </section>
+</section>
+<section id="the-series-form-realization-of-a-digital-filter">
+<span id="u72-fd-series"></span><h3>The Series Form Realization of a Digital Filter<a class="headerlink" href="#the-series-form-realization-of-a-digital-filter" title="Permalink to this heading">#</a></h3>
+<p>For the Series Form Realization, the transfer function is expressed as a product of first-order and second-orer transefer functions as shown in <a class="reference internal" href="#equation-eq-u72-20">(61)</a> below.</p>
+<div class="math notranslate nohighlight" id="equation-eq-u72-20">
+<span class="eqno">(61)<a class="headerlink" href="#equation-eq-u72-20" title="Permalink to this equation">#</a></span>\[H(z) = H_1(z)\cdot H_2(z)\cdots H_R(z)\]</div>
+<p>Relation <a class="reference internal" href="#equation-eq-u72-20">(61)</a> is implemented as the cascaded blocks shown in <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig:u72:5</span></code></p>
+<figure class="align-default" id="fig-u72-5">
+<a class="reference internal image-reference" href="../_images/series.png"><img alt="../_images/series.png" src="../_images/series.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Series Form Realization</span><a class="headerlink" href="#fig-u72-5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><code class="xref std std-numref docutils literal notranslate"><span class="pre">fig:u72:6</span></code> shows the Series Form Realization of a second-order digital filter.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">series_form_2nd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<figure class="align-default" id="id13">
+<a class="reference internal image-reference" href="../_images/series_2nd.png"><img alt="../_images/series_2nd.png" src="../_images/series_2nd.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Series Form Realization of a second-order digital filter</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Download this model as <a class="reference download internal" download="" href="../_downloads/e6cbfc13f414a5b5851bf0bb85da33a0/series_form_2nd.slx"><span class="xref download myst">series_form_2nd.slx</span></a>.</p>
+</section>
+<section id="example-15">
+<span id="u72-ex-15"></span><h3>Example 15<a class="headerlink" href="#example-15" title="Permalink to this heading">#</a></h3>
+<p>The transfer function of the series form Realization of a certian second-order digital filter is</p>
+<div class="math notranslate nohighlight">
+\[H(z) = \frac{0.5\left(1-0.36z^{-2}\right)}{1 + 0.1 z^{-1} - 0.72 z^{-2}} \]</div>
+<p>To implement this filter, we factor the numerator and denominator polynomials as<a class="footnote-reference brackets" href="#u72-note-7" id="id14">7</a></p>
+<div class="math notranslate nohighlight" id="equation-eq-u72-21">
+<span class="eqno">(62)<a class="headerlink" href="#equation-eq-u72-21" title="Permalink to this equation">#</a></span>\[H(z) = \frac{0.5\left(1+0.6z^{-1}\right)\left(1-0.6z^{-1}\right)}{\left(1+0.9z^{-1}\right)\left(1-0.8z^{-1}\right)} \]</div>
+<p>The Simulink model and the input and output waveforms are shown in <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig:u72:6</span></code>.</p>
 </section>
 </section>
 <section id="exercises">
@@ -1137,10 +1177,13 @@ document.write(`
 <dd><p>Note the significant distortion of the digital filter response at high frequencies.</p>
 </dd>
 <dt class="label" id="u72-notes-5"><span class="brackets"><a class="fn-backref" href="#id10">5</a></span></dt>
-<dd><p>For a detailed discussion on overflow cinditions please refer to Section 10.5, Chapter 10, Page 10-6 of <span id="id14">[<a class="reference internal" href="../zbib.html#id23" title="Steven T. Karris. Digital Circuit Analysis and Design with an Introduction to CPLDs and FPGAs. Orchard Publications, Fremont, CA., first edition, 2005. ISBN 0-9744239-6-3.">Karris, 2005</a>]</span>.</p>
+<dd><p>For a detailed discussion on overflow cinditions please refer to Section 10.5, Chapter 10, Page 10-6 of <span id="id15">[<a class="reference internal" href="../zbib.html#id23" title="Steven T. Karris. Digital Circuit Analysis and Design with an Introduction to CPLDs and FPGAs. Orchard Publications, Fremont, CA., first edition, 2005. ISBN 0-9744239-6-3.">Karris, 2005</a>]</span>.</p>
 </dd>
-<dt class="label" id="u72-notes-6"><span class="brackets"><a class="fn-backref" href="#id12">6</a></span></dt>
+<dt class="label" id="u72-notes-6"><span class="brackets"><a class="fn-backref" href="#id11">6</a></span></dt>
 <dd><p>The Direct Form-II is also known as the <strong>Canonical</strong> Form.</p>
+</dd>
+<dt class="label" id="u72-note-7"><span class="brackets"><a class="fn-backref" href="#id14">7</a></span></dt>
+<dd><p>The way we combine the numerator and denominator factors is immaterial. For example we could group the factors as <span class="math notranslate nohighlight">\(\left(1 + 0.6z^{-1}\right)/\left(1+0.9z^{-1}\right)\)</span> and <span class="math notranslate nohighlight">\(\left(1 - 0.6z^{-1}\right)/\left(1-0.8z^{-1}\right)\)</span>, or as <span class="math notranslate nohighlight">\(\left(1 + 0.6z^{-1}\right)/\left(1-0.8z^{-1}\right)\)</span> and <span class="math notranslate nohighlight">\(\left(1 - 0.6z^{-1}\right)/\left(1+0.9z^{-1}\right)\)</span>.</p>
 </dd>
 </dl>
 </section>
@@ -1265,6 +1308,8 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-14">Example 14</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-series-form-realization-of-a-digital-filter">The Series Form Realization of a Digital Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-15">Example 15</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
