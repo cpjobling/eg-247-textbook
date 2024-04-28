@@ -49,8 +49,13 @@ In this unit we will explore further some of the concepts of what is called *fil
 * {ref}`unit7.2:bilinear`
 * {ref}`u72:matlab_fd_tools`
 * {ref}`u72:simulink`
+* {ref}`u72:df_design_block`
 
 ```{code-cell}
+---
+slideshow:
+  slide_type: slide
+---
 format compact
 cd matlab
 ```
@@ -908,7 +913,14 @@ $$H(z) = \frac{0.5\left(1+0.6z^{-1}\right)\left(1-0.6z^{-1}\right)}{\left(1+0.9z
 
 [^u72:note:7]: The way we combine the numerator and denominator factors is immaterial. For example we could group the factors as $\left(1 + 0.6z^{-1}\right)/\left(1+0.9z^{-1}\right)$ and $\left(1 - 0.6z^{-1}\right)/\left(1-0.8z^{-1}\right)$, or as $\left(1 + 0.6z^{-1}\right)/\left(1-0.8z^{-1}\right)$ and $\left(1 - 0.6z^{-1}\right)/\left(1+0.9z^{-1}\right)$.
 
++++ {"slideshow": {"slide_type": "subslide"}}
+
 The Simulink model and the input and output waveforms are shown in {numref}`fig:u72:6`.
+
++++
+
+(u72:df_design_block)=
+## The Digital Filter Design Block
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
