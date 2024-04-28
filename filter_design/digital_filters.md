@@ -48,6 +48,7 @@ In this unit we will explore further some of the concepts of what is called *fil
 * {ref}`unit7.2:digital`
 * {ref}`unit7.2:bilinear`
 * {ref}`u72:matlab_fd_tools`
+* {ref}`u72:simulink`
 
 ```{code-cell}
 format compact
@@ -565,10 +566,216 @@ Therefore, the transfer function $H(z)$ for this filter is
 
 $$H(z) = \frac{0.0640 z^2  +  0.1279 z +   0.0640}{z^2   -1.1683 z +    0.4241} = \frac{0.0640  +  0.1279 z^{-1} +   0.0640 z^{-2}}{1   -1.1683 z^{-1} +    0.4241 z^{-2}}$$ (eq:7.2:16)
 
-+++
++++ {"slideshow": {"slide_type": "slide"}}
 
 (u72:matlab_fd_tools)=
 ## MATLAB Functions for direct digital filter design
+
+MATLAB provides us with a suite of functions that we need to design gigital filters using analogue prototypes. These are listed below.
+
+- `N` = order of the filter
+
+- `Wn` = normalized cutoff frequency
+
+- `Rp` = pass band ripple
+
+- `Rs` = stop band ripple
+
+- `B` = $B(z)$, i.e. the numerator of the discrete transfer function $H(z) = B(z)/A(z)$
+
+- `A` = $A(z)$, i.e. the denominator of the discrete transfer function $H(z)$
+
+The MathWorks also provides a catalogue of filter design tools with examples in the [Filter Design Gallery](https://uk.mathworks.com/help/signal/ug/filter-design-gallery.html).
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+(u72:fd_lp)=
+### For Low-Pass Filters
+
+```matlab
+[B,A] = butter(N,Wn)
+[B,A] = cheb1(N,Wn)
+[B,A] = cheb2(N,Wn)
+[B,A] = ellip(N,Wn)
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+(u72:fd_hp)=
+### For High-Pass Filters
+
+```matlab
+[B,A] = butter(N,Wn,'high')
+[B,A] = cheb1(N,Wn,'high')
+[B,A] = cheb2(N,Wn,'high')
+[B,A] = ellip(N,Wn,'high')
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+(u72:fd_bp)=
+### For Band-Pass Filters
+
+```matlab
+[B,A] = butter(N,[Wn1,Wn2])
+[B,A] = cheb1(N,[Wn1,Wn2])
+[B,A] = cheb2(N,[Wn1,Wn2])
+[B,A] = ellip(N,[Wn1,Wn2])
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+(u72:fd_sb)=
+### For Band-Elimination Filters
+
+```matlab
+[B,A] = butter(N,[Wn1,Wn2],'stop')
+[B,A] = cheb1(N,[Wn1,Wn2],'stop')
+[B,A] = cheb2(N,[Wn1,Wn2],'stop')
+[B,A] = ellip(N,[Wn1,Wn2],'stop')
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+(u72:ex:13)=
+#### Example 13
+
+The transfer functions {eq}`eq:7.2:16` through {eq}`eq:7.2:19`, describe differet types of digital filters. Use the MATLAB `freqz` commmand to plot the magnitude versus radian frequency. What types of filter does each transfer function represent? What classes of filter are they?
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+$$H_1(z) = \frac{\left(2.8982 + 8.6946z^{-1} + 8.6946z^{-2} + 2.8982z^{-3}\right)\cdot 10^{-3}}{1 - 2.3741z^{-1} + 1.9294z^{-2} - 0.5321z^{-3}} $$ (eq:7.2:16)
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+$$H_2(z) = \frac{0.5276 - 1.5828z^{-1} + 1.5828z^{-2} - 0.5276z^{-3}}{1 - 1.7600z^{-1} + 1.1829z^{-2} - 0.2781z^{-3}} $$ (eq:7.2:17)
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+$$H_3(z) = \frac{\left(6.8482 - 13.6964z^{-2} + 6.8482z^{-4}\right)\cdot 10^{-4}}{1 + 3.3033z^{-1} + 4.5244z^{-2} + 3.1390z^{-3} + 0.9603z^{-4}}$$ (eq:7.2:18)
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+$$H_4(z) = \frac{0.9270-1.2079z^{-1}+0.9270z^{-2}}{1-1.2079z^{-1}+0.8541z^{-2}} $$ (eq:7.2:19)
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+##### Solution
+
+The MATLAB script to plot each of the transfer functions of {eq}`eq:7.2:16` through {eq}`eq:7.2:19`, is given below where N = 512, i.e. the default value.
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+b1 = [2.8982, 8.6946, 8.6946, 2.8982]*10^(-3); a1 = [1, -2.3741, 1.9294, -0.5321];
+[H1z,w1T] = freqz(b1, a1);
+```
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+b2 = [0.5276, -1.5828, 1.5828, -0.5276]; a2 = [1, -1.7600, 1.1829, -0.2781];
+[H2z,w2T] = freqz(b2, a2);
+```
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+b3 = [6.8482, 0, -13.6964, 0, 6.8482]*10^(-4); a3 = [1, 3.2033, 4.5244, 3.1390, 0.9603];
+[H3z,w3T] = freqz(b3, a3);
+```
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+b4 = [0.9270, -1.2079, 0.9270]; a4 = [1, -1.2079, 0.8541];
+[H4z,w4T] = freqz(b4, a4);
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+Now do the plots
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+clf; % clear the current figure
+subplot(221), semilogx(w1T,abs(H1z)),axis([0.1 1 0 1]),title('Filter for H1(z)')
+xlabel(''),ylabel('Magnitude'),grid
+%
+subplot(222), semilogx(w2T,abs(H2z)),axis([0.1 10 0 1]),title('Filter for H2(z)')
+xlabel(''),ylabel('Magnitude'),grid
+%
+subplot(223), semilogx(w3T,abs(H3z)),axis([1 10 0 1]),title('Filter for H3(z)')
+xlabel(''),ylabel('Magnitude'),grid
+%
+subplot(224), semilogx(w4T,abs(H4z)),axis([0.1 10 0 1]),title('Filter for H4(z)')
+xlabel(''),ylabel('Magnitude'),grid
+```
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+It is clear that the filters are low-pass, high-pass, band-pass and band-stop. There is now ripple in the pass-band or stop band so they are all Butterworth filters.
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+(u72:simulink)=
+## Digital Filter Design with Simulink
+
+As stated earlier in this unit, a digital filter is a computational process, or algorithm, that converts one sequence of numbers representing the input signal into another sequence of numbers representing the outpit signal.
+
+To close out this unit and the module, we will explore Simulink models that can be used to implement digital filters, and present the *Digital Filter Design* block included in the [Simulink DSP System Toolbox](https://uk.mathworks.com/help/dsp/index.html), which can generate these models automatically.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+(u72:fd:direct_i)=
+### The Direct Form I Realization of a Digital Filter
+
+The **Direct Form I Realization** of a second-order digital filter is shown in {numref}`fig:u72:3`.
+
+```{code-cell}
+---
+slideshow:
+  slide_type: slide
+---
+dfir_df
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+::: {figure-md} fig:u72:3
+<img src="pictures/dfir_df.png" alt="Direct Form I Realization of a second-order digital filter" width="100%" />
+
+Direct Form I Realization of a second-order digital filter
+:::
+
+Download this model as [dfir_df](matlab/dfir_df.slx).
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+At the summing junction of {numref}`fig:u72:3` we obtain
+
+$$b_0X(z)+b_1z^{-1}X(z)+b_2z^{-2}X(z) + \left(-a_1\right)z^{-1}Y(z) + \left(-a_1\right)z^{-2}Y(z) = Y(z)$$
+
+$$X(z)\left(b_0 + b_1z^{-1} + b_2z^{-2}\right) = Y(s)\left(1 + a_1z^{-1} + a_2z^{-2}\right)$$
+
+And thus, the transfer function of the Direct Form I Realization of the second-order digital filter of {numref}`fig:u72:3` is
+
+$$H(z) = \frac{Y(z)}{X(z)} = \frac{b_0 + b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}} $$
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+A disadvantage of the Direct Form I Realization digital filter is that it requires $2k$ registers where $k$ represents the order of the filter. We observe that the second-order ($k=2$) digital filter of {numref}`fig:u72:3` requires 4 delay (register) elements denoted as $z^{-1}$. However, this form of realization has the advantage that there is no possibility of internal filter overflow.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -580,7 +787,7 @@ $$H(z) = \frac{0.0640 z^2  +  0.1279 z +   0.0640}{z^2   -1.1683 z +    0.4241} 
 (u72:ex:1)=
 ### Exercise 7.2.1
 
-Use the block diagram shown in {numref}`fig:u72:1` to validate {eq}`eq:u71:2` and eq}`eq:u71:1`.
+Use the block diagram shown in {numref}`fig:u72:1` to validate {eq}`eq:u72:2` and eq}`eq:u72:1`.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
