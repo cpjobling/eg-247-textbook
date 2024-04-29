@@ -203,7 +203,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../filter_design/index.html">Analogue and Digital Filter Design</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../filter_design/analogue_filters.html">Unit 7.1: Designing Analogue Filters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../filter_design/digital_filters.html">Unit 7.2: Designing Digital Filters in MATLAB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../filter_design/digital_filters.html">Unit 7.2: Designing Digital Filters in MATLAB and Simulink</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../zbib.html">Bibliography</a></li>
@@ -692,7 +692,7 @@ document.write(`
 <p>where <span class="math notranslate nohighlight">\(\Omega_0 = T/2\pi\)</span> is the fundamental frequency.</p>
 <p>Thus <span class="math notranslate nohighlight">\(y(t)\)</span> is a Fourier series itself with coefficients <span class="math notranslate nohighlight">\(D_k\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-fs4-d-k-ws">
-<span class="eqno">(64)<a class="headerlink" href="#equation-fs4-d-k-ws" title="Permalink to this equation">#</a></span>\[D_k = C_kH(jk\Omega_0)\]</div>
+<span class="eqno">(65)<a class="headerlink" href="#equation-fs4-d-k-ws" title="Permalink to this equation">#</a></span>\[D_k = C_kH(jk\Omega_0)\]</div>
 </section>
 <section id="illustration">
 <h3>Illustration<a class="headerlink" href="#illustration" title="Permalink to this heading">#</a></h3>
@@ -743,16 +743,16 @@ $<span class="math notranslate nohighlight">\(\angle D_k = \angle C_k + \phi_k.\
 <p class="admonition-title">Note</p>
 <p>Use MATLAB to complete this example.</p>
 </div>
-<p>a) A triangle waveform <span class="math notranslate nohighlight">\(x(t)\)</span> with frequency <span class="math notranslate nohighlight">\(\Omega_0 = 2\pi/T\)</span> is shown in <a class="reference internal" href="#fig-ex19-1a"><span class="std std-numref">Fig. 22</span></a>.</p>
+<p>a) A triangle waveform <span class="math notranslate nohighlight">\(x(t)\)</span> with frequency <span class="math notranslate nohighlight">\(\Omega_0 = 2\pi/T\)</span> is shown in <a class="reference internal" href="#fig-ex19-1a"><span class="std std-numref">Fig. 25</span></a>.</p>
 <figure class="align-default" id="fig-ex19-1a">
 <a class="reference internal image-reference" href="../../_images/ex19_5.png"><img alt="A triangle waveform" src="../../_images/ex19_5.png" style="width: 60%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 22 </span><span class="caption-text">A triangle waveform</span><a class="headerlink" href="#fig-ex19-1a" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">A triangle waveform</span><a class="headerlink" href="#fig-ex19-1a" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Determine the exponential Fourier series coefficients <span class="math notranslate nohighlight">\(C_k\)</span> for this waveform and use this result to show that the trigonomentric Fourier series for a triangle waveform is</p>
 <div class="math notranslate nohighlight" id="equation-fse4-ws-fs4tri">
-<span class="eqno">(65)<a class="headerlink" href="#equation-fse4-ws-fs4tri" title="Permalink to this equation">#</a></span>\[x(t) = \frac{8A}{\pi^2}\left(\sum_{k\ \mathrm{odd}}(-1)^{\left(\frac{k-1}{2}\right)}\frac{1}{k^2}\sin k \Omega_0 t \right)\]</div>
+<span class="eqno">(66)<a class="headerlink" href="#equation-fse4-ws-fs4tri" title="Permalink to this equation">#</a></span>\[x(t) = \frac{8A}{\pi^2}\left(\sum_{k\ \mathrm{odd}}(-1)^{\left(\frac{k-1}{2}\right)}\frac{1}{k^2}\sin k \Omega_0 t \right)\]</div>
 <p>which, for the first seven harmonic frequencies, is given as</p>
 <div class="math notranslate nohighlight">
 \[x(t) \approx \frac{8A}{\pi^2}\left(\sin \Omega_0 t - \frac{1}{9} \sin 3\Omega_0 t + \frac{1}{25} \sin 5\Omega_0 t - \frac{1}{49} \sin 7\Omega_0 t \cdots \right) \]</div>
@@ -790,14 +790,14 @@ $<span class="math notranslate nohighlight">\(\angle D_k = \angle C_k + \phi_k.\
 
 
 
-</pre><p>b) In the signal generator, the block diagram for which is given in <a class="reference internal" href="#fig19-5a-bd-ws"><span class="std std-numref">Fig. 23</span></a>, a triangle wavefom with <span class="math notranslate nohighlight">\(A = 10\)</span> and frequency <span class="math notranslate nohighlight">\(f = 1/T = 2.5\)</span> kHz, is filtered by the low-pass filter with transfer function</p>
+</pre><p>b) In the signal generator, the block diagram for which is given in <a class="reference internal" href="#fig19-5a-bd-ws"><span class="std std-numref">Fig. 26</span></a>, a triangle wavefom with <span class="math notranslate nohighlight">\(A = 10\)</span> and frequency <span class="math notranslate nohighlight">\(f = 1/T = 2.5\)</span> kHz, is filtered by the low-pass filter with transfer function</p>
 <div class="math notranslate nohighlight">
 \[H(s) = \frac{a^2}{s^2 + 3as + a^2}\]</div>
 <p>where <span class="math notranslate nohighlight">\(a = 1/(RC)\)</span> and <span class="math notranslate nohighlight">\(RC\)</span> is the time constant of an RC circuit with <span class="math notranslate nohighlight">\(R = 8.2\)</span> kΩ and <span class="math notranslate nohighlight">\(C  = 10\)</span> nF.</p>
 <figure class="align-default" id="fig19-5a-bd-ws">
 <a class="reference internal image-reference" href="../../_images/ex19_5_bd.png"><img alt="A signal generator" src="../../_images/ex19_5_bd.png" style="width: 60%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 23 </span><span class="caption-text">A signal generator</span><a class="headerlink" href="#fig19-5a-bd-ws" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">A signal generator</span><a class="headerlink" href="#fig19-5a-bd-ws" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>i) Determine the frequency response <span class="math notranslate nohighlight">\(H(j\omega)\)</span> of the filter.</p>
@@ -842,7 +842,7 @@ $<span class="math notranslate nohighlight">\(\angle D_k = \angle C_k + \phi_k.\
 
 
 
-</pre><p>iii) Use equation <a class="reference internal" href="#equation-fs4-d-k-ws">(64)</a> and the result of a) to determine the attenuation in the first 7 harmonics of the triangle waveform.</p>
+</pre><p>iii) Use equation <a class="reference internal" href="#equation-fs4-d-k-ws">(65)</a> and the result of a) to determine the attenuation in the first 7 harmonics of the triangle waveform.</p>
 </section>
 <section id="id5">
 <h3>Solution<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>

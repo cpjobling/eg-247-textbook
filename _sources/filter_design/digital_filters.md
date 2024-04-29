@@ -15,7 +15,7 @@ kernelspec:
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (unit7.2)=
-# Unit 7.2: Designing Digital Filters in MATLAB
+# Unit 7.2: Designing Digital Filters in MATLAB and Simulink
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -31,15 +31,42 @@ kernelspec:
 
 ## Scope and Background Reading
 
-**[TODO] Write this properly**
+### Getting Started with Simulink for Signal Processing
 
-We introduced the idea of filters in {ref}`ft4` and examined in some detail the idea of an ideal low-pass filter and an approximation to the ideal filter known and the *Butterworth* filter. We also showed how a high-pass filter, stop-band filter and and pass-band filter could be implemented by simple manipulations of the frequency response (or transfer functions) of a low-pass filter. 
 
-An advantage of the Butterworth filter is that it has a flat response in the pass band, a consistent attenuation of -3 dB at the cut-off frequency, and a steady roll-off in the stop band. A disadvantage is that you need a high-order filter to get a fast transition between the pass-band and the stop-band.
+To provide some inspiration for the power of MATLAB and Simulink for the design of digital filters, we have included the following [video from the MathWorks](https://uk.mathworks.com/support/search.html/videos/getting-started-with-simulink-for-signal-processing-1586429627003.html).
 
-In {ref}`demo`, we showed how an analogue 2nd-order Butterworth filter could be translated into a discrete-time (DT) system using the MATLAB function `c2d`, and we demonstrated the architecture and code that might be used to implement the digital filter.
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GTpP3Agz3L8?si=X66ZSHTHrvhp6bGo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-In this unit we will explore further some of the concepts of what is called *filter design by analogue prototype*. This Unit is based on Chapter 11 of {cite}`karris`. We will illustrate the concepts using MATLAB and Simulink as appropriate on the understanding that you should be able to use the bilinear transform to convert a 2nd-order analogue proptotype into a digital filter.
++++ {"slideshow": {"slide_type": "notes"}}
+
+> [The] video shows you an example of designing a signal processing system using Simulink®.
+
+> You start off with a blank Simulink model and design a signal processing algorithm to predict whether it is going to be sunny or cloudy in order to optimize power generated from a solar energy grid. The video walks you through analyzing sensor signals, designing filters and finally generating code for hardware deployment. 
+
+> By the end of the video, you will learn the basics of Simulink and how Model-Based Design can be used to model, simulate, test and implement real-world signal processing systems.
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+In {ref}`unit7.1)` we looked at the MATLAB tools that can be used to design prototype analogue low-pass filters of various types, and introduced the MATLAB tools that design the prototypes and map them to high-pass, band-pass and stop pass filters. We also demostrated the tools needed to visualize the frequency response of such filters.
+
+A the end of this process, we will have a transfer function $H(s)$ that defines the poles and zeros of the filter which we now need to digitize for implementation.
+
+In this unit, we will introduce the bilinear transformation, which is one way to convert and analogue filter $H(s)$ into a digital filter $H(z)$, and we will give examples of a digital filter design for a second-order analogue filter. 
+
+We will present the tools that MATLAB provides for the direct design of digital filters.
+
+We will also look at the realization of such filters and give examples as Simulink block diagrams.
+
+Finally we will present the Digital Filter Design block which allows the design of a filter directly in Simulink and supports the automatic generation of C-code and VHDL for digital filter design.
+
+This unit is based on Sections 11.4-11.6 of {cite}`karris`.
+
+To continue your learning we recommend that you visit the following pages on the MATLAB Documentation Platform:
+
+* [Signal Processing](https://uk.mathworks.com/help/overview/signal-processing.html) [in MATLAB]
+* [Signal Processing Toolbox](https://uk.mathworks.com/help/signal/index.html) - signal analysis, analogue and digital filter design
+* [DSP System Toolbox](https://uk.mathworks.com/help/dsp/index.html) - for designing and implementing digital filters in Simulink and for code generation.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -886,7 +913,7 @@ series_form_2nd
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-:::{figure-md} fig:u72:5
+:::{figure-md} fig:u72:6
 <img src="pictures/series_2nd.png" alth="Series Form Realization of a second-order digital filter" width="100%" />
 
 Series Form Realization of a second-order digital filter
@@ -915,16 +942,20 @@ $$H(z) = \frac{0.5\left(1+0.6z^{-1}\right)\left(1-0.6z^{-1}\right)}{\left(1+0.9z
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-The Simulink model and the input and output waveforms are shown in {numref}`fig:u72:6`.
+The Simulink model and the input and output waveforms are shown in {numref}`fig:u72:7`.
 
-+++ {"slideshow": {"slide_type": "subslide"}}
-
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
 fig15
+```
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-:::{figure-md} fig:u72:5
-<img src="pictures/ex15.png" alt="Series Form Realization of the digital filter of Example 14" width="100%" />
+:::{figure-md} fig:u72:7
+<img src="pictures/ex15.png" alt="Series Form Realization of the digital filter of Example 15" width="100%" />
 
 Model for Example 15
 :::
@@ -941,10 +972,121 @@ The general form of the transfer function of a Parallel Form Realization is
 
 $$H(z) = K + H_1(z) + H_2(z) + \cdots + H_R(z)$$ (eq:u72:22)
 
-+++
+Relation {eq}`eq:u72:22` is implemented at the parallel blocks shown in {numre}`fig:u72:8`
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+:::{figure-md} fig:u72:8
+<img src="pictures/parallel.png" alth="Parallel Form Realization of a second-order digital filter" width="50%" />
+
+Parallel Form Realization of a second-order digital filter
+:::
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+As with the Series Form Realization, the ordering of the individual filters in {numref}`fig:u72:8` is immaterial. But because of the presence of the constant $K$, we can simplify the transfer function expressiom by performing the partial fraction expansion after we express the transfer function in the form $H(z)/z$.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+(u72:ex:16)=
+#### Example 16
+
+The transfer function of a certain second-order digital filter is
+
+$$H(z) = \frac{0.5\left(1-0.36z^{-2}\right)}{1+0.1z^{-1}-0.72z^{-2}} $$
+
+Implement this filter using the Parallel Form Realization.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+$$\frac{H(z)}{z}  = \frac{0.5\left(z+0.6\right)\left(z-0.6\right)}{z\left(z+0.9\right)\left(z-0.8\right)} $$
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+Next we perform partial fraction expansion
+
+$$\frac{0.5\left(z+0.6\right)\left(z-0.6\right)}{z\left(z+0.9\right)\left(z-0.8\right)} = \frac{r_1}{z} + \frac{r_2}{z+0.9} + \frac{r_2}{z-0.8} $$
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+$$r_1 = \left.\frac{0.5\left(z+0.6\right)\left(z-0.6\right)}{\left(z+0.9\right)\left(z-0.8\right)}\right|_{z=0} = 0.25$$
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+$$r_2 = \left.\frac{0.5\left(z+0.6\right)\left(z-0.6\right)}{z\left(z-0.8\right)}\right|_{z=-0.9} = 0.147$$
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+$$r_3 = \left.\frac{0.5\left(z+0.6\right)\left(z-0.6\right)}{z\left(z+0.9\right)}\right|_{z=0.8} = 0.103$$
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+Therefore,
+
+$$\frac{H(z)}{z} = \frac{0.25}{z} + \frac{0.147}{z+0.9} + \frac{0.103}{z-0.8}$$
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+$$H(z) = 0.25 + \frac{0.147z}{z+0.9} + \frac{0.103z}{z-0.8}$$
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+$$H(z) = 0.25 + \frac{0.147}{1+0.9z^{-1}} + \frac{0.103}{1-0.8z^{-1}}$$ (eq:u72:23)
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+The model and input and output waveforms are shown in {numref}`fig:u72:8`.
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+ex16
+```
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+:::{figure-md} fig:u72:8
+<img src="pictures/ex16.png" alt="Parallel Form Realization of the digital filter of Example 16" width="100%" />
+
+Model for Example 16
+:::
+
+Download this model as [ex16.slx](matlab/ex16.slx).
+
++++ {"slideshow": {"slide_type": "slide"}}
 
 (u72:df_design_block)=
 ## The Digital Filter Design Block
+
+The [**Digital Filter Design** block](https://uk.mathworks.com/help/dsp/ug/using-digital-filter-design-block.html) is included in the [DSP System Toolbox](https://uk.mathworks.com/help/dsp/index.html) and is included in the version of MATLAB for which Swansea University has a site license. It also works on MATLAB online. This block can be used to create models related to digital filter design applications directly in Simulink.
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+The functionality of this block can be observed by dragging this block from the library into a model and double clicking it.
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+dfd_block
+```
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+When this is done, the **Block Parameters** dialogue box appears as shown in {numref}`ig:u72:9`.
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+:::{figure-md} fig:u72:9
+<img src="pictures/dfd_block.png" alt="Screenshot of the Digital Filter Design Block Parameters dialogue box" width="100%" />
+
+The Digital Filter Design Block Parameters dialogue box
+:::
+
+Download this model as [ex16.slx](matlab/dfd_block.slx).
 
 +++ {"slideshow": {"slide_type": "notes"}}
 

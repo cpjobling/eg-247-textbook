@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Unit 7.2: Designing Digital Filters in MATLAB &#8212; EG-247 Digital Signal Processing</title>
+    <title>Unit 7.2: Designing Digital Filters in MATLAB and Simulink &#8212; EG-247 Digital Signal Processing</title>
   
   
   
@@ -203,7 +203,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Analogue and Digital Filter Design</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="analogue_filters.html">Unit 7.1: Designing Analogue Filters</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Unit 7.2: Designing Digital Filters in MATLAB</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Unit 7.2: Designing Digital Filters in MATLAB and Simulink</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../zbib.html">Bibliography</a></li>
@@ -465,7 +465,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Unit 7.2: Designing Digital Filters in MATLAB</h1>
+    <h1>Unit 7.2: Designing Digital Filters in MATLAB and Simulink</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -476,7 +476,10 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colophon">Colophon</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope-and-background-reading">Scope and Background Reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope-and-background-reading">Scope and Background Reading</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started-with-simulink-for-signal-processing">Getting Started with Simulink for Signal Processing</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">Agenda</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digital-filters">Digital filters</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-of-digital-filters">Classification of digital filters</a><ul class="nav section-nav flex-column">
@@ -535,7 +538,10 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-15">Example 15</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-parallel-form-realization-of-a-digital-filter">The Parallel Form Realization of a Digital Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-parallel-form-realization-of-a-digital-filter">The Parallel Form Realization of a Digital Filter</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-16">Example 16</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-digital-filter-design-block">The Digital Filter Design Block</a></li>
@@ -556,8 +562,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="unit-7-2-designing-digital-filters-in-matlab">
-<span id="unit7-2"></span><h1>Unit 7.2: Designing Digital Filters in MATLAB<a class="headerlink" href="#unit-7-2-designing-digital-filters-in-matlab" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="unit-7-2-designing-digital-filters-in-matlab-and-simulink">
+<span id="unit7-2"></span><h1>Unit 7.2: Designing Digital Filters in MATLAB and Simulink<a class="headerlink" href="#unit-7-2-designing-digital-filters-in-matlab-and-simulink" title="Permalink to this heading">#</a></h1>
 <section id="colophon">
 <h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
@@ -568,11 +574,32 @@ document.write(`
 </section>
 <section id="scope-and-background-reading">
 <h2>Scope and Background Reading<a class="headerlink" href="#scope-and-background-reading" title="Permalink to this heading">#</a></h2>
-<p><strong>[TODO] Write this properly</strong></p>
-<p>We introduced the idea of filters in <a class="reference internal" href="../fourier_transform/4/ft4.html#ft4"><span class="std std-ref">Unit 4.4: Introduction to Filters</span></a> and examined in some detail the idea of an ideal low-pass filter and an approximation to the ideal filter known and the <em>Butterworth</em> filter. We also showed how a high-pass filter, stop-band filter and and pass-band filter could be implemented by simple manipulations of the frequency response (or transfer functions) of a low-pass filter.</p>
-<p>An advantage of the Butterworth filter is that it has a flat response in the pass band, a consistent attenuation of -3 dB at the cut-off frequency, and a steady roll-off in the stop band. A disadvantage is that you need a high-order filter to get a fast transition between the pass-band and the stop-band.</p>
-<p>In <a class="reference internal" href="../dt_systems/4/dt_models.html#demo"><span class="std std-ref">Example: Digital Butterworth Filter</span></a>, we showed how an analogue 2nd-order Butterworth filter could be translated into a discrete-time (DT) system using the MATLAB function <code class="docutils literal notranslate"><span class="pre">c2d</span></code>, and we demonstrated the architecture and code that might be used to implement the digital filter.</p>
-<p>In this unit we will explore further some of the concepts of what is called <em>filter design by analogue prototype</em>. This Unit is based on Chapter 11 of <span id="id1">[<a class="reference internal" href="../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., fifth edition, 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3384197&amp;pq-origsite=primo.">Karris, 2012</a>]</span>. We will illustrate the concepts using MATLAB and Simulink as appropriate on the understanding that you should be able to use the bilinear transform to convert a 2nd-order analogue proptotype into a digital filter.</p>
+<section id="getting-started-with-simulink-for-signal-processing">
+<h3>Getting Started with Simulink for Signal Processing<a class="headerlink" href="#getting-started-with-simulink-for-signal-processing" title="Permalink to this heading">#</a></h3>
+<p>To provide some inspiration for the power of MATLAB and Simulink for the design of digital filters, we have included the following <a class="reference external" href="https://uk.mathworks.com/support/search.html/videos/getting-started-with-simulink-for-signal-processing-1586429627003.html">video from the MathWorks</a>.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GTpP3Agz3L8?si=X66ZSHTHrvhp6bGo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><blockquote>
+<div><p>[The] video shows you an example of designing a signal processing system using Simulink®.</p>
+</div></blockquote>
+<blockquote>
+<div><p>You start off with a blank Simulink model and design a signal processing algorithm to predict whether it is going to be sunny or cloudy in order to optimize power generated from a solar energy grid. The video walks you through analyzing sensor signals, designing filters and finally generating code for hardware deployment.</p>
+</div></blockquote>
+<blockquote>
+<div><p>By the end of the video, you will learn the basics of Simulink and how Model-Based Design can be used to model, simulate, test and implement real-world signal processing systems.</p>
+</div></blockquote>
+<p>In <span class="xref std std-ref">unit7.1)</span> we looked at the MATLAB tools that can be used to design prototype analogue low-pass filters of various types, and introduced the MATLAB tools that design the prototypes and map them to high-pass, band-pass and stop pass filters. We also demostrated the tools needed to visualize the frequency response of such filters.</p>
+<p>A the end of this process, we will have a transfer function <span class="math notranslate nohighlight">\(H(s)\)</span> that defines the poles and zeros of the filter which we now need to digitize for implementation.</p>
+<p>In this unit, we will introduce the bilinear transformation, which is one way to convert and analogue filter <span class="math notranslate nohighlight">\(H(s)\)</span> into a digital filter <span class="math notranslate nohighlight">\(H(z)\)</span>, and we will give examples of a digital filter design for a second-order analogue filter.</p>
+<p>We will present the tools that MATLAB provides for the direct design of digital filters.</p>
+<p>We will also look at the realization of such filters and give examples as Simulink block diagrams.</p>
+<p>Finally we will present the Digital Filter Design block which allows the design of a filter directly in Simulink and supports the automatic generation of C-code and VHDL for digital filter design.</p>
+<p>This unit is based on Sections 11.4-11.6 of <span id="id1">[<a class="reference internal" href="../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., fifth edition, 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3384197&amp;pq-origsite=primo.">Karris, 2012</a>]</span>.</p>
+<p>To continue your learning we recommend that you visit the following pages on the MATLAB Documentation Platform:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://uk.mathworks.com/help/overview/signal-processing.html">Signal Processing</a> [in MATLAB]</p></li>
+<li><p><a class="reference external" href="https://uk.mathworks.com/help/signal/index.html">Signal Processing Toolbox</a> - signal analysis, analogue and digital filter design</p></li>
+<li><p><a class="reference external" href="https://uk.mathworks.com/help/dsp/index.html">DSP System Toolbox</a> - for designing and implementing digital filters in Simulink and for code generation.</p></li>
+</ul>
+</section>
 </section>
 <section id="agenda">
 <h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this heading">#</a></h2>
@@ -864,7 +891,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ba49b595d1ba0e887a48e601172f00e04ec1f042876bfbb4347805d63807873c.png" src="../_images/ba49b595d1ba0e887a48e601172f00e04ec1f042876bfbb4347805d63807873c.png" />
+<img alt="../_images/0f2375c0353e503c17e96b61321e6b186fba7955d6adab5e7f08428b9cc02fc6.png" src="../_images/0f2375c0353e503c17e96b61321e6b186fba7955d6adab5e7f08428b9cc02fc6.png" />
 </div>
 </div>
 <p>We now plot the analogue equivalent to compare the digital to the analogue frequency response.</p>
@@ -879,7 +906,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/cdeb12f301791adff6ac69a1d6038c18f46aa21cb861aa3f2eadb2135f7bba59.png" src="../_images/cdeb12f301791adff6ac69a1d6038c18f46aa21cb861aa3f2eadb2135f7bba59.png" />
+<img alt="../_images/7ca7dfa5e386281e8490c6fb84183e0a3bb6682c76b002bbdd77f1380508afb8.png" src="../_images/7ca7dfa5e386281e8490c6fb84183e0a3bb6682c76b002bbdd77f1380508afb8.png" />
 </div>
 </div>
 <p>Comparing the digital filter plot with the equivalent analogue filter plot, we observe that the magnitude is greater than <span class="math notranslate nohighlight">\(-3\)</span> dB for frequencies less than <span class="math notranslate nohighlight">\(20\)</span> rad/s, and is smaller than <span class="math notranslate nohighlight">\(-10\)</span> dB for frequencies greater than <span class="math notranslate nohighlight">\(40\)</span> Hz. Therefore, both the digital and analogue low-pass filters meet the specified requirements.<a class="footnote-reference brackets" href="#u72-note-4" id="id5">4</a></p>
@@ -1033,7 +1060,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0679a97f97f55118132527fde838ad4e7fbca1d66897ae8409471757199a9063.png" src="../_images/0679a97f97f55118132527fde838ad4e7fbca1d66897ae8409471757199a9063.png" />
+<img alt="../_images/db95e4c8576a38b2eae9c937634215b238858f2edb77e25fcbc0412a5a123d9e.png" src="../_images/db95e4c8576a38b2eae9c937634215b238858f2edb77e25fcbc0412a5a123d9e.png" />
 </div>
 </div>
 <p>It is clear that the filters are low-pass, high-pass, band-pass and band-stop. There is now ripple in the pass-band or stop band so they are all Butterworth filters.</p>
@@ -1119,14 +1146,14 @@ document.write(`
 <p>For the Series Form Realization, the transfer function is expressed as a product of first-order and second-orer transefer functions as shown in <a class="reference internal" href="#equation-eq-u72-20">(61)</a> below.</p>
 <div class="math notranslate nohighlight" id="equation-eq-u72-20">
 <span class="eqno">(61)<a class="headerlink" href="#equation-eq-u72-20" title="Permalink to this equation">#</a></span>\[H(z) = H_1(z)\cdot H_2(z)\cdots H_R(z)\]</div>
-<p>Relation <a class="reference internal" href="#equation-eq-u72-20">(61)</a> is implemented as the cascaded blocks shown in <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig:u72:5</span></code></p>
+<p>Relation <a class="reference internal" href="#equation-eq-u72-20">(61)</a> is implemented as the cascaded blocks shown in <a class="reference internal" href="#fig-u72-5"><span class="std std-numref">Fig. 19</span></a></p>
 <figure class="align-default" id="fig-u72-5">
 <a class="reference internal image-reference" href="../_images/series.png"><img alt="../_images/series.png" src="../_images/series.png" style="width: 100%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 19 </span><span class="caption-text">Series Form Realization</span><a class="headerlink" href="#fig-u72-5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p><code class="xref std std-numref docutils literal notranslate"><span class="pre">fig:u72:6</span></code> shows the Series Form Realization of a second-order digital filter.</p>
+<p><a class="reference internal" href="#fig-u72-6"><span class="std std-numref">Fig. 20</span></a> shows the Series Form Realization of a second-order digital filter.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">series_form_2nd</span>
@@ -1134,10 +1161,10 @@ document.write(`
 </div>
 </div>
 </div>
-<figure class="align-default" id="id13">
+<figure class="align-default" id="fig-u72-6">
 <a class="reference internal image-reference" href="../_images/series_2nd.png"><img alt="../_images/series_2nd.png" src="../_images/series_2nd.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Series Form Realization of a second-order digital filter</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Series Form Realization of a second-order digital filter</span><a class="headerlink" href="#fig-u72-6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Download this model as <a class="reference download internal" download="" href="../_downloads/e6cbfc13f414a5b5851bf0bb85da33a0/series_form_2nd.slx"><span class="xref download myst">series_form_2nd.slx</span></a>.</p>
@@ -1146,15 +1173,28 @@ document.write(`
 <p>The transfer function of the series form Realization of a certian second-order digital filter is</p>
 <div class="math notranslate nohighlight">
 \[H(z) = \frac{0.5\left(1-0.36z^{-2}\right)}{1 + 0.1 z^{-1} - 0.72 z^{-2}} \]</div>
-<p>To implement this filter, we factor the numerator and denominator polynomials as<a class="footnote-reference brackets" href="#u72-note-7" id="id14">7</a></p>
+<p>To implement this filter, we factor the numerator and denominator polynomials as<a class="footnote-reference brackets" href="#u72-note-7" id="id13">7</a></p>
 <div class="math notranslate nohighlight" id="equation-eq-u72-21">
 <span class="eqno">(62)<a class="headerlink" href="#equation-eq-u72-21" title="Permalink to this equation">#</a></span>\[H(z) = \frac{0.5\left(1+0.6z^{-1}\right)\left(1-0.6z^{-1}\right)}{\left(1+0.9z^{-1}\right)\left(1-0.8z^{-1}\right)} \]</div>
-<p>The Simulink model and the input and output waveforms are shown in <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig:u72:6</span></code>.</p>
-<p>fig15</p>
-<figure class="align-default" id="id15">
-<a class="reference internal image-reference" href="../_images/ex15.png"><img alt="Series Form Realization of the digital filter of Example 14" src="../_images/ex15.png" style="width: 100%;" /></a>
+<p>The Simulink model and the input and output waveforms are shown in <a class="reference internal" href="#fig-u72-7"><span class="std std-numref">Fig. 21</span></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">fig15</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Error using eval</span>
+<span class=" -Color -Color-Red">Unrecognized function or variable &#39;fig15&#39;.</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+<figure class="align-default" id="fig-u72-7">
+<a class="reference internal image-reference" href="../_images/ex15.png"><img alt="Series Form Realization of the digital filter of Example 15" src="../_images/ex15.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Model for Example 15</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Model for Example 15</span><a class="headerlink" href="#fig-u72-7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Download this model as <a class="reference download internal" download="" href="../_downloads/6d2704d81f86bd2fb2ed313c814a8803/ex15.slx"><span class="xref download myst">ex15.slx</span></a>.</p>
@@ -1165,10 +1205,75 @@ document.write(`
 <p>The general form of the transfer function of a Parallel Form Realization is</p>
 <div class="math notranslate nohighlight" id="equation-eq-u72-22">
 <span class="eqno">(63)<a class="headerlink" href="#equation-eq-u72-22" title="Permalink to this equation">#</a></span>\[H(z) = K + H_1(z) + H_2(z) + \cdots + H_R(z)\]</div>
+<p>Relation <a class="reference internal" href="#equation-eq-u72-22">(63)</a> is implemented at the parallel blocks shown in <a href="#id14"><span class="problematic" id="id15">fig:u72:8</span></a></p>
+<figure class="align-default" id="fig-u72-8">
+<a class="reference internal image-reference" href="../_images/parallel.png"><img alt="../_images/parallel.png" src="../_images/parallel.png" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Parallel Form Realization of a second-order digital filter</span><a class="headerlink" href="#fig-u72-8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>As with the Series Form Realization, the ordering of the individual filters in <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig:u72:8</span></code> is immaterial. But because of the presence of the constant <span class="math notranslate nohighlight">\(K\)</span>, we can simplify the transfer function expressiom by performing the partial fraction expansion after we express the transfer function in the form <span class="math notranslate nohighlight">\(H(z)/z\)</span>.</p>
+<section id="example-16">
+<span id="u72-ex-16"></span><h4>Example 16<a class="headerlink" href="#example-16" title="Permalink to this heading">#</a></h4>
+<p>The transfer function of a certain second-order digital filter is</p>
+<div class="math notranslate nohighlight">
+\[H(z) = \frac{0.5\left(1-0.36z^{-2}\right)}{1+0.1z^{-1}-0.72z^{-2}} \]</div>
+<p>Implement this filter using the Parallel Form Realization.</p>
+<div class="math notranslate nohighlight">
+\[\frac{H(z)}{z}  = \frac{0.5\left(z+0.6\right)\left(z-0.6\right)}{z\left(z+0.9\right)\left(z-0.8\right)} \]</div>
+<p>Next we perform partial fraction expansion</p>
+<div class="math notranslate nohighlight">
+\[\frac{0.5\left(z+0.6\right)\left(z-0.6\right)}{z\left(z+0.9\right)\left(z-0.8\right)} = \frac{r_1}{z} + \frac{r_2}{z+0.9} + \frac{r_2}{z-0.8} \]</div>
+<div class="math notranslate nohighlight">
+\[r_1 = \left.\frac{0.5\left(z+0.6\right)\left(z-0.6\right)}{\left(z+0.9\right)\left(z-0.8\right)}\right|_{z=0} = 0.25\]</div>
+<div class="math notranslate nohighlight">
+\[r_2 = \left.\frac{0.5\left(z+0.6\right)\left(z-0.6\right)}{z\left(z-0.8\right)}\right|_{z=-0.9} = 0.147\]</div>
+<div class="math notranslate nohighlight">
+\[r_3 = \left.\frac{0.5\left(z+0.6\right)\left(z-0.6\right)}{z\left(z+0.9\right)}\right|_{z=0.8} = 0.103\]</div>
+<p>Therefore,</p>
+<div class="math notranslate nohighlight">
+\[\frac{H(z)}{z} = \frac{0.25}{z} + \frac{0.147}{z+0.9} + \frac{0.103}{z-0.8}\]</div>
+<div class="math notranslate nohighlight">
+\[H(z) = 0.25 + \frac{0.147z}{z+0.9} + \frac{0.103z}{z-0.8}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-u72-23">
+<span class="eqno">(64)<a class="headerlink" href="#equation-eq-u72-23" title="Permalink to this equation">#</a></span>\[H(z) = 0.25 + \frac{0.147}{1+0.9z^{-1}} + \frac{0.103}{1-0.8z^{-1}}\]</div>
+<p>The model and input and output waveforms are shown in <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig:u72:8</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ex16</span>
+</pre></div>
+</div>
+</div>
+</div>
+<figure class="align-default" id="id16">
+<a class="reference internal image-reference" href="../_images/ex16.png"><img alt="Parallel Form Realization of the digital filter of Example 16" src="../_images/ex16.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Model for Example 16</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Download this model as <a class="reference download internal" download="" href="../_downloads/150e0236e593584c08f4fa47f5fbd755/ex16.slx"><span class="xref download myst">ex16.slx</span></a>.</p>
+</section>
 </section>
 </section>
 <section id="the-digital-filter-design-block">
 <span id="u72-df-design-block"></span><h2>The Digital Filter Design Block<a class="headerlink" href="#the-digital-filter-design-block" title="Permalink to this heading">#</a></h2>
+<p>The <a class="reference external" href="https://uk.mathworks.com/help/dsp/ug/using-digital-filter-design-block.html"><strong>Digital Filter Design</strong> block</a> is included in the <a class="reference external" href="https://uk.mathworks.com/help/dsp/index.html">DSP System Toolbox</a> and is included in the version of MATLAB for which Swansea University has a site license. It also works on MATLAB online. This block can be used to create models related to digital filter design applications directly in Simulink.</p>
+<p>The functionality of this block can be observed by dragging this block from the library into a model and double clicking it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">dfd_block</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>When this is done, the <strong>Block Parameters</strong> dialogue box appears as shown in <code class="xref std std-numref docutils literal notranslate"><span class="pre">ig:u72:9</span></code>.</p>
+<figure class="align-default" id="fig-u72-9">
+<a class="reference internal image-reference" href="../_images/dfd_block.png"><img alt="Screenshot of the Digital Filter Design Block Parameters dialogue box" src="../_images/dfd_block.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">The Digital Filter Design Block Parameters dialogue box</span><a class="headerlink" href="#fig-u72-9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Download this model as <a class="reference download internal" download="" href="../_downloads/8171f19cf2942abbf2aeb76493934639/dfd_block.slx"><span class="xref download myst">ex16.slx</span></a>.</p>
 </section>
 <section id="exercises">
 <span id="u72-exercises"></span><h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
@@ -1199,12 +1304,12 @@ document.write(`
 <dd><p>Note the significant distortion of the digital filter response at high frequencies.</p>
 </dd>
 <dt class="label" id="u72-notes-5"><span class="brackets"><a class="fn-backref" href="#id10">5</a></span></dt>
-<dd><p>For a detailed discussion on overflow cinditions please refer to Section 10.5, Chapter 10, Page 10-6 of <span id="id16">[<a class="reference internal" href="../zbib.html#id23" title="Steven T. Karris. Digital Circuit Analysis and Design with an Introduction to CPLDs and FPGAs. Orchard Publications, Fremont, CA., first edition, 2005. ISBN 0-9744239-6-3.">Karris, 2005</a>]</span>.</p>
+<dd><p>For a detailed discussion on overflow cinditions please refer to Section 10.5, Chapter 10, Page 10-6 of <span id="id17">[<a class="reference internal" href="../zbib.html#id23" title="Steven T. Karris. Digital Circuit Analysis and Design with an Introduction to CPLDs and FPGAs. Orchard Publications, Fremont, CA., first edition, 2005. ISBN 0-9744239-6-3.">Karris, 2005</a>]</span>.</p>
 </dd>
 <dt class="label" id="u72-notes-6"><span class="brackets"><a class="fn-backref" href="#id11">6</a></span></dt>
 <dd><p>The Direct Form-II is also known as the <strong>Canonical</strong> Form.</p>
 </dd>
-<dt class="label" id="u72-note-7"><span class="brackets"><a class="fn-backref" href="#id14">7</a></span></dt>
+<dt class="label" id="u72-note-7"><span class="brackets"><a class="fn-backref" href="#id13">7</a></span></dt>
 <dd><p>The way we combine the numerator and denominator factors is immaterial. For example we could group the factors as <span class="math notranslate nohighlight">\(\left(1 + 0.6z^{-1}\right)/\left(1+0.9z^{-1}\right)\)</span> and <span class="math notranslate nohighlight">\(\left(1 - 0.6z^{-1}\right)/\left(1-0.8z^{-1}\right)\)</span>, or as <span class="math notranslate nohighlight">\(\left(1 + 0.6z^{-1}\right)/\left(1-0.8z^{-1}\right)\)</span> and <span class="math notranslate nohighlight">\(\left(1 - 0.6z^{-1}\right)/\left(1+0.9z^{-1}\right)\)</span>.</p>
 </dd>
 </dl>
@@ -1275,7 +1380,10 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colophon">Colophon</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope-and-background-reading">Scope and Background Reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope-and-background-reading">Scope and Background Reading</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started-with-simulink-for-signal-processing">Getting Started with Simulink for Signal Processing</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">Agenda</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digital-filters">Digital filters</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-of-digital-filters">Classification of digital filters</a><ul class="nav section-nav flex-column">
@@ -1334,7 +1442,10 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-15">Example 15</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-parallel-form-realization-of-a-digital-filter">The Parallel Form Realization of a Digital Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-parallel-form-realization-of-a-digital-filter">The Parallel Form Realization of a Digital Filter</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-16">Example 16</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-digital-filter-design-block">The Digital Filter Design Block</a></li>
