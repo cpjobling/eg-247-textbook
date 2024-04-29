@@ -48,17 +48,17 @@ To provide some inspiration for the power of MATLAB and Simulink for the design 
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-In {ref}`unit7.1)` we looked at the MATLAB tools that can be used to design prototype analogue low-pass filters of various types, and introduced the MATLAB tools that design the prototypes and map them to high-pass, band-pass and stop pass filters. We also demostrated the tools needed to visualize the frequency response of such filters.
+In {ref}`unit7.1` we looked at the MATLAB tools that can be used to design prototype analogue low-pass filters of various types, and introduced the MATLAB tools that design the prototypes and map them to high-pass, band-pass and band-stop filters. We also demostrated the tools needed to visualize the frequency response of such filters.
 
-A the end of this process, we will have a transfer function $H(s)$ that defines the poles and zeros of the filter which we now need to digitize for implementation.
+A the end of this process, we will have a transfer function $H(s)$ that defines the poles and zeros of an analogue filter which we now need to digitize for implementation.
 
-In this unit, we will introduce the bilinear transformation, which is one way to convert and analogue filter $H(s)$ into a digital filter $H(z)$, and we will give examples of a digital filter design for a second-order analogue filter. 
+In this unit, we will introduce one way to convert and analogue filter $H(s)$ into a digital filter $H(z)$ which is known as the bilinear transformation. We will give an example of a digital filter design for a second-order analogue filter. 
 
 We will present the tools that MATLAB provides for the direct design of digital filters.
 
 We will also look at the realization of such filters and give examples as Simulink block diagrams.
 
-Finally we will present the Digital Filter Design block which allows the design of a filter directly in Simulink and supports the automatic generation of C-code and VHDL for digital filter design.
+Finally we will present the Digital Filter Design block which allows the design of a filter directly in Simulink and supports the automatic generation of C-code or VHDL for digital filter design.
 
 This unit is based on Sections 11.4-11.6 of {cite}`karris`.
 
