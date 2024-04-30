@@ -970,7 +970,7 @@ These are the topics we covered:
 (unit7.1:takeaways)=
 ### Unit 7.1 Takeaways
 
-+++
++++ {"slideshow": {"slide_type": "notes"}}
 
 (unit7.1:next)=
 ### Coming Next
