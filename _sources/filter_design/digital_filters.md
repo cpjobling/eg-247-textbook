@@ -1094,6 +1094,10 @@ Download this model as [ex16.slx](matlab/dfd_block.slx).
 
 As indicated on the lower left part of this window, we can choose the *Response Type* (Low-Pass, High-Pass, Band-Pass or Band-Stop), the **Design Method** (IIR or FIR) where an IIR filter can be Butterworth, Chebyshev Type I, Chebyshev Type II, or Elliptic, and FIR can be Window, Maximally Flat, etc., and the **Window**[^u72:note:8] can be Kaiser, Hamming etc. We must click on the **Design Filter**. buttom at the bottom right of the Block Parameters dialogue box to update the specifications.
 
++++ {"slideshow": {"slide_type": "notes"}}
+
+[^u72:note:8]: A window function multiplies the infinte length impulse response (IIR) by a finite width function, referred to a a window function, so that the infinite length series will be terminated after a finite number of terms in the series. This causes what is called *leakage* and results in additional ripple in the frequency domain. Windows of various shapes can be used to minimize this leakage for particular applications. The study of windowing functions is beyond the scope of this course. In the CPD course [Signal Processing Toolbox](https://matlabacademy.mathworks.com/R2023b/portal.html?course=mlsg#chapter=6&lesson=4&section=1) you were shown the use of windowing functions as a design method for approximating an ideal filter. EEE stidents will have experienced windowing effecrs in the EGA223 lab on ADC, DAC and filters. You can study windowing in more detail in Appendix E of {cite}`karris`.
+
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 We will not give an actual example of the use of the Simulink filter design block in these notes. Instead we refer you to Example 11.7 in {cite}`karris` and also to the relevant page [Using Digital Filter Design Block](https://uk.mathworks.com/help/dsp/ug/using-digital-filter-design-block.html) in the MATLAB documentation site. There you will find documentation of the Digital Filter Design Block and several examples of its use. 
@@ -1120,10 +1124,6 @@ There are exercises in the notes which will give you practice in the sort of que
 
 Hopefully you found the module interesting and will make use of some of your knowledge after the exams are over!
 
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-[^u72:note:8]: A window function multiplies the infinte length impulse response (IIR) by a finite width function, referred to a a window function, so that the infinite length series will be terminated after a finite number of terms in the series. This causes what is called *leakage* and results in additional ripple in the frequency domain. Windows of various shapes can be used to minimize this leakage for particular applications. The study of windowing functions is beyond the scope of this course. In the CPD course [Signal Processing Toolbox](https://matlabacademy.mathworks.com/R2023b/portal.html?course=mlsg#chapter=6&lesson=4&section=1) you were shown the use of windowing functions as a design method for approximating an ideal filter. EEE stidents will have experienced windowing effecrs in the EGA223 lab on ADC, DAC and filters. You can study windowing in more detail in Appendix E of {cite}`karris`.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
