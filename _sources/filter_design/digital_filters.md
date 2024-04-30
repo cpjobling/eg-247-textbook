@@ -1100,14 +1100,51 @@ Download this model as [ex16.slx](matlab/dfd_block.slx).
 (u72:ex:1)=
 ### Exercise 7.2.1
 
-Use the block diagram shown in {numref}`fig:u72:1` to validate {eq}`eq:u72:2` and eq}`eq:u72:1`.
+**Exam Preparation**
+
+Use the block diagram shown in {numref}`fig:u72:1` to validate {eq}`eq:u72:2` and {eq}`eq:u72:1`.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
 (u72:ex:2)=
+
+**Exam Preparation**
+
 ### Exercise 7.2.2
 
 Use the block diagram shown in {numref}`fig:u72:4` to validate {eq}`eq:u72:18`. Write down the equivalent difference equation.
+
++++
+
+(u72:ex:3)=
+### Exercise 7.2.2
+
+**Exam Preparation**
+
+Design a 2nd-order Butterworth filter with $\omega_c = 20$ kHz. Use the Bilinear transformation to convert the analogue filter to a digital filter with sampling frequency of 44.1 kHz. Use pre-warping to ensure that the cutoff frequency is correct at the equivalent digital frequency.
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+(u72:ex:4)=
+### Exercise 7.2.4
+
+**Exam Preparation**
+
+A digital filter with transfer function 
+
+$$H(z) = ...$$
+
+has the frequency response shown in {numref}`fig:u72:ex7.2.2`.
+
+a) What type of filter is this?
+
+b) Estimate is the cutoff frequency, band-pass ripple, and stop-band ripple of the filter.
+
+c) Implement the filter as Direct Form Type II digital filter and sketch its block diagram
+
+d) Use the example of {ref}`u454:code` to give a code implementation of the filter.
+
+e) If the input to this filter is a step function $x[n] = \left\{1,1,1,1,\ldots\right\}, calculate the first 5 outputs $y[n]$ of the filter.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
