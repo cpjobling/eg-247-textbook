@@ -62,6 +62,8 @@ Finally we will present the Digital Filter Design block which allows the design 
 
 This unit is based on Sections 11.4-11.6 of {cite}`karris`.
 
+**At the end of this unit you should be able to use the bilinear transform to convert a 2nd-order analogue proptotype into a digital filter and provide the coefficients for a block-diagram or code implementation of such a filter.**
+
 To continue your learning we recommend that you visit the following pages on the MATLAB Documentation Platform:
 
 * [Signal Processing](https://uk.mathworks.com/help/overview/signal-processing.html) [in MATLAB]
