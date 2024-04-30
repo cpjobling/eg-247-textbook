@@ -630,7 +630,7 @@ document.write(`
 </section>
 <section id="introduction">
 <span id="unit7-1-introduction"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
-<p><strong>Analogue filters</strong> are defined in continuous range of frequencies. They are classified as <em>low-pass</em>, <em>high-pass</em>, <em>band-pass</em> and <em>band-elimination</em> (<em>band-stope</em>) filters.</p>
+<p><strong>Analogue filters</strong> are defined in continuous range of frequencies. They are classified as <em>low-pass</em>, <em>high-pass</em>, <em>band-pass</em> and <em>band-elimination</em> (<em>band-stop</em>) filters.</p>
 <p>The ideal magnitude characteristics of each are illustrated in <a class="reference internal" href="#fig-7-1-mag-chars"><span class="std std-numref">Fig. 11</span></a></p>
 <figure class="align-default" id="fig-7-1-mag-chars">
 <a class="reference internal image-reference" href="../_images/mag_chars.png"><img alt="illustration of the magnitude characteristics of ideal filters" src="../_images/mag_chars.png" style="width: 100%;" /></a>
@@ -761,13 +761,13 @@ document.write(`
 <span class="nb">plot</span><span class="p">(</span><span class="n">w_w0</span><span class="p">,</span><span class="n">Aw2k1</span><span class="p">,</span><span class="n">w_w0</span><span class="p">,</span><span class="n">Aw2k2</span><span class="p">,</span><span class="n">w_w0</span><span class="p">,</span><span class="n">Aw2k4</span><span class="p">,</span><span class="n">w_w0</span><span class="p">,</span><span class="n">Aw2k8</span><span class="p">),</span><span class="nb">grid</span><span class="w"> </span><span class="n">on</span>
 <span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Normalized Frequency Ratio (ratio of actual to cut-off)&#39;</span><span class="p">)</span>
 <span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Magnitude A (square root of A^2(omega))&#39;</span><span class="p">)</span>
-<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Butterworh Analogue Low-Pass Filter characteritics for k = 1, 2, 4 and 8&#39;</span><span class="p">)</span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Butterworh Analogue Low-Pass Filter characteristics for k = 1, 2, 4 and 8&#39;</span><span class="p">)</span>
 <span class="nb">legend</span><span class="p">(</span><span class="s">&#39;k=1&#39;</span><span class="p">,</span><span class="s">&#39;k=2&#39;</span><span class="p">,</span><span class="s">&#39;k=4&#39;</span><span class="p">,</span><span class="s">&#39;k=8&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7002b0cb5b92861b376faf0cb39d299ccbcd78935c3bed218bfe009ee351e527.png" src="../_images/7002b0cb5b92861b376faf0cb39d299ccbcd78935c3bed218bfe009ee351e527.png" />
+<img alt="../_images/8304bf6dec93a4fe18f72fd7a67eceadb5fa4114faab0105d21d70047a51681e.png" src="../_images/8304bf6dec93a4fe18f72fd7a67eceadb5fa4114faab0105d21d70047a51681e.png" />
 </div>
 </div>
 <p>All Butterworth filters have the property that all poles of the transfer function that describes them lie on the circumference of a circle with radius <span class="math notranslate nohighlight">\(\omega_c\)</span>, and they are <span class="math notranslate nohighlight">\(2\pi/2k\)</span> radians apart. Thus, if <span class="math notranslate nohighlight">\(k\)</span> is odd, the poles start at zero radians, and if <span class="math notranslate nohighlight">\(k\)</span> is even, they start at <span class="math notranslate nohighlight">\(2\pi/2k\)</span> radians. But regardless wether <span class="math notranslate nohighlight">\(k\)</span> is odd or even, the poles are distributed with symmetry with respect to the <span class="math notranslate nohighlight">\(j\omega\)</span> axis. For stability, we chose the left half-plave poles to form <span class="math notranslate nohighlight">\(G(s)\)</span>.</p>
@@ -785,7 +785,7 @@ document.write(`
 <p>With the substitution <span class="math notranslate nohighlight">\(\omega^2 = -s^2\)</span>, <a class="reference internal" href="#equation-eq-7-1-10">(26)</a> becomes</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-1-12">
 <span class="eqno">(28)<a class="headerlink" href="#equation-eq-7-1-12" title="Permalink to this equation">#</a></span>\[G(s).G(-s) = \frac{1}{-s^6 + 1} \]</div>
-<p>The <span class="math notranslate nohighlight">\(s = \sqrt[6]{1}\angle 0 ^\circ\)</span> and by De Moivre’s theorem, with <span class="math notranslate nohighlight">\(n = 6\)</span>,</p>
+<p>The poles of <a class="reference internal" href="#equation-eq-7-1-12">(28)</a> are given by <span class="math notranslate nohighlight">\(s^6 = \sqrt[6]{1}\)</span> or <span class="math notranslate nohighlight">\(s = \sqrt[6]{1}\angle 0 ^\circ\)</span> and by De Moivre’s theorem, with <span class="math notranslate nohighlight">\(n = 6\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[\sqrt[6]{1e^{j0}} = \sqrt[6]{1}e^{j\left(\frac{0 + 2k\pi}{6} \right)},\,k=0,1,2,3,4,5\]</div>
 <p>Thus</p>
@@ -837,7 +837,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 </div>
 </div>
 </div>
-<p>Thereform <a class="reference internal" href="#equation-eq-7-1-12">(28)</a> simplifies to</p>
+<p>Therefore <a class="reference internal" href="#equation-eq-7-1-12">(28)</a> simplifies to</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-1-14">
 <span class="eqno">(30)<a class="headerlink" href="#equation-eq-7-1-14" title="Permalink to this equation">#</a></span>\[G(s) = \frac{K}{s^3 + 2s^2 + 2s + 1} \]</div>
 <p>The gain <span class="math notranslate nohighlight">\(K\)</span> is found from <span class="math notranslate nohighlight">\(A^2(0) = 1\)</span> and <span class="math notranslate nohighlight">\(G(0) = K\)</span>. Thus, K = 1 and</p>
@@ -897,9 +897,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ---------------------
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  s^3 + 2 s^2 + 2 s + 1
+  s^3 + 2 s^2 + 2 s + 1
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
@@ -908,7 +906,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
 </pre></div>
 </div>
-<img alt="../_images/1d9c08d895b96ff3f1ca9c5cdbd2e0dafbc0613a9b60085ec919ae0f85066d91.png" src="../_images/1d9c08d895b96ff3f1ca9c5cdbd2e0dafbc0613a9b60085ec919ae0f85066d91.png" />
+<img alt="../_images/12be7e36dc43c19ba8c36b9123a841a85689b510b5928f6de90674df5dcc7829.png" src="../_images/12be7e36dc43c19ba8c36b9123a841a85689b510b5928f6de90674df5dcc7829.png" />
 </div>
 </div>
 <p>Note that the roll-off is -60 dB/decade above the normalized cut-off <span class="math notranslate nohighlight">\(\omega_c = 1\)</span> rad/s. Also note that the phase changes fron <span class="math notranslate nohighlight">\(0^\circ\)</span> to <span class="math notranslate nohighlight">\(-270^\circ\)</span> from low to high frequency.</p>
@@ -961,7 +959,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6f6024e615fc210ef4a8aecaea25509d12d86b858680538888ccee947f9bebba.png" src="../_images/6f6024e615fc210ef4a8aecaea25509d12d86b858680538888ccee947f9bebba.png" />
+<img alt="../_images/3f668149ec995cf611765c2859e60778e4de28534a2a603b65f7aad5ceb27c65.png" src="../_images/3f668149ec995cf611765c2859e60778e4de28534a2a603b65f7aad5ceb27c65.png" />
 </div>
 </div>
 </section>
@@ -986,7 +984,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c21074f9b44f61dd24943a5d877e78593b1f56d1b8b11ad79f61310266bef5cf.png" src="../_images/c21074f9b44f61dd24943a5d877e78593b1f56d1b8b11ad79f61310266bef5cf.png" />
+<img alt="../_images/9e62dee88a86b4c7a89dc0dbc2e5ad53f9d6439438d0d0b9e6816fb1f1bb8148.png" src="../_images/9e62dee88a86b4c7a89dc0dbc2e5ad53f9d6439438d0d0b9e6816fb1f1bb8148.png" />
 </div>
 </div>
 <p>This plot indicates that for <span class="math notranslate nohighlight">\(k = 1\)</span> the attenuation is <span class="math notranslate nohighlight">\(-20\)</span> dB/decade, for <span class="math notranslate nohighlight">\(k=2\)</span>, the attenuation is <span class="math notranslate nohighlight">\(-40\)</span> dB/decade, and so on. In general, the attenuation is <span class="math notranslate nohighlight">\(-20k\)</span> dB/decade for a Butterworth filter.</p>
@@ -1049,10 +1047,10 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c349c4ad32c923d5f7af70dbcb478257893c5deccbfd2ad903da3c479640a682.png" src="../_images/c349c4ad32c923d5f7af70dbcb478257893c5deccbfd2ad903da3c479640a682.png" />
+<img alt="../_images/ba325a2e0f94cba42e51802bddfdb7c886d2886c0a063adec3e5355f39c303a3.png" src="../_images/ba325a2e0f94cba42e51802bddfdb7c886d2886c0a063adec3e5355f39c303a3.png" />
 </div>
 </div>
-<p>On the Bode plots shown, the ripple is not so obvious. The reason is that the Magnitude is in Db so the plot is essentially a linear approximation. To see the ripple we plot magnitude:</p>
+<p>On the Bode plots shown, the ripple is not so obvious. The reason is that the Magnitude is in dB so the plot is essentially a linear approximation. To see the ripple we plot magnitude:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">w</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mf">0.01</span><span class="p">:</span><span class="mi">10</span><span class="p">;</span><span class="w"> </span>
@@ -1064,7 +1062,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3ff8dfed6db5d57dc698c8b89a4b49434a0ba3b20a27352617ff4400e1712361.png" src="../_images/3ff8dfed6db5d57dc698c8b89a4b49434a0ba3b20a27352617ff4400e1712361.png" />
+<img alt="../_images/2c56c2697ed7f726b9428515749bcb5e40005862de82ac740953046a6c792418.png" src="../_images/2c56c2697ed7f726b9428515749bcb5e40005862de82ac740953046a6c792418.png" />
 </div>
 </div>
 <p>The function <a class="reference external" href="https://uk.mathworks.com/help/signal/ref/freqs.html"><code class="docutils literal notranslate"><span class="pre">freqs</span></code></a> computes the complex frequency response <span class="math notranslate nohighlight">\(H(j\omega)\)</span> of an analogue filter <span class="math notranslate nohighlight">\(H(s) = b(s)/a(s)\)</span>.</p>
@@ -1120,7 +1118,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/82691dfcadaf0e1726e6131bb1a0a7af3e8eb1d5f92625650615c3a45e39c03b.png" src="../_images/82691dfcadaf0e1726e6131bb1a0a7af3e8eb1d5f92625650615c3a45e39c03b.png" />
+<img alt="../_images/910ff0738e71d92d370d3313d2590083697bc2a579cfb12f4357ff7fd99dae29.png" src="../_images/910ff0738e71d92d370d3313d2590083697bc2a579cfb12f4357ff7fd99dae29.png" />
 </div>
 </div>
 </section>
@@ -1128,15 +1126,16 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 </section>
 <section id="elliptic-analogue-low-pass-filter-design">
 <span id="unit7-1-ellip"></span><h3>Elliptic Analogue Low-Pass Filter Design<a class="headerlink" href="#elliptic-analogue-low-pass-filter-design" title="Permalink to this heading">#</a></h3>
-<p>The <em>elliptic</em>, also known as <em>Cauer</em> filter, are characterized by the low-pass magnutude-squared function</p>
+<p>The <em>elliptic filter</em>, also known as <em>Cauer</em> filter, is characterized by the low-pass magnutude-squared function</p>
 <div class="math notranslate nohighlight" id="equation-7-1-18">
-<span class="eqno">(36)<a class="headerlink" href="#equation-7-1-18" title="Permalink to this equation">#</a></span>\[ A^2(\omega) = \frac{1}{1 + R_k^2(\omega/\omega_c}  \]</div>
-<p>where <span class="math notranslate nohighlight">\(R_k(x)\)</span> represents a rational elliptic function used with eliptic integrals. Elliptic filters have ripple in both the pass-bad and stop-band, but have a very steep transiition between these bands.</p>
+<span class="eqno">(36)<a class="headerlink" href="#equation-7-1-18" title="Permalink to this equation">#</a></span>\[ A^2(\omega) = \frac{1}{1 + R_k^2\left(\omega/\omega_c\right)}  \]</div>
+<p>where <span class="math notranslate nohighlight">\(R_k(x)\)</span> represents a rational elliptic function used with eliptic integrals.</p>
+<p>Elliptic filters have ripple in both the pass-bad and stop-band, but have a very steep transiition between these bands.</p>
 <p>We can design elliptic low-pass filters with the <a class="reference external" href="https://uk.mathworks.com/help/signal/ref/ellip.html"><code class="docutils literal notranslate"><span class="pre">ellip</span></code></a> function. The statement</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">z</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ellip</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">Rp</span><span class="p">,</span><span class="n">Rs</span><span class="p">,</span><span class="n">W0</span><span class="p">,</span><span class="s">&#39;s&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>returns the pole-zero-gain values for an alliptical low-pass filter of order <code class="docutils literal notranslate"><span class="pre">N</span></code>, with a maximum passband ripple of <code class="docutils literal notranslate"><span class="pre">Rp</span></code> dB, a stop-band ripple of <code class="docutils literal notranslate"><span class="pre">Rs</span></code> dB, cut-off frequency of <code class="docutils literal notranslate"><span class="pre">W0</span></code> rad/s. The argument ‘s’ returns tye poles and zeros of an analogue filter. If ommitted, the function designs a discrete-time filter.</p>
+<p>returns the pole-zero-gain values for an elliptic low-pass filter of order <code class="docutils literal notranslate"><span class="pre">N</span></code>, with a maximum passband ripple of <code class="docutils literal notranslate"><span class="pre">Rp</span></code> dB, a stop-band ripple of <code class="docutils literal notranslate"><span class="pre">Rs</span></code> dB, cut-off frequency of <code class="docutils literal notranslate"><span class="pre">W0</span></code> rad/s. The argument ‘s’ returns the poles and zeros of an analogue filter. If ommitted, the function designs a discrete-time filter.</p>
 <section id="example-8">
 <span id="uni7-1-ex8"></span><h4>Example 8<a class="headerlink" href="#example-8" title="Permalink to this heading">#</a></h4>
 <p>Use the MATLAB function <code class="docutils literal notranslate"><span class="pre">ellip</span></code> to design a fifth-order analogue eliptic low-pass filter with <span class="math notranslate nohighlight">\(\omega_c = 200\)</span> rad/s, pass-band ripple of <span class="math notranslate nohighlight">\(0.6\)</span> dB and stop-band ripple of <span class="math notranslate nohighlight">\(20\)</span> dB. Plot the magnitude frequency response of the filter.</p>
@@ -1161,7 +1160,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e9fd57d2cce0b2ae48e7a927de5a0260d7330224831eb19c46b66f4d93de80f0.png" src="../_images/e9fd57d2cce0b2ae48e7a927de5a0260d7330224831eb19c46b66f4d93de80f0.png" />
+<img alt="../_images/97c98e2f828aa5f24304a02bf176974b40d0f5bdf9753fcebcb6a26381b033c1.png" src="../_images/97c98e2f828aa5f24304a02bf176974b40d0f5bdf9753fcebcb6a26381b033c1.png" />
 </div>
 </div>
 </section>
@@ -1213,6 +1212,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 <section id="low-pass-to-low-pass">
 <h3>Low-pass to low-pass<a class="headerlink" href="#low-pass-to-low-pass" title="Permalink to this heading">#</a></h3>
 <p>As already seen in <a class="reference internal" href="#unit6-1-denormalize"><span class="std std-ref">Denormalizing a prototype filter</span></a>, the function <code class="docutils literal notranslate"><span class="pre">lp2lp</span></code> will convert a normalised low-pass analogue filter with cut-off frequency <span class="math notranslate nohighlight">\(\omega_c = 1\)</span> to <span class="math notranslate nohighlight">\(\omega_c = \omega_\mathrm{actual}\)</span>.</p>
+<p>See <a class="reference internal" href="#unit6-1-denormalize"><span class="std std-ref">Denormalizing a prototype filter</span></a> for an example.</p>
 </section>
 <section id="low-pass-to-high-pass">
 <h3>Low-pass to high-pass<a class="headerlink" href="#low-pass-to-high-pass" title="Permalink to this heading">#</a></h3>
@@ -1247,7 +1247,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3ab00288d913903cd5b0a316754238c3571a7f7f77afe65bdd9dda7e843d6038.png" src="../_images/3ab00288d913903cd5b0a316754238c3571a7f7f77afe65bdd9dda7e843d6038.png" />
+<img alt="../_images/d4173989f1431fc440cb9e7010fd34f47c1d07b872c069bcb0b30c9f7cdacfbb.png" src="../_images/d4173989f1431fc440cb9e7010fd34f47c1d07b872c069bcb0b30c9f7cdacfbb.png" />
 </div>
 </div>
 </section>
@@ -1289,7 +1289,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c903d62c8d4d12bcb9ff95432f496a6b39fe55751dc43ca2626e202b6e081a64.png" src="../_images/c903d62c8d4d12bcb9ff95432f496a6b39fe55751dc43ca2626e202b6e081a64.png" />
+<img alt="../_images/a8f88ed71ef5383591a26146c800a17aa8edb1c9fb5a23bebabcb86744be9476.png" src="../_images/a8f88ed71ef5383591a26146c800a17aa8edb1c9fb5a23bebabcb86744be9476.png" />
 </div>
 </div>
 </section>
@@ -1336,7 +1336,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5331810387c1c2af4762e26529d731727ee436276681de7a19b05c7cc807c426.png" src="../_images/5331810387c1c2af4762e26529d731727ee436276681de7a19b05c7cc807c426.png" />
+<img alt="../_images/3cad76d16c38451a2a6905395862d405bffb230d68e892536e2a7274375c3612.png" src="../_images/3cad76d16c38451a2a6905395862d405bffb230d68e892536e2a7274375c3612.png" />
 </div>
 </div>
 </section>
