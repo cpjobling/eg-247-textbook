@@ -356,7 +356,9 @@ $$G(s).G(-s) = \frac{1}{-s^6 + 1} $$ (eq:7.1:12)
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-The poles of {eq}`eq:7.1:12` are given by $s^6 = \sqrt[6]{1}$ or $s = \sqrt[6]{1}\angle 0 ^\circ$ and by De Moivre's theorem, with $n = 6$,
+The poles of {eq}`eq:7.1:12` are given by $\left(1 - s^6\right) = 0$  or $s = \sqrt[6]{1}$.
+
+That is, $s = \sqrt[6]{1}\angle 0 ^\circ$ and, by De Moivre's theorem, with $n = 6$,
 
 $$\sqrt[6]{1e^{j0}} = \sqrt[6]{1}e^{j\left(\frac{0 + 2k\pi}{6} \right)},\,k=0,1,2,3,4,5$$
 
