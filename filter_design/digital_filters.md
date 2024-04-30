@@ -62,6 +62,8 @@ Finally we will present the Digital Filter Design block which allows the design 
 
 This unit is based on Sections 11.4-11.6 of {cite}`karris`.
 
+**At the end of this unit you should be able to use the bilinear transform to convert a 2nd-order analogue proptotype into a digital filter and provide the coefficients for a block-diagram or code implementation of such a filter.**
+
 To continue your learning we recommend that you visit the following pages on the MATLAB Documentation Platform:
 
 * [Signal Processing](https://uk.mathworks.com/help/overview/signal-processing.html) [in MATLAB]
@@ -603,7 +605,7 @@ $$H(z) = \frac{0.0640 z^2  +  0.1279 z +   0.0640}{z^2   -1.1683 z +    0.4241} 
 (u72:matlab_fd_tools)=
 ## MATLAB Functions for direct digital filter design
 
-MATLAB provides us with a suite of functions that we need to design gigital filters using analogue prototypes. These are listed below.
+MATLAB provides us with a suite of functions that we need to design digital filters using analogue prototypes. These are listed below.
 
 - `N` = order of the filter
 
@@ -626,9 +628,9 @@ The MathWorks also provides a catalogue of filter design tools with examples in 
 
 ```matlab
 [B,A] = butter(N,Wn)
-[B,A] = cheb1(N,Wn)
-[B,A] = cheb2(N,Wn)
-[B,A] = ellip(N,Wn)
+[B,A] = cheb1(N,Rp,Wn)
+[B,A] = cheb2(N,Rs,Wn)
+[B,A] = ellip(N,Rp,Rs,Wn)
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -638,9 +640,9 @@ The MathWorks also provides a catalogue of filter design tools with examples in 
 
 ```matlab
 [B,A] = butter(N,Wn,'high')
-[B,A] = cheb1(N,Wn,'high')
-[B,A] = cheb2(N,Wn,'high')
-[B,A] = ellip(N,Wn,'high')
+[B,A] = cheb1(N,Rp,Wn,'high')
+[B,A] = cheb2(N,Rs,Wn,'high')
+[B,A] = ellip(N,rp,Rs,Wn,'high')
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -650,9 +652,9 @@ The MathWorks also provides a catalogue of filter design tools with examples in 
 
 ```matlab
 [B,A] = butter(N,[Wn1,Wn2])
-[B,A] = cheb1(N,[Wn1,Wn2])
-[B,A] = cheb2(N,[Wn1,Wn2])
-[B,A] = ellip(N,[Wn1,Wn2])
+[B,A] = cheb1(N,Rp,[Wn1,Wn2])
+[B,A] = cheb2(N,Rs,[Wn1,Wn2])
+[B,A] = ellip(N,Rp,Rs,[Wn1,Wn2])
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -662,9 +664,9 @@ The MathWorks also provides a catalogue of filter design tools with examples in 
 
 ```matlab
 [B,A] = butter(N,[Wn1,Wn2],'stop')
-[B,A] = cheb1(N,[Wn1,Wn2],'stop')
-[B,A] = cheb2(N,[Wn1,Wn2],'stop')
-[B,A] = ellip(N,[Wn1,Wn2],'stop')
+[B,A] = cheb1(N,Rp,[Wn1,Wn2],'stop')
+[B,A] = cheb2(N,Rs,[Wn1,Wn2],'stop')
+[B,A] = ellip(N,Rp,Rs,[Wn1,Wn2],'stop')
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -672,7 +674,7 @@ The MathWorks also provides a catalogue of filter design tools with examples in 
 (u72:ex:13)=
 #### Example 13
 
-The transfer functions {eq}`eq:7.2:16` through {eq}`eq:7.2:19`, describe differet types of digital filters. Use the MATLAB `freqz` commmand to plot the magnitude versus radian frequency. What types of filter does each transfer function represent? What classes of filter are they?
+The transfer functions {eq}`eq:7.2:16` through {eq}`eq:7.2:19`, describe different types of digital filters. Use the MATLAB `freqz` commmand to plot the magnitude versus radian frequency. What types of filter does each transfer function represent? What classes of filter are they?
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -1090,6 +1092,41 @@ Download this model as [ex16.slx](matlab/dfd_block.slx).
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
+As indicated on the lower left part of this window, we can choose the *Response Type* (Low-Pass, High-Pass, Band-Pass or Band-Stop), the **Design Method** (IIR or FIR) where an IIR filter can be Butterworth, Chebyshev Type I, Chebyshev Type II, or Elliptic, and FIR can be Window, Maximally Flat, etc., and the **Window**[^u72:note:8] can be Kaiser, Hamming etc. We must click on the **Design Filter**. buttom at the bottom right of the Block Parameters dialogue box to update the specifications.
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+[^u72:note:8]: A window function multiplies the infinte length impulse response (IIR) by a finite width function, referred to a a window function, so that the infinite length series will be terminated after a finite number of terms in the series. This causes what is called *leakage* and results in additional ripple in the frequency domain. Windows of various shapes can be used to minimize this leakage for particular applications. The study of windowing functions is beyond the scope of this course. In the CPD course [Signal Processing Toolbox](https://matlabacademy.mathworks.com/R2023b/portal.html?course=mlsg#chapter=6&lesson=4&section=1) you were shown the use of windowing functions as a design method for approximating an ideal filter. EEE stidents will have experienced windowing effecrs in the EGA223 lab on ADC, DAC and filters. You can study windowing in more detail in Appendix E of {cite}`karris`.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+We will not give an actual example of the use of the Simulink filter design block in these notes. Instead we refer you to Example 11.7 in {cite}`karris` and also to the relevant page [Using Digital Filter Design Block](https://uk.mathworks.com/help/dsp/ug/using-digital-filter-design-block.html) in the MATLAB documentation site. There you will find documentation of the Digital Filter Design Block and several examples of its use. 
+
+If you go on from this course to do some actual signal processing, we would urge you to take full advantage of these resources.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Code generation
+
+As well as the ability to design filters that can be immediately used in simulations of digital signal processing applications, and the muliple analysis tools it provides in the the Digital Filter Design Block, povided by the Signal Processing Toolbox and the DSP System Toolbox, be used for code generation.
+
+For example, it can generate Simulink models of the designed filter, as well as C header files, and HDL code for VHDL and verilog devices.
+
+Thus, MATLAB can be used in a so-called model-based design process as described in the opening video
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+## The End?
+
+This concludes this module. Don't forget to let us know how it went for you in the end of module feedback.
+
+There are exercises in the notes which will give you practice in the sort of questions that will come up in the exam. 
+
+Hopefully you found the module interesting and will make use of some of your knowledge after the exams are over!
+
+
++++ {"slideshow": {"slide_type": "notes"}}
+
 (u72:exercises)=
 ## Exercises
 
@@ -1098,14 +1135,56 @@ Download this model as [ex16.slx](matlab/dfd_block.slx).
 (u72:ex:1)=
 ### Exercise 7.2.1
 
-Use the block diagram shown in {numref}`fig:u72:1` to validate {eq}`eq:u72:2` and eq}`eq:u72:1`.
+**Exam Preparation**
+
+Use the block diagram shown in {numref}`fig:u72:1` to validate {eq}`eq:u72:2` and {eq}`eq:u72:1`.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
 (u72:ex:2)=
+
+**Exam Preparation**
+
 ### Exercise 7.2.2
 
 Use the block diagram shown in {numref}`fig:u72:4` to validate {eq}`eq:u72:18`. Write down the equivalent difference equation.
+
++++
+
+(u72:ex:3)=
+### Exercise 7.2.3
+
+**Exam Preparation**
+
+Design a 2nd-order Butterworth filter with $\omega_c = 20$ kHz. Use the Bilinear transformation to convert the analogue filter to a digital filter with sampling frequency of 44.1 kHz. Use pre-warping to ensure that the cutoff frequency is correct at the equivalent digital frequency.
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+(u72:ex:4)=
+### Exercise 7.2.4
+
+**Exam Preparation**
+
+A digital filter with cutoff frequency of 100 Hz for a signal sampled at 1 kHz has transfer function 
+
+$$H(z) = \frac{0.6401   -1.1518z^{-1}   + 0.6401z^{-2}}{1	-1.0130 z^{-1}    + 0.4190z^{-2}} $$
+
+has the frequency response shown in {numref}`fig:u72:ex7.2.2`.
+
+:::{figure-md} fig:u72:ex7.2.2
+<img src="pictures/ex724.png" alt="Frequency response for Example 7.2.4" width="50%" />
+
+::: Frequency response for Example 7.2.4
+
+a) What type of filter is this?
+
+b) Estimate the band-pass ripple, and stop-band ripple of the filter.
+
+c) Implement the filter as Direct Form Type II digital filter and sketch its block diagram.
+
+d) Use the example of {ref}`u454:code` to give a code implementation of the filter.
+
+e) If the input to this filter is a step function $x[n] = \left\{1,1,1,1,\ldots\right\}$, calculate the first 5 outputs $y[n]$ of the filter.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 

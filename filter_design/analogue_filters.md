@@ -46,9 +46,9 @@ An advantage of the Butterworth filter is that it has a flat response in the pas
 
 In {ref}`demo`, we showed how an analogue 2nd-order Butterworth filter could be translated into a discrete-time (DT) system using the MATLAB function `c2d`, and we demonstrated the architecture and code that might be used to implement the digital filter.
 
-In this unit we will explore further some of the concepts of what is called *filter design by analogue prototype*. This Unit is based on Chapter 11 of {cite}`karris`. We will illustrate the concepts using MATLAB and Simulink as appropriate on the understanding that you should be able to use the bilinear transform to convert a 2nd-order analogue proptotype into a digital filter.
+In this unit we will explore further some of the concepts of what is called *filter design by analogue prototype*. This Unit is based on Chapter 11 of {cite}`karris`. We will illustrate the concepts using MATLAB and Simulink as appropriate on the understanding that **you should be able to recognize the filter type from a frequency response**.
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "notes"}}
 
 ## Agenda
 
@@ -67,7 +67,7 @@ In this unit we will explore further some of the concepts of what is called *fil
 (unit7.1:introduction)=
 ## Introduction
 
-**Analogue filters** are defined in continuous range of frequencies. They are classified as *low-pass*, *high-pass*, *band-pass* and *band-elimination* (*band-stope*) filters.
+**Analogue filters** are defined in continuous range of frequencies. They are classified as *low-pass*, *high-pass*, *band-pass* and *band-elimination* (*band-stop*) filters.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -313,7 +313,7 @@ We can use MATLAB to plot the frequency response of this relation for $k = 1,2,4
 ```{code-cell}
 ---
 slideshow:
-  slide_type: notes
+  slide_type: fragment
 ---
 w_w0 = 0:0.02:3; 
 Aw2k1 = sqrt(1./(w_w0.^2 + 1)); Aw2k2 = sqrt(1./(w_w0.^4 + 1));
@@ -321,7 +321,7 @@ Aw2k4 = sqrt(1./(w_w0.^8 + 1)); Aw2k8 = sqrt(1./(w_w0.^16 + 1));
 plot(w_w0,Aw2k1,w_w0,Aw2k2,w_w0,Aw2k4,w_w0,Aw2k8),grid on
 xlabel('Normalized Frequency Ratio (ratio of actual to cut-off)')
 ylabel('Magnitude A (square root of A^2(omega))')
-title('Butterworh Analogue Low-Pass Filter characteritics for k = 1, 2, 4 and 8')
+title('Butterworh Analogue Low-Pass Filter characteristics for k = 1, 2, 4 and 8')
 legend('k=1','k=2','k=4','k=8')
 ```
 
@@ -354,13 +354,15 @@ With the substitution $\omega^2 = -s^2$, {eq}`eq:7.1:10` becomes
 
 $$G(s).G(-s) = \frac{1}{-s^6 + 1} $$ (eq:7.1:12)
 
-+++ {"slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "fragment"}}
 
-The $s = \sqrt[6]{1}\angle 0 ^\circ$ and by De Moivre's theorem, with $n = 6$,
+The poles of {eq}`eq:7.1:12` are given by $\left(1 - s^6\right) = 0$  or $s = \sqrt[6]{1}$.
+
+That is, $s = \sqrt[6]{1}\angle 0 ^\circ$ and, by De Moivre's theorem, with $n = 6$,
 
 $$\sqrt[6]{1e^{j0}} = \sqrt[6]{1}e^{j\left(\frac{0 + 2k\pi}{6} \right)},\,k=0,1,2,3,4,5$$
 
-+++ {"slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "fragment"}}
 
 Thus
 
@@ -409,7 +411,7 @@ expand(den)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-Thereform {eq}`eq:7.1:12` simplifies to
+Therefore {eq}`eq:7.1:12` simplifies to
 
 $$G(s) = \frac{K}{s^3 + 2s^2 + 2s + 1} $$ (eq:7.1:14)
 
@@ -633,7 +635,7 @@ grid on
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-On the Bode plots shown, the ripple is not so obvious. The reason is that the Magnitude is in Db so the plot is essentially a linear approximation. To see the ripple we plot magnitude:
+On the Bode plots shown, the ripple is not so obvious. The reason is that the Magnitude is in dB so the plot is essentially a linear approximation. To see the ripple we plot magnitude:
 
 ```{code-cell}
 ---
@@ -707,11 +709,13 @@ grid
 (unit7.1:ellip)=
 ### Elliptic Analogue Low-Pass Filter Design
 
-The *elliptic*, also known as *Cauer* filter, are characterized by the low-pass magnutude-squared function
+The *elliptic filter*, also known as *Cauer* filter, is characterized by the low-pass magnutude-squared function
 
-$$ A^2(\omega) = \frac{1}{1 + R_k^2(\omega/\omega_c}  $$ (7.1.18)
+$$ A^2(\omega) = \frac{1}{1 + R_k^2\left(\omega/\omega_c\right)}  $$ (7.1.18)
 
-where $R_k(x)$ represents a rational elliptic function used with eliptic integrals. Elliptic filters have ripple in both the pass-bad and stop-band, but have a very steep transiition between these bands.
+where $R_k(x)$ represents a rational elliptic function used with eliptic integrals. 
+
+Elliptic filters have ripple in both the pass-bad and stop-band, but have a very steep transiition between these bands.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -720,7 +724,7 @@ We can design elliptic low-pass filters with the [`ellip`](https://uk.mathworks.
 ```matlab
 [z,p,k] = ellip(N,Rp,Rs,W0,'s')
 ```
-returns the pole-zero-gain values for an alliptical low-pass filter of order `N`, with a maximum passband ripple of `Rp` dB, a stop-band ripple of `Rs` dB, cut-off frequency of `W0` rad/s. The argument 's' returns tye poles and zeros of an analogue filter. If ommitted, the function designs a discrete-time filter.
+returns the pole-zero-gain values for an elliptic low-pass filter of order `N`, with a maximum passband ripple of `Rp` dB, a stop-band ripple of `Rs` dB, cut-off frequency of `W0` rad/s. The argument 's' returns the poles and zeros of an analogue filter. If ommitted, the function designs a discrete-time filter.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -796,6 +800,9 @@ Prototype analogue filters can be converted to high-pass, band-pass and band-eli
 ### Low-pass to low-pass
 
 As already seen in {ref}`unit6.1:denormalize`, the function `lp2lp` will convert a normalised low-pass analogue filter with cut-off frequency $\omega_c = 1$ to $\omega_c = \omega_\mathrm{actual}$.
+
+
+See {ref}`unit6.1:denormalize` for an example.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -965,7 +972,7 @@ These are the topics we covered:
 (unit7.1:takeaways)=
 ### Unit 7.1 Takeaways
 
-+++
++++ {"slideshow": {"slide_type": "notes"}}
 
 (unit7.1:next)=
 ### Coming Next
