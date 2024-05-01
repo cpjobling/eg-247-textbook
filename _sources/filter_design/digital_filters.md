@@ -951,7 +951,7 @@ The Simulink model and the input and output waveforms are shown in {numref}`fig:
 slideshow:
   slide_type: subslide
 ---
-fig15
+ex15
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}
