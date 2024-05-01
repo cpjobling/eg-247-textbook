@@ -878,7 +878,7 @@ A comparison of {eq}`eq:7.2:21` and {eq}`eq:7.2:22` shows that whereas a Direct 
 (u72:ex:14)=
 #### Example 14
 
-{numref}`u72:fig:5` shows a Direct Form-II second-order digital filter whose transfer function is
+{numref}`fig:u72:5` shows a Direct Form-II second-order digital filter whose transfer function is
 
 $$H(z) = \frac{1+1.5z^{-1}+1.02z^{-2}}{1 - 0.25 z^{-1} -0.75 z^{-2}} $$ (eq:u72:23)
 
