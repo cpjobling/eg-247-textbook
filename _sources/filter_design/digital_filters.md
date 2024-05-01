@@ -871,7 +871,7 @@ $$H(z) = \frac{b_0 + b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}} $$ (eq:7.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-A camparison of {numref}`eq:7.2:21` and {numref}`eq:7.2:22` shows that whereas a Direct Form-I second-order digital filter requires $2k$ registers, where $k$ represents the order of the filter, a Direct Type-II second-order digital filter requires only $k$ register elements denoted as $z^{-1}$. This is because the register ($z^{-1}$) elements of the Direct Form-II realization are shared between the zeros section and the poles section.
+A comparison of {eq}`eq:7.2:21` and {eq}`eq:7.2:22` shows that whereas a Direct Form-I second-order digital filter requires $2k$ registers, where $k$ represents the order of the filter, a Direct Type-II second-order digital filter requires only $k$ register elements denoted as $z^{-1}$. This is because the register ($z^{-1}$) elements of the Direct Form-II realization are shared between the zeros section and the poles section.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
