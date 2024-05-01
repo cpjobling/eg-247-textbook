@@ -1211,6 +1211,10 @@ e) If the input to this filter is a step function $x[n] = \left\{1,1,1,1,\ldots\
 
 See [Bibliography](/zbib).
 
++++
+
+## Footnotes
+
 ```{code-cell}
 ---
 slideshow:
