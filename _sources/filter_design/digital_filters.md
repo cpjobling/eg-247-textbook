@@ -906,7 +906,7 @@ Download this model as [ex14.slx](matlab/ex14.slx).
 
 ### The Series Form Realization of a Digital Filter
 
-For the Series Form Realization, the transfer function is expressed as a product of first-order and second-orer transefer functions as shown in {eq}`eq:u72:20` below. 
+For the Series Form Realization, the transfer function is expressed as a product of first-order and second-orer transefer functions as shown in {eq}`eq:u72:24` below. 
 
 $$H(z) = H_1(z)\cdot H_2(z)\cdots H_R(z)$$ (eq:u72:24)
 
