@@ -912,7 +912,7 @@ $$H(z) = H_1(z)\cdot H_2(z)\cdots H_R(z)$$ (eq:u72:24)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-Relation {eq}`eq:u72:24` is implemented as the cascaded blocks shown in {numref}`fig:u72:6`
+Relation {eq}`eq:u72:24` is implemented as the cascaded blocks shown in {numref}`fig:u72:6`.
 
 :::{figure-md} fig:u72:6
 <img src="pictures/series.png" alth="Series Form Realization as cascaded blocks" width="100%" />
@@ -993,7 +993,7 @@ The general form of the transfer function of a Parallel Form Realization is
 
 $$H(z) = K + H_1(z) + H_2(z) + \cdots + H_R(z)$$ (eq:u72:26)
 
-Relation {eq}`eq:u72:26` is implemented as the parallel blocks shown in {numre}`fig:u72:8`
+Relation {eq}`eq:u72:26` is implemented as the parallel blocks shown in {numref}`fig:u72:8`
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
