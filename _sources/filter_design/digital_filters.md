@@ -865,7 +865,7 @@ Download this model as [dfiir_df.slx](matlab/dfiir_df.slx).
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-The transfer function for the Direct Form-II second-order digital filter of {numref}`fig:u72:4` is the same as for a Direct Form-I second-order filter of {numref}`fig:u72:4`, that is,
+The transfer function for the Direct Form-II second-order digital filter of {numref}`fig:u72:4` is the same as for a Direct Form-I second-order filter of {numref}`fig:u72:3`, that is,
 
 $$H(z) = \frac{b_0 + b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}} $$ (eq:7.2:22)
 
