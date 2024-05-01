@@ -993,7 +993,7 @@ The general form of the transfer function of a Parallel Form Realization is
 
 $$H(z) = K + H_1(z) + H_2(z) + \cdots + H_R(z)$$ (eq:u72:26)
 
-Relation {eq}`eq:u72:26` is implemented as the parallel blocks shown in {numref}`fig:u72:8`
+Relation {eq}`eq:u72:26` is implemented as the parallel blocks shown in {numref}`fig:u72:8`.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -1005,7 +1005,7 @@ Parallel Form Realization of a second-order digital filter
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-As with the Series Form Realization, the ordering of the individual filters in {numref}`fig:u72:8` is immaterial. But because of the presence of the constant $K$, we can simplify the transfer function expressiom by performing the partial fraction expansion after we express the transfer function in the form $H(z)/z$.
+As with the Series Form Realization, the ordering of the individual filters in {numref}`fig:u72:8` is immaterial. But because of the presence of the constant $K$, we can simplify the transfer function expression by performing the partial fraction expansion after we express the transfer function in the form $H(z)/z$.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
