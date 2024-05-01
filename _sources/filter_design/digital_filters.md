@@ -691,25 +691,25 @@ The transfer functions {eq}`eq:7.2:16` through {eq}`eq:7.2:19`, describe differe
 
 ##### 13(a)
 
-$$H_1(z) = \frac{\left(2.8982 + 8.6946z^{-1} + 8.6946z^{-2} + 2.8982z^{-3}\right)\cdot 10^{-3}}{1 - 2.3741z^{-1} + 1.9294z^{-2} - 0.5321z^{-3}} $$ (eq:7.2:16)
+$$H_1(z) = \frac{\left(2.8982 + 8.6946z^{-1} + 8.6946z^{-2} + 2.8982z^{-3}\right)\cdot 10^{-3}}{1 - 2.3741z^{-1} + 1.9294z^{-2} - 0.5321z^{-3}} $$ (eq:7.2:17)
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
 ##### 13(b)
 
-$$H_2(z) = \frac{0.5276 - 1.5828z^{-1} + 1.5828z^{-2} - 0.5276z^{-3}}{1 - 1.7600z^{-1} + 1.1829z^{-2} - 0.2781z^{-3}} $$ (eq:7.2:17)
+$$H_2(z) = \frac{0.5276 - 1.5828z^{-1} + 1.5828z^{-2} - 0.5276z^{-3}}{1 - 1.7600z^{-1} + 1.1829z^{-2} - 0.2781z^{-3}} $$ (eq:7.2:18)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ##### 13(c)
 
-$$H_3(z) = \frac{\left(6.8482 - 13.6964z^{-2} + 6.8482z^{-4}\right)\cdot 10^{-4}}{1 + 3.3033z^{-1} + 4.5244z^{-2} + 3.1390z^{-3} + 0.9603z^{-4}}$$ (eq:7.2:18)
+$$H_3(z) = \frac{\left(6.8482 - 13.6964z^{-2} + 6.8482z^{-4}\right)\cdot 10^{-4}}{1 + 3.3033z^{-1} + 4.5244z^{-2} + 3.1390z^{-3} + 0.9603z^{-4}}$$ (eq:7.2:19)
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
 ##### 13(d)
 
-$$H_4(z) = \frac{0.9270-1.2079z^{-1}+0.9270z^{-2}}{1-1.2079z^{-1}+0.8541z^{-2}} $$ (eq:7.2:19)
+$$H_4(z) = \frac{0.9270-1.2079z^{-1}+0.9270z^{-2}}{1-1.2079z^{-1}+0.8541z^{-2}} $$ (eq:7.2:20)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -824,7 +824,7 @@ $$X(z)\left(b_0 + b_1z^{-1} + b_2z^{-2}\right) = Y(s)\left(1 + a_1z^{-1} + a_2z^
 
 And thus, the transfer function of the Direct Form I Realization of the second-order digital filter of {numref}`fig:u72:3` is
 
-$$H(z) = \frac{Y(z)}{X(z)} = \frac{b_0 + b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}} $$ (eq:7.2:17)
+$$H(z) = \frac{Y(z)}{X(z)} = \frac{b_0 + b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}} $$ (eq:7.2:21)
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -867,11 +867,11 @@ Download this model as [dfiir_df.slx](matlab/dfiir_df.slx).
 
 The transfer function for the Direct Form-II second-order digital filter of {numref}`fig:u72:4` is the same as for a Direct Form-I second-order filter of {numref}`fig:u72:4`, that is,
 
-$$H(z) = \frac{b_0 + b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}} $$ (eq:7.2:18)
+$$H(z) = \frac{b_0 + b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}} $$ (eq:7.2:22)
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-A camparison of {numref}`eq:7.2:17` and {numref}`eq:7.2:18` shows that whereas a Direct Form-I second-order digital filter requires $2k$ registers, where $k$ represents the order of the filter, a Direct Type-II second-order digital filter requires only $k$ register elements denoted as $z^{-1}$. This is because the register ($z^{-1}$) elements of the Direct Form-II realization are shared between the zeros section and the poles section.
+A camparison of {numref}`eq:7.2:21` and {numref}`eq:7.2:22` shows that whereas a Direct Form-I second-order digital filter requires $2k$ registers, where $k$ represents the order of the filter, a Direct Type-II second-order digital filter requires only $k$ register elements denoted as $z^{-1}$. This is because the register ($z^{-1}$) elements of the Direct Form-II realization are shared between the zeros section and the poles section.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -880,7 +880,7 @@ A camparison of {numref}`eq:7.2:17` and {numref}`eq:7.2:18` shows that whereas a
 
 {numref}`u72:fig:5` shows a Direct Form-II second-order digital filter whose transfer function is
 
-$$H(z) = \frac{1+1.5z^{-1}+1.02z^{-2}}{1 - 0.25 z^{-1} -0.75 z^{-2}} $$ (eq:u72:19)
+$$H(z) = \frac{1+1.5z^{-1}+1.02z^{-2}}{1 - 0.25 z^{-1} -0.75 z^{-2}} $$ (eq:u72:23)
 
 ```{code-cell}
 ---
@@ -908,7 +908,7 @@ Download this model as [ex14.slx](matlab/ex14.slx).
 
 For the Series Form Realization, the transfer function is expressed as a product of first-order and second-orer transefer functions as shown in {eq}`eq:u72:20` below. 
 
-$$H(z) = H_1(z)\cdot H_2(z)\cdots H_R(z)$$ (eq:u72:20)
+$$H(z) = H_1(z)\cdot H_2(z)\cdots H_R(z)$$ (eq:u72:24)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -955,7 +955,7 @@ $$H(z) = \frac{0.5\left(1-0.36z^{-2}\right)}{1 + 0.1 z^{-1} - 0.72 z^{-2}} $$
 
 To implement this filter, we factor the numerator and denominator polynomials as[^u72:note:7]
 
-$$H(z) = \frac{0.5\left(1+0.6z^{-1}\right)\left(1-0.6z^{-1}\right)}{\left(1+0.9z^{-1}\right)\left(1-0.8z^{-1}\right)} $$ (eq:u72:21)
+$$H(z) = \frac{0.5\left(1+0.6z^{-1}\right)\left(1-0.6z^{-1}\right)}{\left(1+0.9z^{-1}\right)\left(1-0.8z^{-1}\right)} $$ (eq:u72:25)
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -991,7 +991,7 @@ Download this model as [ex15.slx](matlab/ex15.slx).
 
 The general form of the transfer function of a Parallel Form Realization is 
 
-$$H(z) = K + H_1(z) + H_2(z) + \cdots + H_R(z)$$ (eq:u72:22)
+$$H(z) = K + H_1(z) + H_2(z) + \cdots + H_R(z)$$ (eq:u72:26)
 
 Relation {eq}`eq:u72:22` is implemented at the parallel blocks shown in {numre}`fig:u72:8`
 
@@ -1052,7 +1052,7 @@ $$H(z) = 0.25 + \frac{0.147z}{z+0.9} + \frac{0.103z}{z-0.8}$$
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-$$H(z) = 0.25 + \frac{0.147}{1+0.9z^{-1}} + \frac{0.103}{1-0.8z^{-1}}$$ (eq:u72:23)
+$$H(z) = 0.25 + \frac{0.147}{1+0.9z^{-1}} + \frac{0.103}{1-0.8z^{-1}}$$ (eq:u72:27)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -1156,7 +1156,7 @@ Hopefully you found the module interesting and will make use of some of your kno
 
 **Exam Preparation**
 
-Use the block diagram shown in {numref}`fig:u72:1` to validate {eq}`eq:u72:2` and {eq}`eq:u72:1`.
+Use the block diagram shown in {numref}`fig:u72:1` to validate {eq}`eq:u7.2:2` and {eq}`eq:u7.2:1`.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -1166,7 +1166,7 @@ Use the block diagram shown in {numref}`fig:u72:1` to validate {eq}`eq:u72:2` an
 
 ### Exercise 7.2.2
 
-Use the block diagram shown in {numref}`fig:u72:4` to validate {eq}`eq:u72:18`. Write down the equivalent difference equation.
+Use the block diagram shown in {numref}`fig:u72:4` to validate {eq}`eq:7.2:18`. Write down the equivalent difference equation.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 

@@ -768,12 +768,12 @@ y[n] + {a_1}y[n - 1] + {a_2}y[n - 2] +  \cdots  + {a_k}y[n - k]\\
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>r =
    0.7500 - 0.5000i
    0.7500 + 0.5000i
-p =
-   0.2500 + 0.2500i
-   0.2500 - 0.2500i
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>k =
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p =
+   0.2500 + 0.2500i
+   0.2500 - 0.2500i
+k =
      1
 </pre></div>
 </div>
@@ -830,7 +830,7 @@ p =
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/477ae28c27d3d146c5ff46c2b7b4792c1899f547d1162ae99a0e06a9180a7e21.png" src="../../_images/477ae28c27d3d146c5ff46c2b7b4792c1899f547d1162ae99a0e06a9180a7e21.png" />
+<img alt="../../_images/777a073bc4e7a195e3ae2c9822372f6c35db4d97187c1d17ab55643b3646019f.png" src="../../_images/777a073bc4e7a195e3ae2c9822372f6c35db4d97187c1d17ab55643b3646019f.png" />
 </div>
 </div>
 </section>
@@ -847,7 +847,7 @@ p =
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e6826d9f9f0af1af210a02d9edec10527622800e74b0889c0e66e4ea539268bb.png" src="../../_images/e6826d9f9f0af1af210a02d9edec10527622800e74b0889c0e66e4ea539268bb.png" />
+<img alt="../../_images/384d4983e4e81baa40e1e18337d25053f2ffa8d4c146a38fe33e20f3cfc33931.png" src="../../_images/384d4983e4e81baa40e1e18337d25053f2ffa8d4c146a38fe33e20f3cfc33931.png" />
 </div>
 </div>
 </section>
@@ -918,7 +918,9 @@ Y(z) = H(z){U_0}(z) &amp;=&amp; \frac{z^2 + z}{z^2 - 0.5z + 0.125}.\frac{z}{z - 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -------------------
-  z^2 - 0.5 z + 0.125
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  z^2 - 0.5 z + 0.125
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
@@ -944,7 +946,7 @@ Y(z) = H(z){U_0}(z) &amp;=&amp; \frac{z^2 + z}{z^2 - 0.5z + 0.125}.\frac{z}{z - 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ff7e55ffc1c938f0b51c45732c8fb5f0ab320e05c66dc542581b35e7d3c036bf.png" src="../../_images/ff7e55ffc1c938f0b51c45732c8fb5f0ab320e05c66dc542581b35e7d3c036bf.png" />
+<img alt="../../_images/bbe57055bf6d90634c2acf980d09fa9398e88fd037bd8b10e2a80ae8c1ee8372.png" src="../../_images/bbe57055bf6d90634c2acf980d09fa9398e88fd037bd8b10e2a80ae8c1ee8372.png" />
 </div>
 </div>
 </section>
@@ -996,64 +998,6 @@ Y(z) = H(z){U_0}(z) &amp;=&amp; \frac{z^2 + z}{z^2 - 0.5z + 0.125}.\frac{z}{z - 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> C2D  Converts continuous-time dynamic system to discrete time.
- 
-    SYSD = C2D(SYSC,TS,METHOD) computes a discrete-time model SYSD with
-    sample time TS that approximates the continuous-time model SYSC.
-    The string METHOD selects the discretization method among the following:
-       &#39;zoh&#39;           Zero-order hold on the inputs
-       &#39;foh&#39;           Linear interpolation of inputs
-       &#39;impulse&#39;       Impulse-invariant discretization
-       &#39;tustin&#39;        Bilinear (Tustin) approximation.
-       &#39;matched&#39;       Matched pole-zero method (for SISO systems only).
-       &#39;least-squares&#39; Least-squares minimization of the error between
-                       frequency responses of the continuous and discrete
-                       systems (for SISO systems only).
-       &#39;damped&#39;        Damped Tustin approximation based on TRBDF2 formula
-                       (sparse models only).
-    The default is &#39;zoh&#39; when METHOD is omitted. The sample time TS should
-    be specified in the time units of SYSC (see &quot;Tim
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eUnit&quot; property).
- 
-    C2D(SYSC,TS,OPTIONS) gives access to additional discretization options. 
-    Use C2DOPTIONS to create and configure the option set OPTIONS. For 
-    example, you can specify a prewarping frequency for the Tustin method by:
-       opt = c2dOptions(&#39;Method&#39;,&#39;tustin&#39;,&#39;PrewarpFrequency&#39;,.5);
-       sysd = c2d(sysc,.1,opt);
- 
-    For state-space models,
-       [SYSD,G] = C2D(SYSC,Ts,METHOD)
-    also returns the matrix G mapping the states xc(t) of SYSC to the states 
-    xd[k] of SYSD:
-       xd[k] = G * [xc(k*Ts) ; u[k]]
-    Given an initial condition x0 for SYSC and an initial input value u0=u(0), 
-    the equivalent initial condition for SYSD is (assuming u(t)=0 for t&lt;0):
-       xd[0] = G * [x0;u0] .
- 
-    For gridded LTV/LPV models (see ssInterpolant), C2D discretizes the LTI
-    model at each grid point and interpolates the resulting discrete-time
-    data. To interpolate the continuous-time data instead, first convert
-    the gridded model to LTVSS or LPVSS. For all other LTV/LPV mode
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ls, C2D
-    uses the Tustin method which amounts to fixed-step integration with the
-    trapezoidal rule.
- 
-    See also C2DOPTIONS, D2C, D2D, SSINTERPOLANT, LTVSS, LPVSS, DYNAMICSYSTEM.
-
-    Documentation for c2d
-       doc c2d
-
-    Other uses of c2d
-
-       DynamicSystem/c2d    ltipack.tfdata/c2d
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1083,12 +1027,6 @@ Y(z) = H(z){U_0}(z) &amp;=&amp; \frac{z^2 + z}{z^2 - 0.5z + 0.125}.\frac{z}{z - 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>wc =
-   1.2566e+05
-</pre></div>
-</div>
-</div>
 </div>
 <div class="math notranslate nohighlight">
 \[\omega_c = 125.6637\times 10^3\;\mathrm{rad/s}\]</div>
@@ -1099,27 +1037,6 @@ Y(z) = H(z){U_0}(z) &amp;=&amp; \frac{z^2 + z}{z^2 - 0.5z + 0.125}.\frac{z}{z - 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Hs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">wc</span>^<span class="mi">2</span><span class="p">,[</span><span class="mi">1</span><span class="w"> </span><span class="n">wc</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">wc</span>^<span class="mi">2</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hs =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           1.579e10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ---------------------------
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  s^2 + 1.777e05 s + 1.579e10
- 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
 </pre></div>
 </div>
 </div>
@@ -1137,9 +1054,6 @@ Y(z) = H(z){U_0}(z) &amp;=&amp; \frac{z^2 + z}{z^2 - 0.5z + 0.125}.\frac{z}{z - 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/acb4a125b4c9fcb8520c2889ba773af560df097c33c9a651035b3641a597ae6c.png" src="../../_images/acb4a125b4c9fcb8520c2889ba773af560df097c33c9a651035b3641a597ae6c.png" />
-</div>
 </div>
 </section>
 <section id="sampling-frequency">
@@ -1151,24 +1065,12 @@ Y(z) = H(z){U_0}(z) &amp;=&amp; \frac{z^2 + z}{z^2 - 0.5z + 0.125}.\frac{z}{z - 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w_stop =
-   1.2566e+07
-</pre></div>
-</div>
-</div>
 </div>
 <p>To avoid aliasing, we should choose a sampling frequency twice this = ?</p>
 <p><span class="math notranslate nohighlight">\(\omega_s = 2\times \omega_\mathrm{stop}\)</span> rad/s.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ws</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="w"> </span><span class="n">w_stop</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ws =
-   2.5133e+07
 </pre></div>
 </div>
 </div>
@@ -1182,12 +1084,6 @@ Y(z) = H(z){U_0}(z) &amp;=&amp; \frac{z^2 + z}{z^2 - 0.5z + 0.125}.\frac{z}{z - 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fs =
-     4000000
-</pre></div>
-</div>
-</div>
 </div>
 <div class="math notranslate nohighlight">
 \[f_s = 4\;\mathrm{MHz}\]</div>
@@ -1196,12 +1092,6 @@ Y(z) = H(z){U_0}(z) &amp;=&amp; \frac{z^2 + z}{z^2 - 0.5z + 0.125}.\frac{z}{z - 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Ts</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ts =
-   2.5000e-07
 </pre></div>
 </div>
 </div>
@@ -1218,30 +1108,6 @@ Y(z) = H(z){U_0}(z) &amp;=&amp; \frac{z^2 + z}{z^2 - 0.5z + 0.125}.\frac{z}{z - 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hz =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0.0004862 z + 0.0004791
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -----------------------
-  z^2 - 1.956 z + 0.9565
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample time: 2.5e-07 seconds
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Discrete-time transfer function.
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="step-response">
@@ -1251,9 +1117,6 @@ Y(z) = H(z){U_0}(z) &amp;=&amp; \frac{z^2 + z}{z^2 - 0.5z + 0.125}.\frac{z}{z - 
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">step</span><span class="p">(</span><span class="n">Hz</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/788572e8f4f4d70135bad8c297dfb3cd21e488f49ac446e0a2ac93d0f3f7dcee.png" src="../../_images/788572e8f4f4d70135bad8c297dfb3cd21e488f49ac446e0a2ac93d0f3f7dcee.png" />
 </div>
 </div>
 </section>
