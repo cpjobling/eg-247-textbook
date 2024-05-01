@@ -1193,7 +1193,8 @@ The frequency response for this filter (plotted against $f/(f_s/2)$) is shown in
 :::{figure-md} fig:u72:ex7.2.2
 <img src="pictures/ex724.png" alt="Frequency response for Example 7.2.4" width="50%" />
 
-::: Frequency response for Example 7.2.4
+Frequency response for Example 7.2.4
+:::
 
 a) What type of filter is this?
 
