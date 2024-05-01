@@ -912,7 +912,7 @@ $$H(z) = H_1(z)\cdot H_2(z)\cdots H_R(z)$$ (eq:u72:24)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-Relation {eq}`eq:u72:20` is implemented as the cascaded blocks shown in {numref}`fig:u72:6`
+Relation {eq}`eq:u72:24` is implemented as the cascaded blocks shown in {numref}`fig:u72:6`
 
 :::{figure-md} fig:u72:6
 <img src="pictures/series.png" alth="Series Form Realization as cascaded blocks" width="100%" />
