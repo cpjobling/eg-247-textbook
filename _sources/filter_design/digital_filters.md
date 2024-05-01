@@ -892,7 +892,7 @@ ex14
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-::: {figure-md} fig:u72:4
+::: {figure-md} fig:u72:5
 <img src="pictures/ex14.png" alt="Direct Form II Realization of the Simulink implementation of Example 14" width="100%" />
 
 Model for Example 14
@@ -912,9 +912,9 @@ $$H(z) = H_1(z)\cdot H_2(z)\cdots H_R(z)$$ (eq:u72:24)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-Relation {eq}`eq:u72:20` is implemented as the cascaded blocks shown in {numref}`fig:u72:5`
+Relation {eq}`eq:u72:20` is implemented as the cascaded blocks shown in {numref}`fig:u72:6`
 
-:::{figure-md} fig:u72:5
+:::{figure-md} fig:u72:6
 <img src="pictures/series.png" alth="Series Form Realization as cascaded blocks" width="100%" />
 
 Series Form Realization
@@ -922,7 +922,7 @@ Series Form Realization
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-{numref}`fig:u72:6` shows the Series Form Realization of a second-order digital filter.
+{numref}`fig:u72:7` shows the Series Form Realization of a second-order digital filter.
 
 ```{code-cell}
 ---
@@ -934,7 +934,7 @@ series_form_2nd
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-:::{figure-md} fig:u72:6
+:::{figure-md} fig:u72:7
 <img src="pictures/series_2nd.png" alth="Series Form Realization of a second-order digital filter" width="100%" />
 
 Series Form Realization of a second-order digital filter
@@ -993,7 +993,7 @@ The general form of the transfer function of a Parallel Form Realization is
 
 $$H(z) = K + H_1(z) + H_2(z) + \cdots + H_R(z)$$ (eq:u72:26)
 
-Relation {eq}`eq:u72:22` is implemented at the parallel blocks shown in {numre}`fig:u72:8`
+Relation {eq}`eq:u72:26` is implemented as the parallel blocks shown in {numre}`fig:u72:8`
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -1056,7 +1056,7 @@ $$H(z) = 0.25 + \frac{0.147}{1+0.9z^{-1}} + \frac{0.103}{1-0.8z^{-1}}$$ (eq:u72:
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-The model and input and output waveforms are shown in {numref}`fig:u72:8`.
+The model and input and output waveforms are shown in {numref}`fig:u72:9`.
 
 ```{code-cell}
 ---
@@ -1068,7 +1068,7 @@ ex16
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-:::{figure-md} fig:u72:8
+:::{figure-md} fig:u72:9
 <img src="pictures/ex16.png" alt="Parallel Form Realization of the digital filter of Example 16" width="100%" />
 
 Model for Example 16
@@ -1097,11 +1097,11 @@ dfd_block
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-When this is done, the **Block Parameters** dialogue box appears as shown in {numref}`fig:u72:9`.
+When this is done, the **Block Parameters** dialogue box appears as shown in {numref}`fig:u72:10`.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-:::{figure-md} fig:u72:9
+:::{figure-md} fig:u72:10
 <img src="pictures/dfd_block.png" alt="Screenshot of the Digital Filter Design Block Parameters dialogue box" width="100%" />
 
 The Digital Filter Design Block Parameters dialogue box
