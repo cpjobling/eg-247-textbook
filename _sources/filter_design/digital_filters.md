@@ -1188,7 +1188,7 @@ A digital filter with cutoff frequency of 100 Hz for a signal sampled at 1 kHz h
 
 $$H(z) = \frac{0.6401   -1.1518z^{-1}   + 0.6401z^{-2}}{1	-1.0130 z^{-1}    + 0.4190z^{-2}} $$
 
-The frequency response for this filter (plotted against $f/(fs/2)$) is shown in {numref}`fig:u72:ex7.2.2`.
+The frequency response for this filter (plotted against $f/(f_s/2)$) is shown in {numref}`fig:u72:ex7.2.2`.
 
 :::{figure-md} fig:u72:ex7.2.2
 <img src="pictures/ex724.png" alt="Frequency response for Example 7.2.4" width="50%" />
