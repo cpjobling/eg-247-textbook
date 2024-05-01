@@ -922,7 +922,7 @@ Series Form Realization
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-{numref}`fig:u72:7` shows the Series Form Realization of a second-order digital filter.
+{numref}`fig:u72:6a` shows the Series Form Realization of a second-order digital filter.
 
 ```{code-cell}
 ---
@@ -934,7 +934,7 @@ series_form_2nd
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-:::{figure-md} fig:u72:7
+:::{figure-md} fig:u72:6a
 <img src="pictures/series_2nd.png" alth="Series Form Realization of a second-order digital filter" width="100%" />
 
 Series Form Realization of a second-order digital filter
