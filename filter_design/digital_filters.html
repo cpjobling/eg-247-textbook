@@ -487,11 +487,15 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#realization">2. Realization</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-of-digital-filters">Implementation of digital filters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-of-digital-filters">Implementation of digital filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#recursive-realization">Recursive realization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#non-recursive-realization">Non-recursive realization</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#digital-filter-design-methods">Digital filter design methods</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-impulse-invariant-method">1. The <em>impulse invariant method</em></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-step-invariant-method">2. The <em>step invariant method</em></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bilinear-transform-method">3. The <em>bilinear transform method</em></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bilinear-transformation-method">3. The <em>bilinear transformation method</em></a></li>
 </ul>
 </li>
 </ul>
@@ -521,6 +525,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-band-pass-filters">For Band-Pass Filters</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-band-elimination-filters">For Band-Elimination Filters</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Example 13</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#a">13(a)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#b">13(b)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#c">13(c)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#d">13(d)</a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Solution</a></li>
 </ul>
 </li>
@@ -569,6 +577,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="unit-7-2-designing-digital-filters-in-matlab-and-simulink">
 <span id="unit7-2"></span><h1>Unit 7.2: Designing Digital Filters in MATLAB and Simulink<a class="headerlink" href="#unit-7-2-designing-digital-filters-in-matlab-and-simulink" title="Permalink to this heading">#</a></h1>
+<p>You can view the notes for this presentation as a webpage (<a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/filter_design/digital_filters.html">HTML</a>).</p>
 <section id="colophon">
 <h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
@@ -632,27 +641,29 @@ document.write(`
 <p>Digital filters can also be used to perform other functions, such as integration, differentiation, and estimation.</p>
 <p>The input-output <em>difference equation</em> that relates the output and input can be expressed in the discrete-time (DT) domain as a summation of the form</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-1">
-<span class="eqno">(37)<a class="headerlink" href="#equation-eq-7-2-1" title="Permalink to this equation">#</a></span>\[y[n] = \sum_{i=0}^{k}b_i y[n - i]-\sum_{i=0}^{k}a_i y[n - i]\]</div>
+<span class="eqno">(37)<a class="headerlink" href="#equation-eq-7-2-1" title="Permalink to this equation">#</a></span>\[y[n] = \sum_{i=0}^{k}b_i x[n - i]-\sum_{i=0}^{k}a_i y[n - i]\]</div>
 <p>or, as a Z-transform as</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-2">
-<span class="eqno">(38)<a class="headerlink" href="#equation-eq-7-2-2" title="Permalink to this equation">#</a></span>\[G(z) = \frac{N(z)}{D(z)} = \frac{\displaystyle\sum_{i=0}^{k}b_i z^{-i}}{1 + \displaystyle\sum_{i=0}^{k}a_i z^{-i}}\]</div>
-<p>Therefore, the design of a digital filter ro perform a desired function, entails the determination of the coefficients <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(a_i\)</span>.</p>
+<span class="eqno">(38)<a class="headerlink" href="#equation-eq-7-2-2" title="Permalink to this equation">#</a></span>\[H(z) = \frac{Y(z)}{X(z)} = \frac{\displaystyle\sum_{i=0}^{k}b_i z^{-i}}{1 + \displaystyle\sum_{i=0}^{k}a_i z^{-i}}\]</div>
+<p>Therefore, the design of a digital filter to perform a desired function, entails the determination of the coefficients <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(a_i\)</span>.</p>
 <section id="classification-of-digital-filters">
 <span id="unit7-2-classification"></span><h3>Classification of digital filters<a class="headerlink" href="#classification-of-digital-filters" title="Permalink to this heading">#</a></h3>
 <p>Digital filters are classified in terms of the duration of the impulse response, and in terms of realization.</p>
 <section id="impulse-response-duration">
 <h4>1. Impulse response duration<a class="headerlink" href="#impulse-response-duration" title="Permalink to this heading">#</a></h4>
 <p>a). An <em>infinite impulse response</em> (IIR) filter as an infinite number of samples in its impulse response <span class="math notranslate nohighlight">\(h[n]\)</span>.</p>
-<p>b). A <em>finite impulse response</em> (FIR) filter as an finite number of samples in its impulse response <span class="math notranslate nohighlight">\(h[n]\)</span>.</p>
+<p>b). A <em>finite impulse response</em> (FIR) filter as a finite number of samples in its impulse response <span class="math notranslate nohighlight">\(h[n]\)</span>.</p>
 </section>
 <section id="realization">
 <h4>2. Realization<a class="headerlink" href="#realization" title="Permalink to this heading">#</a></h4>
 <p>a). In a <em>recursive realization</em> digital filter, the output depends on the input and the <em>previous</em> values of the output. In a recursive digital filter, both the coefficients <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(a_i\)</span> are present.</p>
-<p>b). In a <em>non-recursive realization</em> digital filter, the output depends on present and past value of the input only. In a non-recursive digital filter, only the coefficients <span class="math notranslate nohighlight">\(b_i\)</span> are present, i.e. <span class="math notranslate nohighlight">\(a_i=0\)</span>.</p>
+<p>b). In a <em>non-recursive realization</em> digital filter, the output depends on present and past values of the input only. In a non-recursive digital filter, only the coefficients <span class="math notranslate nohighlight">\(b_i\)</span> are present, i.e. <span class="math notranslate nohighlight">\(a_i=0\)</span>.</p>
 </section>
 </section>
 <section id="implementation-of-digital-filters">
 <h3>Implementation of digital filters<a class="headerlink" href="#implementation-of-digital-filters" title="Permalink to this heading">#</a></h3>
+<section id="recursive-realization">
+<h4>Recursive realization<a class="headerlink" href="#recursive-realization" title="Permalink to this heading">#</a></h4>
 <p><a class="reference internal" href="#fig-u72-1"><span class="std std-numref">Fig. 14</span></a> shows a Simulink model of a third-order (3-delay element or 3-tap) recursive realization of a digital filter<a class="footnote-reference brackets" href="#u72-note-1" id="id2">1</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -668,6 +679,9 @@ document.write(`
 </figcaption>
 </figure>
 <p>Download Simulink model <a class="reference download internal" download="" href="../_downloads/30da42faf2ff15d17921d08610eaf622/nonrecursive.slx"><span class="xref download myst">recursive.slx</span></a></p>
+</section>
+<section id="non-recursive-realization">
+<h4>Non-recursive realization<a class="headerlink" href="#non-recursive-realization" title="Permalink to this heading">#</a></h4>
 <p><a class="reference internal" href="#fig-u72-2"><span class="std std-numref">Fig. 15</span></a> shows a Simulink model of a third-order non-recursive realization of a digital filter<a class="footnote-reference brackets" href="#u72-note-2" id="id3">2</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -685,6 +699,7 @@ document.write(`
 <p>Download Simulink model <a class="reference download internal" download="" href="../_downloads/30da42faf2ff15d17921d08610eaf622/nonrecursive.slx"><span class="xref download myst">nonrecursive.slx</span></a></p>
 <p>Generally, IIR filters are implemented by a recursive realization, and FIR filters are implemented by a non-recursive implementation.</p>
 </section>
+</section>
 <section id="digital-filter-design-methods">
 <h3>Digital filter design methods<a class="headerlink" href="#digital-filter-design-methods" title="Permalink to this heading">#</a></h3>
 <p>As demonstrated in <a class="reference internal" href="analogue_filters.html#unit7-1"><span class="std std-ref">Unit 7.1: Designing Analogue Filters</span></a>, filter-design methods have been established and analogue prototypes have been published. Thus, we can choose an appropriate analogue prototype to satisfy the requirements.</p>
@@ -699,8 +714,8 @@ document.write(`
 <h4>2. The <em>step invariant method</em><a class="headerlink" href="#the-step-invariant-method" title="Permalink to this heading">#</a></h4>
 <p>Produces a digital filter <span class="math notranslate nohighlight">\(H(z)\)</span> whose step response consists of the sampled values of the step response of the equivalent analogue filter <span class="math notranslate nohighlight">\(H(s)\)</span>.</p>
 </section>
-<section id="the-bilinear-transform-method">
-<h4>3. The <em>bilinear transform method</em><a class="headerlink" href="#the-bilinear-transform-method" title="Permalink to this heading">#</a></h4>
+<section id="the-bilinear-transformation-method">
+<h4>3. The <em>bilinear transformation method</em><a class="headerlink" href="#the-bilinear-transformation-method" title="Permalink to this heading">#</a></h4>
 <p>This uses the transformation<a class="footnote-reference brackets" href="#u72-note-3" id="id4">3</a></p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-3">
 <span class="eqno">(39)<a class="headerlink" href="#equation-eq-7-2-3" title="Permalink to this equation">#</a></span>\[s = \frac{2}{T_s}\cdot\frac{z-1}{z+1}\]</div>
@@ -711,13 +726,15 @@ document.write(`
 </section>
 <section id="the-bilinear-transformation">
 <span id="unit7-2-bilinear"></span><h2>The Bilinear Transformation<a class="headerlink" href="#the-bilinear-transformation" title="Permalink to this heading">#</a></h2>
-<p>We recall from <a class="reference internal" href="../dt_systems/2/z_transform.html#s-to-z"><span class="std std-ref">Relationship Between the Laplace and Z-Transform</span></a> that since <span class="math notranslate nohighlight">\(z = e^{sT_s}\)</span>, <span class="math notranslate nohighlight">\(s = 1/T_s \log_e z\)</span>, then a DT transfor function <span class="math notranslate nohighlight">\(H(sz)\)</span> can be determined from a CT transfer function <span class="math notranslate nohighlight">\(H(s)\)</span> using the mapping:</p>
+<p>We recall from <a class="reference internal" href="../dt_systems/2/z_transform.html#s-to-z"><span class="std std-ref">Relationship Between the Laplace and Z-Transform</span></a> that since <span class="math notranslate nohighlight">\(z = e^{sT_s}\)</span>, <span class="math notranslate nohighlight">\(s = 1/T_s \log_e z\)</span>, then a DT transfer function <span class="math notranslate nohighlight">\(H(z)\)</span> can be determined from a CT transfer function <span class="math notranslate nohighlight">\(H(s)\)</span> using the mapping:</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-4">
 <span class="eqno">(40)<a class="headerlink" href="#equation-eq-7-2-4" title="Permalink to this equation">#</a></span>\[H(z) = \left.H(s)\right|_{s = \frac{1}{T_s} \log_e z}\]</div>
 <p>But the relation <span class="math notranslate nohighlight">\(s = 1/T_s \log_e z\)</span> is a multi-valued transformation, and as such, cannot be used to derive a rational polynomial in <span class="math notranslate nohighlight">\(z\)</span>.</p>
 <p>It can be approximated as</p>
+<div class="math notranslate nohighlight">
+\[s = \frac{1}{T_s} \log_e z = \frac{2}{T_s} \left[\frac{z-1}{z+1}  + \frac{1}{3} \left(\frac{z-1}{z+1} \right)^3 + \frac{1}{5} \left(\frac{z-1}{z+1} \right)^5 + \frac{1}{7} \left(\frac{z-1}{z+1} \right)^7 + \cdots\right]\]</div>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-5">
-<span class="eqno">(41)<a class="headerlink" href="#equation-eq-7-2-5" title="Permalink to this equation">#</a></span>\[s = \frac{1}{T_s} \log_e z = \frac{2}{T_s} \left[\frac{z-1}{z+1}  + \frac{1}{3} \left(\frac{z-1}{z+1} \right)^3 + \frac{1}{5} \left(\frac{z-1}{z+1} \right)^5 + \frac{1}{7} \left(\frac{z-1}{z+1} \right)^7 + \cdots\right] \approx \frac{2}{T_s} \cdot \frac{z-1}{z+1} \]</div>
+<span class="eqno">(41)<a class="headerlink" href="#equation-eq-7-2-5" title="Permalink to this equation">#</a></span>\[s \approx \frac{2}{T_s} \cdot \frac{z-1}{z+1} \]</div>
 <p>Substitution of <a class="reference internal" href="#equation-eq-7-2-5">(41)</a> into <a class="reference internal" href="#equation-eq-7-2-4">(40)</a> yields</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-6">
 <span class="eqno">(42)<a class="headerlink" href="#equation-eq-7-2-6" title="Permalink to this equation">#</a></span>\[H(z) = \left.G(s)\right|_{s = \frac{2}{T_s} \cdot \frac{z-1}{z+1}} \]</div>
@@ -735,7 +752,9 @@ document.write(`
 \[j\omega_a = \frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s } + 1}\]</div>
 <p>or</p>
 <div class="math notranslate nohighlight">
-\[\omega_a = \frac{1}{J} \cdot \frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s } + 1} = \frac{2}{T_s}\cdot \frac{1/(j2)}{1/2} \cdot \frac{e^{j\omega_d T_s/2} - e^{-j\omega_d T_s/2}}{e^{j\omega_d T_s/2} + e^{-j\omega_d T_s/2}} = \frac{2}{T_s} \cdot \frac{\sin\left(\omega_d T_s\right)/2}{\cos\left(\omega_d T_s\right)/2} \]</div>
+\[\omega_a = \frac{1}{J} \cdot \frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s } + 1} = \frac{2}{T_s}\cdot \frac{1/(j2)}{1/2} \cdot \frac{e^{j\omega_d T_s/2} - e^{-j\omega_d T_s/2}}{e^{j\omega_d T_s/2} + e^{-j\omega_d T_s/2}}\]</div>
+<div class="math notranslate nohighlight">
+\[\omega_a = \frac{2}{T_s} \cdot \frac{\sin\left(\omega_d T_s\right)/2}{\cos\left(\omega_d T_s\right)/2} \]</div>
 <p>or</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-8">
 <span class="eqno">(44)<a class="headerlink" href="#equation-eq-7-2-8" title="Permalink to this equation">#</a></span>\[\omega_a = \frac{2}{T_s} \tan\left(\frac{\omega_d T_s}{2} \right)\]</div>
@@ -800,7 +819,7 @@ document.write(`
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[T_s = \frac{1}{f_s} = \frac{1}{200}.\]</div>
-<p>Denoting the analogue cuttoff (3 dB) frequency as <span class="math notranslate nohighlight">\(\omega_{ac}\)</span>, we obtain</p>
+<p>Denoting the analogue cutoff (3 dB) frequency as <span class="math notranslate nohighlight">\(\omega_{ac}\)</span>, we obtain</p>
 <div class="math notranslate nohighlight">
 \[\omega_{ac} = 400 \tan \left(\frac{2\pi\times 20}{2\times 200} \right) = 400\tan\left(0.1\pi\right) \approx 130\,\mathrm{rad/s}\]</div>
 <p>or</p>
@@ -897,7 +916,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7a92fac5fbbf8345863db38d35fee30d8b9613e51ded47b7a68d8155e5134961.png" src="../_images/7a92fac5fbbf8345863db38d35fee30d8b9613e51ded47b7a68d8155e5134961.png" />
+<img alt="../_images/0faaf2f24ade91e85f18a0d6967f510ef57705c31145980ae80354573a04ce7c.png" src="../_images/0faaf2f24ade91e85f18a0d6967f510ef57705c31145980ae80354573a04ce7c.png" />
 </div>
 </div>
 <p>We now plot the analogue equivalent to compare the digital to the analogue frequency response.</p>
@@ -912,7 +931,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8a6bb874b7d32fd121a1aa731dac692216d85f3365522a994b4d31dd5f728115.png" src="../_images/8a6bb874b7d32fd121a1aa731dac692216d85f3365522a994b4d31dd5f728115.png" />
+<img alt="../_images/04077e4e8e037b7fff6ef224c4f239da0ad72e0690e170f4873f06992c11455a.png" src="../_images/04077e4e8e037b7fff6ef224c4f239da0ad72e0690e170f4873f06992c11455a.png" />
 </div>
 </div>
 <p>Comparing the digital filter plot with the equivalent analogue filter plot, we observe that the magnitude is greater than <span class="math notranslate nohighlight">\(-3\)</span> dB for frequencies less than <span class="math notranslate nohighlight">\(20\)</span> rad/s, and is smaller than <span class="math notranslate nohighlight">\(-10\)</span> dB for frequencies greater than <span class="math notranslate nohighlight">\(40\)</span> Hz. Therefore, both the digital and analogue low-pass filters meet the specified requirements.<a class="footnote-reference brackets" href="#u72-note-4" id="id5">4</a></p>
@@ -924,7 +943,7 @@ document.write(`
 <p>An analogue filter transfer function can be mapped to a digital transfer function directly with the MATLAB <a class="reference external" href="https://uk.mathworks.com/help/signal/ref/bilinear.html"><code class="docutils literal notranslate"><span class="pre">bilinear</span></code></a> function. The procedure is illustrated with the following example.</p>
 <section id="example-13">
 <span id="u72-ex-13"></span><h4>Example 13<a class="headerlink" href="#example-13" title="Permalink to this heading">#</a></h4>
-<p>Use the MATLAB <code class="docutils literal notranslate"><span class="pre">bilinear</span></code> function to derive the low-pass digital transfer function <span class="math notranslate nohighlight">\(H(z)\)</span> from a second-order Butterworth analogue filter with a <span class="math notranslate nohighlight">\(3\)</span> dB cutoff frequency at <span class="math notranslate nohighlight">\(50\)</span> Hz, ans sample rate <span class="math notranslate nohighlight">\(f_s = 500\)</span> Hz.</p>
+<p>Use the MATLAB <code class="docutils literal notranslate"><span class="pre">bilinear</span></code> function to derive the low-pass digital transfer function <span class="math notranslate nohighlight">\(H(z)\)</span> from a second-order Butterworth analogue filter with a <span class="math notranslate nohighlight">\(3\)</span> dB cutoff frequency at <span class="math notranslate nohighlight">\(50\)</span> Hz, and sample rate <span class="math notranslate nohighlight">\(f_s = 500\)</span> Hz.</p>
 <section id="id6">
 <h5>Solution<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h5>
 <p>We will use the following MATLAB script to produce the desired digital filter function:</p>
@@ -1004,14 +1023,26 @@ document.write(`
 <section id="id7">
 <span id="id8"></span><h4>Example 13<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h4>
 <p>The transfer functions <a class="reference internal" href="#equation-eq-7-2-16">(54)</a> through <a class="reference internal" href="#equation-eq-7-2-19">(57)</a>, describe different types of digital filters. Use the MATLAB <code class="docutils literal notranslate"><span class="pre">freqz</span></code> commmand to plot the magnitude versus radian frequency. What types of filter does each transfer function represent? What classes of filter are they?</p>
+<section id="a">
+<h5>13(a)<a class="headerlink" href="#a" title="Permalink to this heading">#</a></h5>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-16">
 <span class="eqno">(54)<a class="headerlink" href="#equation-eq-7-2-16" title="Permalink to this equation">#</a></span>\[H_1(z) = \frac{\left(2.8982 + 8.6946z^{-1} + 8.6946z^{-2} + 2.8982z^{-3}\right)\cdot 10^{-3}}{1 - 2.3741z^{-1} + 1.9294z^{-2} - 0.5321z^{-3}} \]</div>
+</section>
+<section id="b">
+<h5>13(b)<a class="headerlink" href="#b" title="Permalink to this heading">#</a></h5>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-17">
 <span class="eqno">(58)<a class="headerlink" href="#equation-eq-7-2-17" title="Permalink to this equation">#</a></span>\[H_2(z) = \frac{0.5276 - 1.5828z^{-1} + 1.5828z^{-2} - 0.5276z^{-3}}{1 - 1.7600z^{-1} + 1.1829z^{-2} - 0.2781z^{-3}} \]</div>
+</section>
+<section id="c">
+<h5>13(c)<a class="headerlink" href="#c" title="Permalink to this heading">#</a></h5>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-18">
 <span class="eqno">(59)<a class="headerlink" href="#equation-eq-7-2-18" title="Permalink to this equation">#</a></span>\[H_3(z) = \frac{\left(6.8482 - 13.6964z^{-2} + 6.8482z^{-4}\right)\cdot 10^{-4}}{1 + 3.3033z^{-1} + 4.5244z^{-2} + 3.1390z^{-3} + 0.9603z^{-4}}\]</div>
+</section>
+<section id="d">
+<h5>13(d)<a class="headerlink" href="#d" title="Permalink to this heading">#</a></h5>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-19">
 <span class="eqno">(57)<a class="headerlink" href="#equation-eq-7-2-19" title="Permalink to this equation">#</a></span>\[H_4(z) = \frac{0.9270-1.2079z^{-1}+0.9270z^{-2}}{1-1.2079z^{-1}+0.8541z^{-2}} \]</div>
+</section>
 <section id="id9">
 <h5>Solution<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h5>
 <p>The MATLAB script to plot each of the transfer functions of <a class="reference internal" href="#equation-eq-7-2-16">(54)</a> through <a class="reference internal" href="#equation-eq-7-2-19">(57)</a>, is given below where N = 512, i.e. the default value.</p>
@@ -1066,7 +1097,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f21a44957e9293afd19ee13588353320a20a3577aba7b52f8731597ac440569c.png" src="../_images/f21a44957e9293afd19ee13588353320a20a3577aba7b52f8731597ac440569c.png" />
+<img alt="../_images/53e216392318487fab8691fd443a986b9db449f66cd31d68f9c4d516bfbac3ae.png" src="../_images/53e216392318487fab8691fd443a986b9db449f66cd31d68f9c4d516bfbac3ae.png" />
 </div>
 </div>
 <p>It is clear that the filters are low-pass, high-pass, band-pass and band-stop. There is now ripple in the pass-band or stop band so they are all Butterworth filters.</p>
@@ -1076,7 +1107,7 @@ document.write(`
 </section>
 <section id="digital-filter-design-with-simulink">
 <span id="u72-simulink"></span><h2>Digital Filter Design with Simulink<a class="headerlink" href="#digital-filter-design-with-simulink" title="Permalink to this heading">#</a></h2>
-<p>As stated earlier in this unit, a digital filter is a computational process, or algorithm, that converts one sequence of numbers representing the input signal into another sequence of numbers representing the outpit signal.</p>
+<p>As stated earlier in this unit, a digital filter is a computational process, or algorithm, that converts one sequence of numbers representing the input signal into another sequence of numbers representing the output signal.</p>
 <p>To close out this unit and the module, we will explore Simulink models that can be used to implement digital filters, and present the <em>Digital Filter Design</em> block included in the <a class="reference external" href="https://uk.mathworks.com/help/dsp/index.html">Simulink DSP System Toolbox</a>, which can generate these models automatically.</p>
 <section id="the-direct-form-i-realization-of-a-digital-filter">
 <span id="u72-fd-direct-i"></span><h3>The Direct Form I Realization of a Digital Filter<a class="headerlink" href="#the-direct-form-i-realization-of-a-digital-filter" title="Permalink to this heading">#</a></h3>
@@ -1185,14 +1216,7 @@ document.write(`
 <p>The Simulink model and the input and output waveforms are shown in <a class="reference internal" href="#fig-u72-7"><span class="std std-numref">Fig. 21</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">fig15</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Error using eval</span>
-<span class=" -Color -Color-Red">Unrecognized function or variable &#39;fig15&#39;.</span>
-
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ex15</span>
 </pre></div>
 </div>
 </div>
@@ -1272,7 +1296,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>When this is done, the <strong>Block Parameters</strong> dialogue box appears as shown in <code class="xref std std-numref docutils literal notranslate"><span class="pre">ig:u72:9</span></code>.</p>
+<p>When this is done, the <strong>Block Parameters</strong> dialogue box appears as shown in <a class="reference internal" href="#fig-u72-9"><span class="std std-numref">Fig. 24</span></a>.</p>
 <figure class="align-default" id="fig-u72-9">
 <a class="reference internal image-reference" href="../_images/dfd_block.png"><img alt="Screenshot of the Digital Filter Design Block Parameters dialogue box" src="../_images/dfd_block.png" style="width: 100%;" /></a>
 <figcaption>
@@ -1335,7 +1359,7 @@ document.write(`
 <dd><p>Note the significant distortion of the digital filter response at high frequencies.</p>
 </dd>
 <dt class="label" id="u72-notes-5"><span class="brackets"><a class="fn-backref" href="#id10">5</a></span></dt>
-<dd><p>For a detailed discussion on overflow cinditions please refer to Section 10.5, Chapter 10, Page 10-6 of <span id="id19">[<a class="reference internal" href="../zbib.html#id23" title="Steven T. Karris. Digital Circuit Analysis and Design with an Introduction to CPLDs and FPGAs. Orchard Publications, Fremont, CA., first edition, 2005. ISBN 0-9744239-6-3.">Karris, 2005</a>]</span>.</p>
+<dd><p>For a detailed discussion on overflow conditions please refer to Section 10.5, Chapter 10, Page 10-6 of <span id="id19">[<a class="reference internal" href="../zbib.html#id23" title="Steven T. Karris. Digital Circuit Analysis and Design with an Introduction to CPLDs and FPGAs. Orchard Publications, Fremont, CA., first edition, 2005. ISBN 0-9744239-6-3.">Karris, 2005</a>]</span>.</p>
 </dd>
 <dt class="label" id="u72-notes-6"><span class="brackets"><a class="fn-backref" href="#id11">6</a></span></dt>
 <dd><p>The Direct Form-II is also known as the <strong>Canonical</strong> Form.</p>
@@ -1426,11 +1450,15 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#realization">2. Realization</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-of-digital-filters">Implementation of digital filters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-of-digital-filters">Implementation of digital filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#recursive-realization">Recursive realization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#non-recursive-realization">Non-recursive realization</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#digital-filter-design-methods">Digital filter design methods</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-impulse-invariant-method">1. The <em>impulse invariant method</em></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-step-invariant-method">2. The <em>step invariant method</em></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bilinear-transform-method">3. The <em>bilinear transform method</em></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bilinear-transformation-method">3. The <em>bilinear transformation method</em></a></li>
 </ul>
 </li>
 </ul>
@@ -1460,6 +1488,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-band-pass-filters">For Band-Pass Filters</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-band-elimination-filters">For Band-Elimination Filters</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Example 13</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#a">13(a)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#b">13(b)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#c">13(c)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#d">13(d)</a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Solution</a></li>
 </ul>
 </li>

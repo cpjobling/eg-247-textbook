@@ -17,6 +17,9 @@ kernelspec:
 (unit7.2)=
 # Unit 7.2: Designing Digital Filters in MATLAB and Simulink
 
+
+You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/filter_design/digital_filters.html)). 
+
 +++ {"slideshow": {"slide_type": "notes"}}
 
 ## Colophon
@@ -83,7 +86,7 @@ To continue your learning we recommend that you visit the following pages on the
 ```{code-cell}
 ---
 slideshow:
-  slide_type: slide
+  slide_type: notes
 ---
 format compact
 cd matlab
@@ -108,17 +111,17 @@ Digital filters can also be used to perform other functions, such as integration
 
 The input-output *difference equation* that relates the output and input can be expressed in the discrete-time (DT) domain as a summation of the form
 
-$$y[n] = \sum_{i=0}^{k}b_i y[n - i]-\sum_{i=0}^{k}a_i y[n - i]$$ (eq:7.2:1)
+$$y[n] = \sum_{i=0}^{k}b_i x[n - i]-\sum_{i=0}^{k}a_i y[n - i]$$ (eq:7.2:1)
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
 or, as a Z-transform as
 
-$$G(z) = \frac{N(z)}{D(z)} = \frac{\displaystyle\sum_{i=0}^{k}b_i z^{-i}}{1 + \displaystyle\sum_{i=0}^{k}a_i z^{-i}}$$ (eq:7.2:2)
+$$H(z) = \frac{Y(z)}{X(z)} = \frac{\displaystyle\sum_{i=0}^{k}b_i z^{-i}}{1 + \displaystyle\sum_{i=0}^{k}a_i z^{-i}}$$ (eq:7.2:2)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-Therefore, the design of a digital filter ro perform a desired function, entails the determination of the coefficients $b_i$ and $a_i$.
+Therefore, the design of a digital filter to perform a desired function, entails the determination of the coefficients $b_i$ and $a_i$.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -137,7 +140,7 @@ a). An *infinite impulse response* (IIR) filter as an infinite number of samples
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-b). A *finite impulse response* (FIR) filter as an finite number of samples in its impulse response $h[n]$.
+b). A *finite impulse response* (FIR) filter as a finite number of samples in its impulse response $h[n]$.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -149,27 +152,29 @@ a). In a *recursive realization* digital filter, the output depends on the input
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-b). In a *non-recursive realization* digital filter, the output depends on present and past value of the input only. In a non-recursive digital filter, only the coefficients $b_i$ are present, i.e. $a_i=0$.
+b). In a *non-recursive realization* digital filter, the output depends on present and past values of the input only. In a non-recursive digital filter, only the coefficients $b_i$ are present, i.e. $a_i=0$.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### Implementation of digital filters
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "subslide"}}
+
+#### Recursive realization
 
 {numref}`fig:u72:1` shows a Simulink model of a third-order (3-delay element or 3-tap) recursive realization of a digital filter[^u72:note:1]
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-[^u72:note:1]: Note that the block labelled $z^{-1}$ is a one unit delay $y[n] = x[n - 1]$; the triangular blocks are gains $y[n] = k x[n]$; and the circular blocks are summing points. Following the equations we have $w[n] = x[n] - a_1 w[n-1] - a_2 w[n-2] - a_3 w[n-3]$ and $y[n] = b_0 w[n] + b_1 w[n-1] + b_2 w[n-2] + b_3 w[n-3]$. It is left as an exercise for the reader to show that combining these two equations, taking Z-transforms, and eliminating $W(z)$, results in the transfer function $H(z) = Y(z)/X(z)$ given in {eq}`eq:7.2:2` and hence the difference equation of {eq}`eq:7.2:1`.
 
 ```{code-cell}
 ---
 slideshow:
-  slide_type: fragment
+  slide_type: '-'
 ---
 recursive
 ```
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+[^u72:note:1]: Note that the block labelled $z^{-1}$ is a one unit delay $y[n] = x[n - 1]$; the triangular blocks are gains $y[n] = k x[n]$; and the circular blocks are summing points. Following the equations we have $w[n] = x[n] - a_1 w[n-1] - a_2 w[n-2] - a_3 w[n-3]$ and $y[n] = b_0 w[n] + b_1 w[n-1] + b_2 w[n-2] + b_3 w[n-3]$. It is left as an exercise for the reader to show that combining these two equations, taking Z-transforms, and eliminating $W(z)$, results in the transfer function $H(z) = Y(z)/X(z)$ given in {eq}`eq:7.2:2` and hence the difference equation of {eq}`eq:7.2:1`.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -179,22 +184,24 @@ recursive
 Recursive digital filter realization in Simulink
 :::
 
-+++ {"slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "notes"}}
 
 Download Simulink model [recursive.slx](matlab/nonrecursive.slx)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
+#### Non-recursive realization
+
 {numref}`fig:u72:2` shows a Simulink model of a third-order non-recursive realization of a digital filter[^u72:note:2]
 
-+++ {"slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "notes"}}
 
 [^u72:note:2]: It is obvious from this figure that $y[n] = b_0 x[n] + b_1 x[n-1] + b_2 x[n-2] + b_3 x[n-3]$.
 
 ```{code-cell}
 ---
 slideshow:
-  slide_type: subslide
+  slide_type: '-'
 ---
 nonrecursive
 ```
@@ -211,7 +218,7 @@ Non-recursive digital filter realization in Simulink
 
 Download Simulink model [nonrecursive.slx](matlab/nonrecursive.slx)
 
-+++ {"slideshow": {"slide_type": "notes"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 Generally, IIR filters are implemented by a recursive realization, and FIR filters are implemented by a non-recursive implementation.
 
@@ -220,8 +227,6 @@ Generally, IIR filters are implemented by a recursive realization, and FIR filte
 ### Digital filter design methods
 
 As demonstrated in {ref}`unit7.1`, filter-design methods have been established and analogue prototypes have been published. Thus, we can choose an appropriate analogue prototype to satisfy the requirements.
-
-+++ {"slideshow": {"slide_type": "fragment"}}
 
 Transformation methods are also available to transform analogue prototypes into an equivalent digital filter.
 
@@ -247,7 +252,7 @@ Produces a digital filter $H(z)$ whose step response consists of the sampled val
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### 3. The *bilinear transform method*
+#### 3. The *bilinear transformation method*
 
 This uses the transformation[^u72:note:3]
 
@@ -268,11 +273,11 @@ In this unit, we will discuss, *and assess*, only the use of the blinear transfo
 (unit7.2:bilinear)=
 ## The Bilinear Transformation
 
-We recall from {ref}`s-to-z` that since $z = e^{sT_s}$, $s = 1/T_s \log_e z$, then a DT transfor function $H(sz)$ can be determined from a CT transfer function $H(s)$ using the mapping:
+We recall from {ref}`s-to-z` that since $z = e^{sT_s}$, $s = 1/T_s \log_e z$, then a DT transfer function $H(z)$ can be determined from a CT transfer function $H(s)$ using the mapping:
 
 $$H(z) = \left.H(s)\right|_{s = \frac{1}{T_s} \log_e z}$$ (eq:7.2:4)
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 But the relation $s = 1/T_s \log_e z$ is a multi-valued transformation, and as such, cannot be used to derive a rational polynomial in $z$.
 
@@ -280,7 +285,9 @@ But the relation $s = 1/T_s \log_e z$ is a multi-valued transformation, and as s
 
 It can be approximated as
 
-$$s = \frac{1}{T_s} \log_e z = \frac{2}{T_s} \left[\frac{z-1}{z+1}  + \frac{1}{3} \left(\frac{z-1}{z+1} \right)^3 + \frac{1}{5} \left(\frac{z-1}{z+1} \right)^5 + \frac{1}{7} \left(\frac{z-1}{z+1} \right)^7 + \cdots\right] \approx \frac{2}{T_s} \cdot \frac{z-1}{z+1} $$ (eq:7.2:5)
+$$s = \frac{1}{T_s} \log_e z = \frac{2}{T_s} \left[\frac{z-1}{z+1}  + \frac{1}{3} \left(\frac{z-1}{z+1} \right)^3 + \frac{1}{5} \left(\frac{z-1}{z+1} \right)^5 + \frac{1}{7} \left(\frac{z-1}{z+1} \right)^7 + \cdots\right]$$
+
+$$s \approx \frac{2}{T_s} \cdot \frac{z-1}{z+1} $$ (eq:7.2:5)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -313,13 +320,15 @@ That is,
 
 $$j\omega_a = \frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s } + 1}$$
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 or
 
-$$\omega_a = \frac{1}{J} \cdot \frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s } + 1} = \frac{2}{T_s}\cdot \frac{1/(j2)}{1/2} \cdot \frac{e^{j\omega_d T_s/2} - e^{-j\omega_d T_s/2}}{e^{j\omega_d T_s/2} + e^{-j\omega_d T_s/2}} = \frac{2}{T_s} \cdot \frac{\sin\left(\omega_d T_s\right)/2}{\cos\left(\omega_d T_s\right)/2} $$
+$$\omega_a = \frac{1}{J} \cdot \frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s } + 1} = \frac{2}{T_s}\cdot \frac{1/(j2)}{1/2} \cdot \frac{e^{j\omega_d T_s/2} - e^{-j\omega_d T_s/2}}{e^{j\omega_d T_s/2} + e^{-j\omega_d T_s/2}}$$
 
-+++ {"slideshow": {"slide_type": "subslide"}}
+$$\omega_a = \frac{2}{T_s} \cdot \frac{\sin\left(\omega_d T_s\right)/2}{\cos\left(\omega_d T_s\right)/2} $$
+
++++ {"slideshow": {"slide_type": "fragment"}}
 
 or
 
@@ -426,9 +435,9 @@ where
 
 $$T_s = \frac{1}{f_s} = \frac{1}{200}.$$
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
-Denoting the analogue cuttoff (3 dB) frequency as $\omega_{ac}$, we obtain
+Denoting the analogue cutoff (3 dB) frequency as $\omega_{ac}$, we obtain
 
 $$\omega_{ac} = 400 \tan \left(\frac{2\pi\times 20}{2\times 200} \right) = 400\tan\left(0.1\pi\right) \approx 130\,\mathrm{rad/s}$$
 
@@ -564,7 +573,7 @@ Comparing the digital filter plot with the equivalent analogue filter plot, we o
 
 [^u72:note:4]: Note the significant distortion of the digital filter response at high frequencies.
 
-+++ {"slideshow": {"slide_type": "notes"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 (u72:matlab_bilinear)=
 ### MATLAB bilinear function
@@ -576,7 +585,7 @@ An analogue filter transfer function can be mapped to a digital transfer functio
 (u72:ex:13)=
 #### Example 13
 
-Use the MATLAB `bilinear` function to derive the low-pass digital transfer function $H(z)$ from a second-order Butterworth analogue filter with a $3$ dB cutoff frequency at $50$ Hz, ans sample rate $f_s = 500$ Hz.
+Use the MATLAB `bilinear` function to derive the low-pass digital transfer function $H(z)$ from a second-order Butterworth analogue filter with a $3$ dB cutoff frequency at $50$ Hz, and sample rate $f_s = 500$ Hz.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -618,6 +627,8 @@ MATLAB provides us with a suite of functions that we need to design digital filt
 - `B` = $B(z)$, i.e. the numerator of the discrete transfer function $H(z) = B(z)/A(z)$
 
 - `A` = $A(z)$, i.e. the denominator of the discrete transfer function $H(z)$
+
++++ {"slideshow": {"slide_type": "notes"}}
 
 The MathWorks also provides a catalogue of filter design tools with examples in the [Filter Design Gallery](https://uk.mathworks.com/help/signal/ug/filter-design-gallery.html).
 
@@ -676,19 +687,27 @@ The MathWorks also provides a catalogue of filter design tools with examples in 
 
 The transfer functions {eq}`eq:7.2:16` through {eq}`eq:7.2:19`, describe different types of digital filters. Use the MATLAB `freqz` commmand to plot the magnitude versus radian frequency. What types of filter does each transfer function represent? What classes of filter are they?
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "subslide"}}
+
+##### 13(a)
 
 $$H_1(z) = \frac{\left(2.8982 + 8.6946z^{-1} + 8.6946z^{-2} + 2.8982z^{-3}\right)\cdot 10^{-3}}{1 - 2.3741z^{-1} + 1.9294z^{-2} - 0.5321z^{-3}} $$ (eq:7.2:16)
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
+##### 13(b)
+
 $$H_2(z) = \frac{0.5276 - 1.5828z^{-1} + 1.5828z^{-2} - 0.5276z^{-3}}{1 - 1.7600z^{-1} + 1.1829z^{-2} - 0.2781z^{-3}} $$ (eq:7.2:17)
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "subslide"}}
+
+##### 13(c)
 
 $$H_3(z) = \frac{\left(6.8482 - 13.6964z^{-2} + 6.8482z^{-4}\right)\cdot 10^{-4}}{1 + 3.3033z^{-1} + 4.5244z^{-2} + 3.1390z^{-3} + 0.9603z^{-4}}$$ (eq:7.2:18)
 
 +++ {"slideshow": {"slide_type": "fragment"}}
+
+##### 13(d)
 
 $$H_4(z) = \frac{0.9270-1.2079z^{-1}+0.9270z^{-2}}{1-1.2079z^{-1}+0.8541z^{-2}} $$ (eq:7.2:19)
 
@@ -766,7 +785,7 @@ It is clear that the filters are low-pass, high-pass, band-pass and band-stop. T
 (u72:simulink)=
 ## Digital Filter Design with Simulink
 
-As stated earlier in this unit, a digital filter is a computational process, or algorithm, that converts one sequence of numbers representing the input signal into another sequence of numbers representing the outpit signal.
+As stated earlier in this unit, a digital filter is a computational process, or algorithm, that converts one sequence of numbers representing the input signal into another sequence of numbers representing the output signal.
 
 To close out this unit and the module, we will explore Simulink models that can be used to implement digital filters, and present the *Digital Filter Design* block included in the [Simulink DSP System Toolbox](https://uk.mathworks.com/help/dsp/index.html), which can generate these models automatically.
 
@@ -780,12 +799,12 @@ The **Direct Form I Realization** of a second-order digital filter is shown in {
 ```{code-cell}
 ---
 slideshow:
-  slide_type: slide
+  slide_type: fragment
 ---
 dfir_df
 ```
 
-+++ {"slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "notes"}}
 
 ::: {figure-md} fig:u72:3
 <img src="pictures/dfir_df.png" alt="Direct Form I Realization of a second-order digital filter" width="100%" />
@@ -813,7 +832,7 @@ A disadvantage of the Direct Form I Realization digital filter is that it requir
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-[^u72:notes:5]: For a detailed discussion on overflow cinditions please refer to Section 10.5, Chapter 10, Page 10-6 of {cite}`karris_2005`.
+[^u72:notes:5]: For a detailed discussion on overflow conditions please refer to Section 10.5, Chapter 10, Page 10-6 of {cite}`karris_2005`.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -829,12 +848,12 @@ The **Direct Form II Realization**[^u72:notes:6] of a second-order digital filte
 ```{code-cell}
 ---
 slideshow:
-  slide_type: slide
+  slide_type: '-'
 ---
 dfiir_df
 ```
 
-+++ {"slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "notes"}}
 
 ::: {figure-md} fig:u72:4
 <img src="pictures/dfiir_df.png" alt="Direct Form II Realization of a second-order digital filter" width="100%" />
@@ -866,7 +885,7 @@ $$H(z) = \frac{1+1.5z^{-1}+1.02z^{-2}}{1 - 0.25 z^{-1} -0.75 z^{-2}} $$ (eq:u72:
 ```{code-cell}
 ---
 slideshow:
-  slide_type: fragment
+  slide_type: '-'
 ---
 ex14
 ```
@@ -891,7 +910,7 @@ For the Series Form Realization, the transfer function is expressed as a product
 
 $$H(z) = H_1(z)\cdot H_2(z)\cdots H_R(z)$$ (eq:u72:20)
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 Relation {eq}`eq:u72:20` is implemented as the cascaded blocks shown in {numref}`fig:u72:5`
 
@@ -908,7 +927,7 @@ Series Form Realization
 ```{code-cell}
 ---
 slideshow:
-  slide_type: fragment
+  slide_type: '-'
 ---
 series_form_2nd
 ```
@@ -949,7 +968,7 @@ The Simulink model and the input and output waveforms are shown in {numref}`fig:
 ```{code-cell}
 ---
 slideshow:
-  slide_type: subslide
+  slide_type: '-'
 ---
 ex15
 ```
@@ -1042,7 +1061,7 @@ The model and input and output waveforms are shown in {numref}`fig:u72:8`.
 ```{code-cell}
 ---
 slideshow:
-  slide_type: fragment
+  slide_type: '-'
 ---
 ex16
 ```
@@ -1076,9 +1095,9 @@ slideshow:
 dfd_block
 ```
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "notes"}}
 
-When this is done, the **Block Parameters** dialogue box appears as shown in {numref}`ig:u72:9`.
+When this is done, the **Block Parameters** dialogue box appears as shown in {numref}`fig:u72:9`.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -1149,7 +1168,7 @@ Use the block diagram shown in {numref}`fig:u72:1` to validate {eq}`eq:u72:2` an
 
 Use the block diagram shown in {numref}`fig:u72:4` to validate {eq}`eq:u72:18`. Write down the equivalent difference equation.
 
-+++
++++ {"slideshow": {"slide_type": "notes"}}
 
 (u72:ex:3)=
 ### Exercise 7.2.3
