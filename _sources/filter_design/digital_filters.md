@@ -1156,7 +1156,7 @@ Hopefully you found the module interesting and will make use of some of your kno
 
 **Exam Preparation**
 
-Use the block diagram shown in {numref}`fig:u72:1` to validate {eq}`eq:u7.2:2` and {eq}`eq:u7.2:1`.
+Use the block diagram shown in {numref}`fig:u72:1` to validate {eq}`eq:7.2:2` and {eq}`eq:7.2:1`.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
