@@ -304,7 +304,7 @@ $$H(z) = \left.G(s)\right|_{s = \frac{2}{T_s} \cdot \frac{z-1}{z+1}} $$ (eq:7.2:
 
 The digital frequency response (using $\omega_d$ on the unit circle in the $z$-plane) is obtained by the substitution $z = e^{j\omega_d T_s}$, giving
 
-$$H\left(e^{j\omega_d T_s}\right) = G\left(\frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s } + 1} \right) $$ (eq:7.2:7)
+$$H\left(e^{j\omega_d T_s}\right) = H\left(\frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s } + 1} \right) $$ (eq:7.2:7)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -421,7 +421,7 @@ $$H_n(s) = \frac{1}{s^2 + 1.414 s + 1} $$ (eq:7.2:12)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-Now, we must transform this transfer function to another with actual cuttoff frequency at $20$ Hz. We donote it as $H_a(s)$.
+Now, we must transform this transfer function to another with actual cutoff frequency at $20$ Hz. We donote it as $H_a(s)$.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -483,7 +483,7 @@ syms s; simplifyFraction(1/((s/130)^2 + 1.414*s/130 + 1))
 9191/50
 ```
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 Then,
 
@@ -691,25 +691,25 @@ The transfer functions {eq}`eq:7.2:16` through {eq}`eq:7.2:19`, describe differe
 
 ##### 13(a)
 
-$$H_1(z) = \frac{\left(2.8982 + 8.6946z^{-1} + 8.6946z^{-2} + 2.8982z^{-3}\right)\cdot 10^{-3}}{1 - 2.3741z^{-1} + 1.9294z^{-2} - 0.5321z^{-3}} $$ (eq:7.2:16)
+$$H_1(z) = \frac{\left(2.8982 + 8.6946z^{-1} + 8.6946z^{-2} + 2.8982z^{-3}\right)\cdot 10^{-3}}{1 - 2.3741z^{-1} + 1.9294z^{-2} - 0.5321z^{-3}} $$ (eq:7.2:17)
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
 ##### 13(b)
 
-$$H_2(z) = \frac{0.5276 - 1.5828z^{-1} + 1.5828z^{-2} - 0.5276z^{-3}}{1 - 1.7600z^{-1} + 1.1829z^{-2} - 0.2781z^{-3}} $$ (eq:7.2:17)
+$$H_2(z) = \frac{0.5276 - 1.5828z^{-1} + 1.5828z^{-2} - 0.5276z^{-3}}{1 - 1.7600z^{-1} + 1.1829z^{-2} - 0.2781z^{-3}} $$ (eq:7.2:18)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ##### 13(c)
 
-$$H_3(z) = \frac{\left(6.8482 - 13.6964z^{-2} + 6.8482z^{-4}\right)\cdot 10^{-4}}{1 + 3.3033z^{-1} + 4.5244z^{-2} + 3.1390z^{-3} + 0.9603z^{-4}}$$ (eq:7.2:18)
+$$H_3(z) = \frac{\left(6.8482 - 13.6964z^{-2} + 6.8482z^{-4}\right)\cdot 10^{-4}}{1 + 3.3033z^{-1} + 4.5244z^{-2} + 3.1390z^{-3} + 0.9603z^{-4}}$$ (eq:7.2:19)
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
 ##### 13(d)
 
-$$H_4(z) = \frac{0.9270-1.2079z^{-1}+0.9270z^{-2}}{1-1.2079z^{-1}+0.8541z^{-2}} $$ (eq:7.2:19)
+$$H_4(z) = \frac{0.9270-1.2079z^{-1}+0.9270z^{-2}}{1-1.2079z^{-1}+0.8541z^{-2}} $$ (eq:7.2:20)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -824,7 +824,7 @@ $$X(z)\left(b_0 + b_1z^{-1} + b_2z^{-2}\right) = Y(s)\left(1 + a_1z^{-1} + a_2z^
 
 And thus, the transfer function of the Direct Form I Realization of the second-order digital filter of {numref}`fig:u72:3` is
 
-$$H(z) = \frac{Y(z)}{X(z)} = \frac{b_0 + b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}} $$ (eq:7.2:17)
+$$H(z) = \frac{Y(z)}{X(z)} = \frac{b_0 + b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}} $$ (eq:7.2:21)
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -865,22 +865,22 @@ Download this model as [dfiir_df.slx](matlab/dfiir_df.slx).
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-The transfer function for the Direct Form-II second-order digital filter of {numref}`fig:u72:4` is the same as for a Direct Form-I second-order filter of {numref}`fig:u72:4`, that is,
+The transfer function for the Direct Form-II second-order digital filter of {numref}`fig:u72:4` is the same as for a Direct Form-I second-order filter of {numref}`fig:u72:3`, that is,
 
-$$H(z) = \frac{b_0 + b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}} $$ (eq:7.2:18)
+$$H(z) = \frac{b_0 + b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}} $$ (eq:7.2:22)
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-A camparison of {numref}`eq:7.2:17` and {numref}`eq:7.2:18` shows that whereas a Direct Form-I second-order digital filter requires $2k$ registers, where $k$ represents the order of the filter, a Direct Type-II second-order digital filter requires only $k$ register elements denoted as $z^{-1}$. This is because the register ($z^{-1}$) elements of the Direct Form-II realization are shared between the zeros section and the poles section.
+A comparison of {eq}`eq:7.2:21` and {eq}`eq:7.2:22` shows that whereas a Direct Form-I second-order digital filter requires $2k$ registers, where $k$ represents the order of the filter, a Direct Type-II second-order digital filter requires only $k$ register elements denoted as $z^{-1}$. This is because the register ($z^{-1}$) elements of the Direct Form-II realization are shared between the zeros section and the poles section.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (u72:ex:14)=
 #### Example 14
 
-{numref}`u72:fig:5` shows a Direct Form-II second-order digital filter whose transfer function is
+{numref}`fig:u72:5` shows a Direct Form-II second-order digital filter whose transfer function is
 
-$$H(z) = \frac{1+1.5z^{-1}+1.02z^{-2}}{1 - 0.25 z^{-1} -0.75 z^{-2}} $$ (eq:u72:19)
+$$H(z) = \frac{1+1.5z^{-1}+1.02z^{-2}}{1 - 0.25 z^{-1} -0.75 z^{-2}} $$ (eq:u72:23)
 
 ```{code-cell}
 ---
@@ -892,7 +892,7 @@ ex14
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-::: {figure-md} fig:u72:4
+::: {figure-md} fig:u72:5
 <img src="pictures/ex14.png" alt="Direct Form II Realization of the Simulink implementation of Example 14" width="100%" />
 
 Model for Example 14
@@ -906,15 +906,15 @@ Download this model as [ex14.slx](matlab/ex14.slx).
 
 ### The Series Form Realization of a Digital Filter
 
-For the Series Form Realization, the transfer function is expressed as a product of first-order and second-orer transefer functions as shown in {eq}`eq:u72:20` below. 
+For the Series Form Realization, the transfer function is expressed as a product of first-order and second-orer transefer functions as shown in {eq}`eq:u72:24` below. 
 
-$$H(z) = H_1(z)\cdot H_2(z)\cdots H_R(z)$$ (eq:u72:20)
+$$H(z) = H_1(z)\cdot H_2(z)\cdots H_R(z)$$ (eq:u72:24)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-Relation {eq}`eq:u72:20` is implemented as the cascaded blocks shown in {numref}`fig:u72:5`
+Relation {eq}`eq:u72:24` is implemented as the cascaded blocks shown in {numref}`fig:u72:6`.
 
-:::{figure-md} fig:u72:5
+:::{figure-md} fig:u72:6
 <img src="pictures/series.png" alth="Series Form Realization as cascaded blocks" width="100%" />
 
 Series Form Realization
@@ -922,7 +922,7 @@ Series Form Realization
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-{numref}`fig:u72:6` shows the Series Form Realization of a second-order digital filter.
+{numref}`fig:u72:6a` shows the Series Form Realization of a second-order digital filter.
 
 ```{code-cell}
 ---
@@ -934,7 +934,7 @@ series_form_2nd
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-:::{figure-md} fig:u72:6
+:::{figure-md} fig:u72:6a
 <img src="pictures/series_2nd.png" alth="Series Form Realization of a second-order digital filter" width="100%" />
 
 Series Form Realization of a second-order digital filter
@@ -955,7 +955,7 @@ $$H(z) = \frac{0.5\left(1-0.36z^{-2}\right)}{1 + 0.1 z^{-1} - 0.72 z^{-2}} $$
 
 To implement this filter, we factor the numerator and denominator polynomials as[^u72:note:7]
 
-$$H(z) = \frac{0.5\left(1+0.6z^{-1}\right)\left(1-0.6z^{-1}\right)}{\left(1+0.9z^{-1}\right)\left(1-0.8z^{-1}\right)} $$ (eq:u72:21)
+$$H(z) = \frac{0.5\left(1+0.6z^{-1}\right)\left(1-0.6z^{-1}\right)}{\left(1+0.9z^{-1}\right)\left(1-0.8z^{-1}\right)} $$ (eq:u72:25)
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -991,9 +991,9 @@ Download this model as [ex15.slx](matlab/ex15.slx).
 
 The general form of the transfer function of a Parallel Form Realization is 
 
-$$H(z) = K + H_1(z) + H_2(z) + \cdots + H_R(z)$$ (eq:u72:22)
+$$H(z) = K + H_1(z) + H_2(z) + \cdots + H_R(z)$$ (eq:u72:26)
 
-Relation {eq}`eq:u72:22` is implemented at the parallel blocks shown in {numre}`fig:u72:8`
+Relation {eq}`eq:u72:26` is implemented as the parallel blocks shown in {numref}`fig:u72:8`.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -1005,7 +1005,7 @@ Parallel Form Realization of a second-order digital filter
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-As with the Series Form Realization, the ordering of the individual filters in {numref}`fig:u72:8` is immaterial. But because of the presence of the constant $K$, we can simplify the transfer function expressiom by performing the partial fraction expansion after we express the transfer function in the form $H(z)/z$.
+As with the Series Form Realization, the ordering of the individual filters in {numref}`fig:u72:8` is immaterial. But because of the presence of the constant $K$, we can simplify the transfer function expression by performing the partial fraction expansion after we express the transfer function in the form $H(z)/z$.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -1052,11 +1052,11 @@ $$H(z) = 0.25 + \frac{0.147z}{z+0.9} + \frac{0.103z}{z-0.8}$$
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-$$H(z) = 0.25 + \frac{0.147}{1+0.9z^{-1}} + \frac{0.103}{1-0.8z^{-1}}$$ (eq:u72:23)
+$$H(z) = 0.25 + \frac{0.147}{1+0.9z^{-1}} + \frac{0.103}{1-0.8z^{-1}}$$ (eq:u72:27)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-The model and input and output waveforms are shown in {numref}`fig:u72:8`.
+The model and input and output waveforms are shown in {numref}`fig:u72:9`.
 
 ```{code-cell}
 ---
@@ -1068,7 +1068,7 @@ ex16
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-:::{figure-md} fig:u72:8
+:::{figure-md} fig:u72:9
 <img src="pictures/ex16.png" alt="Parallel Form Realization of the digital filter of Example 16" width="100%" />
 
 Model for Example 16
@@ -1097,11 +1097,11 @@ dfd_block
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-When this is done, the **Block Parameters** dialogue box appears as shown in {numref}`fig:u72:9`.
+When this is done, the **Block Parameters** dialogue box appears as shown in {numref}`fig:u72:10`.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-:::{figure-md} fig:u72:9
+:::{figure-md} fig:u72:10
 <img src="pictures/dfd_block.png" alt="Screenshot of the Digital Filter Design Block Parameters dialogue box" width="100%" />
 
 The Digital Filter Design Block Parameters dialogue box
@@ -1156,7 +1156,7 @@ Hopefully you found the module interesting and will make use of some of your kno
 
 **Exam Preparation**
 
-Use the block diagram shown in {numref}`fig:u72:1` to validate {eq}`eq:u72:2` and {eq}`eq:u72:1`.
+Use the block diagram shown in {numref}`fig:u72:1` to validate {eq}`eq:7.2:2` and {eq}`eq:7.2:1`.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -1166,7 +1166,7 @@ Use the block diagram shown in {numref}`fig:u72:1` to validate {eq}`eq:u72:2` an
 
 ### Exercise 7.2.2
 
-Use the block diagram shown in {numref}`fig:u72:4` to validate {eq}`eq:u72:18`. Write down the equivalent difference equation.
+Use the block diagram shown in {numref}`fig:u72:4` to validate {eq}`eq:7.2:18`. Write down the equivalent difference equation.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -1188,12 +1188,13 @@ A digital filter with cutoff frequency of 100 Hz for a signal sampled at 1 kHz h
 
 $$H(z) = \frac{0.6401   -1.1518z^{-1}   + 0.6401z^{-2}}{1	-1.0130 z^{-1}    + 0.4190z^{-2}} $$
 
-The frequency response for this filter (plotted against $f/(fs/2)$) is shown in {numref}`fig:u72:ex7.2.2`.
+The frequency response for this filter (plotted against $f/(f_s/2)$) is shown in {numref}`fig:u72:ex7.2.2`.
 
 :::{figure-md} fig:u72:ex7.2.2
 <img src="pictures/ex724.png" alt="Frequency response for Example 7.2.4" width="50%" />
 
-::: Frequency response for Example 7.2.4
+Frequency response for Example 7.2.4
+:::
 
 a) What type of filter is this?
 
@@ -1210,6 +1211,10 @@ e) If the input to this filter is a step function $x[n] = \left\{1,1,1,1,\ldots\
 ## References
 
 See [Bibliography](/zbib).
+
++++
+
+## Footnotes
 
 ```{code-cell}
 ---
