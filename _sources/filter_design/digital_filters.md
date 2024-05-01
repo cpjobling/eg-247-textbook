@@ -304,7 +304,7 @@ $$H(z) = \left.G(s)\right|_{s = \frac{2}{T_s} \cdot \frac{z-1}{z+1}} $$ (eq:7.2:
 
 The digital frequency response (using $\omega_d$ on the unit circle in the $z$-plane) is obtained by the substitution $z = e^{j\omega_d T_s}$, giving
 
-$$H\left(e^{j\omega_d T_s}\right) = G\left(\frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s } + 1} \right) $$ (eq:7.2:7)
+$$H\left(e^{j\omega_d T_s}\right) = H\left(\frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s } + 1} \right) $$ (eq:7.2:7)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -421,7 +421,7 @@ $$H_n(s) = \frac{1}{s^2 + 1.414 s + 1} $$ (eq:7.2:12)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-Now, we must transform this transfer function to another with actual cuttoff frequency at $20$ Hz. We donote it as $H_a(s)$.
+Now, we must transform this transfer function to another with actual cutoff frequency at $20$ Hz. We donote it as $H_a(s)$.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -483,7 +483,7 @@ syms s; simplifyFraction(1/((s/130)^2 + 1.414*s/130 + 1))
 9191/50
 ```
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 Then,
 
