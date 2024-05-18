@@ -735,7 +735,7 @@ $$y[n] = y[n] = 1.956y[n - 1] - 0.9665y[n - 2] + 486.2 \times {10^{ - 6}}u[n - 1
     Ts = 0.25e-06; /* more probably some fraction of clock speed */
     ynm1 = 0; ynm2 = 0; unm1 = 0; unm2 = 0;
     while (true) {
-        un = read_adc;
+        un = read_adc();
         yn = 1.956*ynm1 - 0.9665*ynm2 + 486.2e-6*unm1 + 479.1e-6*unm2;
         write_dac(yn);
         /* store past values */

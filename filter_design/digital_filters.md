@@ -18,7 +18,7 @@ kernelspec:
 # Unit 7.2: Designing Digital Filters in MATLAB and Simulink
 
 
-You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/filter_design/digital_filters.html)). 
+You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/filter_design/digital_filters.html)).
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -1143,7 +1143,6 @@ There are exercises in the notes which will give you practice in the sort of que
 
 Hopefully you found the module interesting and will make use of some of your knowledge after the exams are over!
 
-
 +++ {"slideshow": {"slide_type": "notes"}}
 
 (u72:exercises)=
@@ -1158,6 +1157,8 @@ Hopefully you found the module interesting and will make use of some of your kno
 
 Use the block diagram shown in {numref}`fig:u72:1` to validate {eq}`eq:7.2:2` and {eq}`eq:7.2:1`.
 
+{ref}`sol:ex7.2.1`
+
 +++ {"slideshow": {"slide_type": "notes"}}
 
 (u72:ex:2)=
@@ -1168,6 +1169,8 @@ Use the block diagram shown in {numref}`fig:u72:1` to validate {eq}`eq:7.2:2` an
 
 Use the block diagram shown in {numref}`fig:u72:4` to validate {eq}`eq:7.2:18`. Write down the equivalent difference equation.
 
+{ref}`sol:ex7.2.2`
+
 +++ {"slideshow": {"slide_type": "notes"}}
 
 (u72:ex:3)=
@@ -1176,6 +1179,8 @@ Use the block diagram shown in {numref}`fig:u72:4` to validate {eq}`eq:7.2:18`. 
 **Exam Preparation**
 
 Design a 2nd-order Butterworth filter with $\omega_c = 20$ kHz. Use the Bilinear transformation to convert the analogue filter to a digital filter with sampling frequency of 44.1 kHz. Use pre-warping to ensure that the cutoff frequency is correct at the equivalent digital frequency.
+
+{ref}`sol:ex7.2.3`
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -1206,6 +1211,8 @@ d) Use the example of {ref}`u454:code` to give a code implementation of the filt
 
 e) If the input to this filter is a step function $x[n] = \left\{1,1,1,1,\ldots\right\}$, calculate the first 5 outputs $y[n]$ of the filter.
 
+{ref}`sol:ex7.2.4`
+
 +++ {"slideshow": {"slide_type": "notes"}}
 
 ## References
@@ -1215,11 +1222,3 @@ See [Bibliography](/zbib).
 +++
 
 ## Footnotes
-
-```{code-cell}
----
-slideshow:
-  slide_type: notes
----
-
-```
