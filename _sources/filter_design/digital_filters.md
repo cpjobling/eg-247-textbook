@@ -1169,7 +1169,7 @@ Use the block diagram shown in {numref}`fig:u72:1` to validate {eq}`eq:7.2:2` an
 
 Use the block diagram shown in {numref}`fig:u72:4` to validate {eq}`eq:7.2:18`. Write down the equivalent difference equation.
 
-{ref}sol:ex7.2.2
+{ref}`sol:ex7.2.2`
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
