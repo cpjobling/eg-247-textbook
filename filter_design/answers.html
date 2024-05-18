@@ -1,0 +1,884 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Worked Solutions to Exercises 7.2 &#8212; EG-247 Digital Signal Processing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'filter_design/answers';</script>
+    <link rel="canonical" href="https://cpjobling.github.io/eg-247-textbook/filter_design/answers.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Laplace Transform Properties" href="../transfer_functions/1/lt_props.html" />
+    <link rel="prev" title="Answers to Worksheet 2" href="../introduction/answers.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../introduction/index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">EG-247 Digital Signal Processing</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../introduction/index.html">
+                    Unit 1: Introducing Digital Signal Processing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Online notes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../transfer_functions/index.html">Transfer Function Analysis of Dynamic Systems</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../transfer_functions/1/concepts.html">Concept Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transfer_functions/2/transfer_function_basics.html">Transfer Function Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transfer_functions/3/pole_zero_analysis.html">Pole Zero Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fourier_series/index.html">Fourier Series</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fourier_series/1/trig_fseries.html">Trigonometric Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fourier_series/2/exp_fs1.html">Exponential Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fourier_series/3/exp_fs2.html">Computing Line Spectra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fourier_series/4/exp_fs3.html">Applications of Line Spectra</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fourier_transform/index.html">Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fourier_transform/1/ft1.html">Defining the Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fourier_transform/2/ft2.html">Fourier transforms of commonly occuring signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fourier_transform/3/ft3.html">Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fourier_transform/4/ft4.html">Introduction to Filters</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dt_systems/index.html">Sampled Data Systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dt_systems/1/sampling.html">Sampling Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dt_systems/2/z_transform.html">The Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dt_systems/3/i_z_transform.html">The Inverse Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dt_systems/4/dt_models.html">Models of Discrete Time Systems</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dft/index.html">Discrete Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dft/1/dft.html">The Discrete Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dft/2/fft.html">The Fast-Fourier Transform</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="index.html">Analogue and Digital Filter Design</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="analogue_filters.html">Unit 7.1: Designing Analogue Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="digital_filters.html">Unit 7.2: Designing Digital Filters in MATLAB and Simulink</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../zbib.html">Bibliography</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">In Class Worksheets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../worksheets/index.html">Worksheets</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/worksheet1.html">Worksheet 1 Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fourier_series/1/worksheet2.html">Worksheet 2 Trigonometric Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fourier_series/2/worksheet3.html">Worksheet 3 Exponential Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fourier_series/3/worksheet4.html">Worksheet 4 Computing Line Spectra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fourier_series/4/worksheet5.html">Worksheet 5 Applications of Line Spectra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fourier_transform/1/worksheet6.html">Worksheet 6 Defining the Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fourier_transform/2/worksheet7.html">Worksheet 7 Fourier transforms of commonly occuring signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fourier_transform/3/worksheet8.html">Worksheet 8 Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fourier_transform/4/worksheet9.html">Worksheet 9 Introduction to Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dt_systems/3/worksheet10.html">Worksheet 10 The Inverse Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dt_systems/4/worksheet11.html">Worksheet 11 Models of DT Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dft/1/worksheet12.html">Worksheet 12 The Discrete-time Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dft/2/worksheet13.html">Worksheet 13 The Fast Fourier Transform</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework problems</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../homework/index.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw4.html">Homework 4 Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw5.html">Homework 5 Fourier Transforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw6.html">Homework 6: Fourier Transforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw7.html">Homework 7 Applications of the Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw8.html">Homework 8 Sampling Theory and the Z-Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw9.html">Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Answers to Selected Problems</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/answers.html">Worksheet 2</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Worked Solutions to Exercises 7.2</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../transfer_functions/1/lt_props.html">Properties of the Laplace Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfer_functions/1/lt_table.html">Common Laplace Transform Pairs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fourier_transform/1/ft_props.html">Properties of the Fourier Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fourier_transform/1/ft_table.html">Common Fourier Transform Pairs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dt_systems/2/zt_props.html">Properties of the Z-Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dt_systems/2/zt_table.html">Table of Z-Transforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/polling_setup.html">Set Up In-Class Polling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../todo.html">List of Planned Enhancements</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../setup/index.html">Setting up your own version of this book</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../transfer_functions/1/LICENSE.html">MathWorks License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/jupyter.html">About Jupyter notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/python.html">Installing Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/setup.html">Setting up your Own Jupyter-MATLAB Computing Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/matlab_kernel.html">Testing the Jupyter Matlab Kernel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/advanced-setup.html">Quick Start - For Experienced Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/jupyter-book.html">Setting up jupyter-book</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-247-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-247-textbook/edit/master/filter_design/answers.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-247-textbook/issues/new?title=Issue%20on%20page%20%2Ffilter_design/answers.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/filter_design/answers.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Worked Solutions to Exercises 7.2</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Worked Solutions to Exercises 7.2</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-to-u72-ex-1">Solution to <span class="xref std std-ref">u72:ex:1</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-to-u72-ex-2">Solution to <span class="xref std std-ref">u72:ex:2</span></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-to-u72-ex-3">Solution to <span class="xref std std-ref">u72:ex:3</span></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-to-u72-ex-4">Solution to <span class="xref std std-ref">u72:ex:4</span></a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="worked-solutions-to-exercises-7-2">
+<h1>Worked Solutions to Exercises 7.2<a class="headerlink" href="#worked-solutions-to-exercises-7-2" title="Permalink to this heading">#</a></h1>
+<section id="solution-to-u72-ex-1">
+<span id="sol-ex7-2-1"></span><h2>Solution to <a class="reference internal" href="digital_filters.html#u72-ex-1"><span class="std std-ref">Exercise 7.2.1</span></a><a class="headerlink" href="#solution-to-u72-ex-1" title="Permalink to this heading">#</a></h2>
+<p>We first write down the difference equations by tracing through the signals in the block diagram of <a class="reference internal" href="digital_filters.html#fig-u72-1"><span class="std std-numref">Fig. 14</span></a>.</p>
+<div class="math notranslate nohighlight" id="equation-eq-sol-7-2-1-1">
+<span class="eqno">(67)<a class="headerlink" href="#equation-eq-sol-7-2-1-1" title="Permalink to this equation">#</a></span>\[
+y[n] = b_0 w[n] + b_1w[n-1] + b_2w[n-2] + b_3w[n-2] 
+\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-sol-7-2-1-2">
+<span class="eqno">(68)<a class="headerlink" href="#equation-eq-sol-7-2-1-2" title="Permalink to this equation">#</a></span>\[
+w[n] = x[n] - a_1 w[n-1] - a_1 w[n-2] - a_3w[n-2] 
+\]</div>
+<p>We take Z-transforms of equations <a class="reference internal" href="#equation-eq-sol-7-2-1-1">(67)</a> and <a class="reference internal" href="#equation-eq-sol-7-2-1-2">(68)</a>:</p>
+<div class="math notranslate nohighlight" id="equation-eq-sol-7-2-1-3">
+<span class="eqno">(69)<a class="headerlink" href="#equation-eq-sol-7-2-1-3" title="Permalink to this equation">#</a></span>\[
+Y(z) = b_0 W(z) + b_1 z^{-1} W(z)  + b_2 z^{-2} W(z) + b_3 z^{-3} W(z) 
+\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-sol-7-2-1-4">
+<span class="eqno">(70)<a class="headerlink" href="#equation-eq-sol-7-2-1-4" title="Permalink to this equation">#</a></span>\[
+W(z) = X(z) + a_1 z^{-1} W(z) + a_1 z^{-2} W(z) + a_3 z^{-3} W(z) 
+\]</div>
+<p>Gather terms in <a class="reference internal" href="#equation-eq-sol-7-2-1-3">(69)</a> and <a class="reference internal" href="#equation-eq-sol-7-2-1-4">(70)</a>:</p>
+<div class="math notranslate nohighlight" id="equation-eq-sol-7-2-1-5">
+<span class="eqno">(71)<a class="headerlink" href="#equation-eq-sol-7-2-1-5" title="Permalink to this equation">#</a></span>\[
+Y(z) = \left(b_0 + b_1 z^{-1} + b_2 z^{-2} + b_3 z^{-3}\right) W(z) 
+\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-sol-7-2-1-6">
+<span class="eqno">(72)<a class="headerlink" href="#equation-eq-sol-7-2-1-6" title="Permalink to this equation">#</a></span>\[
+\left(1 + a_1 z^{-1}- a_1 z^{-2} - a_3 z^{-3} \right) W(z) = X(z) 
+\]</div>
+<p>From <a class="reference internal" href="#equation-eq-sol-7-2-1-6">(72)</a> we obtain</p>
+<div class="math notranslate nohighlight" id="equation-eq-sol-7-2-1-7">
+<span class="eqno">(73)<a class="headerlink" href="#equation-eq-sol-7-2-1-7" title="Permalink to this equation">#</a></span>\[W(z) = \frac{1}{1 + a_1 z^{-1}- a_1 z^{-2} - a_3 z^{-3}}  X(z)\]</div>
+<p>We then use <a class="reference internal" href="#equation-eq-sol-7-2-1-7">(73)</a> to eliminate <span class="math notranslate nohighlight">\(W(z)\)</span> from <a class="reference internal" href="#equation-eq-sol-7-2-1-5">(71)</a>, giving</p>
+<div class="math notranslate nohighlight">
+\[Y(z) = \frac{b_0 W(z) + b_1 z^{-1} W(z)  + b_2 z^{-2} W(z) + b_3 z^{-3}}{1 + a_1 z^{-1}- a_1 z^{-2} - a_3 z^{-3}} X(z)\]</div>
+<p>and the transfer function follows:</p>
+<div class="math notranslate nohighlight" id="equation-eq-sol-7-2-1-8">
+<span class="eqno">(74)<a class="headerlink" href="#equation-eq-sol-7-2-1-8" title="Permalink to this equation">#</a></span>\[H(z) = \frac{Y(z)}{X(z)} = \frac{b_0 W(z) + b_1 z^{-1} W(z)  + b_2 z^{-2} W(z) + b_3 z^{-3}}{1 + a_1 z^{-1}- a_1 z^{-2} - a_3 z^{-3}}\]</div>
+</section>
+<section id="solution-to-u72-ex-2">
+<span id="sol-ex7-2-2"></span><h2>Solution to <span class="xref std std-ref">u72:ex:2</span><a class="headerlink" href="#solution-to-u72-ex-2" title="Permalink to this heading">#</a></h2>
+<p>The same procedure used for <a class="reference internal" href="#sol-ex7-2-1"><span class="std std-ref">Solution to u72:ex:1</span></a> is used.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="solution-to-u72-ex-3">
+<span id="sol-ex7-2-3"></span><h1>Solution to <a class="reference internal" href="digital_filters.html#u72-ex-3"><span class="std std-ref">Exercise 7.2.3</span></a><a class="headerlink" href="#solution-to-u72-ex-3" title="Permalink to this heading">#</a></h1>
+<blockquote>
+<div><p>Design a 2nd-order Butterworth filter with <span class="math notranslate nohighlight">\(\omega_c = 20\)</span> kHz. Use the Bilinear transformation to convert the analogue filter to a digital filter with sampling frequency of 44.1 kHz. Use pre-warping to ensure that the cutoff frequency is correct at the equivalent digital frequency.</p>
+</div></blockquote>
+<hr class="docutils" />
+<p>The magnitude squared function of a <span class="math notranslate nohighlight">\(k\)</span>-th order Butterworth low-pass filter is</p>
+<div class="math notranslate nohighlight">
+\[A^2(\omega) = \frac{1}{\left(\omega/\omega_c)^2k + 1\right)}\]</div>
+<p>We need to design a filter that has <span class="math notranslate nohighlight">\(k=2\)</span> and <span class="math notranslate nohighlight">\(\omega_c = 2\times\pi\times 20\times 10^3 = 125,66371\times 10^3\)</span> rad/s. It will be easier to design the filter for <span class="math notranslate nohighlight">\(\omega_c = 1\)</span> then complete the design by subsitution of the actual cut-off frequency afterwards.</p>
+<p>We follow the procedure outlined in the notes (see <a class="reference internal" href="analogue_filters.html#unit7-1-butter"><span class="std std-ref">Butterworth Analogue Low-Pass Filter Design</span></a>).</p>
+<div class="math notranslate nohighlight">
+\[A^2(\omega) = \frac{1}{\omega^4 + 1}\]</div>
+<p>which on subsitution of <span class="math notranslate nohighlight">\(\omega^2 = -s^2\)</span> gives</p>
+<div class="math notranslate nohighlight">
+\[G(s)G(-s) = \frac{1}{s^4 + 1}\]</div>
+<p>The poles of this equation are given by <span class="math notranslate nohighlight">\(s = \sqrt[4]{-1}\)</span>, that is <span class="math notranslate nohighlight">\(s = \sqrt[4]{1\angle 180^\circ}\)</span> which, by De Moivre’s theorem, with <span class="math notranslate nohighlight">\(n = 4\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\sqrt[4]{1e^{j\pi}} = 1e^{j\left(\frac{\pi + 2k\pi}{4}\right)}\]</div>
+<p>Thus $<span class="math notranslate nohighlight">\(
+\begin{array}{ll}
+s_1 = e^{j 3\pi/4} = -\frac{1}{\sqrt{2}} + j\frac{1}{\sqrt{2}} &amp; s_2 = e^{j5\pi/4} = -\frac{1}{\sqrt{2}} - j\frac{1}{\sqrt{2}}\\
+s_3 = e^{j 7\pi/4} = +\frac{1}{\sqrt{2}} - j\frac{1}{\sqrt{2}} &amp; s_4 = e^{j9\pi/4} =  +\frac{1}{\sqrt{2}} + j\frac{1}{\sqrt{2}}
+\end{array}
+\)</span>$</p>
+<p>We take the left-half plane poles <span class="math notranslate nohighlight">\(s_1\)</span> and <span class="math notranslate nohighlight">\(s_2\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[H(s) = \frac{K}{\left(s +\frac{1}{\sqrt{2}} + j\frac{1}{\sqrt{2}}\right)\left(s + \frac{1}{\sqrt{2}} + j\frac{1}{\sqrt{2}}\right)} \]</div>
+<div class="math notranslate nohighlight">
+\[H(s) = \frac{K}{s^2 + \sqrt{2}s + 1} \]</div>
+<p>The gain <span class="math notranslate nohighlight">\(K\)</span> is found from <span class="math notranslate nohighlight">\(A^2(0) = 1\)</span>, and <span class="math notranslate nohighlight">\(H(0) = 1\)</span>, so <span class="math notranslate nohighlight">\(K=1\)</span> and the prototype Butterworth low-pass filter is</p>
+<div class="math notranslate nohighlight">
+\[H(s) = \frac{1}{s^2 + \sqrt{2}s + 1}\]</div>
+<p>We now convert this to the filter we need by substitution <span class="math notranslate nohighlight">\(s = s/\omega_c\)</span></p>
+<div class="math notranslate nohighlight">
+\[H(s) = \frac{1}{\left(\frac{s}{\omega_c}\right)^2 + \sqrt{2}\left(\frac{s}{\omega_c}\right) + 1}\]</div>
+<p>from which</p>
+<div class="math notranslate nohighlight">
+\[\frac{\omega_c^2}{s^2 + \sqrt{2}\omega_c s + \omega_c^2} \]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\frac{15.79\times 10^3}{s^2 + 177.7s + 15.79\times 10^3}\]</div>
+<p>We will complete the problem by switching to MATLAB. We first need to determine the pre-warping correction</p>
+<div class="math notranslate nohighlight">
+\[\omega_a = \frac{2}{T_s} \tan\left(\frac{ \omega_c T_s}{2}\right)\]</div>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">44.1e2</span><span class="p">;</span><span class="w"> </span><span class="c">% sampling frequency</span>
+<span class="n">Ts</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">;</span>
+<span class="n">wc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="mf">20e3</span>
+</pre></div>
+</div>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">wa</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="n">Ts</span><span class="p">)</span><span class="o">*</span><span class="nb">tan</span><span class="p">(</span><span class="n">wc</span><span class="o">*</span><span class="n">Ts</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Re calculate Butterworth filter with pre-warped frequency</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Hs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">wa</span>^<span class="mi">2</span><span class="p">,[</span><span class="mi">1</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">wa</span><span class="w"> </span><span class="n">wa</span>^<span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Now find <span class="math notranslate nohighlight">\(H(z)\)</span> using the bilinear transformation by substituting</p>
+<div class="math notranslate nohighlight">
+\[s = \frac{2}{Ts} \left(\frac{z-1}{z+1} \right)\]</div>
+<p>You should try this algebraicly, but we will cheat</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Hz</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c2d</span><span class="p">(</span><span class="n">Hs</span><span class="p">,</span><span class="n">Ts</span><span class="p">,</span><span class="s">&#39;tustin&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>From which</p>
+<div class="math notranslate nohighlight">
+\[H(z) = \frac{1.169z^{2} + 2.338 z + 1.169}{z^2 + 2.309z + 1.367}\]</div>
+<p>To implement this, we simply convert to negative powers of <span class="math notranslate nohighlight">\(z\)</span></p>
+<div class="math notranslate nohighlight">
+\[H(z) = \frac{1.169 + 2.338 z^{-1} + 1.169z^{-2}}{1 + 2.309z^{-1} + 1.367z^{-2}}\]</div>
+<section id="solution-to-u72-ex-4">
+<span id="id1"></span><h2>Solution to <a class="reference internal" href="digital_filters.html#u72-ex-4"><span class="std std-ref">Exercise 7.2.4</span></a><a class="headerlink" href="#solution-to-u72-ex-4" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><p>A digital filter with cutoff frequency of 100 Hz for a signal sampled at 1 kHz has transfer function</p>
+<div class="math notranslate nohighlight">
+\[H(z) = \frac{0.6401   -1.1518z^{-1}   + 0.6401z^{-2}}{1	-1.0130 z^{-1}    + 0.4190z^{-2}} \]</div>
+<p>The frequency response for this filter (plotted against <span class="math notranslate nohighlight">\(f/(f_s/2)\)</span>) is shown in <a class="reference internal" href="digital_filters.html#fig-u72-ex7-2-2"><span class="std std-numref">Fig. 25</span></a>.</p>
+<p>a) What type of filter is this?</p>
+<p>b) Estimate the band-pass ripple, and stop-band ripple of the filter.</p>
+<p>c) Implement the filter as Direct Form Type II digital filter and sketch its block diagram.</p>
+<p>d) Use the example of <a class="reference internal" href="../dt_systems/4/dt_models.html#u454-code"><span class="std std-ref">Convert to code</span></a> to give a code implementation of the filter.</p>
+<p>e) If the input to this filter is a step function <span class="math notranslate nohighlight">\(x[n] = \left\{1,1,1,1,\ldots\right\}\)</span>, calculate the first 5 outputs <span class="math notranslate nohighlight">\(y[n]\)</span> of the filter.</p>
+</div></blockquote>
+<!-- #region -->
+<hr class="docutils" />
+<p>This is a 2nd-order filter and the ripple is rather non-typical!</p>
+<p>a) The gain at high frequency is 0 dB so the filter is high-pass. There is ripple in the pass-band so it is Chebyshev Type II.</p>
+<p>b) The stop-band ripple is 10 dB, there is no ripple in the stop-band. Note that it is not clear that the cut-off frequency is 100 Hz!</p>
+<p>c) For the sketch, refer to <a class="reference internal" href="digital_filters.html#fig-u72-4"><span class="std std-numref">Fig. 17</span></a> and note that the coefficients will be: <span class="math notranslate nohighlight">\(b_0 = 0.6401\)</span>, <span class="math notranslate nohighlight">\(b_1 = -1.1518\)</span>, <span class="math notranslate nohighlight">\(b_3 = 0.6401\)</span>, <span class="math notranslate nohighlight">\(a_1 = 1.0130\)</span>, <span class="math notranslate nohighlight">\(a_2 = 0.4190\)</span>. Note in particular the signs of the <span class="math notranslate nohighlight">\(a\)</span> coefficients. They are negative in the block diagram but positive in the transfer function.</p>
+<p>d) To write the code, we need to express the transfer function as a difference equation.</p>
+<div class="math notranslate nohighlight">
+\[H(z) = \frac{Y(z)}{X(z)} = \frac{0.6401   -1.1518z^{-1}   + 0.6401z^{-2}}{1	-1.0130 z^{-1}    + 0.4190z^{-2}} \]</div>
+<p>So</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\left(1	- 1.0130 z^{-1}    + 0.4190z^{-2}\right)Y(z) &amp;= \left(0.6401   -1.1518z^{-1}   + 0.6401z^{-2}\right)X(z) \\
+Y(z)	- 1.0130 z^{-1}Y(z)    + 0.4190z^{-2}Y(z) &amp;= 0.6401 X(z)   -1.1518z^{-1}X(z)   + 0.6401z^{-2}X(z) \\
+Y(z) &amp;= 0.6401 X(z)   -1.1518z^{-1}X(z)   + 0.6401z^{-2}X(z) + 1.0130 z^{-1}Y(z)    - 0.4190z^{-2}Y(z)
+\end{align*}
+\end{split}\]</div>
+<p>Taking inverse Z-transform:</p>
+<div class="math notranslate nohighlight">
+\[y[n] = 0.6401 x[n]   -1.1518 x[n-1]   + 0.6401 x[n-2] + 1.0130 y[n-1]    - 0.4190 y[n-2]\]</div>
+<!-- #endregion -->
+<p>Using the example in <a class="reference internal" href="../dt_systems/4/dt_models.html#u454-code"><span class="std std-ref">Convert to code</span></a> with <span class="math notranslate nohighlight">\(T_s = 1/1000 = 0.001\)</span></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>/* Initialize */
+Ts = 0.001; /* more probably some fraction of clock speed */
+ynm1 = 0; ynm2 = 0; unm1 = 0; unm2 = 0;
+while (true) {
+    un = read_adc();
+    yn = 0.6401*un + −1.1518*unm1 + 0.6401*unm2 + 1.0130*ynm1 - 0.4190*ynm2;
+    write_dac(yn);
+    /* store past values */
+    ynm2 = ynm1; ynm1 = yn;
+    unm2 = unm1; unm1 = un;
+    wait(Ts);
+}
+
+</pre></div>
+</div>
+<p>e) The easiest way to complete the problem is to tabulate the data</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(n\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(x[n]\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(0.6401 x[n]\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(-1.1518 x[n-1]\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(0.6401 x[n-2]\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(1.0130 y[n-1] \)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(- 0.4190 y[n-2]\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(y[n]\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.6401\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.6401\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.6401\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-1.1518\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.6486\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.1369\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.6401\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-1.1518\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.6401\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.1387\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-0.2682\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-0.011\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(3\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.6401\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-1.1518\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.6401\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-0.0011\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-0.0574\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.0700\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(4\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.6401\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-1.1518\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.6401\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.0709\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.0004\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.1997\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>from which <span class="math notranslate nohighlight">\(y[n] = \left\{0.6401,0.1369,-0.011,0.0700,0.1997,\dots\right\}\)</span></p>
+<p>I find the use of Excel to be a useful tool for confirming such results and the sheet for this one can be downloaded <a class="reference download internal" download="" href="../_downloads/98420945bd065c394491115b00cc21c3/sol_ex_7_2_3.xlsx"><span class="xref download myst">sol_ex_7_2_3.xlsx</span></a>.</p>
+<p>You can also use MATLAB of course</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span>
+<span class="n">Ts</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span>
+<span class="n">Hz</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">([</span><span class="mf">0.6401</span><span class="p">,</span><span class="o">-</span><span class="mf">1.1518</span><span class="p">,</span><span class="mf">0.6401</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mf">1.0130</span><span class="p">,</span><span class="mf">0.4190</span><span class="p">],</span><span class="n">Ts</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">yn</span><span class="p">,</span><span class="n">nTs</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">step</span><span class="p">(</span><span class="n">Hz</span><span class="p">);</span>
+<span class="n">yn</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">stem</span><span class="p">(</span><span class="n">nTs</span><span class="o">*</span><span class="mi">1000</span><span class="p">,</span><span class="n">yn</span><span class="p">),</span><span class="nb">grid</span><span class="p">,</span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;Step response of filter in Exercise 7.2.3&#39;</span><span class="p">),</span><span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Time [ms]&#39;</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;y[n]&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./filter_design"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../introduction/answers.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Answers to Worksheet 2</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../transfer_functions/1/lt_props.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Laplace Transform Properties</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Worked Solutions to Exercises 7.2</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-to-u72-ex-1">Solution to <span class="xref std std-ref">u72:ex:1</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-to-u72-ex-2">Solution to <span class="xref std std-ref">u72:ex:2</span></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-to-u72-ex-3">Solution to <span class="xref std std-ref">u72:ex:3</span></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-to-u72-ex-4">Solution to <span class="xref std std-ref">u72:ex:4</span></a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Chris P. Jobling
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Swansea University (2023-2024).
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  This page was created by 
+<a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
+  Dr Chris P. Jobling
+</a> 
+for 
+<a href="https://www.swansea.ac.uk">
+  Swansea University
+</a>.
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
