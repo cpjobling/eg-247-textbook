@@ -736,16 +736,20 @@ while (true) {
 </table>
 <p>from which <span class="math notranslate nohighlight">\(y[n] = \left\{0.6401,0.1369,-0.011,0.0700,0.1997,\dots\right\}\)</span></p>
 <p>I find the use of Excel to be a useful tool for confirming such results and the sheet for this one can be downloaded <a class="reference download internal" download="" href="../_downloads/98420945bd065c394491115b00cc21c3/sol_ex_7_2_3.xlsx"><span class="xref download myst">sol_ex_7_2_3.xlsx</span></a>.</p>
-<p>You can also use MATLAB of course</p>
+<p>You can also use MATLAB of course. Here we set up the transfer function:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span>
 <span class="n">Ts</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span>
 <span class="n">Hz</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">([</span><span class="mf">0.6401</span><span class="p">,</span><span class="o">-</span><span class="mf">1.1518</span><span class="p">,</span><span class="mf">0.6401</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mf">1.0130</span><span class="p">,</span><span class="mf">0.4190</span><span class="p">],</span><span class="n">Ts</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Then compute the step response</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">yn</span><span class="p">,</span><span class="n">nTs</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">step</span><span class="p">(</span><span class="n">Hz</span><span class="p">);</span>
-<span class="n">yn</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">)</span>
 <span class="nb">stem</span><span class="p">(</span><span class="n">nTs</span><span class="o">*</span><span class="mi">1000</span><span class="p">,</span><span class="n">yn</span><span class="p">),</span><span class="nb">grid</span><span class="p">,</span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;Step response of filter in Exercise 7.2.3&#39;</span><span class="p">),</span><span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Time [ms]&#39;</span><span class="p">)</span>
 <span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;y[n]&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Confirm the tabulated results</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">yn</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>

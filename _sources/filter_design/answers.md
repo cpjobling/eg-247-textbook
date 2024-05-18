@@ -275,7 +275,7 @@ from which $y[n] = \left\{0.6401,0.1369,-0.011,0.0700,0.1997,\dots\right\}$
 
 I find the use of Excel to be a useful tool for confirming such results and the sheet for this one can be downloaded [sol_ex_7_2_3.xlsx](matlab/sol_ex_7_2_3.xlsx).
 
-You can also use MATLAB of course
+You can also use MATLAB of course. Here we set up the transfer function:
 
 ```matlab
 fs = 1000;
@@ -283,9 +283,16 @@ Ts = 1/fs
 Hz = tf([0.6401,-1.1518,0.6401],[1,-1.0130,0.4190],Ts)
 ```
 
+Then compute the step response
+
 ```matlab
 [yn,nTs] = step(Hz);
-yn(1:5)
 stem(nTs*1000,yn),grid,title('Step response of filter in Exercise 7.2.3'),xlabel('Time [ms]')
 ylabel('y[n]')
+```
+
+Confirm the tabulated results
+
+```matlab
+yn(1:5)
 ```
