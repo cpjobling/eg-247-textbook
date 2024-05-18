@@ -187,8 +187,8 @@ To implement this, we simply convert to negative powers of $z$
 $$H(z) = \frac{1.169 + 2.338 z^{-1} + 1.169z^{-2}}{1 + 2.309z^{-1} + 1.367z^{-2}}$$
 
 
-(sol:ex7.2.3)=
-## Solution to 
+(sol:ex7.2.4)=
+## Solution to Exercise 7.2.4
 
 > A digital filter with cutoff frequency of 100 Hz for a signal sampled at 1 kHz has transfer function 
 >
@@ -208,9 +208,11 @@ $$H(z) = \frac{1.169 + 2.338 z^{-1} + 1.169z^{-2}}{1 + 2.309z^{-1} + 1.367z^{-2}
 
 See: {ref}`u72:ex:4`
 
-<!-- #region -->
 ----
 
+
+
+<!-- #region -->
 This is a 2nd-order filter and the ripple is rather non-typical!
 
 a) The gain at high frequency is 0 dB so the filter is high-pass. There is ripple in the pass-band so it is Chebyshev Type II.
