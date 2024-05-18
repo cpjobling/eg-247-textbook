@@ -16,7 +16,9 @@ jupyter:
 # Worked Solutions to Exercises 7.2
 
 (sol:ex7.2.1)=
-## Solution to {ref}`u72:ex:1`
+## Solution to Exercise 7.2.1
+
+See: {ref}`u72:ex:1`
 
 
 We first write down the difference equations by tracing through the signals in the block diagram of {numref}`fig:u72:1`.
@@ -68,15 +70,26 @@ $$H(z) = \frac{Y(z)}{X(z)} = \frac{b_0 W(z) + b_1 z^{-1} W(z)  + b_2 z^{-2} W(z)
 
 
 (sol:ex7.2.2)=
-## Solution to {ref}`u72:ex:2`
+## Solution to Exercise 7.2.2
+
+> Use the block diagram shown in {numref}`fig:u72:4` to validate {eq}`eq:7.2:18`. Write down the equivalent difference equation.
+
+See: {ref}`u72:ex:2`
+
+----
 
 The same procedure used for {ref}`sol:ex7.2.1` is used.
 
 
+
+
+
 (sol:ex7.2.3)=
-# Solution to {ref}`u72:ex:3`
+# Solution to Exercise 7.2.3
 
 > Design a 2nd-order Butterworth filter with $\omega_c = 20$ kHz. Use the Bilinear transformation to convert the analogue filter to a digital filter with sampling frequency of 44.1 kHz. Use pre-warping to ensure that the cutoff frequency is correct at the equivalent digital frequency.
+
+See: {ref}`u72:ex:3`
 
 
 ---- 
@@ -175,7 +188,7 @@ $$H(z) = \frac{1.169 + 2.338 z^{-1} + 1.169z^{-2}}{1 + 2.309z^{-1} + 1.367z^{-2}
 
 
 (sol:ex7.2.3)=
-## Solution to {ref}`u72:ex:4`
+## Solution to 
 
 > A digital filter with cutoff frequency of 100 Hz for a signal sampled at 1 kHz has transfer function 
 >
@@ -192,6 +205,8 @@ $$H(z) = \frac{1.169 + 2.338 z^{-1} + 1.169z^{-2}}{1 + 2.309z^{-1} + 1.367z^{-2}
 > d) Use the example of {ref}`u454:code` to give a code implementation of the filter.
 >
 > e) If the input to this filter is a step function $x[n] = \left\{1,1,1,1,\ldots\right\}$, calculate the first 5 outputs $y[n]$ of the filter.
+
+See: {ref}`u72:ex:4`
 
 <!-- #region -->
 ----

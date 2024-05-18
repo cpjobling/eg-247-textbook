@@ -1211,7 +1211,7 @@ d) Use the example of {ref}`u454:code` to give a code implementation of the filt
 
 e) If the input to this filter is a step function $x[n] = \left\{1,1,1,1,\ldots\right\}$, calculate the first 5 outputs $y[n]$ of the filter.
 
-{ref}`sol:ex7.2.3`
+{ref}`sol:ex7.2.4`
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -1222,11 +1222,3 @@ See [Bibliography](/zbib).
 +++
 
 ## Footnotes
-
-```{code-cell}
----
-slideshow:
-  slide_type: notes
----
-
-```
