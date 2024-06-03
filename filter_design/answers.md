@@ -213,11 +213,11 @@ See: {ref}`u72:ex:4`
 
 
 <!-- #region -->
-This is a 2nd-order filter and the ripple is rather non-typical!
+This is a 2nd-order filter designed to have a cut-off frequency of $100$ Hz. Beacuse it is low-order, the ripple is rather non-typical!
 
-a) The gain at high frequency is 0 dB so the filter is high-pass. There is ripple in the pass-band so it is Chebyshev Type II.
+a) The gain at high frequency is 0 dB so the filter is high-pass. There is ripple in the stop-band so it is Chebyshev Type II.
 
-b) The stop-band ripple is 10 dB, there is no ripple in the stop-band. Note that it is not clear that the cut-off frequency is 100 Hz!
+b) The stop-band ripple is 10 dB, there is no ripple in the pass-band. Note that it is not clear that the cut-off frequency is 100 Hz! Any value near the -3dB cut-off frequency will be taken as correct.
 
 c) For the sketch, refer to {numref}`fig:u72:4` and note that the coefficients will be: $b_0 = 0.6401$, $b_1 = -1.1518$, $b_3 = 0.6401$, $a_1 = 1.0130$, $a_2 = 0.4190$. Note in particular the signs of the $a$ coefficients. They are negative in the block diagram but positive in the transfer function.
 
