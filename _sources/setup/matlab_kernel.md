@@ -5,11 +5,11 @@ jupyter:
       extension: .md
       format_name: markdown
       format_version: '1.3'
-      jupytext_version: 1.14.1
+      jupytext_version: 1.15.1
   kernelspec:
-    display_name: Matlab
+    display_name: MKernel
     language: matlab
-    name: matlab
+    name: mkernel
 ---
 
 Testing the Jupyter Matlab Kernel
@@ -19,7 +19,7 @@ Interact with Matlab in Notebook the using the [Matlab engine for Python](https:
 
 ```matlab
 % Use inline SVG graphics
-imatlab_export_fig('print-svg')
+setappdata(0, "MKernel_plot_format", "svg")
 ```
 
 ```matlab
@@ -56,4 +56,8 @@ disp(b)
 
 ```python
 print('Hello, world!')
+```
+
+```matlab
+
 ```

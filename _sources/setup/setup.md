@@ -5,11 +5,11 @@ jupyter:
       extension: .md
       format_name: markdown
       format_version: '1.3'
-      jupytext_version: 1.14.0
+      jupytext_version: 1.15.1
   kernelspec:
-    display_name: Python 3 (ipykernel)
-    language: python
-    name: python3
+    display_name: MKernel
+    language: matlab
+    name: mkernel
 ---
 
 # Setup
@@ -59,7 +59,7 @@ The following Python code (adapted from the script [soton-test-python-installati
 
 First we define some tests.
 
-```python
+```matlab
 import math
 import os
 import sys
@@ -163,7 +163,7 @@ def test_pytest():
 
 The we run the tests to test that we have all the packages we need. If we have installed Anaconda 3 correctly, there should be no errors.
 
-```python
+```matlab
 print("Running using Python {}".format(sys.version))
 test_is_python_35()
 test_numpy()
@@ -188,27 +188,28 @@ I ran this on my Mac. The equivalent Windows and Linux commands are given in the
 
 
 ### Mac OS: 
+If you have an M1 or later processor, you should install the Silicon version of MATLAB (see [MATLAB on Apple Silicon Macs](https://uk.mathworks.com/support/requirements/apple-silicon.html))
 
-```python
-matlabroot='/Applications/MATLAB_R2022b.app'
+```matlab
+matlabroot='/Applications/MATLABSi/MATLAB_R2024a.app'
 ```
 
 ### Unix
 
-```python
+```matlab
 %cd {matlabroot}/extern/engines/python
 ```
 
 ### Ubuntu running in Windows using WSL
 
-```python
+```matlab
 matlabroot='/mnt/c/Program\ Files/MATLAB/R2022b'
 %cd {matlabroot}/extern/engines/python
 ```
 
 ### Windows
 
-```python
+```matlab
 matlabroot='C:\Program Files\MATLAB\R2022b'
 %cd {matlabroot}\extern\engines\python
 ```
@@ -224,7 +225,7 @@ matlabroot='C:\Program Files\MATLAB\R2022b'
   * Now copy `python setup.py install`, paste and type `Enter`
 * If your MATLAB is 2016b, or older, you may need to install an earlier version of Python and repeat the steps above.
 
-```python
+```matlab
 !python --version
 #%shell
 !python setup.py install
@@ -234,40 +235,45 @@ matlabroot='C:\Program Files\MATLAB\R2022b'
 
 First start a MATLAB session. You will have to restart your Python kernel first!
 
-```python
+```matlab
 import matlab.engine
 eng = matlab.engine.start_matlab()
 ```
 
 Then connect to the session
 
-```python
+```matlab
 eng = matlab.engine.connect_matlab()
 ```
 
 Now compute something. Here's a 10x10 magic square
 
-```python
+```matlab
 m = eng.magic(10);
 ```
 
-```python
+```matlab
 print(m)
 ```
 
 Close the session
 
-```python
+```matlab
 eng.quit()
 ```
 
+<!-- #region -->
 ## MATLAB Kernel for Jupyter
 
-Finally we install the `matlab_kernel` using the instructions given here: [github.com/imatlab/imatlab](https://github.com/imatlab/imatlab).
 
-```python
-!pip install matlab_kernel
-!python -m matlab_kernel install --user
+Finally we install Carsten Allefeld's `Mkernel` ([github.com/allefeld/mkernel](https://github.com/allefeld/mkernel)) using the instructions given in `cite`{allefeld2023}: 
+<!-- #endregion -->
+
+```matlab
+!pip install git+https://github.com/allefeld/mkernel.git
+```
+
+```matlab
 !jupyter kernelspec list
 ```
 
@@ -286,7 +292,7 @@ jupyter notebook setup.ipynb --debug
 
 ## Test MATLAB Kernel
 
-From the `Kernel` menu you should be able to navigate to `Change kernel` and `Matlab` should now be listed (Fig. 1).
+From the `Kernel` menu you should be able to navigate to `Change kernel` and `MKernel` should now be listed (Fig. 1).
 
 ![Figure 1: The Kernel Menu](fig1.png)
 
@@ -324,7 +330,7 @@ ans =
 Go ahead and execute the next code cell.
 <!-- #endregion -->
 
-```python
+```matlab
 magic(10)
 ```
 
@@ -332,10 +338,10 @@ If you wish to further test the Matlab interface, download this file from the `C
 
 If *you* have any problems, send me a message through the Teams page for the EG-247 Course.
 
-By default, the imatlab kernel uses MATLAB figure windows. To get images inline, use
+By default, the `Mkernal` kernel uses MATLAB figure windows. To get images inline in svg, use
 
 ```
-imatlab_export_fig('print-svg') 
+setappdata(0, "MKernel_plot_format", "svg")
 ```
 
 at the beginning of any notebooks that use the MATLAB kernel.
@@ -347,9 +353,9 @@ To learn more about Jupyter notebooks, the key resource is the [Jupyter Project 
 
 For a quick introduction, I particularly recommend Corey Schafer's YouTube tutorial: https://youtu.be/HW29067qVWk.
 
-```html
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/HW29067qVWk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-```
+
 
 ## Jupyter Noteboooks versus MATLAB Live Scripts 
 
