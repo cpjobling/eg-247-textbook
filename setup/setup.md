@@ -266,7 +266,7 @@ eng.quit()
 ## MATLAB Kernel for Jupyter
 
 
-Finally we install Carsten Allefeld's `Mkernel` ([github.com/allefeld/mkernel](https://github.com/allefeld/mkernel)) using the instructions given in `cite`{allefeld2023}: 
+Finally we install Carsten Allefeld's `Mkernel` ([github.com/allefeld/mkernel](https://github.com/allefeld/mkernel)) using the instructions given in {cite}`allefeld2023`: 
 <!-- #endregion -->
 
 ```matlab
@@ -370,8 +370,7 @@ That said, we will be using MATLAB throughout this course and MATLAB Live Script
 
 ## References
 
-1. Fangohr, Prof Hans, *Installation of Python, Spyder, Numpy, Sympy, Scipy, Pytest, Matplotlib via Anaconda*, University of Southampton, 20116. Available from: https://fangohr.github.io/blog/installation-of-python-spyder-numpy-sympy-scipy-pytest-matplotlib-via-anaconda.html.
+```{bibliography}
+:filter: docname in docnames
+```
 
-1. Blank, Doug, Silvester, Steven and Lee, Antony, *`Calysto/matlab_kernel` README*, Calysto, 2017. Available from GitHub: https://github.com/Calysto/matlab_kernel/blob/master/README.rst.
-
-1. Lee, Antony and collaborators, *A Jupyter kernel for MATLAB*, 2021. Available from GitHub: https://github.com/imatlab/imatlab/blob/master/README.rst.

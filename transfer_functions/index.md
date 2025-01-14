@@ -7,7 +7,7 @@ Additional background material is available in Units [3](https://cpjobling.githu
 
 You can run the original MATLAB LiveScripts by visiting [Transfer Function Analysis of Dynamic Systems](https://uk.mathworks.com/matlabcentral/fileexchange/94635-transfer-function-analysis-of-dynamic-systems?s_tid=srchtitle) and following the link to **Open in MATLAB Online**.
 
-This will install a project called `Repositories/Transfer-Function-Analysis-of-Dynamic-Systems` on your MATLAB Drive. If you have the *MATLAB Connector* installed (see instructions on [Canvas](https://canvas.swansea.ac.uk/courses/44853/pages/prepare-the-matlab-curriculum-module-used-in-these-labs?module_item_id=2512408)) the project will be automatically synced to your desktop.
+This will install a project called `Repositories/Transfer-Function-Analysis-of-Dynamic-Systems` on your MATLAB Drive. If you have the *MATLAB Connector* installed (see instructions on [Canvas](https://canvas.swansea.ac.uk/courses/53137/pages/prepare-the-matlab-curriculum-module-used-in-these-labs?module_item_id=2512408)) the project will be automatically synced to your desktop.
 
 Run the project by finding and opening the file `TransferFunctions.prj`.
 
