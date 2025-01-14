@@ -642,7 +642,7 @@ theta = ilaplace(Theta)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-There is an animated version of the solution to this simple pendulum system in the MATLAB LiveScript `ConceptReview.mlx`. Open the LiveScript file and paste your solution into the appropriate place to see the animation. 
+There is an animated version of the solution to this simple pendulum system in the MATLAB LiveScript `ConceptReview.mlx`. Open the LiveScript file and paste your solution into the appropriate place to see the animation.
 
 ```{code-cell}
 ---
@@ -719,7 +719,7 @@ open('ConceptReview.mlx')
 
 ### Solution to Exercise 1
 
-We have made use of the resource [Laplace Transforms](https://www.lboro.ac.uk/departments/mlsc/student-resources/helm-workbooks/) from the [HELM project](https://www.lboro.ac.uk/media/media/schoolanddepartments/mlsc/downloads/HELM%20Workbook%2020%20Laplace%20Transforms.pdf) {cite}`HELM,HELM-Laplace` hosted at Loughborough University. We have made the [HELM resource available in the Canvas site](https://canvas.swansea.ac.uk/courses/44853/modules/items/2565502) for this module. 
+We have made use of the resource [Laplace Transforms](https://www.lboro.ac.uk/departments/mlsc/student-resources/helm-workbooks/) from the [HELM project](https://www.lboro.ac.uk/media/media/schoolanddepartments/mlsc/downloads/HELM%20Workbook%2020%20Laplace%20Transforms.pdf) {cite}`HELM,HELM-Laplace` hosted at Loughborough University. We have made the [HELM resource available in the Canvas site](https://canvas.swansea.ac.uk/courses/53137/modules/items/2565502) for this module. 
 
 Compute the Laplace transform of some standard functions listed below:
 
@@ -868,4 +868,4 @@ $$
 
 [^examples]: We will tackle some of the paper-based exercises in the examples class.
 
-[^installation]: Installation details are given in Canvas here: [Prepare the MATLAB Curriculum Module used in Unit 2 and Lab 2](https://canvas.swansea.ac.uk/courses/44853/pages/prepare-the-matlab-curriculum-module-used-in-unit-2-and-lab-2).
+[^installation]: Installation details are given in Canvas here: [Prepare the MATLAB Curriculum Module used in Unit 2 and Lab 2](https://canvas.swansea.ac.uk/courses/53137/pages/prepare-the-matlab-curriculum-module-used-in-unit-2-and-lab-2).

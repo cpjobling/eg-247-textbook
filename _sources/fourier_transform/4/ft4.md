@@ -118,7 +118,7 @@ An ideal frequency-selective filter is a system that let's the frequency compone
 
 ### Motivating example
 
-See the video and script on [*Canvas Week 6*](https://canvas.swansea.ac.uk/courses/44853/pages/motivating-example-filter-design-using-matlab?module_item_id=2484097).
+See the video and script on [*Canvas Week 6*](https://canvas.swansea.ac.uk/courses/53137/pages/motivating-example-filter-design-using-matlab?module_item_id=2484097).
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
