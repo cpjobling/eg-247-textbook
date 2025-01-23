@@ -7,14 +7,15 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.15.2
 kernelspec:
-  display_name: Matlab
+  display_name: MKernel
   language: matlab
-  name: matlab
+  name: mkernel
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (ft3)=
+
 # Unit 4.3: Fourier Transforms for Circuit and LTI Systems Analysis
 
 +++ {"slideshow": {"slide_type": "notes"}}
@@ -23,11 +24,11 @@ kernelspec:
 
 An annotatable worksheet for this presentation is available as {ref}`ws8`.
 
-* The source code for this page is [fourier_transform/3/ft3.md](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_transform/3/ft3.md).
+- The source code for this page is [fourier_transform/3/ft3.md](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_transform/3/ft3.md).
 
-* You can view the notes for this presentation as a webpage ({ref}`ft3`). 
+- You can view the notes for this presentation as a webpage ({ref}`ft3`).
 
-* This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/fourier_transform/3/ft3.pdf) file.
+- This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/fourier_transform/3/ft3.pdf) file.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -39,11 +40,11 @@ In this section we will apply what we have learned about Fourier transforms to s
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* The system function
+- The system function
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Examples
+- Examples
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -59,7 +60,7 @@ $$h(t)*u(t)=\int_{-\infty}^{\infty}h(t-\tau)u(\tau)\,d\tau.$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-We let 
+We let
 
 $$g(t) = h(t)*u(t)$$
 
@@ -73,7 +74,7 @@ $$h(t)*u(t) = g(t) \Leftrightarrow G(\omega) = H(\omega).U(\omega)$$
 
 ### The System Function
 
-We call $H(\omega)$ the *system function*.
+We call $H(\omega)$ the _system function_.
 
 We note that the system function $H(\omega)$ and the impulse response $h(t)$ form the Fourier transform pair
 
@@ -115,7 +116,7 @@ Solutions see: {ref}`solutions_ft3`
 slideshow:
   slide_type: subslide
 ---
-format compact; % reduce whitesace for textbook presentation
+format compact; setappdata(0, "MKernel_plot_format", 'svg'); % reduce whitesace for textbook presentation
 syms t w
 U1 = fourier(2*heaviside(t),t,w)
 ```
@@ -169,7 +170,7 @@ y = y1 - y2
 +++ {"slideshow": {"slide_type": "notes"}}
 
 The result is equivalent to:
-    
+
     y = 3*heaviside(t) - 3*heaviside(t - 3) + 3*heaviside(t - 3)*exp(6 - 2*t) - 3*exp(-2*t)*heaviside(t)
 
 Which after gathering terms gives
@@ -189,7 +190,7 @@ fplot(y,[0,6])
 title('Solution to Example 1')
 ylabel('y(t)')
 xlabel('t [s]')
-grid 
+grid
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -240,7 +241,7 @@ v_L = simplify(ifourier(V_L,w,t))
 +++ {"slideshow": {"slide_type": "notes"}}
 
 The result is equivalent to:
-    
+
     vout = -5*exp(-3*t)*heaviside(t)*(2*exp(t) - 3)
 
 Which after gathering terms gives
@@ -260,7 +261,7 @@ fplot(v_L,[0,5])
 title('Solution to Example 2')
 ylabel('v_L(t) [V]')
 xlabel('t [s]')
-grid 
+grid
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -315,7 +316,7 @@ vout = simplify(ifourier(Vout,w,t))
 +++ {"slideshow": {"slide_type": "notes"}}
 
 The result is equiavlent to:
-    
+
     15*exp(-4*t)*heaviside(t)*(exp(2*t) - 1)
 
 Which after gathering terms gives
@@ -335,7 +336,7 @@ fplot(vout,[0,5])
 title('Solution to Example 3')
 ylabel('vout(t) [V]')
 xlabel('t [s]')
-grid 
+grid
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -344,7 +345,7 @@ grid
 
 Karris example 8.11: the voltage across a 1 $\Omega$ resistor is known to be $V_{R}(t)=3e^{-2t} u_0(t)$. Compute the energy dissipated in the resistor for $0\lt t\lt\infty$, and verify the result using Parseval's theorem. Verify the result with Matlab.
 
-Note from [tables of integrals](https://en.wikipedia.org/wiki/Lists_of_integrals) 
+Note from [tables of integrals](https://en.wikipedia.org/wiki/Lists_of_integrals)
 
 $$\int\frac{1}{a^2 + x^2}\,dx = \frac{1}{a}\arctan\frac{x}{a}+C.$$
 
@@ -417,20 +418,20 @@ See [ft3_ex4.m](https://cpjobling.github.io/eg-247-textbook/fourier_transform/ma
 
 ## Worked Solutions
 
-* Example 1: [ft3-ex1.pdf](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/ft3-ex1.pdf)
+- Example 1: [ft3-ex1.pdf](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/ft3-ex1.pdf)
 
-* Example 2: [ft3-ex2.pdf](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/ft3-ex2.pdf)
+- Example 2: [ft3-ex2.pdf](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/ft3-ex2.pdf)
 
-* Example 3: [ft3-ex3.pdf](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/ft3-ex4.pdf)
+- Example 3: [ft3-ex3.pdf](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/ft3-ex4.pdf)
 
-* Example 3: [ft3-ex4.pdf](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/ft3-ex4.pdf)
+- Example 3: [ft3-ex4.pdf](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/ft3-ex4.pdf)
 
 ## MATLAB Solutions
 
-* Example 1: [ft3_ex1.mlx](https://cpjobling.github.io/eg-247-textbook/fourier_transform/matlab/ft3_ex1.mlx)
+- Example 1: [ft3_ex1.mlx](https://cpjobling.github.io/eg-247-textbook/fourier_transform/matlab/ft3_ex1.mlx)
 
-* Example 2: [ft3_ex2.mlx](https://cpjobling.github.io/eg-247-textbook/fourier_transform/matlab/ft3_ex2.mlx)
+- Example 2: [ft3_ex2.mlx](https://cpjobling.github.io/eg-247-textbook/fourier_transform/matlab/ft3_ex2.mlx)
 
-* Example 3: [ft3_ex3.mlx](https://cpjobling.github.io/eg-247-textbook/fourier_transform/matlab/ft3_ex3.mlx)
+- Example 3: [ft3_ex3.mlx](https://cpjobling.github.io/eg-247-textbook/fourier_transform/matlab/ft3_ex3.mlx)
 
-* Example 4: [ft3_ex4.mlx](https://cpjobling.github.io/eg-247-textbook/fourier_transform/matlab/ft3_ex4.mlx)
+- Example 4: [ft3_ex4.mlx](https://cpjobling.github.io/eg-247-textbook/fourier_transform/matlab/ft3_ex4.mlx)

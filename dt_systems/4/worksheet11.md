@@ -7,15 +7,16 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.15.2
 kernelspec:
-  display_name: Matlab
+  display_name: MKernel
   language: matlab
-  name: matlab
+  name: mkernel
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (ws11)=
-# Worksheet 11 
+
+# Worksheet 11
 
 ## To accompany Unit 5.4: Models of Discrete-Time Systems
 
@@ -23,9 +24,9 @@ kernelspec:
 
 ## Colophon
 
-This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet17.pdf). We will step through this worksheet in class. 
+This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet17.pdf). We will step through this worksheet in class.
 
-An annotatable copy of the notes for this presentation will be distributed before the second class meeting as **Worksheet 17** in the **Week 9: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **Worksheets** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote. 
+An annotatable copy of the notes for this presentation will be distributed before the second class meeting as **Worksheet 17** in the **Week 9: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **Worksheets** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote.
 
 You are expected to have at least watched the video presentation of [Models of Discrete-Time Systems](https://cpjobling.github.io/eg-247-textbook/dt_systems/4/dt_models) of the [notes](https://cpjobling.github.io/eg-247-textbook) before coming to class. If you haven't watch it afterwards!
 
@@ -37,23 +38,23 @@ After class, the lecture recording and the annotated version of the worksheets w
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Discrete Time Systems ([Notes](dt_models.html#dts))
+- Discrete Time Systems ([Notes](dt_models.html#dts))
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Transfer Functions in the Z-Domain ([Notes](dt_models.html#tf))
+- Transfer Functions in the Z-Domain ([Notes](dt_models.html#tf))
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* [Modelling digital systems in MATLAB/Simulink](simulink)
+- [Modelling digital systems in MATLAB/Simulink](simulink)
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* [Converting Continuous Time Systems to Discrete Time Systems](cse)
+- [Converting Continuous Time Systems to Discrete Time Systems](cse)
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* [Example: Digital Butterworth Filter](demo)
+- [Example: Digital Butterworth Filter](demo)
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -165,7 +166,7 @@ slideshow:
 clear all
 cd matlab
 pwd
-format compact
+format compact; setappdata(0, "MKernel_plot_format", 'svg')
 ```
 
 +++ {"slideshow": {"slide_type": "fragment"}}
@@ -253,10 +254,12 @@ $$u_0[n] \Leftrightarrow \frac{z}{z - 1}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-$$\begin{array}{lcl}
+$$
+\begin{array}{lcl}
 Y(z) = H(z){U_0}(z) &=& \frac{z^2 + z}{z^2 + 0.5z + 0.125}.\frac{z}{z - 1}\\
  & = & \frac{z(z^2 + z)}{(z^2 + 0.5z + 0.125)(z - 1)}
-\end{array}$$
+\end{array}
+$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -384,10 +387,10 @@ dtm
 
 ### Continuous System Equivalents
 
-* There is no digital system that uniquely represents a continuous system
-* This is because as we are sampling, we only have knowledge of signals being processed at the sampling instants, and need to *reconstruct* the inter-sample behaviour.
-* In practice, only a small number of transformations are used.
-* The derivation of these is beyond the scope of this module, but here we'll demonstrate the ones that MATLAB provides in a function called `c2d`
+- There is no digital system that uniquely represents a continuous system
+- This is because as we are sampling, we only have knowledge of signals being processed at the sampling instants, and need to _reconstruct_ the inter-sample behaviour.
+- In practice, only a small number of transformations are used.
+- The derivation of these is beyond the scope of this module, but here we'll demonstrate the ones that MATLAB provides in a function called `c2d`
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -407,9 +410,9 @@ help c2d
 
 ## Example: Digital Butterworth Filter
 
-* Design a 2nd-order butterworth low-pass anti-aliasing filter with transfer function $H(s)$ for use in sampling music. 
-* The cut-off frequency $\omega_c = 20$&nbsp;kHz and the filter should have an attenuation of at least $-80$&nbsp;dB in the stop band. 
-* Choose a suitable sampling frequency for the audio signal and give the transfer function $H(z)$ and an algorithm to implement $h[n]$
+- Design a 2nd-order butterworth low-pass anti-aliasing filter with transfer function $H(s)$ for use in sampling music.
+- The cut-off frequency $\omega_c = 20$&nbsp;kHz and the filter should have an attenuation of at least $-80$&nbsp;dB in the stop band.
+- Choose a suitable sampling frequency for the audio signal and give the transfer function $H(z)$ and an algorithm to implement $h[n]$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -476,7 +479,7 @@ grid
 
 #### Sampling Frequency
 
-From the bode diagram, the frequency roll-off is -40 dB/decade for frequencies $\omega \gg \omega_c$. So, $|H(j\omega)| = -80$&nbsp;dB  is approximately 2 decades above $\omega_c$.
+From the bode diagram, the frequency roll-off is -40 dB/decade for frequencies $\omega \gg \omega_c$. So, $|H(j\omega)| = -80$&nbsp;dB is approximately 2 decades above $\omega_c$.
 
 ```{code-cell}
 w_stop = 100*wc
@@ -506,7 +509,7 @@ $\omega_s = 25.133\times 10^6$&nbsp;rad/s.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-Sampling frequency ($f_s$) in Hz  = ?
+Sampling frequency ($f_s$) in Hz = ?
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -572,28 +575,34 @@ $$H(z) = \frac{Y(z)}{U(z)} = \frac{486.2\times 10^{-6}z^{-1} +  479.1\times 10^{
 
 expanding out ...
 
-$$\begin{array}{l}
+$$
+\begin{array}{l}
 Y(z) - 1.956{z^{ - 1}}Y(z) + 0.9665{z^{ - 2}}Y(z) = \\
 \quad 486.2 \times {10^{ - 6}}{z^{ - 1}}U(z) + 479.1 \times {10^{ - 6}}{z^{ - 2}}U(z)
-\end{array}$$
+\end{array}
+$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 Inverse z-transform gives ...
 
-$$\begin{array}{l}
+$$
+\begin{array}{l}
 y[n] - 1.956y[n - 1] + 0.9665y[n - 2] = \\
 \quad 486.2 \times {10^{ - 6}}u[n - 1] + 479.1 \times {10^{ - 6}}u[n - 2]
-\end{array}$$
+\end{array}
+$$
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
 in algorithmic form (compute $y[n]$ from past values of $u$ and $y$) ...
 
-$$\begin{array}{l}
+$$
+\begin{array}{l}
 y[n] = 1.956y[n - 1] - 0.9665y[n - 2] + 486.2 \times {10^{ - 6}}u[n - 1] + ...\\
 \quad 479.1 \times {10^{ - 6}}u[n - 2]
-\end{array}$$
+\end{array}
+$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 

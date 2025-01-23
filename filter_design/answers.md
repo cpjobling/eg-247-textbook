@@ -5,53 +5,73 @@ jupyter:
     text_representation:
       extension: .md
       format_name: markdown
-      format_version: '1.3'
+      format_version: "1.3"
       jupytext_version: 1.15.2
   kernelspec:
-    display_name: Matlab (Connection)
+    display_name: MKernel
     language: matlab
-    name: matlab_connect
+    name: mkernel
 ---
 
 # Worked Solutions to Exercises 7.2
 
 (sol:ex7.2.1)=
+
 ## Solution to Exercise 7.2.1
 
 See: {ref}`u72:ex:1`
 
-
 We first write down the difference equations by tracing through the signals in the block diagram of {numref}`fig:u72:1`.
 
 $$
-y[n] = b_0 w[n] + b_1w[n-1] + b_2w[n-2] + b_3w[n-2] 
+y[n] = b_0 w[n] + b_1w[n-1] + b_2w[n-2] + b_3w[n-2]
 $$ (eq:sol:7.2.1:1)
 
+
 $$
-w[n] = x[n] - a_1 w[n-1] - a_1 w[n-2] - a_3w[n-2] 
-$$ (eq:sol:7.2.1:2)
+
+w[n] = x[n] - a_1 w[n-1] - a_1 w[n-2] - a_3w[n-2]
+
+$$
+(eq:sol:7.2.1:2)
 
 
 We take Z-transforms of equations {eq}`eq:sol:7.2.1:1` and {eq}`eq:sol:7.2.1:2`:
 
-$$
-Y(z) = b_0 W(z) + b_1 z^{-1} W(z)  + b_2 z^{-2} W(z) + b_3 z^{-3} W(z) 
-$$ (eq:sol:7.2.1:3)
 
 $$
-W(z) = X(z) + a_1 z^{-1} W(z) + a_1 z^{-2} W(z) + a_3 z^{-3} W(z) 
-$$ (eq:sol:7.2.1:4)
+
+Y(z) = b_0 W(z) + b_1 z^{-1} W(z) + b_2 z^{-2} W(z) + b_3 z^{-3} W(z)
+
+$$
+(eq:sol:7.2.1:3)
+
+
+$$
+
+W(z) = X(z) + a_1 z^{-1} W(z) + a_1 z^{-2} W(z) + a_3 z^{-3} W(z)
+
+$$
+(eq:sol:7.2.1:4)
 
 
 Gather terms in {eq}`eq:sol:7.2.1:3` and {eq}`eq:sol:7.2.1:4`:
 
-$$
-Y(z) = \left(b_0 + b_1 z^{-1} + b_2 z^{-2} + b_3 z^{-3}\right) W(z) 
-$$ (eq:sol:7.2.1:5)
 
 $$
-\left(1 + a_1 z^{-1}- a_1 z^{-2} - a_3 z^{-3} \right) W(z) = X(z) 
-$$ (eq:sol:7.2.1:6)
+
+Y(z) = \left(b_0 + b_1 z^{-1} + b_2 z^{-2} + b_3 z^{-3}\right) W(z)
+
+$$
+(eq:sol:7.2.1:5)
+
+
+$$
+
+\left(1 + a_1 z^{-1}- a_1 z^{-2} - a_3 z^{-3} \right) W(z) = X(z)
+
+$$
+(eq:sol:7.2.1:6)
 
 
 From {eq}`eq:sol:7.2.1:6` we obtain
@@ -92,7 +112,7 @@ The same procedure used for {ref}`sol:ex7.2.1` is used.
 See: {ref}`u72:ex:3`
 
 
----- 
+----
 
 
 The magnitude squared function of a $k$-th order Butterworth low-pass filter is
@@ -114,11 +134,14 @@ The poles of this equation are given by $s = \sqrt[4]{-1}$, that is $s = \sqrt[4
 $$\sqrt[4]{1e^{j\pi}} = 1e^{j\left(\frac{\pi + 2k\pi}{4}\right)}$$
 
 
-Thus $$
+Thus
+$$
+
 \begin{array}{ll}
 s_1 = e^{j 3\pi/4} = -\frac{1}{\sqrt{2}} + j\frac{1}{\sqrt{2}} & s_2 = e^{j5\pi/4} = -\frac{1}{\sqrt{2}} - j\frac{1}{\sqrt{2}}\\
-s_3 = e^{j 7\pi/4} = +\frac{1}{\sqrt{2}} - j\frac{1}{\sqrt{2}} & s_4 = e^{j9\pi/4} =  +\frac{1}{\sqrt{2}} + j\frac{1}{\sqrt{2}}
+s_3 = e^{j 7\pi/4} = +\frac{1}{\sqrt{2}} - j\frac{1}{\sqrt{2}} & s_4 = e^{j9\pi/4} = +\frac{1}{\sqrt{2}} + j\frac{1}{\sqrt{2}}
 \end{array}
+
 $$
 
 
@@ -129,7 +152,7 @@ $$H(s) = \frac{K}{\left(s +\frac{1}{\sqrt{2}} + j\frac{1}{\sqrt{2}}\right)\left(
 $$H(s) = \frac{K}{s^2 + \sqrt{2}s + 1} $$
 
 
-The gain $K$ is found from $A^2(0) = 1$, and $H(0) = 1$, so $K=1$ and the prototype Butterworth low-pass filter is 
+The gain $K$ is found from $A^2(0) = 1$, and $H(0) = 1$, so $K=1$ and the prototype Butterworth low-pass filter is
 
 $$H(s) = \frac{1}{s^2 + \sqrt{2}s + 1}$$
 
@@ -190,7 +213,7 @@ $$H(z) = \frac{1.169 + 2.338 z^{-1} + 1.169z^{-2}}{1 + 2.309z^{-1} + 1.367z^{-2}
 (sol:ex7.2.4)=
 ## Solution to Exercise 7.2.4
 
-> A digital filter with cutoff frequency of 100 Hz for a signal sampled at 1 kHz has transfer function 
+> A digital filter with cutoff frequency of 100 Hz for a signal sampled at 1 kHz has transfer function
 >
 > $$H(z) = \frac{0.6401   -1.1518z^{-1}   + 0.6401z^{-2}}{1	-1.0130 z^{-1}    + 0.4190z^{-2}} $$
 >
@@ -227,12 +250,15 @@ $$H(z) = \frac{Y(z)}{X(z)} = \frac{0.6401   -1.1518z^{-1}   + 0.6401z^{-2}}{1	-1
 
 So
 
+
 $$
+
 \begin{align*}
-\left(1	- 1.0130 z^{-1}    + 0.4190z^{-2}\right)Y(z) &= \left(0.6401   -1.1518z^{-1}   + 0.6401z^{-2}\right)X(z) \\
-Y(z)	- 1.0130 z^{-1}Y(z)    + 0.4190z^{-2}Y(z) &= 0.6401 X(z)   -1.1518z^{-1}X(z)   + 0.6401z^{-2}X(z) \\
-Y(z) &= 0.6401 X(z)   -1.1518z^{-1}X(z)   + 0.6401z^{-2}X(z) + 1.0130 z^{-1}Y(z)    - 0.4190z^{-2}Y(z)
+\left(1 - 1.0130 z^{-1} + 0.4190z^{-2}\right)Y(z) &= \left(0.6401 -1.1518z^{-1} + 0.6401z^{-2}\right)X(z) \\
+Y(z) - 1.0130 z^{-1}Y(z) + 0.4190z^{-2}Y(z) &= 0.6401 X(z) -1.1518z^{-1}X(z) + 0.6401z^{-2}X(z) \\
+Y(z) &= 0.6401 X(z) -1.1518z^{-1}X(z) + 0.6401z^{-2}X(z) + 1.0130 z^{-1}Y(z) - 0.4190z^{-2}Y(z)
 \end{align*}
+
 $$
 
 
@@ -260,7 +286,7 @@ while (true) {
 ```
 
 
-e) The easiest way to complete the problem is to tabulate the data 
+e) The easiest way to complete the problem is to tabulate the data
 
 | $n$ | $x[n]$ | $0.6401 x[n]$ | $-1.1518 x[n-1]$ | $0.6401 x[n-2]$ | $1.0130 y[n-1] $ | $- 0.4190 y[n-2]$ | $y[n]$ |
 |-----|--------|---------------|------------------|-----------------|------------------|-------------------|-------|
@@ -296,3 +322,4 @@ Confirm the tabulated results
 ```matlab
 yn(1:5)
 ```
+$$

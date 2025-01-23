@@ -7,9 +7,9 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.15.2
 kernelspec:
-  display_name: Matlab
+  display_name: MKernel
   language: matlab
-  name: matlab
+  name: mkernel
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -22,17 +22,17 @@ kernelspec:
 
 An annotatable copy of the notes for this presentation is available as [**Worksheet 1**](worksheet1).
 
-* The [Jupytext](https://jupytext.readthedocs.io/en/latest/index.html) source code for this page is [introduction/index.md](https://github.com/cpjobling/eg-247-textbook/blob/master/introduction/index.md).
+- The [Jupytext](https://jupytext.readthedocs.io/en/latest/index.html) source code for this page is [introduction/index.md](https://github.com/cpjobling/eg-247-textbook/blob/master/introduction/index.md).
 
-* You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/introduction/index.html)).
+- You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/introduction/index.html)).
 
-* This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/introduction/introduction.pdf) file.
+- This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/introduction/introduction.pdf) file.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## Signals and Systems for Dummies
 
-Signals and Systems for Dummies (**SS4D**) {cite}`ss4d` provides a useful introduction to the topics that will be covered in this module and it is in the [Reading List](https://eu.alma.exlibrisgroup.com/leganto/readinglist/searchlists/27328240030002417) as a *recommended text*. I have based this presentation on Chapter 1 which is available as a [downloadable PDF](https://www.dummies.com/store/product/Signals-and-Systems-For-Dummies.productCd-111847581X.html) from the publishers.
+Signals and Systems for Dummies (**SS4D**) {cite}`ss4d` provides a useful introduction to the topics that will be covered in this module and it is in the [Reading List](https://eu.alma.exlibrisgroup.com/leganto/readinglist/searchlists/27328240030002417) as a _recommended text_. I have based this presentation on Chapter 1 which is available as a [downloadable PDF](https://www.dummies.com/store/product/Signals-and-Systems-For-Dummies.productCd-111847581X.html) from the publishers.
 
 You should read Chapter 1 of SS4D in conjunction with the notes for this presentation.
 
@@ -44,17 +44,18 @@ Note that Signals and Systems for Dummies is available as an e-book from the [Un
 
 ## Topics
 
-* [Continuous-time Signals](ctsignals)
-* [Continuous-time Systems](ctsystems)
-* [Discrete-time Signals](dtsignals)
-* [Discrete-time Systems](dtsystems)
-* [Signal Classifications](sigclass)
-* [Domains for Signals](domains)
-* [Systems Thinking and Systems Design](systems_thinking)
+- [Continuous-time Signals](ctsignals)
+- [Continuous-time Systems](ctsystems)
+- [Discrete-time Signals](dtsignals)
+- [Discrete-time Systems](dtsystems)
+- [Signal Classifications](sigclass)
+- [Domains for Signals](domains)
+- [Systems Thinking and Systems Design](systems_thinking)
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (ctsignals)=
+
 ## Continuous-time signals
 
 Continuous signals are represented mathematically by functions which vary continuously with time.
@@ -76,7 +77,7 @@ For this expression, we wish to match each of the symbols to its definition.
 Without computing anything, see if you can complete this table.
 
 | Symbol     | Definition         |
-|------------|--------------------|
+| ---------- | ------------------ |
 | $A$        | Phase in radians   |
 | $f_0$      | Frequency in Hz    |
 | $\phi$     | Amplitude          |
@@ -86,7 +87,7 @@ Without computing anything, see if you can complete this table.
 
 ### Gaining insight using computers
 
-To help us answer these questions, let's use our Mathematical tools to plot a signal like this and explore it. The example we will use is from *Signals and Systems for Dummies* (SS4D: page 12):
+To help us answer these questions, let's use our Mathematical tools to plot a signal like this and explore it. The example we will use is from _Signals and Systems for Dummies_ (SS4D: page 12):
 
 $$3\cos(2\pi\cdot 2t - 3\pi/4)$$
 
@@ -98,7 +99,7 @@ Here's the link: <https://www.wolframalpha.com>
 
 Paste this into the search box
 
-    plot 3 cos(2 pi 2 t - 3 pi/4) 
+    plot 3 cos(2 pi 2 t - 3 pi/4)
 
 Try changing the numbers to gain insight.
 
@@ -115,7 +116,7 @@ slideshow:
 ---
 %Make sure that we have a clean workspace
 clear all
-format compact
+format compact; setappdata(0, "MKernel_plot_format", 'svg')
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -224,7 +225,7 @@ $$x(t) = A \cos (2\pi f_0 t - \phi).$$
 Using the insight just gained by exploring this function with a computer, match each of the symbols to its definition again.
 
 | Symbol     | Definition         |
-|------------|--------------------|
+| ---------- | ------------------ |
 | $A$        | Phase in radians   |
 | $f_0$      | Frequency in Hz    |
 | $\phi$     | Amplitude          |
@@ -244,24 +245,25 @@ What is the period of the waveform in seconds?
 
 **Notes**
 
-* In communications and electronic signal processing, the frequency of sinusoidal signals us usually given in *cycles per second* or Hz. 
-* In mathematics, the frequency is always expressed in *radians per second*. 
-* In some courses, including later in this one and in EG-243 Control Systems, the frequency $2\pi f_0$ is often called the *natural frequency* and is usually written $\omega_n$.
+- In communications and electronic signal processing, the frequency of sinusoidal signals us usually given in _cycles per second_ or Hz.
+- In mathematics, the frequency is always expressed in _radians per second_.
+- In some courses, including later in this one and in EG-243 Control Systems, the frequency $2\pi f_0$ is often called the _natural frequency_ and is usually written $\omega_n$.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
 ### Try This Yourself
 
-* Use any or all of computing tools that you have access to to explore other sinusoids. Change the values of the variables and explain what happens. 
-* Try adding sinusoids of different amplitudes and different frequencies together and see what happens.
-* Change `cos` to `sin` and see what happens.
+- Use any or all of computing tools that you have access to to explore other sinusoids. Change the values of the variables and explain what happens.
+- Try adding sinusoids of different amplitudes and different frequencies together and see what happens.
+- Change `cos` to `sin` and see what happens.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (ctsystems)=
+
 ## Continuous-time Systems
 
-Systems operate on signals. In mathematical terms, a *system* is a function or an *operator*, $H\{\}$ that maps the input signal $x(t)$ to an output signal $y(t)$. 
+Systems operate on signals. In mathematical terms, a _system_ is a function or an _operator_, $H\{\}$ that maps the input signal $x(t)$ to an output signal $y(t)$.
 
 Mathematically we would write this:
 
@@ -288,6 +290,7 @@ The Similink code can be downloaded from this file [gain_level_shift.slx](https:
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (dtsignals)=
+
 ## Discrete-time Signals
 
 Discrete-time signals are a function of a time index $n$. A discrete-time signal $x[n]$, unlike a continuous-time signal $x(t)$, is only defined at integer values of the independent variable $n$. This means that the signal is only active at specific periods of time. Discrete-time signals can be stored in computer memory.
@@ -299,17 +302,17 @@ Discrete-time signals are a function of a time index $n$. A discrete-time signal
 Consider the following simple signal, a pulse sequence:
 
 $$
-  y[n] = \left\{ 
+  y[n] = \left\{
     {
-      \begin{array}{*{20}{c}}
+      \begin{array}{ll}
         {5,\;0 \le n < 10}\\
         {0,\;{\rm{otherwise}}\quad \;}
       \end{array}
-    } 
+    }
   \right.
 $$
 
-We can plot this in MATLAB as a *stem plot*
+We can plot this in MATLAB as a _stem plot_
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -322,28 +325,8 @@ Define function using this text:
 slideshow:
   slide_type: subslide
 ---
-%%file y.m
-% Define the function
-function [ y ] = x( n )
-  if n < 0 | n >= 10 
-      y = 0;
-  else 
-      y = 5;
-  end
-end
-```
-
-```{code-cell}
----
-slideshow:
-  slide_type: subslide
----
 edit y
 ```
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-(Open [y.m](https://cpjobling.github.io/eg-247-textbook/introduction/y.m)).
 
 ```{code-cell}
 ---
@@ -389,15 +372,16 @@ grid
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (dt_systems)=
+
 ## Discrete-time Systems
 
-A discrete-time system, like its continuous-time counterpart, is a function, $H\{\}$, that maps the input $x[n]$￼ ￼to the output $y[n] = H\{x[n]\}$. An example of a discrete-time system is the *two-tap* filter:
+A discrete-time system, like its continuous-time counterpart, is a function, $H\{\}$, that maps the input $x[n]$￼ ￼to the output $y[n] = H\{x[n]\}$. An example of a discrete-time system is the _two-tap_ filter:
 
 $$y[n] = H\{x[n]\} = \frac{3}{4}x[n] + \frac{1}{4}x[n-1]$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-The term *tap* denotes that output at time instant $n$ is formed from two time instants of the input, $n$ and $n – 1$. Check out a block diagram of a two-tap filter system:
+The term _tap_ denotes that output at time instant $n$ is formed from two time instants of the input, $n$ and $n – 1$. Check out a block diagram of a two-tap filter system:
 
 ![Simulink model of a discrete-time system](pictures/ds.png)
 
@@ -405,23 +389,24 @@ This system is available as a Simulink model [discrete_system.slx](https://cpjob
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-In words, this system scales the present input by 3/4 and adds it to the past value of the input scaled by 1/4. The notion of the past input comes about because $x[n - 1]$ is lagging one sample value behind $x[n]$. The term *filter* describes the output as an *averaging* of the present input and the previous input. *Averaging* is a form of filtering.
+In words, this system scales the present input by 3/4 and adds it to the past value of the input scaled by 1/4. The notion of the past input comes about because $x[n - 1]$ is lagging one sample value behind $x[n]$. The term _filter_ describes the output as an _averaging_ of the present input and the previous input. _Averaging_ is a form of filtering.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (sigclass)=
+
 ## Signal Classifications
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### Periodic
 
-Signals that repeat over and over are said to be *periodic*. In mathematical terms, a signal is periodic if:
+Signals that repeat over and over are said to be _periodic_. In mathematical terms, a signal is periodic if:
 
-* *Continuous signal* $x(t + T) = x(t)$
-* *Discrete signal* $x[n + N] = x[n]$
+- _Continuous signal_ $x(t + T) = x(t)$
+- _Discrete signal_ $x[n + N] = x[n]$
 
-The smallest $T$ or $N$ for which the equality holds is the *signal period*.
+The smallest $T$ or $N$ for which the equality holds is the _signal period_.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -466,9 +451,9 @@ What is the period $T$ in milliseconds?
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Aperiodic 
+### Aperiodic
 
-Signals that are *deterministic* (completely determined functions of time) but not periodic are known as *aperiodic*. Point of view matters. If a signal occurs infrequently, you may view it as aperiodic. 
+Signals that are _deterministic_ (completely determined functions of time) but not periodic are known as _aperiodic_. Point of view matters. If a signal occurs infrequently, you may view it as aperiodic.
 
 This is how we generate an aperiodic rectangular pulse of duration $\tau$ in Matlab:
 
@@ -523,6 +508,7 @@ ylabel('Amplitude')
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (domains)=
+
 ## Domains for Signals and Systems
 
 Most of the signals we encounter on a daily basis reside in the time domain. They’re functions of independent variable $t$ or $n$. But sometimes when you’re working with continuous-time signals, you may need to transform away from the time domain ($t$) to another domain.
@@ -531,10 +517,9 @@ Most of the signals we encounter on a daily basis reside in the time domain. The
 
 ### Other Domains you will encounter
 
-The most commonly used domains used when analyzing continuous-time signals are the frequency domain ($f$ or $\omega$) and the Laplace $s$-domain ($s$). 
+The most commonly used domains used when analyzing continuous-time signals are the frequency domain ($f$ or $\omega$) and the Laplace $s$-domain ($s$).
 
 Similarly, for discrete-time signals, you may need to transform from the discrete-time domain ($n$) to the frequency domain ($\hat{\omega}$) or the z-domain ($z$).
-
 
 This section briefly introduces the world of signals and systems in the frequency, s-, and z-domains. More on these domains will follow.
 
@@ -607,7 +592,7 @@ Think about tuning in a radio station. Stations are located at different center 
 
 ### Fourier Transform
 
-We use the *Fourier transform* to move away from the time domain and into the frequency domain. To get back to the time domain, use the *inverse Fourier transform*. We will find out more about these transforms in this module.
+We use the _Fourier transform_ to move away from the time domain and into the frequency domain. To get back to the time domain, use the _inverse Fourier transform_. We will find out more about these transforms in this module.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -620,14 +605,15 @@ In addition to visualization properties, the s-domain reduces differential equat
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (systems_thinking)=
+
 ## Systems Thinking and Systems Design
 
 See section **Testing Product Concepts with Behavioral Level Modeling** from Chapter 1 of [SS4D](https://www.dummies.com/store/product/Signals-and-Systems-For-Dummies.productCd-111847581X.html) ({cite}`ss4d` pages 18--20) and add some notes to summarize this for yourself.
 
-* We will use *behavioural modelling*
-* We will rely on *abstraction*
-* We work *top-down*
-* We make use of *mathematics* and *mathematical software*.
+- We will use _behavioural modelling_
+- We will rely on _abstraction_
+- We work _top-down_
+- We make use of _mathematics_ and _mathematical software_.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 

@@ -7,14 +7,15 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.15.2
 kernelspec:
-  display_name: Matlab
+  display_name: MKernel
   language: matlab
-  name: matlab
+  name: mkernel
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (ft4)=
+
 # Unit 4.4: Introduction to Filters
 
 +++ {"slideshow": {"slide_type": "skip"}}
@@ -23,11 +24,11 @@ kernelspec:
 
 An annotatable worksheet for this presentation is available as {ref}`ws9`.
 
-* The source code for this page is [fourier_transform/4/ft4.md](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_transform/4/ft4.md).
+- The source code for this page is [fourier_transform/4/ft4.md](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_transform/4/ft4.md).
 
-* You can view the notes for this presentation as a webpage ({ref}`ft4`). 
+- You can view the notes for this presentation as a webpage ({ref}`ft4`).
 
-* This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/fourier_transform/4/ft4.pdf) file.
+- This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/fourier_transform/4/ft4.pdf) file.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -43,32 +44,32 @@ This material is an introduction to analogue filters. You will find much more in
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Frequency Selective Filters
+- Frequency Selective Filters
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Ideal low-pass filter
+- Ideal low-pass filter
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Butterworth low-pass filter
+- Butterworth low-pass filter
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-* High-pass filter
+- High-pass filter
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Bandpass filter
+- Bandpass filter
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## Introduction
 
-* Filter design is an important application of the Fourier transform
-* Filtering is a rich topic often taught in graduate courses so we give only an introduction.
-* Our introduction *will* illustrate the usefulness of the frequency domain viewpoint.
-* We will explore how filters can shape the spectrum of a signal.
+- Filter design is an important application of the Fourier transform
+- Filtering is a rich topic often taught in graduate courses so we give only an introduction.
+- Our introduction _will_ illustrate the usefulness of the frequency domain viewpoint.
+- We will explore how filters can shape the spectrum of a signal.
 
 Other applications of the Fourier transform are sampling theory (introduced next week) and modulation.
 
@@ -80,9 +81,9 @@ An ideal frequency-selective filter is a system that let's the frequency compone
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-* The range of frequencies which are let through belong to the **pass Band**
-* The range of frequencies which are cut-off by the filter are called the **stopband**
-* A typical scenario where filtering is needed is when noise $n(t)$ is added to a signal $x(t)$ but that signal has most of its energy outside the bandwidth of a signal.
+- The range of frequencies which are let through belong to the **pass Band**
+- The range of frequencies which are cut-off by the filter are called the **stopband**
+- A typical scenario where filtering is needed is when noise $n(t)$ is added to a signal $x(t)$ but that signal has most of its energy outside the bandwidth of a signal.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -98,7 +99,7 @@ An ideal frequency-selective filter is a system that let's the frequency compone
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Out-of Bandwidth Noise 
+### Out-of Bandwidth Noise
 
 ![Out of bandwidth noise](./pictures/filter3.png)
 
@@ -118,19 +119,22 @@ An ideal frequency-selective filter is a system that let's the frequency compone
 
 ### Motivating example
 
-See the video and script on [*Canvas Week 6*](https://canvas.swansea.ac.uk/courses/53137/pages/motivating-example-filter-design-using-matlab?module_item_id=2484097).
+See the video and script on [_Canvas Week 6_](https://canvas.swansea.ac.uk/courses/53137/pages/motivating-example-filter-design-using-matlab?module_item_id=2484097).
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (ft4:ideal_lp_filter)=
+
 ## Ideal Low-Pass Filter (LPF)
 
-An ideal low pass filter cuts-off frequencies higher than its *cut-off frequency*, $\omega_c$.
+An ideal low pass filter cuts-off frequencies higher than its _cut-off frequency_, $\omega_c$.
 
-$$H_{\rm{lp}}(\omega ) = \left\{ {\begin{array}{*{20}{c}}
+$$
+H_{\rm{lp}}(\omega ) = \left\{ {\begin{array}{*{20}{c}}
 {1,}&{|\omega |{\kern 1pt} \, < {\omega _c}}\\
 {0,}&{|\omega |{\kern 1pt} \, \ge {\omega _c}}
-\end{array}} \right.$$
+\end{array}} \right.
+$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -152,7 +156,7 @@ $$h_{\rm{lp}}(t) = \frac{\omega _c}{\pi }{\mathop{\rm sinc}\nolimits} \left( \fr
 
 ### Filtering is Convolution
 
-The output of an LTI system with impulse response 
+The output of an LTI system with impulse response
 
 $$h(t) \Leftrightarrow H(\omega)$$
 
@@ -160,7 +164,7 @@ subject to an input signal
 
 $$x(t) \Leftrightarrow X(\omega)$$
 
-is given by 
+is given by
 
 $$y(t) = h(t)*x(t) \Leftrightarrow Y(\omega) = H(\omega)X(\omega)$$
 
@@ -188,14 +192,14 @@ $$\left| H_B(\omega ) \right| = \frac{1}{\left(1 + \left(\frac{\omega }{\omega _
 
 **Remarks**
 
-* DC gain is 
+- DC gain is
 
   $$|H_B(j0)|=1$$
 
-* Attenuation at the cut-off frequency is 
+- Attenuation at the cut-off frequency is
 
-  $$|H_B(j\omega_c)|=1/\sqrt{2}$$ 
-  
+  $$|H_B(j\omega_c)|=1/\sqrt{2}$$
+
   for any $N$
 
 More about the Butterworth filter: [Wikipedia Article](https://en.wikipedia.org/wiki/Butterworth_filter)
@@ -317,7 +321,7 @@ title('Bode-plot of Butterworth 2nd-Order Butterworth Low Pass Filter')
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-Note that the attentuation of the filter is flat at 0 dB in the pass-band at frequencies below the cut-off frequency $\omega < \omega_c$; has a value of $-3$ dB at the cut-off frquency $\omega = \omega_c$; and has a "roll-off" (rate of decrease) of $N\times 20$ dB/decade in the stop-band. 
+Note that the attentuation of the filter is flat at 0 dB in the pass-band at frequencies below the cut-off frequency $\omega < \omega_c$; has a value of $-3$ dB at the cut-off frquency $\omega = \omega_c$; and has a "roll-off" (rate of decrease) of $N\times 20$ dB/decade in the stop-band.
 
 In this case, $N=2$, and $\omega_c = 100$ rad/s so the attenuation is -40 dB at $\omega = 10\omega_c = 1,000$ rad/s and $\omega = -80$ dB at $\omega = 100\omega_c = 10,000$ rad/s.
 
@@ -366,12 +370,14 @@ text(0.008,1,'s_B(t) for \omega_c = 100 rad/s')
 
 ## High-pass filter (HPF)
 
-An ideal highpass filter cuts-off frequencies lower than its *cutoff frequency*, $\omega_c$.
+An ideal highpass filter cuts-off frequencies lower than its _cutoff frequency_, $\omega_c$.
 
-$$H_{\rm{hp}}(\omega ) = \left\{ {\begin{array}{*{20}{c}}
+$$
+H_{\rm{hp}}(\omega ) = \left\{ {\begin{array}{*{20}{c}}
 {0,}&{|\omega |{\kern 1pt} \, \le {\omega _c}}\\
 {1,}&{|\omega |{\kern 1pt} \, > {\omega _c}}
-\end{array}} \right.$$
+\end{array}} \right.
+$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -438,12 +444,14 @@ title('Bode-plot of Butterworth 2nd-Order Butterworth High Pass Filter')
 
 ## Band-pass filter (BPF)
 
-An ideal bandpass filter cuts-off frequencies lower than its first *cutoff frequency* $\omega_{c1}$, and higher than its second *cutoff frequency* $\omega_{c2}$.
+An ideal bandpass filter cuts-off frequencies lower than its first _cutoff frequency_ $\omega_{c1}$, and higher than its second _cutoff frequency_ $\omega_{c2}$.
 
-$$H_{\rm{bp}}(\omega ) = \left\{ {\begin{array}{*{20}{c}}
+$$
+H_{\rm{bp}}(\omega ) = \left\{ {\begin{array}{*{20}{c}}
 {1,}&\omega _{c1} < \,|\omega |\, < \omega _{c2}\\
 {0,}&\rm{otherwise}
-\end{array}} \right.$$
+\end{array}} \right.
+$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -463,30 +471,30 @@ $$H_{\mathrm{bp}}(\omega) = H_{\mathrm{hp}}(\omega)H_{\mathrm{lp}}(\omega)$$
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* The highpass filter should have cut-off frequency of $\omega_{c1}$
+- The highpass filter should have cut-off frequency of $\omega_{c1}$
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* The lowpass filter should have cut-off frequency of $\omega_{c2}$
+- The lowpass filter should have cut-off frequency of $\omega_{c2}$
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## Summary
 
-* Frequency-Selective Filters
-* Ideal low-pass filter
-* Butterworth low-pass filter
-* High-pass filter
-* Bandpass filter
+- Frequency-Selective Filters
+- Ideal low-pass filter
+- Butterworth low-pass filter
+- High-pass filter
+- Bandpass filter
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
 ## Solutions
 
-### Handwritten 
+### Handwritten
 
 Solutions to Examples 5-9 are captured as a PenCast in [filters.pdf](https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/filters2.pdf).
 
-### MATLAB 
+### MATLAB
 
 To generate all the plots shown in this presentation, you can use [butter2_ex.mlx](https://cpjobling.github.io/eg-247-textbook/fourier_transform/matlab/butter2_ex.mlx)

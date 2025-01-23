@@ -7,25 +7,26 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.15.2
 kernelspec:
-  display_name: Matlab
+  display_name: MKernel
   language: matlab
-  name: matlab
+  name: mkernel
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (unit5.1)=
+
 # Unit 5.1: Sampling Theory
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
 ## Colophon
 
-* The source code for this page is [dt_systems/1/sampling.ipynb](https://github.com/cpjobling/eg-247-textbook/blob/master/dt_systems/1/sampling.ipynb).
+- The source code for this page is [dt_systems/1/sampling.ipynb](https://github.com/cpjobling/eg-247-textbook/blob/master/dt_systems/1/sampling.ipynb).
 
-* You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/dt_systems/1/sampling.html)). 
+- You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/dt_systems/1/sampling.html)).
 
-* This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/dt_systems/1/sampling.pdf) file.
+- This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/dt_systems/1/sampling.pdf) file.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -41,34 +42,34 @@ The material in this presentation and notes is based on Chapter 15 of {cite}`bou
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Sampling of Continuous-Time Signals
+- Sampling of Continuous-Time Signals
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Signal Reconstruction
+- Signal Reconstruction
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Discrete-time Processing of Continuous-Time Signals
+- Discrete-time Processing of Continuous-Time Signals
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Sampling of Discrete-Time Systems
+- Sampling of Discrete-Time Systems
 
 +++ {"slideshow": {"slide_type": "skip"}}
 
 ## Acknowledgements
 
-We will be using an adaptation of a pair of demo scripts to illustrate *alialising*. These scripts were published by Prof. Charles A. Bouman, School of Electrical and Computer Engineering, Purdue University as part of the course materials for [ECE438: Digital Signal Processing](https://engineering.purdue.edu/VISE/ee438/demos/).
+We will be using an adaptation of a pair of demo scripts to illustrate _alialising_. These scripts were published by Prof. Charles A. Bouman, School of Electrical and Computer Engineering, Purdue University as part of the course materials for [ECE438: Digital Signal Processing](https://engineering.purdue.edu/VISE/ee438/demos/).
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## Introduction
 
-* The *sampling process* provides the bridge between continuous-time (CT) and discrete-time (DT) signals
-* Sampling records discrete values of a CT signal at periodic instants of time.
-* Sampled data can be used in *real-time* or *off-line* processing
-* Sampling opens up possibility of processing CT signals through *finite impulse response* (FIR) and *infinite impulse response* (IIR) filters.
+- The _sampling process_ provides the bridge between continuous-time (CT) and discrete-time (DT) signals
+- Sampling records discrete values of a CT signal at periodic instants of time.
+- Sampled data can be used in _real-time_ or _off-line_ processing
+- Sampling opens up possibility of processing CT signals through _finite impulse response_ (FIR) and _infinite impulse response_ (IIR) filters.
 
 +++ {"slideshow": {"slide_type": "skip"}}
 
@@ -90,7 +91,7 @@ slideshow:
   slide_type: skip
 ---
 clearvars
-format compact
+format compact; setappdata(0, "MKernel_plot_format", 'svg')
 cd matlab
 pwd
 ```
@@ -107,10 +108,10 @@ open sampling_demo
 
 #### Technical Details
 
-* **Sampling rate**: 8000 samples per second (fs = 8 kHz)
-* **Resolution**: 8 bits per sample
-* **Channels**: 1 channel. 
-* **Reconstruction**: MATLAB plays the audio back at 8192 samples per second.
+- **Sampling rate**: 8000 samples per second (fs = 8 kHz)
+- **Resolution**: 8 bits per sample
+- **Channels**: 1 channel.
+- **Reconstruction**: MATLAB plays the audio back at 8192 samples per second.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -142,7 +143,7 @@ $T_s$ is the period of the periodic sampling function.
 
 ### Frequency domain
 
-Multiplication in the time domain is *convolution* in the frequency domain
+Multiplication in the time domain is _convolution_ in the frequency domain
 
 ![Frequency domain view of sampling](./pictures/sampling_fr.png)
 
@@ -259,6 +260,7 @@ tmax = 1.5*t0; % plottable range
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 #### Define a suitable signal
+
 We will use a system with an underdamped second-order response.
 
 The transfer function is:
@@ -354,7 +356,7 @@ The inverse of $H_0(\omega)$ is given by
 
 $${H_1}(\omega ) = {H^{ - 1}}(\omega ) = \frac{1}{2}{e^{j\omega \frac{T_s}{2}}}\frac{\omega }{\sin \left( {\frac{T_s}{2}\omega } \right)}$$
 
-The *reconstruction filter* is the cascade of the inverse filter and the lowpass filter:
+The _reconstruction filter_ is the cascade of the inverse filter and the lowpass filter:
 
 $$H_r(\omega)=T_sH_{\mathrm{lp}}(\omega)H_1(\omega)$$
 
@@ -368,16 +370,16 @@ The frequency response of this filter and additional notes are to be found on Pa
 
 **Problem**
 
-* We have a bandlimited signal that is sampled at the Nyquist-Shannon sampling frequency $\omega_s = 2\pi/T_s$.
-* We therefore have a discrete-time (DT) signal $x(nT_s)$ from which we want to reconstruct the original signal.
+- We have a bandlimited signal that is sampled at the Nyquist-Shannon sampling frequency $\omega_s = 2\pi/T_s$.
+- We therefore have a discrete-time (DT) signal $x(nT_s)$ from which we want to reconstruct the original signal.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### Perfect Signal Interpolation Using sinc Functions
 
-* In the *frequency domain*, the ideal way to reconstruct the signal would be to construct a chain of impulses $x_s(t)$ and then to filter this signal with an ideal lowpass filter.
+- In the _frequency domain_, the ideal way to reconstruct the signal would be to construct a chain of impulses $x_s(t)$ and then to filter this signal with an ideal lowpass filter.
 
-* In the *time domain*, this is equivalent to interpolating the samples using time-shifted sinc functions with zeros at $nT_s$ for $\omega_c = \omega_s$.
+- In the _time domain_, this is equivalent to interpolating the samples using time-shifted sinc functions with zeros at $nT_s$ for $\omega_c = \omega_s$.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -385,7 +387,7 @@ The frequency response of this filter and additional notes are to be found on Pa
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
- #### Reconstruction with sinc function
+#### Reconstruction with sinc function
 
 ```{code-cell}
 ---
@@ -432,6 +434,7 @@ $$x(t) = \sum\limits_{k =  - \infty }^{ + \infty } {x(n{T_s}){\rm{sinc}}} \left(
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 #### Reconstructed signal
+
 Obtained by summing all the sinc functions
 
 ```{code-cell}
@@ -446,7 +449,7 @@ ylabel('x(t)')
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-This is clearly unfeasible, at least in real-time, so we have to resort to approximations of the ideal low-pass filter. 
+This is clearly unfeasible, at least in real-time, so we have to resort to approximations of the ideal low-pass filter.
 
 A couple of examples are given below. Boulet gives more information including an evaluation of the quality of the approximation.
 
@@ -488,11 +491,11 @@ xlabel('Time t [s]')
 
 ## Aliasing
 
-* Aliasing Occurs when the sampling frequency is too low to ovoid overlapping between the spectra.
+- Aliasing Occurs when the sampling frequency is too low to ovoid overlapping between the spectra.
 
-* When aliasing occours, we have violated the sampling theorem: that is $\omega_s < 2\omega_m$.
+- When aliasing occours, we have violated the sampling theorem: that is $\omega_s < 2\omega_m$.
 
-* When aliasing occurs, the original signal cannot be recovered by lowpass filtering.
+- When aliasing occurs, the original signal cannot be recovered by lowpass filtering.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -522,7 +525,7 @@ open aliaseg1
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### Demo  4.2
+#### Demo 4.2
 
 Assume signal $x(t)=\cos(\omega_0 t)$ is sampled at a rate of $\omega_s = 1.5\omega_0$, violating the sampling theorem.
 
@@ -550,13 +553,13 @@ You should confirm for yourself that after lowpass filtering the spectrum with a
 
 ### Antialising Filters
 
-* Most real signals are not band-limited so we have to artificially make them bandlimited  using an *anti-aliasing filter*.
+- Most real signals are not band-limited so we have to artificially make them bandlimited using an _anti-aliasing filter_.
 
-* An anti-aliasing filter is a low-pass filter whose cutoff frequency is lower than half the sampling frequency.
+- An anti-aliasing filter is a low-pass filter whose cutoff frequency is lower than half the sampling frequency.
 
-* This can produce some distortion at high-frequencies but this is often better than the distortion that would occur at low frequencies if aliasing was allowed to happen.
+- This can produce some distortion at high-frequencies but this is often better than the distortion that would occur at low frequencies if aliasing was allowed to happen.
 
-* For more on this topic see Pages 551&mdash;552 of Boulet.
+- For more on this topic see Pages 551&mdash;552 of Boulet.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -600,11 +603,11 @@ In practice, modern digital processing relies on the use of an analogue-to-digit
 
 ## Sampling of DT Signals
 
-* In modern signal processing and digital communications many of the operations that were once done in continuous time are now done entirely in discrete time.
+- In modern signal processing and digital communications many of the operations that were once done in continuous time are now done entirely in discrete time.
 
-* For example, we can implement sampling and modulation in discrete time.
+- For example, we can implement sampling and modulation in discrete time.
 
-* We can also upsample (interpolate between samples) or downsample (reduce the number of samples in a discrete-time signal)
+- We can also upsample (interpolate between samples) or downsample (reduce the number of samples in a discrete-time signal)
 
 These topics are left to you for further study.
 
@@ -612,15 +615,15 @@ These topics are left to you for further study.
 
 ## Summary
 
-* Sampling of Continuous-Time Signals
-* Signal Reconstruction
-* Aliasing
-* Discrete-time Processing of Continuous-Time Signals
-* Sampling of Discrete-Time Systems
+- Sampling of Continuous-Time Signals
+- Signal Reconstruction
+- Aliasing
+- Discrete-time Processing of Continuous-Time Signals
+- Sampling of Discrete-Time Systems
 
-*Next session*
+_Next session_
 
-* The Z-Transform
+- The Z-Transform
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -648,15 +651,15 @@ See [Bibliography](/zbib).
 
 ## MATLAB Functions used
 
-* The matlab recorder command is: `recorder = audiorecorder(Fs,nBits,nChannels);`
-* Sound is recorded using: `recordblocking(recObj, time);`
-* Recorded sound is played back: `play(recorder);`
-* Sound is extracted as Matlab data using: `x = getaudiodata(recorder);`
-* Sound is plotted against sample number using: `plot(x)`
-* I extracted 50 points for the stem plot using `stem([1000:1049],myRecording(1000:1049))`
-* Sound is saved as an audio file using: `audiowrite(audioFile,myRecording,Fs);` where `audiofile` is a filename in form `name.extension`. Supported extensions are `'.wav'`, `'.ogg'`, and `'.flac'` on all platforms. Windows and Mac support `'.m4m'` and '`.mp4`'. 
-* Sound is loaded using `[x,Fs]=audioread(audioFile);`. Additional file formats are supported for reading including `'.mp3'`.
-* Frequency response spectra were generated using the fast Fourier transform (`fft`) function.
-* Multiple graphs in one figure window is achieved using `subplot`.
+- The matlab recorder command is: `recorder = audiorecorder(Fs,nBits,nChannels);`
+- Sound is recorded using: `recordblocking(recObj, time);`
+- Recorded sound is played back: `play(recorder);`
+- Sound is extracted as Matlab data using: `x = getaudiodata(recorder);`
+- Sound is plotted against sample number using: `plot(x)`
+- I extracted 50 points for the stem plot using `stem([1000:1049],myRecording(1000:1049))`
+- Sound is saved as an audio file using: `audiowrite(audioFile,myRecording,Fs);` where `audiofile` is a filename in form `name.extension`. Supported extensions are `'.wav'`, `'.ogg'`, and `'.flac'` on all platforms. Windows and Mac support `'.m4m'` and '`.mp4`'.
+- Sound is loaded using `[x,Fs]=audioread(audioFile);`. Additional file formats are supported for reading including `'.mp3'`.
+- Frequency response spectra were generated using the fast Fourier transform (`fft`) function.
+- Multiple graphs in one figure window is achieved using `subplot`.
 
-For more information use `doc` *command* from the command-line.
+For more information use `doc` _command_ from the command-line.

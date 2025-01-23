@@ -7,14 +7,15 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.15.2
 kernelspec:
-  display_name: Matlab
+  display_name: MKernel
   language: matlab
-  name: matlab
+  name: mkernel
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (ws6)=
+
 # Worksheet 6
 
 ## To accompany Unit 4.1 Defining the Fourier Transform
@@ -23,9 +24,9 @@ kernelspec:
 
 ## Colophon
 
-This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet6.pdf). We will step through this worksheet in class. 
+This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet6.pdf). We will step through this worksheet in class.
 
-An annotatable copy of the notes for this presentation will be distributed before the second class meeting as **Worksheet 6** in the **Week 5: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **Worksheets** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote. 
+An annotatable copy of the notes for this presentation will be distributed before the second class meeting as **Worksheet 6** in the **Week 5: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **Worksheets** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote.
 
 You are expected to have at least watched the video presentation of {ref}`ft1` of the [notes](https://cpjobling.github.io/eg-247-textbook) before coming to class. If you haven't watch it afterwards!
 
@@ -33,7 +34,7 @@ After class, the lecture recording and the annotated version of the worksheets w
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-##  Fourier Transform as the Limit of a Fourier Series
+## Fourier Transform as the Limit of a Fourier Series
 
 We start by considering the pulse train that we used in the last lecture and demonstrate that the discrete line spectra for the Fourier Series becomes a continuous spectrum as the signal becomes aperiodic.
 
@@ -106,7 +107,7 @@ Let's complete the analysis on the virtual whiteboard.
 
 #### The Sinc Function
 
-The function, $\sin(\pi x)/\pi x$ crops up again and again in Fourier analysis. The Fourier coefficients $C_k$ are scaled *samples* of the real continuous *normalized sinc* function defined as follows:
+The function, $\sin(\pi x)/\pi x$ crops up again and again in Fourier analysis. The Fourier coefficients $C_k$ are scaled _samples_ of the real continuous _normalized sinc_ function defined as follows:
 
 $$\operatorname{sinc} u: = \frac{\sin \pi u}{\pi u},\;u \in \mathbb{R}.$$
 
@@ -115,9 +116,9 @@ $$\operatorname{sinc} u: = \frac{\sin \pi u}{\pi u},\;u \in \mathbb{R}.$$
 The function is equal to 1 at $u=0$<sup>1</sup> and has zero crossings at $u=\pm n,\; n=1,2,3,\ldots$ as shown below.
 
 #### Plot the sinc function
- 
-Plots: 
- 
+
+Plots:
+
 $$sinc(u) = \frac{\sin \pi u}{\pi u},\; u \in \mathbb{R}$$
 
 ```{code-cell}
@@ -127,7 +128,7 @@ slideshow:
 ---
 clear all
 cd ../matlab
-format compact
+format compact; setappdata(0, "MKernel_plot_format", 'svg')
 ```
 
 ```{code-cell}
@@ -147,8 +148,8 @@ xlabel('u')
 
 #### Duty cycle
 
-* We define the duty cycle $\eta = 2t_0/T$ of the rectangular pulse train as the fraction of the time the signal is "on" (equal to 1) over one period.
-* The duty cycle is often given as a percentage.
+- We define the duty cycle $\eta = 2t_0/T$ of the rectangular pulse train as the fraction of the time the signal is "on" (equal to 1) over one period.
+- The duty cycle is often given as a percentage.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -184,39 +185,39 @@ open duty_cycle
 
 Run duty_cycle with values of:
 
-* 50% ($\eta = 1/2$)
+- 50% ($\eta = 1/2$)
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* 25% ($\eta = ?$)
+- 25% ($\eta = ?$)
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* 12.5% ($\eta = ?$)
+- 12.5% ($\eta = ?$)
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* 5% ($\eta = ?$)
+- 5% ($\eta = ?$)
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
 #### Comments
 
-* As the fundamental period increases, we get more spectral lines packed into the lobes of the sinc envelope.
-* These normalized spectral coefficients turn out to be samples of the continuous sinc function on the spectrum of $\tilde{x}(t)$
+- As the fundamental period increases, we get more spectral lines packed into the lobes of the sinc envelope.
+- These normalized spectral coefficients turn out to be samples of the continuous sinc function on the spectrum of $\tilde{x}(t)$
 
-* The two spectra are plotted against the frequency variable $k\omega_0$ with units of rad/s rather than index of harmonic component
-* The first zeros of each side of the main lobe are at frequencies $\omega = \pm \pi/t_0$ rad/s
-* The zero-crossing points of sinc envelope are independent of the period T. They only depend on $t_0$.
+- The two spectra are plotted against the frequency variable $k\omega_0$ with units of rad/s rather than index of harmonic component
+- The first zeros of each side of the main lobe are at frequencies $\omega = \pm \pi/t_0$ rad/s
+- The zero-crossing points of sinc envelope are independent of the period T. They only depend on $t_0$.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 #### Intuition leading to the Fourier Transform
 
-* An aperiodic signal that has been made periodic by "repeating" its graph every $T$ seconds will have a line spectrum that becomes more and more dense as the fundamental period is made longer and longer.
-* The line spectrum has the same continuous envelope.
-* As $T$ goes to infinity, the line spectrum will become a continuous function of $\omega$.
-* The *envelope* is the function that represents the Fourier transform.
+- An aperiodic signal that has been made periodic by "repeating" its graph every $T$ seconds will have a line spectrum that becomes more and more dense as the fundamental period is made longer and longer.
+- The line spectrum has the same continuous envelope.
+- As $T$ goes to infinity, the line spectrum will become a continuous function of $\omega$.
+- The _envelope_ is the function that represents the Fourier transform.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -242,14 +243,14 @@ $$X(j\omega) = \int_{-\infty}^{\infty}x(t)e^{-j\omega t}\,dt := \mathcal{F}\left
 
 #### Fourier Transform Pair
 
-* The two equations on the previous slide are called the *Fourier transform pair*.
+- The two equations on the previous slide are called the _Fourier transform pair_.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## Properties of the Fourier Transform
 
 Again, we will provide any properties that you might need in the examination.
-    
+
 You will find a number of these in the accompanying notes.
 
 +++ {"slideshow": {"slide_type": "notes"}}
@@ -260,23 +261,23 @@ As was the case of the Laplace Transform, properties of Fourier transforms are u
 
 More detail and some commentry is given in the printable version of these notes.
 
-| No. | **Name** | $f(t)$ | $F(j\omega)$ | **Remarks** |
-|----:|----------|--------|--------------|-------------|
-| 1.   | Linearity | $a_1f_1(t)+a_2f_2(t)+\cdots+a_nf_n(t)$ | $a_1F_1(j\omega)+a_2F_2(j\omega)+\cdots+a_nF_n(j\omega)$ | Fourier transform is a linear operator. |
-| 2.   | Symmetry | $2\pi f(-j\omega)$ | $F(t)$ | |
-| 3.  | Time and frequency scaling | $f(\alpha t)$ | $\displaystyle{\frac{1}{\lvert \alpha\rvert}F\left(j\frac{\omega}{\alpha}\right)}$ | time compression is frequency expansion and *vice versa* |
-| 4.  | Time shifting | $\displaystyle{f(t-t_0)}$ | $\displaystyle{e^{-j\omega t_0}F(j\omega)}$ | A time shift corresponds to a phase shift in frequency domain |
-| 5.  | Frequency shifting | $\displaystyle{e^{j\omega_0 t}f(t)}$ | $\displaystyle{F(j\omega-j\omega_0)}$ | Multiplying a signal by a complex exponential results in a frequency shift. |
-| 6.  | Time differentiation | $\displaystyle{\frac{d^n}{dt^n}\,f(t)}$ | $\displaystyle{(j\omega)^nF(j\omega)}$ | |
-| 7.  | Frequency differentiation | $\displaystyle{(-jt)^n f(t)}$ | $\displaystyle{\frac{d^n}{d\omega^n}F(j\omega)}$ | |
-| 8.  | Time integration | $\displaystyle{\int_{-\infty}^{t}f(\tau)d\tau}$ | $\displaystyle{\frac{F(j\omega)}{j\omega}+\pi F(0)\delta(\omega)}$ | |
-| 9.  | Conjugation | $\displaystyle{f^*(t)}$ | $\displaystyle{F^*(-j\omega)}$ | |
-| 10. | Time convolution | $\displaystyle{f_1(t)*f_2(t)}$ | $\displaystyle{F_1(j\omega) F_2(j\omega)}$ | Compare with Laplace Transform | |
-| 11. | Frequency convolution | $\displaystyle{f_1(t)f_2(t)}$ | $\displaystyle{\frac{1}{2\pi}F_1(j\omega)*F_2(j\omega)}$ | This has application to amplitude modulation as shown in Boulet pp 182&mdash;183. |
-| 12. | Area under $f(t)$ | $\displaystyle{\int_{-\infty}^{\infty} f(t)\,dt = F(0)}$ | | Way to calculate DC (or average) value of a signal |
-| 13. | Area under $F(j\omega)$ | $\displaystyle{f(0) = \frac{1}{2\pi}\int_{-\infty}^{\infty}F(j\omega)\,d\omega}$ |  |
-| 14. | Energy-Density Spectrum | $\displaystyle{E_{[\omega_1,\omega_2]}}:=\displaystyle{\frac{1}{2\pi}\int_{\omega_1}^{\omega_2}\lvert F(j\omega)\rvert^2\,d\omega.}$ | |
-| 15. | Parseval's theorem | $\displaystyle{\int_{-\infty}^{\infty}\lvert f(t)\rvert^2\,dt}=\displaystyle{\frac{1}{2\pi}\int_{-\infty}^{\infty}\lvert F(j\omega)\rvert^2\,d\omega.}$ | | Definition of RMS follows from this |
+| No. | **Name**                   | $f(t)$                                                                                                                                                  | $F(j\omega)$                                                                       | **Remarks**                                                                       |
+| --: | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --- |
+|  1. | Linearity                  | $a_1f_1(t)+a_2f_2(t)+\cdots+a_nf_n(t)$                                                                                                                  | $a_1F_1(j\omega)+a_2F_2(j\omega)+\cdots+a_nF_n(j\omega)$                           | Fourier transform is a linear operator.                                           |
+|  2. | Symmetry                   | $2\pi f(-j\omega)$                                                                                                                                      | $F(t)$                                                                             |                                                                                   |
+|  3. | Time and frequency scaling | $f(\alpha t)$                                                                                                                                           | $\displaystyle{\frac{1}{\lvert \alpha\rvert}F\left(j\frac{\omega}{\alpha}\right)}$ | time compression is frequency expansion and _vice versa_                          |
+|  4. | Time shifting              | $\displaystyle{f(t-t_0)}$                                                                                                                               | $\displaystyle{e^{-j\omega t_0}F(j\omega)}$                                        | A time shift corresponds to a phase shift in frequency domain                     |
+|  5. | Frequency shifting         | $\displaystyle{e^{j\omega_0 t}f(t)}$                                                                                                                    | $\displaystyle{F(j\omega-j\omega_0)}$                                              | Multiplying a signal by a complex exponential results in a frequency shift.       |
+|  6. | Time differentiation       | $\displaystyle{\frac{d^n}{dt^n}\,f(t)}$                                                                                                                 | $\displaystyle{(j\omega)^nF(j\omega)}$                                             |                                                                                   |
+|  7. | Frequency differentiation  | $\displaystyle{(-jt)^n f(t)}$                                                                                                                           | $\displaystyle{\frac{d^n}{d\omega^n}F(j\omega)}$                                   |                                                                                   |
+|  8. | Time integration           | $\displaystyle{\int_{-\infty}^{t}f(\tau)d\tau}$                                                                                                         | $\displaystyle{\frac{F(j\omega)}{j\omega}+\pi F(0)\delta(\omega)}$                 |                                                                                   |
+|  9. | Conjugation                | $\displaystyle{f^*(t)}$                                                                                                                                 | $\displaystyle{F^*(-j\omega)}$                                                     |                                                                                   |
+| 10. | Time convolution           | $\displaystyle{f_1(t)*f_2(t)}$                                                                                                                          | $\displaystyle{F_1(j\omega) F_2(j\omega)}$                                         | Compare with Laplace Transform                                                    |     |
+| 11. | Frequency convolution      | $\displaystyle{f_1(t)f_2(t)}$                                                                                                                           | $\displaystyle{\frac{1}{2\pi}F_1(j\omega)*F_2(j\omega)}$                           | This has application to amplitude modulation as shown in Boulet pp 182&mdash;183. |
+| 12. | Area under $f(t)$          | $\displaystyle{\int_{-\infty}^{\infty} f(t)\,dt = F(0)}$                                                                                                |                                                                                    | Way to calculate DC (or average) value of a signal                                |
+| 13. | Area under $F(j\omega)$    | $\displaystyle{f(0) = \frac{1}{2\pi}\int_{-\infty}^{\infty}F(j\omega)\,d\omega}$                                                                        |                                                                                    |
+| 14. | Energy-Density Spectrum    | $\displaystyle{E_{[\omega_1,\omega_2]}}:=\displaystyle{\frac{1}{2\pi}\int_{\omega_1}^{\omega_2}\lvert F(j\omega)\rvert^2\,d\omega.}$                    |                                                                                    |
+| 15. | Parseval's theorem         | $\displaystyle{\int_{-\infty}^{\infty}\lvert f(t)\rvert^2\,dt}=\displaystyle{\frac{1}{2\pi}\int_{-\infty}^{\infty}\lvert F(j\omega)\rvert^2\,d\omega.}$ |                                                                                    | Definition of RMS follows from this                                               |
 
 See also: [Wikibooks: Engineering Tables/Fourier Transform Properties](https://en.wikibooks.org/wiki/Engineering_Tables/Fourier_Transform_Properties) and [Fourier Transfom&mdash;WolframMathworld](https://mathworld.wolfram.com/FourierTransform.html) for more complete references.
 
@@ -294,7 +295,7 @@ See also: [Wikibooks: Engineering Tables/Fourier Transform Properties](https://e
 
 Compute the result of multiplying a signal $f(t)$ by a carrier waveform $\cos \omega_c t$.
 
-*Hint* use Euler's identity and the frequency shift property
+_Hint_ use Euler's identity and the frequency shift property
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -381,7 +382,7 @@ For now, here's an example:
 ### Example
 
 Use MATLAB to confirm the Fourier transform pair:
-    
+
 $$e^{-\frac{1}{2}t^2}\Leftrightarrow \sqrt{2\pi}e^{-\frac{1}{2}\omega^2}$$
 
 ```{code-cell}

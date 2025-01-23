@@ -7,17 +7,18 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.15.2
 kernelspec:
-  display_name: Matlab
+  display_name: MKernel
   language: matlab
-  name: matlab
+  name: mkernel
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (unit3.4)=
+
 # Unit 3.4: Applications of Line Spectra
 
-The preparatory reading for this section is [Chapter 7.10](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=247) of  {cite}`karris`.
+The preparatory reading for this section is [Chapter 7.10](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=247) of {cite}`karris`.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -33,30 +34,31 @@ In this section we discuss how we can use these line spectra for the calculation
 
 An annotatable worksheet for this presentation is available as {ref}`ws5`.
 
-* The source code for this page is [fourier_series/4/exp_fs3.md](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_series/4/exp_fs3.md).
+- The source code for this page is [fourier_series/4/exp_fs3.md](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_series/4/exp_fs3.md).
 
-* You can view the notes for this presentation as a webpage ({ref}`unit3.4`). 
+- You can view the notes for this presentation as a webpage ({ref}`unit3.4`).
 
-* This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/fourier_series/4/exp_fs3.pdf) file.
+- This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/fourier_series/4/exp_fs3.pdf) file.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
 ## Agenda
 
-* {ref}`fse4:power`
-* {ref}`fse4:power_spectrum`
-* {ref}`fse4:thd`
-* {ref}`fse4:ss_resp`
-* {ref}`examples19`
+- {ref}`fse4:power`
+- {ref}`fse4:power_spectrum`
+- {ref}`fse4:thd`
+- {ref}`fse4:ss_resp`
+- {ref}`examples19`
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (fse4:power)=
+
 ## Power in Periodic Signals
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-In [Unit 2.2 of EG-150 Signals and Systems](https://cpjobling.github.io/eg-150-textbook/signals_and_systems/signals/pep_signals.html) we defined *Signal Energy*, *Average Signal Power* and *Root Mean Square Power* which for periodic signals will be defined as shown below:
+In [Unit 2.2 of EG-150 Signals and Systems](https://cpjobling.github.io/eg-150-textbook/signals_and_systems/signals/pep_signals.html) we defined _Signal Energy_, _Average Signal Power_ and _Root Mean Square Power_ which for periodic signals will be defined as shown below:
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -107,19 +109,21 @@ $$P_{\mathrm{RMS}} = \sqrt{\frac{1}{T}\int_0^T \left|f(t)\right|^2\,dt} = \sqrt{
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (fse4:power_spectrum)=
+
 ## Power Spectrum
 
-The *power spectrum* of signal is the sequence of average powers in each complex harmonic: 
+The _power spectrum_ of signal is the sequence of average powers in each complex harmonic:
 
-$$|C_k|^2.$$ 
+$$|C_k|^2.$$
 
-For real periodic signals the power spectrum is a real even sequence as 
+For real periodic signals the power spectrum is a real even sequence as
 
 $$|C_{-k}|^2 = |C_k^*|^2 = |C_k|^2.$$
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (fse4:thd)=
+
 ## Total Harmonic Distortion
 
 Suppose that a signal that is supposed to be a pure sine wave of amplitude A is distorted as shown in {numref}`fse:thd1` below
@@ -138,17 +142,17 @@ This can occur in the line voltages of an industrial plant that makes heavy use 
 
 ### THD Defined
 
-Clearly, some of the harmonics for $k\ne \pm 1$ are nonzero. One way to characterize the distortion is to compute the ratio of average power in all the harmonics that "should not be present", that is for $k > 1$, to the total average power of the distorted sine wave. The square-root of this ratio is called the *total harmonic distortion* (THD) of the signal.
+Clearly, some of the harmonics for $k\ne \pm 1$ are nonzero. One way to characterize the distortion is to compute the ratio of average power in all the harmonics that "should not be present", that is for $k > 1$, to the total average power of the distorted sine wave. The square-root of this ratio is called the _total harmonic distortion_ (THD) of the signal.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-If the signal is real and based on a sine wave (that is *odd*), then $C_0=0$ and
+If the signal is real and based on a sine wave (that is _odd_), then $C_0=0$ and
 
 $$x_{\mathrm{RMS}}=\sqrt{\sum_{k=1}^{\infty}2|C_k|^2}$$ (eq:fs3:7)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-and we can define the THD as the ratio of the RMS value for all the harmonics for $K>1$ (the distortion) to the RMS of the fundamental which is 
+and we can define the THD as the ratio of the RMS value for all the harmonics for $K>1$ (the distortion) to the RMS of the fundamental which is
 
 $$\sqrt{2\left|C_1\right|^2}$$ (eq:fs3:8)
 
@@ -167,6 +171,7 @@ Computation of THD from the signal power spectrum
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (fse4:ss_resp)=
+
 ## Steady-State Response of a Continuous-Time LTI System to a Periodic Signal
 
 As shown in [Eigenfunctions of Continuous-Time LTI Systems](https://cpjobling.github.io/eg-150-textbook/lti_systems/lti2.html#eigenfunctions-of-continuous-time-lti-systems), the response of a continuous-time LTI system with impulse response $h(t)$ to a complex exponential signal $e^{st}$ is the same complex exponential multiplied by a complex gain: $y(t) = H(s)e^{st}$, where:
@@ -179,7 +184,7 @@ In particular, for $s = j\omega$, the output is simply $y(t)=H(j\omega)e^{j\omeg
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-The complex functions $H(s)$ and $H(j\omega)$ are called the system's *transfer function* and *frequency response*, respectively.
+The complex functions $H(s)$ and $H(j\omega)$ are called the system's _transfer function_ and _frequency response_, respectively.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -231,27 +236,30 @@ $$H(j\omega) = \frac{\omega_c}{j\omega + \omega_c}.$$
 
 Let us say that we wish to compute the attenuation and phase of this filter at $\omega = \Omega_0$.
 
-To compute the *magnitude*:
+To compute the _magnitude_:
 
-$$\begin{eqnarray*}
+$$
+\begin{eqnarray*}
 \left|H(j\Omega_0)\right| &=& \left|\frac{\omega_c}{j\Omega_0 + \omega_c}\right| \\
 & = & \frac{\omega_c}{\sqrt{\Omega_0^2 + \omega_c^2}}
-\end{eqnarray*}$$
+\end{eqnarray*}
+$$
 
-We note that is $\left|H(j\Omega_0\right| \lt 1$ so the filter will *attenuate* the incoming harmonic frequency. This will be true for all harmonics, so in general, for a LP filter:
+We note that is $\left|H(j\Omega_0\right| \lt 1$ so the filter will _attenuate_ the incoming harmonic frequency. This will be true for all harmonics, so in general, for a LP filter:
 
 $$D_k = C_k\left|H(jk\Omega_0)\right|   < C_k.$$
 
-The phase will be given by 
+The phase will be given by
 
 $$\phi = \angle H(j\omega) = \tan^{-1}\left(\frac{\Im \left( H(j\omega)\right)}{\Re \left(H(j(\omega)\right)}\right)$$
 
 where
 
-$$\begin{eqnarray*}
+$$
+\begin{eqnarray*}
 H(jk\Omega_0) &=& \frac{\omega_c^2}{(k\Omega_0)^2 + \omega_c^2} - j\frac{k\Omega_0\omega_c}{(k\Omega_0)^2 + \omega_c^2}\\
 \phi_k &=& \tan^{-1}\left(-\frac{K\Omega_0\omega_c}{\omega_c^2}\right) \\
-&=& \tan^{-1}\left(-\frac{k\Omega_0}{\omega_c}\right) 
+&=& \tan^{-1}\left(-\frac{k\Omega_0}{\omega_c}\right)
 \end{eqnarray*}
 $$
 
@@ -264,6 +272,7 @@ By doing such analysis, we can examine the effect of a filter on a periodic sign
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (examples19)=
+
 ## Examples
 
 The recurrent rectangular pulse is used extensively in digital communication systems. To determine how faithfully such pulses will be transmitted, it is necessary to know the power in the frequency components.
@@ -271,9 +280,10 @@ The recurrent rectangular pulse is used extensively in digital communication sys
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (ex:19.1)=
+
 ### Example 6: Average Power
 
-Compute the average power of a pulse train for which the pulse width is $T/2$ (duty cycle 50%). Use the result: 
+Compute the average power of a pulse train for which the pulse width is $T/2$ (duty cycle 50%). Use the result:
 
 $$C_k = \frac{A}{w}.\frac{\sin(k\pi/w)}{k\pi/w}$$
 
@@ -302,6 +312,7 @@ as your starting point.
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (ex19.2)=
+
 ### Example 7: Power Spectrum
 
 Compute and display the power spectrum for the signal of {ref}`ex:19.1`.
@@ -313,7 +324,7 @@ slideshow:
 ---
 clear all
 cd ../matlab
-format compact
+format compact; setappdata(0, "MKernel_plot_format", 'svg')
 ```
 
 ```{code-cell}
@@ -362,8 +373,10 @@ Note that most of the power is concentrated at DC and in the first five harmonic
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (ex19.3)=
+
 ### Example 8: THD in a square-wave
-Given that the exponential fourier series coefficients for a square wave are 
+
+Given that the exponential fourier series coefficients for a square wave are
 
 $$C_0 = 0$$
 
@@ -376,7 +389,9 @@ compute the total harmonic distortion represented by the first 7 harmonics of th
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (ex19.4)=
+
 ### Example 9: THD in a triangle wave
+
 Given that the exponential fourier series coefficients for a triangle wave with even symmetry is
 
 $$C_0 = 0$$
@@ -390,16 +405,16 @@ compute the total harmonic distortion represented by the first 7 harmonics of th
 +++ {"slideshow": {"slide_type": "notes"}}
 
 (ex19.5)=
+
 ### Example 10: Low-pass filter
+
 This example represents the low-pass filter used in the signal generator project for **EG-152: Analogue Design**.
 
 :::{note}
 Use MATLAB to complete this example.
 :::
 
-
-
-a) A triangle waveform $x(t)$ with frequency $\Omega_0 = 2\pi/T$ is shown below 
+a) A triangle waveform $x(t)$ with frequency $\Omega_0 = 2\pi/T$ is shown below
 
 :::{figure-md} fig_ex19.1a
 <img src="pictures/ex19_5.png" alt="A triangle waveform" width="60%">
@@ -435,11 +450,9 @@ where $a = 1/(RC)$ and $RC$ is the time constant of an RC circuit with $R = 8.2$
 A signal generator
 :::
 
-
-
 i) Determine the frequency response $H(j\omega)$ of the filter.
 
-ii) Compute the cut-off frequency $\omega_c$ of the filter. Note the value of the cut-off frequency this is the frequency for which the filter transmits half-the power or 
+ii) Compute the cut-off frequency $\omega_c$ of the filter. Note the value of the cut-off frequency this is the frequency for which the filter transmits half-the power or
 
 $$|H(j\omega_c)| = \frac{1}{\sqrt{2}}$$
 
@@ -473,22 +486,21 @@ ex19_5
 
 We concluded our study of Fourier series by reviewing the following topics
 
-* {ref}`fse4:power`
-* {ref}`fse4:power_spectrum`
-* {ref}`fse4:thd`
-* {ref}`fse4:ss_resp`
-* {ref}`examples19`
-
+- {ref}`fse4:power`
+- {ref}`fse4:power_spectrum`
+- {ref}`fse4:thd`
+- {ref}`fse4:ss_resp`
+- {ref}`examples19`
 
 (unit5.4:takeaways)=
+
 ### Unit 3.4 Takeaways
 
-* Parseval's theorem allows us to compute the average power of of periodic signal $x(t) = x(t + nT)$ from its eponential Fourier series coefficients. The average Paower in a signale $x(t)$ is given by Eq. {eq}`eq:fs3:4` and RMS power is given by Eq. {eq}`eq:fs3:6`.
-* The *power spectrum* of signal is the sequence of average powers in each complex harmonic: $|C_k|^2.$ which for real periodic signals is a *real even* sequence. 
-* Total harmonic distortion is a measure of how much a periodic signal is different from a sine wave. It is defined in Eq. {eq}`fse4:thd`.
-* The steady-state frequency response of a continuous-time LTI system with impulse response $h(t)$ to a periodic signal $x(t) = xTt + nT)$ with exponential Fourier series components $C_k$ is a Fourier series $y(t)$ with coefficients $D_k = C_k H(jk\Omega_0)$. (Where $H(s)$ is the Laplace transform of $h(t)$). This
-result can be used to determine the filtering affect of any continuous-time LTI system on any periodic signal. As an example of this you should review the theory for the *harmonic filter* studied in Session 4 of **EG-152 Analogue Design** and which is reviewed in {ref}`ex19.5`.
-
+- Parseval's theorem allows us to compute the average power of of periodic signal $x(t) = x(t + nT)$ from its eponential Fourier series coefficients. The average Paower in a signale $x(t)$ is given by Eq. {eq}`eq:fs3:4` and RMS power is given by Eq. {eq}`eq:fs3:6`.
+- The _power spectrum_ of signal is the sequence of average powers in each complex harmonic: $|C_k|^2.$ which for real periodic signals is a _real even_ sequence.
+- Total harmonic distortion is a measure of how much a periodic signal is different from a sine wave. It is defined in Eq. {eq}`fse4:thd`.
+- The steady-state frequency response of a continuous-time LTI system with impulse response $h(t)$ to a periodic signal $x(t) = xTt + nT)$ with exponential Fourier series components $C_k$ is a Fourier series $y(t)$ with coefficients $D_k = C_k H(jk\Omega_0)$. (Where $H(s)$ is the Laplace transform of $h(t)$). This
+  result can be used to determine the filtering affect of any continuous-time LTI system on any periodic signal. As an example of this you should review the theory for the _harmonic filter_ studied in Session 4 of **EG-152 Analogue Design** and which is reviewed in {ref}`ex19.5`.
 
 ### Coming next
 
@@ -497,11 +509,13 @@ We will continue our study of signals and system by introducing the Fourier Tran
 +++ {"slideshow": {"slide_type": "notes"}}
 
 (solutions19)=
+
 ## Answers to selected examples
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
 (sol:ex:19.1)=
+
 ### Solution to Example 1
 
 $w = 2$ so:

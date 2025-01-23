@@ -7,14 +7,15 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.15.2
 kernelspec:
-  display_name: Matlab
+  display_name: MKernel
   language: matlab
-  name: matlab
+  name: mkernel
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (ws3)=
+
 # Worksheet 3
 
 ## To accompany Unit 3.2 Exponential Fourier Series
@@ -23,13 +24,11 @@ kernelspec:
 
 ## Colophon
 
-This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet3.pdf). We will step through this worksheet in class. 
+This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet3.pdf). We will step through this worksheet in class.
 
-An annotatable copy of the notes for this presentation will be distributed before the second class meeting as **Worksheet 3** in the **Week 3: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **Worksheets** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote. 
-
+An annotatable copy of the notes for this presentation will be distributed before the second class meeting as **Worksheet 3** in the **Week 3: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **Worksheets** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote.
 
 You are expected to have at least watched the video presentation of {ref}`exp_fseries`) of the [notes](https://cpjobling.github.io/eg-247-textbook) before coming to class. If you haven't watch it afterwards!
-
 
 After class, the lecture recording and the annotated version of the worksheets will be made available through Canvas.
 
@@ -37,18 +36,18 @@ After class, the lecture recording and the annotated version of the worksheets w
 
 ## Agenda
 
-* Exponents and Euler's Equation
-* The Exponential Fourier series
-* Symmetry in Exponential Fourier Series
-* Example
+- Exponents and Euler's Equation
+- The Exponential Fourier series
+- Symmetry in Exponential Fourier Series
+- Example
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## The Exponential Function $e^{at}$
 
-* You should already be familiar with $e^{at}$ because it appears in the solution of differential equations. 
-* It is also a function that appears in the definition of the Laplace and Inverse Laplace Transform.
-* It pops up again and again in tables and properies of the Laplace Transform.
+- You should already be familiar with $e^{at}$ because it appears in the solution of differential equations.
+- It is also a function that appears in the definition of the Laplace and Inverse Laplace Transform.
+- It pops up again and again in tables and properies of the Laplace Transform.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -63,7 +62,7 @@ slideshow:
 ---
 clear all
 cd ../matlab
-format compact
+format compact; setappdata(0, "MKernel_plot_format", 'svg')
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}
@@ -80,14 +79,13 @@ expon
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-* When $a < 0$ the response is a decaying exponential (red line in plot)
-* When $a = 0$ $e^{at} = 1$ -- essentially a model of DC
-* When $a > 0$ the response is an *unbounded* increasing exponential (blue line in plot)
+- When $a < 0$ the response is a decaying exponential (red line in plot)
+- When $a = 0$ $e^{at} = 1$ -- essentially a model of DC
+- When $a > 0$ the response is an _unbounded_ increasing exponential (blue line in plot)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### Case when a is imaginary
-
 
 <img src="pictures/euler.png" title="exp(j*omega*t) = cos(omega*t) + j*sin(omega*t)">
 
@@ -104,11 +102,12 @@ It was [Leonhard Euler](https://en.wikipedia.org/wiki/Leonhard_Euler) who discov
 These are useful when simplifying expressions that result from integrating functions that involve the imaginary exponential
 
 Give the following:
-* $e^{j\omega t}$ when $\omega t = 0$
-* $e^{j\omega t}$ when $\omega t = \pi/2$
-* $e^{j\omega t}$ when $\omega t = \pi$
-* $e^{j\omega t}$ when $\omega t = 3\pi/2$
-* $e^{j\omega t}$ when $\omega t = 2\pi$
+
+- $e^{j\omega t}$ when $\omega t = 0$
+- $e^{j\omega t}$ when $\omega t = \pi/2$
+- $e^{j\omega t}$ when $\omega t = \pi$
+- $e^{j\omega t}$ when $\omega t = 3\pi/2$
+- $e^{j\omega t}$ when $\omega t = 2\pi$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -134,11 +133,11 @@ Give the following:
 
 ### Case where $a$ is complex
 
-We shall not say much about this case except to note that the Laplace transform equation includes such a number. The variable $s$ in the Laplace Transform 
+We shall not say much about this case except to note that the Laplace transform equation includes such a number. The variable $s$ in the Laplace Transform
 
 $$\int_{0}^{\infty} f(t)e^{-st} dt$$
 
-is a *complex exponential*.
+is a _complex exponential_.
 
 The consequences of a complex $s$ have particular significance in the development of system stability theories and in control systems analysis and design. Look out for them in EG-243.
 
@@ -150,13 +149,13 @@ By use of trig. identities, it is relatively straight forward to show that:
 
 $$\cos \omega t = \frac{e^{j\omega t} + e^{-j\omega t}}{2}$$
 
-and 
+and
 
 $$\sin \omega t = \frac{e^{j\omega t} - e^{-j\omega t}}{j2}$$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-We can use this result to convert the *trigonometric Fourier series* into an *exponential Fourier series* which has only one integral term to solve per harmonic.
+We can use this result to convert the _trigonometric Fourier series_ into an _exponential Fourier series_ which has only one integral term to solve per harmonic.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -172,7 +171,7 @@ $$f(t) = \sum_{k=-n}^{n}C_{k}e^{jk \Omega_0  t}$$
 
 **Important**
 
-The $C_k$ coefficents, except for $C_0$ are *complex* and appear in conjugate pairs so
+The $C_k$ coefficents, except for $C_0$ are _complex_ and appear in conjugate pairs so
 
 $$C_{-k} = C_k^*$$
 
@@ -180,7 +179,7 @@ $$C_{-k} = C_k^*$$
 
 ### Evaluation of the complex coefficients
 
-The coefficients are obtained from the following expressions<sup>*</sup>:
+The coefficients are obtained from the following expressions<sup>\*</sup>:
 
 $$C_k = \frac{1}{2\pi}\int_{0}^{2\pi}f(\Omega_0 t)e^{-jk(\Omega_0 t)}\,d(\Omega_0 t) = \frac{1}{2\pi}\int_{0}^{2\pi}f(\theta)e^{-jk\theta}\,d\theta$$
 
@@ -214,7 +213,7 @@ By a similar argument, all odd functions have no cosine terms so the $a_k$ coeff
 
 ### Half-wave symmetry
 
-If there is *half-wave symmetry*, $C_k = 0$ for $k$ even.
+If there is _half-wave symmetry_, $C_k = 0$ for $k$ even.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -240,19 +239,19 @@ Compute the Exponential Fourier Series for the square wave shown below assuming 
 
 ### Some questions for you
 
-* Square wave is an [**odd/even/neither**] function?
-* DC component is [**zero/non-zero**]?
-* Square wave [**has/does not have**] half-wave symmetry?
+- Square wave is an [**odd/even/neither**] function?
+- DC component is [**zero/non-zero**]?
+- Square wave [**has/does not have**] half-wave symmetry?
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 Hence
 
-* $C_0 = $[**?**]
-* Coefficients $C_k$ are [**real/imaginary/complex**]?
-* Subscripts $k$ are [**odd only/even only/both odd and even**]?
-* What is the integral that needs to be solved for $C_k$?
-* Find the coefficients
+- $C_0 = $[**?**]
+- Coefficients $C_k$ are [**real/imaginary/complex**]?
+- Subscripts $k$ are [**odd only/even only/both odd and even**]?
+- What is the integral that needs to be solved for $C_k$?
+- Find the coefficients
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -301,6 +300,7 @@ open efs_sqw
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### EFS_SQW
+
 Calculates the Exponential Fourier for a Square Wave with Odd Symmetry.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -375,7 +375,7 @@ xlabel('Hamonic frequencies: k\Omega_0 (rad/sec)');
 ylabel('|c_k|');
 subplot(212)
 stem(w,angle(Xw), 'o-');
-xlabel('Hamonic frequencies: k\Omega_0 (rad/sec)'); 
+xlabel('Hamonic frequencies: k\Omega_0 (rad/sec)');
 ylabel('\angle c_k [radians]');
 ```
 
@@ -389,7 +389,7 @@ Refer to the [notes](exp_fs1).
 
 ## Summary
 
-* Exponents and Euler's Equation
-* The exponential Fourier series
-* Symmetry in Exponential Fourier Series
-* Example
+- Exponents and Euler's Equation
+- The exponential Fourier series
+- Symmetry in Exponential Fourier Series
+- Example

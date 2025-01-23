@@ -41,7 +41,7 @@ clean:
 
 build:  
 	make assets
-	jupyter-book build -keep-going .
+	jupyter-book build --keep-going .
 
 site:   
 	make clean

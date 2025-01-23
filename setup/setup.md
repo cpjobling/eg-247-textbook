@@ -5,11 +5,11 @@ jupyter:
       extension: .md
       format_name: markdown
       format_version: '1.3'
-      jupytext_version: 1.15.1
+      jupytext_version: 1.15.2
   kernelspec:
-    display_name: MKernel
-    language: matlab
-    name: mkernel
+    display_name: Python 3 (ipykernel)
+    language: python
+    name: python3
 ---
 
 # Setup
@@ -59,7 +59,7 @@ The following Python code (adapted from the script [soton-test-python-installati
 
 First we define some tests.
 
-```matlab
+```python
 import math
 import os
 import sys
@@ -163,7 +163,7 @@ def test_pytest():
 
 The we run the tests to test that we have all the packages we need. If we have installed Anaconda 3 correctly, there should be no errors.
 
-```matlab
+```python
 print("Running using Python {}".format(sys.version))
 test_is_python_35()
 test_numpy()
@@ -171,6 +171,12 @@ test_scipy()
 test_pylab()
 test_sympy()
 test_pytest()
+```
+
+If any of the tests fails, the missing packages can be installed using the following command
+
+```python
+%conda install -c conda-forge numpy scipy matplotlib sympy pytest
 ```
 
 The remaining installation instructions are adapted from [2].
@@ -190,26 +196,26 @@ I ran this on my Mac. The equivalent Windows and Linux commands are given in the
 ### Mac OS: 
 If you have an M1 or later processor, you should install the Silicon version of MATLAB (see [MATLAB on Apple Silicon Macs](https://uk.mathworks.com/support/requirements/apple-silicon.html))
 
-```matlab
-matlabroot='/Applications/MATLABSi/MATLAB_R2024a.app'
+```python
+matlabroot='/Applications/MATLAB_R2024b.app'
 ```
 
 ### Unix
 
-```matlab
+```python
 %cd {matlabroot}/extern/engines/python
 ```
 
 ### Ubuntu running in Windows using WSL
 
-```matlab
+```python
 matlabroot='/mnt/c/Program\ Files/MATLAB/R2022b'
 %cd {matlabroot}/extern/engines/python
 ```
 
 ### Windows
 
-```matlab
+```python
 matlabroot='C:\Program Files\MATLAB\R2022b'
 %cd {matlabroot}\extern\engines\python
 ```
@@ -225,7 +231,7 @@ matlabroot='C:\Program Files\MATLAB\R2022b'
   * Now copy `python setup.py install`, paste and type `Enter`
 * If your MATLAB is 2016b, or older, you may need to install an earlier version of Python and repeat the steps above.
 
-```matlab
+```python
 !python --version
 #%shell
 !python setup.py install
@@ -235,30 +241,30 @@ matlabroot='C:\Program Files\MATLAB\R2022b'
 
 First start a MATLAB session. You will have to restart your Python kernel first!
 
-```matlab
+```python
 import matlab.engine
 eng = matlab.engine.start_matlab()
 ```
 
 Then connect to the session
 
-```matlab
+```python
 eng = matlab.engine.connect_matlab()
 ```
 
 Now compute something. Here's a 10x10 magic square
 
-```matlab
+```python
 m = eng.magic(10);
 ```
 
-```matlab
+```python
 print(m)
 ```
 
 Close the session
 
-```matlab
+```python
 eng.quit()
 ```
 
@@ -269,11 +275,11 @@ eng.quit()
 Finally we install Carsten Allefeld's `Mkernel` ([github.com/allefeld/mkernel](https://github.com/allefeld/mkernel)) using the instructions given in {cite}`allefeld2023`: 
 <!-- #endregion -->
 
-```matlab
+```python
 !pip install git+https://github.com/allefeld/mkernel.git
 ```
 
-```matlab
+```python
 !jupyter kernelspec list
 ```
 
@@ -330,7 +336,7 @@ ans =
 Go ahead and execute the next code cell.
 <!-- #endregion -->
 
-```matlab
+```python
 magic(10)
 ```
 

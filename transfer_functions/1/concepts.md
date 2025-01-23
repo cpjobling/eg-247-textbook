@@ -7,14 +7,15 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.15.2
 kernelspec:
-  display_name: Matlab
+  display_name: MKernel
   language: matlab
-  name: matlab
+  name: mkernel
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (tf_concepts)=
+
 # Unit 2.1 Laplace transforms and LTI systems
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -23,15 +24,15 @@ kernelspec:
 
 In this unit, students will...
 
-* Compute Laplace transforms by hand and using symbolic math.
-* Describe the properties of the Laplace transform.
-* Apply Laplace transforms to solve initial value problems.
-* Recall the definition of a linear time-invariant (LTI) operator.
+- Compute Laplace transforms by hand and using symbolic math.
+- Describe the properties of the Laplace transform.
+- Apply Laplace transforms to solve initial value problems.
+- Recall the definition of a linear time-invariant (LTI) operator.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
 :::{note}
-This unit is based on the MATLAB LiveScript `ConceptReview.mlx` from the curriculum module [Transfer Function Analysis of Dynamic Systems](https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems). 
+This unit is based on the MATLAB LiveScript `ConceptReview.mlx` from the curriculum module [Transfer Function Analysis of Dynamic Systems](https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems).
 
 Some of the examples rely on interactive features of MATLAB that are not readily reproduced in these notes. To make use of these facilities, you are advised to access the script directly from the project in MATLAB online.
 
@@ -48,7 +49,7 @@ slideshow:
 % Setup MATLAB to use the ConceptReview.mlx LiveScript in class.
 % I am assuming that this is on the MATLAB Drive
 
-format compact 
+format compact; setappdata(0, "MKernel_plot_format", 'svg')
 % Change this to local set up where this Jupyter book is run
 cd '/Users/eechris/MATLAB-Drive/Repositories/Transfer-Function-Analysis-of-Dynamic-Systems'
 open('TransferFunctions.prj')
@@ -63,13 +64,14 @@ Transfer functions are derived by computing the **Laplace transform** of **linea
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (laplace_xform)=
+
 ## The Laplace Transform
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
 ### Definition
 
-The Laplace transform of a locally integrable function $f$  is 
+The Laplace transform of a locally integrable function $f$ is
 
 $$F(s) = \mathcal{L}\{f(t)\} =\int_{0}^{\infty} f(t) e^{-st} \ dt$$
 
@@ -91,7 +93,7 @@ Inverse Laplace transforms (and forward Laplace transforms, for that matter) are
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-(a)  Compute the Laplace transform of $f(t) = u_0(t - a)$ by hand, where $u_o(t)$ is the Heaviside step function with $a > 0$.
+(a) Compute the Laplace transform of $f(t) = u_0(t - a)$ by hand, where $u_o(t)$ is the Heaviside step function with $a > 0$.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -105,16 +107,19 @@ Inverse Laplace transforms (and forward Laplace transforms, for that matter) are
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-$$\begin{array}{rl}
+$$
+\begin{array}{rl}
 F(s) &= \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
  &= \int_{a}^{\infty}  e^{-st} \ dt \\
 &= \left. -\frac{1}{s} e^{-st} \ \right\vert_a^\infty \\
 &= \frac{1}{s} e^{-as} \\
-\end{array}$$
+\end{array}
+$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (b) The [laplace](https://www.mathworks.com/help/symbolic/laplace.html) function computes the analytic transform of a symbolic expression $f$. You can use the syntax:
+
 ```matlab
 Fs = laplace(f,var,transformVar)
 ```
@@ -128,7 +133,7 @@ Fs = laplace(f,var,transformVar)
 slideshow:
   slide_type: fragment
 ---
-format compact % use less white space in outputs
+format compact; setappdata(0, "MKernel_plot_format", 'svg') % use less white space in outputs
 syms t s
 syms a positive
 ```
@@ -157,11 +162,11 @@ Fs = laplace(f, t, s)
 
 #### Exercise 1
 
-![example](images/write.png) 
+![example](images/write.png)
 
 1. Compute the Laplace transform of some standard functions listed below on paper[^examples]. Assume $a$ is real and $a > 0$
 
-**a.** $f(t) = 1$ **b.** $f(t) = e^{-at}$ **c.** $f(t) = t$ **d.** $f(t) = \delta(t - a)$ 
+**a.** $f(t) = 1$ **b.** $f(t) = e^{-at}$ **c.** $f(t) = t$ **d.** $f(t) = \delta(t - a)$
 
 **e.** $f(t) = \cos(t)$ **f.** $f(t) = t^2 e^{-at}$ **g.** $f(t) = e^{-at}\sin(t)$
 
@@ -278,7 +283,7 @@ Fs = laplace(f, t, s)
 
 ### Visualize Laplace transforms
 
-![Try](images/try.png) 
+![Try](images/try.png)
 
 See the MATLAB LiveScript `ConceptReview.mlx`.
 
@@ -296,8 +301,8 @@ open('ConceptReview.mlx')
 
 ![reflect](images/reflect.png)
 
-* What class of functions is most commonly observed in the Laplace transform?
-* How do the poles of the Laplace transform reflect the behavior of the time domain function $f(t)$?
+- What class of functions is most commonly observed in the Laplace transform?
+- How do the poles of the Laplace transform reflect the behavior of the time domain function $f(t)$?
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -308,13 +313,15 @@ See also {ref}`lxf_table` in this textbook.
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (ltp)=
+
 ### Laplace transform properties
 
 Laplace transforms have several important properties that can be derived from the definition. A few essential properties are reviewed below.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-$$\left.
+$$
+\left.
 \begin{array}{lll}
 \textbf{Name} & \mathbf{f(t)} & \mathbf{F(s)}
 \\
@@ -452,9 +459,9 @@ See the MATLAB LiveScript `ConceptReview.mlx`
 
 ### Solving differential equations using the Laplace transform
 
-You can solve initial value problems analytically using Laplace transforms. In general, this is accomplished by: 
+You can solve initial value problems analytically using Laplace transforms. In general, this is accomplished by:
 
-1. taking the Laplace transform, 
+1. taking the Laplace transform,
 2. solving for the solution variable in the Laplace domain ($X(s)$), and
 3. taking the inverse Laplace transform by referring to a Laplace transform table.
 
@@ -462,12 +469,13 @@ You can solve initial value problems analytically using Laplace transforms. In g
 
 #### Example 3
 
-![example](images/write.png) 
+![example](images/write.png)
 
-Use the Laplace transform to solve for the dynamics of the mass-spring-damper with 
-* constant forcing $F = 10$ N
-* physical parameters: $m = 1$ kg, $c = 2$ Ns/m, and $k = 10$ N/m
-* zero initial conditions: $x(0) = 0$ and $x'(0) = 0$
+Use the Laplace transform to solve for the dynamics of the mass-spring-damper with
+
+- constant forcing $F = 10$ N
+- physical parameters: $m = 1$ kg, $c = 2$ Ns/m, and $k = 10$ N/m
+- zero initial conditions: $x(0) = 0$ and $x'(0) = 0$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -505,7 +513,7 @@ $$s^2 X + 2 s X  + 10X = \frac{10}{s}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-Solving for  yields
+Solving for yields
 
 $$X = \frac{10}{s^3 + 2  s^2   + 10s }$$
 
@@ -521,7 +529,7 @@ slideshow:
   slide_type: subslide
 ---
 % Define X(s)
-syms s 
+syms s
 X = 10/(s^3 + 2*s^2 + 10*s)
 ```
 
@@ -538,7 +546,7 @@ Xdecomp = partfrac(X,s)
 
 ##### 4. Take the inverse Laplace transform
 
-You can take the inverse Laplace transform by rewriting  as a sum of terms in forms found on a [transform table](https://en.wikipedia.org/wiki/List_of_Laplace_transforms#Table).
+You can take the inverse Laplace transform by rewriting as a sum of terms in forms found on a [transform table](https://en.wikipedia.org/wiki/List_of_Laplace_transforms#Table).
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -610,7 +618,7 @@ In this exercise, you will solve for the dynamics of the simple pendulum using t
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-##### 4(a) 
+##### 4(a)
 
 Draw a free-body diagram for the simple pendulum shown above and derive the equation of motion for a pendulum with length $l = 0.5$ m and a gravitational constant of 9.8 m/s. Linearize the equation near $\theta = 0$ and show that it is equivalent to
 
@@ -623,9 +631,8 @@ $$\ddot \theta + 19.6 \theta = 0$$
 Use the Laplace transform to solve the linearized equations of motion:
 
 $$\ddot \theta + 19.6 \theta = 0$$
-      
-with initial conditions $\theta(0) = \pi/6$, $\dot{\theta}(0) = 0$.
 
+with initial conditions $\theta(0) = \pi/6$, $\dot{\theta}(0) = 0$.
 
 Write your solution in the variable `theta` in terms of the symbolic variable `t`. Then click the checkbox to plot your solution.
 
@@ -665,9 +672,11 @@ Consider an operator $g$ that maps an input $u(t)$ to an output $y(t)$.
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### 1. Linearity
+
 The operator $g$ is linear if it has two properties:
-* Superposition: $g[u_1(t) + u_2(t)]$ = $y_1(t)$ + $y_2(t)$
-* Homogeneity: $g[au(t)] = ay(t)$
+
+- Superposition: $g[u_1(t) + u_2(t)]$ = $y_1(t)$ + $y_2(t)$
+- Homogeneity: $g[au(t)] = ay(t)$
 
 Often these two properties are written together as
 
@@ -683,18 +692,18 @@ $$g[u(t - \tau)]= y(t - \tau)$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Exercise 5. 
+### Exercise 5.
 
 ![reflect](images/reflect.png)
 
-Consider the simple operators listed below. Which operators are linear? Which are time-invariant? 
+Consider the simple operators listed below. Which operators are linear? Which are time-invariant?
 
 Use the interactive tool in the MATLAB LiveScript `ConceptReview.mlx` to explore these and reflect on the results.
 
-* $g$: $y(t) = g[u(t)]$ with $g = \frac{d}{dt}  + \frac{d^2}{dt^2}$
-* $h$: $y(t) = 4\sin^2[u(t)]$
-* $i$: $y(t) = \int_{t - 1}^{t + 1} 3u(\tau) d\tau$
-* $j$: $y(t) = t \frac{d}{dt} u(t)$
+- $g$: $y(t) = g[u(t)]$ with $g = \frac{d}{dt}  + \frac{d^2}{dt^2}$
+- $h$: $y(t) = 4\sin^2[u(t)]$
+- $i$: $y(t) = \int_{t - 1}^{t + 1} 3u(\tau) d\tau$
+- $j$: $y(t) = t \frac{d}{dt} u(t)$
 
 ```{code-cell}
 ---
@@ -707,6 +716,7 @@ open('ConceptReview.mlx')
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (homework1)=
+
 ## Homework 1: Laplace Transform and LTI Systems
 
 1. Register with the MathWorks (if you haven't already) using your Swansea University email and install your own copy of the curriculum module [Transfer Function Analysis of Dynamic Systems](https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems) into the online MATLAB version[^installation].
@@ -719,12 +729,11 @@ open('ConceptReview.mlx')
 
 ### Solution to Exercise 1
 
-We have made use of the resource [Laplace Transforms](https://www.lboro.ac.uk/departments/mlsc/student-resources/helm-workbooks/) from the [HELM project](https://www.lboro.ac.uk/media/media/schoolanddepartments/mlsc/downloads/HELM%20Workbook%2020%20Laplace%20Transforms.pdf) {cite}`HELM,HELM-Laplace` hosted at Loughborough University. We have made the [HELM resource available in the Canvas site](https://canvas.swansea.ac.uk/courses/53137/modules/items/2565502) for this module. 
+We have made use of the resource [Laplace Transforms](https://www.lboro.ac.uk/departments/mlsc/student-resources/helm-workbooks/) from the [HELM project](https://www.lboro.ac.uk/media/media/schoolanddepartments/mlsc/downloads/HELM%20Workbook%2020%20Laplace%20Transforms.pdf) {cite}`HELM,HELM-Laplace` hosted at Loughborough University. We have made the [HELM resource available in the Canvas site](https://canvas.swansea.ac.uk/courses/53137/modules/items/2565502) for this module.
 
 Compute the Laplace transform of some standard functions listed below:
 
 **a.** $f(t) = 1$
-
 
 $$
 \begin{align}
@@ -740,7 +749,7 @@ $$
 We have given all the steps here: in the remaining exercises we will omit some of the details but the results would be much the same. We will also demonstrate pragmatism by using the provided Laplace transform properties and transform tables ({ref}`lxf_props`, {ref}`lxf_table`) when they simplify the analysis. This is generally the approach you should take too.
 ```
 
-**b.** $f(t) = e^{-at}$ 
+**b.** $f(t) = e^{-at}$
 
 $$
 \begin{align}
@@ -751,11 +760,12 @@ F(s) &= \int_0^\infty e^{-at}.e^{-st}\,dt\\
 \end{align}
 $$
 
-**c.** $f(t) = t$ 
+**c.** $f(t) = t$
 
 $$
 F(s) \int_0^\infty t.e^{-st}\,dt
 $$
+
 Using integration by parts
 
 $$
@@ -774,12 +784,12 @@ $$
 \end{align}
 $$
 
-**d.** $f(t) = \delta(t - a)$ 
+**d.** $f(t) = \delta(t - a)$
 
-The solution uses the sampling property $f(t)\delta(t-a) = f(a)\delta(t-a)$ and the sifting property 
+The solution uses the sampling property $f(t)\delta(t-a) = f(a)\delta(t-a)$ and the sifting property
 
 $$
-\int_0^\infty f(t)\delta(t - a)\,dt = f(a). See 
+\int_0^\infty f(t)\delta(t - a)\,dt = f(a). See
 $$
 
 (see [Important Properties of the Delta Function](https://cpjobling.github.io/eg-150-textbook/signals_and_systems/elementary_signals/index.html#important-properties-of-the-delta-function) in {cite}`jobling-eg-150`).
@@ -791,7 +801,7 @@ F(s) &= \int_0^\infty e^{-st}\delta(t-a)\,dt\\
 \end{align}
 $$
 
-**e.** $f(t) = \cos(t)$ 
+**e.** $f(t) = \cos(t)$
 
 Using the identity
 
@@ -809,7 +819,7 @@ $$
 \end{align}
 $$
 
-**f.** $f(t) = t^2 e^{-at}$ 
+**f.** $f(t) = t^2 e^{-at}$
 
 From transform tables (e.g. {ref}`lxf_table`)
 
@@ -826,7 +836,7 @@ From the frequency shift property (see {ref}`ltp`)
 
 $$\mathcal{L}\left\{e^{-at}\right\} = F(s + a)$$
 
-so 
+so
 
 $$
 \mathcal{L}\left\{e^{-at} t^2\right\} = \frac{2}{\left(s + a\right)^3}
@@ -834,11 +844,11 @@ $$
 
 **g.** $f(t) = e^{-at}\sin(t)$
 
-To complete this from first principles you can use the approach we used to solve (e). If you want to do this you should note that 
+To complete this from first principles you can use the approach we used to solve (e). If you want to do this you should note that
 
 $$\sin(t) = \frac{1}{j2}\left(e^{jt} - e^{-jt}\right).$$
 
-It is easy to show that 
+It is easy to show that
 
 $$\mathcal{L}\left\{\sin(\omega t)\right\} = \frac{\omega}{s^2 + \omega^2}$$
 
@@ -867,5 +877,4 @@ $$
 ## Footnotes
 
 [^examples]: We will tackle some of the paper-based exercises in the examples class.
-
 [^installation]: Installation details are given in Canvas here: [Prepare the MATLAB Curriculum Module used in Unit 2 and Lab 2](https://canvas.swansea.ac.uk/courses/53137/pages/prepare-the-matlab-curriculum-module-used-in-unit-2-and-lab-2).

@@ -7,9 +7,9 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.15.2
 kernelspec:
-  display_name: Matlab
+  display_name: MKernel
   language: matlab
-  name: matlab
+  name: mkernel
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -22,7 +22,7 @@ kernelspec:
 
 ## To accompany Unit 1 Introduction
 
-We will step through this worksheet in class. 
+We will step through this worksheet in class.
 
 This give us an opportunity to demonstrate the electronic resources, Canvas, OneNote, Pingo, MATLAB, Simulink and Wolfram Alpha, that we will use to make our time in class more active and engaging. We will also test your background knowledge coming into the module.
 
@@ -52,29 +52,29 @@ We will use the worksheets as class whiteboards and the Pingo audience response 
 
 ### Before class
 
-* I will have published a video of me presenting the slide-show version of the notes in advance of class.
+- I will have published a video of me presenting the slide-show version of the notes in advance of class.
 
-* A copy of this worksheet will have been distributed to your **Worksheets** folder on OneNote so that you can make your own notes.
+- A copy of this worksheet will have been distributed to your **Worksheets** folder on OneNote so that you can make your own notes.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### In class
 
-* I will step through the worksheet in class using the Slide Show feature of Jupyter Notebooks.
+- I will step through the worksheet in class using the Slide Show feature of Jupyter Notebooks.
 
-* I can execute embedded examples of MATLAB code as we go (the notes contain all the results of these code examples).
+- I can execute embedded examples of MATLAB code as we go (the notes contain all the results of these code examples).
 
-* Any hand written notes that I would need to make on a White Board will be done on my copy of this worksheet. This means you have a copy of my handwritten notes as soon as the network syncs your class notebook.
+- Any hand written notes that I would need to make on a White Board will be done on my copy of this worksheet. This means you have a copy of my handwritten notes as soon as the network syncs your class notebook.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### After class
 
-* My annotated version of this worksheet will be visible in the **_Content Library** of the class notebook
-* I will provide a link to the OneNote page on the Whiteboard pages in Canvas.
-* Copies of the lecture recordings will be uploaded to Canvas.
-* There will be a lab in which you can learn more about the topics covered using MATLAB.
-* You should attempt the homework.
+- My annotated version of this worksheet will be visible in the **\_Content Library** of the class notebook
+- I will provide a link to the OneNote page on the Whiteboard pages in Canvas.
+- Copies of the lecture recordings will be uploaded to Canvas.
+- There will be a lab in which you can learn more about the topics covered using MATLAB.
+- You should attempt the homework.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -92,7 +92,7 @@ tags: [remove-output]
 ---
 %Make sure that we have a clean workspace
 clear all
-format compact
+format compact; setappdata(0, "MKernel_plot_format", 'svg')
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -105,7 +105,7 @@ We will be using a web-based audience response system called **Pingo** for in-cl
 
 ## Setup
 
-Browse to: [pingo.coactum.de](https://pingo.coactum.de). 
+Browse to: [pingo.coactum.de](https://pingo.coactum.de).
 
 ![QR code](https://chart.googleapis.com/chart?cht=qr&chs=300x300&choe=UTF-8&chld=H&chl=https://pingo.coactum.de)
 
@@ -114,6 +114,7 @@ Browse to: [pingo.coactum.de](https://pingo.coactum.de).
 When prompted: enter the **session ID**
 
 ### The Session ID for this Course
+
 <pre>
 
 
@@ -121,8 +122,6 @@ When prompted: enter the **session ID**
 </pre>
 <div style="font-size: 32pt; font-face: bold;">194851</div>
 <pre>
-
-
 
 </pre>
 
@@ -148,17 +147,17 @@ Continuous signals are represented mathematically by functions which vary contin
 
 Sinusoidal signals (e.g. AC) are pretty fundamental in electrical engineering. The mathematical model of a sinusoidal signal is:
 
-$$x(t) = A \cos (2\pi f_0 t - \phi).$$ 
+$$x(t) = A \cos (2\pi f_0 t - \phi).$$
 
 **Without talking to your anyone**, which of the following symbols do you think represents the period of the signal in seconds?
 
-| Symbol     | 
-|------------|
-| $A$        |
-| $f_0$      |
-| $1/f_0$      |
-| $\frac{2\pi}{f_0}$|
-| $\phi$ |
+| Symbol             |
+| ------------------ |
+| $A$                |
+| $f_0$              |
+| $1/f_0$            |
+| $\frac{2\pi}{f_0}$ |
+| $\phi$             |
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -168,7 +167,7 @@ $$x(t) = A \cos (2\pi f_0 t - \phi).$$
 
 ### Gaining insight using computers
 
-To help us answer these questions, let's use our mathematical tools to plot a signal like this and explore it. The example we will use is from *Signals and Systems for Dummies* (SS4D: page 12): 
+To help us answer these questions, let's use our mathematical tools to plot a signal like this and explore it. The example we will use is from _Signals and Systems for Dummies_ (SS4D: page 12):
 
 $$3\cos(2\pi\cdot 2t - 3\pi/4)$$
 
@@ -180,8 +179,8 @@ Here's the link: <https://www.wolframalpha.com>
 
 Paste this into the search box
 
-    plot 3 cos(2 pi 2 t - 3 pi/4) 
-    
+    plot 3 cos(2 pi 2 t - 3 pi/4)
+
 The lecturer will change the numbers in class. Note what happens and try to gain insight.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -289,18 +288,17 @@ Next time you have access to MATLAB, download this script ([sinewave.m](https://
 
 Sinusoidal signals (e.g. AC) are pretty fundamental in electrical engineering. The mathematical model of a sinusoidal signal is:
 
-$$x(t) = A \cos (2\pi f_0 t - \phi).$$ 
+$$x(t) = A \cos (2\pi f_0 t - \phi).$$
 
 Using the insight just gained by exploring this function with a computer, try matching each of the symbols to its definition again.
 
-
-| Symbol     | 
-|------------|
-| $A$        |
-| $f_0$      |
-| $1/f$      |
+| Symbol             |
+| ------------------ |
+| $A$                |
+| $f_0$              |
+| $1/f$              |
 | $\frac{2\pi}{f_0}$ |
-| $\phi$ |
+| $\phi$             |
 
 **This time you may discuss with your neighbours!**!
 
@@ -328,23 +326,23 @@ What is the period of the waveform in seconds?
 
 **Notes**
 
-* In communications and electronic signal processing, the frequency of sinusoidal signals us usually given in *cycles per second* or Hz. 
-* In mathematics, the frequency is always expressed in *radians per second*. 
-* In some courses, including later in this one and in EG-243 Control Systems, the frequency $2\pi f_0$ is often called the *natural frequency* and is usually written $\omega_n$.
+- In communications and electronic signal processing, the frequency of sinusoidal signals us usually given in _cycles per second_ or Hz.
+- In mathematics, the frequency is always expressed in _radians per second_.
+- In some courses, including later in this one and in EG-243 Control Systems, the frequency $2\pi f_0$ is often called the _natural frequency_ and is usually written $\omega_n$.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
 ### Try This Yourself
 
-* Use any or all of computing tools that you have access to to explore other sinusoids. Change the values of the variables and explain what happens. 
-* Try adding sinusoids of different amplitudes and different frequencies together and see what happens.
-* Change `cos` to `sin` and see what happens.
+- Use any or all of computing tools that you have access to to explore other sinusoids. Change the values of the variables and explain what happens.
+- Try adding sinusoids of different amplitudes and different frequencies together and see what happens.
+- Change `cos` to `sin` and see what happens.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## Continuous-time Systems
 
-Systems operate on signals. In mathematical terms, a *system* is a function or an *operator*, $H\{\}$ that maps the input signal $x(t)$ to an output signal $y(t)$. 
+Systems operate on signals. In mathematical terms, a _system_ is a function or an _operator_, $H\{\}$ that maps the input signal $x(t)$ to an output signal $y(t)$.
 
 Mathematically we would write this:
 
@@ -403,13 +401,14 @@ Discrete-time signals are a function of a time index $n$. A discrete-time signal
 
 Consider the following simple signal, a pulse sequence:
 
-$$y[n] = \left\{ {\begin{array}{*{20}{c}}
+$$
+y[n] = \left\{ {\begin{array}{*{20}{c}}
 {5,\;0 \le n < 10}\\
 {0,\;{\rm{otherwise}}\quad \;}
 \end{array}} \right.
 $$
 
-We can plot this in Matlab as a *stem plot*
+We can plot this in Matlab as a _stem plot_
 
 +++ {"slideshow": {"slide_type": "subslide"}, "tags": ["remove-output"]}
 
@@ -431,9 +430,9 @@ tags: [remove-output]
 %%file y.m
 % Define the function
 function [ y ] = x( n )
-  if n < 0 | n >= 10 
+  if n < 0 | n >= 10
       y = 0;
-  else 
+  else
       y = 5;
   end
 end
@@ -490,9 +489,10 @@ grid
 
 ### Exercise 1
 
-Draw a digital signal that represents your student number in some way. For example if your number was 765443, then you could generate a signal for which $x[n] = 0$ when $n < 7$, then $x[n] = 7$ for $7$ periods, then $x[n] = 6$ for the next 6 periods, $x[n] = 5$ for 5 periods, and so on. The signal should return to 0 when the last digit has been transmitted. 
+Draw a digital signal that represents your student number in some way. For example if your number was 765443, then you could generate a signal for which $x[n] = 0$ when $n < 7$, then $x[n] = 7$ for $7$ periods, then $x[n] = 6$ for the next 6 periods, $x[n] = 5$ for 5 periods, and so on. The signal should return to 0 when the last digit has been transmitted.
 
 Sketch your signal here:
+
 <pre style="border: 2px solid blue;">
 
 
@@ -536,13 +536,13 @@ For the example we started with $x(t) = 2 \cos (2\pi . 2t + 3\pi/4)$. Say we sam
 
 ## Discrete-time Systems
 
-A discrete-time system, like its continuous-time counterpart, is a function, $H\{\}$, that maps the input $x[n]$￼ ￼to the output $y[n] = H\{x[n]\}$. An example of a discrete-time system is the *two-tap* filter:
+A discrete-time system, like its continuous-time counterpart, is a function, $H\{\}$, that maps the input $x[n]$￼ ￼to the output $y[n] = H\{x[n]\}$. An example of a discrete-time system is the _two-tap_ filter:
 
 $$y[n] = H\{x[n]\} = \frac{3}{4}x[n] + \frac{1}{4}x[n-1]$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-The term *tap* denotes that output at time instant $n$ is formed from two time instants of the input, $n$ and $n – 1$. Check out a block diagram of a two-tap filter system:
+The term _tap_ denotes that output at time instant $n$ is formed from two time instants of the input, $n$ and $n – 1$. Check out a block diagram of a two-tap filter system:
 
 ![Simulink model of a discrete-time system](./pictures/ds.png)
 
@@ -559,7 +559,7 @@ open discrete_system
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-In words, this system scales the present input by 3/4 and adds it to the past value of the input scaled by 1/4. The notion of the past input comes about because $x[n - 1]$ is lagging one sample value behind $x[n]$. The term *filter* describes the output as an *averaging* of the present input and the previous input. *Averaging* is a form of filtering.
+In words, this system scales the present input by 3/4 and adds it to the past value of the input scaled by 1/4. The notion of the past input comes about because $x[n - 1]$ is lagging one sample value behind $x[n]$. The term _filter_ describes the output as an _averaging_ of the present input and the previous input. _Averaging_ is a form of filtering.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -569,12 +569,12 @@ In words, this system scales the present input by 3/4 and adds it to the past va
 
 ### Periodic
 
-Signals that repeat over and over are said to be *periodic*. In mathematical terms, a signal is periodic if:
+Signals that repeat over and over are said to be _periodic_. In mathematical terms, a signal is periodic if:
 
-* *Continuous signal* $x(t + T) = x(t)$
-* *Discrete signal* $x[n + N] = x[n]$
+- _Continuous signal_ $x(t + T) = x(t)$
+- _Discrete signal_ $x[n + N] = x[n]$
 
-The smallest $T$ or $N$ for which the equality holds is the *signal period*.
+The smallest $T$ or $N$ for which the equality holds is the _signal period_.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -622,6 +622,7 @@ What is the period $T$ in milliseconds?
 +++ {"slideshow": {"slide_type": "notes"}}
 
 Write your answer here
+
 <pre style="border: 2px solid blue">
 
 
@@ -635,9 +636,9 @@ Write your answer here
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Aperiodic 
+### Aperiodic
 
-Signals that are *deterministic* (completely determined functions of time) but not periodic are known as *aperiodic*. Point of view matters. If a signal occurs infrequently, you may view it as aperiodic. 
+Signals that are _deterministic_ (completely determined functions of time) but not periodic are known as _aperiodic_. Point of view matters. If a signal occurs infrequently, you may view it as aperiodic.
 
 This is how we generate an aperiodic rectangular pulse of duration $\tau$ in MATLAB:
 
@@ -734,10 +735,9 @@ Tell me what domain is this?
 
 ### Other Domains you will encounter
 
-The most commonly used domains used when analysing continuous time signals are the frequency domain ($f$ or $\omega$) and the Laplace $s$-domain ($s$). 
+The most commonly used domains used when analysing continuous time signals are the frequency domain ($f$ or $\omega$) and the Laplace $s$-domain ($s$).
 
 Similarly, for discrete-time signals, you may need to transform from the discrete-time domain ($n$) to the frequency domain ($\hat{\omega}$) or the z-domain ($z$).
-
 
 This section briefly introduces the world of signals and systems in the frequency, s-, and z-domains. More on these domains will follow.
 
@@ -810,12 +810,12 @@ two_sines
 
 ### Polling Question
 
-Which analysis method that you may have already encountered would turn the time response shown in this picture to the frequency spectrum shown in the bottom graph? 
+Which analysis method that you may have already encountered would turn the time response shown in this picture to the frequency spectrum shown in the bottom graph?
 
-* Fourier transform
-* Parseval's theorem 
-* Laplace transform
-* Phasor analysis
+- Fourier transform
+- Parseval's theorem
+- Laplace transform
+- Phasor analysis
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
