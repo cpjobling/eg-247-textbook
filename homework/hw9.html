@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Homework 9: Discrete Fourier Transform and the Fast-Fourier Transform &#8212; EG-247 Digital Signal Processing</title>
   
@@ -14,51 +15,55 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css?v=7235edc5" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'homework/hw9';</script>
@@ -76,23 +81,28 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
+
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -114,20 +124,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -144,8 +146,6 @@
         <div class="sidebar-primary-item">
 
   
-    
-  
 
 <a class="navbar-brand logo" href="../introduction/index.html">
   
@@ -157,18 +157,7 @@
     <p class="title logo__title">EG-247 Digital Signal Processing</p>
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -180,48 +169,48 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Online notes</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../transfer_functions/index.html">Transfer Function Analysis of Dynamic Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../transfer_functions/index.html">Transfer Function Analysis of Dynamic Systems</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../transfer_functions/1/concepts.html">Concept Review</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../transfer_functions/2/transfer_function_basics.html">Transfer Function Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../transfer_functions/3/pole_zero_analysis.html">Pole Zero Analysis</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../fourier_series/index.html">Fourier Series</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fourier_series/index.html">Fourier Series</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/1/trig_fseries.html">Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/2/exp_fs1.html">Exponential Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/3/exp_fs2.html">Computing Line Spectra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/4/exp_fs3.html">Applications of Line Spectra</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../fourier_transform/index.html">Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fourier_transform/index.html">Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_transform/1/ft1.html">Defining the Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_transform/2/ft2.html">Fourier transforms of commonly occuring signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_transform/3/ft3.html">Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_transform/4/ft4.html">Introduction to Filters</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../dt_systems/index.html">Sampled Data Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dt_systems/index.html">Sampled Data Systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../dt_systems/1/sampling.html">Sampling Theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dt_systems/2/z_transform.html">The Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dt_systems/3/i_z_transform.html">The Inverse Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dt_systems/4/dt_models.html">Models of Discrete Time Systems</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../dft/index.html">Discrete Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dft/index.html">Discrete Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../dft/1/dft.html">The Discrete Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dft/2/fft.html">The Fast-Fourier Transform</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../filter_design/index.html">Analogue and Digital Filter Design</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../filter_design/index.html">Analogue and Digital Filter Design</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../filter_design/analogue_filters.html">Unit 7.1: Designing Analogue Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../filter_design/digital_filters.html">Unit 7.2: Designing Digital Filters in MATLAB and Simulink</a></li>
 </ul>
-</details></li>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../zbib.html">Bibliography</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">In Class Worksheets</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../worksheets/index.html">Worksheets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../worksheets/index.html">Worksheets</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/worksheet1.html">Worksheet 1 Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/1/worksheet2.html">Worksheet 2 Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/2/worksheet3.html">Worksheet 3 Exponential Fourier Series</a></li>
@@ -236,11 +225,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../dft/1/worksheet12.html">Worksheet 12 The Discrete-time Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dft/2/worksheet13.html">Worksheet 13 The Fast Fourier Transform</a></li>
 </ul>
-</details></li>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework problems</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Homework</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Homework</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="hw4.html">Homework 4 Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hw5.html">Homework 5 Fourier Transforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hw6.html">Homework 6: Fourier Transforms</a></li>
@@ -248,7 +237,7 @@
 <li class="toctree-l2"><a class="reference internal" href="hw8.html">Homework 8 Sampling Theory and the Z-Transform</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems</a></li>
 </ul>
-</details></li>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Answers to Selected Problems</span></p>
 <ul class="nav bd-sidenav">
@@ -266,7 +255,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../dt_systems/2/zt_table.html">Table of Z-Transforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../setup/polling_setup.html">Set Up In-Class Polling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../todo.html">List of Planned Enhancements</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../setup/index.html">Setting up your own version of this book</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../setup/index.html">Setting up your own version of this book</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../transfer_functions/1/LICENSE.html">MathWorks License</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/jupyter.html">About Jupyter notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/python.html">Installing Python</a></li>
@@ -275,7 +264,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../setup/advanced-setup.html">Quick Start - For Experienced Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/jupyter-book.html">Setting up jupyter-book</a></li>
 </ul>
-</details></li>
+</li>
 </ul>
 
     </div>
@@ -291,7 +280,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -300,14 +289,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -347,7 +336,7 @@
       
       
       
-      <li><a href="https://github.com/cpjobling/eg-247-textbook/edit/master/homework/hw9.ipynb" target="_blank"
+      <li><a href="https://github.com/cpjobling/eg-247-textbook/edit/master/homework/hw9.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -394,7 +383,7 @@
       
       
       
-      <li><a href="../_sources/homework/hw9.ipynb" target="_blank"
+      <li><a href="../_sources/homework/hw9.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -404,7 +393,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -449,10 +438,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -460,14 +449,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -500,12 +489,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="homework-9-discrete-fourier-transform-and-the-fast-fourier-transform">
-<span id="homework9"></span><h1>Homework 9: Discrete Fourier Transform and the Fast-Fourier Transform<a class="headerlink" href="#homework-9-discrete-fourier-transform-and-the-fast-fourier-transform" title="Link to this heading">#</a></h1>
+<span id="homework9"></span><h1>Homework 9: Discrete Fourier Transform and the Fast-Fourier Transform<a class="headerlink" href="#homework-9-discrete-fourier-transform-and-the-fast-fourier-transform" title="Permalink to this heading">#</a></h1>
 <section id="discrete-fourier-transform">
-<h2>Discrete Fourier Transform<a class="headerlink" href="#discrete-fourier-transform" title="Link to this heading">#</a></h2>
+<h2>Discrete Fourier Transform<a class="headerlink" href="#discrete-fourier-transform" title="Permalink to this heading">#</a></h2>
 <ol>
     <li>Try Exercise 1 and Exercise 2 in section <a href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=421">10.8</a> of Karris{cite}`karris` by hand.</li>
 <li>The eight-point	Discrete Fourier Transform (DFT) of the	function:
@@ -537,9 +526,10 @@ document.write(`
         x[n] = \frac{1}{8}\sum_{m=0}^{7}\,X[m]\exp{\left(j\left(\frac{2\pi n}{8}\right)m\right)} = \frac{1}{8}\sum_{m=0}^{7}\,X[m]W_{8}^{-nm}.
 \)</span>$</li></ol></p>
 <li>If	we	wanted	to	compute	a 1024 point DFT from a	sampled-data signal, how much	speed-up could we expect to achieve	using the FFT rather than the standard formula for the	DFT?</li>
-<li>Given that direct convolution of two	digital	sequences takes order $n^2$ floating point operations, is taking the FFT of the two 1024 point signals, multiplying them and taking	the	inverse	FFT	more efficient than direct convolution?	If not, for how	many samples,	would using	the	FFT	be more efficient than direct convolution?</li></ol></section>
+<li>Given that direct convolution of two	digital	sequences takes order $n^2$ floating point operations, is taking the FFT of the two 1024 point signals, multiplying them and taking	the	inverse	FFT	more efficient than direct convolution?	If not, for how	many samples,	would using	the	FFT	be more efficient than direct convolution?</li></ol>
+</section>
 <section id="solutions">
-<h2>Solutions<a class="headerlink" href="#solutions" title="Link to this heading">#</a></h2>
+<h2>Solutions<a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>See section <a href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&ppg=421">10.9</a> of Karris<span id="id1">[<a class="reference internal" href="../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., fifth edition, 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3384197&amp;pq-origsite=primo.">Karris, 2012</a>]</span></p></li>
 <li><p><em>Hints</em>:</p>
@@ -554,7 +544,7 @@ document.write(`
 </ol>
 </section>
 <section id="reference">
-<h2>Reference<a class="headerlink" href="#reference" title="Link to this heading">#</a></h2>
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this heading">#</a></h2>
 <p>See <a class="reference internal" href="../zbib.html"><span class="doc std std-doc">Bibliograhy</span></a>.</p>
 </section>
 </section>
@@ -586,7 +576,7 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -615,7 +605,6 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -685,8 +674,8 @@ for
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

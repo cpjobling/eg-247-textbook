@@ -1,0 +1,553 @@
+---
+jupytext:
+  formats: ipynb,md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.15.2
+kernelspec:
+  display_name: MKernel
+  language: matlab
+  name: mkernel
+---
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+(ws10)=
+
+# Worksheet 10
+
+## To accompany Unit 5.3 The Inverse Z-Transform
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+## Colophon
+
+This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet16.pdf). We will step through this worksheet in class.
+
+An annotatable copy of the notes for this presentation will be distributed before the second class meeting as **Worksheet 16** in the **Week 9: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **Worksheets** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote.
+
+You are expected to have at least watched the video presentation of [Chapter 6.3](i_z_transform) of the [notes](https://cpjobling.github.io/eg-247-textbook) before coming to class. If you haven't watch it afterwards!
+
+After class, the lecture recording and the annotated version of the worksheets will be made available through Canvas.
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+## Agenda
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+- Inverse Z-Transform
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+- Examples using PFE
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+- Examples using Long Division
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+- Analysis in MATLAB
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+## The Inverse Z-Transform
+
+The inverse Z-Transform enables us to extract a sequence $f[n]$ from $F(z)$. It can be found by any of the following methods:
+
+- Partial fraction expansion
+- The inversion integral
+- Long division of polynomials
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Partial fraction expansion
+
+We expand $F(z)$ into a summation of terms whose inverse is known. These terms have the form:
+
+$$k,\;\frac{r_1 z}{z - p_1},\;\frac{r_1 z}{(z - p_1)^2},\;\frac{r_3 z}{z - p_2},\ldots$$
+
+where $k$ is a constant, and $r_i$ and $p_i$ represent the residues and poles respectively, and can be real or complex<sup>1</sup>.
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+**Notes**
+
+1. If complex, the poles and residues will be in complex conjugate pairs
+
+$$\frac{r_{i} z}{z - p_i} + \frac{r_{i}^* z}{z - p_i^*}$$
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Step 1: Make Fractions Proper
+
+- Before we expand $F(z)$ into partial fraction expansions, we must first express it as a _proper_ rational function.
+- This is done by expanding $F(z)/z$ instead of $F(z)$
+- That is we expand
+
+$$\frac{F(z)}{z} = \frac{k}{z} + \frac{r_1}{z-p_1} + \frac{r_2}{z-p_2} + \cdots$$
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Step 2: Find residues
+
+- Find residues from
+
+$$r_k = \lim_{z\to p_k}(z - p_k)\frac{F(z)}{z} = (z - p_k)\left.\frac{F(z)}{z}\right|_{z=p_k}$$
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Step 3: Map back to transform tables form
+
+- Rewrite $F(z)/z$:
+
+$$z\frac{F(z)}{z} = F(z) = k + \frac{r_1z}{z-p_1} + \frac{r_2z}{z-p_2} + \cdots$$
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Example 1
+
+Karris Example 9.4: use the partial fraction expansion to compute the inverse z-transform of
+
+$$F(z) = \frac{1}{(1 - 0.5z^{-1})(1 - 0.75z^{-1})(1 - z^{-1})}$$
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+Solution [example1.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example1.pdf)
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### MATLAB solution
+
+See [example1.mlx](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example1.mlx). (Also available as [example1.m](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example1.m).)
+
+Uses MATLAB functions:
+
+- `collect` &ndash; expands a polynomial
+- `sym2poly` &ndash; converts a polynomial into a numeric polymial (vector of coefficients in descending order of exponents)
+- `residue` &ndash; calculates poles and zeros of a polynomial
+- `ztrans` &ndash; symbolic z-transform
+- `iztrans` &ndash; symbolic inverse ze-transform
+- `stem` &ndash; plots sequence as a "lollipop" diagram
+
+```{code-cell}
+---
+slideshow:
+  slide_type: skip
+---
+clear all
+cd matlab
+format compact; setappdata(0, "MKernel_plot_format", 'svg')
+```
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+open example1
+```
+
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
+syms z n
+assume(n,'integer')
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+The denoninator of $F(z)$
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+Dz = (z - 0.5)*(z - 0.75)*(z - 1);
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+Multiply the three factors of Dz to obtain a polynomial
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+Dz_poly = collect(Dz)
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Make into a rational polynomial
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+$z^2$
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+num = [0, 1, 0, 0];
+```
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+$z^3 - 9/4 z^2 - 13/8 z - 3/8$
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+den = sym2poly(Dz_poly)
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Compute residues and poles
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+[r,p,k] = residue(num,den)
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Print results
+
+- `fprintf` works like the c-language function
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+fprintf('\n')
+fprintf('r1 = %4.2f\t', r(1)); fprintf('p1 = %4.2f\n', p(1));...
+fprintf('r2 = %4.2f\t', r(2)); fprintf('p2 = %4.2f\n', p(2));...
+fprintf('r3 = %4.2f\t', r(3)); fprintf('p3 = %4.2f\n', p(3));
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Symbolic proof
+
+$$f[n] = 2\left(\frac{1}{2}\right)^n - 9\left(\frac{3}{4}\right)^n + 8$$
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+% z-transform
+fn = 2*(1/2)^n-9*(3/4)^n + 8;
+Fz = ztrans(fn)
+```
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+% inverse z-transform
+iztrans(Fz)
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Sequence
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+n = 0:15;
+sequence = subs(fn,n);
+stem(n,sequence)
+title('Discrete Time Sequence f[n] = 2*(1/2)^n-9*(3/4)^n + 8');
+ylabel('f[n]')
+xlabel('Sequence number n')
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Example 2
+
+Karris example 9.5: use the partial fraction expansion method to to compute the inverse z-transform of
+
+$$F(z) = \frac{12z}{(z+1)(z - 1)^2}$$
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+Solution [example2.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example2.pdf)
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### MATLAB solution
+
+See [example2.mlx](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example2.mlx). (Also available as [example2.m](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example2.m).)
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+open example2
+```
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+Uses additional MATLAB functions:
+
+- `dimpulse` &ndash; computes and plots a sequence $f[n]$ for any range of values of $n$
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Example 3
+
+Karris example 9.6: use the partial fraction expansion method to to compute the inverse z-transform of
+
+$$F(z) = \frac{z + 1}{(z-1)(z^2 + 2z + 2)}$$
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+Solution [example3.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example3.pdf)
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### MATLAB solution
+
+See [example3.mlx](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example3.mlx). (Also available as [example3.m](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example3.m).)
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+open example3
+```
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+### Inverse Z-Transform by the Inversion Integral
+
+The inversion integral states that:
+
+$$f[n] = \frac{1}{j2\pi}\oint_C {F(z){z^{n - 1}}\,dz} $$
+
+where $C$ is a closed curve that encloses all poles of the integrant.
+
+This can (_apparently_) be solved by Cauchy's residue theorem!!
+
+Fortunately (:-), this is beyond the scope of this module!
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+See Karris Section 9.6.2 (pp 9-29&mdash;9-33) if you want to find out more.
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+### Inverse Z-Transform by the Long Division
+
+To apply this method, $F(z)$ must be a rational polynomial function, and the numerator and denominator must be polynomials arranged in descending powers of $z$.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+We will work through an example in class.
+
+[Skip next slide in Pre-Lecture]
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Example 4
+
+Karris example 9.9: use the long division method to determine $f[n]$ for $n = 0,\,1,\,\mathrm{and}\,2$, given that
+
+$$F(z) = \frac{1 + z^{-1} + 2z^{-2} + 3z^{-3}}{(1 - 0.25z^{-1})(1 - 0.5z^{-1})(1 - 0.75z^{-1})}$$
+
++++ {"slideshow": {"slide_type": "notes"}}
+
+<pre style="border: 2px solid blue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+Solution [example4.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example4.pdf)
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### MATLAB
+
+See [example4.mlx](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example4.mlx). (also available as [example4.m](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example4.m).)
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
+open example4
+```
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+## Methods of Evaluation of the Inverse Z-Transform
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Partial Fraction Expansion
+
+_Advantages_
+
+- Most familiar.
+- Can use MATLAB `residue` function.
+
+_Disadvantages_
+
+- Requires that $F(z)$ is a proper rational function.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Inversion Integral
+
+_Advantage_
+
+- Can be used whether $F(z)$ is rational or not
+
+_Disadvantages_
+
+- Requires familiarity with the _Residues theorem_ of complex variable analaysis.</li></ul>
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Long Division
+
+_Advantages_
+
+- Practical when only a small sequence of numbers is desired.
+- Useful when z-transform has no closed-form solution.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+_Disadvantages_
+
+- Can use MATLAB `dimpulse` function to compute a large sequence of numbers.
+- Requires that $F(z)$ is a proper rational function.
+- Division may be endless.
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+## Summary
+
+- Inverse Z-Transform
+- Examples using PFE
+- Examples using Long Division
+- Analysis in MATLAB
+
+_Coming Next_
+
+- DT transfer functions, continuous system equivalents, and modelling DT systems in Matlab and Simulink.
