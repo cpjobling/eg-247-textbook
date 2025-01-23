@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Unit 2.1 Laplace transforms and LTI systems &#8212; EG-247 Digital Signal Processing</title>
   
@@ -15,19 +15,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -81,28 +81,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -124,12 +119,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -145,6 +148,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../introduction/index.html">
@@ -169,48 +174,48 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Online notes</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Transfer Function Analysis of Dynamic Systems</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Transfer Function Analysis of Dynamic Systems</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Concept Review</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2/transfer_function_basics.html">Transfer Function Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3/pole_zero_analysis.html">Pole Zero Analysis</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_series/index.html">Fourier Series</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_series/index.html">Fourier Series</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/trig_fseries.html">Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/2/exp_fs1.html">Exponential Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/3/exp_fs2.html">Computing Line Spectra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/4/exp_fs3.html">Applications of Line Spectra</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_transform/index.html">Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_transform/index.html">Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/1/ft1.html">Defining the Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/2/ft2.html">Fourier transforms of commonly occuring signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/3/ft3.html">Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/4/ft4.html">Introduction to Filters</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../dt_systems/index.html">Sampled Data Systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dt_systems/index.html">Sampled Data Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/1/sampling.html">Sampling Theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/2/z_transform.html">The Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/3/i_z_transform.html">The Inverse Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/4/dt_models.html">Models of Discrete Time Systems</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../dft/index.html">Discrete Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dft/index.html">Discrete Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../dft/1/dft.html">The Discrete Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dft/2/fft.html">The Fast-Fourier Transform</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../filter_design/index.html">Analogue and Digital Filter Design</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../filter_design/index.html">Analogue and Digital Filter Design</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../filter_design/analogue_filters.html">Unit 7.1: Designing Analogue Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../filter_design/digital_filters.html">Unit 7.2: Designing Digital Filters in MATLAB and Simulink</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../zbib.html">Bibliography</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">In Class Worksheets</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../worksheets/index.html">Worksheets</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../worksheets/index.html">Worksheets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../introduction/worksheet1.html">Worksheet 1 Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/worksheet2.html">Worksheet 2 Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/2/worksheet3.html">Worksheet 3 Exponential Fourier Series</a></li>
@@ -225,11 +230,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../dft/1/worksheet12.html">Worksheet 12 The Discrete-time Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dft/2/worksheet13.html">Worksheet 13 The Fast Fourier Transform</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework problems</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../homework/index.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../homework/index.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw4.html">Homework 4 Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw5.html">Homework 5 Fourier Transforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw6.html">Homework 6: Fourier Transforms</a></li>
@@ -237,7 +242,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw8.html">Homework 8 Sampling Theory and the Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw9.html">Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Answers to Selected Problems</span></p>
 <ul class="nav bd-sidenav">
@@ -255,7 +260,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../dt_systems/2/zt_table.html">Table of Z-Transforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../setup/polling_setup.html">Set Up In-Class Polling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../todo.html">List of Planned Enhancements</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup/index.html">Setting up your own version of this book</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup/index.html">Setting up your own version of this book</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="LICENSE.html">MathWorks License</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter.html">About Jupyter notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../setup/python.html">Installing Python</a></li>
@@ -264,7 +269,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../setup/advanced-setup.html">Quick Start - For Experienced Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter-book.html">Setting up jupyter-book</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 
     </div>
@@ -280,7 +285,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -289,7 +294,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -438,10 +443,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -449,7 +454,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -552,7 +557,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="unit-2-1-laplace-transforms-and-lti-systems">
 <span id="tf-concepts"></span><h1>Unit 2.1 Laplace transforms and LTI systems<a class="headerlink" href="#unit-2-1-laplace-transforms-and-lti-systems" title="Permalink to this heading">#</a></h1>
@@ -578,7 +583,7 @@ document.write(`
 <span class="c">% Setup MATLAB to use the ConceptReview.mlx LiveScript in class.</span>
 <span class="c">% I am assuming that this is on the MATLAB Drive</span>
 
-<span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="w"> </span>
+<span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"> </span><span class="nb">setappdata</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MKernel_plot_format&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;svg&#39;</span><span class="p">)</span>
 <span class="c">% Change this to local set up where this Jupyter book is run</span>
 <span class="nb">cd</span><span class="w"> </span><span class="s">&#39;/Users/eechris/MATLAB-Drive/Repositories/Transfer-Function-Analysis-of-Dynamic-Systems&#39;</span>
 <span class="nb">open</span><span class="p">(</span><span class="s">&#39;TransferFunctions.prj&#39;</span><span class="p">)</span>
@@ -595,7 +600,7 @@ document.write(`
 <span id="laplace-xform"></span><h2>The Laplace Transform<a class="headerlink" href="#the-laplace-transform" title="Permalink to this heading">#</a></h2>
 <section id="definition">
 <h3>Definition<a class="headerlink" href="#definition" title="Permalink to this heading">#</a></h3>
-<p>The Laplace transform of a locally integrable function <span class="math notranslate nohighlight">\(f\)</span>  is</p>
+<p>The Laplace transform of a locally integrable function <span class="math notranslate nohighlight">\(f\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[F(s) = \mathcal{L}\{f(t)\} =\int_{0}^{\infty} f(t) e^{-st} \ dt\]</div>
 <p>The corresponding inverse Laplace transform is denoted as</p>
@@ -605,19 +610,21 @@ document.write(`
 <section id="example-1">
 <h4>Example 1<a class="headerlink" href="#example-1" title="Permalink to this heading">#</a></h4>
 <p><img alt="example" src="../../_images/write.png" /></p>
-<p>(a)  Compute the Laplace transform of <span class="math notranslate nohighlight">\(f(t) = u_0(t - a)\)</span> by hand, where <span class="math notranslate nohighlight">\(u_o(t)\)</span> is the Heaviside step function with <span class="math notranslate nohighlight">\(a &gt; 0\)</span>.</p>
+<p>(a) Compute the Laplace transform of <span class="math notranslate nohighlight">\(f(t) = u_0(t - a)\)</span> by hand, where <span class="math notranslate nohighlight">\(u_o(t)\)</span> is the Heaviside step function with <span class="math notranslate nohighlight">\(a &gt; 0\)</span>.</p>
 <p>(b) Compute the analytic Laplace transform of <span class="math notranslate nohighlight">\(f\)</span> using the <a class="reference external" href="https://www.mathworks.com/products/symbolic.html">Symbolic Math Toolbox</a>.</p>
 </section>
 <section id="solution">
 <h4>Solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h4>
 <p>(a)</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{array}{rl}
+\[\begin{split}
+\begin{array}{rl}
 F(s) &amp;= \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
  &amp;= \int_{a}^{\infty}  e^{-st} \ dt \\
 &amp;= \left. -\frac{1}{s} e^{-st} \ \right\vert_a^\infty \\
 &amp;= \frac{1}{s} e^{-as} \\
-\end{array}\end{split}\]</div>
+\end{array}
+\end{split}\]</div>
 <p>(b) The <a class="reference external" href="https://www.mathworks.com/help/symbolic/laplace.html">laplace</a> function computes the analytic transform of a symbolic expression <span class="math notranslate nohighlight">\(f\)</span>. You can use the syntax:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">laplace</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="nb">var</span><span class="p">,</span><span class="n">transformVar</span><span class="p">)</span>
 </pre></div>
@@ -627,7 +634,7 @@ F(s) &amp;= \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="w"> </span><span class="c">% use less white space in outputs</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"> </span><span class="nb">setappdata</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MKernel_plot_format&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;svg&#39;</span><span class="p">)</span><span class="w"> </span><span class="c">% use less white space in outputs</span>
 <span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">s</span>
 <span class="n">syms</span><span class="w"> </span><span class="s">a</span><span class="w"> </span><span class="s">positive</span>
 </pre></div>
@@ -645,9 +652,7 @@ F(s) &amp;= \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>heaviside(t - a)
+heaviside(t - a)
 </pre></div>
 </div>
 </div>
@@ -663,9 +668,7 @@ F(s) &amp;= \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fs =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>exp(-a*s)/s
+exp(-a*s)/s
 </pre></div>
 </div>
 </div>
@@ -675,7 +678,7 @@ F(s) &amp;= \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
 <h4>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h4>
 <p><img alt="example" src="../../_images/write.png" /></p>
 <ol class="arabic simple">
-<li><p>Compute the Laplace transform of some standard functions listed below on paper<a class="footnote-reference brackets" href="#examples" id="id1">1</a>. Assume <span class="math notranslate nohighlight">\(a\)</span> is real and <span class="math notranslate nohighlight">\(a &gt; 0\)</span></p></li>
+<li><p>Compute the Laplace transform of some standard functions listed below on paper<a class="footnote-reference brackets" href="#examples" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. Assume <span class="math notranslate nohighlight">\(a\)</span> is real and <span class="math notranslate nohighlight">\(a &gt; 0\)</span></p></li>
 </ol>
 <p><strong>a.</strong> <span class="math notranslate nohighlight">\(f(t) = 1\)</span> <strong>b.</strong> <span class="math notranslate nohighlight">\(f(t) = e^{-at}\)</span> <strong>c.</strong> <span class="math notranslate nohighlight">\(f(t) = t\)</span> <strong>d.</strong> <span class="math notranslate nohighlight">\(f(t) = \delta(t - a)\)</span></p>
 <p><strong>e.</strong> <span class="math notranslate nohighlight">\(f(t) = \cos(t)\)</span> <strong>f.</strong> <span class="math notranslate nohighlight">\(f(t) = t^2 e^{-at}\)</span> <strong>g.</strong> <span class="math notranslate nohighlight">\(f(t) = e^{-at}\sin(t)\)</span></p>
@@ -704,12 +707,8 @@ F(s) &amp;= \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f =
      1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fs =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/s
+Fs =
+1/s
 </pre></div>
 </div>
 </div>
@@ -726,15 +725,9 @@ F(s) &amp;= \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>exp(-a*t)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fs =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/(a + s)
+exp(-a*t)
+Fs =
+1/(a + s)
 </pre></div>
 </div>
 </div>
@@ -751,15 +744,9 @@ F(s) &amp;= \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fs =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/s^2
+t
+Fs =
+1/s^2
 </pre></div>
 </div>
 </div>
@@ -776,15 +763,9 @@ F(s) &amp;= \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dirac(a - t)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fs =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>exp(-a*s)
+dirac(a - t)
+Fs =
+exp(-a*s)
 </pre></div>
 </div>
 </div>
@@ -801,15 +782,9 @@ F(s) &amp;= \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cos(t)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fs =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s/(s^2 + 1)
+cos(t)
+Fs =
+s/(s^2 + 1)
 </pre></div>
 </div>
 </div>
@@ -819,22 +794,16 @@ F(s) &amp;= \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
 <h5>Solution 1 (f).<a class="headerlink" href="#solution-1-f" title="Permalink to this heading">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">t</span>^<span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">t</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
 <span class="n">Fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">laplace</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t^2*exp(-a*t)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fs =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2/(a + s)^3
+t^2*exp(-a*t)
+Fs =
+2/(a + s)^3
 </pre></div>
 </div>
 </div>
@@ -851,15 +820,9 @@ F(s) &amp;= \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>exp(-a*t)*sin(t)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fs =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/((a + s)^2 + 1)
+exp(-a*t)*sin(t)
+Fs =
+1/((a + s)^2 + 1)
 </pre></div>
 </div>
 </div>
@@ -893,7 +856,8 @@ F(s) &amp;= \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
 <span id="ltp"></span><h3>Laplace transform properties<a class="headerlink" href="#laplace-transform-properties" title="Permalink to this heading">#</a></h3>
 <p>Laplace transforms have several important properties that can be derived from the definition. A few essential properties are reviewed below.</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\left.
+\[\begin{split}
+\left.
 \begin{array}{lll}
 \textbf{Name} &amp; \mathbf{f(t)} &amp; \mathbf{F(s)}
 \\
@@ -944,9 +908,7 @@ F(s) &amp;= \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dfdt(t) =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>diff(f(t), t)
+diff(f(t), t)
 </pre></div>
 </div>
 </div>
@@ -960,9 +922,7 @@ F(s) &amp;= \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fs =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s*laplace(f(t), t, s) - f(0)
+s*laplace(f(t), t, s) - f(0)
 </pre></div>
 </div>
 </div>
@@ -973,7 +933,7 @@ F(s) &amp;= \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
 <p><img alt="exercise" src="../../_images/write.png" /></p>
 <section id="a">
 <h5>2 (a).<a class="headerlink" href="#a" title="Permalink to this heading">#</a></h5>
-<p>Find the formula for the Laplace transform of the second time derivative <span class="math notranslate nohighlight">\(\ddot{f}(t)\)</span> by hand<a class="footnote-reference brackets" href="#examples" id="id2">1</a>.</p>
+<p>Find the formula for the Laplace transform of the second time derivative <span class="math notranslate nohighlight">\(\ddot{f}(t)\)</span> by hand<a class="footnote-reference brackets" href="#examples" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
 </section>
 <section id="b">
 <h5>2(b).<a class="headerlink" href="#b" title="Permalink to this heading">#</a></h5>
@@ -996,9 +956,7 @@ F(s) &amp;= \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>d2fdt2(t) =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>diff(f(t), t, t)
+diff(f(t), t, t)
 </pre></div>
 </div>
 </div>
@@ -1011,9 +969,7 @@ F(s) &amp;= \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fs =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s^2*laplace(f(t), t, s) - subs(diff(f(t), t), t, 0) - s*f(0)
+s^2*laplace(f(t), t, s) - subs(diff(f(t), t), t, 0) - s*f(0)
 </pre></div>
 </div>
 </div>
@@ -1062,7 +1018,7 @@ F(s) &amp;= \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
 <p>Applying the zero initial conditions and the values of the physical parameters implies</p>
 <div class="math notranslate nohighlight">
 \[s^2 X + 2 s X  + 10X = \frac{10}{s}\]</div>
-<p>Solving for  yields</p>
+<p>Solving for yields</p>
 <div class="math notranslate nohighlight">
 \[X = \frac{10}{s^3 + 2  s^2   + 10s }\]</div>
 </section>
@@ -1072,16 +1028,14 @@ F(s) &amp;= \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define X(s)</span>
-<span class="n">syms</span><span class="w"> </span><span class="s">s</span><span class="w"> </span>
-<span class="n">X</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">10</span><span class="o">/</span><span class="p">(</span><span class="n">s</span>^<span class="mi">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">10</span><span class="o">*</span><span class="n">s</span><span class="p">)</span>
+<span class="n">syms</span><span class="w"> </span><span class="s">s</span>
+<span class="n">X</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">10</span><span class="o">/</span><span class="p">(</span><span class="n">s</span><span class="o">^</span><span class="mi">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">10</span><span class="o">*</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10/(s^3 + 2*s^2 + 10*s)
+10/(s^3 + 2*s^2 + 10*s)
 </pre></div>
 </div>
 </div>
@@ -1095,9 +1049,7 @@ F(s) &amp;= \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Xdecomp =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/s - (s + 2)/(s^2 + 2*s + 10)
+1/s - (s + 2)/(s^2 + 2*s + 10)
 </pre></div>
 </div>
 </div>
@@ -1105,7 +1057,7 @@ F(s) &amp;= \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
 </section>
 <section id="take-the-inverse-laplace-transform">
 <h5>4. Take the inverse Laplace transform<a class="headerlink" href="#take-the-inverse-laplace-transform" title="Permalink to this heading">#</a></h5>
-<p>You can take the inverse Laplace transform by rewriting  as a sum of terms in forms found on a <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_Laplace_transforms#Table">transform table</a>.</p>
+<p>You can take the inverse Laplace transform by rewriting as a sum of terms in forms found on a <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_Laplace_transforms#Table">transform table</a>.</p>
 <div class="math notranslate nohighlight">
 \[X(s) = \frac{1}{s}-\frac{s+2}{s^2 +2 \ s+10} =  \frac{1}{s}-\frac{s+2}{(s + 1)^2 + 9}  =  \frac{1}{s}-\frac{s+1}{(s + 1)^2 + 3^2}  -\frac{1}{3}\frac{3}{(s + 1)^2 + 3^2}\]</div>
 <p>The solution is then constructed by taking the inverse transform:</p>
@@ -1129,9 +1081,7 @@ x(t) &amp;= \mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1)^2 + 3^2}  -\
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 - exp(-t)*(cos(3*t) + sin(3*t)/3)
+1 - exp(-t)*(cos(3*t) + sin(3*t)/3)
 </pre></div>
 </div>
 </div>
@@ -1149,8 +1099,7 @@ x(t) &amp;= \mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1)^2 + 3^2}  -\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ccfd9cc2b1cce24b148f48f6455a7ed0758477012252a76e36c5805ad74e206d.png" src="../../_images/ccfd9cc2b1cce24b148f48f6455a7ed0758477012252a76e36c5805ad74e206d.png" />
-</div>
+<img alt="../../_images/f79046a62b38f20f36b1d7a374b47f22ae8f7f3298df5f7136f41acc8d26ff4f.svg" src="../../_images/f79046a62b38f20f36b1d7a374b47f22ae8f7f3298df5f7136f41acc8d26ff4f.svg" /></div>
 </div>
 <p>There is an animated version of the solution to this spring-mass-damper system in the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">ConceptReview.mlx</span></code>.</p>
 <div class="cell docutils container">
@@ -1184,16 +1133,14 @@ x(t) &amp;= \mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1)^2 + 3^2}  -\
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">s</span>
 <span class="c">% Replace NaN with your symbolic solution and run the section</span>
-<span class="n">Theta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="nb">pi</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span><span class="o">*</span><span class="n">s</span><span class="o">/</span><span class="p">(</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">19.6</span><span class="p">);</span>
+<span class="n">Theta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="nb">pi</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span><span class="o">*</span><span class="n">s</span><span class="o">/</span><span class="p">(</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">19.6</span><span class="p">);</span>
 <span class="n">theta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ilaplace</span><span class="p">(</span><span class="n">Theta</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>theta =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(pi*cos((7*2^(1/2)*5^(1/2)*t)/5))/6
+(pi*cos((7*2^(1/2)*5^(1/2)*t)/5))/6
 </pre></div>
 </div>
 </div>
@@ -1255,7 +1202,7 @@ x(t) &amp;= \mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1)^2 + 3^2}  -\
 <section id="homework-1-laplace-transform-and-lti-systems">
 <span id="homework1"></span><h2>Homework 1: Laplace Transform and LTI Systems<a class="headerlink" href="#homework-1-laplace-transform-and-lti-systems" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Register with the MathWorks (if you haven’t already) using your Swansea University email and install your own copy of the curriculum module <a class="reference external" href="https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems">Transfer Function Analysis of Dynamic Systems</a> into the online MATLAB version<a class="footnote-reference brackets" href="#installation" id="id6">2</a>.</p></li>
+<li><p>Register with the MathWorks (if you haven’t already) using your Swansea University email and install your own copy of the curriculum module <a class="reference external" href="https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems">Transfer Function Analysis of Dynamic Systems</a> into the online MATLAB version<a class="footnote-reference brackets" href="#installation" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</p></li>
 <li><p>Open the <code class="docutils literal notranslate"><span class="pre">ConceptsReview.mlx</span></code> activity.</p></li>
 <li><p>Complete the Exercises and Activities and add your own notes to the LiveScript file in response to the Reflection prompts given above.</p></li>
 </ol>
@@ -1316,7 +1263,7 @@ F(s) \int_0^\infty t.e^{-st}\,dt
 <p>The solution uses the sampling property <span class="math notranslate nohighlight">\(f(t)\delta(t-a) = f(a)\delta(t-a)\)</span> and the sifting property</p>
 <div class="math notranslate nohighlight">
 \[
-\int_0^\infty f(t)\delta(t - a)\,dt = f(a). See 
+\int_0^\infty f(t)\delta(t - a)\,dt = f(a). See
 \]</div>
 <p>(see <a class="reference external" href="https://cpjobling.github.io/eg-150-textbook/signals_and_systems/elementary_signals/index.html#important-properties-of-the-delta-function">Important Properties of the Delta Function</a> in <span id="id8">[<a class="reference internal" href="../../zbib.html#id15" title="Christopher P. Jobling. EG-150: Signals and Systems. Swansea University, 2024. URL: https://cpjobling.github.io/eg-150-textbook.">Jobling, 2024</a>]</span>).</p>
 <div class="math notranslate nohighlight">
@@ -1382,30 +1329,33 @@ F(s) &amp;= \int_0^\infty e^{-st}\delta(t-a)\,dt\\
 <section id="references-for-this-unit">
 <h2>References for this Unit<a class="headerlink" href="#references-for-this-unit" title="Permalink to this heading">#</a></h2>
 <div class="docutils container" id="id9">
-<dl class="citation">
-<dt class="label" id="id23"><span class="brackets"><a class="fn-backref" href="#id8">Job24</a></span></dt>
-<dd><p>Christopher P. Jobling. <em>EG-150: Signals and Systems</em>. Swansea University, 2024. URL: <a class="reference external" href="https://cpjobling.github.io/eg-150-textbook">https://cpjobling.github.io/eg-150-textbook</a>.</p>
-</dd>
-<dt class="label" id="id24"><span class="brackets"><a class="fn-backref" href="#id7">Uni08a</a></span></dt>
-<dd><p>Loughborough University. Helping engineers learn mathematics workbooks (helm). 2008. URL: <a class="reference external" href="https://www.lboro.ac.uk/departments/mlsc/student-resources/helm-workbooks/">https://www.lboro.ac.uk/departments/mlsc/student-resources/helm-workbooks/</a> (visited on 2024-08-02).</p>
-</dd>
-<dt class="label" id="id25"><span class="brackets"><a class="fn-backref" href="#id7">Uni08b</a></span></dt>
-<dd><p>Loughborough University. Laplace transforms (helm). 2008. URL: <a class="reference external" href="https://www.lboro.ac.uk/media/media/schoolanddepartments/mlsc/downloads/HELM%20Workbook%2020%20Laplace%20Transforms.pdf">https://www.lboro.ac.uk/media/media/schoolanddepartments/mlsc/downloads/HELM%20Workbook%2020%20Laplace%20Transforms.pdf</a> (visited on 2024-08-02).</p>
-</dd>
-</dl>
+<div class="citation" id="id23" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">Job24</a><span class="fn-bracket">]</span></span>
+<p>Christopher P. Jobling. <em>EG-150: Signals and Systems</em>. Swansea University, 2024. URL: <a class="reference external" href="https://cpjobling.github.io/eg-150-textbook">https://cpjobling.github.io/eg-150-textbook</a>.</p>
+</div>
+<div class="citation" id="id24" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">Uni08a</a><span class="fn-bracket">]</span></span>
+<p>Loughborough University. Helping engineers learn mathematics workbooks (helm). 2008. URL: <a class="reference external" href="https://www.lboro.ac.uk/departments/mlsc/student-resources/helm-workbooks/">https://www.lboro.ac.uk/departments/mlsc/student-resources/helm-workbooks/</a> (visited on 2024-08-02).</p>
+</div>
+<div class="citation" id="id25" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">Uni08b</a><span class="fn-bracket">]</span></span>
+<p>Loughborough University. Laplace transforms (helm). 2008. URL: <a class="reference external" href="https://www.lboro.ac.uk/media/media/schoolanddepartments/mlsc/downloads/HELM%20Workbook%2020%20Laplace%20Transforms.pdf">https://www.lboro.ac.uk/media/media/schoolanddepartments/mlsc/downloads/HELM%20Workbook%2020%20Laplace%20Transforms.pdf</a> (visited on 2024-08-02).</p>
+</div>
+</div>
 </div>
 </section>
 <section id="footnotes">
 <h2>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this heading">#</a></h2>
 <hr class="footnotes docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="examples"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
-<dd><p>We will tackle some of the paper-based exercises in the examples class.</p>
-</dd>
-<dt class="label" id="installation"><span class="brackets"><a class="fn-backref" href="#id6">2</a></span></dt>
-<dd><p>Installation details are given in Canvas here: <a class="reference external" href="https://canvas.swansea.ac.uk/courses/53137/pages/prepare-the-matlab-curriculum-module-used-in-unit-2-and-lab-2">Prepare the MATLAB Curriculum Module used in Unit 2 and Lab 2</a>.</p>
-</dd>
-</dl>
+<aside class="footnote brackets" id="examples" role="note">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>)</span>
+<p>We will tackle some of the paper-based exercises in the examples class.</p>
+</aside>
+<aside class="footnote brackets" id="installation" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">2</a><span class="fn-bracket">]</span></span>
+<p>Installation details are given in Canvas here: <a class="reference external" href="https://canvas.swansea.ac.uk/courses/53137/pages/prepare-the-matlab-curriculum-module-used-in-unit-2-and-lab-2">Prepare the MATLAB Curriculum Module used in Unit 2 and Lab 2</a>.</p>
+</aside>
 </section>
 </section>
 
@@ -1418,16 +1368,16 @@ F(s) &amp;= \int_0^\infty e^{-st}\delta(t-a)\,dt\\
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "matlab"
+            mode: "mkernel"
         },
         kernelOptions: {
-            name: "matlab",
+            name: "mkernel",
             path: "./transfer_functions/1"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'matlab'</script>
+    <script>kernelName = 'mkernel'</script>
 
                 </article>
               
@@ -1436,7 +1386,7 @@ F(s) &amp;= \int_0^\infty e^{-st}\delta(t-a)\,dt\\
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1465,6 +1415,7 @@ F(s) &amp;= \int_0^\infty e^{-st}\delta(t-a)\,dt\\
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1597,8 +1548,8 @@ for
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

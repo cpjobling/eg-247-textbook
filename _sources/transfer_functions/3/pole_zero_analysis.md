@@ -7,14 +7,15 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.15.2
 kernelspec:
-  display_name: Matlab
+  display_name: MKernel
   language: matlab
-  name: matlab
+  name: mkernel
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (pz_analysis)=
+
 # Unit 2.3: Pole-Zero Analysis
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -23,20 +24,20 @@ kernelspec:
 
 In this unit, students will...
 
-* Describe how the transfer function of a DC motor is derived.
-* Identify the poles and zeros of a transfer function.
-* Assess the stability of an LTI system based on the transfer function poles.
+- Describe how the transfer function of a DC motor is derived.
+- Identify the poles and zeros of a transfer function.
+- Assess the stability of an LTI system based on the transfer function poles.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-* Relate the position of poles in the s-plane to the damping and natural frequency of a system.
-* Explain how poles of a second-order system relate to its dynamics.
-* Examine how transfer function zeros affect the dynamics of a system.
+- Relate the position of poles in the s-plane to the damping and natural frequency of a system.
+- Explain how poles of a second-order system relate to its dynamics.
+- Examine how transfer function zeros affect the dynamics of a system.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
 :::{note}
-This unit is based on the MATLAB LiveScript `PoleZeroAnalysis.mlx` from the curriculum module [Transfer Function Analysis of Dynamic Systems](https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems). 
+This unit is based on the MATLAB LiveScript `PoleZeroAnalysis.mlx` from the curriculum module [Transfer Function Analysis of Dynamic Systems](https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems).
 
 Some of the examples rely on interactive features of MATLAB that are not readily reproduced in these notes. To make use of these facilities, you are advised to access the script directly from the project in MATLAB online.
 
@@ -53,7 +54,7 @@ slideshow:
 % Setup MATLAB to use the PoleZeroAnalysis.mlx LiveScript and the polesApp.mlapp app in class.
 % I am assuming that this is on the MATLAB Drive
 
-format compact 
+format compact; setappdata(0, "MKernel_plot_format", 'svg')
 % Change this to local set up where this Jupyter book is run
 cd '/Users/eechris/MATLAB-Drive/Repositories/Transfer-Function-Analysis-of-Dynamic-Systems'
 open('TransferFunctions.prj')
@@ -65,7 +66,7 @@ open('TransferFunctions.prj')
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-Another essential electric vehicle (EV) component is the DC motor. 
+Another essential electric vehicle (EV) component is the DC motor.
 
 ![Simplified EV schematic](images/engineFocus.png)
 
@@ -121,17 +122,24 @@ where $v$ is the electric potential applied to the motor.
 
 In the absence of other applied torques, the equation of motion can be derived by balancing the inertia of the motor shaft ($J \ddot{\theta}$) with the applied torque ($T$) and frictional resistance ($B \dot{\theta}$).
 
+
 $$
-J \ddot{\theta}  = T - B \dot{\theta}
+
+J \ddot{\theta} = T - B \dot{\theta}
+
 $$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 Using the linear relationship between torque and current, this is equivalent to:
 
+
 $$
-J \ddot{\theta} + B \dot{\theta}  = k_m i
-$$ (eq2)
+
+J \ddot{\theta} + B \dot{\theta} = k_m i
+
+$$
+(eq2)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -144,13 +152,13 @@ In this exercise, you will compute transfer functions of the DC motor system. As
 +++ {"slideshow": {"slide_type": "notes"}}
 
 :::{note}
-We will do some of these calculations in class. To revise this material, we recommend that you use the the MATLAB LiveScript `PoleZeroAnalysis.mlx` from the curriculum module [Transfer Function Analysis of Dynamic Systems](https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems) and fill in your answers there. The LiveScript provides checking functions with which you can validate your answers. 
+We will do some of these calculations in class. To revise this material, we recommend that you use the the MATLAB LiveScript `PoleZeroAnalysis.mlx` from the curriculum module [Transfer Function Analysis of Dynamic Systems](https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems) and fill in your answers there. The LiveScript provides checking functions with which you can validate your answers.
 :::
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (ex1a)=
-#### 1(a) 
+#### 1(a)
 
 Compute the Laplace transform of the voltage conservation equation {eq}`eq1` and apply the initial conditions. Type your result below in terms of the defined symbolic variables.
 
@@ -160,7 +168,7 @@ Compute the Laplace transform of the voltage conservation equation {eq}`eq1` and
 
 ![matlab](images/matlab.png)
 
-When you write a symbolic equation, you assign the whole equation to a MATLAB variable using the assignment operator "`=`" (single equals). The equals sign in the symbolic equation is written using "`==`" (double equals). For example: 
+When you write a symbolic equation, you assign the whole equation to a MATLAB variable using the assignment operator "`=`" (single equals). The equals sign in the symbolic equation is written using "`==`" (double equals). For example:
 
 ```matlab
 syms y m x b
@@ -172,7 +180,7 @@ linearEq = y == m*x + b
 slideshow:
   slide_type: subslide
 ---
-format compact
+format compact; setappdata(0, "MKernel_plot_format", 'svg')
 % Use these symbolic variables
 syms L R k_e J B k_m    % Constants
 syms Theta I s V        % Laplace domain variables
@@ -183,7 +191,7 @@ eqn1 = R*I + L*s*I + s*k_e*Theta == V
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (ex1b)=
-#### 1(b) 
+#### 1(b)
 
 Compute the Laplace transform of the equation of motion {eq}`eq2` and apply the initial conditions. Type your answer below in terms of the defined symbolic variables.
 
@@ -199,9 +207,9 @@ eqn2 = J*s^2*Theta + B*s*Theta == k_m*I
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (ex1c)=
-#### 1(c) 
+#### 1(c)
 
-Solve for the angular displacement transfer function 
+Solve for the angular displacement transfer function
 
 $$G(s) = \frac{ \Theta(s) }{V(s)}$$
 
@@ -219,11 +227,11 @@ ThetaOverV = k_m/(s*(L*J*s^2 + (R*J+L*B)*s + B*R + k_m*k_e))
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (ex1d)=
-#### 1(d) 
+#### 1(d)
 
-Solve for the angular velocity transfer function 
+Solve for the angular velocity transfer function
 
-$$H(s) = \frac{\Omega(s)}{V(s)}$$ 
+$$H(s) = \frac{\Omega(s)}{V(s)}$$
 
 where $\Omega$ is the Laplace transform of the angular velocity $\omega(t) = \dot{\theta}(t)$.
 
@@ -245,8 +253,11 @@ You can gain insight into the characteristics of a dynamic system without actual
 
 **Definition**. The **poles** of a rational transfer function occur where the denominator is zero. Consider a rational transfer function in factored form:
 
+
 $$
+
 G(s) = K \frac{ (s-z_1)(s-z_2) \ldots (s-z_m) }{ (s-p_1)(s-p_2) \ldots (s-p_n)}
+
 $$
 
 The poles are $p_1$, $p_2$, $\ldots$, $p_n$.
@@ -321,9 +332,9 @@ A screenshot of the `polesApp.mlapp` app
 **Part 2**. Transfer function poles
 1. You can change the transfer function by adjusting the number and location of the poles and zeros. Set the number of poles to two and change the location of the poles to $p = -1, -2$. The transfer function should be $F(s) = 1/[(s+1)(s+2)]$. Is the system stable or unstable?
 2. Adjust the number of poles and their locations to reproduce the transfer functions shown below.
-   
-   a. $F(s) = \frac{1}{s^2 + 1}$            
-   b. $F(s) = \frac{1}{(s-1)(s^2+2s+2)}$            
+
+   a. $F(s) = \frac{1}{s^2 + 1}$
+   b. $F(s) = \frac{1}{(s-1)(s^2+2s+2)}$
    c.  $F(s) = \frac{1}{(s-1)(s+2)(s^2+4s+8)}$
 3.  Which of the transfer functions are stable? Which are unstable?
 
@@ -350,11 +361,11 @@ A screenshot of the `polesApp.mlapp` app
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### Reflect. 
+#### Reflect.
 
 ![reflect](images/reflect.png)
 
-* What effect does increasing the magnitude of the imaginary component of a pole have? 
+* What effect does increasing the magnitude of the imaginary component of a pole have?
 * What effect does increasing the magnitude of the real component of a pole have?
 * In a system with one stable pole and one unstable pole, is it possible for a stable pole to "balance out" an unstable pole, leading to an overall stable system?
 
@@ -378,7 +389,7 @@ $$\frac{\Omega}{V} = \frac{g}{ s^2 + bs + c}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-##### Homework Exercise 1(a) 
+##### Homework Exercise 1(a)
 
 Suppose that a DC motor has constants $g =60$, $b = 2.3$, and $c = 11$. Define the transfer function in MATLAB using the [`tf`](https://uk.mathworks.com/help/control/ref/tf.html) function.
 
@@ -394,8 +405,8 @@ G = tf([0 0 g],[1 b c])
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
- 
-##### Homework Exercise 1(b) 
+
+##### Homework Exercise 1(b)
 
 Is the system stable? You can plot the poles in the s-plane using the [`pzmap`](https://www.mathworks.com/help/control/ref/lti.pzmap.html) function. For example, to plot the poles of a transfer function G, use:
 ```matlab
@@ -413,8 +424,8 @@ pzmap(G)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
- 
-##### Homework Exercise 1(c) 
+
+##### Homework Exercise 1(c)
 What are the poles of the transfer function? You can use the [`pole`](https://www.mathworks.com/help/control/ref/lti.pole.html) function to compute the poles of a dynamic system in MATLAB. For example, to identify the poles of a transfer function R, use:
 ```matlab
 pole(R)
@@ -431,7 +442,7 @@ pole(G)
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-##### Reflect. 
+##### Reflect.
 
 ![reflect](images/reflect.png)
 
@@ -446,7 +457,7 @@ The locations of the poles in the s-plane determine the natural oscillation freq
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-* The natural (undamped) frequency (in rad/s) contributed by a pole $p$ is the pole magnitude, $r = |p|$. 
+* The natural (undamped) frequency (in rad/s) contributed by a pole $p$ is the pole magnitude, $r = |p|$.
 * The phase, $\phi = \arg p$, determines the relative strength of the oscillatory component.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -464,7 +475,7 @@ In this activity you will explore how poles relate to the natural frequency resp
 
 Consider the transfer function:
 
-$$H(s) = \frac{1}{s^2 -2\,\mathrm{cos}\left(\phi \right)\,r\,s+r^2},$$  
+$$H(s) = \frac{1}{s^2 -2\,\mathrm{cos}\left(\phi \right)\,r\,s+r^2},$$
 
 which is constructed with poles: $p = r(\cos \phi \pm i\sin \phi)$.
 1. The transfer function poles are plotted below. Change the slider values to $(r,\phi) = (1,135^\circ)$. Are oscillations present in the impulse response?
@@ -495,13 +506,13 @@ open('PoleZeroAnalysis.mlx')
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### Exercise 2 
+#### Exercise 2
 
 A specific example of the DC motor angular velocity transfer function is
 ```matlab
 G = tf([0 0 60],[1 2.3 11])
 ```
-##### Exercise 2(a) 
+##### Exercise 2(a)
 
 Compute the poles of the system and then use the poles to compute the system's natural frequencies in rad/s.
 
@@ -518,8 +529,8 @@ wn = abs(p) % rad/s
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
- 
-##### Exercise 2(b) 
+
+##### Exercise 2(b)
 
 You can also use the `damp` function to analyze the natural frequencies of the system. Validate your solution in (a) by calling the `damp` function.
 
@@ -552,7 +563,7 @@ $$G(s) = \frac{ K }{s^2 + 2 \zeta \omega_n s  + \omega_n^2}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-where 
+where
 * $K$ is the gain coefficient
 * $\zeta$ is the damping ratio
 *  and $\omega_n$ is the (undamped) natural frequency.
@@ -578,7 +589,7 @@ $$p = - \zeta \omega_n \pm j \omega_n \sqrt{1 - \zeta^2}$$
 
 As stated above, the natural frequency is defined as the magnitude of the pole. The magnitude is computed as $\sqrt{ Re^2 + Im^2}$:
 
-\begin{array}{rl} |p|  &= \sqrt{ (-\zeta \omega_n)^2 + ( \pm \omega_n \sqrt{1-\zeta^2})^2 } \\   &= \sqrt{ \zeta^2 \omega_n^2 + \omega_n^2 (1-\zeta^2) } \\   &= |\omega_n|\  
+\begin{array}{rl} |p|  &= \sqrt{ (-\zeta \omega_n)^2 + ( \pm \omega_n \sqrt{1-\zeta^2})^2 } \\   &= \sqrt{ \zeta^2 \omega_n^2 + \omega_n^2 (1-\zeta^2) } \\   &= |\omega_n|\
 \end{array}
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -591,9 +602,9 @@ This illustrates why this form of the equation is used: the natural frequency is
 
 ##### Damping ratio $\zeta$
 
-The damping ratio $\zeta$ determines the relative strength of the exponential part of the response. 
+The damping ratio $\zeta$ determines the relative strength of the exponential part of the response.
 
-As $\zeta \rightarrow 1$, the complex part of the pole tends to zero, implying less oscillatory and stronger exponential behavior. 
+As $\zeta \rightarrow 1$, the complex part of the pole tends to zero, implying less oscillatory and stronger exponential behavior.
 
 For stable systems, that implies greater damping.
 
@@ -618,7 +629,7 @@ slideshow:
   slide_type: subslide
 ---
 syms s zeta omega_n K X(s) x(t)
-X(s) = K/(s^2 + 2*zeta*omega_n*s + omega_n^2) 
+X(s) = K/(s^2 + 2*zeta*omega_n*s + omega_n^2)
 x(t) = ilaplace(X) % The impulse response in the time domain
 ```
 
@@ -626,7 +637,7 @@ x(t) = ilaplace(X) % The impulse response in the time domain
 
 Notice that the impulse response is a product of an exponential and sine function. From these functions observe that:
 * The sine function frequency (in rads/s) is $\omega_n \sqrt{1-\zeta^2}$. If the damping $\zeta = 0$, then the frequency is $\omega_n$. This is the reason $\omega_n$ is often referred to as the undamped natural frequency.
-* The rate of decay of the exponential damping function is $\omega_n \zeta$. 
+* The rate of decay of the exponential damping function is $\omega_n \zeta$.
 * The gain parameter $K$ only contributes as a constant multiplier to the magnitude of the response.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -641,7 +652,7 @@ $$G(s) = \frac{ K }{s^2 + 2 \zeta \omega_n s  + \omega_n^2}$$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-##### Reflect. 
+##### Reflect.
 * Does the carrier frequency of the solution change with the damping coefficient $\zeta$?
 * Does the exponential envelope change with $\omega_n$?
 * How does the gain $K$ affect the response?
@@ -675,9 +686,9 @@ $$G(s) = \frac{X(s)}{U(s)} = \frac{1}{ m s^2 + cs + k}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### Homework Exercise 2(a) 
+#### Homework Exercise 2(a)
 
-Write the mass-spring-damper transfer function in the form 
+Write the mass-spring-damper transfer function in the form
 
 $$G(s) = \frac{ K }{s^2 + 2 \zeta \omega_n s  + \omega_n^2}$$
 
@@ -698,7 +709,7 @@ zeta = NaN;
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### Homework Exercise 2(b) 
+#### Homework Exercise 2(b)
 
 Solve for the symbolic expressions of the poles of `G` in terms of the mass-spring-damper parameters `m`, `c`, and `k`. Store the expressions below in `pplus` and `pminus` where `pplus` stores the positive root.
 
@@ -715,17 +726,17 @@ pminus = NaN;
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### Homework Exercise 2(c) 
+#### Homework Exercise 2(c)
 
-You can gain insight into the dynamics of the system by examining how the poles change in the $s$-plane when parameters are varied. 
+You can gain insight into the dynamics of the system by examining how the poles change in the $s$-plane when parameters are varied.
 * The graph given in the MATLAB LiveScript `PoleZeroAnalysis.mlx` shows the pole locations under variations of a parameter starting with $k = m = 1$ and $c = 0$.
-* Adjust the dropdown to change which parameter is varied. 
+* Adjust the dropdown to change which parameter is varied.
 * The curves plot the pole locations between the specified parameter's starting value and maximum value. Try changing the dropdown and the `maxValue` to observe changes to the poles.
 * Use the plot to answer the reflection questions.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-##### Reflect. 
+##### Reflect.
 
 ![reflection](images/reflect.png)
 
@@ -744,7 +755,7 @@ The analysis of zeros is less straight-forward than the analysis of the poles of
 +++ {"slideshow": {"slide_type": "notes"}}
 
 :::{note}
-Use the MATLAB LiveScript PoleZeroAnalysis.mlx and the `polesApp` app to complete these Activities. 
+Use the MATLAB LiveScript PoleZeroAnalysis.mlx and the `polesApp` app to complete these Activities.
 :::
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -761,7 +772,7 @@ Adjust the location of the zero using the slider and observe the changes to the 
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### Reflect. 
+#### Reflect.
 
 ![reflection](images/reflect.png)
 
@@ -803,7 +814,7 @@ open('polesApp.mlapp')
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-##### Reflect 
+##### Reflect
 * The transient of the step response that exceeds the steady value (y = 1, in this case) is known as the overshoot. As the zero moves further in the negative direction along the real axis, what happens to the overshoot?
 * The time it takes to reach the steady value (y = 1, in this case) is known as the rise time. How is the rise time affected by changes to the zero, z_0?
 * Try other values of the poles and zero, do you observe similar changes to the overshoot and rise time?
@@ -823,7 +834,7 @@ $$G = \frac{s-z_0}{s^2 + 2s + 2}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### Homework Exercise 3(a) 
+#### Homework Exercise 3(a)
 
 Compute the symbolic form of the step response of the transfer function, $x(t$). You can perform the analytic computations by hand or using the Symbolic Math Toolbox.
 
@@ -833,14 +844,14 @@ slideshow:
   slide_type: subslide
 ---
 % Use these symbolic variables
-syms s z_0 t positive 
+syms s z_0 t positive
 % Write your solution here
 x = NaN
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### Homework Exercise 3(b) 
+#### Homework Exercise 3(b)
 
 Plot the analytic step response with $z_0 = -1$ on the interval $t \in [0, 10]$. If you computed the step response function with the Symbolic Math Toolbox, you can use the [`matlabFunction`](https://www.mathworks.com/help/symbolic/matlabfunction.html) command to convert it to a function handle that you can evaluate.
 
@@ -854,8 +865,8 @@ slideshow:
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
- 
-#### Homework Exercise 3(c) 
+
+#### Homework Exercise 3(c)
 Using the analytic form of the transfer function, compute the limit of the function as $t \to \infty$.
 
 ```{code-cell}
@@ -884,7 +895,7 @@ tlim = NaN
 
 1. Register with the MathWorks (if you haven't already) using your Swansea University email and install your own copy of the curriculum module [Transfer Function Analysis of Dynamic Systems](https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems) into the online MATLAB version[^installation].
 2. Open the `PoleZeroAnalysis.mlx` activity.
-3. Complete the Exercises and Activities and add your own notes to the LiveScript file in response to the reflection prompts given above. 
+3. Complete the Exercises and Activities and add your own notes to the LiveScript file in response to the reflection prompts given above.
 
 * {ref}`hw3-exercise-1`
 * {ref}`hw3-exercise-2`
@@ -901,3 +912,4 @@ tlim = NaN
 ## Footnotes
 
 [^eg-243]: This will provide additional insights useful for EG-243 Control Systems.
+$$

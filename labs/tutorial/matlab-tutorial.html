@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>MATLAB Tutorial &#8212; EG-247 Digital Signal Processing</title>
   
@@ -15,19 +15,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -79,28 +79,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -122,12 +117,22 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -143,6 +148,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../introduction/index.html">
@@ -167,48 +174,48 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Online notes</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../transfer_functions/index.html">Transfer Function Analysis of Dynamic Systems</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../transfer_functions/index.html">Transfer Function Analysis of Dynamic Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../transfer_functions/1/concepts.html">Concept Review</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../transfer_functions/2/transfer_function_basics.html">Transfer Function Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../transfer_functions/3/pole_zero_analysis.html">Pole Zero Analysis</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_series/index.html">Fourier Series</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_series/index.html">Fourier Series</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/trig_fseries.html">Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/2/exp_fs1.html">Exponential Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/3/exp_fs2.html">Computing Line Spectra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/4/exp_fs3.html">Applications of Line Spectra</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_transform/index.html">Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_transform/index.html">Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/1/ft1.html">Defining the Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/2/ft2.html">Fourier transforms of commonly occuring signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/3/ft3.html">Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/4/ft4.html">Introduction to Filters</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../dt_systems/index.html">Sampled Data Systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dt_systems/index.html">Sampled Data Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/1/sampling.html">Sampling Theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/2/z_transform.html">The Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/3/i_z_transform.html">The Inverse Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/4/dt_models.html">Models of Discrete Time Systems</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../dft/index.html">Discrete Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dft/index.html">Discrete Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../dft/1/dft.html">The Discrete Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dft/2/fft.html">The Fast-Fourier Transform</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../filter_design/index.html">Analogue and Digital Filter Design</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../filter_design/index.html">Analogue and Digital Filter Design</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../filter_design/analogue_filters.html">Unit 7.1: Designing Analogue Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../filter_design/digital_filters.html">Unit 7.2: Designing Digital Filters in MATLAB and Simulink</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../zbib.html">Bibliography</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">In Class Worksheets</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../worksheets/index.html">Worksheets</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../worksheets/index.html">Worksheets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../introduction/worksheet1.html">Worksheet 1 Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/worksheet2.html">Worksheet 2 Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/2/worksheet3.html">Worksheet 3 Exponential Fourier Series</a></li>
@@ -223,11 +230,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../dft/1/worksheet12.html">Worksheet 12 The Discrete-time Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dft/2/worksheet13.html">Worksheet 13 The Fast Fourier Transform</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework problems</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../homework/index.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../homework/index.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw4.html">Homework 4 Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw5.html">Homework 5 Fourier Transforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw6.html">Homework 6: Fourier Transforms</a></li>
@@ -235,7 +242,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw8.html">Homework 8 Sampling Theory and the Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw9.html">Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Answers to Selected Problems</span></p>
 <ul class="nav bd-sidenav">
@@ -253,7 +260,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../dt_systems/2/zt_table.html">Table of Z-Transforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../setup/polling_setup.html">Set Up In-Class Polling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../todo.html">List of Planned Enhancements</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup/index.html">Setting up your own version of this book</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup/index.html">Setting up your own version of this book</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../transfer_functions/1/LICENSE.html">MathWorks License</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter.html">About Jupyter notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../setup/python.html">Installing Python</a></li>
@@ -262,7 +269,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../setup/advanced-setup.html">Quick Start - For Experienced Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter-book.html">Setting up jupyter-book</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 
     </div>
@@ -278,7 +285,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -287,7 +294,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -436,10 +443,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -447,7 +454,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -538,7 +545,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#subtraction">Subtraction</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplication">Multiplication</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#division">Division</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#combination-of-operations">Combination of  operations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#combination-of-operations">Combination of operations</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-responses">Time responses</a></li>
@@ -566,7 +573,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <!-- #region -->
 <section class="tex2jax_ignore mathjax_ignore" id="matlab-tutorial">
@@ -648,7 +655,7 @@ The following represents a beginner’s route into the use of the MATLAB package
 </section>
 <section id="power">
 <h4>Power ( <code class="docutils literal notranslate"><span class="pre">^</span></code> )<a class="headerlink" href="#power" title="Permalink to this heading">#</a></h4>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">a</span>^<span class="n">b</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">^</span><span class="n">b</span>
 </pre></div>
 </div>
 </section>
@@ -665,34 +672,34 @@ The following represents a beginner’s route into the use of the MATLAB package
 <h2>Vectors<a class="headerlink" href="#vectors" title="Permalink to this heading">#</a></h2>
 <p>To define a row vector we type each element of the vector (separated by a comma) between square brackets and set it equal to a variable.
 For example, to create the row vector x, enter into MATLAB:</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>»<span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span><span class="w"> </span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>»<span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
 
-<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span>
-<span class="w">    </span><span class="mi">1</span><span class="w">     </span><span class="mi">2</span><span class="w">     </span><span class="mi">3</span><span class="w">     </span><span class="mi">4</span><span class="w"> </span>
+<span class="n">x</span><span class="w"> </span><span class="p">=</span>
+<span class="w">    </span><span class="mi">1</span><span class="w">     </span><span class="mi">2</span><span class="w">     </span><span class="mi">3</span><span class="w">     </span><span class="mi">4</span>
 </pre></div>
 </div>
 <p>To enter a column vector, separate the elements by a semicolon; for example:</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>»<span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">;</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">;</span><span class="mi">4</span><span class="p">]</span><span class="w"> </span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>»<span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">;</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">;</span><span class="mi">4</span><span class="p">]</span>
 
-<span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span>
-<span class="w">    </span><span class="mi">1</span><span class="w"> </span>
-<span class="w">    </span><span class="mi">2</span><span class="w"> </span>
-<span class="w">    </span><span class="mi">3</span><span class="w"> </span>
-<span class="w">    </span><span class="mi">4</span><span class="w"> </span>
+<span class="n">y</span><span class="w"> </span><span class="p">=</span>
+<span class="w">    </span><span class="mi">1</span>
+<span class="w">    </span><span class="mi">2</span>
+<span class="w">    </span><span class="mi">3</span>
+<span class="w">    </span><span class="mi">4</span>
 </pre></div>
 </div>
 <p>We can determine the size of the vectors x and y by using the size command.</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>»<span class="w"> </span><span class="nb">size</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>»<span class="w"> </span><span class="nb">size</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
-<span class="nb">ans</span><span class="w"> </span><span class="p">=</span><span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="mi">4</span><span class="w"> </span>
+<span class="nb">ans</span><span class="w"> </span><span class="p">=</span><span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="mi">4</span>
 
-»<span class="w"> </span><span class="nb">size</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w"> </span>
+»<span class="w"> </span><span class="nb">size</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 
-<span class="nb">ans</span><span class="w"> </span><span class="p">=</span><span class="w">  </span><span class="mi">4</span><span class="w">  </span><span class="mi">1</span><span class="w"> </span>
+<span class="nb">ans</span><span class="w"> </span><span class="p">=</span><span class="w">  </span><span class="mi">4</span><span class="w">  </span><span class="mi">1</span>
 </pre></div>
 </div>
 <p>If we want to create a vector with elements between 0 and 5 evenly spaced in increments of 0.5, we can use:</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>»<span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mf">0.5</span><span class="p">:</span><span class="mi">5</span><span class="w"> </span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>»<span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mf">0.5</span><span class="p">:</span><span class="mi">5</span>
 
 <span class="n">t</span><span class="w"> </span><span class="p">=</span>
 
@@ -711,7 +718,7 @@ For example, to create the row vector x, enter into MATLAB:</p>
 </pre></div>
 </div>
 <p>C. The following table shows some measurements of voltage across a resistor as a function of timeTime (sec)</p>
-<table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Time (s)</p></th>
 <th class="head"><p>0.0</p></th>
@@ -741,6 +748,7 @@ For example, to create the row vector x, enter into MATLAB:</p>
 </tr>
 </tbody>
 </table>
+</div>
 <p>Enter the time as a column vector called <code class="docutils literal notranslate"><span class="pre">time</span></code></p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% put your code here</span>
 </pre></div>
@@ -762,11 +770,11 @@ For example, to create the row vector x, enter into MATLAB:</p>
 </section>
 <section id="vector-manipulation">
 <h2>Vector manipulation<a class="headerlink" href="#vector-manipulation" title="Permalink to this heading">#</a></h2>
-<p>Manipulating vectors is almost as easy as creating them.  Try the following operations:</p>
+<p>Manipulating vectors is almost as easy as creating them. Try the following operations:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a</span><span class="o">+</span><span class="mi">2</span><span class="w"> </span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a</span><span class="o">+</span><span class="mi">2</span>
 </pre></div>
 </div>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a</span><span class="o">-</span><span class="mi">2</span>
@@ -778,13 +786,13 @@ For example, to create the row vector x, enter into MATLAB:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a</span><span class="o">/</span><span class="mi">2</span>
 </pre></div>
 </div>
-<p>Let <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>.  What happens if we try to add two variables (vectors: a+b) of different dimensions?  What is the error message?</p>
+<p>Let <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>. What happens if we try to add two variables (vectors: a+b) of different dimensions? What is the error message?</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% put your code here</span>
 </pre></div>
 </div>
-<p>(We note that, in the example <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">+</span> <span class="pre">2</span></code>, variable <code class="docutils literal notranslate"><span class="pre">a</span></code> is size 1 x 4 and <code class="docutils literal notranslate"><span class="pre">2</span></code> is size 1 x 1. Technically they could not be added together, as the dimensions are not compatible.  However MATLAB assumes, when you add/subtract/multiply/divide a variable by a number, that all elements of the vector should be operated on.  This is not true with two vectors, as we see now.)</p>
+<p>(We note that, in the example <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">+</span> <span class="pre">2</span></code>, variable <code class="docutils literal notranslate"><span class="pre">a</span></code> is size 1 x 4 and <code class="docutils literal notranslate"><span class="pre">2</span></code> is size 1 x 1. Technically they could not be added together, as the dimensions are not compatible. However MATLAB assumes, when you add/subtract/multiply/divide a variable by a number, that all elements of the vector should be operated on. This is not true with two vectors, as we see now.)</p>
 <p>For</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">]</span><span class="w"> </span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>and</p>
@@ -799,14 +807,14 @@ For example, to create the row vector x, enter into MATLAB:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="o">*</span><span class="n">x</span>
 </pre></div>
 </div>
-<p>In this case, we note that we cannot add <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">y</span></code> since they do not have appropriate dimensions.  However, if we use transpose <code class="docutils literal notranslate"><span class="pre">x'</span></code> (where <code class="docutils literal notranslate"><span class="pre">'</span></code> indicates the transpose), we can then evaluate:</p>
+<p>In this case, we note that we cannot add <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">y</span></code> since they do not have appropriate dimensions. However, if we use transpose <code class="docutils literal notranslate"><span class="pre">x'</span></code> (where <code class="docutils literal notranslate"><span class="pre">'</span></code> indicates the transpose), we can then evaluate:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="o">&#39;</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">size</span></code> command could be used to verify the dimensions of the vectors.</p>
 <section id="exercise-3-vector-manipulation">
 <h3>Exercise 3: Vector Manipulation<a class="headerlink" href="#exercise-3-vector-manipulation" title="Permalink to this heading">#</a></h3>
-<p>Try the following vector operations and note the results.  Ensure the dimensions of x and y are appropriate for the operations attempted.  Note that some of the operators are different from scalar operators.</p>
+<p>Try the following vector operations and note the results. Ensure the dimensions of x and y are appropriate for the operations attempted. Note that some of the operators are different from scalar operators.</p>
 <section id="id1">
 <h4>Plus ( <code class="docutils literal notranslate"><span class="pre">+</span></code> )<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
 <p>Must be same dimension</p>
@@ -847,7 +855,7 @@ For example, to create the row vector x, enter into MATLAB:</p>
 </div>
 <p>Explain in words the three operations: <code class="docutils literal notranslate"><span class="pre">.*</span></code>, <code class="docutils literal notranslate"><span class="pre">./</span></code> and <code class="docutils literal notranslate"><span class="pre">.\</span></code>.</p>
 <p>Think of an example where we might need this type of operation.</p>
-<p><strong>Remark</strong>:   Note if we put a semi-colon (;) at the end of a MATLAB command, MATLAB does not return the values to the window.  Try:</p>
+<p><strong>Remark</strong>: Note if we put a semi-colon (;) at the end of a MATLAB command, MATLAB does not return the values to the window. Try:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">=[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">];</span>
 </pre></div>
 </div>
@@ -870,7 +878,7 @@ For example, to create the row vector x, enter into MATLAB:</p>
 <div class="math notranslate nohighlight">
 \[p(x) = x^2 + 10s + 3\]</div>
 <p>can be represented by</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>»<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">];</span><span class="w"> </span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>»<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">];</span>
 </pre></div>
 </div>
 <p>How would we enter the following polynomial, <span class="math notranslate nohighlight">\(q\)</span>?</p>
@@ -881,21 +889,21 @@ For example, to create the row vector x, enter into MATLAB:</p>
 </pre></div>
 </div>
 <!-- #region -->
-<p>MATLAB can interpret a vector of length n+l as the coefficients of an n<sup>th</sup> order polynomial.  Thus, if the polynomial is missing any coefficients, we must enter zeros in the appropriate place in the vector.  For example</p>
+<p>MATLAB can interpret a vector of length n+l as the coefficients of an n<sup>th</sup> order polynomial. Thus, if the polynomial is missing any coefficients, we must enter zeros in the appropriate place in the vector. For example</p>
 <div class="math notranslate nohighlight">
 \[y(s) = s^4 + 1\]</div>
 <p>would be represented in MATLAB as:</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>»<span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span><span class="w"> </span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>»<span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span>
 </pre></div>
 </div>
 <section id="finding-roots">
 <h3>Finding roots<a class="headerlink" href="#finding-roots" title="Permalink to this heading">#</a></h3>
 <p>Use the following command:</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>»<span class="w"> </span><span class="nb">roots</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">])</span><span class="w"> </span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>»<span class="w"> </span><span class="nb">roots</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>»<span class="w"> </span><span class="nb">roots</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w"> </span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>»<span class="w"> </span><span class="nb">roots</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>How would we enter the following polynomial, <span class="math notranslate nohighlight">\(m\)</span>:</p>
@@ -909,12 +917,12 @@ For example, to create the row vector x, enter into MATLAB:</p>
 </section>
 <section id="multiplying-dividing-polynomials">
 <h3>Multiplying/Dividing polynomials<a class="headerlink" href="#multiplying-dividing-polynomials" title="Permalink to this heading">#</a></h3>
-<p>The product of two polynomials is found by taking the convolution of their coefficients.  The function <code class="docutils literal notranslate"><span class="pre">conv</span></code> will do this for us.</p>
+<p>The product of two polynomials is found by taking the convolution of their coefficients. The function <code class="docutils literal notranslate"><span class="pre">conv</span></code> will do this for us.</p>
 <p>Polynomial: <span class="math notranslate nohighlight">\(x(s) = s + 2\)</span></p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Polynomial:  <span class="math notranslate nohighlight">\(y(s) = s^2 + 4s + 8\)</span></p>
+<p>Polynomial: <span class="math notranslate nohighlight">\(y(s) = s^2 + 4s + 8\)</span></p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -922,8 +930,8 @@ For example, to create the row vector x, enter into MATLAB:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">conv</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Dividing two polynomials is just as easy.  The <code class="docutils literal notranslate"><span class="pre">deconv</span></code> function will return the result, <span class="math notranslate nohighlight">\(Q\)</span>, as well as the remainder, <span class="math notranslate nohighlight">\(R\)</span>. Note that if there is more than one output for a function, they should be put inside square brackets and be separated by commas.  Try to divide <span class="math notranslate nohighlight">\(z(s)\)</span> by <span class="math notranslate nohighlight">\(y(s)\)</span>:</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">deconv</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="w"> </span>
+<p>Dividing two polynomials is just as easy. The <code class="docutils literal notranslate"><span class="pre">deconv</span></code> function will return the result, <span class="math notranslate nohighlight">\(Q\)</span>, as well as the remainder, <span class="math notranslate nohighlight">\(R\)</span>. Note that if there is more than one output for a function, they should be put inside square brackets and be separated by commas. Try to divide <span class="math notranslate nohighlight">\(z(s)\)</span> by <span class="math notranslate nohighlight">\(y(s)\)</span>:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">deconv</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>How do we check the result?</p>
@@ -944,7 +952,7 @@ $<span class="math notranslate nohighlight">\(y(t) = 4t^2 + 2t - 3\)</span>$</p>
 <li><p>We can plot the function y against time and note the points where the function crosses the time axis (that is points where <span class="math notranslate nohighlight">\(y = 0\)</span>).</p>
 <p>a. Create a vector <code class="docutils literal notranslate"><span class="pre">t</span></code>, which has values evenly spaced from -5 to 5, in steps of 0.5.</p>
 <p>b. Calculate <span class="math notranslate nohighlight">\(y(t) = 4t^2 + 2t - 3\)</span> for all values of the time vector, <code class="docutils literal notranslate"><span class="pre">t</span></code>. Since <code class="docutils literal notranslate"><span class="pre">t</span></code> is a vector, think carefully how you will calculate <span class="math notranslate nohighlight">\(4t^2 + 2t - 3\)</span>.</p>
-<p>c. Request a plot using <code class="docutils literal notranslate"><span class="pre">plot(t,y)</span></code>.  Find the roots on the graph. Are the roots on the graph similar to the answer in 1 above?</p>
+<p>c. Request a plot using <code class="docutils literal notranslate"><span class="pre">plot(t,y)</span></code>. Find the roots on the graph. Are the roots on the graph similar to the answer in 1 above?</p>
 </li>
 </ol>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% put your code here</span>
@@ -955,11 +963,11 @@ $<span class="math notranslate nohighlight">\(y(t) = 4t^2 + 2t - 3\)</span>$</p>
 <section id="matrices">
 <h2>Matrices<a class="headerlink" href="#matrices" title="Permalink to this heading">#</a></h2>
 <p>Entering matrices into MATLAB is the same as entering a vector, except each row of elements is separated by a semicolon, try:</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">B</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">]</span><span class="w"> </span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">B</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Matrices in MATLAB can be manipulated in many ways. For example, we can find the transpose of a matrix using the apostrophe key (‘).  Try</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B</span><span class="o">&#39;</span><span class="w"> </span>
+<p>Matrices in MATLAB can be manipulated in many ways. For example, we can find the transpose of a matrix using the apostrophe key (‘). Try</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B</span><span class="o">&#39;</span>
 </pre></div>
 </div>
 <!-- #region -->
@@ -979,7 +987,7 @@ $<span class="math notranslate nohighlight">\(y(t) = 4t^2 + 2t - 3\)</span>$</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">D</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">C</span>
 </pre></div>
 </div>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">E</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">D</span><span class="w"> </span>^<span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="c">% power of a matrix</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">E</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="c">% power of a matrix</span>
 </pre></div>
 </div>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">inv</span><span class="p">(</span><span class="n">E</span><span class="p">)</span><span class="w"> </span><span class="c">% inverse of a matrix</span>
@@ -989,11 +997,11 @@ $<span class="math notranslate nohighlight">\(y(t) = 4t^2 + 2t - 3\)</span>$</p>
 <h3>Exercise 5: Matrices<a class="headerlink" href="#exercise-5-matrices" title="Permalink to this heading">#</a></h3>
 <p>Find the solution of the following set of linear equations:</p>
 <p>\begin{eqnarray*}
-2 x_1 + 5 x_2 + 3 x_3  &amp;=&amp; 6 \
-3 x_1 - 2 x_2 + 4 x_3  &amp;=&amp;  - 2 \
+2 x_1 + 5 x_2 + 3 x_3 &amp;=&amp; 6 \
+3 x_1 - 2 x_2 + 4 x_3 &amp;=&amp; - 2 \
 x_1 + 6 x_2 - 4 x_3 &amp;=&amp; 3
 \end{eqnarray*}</p>
-<p><em>Hint</em>:  We write this in the matrix form, that is, <span class="math notranslate nohighlight">\(\matrix{A}\matrix{X} = \matrix{B}\)</span>, where
+<p><em>Hint</em>: We write this in the matrix form, that is, <span class="math notranslate nohighlight">\(\matrix{A}\matrix{X} = \matrix{B}\)</span>, where
 <span class="math notranslate nohighlight">\(\matrix{A}\)</span> is the matrix of coefficients of <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span>, and <span class="math notranslate nohighlight">\(x_3\)</span>.
 <span class="math notranslate nohighlight">\(\matrix{X}\)</span> is the column vector, which will contain the solutions <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span>, and <span class="math notranslate nohighlight">\(x_3\)</span>.
 <span class="math notranslate nohighlight">\(\matrix{B}\)</span> is the column vector of values on the right-hand side.</p>
@@ -1066,7 +1074,7 @@ x_1 + 6 x_2 - 4 x_3 &amp;=&amp; 3
 </div>
 <p>The documentation system covers all the MATLAB functions, applications and toolboxes. Once there you have the choice of browsing the documentation or searching for particular functions.</p>
 <p>You can give an argument to the doc function to get help on a particular function or concept. For example,</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">doc</span><span class="w"> </span><span class="n">elfun</span><span class="w"> </span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">doc</span><span class="w"> </span><span class="n">elfun</span>
 </pre></div>
 </div>
 <p>provides an index of basic functions.</p>
@@ -1077,9 +1085,9 @@ x_1 + 6 x_2 - 4 x_3 &amp;=&amp; 3
 <li><p>Keep the documentation window open for quick access to help. Use search often!</p></li>
 <li><p>MATLAB variables are case sensitive, that is, <code class="docutils literal notranslate"><span class="pre">temp</span></code> and <code class="docutils literal notranslate"><span class="pre">Temp</span></code> would be two different variables.</p></li>
 <li><p>We can use the command <code class="docutils literal notranslate"><span class="pre">who</span></code> to see the variables in the MATLAB workspace.</p></li>
-<li><p>We can get the value of a particular variable at any time by typing its name.  Use <code class="docutils literal notranslate"><span class="pre">who</span></code> to list all the variables in the workspace.  Type the name of one of these variables to show its current value.</p></li>
+<li><p>We can get the value of a particular variable at any time by typing its name. Use <code class="docutils literal notranslate"><span class="pre">who</span></code> to list all the variables in the workspace. Type the name of one of these variables to show its current value.</p></li>
 <li><p>We can use <code class="docutils literal notranslate"><span class="pre">clear</span> <span class="pre">all</span></code> to clear all the variables from the workspace or <code class="docutils literal notranslate"><span class="pre">clear</span></code> <em>variable name</em> to clear only a single variable.</p></li>
-<li><p>We can also have more than one statement on a single line, so long as we separate them with either a semicolon or comma.  Try:</p></li>
+<li><p>We can also have more than one statement on a single line, so long as we separate them with either a semicolon or comma. Try:</p></li>
 </ul>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">gain</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">20</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="n">ang</span><span class="p">=</span><span class="nb">angle</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="nb">i</span><span class="p">);</span>
 </pre></div>
@@ -1089,7 +1097,7 @@ x_1 + 6 x_2 - 4 x_3 &amp;=&amp; 3
 </pre></div>
 </div>
 <!-- #region -->
-<p>If we do not assign a variable to a specific operation or result, MATLAB will store the outcome of the operation in a temporary variable called ans.  For example</p>
+<p>If we do not assign a variable to a specific operation or result, MATLAB will store the outcome of the operation in a temporary variable called ans. For example</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>»<span class="w"> </span><span class="mi">3</span><span class="o">+</span><span class="mi">6</span>
 
 <span class="nb">ans</span><span class="w"> </span><span class="p">=</span>
@@ -1100,7 +1108,7 @@ x_1 + 6 x_2 - 4 x_3 &amp;=&amp; 3
 </section>
 <section id="function-inputs-and-outputs">
 <h3>Function Inputs and Outputs<a class="headerlink" href="#function-inputs-and-outputs" title="Permalink to this heading">#</a></h3>
-<p>Each function in MATLAB has a number of inputs and output variables.  We should define all the necessary inputs before we run a function. (We can use the <code class="docutils literal notranslate"><span class="pre">help</span></code> function to check the inputs and outputs of any function we are going to use.) For example, if we wanted to find out about the use of the <code class="docutils literal notranslate"><span class="pre">abs</span></code> function, we could type</p>
+<p>Each function in MATLAB has a number of inputs and output variables. We should define all the necessary inputs before we run a function. (We can use the <code class="docutils literal notranslate"><span class="pre">help</span></code> function to check the inputs and outputs of any function we are going to use.) For example, if we wanted to find out about the use of the <code class="docutils literal notranslate"><span class="pre">abs</span></code> function, we could type</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>»<span class="w"> </span><span class="nb">help</span><span class="w"> </span><span class="nb">abs</span>
 </pre></div>
 </div>
@@ -1109,7 +1117,7 @@ x_1 + 6 x_2 - 4 x_3 &amp;=&amp; 3
 <span class="w">    </span><span class="nb">abs</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">absolute</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">elements</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">X</span><span class="p">.</span><span class="w"> </span><span class="n">When</span>
 <span class="w">    </span><span class="n">X</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="nb">complex</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="nb">complex</span><span class="w"> </span><span class="n">modulus</span><span class="w"> </span><span class="p">(</span><span class="n">magnitude</span><span class="p">)</span><span class="w"> </span><span class="n">of</span>
 <span class="w">    </span><span class="n">the</span><span class="w"> </span><span class="n">elements</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">X</span><span class="p">.</span>
-<span class="w"> </span>
+
 <span class="w">    </span><span class="n">See</span><span class="w"> </span><span class="n">also</span><span class="w"> </span><span class="nb">sign</span><span class="p">,</span><span class="w"> </span><span class="nb">angle</span><span class="p">,</span><span class="w"> </span><span class="nb">unwrap</span><span class="p">,</span><span class="w"> </span><span class="nb">hypot</span><span class="p">.</span>
 
 <span class="w">    </span><span class="n">Reference</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">abs</span>
@@ -1126,7 +1134,7 @@ x_1 + 6 x_2 - 4 x_3 &amp;=&amp; 3
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">j</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="mi">4</span><span class="w"> </span><span class="c">% define complex number s</span>
 </pre></div>
 </div>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="n">s</span><span class="w"> </span><span class="c">% define complex function g </span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="n">s</span><span class="w"> </span><span class="c">% define complex function g</span>
 </pre></div>
 </div>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">mag</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">g</span><span class="p">)</span><span class="w"> </span><span class="c">% find the magnitude: output: mag input: g</span>
@@ -1144,7 +1152,7 @@ x_1 + 6 x_2 - 4 x_3 &amp;=&amp; 3
 <section id="method-1">
 <h3>Method 1:<a class="headerlink" href="#method-1" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>We can use the command <code class="docutils literal notranslate"><span class="pre">tf(num,den)</span></code>, where num and den are vectors of coefficients of the numerator and denominator polynomials, respectively.  Enter the transfer function:</p></li>
+<li><p>We can use the command <code class="docutils literal notranslate"><span class="pre">tf(num,den)</span></code>, where num and den are vectors of coefficients of the numerator and denominator polynomials, respectively. Enter the transfer function:</p></li>
 </ol>
 <div class="math notranslate nohighlight">
 \[g_1(s) = \frac{3s + 1}{s^2 + 3s + 2}\]</div>
@@ -1163,7 +1171,7 @@ x_1 + 6 x_2 - 4 x_3 &amp;=&amp; 3
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">=</span><span class="n">tf</span><span class="p">(</span><span class="s">&#39;s&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">g1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">g1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -1199,7 +1207,7 @@ x_1 + 6 x_2 - 4 x_3 &amp;=&amp; 3
 </pre></div>
 </div>
 <p>If you want to use the symbolic version, you have to enter the complex poles as the coefficients of the quadratic <span class="math notranslate nohighlight">\(s^2 + 4s + 13\)</span> as:</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">g3</span><span class="p">=</span><span class="mi">4</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">13</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">g3</span><span class="p">=</span><span class="mi">4</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">13</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>If you need to, you can find the coefficients of the quadratic using conv:</p>
@@ -1256,12 +1264,12 @@ x_1 + 6 x_2 - 4 x_3 &amp;=&amp; 3
 </div>
 </section>
 <section id="combination-of-operations">
-<h4>Combination of  operations<a class="headerlink" href="#combination-of-operations" title="Permalink to this heading">#</a></h4>
+<h4>Combination of operations<a class="headerlink" href="#combination-of-operations" title="Permalink to this heading">#</a></h4>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">g6</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">g6</span><span class="p">)</span>
 </pre></div>
 </div>
 <!-- #region -->
-<p>Now, that we have entered various transfer functions, it is easy to use some of the system analysis commands available from the various MATLAB toolboxes.  The following commands represent some of the systems control analysis operations.</p>
+<p>Now, that we have entered various transfer functions, it is easy to use some of the system analysis commands available from the various MATLAB toolboxes. The following commands represent some of the systems control analysis operations.</p>
 </section>
 </section>
 <section id="time-responses">
@@ -1319,17 +1327,17 @@ x_1 + 6 x_2 - 4 x_3 &amp;=&amp; 3
 </section>
 <section id="plotting">
 <h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this heading">#</a></h2>
-<p>It is easy to create plots in MATLAB.  Suppose we make a time vector and then compute the sine values of the vector at each time.</p>
+<p>It is easy to create plots in MATLAB. Suppose we make a time vector and then compute the sine values of the vector at each time.</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="p">=</span><span class="mi">0</span><span class="p">:</span><span class="mf">0.25</span><span class="p">:</span><span class="mi">10</span><span class="p">;</span>
 <span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
 <span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 <!-- #region -->
-<p>This illustrates that basic plotting is very easy in MATLAB, and the <code class="docutils literal notranslate"><span class="pre">plot</span></code> command has extensive add-on capabilities.  Some useful features are given here.</p>
+<p>This illustrates that basic plotting is very easy in MATLAB, and the <code class="docutils literal notranslate"><span class="pre">plot</span></code> command has extensive add-on capabilities. Some useful features are given here.</p>
 <section id="figure-command">
 <h3>Figure command<a class="headerlink" href="#figure-command" title="Permalink to this heading">#</a></h3>
-<p>When we plot a graph, MATLAB opens a window called a “Figure Window”.  Every time we plot a graph, this figure window is updated.  If we want to keep the old graphs, we can open a new window by using the command:</p>
+<p>When we plot a graph, MATLAB opens a window called a “Figure Window”. Every time we plot a graph, this figure window is updated. If we want to keep the old graphs, we can open a new window by using the command:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>»<span class="w"> </span><span class="nb">figure</span>
 </pre></div>
 </div>
@@ -1377,7 +1385,7 @@ x_1 + 6 x_2 - 4 x_3 &amp;=&amp; 3
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">ginput</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Use the mouse to click on the final value of the step response.  Look in MATLAB Command Window to see the values of x and y.</p>
+<p>Use the mouse to click on the final value of the step response. Look in MATLAB Command Window to see the values of x and y.</p>
 </section>
 <section id="labelling-plots-and-axes">
 <h3>Labelling plots and axes<a class="headerlink" href="#labelling-plots-and-axes" title="Permalink to this heading">#</a></h3>
@@ -1390,7 +1398,7 @@ x_1 + 6 x_2 - 4 x_3 &amp;=&amp; 3
 </pre></div>
 </div>
 <!-- #region -->
-<p>The following command allows text to be placed on a graph.  This can be useful, for example, for labelling certain areas of a plot or for pointing out specific features on the plot. Again, it will only work from the command line, not in Jupyter notebook.</p>
+<p>The following command allows text to be placed on a graph. This can be useful, for example, for labelling certain areas of a plot or for pointing out specific features on the plot. Again, it will only work from the command line, not in Jupyter notebook.</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">gtext</span><span class="p">(</span><span class="s">&#39;Step Response&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1398,7 +1406,7 @@ x_1 + 6 x_2 - 4 x_3 &amp;=&amp; 3
 </section>
 <section id="frequency-response-graphs">
 <h3>Frequency response graphs<a class="headerlink" href="#frequency-response-graphs" title="Permalink to this heading">#</a></h3>
-<p>The command <code class="docutils literal notranslate"><span class="pre">semilogx</span></code> is the same as plot except a logarithmic (base 10) scale is used for the x-axis.  See the exercise for an example.</p>
+<p>The command <code class="docutils literal notranslate"><span class="pre">semilogx</span></code> is the same as plot except a logarithmic (base 10) scale is used for the x-axis. See the exercise for an example.</p>
 </section>
 <section id="exercise-8-plotting">
 <h3>Exercise 8: Plotting<a class="headerlink" href="#exercise-8-plotting" title="Permalink to this heading">#</a></h3>
@@ -1413,7 +1421,7 @@ x_1 + 6 x_2 - 4 x_3 &amp;=&amp; 3
 <p><em>Hints</em>:</p>
 <ul class="simple">
 <li><p>Enter the values <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(\tau\)</span> as <code class="docutils literal notranslate"><span class="pre">K</span></code> and <code class="docutils literal notranslate"><span class="pre">tau</span></code>. Define a frequency vector, <code class="docutils literal notranslate"><span class="pre">w</span></code>.</p></li>
-<li><p>Calculate <code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">=</span> <span class="pre">K./(j*w*tau</span> <span class="pre">+</span> <span class="pre">l)</span></code>.  Note the use of the operator <code class="docutils literal notranslate"><span class="pre">./</span></code>.</p></li>
+<li><p>Calculate <code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">=</span> <span class="pre">K./(j*w*tau</span> <span class="pre">+</span> <span class="pre">l)</span></code>. Note the use of the operator <code class="docutils literal notranslate"><span class="pre">./</span></code>.</p></li>
 <li><p>Calculate the gain in dB (<code class="docutils literal notranslate"><span class="pre">gain</span> <span class="pre">=</span> <span class="pre">20</span> <span class="pre">*</span> <span class="pre">log10(gain)</span></code>) and the phase in degrees (<code class="docutils literal notranslate"><span class="pre">phase</span> <span class="pre">=</span> <span class="pre">phase</span> <span class="pre">*</span> <span class="pre">180/pi</span></code>).</p></li>
 <li><p>Plot the response using <code class="docutils literal notranslate"><span class="pre">semilogx(w,gain)</span></code> and <code class="docutils literal notranslate"><span class="pre">semilogx(w,phase)</span></code>.</p></li>
 <li><p>Label both plots.</p></li>
@@ -1470,7 +1478,7 @@ x_1 + 6 x_2 - 4 x_3 &amp;=&amp; 3
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
 </div>
@@ -1481,6 +1489,7 @@ x_1 + 6 x_2 - 4 x_3 &amp;=&amp; 3
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1551,7 +1560,7 @@ x_1 + 6 x_2 - 4 x_3 &amp;=&amp; 3
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#subtraction">Subtraction</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplication">Multiplication</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#division">Division</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#combination-of-operations">Combination of  operations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#combination-of-operations">Combination of operations</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-responses">Time responses</a></li>
@@ -1629,8 +1638,8 @@ for
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

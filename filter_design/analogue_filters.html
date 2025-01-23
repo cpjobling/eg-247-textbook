@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Unit 7.1: Designing Analogue Filters &#8212; EG-247 Digital Signal Processing</title>
   
@@ -15,19 +15,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -81,28 +81,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -124,12 +119,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -145,6 +148,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../introduction/index.html">
@@ -169,48 +174,48 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Online notes</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../transfer_functions/index.html">Transfer Function Analysis of Dynamic Systems</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../transfer_functions/index.html">Transfer Function Analysis of Dynamic Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../transfer_functions/1/concepts.html">Concept Review</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../transfer_functions/2/transfer_function_basics.html">Transfer Function Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../transfer_functions/3/pole_zero_analysis.html">Pole Zero Analysis</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../fourier_series/index.html">Fourier Series</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fourier_series/index.html">Fourier Series</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/1/trig_fseries.html">Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/2/exp_fs1.html">Exponential Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/3/exp_fs2.html">Computing Line Spectra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/4/exp_fs3.html">Applications of Line Spectra</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../fourier_transform/index.html">Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fourier_transform/index.html">Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_transform/1/ft1.html">Defining the Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_transform/2/ft2.html">Fourier transforms of commonly occuring signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_transform/3/ft3.html">Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_transform/4/ft4.html">Introduction to Filters</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../dt_systems/index.html">Sampled Data Systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dt_systems/index.html">Sampled Data Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../dt_systems/1/sampling.html">Sampling Theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dt_systems/2/z_transform.html">The Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dt_systems/3/i_z_transform.html">The Inverse Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dt_systems/4/dt_models.html">Models of Discrete Time Systems</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../dft/index.html">Discrete Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dft/index.html">Discrete Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../dft/1/dft.html">The Discrete Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dft/2/fft.html">The Fast-Fourier Transform</a></li>
 </ul>
-</li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Analogue and Digital Filter Design</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Analogue and Digital Filter Design</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Unit 7.1: Designing Analogue Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="digital_filters.html">Unit 7.2: Designing Digital Filters in MATLAB and Simulink</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../zbib.html">Bibliography</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">In Class Worksheets</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../worksheets/index.html">Worksheets</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../worksheets/index.html">Worksheets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/worksheet1.html">Worksheet 1 Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/1/worksheet2.html">Worksheet 2 Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/2/worksheet3.html">Worksheet 3 Exponential Fourier Series</a></li>
@@ -225,11 +230,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../dft/1/worksheet12.html">Worksheet 12 The Discrete-time Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dft/2/worksheet13.html">Worksheet 13 The Fast Fourier Transform</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework problems</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../homework/index.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../homework/index.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw4.html">Homework 4 Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw5.html">Homework 5 Fourier Transforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw6.html">Homework 6: Fourier Transforms</a></li>
@@ -237,7 +242,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw8.html">Homework 8 Sampling Theory and the Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw9.html">Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Answers to Selected Problems</span></p>
 <ul class="nav bd-sidenav">
@@ -255,7 +260,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../dt_systems/2/zt_table.html">Table of Z-Transforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../setup/polling_setup.html">Set Up In-Class Polling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../todo.html">List of Planned Enhancements</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../setup/index.html">Setting up your own version of this book</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../setup/index.html">Setting up your own version of this book</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../transfer_functions/1/LICENSE.html">MathWorks License</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/jupyter.html">About Jupyter notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/python.html">Installing Python</a></li>
@@ -264,7 +269,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../setup/advanced-setup.html">Quick Start - For Experienced Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/jupyter-book.html">Setting up jupyter-book</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 
     </div>
@@ -280,7 +285,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -289,7 +294,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -438,10 +443,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -449,7 +454,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -586,13 +591,13 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="unit-7-1-designing-analogue-filters">
 <span id="unit7-1"></span><h1>Unit 7.1: Designing Analogue Filters<a class="headerlink" href="#unit-7-1-designing-analogue-filters" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"> </span><span class="nb">setappdata</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MKernel_plot_format&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;svg&#39;</span><span class="p">)</span>
 <span class="nb">cd</span><span class="w"> </span><span class="n">matlab</span>
 </pre></div>
 </div>
@@ -659,15 +664,15 @@ document.write(`
 </div>
 <section id="magnitude-square-function">
 <span id="unit7-1-msf"></span><h3>Magnitude-square function<a class="headerlink" href="#magnitude-square-function" title="Permalink to this heading">#</a></h3>
-<p>To facilitate the design of filters we use a so-called <em>magnitude-squared function</em><a class="footnote-reference brackets" href="#u71-note1" id="id5">1</a> <span class="math notranslate nohighlight">\(A^2(\omega)\)</span>, and from it derive a <span class="math notranslate nohighlight">\(G(s)\)</span> function such that</p>
+<p>To facilitate the design of filters we use a so-called <em>magnitude-squared function</em><a class="footnote-reference brackets" href="#u71-note1" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> <span class="math notranslate nohighlight">\(A^2(\omega)\)</span>, and from it derive a <span class="math notranslate nohighlight">\(G(s)\)</span> function such that</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-1-1">
-<span class="eqno">(16)<a class="headerlink" href="#equation-eq-7-1-1" title="Permalink to this equation">#</a></span>\[A^2(\omega) = \left.G(s).G(-s)\right|_{s = j\omega}\]</div>
+<span class="eqno">(15)<a class="headerlink" href="#equation-eq-7-1-1" title="Permalink to this equation">#</a></span>\[A^2(\omega) = \left.G(s).G(-s)\right|_{s = j\omega}\]</div>
 <p>Since <span class="math notranslate nohighlight">\((j\omega)^* = (-j\omega)\)</span>, the square of a complex number can be expressed as that complex number and its complex conjugate. Thus, if the magnitude is <span class="math notranslate nohighlight">\(A\)</span>, then</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-1-2">
-<span class="eqno">(17)<a class="headerlink" href="#equation-eq-7-1-2" title="Permalink to this equation">#</a></span>\[A^2(\omega) = \left|G(j\omega)\right| = G(j\omega)G^*(j\omega) = G(j\omega).G(-j\omega)\]</div>
-<p>Now, <span class="math notranslate nohighlight">\(G(j\omega)\)</span> can be considered as <span class="math notranslate nohighlight">\(G(s)\)</span> evaluated at <span class="math notranslate nohighlight">\(s = j\omega\)</span>, and this <a class="reference internal" href="#equation-eq-7-1-1">(16)</a> is justified.</p>
+<span class="eqno">(16)<a class="headerlink" href="#equation-eq-7-1-2" title="Permalink to this equation">#</a></span>\[A^2(\omega) = \left|G(j\omega)\right| = G(j\omega)G^*(j\omega) = G(j\omega).G(-j\omega)\]</div>
+<p>Now, <span class="math notranslate nohighlight">\(G(j\omega)\)</span> can be considered as <span class="math notranslate nohighlight">\(G(s)\)</span> evaluated at <span class="math notranslate nohighlight">\(s = j\omega\)</span>, and this <a class="reference internal" href="#equation-eq-7-1-1">(15)</a> is justified.</p>
 <p>Also, since <span class="math notranslate nohighlight">\(A\)</span> is understood to represent the magnitude, it does not need to be enclosed in vertical lines.</p>
-<p>Not all magnitude-square functions can be decomposed to <span class="math notranslate nohighlight">\(G(s)\)</span> and <span class="math notranslate nohighlight">\(G(-s)\)</span> rational functions; only even functions of <span class="math notranslate nohighlight">\(\omega\)</span>, positive for all <span class="math notranslate nohighlight">\(\omega\)</span>, and <em>proper-rational functions</em><a class="footnote-reference brackets" href="#u71-note2" id="id6">2</a> can satisfy <a class="reference internal" href="#equation-eq-7-1-1">(16)</a>.</p>
+<p>Not all magnitude-square functions can be decomposed to <span class="math notranslate nohighlight">\(G(s)\)</span> and <span class="math notranslate nohighlight">\(G(-s)\)</span> rational functions; only even functions of <span class="math notranslate nohighlight">\(\omega\)</span>, positive for all <span class="math notranslate nohighlight">\(\omega\)</span>, and <em>proper-rational functions</em><a class="footnote-reference brackets" href="#u71-note2" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> can satisfy <a class="reference internal" href="#equation-eq-7-1-1">(15)</a>.</p>
 <section id="example-1">
 <span id="unut7-1-ex1"></span><h4>Example 1<a class="headerlink" href="#example-1" title="Permalink to this heading">#</a></h4>
 <p>It is known that</p>
@@ -694,46 +699,46 @@ document.write(`
 <h4>General form of magnitude-square function<a class="headerlink" href="#general-form-of-magnitude-square-function" title="Permalink to this heading">#</a></h4>
 <p>The general form of magnitude-square function <span class="math notranslate nohighlight">\(A^2(\omega)\)</span> is</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-1-3">
-<span class="eqno">(18)<a class="headerlink" href="#equation-eq-7-1-3" title="Permalink to this equation">#</a></span>\[A^2(\omega) = \frac{C\left(b_k\omega^{2k}+b_{k-1}\omega^{2k-2}+\cdots+ b_0\right)}{a_k\omega^{2k}+a_{k-1}\omega^{2k-2}+\cdots+ a_0} \]</div>
+<span class="eqno">(17)<a class="headerlink" href="#equation-eq-7-1-3" title="Permalink to this equation">#</a></span>\[A^2(\omega) = \frac{C\left(b_k\omega^{2k}+b_{k-1}\omega^{2k-2}+\cdots+ b_0\right)}{a_k\omega^{2k}+a_{k-1}\omega^{2k-2}+\cdots+ a_0} \]</div>
 <p>where <span class="math notranslate nohighlight">\(C\)</span> is the DC gain, <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are constant coefficients, and <span class="math notranslate nohighlight">\(k\)</span> is a positive integer denoting the order of the filter.</p>
-<p>Once the magnitude-square function <span class="math notranslate nohighlight">\(A^2(\omega)\)</span> is known, we can derive <span class="math notranslate nohighlight">\(G(s)\)</span> from <a class="reference internal" href="#equation-eq-7-1-1">(16)</a> with the substitution <span class="math notranslate nohighlight">\(\left(j\omega\right)^2 = -\omega^2 = - s^2\)</span>,</p>
+<p>Once the magnitude-square function <span class="math notranslate nohighlight">\(A^2(\omega)\)</span> is known, we can derive <span class="math notranslate nohighlight">\(G(s)\)</span> from <a class="reference internal" href="#equation-eq-7-1-1">(15)</a> with the substitution <span class="math notranslate nohighlight">\(\left(j\omega\right)^2 = -\omega^2 = - s^2\)</span>,</p>
 <p>that is</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-1-4">
-<span class="eqno">(19)<a class="headerlink" href="#equation-eq-7-1-4" title="Permalink to this equation">#</a></span>\[G(s).G(-s) = \left. A^2(\omega)\right|_{\omega^2 = -s^2}\]</div>
+<span class="eqno">(18)<a class="headerlink" href="#equation-eq-7-1-4" title="Permalink to this equation">#</a></span>\[G(s).G(-s) = \left. A^2(\omega)\right|_{\omega^2 = -s^2}\]</div>
 </section>
 <section id="analysis-of-magnitude-square-filter">
 <h4>Analysis of magnitude-square filter<a class="headerlink" href="#analysis-of-magnitude-square-filter" title="Permalink to this heading">#</a></h4>
-<p>In the simplest low-pass filter, the DC gain of the magnitude-square function is unity. In this case <a class="reference internal" href="#equation-eq-7-1-3">(18)</a> reduces to</p>
+<p>In the simplest low-pass filter, the DC gain of the magnitude-square function is unity. In this case <a class="reference internal" href="#equation-eq-7-1-3">(17)</a> reduces to</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-1-5">
-<span class="eqno">(20)<a class="headerlink" href="#equation-eq-7-1-5" title="Permalink to this equation">#</a></span>\[A^2(\omega) = \frac{b_0}{a_k\omega^{2k}+a_{k-1}\omega^{2k-2}+\cdots+ a_0} \]</div>
+<span class="eqno">(19)<a class="headerlink" href="#equation-eq-7-1-5" title="Permalink to this equation">#</a></span>\[A^2(\omega) = \frac{b_0}{a_k\omega^{2k}+a_{k-1}\omega^{2k-2}+\cdots+ a_0} \]</div>
 <p>and at high frequencies (i.e. in the stop-band) can be approximated as</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-1-6">
-<span class="eqno">(21)<a class="headerlink" href="#equation-eq-7-1-6" title="Permalink to this equation">#</a></span>\[A^2(\omega) = \frac{b_0/a_k}{\omega^{2k}} \]</div>
+<span class="eqno">(20)<a class="headerlink" href="#equation-eq-7-1-6" title="Permalink to this equation">#</a></span>\[A^2(\omega) = \frac{b_0/a_k}{\omega^{2k}} \]</div>
 <p>The <em>attenuation rate</em> of this approximation is <span class="math notranslate nohighlight">\(20k\)</span> dB/decade.</p>
 </section>
 <section id="example-2">
 <span id="unit7-1-ex2"></span><h4>Example 2<a class="headerlink" href="#example-2" title="Permalink to this heading">#</a></h4>
 <p>Given the magnitude-square function</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-1-7">
-<span class="eqno">(22)<a class="headerlink" href="#equation-eq-7-1-7" title="Permalink to this equation">#</a></span>\[A^2(\omega) = \frac{16\left(-\omega^2 + 1\right)}{\left(\omega^2+4\right)\left(\omega^2+ 9\right)}\]</div>
+<span class="eqno">(21)<a class="headerlink" href="#equation-eq-7-1-7" title="Permalink to this equation">#</a></span>\[A^2(\omega) = \frac{16\left(-\omega^2 + 1\right)}{\left(\omega^2+4\right)\left(\omega^2+ 9\right)}\]</div>
 <p>derive a suitable transfer function <span class="math notranslate nohighlight">\(G(s)\)</span>.</p>
 <section id="id7">
 <h5>Solution<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h5>
-<p>From relation <a class="reference internal" href="#equation-eq-7-1-4">(19)</a></p>
+<p>From relation <a class="reference internal" href="#equation-eq-7-1-4">(18)</a></p>
 <div class="math notranslate nohighlight" id="equation-eq-7-1-8">
-<span class="eqno">(23)<a class="headerlink" href="#equation-eq-7-1-8" title="Permalink to this equation">#</a></span>\[G(s).G(-s) = \left. A^2(\omega)\right|_{\omega^2 = -s^2} = \frac{16\left(s^2 + 1\right)}{\left(-s^2 + 4\right)\left(-s^2 + 9\right)} \]</div>
+<span class="eqno">(22)<a class="headerlink" href="#equation-eq-7-1-8" title="Permalink to this equation">#</a></span>\[G(s).G(-s) = \left. A^2(\omega)\right|_{\omega^2 = -s^2} = \frac{16\left(s^2 + 1\right)}{\left(-s^2 + 4\right)\left(-s^2 + 9\right)} \]</div>
 <p>This function has zeros at <span class="math notranslate nohighlight">\(s = \pm j\)</span>, and poles at <span class="math notranslate nohighlight">\(s = \pm 2\)</span> and <span class="math notranslate nohighlight">\(s = \pm 3\)</span>.</p>
-<p>There is no restriction on the zeros, but for stability<a class="footnote-reference brackets" href="#u71-note3" id="id8">3</a>, we select the left-half <span class="math notranslate nohighlight">\(s\)</span>-plane poles.</p>
+<p>There is no restriction on the zeros, but for stability<a class="footnote-reference brackets" href="#u71-note3" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>, we select the left-half <span class="math notranslate nohighlight">\(s\)</span>-plane poles.</p>
 <p>Let</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-1-9">
-<span class="eqno">(24)<a class="headerlink" href="#equation-eq-7-1-9" title="Permalink to this equation">#</a></span>\[G(s) = \frac{K\left(s^2 + 1\right)}{\left(s + 2\right)\left(s+3\right)} \]</div>
-<p>We must find <span class="math notranslate nohighlight">\(K\)</span> such that <span class="math notranslate nohighlight">\(G(0) = A(0)\)</span>. From <a class="reference internal" href="#equation-eq-7-1-7">(22)</a></p>
+<span class="eqno">(23)<a class="headerlink" href="#equation-eq-7-1-9" title="Permalink to this equation">#</a></span>\[G(s) = \frac{K\left(s^2 + 1\right)}{\left(s + 2\right)\left(s+3\right)} \]</div>
+<p>We must find <span class="math notranslate nohighlight">\(K\)</span> such that <span class="math notranslate nohighlight">\(G(0) = A(0)\)</span>. From <a class="reference internal" href="#equation-eq-7-1-7">(21)</a></p>
 <div class="math notranslate nohighlight">
 \[A^2(0) = 16/36 = 4/9\]</div>
 <p>or</p>
 <div class="math notranslate nohighlight">
 \[A(0) = 2/3\]</div>
-<p>From <a class="reference internal" href="#equation-eq-7-1-9">(24)</a>,</p>
+<p>From <a class="reference internal" href="#equation-eq-7-1-9">(23)</a>,</p>
 <div class="math notranslate nohighlight">
 \[G(0) = K/6\]</div>
 <p>and for <span class="math notranslate nohighlight">\(G(0) = A(0)\)</span> we must have,</p>
@@ -742,22 +747,22 @@ document.write(`
 <p>or</p>
 <div class="math notranslate nohighlight">
 \[K = 12/3 = 4\]</div>
-<p>By subsitution into <a class="reference internal" href="#equation-eq-7-1-9">(24)</a>, we obtain</p>
+<p>By subsitution into <a class="reference internal" href="#equation-eq-7-1-9">(23)</a>, we obtain</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-1-10a">
-<span class="eqno">(25)<a class="headerlink" href="#equation-eq-7-1-10a" title="Permalink to this equation">#</a></span>\[G(s) = \frac{4\left(s^2 + 1\right)}{\left(s + 2\right)\left(s+3\right)} \]</div>
+<span class="eqno">(24)<a class="headerlink" href="#equation-eq-7-1-10a" title="Permalink to this equation">#</a></span>\[G(s) = \frac{4\left(s^2 + 1\right)}{\left(s + 2\right)\left(s+3\right)} \]</div>
 </section>
 </section>
 </section>
 <section id="butterworth-analogue-low-pass-filter-design">
 <span id="unit7-1-butter"></span><h3>Butterworth Analogue Low-Pass Filter Design<a class="headerlink" href="#butterworth-analogue-low-pass-filter-design" title="Permalink to this heading">#</a></h3>
-<p>Consider the <em>Butterworth low-pass filter</em><a class="footnote-reference brackets" href="#u71-note5" id="id9">4</a> whose magnitude-squared function is</p>
+<p>Consider the <em>Butterworth low-pass filter</em><a class="footnote-reference brackets" href="#u71-note5" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> whose magnitude-squared function is</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-1-10">
-<span class="eqno">(26)<a class="headerlink" href="#equation-eq-7-1-10" title="Permalink to this equation">#</a></span>\[A^2(\omega) = \frac{1}{\left(\omega/\omega_c\right)^{2k}+1} \]</div>
+<span class="eqno">(25)<a class="headerlink" href="#equation-eq-7-1-10" title="Permalink to this equation">#</a></span>\[A^2(\omega) = \frac{1}{\left(\omega/\omega_c\right)^{2k}+1} \]</div>
 <p>where <span class="math notranslate nohighlight">\(k\)</span> is a positive integer, and <span class="math notranslate nohighlight">\(\omega_c\)</span> is the cutoff (-3 dB) frequency.</p>
 <p>We can use MATLAB to plot the frequency response of this relation for <span class="math notranslate nohighlight">\(k = 1,2,4,8\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">w_w0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mf">0.02</span><span class="p">:</span><span class="mi">3</span><span class="p">;</span><span class="w"> </span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">w_w0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mf">0.02</span><span class="p">:</span><span class="mi">3</span><span class="p">;</span>
 <span class="n">Aw2k1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">./</span><span class="p">(</span><span class="n">w_w0</span><span class="o">.^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span><span class="w"> </span><span class="n">Aw2k2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">./</span><span class="p">(</span><span class="n">w_w0</span><span class="o">.^</span><span class="mi">4</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span>
 <span class="n">Aw2k4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">./</span><span class="p">(</span><span class="n">w_w0</span><span class="o">.^</span><span class="mi">8</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span><span class="w"> </span><span class="n">Aw2k8</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">./</span><span class="p">(</span><span class="n">w_w0</span><span class="o">.^</span><span class="mi">16</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span>
 <span class="nb">plot</span><span class="p">(</span><span class="n">w_w0</span><span class="p">,</span><span class="n">Aw2k1</span><span class="p">,</span><span class="n">w_w0</span><span class="p">,</span><span class="n">Aw2k2</span><span class="p">,</span><span class="n">w_w0</span><span class="p">,</span><span class="n">Aw2k4</span><span class="p">,</span><span class="n">w_w0</span><span class="p">,</span><span class="n">Aw2k8</span><span class="p">),</span><span class="nb">grid</span><span class="w"> </span><span class="n">on</span>
@@ -769,8 +774,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e4a934df616438a55eeaf477af0ab03ed2e35fdf964b42c90f432dd27f6d994b.png" src="../_images/e4a934df616438a55eeaf477af0ab03ed2e35fdf964b42c90f432dd27f6d994b.png" />
-</div>
+<img alt="../_images/ce346960709846bc350e7edced27943a0215ca9d517cb4445637f5cd1fafef2b.svg" src="../_images/ce346960709846bc350e7edced27943a0215ca9d517cb4445637f5cd1fafef2b.svg" /></div>
 </div>
 <p>All Butterworth filters have the property that all poles of the transfer function that describes them lie on the circumference of a circle with radius <span class="math notranslate nohighlight">\(\omega_c\)</span>, and they are <span class="math notranslate nohighlight">\(2\pi/2k\)</span> radians apart. Thus, if <span class="math notranslate nohighlight">\(k\)</span> is odd, the poles start at zero radians, and if <span class="math notranslate nohighlight">\(k\)</span> is even, they start at <span class="math notranslate nohighlight">\(2\pi/2k\)</span> radians. But regardless wether <span class="math notranslate nohighlight">\(k\)</span> is odd or even, the poles are distributed with symmetry with respect to the <span class="math notranslate nohighlight">\(j\omega\)</span> axis. For stability, we chose the left half-plave poles to form <span class="math notranslate nohighlight">\(G(s)\)</span>.</p>
 <p>We can find the nth roots of the complex number <span class="math notranslate nohighlight">\(s\)</span> by <em>De Moirvre’s theorem</em>. This states that</p>
@@ -781,13 +785,13 @@ document.write(`
 <p>Derive the transfer function <span class="math notranslate nohighlight">\(G(s)\)</span> for the third-order (<span class="math notranslate nohighlight">\(k=3\)</span>) Butterworth low-pass filter with <em>normalized cut-off frequency</em> <span class="math notranslate nohighlight">\(\omega_c = 1\)</span> rad/s.</p>
 <section id="id10">
 <h5>Solution<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h5>
-<p>With <span class="math notranslate nohighlight">\(k = 3\)</span> and <span class="math notranslate nohighlight">\(\omega_c = 1\)</span> rad/s, <a class="reference internal" href="#equation-eq-7-1-10">(26)</a> simplifies to</p>
+<p>With <span class="math notranslate nohighlight">\(k = 3\)</span> and <span class="math notranslate nohighlight">\(\omega_c = 1\)</span> rad/s, <a class="reference internal" href="#equation-eq-7-1-10">(25)</a> simplifies to</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-1-11">
-<span class="eqno">(27)<a class="headerlink" href="#equation-eq-7-1-11" title="Permalink to this equation">#</a></span>\[A^2(\omega) = \frac{1}{\omega^6 + 1} \]</div>
-<p>With the substitution <span class="math notranslate nohighlight">\(\omega^2 = -s^2\)</span>, <a class="reference internal" href="#equation-eq-7-1-10">(26)</a> becomes</p>
+<span class="eqno">(26)<a class="headerlink" href="#equation-eq-7-1-11" title="Permalink to this equation">#</a></span>\[A^2(\omega) = \frac{1}{\omega^6 + 1} \]</div>
+<p>With the substitution <span class="math notranslate nohighlight">\(\omega^2 = -s^2\)</span>, <a class="reference internal" href="#equation-eq-7-1-10">(25)</a> becomes</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-1-12">
-<span class="eqno">(28)<a class="headerlink" href="#equation-eq-7-1-12" title="Permalink to this equation">#</a></span>\[G(s).G(-s) = \frac{1}{-s^6 + 1} \]</div>
-<p>The poles of <a class="reference internal" href="#equation-eq-7-1-12">(28)</a> are given by <span class="math notranslate nohighlight">\(\left(1 - s^6\right) = 0\)</span>  or <span class="math notranslate nohighlight">\(s = \sqrt[6]{1}\)</span>.</p>
+<span class="eqno">(27)<a class="headerlink" href="#equation-eq-7-1-12" title="Permalink to this equation">#</a></span>\[G(s).G(-s) = \frac{1}{-s^6 + 1} \]</div>
+<p>The poles of <a class="reference internal" href="#equation-eq-7-1-12">(27)</a> are given by <span class="math notranslate nohighlight">\(\left(1 - s^6\right) = 0\)</span> or <span class="math notranslate nohighlight">\(s = \sqrt[6]{1}\)</span>.</p>
 <p>That is, <span class="math notranslate nohighlight">\(s = \sqrt[6]{1}\angle 0 ^\circ\)</span> and, by De Moivre’s theorem, with <span class="math notranslate nohighlight">\(n = 6\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[\sqrt[6]{1e^{j0}} = \sqrt[6]{1}e^{j\left(\frac{0 + 2k\pi}{6} \right)},\,k=0,1,2,3,4,5\]</div>
@@ -808,7 +812,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 </figure>
 <p>The transfer function <span class="math notranslate nohighlight">\(G(s)\)</span> is formed with the left half-plane poles <span class="math notranslate nohighlight">\(s_3\)</span>, <span class="math notranslate nohighlight">\(s_4\)</span> and <span class="math notranslate nohighlight">\(s_5\)</span>. Then</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-1-13">
-<span class="eqno">(29)<a class="headerlink" href="#equation-eq-7-1-13" title="Permalink to this equation">#</a></span>\[G(s) = \frac{K}{\left(s + 1\right)\left(s + \frac{1}{2} -j\frac{\sqrt{3}}{2}\right)\left(s + \frac{1}{2} +j\frac{\sqrt{3}}{2}\right)} \]</div>
+<span class="eqno">(28)<a class="headerlink" href="#equation-eq-7-1-13" title="Permalink to this equation">#</a></span>\[G(s) = \frac{K}{\left(s + 1\right)\left(s + \frac{1}{2} -j\frac{\sqrt{3}}{2}\right)\left(s + \frac{1}{2} +j\frac{\sqrt{3}}{2}\right)} \]</div>
 <p>We use MATLAB to express the denominator as a polynomial</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -818,9 +822,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>den =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(s + 1)*(s - (3^(1/2)*1i)/2 + 1/2)*(s + (3^(1/2)*1i)/2 + 1/2)
+(s + 1)*(s - (3^(1/2)*1i)/2 + 1/2)*(s + (3^(1/2)*1i)/2 + 1/2)
 </pre></div>
 </div>
 </div>
@@ -833,22 +835,20 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+s^3 + 2*s^2 + 2*s + 1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s^3 + 2*s^2 + 2*s + 1
-</pre></div>
 </div>
 </div>
-</div>
-<p>Therefore <a class="reference internal" href="#equation-eq-7-1-12">(28)</a> simplifies to</p>
+<p>Therefore <a class="reference internal" href="#equation-eq-7-1-12">(27)</a> simplifies to</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-1-14">
-<span class="eqno">(30)<a class="headerlink" href="#equation-eq-7-1-14" title="Permalink to this equation">#</a></span>\[G(s) = \frac{K}{s^3 + 2s^2 + 2s + 1} \]</div>
+<span class="eqno">(29)<a class="headerlink" href="#equation-eq-7-1-14" title="Permalink to this equation">#</a></span>\[G(s) = \frac{K}{s^3 + 2s^2 + 2s + 1} \]</div>
 <p>The gain <span class="math notranslate nohighlight">\(K\)</span> is found from <span class="math notranslate nohighlight">\(A^2(0) = 1\)</span> and <span class="math notranslate nohighlight">\(G(0) = K\)</span>. Thus, K = 1 and</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-1-15">
-<span class="eqno">(33)<a class="headerlink" href="#equation-eq-7-1-15" title="Permalink to this equation">#</a></span>\[G(s) = \frac{1}{s^3 + 2s^2 + 2s + 1} \]</div>
+<span class="eqno">(32)<a class="headerlink" href="#equation-eq-7-1-15" title="Permalink to this equation">#</a></span>\[G(s) = \frac{1}{s^3 + 2s^2 + 2s + 1} \]</div>
 <p>The generalized form of any analogue low-pass filter (Butterworth, Chebyshev, Elliptic, etc) is</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-1-16">
-<span class="eqno">(34)<a class="headerlink" href="#equation-eq-7-1-16" title="Permalink to this equation">#</a></span>\[\left.G(s)\right|_{\mathrm{lp}} = \frac{b_0}{a_ks^k + \cdots a_2 s^2 + a_1 s + a_0} \]</div>
+<span class="eqno">(33)<a class="headerlink" href="#equation-eq-7-1-16" title="Permalink to this equation">#</a></span>\[\left.G(s)\right|_{\mathrm{lp}} = \frac{b_0}{a_ks^k + \cdots a_2 s^2 + a_1 s + a_0} \]</div>
 <p>The pole locations and coefficients of the corresponding denominator polynomials have been derived and tabulated and easily found on the internet: for example <a class="reference external" href="https://en.wikipedia.org/wiki/Butterworth_filter#Normalized_Butterworth_polynomials">Normalized Butterworth polynomials</a> in Wikipedia.</p>
 <p>For brevity, we will not reproduce these tables here.</p>
 </section>
@@ -865,7 +865,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 <h5>Solution<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">z</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">buttap</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span><span class="w"> </span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">z</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">buttap</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
 <span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zp2tf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -873,9 +873,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b =
          0         0         0    1.0000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a =
+a =
     1.0000    2.0000    2.0000    1.0000
 </pre></div>
 </div>
@@ -891,28 +889,15 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>G =
+ 
+            1
+  ---------------------
+  s^3 + 2 s^2 + 2 s + 1
+ 
+Continuous-time transfer function.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ---------------------
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  s^3 + 2 s^2 + 2 s + 1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
-</pre></div>
-</div>
-<img alt="../_images/7106deda113492cee3b06fdda733cca1fe3698d431f64945b2f61c561bd3b8cd.png" src="../_images/7106deda113492cee3b06fdda733cca1fe3698d431f64945b2f61c561bd3b8cd.png" />
-</div>
+<img alt="../_images/b5520bbe70269579c4d1e71f802fc5b3db014995513e16cd398de590210bce2b.svg" src="../_images/b5520bbe70269579c4d1e71f802fc5b3db014995513e16cd398de590210bce2b.svg" /></div>
 </div>
 <p>Note that the roll-off is -60 dB/decade above the normalized cut-off <span class="math notranslate nohighlight">\(\omega_c = 1\)</span> rad/s. Also note that the phase changes fron <span class="math notranslate nohighlight">\(0^\circ\)</span> to <span class="math notranslate nohighlight">\(-270^\circ\)</span> from low to high frequency.</p>
 </section>
@@ -922,7 +907,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 <p>The examples given so far, and the MATLAB function <code class="docutils literal notranslate"><span class="pre">buttap</span></code> (and the others we will meet later) give the coefficents assuming that the cut-off frequency <span class="math notranslate nohighlight">\(\omega_c\)</span> is 1 rad/s. To <em>denormalize</em> the filter coefficients, we need to change the radius of the circle shown e.g in <a class="reference internal" href="#fig-7-1-2"><span class="std std-numref">Fig. 12</span></a> from <span class="math notranslate nohighlight">\(\omega_c = 1\)</span> to <span class="math notranslate nohighlight">\(\omega_c = \omega_\mathrm{actual}\)</span> .</p>
 <p>To do this we make the subsitution</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-1-15">
-<span class="eqno">(33)<a class="headerlink" href="#equation-eq-7-1-15" title="Permalink to this equation">#</a></span>\[G(s)_\mathrm{actual} = G\left(\frac{s}{\omega_\mathrm{actual}} \right) \]</div>
+<span class="eqno">(32)<a class="headerlink" href="#equation-eq-7-1-15" title="Permalink to this equation">#</a></span>\[G(s)_\mathrm{actual} = G\left(\frac{s}{\omega_\mathrm{actual}} \right) \]</div>
 <p>As you might expect, MATLAB provides a function for that: <a class="reference external" href="https://uk.mathworks.com/help/signal/ref/lp2lp.html"><code class="docutils literal notranslate"><span class="pre">lp2lp</span></code></a>.</p>
 </section>
 <section id="example-5">
@@ -932,7 +917,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 <h5>Solution<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">z</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">buttap</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span><span class="w"> </span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">z</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">buttap</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
 <span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zp2tf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">);</span>
 <span class="n">fc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e3</span><span class="p">;</span><span class="w"> </span><span class="c">% 1 kHz</span>
 <span class="n">wc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">fc</span><span class="p">;</span><span class="w"> </span><span class="c">% rad/s</span>
@@ -944,9 +929,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b =
      2.480502134423985e+11
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a =
+a =
    1.0e+11 *
   Columns 1 through 3
    0.000000000010000   0.000000125663706   0.000789568352087
@@ -964,8 +947,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b44048415e05cffe06d9a46b44624b3d891d3c0dfe240d57945795ba2dbebd82.png" src="../_images/b44048415e05cffe06d9a46b44624b3d891d3c0dfe240d57945795ba2dbebd82.png" />
-</div>
+<img alt="../_images/a89efba832d629c55ab2f6d898519e80a459397114df547168f4e27e4cb5123b.svg" src="../_images/a89efba832d629c55ab2f6d898519e80a459397114df547168f4e27e4cb5123b.svg" /></div>
 </div>
 </section>
 </section>
@@ -989,8 +971,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6070cc68a657c91faa30883009d26d68feecccc6ec6503e240f07ae535321dd9.png" src="../_images/6070cc68a657c91faa30883009d26d68feecccc6ec6503e240f07ae535321dd9.png" />
-</div>
+<img alt="../_images/4187b3d0d9730f978ff4dbf4e15cf10522024f07e44985fe14eeb94a08b1c6c3.svg" src="../_images/4187b3d0d9730f978ff4dbf4e15cf10522024f07e44985fe14eeb94a08b1c6c3.svg" /></div>
 </div>
 <p>This plot indicates that for <span class="math notranslate nohighlight">\(k = 1\)</span> the attenuation is <span class="math notranslate nohighlight">\(-20\)</span> dB/decade, for <span class="math notranslate nohighlight">\(k=2\)</span>, the attenuation is <span class="math notranslate nohighlight">\(-40\)</span> dB/decade, and so on. In general, the attenuation is <span class="math notranslate nohighlight">\(-20k\)</span> dB/decade for a Butterworth filter.</p>
 <div class="admonition note">
@@ -1012,9 +993,9 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 <p>The Chebyshev analogue low-pass filter is such a design.</p>
 <p>The model transfer function for a Type I Chebyshev filter is</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-1-16">
-<span class="eqno">(34)<a class="headerlink" href="#equation-eq-7-1-16" title="Permalink to this equation">#</a></span>\[ A^2(\omega) = \frac{\alpha}{1 + \epsilon^2C_k^2(\omega/\omega_c)}  \]</div>
-<p>Where <span class="math notranslate nohighlight">\(C_k\)</span> is the Chebyshev polynomial<a class="footnote-reference brackets" href="#chebyshev-poly" id="id14">5</a> of degree <span class="math notranslate nohighlight">\(k\)</span>, and <span class="math notranslate nohighlight">\(\epsilon^2\)</span> is a parameter that is used to set the pass-band ripple.</p>
-<p>A Chebyshev filter has the same transfer function structure as <a class="reference internal" href="#equation-eq-7-1-16">(34)</a>, but the poles are located on an elipse rather than a circle.</p>
+<span class="eqno">(33)<a class="headerlink" href="#equation-eq-7-1-16" title="Permalink to this equation">#</a></span>\[ A^2(\omega) = \frac{\alpha}{1 + \epsilon^2C_k^2(\omega/\omega_c)} \]</div>
+<p>Where <span class="math notranslate nohighlight">\(C_k\)</span> is the Chebyshev polynomial<a class="footnote-reference brackets" href="#chebyshev-poly" id="id14" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> of degree <span class="math notranslate nohighlight">\(k\)</span>, and <span class="math notranslate nohighlight">\(\epsilon^2\)</span> is a parameter that is used to set the pass-band ripple.</p>
+<p>A Chebyshev filter has the same transfer function structure as <a class="reference internal" href="#equation-eq-7-1-16">(33)</a>, but the poles are located on an elipse rather than a circle.</p>
 <p>We will not present the formulae used to define the poles of this filter type, as MATLAB provides the design tool <a class="reference external" href="https://uk.mathworks.com/help/signal/ref/cheb1ap.html"><code class="docutils literal notranslate"><span class="pre">cheb1ap</span></code></a> that will do this for us.</p>
 <section id="example-6">
 <span id="unit7-1-ex6"></span><h4>Example 6<a class="headerlink" href="#example-6" title="Permalink to this heading">#</a></h4>
@@ -1034,9 +1015,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b =
                    0                   0   0.501188646503800
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a =
+a =
    1.000000000000000   0.644899651302867   0.707947780125280
 </pre></div>
 </div>
@@ -1052,13 +1031,12 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/14c04be541afe8135cdfba9078d34615501993c2cc39bcc1a68a0a35a6929c8d.png" src="../_images/14c04be541afe8135cdfba9078d34615501993c2cc39bcc1a68a0a35a6929c8d.png" />
-</div>
+<img alt="../_images/cd9dcd72a4c8fb215491c63b4322a30ec38f6dc8eddd17319851e6b1edf82a29.svg" src="../_images/cd9dcd72a4c8fb215491c63b4322a30ec38f6dc8eddd17319851e6b1edf82a29.svg" /></div>
 </div>
 <p>On the Bode plots shown, the ripple is not so obvious. The reason is that the Magnitude is in dB so the plot is essentially a linear approximation. To see the ripple we plot magnitude:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">w</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mf">0.01</span><span class="p">:</span><span class="mi">10</span><span class="p">;</span><span class="w"> </span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">w</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mf">0.01</span><span class="p">:</span><span class="mi">10</span><span class="p">;</span>
 <span class="n">Gs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">freqs</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">);</span><span class="w"> </span><span class="c">% returns response as complex values</span>
 <span class="nb">semilogx</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="nb">abs</span><span class="p">(</span><span class="n">Gs</span><span class="p">)),</span><span class="nb">grid</span><span class="w"> </span><span class="n">on</span>
 <span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Frequency in rad/s&#39;</span><span class="p">),</span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Magnitude of G(s)&#39;</span><span class="p">)</span>
@@ -1067,8 +1045,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d922f8d0ff636ca073afa4b9aaab1a3f05f369e75ab9bfdd911145d71311c391.png" src="../_images/d922f8d0ff636ca073afa4b9aaab1a3f05f369e75ab9bfdd911145d71311c391.png" />
-</div>
+<img alt="../_images/f48643ff0b218c0614b250e40d0839c4d610a8d18aebf440329dbf82b009cd37.svg" src="../_images/f48643ff0b218c0614b250e40d0839c4d610a8d18aebf440329dbf82b009cd37.svg" /></div>
 </div>
 <p>The function <a class="reference external" href="https://uk.mathworks.com/help/signal/ref/freqs.html"><code class="docutils literal notranslate"><span class="pre">freqs</span></code></a> computes the complex frequency response <span class="math notranslate nohighlight">\(H(j\omega)\)</span> of an analogue filter <span class="math notranslate nohighlight">\(H(s) = b(s)/a(s)\)</span>.</p>
 </section>
@@ -1078,7 +1055,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 <span id="unit7-1-cheby2"></span><h3>Chebyshev Type II Analogue Low-Pass Filter Design<a class="headerlink" href="#chebyshev-type-ii-analogue-low-pass-filter-design" title="Permalink to this heading">#</a></h3>
 <p>A Type II Chebyshev filter has ripple in the stop-band. It is defined by the magnitude squared expression:</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-1-17">
-<span class="eqno">(35)<a class="headerlink" href="#equation-eq-7-1-17" title="Permalink to this equation">#</a></span>\[ A^2(\omega) = \frac{\epsilon^2C_k^2(\omega/\omega_c)}{1 + \epsilon^2C_k^2(\omega/\omega_c)}  \]</div>
+<span class="eqno">(34)<a class="headerlink" href="#equation-eq-7-1-17" title="Permalink to this equation">#</a></span>\[ A^2(\omega) = \frac{\epsilon^2C_k^2(\omega/\omega_c)}{1 + \epsilon^2C_k^2(\omega/\omega_c)} \]</div>
 <p>We can design Chebyshev Type II low-pass filters with the MATLAB <a class="reference external" href="https://uk.mathworks.com/help/signal/ref/cheb2ap.html"><code class="docutils literal notranslate"><span class="pre">cheb2ap</span></code></a> function.</p>
 <section id="example-7">
 <span id="unit7-1-ex7"></span><h4>Example 7<a class="headerlink" href="#example-7" title="Permalink to this heading">#</a></h4>
@@ -1088,7 +1065,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 <p>We begin with the MATLAB script reporoduced below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">w</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mf">0.01</span><span class="p">:</span><span class="mi">1000</span><span class="p">;</span><span class="w"> </span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">w</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mf">0.01</span><span class="p">:</span><span class="mi">1000</span><span class="p">;</span>
 <span class="p">[</span><span class="n">z</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cheb2ap</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
 <span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zp2tf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">)</span>
 </pre></div>
@@ -1100,9 +1077,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
                    0   3.007131879022801                   0
   Column 4
    4.009509172030401
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a =
+a =
   Columns 1 through 3
    1.000000000000000   3.716637149027132   2.385274779846660
   Column 4
@@ -1123,8 +1098,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a23d646ac47487aaefbce5e225dd416e24b611ac323ae7fb0ea125293455e3aa.png" src="../_images/a23d646ac47487aaefbce5e225dd416e24b611ac323ae7fb0ea125293455e3aa.png" />
-</div>
+<img alt="../_images/cff759be247a467c3c43a923d048169babdf9cdfbf1e5f5914b69c063e911691.svg" src="../_images/cff759be247a467c3c43a923d048169babdf9cdfbf1e5f5914b69c063e911691.svg" /></div>
 </div>
 </section>
 </section>
@@ -1133,7 +1107,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 <span id="unit7-1-ellip"></span><h3>Elliptic Analogue Low-Pass Filter Design<a class="headerlink" href="#elliptic-analogue-low-pass-filter-design" title="Permalink to this heading">#</a></h3>
 <p>The <em>elliptic filter</em>, also known as <em>Cauer</em> filter, is characterized by the low-pass magnutude-squared function</p>
 <div class="math notranslate nohighlight" id="equation-7-1-18">
-<span class="eqno">(36)<a class="headerlink" href="#equation-7-1-18" title="Permalink to this equation">#</a></span>\[ A^2(\omega) = \frac{1}{1 + R_k^2\left(\omega/\omega_c\right)}  \]</div>
+<span class="eqno">(35)<a class="headerlink" href="#equation-7-1-18" title="Permalink to this equation">#</a></span>\[ A^2(\omega) = \frac{1}{1 + R_k^2\left(\omega/\omega_c\right)} \]</div>
 <p>where <span class="math notranslate nohighlight">\(R_k(x)\)</span> represents a rational elliptic function used with eliptic integrals.</p>
 <p>Elliptic filters have ripple in both the pass-bad and stop-band, but have a very steep transiition between these bands.</p>
 <p>We can design elliptic low-pass filters with the <a class="reference external" href="https://uk.mathworks.com/help/signal/ref/ellip.html"><code class="docutils literal notranslate"><span class="pre">ellip</span></code></a> function. The statement</p>
@@ -1165,8 +1139,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b273c39e59a8469736d56f9df3985abb04022bf2e3981a04d000bfd36679ca94.png" src="../_images/b273c39e59a8469736d56f9df3985abb04022bf2e3981a04d000bfd36679ca94.png" />
-</div>
+<img alt="../_images/44471795dc8c2ad33b2e4888a05282f2e2b633b14e2b77023e705871b6f8fd31.svg" src="../_images/44471795dc8c2ad33b2e4888a05282f2e2b633b14e2b77023e705871b6f8fd31.svg" /></div>
 </div>
 </section>
 </section>
@@ -1183,32 +1156,12 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 </section>
 <section id="advantages-and-disadvantages-of-different-types-of-filters">
 <h3>Advantages and disadvantages of different types of filters<a class="headerlink" href="#advantages-and-disadvantages-of-different-types-of-filters" title="Permalink to this heading">#</a></h3>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Filter Type</strong></p></th>
-<th class="head"><p><strong>Advantages</strong></p></th>
-<th class="head"><p>Disadvantages</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Butterworth</p></td>
-<td><p>Simplest design; Flat pass band</p></td>
-<td><p>Slow rate of attenuation for order 4 or less</p></td>
-</tr>
-<tr class="row-odd"><td><p>Chebyshev Type I</p></td>
-<td><p>Sharp cuttoff rate in transition (pass to stop) band</p></td>
-<td><p>Ripple in pass band. Bad (non-linear) phase response</p></td>
-</tr>
-<tr class="row-even"><td><p>Chebyshev Type II</p></td>
-<td><p>Sharp cuttoff rate in transition (pass to stop) band</p></td>
-<td><p>Ripple in stop band. Bad (non-linear) phase response</p></td>
-</tr>
-<tr class="row-odd"><td><p>Elliptic (Cauer)</p></td>
-<td><p>Sharpest cutoff rate among all other types of filters</p></td>
-<td><p>Ripple in both pass and stop band. Worst (most non-linear) phase response among the other types of filters.</p></td>
-</tr>
-</tbody>
-</table>
+<p>| <strong>Filter Type</strong>   | <strong>Advantages</strong>                                        | Disadvantages                                                                                               |
+| —————– | —————————————————– | ———————————————————————————————————– | — | — |
+| Butterworth       | Simplest design; Flat pass band                       | Slow rate of attenuation for order 4 or less                                                                |
+| Chebyshev Type I  | Sharp cuttoff rate in transition (pass to stop) band  | Ripple in pass band. Bad (non-linear) phase response                                                        |
+| Chebyshev Type II | Sharp cuttoff rate in transition (pass to stop) band  | Ripple in stop band. Bad (non-linear) phase response                                                        |     |     |
+| Elliptic (Cauer)  | Sharpest cutoff rate among all other types of filters | Ripple in both pass and stop band. Worst (most non-linear) phase response among the other types of filters. |</p>
 </section>
 </section>
 <section id="high-pass-band-pass-and-band-elimination-filter-design">
@@ -1235,7 +1188,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 <span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zp2tf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">);</span><span class="w">      </span><span class="c">% Compute numerator and denoninator coefficents with wcn = 1 rad/s</span>
 <span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1000</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span><span class="mi">100000</span><span class="p">;</span><span class="w">       </span><span class="c">% Define frequency range to plot</span>
 <span class="n">fc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5000</span><span class="p">;</span><span class="w">                 </span><span class="c">% Define actual cutoff frequency at 5 kHz</span>
-<span class="n">wc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">fc</span><span class="p">;</span><span class="w">              </span><span class="c">% Convert desired cut-off frequency to rad/s       </span>
+<span class="n">wc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">fc</span><span class="p">;</span><span class="w">              </span><span class="c">% Convert desired cut-off frequency to rad/s</span>
 <span class="p">[</span><span class="n">bn</span><span class="p">,</span><span class="n">an</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">lp2hp</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">wc</span><span class="p">);</span><span class="w"> </span><span class="c">% Compute numerator and denoninator coefficents of high-pass filter with fc = 5 kHz</span>
 </pre></div>
 </div>
@@ -1252,8 +1205,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8bcab8f648e0a62bf8e48944626a13c8c0ebc881cc1ff1eba06678e9be92fce9.png" src="../_images/8bcab8f648e0a62bf8e48944626a13c8c0ebc881cc1ff1eba06678e9be92fce9.png" />
-</div>
+<img alt="../_images/59b885d0af0117bff2270928dc684f87243a5bb3d6ebb21757cd197594164412.svg" src="../_images/59b885d0af0117bff2270928dc684f87243a5bb3d6ebb21757cd197594164412.svg" /></div>
 </div>
 </section>
 </section>
@@ -1275,7 +1227,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 <span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zp2tf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">);</span><span class="w">      </span><span class="c">% Compute numerator and denoninator coefficents with wcn = 1 rad/s</span>
 <span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span><span class="mi">100000</span><span class="p">;</span><span class="w">        </span><span class="c">% Define frequency range to plot</span>
 <span class="n">f0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">4000</span><span class="p">;</span><span class="w">                 </span><span class="c">% Define center frequency at 4 kHz</span>
-<span class="n">W0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f0</span><span class="p">;</span><span class="w">              </span><span class="c">% Convert desired centre frequency to rad/s    </span>
+<span class="n">W0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f0</span><span class="p">;</span><span class="w">              </span><span class="c">% Convert desired centre frequency to rad/s</span>
 <span class="n">fbw</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2000</span><span class="p">;</span><span class="w">                </span><span class="c">% Define bandwidth</span>
 <span class="n">Bw</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">fbw</span><span class="p">;</span><span class="w">             </span><span class="c">% Convert desired bandwidth to rad/s</span>
 <span class="p">[</span><span class="n">bn</span><span class="p">,</span><span class="n">an</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">lp2bp</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">W0</span><span class="p">,</span><span class="w"> </span><span class="n">Bw</span><span class="p">);</span><span class="w"> </span><span class="c">% Compute numerator and denoninator coefficents of band-pass filter</span>
@@ -1294,8 +1246,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a44bb8b51f81735d9a2ce2c7e7d9d27d8c48ad1dddbcd8598071d2fb8556b39e.png" src="../_images/a44bb8b51f81735d9a2ce2c7e7d9d27d8c48ad1dddbcd8598071d2fb8556b39e.png" />
-</div>
+<img alt="../_images/63932f720576f0351ace34f5a784066977fc6b404e49a20fed7b073abbbe8646.svg" src="../_images/63932f720576f0351ace34f5a784066977fc6b404e49a20fed7b073abbbe8646.svg" /></div>
 </div>
 </section>
 </section>
@@ -1322,7 +1273,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 <span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zp2tf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">);</span><span class="w">      </span><span class="c">% Compute numerator and denoninator coefficents with wcn = 1 rad/s</span>
 <span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1000</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span><span class="mi">10000</span><span class="p">;</span><span class="w">        </span><span class="c">% Define frequency range to plot</span>
 <span class="n">f0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5000</span><span class="p">;</span><span class="w">                 </span><span class="c">% Define center frequency at 4 kHz</span>
-<span class="n">W0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f0</span><span class="p">;</span><span class="w">              </span><span class="c">% Convert desired centre frequency to rad/s    </span>
+<span class="n">W0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f0</span><span class="p">;</span><span class="w">              </span><span class="c">% Convert desired centre frequency to rad/s</span>
 <span class="n">fbw</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2000</span><span class="p">;</span><span class="w">                </span><span class="c">% Define bandwidth</span>
 <span class="n">Bw</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">fbw</span><span class="p">;</span><span class="w">             </span><span class="c">% Convert desired bandwidth to rad/s</span>
 <span class="p">[</span><span class="n">bn</span><span class="p">,</span><span class="n">an</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">lp2bs</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">W0</span><span class="p">,</span><span class="w"> </span><span class="n">Bw</span><span class="p">);</span><span class="w"> </span><span class="c">% Compute numerator and denoninator coefficents of band-pass filter</span>
@@ -1341,8 +1292,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/27a66ce6a0939fecb7c4b4cdaae0dc6dc19f8e816c15407d36da9946230094f7.png" src="../_images/27a66ce6a0939fecb7c4b4cdaae0dc6dc19f8e816c15407d36da9946230094f7.png" />
-</div>
+<img alt="../_images/341b61a0142da5580f42af660f1f766fb4ac873b83470886c95b6a46d919de6a.svg" src="../_images/341b61a0142da5580f42af660f1f766fb4ac873b83470886c95b6a46d919de6a.svg" /></div>
 </div>
 </section>
 </section>
@@ -1401,7 +1351,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 <li><p><a class="reference external" href="https://uk.mathworks.com/support/search.html"><code class="docutils literal notranslate"><span class="pre">fregs</span></code></a> - return the CT frequency response of an analogue filter</p></li>
 <li><p><a class="reference external" href="https://uk.mathworks.com/help/matlab/ref/semilogx.html"><code class="docutils literal notranslate"><span class="pre">semilogx</span></code></a> - plot y against the log of x.</p></li>
 <li><p><a class="reference external" href="https://uk.mathworks.com/help/control/ref/tf.html"><code class="docutils literal notranslate"><span class="pre">tf</span></code></a> - create an LTI system object</p></li>
-<li><p><a class="reference external" href="https://uk.mathworks.com/help/control/ref/dynamicsystem.bode.html"><code class="docutils literal notranslate"><span class="pre">bode</span></code></a> - Bode ploto of an LTI system:  magnitude in dB, phase in degrees plotted against log frequency.</p></li>
+<li><p><a class="reference external" href="https://uk.mathworks.com/help/control/ref/dynamicsystem.bode.html"><code class="docutils literal notranslate"><span class="pre">bode</span></code></a> - Bode ploto of an LTI system: magnitude in dB, phase in degrees plotted against log frequency.</p></li>
 <li><p><a class="reference external" href="https://uk.mathworks.com/help/signal/ref/mag2db.html"><code class="docutils literal notranslate"><span class="pre">mag2db</span></code></a> - Converts magnitude into dB using <span class="math notranslate nohighlight">\(20\log_{10} M\)</span>.</p></li>
 </ul>
 </section>
@@ -1414,23 +1364,26 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
 <section id="footnotes">
 <h2>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this heading">#</a></h2>
 <hr class="footnotes docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="u71-note1"><span class="brackets"><a class="fn-backref" href="#id5">1</a></span></dt>
-<dd><p>This avoids having to deal with complex magnitudes which use the square-root operator.</p>
-</dd>
-<dt class="label" id="u71-note2"><span class="brackets"><a class="fn-backref" href="#id6">2</a></span></dt>
-<dd><p>A rational function is said to be <em>proper</em> if the largest power in the denominator is equal to or larger than that of the numerator.</p>
-</dd>
-<dt class="label" id="u71-note3"><span class="brackets"><a class="fn-backref" href="#id8">3</a></span></dt>
-<dd><p>A system is said to be stable if a finite input produces a finite output. Alternatively, a system is stable if its impulse response <span class="math notranslate nohighlight">\(h(t)\)</span> vanishes after a sufficiently long time. For linear time-invariant systems, a system will be stable <em>only if</em> all the real-parts of the poles have negative sign. That is, they lie in the left-half of the <span class="math notranslate nohighlight">\(s\)</span>-plane.</p>
-</dd>
-<dt class="label" id="u71-note5"><span class="brackets"><a class="fn-backref" href="#id9">4</a></span></dt>
-<dd><p>The frequency response of the Butterworth filter is <em>maximally flat</em> (has no ripples) in the passband, and rolls off towards zero in the stopband. When viewed on a logarithmic Bode plot, the response slopes off linearly at a rate of <span class="math notranslate nohighlight">\(-20k\)</span> dB/decade towards negative infinity.</p>
-</dd>
-<dt class="label" id="chebyshev-poly"><span class="brackets"><a class="fn-backref" href="#id14">5</a></span></dt>
-<dd><p>The derivation of the Chebyshev polynomials is outside the scope of this unit, but if you are interested you can review one of the many online resources: e.g. <a class="reference external" href="https://en.wikipedia.org/wiki/Chebyshev_polynomials">Chebyshev polynomials</a> [WikiPedia]. The <a class="reference external" href="https://en.wikipedia.org/wiki/Chebyshev_polynomials#Examples">Chebyshev polynomials of the first kind</a> are used in the design of filters. If you want the details, please consult Section 11.2.2 of <span id="id23">Karris [<a class="reference internal" href="../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., fifth edition, 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3384197&amp;pq-origsite=primo.">2012</a>]</span>. See also <a class="reference external" href="https://en.wikipedia.org/wiki/Chebyshev_filter">Chebyshev filter</a> [WikiPedia]</p>
-</dd>
-</dl>
+<aside class="footnote brackets" id="u71-note1" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">1</a><span class="fn-bracket">]</span></span>
+<p>This avoids having to deal with complex magnitudes which use the square-root operator.</p>
+</aside>
+<aside class="footnote brackets" id="u71-note2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">2</a><span class="fn-bracket">]</span></span>
+<p>A rational function is said to be <em>proper</em> if the largest power in the denominator is equal to or larger than that of the numerator.</p>
+</aside>
+<aside class="footnote brackets" id="u71-note3" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">3</a><span class="fn-bracket">]</span></span>
+<p>A system is said to be stable if a finite input produces a finite output. Alternatively, a system is stable if its impulse response <span class="math notranslate nohighlight">\(h(t)\)</span> vanishes after a sufficiently long time. For linear time-invariant systems, a system will be stable <em>only if</em> all the real-parts of the poles have negative sign. That is, they lie in the left-half of the <span class="math notranslate nohighlight">\(s\)</span>-plane.</p>
+</aside>
+<aside class="footnote brackets" id="u71-note5" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">4</a><span class="fn-bracket">]</span></span>
+<p>The frequency response of the Butterworth filter is <em>maximally flat</em> (has no ripples) in the passband, and rolls off towards zero in the stopband. When viewed on a logarithmic Bode plot, the response slopes off linearly at a rate of <span class="math notranslate nohighlight">\(-20k\)</span> dB/decade towards negative infinity.</p>
+</aside>
+<aside class="footnote brackets" id="chebyshev-poly" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id14">5</a><span class="fn-bracket">]</span></span>
+<p>The derivation of the Chebyshev polynomials is outside the scope of this unit, but if you are interested you can review one of the many online resources: e.g. <a class="reference external" href="https://en.wikipedia.org/wiki/Chebyshev_polynomials">Chebyshev polynomials</a> [WikiPedia]. The <a class="reference external" href="https://en.wikipedia.org/wiki/Chebyshev_polynomials#Examples">Chebyshev polynomials of the first kind</a> are used in the design of filters. If you want the details, please consult Section 11.2.2 of <span id="id23">Karris [<a class="reference internal" href="../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., fifth edition, 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3384197&amp;pq-origsite=primo.">2012</a>]</span>. See also <a class="reference external" href="https://en.wikipedia.org/wiki/Chebyshev_filter">Chebyshev filter</a> [WikiPedia]</p>
+</aside>
 </section>
 </section>
 
@@ -1443,16 +1396,16 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "matlab"
+            mode: "mkernel"
         },
         kernelOptions: {
-            name: "matlab",
+            name: "mkernel",
             path: "./filter_design"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'matlab'</script>
+    <script>kernelName = 'mkernel'</script>
 
                 </article>
               
@@ -1461,7 +1414,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1490,6 +1443,7 @@ s_4 = 1\angle 180^\circ = -1 &amp;  s_5 = 1\angle 240^\circ = -\frac{1}{2} - j\f
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1656,8 +1610,8 @@ for
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

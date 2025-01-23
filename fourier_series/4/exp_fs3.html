@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Unit 3.4: Applications of Line Spectra &#8212; EG-247 Digital Signal Processing</title>
   
@@ -15,19 +15,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -81,28 +81,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -124,12 +119,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -145,6 +148,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../introduction/index.html">
@@ -169,48 +174,48 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Online notes</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../transfer_functions/index.html">Transfer Function Analysis of Dynamic Systems</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../transfer_functions/index.html">Transfer Function Analysis of Dynamic Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../transfer_functions/1/concepts.html">Concept Review</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../transfer_functions/2/transfer_function_basics.html">Transfer Function Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../transfer_functions/3/pole_zero_analysis.html">Pole Zero Analysis</a></li>
 </ul>
-</li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Fourier Series</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Fourier Series</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../1/trig_fseries.html">Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2/exp_fs1.html">Exponential Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3/exp_fs2.html">Computing Line Spectra</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Applications of Line Spectra</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_transform/index.html">Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_transform/index.html">Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/1/ft1.html">Defining the Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/2/ft2.html">Fourier transforms of commonly occuring signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/3/ft3.html">Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/4/ft4.html">Introduction to Filters</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../dt_systems/index.html">Sampled Data Systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dt_systems/index.html">Sampled Data Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/1/sampling.html">Sampling Theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/2/z_transform.html">The Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/3/i_z_transform.html">The Inverse Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/4/dt_models.html">Models of Discrete Time Systems</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../dft/index.html">Discrete Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dft/index.html">Discrete Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../dft/1/dft.html">The Discrete Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dft/2/fft.html">The Fast-Fourier Transform</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../filter_design/index.html">Analogue and Digital Filter Design</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../filter_design/index.html">Analogue and Digital Filter Design</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../filter_design/analogue_filters.html">Unit 7.1: Designing Analogue Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../filter_design/digital_filters.html">Unit 7.2: Designing Digital Filters in MATLAB and Simulink</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../zbib.html">Bibliography</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">In Class Worksheets</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../worksheets/index.html">Worksheets</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../worksheets/index.html">Worksheets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../introduction/worksheet1.html">Worksheet 1 Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../1/worksheet2.html">Worksheet 2 Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2/worksheet3.html">Worksheet 3 Exponential Fourier Series</a></li>
@@ -225,11 +230,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../dft/1/worksheet12.html">Worksheet 12 The Discrete-time Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dft/2/worksheet13.html">Worksheet 13 The Fast Fourier Transform</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework problems</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../homework/index.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../homework/index.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw4.html">Homework 4 Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw5.html">Homework 5 Fourier Transforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw6.html">Homework 6: Fourier Transforms</a></li>
@@ -237,7 +242,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw8.html">Homework 8 Sampling Theory and the Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw9.html">Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Answers to Selected Problems</span></p>
 <ul class="nav bd-sidenav">
@@ -255,7 +260,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../dt_systems/2/zt_table.html">Table of Z-Transforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../setup/polling_setup.html">Set Up In-Class Polling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../todo.html">List of Planned Enhancements</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup/index.html">Setting up your own version of this book</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup/index.html">Setting up your own version of this book</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../transfer_functions/1/LICENSE.html">MathWorks License</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter.html">About Jupyter notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../setup/python.html">Installing Python</a></li>
@@ -264,7 +269,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../setup/advanced-setup.html">Quick Start - For Experienced Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter-book.html">Setting up jupyter-book</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 
     </div>
@@ -280,7 +285,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -289,7 +294,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -438,10 +443,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -449,7 +454,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -531,11 +536,11 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="unit-3-4-applications-of-line-spectra">
 <span id="unit3-4"></span><h1>Unit 3.4: Applications of Line Spectra<a class="headerlink" href="#unit-3-4-applications-of-line-spectra" title="Permalink to this heading">#</a></h1>
-<p>The preparatory reading for this section is <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=247">Chapter 7.10</a> of  <span id="id1">[<a class="reference internal" href="../../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., fifth edition, 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3384197&amp;pq-origsite=primo.">Karris, 2012</a>]</span>.</p>
+<p>The preparatory reading for this section is <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=247">Chapter 7.10</a> of <span id="id1">[<a class="reference internal" href="../../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., fifth edition, 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3384197&amp;pq-origsite=primo.">Karris, 2012</a>]</span>.</p>
 <p>This section concludes our introduction to Fourier Series.</p>
 <p>In <a class="reference internal" href="../3/exp_fs2.html#exp-fs2"><span class="std std-ref">Unit 3.3: Computing Line Spectra</span></a> we saw that we could represent continuous-time periodic waveforms as line spectra in the frequency domain.</p>
 <p>In this section we discuss how we can use these line spectra for the calculation of power for signals with harmonics, computation of total harmanic distortion and we conclude with an introduction to filters.</p>
@@ -562,28 +567,28 @@ document.write(`
 <span id="fse4-power"></span><h2>Power in Periodic Signals<a class="headerlink" href="#power-in-periodic-signals" title="Permalink to this heading">#</a></h2>
 <p>In <a class="reference external" href="https://cpjobling.github.io/eg-150-textbook/signals_and_systems/signals/pep_signals.html">Unit 2.2 of EG-150 Signals and Systems</a> we defined <em>Signal Energy</em>, <em>Average Signal Power</em> and <em>Root Mean Square Power</em> which for periodic signals will be defined as shown below:</p>
 <div class="math notranslate nohighlight" id="equation-eq-fs3-1">
-<span class="eqno">(3)<a class="headerlink" href="#equation-eq-fs3-1" title="Permalink to this equation">#</a></span>\[E = \int_0^T |x(t)|^2 dt\]</div>
+<span class="eqno">(2)<a class="headerlink" href="#equation-eq-fs3-1" title="Permalink to this equation">#</a></span>\[E = \int_0^T |x(t)|^2 dt\]</div>
 <div class="math notranslate nohighlight" id="equation-eq-fs3-2">
-<span class="eqno">(4)<a class="headerlink" href="#equation-eq-fs3-2" title="Permalink to this equation">#</a></span>\[P_{\mathrm{av}} = \frac{1}{T}\int_0^T |x(t)|^2 dt\]</div>
+<span class="eqno">(3)<a class="headerlink" href="#equation-eq-fs3-2" title="Permalink to this equation">#</a></span>\[P_{\mathrm{av}} = \frac{1}{T}\int_0^T |x(t)|^2 dt\]</div>
 <div class="math notranslate nohighlight" id="equation-eq-fs3-3">
-<span class="eqno">(5)<a class="headerlink" href="#equation-eq-fs3-3" title="Permalink to this equation">#</a></span>\[P_{\mathrm{RMS}} = \sqrt{\frac{1}{T}\int_0^T |x(t)|^2 dt}\]</div>
+<span class="eqno">(4)<a class="headerlink" href="#equation-eq-fs3-3" title="Permalink to this equation">#</a></span>\[P_{\mathrm{RMS}} = \sqrt{\frac{1}{T}\int_0^T |x(t)|^2 dt}\]</div>
 <section id="parseval-s-theorem">
 <h3>Parseval’s Theorem<a class="headerlink" href="#parseval-s-theorem" title="Permalink to this heading">#</a></h3>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Parseval's_theorem">Parseval’s Theorem</a> states that the total average power of a periodic signal <span class="math notranslate nohighlight">\(f(t)\)</span> is equal to the sum of the average powers of all its harmonic components.</p>
 <p>The power in the <span class="math notranslate nohighlight">\(k\)</span>th harmonic <span class="math notranslate nohighlight">\(C_ke^{jk\Omega_0 t}\)</span> is given by</p>
 <div class="math notranslate nohighlight" id="equation-eq-fs3-4">
-<span class="eqno">(6)<a class="headerlink" href="#equation-eq-fs3-4" title="Permalink to this equation">#</a></span>\[P_k = \frac{1}{T}\int_0^T\left|C_ke^{jk\Omega_0 t}\right|^2\,dt = \frac{1}{T}\int_0^T\left|C_k\right|^2\,dt=\left|C_k\right|^2\]</div>
+<span class="eqno">(5)<a class="headerlink" href="#equation-eq-fs3-4" title="Permalink to this equation">#</a></span>\[P_k = \frac{1}{T}\int_0^T\left|C_ke^{jk\Omega_0 t}\right|^2\,dt = \frac{1}{T}\int_0^T\left|C_k\right|^2\,dt=\left|C_k\right|^2\]</div>
 <p>Since <span class="math notranslate nohighlight">\(P_k = P_{-k}\)</span>, the total power of the <span class="math notranslate nohighlight">\(k\)</span>th harmomic is <span class="math notranslate nohighlight">\(2P_k\)</span>.</p>
 <p>You should note that <span class="math notranslate nohighlight">\(|C_k| = \sqrt{C_k C_k^*}\)</span> so <span class="math notranslate nohighlight">\(|C_k|^2 = C_k C_k^*\)</span>.</p>
 <p>Parseval’s theorem states that</p>
 <div class="math notranslate nohighlight" id="equation-eq-fs3-5">
-<span class="eqno">(7)<a class="headerlink" href="#equation-eq-fs3-5" title="Permalink to this equation">#</a></span>\[P = \frac{1}{T}\int_0^T \left|x(t)\right|^2\,dt = \sum_{k=-\infty}^{\infty}\left|C_k\right|^2.\]</div>
+<span class="eqno">(6)<a class="headerlink" href="#equation-eq-fs3-5" title="Permalink to this equation">#</a></span>\[P = \frac{1}{T}\int_0^T \left|x(t)\right|^2\,dt = \sum_{k=-\infty}^{\infty}\left|C_k\right|^2.\]</div>
 </section>
 <section id="rms-power">
 <h3>RMS Power<a class="headerlink" href="#rms-power" title="Permalink to this heading">#</a></h3>
 <p>By a similar argument:</p>
 <div class="math notranslate nohighlight" id="equation-eq-fs3-6">
-<span class="eqno">(8)<a class="headerlink" href="#equation-eq-fs3-6" title="Permalink to this equation">#</a></span>\[P_{\mathrm{RMS}} = \sqrt{\frac{1}{T}\int_0^T \left|f(t)\right|^2\,dt} = \sqrt{\sum_{k=-\infty}^{\infty}\left|C_k\right|^2}.\]</div>
+<span class="eqno">(7)<a class="headerlink" href="#equation-eq-fs3-6" title="Permalink to this equation">#</a></span>\[P_{\mathrm{RMS}} = \sqrt{\frac{1}{T}\int_0^T \left|f(t)\right|^2\,dt} = \sqrt{\sum_{k=-\infty}^{\infty}\left|C_k\right|^2}.\]</div>
 </section>
 </section>
 <section id="power-spectrum">
@@ -610,12 +615,12 @@ document.write(`
 <p>Clearly, some of the harmonics for <span class="math notranslate nohighlight">\(k\ne \pm 1\)</span> are nonzero. One way to characterize the distortion is to compute the ratio of average power in all the harmonics that “should not be present”, that is for <span class="math notranslate nohighlight">\(k &gt; 1\)</span>, to the total average power of the distorted sine wave. The square-root of this ratio is called the <em>total harmonic distortion</em> (THD) of the signal.</p>
 <p>If the signal is real and based on a sine wave (that is <em>odd</em>), then <span class="math notranslate nohighlight">\(C_0=0\)</span> and</p>
 <div class="math notranslate nohighlight" id="equation-eq-fs3-7">
-<span class="eqno">(9)<a class="headerlink" href="#equation-eq-fs3-7" title="Permalink to this equation">#</a></span>\[x_{\mathrm{RMS}}=\sqrt{\sum_{k=1}^{\infty}2|C_k|^2}\]</div>
+<span class="eqno">(8)<a class="headerlink" href="#equation-eq-fs3-7" title="Permalink to this equation">#</a></span>\[x_{\mathrm{RMS}}=\sqrt{\sum_{k=1}^{\infty}2|C_k|^2}\]</div>
 <p>and we can define the THD as the ratio of the RMS value for all the harmonics for <span class="math notranslate nohighlight">\(K&gt;1\)</span> (the distortion) to the RMS of the fundamental which is</p>
 <div class="math notranslate nohighlight" id="equation-eq-fs3-8">
-<span class="eqno">(10)<a class="headerlink" href="#equation-eq-fs3-8" title="Permalink to this equation">#</a></span>\[\sqrt{2\left|C_1\right|^2}\]</div>
+<span class="eqno">(9)<a class="headerlink" href="#equation-eq-fs3-8" title="Permalink to this equation">#</a></span>\[\sqrt{2\left|C_1\right|^2}\]</div>
 <div class="math notranslate nohighlight" id="equation-fse4-thd">
-<span class="eqno">(11)<a class="headerlink" href="#equation-fse4-thd" title="Permalink to this equation">#</a></span>\[{\rm{THD}} = 100\sqrt {\frac{\sum\limits_{k = 2}^\infty  {\left| C_k \right|^2}} {\left| C_1 \right|^2}} \% \]</div>
+<span class="eqno">(10)<a class="headerlink" href="#equation-fse4-thd" title="Permalink to this equation">#</a></span>\[{\rm{THD}} = 100\sqrt {\frac{\sum\limits_{k = 2}^\infty  {\left| C_k \right|^2}} {\left| C_1 \right|^2}} \% \]</div>
 </section>
 <section id="computation-of-thd">
 <h3>Computation of THD<a class="headerlink" href="#computation-of-thd" title="Permalink to this heading">#</a></h3>
@@ -631,18 +636,18 @@ document.write(`
 <span id="fse4-ss-resp"></span><h2>Steady-State Response of a Continuous-Time LTI System to a Periodic Signal<a class="headerlink" href="#steady-state-response-of-a-continuous-time-lti-system-to-a-periodic-signal" title="Permalink to this heading">#</a></h2>
 <p>As shown in <a class="reference external" href="https://cpjobling.github.io/eg-150-textbook/lti_systems/lti2.html#eigenfunctions-of-continuous-time-lti-systems">Eigenfunctions of Continuous-Time LTI Systems</a>, the response of a continuous-time LTI system with impulse response <span class="math notranslate nohighlight">\(h(t)\)</span> to a complex exponential signal <span class="math notranslate nohighlight">\(e^{st}\)</span> is the same complex exponential multiplied by a complex gain: <span class="math notranslate nohighlight">\(y(t) = H(s)e^{st}\)</span>, where:</p>
 <div class="math notranslate nohighlight" id="equation-fse4-h-s">
-<span class="eqno">(12)<a class="headerlink" href="#equation-fse4-h-s" title="Permalink to this equation">#</a></span>\[H(s)=\int_{-\infty}^{\infty}h(\tau)e^{-s\tau}\,d\tau.\]</div>
+<span class="eqno">(11)<a class="headerlink" href="#equation-fse4-h-s" title="Permalink to this equation">#</a></span>\[H(s)=\int_{-\infty}^{\infty}h(\tau)e^{-s\tau}\,d\tau.\]</div>
 <p>In particular, for <span class="math notranslate nohighlight">\(s = j\omega\)</span>, the output is simply <span class="math notranslate nohighlight">\(y(t)=H(j\omega)e^{j\omega t}\)</span>.</p>
 <p>The complex functions <span class="math notranslate nohighlight">\(H(s)\)</span> and <span class="math notranslate nohighlight">\(H(j\omega)\)</span> are called the system’s <em>transfer function</em> and <em>frequency response</em>, respectively.</p>
 <section id="by-superposition">
 <h3>By superposition<a class="headerlink" href="#by-superposition" title="Permalink to this heading">#</a></h3>
 <p>The output of a continuous-time LTI system to a periodic function with period <span class="math notranslate nohighlight">\(T\)</span> represented by a Fourier series is given by:</p>
 <div class="math notranslate nohighlight" id="equation-fs4-y-t">
-<span class="eqno">(13)<a class="headerlink" href="#equation-fs4-y-t" title="Permalink to this equation">#</a></span>\[y(t)=\sum_{k=-\infty}^{\infty} C_kH(jk\Omega_0)e^{jk\Omega_0 t}\]</div>
+<span class="eqno">(12)<a class="headerlink" href="#equation-fs4-y-t" title="Permalink to this equation">#</a></span>\[y(t)=\sum_{k=-\infty}^{\infty} C_kH(jk\Omega_0)e^{jk\Omega_0 t}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\Omega_0 = 2\pi/T\)</span> is the fundamental frequency.</p>
 <p>Thus <span class="math notranslate nohighlight">\(y(t)\)</span> is a Fourier series itself with coefficients <span class="math notranslate nohighlight">\(D_k\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-fs4-d-k">
-<span class="eqno">(14)<a class="headerlink" href="#equation-fs4-d-k" title="Permalink to this equation">#</a></span>\[D_k = C_kH(jk\Omega_0)\]</div>
+<span class="eqno">(13)<a class="headerlink" href="#equation-fs4-d-k" title="Permalink to this equation">#</a></span>\[D_k = C_kH(jk\Omega_0)\]</div>
 </section>
 <section id="illustration">
 <h3>Illustration<a class="headerlink" href="#illustration" title="Permalink to this heading">#</a></h3>
@@ -666,10 +671,12 @@ document.write(`
 <p>Let us say that we wish to compute the attenuation and phase of this filter at <span class="math notranslate nohighlight">\(\omega = \Omega_0\)</span>.</p>
 <p>To compute the <em>magnitude</em>:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{eqnarray*}
+\[\begin{split}
+\begin{eqnarray*}
 \left|H(j\Omega_0)\right| &amp;=&amp; \left|\frac{\omega_c}{j\Omega_0 + \omega_c}\right| \\
 &amp; = &amp; \frac{\omega_c}{\sqrt{\Omega_0^2 + \omega_c^2}}
-\end{eqnarray*}\end{split}\]</div>
+\end{eqnarray*}
+\end{split}\]</div>
 <p>We note that is <span class="math notranslate nohighlight">\(\left|H(j\Omega_0\right| \lt 1\)</span> so the filter will <em>attenuate</em> the incoming harmonic frequency. This will be true for all harmonics, so in general, for a LP filter:</p>
 <div class="math notranslate nohighlight">
 \[D_k = C_k\left|H(jk\Omega_0)\right|   &lt; C_k.\]</div>
@@ -678,10 +685,11 @@ document.write(`
 \[\phi = \angle H(j\omega) = \tan^{-1}\left(\frac{\Im \left( H(j\omega)\right)}{\Re \left(H(j(\omega)\right)}\right)\]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{eqnarray*}
+\[\begin{split}
+\begin{eqnarray*}
 H(jk\Omega_0) &amp;=&amp; \frac{\omega_c^2}{(k\Omega_0)^2 + \omega_c^2} - j\frac{k\Omega_0\omega_c}{(k\Omega_0)^2 + \omega_c^2}\\
 \phi_k &amp;=&amp; \tan^{-1}\left(-\frac{K\Omega_0\omega_c}{\omega_c^2}\right) \\
-&amp;=&amp; \tan^{-1}\left(-\frac{k\Omega_0}{\omega_c}\right) 
+&amp;=&amp; \tan^{-1}\left(-\frac{k\Omega_0}{\omega_c}\right)
 \end{eqnarray*}
 \end{split}\]</div>
 <p>Phases are additive so</p>
@@ -723,7 +731,7 @@ H(jk\Omega_0) &amp;=&amp; \frac{\omega_c^2}{(k\Omega_0)^2 + \omega_c^2} - j\frac
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">clear</span><span class="w"> </span><span class="nb">all</span>
 <span class="nb">cd</span><span class="w"> </span><span class="p">.</span><span class="o">./</span><span class="n">matlab</span>
-<span class="nb">format</span><span class="w"> </span><span class="n">compact</span>
+<span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"> </span><span class="nb">setappdata</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MKernel_plot_format&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;svg&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -749,89 +757,37 @@ H(jk\Omega_0) &amp;=&amp; \frac{\omega_c^2}{(k\Omega_0)^2 + \omega_c^2} - j\frac
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Omega (rad/s)	Power (W)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-15		0.000450
+-15		0.000450
 -14		0.000000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-13		0.000600
+-13		0.000600
 -12		0.000000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-11		0.000837
+-11		0.000837
 -10		0.000000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-9		0.001251
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-8		0.000000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-7		0.002068
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-6		0.000000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-5		0.004053
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-4		0.000000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-3		0.011258
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2		0.000000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1		0.101321
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0		0.250000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1		0.101321
+-9		0.001251
+-8		0.000000
+-7		0.002068
+-6		0.000000
+-5		0.004053
+-4		0.000000
+-3		0.011258
+-2		0.000000
+-1		0.101321
+0		0.250000
+1		0.101321
 2		0.000000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3		0.011258
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4		0.000000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5		0.004053
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6		0.000000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7		0.002068
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8		0.000000
+3		0.011258
+4		0.000000
+5		0.004053
+6		0.000000
+7		0.002068
+8		0.000000
 9		0.001251
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10		0.000000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11		0.000837
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12		0.000000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13		0.000600
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14		0.000000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15		0.000450
+10		0.000000
+11		0.000837
+12		0.000000
+13		0.000600
+14		0.000000
+15		0.000450
 </pre></div>
 </div>
 </div>
@@ -849,8 +805,7 @@ H(jk\Omega_0) &amp;=&amp; \frac{\omega_c^2}{(k\Omega_0)^2 + \omega_c^2} - j\frac
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/58fd27d82563446e78701a643298521e060ff62be13cab811a2c053df9de9921.png" src="../../_images/58fd27d82563446e78701a643298521e060ff62be13cab811a2c053df9de9921.png" />
-</div>
+<img alt="../../_images/8f4471a7b7d3e1683e773d77c6b47d0415d0ac6e6f1268f2b7e62749ef8ce345.svg" src="../../_images/8f4471a7b7d3e1683e773d77c6b47d0415d0ac6e6f1268f2b7e62749ef8ce345.svg" /></div>
 </div>
 <p>Note that most of the power is concentrated at DC and in the first five harmonic components.</p>
 </section>
@@ -893,7 +848,7 @@ H(jk\Omega_0) &amp;=&amp; \frac{\omega_c^2}{(k\Omega_0)^2 + \omega_c^2} - j\frac
 </figure>
 <p>Determine the exponential Fourier series coefficients <span class="math notranslate nohighlight">\(C_k\)</span> for this waveform and use this result to show that the trigonomentric Fourier series for a triangle waveform is</p>
 <div class="math notranslate nohighlight" id="equation-fse4-ws-fs4tri">
-<span class="eqno">(15)<a class="headerlink" href="#equation-fse4-ws-fs4tri" title="Permalink to this equation">#</a></span>\[x(t) = \frac{8A}{\pi^2}\left(\sum_{k\ \mathrm{odd}}(-1)^{\left(\frac{k-1}{2}\right)}\frac{1}{k^2}\sin k \Omega_0 t \right)\]</div>
+<span class="eqno">(14)<a class="headerlink" href="#equation-fse4-ws-fs4tri" title="Permalink to this equation">#</a></span>\[x(t) = \frac{8A}{\pi^2}\left(\sum_{k\ \mathrm{odd}}(-1)^{\left(\frac{k-1}{2}\right)}\frac{1}{k^2}\sin k \Omega_0 t \right)\]</div>
 <p>which, for the first seven harmonic frequencies, is given as</p>
 <div class="math notranslate nohighlight">
 \[x(t) \approx \frac{8A}{\pi^2}\left(\sin \Omega_0 t - \frac{1}{9} \sin 3\Omega_0 t + \frac{1}{25} \sin 5\Omega_0 t - \frac{1}{49} \sin 7\Omega_0 t \cdots \right) \]</div>
@@ -911,7 +866,7 @@ H(jk\Omega_0) &amp;=&amp; \frac{\omega_c^2}{(k\Omega_0)^2 + \omega_c^2} - j\frac
 <p>ii) Compute the cut-off frequency <span class="math notranslate nohighlight">\(\omega_c\)</span> of the filter. Note the value of the cut-off frequency this is the frequency for which the filter transmits half-the power or</p>
 <div class="math notranslate nohighlight">
 \[|H(j\omega_c)| = \frac{1}{\sqrt{2}}\]</div>
-<p>iii) Use equation <a class="reference internal" href="#equation-fs4-d-k">(14)</a> and the result of a) to determine the attenuation in the first 7 harmonics of the triangle waveform.</p>
+<p>iii) Use equation <a class="reference internal" href="#equation-fs4-d-k">(13)</a> and the result of a) to determine the attenuation in the first 7 harmonics of the triangle waveform.</p>
 <p>iv) The filter is intended to generate a sinewave from the triangle wave. Determine the value of the recovery gain <span class="math notranslate nohighlight">\(K\)</span> to ensure that the attenuation is 0 dB at 2.5 kHz. Recompute the harmonic attenuation given the presence of <span class="math notranslate nohighlight">\(K\)</span>.</p>
 <p>v) Use these results to determine the THD (in dB) of the filtered waveform.</p>
 <p>vi) Use the attached Simulink model (<a class="reference download internal" download="" href="../../_downloads/cfb52856eb8af406751f5647df645847/ex19_5.slx"><span class="xref download myst">ex19_5.slx</span></a>) of the the filter to validate the results. Comment on the quality of the design.</p>
@@ -923,7 +878,7 @@ H(jk\Omega_0) &amp;=&amp; \frac{\omega_c^2}{(k\Omega_0)^2 + \omega_c^2} - j\frac
 <span class="n">C</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">10e-9</span><span class="p">;</span><span class="w"> </span><span class="c">% 10 nF</span>
 <span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">C</span><span class="p">));</span><span class="w"> </span><span class="c">% filter coefficient</span>
 <span class="n">K</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c">% replace wthis value with the value computed in Exercise 10(b)(iv)</span>
-<span class="n">Hs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">a</span>^<span class="mi">2</span><span class="p">,[</span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="o">*</span><span class="n">a</span><span class="w"> </span><span class="n">a</span>^<span class="mi">2</span><span class="p">])</span>
+<span class="n">Hs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">a</span><span class="o">^</span><span class="mi">2</span><span class="p">,[</span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="o">*</span><span class="n">a</span><span class="w"> </span><span class="n">a</span><span class="o">^</span><span class="mi">2</span><span class="p">])</span>
 <span class="n">bode</span><span class="p">(</span><span class="n">Hs</span><span class="p">),</span><span class="nb">grid</span>
 <span class="n">ex19_5</span>
 </pre></div>
@@ -932,31 +887,17 @@ H(jk\Omega_0) &amp;=&amp; \frac{\omega_c^2}{(k\Omega_0)^2 + \omega_c^2} - j\frac
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>K =
      1
+
+Hs =
+ 
+           1.487e08
+  ---------------------------
+  s^2 + 3.659e04 s + 1.487e08
+ 
+Continuous-time transfer function.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hs =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           1.487e08
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ---------------------------
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  s^2 + 3.659e04 s + 1.487e08
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
-</pre></div>
-</div>
-<img alt="../../_images/a96aab71fe13e1e422f788aabb2b548355f54fd49a3d0e49fdbc7f0ad4de6e74.png" src="../../_images/a96aab71fe13e1e422f788aabb2b548355f54fd49a3d0e49fdbc7f0ad4de6e74.png" />
-</div>
+<img alt="../../_images/6c5cc4b15a4f5e672b4131282e6cea0e7cb944b1d67fea0631761be1cd2fd28c.svg" src="../../_images/6c5cc4b15a4f5e672b4131282e6cea0e7cb944b1d67fea0631761be1cd2fd28c.svg" /></div>
 </div>
 </section>
 </section>
@@ -973,9 +914,9 @@ H(jk\Omega_0) &amp;=&amp; \frac{\omega_c^2}{(k\Omega_0)^2 + \omega_c^2} - j\frac
 <section id="unit-3-4-takeaways">
 <span id="unit5-4-takeaways"></span><h3>Unit 3.4 Takeaways<a class="headerlink" href="#unit-3-4-takeaways" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Parseval’s theorem allows us to compute the average power of of periodic signal <span class="math notranslate nohighlight">\(x(t) = x(t + nT)\)</span> from its eponential Fourier series coefficients. The average Paower in a signale <span class="math notranslate nohighlight">\(x(t)\)</span> is given by Eq. <a class="reference internal" href="#equation-eq-fs3-4">(6)</a> and RMS power is given by Eq. <a class="reference internal" href="#equation-eq-fs3-6">(8)</a>.</p></li>
+<li><p>Parseval’s theorem allows us to compute the average power of of periodic signal <span class="math notranslate nohighlight">\(x(t) = x(t + nT)\)</span> from its eponential Fourier series coefficients. The average Paower in a signale <span class="math notranslate nohighlight">\(x(t)\)</span> is given by Eq. <a class="reference internal" href="#equation-eq-fs3-4">(5)</a> and RMS power is given by Eq. <a class="reference internal" href="#equation-eq-fs3-6">(7)</a>.</p></li>
 <li><p>The <em>power spectrum</em> of signal is the sequence of average powers in each complex harmonic: <span class="math notranslate nohighlight">\(|C_k|^2.\)</span> which for real periodic signals is a <em>real even</em> sequence.</p></li>
-<li><p>Total harmonic distortion is a measure of how much a periodic signal is different from a sine wave. It is defined in Eq. <a class="reference internal" href="#equation-fse4-thd">(11)</a>.</p></li>
+<li><p>Total harmonic distortion is a measure of how much a periodic signal is different from a sine wave. It is defined in Eq. <a class="reference internal" href="#equation-fse4-thd">(10)</a>.</p></li>
 <li><p>The steady-state frequency response of a continuous-time LTI system with impulse response <span class="math notranslate nohighlight">\(h(t)\)</span> to a periodic signal <span class="math notranslate nohighlight">\(x(t) = xTt + nT)\)</span> with exponential Fourier series components <span class="math notranslate nohighlight">\(C_k\)</span> is a Fourier series <span class="math notranslate nohighlight">\(y(t)\)</span> with coefficients <span class="math notranslate nohighlight">\(D_k = C_k H(jk\Omega_0)\)</span>. (Where <span class="math notranslate nohighlight">\(H(s)\)</span> is the Laplace transform of <span class="math notranslate nohighlight">\(h(t)\)</span>). This
 result can be used to determine the filtering affect of any continuous-time LTI system on any periodic signal. As an example of this you should review the theory for the <em>harmonic filter</em> studied in Session 4 of <strong>EG-152 Analogue Design</strong> and which is reviewed in <a class="reference internal" href="#ex19-5"><span class="std std-ref">Example 10: Low-pass filter</span></a>.</p></li>
 </ul>
@@ -1030,16 +971,16 @@ result can be used to determine the filtering affect of any continuous-time LTI 
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "matlab"
+            mode: "mkernel"
         },
         kernelOptions: {
-            name: "matlab",
+            name: "mkernel",
             path: "./fourier_series/4"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'matlab'</script>
+    <script>kernelName = 'mkernel'</script>
 
                 </article>
               
@@ -1048,7 +989,7 @@ result can be used to determine the filtering affect of any continuous-time LTI 
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1077,6 +1018,7 @@ result can be used to determine the filtering affect of any continuous-time LTI 
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1188,8 +1130,8 @@ for
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

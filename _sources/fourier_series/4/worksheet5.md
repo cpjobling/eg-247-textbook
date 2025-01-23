@@ -7,14 +7,15 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.15.2
 kernelspec:
-  display_name: Matlab
+  display_name: MKernel
   language: matlab
-  name: matlab
+  name: mkernel
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (ws5)=
+
 # Worksheet 5
 
 ## To accompany Unit 3.4 Applications of Line Spectra
@@ -23,9 +24,9 @@ kernelspec:
 
 ## Colophon
 
-This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet5.pdf). We will step through this worksheet in class. 
+This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet5.pdf). We will step through this worksheet in class.
 
-An annotatable copy of the notes for this presentation will be distributed before the second class meeting as **Worksheet 5** in the **Week 4: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **Worksheets** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote. 
+An annotatable copy of the notes for this presentation will be distributed before the second class meeting as **Worksheet 5** in the **Week 4: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **Worksheets** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote.
 
 You are expected to have at least watched the video presentation of {ref}`unit3.4` of the [notes](https://cpjobling.github.io/eg-247-textbook/) before coming to class. If you haven't watch it afterwards!
 
@@ -81,7 +82,7 @@ $$P_{\mathrm{RMS}} = \sqrt{\frac{1}{T}\int_0^T \left|f(t)\right|^2\,dt} = \sqrt{
 
 ### Example 6
 
-Compute the average power of a pulse train for which the pulse width is $T/2$ (duty cycle 50%). Use the result: 
+Compute the average power of a pulse train for which the pulse width is $T/2$ (duty cycle 50%). Use the result:
 
 $$C_k = \frac{A}{w}.\frac{\sin(k\pi/w)}{k\pi/w}$$
 
@@ -112,6 +113,7 @@ as your starting point.
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (ex:ws:19.2)=
+
 ### Example 7: Power Spectrum
 
 Compute and display the power spectrum for the signal of {ref}`ex:ws:19.1`.
@@ -119,7 +121,7 @@ Compute and display the power spectrum for the signal of {ref}`ex:ws:19.1`.
 ```{code-cell}
 clear all
 cd ../matlab
-format compact
+format compact; setappdata(0, "MKernel_plot_format", 'svg')
 ```
 
 ```{code-cell}
@@ -127,7 +129,7 @@ format compact
 slideshow:
   slide_type: subslide
 ---
-A = 1; w = 2; 
+A = 1; w = 2;
 [f,omega] = pulse_fs(A,w,15);
 ```
 
@@ -160,11 +162,11 @@ This can occur in the line voltages of an industrial plant that makes heavy use 
 
 #### THD Defined
 
-Clearly, some of the harmonics for $k\ne \pm 1$ are nonzero. One way to characterize the distortion is to compute the ratio of average power in all the harmonics that "should not be present", that is for $k > 1$, to the total average power of the distorted sine wave. The square-root of this ratio is called the *total harmonic distortion* (THD) of the signal.
+Clearly, some of the harmonics for $k\ne \pm 1$ are nonzero. One way to characterize the distortion is to compute the ratio of average power in all the harmonics that "should not be present", that is for $k > 1$, to the total average power of the distorted sine wave. The square-root of this ratio is called the _total harmonic distortion_ (THD) of the signal.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-If the signal is real and based on a sine wave (that is *odd*), then $C_k=0$ and
+If the signal is real and based on a sine wave (that is _odd_), then $C_k=0$ and
 
 $$f_{\mathrm{RMS}}=\sqrt{\sum_{k=1}^{\infty}2|C_k|^2}$$
 
@@ -181,8 +183,10 @@ $${\rm{THD}} = 100\sqrt {\frac{\sum\limits_{k = 2}^\infty  {\left| C_k \right|^2
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (ex:ws:19.3)=
+
 ### Example 8: THD in a square-wave
-Given that the exponential fourier series coefficients for a square wave are 
+
+Given that the exponential fourier series coefficients for a square wave are
 
 $$C_0 = 0$$
 
@@ -217,7 +221,9 @@ compute the total harmonic distortion represented by the first 7 harmonics of th
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (ex:ws:19.4)=
+
 ### Example 9: THD in a triangle wave
+
 Given that the exponential fourier series coefficients for a triangle wave with even symmetry is
 
 $$C_0 = 0$$
@@ -240,7 +246,7 @@ $$H(s)=\int_{-\infty}^{\infty}h(\tau)e^{-s\tau}\,d\tau.$$
 
 In particular, for $s = j\omega$, the output is simply $y(t)=H(j\omega)e^{j\omega t}$.
 
-The complex functions $H(s)$ and $H(j\omega)$ are called the system's *transfer function* and *frequency response*, respectively.
+The complex functions $H(s)$ and $H(j\omega)$ are called the system's _transfer function_ and _frequency response_, respectively.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -292,23 +298,28 @@ $$H(j\omega) = \frac{\omega_c}{j\omega + \omega_c}.$$
 
 Let us say that we wish to compute the attenuation and phase of this filter at $\omega = \Omega_0$.
 
-To compute the *magnitude*:
-$$\begin{eqnarray*}
+To compute the _magnitude_:
+
+$$
+\begin{eqnarray*}
 \left|H(j\Omega_0)\right| &=& \left|\frac{\omega_c}{j\Omega_0 + \omega_c}\right| \\
 & = & \frac{\omega_c}{\sqrt{\Omega_0^2 + \omega_c^2}}
-\end{eqnarray*}$$
+\end{eqnarray*}
+$$
 
-We note that is $\left|H(j\Omega_0\right| \lt 1$ so the filter will *attenuate* the incoming harmonic frequency. This will be true for all harmonics, so in general, for a LP filter:
+We note that is $\left|H(j\Omega_0\right| \lt 1$ so the filter will _attenuate_ the incoming harmonic frequency. This will be true for all harmonics, so in general, for a LP filter:
 
 $$D_k = C_k\left|H(jk\Omega_0)\right|   < C_k.$$
 
-The phase will be given by 
+The phase will be given by
 $$\phi = \angle H(j\omega) = \tan^{-1}\left(\frac{\Im \left( H(j\omega)\right)}{\Re \left(H(j(\omega)\right)}\right)$$
 where
-$$\begin{eqnarray*}
+
+$$
+\begin{eqnarray*}
 H(jk\Omega_0) &=& \frac{\omega_c^2}{(k\Omega_0)^2 + \omega_c^2} - j\frac{k\Omega_0\omega_c}{(k\Omega_0)^2 + \omega_c^2}\\
 \phi_k &=& \tan^{-1}\left(-\frac{K\Omega_0\omega_c}{\omega_c^2}\right) \\
-&=& \tan^{-1}\left(-\frac{k\Omega_0}{\omega_c}\right) 
+&=& \tan^{-1}\left(-\frac{k\Omega_0}{\omega_c}\right)
 \end{eqnarray*}
 $$
 
@@ -320,6 +331,7 @@ By doing such analysis, we can examine the effect of a filter on a periodic sign
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (ex:ws:19.5)=
+
 ### Example 10: Low-pass filter
 
 **This is an examination level question.**
@@ -330,9 +342,7 @@ This example represents the low-pass filter used in the signal generator project
 Use MATLAB to complete this example.
 :::
 
-
-
-a) A triangle waveform $x(t)$ with frequency $\Omega_0 = 2\pi/T$ is shown in {numref}`fig_ex19.1a`. 
+a) A triangle waveform $x(t)$ with frequency $\Omega_0 = 2\pi/T$ is shown in {numref}`fig_ex19.1a`.
 
 :::{figure-md} fig_ex19.1a
 <img src="pictures/ex19_5.png" alt="A triangle waveform" width="60%">
@@ -433,7 +443,7 @@ i) Determine the frequency response $H(j\omega)$ of the filter.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-ii) Compute the cut-off frequency $\omega_c$ of the filter. Note the value of the cut-off frequency this is the frequency for which the filter transmits half-the power or 
+ii) Compute the cut-off frequency $\omega_c$ of the filter. Note the value of the cut-off frequency this is the frequency for which the filter transmits half-the power or
 
 $$|H(j\omega_c)| = \frac{1}{\sqrt{2}}$$
 

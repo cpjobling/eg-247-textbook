@@ -7,14 +7,15 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.15.2
 kernelspec:
-  display_name: Matlab
+  display_name: MKernel
   language: matlab
-  name: matlab
+  name: mkernel
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (unit6.2)=
+
 # Unit 6.2: The Fast Fourier Transform
 
 +++ {"slideshow": {"slide_type": "skip"}}
@@ -23,11 +24,11 @@ kernelspec:
 
 An annotatable worksheet for this presentation is available as [**Worksheet 19**](worksheet19).
 
-* The source code for this page is [dft/1/dft.ipynb](https://github.com/cpjobling/eg-247-textbook/blob/master/dft/2/fft.ipynb).
+- The source code for this page is [dft/1/dft.ipynb](https://github.com/cpjobling/eg-247-textbook/blob/master/dft/2/fft.ipynb).
 
-* You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/dft/2/fft.html)). 
+- You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/dft/2/fft.html)).
 
-* This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/dft/2/fft.pdf) file.
+- This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/dft/2/fft.pdf) file.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -55,27 +56,27 @@ The material in this presentation and notes is based on [Chapter 10](https://ebo
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* The inefficiency of the DFT
+- The inefficiency of the DFT
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* The FFT - a sketch of its development
+- The FFT - a sketch of its development
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* An illustration of part of the FFT algorithm
+- An illustration of part of the FFT algorithm
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* FFT v DFT
+- FFT v DFT
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Two examples
+- Two examples
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Frequency and Amplitude Scaling
+- Frequency and Amplitude Scaling
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -99,63 +100,65 @@ $$X[m] = \sum_{n=0}^{N-1} x[n] W_N^{mn}$$
 
 Then
 
-$$\begin{eqnarray*}
+$$
+\begin{eqnarray*}
   X[0] &=& x[0]W_N^0 + x[1]W_N^0 + x[1]W_N^0 +  \cdots  + x[N - 1]W_N^0 \hfill \\
   X[1] &=& x[0]W_N^0 + x[1]W_N^1 + x[1]W_N^2 +  \cdots  + x[N - 1]W_N^{N - 1} \hfill \\
   X[2] &=& x[0]W_N^0 + x[1]W_N^2 + x[1]W_N^4 +  \cdots  + x[N - 1]W_N^{2(N - 1)} \hfill \\
   \hfil &\cdots&  \hfill \\
-  X[N - 1] &=& x[0]W_N^0 + x[1]W_N^{N - 1} + x[1]W_N^{2(N - 1)} +  \cdots  + x[N - 1]W_N^{(N - 1)^2} \hfill \\ 
-\end{eqnarray*}$$
+  X[N - 1] &=& x[0]W_N^0 + x[1]W_N^{N - 1} + x[1]W_N^{2(N - 1)} +  \cdots  + x[N - 1]W_N^{(N - 1)^2} \hfill \\
+\end{eqnarray*}
+$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-* It is worth remembering that 
+- It is worth remembering that
 
 $$W_N^0 = \exp\left(-j\frac{2\pi}{N}(0)\right) = 1.$$
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Since $W_N^i$ is a complex number, the computation of any frequency component $X[k]$ requires $N$ complex multiplications and $N$ complex additions
+- Since $W_N^i$ is a complex number, the computation of any frequency component $X[k]$ requires $N$ complex multiplications and $N$ complex additions
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* $2N$ complex arithmetic operations are required to compute any frequency component of $X[k].$<sup>1</sup>
+- $2N$ complex arithmetic operations are required to compute any frequency component of $X[k].$<sup>1</sup>
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* If we assume that $x[n]$ is real, then only $N/2$ of the $X[m]$ components are unique.
+- If we assume that $x[n]$ is real, then only $N/2$ of the $X[m]$ components are unique.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Therefore we would require $2N\times N/2 = N^2$ complex operations to compute the entire frequency spectrum.<sup>2</sup>
+- Therefore we would require $2N\times N/2 = N^2$ complex operations to compute the entire frequency spectrum.<sup>2</sup>
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-* For our example, the $N=1024$-point DFT, would require $1024^2 = 1,048,576$ complex operations
+- For our example, the $N=1024$-point DFT, would require $1024^2 = 1,048,576$ complex operations
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* These would have to be completed in 20.48 ms.
+- These would have to be completed in 20.48 ms.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* This may be possible with modern computing hardware, perhaps even in a mobile phone, but it seems impractical.
+- This may be possible with modern computing hardware, perhaps even in a mobile phone, but it seems impractical.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-* Fortunately, many of the $W_N$ terms in the computation are unity ($=\pm 1$).
+- Fortunately, many of the $W_N$ terms in the computation are unity ($=\pm 1$).
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Moreover, because the $W_N^i$ points are equally spaced points on the unit circle;
+- Moreover, because the $W_N^i$ points are equally spaced points on the unit circle;
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* And because $N$ is a power of 2, the points on the upper-half plane (range $0 < \theta < \pi$ are the mirror image of the points on the lower-half plane range $\pi < \theta < 2\pi$;
+- And because $N$ is a power of 2, the points on the upper-half plane (range $0 < \theta < \pi$ are the mirror image of the points on the lower-half plane range $\pi < \theta < 2\pi$;
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Thus, there is a great deal of symmetry in the computation that can be exploited to simplify the computation and reduce the number of operations considerably to a much more manageable $N\log_2 N$ operations<sup>3</sup>.
+- Thus, there is a great deal of symmetry in the computation that can be exploited to simplify the computation and reduce the number of operations considerably to a much more manageable $N\log_2 N$ operations<sup>3</sup>.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -181,31 +184,37 @@ which results in some simplifications and mathematical short-cuts when $N$ is a 
 
 The most useful properties are:
 
-$$\begin{eqnarray*}
+$$
+\begin{eqnarray*}
   W_N^N &=& \exp\left(-j\frac{2\pi}{N}N\right) = \exp\left(-j2\pi\right) = 1.\\
   W_N^{N/2} &=&  \exp\left(-j\frac{2\pi}{N}\frac{N}{2}\right) = \exp\left(-j\pi\right) = -1.\\
   W_N^{N/4} &=&  \exp\left(-j\frac{2\pi}{N}\frac{N}{4}\right) = \exp\left(-j\pi/2\right) = -j.\\
-  W_N^{3N/4} &=&  \exp\left(-j\frac{2\pi}{N}\frac{3N}{4}\right) = \exp\left(-j3\pi/2\right) = j.\end{eqnarray*}$$
+  W_N^{3N/4} &=&  \exp\left(-j\frac{2\pi}{N}\frac{3N}{4}\right) = \exp\left(-j3\pi/2\right) = j.\end{eqnarray*}
+$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-$$\begin{eqnarray*}
+$$
+\begin{eqnarray*}
   W_N^{kN} &=&  \exp\left(-j\frac{2\pi}{N}kN\right) = \exp\left(-j2\pi\right) = 1,\,k=0,1,2,\ldots\\
   W_N^{kN+r} &=&  \exp\left(-j\frac{2\pi}{N}kN\right)\exp\left(-j\frac{2\pi}{N}r\right) = 1.W_N^r=W_N^r.\\
   W_{2N}^{k} &=&  \exp\left(-j\frac{2\pi}{2N}k\right) = \exp\left(-j\frac{2\pi}{N}\frac{k}{2}\right) = W_N^{k/2}.
-\end{eqnarray*}$$
+\end{eqnarray*}
+$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 Representing
 
-$$\begin{eqnarray*}
+$$
+\begin{eqnarray*}
   X[0] &=& x[0]W_N^0 + x[1]W_N^0 + x[2]W_N^0 +  \cdots  + x[N - 1]W_N^0 \hfill \\
   X[1] &=& x[0]W_N^0 + x[1]W_N^1 + x[2]W_N^2 +  \cdots  + x[N - 1]W_N^{N - 1} \hfill \\
   X[2] &=& x[0]W_N^0 + x[1]W_N^2 + x[2]W_N^4 +  \cdots  + x[N - 1]W_N^{2(N - 1)} \hfill \\
   \hfil &\cdots&  \hfill \\
-  X[N - 1] &=& x[0]W_N^0 + x[1]W_N^{N - 1} + x[2]W_N^{2(N - 1)} +  \cdots  + x[N - 1]W_N^{(N - 1)^2} \hfill \\ 
-\end{eqnarray*}$$
+  X[N - 1] &=& x[0]W_N^0 + x[1]W_N^{N - 1} + x[2]W_N^{2(N - 1)} +  \cdots  + x[N - 1]W_N^{(N - 1)^2} \hfill \\
+\end{eqnarray*}
+$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -240,7 +249,7 @@ $$\mathbf{X}[m] = \mathbf{W_N} \mathbf{x}[n]$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-The algorithm developed by Cooley and Tukey is based on *matrix decomposition* methods, where the matrix $\mathbf{W_N}$ is factored into $L$ smaller matrices, that is:
+The algorithm developed by Cooley and Tukey is based on _matrix decomposition_ methods, where the matrix $\mathbf{W_N}$ is factored into $L$ smaller matrices, that is:
 
 $$\mathbf{W_N} = \mathbf{W_1} \mathbf{W_2} \mathbf{W_3} \cdots \mathbf{W_L}$$
 
@@ -248,7 +257,7 @@ where $L$ is chosen as $L = \log_2N$ or $N=2^L$.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-Each row of the matrices on the right side of the decomposition, contains only two, non-zero terms, unity and $W_N^k$. 
+Each row of the matrices on the right side of the decomposition, contains only two, non-zero terms, unity and $W_N^k$.
 
 And the DFT sequence is:
 
@@ -276,7 +285,7 @@ However, since $W_N^0 = 1$, $W_N^{N/2}=-1$, and other simplifications, it is est
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-This development follows (Philips, *et al.*, 2015). It is called the *decomposition-in-time (DIT), radix-2, FFT*.
+This development follows (Philips, _et al._, 2015). It is called the _decomposition-in-time (DIT), radix-2, FFT_.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -300,10 +309,12 @@ $$X[k] = \sum_{n=0}^1 x[n]W^{nk}_2 = x[0]W_2^{0k} + X[1]W_2^{1k},\,k=0,1.$$
 
 Because $W_2^{0k}=\exp\left(j0\right)=1$ and $W_2^{1k}=\exp\left(-j\pi k\right)=(-1)^k$, we write
 
-$$\begin{eqnarray*}
+$$
+\begin{eqnarray*}
 X[0] &=& x[0]+x[1];\\
 X[1] &=& x[0]-x[1].
-\end{eqnarray*}$$
+\end{eqnarray*}
+$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -334,7 +345,7 @@ slideshow:
 ---
 cd matlab
 clear all
-format compact
+format compact; setappdata(0, "MKernel_plot_format", 'svg')
 ```
 
 ```{code-cell}
@@ -357,31 +368,37 @@ $$X[k] = \sum_{n=0}^3 x[n]W_4^{nk}= x[0]W_4^{0k} + x[1]W_4^{1k} + x[2]W_4^{2k} +
 
 As a result of the periodicity of the weighting factor, we can simplify this expression:
 
-$$\begin{eqnarray*}
+$$
+\begin{eqnarray*}
 W_N^{nk} &=& \exp\left(-j(2\pi/N)nk\right);\\
 W_4^{0k} &=& 1;\\
 W_4^{1k} &=& \exp\left(-j(\pi/2)k\right) = (-j)^k;\\
 W_4^{2k} &=& \exp\left(-j\pi k\right) = (-1)^k;\\
 W_4^{3k} &=& W_4^{2k}W_4^{1k}=(-1)^k W_4^{1k}.
-\end{eqnarray*}$$
+\end{eqnarray*}
+$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 Using these results, we write
 
-$$\begin{eqnarray*}
+$$
+\begin{eqnarray*}
 X[k] &=&  x[0] + x[1]W_4^{1k} + x[2](-1)^k + x[3](-1)^kW_4^{1k},\\
 X[k] &=&  \left[x[0] + x[2](-1)^k\right] \left[x[1] +  x[3](-1)^k\right]W_4^{1k}.
-\end{eqnarray*}$$
+\end{eqnarray*}
+$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 To clarify the next step, we define two new variables
 
-$$\begin{eqnarray*}
+$$
+\begin{eqnarray*}
 x_e[n]&=&x[2n],\,n=0,1;\\
 x_o[n]&=&x[2n+1],\,n=0,1.
-\end{eqnarray*}$$
+\end{eqnarray*}
+$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -393,10 +410,12 @@ $$X[k] =  \left[x_e[0] + x_e[1](-1)^k\right] + \left[x_o[0] + x_o[1](-1)^k\right
 
 The factors in brackets in this equation can be recognized as 2-point DFTs:
 
-$$\begin{eqnarray*}
+$$
+\begin{eqnarray*}
 X_e[m] &=& x_e[0] + x_e[1](-1)^m,\;m=0,1;\\
 X_o[m] &=& x_o[0] + x_o[1](-1)^m,\;m=0,1.
-\end{eqnarray*}$$
+\end{eqnarray*}
+$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -412,16 +431,18 @@ $$X_o[3]= x_o[0]+ x_o[1](-1)^3 = X_o[1]$$
 
 The 4-point DFT then is
 
-$$\begin{eqnarray*}
+$$
+\begin{eqnarray*}
 X[0] &=& X_e[0] + X_o[0]W_4^{1(0)} = X_e[0] + X_o[0];\\
 X[1] &=& X_e[1] + X_o[1]W_4^{1(1)} = X_e[1] + X_o[1]W_4^1;\\
 X[2] &=& X_e[0] - X_o[0]W_4^{1(2)} = X_e[0] - X_o[0];\\
 X[3] &=& X_e[1] - X_o[1]W_4^{1(3)} = X_e[1] + X_o[1]W_4^1.
-\end{eqnarray*}$$
+\end{eqnarray*}
+$$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-We see that the 4-point DFT can be computed by the generation of two 2-point DFTs, followed by a *recomposition* of terms as shown in the signal flow graph below:
+We see that the 4-point DFT can be computed by the generation of two 2-point DFTs, followed by a _recomposition_ of terms as shown in the signal flow graph below:
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -451,11 +472,11 @@ open four_point_dft
 
 ### In Class Example 1
 
-Use four-point DIT FFT to confirm that the DFT of the sequence 
+Use four-point DIT FFT to confirm that the DFT of the sequence
 
 $$x[n] = [1, 2, 3, 4]$$
 
-is 
+is
 
 $$X[m] = [10, -2+j2, -2, -2-j2].$$
 
@@ -528,9 +549,9 @@ In general, the $N$-point, radix-2 DIT FFT is computed as the recomposition of t
 
 ### Decomposition-in-Frequency FFT
 
-Another approach to forming the FFT is the so-called decomposition in frequency (DIF) FFT. 
+Another approach to forming the FFT is the so-called decomposition in frequency (DIF) FFT.
 
-We will not cover it's development in detail (see Karris and Phillips *et al.*) if you want to follow it through.
+We will not cover it's development in detail (see Karris and Phillips _et al._) if you want to follow it through.
 
 We instead illustrate the final result for the four-point DIF FFT.
 
@@ -550,11 +571,11 @@ Also note that it is frequency $X_n[k]$ that is the input to the DFT stage.
 
 ### In Class Example 2
 
-Use four two-point DIF FFT to confirm that the DFT of the sequence 
+Use four two-point DIF FFT to confirm that the DFT of the sequence
 
 $$x[n] = [1, 2, 3, 4]$$
 
-is 
+is
 
 $$X[m] = [10, -2+j2, -2, -2-j2].$$
 
@@ -613,7 +634,7 @@ I have created a Simulink model of the 8-point DIF FFT. I will create a signal f
 
 ## Efficiency of the FFT
 
-Wether we implement it as a Decomposition-in-Time (DIT) or a Decomposition-in-Frequency (DIF), the FFT ends up having approximately $(N/2)\log_2(N)$ multiplications and a similar number of complex additions or subtractions. 
+Wether we implement it as a Decomposition-in-Time (DIT) or a Decomposition-in-Frequency (DIF), the FFT ends up having approximately $(N/2)\log_2(N)$ multiplications and a similar number of complex additions or subtractions.
 
 In other words, $(N)\log_2(N)$ complex arithmetic operations.
 
@@ -625,23 +646,22 @@ As complex arithmetic, particularly multiplication, is very expensive, this is a
 
 Under the assumptions about the relative efficiency of the DFT and FFT we can create a table like that shown below:
 
-
-| &nbsp; |  &nbsp;      | DFT         | FFT       | FFT/DFT   |
-|--------|--------------|-------------|-----------|-----------|
-| N      | $\log_2 N$ | $N^2$   | $N\log_2 N$ |         % | 
-| 8      | 3            | 64        | 24          | 37.5      |
-| 16     | 4            | 256       | 64          | 25        |
-| 32     | 5            | 1,024     | 160         | 15.6      |
-| 64     | 6            | 4,096     | 384         | 9.4       |
-| 128    | 7            | 16,384    | 896         | 5.5       |
-| 256    | 8            | 65,536    | 2,048       | 3.1       |
-| 512    | 9            | 261,144   | 4,608       | 1.8       |
-| 1024   | 10           | 1,048,576 | 10,240      | 1         |
-| 2048   | 11           | 4,194,304 | 22,528      | 0.5       |
+| &nbsp; | &nbsp;     | DFT       | FFT         | FFT/DFT |
+| ------ | ---------- | --------- | ----------- | ------- |
+| N      | $\log_2 N$ | $N^2$     | $N\log_2 N$ | %       |
+| 8      | 3          | 64        | 24          | 37.5    |
+| 16     | 4          | 256       | 64          | 25      |
+| 32     | 5          | 1,024     | 160         | 15.6    |
+| 64     | 6          | 4,096     | 384         | 9.4     |
+| 128    | 7          | 16,384    | 896         | 5.5     |
+| 256    | 8          | 65,536    | 2,048       | 3.1     |
+| 512    | 9          | 261,144   | 4,608       | 1.8     |
+| 1024   | 10         | 1,048,576 | 10,240      | 1       |
+| 2048   | 11         | 4,194,304 | 22,528      | 0.5     |
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-As you can see, the efficiency of the FFT actual gets better as the number of samples go up! 
+As you can see, the efficiency of the FFT actual gets better as the number of samples go up!
 
 However, there are other costs, such as the data storage needed for intermediate steps, that need to be taken into account as well. For example, an 8-point FFT requires only a 3 stage decomposition, with each stage needing storage for 8 complex numbers. That is 24 in all. Whereas a 2048 sequence will require 11 stages, storing 2048 values each. That is a total of 22,528 complex values<sup>6</sup>.
 
@@ -768,6 +788,7 @@ stem(ifft(fft(y)))
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (fas)=
+
 ## Frequency and Amplitude Scaling
 
 Let's assume that you have a DT sequence $x[n]$ sampled from a CT signal $x(t)$ at some period $T_s = 1/f_s$. When you apply the `fft` function to $x[n]$, the absolute values of the frequency terms $X[K]$ will have the distribution shown in {numref}`fig:fft:1` starting at $K=0$ on the left and going up to $K=N-1$ at the right.
@@ -802,13 +823,13 @@ As demonstrated above, we normally expect the frequency response to be symmetric
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-* However, even when shifted in this way, the $x$-axis of the FFT plot only represents the sequence number $K$ not frequency. 
-* Furthermore, the amplitude of the frequency terms is related to the FFT algorithm rather than the physical size of the frequency components in the original signal. 
-* Also, we often only care about the postive frequencies and so usually present the FFT data as a single-sided plot.
+- However, even when shifted in this way, the $x$-axis of the FFT plot only represents the sequence number $K$ not frequency.
+- Furthermore, the amplitude of the frequency terms is related to the FFT algorithm rather than the physical size of the frequency components in the original signal.
+- Also, we often only care about the postive frequencies and so usually present the FFT data as a single-sided plot.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-To achieve a single sided FFT plot against frequency, with realistic amplitudes, and valid values of power and power spectral density for power plots, we need to make some adjustments to the FFT data. This is called *frequency and amplitude scaling*.
+To achieve a single sided FFT plot against frequency, with realistic amplitudes, and valid values of power and power spectral density for power plots, we need to make some adjustments to the FFT data. This is called _frequency and amplitude scaling_.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -930,6 +951,7 @@ Now we see the peaks in the postive and negative frequency. But they are plotted
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ##### One-sided FFT plotted against frequency
+
 Just plot half of the frequency by plotting absolute values only for $K = 0 \to N/2$<sup>7</sup>.
 
 ```{code-cell}
@@ -978,7 +1000,7 @@ xlabel('Frequencty (Hz)')
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-Now we can clearly see the peak at 3 Hz, but the amplitude is 20, which has no real physical value. 
+Now we can clearly see the peak at 3 Hz, but the amplitude is 20, which has no real physical value.
 
 we will see how to scale the amplitude of the FFT in the next section.
 
@@ -988,9 +1010,9 @@ The actual Live Script can be obtained from [aerojunkie/control-tools/FFT MATLAB
 
 #### Amplitude Scaling
 
-If you only need to know that a peak occurs at a particular frequency then you only need to scale the frequency. If you need to know the *amplitude* or *power* of the sinusoidal frequencies that are present in the FFT, then we also need to scale the magnitudes.
+If you only need to know that a peak occurs at a particular frequency then you only need to scale the frequency. If you need to know the _amplitude_ or _power_ of the sinusoidal frequencies that are present in the FFT, then we also need to scale the magnitudes.
 
-The detail of how this is done is covered in {cite}`douglaspsd` (see video in the notes) and we will only summarize it here and give an example. 
+The detail of how this is done is covered in {cite}`douglaspsd` (see video in the notes) and we will only summarize it here and give an example.
 
 The example is available on [GitHub](https://github.com/aerojunkie/control-tools/tree/master/PSD) and can be loaded into MATLAB online (we will do this in class).
 
@@ -1000,7 +1022,7 @@ The example is available on [GitHub](https://github.com/aerojunkie/control-tools
 
 For a double-sided FFT, the amplitudes are scaled by the number of samples, that is:
 
-$$X'[m] = \frac{\left|X[m]\right|}{N}$$ 
+$$X'[m] = \frac{\left|X[m]\right|}{N}$$
 
 For a single sided FFT, we use double this value and ignore the DC and Nyquist frequency.
 
@@ -1022,11 +1044,11 @@ There is also a function [`periodigram`](https://uk.mathworks.com/help/signal/re
 
 ```matlab
 periodogram(xn, rectwin(length(xn)), length(xn), fs, 'power')
-````
+```
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-The second argument is a windowing function that is applied to the sequence to select, and possibly prescale, the samples to reduce *spectral leakage*. This is explained by Brian Douglas in the video {cite}`douglaspsd` and we will not persue it further here.
+The second argument is a windowing function that is applied to the sequence to select, and possibly prescale, the samples to reduce _spectral leakage_. This is explained by Brian Douglas in the video {cite}`douglaspsd` and we will not persue it further here.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -1038,7 +1060,7 @@ The function [`periodigram`](https://uk.mathworks.com/help/signal/ref/periodogra
 
 ```matlab
 periodogram(xn, rectwin(length(xn)), length(xn), fs, 'psd')
-````
+```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -1052,12 +1074,12 @@ Compute the power spectrum and power-spectral desity.
 
 ## Summary
 
-* The inefficiency of the DFT
-* The FFT - a sketch of its development
-* An illustration of part of the FFT algorithm
-* FFT v DFT
-* Two examples
-* Frequency and Amplitude Scaling
+- The inefficiency of the DFT
+- The FFT - a sketch of its development
+- An illustration of part of the FFT algorithm
+- FFT v DFT
+- Two examples
+- Frequency and Amplitude Scaling
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -1069,7 +1091,7 @@ Read the rest of Chapter 10 of Karris from page 10.9 and make your own notes on 
 
 ## Coming next
 
-* **Filter Design** (including the use of MATLAB for this) from Chapter 11 of Karris and other resources.
+- **Filter Design** (including the use of MATLAB for this) from Chapter 11 of Karris and other resources.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -1081,21 +1103,21 @@ See [Bibliography](/zbib).
 
 ### Footnotes
 
-1. *Note*: addition of two complex numbers $(a + jb) + (c + jd) = (a+b) + j(b + d)$ so requires 2 floating-point additions; multiplication $(a + jb)(c + jd) = (ac - bd)+j(ad + bc)$ requires four floating-point multiplications and two additions. 
+1. _Note_: addition of two complex numbers $(a + jb) + (c + jd) = (a+b) + j(b + d)$ so requires 2 floating-point additions; multiplication $(a + jb)(c + jd) = (ac - bd)+j(ad + bc)$ requires four floating-point multiplications and two additions.
 
-    In MATLAB, complex numbers are represented internally as two 64 bit floating point operations so each complex operation is expensive both in terms of computing time and working memory space. And the result of an N-point DFT will require twice the memory of the original sequence, assuming that it is stored as floating point real numbers, considerably 16 times the storage is needed if the original sequence is the result of sampling by, say, an 8 bit ADC.
+   In MATLAB, complex numbers are represented internally as two 64 bit floating point operations so each complex operation is expensive both in terms of computing time and working memory space. And the result of an N-point DFT will require twice the memory of the original sequence, assuming that it is stored as floating point real numbers, considerably 16 times the storage is needed if the original sequence is the result of sampling by, say, an 8 bit ADC.
 
-    Of course, modern 64 bit mirocprocessers have hardware support for floating point operations and so these operations take a minumum number of machine cycles. Digital Signal Processors and Graphic Processing Units, probably have hardware support for complex arithmetic too. Nonethess, complex arithmetic is an expensive operation, so any simplifications we can make will be valuable.
+   Of course, modern 64 bit mirocprocessers have hardware support for floating point operations and so these operations take a minumum number of machine cycles. Digital Signal Processors and Graphic Processing Units, probably have hardware support for complex arithmetic too. Nonethess, complex arithmetic is an expensive operation, so any simplifications we can make will be valuable.
 
 2. Even if we do not have a real sequence, we only need to compute the first $N/2$ values of the spectrum because the sequence for $X[k]$ from $N/2 + 1 < k \le N-1$ are complex conjugates, in the reverse order, of the sequence of $X[k]$ for $0 \le k < N/2$. This is easy to prove by looking at the geometry of the unit circle in the z-plane.
 
 3. If $N=1024$, $N\log_2 N = 1024\times 10 = 10,240$ complex operations.
 
 4. The Inverse FFT (IFFT) follows by noting that the rotation vector used in its computation is the complex conjugate
-$$W_N^{-1}.$$
+   $$W_N^{-1}.$$
 
-5. Karris goes further in showing how the decomposition used to implement the FFT can be further be understood by considering even and odd decompositions. This is also the approach taken by Phillips *et al.* reproduced here.
-You'll also find that most text books on Digital Signal Processing will cover the FFT and give more or less understandable presentations of the way the algorithm works.
+5. Karris goes further in showing how the decomposition used to implement the FFT can be further be understood by considering even and odd decompositions. This is also the approach taken by Phillips _et al._ reproduced here.
+   You'll also find that most text books on Digital Signal Processing will cover the FFT and give more or less understandable presentations of the way the algorithm works.
 
 6. A complex number in MATLAB is 2 floating point doubles or 128 bits. So a 2048 "bin" FFT needs storage in RAM for approximately $22,528\times 128 = 2.9$ Mbit ($260$ kByte) of data.
 
@@ -1111,21 +1133,25 @@ You'll also find that most text books on Digital Signal Processing will cover th
 
 From the mathematical development and signal flow graph shown earlier:
 
-$$\begin{eqnarray*}
+$$
+\begin{eqnarray*}
 X_e[0] &=& x[0] + x[2] = 1 + 3 = 4;\\
 X_e[1] &=& x[0] - x[2] = 1 - 3 = -2;\\
 X_o[0] &=& x[1] + x[3] = 2 + 4 = 6;\\
 X_o[1] &=& x[1] - x[3] = 2 - 4 = -2.
-\end{eqnarray*}$$
+\end{eqnarray*}
+$$
 
 Thus,
 
-$$\begin{eqnarray*}
+$$
+\begin{eqnarray*}
 X[0] &=& X_e[0] + X_o[0] = 4 + 6 = 10,\\
 X[1] &=& X_e[1] + W_4^1 X_o[1] = -2 + (-j)(-2) = -2 - j2,\\
 X[2] &=& X_e[0] - X_o[0] = 4 - 6 = -2,\\
 X[3] &=& X_e[1] - W_4^1 X_o[1] = -2 - (-j)(-2) = -2 + j2.
-\end{eqnarray*}$$
+\end{eqnarray*}
+$$
 
 Q.E.D.
 
@@ -1135,21 +1161,25 @@ Q.E.D.
 
 After decomposition we have:
 
-$$\begin{eqnarray*}
+$$
+\begin{eqnarray*}
 X_1[0] &=& x[0] + x[2] = 1 + 3 = 4;\\
 X_1[1] &=& W_4^0\left[x[1] - x[3]\right] = 2 + 4 = 6;\\
 X_2[0] &=& x[0] - x[2] = 1 - 3 = -2;\\
 X_2[1] &=& W_4^1\left[x[1] - x[3]\right] = -j[2 - 4] = -j2.
-\end{eqnarray*}$$
+\end{eqnarray*}
+$$
 
 Hence, after 2-point FFT:
 
-$$\begin{eqnarray*}
+$$
+\begin{eqnarray*}
 X[0] &=& X_1[0] + X_1[1] = 4 + 6 = 10,\\
 X[1] &=& X_2[0] + X_2[1] = -2 - j2,\\
 X[2] &=& X_1[0] - X_1[1] = 4 - 6 = -2,\\
 X[3] &=& X_2[0] - X_2[1] = -2 + j2.
-\end{eqnarray*}$$
+\end{eqnarray*}
+$$
 
 Q.E.D.
 

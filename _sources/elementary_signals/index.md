@@ -7,9 +7,9 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.14.4
 kernelspec:
-  display_name: Matlab
+  display_name: MKernel
   language: matlab
-  name: matlab
+  name: mkernel
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -18,10 +18,10 @@ kernelspec:
 
 The preparatory reading for this section is [Chapter 1](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853&ppg=75#ppg=17) of {cite}`karris` which
 
-* begins with a discussion of the elementary signals that may be applied to electrical circuits
-* introduces the unit step, unit ramp and dirac delta functions
-* presents the sampling and sifting properties of the delta function and
-* concludes with examples of how other useful signals can be synthesised from these elementary signals.
+- begins with a discussion of the elementary signals that may be applied to electrical circuits
+- introduces the unit step, unit ramp and dirac delta functions
+- presents the sampling and sifting properties of the delta function and
+- concludes with examples of how other useful signals can be synthesised from these elementary signals.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -29,15 +29,15 @@ The preparatory reading for this section is [Chapter 1](https://ebookcentral.pro
 
 An annotatable worksheet for this presentation is available as [**Worksheet 3**](/elementary_signals/worksheet3).
 
-* The source code for this page is [elementary_signals/index.md](https://github.com/cpjobling/eg-247-textbook/blob/master/elementary_signals/index.md).
+- The source code for this page is [elementary_signals/index.md](https://github.com/cpjobling/eg-247-textbook/blob/master/elementary_signals/index.md).
 
-* You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/elementary_signals/index.html)). 
+- You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/elementary_signals/index.html)).
 
-* This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/elementary_signals/elementary_signals.pdf) file.
+- This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/elementary_signals/elementary_signals.pdf) file.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-Consider the network shown in below where the switch is closed at time $t=T$ and all components are ideal. 
+Consider the network shown in below where the switch is closed at time $t=T$ and all components are ideal.
 
 ![Network with a switch which is closed at t = T.](./pictures/circuit2.png)
 
@@ -51,7 +51,7 @@ Before the switch is closed at $t < T$:
 
 $$V_{\mathrm{out}} = 0.$$
 
-After the switch is closed for $t > T$: 
+After the switch is closed for $t > T$:
 
 $$V_{\mathrm{out}} = V_s.$$
 
@@ -67,10 +67,12 @@ We call this type of signal a step function.
 
 ## The Unit Step Function
 
-$${u_0}(t) = \left\{ {\begin{array}{*{20}{c}}
+$$
+{u_0}(t) = \left\{ {\begin{array}{*{20}{c}}
 {0\quad t < 0}\\
 {1\quad t > 0}
-\end{array}} \right.$$
+\end{array}} \right.
+$$
 
 ![The unit step function](./pictures/unitstep.png)
 
@@ -92,8 +94,8 @@ heaviside(0)
 slideshow:
   slide_type: subslide
 ---
-%%file plot_heaviside.m 
-syms t 
+%%file plot_heaviside.m
+syms t
 fplot(heaviside(t),[-1,1]),ylim([-0.2,1.2])
 grid
 heaviside(0)
@@ -105,13 +107,15 @@ plot_heaviside
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-Note that, so that it can be plotted, Matlab defines the *heaviside function* slightly differently from the mathematically ideal unit step:
+Note that, so that it can be plotted, Matlab defines the _heaviside function_ slightly differently from the mathematically ideal unit step:
 
-$$\mathrm{heaviside}(t) = \left\{ {\begin{array}{*{20}{c}}
+$$
+\mathrm{heaviside}(t) = \left\{ {\begin{array}{*{20}{c}}
 {0\quad t < 0}\\
 {1/2\quad t = 0}\\
 {1\quad t > 0}
-\end{array}} \right.$$
+\end{array}} \right.
+$$
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -185,7 +189,7 @@ fplot(u0(t - T),[-1,2]),ylim([-0.2,1.2]),grid,title('Time delay $$u_0(t - T)$$',
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-This is a *time delay* ... note for $u_0(t - T)$ the step change occurs T seconds **later** than it does for $u_o(t)$.
+This is a _time delay_ ... note for $u_0(t - T)$ the step change occurs T seconds **later** than it does for $u_o(t)$.
 
 ```{code-cell}
 ---
@@ -197,7 +201,7 @@ fplot(u0(t + T),[-2,1]),ylim([-0.2,1.2]),grid,title('Time advance $$u_0(t + T)$$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-This is a *time advance* ... note for $u_0(t + T)$ the step change occurs T seconds **earlier** than it does for $u_o(t)$.
+This is a _time advance_ ... note for $u_0(t + T)$ the step change occurs T seconds **earlier** than it does for $u_o(t)$.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -223,7 +227,7 @@ In the circuit shown above $i_s$ is a constant current source and the switch is 
 
 When the current through the capacitor $i_c(t) = i_s$ is a constant and the voltage across the capacitor is
 
-$$v_c(t) = \frac{1}{C}\int_{-\infty}^{t} i_c(\tau)\;d\tau$$ 
+$$v_c(t) = \frac{1}{C}\int_{-\infty}^{t} i_c(\tau)\;d\tau$$
 
 where $\tau$ is a dummy variable.
 
@@ -263,7 +267,7 @@ fplot(vc(t),[-1,4]),grid,title('A ramp function')
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-This type of signal is called a **ramp function**. Note that it is the *integral* of the step function (the resistor-capacitor circuit implements a simple integrator circuit).
+This type of signal is called a **ramp function**. Note that it is the _integral_ of the step function (the resistor-capacitor circuit implements a simple integrator circuit).
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -273,12 +277,14 @@ $$u_1(t) = \int_{-\infty}^{t}u_0(\tau)d\tau$$
 
 so
 
-$${u_1}(t) = \left\{ {\begin{array}{*{20}{c}}
+$$
+{u_1}(t) = \left\{ {\begin{array}{*{20}{c}}
 {0\quad t < 0}\\
 {t\quad t \ge 0}
-\end{array}} \right.$$
+\end{array}} \right.
+$$
 
-and 
+and
 
 $$u_0(t) = \frac{d }{dt}u_1(t)$$
 
@@ -286,7 +292,7 @@ $$u_0(t) = \frac{d }{dt}u_1(t)$$
 
 **Note**
 
-Higher order functions of $t$ can be generated by the repeated integration of the unit step function. 
+Higher order functions of $t$ can be generated by the repeated integration of the unit step function.
 
 For future reference, you should determine $u_2(t)$, $u_3(t)$ and $u_n(t)$ for yourself and make a note of the general rule:
 
@@ -304,7 +310,7 @@ In the circuit shown above, the switch is closed at time $t=0$ and $i_L(t)=0$ fo
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-**Solution** 
+**Solution**
 
 $$v_L(t) = L\frac{di_L}{dt}$$
 
@@ -312,13 +318,13 @@ Because the switch closes instantaneously at $t=0$
 
 $$i_L(t) = i_s u_0(t)$$
 
-Thus 
+Thus
 
 $$v_L(t) = i_s L\frac{d}{dt} u_0(t).$$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-To solve this problem we need to invent a function that represents the derivative of the unit step function. This function is called $\delta(t)$ or the *dirac delta* function (named after [Paul Dirac](https://en.wikipedia.org/wiki/Paul_Dirac)).
+To solve this problem we need to invent a function that represents the derivative of the unit step function. This function is called $\delta(t)$ or the _dirac delta_ function (named after [Paul Dirac](https://en.wikipedia.org/wiki/Paul_Dirac)).
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -332,8 +338,10 @@ $$\int_{-\infty}^{t}\delta(\tau)d\tau = u_0(t)$$
 
 and
 
-$$\delta(t) = 0\;\forall\;
-t\ne 0.$$
+$$
+\delta(t) = 0\;\forall\;
+t\ne 0.
+$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -366,7 +374,7 @@ Note that we can't plot dirac(t) in MATLAB with `ezplot`.
 
 ### Sampling Property
 
-The *sampling property* of the delta function states that
+The _sampling property_ of the delta function states that
 
 $$f(t)\delta(t-a) = f(a)\delta(t-a)$$
 
@@ -380,13 +388,13 @@ Multiplication of any function $f(t)$ by the delta function $\delta(t)$ results 
 
 The study of descrete-time (sampled) systems is based on this property.
 
-*You should work through the proof* for youself.
+_You should work through the proof_ for youself.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### Sifting Property
 
-The *sifting property* of the delta function states that
+The _sifting property_ of the delta function states that
 
 $$\int_{-\infty}^{\infty}f(t)\delta(t-\alpha)dt=f(\alpha)$$
 
@@ -394,17 +402,17 @@ $$\int_{-\infty}^{\infty}f(t)\delta(t-\alpha)dt=f(\alpha)$$
 
 That is, if multiply any function $f(t)$ by $\delta(t-\alpha)$, and integrate from $-\infty$ to $+\infty$, we will get the value of $f(t)$ evaluated at $t=\alpha.$
 
-*You should also work through the proof* for yourself.
+_You should also work through the proof_ for yourself.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### Higher Order Delta Fuctions
 
-the n*th*-order *delta function* is defined as the n*th* derivative of $u_0(t)$, that is
+the n*th*-order _delta function_ is defined as the n*th* derivative of $u_0(t)$, that is
 
 $$\delta^n(t)=\frac{d^n}{dt^n}[u_0(t)]$$
 
-The function $\delta'(t)$ is called the *doublet*, $\delta''(t)$ is called the *triplet* and so on.
+The function $\delta'(t)$ is called the _doublet_, $\delta''(t)$ is called the _triplet_ and so on.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -426,11 +434,11 @@ In this chapter we have looked at some elementary signals and the theoretical ci
 
 ### Takeaways
 
-* You should note that the unit step is the *heaviside function* $u_0(t)$.
-* Many useful signals can be synthesized by use of the unit step as a "gating function" in combination with other signals
-* That unit ramp function $u_1(t)$ is the integral of the step function.
-* The *Dirac delta* function $\delta(t)$ is the derivative of the unit step function. We sometimes refer to it as the *unit impulse function*.
-* The delta function has sampling and sifting properties that will be useful in the development of *time convolution* and *sampling theory*.
+- You should note that the unit step is the _heaviside function_ $u_0(t)$.
+- Many useful signals can be synthesized by use of the unit step as a "gating function" in combination with other signals
+- That unit ramp function $u_1(t)$ is the integral of the step function.
+- The _Dirac delta_ function $\delta(t)$ is the derivative of the unit step function. We sometimes refer to it as the _unit impulse function_.
+- The delta function has sampling and sifting properties that will be useful in the development of _time convolution_ and _sampling theory_.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 

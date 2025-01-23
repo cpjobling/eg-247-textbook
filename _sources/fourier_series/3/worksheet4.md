@@ -7,14 +7,15 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.15.2
 kernelspec:
-  display_name: Matlab
+  display_name: MKernel
   language: matlab
-  name: matlab
+  name: mkernel
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (ws4)=
+
 # Worksheet 4
 
 ## To accompany Unit 3.3 Computing Line Spectra
@@ -23,9 +24,9 @@ kernelspec:
 
 ## Colophon
 
-This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet4.pdf). We will step through this worksheet in class. 
+This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet4.pdf). We will step through this worksheet in class.
 
-An annotatable copy of the notes for this presentation will be distributed before the second class meeting as **Worksheet 4** in the **Week 4: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **Worksheets** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote. 
+An annotatable copy of the notes for this presentation will be distributed before the second class meeting as **Worksheet 4** in the **Week 4: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **Worksheets** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote.
 
 You are expected to have at least watched the video presentation of {ref}`exp_fs2` of the [notes](https://cpjobling.github.io/eg-247-textbook/) before coming to class. If you haven't watch it afterwards!
 
@@ -49,9 +50,9 @@ The recurrent rectangular pulse is used extensively in digital communication sys
 
 **What do we know?**
 
-* The pulse duration is $T/w$.
-* The recurrence interval $T$ is $w$ times the pulse duration.
-* $w$ is the ratio of pulse repetition time to the pulse duration &ndash; normally called the *duty cycle*.
+- The pulse duration is $T/w$.
+- The recurrence interval $T$ is $w$ times the pulse duration.
+- $w$ is the ratio of pulse repetition time to the pulse duration &ndash; normally called the _duty cycle_.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -61,10 +62,10 @@ Given
 
 $$C_k = \frac{1}{2\pi}\int_{-\pi}^{\pi} f(\theta) e^{-jk\theta}\,d\theta$$
 
-* Is the function **even** or **odd**?
-* Does the signal have **half-wave symmetry**?
-* What are the consequencies of symmetry on the form of the coefficients $C_k$?
-* What function do we actually need to integrate to compute $C_k$?
+- Is the function **even** or **odd**?
+- Does the signal have **half-wave symmetry**?
+- What are the consequencies of symmetry on the form of the coefficients $C_k$?
+- What function do we actually need to integrate to compute $C_k$?
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -166,7 +167,7 @@ Integrate for $k\ne 0$
 
 ### Effect of pulse width on frequency spectra
 
-* Recall pulse width = $T/w$
+- Recall pulse width = $T/w$
 
 We will use the provided MATLAB script [sinc.mlx](https://cpjobling.github.io/eg-247-textbook/fourier_series/matlab/sinc.mlx) to explore these in class. You will also need [pulse_fs.m](https://cpjobling.github.io/eg-247-textbook/fourier_series/matlab/pulse_fs.m). See Canvas/OneNote for copies of these files.
 
@@ -180,13 +181,11 @@ $\Omega_0 = 1$ rad/s; $w = 2$; $T = 2\pi$ s; $T/w = \pi$ s.
 
 #### w = 5
 
-
 $\Omega_0 = 1$ rad/s; $w = 5$; $T = 2\pi$ s; $T/w = 2\pi/5$ s.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 #### w = 10
-
 
 $\Omega_0 = 1$ rad/s; $w = 10$; $T = 2\pi$ s; $T/w = \pi/5$ s.
 
@@ -194,14 +193,14 @@ $\Omega_0 = 1$ rad/s; $w = 10$; $T = 2\pi$ s; $T/w = \pi/5$ s.
 
 #### Implications
 
-* As the width of the pulse **reduces** the width of the freqency spectra needed to fully describe the signal **increases** 
-* more bandwidth is needed to transmit the pulse.
+- As the width of the pulse **reduces** the width of the freqency spectra needed to fully describe the signal **increases**
+- more bandwidth is needed to transmit the pulse.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ### Example 4
 
-Use the result of Example 1 to compute the exponential Fourier series of the impulse train $\delta(t\pm 2\pi k)$ shown below 
+Use the result of Example 1 to compute the exponential Fourier series of the impulse train $\delta(t\pm 2\pi k)$ shown below
 
 <img src="pictures/impulse_train.png">
 
@@ -223,7 +222,7 @@ Try it!
 
 #### Proof!
 
-From the previous result, 
+From the previous result,
 
 $$C_k = \frac{A}{w}.\frac{\sin(k\pi/w)}{k\pi/w}$$
 
@@ -241,7 +240,7 @@ $$A = \frac{1}{T/w} = \frac{1}{2\pi/w} = \frac{w}{2\pi}.$$
 
 #### Pulse with unit area
 
-The area of each pulse is then 
+The area of each pulse is then
 
 $$\frac{2\pi}{w}\times\frac{w}{2\pi} = 1$$
 
@@ -256,7 +255,7 @@ and the pulse train is as shown below:
 #### New coefficents
 
 The coefficients of the Exponential Fourier Series are now:
-    
+
 $$C_n = \frac{w/2\pi}{w}\frac{\sin(k\pi/w)}{k\pi/w} = \frac{1}{2\pi}\frac{\sin(k\pi/w)}{k\pi/w}$$
 
 and as $\pi/w \to 0$ each recurrent pulse becomes a unit impulse, and the pulse train reduces to a unit impulse train.
@@ -280,7 +279,7 @@ $$f(t) = \frac{1}{2\pi}\sum_{n=-\infty}^{\infty} e^{jk\Omega_0 t}$$
 #### Spectrum of Unit Impulse Train
 
 The line spectrum of a sequence of unit impulses $\delta(t \pm kT)$ is shown below:
-                                                         
+
 <img src="pictures/impulse_spectrum.png">
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -297,9 +296,9 @@ What happens when the pulses to the left and right of the centre pulse become le
 
 #### Well?
 
-* As $T\to \infty$ the fundamental frequency $\Omega_0 \to 0$
-* We are then left with just one pulse centred around $t=0$.
-* The frequency difference between harmonics also becomes smaller.
-* Line spectrum becomes a continous function.
+- As $T\to \infty$ the fundamental frequency $\Omega_0 \to 0$
+- We are then left with just one pulse centred around $t=0$.
+- The frequency difference between harmonics also becomes smaller.
+- Line spectrum becomes a continous function.
 
-This result is the basis of the *Fourier Transform* which is coming soon.
+This result is the basis of the _Fourier Transform_ which is coming soon.

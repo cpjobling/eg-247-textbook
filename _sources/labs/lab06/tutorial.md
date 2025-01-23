@@ -4,34 +4,36 @@ jupyter:
     text_representation:
       extension: .md
       format_name: markdown
-      format_version: '1.3'
+      format_version: "1.3"
       jupytext_version: 1.14.1
   kernelspec:
-    display_name: Matlab
+    display_name: MKernel
     language: matlab
-    name: matlab
+    name: mkernel
 ---
 
 # Tutorial: Basic Matlab Functions for Representing Signals
 
 In this tutorial, you will learn how to use several MATLAB functions that
-are frequently used to construct and represent signals. Although there 
-are no problems to be worked in this tutorial, you should duplicate all 
+are frequently used to construct and represent signals. Although there
+are no problems to be worked in this tutorial, you should duplicate all
 the examples in MATLAB to give yourself practice with the commands.
 
 ## Discrete-time (DT) Signals
 
-In general, signals will be represented in a row or column vector, 
-depending on the context. All vectors are represented in MATLAB are 
-indexed starting with 1, i.e. `y(1)` is the first element of the vector 
-`y`. If these indices do not correspond to those in your application, 
-you an create an additional index vector to properly keep track of the 
+In general, signals will be represented in a row or column vector,
+depending on the context. All vectors are represented in MATLAB are
+indexed starting with 1, i.e. `y(1)` is the first element of the vector
+`y`. If these indices do not correspond to those in your application,
+you an create an additional index vector to properly keep track of the
 signal index. For example, to represent the discrete-time (DT) signal:
 
-$$x[n] = \left\{ {\begin{array}{*{20}{c}}
+$$
+x[n] = \left\{ {\begin{array}{*{20}{c}}
 {2n,}&{ - 3 \le n \le 3,}\\
 {0,}&{{\rm{otherwise}}}
-\end{array}} \right.$$
+\end{array}} \right.
+$$
 
 You could first use the colon operator to define the index vector for the non-zero samples of `x[n]`, and then define the vector `x` containing the values of the signal at each of these time indices:
 
@@ -82,11 +84,11 @@ We will explore two methods for representing continuous-time signals in MATLAB. 
 
 ## Sinusoids and complex exponentials
 
-Sinusoids and complex exponentials are important signals in the study of linear systems. MATLAB provides several functions that are useful for defining such signals, especially if you have already defined either a discrete-time or continuous-time index vector. For instance, if you wanted to form a vector to represent $x(t) = \sin(\pi t/4)$ for $-5 \le t \le 5$, you could use the vector `t` defined in the previous paragraph and type `x = sin(pi*t/4)`. Note that when the argument to `sin` (or many other MATLAB functions such as `cos` or `exp`) is a vector, the function returns a vector of the same size where each element of the output vector is the function applied to the corresponding element of the imput vector. 
+Sinusoids and complex exponentials are important signals in the study of linear systems. MATLAB provides several functions that are useful for defining such signals, especially if you have already defined either a discrete-time or continuous-time index vector. For instance, if you wanted to form a vector to represent $x(t) = \sin(\pi t/4)$ for $-5 \le t \le 5$, you could use the vector `t` defined in the previous paragraph and type `x = sin(pi*t/4)`. Note that when the argument to `sin` (or many other MATLAB functions such as `cos` or `exp`) is a vector, the function returns a vector of the same size where each element of the output vector is the function applied to the corresponding element of the imput vector.
 
 You can use the `plot` command to plot your approximation to the continuous-time function $x(t)$. Unlike `stem`, `plot` connects adjacent elements with a straight line, so that when the time index is finely sampled, the straight lines are a close approximation to the plot of the original continuous-time signal. For this example you can generate such a plot by typing `plot(t,x)`. In general, you will want to use `stem` to plot short discrete-time sequemnces, and `plot` for sampled approximations of continuous-time signals or for very long discrete-time signals where the number of stems grows unwieldy.
 
-Discrete-time sinusoids and complex exponentials can also be generated using `cos`, `sin` and `exp`. For example, to respresent the discrete-time signal 
+Discrete-time sinusoids and complex exponentials can also be generated using `cos`, `sin` and `exp`. For example, to respresent the discrete-time signal
 $$x[n]=e^{j(\pi/8)n}$$
 for $0\le n \le 32$ you would type:
 
@@ -153,13 +155,13 @@ y1 = 2 * x1;
 y1 = x1.^3;
 ```
 
-Note that for multiplying, dividing and exponentiating on a term-by-term basis you must precede the operator with a period '`.`', i.e. use the `.*` operator rather than just `*` for term-by-term multiplication. MATLAB interprets the `*` operator without a period to be *matrix multiplication* operator, not term-by-term multiplication. For example if you try to multiply `x1` by `x2` using `*`, you will get an error message:
+Note that for multiplying, dividing and exponentiating on a term-by-term basis you must precede the operator with a period '`.`', i.e. use the `.*` operator rather than just `*` for term-by-term multiplication. MATLAB interprets the `*` operator without a period to be _matrix multiplication_ operator, not term-by-term multiplication. For example if you try to multiply `x1` by `x2` using `*`, you will get an error message:
 
 ```matlab
 x1*x2
 ```
 
-This is because matrix multiplication requires that the number of columns in the first argument match the number of rows in the second argumemt, which is not true for two $1\times 5$ vectors `x1` and `x2`. You must also use `./` and `.^`  when operating on vectors term-by-term, since `/` and `^` are also matric operations in MATLAB.
+This is because matrix multiplication requires that the number of columns in the first argument match the number of rows in the second argumemt, which is not true for two $1\times 5$ vectors `x1` and `x2`. You must also use `./` and `.^` when operating on vectors term-by-term, since `/` and `^` are also matric operations in MATLAB.
 
 The `print` command allows you to print the current plot. You should type `help print` to understand how it works on your system, as it will vary according to the operating system and configuration of the computer you are using.
 
@@ -212,10 +214,10 @@ ylabel('x2[n]')
 ```
 
 <!-- #region -->
+
 You can then type `prob2` to run these commands and generate the desired plot and compute the average value of the new signal. Instead of retyping all 7 lines, you only had to edit about a dozen characters. We strongly encourage you to use scripts in working through these laboratories, with a separate script for each exercise, even each part of an exercise. Scripts also make debugging your work easier, as you can fix one mistake and re-run the modified sequence of commands. To encourage you to use scripts, we will ask you to attach your solutions to each lab exercise to the lab portfolio as scripts. You must do this in order to claim your marks.
 
 MATLAB has another useful feature in that by adding some simple commands as comments to your scripts, they can be published as web pages, PDFs or word documents, and the published documents will include all the graphs produced in the run. You can add sub-sections and even mathematical notation. See `help publish` for more details. **Note** comments are indicated in MATLAB by `%`. Anything after `%` is ignored by MATLAB, but can contribute to the documentation of your work.
-
 
 ## Functions
 
@@ -231,6 +233,7 @@ z = (5/9)*(x-32)
 ```
 
 Two sample calls to `foo` are shown below:
+
 <!-- #endregion -->
 
 ```matlab

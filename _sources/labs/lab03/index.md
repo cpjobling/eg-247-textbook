@@ -4,57 +4,57 @@ jupyter:
     text_representation:
       extension: .md
       format_name: markdown
-      format_version: '1.3'
+      format_version: "1.3"
       jupytext_version: 1.14.4
   kernelspec:
-    display_name: Matlab
+    display_name: MKernel
     language: matlab
-    name: matlab
+    name: mkernel
 ---
 
 # Lab 3: Laplace transforms and transfer functions for circuit analysis
-
 
 ## Preamble
 
 ### Associated Class Notes
 
-This lab supports the materials covered in [Chapter 3.3](../../laplace_transform/3/circuit_analysis) and [Chapter 3.4](../../laplace_transform/4/transfer_functions) of the course notes. You may wish to refer to the Worksheets [worksheet 6](../../laplace_transform/3/worksheet6) and [worksheet 7](../../laplace_transform/4/worksheet7) for additional examples to try. 
+This lab supports the materials covered in [Chapter 3.3](../../laplace_transform/3/circuit_analysis) and [Chapter 3.4](../../laplace_transform/4/transfer_functions) of the course notes. You may wish to refer to the Worksheets [worksheet 6](../../laplace_transform/3/worksheet6) and [worksheet 7](../../laplace_transform/4/worksheet7) for additional examples to try.
 
 ### Other formats
 
 This document is available in [HTML](index) format for online viewing [PDF](https://cpjobling.github.io/eg-247-textbook/labs/lab03/lab03.pdf) for printing.
 
 ### Acknowledgements
-These examples have been adapted from [Chapter 4](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853#ppg=101) of {cite}`karris`.
 
+These examples have been adapted from [Chapter 4](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853#ppg=101) of {cite}`karris`.
 
 ## Aims
 
-The purpose of this laboratory is to explore the use of MATLAB for circuit analysis and Simulink for circuit modelling using transfer functions. 
+The purpose of this laboratory is to explore the use of MATLAB for circuit analysis and Simulink for circuit modelling using transfer functions.
 
 It also encourages you to make full use of the documentation features afforded by the Live Script format.
 
 <!-- #region -->
+
 ## Assessment criteria
 
 Marks can be claimed according to how many of the parts of Lab Exercises 4 to 6 and Mini-project 2 and have been completed.
 
-You can take nadvantage of a number of MATLAB Graded assessments that will provide guidance and feedback enabling you to complete exercises 4, 5 and 6. See [Using MATLAB Grader for Lab 3](https://canvas.swansea.ac.uk/courses/36921/pages/using-matlab-grader-for-lab-3?module_item_id=1964755) for details. 
+You can take nadvantage of a number of MATLAB Graded assessments that will provide guidance and feedback enabling you to complete exercises 4, 5 and 6. See [Using MATLAB Grader for Lab 3](https://canvas.swansea.ac.uk/courses/36921/pages/using-matlab-grader-for-lab-3?module_item_id=1964755) for details.
 
 The mini project should be completed with a Live Script and a Simulink file.
 
 Your peer assessor is encouraged to give feedback on the quality of the Live Script documentation you include in your submissions.
 
-
 Detailed marking criteria for this and the other labs and the project are given in the linked [Assessment Criteria](https://docs.google.com/spreadsheets/d/1m5ttr8WNoXa_yhXRESI4f7fKKmhK9HsTJjRViqP4i2o/edit?usp=sharing) [Google sheet].
+
 <!-- #endregion -->
 
 ## Setup
 
 ### Before you start
 
-If you haven't already, create a suitable folder structure on your file-store for your labs. 
+If you haven't already, create a suitable folder structure on your file-store for your labs.
 
 I suggest
 
@@ -76,9 +76,10 @@ The linked m-File is a short tutorial introduction to the definition of transfer
 Linked m-file: [tf_matlab.m](https://cpjobling.github.io/eg-247-textbook/labs/lab03/tf_matlab.m).
 
 <!-- #region -->
+
 ## Lab Exercises
 
-As an experiment in course development for this laboratory you have the option to complete Lab Exercises 4, 5 and 6 using the instructions below or by guided assessment using MATLAB Grader. 
+As an experiment in course development for this laboratory you have the option to complete Lab Exercises 4, 5 and 6 using the instructions below or by guided assessment using MATLAB Grader.
 
 In all these exercises you should add sections, headings and explanatory text to document your Live Script files so and help your peer assessor understand your solutions.
 
@@ -86,11 +87,9 @@ In all these exercises you should add sections, headings and explanatory text to
 
 Download the linked script file [solution3.m](https://cpjobling.github.io/eg-247-textbook/labs/lab03/solution3.m) for the Solution for Example 3 from Week 3. Open it as a Live Script file and run all the code. Study the file which presents part of the solution to Textbook Example 4.3.
 
-
-
 #### Step 1
 
-Save the Live Script file then save it as `ex4.mlx`. 
+Save the Live Script file then save it as `ex4.mlx`.
 
 At the line that which says
 
@@ -98,7 +97,7 @@ At the line that which says
 % ADD NEW CODE HERE (1)
 ```
 
-We want you to add code that completes the derivation of the transfer function. 
+We want you to add code that completes the derivation of the transfer function.
 
 So, starting from the simplified circuit ([Fig. 4.9](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853&ppg=101#ppg=101) from Karris{cite}`karris`: p4-5):
 
@@ -112,13 +111,13 @@ Define equation 4.5 in MATLAB:
     eq45 = (Vout - 1 - 3/s)/(1/s + 2 + s/2) + Vout/1 + Vout/(s/2) == 0
 ```
 
-Now use  `Vout = solve(eq45,Vout)` function to confirm Equation 4.6
-    
+Now use `Vout = solve(eq45,Vout)` function to confirm Equation 4.6
+
 $$V_{\mathrm out}(s) = \frac{2s(s+3)}{s^3+8s^2+10s+4}.$$
 
 #### Step 2
 
-The provided code uses `roots` to find the factors of the denominator 
+The provided code uses `roots` to find the factors of the denominator
 
 $$s^3+8s^2+10s+4$$
 
@@ -130,12 +129,11 @@ Use the inverse Laplace Transform on the rational polynomial with real and quadr
 
 #### Step 4
 
-Verify that the response is 
+Verify that the response is
 
 $$v_{\mathrm out}(t) = \left(1.36e^{-6.57t}+0.64e^{-0.715t}\cos 0.316t -1.84e^{-0.715t}\sin 0.316t\right)u_0(t)$$
 
 Use `fplot` to plot this result.
-
 
 #### Step 5
 
@@ -145,13 +143,11 @@ Save your solution `ex4.mlx` for upload to Canvas.
 
 Alternatively, take the code you developed and paste it into Exercise 4 of Lab 3 in the MATLAB Grader for parts 4.1 to 4.4 and instant grading and feedback.
 
-
 ### Lab Exercise 5: Problem Solving in MATLAB
 
 Choose one of the Problems Q1-Q3 from [Section 4.7](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853#ppg=121) of {cite}`karris` (page 4-21) and use MATLAB to adapt the methods used to solve the problem in **Lab Exercise 4** to determine the required solution.
 
 Save your chosen solution as a Live Script file with the name `ex5.mlx` for upload to Canvas.
-
 
 ### Lab Exercise 6: Complex Impedance and Admittance
 
@@ -167,11 +163,10 @@ Use the same technique to solve Q4 from Section 4.7 (Exercises) of Karris (p. 4-
 
 Save your solution to a Live Script file with the name `ex6.mlx` for upload to Canvas.
 
-
 ### Mini Project 2: Transfer Functions
 
-Download the linked MATLAB script which computes the solution to [Example 4.7](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853) 
-from {cite}`karris` ([Example 7](https://cpjobling.github.io/eg-247-textbook/laplace_transform/4/transfer_functions.html#example-7) from the notes). This script computes the 
+Download the linked MATLAB script which computes the solution to [Example 4.7](https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853)
+from {cite}`karris` ([Example 7](https://cpjobling.github.io/eg-247-textbook/laplace_transform/4/transfer_functions.html#example-7) from the notes). This script computes the
 transfer function of the Op-Amp circuit shown below:
 
 ![The s-Domain circuit for Example 4.7](fig4_21.png)
@@ -205,9 +200,9 @@ C1 = **54** nF
 C2 = **3**0 nF
 
 If your student number contains 0s, you should substitute a digit if your choice.
-You may find `doc` or `help` and the symbolic toolbox function ``sym2poly`` useful.
+You may find `doc` or `help` and the symbolic toolbox function `sym2poly` useful.
 
-To Do: open `solution7.m` as a Live Script file and save as `proj2.mlx`. Adapt the script to repeat the computation using component values based on your student number. 
+To Do: open `solution7.m` as a Live Script file and save as `proj2.mlx`. Adapt the script to repeat the computation using component values based on your student number.
 
 Then add text and instructions to:
 
@@ -220,6 +215,7 @@ Then add text and instructions to:
 7. Repeat the simulation of the sinsoidal response in Simulink - save model as `proj2.slx`.
 
 Submit the files `proj2.mlx` and `proj2.slx` to Canvas.
+
 <!-- #endregion -->
 
 ## What to hand in
@@ -245,10 +241,9 @@ The deadline for claims and submission is:
 
 **4:00pm, 13th March 2023**.
 
-
 ## Peer assessment procedure for this lab
 
-On Monday 6th March, you should receive notification that the submission from one of your colleagues is available for peer assessment. This notification will arrive by email (if you have your Canvas notifications turned on) or via the inbox on Canvas or the Canvas Student App. 
+On Monday 6th March, you should receive notification that the submission from one of your colleagues is available for peer assessment. This notification will arrive by email (if you have your Canvas notifications turned on) or via the inbox on Canvas or the Canvas Student App.
 
 This is the procedure you should follow:
 
@@ -256,8 +251,8 @@ This is the procedure you should follow:
 
 2. Check that the files are downloaded and named correctly as per the note on [Filenaming Conventions](../peer-assessment#important-note-about-file-names) in the peer-assessment document.
 
-3. Open the Live Script file `proj2.mlx` and execute **run all**. Check that the results are all present and that there are no errors. Review the formatting of the file and think about how readable and understandable the script is as a record of the experiment. 
+3. Open the Live Script file `proj2.mlx` and execute **run all**. Check that the results are all present and that there are no errors. Review the formatting of the file and think about how readable and understandable the script is as a record of the experiment.
 
 4. Open the Simulink model `proj2.slx`. Review the transfer function block and confirm that it matches the values computed in `proj2.mlx`. Run the simulation and check the results.
 
-5. Review the live Script files `ex4.mlx`, `ex5.mlx` and `ex6.mlx` in the same way that you did for `proj2.mlx`. Comment on your findings. 
+5. Review the live Script files `ex4.mlx`, `ex5.mlx` and `ex6.mlx` in the same way that you did for `proj2.mlx`. Comment on your findings.

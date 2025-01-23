@@ -7,9 +7,9 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.14.4
 kernelspec:
-  display_name: Matlab (Connection)
+  display_name: MKernel
   language: matlab
-  name: matlab_connect
+  name: mkernel
 ---
 
 # Lab 6: Signal Processing OnRamp
@@ -19,9 +19,9 @@ This free, two-hour tutorial provided by the MathWorks (developer of MATLAB and 
 The official prerequisite for the **Signal Processing OnRamp** is the **[MATLAB OnRamp](https://uk.mathworks.com/learn/tutorials/matlab-onramp.html)** but you have enough experience of MATLAB to satisfy this requirement.
 
 To claim the marks for this assessment you need to [register with the MathWorks](https://uk.mathworks.com/mwaccount/register?uri=https%3A%2F%2Fuk.mathworks.com%2Fmwaccount%2F) using your Swansea University email. Once you have gone through the registration process, which includes email verification, you can <a class="inline_disabled" href="https://uk.mathworks.com/login" target="_blank" rel="noopener">login to the Mathworks</a> and complete the <a class="inline_disabled" href="https://uk.mathworks.com/learn/tutorials/signal-processing-onramp.html" target="_blank" rel="noopener">Signal Processing OnRamp</a>.
-    
+
 When you have completed the <strong>Signal Processing OnRamp</strong>, you will get a course completion certificate from the MathWorks. You need to submit the link to your certificate and add to the assignment comment a short reflection on your experiences with the <strong>Signal Processing OnRamp</strong>.
-    
+
 When you submit your <strong>Signal Processing OnRamp</strong> certificate and have provided a reflection, you will be awarded 5 marks.</span></p>
 
 You need to complete the <strong>Signal Processing OnRamp</strong> by the 20th March 2023.</span></p>

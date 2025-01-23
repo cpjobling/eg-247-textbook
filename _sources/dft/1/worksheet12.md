@@ -7,22 +7,22 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.15.2
 kernelspec:
-  display_name: Matlab
+  display_name: MKernel
   language: matlab
-  name: matlab
+  name: mkernel
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# Worksheet 12 
+# Worksheet 12
 
 ## To accompany Unit 6.1 The Discrete Fourier Transform
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-We will step through this worksheet in class. 
+We will step through this worksheet in class.
 
-You are expected to have at least watched the video presentation of {ref}`unit6.1` of the [notes](https://cpjobling.github.io/eg-247-textbook/) before coming to class. 
+You are expected to have at least watched the video presentation of {ref}`unit6.1` of the [notes](https://cpjobling.github.io/eg-247-textbook/) before coming to class.
 
 If you haven't watch it afterwards!
 
@@ -30,11 +30,11 @@ If you haven't watch it afterwards!
 
 ### List of Abbreviations
 
-* CT -- Continuous Time
-* DT -- Discrete Time
-* DF - Discrete frequency
-* DFT -- Discrete (Time) Fourier Transform
-* FFT -- Fast Fourier Transform
+- CT -- Continuous Time
+- DT -- Discrete Time
+- DF - Discrete frequency
+- DFT -- Discrete (Time) Fourier Transform
+- FFT -- Fast Fourier Transform
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -58,7 +58,7 @@ $$F\left(\exp\left({j\omega T}\right)\right) = \sum_{n=0}^{\infty} f[n]\exp\left
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-This is an infinite sum.  So to compute it, we need to truncate it.
+This is an infinite sum. So to compute it, we need to truncate it.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -82,7 +82,7 @@ and $m = 0,1,2,\ldots, N-1$ and $n = 0,1,2,\ldots, N-1$.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-We refer to the equation 
+We refer to the equation
 
 $$X[m] =  \sum_{n=0}^{N-1} x[n]\exp\left({-j2\pi \frac{m n}{N}}\right)$$
 
@@ -120,7 +120,7 @@ $$X[m] =  \sum_{n=0}^{N-1} x[n]\exp\left({-j2\pi \frac{m n}{N}}\right) = \sum_{n
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-For $n=0$ this reduces to 
+For $n=0$ this reduces to
 
 $$X[m] = x[0].$$
 
@@ -146,10 +146,10 @@ Note that the summations are from 1 to $N-1$ because $n=0$ is covered in the rea
 
 ### In Class Example 1
 
-A discrete time signal is defined by the sequence 
+A discrete time signal is defined by the sequence
 
-$x[0] = 1$, $x[1] = 2$, $x[2] = 2$, $x[3] = 1$, 
-and $x[n]=0$ for all other values of $n$. 
+$x[0] = 1$, $x[1] = 2$, $x[2] = 2$, $x[3] = 1$,
+and $x[n]=0$ for all other values of $n$.
 
 Compute the frequency components $X[m]$.
 
@@ -157,7 +157,7 @@ Compute the frequency components $X[m]$.
 
 ### Solution 1
 
-* Compute the $N$ point DFT for $\Re\left\{X[m]\right\}$.
+- Compute the $N$ point DFT for $\Re\left\{X[m]\right\}$.
 
 <pre style="border: 2px solid blue">
 
@@ -181,7 +181,7 @@ Compute the frequency components $X[m]$.
 
 </pre>
 
-* Compute the four point DFT for $\Im\left\{X[m]\right\}$.
+- Compute the four point DFT for $\Im\left\{X[m]\right\}$.
 
 <pre style="border: 2px solid blue">
 
@@ -205,7 +205,7 @@ Compute the frequency components $X[m]$.
 
 </pre>
 
-* Add these together to find $X[m]$.
+- Add these together to find $X[m]$.
 
 <pre style="border: 2px solid blue">
 
@@ -239,7 +239,7 @@ Use the inverse DFT to compute the discrete-time sequence $x[n]$ from $X[m]$.
 
 ### Solution 2
 
-* Write down the expression $x[n]$ in terms of $X[m]$.
+- Write down the expression $x[n]$ in terms of $X[m]$.
 
 <pre style="border: 2px solid blue">
 
@@ -263,7 +263,7 @@ Use the inverse DFT to compute the discrete-time sequence $x[n]$ from $X[m]$.
 
 </pre>
 
-* Compute $x[0]$ from this result.
+- Compute $x[0]$ from this result.
 
 <pre style="border: 2px solid blue">
 
@@ -287,7 +287,7 @@ Use the inverse DFT to compute the discrete-time sequence $x[n]$ from $X[m]$.
 
 </pre>
 
-* Repeat for $x[1]$, $x[2]$ and $x[3]$.
+- Repeat for $x[1]$, $x[2]$ and $x[3]$.
 
 <pre style="border: 2px solid blue">
 
@@ -320,7 +320,7 @@ Use the inverse DFT to compute the discrete-time sequence $x[n]$ from $X[m]$.
 slideshow:
   slide_type: fragment
 ---
-format compact
+format compact; setappdata(0, "MKernel_plot_format", 'svg')
 cd matlab
 pwd
 ```
@@ -405,7 +405,7 @@ It is convenient to represent this as $W_N$, that is
 
 $$W_N = \exp\left({\frac{-j2\pi}{N}}\right)$$
 
-and consequently, 
+and consequently,
 
 $$W_N^{-1} = \exp\left({\frac{j2\pi}{N}}\right).$$
 
@@ -420,7 +420,7 @@ $W_8$
 
 ### Solution 3
 
-* Rewrite $W_8$ in exponential form
+- Rewrite $W_8$ in exponential form
 
 <pre style="border: 2px solid blue">
 
@@ -436,17 +436,17 @@ $W_8$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-* Visualize on unit circle
+- Visualize on unit circle
 
 ![Visualization of the function unction $W_8^n$](pictures/circle.png)
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-* Complete this table
+- Complete this table
 
-| $n$ | $\theta$        | Real | Imaginary | $W_8^n$ |
-|-----|-----------------|------|-----------|--------|
-| 0   | 0               | 1    |  0        | 1      |
+| $n$ | $\theta$ | Real | Imaginary | $W_8^n$ |
+| --- | -------- | ---- | --------- | ------- |
+| 0   | 0        | 1    | 0         | 1       |
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -479,7 +479,7 @@ $W_8$
 
 Using this notation, the DFT and inverse DFT pairs are represented as:
 
-$$X[m] =  \sum_{n=0}^{N-1} x[n]W_N^{nm}$$ 
+$$X[m] =  \sum_{n=0}^{N-1} x[n]W_N^{nm}$$
 
 and
 
@@ -489,7 +489,7 @@ $$x[n] = \frac{1}{N}\sum_{n=0}^{N-1} X[m]W_N^{-nm}$$
 
 ### MATLAB implementation of DFT
 
-Using the W notation, it is very easy to write a function to implement the DFT. 
+Using the W notation, it is very easy to write a function to implement the DFT.
 
 We will demonstrate this in class.
 
@@ -547,11 +547,11 @@ In the remainder of these notes, the correspondence between $x[n]$ and $X[m]$ wi
 
 $$x[n] \Leftrightarrow X[m]$$
 
-In Example 2, we found that, although the DT sequence $x[n]$ was real, the discrete frequency (DF) sequence was complex. However, in most applications we are interested in the magnitude and phase of the DF, that is 
+In Example 2, we found that, although the DT sequence $x[n]$ was real, the discrete frequency (DF) sequence was complex. However, in most applications we are interested in the magnitude and phase of the DF, that is
 
-$$|X[m]|$$ 
+$$|X[m]|$$
 
-and 
+and
 
 $$
  \angle X[m].
@@ -563,9 +563,9 @@ $$
 
 Use MATLAB to compute the magnitude of the frequency components of the following DT function:
 
-| $n$ | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 
-|-----|---|---|---|---|---|---|---|---|---|---|----|----|----|----|----|----|
-| $x[n]$ |1.0 |2 |2 |2.5 |1.5 |0.5 |-0.5 |-1.5 |-2.5 |-0.5 |0.25 | 1.25 | 2 | 1.5 | 1 | 0.5 |
+| $n$    | 0   | 1   | 2   | 3   | 4   | 5   | 6    | 7    | 8    | 9    | 10   | 11   | 12  | 13  | 14  | 15  |
+| ------ | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- |
+| $x[n]$ | 1.0 | 2   | 2   | 2.5 | 1.5 | 0.5 | -0.5 | -1.5 | -2.5 | -0.5 | 0.25 | 1.25 | 2   | 1.5 | 1   | 0.5 |
 
 We will compute this in class and make some comments afterwards.
 
@@ -605,22 +605,22 @@ stem([0:15],abs(Xm)),xlabel('m'),ylabel('|X[m]|'),title('Discrete Frequency Sequ
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-Points to note: 
+Points to note:
 
-* $X[0] = 12$ is the DC component of the DT sequence.
-* After the $|X[8]| = 1.4872$ term, the magnitude of the frequency values for the range $9 <= m \le 15$ are the mirror image of the values for the range $0 <= m <= 7$.
-* This is not a coincidence, in fact if $x[n]$ is an N-point *real discrete-time function*, only $N/2$ of the *frequency components* of $|X[m]|$ *are unique*.
+- $X[0] = 12$ is the DC component of the DT sequence.
+- After the $|X[8]| = 1.4872$ term, the magnitude of the frequency values for the range $9 <= m \le 15$ are the mirror image of the values for the range $0 <= m <= 7$.
+- This is not a coincidence, in fact if $x[n]$ is an N-point _real discrete-time function_, only $N/2$ of the _frequency components_ of $|X[m]|$ _are unique_.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## A summary of the important features of sampling and the DFT
 
-* $N$ is the number of samples in frequency.
-* $f_s$ sampling frequency, samples per second.
-* $T_t$ period of a periodic DT function.
-* $t_s$ interval between the $N$ samples in time period $T_t$.
-* $f_f$ period of a periodic DF function.
-* $F_s$ interval between the $N$ samples in frequency period $T_f$.
+- $N$ is the number of samples in frequency.
+- $f_s$ sampling frequency, samples per second.
+- $T_t$ period of a periodic DT function.
+- $t_s$ interval between the $N$ samples in time period $T_t$.
+- $f_f$ period of a periodic DF function.
+- $F_s$ interval between the $N$ samples in frequency period $T_f$.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -654,11 +654,11 @@ To reproduce this plot use [repeat.m](https://cpjobling.github.io/eg-247-textboo
 
 The period of a periodic DT function is 0.125 ms and it is sampled at 1024 equally spaced points. It is assumed that with this number of samples, the sampling theorem is satisfied and thus there will be no aliasing.
 
-1. Compute the interval $t_t$ between samples for the periodic signal 
+1. Compute the interval $t_t$ between samples for the periodic signal
 1. Compute the period $T_f$ of the frequency spectrum in kHz
-2. Compute the interval $t_f$ between frequency components in kHz
-3. Compute the sampling frequency $f_s$.
-4. Compute the Nyquist frequency $f_n$.
+1. Compute the interval $t_f$ between frequency components in kHz
+1. Compute the sampling frequency $f_s$.
+1. Compute the Nyquist frequency $f_n$.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -666,7 +666,7 @@ The period of a periodic DT function is 0.125 ms and it is sampled at 1024 equal
 
 To be done in class.
 
-*  Compute the interval $t_t$ between samples for the periodic signal 
+- Compute the interval $t_t$ between samples for the periodic signal
 
 <pre style="border: 2px solid blue">
 
@@ -680,7 +680,7 @@ To be done in class.
 
 </pre>
 
-* Compute the period of the frequency spectrum $T_f$ in kHz
+- Compute the period of the frequency spectrum $T_f$ in kHz
 
 <pre style="border: 2px solid blue">
 
@@ -694,7 +694,7 @@ To be done in class.
 
 </pre>
 
-* Compute the interval $t_f$ between frequency components in kHz
+- Compute the interval $t_f$ between frequency components in kHz
 
 <pre style="border: 2px solid blue">
 
@@ -708,7 +708,7 @@ To be done in class.
 
 </pre>
 
-* Compute the sampling frequency $f_s$.
+- Compute the sampling frequency $f_s$.
 
 <pre style="border: 2px solid blue">
 
@@ -722,7 +722,7 @@ To be done in class.
 
 </pre>
 
-* Compute the Nyquist frequency $f_n$.
+- Compute the Nyquist frequency $f_n$.
 
 <pre style="border: 2px solid blue">
 

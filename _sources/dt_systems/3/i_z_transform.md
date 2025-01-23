@@ -7,14 +7,15 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.15.2
 kernelspec:
-  display_name: Matlab
+  display_name: MKernel
   language: matlab
-  name: matlab
+  name: mkernel
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (unit5.3)=
+
 # Unit 5.3: The Inverse Z-Transform
 
 +++ {"slideshow": {"slide_type": "notes"}}
@@ -23,11 +24,11 @@ kernelspec:
 
 An annotatable worksheet for this presentation is available as [**Worksheet 10**](worksheet10).
 
-* The source code for this page is [dt_systems/3/i_z_transform.ipynb](https://github.com/cpjobling/eg-247-textbook/blob/master/dt_systems/3/i_z_transform.ipynb).
+- The source code for this page is [dt_systems/3/i_z_transform.ipynb](https://github.com/cpjobling/eg-247-textbook/blob/master/dt_systems/3/i_z_transform.ipynb).
 
-* You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/i_z_transform.html)). 
+- You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/i_z_transform.html)).
 
-* This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/i_z_transform.pdf) file.
+- This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/i_z_transform.pdf) file.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -43,19 +44,19 @@ The material in this presentation and notes is based on Chapter 9 (Starting at [
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Inverse Z-Transform
+- Inverse Z-Transform
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Examples using PFE
+- Examples using PFE
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Examples using Long Division
+- Examples using Long Division
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Analysis in MATLAB
+- Analysis in MATLAB
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -63,9 +64,9 @@ The material in this presentation and notes is based on Chapter 9 (Starting at [
 
 The inverse Z-Transform enables us to extract a sequence $f[n]$ from $F(z)$. It can be found by any of the following methods:
 
-* Partial fraction expansion
-* The inversion integral
-* Long division of polynomials
+- Partial fraction expansion
+- The inversion integral
+- Long division of polynomials
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -81,7 +82,7 @@ where $k$ is a constant, and $r_i$ and $p_i$ represent the residues and poles re
 
 **Notes**
 
-1. If complex, the poles and residues will be in complex conjugate pairs 
+1. If complex, the poles and residues will be in complex conjugate pairs
 
 $$\frac{r_{i} z}{z - p_i} + \frac{r_{i}^* z}{z - p_i^*}$$
 
@@ -89,9 +90,9 @@ $$\frac{r_{i} z}{z - p_i} + \frac{r_{i}^* z}{z - p_i^*}$$
 
 ### Step 1: Make Fractions Proper
 
-* Before we expand $F(z)$ into partial fraction expansions, we must first express it as a *proper* rational function.
-* This is done by expanding $F(z)/z$ instead of $F(z)$
-* That is we expand
+- Before we expand $F(z)$ into partial fraction expansions, we must first express it as a _proper_ rational function.
+- This is done by expanding $F(z)/z$ instead of $F(z)$
+- That is we expand
 
 $$\frac{F(z)}{z} = \frac{k}{z} + \frac{r_1}{z-p_1} + \frac{r_2}{z-p_2} + \cdots$$
 
@@ -99,7 +100,7 @@ $$\frac{F(z)}{z} = \frac{k}{z} + \frac{r_1}{z-p_1} + \frac{r_2}{z-p_2} + \cdots$
 
 ### Step 2: Find residues
 
-* Find residues from
+- Find residues from
 
 $$r_k = \lim_{z\to p_k}(z - p_k)\frac{F(z)}{z} = (z - p_k)\left.\frac{F(z)}{z}\right|_{z=p_k}$$
 
@@ -107,7 +108,7 @@ $$r_k = \lim_{z\to p_k}(z - p_k)\frac{F(z)}{z} = (z - p_k)\left.\frac{F(z)}{z}\r
 
 ### Step 3: Map back to transform tables form
 
-* Rewrite $F(z)/z$:
+- Rewrite $F(z)/z$:
 
 $$z\frac{F(z)}{z} = F(z) = k + \frac{r_1z}{z-p_1} + \frac{r_2z}{z-p_2} + \cdots$$
 
@@ -153,16 +154,16 @@ $$F(z) = \frac{1}{(1 - 0.5z^{-1})(1 - 0.75z^{-1})(1 - z^{-1})}$$
 
 ### MATLAB solution for example 1
 
-See [example1.mlx](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example1.mlx). (Also available as  [example1.m](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example1.m).)
+See [example1.mlx](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example1.mlx). (Also available as [example1.m](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example1.m).)
 
-Uses MATLAB functions: 
+Uses MATLAB functions:
 
-* `collect` &ndash; expands a polynomial
-* `sym2poly` &ndash; converts a polynomial into a numeric polymial (vector of coefficients in descending order of exponents)
-* `residue` &ndash; calculates poles and zeros of a polynomial
-* `ztrans` &ndash; symbolic z-transform
-* `iztrans` &ndash; symbolic inverse z-transform
-* `stem` &ndash; plots sequence as a "lollipop" diagram
+- `collect` &ndash; expands a polynomial
+- `sym2poly` &ndash; converts a polynomial into a numeric polymial (vector of coefficients in descending order of exponents)
+- `residue` &ndash; calculates poles and zeros of a polynomial
+- `ztrans` &ndash; symbolic z-transform
+- `iztrans` &ndash; symbolic inverse z-transform
+- `stem` &ndash; plots sequence as a "lollipop" diagram
 
 ```{code-cell}
 ---
@@ -171,7 +172,7 @@ slideshow:
 ---
 clear all
 cd matlab
-format compact
+format compact; setappdata(0, "MKernel_plot_format", 'svg')
 ```
 
 ```{code-cell}
@@ -257,7 +258,7 @@ slideshow:
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Print results 
+### Print results
 
 - `fprintf` works like the c-language function where `"%4.2f"` means print a floating point number with four significant digits and 2 places of decimals.
 
@@ -350,13 +351,13 @@ $$F(z) = \frac{12z}{(z+1)(z - 1)^2}$$
 
 ### MATLAB solution for example 2
 
-See [example2.mlx](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example2.mlx). (Also available as  [example2.m](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example2.m).)
+See [example2.mlx](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example2.mlx). (Also available as [example2.m](https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example2.m).)
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-Uses additional MATLAB functions: 
+Uses additional MATLAB functions:
 
-* `dimpulse` &ndash; computes and plots a sequence $f[n]$ for any range of values of $n$
+- `dimpulse` &ndash; computes and plots a sequence $f[n]$ for any range of values of $n$
 
 ```{code-cell}
 ---
@@ -448,7 +449,7 @@ $$f[n] = \frac{1}{j2\pi}\oint_C {F(z){z^{n - 1}}\,dz} $$
 
 where $C$ is a closed curve that encloses all poles of the integrant.
 
-This can (*apparently*) be solved by Cauchy's residue theorem!!
+This can (_apparently_) be solved by Cauchy's residue theorem!!
 
 Fortunately (:-), this is beyond the scope of this module!
 
@@ -518,11 +519,11 @@ open example4
 
 ### Results for example 4
 
-````
+```
 sym_den =
- 
+
 z^3 - (3*z^2)/2 + (11*z)/16 - 3/32
- 
+
 
 fn =
 
@@ -530,7 +531,7 @@ fn =
     2.5000
     5.0625
     ....
-````
+```
 
 #### Combined Staircase/Lollipop Plot
 
@@ -544,56 +545,56 @@ fn =
 
 ### Partial Fraction Expansion
 
-*Advantages*
+_Advantages_
 
-* Most familiar.
-* Can use MATLAB `residue` function.
+- Most familiar.
+- Can use MATLAB `residue` function.
 
-*Disadvantages*
+_Disadvantages_
 
-* Requires that $F(z)$ is a proper rational function.
+- Requires that $F(z)$ is a proper rational function.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### Inversion Integral
 
-*Advantage*
+_Advantage_
 
-* Can be used whether $F(z)$ is rational or not
+- Can be used whether $F(z)$ is rational or not
 
-*Disadvantages*
+_Disadvantages_
 
-* Requires familiarity with the *Residues theorem* of complex variable analaysis.</li></ul>
+- Requires familiarity with the _Residues theorem_ of complex variable analaysis.</li></ul>
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### Long Division
 
-*Advantages*
+_Advantages_
 
-* Practical when only a small sequence of numbers is desired.
-* Useful when z-transform has no closed-form solution.
+- Practical when only a small sequence of numbers is desired.
+- Useful when z-transform has no closed-form solution.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-*Disadvantages*
+_Disadvantages_
 
-* Can use MATLAB `dimpulse` function to compute a large sequence of numbers.
-* Requires that $F(z)$ is a proper rational function.
-* Division may be endless.
+- Can use MATLAB `dimpulse` function to compute a large sequence of numbers.
+- Requires that $F(z)$ is a proper rational function.
+- Division may be endless.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## Summary
 
-* Inverse Z-Transform
-* Examples using PFE
-* Examples using Long Division
-* Analysis in MATLAB
+- Inverse Z-Transform
+- Examples using PFE
+- Examples using Long Division
+- Analysis in MATLAB
 
-*Coming Next*
+_Coming Next_
 
-* DT transfer functions, continuous system equivalents, and modelling DT systems in Matlab and Simulink.
+- DT transfer functions, continuous system equivalents, and modelling DT systems in Matlab and Simulink.
 
 +++
 
@@ -635,7 +636,7 @@ $f[0] = 1$, $f[1] = 5/2$, $f[2] = 81/16$, ....
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-* Solution to [example1.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example1.pdf)
-* Solution to [example2.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example2.pdf)
-* Solution to [example3.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example3.pdf)
-* Solution to [example4.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example4.pdf)
+- Solution to [example1.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example1.pdf)
+- Solution to [example2.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example2.pdf)
+- Solution to [example3.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example3.pdf)
+- Solution to [example4.pdf](https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example4.pdf)

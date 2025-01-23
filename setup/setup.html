@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Setup &#8212; EG-247 Digital Signal Processing</title>
   
@@ -15,19 +15,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -79,28 +79,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -122,12 +117,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -143,6 +146,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../introduction/index.html">
@@ -167,48 +172,48 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Online notes</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../transfer_functions/index.html">Transfer Function Analysis of Dynamic Systems</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../transfer_functions/index.html">Transfer Function Analysis of Dynamic Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../transfer_functions/1/concepts.html">Concept Review</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../transfer_functions/2/transfer_function_basics.html">Transfer Function Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../transfer_functions/3/pole_zero_analysis.html">Pole Zero Analysis</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../fourier_series/index.html">Fourier Series</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fourier_series/index.html">Fourier Series</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/1/trig_fseries.html">Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/2/exp_fs1.html">Exponential Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/3/exp_fs2.html">Computing Line Spectra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/4/exp_fs3.html">Applications of Line Spectra</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../fourier_transform/index.html">Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fourier_transform/index.html">Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_transform/1/ft1.html">Defining the Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_transform/2/ft2.html">Fourier transforms of commonly occuring signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_transform/3/ft3.html">Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_transform/4/ft4.html">Introduction to Filters</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../dt_systems/index.html">Sampled Data Systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dt_systems/index.html">Sampled Data Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../dt_systems/1/sampling.html">Sampling Theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dt_systems/2/z_transform.html">The Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dt_systems/3/i_z_transform.html">The Inverse Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dt_systems/4/dt_models.html">Models of Discrete Time Systems</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../dft/index.html">Discrete Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dft/index.html">Discrete Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../dft/1/dft.html">The Discrete Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dft/2/fft.html">The Fast-Fourier Transform</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../filter_design/index.html">Analogue and Digital Filter Design</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../filter_design/index.html">Analogue and Digital Filter Design</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../filter_design/analogue_filters.html">Unit 7.1: Designing Analogue Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../filter_design/digital_filters.html">Unit 7.2: Designing Digital Filters in MATLAB and Simulink</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../zbib.html">Bibliography</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">In Class Worksheets</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../worksheets/index.html">Worksheets</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../worksheets/index.html">Worksheets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/worksheet1.html">Worksheet 1 Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/1/worksheet2.html">Worksheet 2 Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/2/worksheet3.html">Worksheet 3 Exponential Fourier Series</a></li>
@@ -223,11 +228,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../dft/1/worksheet12.html">Worksheet 12 The Discrete-time Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dft/2/worksheet13.html">Worksheet 13 The Fast Fourier Transform</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework problems</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../homework/index.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../homework/index.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw4.html">Homework 4 Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw5.html">Homework 5 Fourier Transforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw6.html">Homework 6: Fourier Transforms</a></li>
@@ -235,7 +240,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw8.html">Homework 8 Sampling Theory and the Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw9.html">Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Answers to Selected Problems</span></p>
 <ul class="nav bd-sidenav">
@@ -253,7 +258,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../dt_systems/2/zt_table.html">Table of Z-Transforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="polling_setup.html">Set Up In-Class Polling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../todo.html">List of Planned Enhancements</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Setting up your own version of this book</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Setting up your own version of this book</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../transfer_functions/1/LICENSE.html">MathWorks License</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jupyter.html">About Jupyter notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python.html">Installing Python</a></li>
@@ -262,7 +267,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="advanced-setup.html">Quick Start - For Experienced Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jupyter-book.html">Setting up jupyter-book</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 
     </div>
@@ -278,7 +283,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -287,7 +292,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -436,10 +441,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -447,7 +452,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -502,7 +507,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="setup">
 <h1>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h1>
@@ -538,115 +543,119 @@ document.write(`
 <h2>Test Base Setup<a class="headerlink" href="#test-base-setup" title="Permalink to this heading">#</a></h2>
 <p>The following Python code (adapted from the script <a class="reference external" href="https://fangohr.github.io/blog/code/python/soton-test-python-installation.py">soton-test-python-installation.py</a> [1]) can be executed to report whether particular python packages are available on the system.</p>
 <p>First we define some tests.</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">import</span><span class="w"> </span><span class="n">math</span>
-<span class="nb">import</span><span class="w"> </span><span class="n">os</span>
-<span class="nb">import</span><span class="w"> </span><span class="n">sys</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 
 
-<span class="n">def</span><span class="w"> </span><span class="s">test_is_python_35():</span>
-<span class="w">    </span><span class="n">major</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sys</span><span class="p">.</span><span class="n">version_info</span><span class="p">.</span><span class="n">major</span>
-<span class="w">    </span><span class="n">minor</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sys</span><span class="p">.</span><span class="n">version_info</span><span class="p">.</span><span class="n">minor</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">major</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span>
-<span class="w">        </span><span class="n">pass</span><span class="w"> </span>
-<span class="w">    </span><span class="k">else</span><span class="p">:</span>
-<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s">&quot;You are running Python {}, but we need Python {}.&quot;</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="n">major</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span>
-<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s">&quot;Download and install the Anaconda distribution for Python 3.&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s">&quot;Stopping here.&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_is_python_35</span><span class="p">():</span>
+    <span class="n">major</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="o">.</span><span class="n">major</span>
+    <span class="n">minor</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="o">.</span><span class="n">minor</span>
+    <span class="k">if</span> <span class="n">major</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">pass</span> 
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You are running Python </span><span class="si">{}</span><span class="s2">, but we need Python </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">major</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Download and install the Anaconda distribution for Python 3.&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stopping here.&quot;</span><span class="p">)</span>
 
-<span class="w">        </span>#<span class="w"> </span><span class="n">Let</span><span class="o">&#39;</span><span class="n">s</span><span class="w"> </span><span class="nb">stop</span><span class="w"> </span><span class="n">here</span>
-<span class="w">        </span><span class="n">sys</span><span class="p">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">None</span>
-<span class="w">        </span>#<span class="w"> </span><span class="nb">assert</span><span class="w"> </span><span class="n">major</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Stopping here - we need Python 3.&quot;</span>
+        <span class="c1"># Let&#39;s stop here</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+        <span class="c1"># assert major == 3, &quot;Stopping here - we need Python 3.&quot;</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">minor</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">5</span><span class="p">:</span>
-<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s">&quot;Testing Python version-&gt; py{}.{} OK&quot;</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="n">major</span><span class="p">,</span><span class="w"> </span><span class="n">minor</span><span class="p">))</span>
-<span class="w">    </span><span class="k">else</span><span class="p">:</span>
-<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s">&quot;Warning: You should be running Python 3.5 or newer, &quot;</span><span class="w"> </span><span class="o">+</span>
-<span class="w">              </span><span class="s">&quot;you have Python {}.{}.&quot;</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="n">major</span><span class="p">,</span><span class="w"> </span><span class="n">minor</span><span class="p">))</span>
-<span class="w">        </span>
-<span class="w">        </span>
-<span class="n">def</span><span class="w"> </span><span class="s">test_numpy():</span>
-<span class="w">    </span><span class="k">try</span><span class="p">:</span>
-<span class="w">        </span><span class="nb">import</span><span class="w"> </span><span class="n">numpy</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">np</span>
-<span class="w">    </span><span class="n">except</span><span class="w"> </span><span class="n">ImportError</span><span class="p">:</span>
-<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s">&quot;Could not import numpy -&gt; numpy failed&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">None</span>
-<span class="w">    </span>#<span class="w"> </span><span class="n">Simple</span><span class="w"> </span><span class="n">test</span>
-<span class="w">    </span><span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
-<span class="w">    </span><span class="nb">assert</span><span class="w"> </span><span class="n">np</span><span class="p">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s">&quot;Testing numpy...      -&gt; numpy OK&quot;</span><span class="p">)</span>
-
-
-<span class="n">def</span><span class="w"> </span><span class="s">test_scipy():</span>
-<span class="w">    </span><span class="k">try</span><span class="p">:</span>
-<span class="w">        </span><span class="nb">import</span><span class="w"> </span><span class="n">scipy</span>
-<span class="w">    </span><span class="n">except</span><span class="w"> </span><span class="n">ImportError</span><span class="p">:</span>
-<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s">&quot;Could not import &#39;scipy&#39; -&gt; scipy failed&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">None</span>
-<span class="w">    </span>#<span class="w"> </span><span class="n">Simple</span><span class="w"> </span><span class="n">test</span>
-<span class="w">    </span><span class="nb">import</span><span class="w"> </span><span class="n">scipy</span><span class="p">.</span><span class="n">integrate</span>
-<span class="w">    </span><span class="nb">assert</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">scipy</span><span class="p">.</span><span class="n">integrate</span><span class="p">.</span><span class="n">quad</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="n">x</span><span class="p">:</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">72.0</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">1e-6</span>
-<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s">&quot;Testing scipy ...     -&gt; scipy OK&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">minor</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Testing Python version-&gt; py</span><span class="si">{}</span><span class="s2">.</span><span class="si">{}</span><span class="s2"> OK&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">major</span><span class="p">,</span> <span class="n">minor</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Warning: You should be running Python 3.5 or newer, &quot;</span> <span class="o">+</span>
+              <span class="s2">&quot;you have Python </span><span class="si">{}</span><span class="s2">.</span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">major</span><span class="p">,</span> <span class="n">minor</span><span class="p">))</span>
+        
+        
+<span class="k">def</span><span class="w"> </span><span class="nf">test_numpy</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Could not import numpy -&gt; numpy failed&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="c1"># Simple test</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Testing numpy...      -&gt; numpy OK&quot;</span><span class="p">)</span>
 
 
-<span class="n">def</span><span class="w"> </span><span class="s">test_pylab():</span>
-<span class="w">    </span><span class="s">&quot;&quot;&quot;Actually testing matplotlib, as pylab is part of matplotlib.&quot;&quot;&quot;</span>
-<span class="w">    </span><span class="k">try</span><span class="p">:</span>
-<span class="w">        </span><span class="nb">import</span><span class="w"> </span><span class="n">pylab</span>
-<span class="w">    </span><span class="n">except</span><span class="w"> </span><span class="n">ImportError</span><span class="p">:</span>
-<span class="w">            </span><span class="nb">print</span><span class="p">(</span><span class="s">&quot;Could not import &#39;matplotlib/pylab&#39; -&gt; failed&quot;</span><span class="p">)</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">None</span>
-<span class="w">    </span>#<span class="w"> </span><span class="n">Creata</span><span class="w"> </span><span class="nb">plot</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">testing</span><span class="w"> </span><span class="n">purposes</span>
-<span class="w">    </span><span class="n">xvalues</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="nb">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.1</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)]</span>
-<span class="w">    </span><span class="n">yvalues</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">math</span><span class="p">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">xvalues</span><span class="p">]</span>
-<span class="w">    </span><span class="n">pylab</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvalues</span><span class="p">,</span><span class="w"> </span><span class="n">yvalues</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;-o&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="p">=</span><span class="s">&quot;sin(x)&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="n">pylab</span><span class="p">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="w">    </span><span class="n">pylab</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">)</span>
-<span class="w">    </span><span class="n">testfilename</span><span class="p">=</span><span class="s">&#39;pylab-testfigure.png&#39;</span>
-
-<span class="w">    </span>#<span class="w"> </span><span class="n">check</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="n">does</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="nb">exist</span><span class="w"> </span><span class="n">yet</span><span class="p">:</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">exists</span><span class="p">(</span><span class="n">testfilename</span><span class="p">):</span>
-<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s">&quot;Skipping plotting to file as file {} exists already.&quot;</span><span class="o">\</span>
-<span class="w">            </span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="n">testfilename</span><span class="p">))</span>
-<span class="w">    </span><span class="k">else</span><span class="p">:</span>
-<span class="w">        </span>#<span class="w"> </span><span class="n">Write</span><span class="w"> </span><span class="nb">plot</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">file</span>
-<span class="w">        </span><span class="n">pylab</span><span class="p">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">testfilename</span><span class="p">)</span>
-<span class="w">        </span>#<span class="w"> </span><span class="n">Then</span><span class="w"> </span><span class="n">check</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="n">exists</span>
-<span class="w">        </span><span class="nb">assert</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">exists</span><span class="p">(</span><span class="n">testfilename</span><span class="p">)</span>
-<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s">&quot;Testing matplotlib... -&gt; pylab OK&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="n">os</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">testfilename</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_scipy</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Could not import &#39;scipy&#39; -&gt; scipy failed&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="c1"># Simple test</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">scipy.integrate</span>
+    <span class="k">assert</span> <span class="nb">abs</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mf">72.0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-6</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Testing scipy ...     -&gt; scipy OK&quot;</span><span class="p">)</span>
 
 
-<span class="n">def</span><span class="w"> </span><span class="s">test_sympy():</span>
-<span class="w">    </span><span class="k">try</span><span class="p">:</span>
-<span class="w">        </span><span class="nb">import</span><span class="w"> </span><span class="n">sympy</span>
-<span class="w">    </span><span class="n">except</span><span class="w"> </span><span class="n">ImportError</span><span class="p">:</span>
-<span class="w">            </span><span class="nb">print</span><span class="p">(</span><span class="s">&quot;Could not import &#39;sympy&#39; -&gt; fail&quot;</span><span class="p">)</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">None</span>
-<span class="w">    </span>#<span class="w"> </span><span class="n">simple</span><span class="w"> </span><span class="n">test</span>
-<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sympy</span><span class="p">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">)</span>
-<span class="w">    </span><span class="n">my_f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="mi">2</span>
-<span class="w">    </span><span class="nb">assert</span><span class="w"> </span><span class="n">sympy</span><span class="p">.</span><span class="n">diff</span><span class="p">(</span><span class="n">my_f</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span>
-<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s">&quot;Testing sympy         -&gt; sympy OK&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_pylab</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Actually testing matplotlib, as pylab is part of matplotlib.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">pylab</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Could not import &#39;matplotlib/pylab&#39; -&gt; failed&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+    <span class="c1"># Creata plot for testing purposes</span>
+    <span class="n">xvalues</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="mf">0.1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)]</span>
+    <span class="n">yvalues</span> <span class="o">=</span> <span class="p">[</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xvalues</span><span class="p">]</span>
+    <span class="n">pylab</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvalues</span><span class="p">,</span> <span class="n">yvalues</span><span class="p">,</span> <span class="s2">&quot;-o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;sin(x)&quot;</span><span class="p">)</span>
+    <span class="n">pylab</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">pylab</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">testfilename</span><span class="o">=</span><span class="s1">&#39;pylab-testfigure.png&#39;</span>
+
+    <span class="c1"># check that file does not exist yet:</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">testfilename</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Skipping plotting to file as file </span><span class="si">{}</span><span class="s2"> exists already.&quot;</span>\
+            <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">testfilename</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Write plot to file</span>
+        <span class="n">pylab</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">testfilename</span><span class="p">)</span>
+        <span class="c1"># Then check that file exists</span>
+        <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">testfilename</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Testing matplotlib... -&gt; pylab OK&quot;</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">testfilename</span><span class="p">)</span>
 
 
-<span class="n">def</span><span class="w"> </span><span class="s">test_pytest():</span>
-<span class="w">    </span><span class="k">try</span><span class="p">:</span>
-<span class="w">        </span><span class="nb">import</span><span class="w"> </span><span class="n">pytest</span>
-<span class="w">    </span><span class="n">except</span><span class="w"> </span><span class="n">ImportError</span><span class="p">:</span>
-<span class="w">            </span><span class="nb">print</span><span class="p">(</span><span class="s">&quot;Could not import &#39;pytest&#39; -&gt; fail&quot;</span><span class="p">)</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">None</span>
-<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s">&quot;Testing pytest        -&gt; pytest OK&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_sympy</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Could not import &#39;sympy&#39; -&gt; fail&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+    <span class="c1"># simple test</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">my_f</span> <span class="o">=</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="k">assert</span> <span class="n">sympy</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">my_f</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Testing sympy         -&gt; sympy OK&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_pytest</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Could not import &#39;pytest&#39; -&gt; fail&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Testing pytest        -&gt; pytest OK&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The we run the tests to test that we have all the packages we need. If we have installed Anaconda 3 correctly, there should be no errors.</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s">&quot;Running using Python {}&quot;</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="n">sys</span><span class="p">.</span><span class="n">version</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Running using Python </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">))</span>
 <span class="n">test_is_python_35</span><span class="p">()</span>
 <span class="n">test_numpy</span><span class="p">()</span>
 <span class="n">test_scipy</span><span class="p">()</span>
 <span class="n">test_pylab</span><span class="p">()</span>
 <span class="n">test_sympy</span><span class="p">()</span>
 <span class="n">test_pytest</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>If any of the tests fails, the missing packages can be installed using the following command</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">numpy</span> <span class="n">scipy</span> <span class="n">matplotlib</span> <span class="n">sympy</span> <span class="n">pytest</span>
 </pre></div>
 </div>
 <p>The remaining installation instructions are adapted from [2].</p>
@@ -660,27 +669,27 @@ document.write(`
 <section id="mac-os">
 <h3>Mac OS:<a class="headerlink" href="#mac-os" title="Permalink to this heading">#</a></h3>
 <p>If you have an M1 or later processor, you should install the Silicon version of MATLAB (see <a class="reference external" href="https://uk.mathworks.com/support/requirements/apple-silicon.html">MATLAB on Apple Silicon Macs</a>)</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">matlabroot</span><span class="p">=</span><span class="s">&#39;/Applications/MATLABSi/MATLAB_R2024a.app&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matlabroot</span><span class="o">=</span><span class="s1">&#39;/Applications/MATLAB_R2024b.app&#39;</span>
 </pre></div>
 </div>
 </section>
 <section id="unix">
 <h3>Unix<a class="headerlink" href="#unix" title="Permalink to this heading">#</a></h3>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%cd {matlabroot}/extern/engines/python</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">cd</span> <span class="p">{</span><span class="n">matlabroot</span><span class="p">}</span><span class="o">/</span><span class="n">extern</span><span class="o">/</span><span class="n">engines</span><span class="o">/</span><span class="n">python</span>
 </pre></div>
 </div>
 </section>
 <section id="ubuntu-running-in-windows-using-wsl">
 <h3>Ubuntu running in Windows using WSL<a class="headerlink" href="#ubuntu-running-in-windows-using-wsl" title="Permalink to this heading">#</a></h3>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">matlabroot</span><span class="p">=</span><span class="s">&#39;/mnt/c/Program\ Files/MATLAB/R2022b&#39;</span>
-<span class="c">%cd {matlabroot}/extern/engines/python</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matlabroot</span><span class="o">=</span><span class="s1">&#39;/mnt/c/Program\ Files/MATLAB/R2022b&#39;</span>
+<span class="o">%</span><span class="n">cd</span> <span class="p">{</span><span class="n">matlabroot</span><span class="p">}</span><span class="o">/</span><span class="n">extern</span><span class="o">/</span><span class="n">engines</span><span class="o">/</span><span class="n">python</span>
 </pre></div>
 </div>
 </section>
 <section id="windows">
 <h3>Windows<a class="headerlink" href="#windows" title="Permalink to this heading">#</a></h3>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">matlabroot</span><span class="p">=</span><span class="s">&#39;C:\Program Files\MATLAB\R2022b&#39;</span>
-<span class="c">%cd {matlabroot}\extern\engines\python</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matlabroot</span><span class="o">=</span><span class="s1">&#39;C:\Program Files\MATLAB\R2022b&#39;</span>
+<span class="o">%</span><span class="n">cd</span> <span class="p">{</span><span class="n">matlabroot</span><span class="p">}</span>\<span class="n">extern</span>\<span class="n">engines</span>\<span class="n">python</span>
 </pre></div>
 </div>
 </section>
@@ -698,9 +707,9 @@ document.write(`
 </li>
 <li><p>If your MATLAB is 2016b, or older, you may need to install an earlier version of Python and repeat the steps above.</p></li>
 </ul>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="sx">!python --version</span>
-#<span class="c">%shell</span>
-<span class="sx">!python setup.py install</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!python --version
+#%shell
+!python setup.py install
 </pre></div>
 </div>
 </section>
@@ -708,23 +717,23 @@ document.write(`
 <section id="test-python-can-now-communicate-with-matlab">
 <h2>Test Python can now communicate with MATLAB<a class="headerlink" href="#test-python-can-now-communicate-with-matlab" title="Permalink to this heading">#</a></h2>
 <p>First start a MATLAB session. You will have to restart your Python kernel first!</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">import</span><span class="w"> </span><span class="n">matlab</span><span class="p">.</span><span class="n">engine</span>
-<span class="n">eng</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">matlab.engine.start_matlab</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matlab.engine</span>
+<span class="n">eng</span> <span class="o">=</span> <span class="n">matlab</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">start_matlab</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Then connect to the session</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">eng</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">matlab.engine.connect_matlab</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">eng</span> <span class="o">=</span> <span class="n">matlab</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">connect_matlab</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Now compute something. Here’s a 10x10 magic square</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">eng</span><span class="p">.</span><span class="n">magic</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">eng</span><span class="o">.</span><span class="n">magic</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
 </pre></div>
 </div>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Close the session</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">eng</span><span class="p">.</span><span class="n">quit</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">eng</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 </pre></div>
 </div>
 <!-- #region -->
@@ -733,10 +742,10 @@ document.write(`
 <h2>MATLAB Kernel for Jupyter<a class="headerlink" href="#matlab-kernel-for-jupyter" title="Permalink to this heading">#</a></h2>
 <p>Finally we install Carsten Allefeld’s <code class="docutils literal notranslate"><span class="pre">Mkernel</span></code> (<a class="reference external" href="https://github.com/allefeld/mkernel">github.com/allefeld/mkernel</a>) using the instructions given in <span id="id1">[<a class="reference internal" href="../zbib.html#id24" title="C. Allefeld. Mkernel: a jupyter kernel for matlab (1.1.0). 2023. URL: https://github.com/allefeld/mkernel (visited on 2024-07-04).">Allefeld, 2023</a>]</span>:</p>
 <!-- #endregion -->
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="sx">!pip install git+https://github.com/allefeld/mkernel.git</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install git+https://github.com/allefeld/mkernel.git
 </pre></div>
 </div>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="sx">!jupyter kernelspec list</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!jupyter kernelspec list
 </pre></div>
 </div>
 <p>To check that the MATLAB kernel is properly installed do the following.</p>
@@ -780,7 +789,7 @@ document.write(`
 </div>
 <p>Go ahead and execute the next code cell.</p>
 <!-- #endregion -->
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">magic</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">magic</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>If you wish to further test the Matlab interface, download this file from the <code class="docutils literal notranslate"><span class="pre">Calysto/matlab_kernel</span></code> repository <a class="reference external" href="https://github.com/Calysto/matlab_kernel/blob/master/matlab_kernel.ipynb">matlab_kernel.ipynb</a>, open it in Jupyter and run the whole notebook.</p>
@@ -807,11 +816,11 @@ document.write(`
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <div class="docutils container" id="id2">
-<dl class="citation">
-<dt class="label" id="id25"><span class="brackets"><a class="fn-backref" href="#id1">All23</a></span></dt>
-<dd><p>C. Allefeld. Mkernel: a jupyter kernel for matlab (1.1.0). 2023. URL: <a class="github reference external" href="https://github.com/allefeld/mkernel">allefeld/mkernel</a> (visited on 2024-07-04).</p>
-</dd>
-</dl>
+<div class="citation" id="id25" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">All23</a><span class="fn-bracket">]</span></span>
+<p>C. Allefeld. Mkernel: a jupyter kernel for matlab (1.1.0). 2023. URL: <a class="github reference external" href="https://github.com/allefeld/mkernel">allefeld/mkernel</a> (visited on 2024-07-04).</p>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -843,7 +852,7 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -872,6 +881,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -956,8 +966,8 @@ for
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

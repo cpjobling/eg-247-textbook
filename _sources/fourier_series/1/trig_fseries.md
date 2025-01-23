@@ -7,17 +7,16 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.15.2
 kernelspec:
-  display_name: Matlab
+  display_name: MKernel
   language: matlab
-  name: matlab
+  name: mkernel
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (trig_fseries)=
+
 # Unit 3.1: Trigonometric Fourier Series
-
-
 
 Any periodic waveform can be approximated by a DC component (which may be 0) and the sum of the fundamental and harmomic sinusoidal waveforms. This has important applications in many applications of electronics but is particularly crucial for signal processing and communications.
 
@@ -27,11 +26,11 @@ Any periodic waveform can be approximated by a DC component (which may be 0) and
 
 An annotatable worksheet for this presentation is available as {ref}`ws2`.
 
-* The source code for this page is [fourier_series/1/trig_fseries.md](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_series/1/trig_fseries.md).
+- The source code for this page is [fourier_series/1/trig_fseries.md](https://github.com/cpjobling/eg-247-textbook/blob/master/fourier_series/1/trig_fseries.md).
 
-* You can view the notes for this presentation as a webpage ({ref}`trig_fseries`). 
+- You can view the notes for this presentation as a webpage ({ref}`trig_fseries`).
 
-* This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/fourier_series/1/trig_fseries.pdf) file.
+- This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/fourier_series/1/trig_fseries.pdf) file.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -39,23 +38,23 @@ An annotatable worksheet for this presentation is available as {ref}`ws2`.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Motivating examples
+- Motivating examples
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Wave analysis and the Trig. Fourier Series
+- Wave analysis and the Trig. Fourier Series
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Symmetry in Trigonometric Fourier Series
+- Symmetry in Trigonometric Fourier Series
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Computing coefficients of Trig. Fourier Series in MATLAB
+- Computing coefficients of Trig. Fourier Series in MATLAB
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* Gibbs Phenomenon
+- Gibbs Phenomenon
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -71,11 +70,11 @@ To install this example, download the [zip file](http://dspfirst.gatech.edu/matl
 
 ## Wave Analysis
 
-* [Jean Baptiste Joseph Fourier](https://en.wikipedia.org/wiki/Joseph_Fourier) (21 March 1768 – 16 May 1830) discovered that any _**periodic**_ signal could be represented as a series of *harmonically related* sinusoids.
+- [Jean Baptiste Joseph Fourier](https://en.wikipedia.org/wiki/Joseph_Fourier) (21 March 1768 – 16 May 1830) discovered that any _**periodic**_ signal could be represented as a series of _harmonically related_ sinusoids.
 
-* An *harmonic* is a frequency whose value is an integer multiple of some *fundamental frequency*
+- An _harmonic_ is a frequency whose value is an integer multiple of some _fundamental frequency_
 
-* For example, the frequencies 2 MHz, 3 Mhz, 4 MHz are the second, third and fourth harmonics of a sinusoid with fundamental frequency 1 Mhz.
+- For example, the frequencies 2 MHz, 3 Mhz, 4 MHz are the second, third and fourth harmonics of a sinusoid with fundamental frequency 1 Mhz.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -85,8 +84,8 @@ Any periodic waveform $f(t)$ can be represented as
 
 $$
 \begin{eqnarray*}
-  f(t) &=& \frac{1}{2}{a_0} + {a_1}\cos \Omega_0 t + {a_2}\cos 2\Omega_0 t + {a_3}\cos 3\Omega_0 t +  \cdots  + {a_n}\cos n\Omega_0 t +  \cdots  \\ 
-   &+& {b_1}\sin \Omega_0 t + {b_2}\sin 2\Omega_0 t + {b_3}\sin 3\Omega_0 t +  \cdots  + {b_n}\sin n\Omega_0 t +  \cdots  \\ 
+  f(t) &=& \frac{1}{2}{a_0} + {a_1}\cos \Omega_0 t + {a_2}\cos 2\Omega_0 t + {a_3}\cos 3\Omega_0 t +  \cdots  + {a_n}\cos n\Omega_0 t +  \cdots  \\
+   &+& {b_1}\sin \Omega_0 t + {b_2}\sin 2\Omega_0 t + {b_3}\sin 3\Omega_0 t +  \cdots  + {b_n}\sin n\Omega_0 t +  \cdots  \\
 \end{eqnarray*}
 $$
 
@@ -96,15 +95,15 @@ $$
 f(t) = \frac{1}{2}{a_0} + \sum\limits_{n = 1}^\infty  {({a_n}\cos n\Omega_0 t + {b_n}\sin n\Omega_0 t)}
 $$
 
-where $\Omega_0$ rad/s is the *fundamental frequency*.
+where $\Omega_0$ rad/s is the _fundamental frequency_.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### Notation
 
-* The first term $a_o/2$ is a constant and represents the DC (average) component of the signal $f(t)$
-* The terms with coefficients $a_1$ and $b_1$ together represent the fundamental frequency component of $f(t)$ at frequency $\Omega_0$.
-* The terms with coefficients $a_2$ and $b_2$ together represent the second harmonic frequency component of $f(t)$ at frequency $2\Omega_0$.
+- The first term $a_o/2$ is a constant and represents the DC (average) component of the signal $f(t)$
+- The terms with coefficients $a_1$ and $b_1$ together represent the fundamental frequency component of $f(t)$ at frequency $\Omega_0$.
+- The terms with coefficients $a_2$ and $b_2$ together represent the second harmonic frequency component of $f(t)$ at frequency $2\Omega_0$.
 
 And so on.
 
@@ -140,15 +139,15 @@ $$b_n = \frac{2}{T_0}\int_{0}^{T_0}f(t)\sin n\Omega_0 t\,dt = \frac{1}{\pi}\int_
 
 ### Odd and even symmetry
 
-* An *odd* function is one for which $f(t) = -f(-t)$. The function $\sin t$ is an *odd* function.
-* An *even* function is one for which $f(t) = f(-t)$. The function $\cos t$ is an *even* function.
+- An _odd_ function is one for which $f(t) = -f(-t)$. The function $\sin t$ is an _odd_ function.
+- An _even_ function is one for which $f(t) = f(-t)$. The function $\cos t$ is an _even_ function.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
 ### Half-wave symmetry
 
-* A periodic function with period $T$ is a function for which $f(t) = f(t + T)$
-* A periodic function with period $T$, has *half-wave symmetry* if $f(t) = -f(t + T/2)$
+- A periodic function with period $T$ is a function for which $f(t) = f(t + T)$
+- A periodic function with period $T$, has _half-wave symmetry_ if $f(t) = -f(t + T/2)$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -156,9 +155,9 @@ $$b_n = \frac{2}{T_0}\int_{0}^{T_0}f(t)\sin n\Omega_0 t\,dt = \frac{1}{\pi}\int_
 
 There are simplifications we can make if the original periodic properties has certain properties:
 
-* If $f(t)$ is odd, $a_0=0$ and there will be no cosine terms so ${a_n} = 0\; \forall n > 0$
-* If $f(t)$ is even, there will be no sine terms and ${b_n} = 0\; \forall n > 0$. The DC may or may not be zero.
-* If $f(t)$ has *half-wave symmetry* only the odd harmonics will be present. That is $a_n$ and $b_n$ is zero for all even values of $n$ (0, 2, 4, ...)
+- If $f(t)$ is odd, $a_0=0$ and there will be no cosine terms so ${a_n} = 0\; \forall n > 0$
+- If $f(t)$ is even, there will be no sine terms and ${b_n} = 0\; \forall n > 0$. The DC may or may not be zero.
+- If $f(t)$ has _half-wave symmetry_ only the odd harmonics will be present. That is $a_n$ and $b_n$ is zero for all even values of $n$ (0, 2, 4, ...)
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -172,9 +171,9 @@ To reproduce the following waveforms (without annotation) publish the script [wa
 
 <img src="pictures/square.png">
 
-* Average value over period $T$ is ...?
-* It is an **odd**/**even**function?
-* It **has/has not** half-wave symmetry $f(t)=-f(t+T/2)$?
+- Average value over period $T$ is ...?
+- It is an **odd**/**even**function?
+- It **has/has not** half-wave symmetry $f(t)=-f(t+T/2)$?
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -182,9 +181,9 @@ To reproduce the following waveforms (without annotation) publish the script [wa
 
 <img src="pictures/shifted_sq.png">
 
-* Average value over period $T$ is ...?
-* It is an **odd**/**even** function?
-* It **has/has not** half-wave symmetry $f(t)=-f(t+T/2)$?
+- Average value over period $T$ is ...?
+- It is an **odd**/**even** function?
+- It **has/has not** half-wave symmetry $f(t)=-f(t+T/2)$?
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -192,9 +191,9 @@ To reproduce the following waveforms (without annotation) publish the script [wa
 
 <img src="pictures/sawtooth.png">
 
-* Average value over period $T$ is ...?
-* It is an **odd**/**even** function?
-* It **has/has not** half-wave symmetry $f(t)=-f(t+T/2)$?
+- Average value over period $T$ is ...?
+- It is an **odd**/**even** function?
+- It **has/has not** half-wave symmetry $f(t)=-f(t+T/2)$?
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -202,9 +201,9 @@ To reproduce the following waveforms (without annotation) publish the script [wa
 
 <img src="pictures/triangle.png">
 
-* Average value over period $T$ is ...?
-* It is an **odd**/**even**function?
-* It **has/has not** half-wave symmetry $f(t)=-f(t+T/2)$?
+- Average value over period $T$ is ...?
+- It is an **odd**/**even**function?
+- It **has/has not** half-wave symmetry $f(t)=-f(t+T/2)$?
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -218,10 +217,9 @@ In the following, $T/2$ is taken to be the half-period of the fundamental sinewa
 
 <img src="pictures/fundamental.png">
 
-
-* Average value over period $T$ is ...?
-* It is an **odd**/**even**function?
-* It **has/has not** half-wave symmetry $f(t)=-f(t+T/2)$?
+- Average value over period $T$ is ...?
+- It is an **odd**/**even**function?
+- It **has/has not** half-wave symmetry $f(t)=-f(t+T/2)$?
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -229,10 +227,9 @@ In the following, $T/2$ is taken to be the half-period of the fundamental sinewa
 
 <img src="pictures/2nd_harm.png">
 
-
-* Average value over period $T$ is ...?
-* It is an **odd**/**even** function?
-* It **has/has not** half-wave symmetry $f(t)=-f(t+T/2)$?
+- Average value over period $T$ is ...?
+- It is an **odd**/**even** function?
+- It **has/has not** half-wave symmetry $f(t)=-f(t+T/2)$?
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -240,18 +237,18 @@ In the following, $T/2$ is taken to be the half-period of the fundamental sinewa
 
 <img src="pictures/3rd_harm.png">
 
-* Average value over period $T$ is ...?
-* It is an **odd**/**even** function?
-* It **has/has not** half-wave symmetry $f(t)=-f(t+T/2)$?
+- Average value over period $T$ is ...?
+- It is an **odd**/**even** function?
+- It **has/has not** half-wave symmetry $f(t)=-f(t+T/2)$?
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### Some simplifications that result from symmetry
 
-* The limits of the integrals used to compute the coefficents $a_n$ and $b_n$ of the Fourier series are given as $0\to 2\pi$ which is one period $T$
-* We could also choose to integrate from $-\pi \to \pi$
-* If the function is *odd*, or *even* or has *half-wave symmetry* we can compute $a_n$ and $b_n$ by integrating from $0\to \pi$ and multiplying by 2.
-* If we have *half-wave symmetry* we can compute $a_n$ and $b_n$ by integrating from $0\to \pi/2$ and multiplying by 4.
+- The limits of the integrals used to compute the coefficents $a_n$ and $b_n$ of the Fourier series are given as $0\to 2\pi$ which is one period $T$
+- We could also choose to integrate from $-\pi \to \pi$
+- If the function is _odd_, or _even_ or has _half-wave symmetry_ we can compute $a_n$ and $b_n$ by integrating from $0\to \pi$ and multiplying by 2.
+- If we have _half-wave symmetry_ we can compute $a_n$ and $b_n$ by integrating from $0\to \pi/2$ and multiplying by 4.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -259,7 +256,7 @@ In the following, $T/2$ is taken to be the half-period of the fundamental sinewa
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-## Computing coefficients of Trig. Fourier Series in MATLAB 
+## Computing coefficients of Trig. Fourier Series in MATLAB
 
 As an example let's take a square wave with amplitude $\pm A$ and period $T$.
 
@@ -276,7 +273,7 @@ slideshow:
 ---
 clear all
 cd ../matlab
-format compact
+format compact; setappdata(0, "MKernel_plot_format", 'svg')
 ```
 
 ```{code-cell}
@@ -392,13 +389,13 @@ To run the full solution yourself download and run [square_ftrig.mlx](https://cp
 
 The Result confirms that:
 
-* $a_0 = 0$
-* $a_i = 0$: function is odd
-* $b_i = 0$: for $i$ even - half-wave symmetry
+- $a_0 = 0$
+- $a_i = 0$: function is odd
+- $b_i = 0$: for $i$ even - half-wave symmetry
 
 ```
 ft =
- 
+
 (4*A*sin(t))/pi + (4*A*sin(3*t))/(3*pi) + (4*A*sin(5*t))/(5*pi) + (4*A*sin(7*t))/(7*pi) + (4*A*sin(9*t))/(9*pi) + (4*A*sin(11*t))/(11*pi)
 ```
 
@@ -524,10 +521,10 @@ hold off
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-* As before $a_0=0$
-* We observe that this function is even, so all $b_k$ coefficents will be zero
-* The waveform has half-wave symmetry, so only odd indexed coefficents will be present.
-* Further more, because it has half-wave symmetry we can just integrate from $0 \to \pi/2$ and multiply the result by 4.
+- As before $a_0=0$
+- We observe that this function is even, so all $b_k$ coefficents will be zero
+- The waveform has half-wave symmetry, so only odd indexed coefficents will be present.
+- Further more, because it has half-wave symmetry we can just integrate from $0 \to \pi/2$ and multiply the result by 4.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -549,5 +546,5 @@ This figure shows the approximation for the first 11 harmonics:
 
 <img src="pictures/fsq_trig.png">
 
-As we add more harmonics, the sum looks more and more like a square wave. However the crests do not become flattened; this is known as *Gibbs Phenomenon* and it occurs because of the discontinuity of the perfect sqare waveform as it changes from 
-$+A$ to $-A$ and *vice versa*.
+As we add more harmonics, the sum looks more and more like a square wave. However the crests do not become flattened; this is known as _Gibbs Phenomenon_ and it occurs because of the discontinuity of the perfect sqare waveform as it changes from
+$+A$ to $-A$ and _vice versa_.

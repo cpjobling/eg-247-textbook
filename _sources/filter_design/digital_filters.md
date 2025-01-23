@@ -7,16 +7,16 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.15.2
 kernelspec:
-  display_name: Matlab
+  display_name: MKernel
   language: matlab
-  name: matlab
+  name: mkernel
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (unit7.2)=
-# Unit 7.2: Designing Digital Filters in MATLAB and Simulink
 
+# Unit 7.2: Designing Digital Filters in MATLAB and Simulink
 
 You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/filter_design/digital_filters.html)).
 
@@ -24,18 +24,17 @@ You can view the notes for this presentation as a webpage ([HTML](https://cpjobl
 
 ## Colophon
 
-* The source code for this page is [filters/1/filters.md](https://github.com/cpjobling/eg-247-textbook/blob/master/filter_design/digital_filters.md).
+- The source code for this page is [filters/1/filters.md](https://github.com/cpjobling/eg-247-textbook/blob/master/filter_design/digital_filters.md).
 
-* You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/filter_design/digital_filters.html)). 
+- You can view the notes for this presentation as a webpage ([HTML](https://cpjobling.github.io/eg-247-textbook/filter_design/digital_filters.html)).
 
-* This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/filter_design/digital_filters.pdf) file.
+- This page is downloadable as a [PDF](https://cpjobling.github.io/eg-247-textbook/filter_design/digital_filters.pdf) file.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
 ## Scope and Background Reading
 
 ### Getting Started with Simulink for Signal Processing
-
 
 To provide some inspiration for the power of MATLAB and Simulink for the design of digital filters, we have included the following [video from the MathWorks](https://uk.mathworks.com/support/search.html/videos/getting-started-with-simulink-for-signal-processing-1586429627003.html).
 
@@ -45,7 +44,7 @@ To provide some inspiration for the power of MATLAB and Simulink for the design 
 
 > [The] video shows you an example of designing a signal processing system using Simulink®.
 
-> You start off with a blank Simulink model and design a signal processing algorithm to predict whether it is going to be sunny or cloudy in order to optimize power generated from a solar energy grid. The video walks you through analyzing sensor signals, designing filters and finally generating code for hardware deployment. 
+> You start off with a blank Simulink model and design a signal processing algorithm to predict whether it is going to be sunny or cloudy in order to optimize power generated from a solar energy grid. The video walks you through analyzing sensor signals, designing filters and finally generating code for hardware deployment.
 
 > By the end of the video, you will learn the basics of Simulink and how Model-Based Design can be used to model, simulate, test and implement real-world signal processing systems.
 
@@ -55,7 +54,7 @@ In {ref}`unit7.1` we looked at the MATLAB tools that can be used to design proto
 
 A the end of this process, we will have a transfer function $H(s)$ that defines the poles and zeros of an analogue filter which we now need to digitize for implementation.
 
-In this unit, we will introduce one way to convert and analogue filter $H(s)$ into a digital filter $H(z)$ which is known as the bilinear transformation. We will give an example of a digital filter design for a second-order analogue filter. 
+In this unit, we will introduce one way to convert and analogue filter $H(s)$ into a digital filter $H(z)$ which is known as the bilinear transformation. We will give an example of a digital filter design for a second-order analogue filter.
 
 We will present the tools that MATLAB provides for the direct design of digital filters.
 
@@ -69,35 +68,36 @@ This unit is based on Sections 11.4-11.6 of {cite}`karris`.
 
 To continue your learning we recommend that you visit the following pages on the MATLAB Documentation Platform:
 
-* [Signal Processing](https://uk.mathworks.com/help/overview/signal-processing.html) [in MATLAB]
-* [Signal Processing Toolbox](https://uk.mathworks.com/help/signal/index.html) - signal analysis, analogue and digital filter design
-* [DSP System Toolbox](https://uk.mathworks.com/help/dsp/index.html) - for designing and implementing digital filters in Simulink and for code generation.
+- [Signal Processing](https://uk.mathworks.com/help/overview/signal-processing.html) [in MATLAB]
+- [Signal Processing Toolbox](https://uk.mathworks.com/help/signal/index.html) - signal analysis, analogue and digital filter design
+- [DSP System Toolbox](https://uk.mathworks.com/help/dsp/index.html) - for designing and implementing digital filters in Simulink and for code generation.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
 ## Agenda
 
-* {ref}`unit7.2:digital`
-* {ref}`unit7.2:bilinear`
-* {ref}`u72:matlab_fd_tools`
-* {ref}`u72:simulink`
-* {ref}`u72:df_design_block`
+- {ref}`unit7.2:digital`
+- {ref}`unit7.2:bilinear`
+- {ref}`u72:matlab_fd_tools`
+- {ref}`u72:simulink`
+- {ref}`u72:df_design_block`
 
 ```{code-cell}
 ---
 slideshow:
   slide_type: notes
 ---
-format compact
+format compact; setappdata(0, "MKernel_plot_format", 'svg')
 cd matlab
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (unit7.2:digital)=
+
 ## Digital filters
 
-A *digital filter* is a computational process (algorithm) that converts one sequence of numbers $x[n]$ representing the input, to another sequence $y[n]$ that represents the output.
+A _digital filter_ is a computational process (algorithm) that converts one sequence of numbers $x[n]$ representing the input, to another sequence $y[n]$ that represents the output.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -109,7 +109,7 @@ Digital filters can also be used to perform other functions, such as integration
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-The input-output *difference equation* that relates the output and input can be expressed in the discrete-time (DT) domain as a summation of the form
+The input-output _difference equation_ that relates the output and input can be expressed in the discrete-time (DT) domain as a summation of the form
 
 $$y[n] = \sum_{i=0}^{k}b_i x[n - i]-\sum_{i=0}^{k}a_i y[n - i]$$ (eq:7.2:1)
 
@@ -126,6 +126,7 @@ Therefore, the design of a digital filter to perform a desired function, entails
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (unit7.2:classification)=
+
 ### Classification of digital filters
 
 Digital filters are classified in terms of the duration of the impulse response, and in terms of realization.
@@ -136,11 +137,11 @@ Digital filters are classified in terms of the duration of the impulse response,
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-a). An *infinite impulse response* (IIR) filter as an infinite number of samples in its impulse response $h[n]$.
+a). An _infinite impulse response_ (IIR) filter as an infinite number of samples in its impulse response $h[n]$.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-b). A *finite impulse response* (FIR) filter as a finite number of samples in its impulse response $h[n]$.
+b). A _finite impulse response_ (FIR) filter as a finite number of samples in its impulse response $h[n]$.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -148,11 +149,11 @@ b). A *finite impulse response* (FIR) filter as a finite number of samples in it
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-a). In a *recursive realization* digital filter, the output depends on the input and the *previous* values of the output. In a recursive digital filter, both the coefficients $b_i$ and $a_i$ are present.
+a). In a _recursive realization_ digital filter, the output depends on the input and the _previous_ values of the output. In a recursive digital filter, both the coefficients $b_i$ and $a_i$ are present.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-b). In a *non-recursive realization* digital filter, the output depends on present and past values of the input only. In a non-recursive digital filter, only the coefficients $b_i$ are present, i.e. $a_i=0$.
+b). In a _non-recursive realization_ digital filter, the output depends on present and past values of the input only. In a non-recursive digital filter, only the coefficients $b_i$ are present, i.e. $a_i=0$.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -236,7 +237,7 @@ Three commonly used transformation methods are
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### 1. The *impulse invariant method*
+#### 1. The _impulse invariant method_
 
 Produces a digital filter $H(z)$ whose impulse response consists of the sampled values of the impulse response of the equivalent analogue filter $H(s)$.
 
@@ -246,13 +247,13 @@ This is implemented in MATLAB by the system transformation function: `Hz = c2d(H
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### 2. The *step invariant method*
+#### 2. The _step invariant method_
 
 Produces a digital filter $H(z)$ whose step response consists of the sampled values of the step response of the equivalent analogue filter $H(s)$.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### 3. The *bilinear transformation method*
+#### 3. The _bilinear transformation method_
 
 This uses the transformation[^u72:note:3]
 
@@ -266,11 +267,12 @@ to transform the left-half of the $s$-plane into the interior of the unit circle
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-In this unit, we will discuss, *and assess*, only the use of the blinear transformation.
+In this unit, we will discuss, _and assess_, only the use of the blinear transformation.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (unit7.2:bilinear)=
+
 ## The Bilinear Transformation
 
 We recall from {ref}`s-to-z` that since $z = e^{sT_s}$, $s = 1/T_s \log_e z$, then a DT transfer function $H(z)$ can be determined from a CT transfer function $H(s)$ using the mapping:
@@ -300,6 +302,7 @@ $$H(z) = \left.G(s)\right|_{s = \frac{2}{T_s} \cdot \frac{z-1}{z+1}} $$ (eq:7.2:
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (unit7.2:freqz)=
+
 ### Digital frequency response of the bilinear transformation
 
 The digital frequency response (using $\omega_d$ on the unit circle in the $z$-plane) is obtained by the substitution $z = e^{j\omega_d T_s}$, giving
@@ -337,9 +340,10 @@ $$\omega_a = \frac{2}{T_s} \tan\left(\frac{\omega_d T_s}{2} \right)$$ (eq:7.2:8)
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (u72:warping)=
+
 ### Frequency warping of the bilinear transformation
 
-We see that the analogue frequency to digital frequency transformation results in a non-linear mapping; this condition is know as *warping*.
+We see that the analogue frequency to digital frequency transformation results in a non-linear mapping; this condition is know as _warping_.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -347,15 +351,15 @@ For instance, the frequency range $0 \lt \omega_a \le \infty$ the analogue frequ
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
- To express $\omega_d$ in terms of $\omega_a$, we rewrite {eq}`eq:7.2:8` as
- 
- $$\tan\left(\frac{\omega_d T_s}{2} \right) = \frac{\omega_a T_s}{2} $$
+To express $\omega_d$ in terms of $\omega_a$, we rewrite {eq}`eq:7.2:8` as
+
+$$\tan\left(\frac{\omega_d T_s}{2} \right) = \frac{\omega_a T_s}{2} $$
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
 Then,
 
- $$\omega_d T_s  = 2 \tan^{-1}\left(\frac{\omega_a T_s}{2}\right) $$
+$$\omega_d T_s  = 2 \tan^{-1}\left(\frac{\omega_a T_s}{2}\right) $$
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -367,7 +371,7 @@ $$\tan^{-1}\left(\frac{\omega_a T_s}{2}\right) \approx \frac{\omega_a T_s}{2}$$
 
 Therefore,
 
-$$\omega_d T_s \approx 2 \left(\frac{\omega_a T_s}{2}\right) \approx \omega_a T_s$$  (eq:7.2:9)
+$$\omega_d T_s \approx 2 \left(\frac{\omega_a T_s}{2}\right) \approx \omega_a T_s$$ (eq:7.2:9)
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -384,13 +388,15 @@ $$\omega_d \approx \frac{\omega_a T_s}{\pi} $$ (eq:7.2:11)
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (u72:pre-warping)=
+
 ### Pre-warping
 
-The effect of warping can be eliminated by *pre-warping* the analogue filter prior to the application of the bilinear transformation. This is acomplished with the use of {eq}`eq:7.2:8`.
+The effect of warping can be eliminated by _pre-warping_ the analogue filter prior to the application of the bilinear transformation. This is acomplished with the use of {eq}`eq:7.2:8`.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (u72:ex:12)=
+
 #### Example 12
 
 Compute the transfer function $H(z)$ of a low-pass filter with $3$ dB cutoff frequency at $20$ Hz, and attenuation of at least $10$ dB for frequencies greater than $40$ Hz. The sampling frequency $f_s = 200$ Hz. Compare the magnitude plot with that obtained by a low-pass analogue filter with the same specifications.
@@ -527,9 +533,9 @@ We will used the MATLAB [`freqz`](https://uk.mathworks.com/help/signal/ref/freqz
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
- Dividing each term of {eq}`eq:7.2:14` by $62607z^2$, we obtain
- 
- $$\frac{0.0675 + 0.1350z^{-1} + 0.0675z^{-2}}{1 - 1.1428z^{-1} + 0.4128 z^{-2}}$$ (eq:7.2:15)
+Dividing each term of {eq}`eq:7.2:14` by $62607z^2$, we obtain
+
+$$\frac{0.0675 + 0.1350z^{-1} + 0.0675z^{-2}}{1 - 1.1428z^{-1} + 0.4128 z^{-2}}$$ (eq:7.2:15)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -576,6 +582,7 @@ Comparing the digital filter plot with the equivalent analogue filter plot, we o
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (u72:matlab_bilinear)=
+
 ### MATLAB bilinear function
 
 An analogue filter transfer function can be mapped to a digital transfer function directly with the MATLAB [`bilinear`](https://uk.mathworks.com/help/signal/ref/bilinear.html) function. The procedure is illustrated with the following example.
@@ -583,6 +590,7 @@ An analogue filter transfer function can be mapped to a digital transfer functio
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (u72:ex:13)=
+
 #### Example 13
 
 Use the MATLAB `bilinear` function to derive the low-pass digital transfer function $H(z)$ from a second-order Butterworth analogue filter with a $3$ dB cutoff frequency at $50$ Hz, and sample rate $f_s = 500$ Hz.
@@ -612,6 +620,7 @@ $$H(z) = \frac{0.0640 z^2  +  0.1279 z +   0.0640}{z^2   -1.1683 z +    0.4241} 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (u72:matlab_fd_tools)=
+
 ## MATLAB Functions for direct digital filter design
 
 MATLAB provides us with a suite of functions that we need to design digital filters using analogue prototypes. These are listed below.
@@ -635,6 +644,7 @@ The MathWorks also provides a catalogue of filter design tools with examples in 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (u72:fd_lp)=
+
 ### For Low-Pass Filters
 
 ```matlab
@@ -647,6 +657,7 @@ The MathWorks also provides a catalogue of filter design tools with examples in 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (u72:fd_hp)=
+
 ### For High-Pass Filters
 
 ```matlab
@@ -659,6 +670,7 @@ The MathWorks also provides a catalogue of filter design tools with examples in 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (u72:fd_bp)=
+
 ### For Band-Pass Filters
 
 ```matlab
@@ -671,6 +683,7 @@ The MathWorks also provides a catalogue of filter design tools with examples in 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (u72:fd_sb)=
+
 ### For Band-Elimination Filters
 
 ```matlab
@@ -683,6 +696,7 @@ The MathWorks also provides a catalogue of filter design tools with examples in 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (u72:ex:13)=
+
 #### Example 13
 
 The transfer functions {eq}`eq:7.2:16` through {eq}`eq:7.2:19`, describe different types of digital filters. Use the MATLAB `freqz` commmand to plot the magnitude versus radian frequency. What types of filter does each transfer function represent? What classes of filter are they?
@@ -783,15 +797,17 @@ It is clear that the filters are low-pass, high-pass, band-pass and band-stop. T
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (u72:simulink)=
+
 ## Digital Filter Design with Simulink
 
 As stated earlier in this unit, a digital filter is a computational process, or algorithm, that converts one sequence of numbers representing the input signal into another sequence of numbers representing the output signal.
 
-To close out this unit and the module, we will explore Simulink models that can be used to implement digital filters, and present the *Digital Filter Design* block included in the [Simulink DSP System Toolbox](https://uk.mathworks.com/help/dsp/index.html), which can generate these models automatically.
+To close out this unit and the module, we will explore Simulink models that can be used to implement digital filters, and present the _Digital Filter Design_ block included in the [Simulink DSP System Toolbox](https://uk.mathworks.com/help/dsp/index.html), which can generate these models automatically.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (u72:fd:direct_i)=
+
 ### The Direct Form I Realization of a Digital Filter
 
 The **Direct Form I Realization** of a second-order digital filter is shown in {numref}`fig:u72:3`.
@@ -837,6 +853,7 @@ A disadvantage of the Direct Form I Realization digital filter is that it requir
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (u72:fd:direct_ii)=
+
 ### The Direct Form II Realization of a Digital Filter
 
 The **Direct Form II Realization**[^u72:notes:6] of a second-order digital filter is shown in {numref}`fig:u72:4`. The Simulink [**Transfer Fcn Direct Form II**](https://uk.mathworks.com/help/simulink/slref/transferfcndirectformii.html) block implements the transfer function of this filter.
@@ -876,6 +893,7 @@ A comparison of {eq}`eq:7.2:21` and {eq}`eq:7.2:22` shows that whereas a Direct 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (u72:ex:14)=
+
 #### Example 14
 
 {numref}`fig:u72:5` shows a Direct Form-II second-order digital filter whose transfer function is
@@ -906,7 +924,7 @@ Download this model as [ex14.slx](matlab/ex14.slx).
 
 ### The Series Form Realization of a Digital Filter
 
-For the Series Form Realization, the transfer function is expressed as a product of first-order and second-orer transefer functions as shown in {eq}`eq:u72:24` below. 
+For the Series Form Realization, the transfer function is expressed as a product of first-order and second-orer transefer functions as shown in {eq}`eq:u72:24` below.
 
 $$H(z) = H_1(z)\cdot H_2(z)\cdots H_R(z)$$ (eq:u72:24)
 
@@ -945,6 +963,7 @@ Download this model as [series_form_2nd.slx](matlab/series_form_2nd.slx).
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (u72:ex:15)=
+
 #### Example 15
 
 The transfer function of the series form Realization of a certian second-order digital filter is
@@ -989,7 +1008,7 @@ Download this model as [ex15.slx](matlab/ex15.slx).
 
 ### The Parallel Form Realization of a Digital Filter
 
-The general form of the transfer function of a Parallel Form Realization is 
+The general form of the transfer function of a Parallel Form Realization is
 
 $$H(z) = K + H_1(z) + H_2(z) + \cdots + H_R(z)$$ (eq:u72:26)
 
@@ -1010,6 +1029,7 @@ As with the Series Form Realization, the ordering of the individual filters in {
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (u72:ex:16)=
+
 #### Example 16
 
 The transfer function of a certain second-order digital filter is
@@ -1079,6 +1099,7 @@ Download this model as [ex16.slx](matlab/ex16.slx).
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (u72:df_design_block)=
+
 ## The Digital Filter Design Block
 
 The [**Digital Filter Design** block](https://uk.mathworks.com/help/dsp/ug/using-digital-filter-design-block.html) is included in the [DSP System Toolbox](https://uk.mathworks.com/help/dsp/index.html) and is included in the version of MATLAB for which Swansea University has a site license. It also works on MATLAB online. This block can be used to create models related to digital filter design applications directly in Simulink.
@@ -1111,15 +1132,15 @@ Download this model as [ex16.slx](matlab/dfd_block.slx).
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-As indicated on the lower left part of this window, we can choose the *Response Type* (Low-Pass, High-Pass, Band-Pass or Band-Stop), the **Design Method** (IIR or FIR) where an IIR filter can be Butterworth, Chebyshev Type I, Chebyshev Type II, or Elliptic, and FIR can be Window, Maximally Flat, etc., and the **Window**[^u72:note:8] can be Kaiser, Hamming etc. We must click on the **Design Filter**. buttom at the bottom right of the Block Parameters dialogue box to update the specifications.
+As indicated on the lower left part of this window, we can choose the _Response Type_ (Low-Pass, High-Pass, Band-Pass or Band-Stop), the **Design Method** (IIR or FIR) where an IIR filter can be Butterworth, Chebyshev Type I, Chebyshev Type II, or Elliptic, and FIR can be Window, Maximally Flat, etc., and the **Window**[^u72:note:8] can be Kaiser, Hamming etc. We must click on the **Design Filter**. buttom at the bottom right of the Block Parameters dialogue box to update the specifications.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-[^u72:note:8]: A window function multiplies the infinte length impulse response (IIR) by a finite width function, referred to a a window function, so that the infinite length series will be terminated after a finite number of terms in the series. This causes what is called *leakage* and results in additional ripple in the frequency domain. Windows of various shapes can be used to minimize this leakage for particular applications. The study of windowing functions is beyond the scope of this course. In the CPD course [Signal Processing Toolbox](https://matlabacademy.mathworks.com/R2023b/portal.html?course=mlsg#chapter=6&lesson=4&section=1) you were shown the use of windowing functions as a design method for approximating an ideal filter. EEE stidents will have experienced windowing effecrs in the EGA223 lab on ADC, DAC and filters. You can study windowing in more detail in Appendix E of {cite}`karris`.
+[^u72:note:8]: A window function multiplies the infinte length impulse response (IIR) by a finite width function, referred to a a window function, so that the infinite length series will be terminated after a finite number of terms in the series. This causes what is called _leakage_ and results in additional ripple in the frequency domain. Windows of various shapes can be used to minimize this leakage for particular applications. The study of windowing functions is beyond the scope of this course. In the CPD course [Signal Processing Toolbox](https://matlabacademy.mathworks.com/R2023b/portal.html?course=mlsg#chapter=6&lesson=4&section=1) you were shown the use of windowing functions as a design method for approximating an ideal filter. EEE stidents will have experienced windowing effecrs in the EGA223 lab on ADC, DAC and filters. You can study windowing in more detail in Appendix E of {cite}`karris`.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-We will not give an actual example of the use of the Simulink filter design block in these notes. Instead we refer you to Example 11.7 in {cite}`karris` and also to the relevant page [Using Digital Filter Design Block](https://uk.mathworks.com/help/dsp/ug/using-digital-filter-design-block.html) in the MATLAB documentation site. There you will find documentation of the Digital Filter Design Block and several examples of its use. 
+We will not give an actual example of the use of the Simulink filter design block in these notes. Instead we refer you to Example 11.7 in {cite}`karris` and also to the relevant page [Using Digital Filter Design Block](https://uk.mathworks.com/help/dsp/ug/using-digital-filter-design-block.html) in the MATLAB documentation site. There you will find documentation of the Digital Filter Design Block and several examples of its use.
 
 If you go on from this course to do some actual signal processing, we would urge you to take full advantage of these resources.
 
@@ -1139,18 +1160,20 @@ Thus, MATLAB can be used in a so-called model-based design process as described 
 
 This concludes this module. Don't forget to let us know how it went for you in the end of module feedback.
 
-There are exercises in the notes which will give you practice in the sort of questions that will come up in the exam. 
+There are exercises in the notes which will give you practice in the sort of questions that will come up in the exam.
 
 Hopefully you found the module interesting and will make use of some of your knowledge after the exams are over!
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
 (u72:exercises)=
+
 ## Exercises
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
 (u72:ex:1)=
+
 ### Exercise 7.2.1
 
 **Exam Preparation**
@@ -1174,6 +1197,7 @@ Use the block diagram shown in {numref}`fig:u72:4` to validate {eq}`eq:7.2:18`. 
 +++ {"slideshow": {"slide_type": "notes"}}
 
 (u72:ex:3)=
+
 ### Exercise 7.2.3
 
 **Exam Preparation**
@@ -1185,11 +1209,12 @@ Design a 2nd-order Butterworth filter with $\omega_c = 20$ kHz. Use the Bilinear
 +++ {"slideshow": {"slide_type": "notes"}}
 
 (u72:ex:4)=
+
 ### Exercise 7.2.4
 
 **Exam Preparation**
 
-A digital filter with cutoff frequency of 100 Hz for a signal sampled at 1 kHz has transfer function 
+A digital filter with cutoff frequency of 100 Hz for a signal sampled at 1 kHz has transfer function
 
 $$H(z) = \frac{0.6401   -1.1518z^{-1}   + 0.6401z^{-2}}{1	-1.0130 z^{-1}    + 0.4190z^{-2}} $$
 

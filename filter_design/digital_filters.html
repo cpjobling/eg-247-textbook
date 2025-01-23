@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Unit 7.2: Designing Digital Filters in MATLAB and Simulink &#8212; EG-247 Digital Signal Processing</title>
   
@@ -15,19 +15,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -81,28 +81,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -124,12 +119,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -145,6 +148,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../introduction/index.html">
@@ -169,48 +174,48 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Online notes</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../transfer_functions/index.html">Transfer Function Analysis of Dynamic Systems</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../transfer_functions/index.html">Transfer Function Analysis of Dynamic Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../transfer_functions/1/concepts.html">Concept Review</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../transfer_functions/2/transfer_function_basics.html">Transfer Function Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../transfer_functions/3/pole_zero_analysis.html">Pole Zero Analysis</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../fourier_series/index.html">Fourier Series</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fourier_series/index.html">Fourier Series</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/1/trig_fseries.html">Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/2/exp_fs1.html">Exponential Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/3/exp_fs2.html">Computing Line Spectra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/4/exp_fs3.html">Applications of Line Spectra</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../fourier_transform/index.html">Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fourier_transform/index.html">Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_transform/1/ft1.html">Defining the Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_transform/2/ft2.html">Fourier transforms of commonly occuring signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_transform/3/ft3.html">Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_transform/4/ft4.html">Introduction to Filters</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../dt_systems/index.html">Sampled Data Systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dt_systems/index.html">Sampled Data Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../dt_systems/1/sampling.html">Sampling Theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dt_systems/2/z_transform.html">The Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dt_systems/3/i_z_transform.html">The Inverse Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dt_systems/4/dt_models.html">Models of Discrete Time Systems</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../dft/index.html">Discrete Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dft/index.html">Discrete Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../dft/1/dft.html">The Discrete Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dft/2/fft.html">The Fast-Fourier Transform</a></li>
 </ul>
-</li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Analogue and Digital Filter Design</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Analogue and Digital Filter Design</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="analogue_filters.html">Unit 7.1: Designing Analogue Filters</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Unit 7.2: Designing Digital Filters in MATLAB and Simulink</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../zbib.html">Bibliography</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">In Class Worksheets</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../worksheets/index.html">Worksheets</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../worksheets/index.html">Worksheets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/worksheet1.html">Worksheet 1 Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/1/worksheet2.html">Worksheet 2 Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/2/worksheet3.html">Worksheet 3 Exponential Fourier Series</a></li>
@@ -225,11 +230,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../dft/1/worksheet12.html">Worksheet 12 The Discrete-time Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dft/2/worksheet13.html">Worksheet 13 The Fast Fourier Transform</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework problems</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../homework/index.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../homework/index.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw4.html">Homework 4 Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw5.html">Homework 5 Fourier Transforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw6.html">Homework 6: Fourier Transforms</a></li>
@@ -237,7 +242,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw8.html">Homework 8 Sampling Theory and the Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw9.html">Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Answers to Selected Problems</span></p>
 <ul class="nav bd-sidenav">
@@ -255,7 +260,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../dt_systems/2/zt_table.html">Table of Z-Transforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../setup/polling_setup.html">Set Up In-Class Polling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../todo.html">List of Planned Enhancements</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../setup/index.html">Setting up your own version of this book</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../setup/index.html">Setting up your own version of this book</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../transfer_functions/1/LICENSE.html">MathWorks License</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/jupyter.html">About Jupyter notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/python.html">Installing Python</a></li>
@@ -264,7 +269,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../setup/advanced-setup.html">Quick Start - For Experienced Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/jupyter-book.html">Setting up jupyter-book</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 
     </div>
@@ -280,7 +285,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -289,7 +294,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -438,10 +443,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -449,7 +454,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -577,7 +582,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="unit-7-2-designing-digital-filters-in-matlab-and-simulink">
 <span id="unit7-2"></span><h1>Unit 7.2: Designing Digital Filters in MATLAB and Simulink<a class="headerlink" href="#unit-7-2-designing-digital-filters-in-matlab-and-simulink" title="Permalink to this heading">#</a></h1>
@@ -631,7 +636,7 @@ document.write(`
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"> </span><span class="nb">setappdata</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MKernel_plot_format&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;svg&#39;</span><span class="p">)</span>
 <span class="nb">cd</span><span class="w"> </span><span class="n">matlab</span>
 </pre></div>
 </div>
@@ -645,10 +650,10 @@ document.write(`
 <p>Digital filters can also be used to perform other functions, such as integration, differentiation, and estimation.</p>
 <p>The input-output <em>difference equation</em> that relates the output and input can be expressed in the discrete-time (DT) domain as a summation of the form</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-1">
-<span class="eqno">(37)<a class="headerlink" href="#equation-eq-7-2-1" title="Permalink to this equation">#</a></span>\[y[n] = \sum_{i=0}^{k}b_i x[n - i]-\sum_{i=0}^{k}a_i y[n - i]\]</div>
+<span class="eqno">(36)<a class="headerlink" href="#equation-eq-7-2-1" title="Permalink to this equation">#</a></span>\[y[n] = \sum_{i=0}^{k}b_i x[n - i]-\sum_{i=0}^{k}a_i y[n - i]\]</div>
 <p>or, as a Z-transform as</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-2">
-<span class="eqno">(38)<a class="headerlink" href="#equation-eq-7-2-2" title="Permalink to this equation">#</a></span>\[H(z) = \frac{Y(z)}{X(z)} = \frac{\displaystyle\sum_{i=0}^{k}b_i z^{-i}}{1 + \displaystyle\sum_{i=0}^{k}a_i z^{-i}}\]</div>
+<span class="eqno">(37)<a class="headerlink" href="#equation-eq-7-2-2" title="Permalink to this equation">#</a></span>\[H(z) = \frac{Y(z)}{X(z)} = \frac{\displaystyle\sum_{i=0}^{k}b_i z^{-i}}{1 + \displaystyle\sum_{i=0}^{k}a_i z^{-i}}\]</div>
 <p>Therefore, the design of a digital filter to perform a desired function, entails the determination of the coefficients <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(a_i\)</span>.</p>
 <section id="classification-of-digital-filters">
 <span id="unit7-2-classification"></span><h3>Classification of digital filters<a class="headerlink" href="#classification-of-digital-filters" title="Permalink to this heading">#</a></h3>
@@ -668,7 +673,7 @@ document.write(`
 <h3>Implementation of digital filters<a class="headerlink" href="#implementation-of-digital-filters" title="Permalink to this heading">#</a></h3>
 <section id="recursive-realization">
 <h4>Recursive realization<a class="headerlink" href="#recursive-realization" title="Permalink to this heading">#</a></h4>
-<p><a class="reference internal" href="#fig-u72-1"><span class="std std-numref">Fig. 14</span></a> shows a Simulink model of a third-order (3-delay element or 3-tap) recursive realization of a digital filter<a class="footnote-reference brackets" href="#u72-note-1" id="id2">1</a></p>
+<p><a class="reference internal" href="#fig-u72-1"><span class="std std-numref">Fig. 14</span></a> shows a Simulink model of a third-order (3-delay element or 3-tap) recursive realization of a digital filter<a class="footnote-reference brackets" href="#u72-note-1" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">recursive</span>
@@ -686,7 +691,7 @@ document.write(`
 </section>
 <section id="non-recursive-realization">
 <h4>Non-recursive realization<a class="headerlink" href="#non-recursive-realization" title="Permalink to this heading">#</a></h4>
-<p><a class="reference internal" href="#fig-u72-2"><span class="std std-numref">Fig. 15</span></a> shows a Simulink model of a third-order non-recursive realization of a digital filter<a class="footnote-reference brackets" href="#u72-note-2" id="id3">2</a></p>
+<p><a class="reference internal" href="#fig-u72-2"><span class="std std-numref">Fig. 15</span></a> shows a Simulink model of a third-order non-recursive realization of a digital filter<a class="footnote-reference brackets" href="#u72-note-2" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">nonrecursive</span>
@@ -720,9 +725,9 @@ document.write(`
 </section>
 <section id="the-bilinear-transformation-method">
 <h4>3. The <em>bilinear transformation method</em><a class="headerlink" href="#the-bilinear-transformation-method" title="Permalink to this heading">#</a></h4>
-<p>This uses the transformation<a class="footnote-reference brackets" href="#u72-note-3" id="id4">3</a></p>
+<p>This uses the transformation<a class="footnote-reference brackets" href="#u72-note-3" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-3">
-<span class="eqno">(39)<a class="headerlink" href="#equation-eq-7-2-3" title="Permalink to this equation">#</a></span>\[s = \frac{2}{T_s}\cdot\frac{z-1}{z+1}\]</div>
+<span class="eqno">(38)<a class="headerlink" href="#equation-eq-7-2-3" title="Permalink to this equation">#</a></span>\[s = \frac{2}{T_s}\cdot\frac{z-1}{z+1}\]</div>
 <p>to transform the left-half of the <span class="math notranslate nohighlight">\(s\)</span>-plane into the interior of the unit circle in the <span class="math notranslate nohighlight">\(z\)</span>-plane.</p>
 <p>In this unit, we will discuss, <em>and assess</em>, only the use of the blinear transformation.</p>
 </section>
@@ -732,21 +737,21 @@ document.write(`
 <span id="unit7-2-bilinear"></span><h2>The Bilinear Transformation<a class="headerlink" href="#the-bilinear-transformation" title="Permalink to this heading">#</a></h2>
 <p>We recall from <a class="reference internal" href="../dt_systems/2/z_transform.html#s-to-z"><span class="std std-ref">Relationship Between the Laplace and Z-Transform</span></a> that since <span class="math notranslate nohighlight">\(z = e^{sT_s}\)</span>, <span class="math notranslate nohighlight">\(s = 1/T_s \log_e z\)</span>, then a DT transfer function <span class="math notranslate nohighlight">\(H(z)\)</span> can be determined from a CT transfer function <span class="math notranslate nohighlight">\(H(s)\)</span> using the mapping:</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-4">
-<span class="eqno">(40)<a class="headerlink" href="#equation-eq-7-2-4" title="Permalink to this equation">#</a></span>\[H(z) = \left.H(s)\right|_{s = \frac{1}{T_s} \log_e z}\]</div>
+<span class="eqno">(39)<a class="headerlink" href="#equation-eq-7-2-4" title="Permalink to this equation">#</a></span>\[H(z) = \left.H(s)\right|_{s = \frac{1}{T_s} \log_e z}\]</div>
 <p>But the relation <span class="math notranslate nohighlight">\(s = 1/T_s \log_e z\)</span> is a multi-valued transformation, and as such, cannot be used to derive a rational polynomial in <span class="math notranslate nohighlight">\(z\)</span>.</p>
 <p>It can be approximated as</p>
 <div class="math notranslate nohighlight">
 \[s = \frac{1}{T_s} \log_e z = \frac{2}{T_s} \left[\frac{z-1}{z+1}  + \frac{1}{3} \left(\frac{z-1}{z+1} \right)^3 + \frac{1}{5} \left(\frac{z-1}{z+1} \right)^5 + \frac{1}{7} \left(\frac{z-1}{z+1} \right)^7 + \cdots\right]\]</div>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-5">
-<span class="eqno">(41)<a class="headerlink" href="#equation-eq-7-2-5" title="Permalink to this equation">#</a></span>\[s \approx \frac{2}{T_s} \cdot \frac{z-1}{z+1} \]</div>
-<p>Substitution of <a class="reference internal" href="#equation-eq-7-2-5">(41)</a> into <a class="reference internal" href="#equation-eq-7-2-4">(40)</a> yields</p>
+<span class="eqno">(40)<a class="headerlink" href="#equation-eq-7-2-5" title="Permalink to this equation">#</a></span>\[s \approx \frac{2}{T_s} \cdot \frac{z-1}{z+1} \]</div>
+<p>Substitution of <a class="reference internal" href="#equation-eq-7-2-5">(40)</a> into <a class="reference internal" href="#equation-eq-7-2-4">(39)</a> yields</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-6">
-<span class="eqno">(42)<a class="headerlink" href="#equation-eq-7-2-6" title="Permalink to this equation">#</a></span>\[H(z) = \left.G(s)\right|_{s = \frac{2}{T_s} \cdot \frac{z-1}{z+1}} \]</div>
+<span class="eqno">(41)<a class="headerlink" href="#equation-eq-7-2-6" title="Permalink to this equation">#</a></span>\[H(z) = \left.G(s)\right|_{s = \frac{2}{T_s} \cdot \frac{z-1}{z+1}} \]</div>
 <section id="digital-frequency-response-of-the-bilinear-transformation">
 <span id="unit7-2-freqz"></span><h3>Digital frequency response of the bilinear transformation<a class="headerlink" href="#digital-frequency-response-of-the-bilinear-transformation" title="Permalink to this heading">#</a></h3>
 <p>The digital frequency response (using <span class="math notranslate nohighlight">\(\omega_d\)</span> on the unit circle in the <span class="math notranslate nohighlight">\(z\)</span>-plane) is obtained by the substitution <span class="math notranslate nohighlight">\(z = e^{j\omega_d T_s}\)</span>, giving</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-7">
-<span class="eqno">(43)<a class="headerlink" href="#equation-eq-7-2-7" title="Permalink to this equation">#</a></span>\[H\left(e^{j\omega_d T_s}\right) = H\left(\frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s } + 1} \right) \]</div>
+<span class="eqno">(42)<a class="headerlink" href="#equation-eq-7-2-7" title="Permalink to this equation">#</a></span>\[H\left(e^{j\omega_d T_s}\right) = H\left(\frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s } + 1} \right) \]</div>
 <p>Since the <span class="math notranslate nohighlight">\(z\to s\)</span> transformation maps the unit circle on the <span class="math notranslate nohighlight">\(z\)</span>-plane into the <span class="math notranslate nohighlight">\(j\omega\)</span> axis on the <span class="math notranslate nohighlight">\(s\)</span>-plane, the quantity</p>
 <div class="math notranslate nohighlight">
 \[\frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s} + 1}\]</div>
@@ -761,13 +766,13 @@ document.write(`
 \[\omega_a = \frac{2}{T_s} \cdot \frac{\sin\left(\omega_d T_s\right)/2}{\cos\left(\omega_d T_s\right)/2} \]</div>
 <p>or</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-8">
-<span class="eqno">(44)<a class="headerlink" href="#equation-eq-7-2-8" title="Permalink to this equation">#</a></span>\[\omega_a = \frac{2}{T_s} \tan\left(\frac{\omega_d T_s}{2} \right)\]</div>
+<span class="eqno">(43)<a class="headerlink" href="#equation-eq-7-2-8" title="Permalink to this equation">#</a></span>\[\omega_a = \frac{2}{T_s} \tan\left(\frac{\omega_d T_s}{2} \right)\]</div>
 </section>
 <section id="frequency-warping-of-the-bilinear-transformation">
 <span id="u72-warping"></span><h3>Frequency warping of the bilinear transformation<a class="headerlink" href="#frequency-warping-of-the-bilinear-transformation" title="Permalink to this heading">#</a></h3>
 <p>We see that the analogue frequency to digital frequency transformation results in a non-linear mapping; this condition is know as <em>warping</em>.</p>
 <p>For instance, the frequency range <span class="math notranslate nohighlight">\(0 \lt \omega_a \le \infty\)</span> the analogue frequency is warped into the range <span class="math notranslate nohighlight">\(0 \le \omega_d \le \pi/T_s\)</span> in digital frequency.</p>
-<p>To express <span class="math notranslate nohighlight">\(\omega_d\)</span> in terms of <span class="math notranslate nohighlight">\(\omega_a\)</span>, we rewrite <a class="reference internal" href="#equation-eq-7-2-8">(44)</a> as</p>
+<p>To express <span class="math notranslate nohighlight">\(\omega_d\)</span> in terms of <span class="math notranslate nohighlight">\(\omega_a\)</span>, we rewrite <a class="reference internal" href="#equation-eq-7-2-8">(43)</a> as</p>
 <div class="math notranslate nohighlight">
 \[\tan\left(\frac{\omega_d T_s}{2} \right) = \frac{\omega_a T_s}{2} \]</div>
 <p>Then,</p>
@@ -778,17 +783,17 @@ document.write(`
 \[\tan^{-1}\left(\frac{\omega_a T_s}{2}\right) \approx \frac{\omega_a T_s}{2}\]</div>
 <p>Therefore,</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-9">
-<span class="eqno">(45)<a class="headerlink" href="#equation-eq-7-2-9" title="Permalink to this equation">#</a></span>\[\omega_d T_s \approx 2 \left(\frac{\omega_a T_s}{2}\right) \approx \omega_a T_s\]</div>
+<span class="eqno">(44)<a class="headerlink" href="#equation-eq-7-2-9" title="Permalink to this equation">#</a></span>\[\omega_d T_s \approx 2 \left(\frac{\omega_a T_s}{2}\right) \approx \omega_a T_s\]</div>
 <p>that is, for small frequencies,</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-10">
-<span class="eqno">(46)<a class="headerlink" href="#equation-eq-7-2-10" title="Permalink to this equation">#</a></span>\[\omega_d \approx \omega_a\]</div>
-<p>In MATLAB, <span class="math notranslate nohighlight">\(z\)</span> is a function of normalized frequency and thus the range of frequencies in <span class="math notranslate nohighlight">\(H(z)\)</span> is from <span class="math notranslate nohighlight">\(0 \to \pi\)</span>. Then <a class="reference internal" href="#equation-eq-7-2-9">(45)</a>, when used with MATLAB, becomes</p>
+<span class="eqno">(45)<a class="headerlink" href="#equation-eq-7-2-10" title="Permalink to this equation">#</a></span>\[\omega_d \approx \omega_a\]</div>
+<p>In MATLAB, <span class="math notranslate nohighlight">\(z\)</span> is a function of normalized frequency and thus the range of frequencies in <span class="math notranslate nohighlight">\(H(z)\)</span> is from <span class="math notranslate nohighlight">\(0 \to \pi\)</span>. Then <a class="reference internal" href="#equation-eq-7-2-9">(44)</a>, when used with MATLAB, becomes</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-11">
-<span class="eqno">(47)<a class="headerlink" href="#equation-eq-7-2-11" title="Permalink to this equation">#</a></span>\[\omega_d \approx \frac{\omega_a T_s}{\pi} \]</div>
+<span class="eqno">(46)<a class="headerlink" href="#equation-eq-7-2-11" title="Permalink to this equation">#</a></span>\[\omega_d \approx \frac{\omega_a T_s}{\pi} \]</div>
 </section>
 <section id="pre-warping">
 <span id="u72-pre-warping"></span><h3>Pre-warping<a class="headerlink" href="#pre-warping" title="Permalink to this heading">#</a></h3>
-<p>The effect of warping can be eliminated by <em>pre-warping</em> the analogue filter prior to the application of the bilinear transformation. This is acomplished with the use of <a class="reference internal" href="#equation-eq-7-2-8">(44)</a>.</p>
+<p>The effect of warping can be eliminated by <em>pre-warping</em> the analogue filter prior to the application of the bilinear transformation. This is acomplished with the use of <a class="reference internal" href="#equation-eq-7-2-8">(43)</a>.</p>
 <section id="example-12">
 <span id="u72-ex-12"></span><h4>Example 12<a class="headerlink" href="#example-12" title="Permalink to this heading">#</a></h4>
 <p>Compute the transfer function <span class="math notranslate nohighlight">\(H(z)\)</span> of a low-pass filter with <span class="math notranslate nohighlight">\(3\)</span> dB cutoff frequency at <span class="math notranslate nohighlight">\(20\)</span> Hz, and attenuation of at least <span class="math notranslate nohighlight">\(10\)</span> dB for frequencies greater than <span class="math notranslate nohighlight">\(40\)</span> Hz. The sampling frequency <span class="math notranslate nohighlight">\(f_s = 200\)</span> Hz. Compare the magnitude plot with that obtained by a low-pass analogue filter with the same specifications.</p>
@@ -805,9 +810,7 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b =
      0     0     1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a =
+a =
     1.0000    1.4142    1.0000
 </pre></div>
 </div>
@@ -815,9 +818,9 @@ document.write(`
 </div>
 <p>Thus, the transfer function with noramlized frequency, denoted as <span class="math notranslate nohighlight">\(H_n(s)\)</span>, is</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-12">
-<span class="eqno">(49)<a class="headerlink" href="#equation-eq-7-2-12" title="Permalink to this equation">#</a></span>\[H_n(s) = \frac{1}{s^2 + 1.414 s + 1} \]</div>
+<span class="eqno">(48)<a class="headerlink" href="#equation-eq-7-2-12" title="Permalink to this equation">#</a></span>\[H_n(s) = \frac{1}{s^2 + 1.414 s + 1} \]</div>
 <p>Now, we must transform this transfer function to another with actual cutoff frequency at <span class="math notranslate nohighlight">\(20\)</span> Hz. We donote it as <span class="math notranslate nohighlight">\(H_a(s)\)</span>.</p>
-<p>We will first pre-warp the analogue frequency which by relation <a class="reference internal" href="#equation-eq-7-2-8">(44)</a>, us related to the digital frequency as</p>
+<p>We will first pre-warp the analogue frequency which by relation <a class="reference internal" href="#equation-eq-7-2-8">(43)</a>, us related to the digital frequency as</p>
 <div class="math notranslate nohighlight">
 \[\omega_a = \frac{2}{T_s}\tan\left(\frac{\omega_d T_s}{2} \right)\]</div>
 <p>where</p>
@@ -829,11 +832,11 @@ document.write(`
 <p>or</p>
 <div class="math notranslate nohighlight">
 \[f_{ac} = \frac{130}{2\pi} \approx 20.69\,\mathrm{Hz}.\]</div>
-<p>As expected from relation <a class="reference internal" href="#equation-eq-7-2-10">(46)</a>, this frequency is very close to the discrete-time frequency <span class="math notranslate nohighlight">\(f_{dc} = 20\)</span> Hz, and thus from <a class="reference internal" href="#equation-eq-7-2-12">(49)</a>,</p>
+<p>As expected from relation <a class="reference internal" href="#equation-eq-7-2-10">(45)</a>, this frequency is very close to the discrete-time frequency <span class="math notranslate nohighlight">\(f_{dc} = 20\)</span> Hz, and thus from <a class="reference internal" href="#equation-eq-7-2-12">(48)</a>,</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-12">
-<span class="eqno">(49)<a class="headerlink" href="#equation-eq-7-2-12" title="Permalink to this equation">#</a></span>\[H_a(s) \approx H_n(s) = \frac{1}{s^2 + 1.414 s + 1} \]</div>
-<p>Relation <a class="reference internal" href="#equation-eq-7-2-12">(49)</a> applies only when the cutoff frequency is normalized to <span class="math notranslate nohighlight">\(\omega_c = 1\)</span> rad/s.</p>
-<p>If <span class="math notranslate nohighlight">\(\omega_c \ne 1\)</span>, we must scale the transfer function in accordance with relation <a class="reference internal" href="analogue_filters.html#equation-eq-7-1-15">(33)</a>, that is,</p>
+<span class="eqno">(48)<a class="headerlink" href="#equation-eq-7-2-12" title="Permalink to this equation">#</a></span>\[H_a(s) \approx H_n(s) = \frac{1}{s^2 + 1.414 s + 1} \]</div>
+<p>Relation <a class="reference internal" href="#equation-eq-7-2-12">(48)</a> applies only when the cutoff frequency is normalized to <span class="math notranslate nohighlight">\(\omega_c = 1\)</span> rad/s.</p>
+<p>If <span class="math notranslate nohighlight">\(\omega_c \ne 1\)</span>, we must scale the transfer function in accordance with relation <a class="reference internal" href="analogue_filters.html#equation-eq-7-1-15">(32)</a>, that is,</p>
 <div class="math notranslate nohighlight">
 \[H(s)_\mathrm{actual} = H\left(\frac{s}{\omega_\mathrm{actual}} \right) \]</div>
 <p>For this example, <span class="math notranslate nohighlight">\(\omega_\mathrm{actual} = 130\)</span> rad/s, and thus we replace <span class="math notranslate nohighlight">\(s\)</span> with <span class="math notranslate nohighlight">\(s/130\)</span> and we obtain</p>
@@ -842,7 +845,7 @@ document.write(`
 <p>We will use MATLAB to simplify this expression</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">s</span><span class="p">;</span><span class="w"> </span><span class="n">simplifyFraction</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">((</span><span class="n">s</span><span class="o">/</span><span class="mi">130</span><span class="p">)</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1.414</span><span class="o">*</span><span class="n">s</span><span class="o">/</span><span class="mi">130</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">s</span><span class="p">;</span><span class="w"> </span><span class="n">simplifyFraction</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">((</span><span class="n">s</span><span class="o">/</span><span class="mi">130</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1.414</span><span class="o">*</span><span class="n">s</span><span class="o">/</span><span class="mi">130</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
 <span class="mi">845000</span><span class="o">/</span><span class="mi">50</span>
 <span class="mi">9191</span><span class="o">/</span><span class="mi">50</span>
 </pre></div>
@@ -850,16 +853,10 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>845000/(50*s^2 + 9191*s + 845000)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+845000/(50*s^2 + 9191*s + 845000)
+ans =
        16900
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+ans =
   183.8200
 </pre></div>
 </div>
@@ -867,48 +864,44 @@ document.write(`
 </div>
 <p>Then,</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-13">
-<span class="eqno">(50)<a class="headerlink" href="#equation-eq-7-2-13" title="Permalink to this equation">#</a></span>\[H_a(s) = \frac{845000}{50s^2 + 9191s + 845000} = \frac{16900}{s^2 + 183.82s + 16900} \]</div>
+<span class="eqno">(49)<a class="headerlink" href="#equation-eq-7-2-13" title="Permalink to this equation">#</a></span>\[H_a(s) = \frac{845000}{50s^2 + 9191s + 845000} = \frac{16900}{s^2 + 183.82s + 16900} \]</div>
 <p>and making the substitution of <span class="math notranslate nohighlight">\(s = (2/T_s)(z -1)/(z + 1) = 400(z-1)/(z + 1)\)</span> we obtain</p>
 <div class="math notranslate nohighlight">
 \[H(z) = \frac{16900}{\left(400\cdot \frac{z-1}{z + 1}\right)^2 + \frac{183.82\times 400(z-1)}{(z + 1)} + 16900} \]</div>
 <p>We use the MATLAB code below to simplify this expression</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">z</span><span class="p">;</span><span class="w"> </span><span class="nb">simplify</span><span class="p">(</span><span class="mi">16900</span><span class="o">/</span><span class="p">((</span><span class="mi">400</span><span class="o">*</span><span class="p">(</span><span class="n">z</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">z</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">183.82</span><span class="o">*</span><span class="mi">400</span><span class="o">*</span><span class="p">(</span><span class="n">z</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">z</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">16900</span><span class="p">))</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">z</span><span class="p">;</span><span class="w"> </span><span class="nb">simplify</span><span class="p">(</span><span class="mi">16900</span><span class="o">/</span><span class="p">((</span><span class="mi">400</span><span class="o">*</span><span class="p">(</span><span class="n">z</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">z</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">183.82</span><span class="o">*</span><span class="mi">400</span><span class="o">*</span><span class="p">(</span><span class="n">z</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">z</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">16900</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4225*(z + 1)^2)/(62607*z^2 - 71550*z + 25843)
+(4225*(z + 1)^2)/(62607*z^2 - 71550*z + 25843)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">expand</span><span class="p">(</span><span class="mi">4225</span><span class="o">*</span><span class="p">(</span><span class="n">z</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>^<span class="mi">2</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">expand</span><span class="p">(</span><span class="mi">4225</span><span class="o">*</span><span class="p">(</span><span class="n">z</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4225*z^2 + 8450*z + 4225
+4225*z^2 + 8450*z + 4225
 </pre></div>
 </div>
 </div>
 </div>
 <p>and thus</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-14">
-<span class="eqno">(51)<a class="headerlink" href="#equation-eq-7-2-14" title="Permalink to this equation">#</a></span>\[H(z) = \frac{4225z^2 + 8450z + 4225}{62607z^2 - 71550z + 25843} \]</div>
+<span class="eqno">(50)<a class="headerlink" href="#equation-eq-7-2-14" title="Permalink to this equation">#</a></span>\[H(z) = \frac{4225z^2 + 8450z + 4225}{62607z^2 - 71550z + 25843} \]</div>
 <p>We will used the MATLAB <a class="reference external" href="https://uk.mathworks.com/help/signal/ref/freqz.html"><code class="docutils literal notranslate"><span class="pre">freqz</span></code></a> function to plot the magnitude of <span class="math notranslate nohighlight">\(H(z)\)</span>, but we must first express it in negative powers of <span class="math notranslate nohighlight">\(z\)</span>.</p>
-<p>Dividing each term of <a class="reference internal" href="#equation-eq-7-2-14">(51)</a> by <span class="math notranslate nohighlight">\(62607z^2\)</span>, we obtain</p>
+<p>Dividing each term of <a class="reference internal" href="#equation-eq-7-2-14">(50)</a> by <span class="math notranslate nohighlight">\(62607z^2\)</span>, we obtain</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-15">
-<span class="eqno">(52)<a class="headerlink" href="#equation-eq-7-2-15" title="Permalink to this equation">#</a></span>\[\frac{0.0675 + 0.1350z^{-1} + 0.0675z^{-2}}{1 - 1.1428z^{-1} + 0.4128 z^{-2}}\]</div>
+<span class="eqno">(51)<a class="headerlink" href="#equation-eq-7-2-15" title="Permalink to this equation">#</a></span>\[\frac{0.0675 + 0.1350z^{-1} + 0.0675z^{-2}}{1 - 1.1428z^{-1} + 0.4128 z^{-2}}\]</div>
 <p>The MATLAB script below will generate <span class="math notranslate nohighlight">\(H(z)\)</span> and will plot the magnitude of this transfer function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -920,8 +913,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/db6686943cbb3391b245752bb2ece6405d9a91f049e59cd5068e0fa350116992.png" src="../_images/db6686943cbb3391b245752bb2ece6405d9a91f049e59cd5068e0fa350116992.png" />
-</div>
+<img alt="../_images/6ad994b5f8dcdfdcdd554a94a393b175587a673560031426f0be963f2d9080e4.svg" src="../_images/6ad994b5f8dcdfdcdd554a94a393b175587a673560031426f0be963f2d9080e4.svg" /></div>
 </div>
 <p>We now plot the analogue equivalent to compare the digital to the analogue frequency response.</p>
 <p>The MATLAB script below produces the desired plot.</p>
@@ -935,10 +927,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c2bece196ae8d4a57c577f139cdd90d798612e48b7800e15ab4018c9135988fc.png" src="../_images/c2bece196ae8d4a57c577f139cdd90d798612e48b7800e15ab4018c9135988fc.png" />
+<img alt="../_images/4cef67b74a9c89d0799d6079455cc198abadbdf503402794200e9345b99507d3.svg" src="../_images/4cef67b74a9c89d0799d6079455cc198abadbdf503402794200e9345b99507d3.svg" /></div>
 </div>
-</div>
-<p>Comparing the digital filter plot with the equivalent analogue filter plot, we observe that the magnitude is greater than <span class="math notranslate nohighlight">\(-3\)</span> dB for frequencies less than <span class="math notranslate nohighlight">\(20\)</span> rad/s, and is smaller than <span class="math notranslate nohighlight">\(-10\)</span> dB for frequencies greater than <span class="math notranslate nohighlight">\(40\)</span> Hz. Therefore, both the digital and analogue low-pass filters meet the specified requirements.<a class="footnote-reference brackets" href="#u72-note-4" id="id5">4</a></p>
+<p>Comparing the digital filter plot with the equivalent analogue filter plot, we observe that the magnitude is greater than <span class="math notranslate nohighlight">\(-3\)</span> dB for frequencies less than <span class="math notranslate nohighlight">\(20\)</span> rad/s, and is smaller than <span class="math notranslate nohighlight">\(-10\)</span> dB for frequencies greater than <span class="math notranslate nohighlight">\(40\)</span> Hz. Therefore, both the digital and analogue low-pass filters meet the specified requirements.<a class="footnote-reference brackets" href="#u72-note-4" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a></p>
 </section>
 </section>
 </section>
@@ -962,9 +953,7 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numd =
     0.0640    0.1279    0.0640
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dend =
+dend =
     1.0000   -1.1683    0.4241
 </pre></div>
 </div>
@@ -972,7 +961,7 @@ document.write(`
 </div>
 <p>Therefore, the transfer function <span class="math notranslate nohighlight">\(H(z)\)</span> for this filter is</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-16">
-<span class="eqno">(53)<a class="headerlink" href="#equation-eq-7-2-16" title="Permalink to this equation">#</a></span>\[H(z) = \frac{0.0640 z^2  +  0.1279 z +   0.0640}{z^2   -1.1683 z +    0.4241} = \frac{0.0640  +  0.1279 z^{-1} +   0.0640 z^{-2}}{1   -1.1683 z^{-1} +    0.4241 z^{-2}}\]</div>
+<span class="eqno">(52)<a class="headerlink" href="#equation-eq-7-2-16" title="Permalink to this equation">#</a></span>\[H(z) = \frac{0.0640 z^2  +  0.1279 z +   0.0640}{z^2   -1.1683 z +    0.4241} = \frac{0.0640  +  0.1279 z^{-1} +   0.0640 z^{-2}}{1   -1.1683 z^{-1} +    0.4241 z^{-2}}\]</div>
 </section>
 </section>
 </section>
@@ -1026,33 +1015,33 @@ document.write(`
 </div>
 <section id="id7">
 <span id="id8"></span><h4>Example 13<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h4>
-<p>The transfer functions <a class="reference internal" href="#equation-eq-7-2-16">(53)</a> through <a class="reference internal" href="#equation-eq-7-2-19">(56)</a>, describe different types of digital filters. Use the MATLAB <code class="docutils literal notranslate"><span class="pre">freqz</span></code> commmand to plot the magnitude versus radian frequency. What types of filter does each transfer function represent? What classes of filter are they?</p>
+<p>The transfer functions <a class="reference internal" href="#equation-eq-7-2-16">(52)</a> through <a class="reference internal" href="#equation-eq-7-2-19">(55)</a>, describe different types of digital filters. Use the MATLAB <code class="docutils literal notranslate"><span class="pre">freqz</span></code> commmand to plot the magnitude versus radian frequency. What types of filter does each transfer function represent? What classes of filter are they?</p>
 <section id="a">
 <h5>13(a)<a class="headerlink" href="#a" title="Permalink to this heading">#</a></h5>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-17">
-<span class="eqno">(54)<a class="headerlink" href="#equation-eq-7-2-17" title="Permalink to this equation">#</a></span>\[H_1(z) = \frac{\left(2.8982 + 8.6946z^{-1} + 8.6946z^{-2} + 2.8982z^{-3}\right)\cdot 10^{-3}}{1 - 2.3741z^{-1} + 1.9294z^{-2} - 0.5321z^{-3}} \]</div>
+<span class="eqno">(53)<a class="headerlink" href="#equation-eq-7-2-17" title="Permalink to this equation">#</a></span>\[H_1(z) = \frac{\left(2.8982 + 8.6946z^{-1} + 8.6946z^{-2} + 2.8982z^{-3}\right)\cdot 10^{-3}}{1 - 2.3741z^{-1} + 1.9294z^{-2} - 0.5321z^{-3}} \]</div>
 </section>
 <section id="b">
 <h5>13(b)<a class="headerlink" href="#b" title="Permalink to this heading">#</a></h5>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-18">
-<span class="eqno">(55)<a class="headerlink" href="#equation-eq-7-2-18" title="Permalink to this equation">#</a></span>\[H_2(z) = \frac{0.5276 - 1.5828z^{-1} + 1.5828z^{-2} - 0.5276z^{-3}}{1 - 1.7600z^{-1} + 1.1829z^{-2} - 0.2781z^{-3}} \]</div>
+<span class="eqno">(54)<a class="headerlink" href="#equation-eq-7-2-18" title="Permalink to this equation">#</a></span>\[H_2(z) = \frac{0.5276 - 1.5828z^{-1} + 1.5828z^{-2} - 0.5276z^{-3}}{1 - 1.7600z^{-1} + 1.1829z^{-2} - 0.2781z^{-3}} \]</div>
 </section>
 <section id="c">
 <h5>13(c)<a class="headerlink" href="#c" title="Permalink to this heading">#</a></h5>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-19">
-<span class="eqno">(56)<a class="headerlink" href="#equation-eq-7-2-19" title="Permalink to this equation">#</a></span>\[H_3(z) = \frac{\left(6.8482 - 13.6964z^{-2} + 6.8482z^{-4}\right)\cdot 10^{-4}}{1 + 3.3033z^{-1} + 4.5244z^{-2} + 3.1390z^{-3} + 0.9603z^{-4}}\]</div>
+<span class="eqno">(55)<a class="headerlink" href="#equation-eq-7-2-19" title="Permalink to this equation">#</a></span>\[H_3(z) = \frac{\left(6.8482 - 13.6964z^{-2} + 6.8482z^{-4}\right)\cdot 10^{-4}}{1 + 3.3033z^{-1} + 4.5244z^{-2} + 3.1390z^{-3} + 0.9603z^{-4}}\]</div>
 </section>
 <section id="d">
 <h5>13(d)<a class="headerlink" href="#d" title="Permalink to this heading">#</a></h5>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-20">
-<span class="eqno">(57)<a class="headerlink" href="#equation-eq-7-2-20" title="Permalink to this equation">#</a></span>\[H_4(z) = \frac{0.9270-1.2079z^{-1}+0.9270z^{-2}}{1-1.2079z^{-1}+0.8541z^{-2}} \]</div>
+<span class="eqno">(56)<a class="headerlink" href="#equation-eq-7-2-20" title="Permalink to this equation">#</a></span>\[H_4(z) = \frac{0.9270-1.2079z^{-1}+0.9270z^{-2}}{1-1.2079z^{-1}+0.8541z^{-2}} \]</div>
 </section>
 <section id="id9">
 <h5>Solution<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h5>
-<p>The MATLAB script to plot each of the transfer functions of <a class="reference internal" href="#equation-eq-7-2-16">(53)</a> through <a class="reference internal" href="#equation-eq-7-2-19">(56)</a>, is given below where N = 512, i.e. the default value.</p>
+<p>The MATLAB script to plot each of the transfer functions of <a class="reference internal" href="#equation-eq-7-2-16">(52)</a> through <a class="reference internal" href="#equation-eq-7-2-19">(55)</a>, is given below where N = 512, i.e. the default value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">b1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mf">2.8982</span><span class="p">,</span><span class="w"> </span><span class="mf">8.6946</span><span class="p">,</span><span class="w"> </span><span class="mf">8.6946</span><span class="p">,</span><span class="w"> </span><span class="mf">2.8982</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span>^<span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span><span class="w"> </span><span class="n">a1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">2.3741</span><span class="p">,</span><span class="w"> </span><span class="mf">1.9294</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.5321</span><span class="p">];</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">b1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mf">2.8982</span><span class="p">,</span><span class="w"> </span><span class="mf">8.6946</span><span class="p">,</span><span class="w"> </span><span class="mf">8.6946</span><span class="p">,</span><span class="w"> </span><span class="mf">2.8982</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span><span class="o">^</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span><span class="w"> </span><span class="n">a1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">2.3741</span><span class="p">,</span><span class="w"> </span><span class="mf">1.9294</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.5321</span><span class="p">];</span>
 <span class="p">[</span><span class="n">H1z</span><span class="p">,</span><span class="n">w1T</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">freqz</span><span class="p">(</span><span class="n">b1</span><span class="p">,</span><span class="w"> </span><span class="n">a1</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -1068,7 +1057,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">b3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mf">6.8482</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">13.6964</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">6.8482</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span>^<span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">);</span><span class="w"> </span><span class="n">a3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">3.2033</span><span class="p">,</span><span class="w"> </span><span class="mf">4.5244</span><span class="p">,</span><span class="w"> </span><span class="mf">3.1390</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9603</span><span class="p">];</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">b3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mf">6.8482</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">13.6964</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">6.8482</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span><span class="o">^</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">);</span><span class="w"> </span><span class="n">a3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">3.2033</span><span class="p">,</span><span class="w"> </span><span class="mf">4.5244</span><span class="p">,</span><span class="w"> </span><span class="mf">3.1390</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9603</span><span class="p">];</span>
 <span class="p">[</span><span class="n">H3z</span><span class="p">,</span><span class="n">w3T</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">freqz</span><span class="p">(</span><span class="n">b3</span><span class="p">,</span><span class="w"> </span><span class="n">a3</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -1101,8 +1090,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b5881c6ea206091c18da806c7c4bd7807ec92ed037caeb6c3bc70d29adb8e4b4.png" src="../_images/b5881c6ea206091c18da806c7c4bd7807ec92ed037caeb6c3bc70d29adb8e4b4.png" />
-</div>
+<img alt="../_images/0c8aa7b916c6ffadc86767a0eb88299c37a169a302518fcf47ee4f17c1330d02.svg" src="../_images/0c8aa7b916c6ffadc86767a0eb88299c37a169a302518fcf47ee4f17c1330d02.svg" /></div>
 </div>
 <p>It is clear that the filters are low-pass, high-pass, band-pass and band-stop. There is now ripple in the pass-band or stop band so they are all Butterworth filters.</p>
 </section>
@@ -1137,12 +1125,12 @@ document.write(`
 \[X(z)\left(b_0 + b_1z^{-1} + b_2z^{-2}\right) = Y(s)\left(1 + a_1z^{-1} + a_2z^{-2}\right)\]</div>
 <p>And thus, the transfer function of the Direct Form I Realization of the second-order digital filter of <a class="reference internal" href="#fig-u72-3"><span class="std std-numref">Fig. 16</span></a> is</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-21">
-<span class="eqno">(58)<a class="headerlink" href="#equation-eq-7-2-21" title="Permalink to this equation">#</a></span>\[H(z) = \frac{Y(z)}{X(z)} = \frac{b_0 + b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}} \]</div>
-<p>A disadvantage of the Direct Form I Realization digital filter is that it requires <span class="math notranslate nohighlight">\(2k\)</span> registers where <span class="math notranslate nohighlight">\(k\)</span> represents the order of the filter. We observe that the second-order (<span class="math notranslate nohighlight">\(k=2\)</span>) digital filter of <a class="reference internal" href="#fig-u72-3"><span class="std std-numref">Fig. 16</span></a> requires 4 delay (register) elements denoted as <span class="math notranslate nohighlight">\(z^{-1}\)</span>. However, this form of realization has the advantage that there is no possibility of internal filter overflow<a class="footnote-reference brackets" href="#u72-notes-5" id="id10">5</a>.</p>
+<span class="eqno">(57)<a class="headerlink" href="#equation-eq-7-2-21" title="Permalink to this equation">#</a></span>\[H(z) = \frac{Y(z)}{X(z)} = \frac{b_0 + b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}} \]</div>
+<p>A disadvantage of the Direct Form I Realization digital filter is that it requires <span class="math notranslate nohighlight">\(2k\)</span> registers where <span class="math notranslate nohighlight">\(k\)</span> represents the order of the filter. We observe that the second-order (<span class="math notranslate nohighlight">\(k=2\)</span>) digital filter of <a class="reference internal" href="#fig-u72-3"><span class="std std-numref">Fig. 16</span></a> requires 4 delay (register) elements denoted as <span class="math notranslate nohighlight">\(z^{-1}\)</span>. However, this form of realization has the advantage that there is no possibility of internal filter overflow<a class="footnote-reference brackets" href="#u72-notes-5" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>.</p>
 </section>
 <section id="the-direct-form-ii-realization-of-a-digital-filter">
 <span id="u72-fd-direct-ii"></span><h3>The Direct Form II Realization of a Digital Filter<a class="headerlink" href="#the-direct-form-ii-realization-of-a-digital-filter" title="Permalink to this heading">#</a></h3>
-<p>The <strong>Direct Form II Realization</strong><a class="footnote-reference brackets" href="#u72-notes-6" id="id11">6</a> of a second-order digital filter is shown in <a class="reference internal" href="#fig-u72-4"><span class="std std-numref">Fig. 17</span></a>. The Simulink <a class="reference external" href="https://uk.mathworks.com/help/simulink/slref/transferfcndirectformii.html"><strong>Transfer Fcn Direct Form II</strong></a> block implements the transfer function of this filter.</p>
+<p>The <strong>Direct Form II Realization</strong><a class="footnote-reference brackets" href="#u72-notes-6" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a> of a second-order digital filter is shown in <a class="reference internal" href="#fig-u72-4"><span class="std std-numref">Fig. 17</span></a>. The Simulink <a class="reference external" href="https://uk.mathworks.com/help/simulink/slref/transferfcndirectformii.html"><strong>Transfer Fcn Direct Form II</strong></a> block implements the transfer function of this filter.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">dfiir_df</span>
@@ -1159,13 +1147,13 @@ document.write(`
 <p>Download this model as <a class="reference download internal" download="" href="../_downloads/6da708592d4381f1d785541440f3e765/dfiir_df.slx"><span class="xref download myst">dfiir_df.slx</span></a>.</p>
 <p>The transfer function for the Direct Form-II second-order digital filter of <a class="reference internal" href="#fig-u72-4"><span class="std std-numref">Fig. 17</span></a> is the same as for a Direct Form-I second-order filter of <a class="reference internal" href="#fig-u72-3"><span class="std std-numref">Fig. 16</span></a>, that is,</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-22">
-<span class="eqno">(59)<a class="headerlink" href="#equation-eq-7-2-22" title="Permalink to this equation">#</a></span>\[H(z) = \frac{b_0 + b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}} \]</div>
-<p>A comparison of <a class="reference internal" href="#equation-eq-7-2-21">(58)</a> and <a class="reference internal" href="#equation-eq-7-2-22">(59)</a> shows that whereas a Direct Form-I second-order digital filter requires <span class="math notranslate nohighlight">\(2k\)</span> registers, where <span class="math notranslate nohighlight">\(k\)</span> represents the order of the filter, a Direct Type-II second-order digital filter requires only <span class="math notranslate nohighlight">\(k\)</span> register elements denoted as <span class="math notranslate nohighlight">\(z^{-1}\)</span>. This is because the register (<span class="math notranslate nohighlight">\(z^{-1}\)</span>) elements of the Direct Form-II realization are shared between the zeros section and the poles section.</p>
+<span class="eqno">(58)<a class="headerlink" href="#equation-eq-7-2-22" title="Permalink to this equation">#</a></span>\[H(z) = \frac{b_0 + b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}} \]</div>
+<p>A comparison of <a class="reference internal" href="#equation-eq-7-2-21">(57)</a> and <a class="reference internal" href="#equation-eq-7-2-22">(58)</a> shows that whereas a Direct Form-I second-order digital filter requires <span class="math notranslate nohighlight">\(2k\)</span> registers, where <span class="math notranslate nohighlight">\(k\)</span> represents the order of the filter, a Direct Type-II second-order digital filter requires only <span class="math notranslate nohighlight">\(k\)</span> register elements denoted as <span class="math notranslate nohighlight">\(z^{-1}\)</span>. This is because the register (<span class="math notranslate nohighlight">\(z^{-1}\)</span>) elements of the Direct Form-II realization are shared between the zeros section and the poles section.</p>
 <section id="example-14">
 <span id="u72-ex-14"></span><h4>Example 14<a class="headerlink" href="#example-14" title="Permalink to this heading">#</a></h4>
 <p><a class="reference internal" href="#fig-u72-5"><span class="std std-numref">Fig. 18</span></a> shows a Direct Form-II second-order digital filter whose transfer function is</p>
 <div class="math notranslate nohighlight" id="equation-eq-u72-23">
-<span class="eqno">(60)<a class="headerlink" href="#equation-eq-u72-23" title="Permalink to this equation">#</a></span>\[H(z) = \frac{1+1.5z^{-1}+1.02z^{-2}}{1 - 0.25 z^{-1} -0.75 z^{-2}} \]</div>
+<span class="eqno">(59)<a class="headerlink" href="#equation-eq-u72-23" title="Permalink to this equation">#</a></span>\[H(z) = \frac{1+1.5z^{-1}+1.02z^{-2}}{1 - 0.25 z^{-1} -0.75 z^{-2}} \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ex14</span>
@@ -1184,10 +1172,10 @@ document.write(`
 </section>
 <section id="the-series-form-realization-of-a-digital-filter">
 <span id="u72-fd-series"></span><h3>The Series Form Realization of a Digital Filter<a class="headerlink" href="#the-series-form-realization-of-a-digital-filter" title="Permalink to this heading">#</a></h3>
-<p>For the Series Form Realization, the transfer function is expressed as a product of first-order and second-orer transefer functions as shown in <a class="reference internal" href="#equation-eq-u72-24">(61)</a> below.</p>
+<p>For the Series Form Realization, the transfer function is expressed as a product of first-order and second-orer transefer functions as shown in <a class="reference internal" href="#equation-eq-u72-24">(60)</a> below.</p>
 <div class="math notranslate nohighlight" id="equation-eq-u72-24">
-<span class="eqno">(61)<a class="headerlink" href="#equation-eq-u72-24" title="Permalink to this equation">#</a></span>\[H(z) = H_1(z)\cdot H_2(z)\cdots H_R(z)\]</div>
-<p>Relation <a class="reference internal" href="#equation-eq-u72-24">(61)</a> is implemented as the cascaded blocks shown in <a class="reference internal" href="#fig-u72-6"><span class="std std-numref">Fig. 19</span></a>.</p>
+<span class="eqno">(60)<a class="headerlink" href="#equation-eq-u72-24" title="Permalink to this equation">#</a></span>\[H(z) = H_1(z)\cdot H_2(z)\cdots H_R(z)\]</div>
+<p>Relation <a class="reference internal" href="#equation-eq-u72-24">(60)</a> is implemented as the cascaded blocks shown in <a class="reference internal" href="#fig-u72-6"><span class="std std-numref">Fig. 19</span></a>.</p>
 <figure class="align-default" id="fig-u72-6">
 <a class="reference internal image-reference" href="../_images/series.png"><img alt="../_images/series.png" src="../_images/series.png" style="width: 100%;" /></a>
 <figcaption>
@@ -1214,9 +1202,9 @@ document.write(`
 <p>The transfer function of the series form Realization of a certian second-order digital filter is</p>
 <div class="math notranslate nohighlight">
 \[H(z) = \frac{0.5\left(1-0.36z^{-2}\right)}{1 + 0.1 z^{-1} - 0.72 z^{-2}} \]</div>
-<p>To implement this filter, we factor the numerator and denominator polynomials as<a class="footnote-reference brackets" href="#u72-note-7" id="id12">7</a></p>
+<p>To implement this filter, we factor the numerator and denominator polynomials as<a class="footnote-reference brackets" href="#u72-note-7" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a></p>
 <div class="math notranslate nohighlight" id="equation-eq-u72-25">
-<span class="eqno">(62)<a class="headerlink" href="#equation-eq-u72-25" title="Permalink to this equation">#</a></span>\[H(z) = \frac{0.5\left(1+0.6z^{-1}\right)\left(1-0.6z^{-1}\right)}{\left(1+0.9z^{-1}\right)\left(1-0.8z^{-1}\right)} \]</div>
+<span class="eqno">(61)<a class="headerlink" href="#equation-eq-u72-25" title="Permalink to this equation">#</a></span>\[H(z) = \frac{0.5\left(1+0.6z^{-1}\right)\left(1-0.6z^{-1}\right)}{\left(1+0.9z^{-1}\right)\left(1-0.8z^{-1}\right)} \]</div>
 <p>The Simulink model and the input and output waveforms are shown in <a class="reference internal" href="#fig-u72-7"><span class="std std-numref">Fig. 21</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1238,8 +1226,8 @@ document.write(`
 <span id="u72-fd-parallel"></span><h3>The Parallel Form Realization of a Digital Filter<a class="headerlink" href="#the-parallel-form-realization-of-a-digital-filter" title="Permalink to this heading">#</a></h3>
 <p>The general form of the transfer function of a Parallel Form Realization is</p>
 <div class="math notranslate nohighlight" id="equation-eq-u72-26">
-<span class="eqno">(63)<a class="headerlink" href="#equation-eq-u72-26" title="Permalink to this equation">#</a></span>\[H(z) = K + H_1(z) + H_2(z) + \cdots + H_R(z)\]</div>
-<p>Relation <a class="reference internal" href="#equation-eq-u72-26">(63)</a> is implemented as the parallel blocks shown in <a class="reference internal" href="#fig-u72-8"><span class="std std-numref">Fig. 22</span></a>.</p>
+<span class="eqno">(62)<a class="headerlink" href="#equation-eq-u72-26" title="Permalink to this equation">#</a></span>\[H(z) = K + H_1(z) + H_2(z) + \cdots + H_R(z)\]</div>
+<p>Relation <a class="reference internal" href="#equation-eq-u72-26">(62)</a> is implemented as the parallel blocks shown in <a class="reference internal" href="#fig-u72-8"><span class="std std-numref">Fig. 22</span></a>.</p>
 <figure class="align-default" id="fig-u72-8">
 <a class="reference internal image-reference" href="../_images/parallel.png"><img alt="../_images/parallel.png" src="../_images/parallel.png" style="width: 50%;" /></a>
 <figcaption>
@@ -1270,7 +1258,7 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[H(z) = 0.25 + \frac{0.147z}{z+0.9} + \frac{0.103z}{z-0.8}\]</div>
 <div class="math notranslate nohighlight" id="equation-eq-u72-27">
-<span class="eqno">(64)<a class="headerlink" href="#equation-eq-u72-27" title="Permalink to this equation">#</a></span>\[H(z) = 0.25 + \frac{0.147}{1+0.9z^{-1}} + \frac{0.103}{1-0.8z^{-1}}\]</div>
+<span class="eqno">(63)<a class="headerlink" href="#equation-eq-u72-27" title="Permalink to this equation">#</a></span>\[H(z) = 0.25 + \frac{0.147}{1+0.9z^{-1}} + \frac{0.103}{1-0.8z^{-1}}\]</div>
 <p>The model and input and output waveforms are shown in <a class="reference internal" href="#fig-u72-9"><span class="std std-numref">Fig. 23</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1308,7 +1296,7 @@ document.write(`
 </figcaption>
 </figure>
 <p>Download this model as <a class="reference download internal" download="" href="../_downloads/8171f19cf2942abbf2aeb76493934639/dfd_block.slx"><span class="xref download myst">ex16.slx</span></a>.</p>
-<p>As indicated on the lower left part of this window, we can choose the <em>Response Type</em> (Low-Pass, High-Pass, Band-Pass or Band-Stop), the <strong>Design Method</strong> (IIR or FIR) where an IIR filter can be Butterworth, Chebyshev Type I, Chebyshev Type II, or Elliptic, and FIR can be Window, Maximally Flat, etc., and the <strong>Window</strong><a class="footnote-reference brackets" href="#u72-note-8" id="id13">8</a> can be Kaiser, Hamming etc. We must click on the <strong>Design Filter</strong>. buttom at the bottom right of the Block Parameters dialogue box to update the specifications.</p>
+<p>As indicated on the lower left part of this window, we can choose the <em>Response Type</em> (Low-Pass, High-Pass, Band-Pass or Band-Stop), the <strong>Design Method</strong> (IIR or FIR) where an IIR filter can be Butterworth, Chebyshev Type I, Chebyshev Type II, or Elliptic, and FIR can be Window, Maximally Flat, etc., and the <strong>Window</strong><a class="footnote-reference brackets" href="#u72-note-8" id="id13" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a> can be Kaiser, Hamming etc. We must click on the <strong>Design Filter</strong>. buttom at the bottom right of the Block Parameters dialogue box to update the specifications.</p>
 <p>We will not give an actual example of the use of the Simulink filter design block in these notes. Instead we refer you to Example 11.7 in <span id="id14">[<a class="reference internal" href="../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., fifth edition, 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3384197&amp;pq-origsite=primo.">Karris, 2012</a>]</span> and also to the relevant page <a class="reference external" href="https://uk.mathworks.com/help/dsp/ug/using-digital-filter-design-block.html">Using Digital Filter Design Block</a> in the MATLAB documentation site. There you will find documentation of the Digital Filter Design Block and several examples of its use.</p>
 <p>If you go on from this course to do some actual signal processing, we would urge you to take full advantage of these resources.</p>
 <section id="code-generation">
@@ -1329,13 +1317,13 @@ document.write(`
 <section id="exercise-7-2-1">
 <span id="u72-ex-1"></span><h3>Exercise 7.2.1<a class="headerlink" href="#exercise-7-2-1" title="Permalink to this heading">#</a></h3>
 <p><strong>Exam Preparation</strong></p>
-<p>Use the block diagram shown in <a class="reference internal" href="#fig-u72-1"><span class="std std-numref">Fig. 14</span></a> to validate <a class="reference internal" href="#equation-eq-7-2-2">(38)</a> and <a class="reference internal" href="#equation-eq-7-2-1">(37)</a>.</p>
+<p>Use the block diagram shown in <a class="reference internal" href="#fig-u72-1"><span class="std std-numref">Fig. 14</span></a> to validate <a class="reference internal" href="#equation-eq-7-2-2">(37)</a> and <a class="reference internal" href="#equation-eq-7-2-1">(36)</a>.</p>
 <p><a class="reference internal" href="answers.html#sol-ex7-2-1"><span class="std std-ref">Solution to Exercise 7.2.1</span></a></p>
 <p id="u72-ex-2"><strong>Exam Preparation</strong></p>
 </section>
 <section id="exercise-7-2-2">
 <h3>Exercise 7.2.2<a class="headerlink" href="#exercise-7-2-2" title="Permalink to this heading">#</a></h3>
-<p>Use the block diagram shown in <a class="reference internal" href="#fig-u72-4"><span class="std std-numref">Fig. 17</span></a> to validate <a class="reference internal" href="#equation-eq-7-2-18">(55)</a>. Write down the equivalent difference equation.</p>
+<p>Use the block diagram shown in <a class="reference internal" href="#fig-u72-4"><span class="std std-numref">Fig. 17</span></a> to validate <a class="reference internal" href="#equation-eq-7-2-18">(54)</a>. Write down the equivalent difference equation.</p>
 <p><a class="reference internal" href="answers.html#sol-ex7-2-2"><span class="std std-ref">Solution to Exercise 7.2.2</span></a></p>
 </section>
 <section id="exercise-7-2-3">
@@ -1372,32 +1360,38 @@ document.write(`
 <section id="footnotes">
 <h2>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this heading">#</a></h2>
 <hr class="footnotes docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="u72-note-1"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
-<dd><p>Note that the block labelled <span class="math notranslate nohighlight">\(z^{-1}\)</span> is a one unit delay <span class="math notranslate nohighlight">\(y[n] = x[n - 1]\)</span>; the triangular blocks are gains <span class="math notranslate nohighlight">\(y[n] = k x[n]\)</span>; and the circular blocks are summing points. Following the equations we have <span class="math notranslate nohighlight">\(w[n] = x[n] - a_1 w[n-1] - a_2 w[n-2] - a_3 w[n-3]\)</span> and <span class="math notranslate nohighlight">\(y[n] = b_0 w[n] + b_1 w[n-1] + b_2 w[n-2] + b_3 w[n-3]\)</span>. It is left as an exercise for the reader to show that combining these two equations, taking Z-transforms, and eliminating <span class="math notranslate nohighlight">\(W(z)\)</span>, results in the transfer function <span class="math notranslate nohighlight">\(H(z) = Y(z)/X(z)\)</span> given in <a class="reference internal" href="#equation-eq-7-2-2">(38)</a> and hence the difference equation of <a class="reference internal" href="#equation-eq-7-2-1">(37)</a>.</p>
-</dd>
-<dt class="label" id="u72-note-2"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
-<dd><p>It is obvious from this figure that <span class="math notranslate nohighlight">\(y[n] = b_0 x[n] + b_1 x[n-1] + b_2 x[n-2] + b_3 x[n-3]\)</span>.</p>
-</dd>
-<dt class="label" id="u72-note-3"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
-<dd><p><span class="math notranslate nohighlight">\(T_s\)</span> is the sampling period, that is the reciprocal of the sampling frequency <span class="math notranslate nohighlight">\(f_s\)</span> Hz.</p>
-</dd>
-<dt class="label" id="u72-note-4"><span class="brackets"><a class="fn-backref" href="#id5">4</a></span></dt>
-<dd><p>Note the significant distortion of the digital filter response at high frequencies.</p>
-</dd>
-<dt class="label" id="u72-notes-5"><span class="brackets"><a class="fn-backref" href="#id10">5</a></span></dt>
-<dd><p>For a detailed discussion on overflow conditions please refer to Section 10.5, Chapter 10, Page 10-6 of <span id="id15">[<a class="reference internal" href="../zbib.html#id23" title="Steven T. Karris. Digital Circuit Analysis and Design with an Introduction to CPLDs and FPGAs. Orchard Publications, Fremont, CA., first edition, 2005. ISBN 0-9744239-6-3.">Karris, 2005</a>]</span>.</p>
-</dd>
-<dt class="label" id="u72-notes-6"><span class="brackets"><a class="fn-backref" href="#id11">6</a></span></dt>
-<dd><p>The Direct Form-II is also known as the <strong>Canonical</strong> Form.</p>
-</dd>
-<dt class="label" id="u72-note-7"><span class="brackets"><a class="fn-backref" href="#id12">7</a></span></dt>
-<dd><p>The way we combine the numerator and denominator factors is immaterial. For example we could group the factors as <span class="math notranslate nohighlight">\(\left(1 + 0.6z^{-1}\right)/\left(1+0.9z^{-1}\right)\)</span> and <span class="math notranslate nohighlight">\(\left(1 - 0.6z^{-1}\right)/\left(1-0.8z^{-1}\right)\)</span>, or as <span class="math notranslate nohighlight">\(\left(1 + 0.6z^{-1}\right)/\left(1-0.8z^{-1}\right)\)</span> and <span class="math notranslate nohighlight">\(\left(1 - 0.6z^{-1}\right)/\left(1+0.9z^{-1}\right)\)</span>.</p>
-</dd>
-<dt class="label" id="u72-note-8"><span class="brackets"><a class="fn-backref" href="#id13">8</a></span></dt>
-<dd><p>A window function multiplies the infinte length impulse response (IIR) by a finite width function, referred to a a window function, so that the infinite length series will be terminated after a finite number of terms in the series. This causes what is called <em>leakage</em> and results in additional ripple in the frequency domain. Windows of various shapes can be used to minimize this leakage for particular applications. The study of windowing functions is beyond the scope of this course. In the CPD course <a class="reference external" href="https://matlabacademy.mathworks.com/R2023b/portal.html?course=mlsg#chapter=6&amp;lesson=4&amp;section=1">Signal Processing Toolbox</a> you were shown the use of windowing functions as a design method for approximating an ideal filter. EEE stidents will have experienced windowing effecrs in the EGA223 lab on ADC, DAC and filters. You can study windowing in more detail in Appendix E of <span id="id16">[<a class="reference internal" href="../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., fifth edition, 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3384197&amp;pq-origsite=primo.">Karris, 2012</a>]</span>.</p>
-</dd>
-</dl>
+<aside class="footnote brackets" id="u72-note-1" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>Note that the block labelled <span class="math notranslate nohighlight">\(z^{-1}\)</span> is a one unit delay <span class="math notranslate nohighlight">\(y[n] = x[n - 1]\)</span>; the triangular blocks are gains <span class="math notranslate nohighlight">\(y[n] = k x[n]\)</span>; and the circular blocks are summing points. Following the equations we have <span class="math notranslate nohighlight">\(w[n] = x[n] - a_1 w[n-1] - a_2 w[n-2] - a_3 w[n-3]\)</span> and <span class="math notranslate nohighlight">\(y[n] = b_0 w[n] + b_1 w[n-1] + b_2 w[n-2] + b_3 w[n-3]\)</span>. It is left as an exercise for the reader to show that combining these two equations, taking Z-transforms, and eliminating <span class="math notranslate nohighlight">\(W(z)\)</span>, results in the transfer function <span class="math notranslate nohighlight">\(H(z) = Y(z)/X(z)\)</span> given in <a class="reference internal" href="#equation-eq-7-2-2">(37)</a> and hence the difference equation of <a class="reference internal" href="#equation-eq-7-2-1">(36)</a>.</p>
+</aside>
+<aside class="footnote brackets" id="u72-note-2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
+<p>It is obvious from this figure that <span class="math notranslate nohighlight">\(y[n] = b_0 x[n] + b_1 x[n-1] + b_2 x[n-2] + b_3 x[n-3]\)</span>.</p>
+</aside>
+<aside class="footnote brackets" id="u72-note-3" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
+<p><span class="math notranslate nohighlight">\(T_s\)</span> is the sampling period, that is the reciprocal of the sampling frequency <span class="math notranslate nohighlight">\(f_s\)</span> Hz.</p>
+</aside>
+<aside class="footnote brackets" id="u72-note-4" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">4</a><span class="fn-bracket">]</span></span>
+<p>Note the significant distortion of the digital filter response at high frequencies.</p>
+</aside>
+<aside class="footnote brackets" id="u72-notes-5" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">5</a><span class="fn-bracket">]</span></span>
+<p>For a detailed discussion on overflow conditions please refer to Section 10.5, Chapter 10, Page 10-6 of <span id="id15">[<a class="reference internal" href="../zbib.html#id23" title="Steven T. Karris. Digital Circuit Analysis and Design with an Introduction to CPLDs and FPGAs. Orchard Publications, Fremont, CA., first edition, 2005. ISBN 0-9744239-6-3.">Karris, 2005</a>]</span>.</p>
+</aside>
+<aside class="footnote brackets" id="u72-notes-6" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">6</a><span class="fn-bracket">]</span></span>
+<p>The Direct Form-II is also known as the <strong>Canonical</strong> Form.</p>
+</aside>
+<aside class="footnote brackets" id="u72-note-7" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id12">7</a><span class="fn-bracket">]</span></span>
+<p>The way we combine the numerator and denominator factors is immaterial. For example we could group the factors as <span class="math notranslate nohighlight">\(\left(1 + 0.6z^{-1}\right)/\left(1+0.9z^{-1}\right)\)</span> and <span class="math notranslate nohighlight">\(\left(1 - 0.6z^{-1}\right)/\left(1-0.8z^{-1}\right)\)</span>, or as <span class="math notranslate nohighlight">\(\left(1 + 0.6z^{-1}\right)/\left(1-0.8z^{-1}\right)\)</span> and <span class="math notranslate nohighlight">\(\left(1 - 0.6z^{-1}\right)/\left(1+0.9z^{-1}\right)\)</span>.</p>
+</aside>
+<aside class="footnote brackets" id="u72-note-8" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id13">8</a><span class="fn-bracket">]</span></span>
+<p>A window function multiplies the infinte length impulse response (IIR) by a finite width function, referred to a a window function, so that the infinite length series will be terminated after a finite number of terms in the series. This causes what is called <em>leakage</em> and results in additional ripple in the frequency domain. Windows of various shapes can be used to minimize this leakage for particular applications. The study of windowing functions is beyond the scope of this course. In the CPD course <a class="reference external" href="https://matlabacademy.mathworks.com/R2023b/portal.html?course=mlsg#chapter=6&amp;lesson=4&amp;section=1">Signal Processing Toolbox</a> you were shown the use of windowing functions as a design method for approximating an ideal filter. EEE stidents will have experienced windowing effecrs in the EGA223 lab on ADC, DAC and filters. You can study windowing in more detail in Appendix E of <span id="id16">[<a class="reference internal" href="../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., fifth edition, 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3384197&amp;pq-origsite=primo.">Karris, 2012</a>]</span>.</p>
+</aside>
 </section>
 </section>
 
@@ -1410,16 +1404,16 @@ document.write(`
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "matlab"
+            mode: "mkernel"
         },
         kernelOptions: {
-            name: "matlab",
+            name: "mkernel",
             path: "./filter_design"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'matlab'</script>
+    <script>kernelName = 'mkernel'</script>
 
                 </article>
               
@@ -1428,7 +1422,7 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1457,6 +1451,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1614,8 +1609,8 @@ for
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

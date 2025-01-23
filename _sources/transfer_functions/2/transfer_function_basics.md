@@ -7,14 +7,15 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.15.2
 kernelspec:
-  display_name: Matlab
+  display_name: MKernel
   language: matlab
-  name: matlab
+  name: mkernel
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (tf_basics)=
+
 # Unit 2.2: Transfer Function Basics
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -23,16 +24,16 @@ kernelspec:
 
 In this unit, students will...
 
-* Derive transfer functions by hand.
-* Derive transfer functions using symbolic math.
-* Numerically evaluate and plot the impulse, step, and forced responses of a system.
-* Analytically derive the step and forced responses of a system.
-* Explain the physical significance of time responses.
+- Derive transfer functions by hand.
+- Derive transfer functions using symbolic math.
+- Numerically evaluate and plot the impulse, step, and forced responses of a system.
+- Analytically derive the step and forced responses of a system.
+- Explain the physical significance of time responses.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
 :::{note}
-This unit is based on the MATLAB LiveScript `TransferFunctionBasics.mlx` from the curriculum module [Transfer Function Analysis of Dynamic Systems](https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems). 
+This unit is based on the MATLAB LiveScript `TransferFunctionBasics.mlx` from the curriculum module [Transfer Function Analysis of Dynamic Systems](https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems).
 
 Some of the examples rely on interactive features of MATLAB that are not readily reproduced in these notes. To make use of these facilities, you are advised to access the script directly from the project in MATLAB online.
 
@@ -49,7 +50,7 @@ slideshow:
 % Setup MATLAB to use the TransferFunctionBasics.mlx LiveScript in class.
 % I am assuming that this is on the MATLAB Drive
 
-format compact 
+format compact; setappdata(0, "MKernel_plot_format", 'svg')
 % Change this to local set up where this Jupyter book is run
 cd '/Users/eechris/MATLAB-Drive/Repositories/Transfer-Function-Analysis-of-Dynamic-Systems'
 open('TransferFunctions.prj')
@@ -70,10 +71,11 @@ Electric vehicles (EV) may well be the future of environmentally sustainable tra
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## Transfer Function Definition
-Consider a dynamic system with a single input function  and a single output function:
+
+Consider a dynamic system with a single input function and a single output function:
 
 ![A dynamic system represented as a block diagram in the time domain](images/bdt.png)
-    
+
 This is known as a **SISO** (Single Input Single Output) system. In general, the system $g$ is defined through a differential equation: $g(u, x, \dot{x}, \ddot{x},\ldots) = 0$.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -88,7 +90,7 @@ the ratio of the Laplace transform of the output $Y(s) = \mathcal{L}\{y(t)\}$ to
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-:::{tip}  If you need to brush up on Laplace transforms, review them in: {ref}`tf_concepts`. 
+:::{tip} If you need to brush up on Laplace transforms, review them in: {ref}`tf_concepts`.
 :::
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -98,22 +100,22 @@ the ratio of the Laplace transform of the output $Y(s) = \mathcal{L}\{y(t)\}$ to
 ![example](images/write.png)
 
 Find the transfer function of a mass-spring-damper that is dynamically forced by an arbitrary function $u(t)$. Assume that the system is initially at rest ($x(0)=0$ and $\dot{x}(0) = 0$).
-      
+
 ![Mass-spring-damper diagram](images/smd.png)
 Mass-spring-damper diagram
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Solution to Example 1 
+### Solution to Example 1
 
 The equation of motion for a mass-spring-damper is
-    
+
 $$m \ddot{x} + c \dot{x} + k x = u$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 Using the properties of the Laplace transform for derivatives, the Laplace transform is
-            
+
 $$m[s^2 X - sx(0) - \dot{x}(0)] + c [s X - x(0)] + kX = U$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -130,21 +132,22 @@ $$G(s) = \frac{X(s)}{U(s)} = \frac{1}{m s^2 + cs + k}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Exercise 1 
+### Exercise 1
 
 ![example](images/write.png)
 
-Find the transfer function of a simple pendulum with zero initial conditions using the linearized equations of motion. Consider that the pendulum is being driven by an arbitrary forcing function $u(t)$ (note that any angle dependence of the forcing would be baked into $u(t)$. The equations of motion are: 
+Find the transfer function of a simple pendulum with zero initial conditions using the linearized equations of motion. Consider that the pendulum is being driven by an arbitrary forcing function $u(t)$ (note that any angle dependence of the forcing would be baked into $u(t)$. The equations of motion are:
 
 $$\ddot{\theta} + \frac{g}{l} \theta = u$$
-    
-where $g$ is acceleration due to gravity and $l$ is the length of the pendulum. 
+
+where $g$ is acceleration due to gravity and $l$ is the length of the pendulum.
 
 Record your answer below in variable `pendulumTF` in terms of the symbolic variables `g`, `l`, and `s`.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 #### Solution to Exercise 1
+
 $$
 \mathcal{L}\left\{\ddot{\theta} + \frac{g}{l} \theta = u\right\} = \left(s^2\Theta(s) - sf(0) - f'(0)\right) + \frac{g}{l}\Theta(s) = U(s)
 $$
@@ -178,7 +181,7 @@ We can now enter this result into the code below.
 slideshow:
   slide_type: subslide
 ---
-format compact % remove extra white space
+format compact; setappdata(0, "MKernel_plot_format", 'svg') % remove extra white space
 syms g l s
 % Record your answer in pendulumTF
 pendulumTF = 1/(s^2 + (g/l));
@@ -187,6 +190,7 @@ pendulumTF = 1/(s^2 + (g/l));
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## Electric vehicle dynamic system
+
 In this module, you'll investigate the dynamics of components of an electric vehicle's electrical and mechanical systems (EV) using transfer functions. The major components of the EV system are represented in the diagram below.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -197,14 +201,16 @@ Simplified EV power system
 +++ {"slideshow": {"slide_type": "notes"}}
 
 There are two domains represented in this diagram: the electrical and physical domains. The DC motor couples the domains by converting electrical energy to mechanical. Inside the electrical domain, there are two essential conversions.
-* The AC power source (120/240V) is converted to a high voltage DC source (200-800V) used to charge the battery pack.
-* The battery's high voltage DC (200-800V) is converted to a low voltage (12V or 48V) by a buck converter for use by low voltage systems.
+
+- The AC power source (120/240V) is converted to a high voltage DC source (200-800V) used to charge the battery pack.
+- The battery's high voltage DC (200-800V) is converted to a low voltage (12V or 48V) by a buck converter for use by low voltage systems.
 
 In this unit, you will investigate several paradigmatic components present (or like those present) in EVs.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## Transfer function representation of simple vehicle motion
+
 The most intuitive part of the electric vehicle system is the motion of the vehicle itself.
 
 ![A focus on modeling the motion of the vehicle](images/car_motion.png)
@@ -219,7 +225,7 @@ A simple vehicle model
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Example 2 
+### Example 2
 
 (a) Derive the equation of motion for the simple vehicle model and (b) compute the transfer function of the displacement $x(t)$ using the traction force as the input function $u(t)$.
 
@@ -232,13 +238,13 @@ A simple vehicle model
 #### Example 2(a) Differential equation
 
 The displacement of the vehicle is $x(t)$. For simplicity, the frictional force is assumed to be proportional to the velocity $\dot{x}(t)$ with a constant of proportionality $k$:
-    
+
 $$F_\mathrm{friction} = k \dot{x}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 The traction force varies depending on the output of the motor (among other considerations), so it is treated as an arbitrary function:
-    
+
 $$F_\mathrm{traction} = u(t)$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -252,7 +258,7 @@ $$m\ddot{x} = -k\dot{x}  + u(t)$$
 #### Example 2(b) Transfer function
 
 Computing the Laplace transform of the equation of motion yields
-    
+
 $$m[s^2 X - sx(0) - x'(0)] = - k [s X - x(0)] + U$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -270,8 +276,8 @@ $$G(s) = \frac{X(s)}{U(s)} = \frac{1}{ms^2 + ks}$$
 
 ### Exercise 2
 
-It may be the case that you want to analyze the velocity $v(t)=\dot{x}(t)$ rather than the position $x$. Rewrite the equation of motion 
-    
+It may be the case that you want to analyze the velocity $v(t)=\dot{x}(t)$ rather than the position $x$. Rewrite the equation of motion
+
 $$m\ddot{x} = -k\dot{x} + f(t)$$
 
 in terms of the velocity, $v(t)=\dot{x}(t)$, and then solve for the transfer function of $v$: $H(s) = V(s)/F(s)$. Record your answer below in `Vtf` in terms of the symbolic variables `s`, `m`, and `k`.
@@ -286,7 +292,7 @@ $$m\ddot{x} = -k\dot{x} + f(t) \rightarrow m\dot{v} = -kv + f(t)$$
 
 So
 
-$$m\dot{v} + kv = f(t)$$ 
+$$m\dot{v} + kv = f(t)$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -317,9 +323,10 @@ Vtf = 1/(m*s + k);
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-## Impulse response 
+## Impulse response
+
 The impulse response of a system is the output generated from an impulse input. This is also commonly referred to as the natural response.
-       
+
 ![Response of a system to an impulse](images/impulse_response.png)
 Response of a system to an impulse. While the response may be computed in the $s$-domain, it is shown in the time domain.
 
@@ -327,36 +334,36 @@ Response of a system to an impulse. While the response may be computed in the $s
 
 Here $\delta(t)$ is the Dirac delta function which has the properties:
 
-$\int_{-\infty}^{\infty} \delta(t) dt = 1 $ and $\delta(t) = 0 \text{ for } t \neq 0$ 
+$\int_{-\infty}^{\infty} \delta(t) dt = 1 $ and $\delta(t) = 0 \text{ for } t \neq 0$
 
 Think of the unit impulse as giving the system a (very) quick shove at time $t = 0$. The impulse response shows how the system will respond to that shove.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-###  Reflect
+### Reflect
 
 ![reflect](images/reflect.png)
 
 Consider the simple vehicle motion model. The input function is the traction force $u(t) = F_\mathrm{traction}(t)$. An impulse input corresponds to an instantaneous force at time $t = 0$.
-        
+
 ![A model of a simple vehicle](images/vehicle_model.png)
 
-* Try drawing a plot of the impulse response of the position transfer function $X(s)/F(s)$ in the time domain.
-* Try drawing a plot of the impulse response of the velocity transfer function $V(s)/F(s)$ in the time domain.
+- Try drawing a plot of the impulse response of the position transfer function $X(s)/F(s)$ in the time domain.
+- Try drawing a plot of the impulse response of the velocity transfer function $V(s)/F(s)$ in the time domain.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### Example 3
 
-Plot the impulse response of a mass-spring-damper with zero initial conditions and parameters $m=1$, $c=0.1$, and $k=0.5$. 
-      
+Plot the impulse response of a mass-spring-damper with zero initial conditions and parameters $m=1$, $c=0.1$, and $k=0.5$.
+
 ![Mass-spring-damper diagram](images/smd.png)
 Mass-spring-damper diagram
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 Recall the transfer function of the mass-spring-damper:
-    
+
 $$G(s) = \frac{X(s)}{U(s)} = \frac{1}{m s^2 + cs + k}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -385,8 +392,8 @@ slideshow:
   slide_type: subslide
 ---
 m = 1;
-c = 0.1; 
-k = 0.4; 
+c = 0.1;
+k = 0.4;
 num = [0 0 1];
 denom = [m c k];
 ```
@@ -429,22 +436,21 @@ ylabel("x [m]")
 
 ![reflect](images/reflect.png)
 
-* How are the damping  and spring stiffness  reflected in the impulse response?
-* If $c$ is increased to 0.5, how will the response change?
-* Try setting $c = 0.5$ and recompute the impulse response.
-* Try setting $k = 1$ and recompute the impulse response.
+- How are the damping and spring stiffness reflected in the impulse response?
+- If $c$ is increased to 0.5, how will the response change?
+- Try setting $c = 0.5$ and recompute the impulse response.
+- Try setting $k = 1$ and recompute the impulse response.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### Exercise 3
 
-Consider a simple vehicle with a mass of 1300 kg and a frictional constant of proportionality of $k = 100$  N.s/m. Recall that the simple vehicle motion model has a transfer function:
-
+Consider a simple vehicle with a mass of 1300 kg and a frictional constant of proportionality of $k = 100$ N.s/m. Recall that the simple vehicle motion model has a transfer function:
 
 $$G(s) = \frac{X(s)}{U(s)} = \frac{1}{ms^2 + ks}$$
 
+Plot the impulse response of for the first 100 seconds using MATLAB commands by
 
-Plot the impulse response of  for the first 100 seconds using MATLAB commands by
 1. creating the transfer function using the `tf` function
 2. plotting the impulse response using `impulse` function
 
@@ -471,9 +477,9 @@ impulse(G, Tfinal),ylabel('x(t) [metres]'),grid
 
 ![reflect](images/reflect.png)
 
-* How does the impulse response compare to your prediction for the impulse response?
-* Physically, what does the long-term behavior of the impulse response represent?
-* Define the velocity transfer function $\displaystyle{H(s) = \frac{1}{ms + k}}$ and compute the impulse response in the space below. Physically, what does the limiting behaviour represent?
+- How does the impulse response compare to your prediction for the impulse response?
+- Physically, what does the long-term behavior of the impulse response represent?
+- Define the velocity transfer function $\displaystyle{H(s) = \frac{1}{ms + k}}$ and compute the impulse response in the space below. Physically, what does the limiting behaviour represent?
 
 ```{code-cell}
 ---
@@ -493,7 +499,7 @@ impulse(G2, Tfinal),ylabel('v(t) [metres/s]'),grid
 ## Step response
 
 The output generated from a step input is known as the step response.
-    
+
 ![Response of a system to a step input](images/step_resp.png)
 Response of a system to a step input.
 
@@ -501,7 +507,7 @@ The step response is plotted in the time domain. Think of the step response as t
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Reflect 
+### Reflect
 
 ![reflect](images/reflect.png)
 
@@ -509,9 +515,8 @@ Consider the simple vehicle motion model. The input function is the traction for
 
 ![A model of a simple vehicle](images/vehicle_model.png)
 
-        
-* Try drawing a plot of the step response of the position transfer function $G(s) = X(s)/F(s)$ in the time domain.
-* Try drawing a plot of the step response of the velocity transfer function $H(s) = V(s)/F(s)$ in the time domain.
+- Try drawing a plot of the step response of the position transfer function $G(s) = X(s)/F(s)$ in the time domain.
+- Try drawing a plot of the step response of the velocity transfer function $H(s) = V(s)/F(s)$ in the time domain.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -550,20 +555,20 @@ step(G, Tfinal),ylabel('x(t) [metres]'),grid
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-###  Reflect 
+### Reflect
 
 ![reflect](images/reflect.png)
 
-* How does the step response compare to your prediction?
-* What physical action does the initial transient behavior reflect?
-* What does the long-term behavior of the step response reflect?
+- How does the step response compare to your prediction?
+- What physical action does the initial transient behavior reflect?
+- What does the long-term behavior of the step response reflect?
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 ### Exercise 5
 
-Consider the same simple vehicle with a mass of 1300 kg and a frictional constant of proportionality of $k = 100$ N.s/m. This time, however, analyze the vehicle's velocity  $v(t)$ instead of its position $x(t)$. Recall that the velocity transfer function is
-    
+Consider the same simple vehicle with a mass of 1300 kg and a frictional constant of proportionality of $k = 100$ N.s/m. This time, however, analyze the vehicle's velocity $v(t)$ instead of its position $x(t)$. Recall that the velocity transfer function is
+
 $$H(s) = \frac{1}{ms + k}$$
 
 Compute the step response of the velocity transfer function and use it to determine the vehicle's maximum velocity undergoing a unit step forcing.
@@ -588,10 +593,10 @@ step(G, Tfinal),ylabel('v(t) [metres/s]'),grid
 
 ![reflect](images/reflect.png)
 
-* As you probably noticed, the vehicle's maximum speed under the unit step forcing is only 0.01 m/s, which is about 0.022 mph. That happens because the unit step only applies a traction force of 1 N, which is not nearly enough for a 1300 kg vehicle. 
-* To create a more realistic response, you can add gain to the system by multiplying the transfer function by a constant and then recomputing the step response. What value of the gain constant will produce a maximum speed of 50 m/s (or 112 mph)?
-* Compute the step response of H*gain in the space below, where gain is the gain constant that will produce a maximum velocity of 50m/s. 
-* How long does it take for the vehicle to accelerate from 0 to 60 mph (0 to 26.8m/s)?
+- As you probably noticed, the vehicle's maximum speed under the unit step forcing is only 0.01 m/s, which is about 0.022 mph. That happens because the unit step only applies a traction force of 1 N, which is not nearly enough for a 1300 kg vehicle.
+- To create a more realistic response, you can add gain to the system by multiplying the transfer function by a constant and then recomputing the step response. What value of the gain constant will produce a maximum speed of 50 m/s (or 112 mph)?
+- Compute the step response of H\*gain in the space below, where gain is the gain constant that will produce a maximum velocity of 50m/s.
+- How long does it take for the vehicle to accelerate from 0 to 60 mph (0 to 26.8m/s)?
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -609,7 +614,7 @@ step(gain*G, Tfinal),ylabel('v(t) [metres/s]'),grid
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
- In this case an acceleration from 0-60 mph is achieved in about 10 seconds.
+In this case an acceleration from 0-60 mph is achieved in about 10 seconds.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -632,8 +637,9 @@ While in practice solving for the analytic response is typically unnecessary, it
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 To analytically solve for the impulse or step response:
+
 1. take the Laplace transform of the input function
-2. solve for $X(s)$ 
+2. solve for $X(s)$
 3. back-transform $X(s)$ to obtain the time-domain response $x(t)$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -646,12 +652,14 @@ If you don't want to perform Step 1 by hand, you can simply use a table or the `
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-#### 4(a) 
+#### 4(a)
+
 Compute the analytic impulse response for the simple vehicle model using its position transfer function.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-#### 4(b) 
+#### 4(b)
+
 Set $m = 1300$ and $k = 100$. Then plot the analytic impulse result and compare it to the solution found using the `impulse` function.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -660,22 +668,22 @@ Set $m = 1300$ and $k = 100$. Then plot the analytic impulse result and compare 
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### Solution to Example 4(a) 
+#### Solution to Example 4(a)
 
 Recall that the position transfer function for the simple vehicle model was:
-    
+
 $$G(s) = \frac{X(s)}{U(s)} = \frac{1}{ms^2 + ks}$$
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
 Start by computing the Laplace transform of the input forcing function $\delta(t)$:
-    
+
 $$U(s) = \int_{0}^\infty \delta(t) e^{-st} dt = e^{-st}|_{t = 0} = 1$$
 
 +++ {"slideshow": {"slide_type": "skip"}}
 
 This implies that
-    
+
 $$X(s)= \frac{1}{ms^2 + ks}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -695,7 +703,7 @@ x = ilaplace(X)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### Solution to Example 4(b) 
+#### Solution to Example 4(b)
 
 First define the transfer function using `tf` and then compute the impulse response.
 
@@ -731,6 +739,7 @@ title("Step response")
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (hw2-exercise-1)=
+
 ### Homework Exercise 1
 
 Complete this exercise for homework using the MATLAB LiveScript `TransferFunctionBasics.mlx` from the curriculum module [Transfer Function Analysis of Dynamic Systems](https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems).
@@ -740,14 +749,14 @@ Complete this exercise for homework using the MATLAB LiveScript `TransferFunctio
 #### Homework 1(a)
 
 Compute the analytic **step** response for the vehicle position transfer function. Recall that the position transfer function for the simple vehicle model was:
-    
+
 $$G(s) = \frac{X(s)}{U(s)} = \frac{1}{ms^2 + ks}$$
-    
+
 Store the output in symbolic variable `x` using the pre-defined symbolic variables.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### Homework 1(b) 
+#### Homework 1(b)
 
 Set $m = 1300$ and $k = 100$. Then plot the analytic step result you computed in (a). Also, plot the step response calculated using the `step` function.
 
@@ -756,7 +765,7 @@ Set $m = 1300$ and $k = 100$. Then plot the analytic step result you computed in
 slideshow:
   slide_type: subslide
 ---
-% This computes the step response 
+% This computes the step response
 m = 1300;
 k = 100;
 Xs = tf([0 0 1],[m k 0]);
@@ -779,8 +788,8 @@ slideshow:
 
 ## Forced response
 
-It is also possible to compute the response of a system to an arbitrary input function . 
-        
+It is also possible to compute the response of a system to an arbitrary input function .
+
 ![Forced response of a system](images/forced_response.png)
 Response of a system to a square wave.
 
@@ -789,6 +798,7 @@ Analytically, this can be accomplished by computing $U(s)$ and subsequently find
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (hw2-activity-1)=
+
 ### Homework Activity
 
 ![activity](images/activity.png)
@@ -816,7 +826,7 @@ m = 1;
 c = 0.1;
 k = 1;
 freq = 0.25; % Frequency in Hz.
-tfinal = 30; % Simulation duration. 
+tfinal = 30; % Simulation duration.
 t = linspace(0,tfinal,500);
 u = sin(2*pi*freq*t).^2;
 
@@ -845,12 +855,13 @@ plot(t,x)
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (hw2-exercise-2)=
+
 ### Homework Exercise 2
 
 ![exercise](images/write.png)
 
 In this exercise, you will compute the analytic response of the mass-spring-damper to a sine wave input function and compare the result to the numerical values computed by `lsim`. For this exercise, assume the mass-spring-damper parameters are $m = 1$, $c = 0$, and $k = 1$. The transfer function is therefore
-        
+
 $$G(s) = \frac{X(s)}{U(s)} = \frac{1}{s^2 + 1}$$
 
 You can perform your analytic computations by hand or in MATLAB using the Symbolic Math Toolbox. When using symbolic math, make sure to declare your symbolic variables before using them. For example:
@@ -866,7 +877,7 @@ Complete the exercise in the MATLAB LiveScript `TransferFunctionBasics.mlx`.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### Homework Exercise 2(a) 
+#### Homework Exercise 2(a)
 
 Compute the Laplace transform of the input function:
 
@@ -884,7 +895,7 @@ slideshow:
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### Homework Exercise 2(b)  
+#### Homework Exercise 2(b)
 
 Find the expression for the response in the Laplace domain: $X(s)$.
 
@@ -898,7 +909,7 @@ slideshow:
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### Homework Exercise 2(c) 
+#### Homework Exercise 2(c)
 
 Compute the inverse Laplace transform of $X(s)$ to identify the time-domain response $x(t)$.
 
@@ -912,13 +923,13 @@ slideshow:
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-#### Homework Exercise 2(d) 
+#### Homework Exercise 2(d)
 
 Evaluate the analytic response for $f = 0.16$ on the interval $[0, 50]$ and plot it.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-**Hint**: If you computed  symbolically in MATLAB, you can convert it to a function handle using [`matlabFunction`](https://www.mathworks.com/help/symbolic/matlabfunction.html) and evaluate that instead of writing out the expression yourself. For example:
+**Hint**: If you computed symbolically in MATLAB, you can convert it to a function handle using [`matlabFunction`](https://www.mathworks.com/help/symbolic/matlabfunction.html) and evaluate that instead of writing out the expression yourself. For example:
 
 ```matlab
 xfunc = matlabFunction(x)    % Create a function handle for a symbolic expression x
@@ -948,15 +959,16 @@ slideshow:
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 (homework2)=
+
 ## Homework 2: Transfer Function Basics
 
 1. Register with the MathWorks (if you haven't already) using your Swansea University email and install your own copy of the curriculum module [Transfer Function Analysis of Dynamic Systems](https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems) into the online MATLAB version[^installation].
 2. Open the `TransferFunctionBasics.mlx` activity.
-3. Complete the Exercises and Activities and add your own notes to the LiveScript file in response to the Reflection prompts given above. 
+3. Complete the Exercises and Activities and add your own notes to the LiveScript file in response to the Reflection prompts given above.
 
-* {ref}`hw2-exercise-1`
-* {ref}`hw2-activity-1`
-* {ref}`hw2-exercise-2`
+- {ref}`hw2-exercise-1`
+- {ref}`hw2-activity-1`
+- {ref}`hw2-exercise-2`
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -964,17 +976,15 @@ slideshow:
 
 ![explore](images/navigation.png)
 
-* You can find more information about using transfer functions in MATLAB[^eg243] in the video: [Transfer Functions in MATLAB](https://uk.mathworks.com/videos/transfer-functions-in-matlab-100912.html).
-* Want to learn more about mass-spring-damper systems? Check out the [Mass-Spring-Damper Systems courseware](https://uk.mathworks.com/matlabcentral/fileexchange/94585-mass-spring-damper-systems?s_tid=FX_rc2_behav) module.
-* Learn more about responses in the [MATLAB Tech Talk: Control Systems in Practice, Part 9: The Step Response](https://uk.mathworks.com/videos/control-systems-in-practice-part-9-the-step-response-1593067191882.html)[^eg243].
-Want a little more of the theory? Check out Brian Douglas' video: [Control Systems Lectures - Transfer Functions](https://www.youtube.com/watch?v=RJleGwXorUk&ab_channel=BrianDouglas)[^eg243].
+- You can find more information about using transfer functions in MATLAB[^eg243] in the video: [Transfer Functions in MATLAB](https://uk.mathworks.com/videos/transfer-functions-in-matlab-100912.html).
+- Want to learn more about mass-spring-damper systems? Check out the [Mass-Spring-Damper Systems courseware](https://uk.mathworks.com/matlabcentral/fileexchange/94585-mass-spring-damper-systems?s_tid=FX_rc2_behav) module.
+- Learn more about responses in the [MATLAB Tech Talk: Control Systems in Practice, Part 9: The Step Response](https://uk.mathworks.com/videos/control-systems-in-practice-part-9-the-step-response-1593067191882.html)[^eg243].
+  Want a little more of the theory? Check out Brian Douglas' video: [Control Systems Lectures - Transfer Functions](https://www.youtube.com/watch?v=RJleGwXorUk&ab_channel=BrianDouglas)[^eg243].
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
 ## Footnotes
 
 [^refer_to_livescript]: The MATLAB live script `TransferFunctionBasics.mlx` has sliders to make the interactive adjustment of the parameters `m`, `c` and `k` possible.
-
 [^eg243]: These resources are useful for those of you also studying control systems this semester.
-
 [^solutions]: MATLAB solutions to selected exercises are provided in the online notes.

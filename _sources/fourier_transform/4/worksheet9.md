@@ -7,23 +7,24 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.15.2
 kernelspec:
-  display_name: Matlab
+  display_name: MKernel
   language: matlab
-  name: matlab
+  name: mkernel
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (ws9)=
+
 # Worksheet 9
 
 ## To accompany Unit 4.4 Introduction to Filters
 
 +++ {"slideshow": {"slide_type": "skip"}}
 
-This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet9.pdf). We will step through this worksheet in class. 
+This worksheet can be downloaded as a [PDF file](https://cpjobling.github.io/eg-247-textbook/worksheets/worksheet9.pdf). We will step through this worksheet in class.
 
-An annotatable copy of the notes for this presentation will be distributed before the second class meeting as **Worksheet 9** in the **Week 6: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **Worksheets** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote. 
+An annotatable copy of the notes for this presentation will be distributed before the second class meeting as **Worksheet 9** in the **Week 6: Classroom Activities** section of the Canvas site. I will also distribute a copy to your personal **Worksheets** section of the **OneNote Class Notebook** so that you can add your own notes using OneNote.
 
 You are expected to have at least watched the video presentation of {ref}`ft4` of the [notes](https://cpjobling.github.io/eg-247-textbook/) before coming to class. If you haven't watch it afterwards!
 
@@ -37,9 +38,9 @@ An ideal frequency-selective filter is a system that let's the frequency compone
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-* The range of frequencies which are let through belong to the **pass Band**
-* The range of frequencies which are cut-off by the filter are called the **stopband**
-* A typical scenario where filtering is needed is when noise $n(t)$ is added to a signal $x(t)$ but that signal has most of its energy outside the bandwidth of a signal.
+- The range of frequencies which are let through belong to the **pass Band**
+- The range of frequencies which are cut-off by the filter are called the **stopband**
+- A typical scenario where filtering is needed is when noise $n(t)$ is added to a signal $x(t)$ but that signal has most of its energy outside the bandwidth of a signal.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -55,7 +56,7 @@ An ideal frequency-selective filter is a system that let's the frequency compone
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-### Out-of Bandwidth Noise 
+### Out-of Bandwidth Noise
 
 ![Out of bandwidth noise](./pictures/filter3.png)
 
@@ -81,12 +82,14 @@ See the video and script on [Motivating Example: Filter Design Using MATLAB](htt
 
 ## Ideal Low-Pass Filter (LPF)
 
-An ideal low pass filter cuts-off frequencies higher than its *cutoff frequency*, $\omega_c$.
+An ideal low pass filter cuts-off frequencies higher than its _cutoff frequency_, $\omega_c$.
 
-$$H_{\rm{lp}}(\omega ) = \left\{ {\begin{array}{*{20}{c}}
+$$
+H_{\rm{lp}}(\omega ) = \left\{ {\begin{array}{*{20}{c}}
 {1,}&{|\omega |{\kern 1pt} \, \le {\omega _c}}\\
 {0,}&{|\omega |{\kern 1pt} \, \ge {\omega _c}}
-\end{array}} \right.$$
+\end{array}} \right.
+$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -108,7 +111,7 @@ $$h_{\rm{lp}}(t) = \frac{\omega _c}{\pi }{\mathop{\rm sinc}\nolimits} \left( \fr
 
 ### Filtering is Convolution
 
-The output of an LTI system with impulse response 
+The output of an LTI system with impulse response
 
 $$h(t) \Leftrightarrow H(\omega)$$
 
@@ -116,7 +119,7 @@ subject to an input signal
 
 $$x(t) \Leftrightarrow X(\omega)$$
 
-is given by 
+is given by
 
 $$y(t) = h(t)*x(t) \Leftrightarrow Y(\omega) = H(\omega)X(\omega)$$
 
@@ -144,14 +147,14 @@ $$\left| H_B(\omega ) \right| = \frac{1}{\left(1 + \left(\frac{\omega }{\omega _
 
 **Remarks**
 
-* DC gain is 
+- DC gain is
 
   $$|H_B(j0)|=1$$
 
-* Attenuation at the cut-off frequency is 
+- Attenuation at the cut-off frequency is
 
   $$|H_B(j\omega_c)|=1/\sqrt{2}$$
-  
+
   for any $N$
 
 More about the Butterworth filter: [Wikipedia Article](https://en.wikipedia.org/wiki/Butterworth_filter).
@@ -285,7 +288,7 @@ slideshow:
   slide_type: subslide
 ---
 cd ../matlab
-format compact
+format compact; setappdata(0, "MKernel_plot_format", 'svg')
 open butter2_ex
 ```
 
@@ -384,7 +387,7 @@ title('Bode-plot of Butterworth 2nd-Order Butterworth Low Pass Filter')
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-Note that the attentuation of the filter is flat at 0 dB in the pass-band at frequencies below the cut-off frequency $\omega < \omega_c$; has a value of $-3$ dB at the cut-off frquency $\omega = \omega_c$; and has a "roll-off" (rate of decrease) of $N\times 20$ dB/decade in the stop-band. 
+Note that the attentuation of the filter is flat at 0 dB in the pass-band at frequencies below the cut-off frequency $\omega < \omega_c$; has a value of $-3$ dB at the cut-off frquency $\omega = \omega_c$; and has a "roll-off" (rate of decrease) of $N\times 20$ dB/decade in the stop-band.
 
 In this case, $N=2$, and $\omega_c = 100$ rad/s so the attenuation is -40 dB at $\omega = 10\omega_c = 1,000$ rad/s and $\omega = -80$ dB at $\omega = 100\omega_c = 10,000$ rad/s.
 
@@ -464,12 +467,14 @@ text(0.008,1,'s_B(t) for \omega_c = 100 rad/s')
 
 ## High-pass filter (HPF)
 
-An ideal highpass filter cuts-off frequencies lower than its *cutoff frequency*, $\omega_c$.
+An ideal highpass filter cuts-off frequencies lower than its _cutoff frequency_, $\omega_c$.
 
-$$H_{\rm{hp}}(\omega ) = \left\{ {\begin{array}{*{20}{c}}
+$$
+H_{\rm{hp}}(\omega ) = \left\{ {\begin{array}{*{20}{c}}
 {0,}&{|\omega |{\kern 1pt} \, \le {\omega _c}}\\
 {1,}&{|\omega |{\kern 1pt} \, > {\omega _c}}
-\end{array}} \right.$$
+\end{array}} \right.
+$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -567,12 +572,14 @@ title('Bode-plot of Butterworth 2nd-Order Butterworth High Pass Filter')
 
 ## Band-pass filter (BPF)
 
-An ideal bandpass filter cuts-off frequencies lower than its first *cutoff frequency* $\omega_{c1}$, and higher than its second *cutoff frequency* $\omega_{c2}$.
+An ideal bandpass filter cuts-off frequencies lower than its first _cutoff frequency_ $\omega_{c1}$, and higher than its second _cutoff frequency_ $\omega_{c2}$.
 
-$$H_{\rm{bp}}(\omega ) = \left\{ {\begin{array}{*{20}{c}}
+$$
+H_{\rm{bp}}(\omega ) = \left\{ {\begin{array}{*{20}{c}}
 {1,}&\omega _{c1} < \,|\omega |\, < \omega _{c2}\\
 {0,}&\rm{otherwise}
-\end{array}} \right.$$
+\end{array}} \right.
+$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -592,11 +599,11 @@ $$H_{\mathrm{bp}}(\omega) = H_{\mathrm{hp}}(\omega)H_{\mathrm{lp}}(\omega)$$
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* The highpass filter should have cut-off frequency of $\omega_{c1}$
+- The highpass filter should have cut-off frequency of $\omega_{c1}$
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-* The lowpass filter should have cut-off frequency of $\omega_{c2}$
+- The lowpass filter should have cut-off frequency of $\omega_{c2}$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 

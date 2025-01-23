@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Unit 2: Elementary Signals &#8212; EG-247 Digital Signal Processing</title>
   
@@ -15,19 +15,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -79,28 +79,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -122,12 +117,22 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -143,6 +148,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../introduction/index.html">
@@ -167,48 +174,48 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Online notes</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../transfer_functions/index.html">Transfer Function Analysis of Dynamic Systems</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../transfer_functions/index.html">Transfer Function Analysis of Dynamic Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../transfer_functions/1/concepts.html">Concept Review</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../transfer_functions/2/transfer_function_basics.html">Transfer Function Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../transfer_functions/3/pole_zero_analysis.html">Pole Zero Analysis</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../fourier_series/index.html">Fourier Series</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fourier_series/index.html">Fourier Series</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/1/trig_fseries.html">Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/2/exp_fs1.html">Exponential Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/3/exp_fs2.html">Computing Line Spectra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/4/exp_fs3.html">Applications of Line Spectra</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../fourier_transform/index.html">Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fourier_transform/index.html">Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_transform/1/ft1.html">Defining the Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_transform/2/ft2.html">Fourier transforms of commonly occuring signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_transform/3/ft3.html">Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_transform/4/ft4.html">Introduction to Filters</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../dt_systems/index.html">Sampled Data Systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dt_systems/index.html">Sampled Data Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../dt_systems/1/sampling.html">Sampling Theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dt_systems/2/z_transform.html">The Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dt_systems/3/i_z_transform.html">The Inverse Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dt_systems/4/dt_models.html">Models of Discrete Time Systems</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../dft/index.html">Discrete Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dft/index.html">Discrete Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../dft/1/dft.html">The Discrete Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dft/2/fft.html">The Fast-Fourier Transform</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../filter_design/index.html">Analogue and Digital Filter Design</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../filter_design/index.html">Analogue and Digital Filter Design</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../filter_design/analogue_filters.html">Unit 7.1: Designing Analogue Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../filter_design/digital_filters.html">Unit 7.2: Designing Digital Filters in MATLAB and Simulink</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../zbib.html">Bibliography</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">In Class Worksheets</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../worksheets/index.html">Worksheets</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../worksheets/index.html">Worksheets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/worksheet1.html">Worksheet 1 Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/1/worksheet2.html">Worksheet 2 Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/2/worksheet3.html">Worksheet 3 Exponential Fourier Series</a></li>
@@ -223,11 +230,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../dft/1/worksheet12.html">Worksheet 12 The Discrete-time Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dft/2/worksheet13.html">Worksheet 13 The Fast Fourier Transform</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework problems</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../homework/index.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../homework/index.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw4.html">Homework 4 Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw5.html">Homework 5 Fourier Transforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw6.html">Homework 6: Fourier Transforms</a></li>
@@ -235,7 +242,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw8.html">Homework 8 Sampling Theory and the Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw9.html">Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Answers to Selected Problems</span></p>
 <ul class="nav bd-sidenav">
@@ -253,7 +260,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../dt_systems/2/zt_table.html">Table of Z-Transforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../setup/polling_setup.html">Set Up In-Class Polling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../todo.html">List of Planned Enhancements</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../setup/index.html">Setting up your own version of this book</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../setup/index.html">Setting up your own version of this book</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../transfer_functions/1/LICENSE.html">MathWorks License</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/jupyter.html">About Jupyter notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/python.html">Installing Python</a></li>
@@ -262,7 +269,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../setup/advanced-setup.html">Quick Start - For Experienced Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/jupyter-book.html">Setting up jupyter-book</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 
     </div>
@@ -278,7 +285,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -287,7 +294,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -436,10 +443,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -447,7 +454,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -517,7 +524,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="unit-2-elementary-signals">
 <h1>Unit 2: Elementary Signals<a class="headerlink" href="#unit-2-elementary-signals" title="Permalink to this heading">#</a></h1>
@@ -553,10 +560,12 @@ document.write(`
 <section id="the-unit-step-function">
 <h2>The Unit Step Function<a class="headerlink" href="#the-unit-step-function" title="Permalink to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
-\[\begin{split}{u_0}(t) = \left\{ {\begin{array}{*{20}{c}}
+\[\begin{split}
+{u_0}(t) = \left\{ {\begin{array}{*{20}{c}}
 {0\quad t &lt; 0}\\
 {1\quad t &gt; 0}
-\end{array}} \right.\end{split}\]</div>
+\end{array}} \right.
+\end{split}\]</div>
 <p><img alt="The unit step function" src="../_images/unitstep1.png" /></p>
 <section id="in-matlab">
 <h3>In Matlab<a class="headerlink" href="#in-matlab" title="Permalink to this heading">#</a></h3>
@@ -566,8 +575,8 @@ ezplot(heaviside(t),[-1,1])
 heaviside(0)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%%file plot_heaviside.m </span>
-<span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="w"> </span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%%file plot_heaviside.m</span>
+<span class="n">syms</span><span class="w"> </span><span class="s">t</span>
 <span class="nb">fplot</span><span class="p">(</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">),[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">1.2</span><span class="p">])</span>
 <span class="nb">grid</span>
 <span class="n">heaviside</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -575,9 +584,12 @@ heaviside(0)</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Created file &#39;/Users/eechris/code/src/github.com/cpjobling/eg-247-textbook/elementary_signals/plot_heaviside.m&#39;.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     1
 </pre></div>
 </div>
+<img alt="../_images/3227a25ee2ebd2f457ac91de0bfdac2cacf4766471216737a75dd462fbb32010.png" src="../_images/3227a25ee2ebd2f457ac91de0bfdac2cacf4766471216737a75dd462fbb32010.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -592,16 +604,18 @@ heaviside(0)</p>
      1
 </pre></div>
 </div>
-<img alt="../_images/df8fea248bcf9a4662684205a5a3f39848b9579b9ff220d4b0b494d72723cdb9.png" src="../_images/df8fea248bcf9a4662684205a5a3f39848b9579b9ff220d4b0b494d72723cdb9.png" />
+<img alt="../_images/cbeb2836041ed861147efac66532b811b306bd501b2b8469c2977224ca79dc3a.png" src="../_images/cbeb2836041ed861147efac66532b811b306bd501b2b8469c2977224ca79dc3a.png" />
 </div>
 </div>
 <p>Note that, so that it can be plotted, Matlab defines the <em>heaviside function</em> slightly differently from the mathematically ideal unit step:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\mathrm{heaviside}(t) = \left\{ {\begin{array}{*{20}{c}}
+\[\begin{split}
+\mathrm{heaviside}(t) = \left\{ {\begin{array}{*{20}{c}}
 {0\quad t &lt; 0}\\
 {1/2\quad t = 0}\\
 {1\quad t &gt; 0}
-\end{array}} \right.\end{split}\]</div>
+\end{array}} \right.
+\end{split}\]</div>
 </section>
 </section>
 <section id="simple-signal-operations">
@@ -619,7 +633,7 @@ heaviside(0)</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ad5f8b400e4d0b033260ddbfb1eed46d062ce738d7ff83177e821d14ec706e41.png" src="../_images/ad5f8b400e4d0b033260ddbfb1eed46d062ce738d7ff83177e821d14ec706e41.png" />
+<img alt="../_images/0e0bbda3cc95ab5fb388375108ef9d3f3e0d59b0d05d488d4df563d3872c3481.png" src="../_images/0e0bbda3cc95ab5fb388375108ef9d3f3e0d59b0d05d488d4df563d3872c3481.png" />
 </div>
 </div>
 <p>Note that the signal is scaled in the <span class="math notranslate nohighlight">\(y\)</span> direction.</p>
@@ -630,7 +644,7 @@ heaviside(0)</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/57521a730e8f079ed6154a55270d39505745ed852ae3590d338224d09b27fe2d.png" src="../_images/57521a730e8f079ed6154a55270d39505745ed852ae3590d338224d09b27fe2d.png" />
+<img alt="../_images/89622498e23be469978332d90086ce2b0618effdfbb28cd05c14111f7b931c4e.png" src="../_images/89622498e23be469978332d90086ce2b0618effdfbb28cd05c14111f7b931c4e.png" />
 </div>
 </div>
 <p>Note that, because of the sign, the signal is mirrored about the <span class="math notranslate nohighlight">\(x\)</span> axis as well as being scaled by 2.</p>
@@ -645,7 +659,7 @@ heaviside(0)</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b1148047a33f3e574f3cceb4b5947c08b6e345d23888706190e6308c9f0c3209.png" src="../_images/b1148047a33f3e574f3cceb4b5947c08b6e345d23888706190e6308c9f0c3209.png" />
+<img alt="../_images/fade404f3d0c0f331dfb1883849e72a9eb78eeaa6ba12549612a536b203d0093.png" src="../_images/fade404f3d0c0f331dfb1883849e72a9eb78eeaa6ba12549612a536b203d0093.png" />
 </div>
 </div>
 <p>The sign on the function argument <span class="math notranslate nohighlight">\(-t\)</span> causes the whole signal to be reversed in time. Note that another way of looking at this is that the signal is mirrored about the <span class="math notranslate nohighlight">\(y\)</span> axis.</p>
@@ -661,7 +675,7 @@ heaviside(0)</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/071fe94603015a000e27c9f6255244cafd2b2814ac09168e32d43fffd913be39.png" src="../_images/071fe94603015a000e27c9f6255244cafd2b2814ac09168e32d43fffd913be39.png" />
+<img alt="../_images/8b6aae30942974ca16d5692525922d26c4a5f628d02f34ff4e578a0d81e697a7.png" src="../_images/8b6aae30942974ca16d5692525922d26c4a5f628d02f34ff4e578a0d81e697a7.png" />
 </div>
 </div>
 <p>This is a <em>time delay</em> … note for <span class="math notranslate nohighlight">\(u_0(t - T)\)</span> the step change occurs T seconds <strong>later</strong> than it does for <span class="math notranslate nohighlight">\(u_o(t)\)</span>.</p>
@@ -672,7 +686,7 @@ heaviside(0)</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/42e3485c2056708c4af6403bd056929533c56217de0ba65c0681ee7cb7495a9d.png" src="../_images/42e3485c2056708c4af6403bd056929533c56217de0ba65c0681ee7cb7495a9d.png" />
+<img alt="../_images/d4d2629a160a66f1ff3f84dafa4b01d934fe5295a0eb476c7463a9fd04e72b82.png" src="../_images/d4d2629a160a66f1ff3f84dafa4b01d934fe5295a0eb476c7463a9fd04e72b82.png" />
 </div>
 </div>
 <p>This is a <em>time advance</em> … note for <span class="math notranslate nohighlight">\(u_0(t + T)\)</span> the step change occurs T seconds <strong>earlier</strong> than it does for <span class="math notranslate nohighlight">\(u_o(t)\)</span>.</p>
@@ -714,7 +728,7 @@ heaviside(0)</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/44e02c498264bac84c3b80a27511c55e62ab0e9ebcc259339c7620f805a500b6.png" src="../_images/44e02c498264bac84c3b80a27511c55e62ab0e9ebcc259339c7620f805a500b6.png" />
+<img alt="../_images/5466d5bf90a36dc2605397753a919170361980108e373e3a6cde13248b1f3c87.png" src="../_images/5466d5bf90a36dc2605397753a919170361980108e373e3a6cde13248b1f3c87.png" />
 </div>
 </div>
 <p>This type of signal is called a <strong>ramp function</strong>. Note that it is the <em>integral</em> of the step function (the resistor-capacitor circuit implements a simple integrator circuit).</p>
@@ -723,10 +737,12 @@ heaviside(0)</p>
 \[u_1(t) = \int_{-\infty}^{t}u_0(\tau)d\tau\]</div>
 <p>so</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}{u_1}(t) = \left\{ {\begin{array}{*{20}{c}}
+\[\begin{split}
+{u_1}(t) = \left\{ {\begin{array}{*{20}{c}}
 {0\quad t &lt; 0}\\
 {t\quad t \ge 0}
-\end{array}} \right.\end{split}\]</div>
+\end{array}} \right.
+\end{split}\]</div>
 <p>and</p>
 <div class="math notranslate nohighlight">
 \[u_0(t) = \frac{d }{dt}u_1(t)\]</div>
@@ -759,8 +775,10 @@ heaviside(0)</p>
 \[\int_{-\infty}^{t}\delta(\tau)d\tau = u_0(t)\]</div>
 <p>and</p>
 <div class="math notranslate nohighlight">
-\[\delta(t) = 0\;\forall\;
-t\ne 0.\]</div>
+\[
+\delta(t) = 0\;\forall\;
+t\ne 0.
+\]</div>
 </section>
 <section id="sketch-of-the-delta-function">
 <h3>Sketch of the delta function<a class="headerlink" href="#sketch-of-the-delta-function" title="Permalink to this heading">#</a></h3>
@@ -777,16 +795,10 @@ t\ne 0.\]</div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>vL(t) =
+vL(t) =
  
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>L*is*dirac(t)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+L*is*dirac(t)
+ 
 </pre></div>
 </div>
 </div>
@@ -867,16 +879,16 @@ t\ne 0.\]</div>
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "matlab"
+            mode: "mkernel"
         },
         kernelOptions: {
-            name: "matlab",
+            name: "mkernel",
             path: "./elementary_signals"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'matlab'</script>
+    <script>kernelName = 'mkernel'</script>
 
                 </article>
               
@@ -885,7 +897,7 @@ t\ne 0.\]</div>
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
 </div>
@@ -896,6 +908,7 @@ t\ne 0.\]</div>
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -995,8 +1008,8 @@ for
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

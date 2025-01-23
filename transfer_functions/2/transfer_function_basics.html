@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Unit 2.2: Transfer Function Basics &#8212; EG-247 Digital Signal Processing</title>
   
@@ -15,19 +15,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -81,28 +81,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -124,12 +119,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -145,6 +148,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../introduction/index.html">
@@ -169,48 +174,48 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Online notes</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Transfer Function Analysis of Dynamic Systems</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Transfer Function Analysis of Dynamic Systems</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../1/concepts.html">Concept Review</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Transfer Function Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3/pole_zero_analysis.html">Pole Zero Analysis</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_series/index.html">Fourier Series</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_series/index.html">Fourier Series</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/trig_fseries.html">Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/2/exp_fs1.html">Exponential Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/3/exp_fs2.html">Computing Line Spectra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/4/exp_fs3.html">Applications of Line Spectra</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_transform/index.html">Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_transform/index.html">Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/1/ft1.html">Defining the Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/2/ft2.html">Fourier transforms of commonly occuring signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/3/ft3.html">Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/4/ft4.html">Introduction to Filters</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../dt_systems/index.html">Sampled Data Systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dt_systems/index.html">Sampled Data Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/1/sampling.html">Sampling Theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/2/z_transform.html">The Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/3/i_z_transform.html">The Inverse Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/4/dt_models.html">Models of Discrete Time Systems</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../dft/index.html">Discrete Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dft/index.html">Discrete Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../dft/1/dft.html">The Discrete Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dft/2/fft.html">The Fast-Fourier Transform</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../filter_design/index.html">Analogue and Digital Filter Design</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../filter_design/index.html">Analogue and Digital Filter Design</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../filter_design/analogue_filters.html">Unit 7.1: Designing Analogue Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../filter_design/digital_filters.html">Unit 7.2: Designing Digital Filters in MATLAB and Simulink</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../zbib.html">Bibliography</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">In Class Worksheets</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../worksheets/index.html">Worksheets</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../worksheets/index.html">Worksheets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../introduction/worksheet1.html">Worksheet 1 Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/worksheet2.html">Worksheet 2 Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/2/worksheet3.html">Worksheet 3 Exponential Fourier Series</a></li>
@@ -225,11 +230,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../dft/1/worksheet12.html">Worksheet 12 The Discrete-time Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dft/2/worksheet13.html">Worksheet 13 The Fast Fourier Transform</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework problems</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../homework/index.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../homework/index.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw4.html">Homework 4 Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw5.html">Homework 5 Fourier Transforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw6.html">Homework 6: Fourier Transforms</a></li>
@@ -237,7 +242,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw8.html">Homework 8 Sampling Theory and the Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw9.html">Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Answers to Selected Problems</span></p>
 <ul class="nav bd-sidenav">
@@ -255,7 +260,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../dt_systems/2/zt_table.html">Table of Z-Transforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../setup/polling_setup.html">Set Up In-Class Polling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../todo.html">List of Planned Enhancements</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup/index.html">Setting up your own version of this book</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup/index.html">Setting up your own version of this book</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../1/LICENSE.html">MathWorks License</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter.html">About Jupyter notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../setup/python.html">Installing Python</a></li>
@@ -264,7 +269,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../setup/advanced-setup.html">Quick Start - For Experienced Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter-book.html">Setting up jupyter-book</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 
     </div>
@@ -280,7 +285,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -289,7 +294,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -438,10 +443,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -449,7 +454,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -565,7 +570,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="unit-2-2-transfer-function-basics">
 <span id="tf-basics"></span><h1>Unit 2.2: Transfer Function Basics<a class="headerlink" href="#unit-2-2-transfer-function-basics" title="Permalink to this heading">#</a></h1>
@@ -592,7 +597,7 @@ document.write(`
 <span class="c">% Setup MATLAB to use the TransferFunctionBasics.mlx LiveScript in class.</span>
 <span class="c">% I am assuming that this is on the MATLAB Drive</span>
 
-<span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="w"> </span>
+<span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"> </span><span class="nb">setappdata</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MKernel_plot_format&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;svg&#39;</span><span class="p">)</span>
 <span class="c">% Change this to local set up where this Jupyter book is run</span>
 <span class="nb">cd</span><span class="w"> </span><span class="s">&#39;/Users/eechris/MATLAB-Drive/Repositories/Transfer-Function-Analysis-of-Dynamic-Systems&#39;</span>
 <span class="nb">open</span><span class="p">(</span><span class="s">&#39;TransferFunctions.prj&#39;</span><span class="p">)</span>
@@ -609,7 +614,7 @@ document.write(`
 </section>
 <section id="transfer-function-definition">
 <h2>Transfer Function Definition<a class="headerlink" href="#transfer-function-definition" title="Permalink to this heading">#</a></h2>
-<p>Consider a dynamic system with a single input function  and a single output function:</p>
+<p>Consider a dynamic system with a single input function and a single output function:</p>
 <p><img alt="A dynamic system represented as a block diagram in the time domain" src="../../_images/bdt.png" /></p>
 <p>This is known as a <strong>SISO</strong> (Single Input Single Output) system. In general, the system <span class="math notranslate nohighlight">\(g\)</span> is defined through a differential equation: <span class="math notranslate nohighlight">\(g(u, x, \dot{x}, \ddot{x},\ldots) = 0\)</span>.</p>
 <p>The <strong>transfer function</strong> is defined as</p>
@@ -676,10 +681,10 @@ G(s) &amp;= \frac{\Theta(s)}{U(s)}\\
 <p>We can now enter this result into the code below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="w"> </span><span class="c">% remove extra white space</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"> </span><span class="nb">setappdata</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MKernel_plot_format&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;svg&#39;</span><span class="p">)</span><span class="w"> </span><span class="c">% remove extra white space</span>
 <span class="n">syms</span><span class="w"> </span><span class="s">g</span><span class="w"> </span><span class="s">l</span><span class="w"> </span><span class="s">s</span>
 <span class="c">% Record your answer in pendulumTF</span>
-<span class="n">pendulumTF</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">g</span><span class="o">/</span><span class="n">l</span><span class="p">));</span>
+<span class="n">pendulumTF</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">g</span><span class="o">/</span><span class="n">l</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>
@@ -811,12 +816,12 @@ Mass-spring-damper diagram</p>
 </pre></div>
 </div>
 <p>where <code class="docutils literal notranslate"><span class="pre">num</span></code> represents the coefficients of the numerator and denom represents those of the denominator in descending order. Note that a transfer function created using the <code class="docutils literal notranslate"><span class="pre">tf</span></code> function is not a symbolic function and cannot be manipulated with the Symbolic Math Toolbox.</p>
-<p>The numerator and denominator of <span class="math notranslate nohighlight">\(G\)</span> are defined below<a class="footnote-reference brackets" href="#refer-to-livescript" id="id1">1</a>.</p>
+<p>The numerator and denominator of <span class="math notranslate nohighlight">\(G\)</span> are defined below<a class="footnote-reference brackets" href="#refer-to-livescript" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span><span class="w"> </span>
-<span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.4</span><span class="p">;</span><span class="w"> </span>
+<span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span>
+<span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.4</span><span class="p">;</span>
 <span class="n">num</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span>
 <span class="n">denom</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">m</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="n">k</span><span class="p">];</span>
 </pre></div>
@@ -832,22 +837,12 @@ Mass-spring-damper diagram</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>G =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -----------------
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  s^2 + 0.1 s + 0.4
  
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
+          1
+  -----------------
+  s^2 + 0.1 s + 0.4
+ 
+Continuous-time transfer function.
 </pre></div>
 </div>
 </div>
@@ -866,15 +861,14 @@ Mass-spring-damper diagram</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/80568efc2659d72dc8e101e48b6363eea7ffa88a9aff626ba649bce240d3ce20.png" src="../../_images/80568efc2659d72dc8e101e48b6363eea7ffa88a9aff626ba649bce240d3ce20.png" />
-</div>
+<img alt="../../_images/ae0b20e66672d70f0bced4280f9f2fed071ca247ba530c44385073a519e47e94.svg" src="../../_images/ae0b20e66672d70f0bced4280f9f2fed071ca247ba530c44385073a519e47e94.svg" /></div>
 </div>
 </section>
 <section id="id2">
 <h3>Reflect<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <p><img alt="reflect" src="../../_images/reflect1.png" /></p>
 <ul class="simple">
-<li><p>How are the damping  and spring stiffness  reflected in the impulse response?</p></li>
+<li><p>How are the damping and spring stiffness reflected in the impulse response?</p></li>
 <li><p>If <span class="math notranslate nohighlight">\(c\)</span> is increased to 0.5, how will the response change?</p></li>
 <li><p>Try setting <span class="math notranslate nohighlight">\(c = 0.5\)</span> and recompute the impulse response.</p></li>
 <li><p>Try setting <span class="math notranslate nohighlight">\(k = 1\)</span> and recompute the impulse response.</p></li>
@@ -882,10 +876,10 @@ Mass-spring-damper diagram</p>
 </section>
 <section id="exercise-3">
 <h3>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this heading">#</a></h3>
-<p>Consider a simple vehicle with a mass of 1300 kg and a frictional constant of proportionality of <span class="math notranslate nohighlight">\(k = 100\)</span>  N.s/m. Recall that the simple vehicle motion model has a transfer function:</p>
+<p>Consider a simple vehicle with a mass of 1300 kg and a frictional constant of proportionality of <span class="math notranslate nohighlight">\(k = 100\)</span> N.s/m. Recall that the simple vehicle motion model has a transfer function:</p>
 <div class="math notranslate nohighlight">
 \[G(s) = \frac{X(s)}{U(s)} = \frac{1}{ms^2 + ks}\]</div>
-<p>Plot the impulse response of  for the first 100 seconds using MATLAB commands by</p>
+<p>Plot the impulse response of for the first 100 seconds using MATLAB commands by</p>
 <ol class="arabic simple">
 <li><p>creating the transfer function using the <code class="docutils literal notranslate"><span class="pre">tf</span></code> function</p></li>
 <li><p>plotting the impulse response using <code class="docutils literal notranslate"><span class="pre">impulse</span></code> function</p></li>
@@ -906,8 +900,7 @@ Mass-spring-damper diagram</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8bedc8eece4f2b722e61c7b86b8519dff80236a85bdbfb517e0ec81f71d4fc91.png" src="../../_images/8bedc8eece4f2b722e61c7b86b8519dff80236a85bdbfb517e0ec81f71d4fc91.png" />
-</div>
+<img alt="../../_images/c1d9b31c608247a999eaee840e348d6266b5ac811c90a194dfe32ae9b31b545e.svg" src="../../_images/c1d9b31c608247a999eaee840e348d6266b5ac811c90a194dfe32ae9b31b545e.svg" /></div>
 </div>
 </section>
 <section id="id3">
@@ -930,8 +923,7 @@ Mass-spring-damper diagram</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/dc217bb4a3980eecc297050ed428cc7e5dc9cefa13322011fbb9c6fd132ef743.png" src="../../_images/dc217bb4a3980eecc297050ed428cc7e5dc9cefa13322011fbb9c6fd132ef743.png" />
-</div>
+<img alt="../../_images/40cacb56c5daa22c18aa2377dd3b760427aaaf3246859d93cf3a2792078fe007.svg" src="../../_images/40cacb56c5daa22c18aa2377dd3b760427aaaf3246859d93cf3a2792078fe007.svg" /></div>
 </div>
 </section>
 </section>
@@ -977,8 +969,7 @@ Response of a system to a step input.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fa5883979b177401a84bbe23bc9e46632702cade59557799df5137e75ac6f378.png" src="../../_images/fa5883979b177401a84bbe23bc9e46632702cade59557799df5137e75ac6f378.png" />
-</div>
+<img alt="../../_images/a393f47671df1de7fd993219d6c351d5079eedbd9a43f3a41412d9af27cea04a.svg" src="../../_images/a393f47671df1de7fd993219d6c351d5079eedbd9a43f3a41412d9af27cea04a.svg" /></div>
 </div>
 </section>
 <section id="id5">
@@ -992,7 +983,7 @@ Response of a system to a step input.</p>
 </section>
 <section id="exercise-5">
 <h3>Exercise 5<a class="headerlink" href="#exercise-5" title="Permalink to this heading">#</a></h3>
-<p>Consider the same simple vehicle with a mass of 1300 kg and a frictional constant of proportionality of <span class="math notranslate nohighlight">\(k = 100\)</span> N.s/m. This time, however, analyze the vehicle’s velocity  <span class="math notranslate nohighlight">\(v(t)\)</span> instead of its position <span class="math notranslate nohighlight">\(x(t)\)</span>. Recall that the velocity transfer function is</p>
+<p>Consider the same simple vehicle with a mass of 1300 kg and a frictional constant of proportionality of <span class="math notranslate nohighlight">\(k = 100\)</span> N.s/m. This time, however, analyze the vehicle’s velocity <span class="math notranslate nohighlight">\(v(t)\)</span> instead of its position <span class="math notranslate nohighlight">\(x(t)\)</span>. Recall that the velocity transfer function is</p>
 <div class="math notranslate nohighlight">
 \[H(s) = \frac{1}{ms + k}\]</div>
 <p>Compute the step response of the velocity transfer function and use it to determine the vehicle’s maximum velocity undergoing a unit step forcing.</p>
@@ -1013,8 +1004,7 @@ Response of a system to a step input.</p>
    100
 </pre></div>
 </div>
-<img alt="../../_images/2b4e26ac9565fe4d01b29342f22f467acf4aa4dc835fe6460a52e4d28109f1cb.png" src="../../_images/2b4e26ac9565fe4d01b29342f22f467acf4aa4dc835fe6460a52e4d28109f1cb.png" />
-</div>
+<img alt="../../_images/62a24d39d7b12ee4af3123eadedbac6ee61d7f6bf4df25230f9016c9d451df73.svg" src="../../_images/62a24d39d7b12ee4af3123eadedbac6ee61d7f6bf4df25230f9016c9d451df73.svg" /></div>
 </div>
 </section>
 <section id="reflection">
@@ -1036,8 +1026,7 @@ Response of a system to a step input.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/28ecf4689564ef5af1e2bea3090614c8a037b29192939f8e80a272d304f7a3cf.png" src="../../_images/28ecf4689564ef5af1e2bea3090614c8a037b29192939f8e80a272d304f7a3cf.png" />
-</div>
+<img alt="../../_images/3c762dd39d5cda19cf43d3f54c8d0e3cc6a3a2975e011b896dab7b9ad503c89c.svg" src="../../_images/3c762dd39d5cda19cf43d3f54c8d0e3cc6a3a2975e011b896dab7b9ad503c89c.svg" /></div>
 </div>
 <p>In this case an acceleration from 0-60 mph is achieved in about 10 seconds.</p>
 </section>
@@ -1084,22 +1073,16 @@ Response of a system to a step input.</p>
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">m</span><span class="w"> </span><span class="s">k</span><span class="w"> </span><span class="s">positive</span>
 <span class="n">syms</span><span class="w"> </span><span class="s">s</span><span class="w"> </span><span class="s">x</span>
-<span class="n">X</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">m</span><span class="o">*</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k</span><span class="o">*</span><span class="n">s</span><span class="p">)</span>
+<span class="n">X</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">m</span><span class="o">*</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k</span><span class="o">*</span><span class="n">s</span><span class="p">)</span>
 <span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ilaplace</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/(m*s^2 + k*s)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/k - exp(-(k*t)/m)/k
+1/(m*s^2 + k*s)
+x =
+1/k - exp(-(k*t)/m)/k
 </pre></div>
 </div>
 </div>
@@ -1132,8 +1115,7 @@ Response of a system to a step input.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/723907ebbfbc848babc16e2de30d120d187d6a3980bc5ed168acda1ea967cf0f.png" src="../../_images/723907ebbfbc848babc16e2de30d120d187d6a3980bc5ed168acda1ea967cf0f.png" />
-</div>
+<img alt="../../_images/1ef5fb01fc5061d9e8f940b5606b39337329842f928c61e4181125b20aed2eb2.svg" src="../../_images/1ef5fb01fc5061d9e8f940b5606b39337329842f928c61e4181125b20aed2eb2.svg" /></div>
 </div>
 </section>
 </section>
@@ -1152,7 +1134,7 @@ Response of a system to a step input.</p>
 <p>Set <span class="math notranslate nohighlight">\(m = 1300\)</span> and <span class="math notranslate nohighlight">\(k = 100\)</span>. Then plot the analytic step result you computed in (a). Also, plot the step response calculated using the <code class="docutils literal notranslate"><span class="pre">step</span></code> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% This computes the step response </span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% This computes the step response</span>
 <span class="n">m</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1300</span><span class="p">;</span>
 <span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
 <span class="n">Xs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="p">],[</span><span class="n">m</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="mi">0</span><span class="p">]);</span>
@@ -1194,7 +1176,7 @@ Response of a system to a square wave.</p>
 <span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span>
 <span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="n">freq</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.25</span><span class="p">;</span><span class="w"> </span><span class="c">% Frequency in Hz.</span>
-<span class="n">tfinal</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">30</span><span class="p">;</span><span class="w"> </span><span class="c">% Simulation duration. </span>
+<span class="n">tfinal</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">30</span><span class="p">;</span><span class="w"> </span><span class="c">% Simulation duration.</span>
 <span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">tfinal</span><span class="p">,</span><span class="mi">500</span><span class="p">);</span>
 <span class="n">u</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">freq</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">.^</span><span class="mi">2</span><span class="p">;</span>
 
@@ -1206,8 +1188,7 @@ Response of a system to a square wave.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/46a48c35751b525c3b8337b2eb58f1cb3245e819c3f1c9471cbab39c5fe0bcaa.png" src="../../_images/46a48c35751b525c3b8337b2eb58f1cb3245e819c3f1c9471cbab39c5fe0bcaa.png" />
-</div>
+<img alt="../../_images/d3bfae0d56f22d14365ef6c998fcdc84de5c5dc95cbec82be158a95799c77515.svg" src="../../_images/d3bfae0d56f22d14365ef6c998fcdc84de5c5dc95cbec82be158a95799c77515.svg" /></div>
 </div>
 </section>
 <section id="part-1-familiarize-yourself-with-the-activity">
@@ -1280,7 +1261,7 @@ Response of a system to a square wave.</p>
 <section id="homework-exercise-2-d">
 <h4>Homework Exercise 2(d)<a class="headerlink" href="#homework-exercise-2-d" title="Permalink to this heading">#</a></h4>
 <p>Evaluate the analytic response for <span class="math notranslate nohighlight">\(f = 0.16\)</span> on the interval <span class="math notranslate nohighlight">\([0, 50]\)</span> and plot it.</p>
-<p><strong>Hint</strong>: If you computed  symbolically in MATLAB, you can convert it to a function handle using <a class="reference external" href="https://www.mathworks.com/help/symbolic/matlabfunction.html"><code class="docutils literal notranslate"><span class="pre">matlabFunction</span></code></a> and evaluate that instead of writing out the expression yourself. For example:</p>
+<p><strong>Hint</strong>: If you computed symbolically in MATLAB, you can convert it to a function handle using <a class="reference external" href="https://www.mathworks.com/help/symbolic/matlabfunction.html"><code class="docutils literal notranslate"><span class="pre">matlabFunction</span></code></a> and evaluate that instead of writing out the expression yourself. For example:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">xfunc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">matlabFunction</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">    </span><span class="c">% Create a function handle for a symbolic expression x</span>
 <span class="n">xeval</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">xfunc</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span><span class="n">t</span><span class="p">);</span><span class="w">       </span><span class="c">% Evaluate the function handle based on its input arguments</span>
 </pre></div>
@@ -1320,23 +1301,24 @@ Response of a system to a square wave.</p>
 <h2>Further exploration<a class="headerlink" href="#further-exploration" title="Permalink to this heading">#</a></h2>
 <p><img alt="explore" src="../../_images/navigation.png" /></p>
 <ul class="simple">
-<li><p>You can find more information about using transfer functions in MATLAB<a class="footnote-reference brackets" href="#eg243" id="id6">2</a> in the video: <a class="reference external" href="https://uk.mathworks.com/videos/transfer-functions-in-matlab-100912.html">Transfer Functions in MATLAB</a>.</p></li>
+<li><p>You can find more information about using transfer functions in MATLAB<a class="footnote-reference brackets" href="#eg243" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> in the video: <a class="reference external" href="https://uk.mathworks.com/videos/transfer-functions-in-matlab-100912.html">Transfer Functions in MATLAB</a>.</p></li>
 <li><p>Want to learn more about mass-spring-damper systems? Check out the <a class="reference external" href="https://uk.mathworks.com/matlabcentral/fileexchange/94585-mass-spring-damper-systems?s_tid=FX_rc2_behav">Mass-Spring-Damper Systems courseware</a> module.</p></li>
-<li><p>Learn more about responses in the <a class="reference external" href="https://uk.mathworks.com/videos/control-systems-in-practice-part-9-the-step-response-1593067191882.html">MATLAB Tech Talk: Control Systems in Practice, Part 9: The Step Response</a><a class="footnote-reference brackets" href="#eg243" id="id7">2</a>.
-Want a little more of the theory? Check out Brian Douglas’ video: <a class="reference external" href="https://www.youtube.com/watch?v=RJleGwXorUk&amp;ab_channel=BrianDouglas">Control Systems Lectures - Transfer Functions</a><a class="footnote-reference brackets" href="#eg243" id="id8">2</a>.</p></li>
+<li><p>Learn more about responses in the <a class="reference external" href="https://uk.mathworks.com/videos/control-systems-in-practice-part-9-the-step-response-1593067191882.html">MATLAB Tech Talk: Control Systems in Practice, Part 9: The Step Response</a><a class="footnote-reference brackets" href="#eg243" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.
+Want a little more of the theory? Check out Brian Douglas’ video: <a class="reference external" href="https://www.youtube.com/watch?v=RJleGwXorUk&amp;ab_channel=BrianDouglas">Control Systems Lectures - Transfer Functions</a><a class="footnote-reference brackets" href="#eg243" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</p></li>
 </ul>
 </section>
 <section id="footnotes">
 <h2>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this heading">#</a></h2>
 <hr class="footnotes docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="refer-to-livescript"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>The MATLAB live script <code class="docutils literal notranslate"><span class="pre">TransferFunctionBasics.mlx</span></code> has sliders to make the interactive adjustment of the parameters <code class="docutils literal notranslate"><span class="pre">m</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">k</span></code> possible.</p>
-</dd>
-<dt class="label" id="eg243"><span class="brackets">2</span><span class="fn-backref">(<a href="#id6">1</a>,<a href="#id7">2</a>,<a href="#id8">3</a>)</span></dt>
-<dd><p>These resources are useful for those of you also studying control systems this semester.</p>
-</dd>
-</dl>
+<aside class="footnote brackets" id="refer-to-livescript" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>The MATLAB live script <code class="docutils literal notranslate"><span class="pre">TransferFunctionBasics.mlx</span></code> has sliders to make the interactive adjustment of the parameters <code class="docutils literal notranslate"><span class="pre">m</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">k</span></code> possible.</p>
+</aside>
+<aside class="footnote brackets" id="eg243" role="note">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id6">1</a>,<a role="doc-backlink" href="#id7">2</a>,<a role="doc-backlink" href="#id8">3</a>)</span>
+<p>These resources are useful for those of you also studying control systems this semester.</p>
+</aside>
 </section>
 </section>
 
@@ -1349,16 +1331,16 @@ Want a little more of the theory? Check out Brian Douglas’ video: <a class="re
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "matlab"
+            mode: "mkernel"
         },
         kernelOptions: {
-            name: "matlab",
+            name: "mkernel",
             path: "./transfer_functions/2"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'matlab'</script>
+    <script>kernelName = 'mkernel'</script>
 
                 </article>
               
@@ -1367,7 +1349,7 @@ Want a little more of the theory? Check out Brian Douglas’ video: <a class="re
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1396,6 +1378,7 @@ Want a little more of the theory? Check out Brian Douglas’ video: <a class="re
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1541,8 +1524,8 @@ for
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

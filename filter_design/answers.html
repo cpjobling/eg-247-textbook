@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Worked Solutions to Exercises 7.2 &#8212; EG-247 Digital Signal Processing</title>
   
@@ -15,19 +15,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -81,28 +81,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -124,12 +119,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -145,6 +148,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../introduction/index.html">
@@ -169,48 +174,48 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Online notes</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../transfer_functions/index.html">Transfer Function Analysis of Dynamic Systems</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../transfer_functions/index.html">Transfer Function Analysis of Dynamic Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../transfer_functions/1/concepts.html">Concept Review</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../transfer_functions/2/transfer_function_basics.html">Transfer Function Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../transfer_functions/3/pole_zero_analysis.html">Pole Zero Analysis</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../fourier_series/index.html">Fourier Series</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fourier_series/index.html">Fourier Series</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/1/trig_fseries.html">Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/2/exp_fs1.html">Exponential Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/3/exp_fs2.html">Computing Line Spectra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/4/exp_fs3.html">Applications of Line Spectra</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../fourier_transform/index.html">Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fourier_transform/index.html">Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_transform/1/ft1.html">Defining the Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_transform/2/ft2.html">Fourier transforms of commonly occuring signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_transform/3/ft3.html">Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_transform/4/ft4.html">Introduction to Filters</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../dt_systems/index.html">Sampled Data Systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dt_systems/index.html">Sampled Data Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../dt_systems/1/sampling.html">Sampling Theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dt_systems/2/z_transform.html">The Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dt_systems/3/i_z_transform.html">The Inverse Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dt_systems/4/dt_models.html">Models of Discrete Time Systems</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../dft/index.html">Discrete Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dft/index.html">Discrete Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../dft/1/dft.html">The Discrete Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dft/2/fft.html">The Fast-Fourier Transform</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="index.html">Analogue and Digital Filter Design</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="index.html">Analogue and Digital Filter Design</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="analogue_filters.html">Unit 7.1: Designing Analogue Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="digital_filters.html">Unit 7.2: Designing Digital Filters in MATLAB and Simulink</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../zbib.html">Bibliography</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">In Class Worksheets</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../worksheets/index.html">Worksheets</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../worksheets/index.html">Worksheets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/worksheet1.html">Worksheet 1 Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/1/worksheet2.html">Worksheet 2 Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fourier_series/2/worksheet3.html">Worksheet 3 Exponential Fourier Series</a></li>
@@ -225,11 +230,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../dft/1/worksheet12.html">Worksheet 12 The Discrete-time Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dft/2/worksheet13.html">Worksheet 13 The Fast Fourier Transform</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework problems</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../homework/index.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../homework/index.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw4.html">Homework 4 Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw5.html">Homework 5 Fourier Transforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw6.html">Homework 6: Fourier Transforms</a></li>
@@ -237,7 +242,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw8.html">Homework 8 Sampling Theory and the Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw9.html">Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Answers to Selected Problems</span></p>
 <ul class="current nav bd-sidenav">
@@ -255,7 +260,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../dt_systems/2/zt_table.html">Table of Z-Transforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../setup/polling_setup.html">Set Up In-Class Polling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../todo.html">List of Planned Enhancements</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../setup/index.html">Setting up your own version of this book</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../setup/index.html">Setting up your own version of this book</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../transfer_functions/1/LICENSE.html">MathWorks License</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/jupyter.html">About Jupyter notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/python.html">Installing Python</a></li>
@@ -264,7 +269,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../setup/advanced-setup.html">Quick Start - For Experienced Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/jupyter-book.html">Setting up jupyter-book</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 
     </div>
@@ -280,7 +285,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -289,7 +294,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -438,10 +443,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -449,7 +454,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -496,7 +501,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="worked-solutions-to-exercises-7-2">
 <h1>Worked Solutions to Exercises 7.2<a class="headerlink" href="#worked-solutions-to-exercises-7-2" title="Permalink to this heading">#</a></h1>
@@ -505,45 +510,40 @@ document.write(`
 <p>See: <a class="reference internal" href="digital_filters.html#u72-ex-1"><span class="std std-ref">Exercise 7.2.1</span></a></p>
 <p>We first write down the difference equations by tracing through the signals in the block diagram of <a class="reference internal" href="digital_filters.html#fig-u72-1"><span class="std std-numref">Fig. 14</span></a>.</p>
 <div class="math notranslate nohighlight" id="equation-eq-sol-7-2-1-1">
-<span class="eqno">(67)<a class="headerlink" href="#equation-eq-sol-7-2-1-1" title="Permalink to this equation">#</a></span>\[
-y[n] = b_0 w[n] + b_1w[n-1] + b_2w[n-2] + b_3w[n-2] 
+<span class="eqno">(66)<a class="headerlink" href="#equation-eq-sol-7-2-1-1" title="Permalink to this equation">#</a></span>\[
+y[n] = b_0 w[n] + b_1w[n-1] + b_2w[n-2] + b_3w[n-2]
 \]</div>
-<div class="math notranslate nohighlight" id="equation-eq-sol-7-2-1-2">
-<span class="eqno">(68)<a class="headerlink" href="#equation-eq-sol-7-2-1-2" title="Permalink to this equation">#</a></span>\[
-w[n] = x[n] - a_1 w[n-1] - a_1 w[n-2] - a_3w[n-2] 
-\]</div>
-<p>We take Z-transforms of equations <a class="reference internal" href="#equation-eq-sol-7-2-1-1">(67)</a> and <a class="reference internal" href="#equation-eq-sol-7-2-1-2">(68)</a>:</p>
-<div class="math notranslate nohighlight" id="equation-eq-sol-7-2-1-3">
-<span class="eqno">(69)<a class="headerlink" href="#equation-eq-sol-7-2-1-3" title="Permalink to this equation">#</a></span>\[
-Y(z) = b_0 W(z) + b_1 z^{-1} W(z)  + b_2 z^{-2} W(z) + b_3 z^{-3} W(z) 
-\]</div>
-<div class="math notranslate nohighlight" id="equation-eq-sol-7-2-1-4">
-<span class="eqno">(70)<a class="headerlink" href="#equation-eq-sol-7-2-1-4" title="Permalink to this equation">#</a></span>\[
-W(z) = X(z) + a_1 z^{-1} W(z) + a_1 z^{-2} W(z) + a_3 z^{-3} W(z) 
-\]</div>
-<p>Gather terms in <a class="reference internal" href="#equation-eq-sol-7-2-1-3">(69)</a> and <a class="reference internal" href="#equation-eq-sol-7-2-1-4">(70)</a>:</p>
-<div class="math notranslate nohighlight" id="equation-eq-sol-7-2-1-5">
-<span class="eqno">(71)<a class="headerlink" href="#equation-eq-sol-7-2-1-5" title="Permalink to this equation">#</a></span>\[
-Y(z) = \left(b_0 + b_1 z^{-1} + b_2 z^{-2} + b_3 z^{-3}\right) W(z) 
-\]</div>
-<div class="math notranslate nohighlight" id="equation-eq-sol-7-2-1-6">
-<span class="eqno">(72)<a class="headerlink" href="#equation-eq-sol-7-2-1-6" title="Permalink to this equation">#</a></span>\[
-\left(1 + a_1 z^{-1}- a_1 z^{-2} - a_3 z^{-3} \right) W(z) = X(z) 
-\]</div>
-<p>From <a class="reference internal" href="#equation-eq-sol-7-2-1-6">(72)</a> we obtain</p>
+<div class="math notranslate nohighlight">
+\[w[n] = x[n] - a_1 w[n-1] - a_1 w[n-2] - a_3w[n-2]\]</div>
+<p>(eq:sol:7.2.1:2)</p>
+<p>We take Z-transforms of equations <a class="reference internal" href="#equation-eq-sol-7-2-1-1">(66)</a> and <code class="xref eq docutils literal notranslate"><span class="pre">eq:sol:7.2.1:2</span></code>:</p>
+<div class="math notranslate nohighlight">
+\[Y(z) = b_0 W(z) + b_1 z^{-1} W(z) + b_2 z^{-2} W(z) + b_3 z^{-3} W(z)\]</div>
+<p>(eq:sol:7.2.1:3)</p>
+<div class="math notranslate nohighlight">
+\[W(z) = X(z) + a_1 z^{-1} W(z) + a_1 z^{-2} W(z) + a_3 z^{-3} W(z)\]</div>
+<p>(eq:sol:7.2.1:4)</p>
+<p>Gather terms in <code class="xref eq docutils literal notranslate"><span class="pre">eq:sol:7.2.1:3</span></code> and <code class="xref eq docutils literal notranslate"><span class="pre">eq:sol:7.2.1:4</span></code>:</p>
+<div class="math notranslate nohighlight">
+\[Y(z) = \left(b_0 + b_1 z^{-1} + b_2 z^{-2} + b_3 z^{-3}\right) W(z)\]</div>
+<p>(eq:sol:7.2.1:5)</p>
+<div class="math notranslate nohighlight">
+\[\left(1 + a_1 z^{-1}- a_1 z^{-2} - a_3 z^{-3} \right) W(z) = X(z)\]</div>
+<p>(eq:sol:7.2.1:6)</p>
+<p>From <code class="xref eq docutils literal notranslate"><span class="pre">eq:sol:7.2.1:6</span></code> we obtain</p>
 <div class="math notranslate nohighlight" id="equation-eq-sol-7-2-1-7">
-<span class="eqno">(73)<a class="headerlink" href="#equation-eq-sol-7-2-1-7" title="Permalink to this equation">#</a></span>\[W(z) = \frac{1}{1 + a_1 z^{-1}- a_1 z^{-2} - a_3 z^{-3}}  X(z)\]</div>
-<p>We then use <a class="reference internal" href="#equation-eq-sol-7-2-1-7">(73)</a> to eliminate <span class="math notranslate nohighlight">\(W(z)\)</span> from <a class="reference internal" href="#equation-eq-sol-7-2-1-5">(71)</a>, giving</p>
+<span class="eqno">(67)<a class="headerlink" href="#equation-eq-sol-7-2-1-7" title="Permalink to this equation">#</a></span>\[W(z) = \frac{1}{1 + a_1 z^{-1}- a_1 z^{-2} - a_3 z^{-3}}  X(z)\]</div>
+<p>We then use <a class="reference internal" href="#equation-eq-sol-7-2-1-7">(67)</a> to eliminate <span class="math notranslate nohighlight">\(W(z)\)</span> from <code class="xref eq docutils literal notranslate"><span class="pre">eq:sol:7.2.1:5</span></code>, giving</p>
 <div class="math notranslate nohighlight">
 \[Y(z) = \frac{b_0 W(z) + b_1 z^{-1} W(z)  + b_2 z^{-2} W(z) + b_3 z^{-3}}{1 + a_1 z^{-1}- a_1 z^{-2} - a_3 z^{-3}} X(z)\]</div>
 <p>and the transfer function follows:</p>
 <div class="math notranslate nohighlight" id="equation-eq-sol-7-2-1-8">
-<span class="eqno">(74)<a class="headerlink" href="#equation-eq-sol-7-2-1-8" title="Permalink to this equation">#</a></span>\[H(z) = \frac{Y(z)}{X(z)} = \frac{b_0 W(z) + b_1 z^{-1} W(z)  + b_2 z^{-2} W(z) + b_3 z^{-3}}{1 + a_1 z^{-1}- a_1 z^{-2} - a_3 z^{-3}}\]</div>
+<span class="eqno">(68)<a class="headerlink" href="#equation-eq-sol-7-2-1-8" title="Permalink to this equation">#</a></span>\[H(z) = \frac{Y(z)}{X(z)} = \frac{b_0 W(z) + b_1 z^{-1} W(z)  + b_2 z^{-2} W(z) + b_3 z^{-3}}{1 + a_1 z^{-1}- a_1 z^{-2} - a_3 z^{-3}}\]</div>
 </section>
 <section id="solution-to-exercise-7-2-2">
 <span id="sol-ex7-2-2"></span><h2>Solution to Exercise 7.2.2<a class="headerlink" href="#solution-to-exercise-7-2-2" title="Permalink to this heading">#</a></h2>
 <blockquote>
-<div><p>Use the block diagram shown in <a class="reference internal" href="digital_filters.html#fig-u72-4"><span class="std std-numref">Fig. 17</span></a> to validate <a class="reference internal" href="digital_filters.html#equation-eq-7-2-18">(55)</a>. Write down the equivalent difference equation.</p>
+<div><p>Use the block diagram shown in <a class="reference internal" href="digital_filters.html#fig-u72-4"><span class="std std-numref">Fig. 17</span></a> to validate <a class="reference internal" href="digital_filters.html#equation-eq-7-2-18">(54)</a>. Write down the equivalent difference equation.</p>
 </div></blockquote>
 <p>See: <span class="xref std std-ref">u72:ex:2</span></p>
 <hr class="docutils" />
@@ -570,15 +570,15 @@ Y(z) = \left(b_0 + b_1 z^{-1} + b_2 z^{-2} + b_3 z^{-3}\right) W(z)
 <p>The poles of this equation are given by <span class="math notranslate nohighlight">\(s = \sqrt[4]{-1}\)</span>, that is <span class="math notranslate nohighlight">\(s = \sqrt[4]{1\angle 180^\circ}\)</span> which, by De Moivre’s theorem, with <span class="math notranslate nohighlight">\(n = 4\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[\sqrt[4]{1e^{j\pi}} = 1e^{j\left(\frac{\pi + 2k\pi}{4}\right)}\]</div>
-<p>Thus $<span class="math notranslate nohighlight">\(
-\begin{array}{ll}
-s_1 = e^{j 3\pi/4} = -\frac{1}{\sqrt{2}} + j\frac{1}{\sqrt{2}} &amp; s_2 = e^{j5\pi/4} = -\frac{1}{\sqrt{2}} - j\frac{1}{\sqrt{2}}\\
-s_3 = e^{j 7\pi/4} = +\frac{1}{\sqrt{2}} - j\frac{1}{\sqrt{2}} &amp; s_4 = e^{j9\pi/4} =  +\frac{1}{\sqrt{2}} + j\frac{1}{\sqrt{2}}
-\end{array}
-\)</span>$</p>
-<p>We take the left-half plane poles <span class="math notranslate nohighlight">\(s_1\)</span> and <span class="math notranslate nohighlight">\(s_2\)</span> and</p>
+<p>Thus
+$$</p>
+<p>\begin{array}{ll}
+s_1 = e^{j 3\pi/4} = -\frac{1}{\sqrt{2}} + j\frac{1}{\sqrt{2}} &amp; s_2 = e^{j5\pi/4} = -\frac{1}{\sqrt{2}} - j\frac{1}{\sqrt{2}}\
+s_3 = e^{j 7\pi/4} = +\frac{1}{\sqrt{2}} - j\frac{1}{\sqrt{2}} &amp; s_4 = e^{j9\pi/4} = +\frac{1}{\sqrt{2}} + j\frac{1}{\sqrt{2}}
+\end{array}</p>
 <div class="math notranslate nohighlight">
-\[H(s) = \frac{K}{\left(s +\frac{1}{\sqrt{2}} + j\frac{1}{\sqrt{2}}\right)\left(s + \frac{1}{\sqrt{2}} + j\frac{1}{\sqrt{2}}\right)} \]</div>
+\[ \begin{align}\begin{aligned}
+We take the left-half plane poles $s_1$ and $s_2$ and\\$$H(s) = \frac{K}{\left(s +\frac{1}{\sqrt{2}} + j\frac{1}{\sqrt{2}}\right)\left(s + \frac{1}{\sqrt{2}} + j\frac{1}{\sqrt{2}}\right)} \end{aligned}\end{align} \]</div>
 <div class="math notranslate nohighlight">
 \[H(s) = \frac{K}{s^2 + \sqrt{2}s + 1} \]</div>
 <p>The gain <span class="math notranslate nohighlight">\(K\)</span> is found from <span class="math notranslate nohighlight">\(A^2(0) = 1\)</span>, and <span class="math notranslate nohighlight">\(H(0) = 1\)</span>, so <span class="math notranslate nohighlight">\(K=1\)</span> and the prototype Butterworth low-pass filter is</p>
@@ -605,7 +605,7 @@ s_3 = e^{j 7\pi/4} = +\frac{1}{\sqrt{2}} - j\frac{1}{\sqrt{2}} &amp; s_4 = e^{j9
 </pre></div>
 </div>
 <p>Re calculate Butterworth filter with pre-warped frequency</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Hs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">wa</span>^<span class="mi">2</span><span class="p">,[</span><span class="mi">1</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">wa</span><span class="w"> </span><span class="n">wa</span>^<span class="mi">2</span><span class="p">])</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Hs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">wa</span><span class="o">^</span><span class="mi">2</span><span class="p">,[</span><span class="mi">1</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">wa</span><span class="w"> </span><span class="n">wa</span><span class="o">^</span><span class="mi">2</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>Now find <span class="math notranslate nohighlight">\(H(z)\)</span> using the bilinear transformation by substituting</p>
@@ -646,13 +646,11 @@ s_3 = e^{j 7\pi/4} = +\frac{1}{\sqrt{2}} - j\frac{1}{\sqrt{2}} &amp; s_4 = e^{j9
 \[H(z) = \frac{Y(z)}{X(z)} = \frac{0.6401   -1.1518z^{-1}   + 0.6401z^{-2}}{1	-1.0130 z^{-1}    + 0.4190z^{-2}} \]</div>
 <p>So</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\left(1	- 1.0130 z^{-1}    + 0.4190z^{-2}\right)Y(z) &amp;= \left(0.6401   -1.1518z^{-1}   + 0.6401z^{-2}\right)X(z) \\
-Y(z)	- 1.0130 z^{-1}Y(z)    + 0.4190z^{-2}Y(z) &amp;= 0.6401 X(z)   -1.1518z^{-1}X(z)   + 0.6401z^{-2}X(z) \\
-Y(z) &amp;= 0.6401 X(z)   -1.1518z^{-1}X(z)   + 0.6401z^{-2}X(z) + 1.0130 z^{-1}Y(z)    - 0.4190z^{-2}Y(z)
-\end{align*}
-\end{split}\]</div>
+\[\begin{split}\begin{align*}
+\left(1 - 1.0130 z^{-1} + 0.4190z^{-2}\right)Y(z) &amp;= \left(0.6401 -1.1518z^{-1} + 0.6401z^{-2}\right)X(z) \\
+Y(z) - 1.0130 z^{-1}Y(z) + 0.4190z^{-2}Y(z) &amp;= 0.6401 X(z) -1.1518z^{-1}X(z) + 0.6401z^{-2}X(z) \\
+Y(z) &amp;= 0.6401 X(z) -1.1518z^{-1}X(z) + 0.6401z^{-2}X(z) + 1.0130 z^{-1}Y(z) - 0.4190z^{-2}Y(z)
+\end{align*}\end{split}\]</div>
 <p>Taking inverse Z-transform:</p>
 <div class="math notranslate nohighlight">
 \[y[n] = 0.6401 x[n]   -1.1518 x[n-1]   + 0.6401 x[n-2] + 1.0130 y[n-1]    - 0.4190 y[n-2]\]</div>
@@ -674,7 +672,7 @@ while (true) {
 </pre></div>
 </div>
 <p>e) The easiest way to complete the problem is to tabulate the data</p>
-<table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(n\)</span></p></th>
 <th class="head"><p><span class="math notranslate nohighlight">\(x[n]\)</span></p></th>
@@ -734,6 +732,7 @@ while (true) {
 </tr>
 </tbody>
 </table>
+</div>
 <p>from which <span class="math notranslate nohighlight">\(y[n] = \left\{0.6401,0.1369,-0.011,0.0700,0.1997,\dots\right\}\)</span></p>
 <p>I find the use of Excel to be a useful tool for confirming such results and the sheet for this one can be downloaded <a class="reference download internal" download="" href="../_downloads/98420945bd065c394491115b00cc21c3/sol_ex_7_2_3.xlsx"><span class="xref download myst">sol_ex_7_2_3.xlsx</span></a>.</p>
 <p>You can also use MATLAB of course. Here we set up the transfer function:</p>
@@ -752,6 +751,7 @@ while (true) {
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">yn</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>$$</p>
 </section>
 </section>
 
@@ -782,7 +782,7 @@ while (true) {
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -811,6 +811,7 @@ while (true) {
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -887,8 +888,8 @@ for
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
