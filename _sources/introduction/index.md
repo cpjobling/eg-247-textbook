@@ -114,9 +114,10 @@ In MATLAB we would need to tackle this by breaking down the steps.
 slideshow:
   slide_type: subslide
 ---
-%Make sure that we have a clean workspace
+% Make sure that we have a clean workspace
 clear all
-format compact; setappdata(0, "MKernel_plot_format", 'svg')
+format compact
+setappdata(0, "MKernel_plot_format", 'svg')
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
