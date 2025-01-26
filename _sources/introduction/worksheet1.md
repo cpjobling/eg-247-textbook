@@ -393,37 +393,9 @@ $$
 
 We can plot this in Matlab as a _stem plot_
 
-+++ {"slideshow": {"slide_type": "subslide"}, "tags": ["remove-output"]}
++++ {"slideshow": {"slide_type": "subslide"}}
 
-#### Procedure
-
-Define function using this text:
-
-```{code-cell}
-pwd
-dir
-```
-
-```{code-cell}
----
-slideshow:
-  slide_type: fragment
-tags: [remove-output]
----
-%%file y.m
-% Define the function
-function [ y ] = x( n )
-  if n < 0 | n >= 10
-      y = 0;
-  else
-      y = 5;
-  end
-end
-```
-
-+++ {"slideshow": {"slide_type": "fragment"}, "tags": ["remove-output"]}
-
-and save as [y.m](https://cpjobling.github.io/eg-247-textbook/introduction/y.m).
+First define the signal
 
 ```{code-cell}
 ---
@@ -466,6 +438,14 @@ title('Stem Plot for a Discrete Signal')
 xlabel('Sample n')
 ylabel('Signal x[n]')
 grid
+```
+
+```{code-cell}
+---
+slideshow:
+  slide_type: notes
+---
+Download [y.m](y.m)
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}
