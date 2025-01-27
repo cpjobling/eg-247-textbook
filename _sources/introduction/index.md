@@ -78,10 +78,10 @@ Without computing anything, see if you can complete this table.
 
 | Symbol     | Definition         |
 | ---------- | ------------------ |
-| $A$        | Phase in radians   |
-| $f_0$      | Frequency in Hz    |
-| $\phi$     | Amplitude          |
-| $2\pi f_0$ | Frequency in rad/s |
+| $A$        | Frequency in rad/s |
+| $f_0$      | Amplitude          |
+| $\phi$     | Frequency in Hz    |
+| $2\pi f_0$ | Phase in radians   |
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 

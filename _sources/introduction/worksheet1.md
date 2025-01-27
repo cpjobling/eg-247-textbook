@@ -26,7 +26,7 @@ kernelspec:
 
 We will step through this worksheet in class.
 
-This give us an opportunity to demonstrate the electronic resources, Canvas, OneNote, Pingo, MATLAB, Simulink and Wolfram Alpha, that we will use to make our time in class more active and engaging. We will also test your background knowledge coming into the module.
+This give us an opportunity to demonstrate the electronic resources, Canvas, OneNote, Slido, MATLAB, Simulink and Wolfram Alpha, that we will use to make our time in class more active and engaging. We will also test your background knowledge coming into the module.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -289,7 +289,7 @@ Using the answer from the second poll, let's correct the table of properties of 
 | --------------------------|--------------------|-------|
 | Amplitude                 |                    | V     |
 | Frequency                 |                    | Hz    |
-| Angular requency          |                    | rad/s |
+| Angular frequency          |                    | rad/s |
 | Phase shift               |                    | rad   |
 
 +++ {"slideshow": {"slide_type": "subslide"}}
