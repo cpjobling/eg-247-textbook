@@ -16,6 +16,8 @@ kernelspec:
 
 **-> Start recording**
 
+**-> Start slideshow**
+
 +++ {"slideshow": {"slide_type": "slide"}}
 
 # Worksheet 1
@@ -108,9 +110,9 @@ Open slido [www.slido.com](www.slido.com)
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-When prompted enter the session id **# 288 558**
+When prompted enter the session id **# 288 5587**
 
-<img src="pictures/QR-code-slido.png" alt="QR code for Slide session # 288 5587" width="25%" />
+<img src="pictures/qr-code-slido.svg" alt="QR code for Slide session # 288 5587" width="25%" />
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -128,7 +130,7 @@ Continuous signals are represented mathematically by functions which vary contin
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-Sinusoidal signals (e.g. AC) are fundamental in electrical engineering. 
+Sinusoidal signals (e.g. AC) are fundamental in electrical engineering.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -218,19 +220,35 @@ ylabel('Amplitude')
 grid
 ```
 
-+++ {"slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "notes"}}
 
-If you want to execute this in MATLAB, you can create a file by copying this text into an `m-file`:
+If you want to execute this in MATLAB, you can create a file by copying this text into an `m-file` called `sinewave.m`:
+
+```{matlab}
+% SINEWAVE - plot function $x(t) = 3 \cos(2\pi t - 3 \pi/4)$ for $t = 0\ldots 1$
+
+%% Set up the problem
+% define t
+t = linspace(0, 1, 100);
+% define x
+x = 3 * cos(2*pi*2*t - 3*pi/4);
+%% Plot result and label plot
+plot(t,x)
+title('A Sinusoidal Signal')
+xlabel('Time t (s)')
+ylabel('Amplitude')
+grid
+```
 
 ```{code-cell}
 ---
 slideshow:
-  slide_type: subslide
+  slide_type: notes
 ---
 edit sinewave
 ```
 
-+++ {"slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "notes"}}
 
 To run this script, just type the filename without the `.m` extension.
 
@@ -250,7 +268,7 @@ Next time you have access to MATLAB, download this script ([sinewave.m](https://
 
 ### Returning to the Question
 
-Using the insight just gained by exploring this function with a computer, which of the following symbols do you now think represents the frequecy of the signal in Hz?
+Using the insight just gained by exploring this function with a computer, which of the following symbols do you now think represents the frequency of the signal in Hz?
 
 | Symbol             |
 | ------------------ |
@@ -395,12 +413,24 @@ We can plot this in Matlab as a _stem plot_
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-First define the signal
+First define the signal by copying this text into an `m-file` called `y.m`:
+
+```matlab
+% Define the function
+function [ y ] = x( n )
+  if n < 0 | n >= 10 
+      y = 0;
+  else 
+      y = 5;
+  end
+end
+```
 
 ```{code-cell}
 ---
 slideshow:
   slide_type: subslide
+tags: [remove-output]
 ---
 edit y
 ```
@@ -438,15 +468,12 @@ title('Stem Plot for a Discrete Signal')
 xlabel('Sample n')
 ylabel('Signal x[n]')
 grid
+
 ```
 
-```{code-cell}
----
-slideshow:
-  slide_type: notes
----
++++ {"slideshow": {"slide_type": "notes"}}
+
 Download [y.m](y.m)
-```
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -468,15 +495,19 @@ Sketch your signal here:
 
 </pre>
 
-+++ {"slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "notes"}}
 
 To plot this on a computer you would need to transcribe $x[n]$ into an array and then use the stem plot to plot the data. You could just create the array by hand, but you could also create a MATLAB function if you would like a challenge.
 
-+++ {"slideshow": {"slide_type": "notes"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 ### Exercise 2
 
 For the example we started with $x(t) = 2 \cos (2\pi . 2t + 3\pi/4)$. Say we sample the cosine wave at 20 times the frequency of the sinusoid, what would the sampling period be and what would $N$ be if 1 seconds worth of data for the sampled waveform was to be stored?
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+**-> Open Example poll **
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
