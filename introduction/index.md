@@ -78,10 +78,10 @@ Without computing anything, see if you can complete this table.
 
 | Symbol     | Definition         |
 | ---------- | ------------------ |
-| $A$        | Phase in radians   |
-| $f_0$      | Frequency in Hz    |
-| $\phi$     | Amplitude          |
-| $2\pi f_0$ | Frequency in rad/s |
+| $A$        | Frequency in rad/s |
+| $f_0$      | Amplitude          |
+| $\phi$     | Frequency in Hz    |
+| $2\pi f_0$ | Phase in radians   |
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -114,9 +114,10 @@ In MATLAB we would need to tackle this by breaking down the steps.
 slideshow:
   slide_type: subslide
 ---
-%Make sure that we have a clean workspace
+% Make sure that we have a clean workspace
 clear all
-format compact; setappdata(0, "MKernel_plot_format", 'svg')
+format compact
+setappdata(0, "MKernel_plot_format", 'svg')
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -161,14 +162,9 @@ grid
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-If you want to execute this in MATLAB, you can create a file by copying this text into an `m-file`:
+If you want to execute this in MATLAB, you can create a file by copying this text into an `m-file` called `sinewave.m`:
 
-```{code-cell}
----
-slideshow:
-  slide_type: notes
----
-%%file sinewave.m
+```matlab
 % SINEWAVE - plot function $x(t) = 3 \cos(2\pi t - 3 \pi/4)$ for $t = 0\ldots 1$
 
 %% Set up the problem
@@ -189,7 +185,7 @@ grid
 slideshow:
   slide_type: notes
 ---
-edit sinewave
+
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}
@@ -320,13 +316,18 @@ We can plot this in MATLAB as a _stem plot_
 
 Define function using this text:
 
-```{code-cell}
----
-slideshow:
-  slide_type: subslide
----
-edit y
+```matlab
+% Define the function
+function [ y ] = x( n )
+  if n < 0 | n >= 10 
+      y = 0;
+  else 
+      y = 5;
+  end
+end
 ```
+
+Save as `y.m`
 
 ```{code-cell}
 ---
@@ -537,13 +538,9 @@ $$x(t) = \underbrace {A_1\cos(2\pi f_1 t)}_{s_1} + \underbrace {A_2\cos(2\pi f_2
 
 This can be coded as
 
-```{code-cell}
----
-slideshow:
-  slide_type: notes
----
-%%file two_sines.m
-%... plot two sinusoids signal
+```matlab
+% TWO_SINES - plot two sinusoids signal
+
 A1 = 2; f1 = 1;
 A2 = 1.5;f2 = 2.2;
 t = linspace(0, 3*(1/f1), 1000);
@@ -562,17 +559,17 @@ arrow([f2,0],[f2,A2]),text(f2,A2+0.2,'A2'),text(f2+0.05,0.2,'f2')
 ylabel('Frequency Spectrum X(f)'),xlabel('Frequency (Hz)')
 ```
 
-```{code-cell}
----
-slideshow:
-  slide_type: subslide
----
-edit two_sines
-```
+Save this as `two_sines.m`
+
++++ {"slideshow": {"slide_type": "subslide"}}
 
 Run
 
 ```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
 two_sines
 ```
 
