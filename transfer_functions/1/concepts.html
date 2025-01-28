@@ -558,7 +558,7 @@ document.write(`
 <span id="tf-concepts"></span><h1>Unit 2.1 Laplace transforms and LTI systems<a class="headerlink" href="#unit-2-1-laplace-transforms-and-lti-systems" title="Permalink to this heading">#</a></h1>
 <section id="learning-outcomes">
 <h2>Learning Outcomes<a class="headerlink" href="#learning-outcomes" title="Permalink to this heading">#</a></h2>
-<p>In this unit, students will…</p>
+<p>In this unit, you will…</p>
 <ul class="simple">
 <li><p>Compute Laplace transforms by hand and using symbolic math.</p></li>
 <li><p>Describe the properties of the Laplace transform.</p></li>
@@ -578,7 +578,8 @@ document.write(`
 <span class="c">% Setup MATLAB to use the ConceptReview.mlx LiveScript in class.</span>
 <span class="c">% I am assuming that this is on the MATLAB Drive</span>
 
-<span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"> </span><span class="nb">setappdata</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MKernel_plot_format&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;svg&#39;</span><span class="p">)</span>
+<span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"> </span><span class="c">% use less white space in outputs</span>
+<span class="nb">setappdata</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MKernel_plot_format&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;svg&#39;</span><span class="p">)</span>
 <span class="c">% Change this to local set up where this Jupyter book is run</span>
 <span class="nb">cd</span><span class="w"> </span><span class="s">&#39;/Users/eechris/MATLAB-Drive/Repositories/Transfer-Function-Analysis-of-Dynamic-Systems&#39;</span>
 <span class="nb">open</span><span class="p">(</span><span class="s">&#39;TransferFunctions.prj&#39;</span><span class="p">)</span>
@@ -629,8 +630,7 @@ F(s) &amp;= \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"> </span><span class="nb">setappdata</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MKernel_plot_format&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;svg&#39;</span><span class="p">)</span><span class="w"> </span><span class="c">% use less white space in outputs</span>
-<span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">s</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">s</span>
 <span class="n">syms</span><span class="w"> </span><span class="s">a</span><span class="w"> </span><span class="s">positive</span>
 </pre></div>
 </div>
@@ -1013,7 +1013,7 @@ s^2*laplace(f(t), t, s) - subs(diff(f(t), t), t, 0) - s*f(0)
 <p>Applying the zero initial conditions and the values of the physical parameters implies</p>
 <div class="math notranslate nohighlight">
 \[s^2 X + 2 s X  + 10X = \frac{10}{s}\]</div>
-<p>Solving for yields</p>
+<p>Solving for <span class="math notranslate nohighlight">\(X\)</span> yields</p>
 <div class="math notranslate nohighlight">
 \[X = \frac{10}{s^3 + 2  s^2   + 10s }\]</div>
 </section>
@@ -1059,9 +1059,9 @@ s^2*laplace(f(t), t, s) - subs(diff(f(t), t), t, 0) - s*f(0)
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{array}{rl}
-x(t) &amp;= \mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1)^2 + 3^2}  -\frac{1}{3}\frac{3}{(s + 1)^2 + 3^2} \right\}
+x(t) &amp;= \displaystyle{\mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1)^2 + 3^2}  -\frac{1}{3}\frac{3}{(s + 1)^2 + 3^2} \right\}}
 \\
-  &amp;= u_0(t) - u_0(t) e^{-t} \cos( 3 t) - \frac{1}{3} u_0(t) e^{-t} \sin(3t)
+  &amp;= u_0(t) - e^{-t} \cos( 3 t)u_0(t)  - \frac{1}{3}  e^{-t} \sin(3t)u_0(t)
 \\
   &amp;= \left( 1  - e^{-t} \cos( 3 t) - \frac{1}{3} e^{-t} \sin(3t)\right)u_0(t)
 \end{array}
@@ -1094,7 +1094,7 @@ x(t) &amp;= \mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1)^2 + 3^2}  -\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f79046a62b38f20f36b1d7a374b47f22ae8f7f3298df5f7136f41acc8d26ff4f.svg" src="../../_images/f79046a62b38f20f36b1d7a374b47f22ae8f7f3298df5f7136f41acc8d26ff4f.svg" /></div>
+<img alt="../../_images/3ad52938f06db59b2bc3d555bff8dc19b65f4f009004b4f5d5e45653eb5d67f4.svg" src="../../_images/3ad52938f06db59b2bc3d555bff8dc19b65f4f009004b4f5d5e45653eb5d67f4.svg" /></div>
 </div>
 <p>There is an animated version of the solution to this spring-mass-damper system in the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">ConceptReview.mlx</span></code>.</p>
 <div class="cell docutils container">
@@ -1258,7 +1258,7 @@ F(s) \int_0^\infty t.e^{-st}\,dt
 <p>The solution uses the sampling property <span class="math notranslate nohighlight">\(f(t)\delta(t-a) = f(a)\delta(t-a)\)</span> and the sifting property</p>
 <div class="math notranslate nohighlight">
 \[
-\int_0^\infty f(t)\delta(t - a)\,dt = f(a). See
+\int_0^\infty f(t)\delta(t - a)\,dt = f(a).
 \]</div>
 <p>(see <a class="reference external" href="https://cpjobling.github.io/eg-150-textbook/signals_and_systems/elementary_signals/index.html#important-properties-of-the-delta-function">Important Properties of the Delta Function</a> in <span id="id8">[<a class="reference internal" href="../../zbib.html#id15" title="Christopher P. Jobling. EG-150: Signals and Systems. Swansea University, 2024. URL: https://cpjobling.github.io/eg-150-textbook.">Jobling, 2024</a>]</span>).</p>
 <div class="math notranslate nohighlight">
@@ -1296,7 +1296,7 @@ F(s) &amp;= \int_0^\infty e^{-st}\delta(t-a)\,dt\\
 \end{split}\]</div>
 <p>From the frequency shift property (see <a class="reference internal" href="#ltp"><span class="std std-ref">Laplace transform properties</span></a>)</p>
 <div class="math notranslate nohighlight">
-\[\mathcal{L}\left\{e^{-at}\right\} = F(s + a)\]</div>
+\[\mathcal{L}\left\{f(t) e^{-at}\right\} = F(s + a)\]</div>
 <p>so</p>
 <div class="math notranslate nohighlight">
 \[
