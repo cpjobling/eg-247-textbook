@@ -22,7 +22,7 @@ kernelspec:
 
 ## Learning Outcomes
 
-In this unit, students will...
+In this unit, you will...
 
 - Compute Laplace transforms by hand and using symbolic math.
 - Describe the properties of the Laplace transform.
@@ -49,7 +49,8 @@ slideshow:
 % Setup MATLAB to use the ConceptReview.mlx LiveScript in class.
 % I am assuming that this is on the MATLAB Drive
 
-format compact; setappdata(0, "MKernel_plot_format", 'svg')
+format compact; % use less white space in outputs
+setappdata(0, "MKernel_plot_format", 'svg')
 % Change this to local set up where this Jupyter book is run
 cd '/Users/eechris/MATLAB-Drive/Repositories/Transfer-Function-Analysis-of-Dynamic-Systems'
 open('TransferFunctions.prj')
@@ -133,7 +134,6 @@ Fs = laplace(f,var,transformVar)
 slideshow:
   slide_type: fragment
 ---
-format compact; setappdata(0, "MKernel_plot_format", 'svg') % use less white space in outputs
 syms t s
 syms a positive
 ```
@@ -513,7 +513,7 @@ $$s^2 X + 2 s X  + 10X = \frac{10}{s}$$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-Solving for yields
+Solving for $X$ yields
 
 $$X = \frac{10}{s^3 + 2  s^2   + 10s }$$
 
@@ -558,9 +558,9 @@ The solution is then constructed by taking the inverse transform:
 
 $$
 \begin{array}{rl}
-x(t) &= \mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1)^2 + 3^2}  -\frac{1}{3}\frac{3}{(s + 1)^2 + 3^2} \right\}
+x(t) &= \displaystyle{\mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1)^2 + 3^2}  -\frac{1}{3}\frac{3}{(s + 1)^2 + 3^2} \right\}}
 \\
-  &= u_0(t) - u_0(t) e^{-t} \cos( 3 t) - \frac{1}{3} u_0(t) e^{-t} \sin(3t)
+  &= u_0(t) - e^{-t} \cos( 3 t)u_0(t)  - \frac{1}{3}  e^{-t} \sin(3t)u_0(t)
 \\
   &= \left( 1  - e^{-t} \cos( 3 t) - \frac{1}{3} e^{-t} \sin(3t)\right)u_0(t)
 \end{array}
@@ -789,7 +789,7 @@ $$
 The solution uses the sampling property $f(t)\delta(t-a) = f(a)\delta(t-a)$ and the sifting property
 
 $$
-\int_0^\infty f(t)\delta(t - a)\,dt = f(a). See
+\int_0^\infty f(t)\delta(t - a)\,dt = f(a).
 $$
 
 (see [Important Properties of the Delta Function](https://cpjobling.github.io/eg-150-textbook/signals_and_systems/elementary_signals/index.html#important-properties-of-the-delta-function) in {cite}`jobling-eg-150`).
@@ -834,7 +834,7 @@ $$
 
 From the frequency shift property (see {ref}`ltp`)
 
-$$\mathcal{L}\left\{e^{-at}\right\} = F(s + a)$$
+$$\mathcal{L}\left\{f(t) e^{-at}\right\} = F(s + a)$$
 
 so
 
