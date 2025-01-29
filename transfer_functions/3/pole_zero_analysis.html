@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Unit 2.3: Pole-Zero Analysis &#8212; EG-247 Digital Signal Processing</title>
   
@@ -15,55 +14,54 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystyles.css?v=7235edc5" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'transfer_functions/3/pole_zero_analysis';</script>
@@ -74,6 +72,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Unit 2.2: Transfer Function Basics" href="../2/transfer_function_basics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -81,32 +80,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -114,7 +97,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -122,16 +104,25 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -146,6 +137,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../../introduction/index.html">
   
@@ -157,7 +150,14 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">EG-247 Digital Signal Processing</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -169,48 +169,48 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Online notes</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Transfer Function Analysis of Dynamic Systems</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Transfer Function Analysis of Dynamic Systems</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../1/concepts.html">Concept Review</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2/transfer_function_basics.html">Transfer Function Basics</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Pole Zero Analysis</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_series/index.html">Fourier Series</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_series/index.html">Fourier Series</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/trig_fseries.html">Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/2/exp_fs1.html">Exponential Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/3/exp_fs2.html">Computing Line Spectra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/4/exp_fs3.html">Applications of Line Spectra</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_transform/index.html">Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_transform/index.html">Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/1/ft1.html">Defining the Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/2/ft2.html">Fourier transforms of commonly occuring signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/3/ft3.html">Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/4/ft4.html">Introduction to Filters</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../dt_systems/index.html">Sampled Data Systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dt_systems/index.html">Sampled Data Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/1/sampling.html">Sampling Theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/2/z_transform.html">The Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/3/i_z_transform.html">The Inverse Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/4/dt_models.html">Models of Discrete Time Systems</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../dft/index.html">Discrete Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dft/index.html">Discrete Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../dft/1/dft.html">The Discrete Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dft/2/fft.html">The Fast-Fourier Transform</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../filter_design/index.html">Analogue and Digital Filter Design</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../filter_design/index.html">Analogue and Digital Filter Design</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../filter_design/analogue_filters.html">Unit 7.1: Designing Analogue Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../filter_design/digital_filters.html">Unit 7.2: Designing Digital Filters in MATLAB and Simulink</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../zbib.html">Bibliography</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">In Class Worksheets</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../worksheets/index.html">Worksheets</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../worksheets/index.html">Worksheets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../introduction/worksheet1.html">Worksheet 1 Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/worksheet2.html">Worksheet 2 Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/2/worksheet3.html">Worksheet 3 Exponential Fourier Series</a></li>
@@ -225,11 +225,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../dft/1/worksheet12.html">Worksheet 12 The Discrete-time Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dft/2/worksheet13.html">Worksheet 13 The Fast Fourier Transform</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework problems</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../homework/index.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../homework/index.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw4.html">Homework 4 Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw5.html">Homework 5 Fourier Transforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw6.html">Homework 6: Fourier Transforms</a></li>
@@ -237,7 +237,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw8.html">Homework 8 Sampling Theory and the Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw9.html">Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Answers to Selected Problems</span></p>
 <ul class="nav bd-sidenav">
@@ -255,7 +255,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../dt_systems/2/zt_table.html">Table of Z-Transforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../setup/polling_setup.html">Set Up In-Class Polling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../todo.html">List of Planned Enhancements</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup/index.html">Setting up your own version of this book</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup/index.html">Setting up your own version of this book</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../1/LICENSE.html">MathWorks License</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter.html">About Jupyter notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../setup/python.html">Installing Python</a></li>
@@ -264,7 +264,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../setup/advanced-setup.html">Quick Start - For Experienced Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter-book.html">Setting up jupyter-book</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 
     </div>
@@ -273,14 +273,19 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -289,14 +294,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -336,7 +341,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/cpjobling/eg-247-textbook/edit/master/transfer_functions/3/pole_zero_analysis.md" target="_blank"
+      <li><a href="https://github.com/cpjobling/eg-247-textbook/edit/master/transfer_functions/3/pole_zero_analysis.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -383,7 +388,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/transfer_functions/3/pole_zero_analysis.md" target="_blank"
+      <li><a href="../../_sources/transfer_functions/3/pole_zero_analysis.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -393,7 +398,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -436,27 +441,19 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -567,12 +564,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="unit-2-3-pole-zero-analysis">
-<span id="pz-analysis"></span><h1>Unit 2.3: Pole-Zero Analysis<a class="headerlink" href="#unit-2-3-pole-zero-analysis" title="Permalink to this heading">#</a></h1>
+<span id="pz-analysis"></span><h1>Unit 2.3: Pole-Zero Analysis<a class="headerlink" href="#unit-2-3-pole-zero-analysis" title="Link to this heading">#</a></h1>
 <section id="learning-outcomes">
-<h2>Learning Outcomes<a class="headerlink" href="#learning-outcomes" title="Permalink to this heading">#</a></h2>
+<h2>Learning Outcomes<a class="headerlink" href="#learning-outcomes" title="Link to this heading">#</a></h2>
 <p>In this unit, students will…</p>
 <ul class="simple">
 <li><p>Describe how the transfer function of a DC motor is derived.</p></li>
@@ -597,7 +594,7 @@ document.write(`
 <span class="c">% Setup MATLAB to use the PoleZeroAnalysis.mlx LiveScript and the polesApp.mlapp app in class.</span>
 <span class="c">% I am assuming that this is on the MATLAB Drive</span>
 
-<span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"> </span><span class="nb">setappdata</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MKernel_plot_format&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;svg&#39;</span><span class="p">)</span>
+<span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="w"> </span>
 <span class="c">% Change this to local set up where this Jupyter book is run</span>
 <span class="nb">cd</span><span class="w"> </span><span class="s">&#39;/Users/eechris/MATLAB-Drive/Repositories/Transfer-Function-Analysis-of-Dynamic-Systems&#39;</span>
 <span class="nb">open</span><span class="p">(</span><span class="s">&#39;TransferFunctions.prj&#39;</span><span class="p">)</span>
@@ -607,7 +604,7 @@ document.write(`
 </div>
 </section>
 <section id="transfer-function-representation-of-a-dc-motor">
-<h2>Transfer function representation of a DC motor<a class="headerlink" href="#transfer-function-representation-of-a-dc-motor" title="Permalink to this heading">#</a></h2>
+<h2>Transfer function representation of a DC motor<a class="headerlink" href="#transfer-function-representation-of-a-dc-motor" title="Link to this heading">#</a></h2>
 <p>Another essential electric vehicle (EV) component is the DC motor.</p>
 <p><img alt="Simplified EV schematic" src="../../_images/engineFocus.png" /></p>
 <p>Simplified EV schematic</p>
@@ -618,7 +615,7 @@ document.write(`
 <p><img alt="A schematic diagram of a DC motor" src="../../_images/motorDiagram.png" /></p>
 <p>DC motor schematic. A net torque <span class="math notranslate nohighlight">\(T\)</span> is generated on the armature by Lorentz forces. In the electrical domain, the motor is represented by a series of three circuit elements.</p>
 <section id="derivation-of-the-dc-motor-differential-equations">
-<h3>Derivation of the DC motor differential equations<a class="headerlink" href="#derivation-of-the-dc-motor-differential-equations" title="Permalink to this heading">#</a></h3>
+<h3>Derivation of the DC motor differential equations<a class="headerlink" href="#derivation-of-the-dc-motor-differential-equations" title="Link to this heading">#</a></h3>
 <p>Under typical operating conditions, the torque generated by a DC motor is directly proportional to the current passing <span class="math notranslate nohighlight">\(i\)</span> through it:</p>
 <div class="math notranslate nohighlight">
 \[T = k_mi\]</div>
@@ -629,20 +626,23 @@ document.write(`
 <p>where <span class="math notranslate nohighlight">\(k_e\)</span> is a constant of proportionality. To derive the relationship between the current <span class="math notranslate nohighlight">\(i\)</span> and the motor shaft angular position <span class="math notranslate nohighlight">\(\theta\)</span>, you can apply Kirchhoff’s voltage law and Newton’s second law in terms of torques acting on the motor shaft.</p>
 <p>Kirchhoff’s voltage law implies that the sum of the voltage drops across the circuit must equal the applied voltage:</p>
 <div class="math notranslate nohighlight" id="equation-eq1">
-<span class="eqno">(1)<a class="headerlink" href="#equation-eq1" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(1)<a class="headerlink" href="#equation-eq1" title="Link to this equation">#</a></span>\[
 iR + L \frac{di}{dt} + k_e \dot{\theta} = v
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(v\)</span> is the electric potential applied to the motor.</p>
 <p>In the absence of other applied torques, the equation of motion can be derived by balancing the inertia of the motor shaft (<span class="math notranslate nohighlight">\(J \ddot{\theta}\)</span>) with the applied torque (<span class="math notranslate nohighlight">\(T\)</span>) and frictional resistance (<span class="math notranslate nohighlight">\(B \dot{\theta}\)</span>).</p>
 <div class="math notranslate nohighlight">
-\[J \ddot{\theta} = T - B \dot{\theta}\]</div>
+\[
+J \ddot{\theta}  = T - B \dot{\theta}
+\]</div>
 <p>Using the linear relationship between torque and current, this is equivalent to:</p>
-<div class="math notranslate nohighlight">
-\[J \ddot{\theta} + B \dot{\theta} = k_m i\]</div>
-<p>(eq2)</p>
+<div class="math notranslate nohighlight" id="equation-eq2">
+<span class="eqno">(2)<a class="headerlink" href="#equation-eq2" title="Link to this equation">#</a></span>\[
+J \ddot{\theta} + B \dot{\theta}  = k_m i
+\]</div>
 </section>
 <section id="exercise-1">
-<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h3>
+<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Link to this heading">#</a></h3>
 <p><img alt="exercise" src="../../_images/write2.png" /></p>
 <p>In this exercise, you will compute transfer functions of the DC motor system. Assume that the system starts at rest (<span class="math notranslate nohighlight">\(i = i' = \theta = \dot{\theta} = 0\)</span>). Also, assume that the applied voltage is a function of time <span class="math notranslate nohighlight">\(v = v(t)\)</span>.</p>
 <div class="admonition note">
@@ -650,11 +650,11 @@ iR + L \frac{di}{dt} + k_e \dot{\theta} = v
 <p>We will do some of these calculations in class. To revise this material, we recommend that you use the the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">PoleZeroAnalysis.mlx</span></code> from the curriculum module <a class="reference external" href="https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems">Transfer Function Analysis of Dynamic Systems</a> and fill in your answers there. The LiveScript provides checking functions with which you can validate your answers.</p>
 </div>
 <section id="a">
-<span id="ex1a"></span><h4>1(a)<a class="headerlink" href="#a" title="Permalink to this heading">#</a></h4>
+<span id="ex1a"></span><h4>1(a)<a class="headerlink" href="#a" title="Link to this heading">#</a></h4>
 <p>Compute the Laplace transform of the voltage conservation equation <a class="reference internal" href="#equation-eq1">(1)</a> and apply the initial conditions. Type your result below in terms of the defined symbolic variables.</p>
 </section>
 <section id="pro-tip">
-<h4>Pro-tip<a class="headerlink" href="#pro-tip" title="Permalink to this heading">#</a></h4>
+<h4>Pro-tip<a class="headerlink" href="#pro-tip" title="Link to this heading">#</a></h4>
 <p><img alt="matlab" src="../../_images/matlab.png" /></p>
 <p>When you write a symbolic equation, you assign the whole equation to a MATLAB variable using the assignment operator “<code class="docutils literal notranslate"><span class="pre">=</span></code>” (single equals). The equals sign in the symbolic equation is written using “<code class="docutils literal notranslate"><span class="pre">==</span></code>” (double equals). For example:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">y</span><span class="w"> </span><span class="s">m</span><span class="w"> </span><span class="s">x</span><span class="w"> </span><span class="s">b</span>
@@ -663,7 +663,7 @@ iR + L \frac{di}{dt} + k_e \dot{\theta} = v
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"> </span><span class="nb">setappdata</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MKernel_plot_format&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;svg&#39;</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span>
 <span class="c">% Use these symbolic variables</span>
 <span class="n">syms</span><span class="w"> </span><span class="s">L</span><span class="w"> </span><span class="s">R</span><span class="w"> </span><span class="s">k_e</span><span class="w"> </span><span class="s">J</span><span class="w"> </span><span class="s">B</span><span class="w"> </span><span class="s">k_m</span><span class="w">    </span><span class="s">%</span><span class="w"> </span><span class="s">Constants</span>
 <span class="n">syms</span><span class="w"> </span><span class="s">Theta</span><span class="w"> </span><span class="s">I</span><span class="w"> </span><span class="s">s</span><span class="w"> </span><span class="s">V</span><span class="w">        </span><span class="s">%</span><span class="w"> </span><span class="s">Laplace</span><span class="w"> </span><span class="s">domain</span><span class="w"> </span><span class="s">variables</span>
@@ -681,12 +681,12 @@ I*R + I*L*s + Theta*k_e*s == V
 </div>
 </section>
 <section id="b">
-<span id="ex1b"></span><h4>1(b)<a class="headerlink" href="#b" title="Permalink to this heading">#</a></h4>
-<p>Compute the Laplace transform of the equation of motion <code class="xref eq docutils literal notranslate"><span class="pre">eq2</span></code> and apply the initial conditions. Type your answer below in terms of the defined symbolic variables.</p>
+<span id="ex1b"></span><h4>1(b)<a class="headerlink" href="#b" title="Link to this heading">#</a></h4>
+<p>Compute the Laplace transform of the equation of motion <a class="reference internal" href="#equation-eq2">(2)</a> and apply the initial conditions. Type your answer below in terms of the defined symbolic variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your laplace transform equation here</span>
-<span class="n">eqn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">J</span><span class="o">*</span><span class="n">s</span>^<span class="mi">2</span><span class="o">*</span><span class="n">Theta</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="o">*</span><span class="n">s</span><span class="o">*</span><span class="n">Theta</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">k_m</span><span class="o">*</span><span class="n">I</span>
+<span class="n">eqn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">J</span><span class="o">*</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span><span class="o">*</span><span class="n">Theta</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="o">*</span><span class="n">s</span><span class="o">*</span><span class="n">Theta</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">k_m</span><span class="o">*</span><span class="n">I</span>
 </pre></div>
 </div>
 </div>
@@ -699,7 +699,7 @@ J*Theta*s^2 + B*Theta*s == I*k_m
 </div>
 </section>
 <section id="c">
-<span id="ex1c"></span><h4>1(c)<a class="headerlink" href="#c" title="Permalink to this heading">#</a></h4>
+<span id="ex1c"></span><h4>1(c)<a class="headerlink" href="#c" title="Link to this heading">#</a></h4>
 <p>Solve for the angular displacement transfer function</p>
 <div class="math notranslate nohighlight">
 \[G(s) = \frac{ \Theta(s) }{V(s)}\]</div>
@@ -707,7 +707,7 @@ J*Theta*s^2 + B*Theta*s == I*k_m
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your transfer function here</span>
-<span class="n">ThetaOverV</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">k_m</span><span class="o">/</span><span class="p">(</span><span class="n">s</span><span class="o">*</span><span class="p">(</span><span class="n">L</span><span class="o">*</span><span class="n">J</span><span class="o">*</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">J</span><span class="o">+</span><span class="n">L</span><span class="o">*</span><span class="n">B</span><span class="p">)</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="o">*</span><span class="n">R</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k_m</span><span class="o">*</span><span class="n">k_e</span><span class="p">))</span>
+<span class="n">ThetaOverV</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">k_m</span><span class="o">/</span><span class="p">(</span><span class="n">s</span><span class="o">*</span><span class="p">(</span><span class="n">L</span><span class="o">*</span><span class="n">J</span><span class="o">*</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">J</span><span class="o">+</span><span class="n">L</span><span class="o">*</span><span class="n">B</span><span class="p">)</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="o">*</span><span class="n">R</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k_m</span><span class="o">*</span><span class="n">k_e</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -720,7 +720,7 @@ k_m/(s*(J*L*s^2 + (B*L + J*R)*s + k_e*k_m + B*R))
 </div>
 </section>
 <section id="d">
-<span id="ex1d"></span><h4>1(d)<a class="headerlink" href="#d" title="Permalink to this heading">#</a></h4>
+<span id="ex1d"></span><h4>1(d)<a class="headerlink" href="#d" title="Link to this heading">#</a></h4>
 <p>Solve for the angular velocity transfer function</p>
 <div class="math notranslate nohighlight">
 \[H(s) = \frac{\Omega(s)}{V(s)}\]</div>
@@ -728,7 +728,7 @@ k_m/(s*(J*L*s^2 + (B*L + J*R)*s + k_e*k_m + B*R))
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your transfer function here</span>
-<span class="n">OmegaOverV</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">k_m</span><span class="o">/</span><span class="p">(</span><span class="n">L</span><span class="o">*</span><span class="n">J</span><span class="o">*</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">J</span><span class="o">+</span><span class="n">L</span><span class="o">*</span><span class="n">B</span><span class="p">)</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="o">*</span><span class="n">R</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k_m</span><span class="o">*</span><span class="n">k_e</span><span class="p">)</span>
+<span class="n">OmegaOverV</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">k_m</span><span class="o">/</span><span class="p">(</span><span class="n">L</span><span class="o">*</span><span class="n">J</span><span class="o">*</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">J</span><span class="o">+</span><span class="n">L</span><span class="o">*</span><span class="n">B</span><span class="p">)</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="o">*</span><span class="n">R</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k_m</span><span class="o">*</span><span class="n">k_e</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -743,14 +743,16 @@ k_m/(J*L*s^2 + (B*L + J*R)*s + k_e*k_m + B*R)
 </section>
 </section>
 <section id="pole-analysis">
-<h2>Pole analysis<a class="headerlink" href="#pole-analysis" title="Permalink to this heading">#</a></h2>
+<h2>Pole analysis<a class="headerlink" href="#pole-analysis" title="Link to this heading">#</a></h2>
 <p>You can gain insight into the characteristics of a dynamic system without actually solving it by analyzing the form of its transfer function. The poles of the transfer function offer the most insight.</p>
 <p><strong>Definition</strong>. The <strong>poles</strong> of a rational transfer function occur where the denominator is zero. Consider a rational transfer function in factored form:</p>
 <div class="math notranslate nohighlight">
-\[G(s) = K \frac{ (s-z_1)(s-z_2) \ldots (s-z_m) }{ (s-p_1)(s-p_2) \ldots (s-p_n)}\]</div>
+\[
+G(s) = K \frac{ (s-z_1)(s-z_2) \ldots (s-z_m) }{ (s-p_1)(s-p_2) \ldots (s-p_n)}
+\]</div>
 <p>The poles are <span class="math notranslate nohighlight">\(p_1\)</span>, <span class="math notranslate nohighlight">\(p_2\)</span>, <span class="math notranslate nohighlight">\(\ldots\)</span>, <span class="math notranslate nohighlight">\(p_n\)</span>.</p>
 <section id="stability">
-<h3>Stability<a class="headerlink" href="#stability" title="Permalink to this heading">#</a></h3>
+<h3>Stability<a class="headerlink" href="#stability" title="Link to this heading">#</a></h3>
 <p>The real parts of the poles determine the stability of the system.</p>
 <ol class="arabic simple">
 <li><p>A pole with a positive real part (<span class="math notranslate nohighlight">\(\text{Re}(p_i) &gt; 0\)</span>) characterizes an exponential growth component of the solution.</p></li>
@@ -769,7 +771,7 @@ Impulse responses characterized by the position of poles in the complex s-plane.
 <p>Poles in the left-half plane (where <span class="math notranslate nohighlight">\(\text{Re}(p) &lt; 0\)</span>) are stable. The poles in the bottom-half plane are the conjugate poles required for the imaginary poles.</p>
 </div>
 <section id="activity-1">
-<h4>Activity 1<a class="headerlink" href="#activity-1" title="Permalink to this heading">#</a></h4>
+<h4>Activity 1<a class="headerlink" href="#activity-1" title="Link to this heading">#</a></h4>
 <p><img alt="" src="../../_images/activity1.png" /></p>
 <p>In this activity, you will visually explore the relationship between transfer function poles and time-domain responses.</p>
 <p><strong>Part 1</strong>. Use the app</p>
@@ -785,12 +787,18 @@ Impulse responses characterized by the position of poles in the complex s-plane.
 </div>
 </div>
 </div>
+<figure class="align-default" id="id11">
+<a class="reference internal image-reference" href="../../_images/polesApp.png"><img alt="The polesApp app" src="../../_images/polesApp.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">A screenshot of the <code class="docutils literal notranslate"><span class="pre">polesApp.mlapp</span></code> app</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p><strong>Part 2</strong>. Transfer function poles</p>
 <ol class="arabic">
 <li><p>You can change the transfer function by adjusting the number and location of the poles and zeros. Set the number of poles to two and change the location of the poles to <span class="math notranslate nohighlight">\(p = -1, -2\)</span>. The transfer function should be <span class="math notranslate nohighlight">\(F(s) = 1/[(s+1)(s+2)]\)</span>. Is the system stable or unstable?</p></li>
 <li><p>Adjust the number of poles and their locations to reproduce the transfer functions shown below.</p>
-<p>a. <span class="math notranslate nohighlight">\(F(s) = \frac{1}{s^2 + 1}\)</span>
-b. <span class="math notranslate nohighlight">\(F(s) = \frac{1}{(s-1)(s^2+2s+2)}\)</span>
+<p>a. <span class="math notranslate nohighlight">\(F(s) = \frac{1}{s^2 + 1}\)</span><br />
+b. <span class="math notranslate nohighlight">\(F(s) = \frac{1}{(s-1)(s^2+2s+2)}\)</span><br />
 c.  <span class="math notranslate nohighlight">\(F(s) = \frac{1}{(s-1)(s+2)(s^2+4s+8)}\)</span></p>
 </li>
 <li><p>Which of the transfer functions are stable? Which are unstable?</p></li>
@@ -809,7 +817,7 @@ c.  <span class="math notranslate nohighlight">\(F(s) = \frac{1}{(s-1)(s+2)(s^2+
 <p><img alt="Double pole plots" src="../../_images/doublepoleplots.png" /></p>
 </section>
 <section id="reflect">
-<h4>Reflect.<a class="headerlink" href="#reflect" title="Permalink to this heading">#</a></h4>
+<h4>Reflect.<a class="headerlink" href="#reflect" title="Link to this heading">#</a></h4>
 <p><img alt="reflect" src="../../_images/reflect2.png" /></p>
 <ul class="simple">
 <li><p>What effect does increasing the magnitude of the imaginary component of a pole have?</p></li>
@@ -822,13 +830,13 @@ c.  <span class="math notranslate nohighlight">\(F(s) = \frac{1}{(s-1)(s+2)(s^2+
 </div>
 </section>
 <section id="homework-exercise-1">
-<span id="hw3-exercise-1"></span><h4>Homework Exercise 1<a class="headerlink" href="#homework-exercise-1" title="Permalink to this heading">#</a></h4>
+<span id="hw3-exercise-1"></span><h4>Homework Exercise 1<a class="headerlink" href="#homework-exercise-1" title="Link to this heading">#</a></h4>
 <p><img alt="exercise" src="../../_images/write2.png" /></p>
 <p>You can write the DC motor angular velocity transfer function as</p>
 <div class="math notranslate nohighlight">
 \[\frac{\Omega}{V} = \frac{g}{ s^2 + bs + c}\]</div>
 <section id="homework-exercise-1-a">
-<h5>Homework Exercise 1(a)<a class="headerlink" href="#homework-exercise-1-a" title="Permalink to this heading">#</a></h5>
+<h5>Homework Exercise 1(a)<a class="headerlink" href="#homework-exercise-1-a" title="Link to this heading">#</a></h5>
 <p>Suppose that a DC motor has constants <span class="math notranslate nohighlight">\(g =60\)</span>, <span class="math notranslate nohighlight">\(b = 2.3\)</span>, and <span class="math notranslate nohighlight">\(c = 11\)</span>. Define the transfer function in MATLAB using the <a class="reference external" href="https://uk.mathworks.com/help/control/ref/tf.html"><code class="docutils literal notranslate"><span class="pre">tf</span></code></a> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -852,7 +860,7 @@ Continuous-time transfer function.
 </div>
 </section>
 <section id="homework-exercise-1-b">
-<h5>Homework Exercise 1(b)<a class="headerlink" href="#homework-exercise-1-b" title="Permalink to this heading">#</a></h5>
+<h5>Homework Exercise 1(b)<a class="headerlink" href="#homework-exercise-1-b" title="Link to this heading">#</a></h5>
 <p>Is the system stable? You can plot the poles in the s-plane using the <a class="reference external" href="https://www.mathworks.com/help/control/ref/lti.pzmap.html"><code class="docutils literal notranslate"><span class="pre">pzmap</span></code></a> function. For example, to plot the poles of a transfer function G, use:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">pzmap</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 </pre></div>
@@ -865,11 +873,12 @@ Continuous-time transfer function.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4b88886dda465a1bad640db6f61c700a0f1f73fd6c0c40f566abc3f33680bb10.svg" src="../../_images/4b88886dda465a1bad640db6f61c700a0f1f73fd6c0c40f566abc3f33680bb10.svg" /></div>
+<img alt="../../_images/3d9c42bc76a38d8d9b229e5dfc0cdefdd1e94ec24c07a428fcfe28bd9e407b73.png" src="../../_images/3d9c42bc76a38d8d9b229e5dfc0cdefdd1e94ec24c07a428fcfe28bd9e407b73.png" />
+</div>
 </div>
 </section>
 <section id="homework-exercise-1-c">
-<h5>Homework Exercise 1(c)<a class="headerlink" href="#homework-exercise-1-c" title="Permalink to this heading">#</a></h5>
+<h5>Homework Exercise 1(c)<a class="headerlink" href="#homework-exercise-1-c" title="Link to this heading">#</a></h5>
 <p>What are the poles of the transfer function? You can use the <a class="reference external" href="https://www.mathworks.com/help/control/ref/lti.pole.html"><code class="docutils literal notranslate"><span class="pre">pole</span></code></a> function to compute the poles of a dynamic system in MATLAB. For example, to identify the poles of a transfer function R, use:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">pole</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
 </pre></div>
@@ -891,7 +900,7 @@ Continuous-time transfer function.
 </div>
 </section>
 <section id="id1">
-<h5>Reflect.<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h5>
+<h5>Reflect.<a class="headerlink" href="#id1" title="Link to this heading">#</a></h5>
 <p><img alt="reflect" src="../../_images/reflect2.png" /></p>
 <ul class="simple">
 <li><p>What response would you expect for a brief (impulse) applied voltage in a physical DC motor?</p></li>
@@ -902,7 +911,7 @@ Continuous-time transfer function.
 </section>
 </section>
 <section id="natural-frequency">
-<h3>Natural frequency<a class="headerlink" href="#natural-frequency" title="Permalink to this heading">#</a></h3>
+<h3>Natural frequency<a class="headerlink" href="#natural-frequency" title="Link to this heading">#</a></h3>
 <p>The locations of the poles in the s-plane determine the natural oscillation frequencies present in the system.</p>
 <ul class="simple">
 <li><p>The natural (undamped) frequency (in rad/s) contributed by a pole <span class="math notranslate nohighlight">\(p\)</span> is the pole magnitude, <span class="math notranslate nohighlight">\(r = |p|\)</span>.</p></li>
@@ -911,7 +920,7 @@ Continuous-time transfer function.
 <p><img alt="" src="../../_images/complexPhaseMag.png" />
 Phase <span class="math notranslate nohighlight">\(\phi\)</span> and magnitude <span class="math notranslate nohighlight">\(r\)</span> of pole <span class="math notranslate nohighlight">\(p\)</span> shown in the complex plane</p>
 <section id="activity-2">
-<h4>Activity 2<a class="headerlink" href="#activity-2" title="Permalink to this heading">#</a></h4>
+<h4>Activity 2<a class="headerlink" href="#activity-2" title="Link to this heading">#</a></h4>
 <p><img alt="activity" src="../../_images/activity1.png" /></p>
 <p>In this activity you will explore how poles relate to the natural frequency response.</p>
 <p>Consider the transfer function:</p>
@@ -933,7 +942,7 @@ Phase <span class="math notranslate nohighlight">\(\phi\)</span> and magnitude <
 </div>
 </section>
 <section id="id2">
-<h4>Reflect<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
+<h4>Reflect<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
 <p><img alt="reflect" src="../../_images/reflect2.png" /></p>
 <ul class="simple">
 <li><p>Does the conjugate pole <span class="math notranslate nohighlight">\(p = r(\cos \phi - i\sin \phi)\)</span> contribute a different natural frequency than the first pole <span class="math notranslate nohighlight">\(p = r(\cos \phi + i\sin \phi)\)</span>? Why or why not?</p></li>
@@ -942,13 +951,13 @@ Phase <span class="math notranslate nohighlight">\(\phi\)</span> and magnitude <
 </ul>
 </section>
 <section id="exercise-2">
-<h4>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h4>
+<h4>Exercise 2<a class="headerlink" href="#exercise-2" title="Link to this heading">#</a></h4>
 <p>A specific example of the DC motor angular velocity transfer function is</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">60</span><span class="p">],[</span><span class="mi">1</span><span class="w"> </span><span class="mf">2.3</span><span class="w"> </span><span class="mi">11</span><span class="p">])</span>
 </pre></div>
 </div>
 <section id="exercise-2-a">
-<h5>Exercise 2(a)<a class="headerlink" href="#exercise-2-a" title="Permalink to this heading">#</a></h5>
+<h5>Exercise 2(a)<a class="headerlink" href="#exercise-2-a" title="Link to this heading">#</a></h5>
 <p>Compute the poles of the system and then use the poles to compute the system’s natural frequencies in rad/s.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -979,7 +988,7 @@ wn =
 </div>
 </section>
 <section id="exercise-2-b">
-<h5>Exercise 2(b)<a class="headerlink" href="#exercise-2-b" title="Permalink to this heading">#</a></h5>
+<h5>Exercise 2(b)<a class="headerlink" href="#exercise-2-b" title="Link to this heading">#</a></h5>
 <p>You can also use the <code class="docutils literal notranslate"><span class="pre">damp</span></code> function to analyze the natural frequencies of the system. Validate your solution in (a) by calling the <code class="docutils literal notranslate"><span class="pre">damp</span></code> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1001,7 +1010,7 @@ wn =
 </div>
 </section>
 <section id="id3">
-<h5>Reflect<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h5>
+<h5>Reflect<a class="headerlink" href="#id3" title="Link to this heading">#</a></h5>
 <p><img alt="reflect" src="../../_images/reflect2.png" /></p>
 <ul class="simple">
 <li><p>What physical interactions cause the oscillatory behavior in the DC motor system?</p></li>
@@ -1011,7 +1020,7 @@ wn =
 </section>
 </section>
 <section id="analysis-of-a-second-order-system">
-<h3>Analysis of a second-order system<a class="headerlink" href="#analysis-of-a-second-order-system" title="Permalink to this heading">#</a></h3>
+<h3>Analysis of a second-order system<a class="headerlink" href="#analysis-of-a-second-order-system" title="Link to this heading">#</a></h3>
 <p>Second-order systems with a pair of conjugate poles and no zeros are useful for illustrating the natural frequency response analytically. It is helpful to write this type of system in the form:</p>
 <div class="math notranslate nohighlight">
 \[G(s) = \frac{ K }{s^2 + 2 \zeta \omega_n s  + \omega_n^2}\]</div>
@@ -1023,7 +1032,7 @@ wn =
 </ul>
 <p>These parameters are helpful for drawing a connection between the natural response of the system and the properties of the poles. In this section, the poles of the second-order system will be analytically computed and related to the natural response of the system.</p>
 <section id="id4">
-<h4>Pole analysis<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h4>
+<h4>Pole analysis<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
 <p>The poles of the system occur when the denominator is zero:</p>
 <div class="math notranslate nohighlight">
 \[p = - \zeta \omega_n \pm \omega_n \sqrt{\zeta^2 - 1 }\]</div>
@@ -1031,25 +1040,25 @@ wn =
 <div class="math notranslate nohighlight">
 \[p = - \zeta \omega_n \pm j \omega_n \sqrt{1 - \zeta^2}\]</div>
 <p>As stated above, the natural frequency is defined as the magnitude of the pole. The magnitude is computed as <span class="math notranslate nohighlight">\(\sqrt{ Re^2 + Im^2}\)</span>:</p>
-<p>\begin{array}{rl} |p|  &amp;= \sqrt{ (-\zeta \omega_n)^2 + ( \pm \omega_n \sqrt{1-\zeta^2})^2 } \   &amp;= \sqrt{ \zeta^2 \omega_n^2 + \omega_n^2 (1-\zeta^2) } \   &amp;= |\omega_n|<br />
+<p>\begin{array}{rl} |p|  &amp;= \sqrt{ (-\zeta \omega_n)^2 + ( \pm \omega_n \sqrt{1-\zeta^2})^2 } \   &amp;= \sqrt{ \zeta^2 \omega_n^2 + \omega_n^2 (1-\zeta^2) } \   &amp;= |\omega_n|\ 
 \end{array}</p>
 <section id="natural-frequency-omega-n">
-<h5>Natural frequency <span class="math notranslate nohighlight">\(\omega_n\)</span><a class="headerlink" href="#natural-frequency-omega-n" title="Permalink to this heading">#</a></h5>
+<h5>Natural frequency <span class="math notranslate nohighlight">\(\omega_n\)</span><a class="headerlink" href="#natural-frequency-omega-n" title="Link to this heading">#</a></h5>
 <p>This illustrates why this form of the equation is used: the natural frequency is the parameter <span class="math notranslate nohighlight">\(\omega_n\)</span>.</p>
 </section>
 <section id="damping-ratio-zeta">
-<h5>Damping ratio <span class="math notranslate nohighlight">\(\zeta\)</span><a class="headerlink" href="#damping-ratio-zeta" title="Permalink to this heading">#</a></h5>
+<h5>Damping ratio <span class="math notranslate nohighlight">\(\zeta\)</span><a class="headerlink" href="#damping-ratio-zeta" title="Link to this heading">#</a></h5>
 <p>The damping ratio <span class="math notranslate nohighlight">\(\zeta\)</span> determines the relative strength of the exponential part of the response.</p>
 <p>As <span class="math notranslate nohighlight">\(\zeta \rightarrow 1\)</span>, the complex part of the pole tends to zero, implying less oscillatory and stronger exponential behavior.</p>
 <p>For stable systems, that implies greater damping.</p>
 </section>
 <section id="gain-coefficient-k">
-<h5>Gain coefficient <span class="math notranslate nohighlight">\(K\)</span><a class="headerlink" href="#gain-coefficient-k" title="Permalink to this heading">#</a></h5>
+<h5>Gain coefficient <span class="math notranslate nohighlight">\(K\)</span><a class="headerlink" href="#gain-coefficient-k" title="Link to this heading">#</a></h5>
 <p>The gain coefficient <span class="math notranslate nohighlight">\(K\)</span> affects the magnitude of the response, not the time-dependent behavior.</p>
 </section>
 </section>
 <section id="natural-response">
-<h4>Natural response<a class="headerlink" href="#natural-response" title="Permalink to this heading">#</a></h4>
+<h4>Natural response<a class="headerlink" href="#natural-response" title="Link to this heading">#</a></h4>
 <p>The impulse response is also called the <em>natural response</em>. The natural response <span class="math notranslate nohighlight">\(x(t)\)</span> is computed by taking the inverse Laplace transform of</p>
 <div class="math notranslate nohighlight">
 \[\frac{X(s)}{U(s)} = \frac{X(s)}{1} = \frac{ K }{s^2 + 2 \zeta \omega_n s  + \omega_n^2}\]</div>
@@ -1057,7 +1066,7 @@ wn =
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">s</span><span class="w"> </span><span class="s">zeta</span><span class="w"> </span><span class="s">omega_n</span><span class="w"> </span><span class="s">K</span><span class="w"> </span><span class="s">X(s)</span><span class="w"> </span><span class="s">x(t)</span>
-<span class="n">X</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">K</span><span class="o">/</span><span class="p">(</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">zeta</span><span class="o">*</span><span class="n">omega_n</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">omega_n</span>^<span class="mi">2</span><span class="p">)</span>
+<span class="n">X</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">K</span><span class="o">/</span><span class="p">(</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">zeta</span><span class="o">*</span><span class="n">omega_n</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">omega_n</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span>
 <span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ilaplace</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="w"> </span><span class="c">% The impulse response in the time domain</span>
 </pre></div>
 </div>
@@ -1078,14 +1087,14 @@ x(t) =
 <li><p>The gain parameter <span class="math notranslate nohighlight">\(K\)</span> only contributes as a constant multiplier to the magnitude of the response.</p></li>
 </ul>
 <section id="activity-3">
-<h5>Activity 3<a class="headerlink" href="#activity-3" title="Permalink to this heading">#</a></h5>
+<h5>Activity 3<a class="headerlink" href="#activity-3" title="Link to this heading">#</a></h5>
 <p><img alt="activity" src="../../_images/activity1.png" /></p>
 <p>Open the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">PoleZeroAnalysis.mlx</span></code> and find this activity there. Adjust the sliders to view different time-domain responses for the classical second-order system:</p>
 <div class="math notranslate nohighlight">
 \[G(s) = \frac{ K }{s^2 + 2 \zeta \omega_n s  + \omega_n^2}\]</div>
 </section>
 <section id="id5">
-<h5>Reflect.<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h5>
+<h5>Reflect.<a class="headerlink" href="#id5" title="Link to this heading">#</a></h5>
 <ul class="simple">
 <li><p>Does the carrier frequency of the solution change with the damping coefficient <span class="math notranslate nohighlight">\(\zeta\)</span>?</p></li>
 <li><p>Does the exponential envelope change with <span class="math notranslate nohighlight">\(\omega_n\)</span>?</p></li>
@@ -1094,7 +1103,7 @@ x(t) =
 </section>
 </section>
 <section id="homework-exercise-2-mass-spring-damper-analysis">
-<span id="hw3-exercise-2"></span><h4>Homework Exercise 2: Mass-spring-damper analysis<a class="headerlink" href="#homework-exercise-2-mass-spring-damper-analysis" title="Permalink to this heading">#</a></h4>
+<span id="hw3-exercise-2"></span><h4>Homework Exercise 2: Mass-spring-damper analysis<a class="headerlink" href="#homework-exercise-2-mass-spring-damper-analysis" title="Link to this heading">#</a></h4>
 <p><img alt="exercise" src="../../_images/write2.png" /></p>
 <p>You can analyze a mass-spring-damper by looking at the poles of its transfer function.</p>
 <p><img alt="Mass-spring damper system" src="../../_images/mass_spring_damper2-flipped.png" />
@@ -1108,7 +1117,7 @@ Mass-spring-damper diagram</p>
 $<span class="math notranslate nohighlight">\(G(s) = \frac{X(s)}{U(s)} = \frac{1}{ m s^2 + cs + k}\)</span>$</p>
 </section>
 <section id="homework-exercise-2-a">
-<h4>Homework Exercise 2(a)<a class="headerlink" href="#homework-exercise-2-a" title="Permalink to this heading">#</a></h4>
+<h4>Homework Exercise 2(a)<a class="headerlink" href="#homework-exercise-2-a" title="Link to this heading">#</a></h4>
 <p>Write the mass-spring-damper transfer function in the form</p>
 <div class="math notranslate nohighlight">
 \[G(s) = \frac{ K }{s^2 + 2 \zeta \omega_n s  + \omega_n^2}\]</div>
@@ -1127,7 +1136,7 @@ $<span class="math notranslate nohighlight">\(G(s) = \frac{X(s)}{U(s)} = \frac{1
 </div>
 </section>
 <section id="homework-exercise-2-b">
-<h4>Homework Exercise 2(b)<a class="headerlink" href="#homework-exercise-2-b" title="Permalink to this heading">#</a></h4>
+<h4>Homework Exercise 2(b)<a class="headerlink" href="#homework-exercise-2-b" title="Link to this heading">#</a></h4>
 <p>Solve for the symbolic expressions of the poles of <code class="docutils literal notranslate"><span class="pre">G</span></code> in terms of the mass-spring-damper parameters <code class="docutils literal notranslate"><span class="pre">m</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code>, and <code class="docutils literal notranslate"><span class="pre">k</span></code>. Store the expressions below in <code class="docutils literal notranslate"><span class="pre">pplus</span></code> and <code class="docutils literal notranslate"><span class="pre">pminus</span></code> where <code class="docutils literal notranslate"><span class="pre">pplus</span></code> stores the positive root.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1141,7 +1150,7 @@ $<span class="math notranslate nohighlight">\(G(s) = \frac{X(s)}{U(s)} = \frac{1
 </div>
 </section>
 <section id="homework-exercise-2-c">
-<h4>Homework Exercise 2(c)<a class="headerlink" href="#homework-exercise-2-c" title="Permalink to this heading">#</a></h4>
+<h4>Homework Exercise 2(c)<a class="headerlink" href="#homework-exercise-2-c" title="Link to this heading">#</a></h4>
 <p>You can gain insight into the dynamics of the system by examining how the poles change in the <span class="math notranslate nohighlight">\(s\)</span>-plane when parameters are varied.</p>
 <ul class="simple">
 <li><p>The graph given in the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">PoleZeroAnalysis.mlx</span></code> shows the pole locations under variations of a parameter starting with <span class="math notranslate nohighlight">\(k = m = 1\)</span> and <span class="math notranslate nohighlight">\(c = 0\)</span>.</p></li>
@@ -1150,7 +1159,7 @@ $<span class="math notranslate nohighlight">\(G(s) = \frac{X(s)}{U(s)} = \frac{1
 <li><p>Use the plot to answer the reflection questions.</p></li>
 </ul>
 <section id="id6">
-<h5>Reflect.<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h5>
+<h5>Reflect.<a class="headerlink" href="#id6" title="Link to this heading">#</a></h5>
 <p><img alt="reflection" src="../../_images/reflect2.png" /></p>
 <ul class="simple">
 <li><p>What happens to the poles when <span class="math notranslate nohighlight">\(c = 2\)</span>? Physically, what does this represent?</p></li>
@@ -1162,7 +1171,7 @@ $<span class="math notranslate nohighlight">\(G(s) = \frac{X(s)}{U(s)} = \frac{1
 </section>
 </section>
 <section id="zero-analysis">
-<h2>Zero analysis<a class="headerlink" href="#zero-analysis" title="Permalink to this heading">#</a></h2>
+<h2>Zero analysis<a class="headerlink" href="#zero-analysis" title="Link to this heading">#</a></h2>
 <p>The analysis of zeros is less straight-forward than the analysis of the poles of the system, because their effects are less pronounced. Zeros contribute to</p>
 <ul class="simple">
 <li><p>the transient behavior of the response,</p></li>
@@ -1174,7 +1183,7 @@ $<span class="math notranslate nohighlight">\(G(s) = \frac{X(s)}{U(s)} = \frac{1
 <p>Use the MATLAB LiveScript PoleZeroAnalysis.mlx and the <code class="docutils literal notranslate"><span class="pre">polesApp</span></code> app to complete these Activities.</p>
 </div>
 <section id="activity-4">
-<h3>Activity 4<a class="headerlink" href="#activity-4" title="Permalink to this heading">#</a></h3>
+<h3>Activity 4<a class="headerlink" href="#activity-4" title="Link to this heading">#</a></h3>
 <p><img alt="activity" src="../../_images/activity1.png" /></p>
 <p>Consider the simple system:</p>
 <div class="math notranslate nohighlight">
@@ -1182,7 +1191,7 @@ $<span class="math notranslate nohighlight">\(G(s) = \frac{X(s)}{U(s)} = \frac{1
 <p>Adjust the location of the zero using the slider and observe the changes to the response.</p>
 </section>
 <section id="id7">
-<h3>Reflect.<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<h3>Reflect.<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p><img alt="reflection" src="../../_images/reflect2.png" /></p>
 <ul class="simple">
 <li><p>Is the stability or long-term behavior of the system affected by the zero location?</p></li>
@@ -1192,7 +1201,7 @@ $<span class="math notranslate nohighlight">\(G(s) = \frac{X(s)}{U(s)} = \frac{1
 </ul>
 </section>
 <section id="activity-5">
-<h3>Activity 5<a class="headerlink" href="#activity-5" title="Permalink to this heading">#</a></h3>
+<h3>Activity 5<a class="headerlink" href="#activity-5" title="Link to this heading">#</a></h3>
 <p><img alt="activity" src="../../_images/activity1.png" /></p>
 <p>In this activity, you will visually explore the relationship between transfer function zeros and time-domain responses. You will inspect the step responses of</p>
 <div class="math notranslate nohighlight">
@@ -1215,7 +1224,7 @@ $<span class="math notranslate nohighlight">\(G(s) = \frac{X(s)}{U(s)} = \frac{1
 </ul>
 <p><img alt="Zero pole plots" src="../../_images/zeroPlotPart1.png" /></p>
 <section id="id8">
-<h4>Reflect<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h4>
+<h4>Reflect<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>The transient of the step response that exceeds the steady value (y = 1, in this case) is known as the overshoot. As the zero moves further in the negative direction along the real axis, what happens to the overshoot?</p></li>
 <li><p>The time it takes to reach the steady value (y = 1, in this case) is known as the rise time. How is the rise time affected by changes to the zero, z_0?</p></li>
@@ -1224,19 +1233,19 @@ $<span class="math notranslate nohighlight">\(G(s) = \frac{X(s)}{U(s)} = \frac{1
 </section>
 </section>
 <section id="homework-exercise-3-transfer-function-with-a-single-zero">
-<span id="hw3-exercise-3"></span><h3>Homework Exercise 3 : Transfer Function with a Single Zero<a class="headerlink" href="#homework-exercise-3-transfer-function-with-a-single-zero" title="Permalink to this heading">#</a></h3>
+<span id="hw3-exercise-3"></span><h3>Homework Exercise 3 : Transfer Function with a Single Zero<a class="headerlink" href="#homework-exercise-3-transfer-function-with-a-single-zero" title="Link to this heading">#</a></h3>
 <p><img alt="homework" src="../../_images/write2.png" /></p>
 <p>In this exercise, you will examine the changes to the analytic step response of a transfer function with a single zero.</p>
 <p>Consider the transfer function used in the previous activity:</p>
 <div class="math notranslate nohighlight">
 \[G = \frac{s-z_0}{s^2 + 2s + 2}\]</div>
 <section id="homework-exercise-3-a">
-<h4>Homework Exercise 3(a)<a class="headerlink" href="#homework-exercise-3-a" title="Permalink to this heading">#</a></h4>
+<h4>Homework Exercise 3(a)<a class="headerlink" href="#homework-exercise-3-a" title="Link to this heading">#</a></h4>
 <p>Compute the symbolic form of the step response of the transfer function, <span class="math notranslate nohighlight">\(x(t\)</span>). You can perform the analytic computations by hand or using the Symbolic Math Toolbox.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Use these symbolic variables</span>
-<span class="n">syms</span><span class="w"> </span><span class="s">s</span><span class="w"> </span><span class="s">z_0</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">positive</span>
+<span class="n">syms</span><span class="w"> </span><span class="s">s</span><span class="w"> </span><span class="s">z_0</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">positive</span><span class="w"> </span>
 <span class="c">% Write your solution here</span>
 <span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span>
 </pre></div>
@@ -1251,7 +1260,7 @@ $<span class="math notranslate nohighlight">\(G(s) = \frac{X(s)}{U(s)} = \frac{1
 </div>
 </section>
 <section id="homework-exercise-3-b">
-<h4>Homework Exercise 3(b)<a class="headerlink" href="#homework-exercise-3-b" title="Permalink to this heading">#</a></h4>
+<h4>Homework Exercise 3(b)<a class="headerlink" href="#homework-exercise-3-b" title="Link to this heading">#</a></h4>
 <p>Plot the analytic step response with <span class="math notranslate nohighlight">\(z_0 = -1\)</span> on the interval <span class="math notranslate nohighlight">\(t \in [0, 10]\)</span>. If you computed the step response function with the Symbolic Math Toolbox, you can use the <a class="reference external" href="https://www.mathworks.com/help/symbolic/matlabfunction.html"><code class="docutils literal notranslate"><span class="pre">matlabFunction</span></code></a> command to convert it to a function handle that you can evaluate.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1262,7 +1271,7 @@ $<span class="math notranslate nohighlight">\(G(s) = \frac{X(s)}{U(s)} = \frac{1
 </div>
 </section>
 <section id="homework-exercise-3-c">
-<h4>Homework Exercise 3(c)<a class="headerlink" href="#homework-exercise-3-c" title="Permalink to this heading">#</a></h4>
+<h4>Homework Exercise 3(c)<a class="headerlink" href="#homework-exercise-3-c" title="Link to this heading">#</a></h4>
 <p>Using the analytic form of the transfer function, compute the limit of the function as <span class="math notranslate nohighlight">\(t \to \infty\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1279,7 +1288,7 @@ $<span class="math notranslate nohighlight">\(G(s) = \frac{X(s)}{U(s)} = \frac{1
 </div>
 </div>
 <section id="id9">
-<h5>Reflect.<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h5>
+<h5>Reflect.<a class="headerlink" href="#id9" title="Link to this heading">#</a></h5>
 <p><img alt="reflect" src="../../_images/reflect2.png" /></p>
 <ul class="simple">
 <li><p>Vary the location of the zero (<span class="math notranslate nohighlight">\(z_0\)</span>) and observe how the step response changes.</p></li>
@@ -1291,7 +1300,7 @@ $<span class="math notranslate nohighlight">\(G(s) = \frac{X(s)}{U(s)} = \frac{1
 </section>
 </section>
 <section id="homework-3-pole-zero-analysis">
-<span id="homework3"></span><h2>Homework 3: Pole-Zero Analysis<a class="headerlink" href="#homework-3-pole-zero-analysis" title="Permalink to this heading">#</a></h2>
+<span id="homework3"></span><h2>Homework 3: Pole-Zero Analysis<a class="headerlink" href="#homework-3-pole-zero-analysis" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Register with the MathWorks (if you haven’t already) using your Swansea University email and install your own copy of the curriculum module <a class="reference external" href="https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems">Transfer Function Analysis of Dynamic Systems</a> into the online MATLAB version[^installation].</p></li>
 <li><p>Open the <code class="docutils literal notranslate"><span class="pre">PoleZeroAnalysis.mlx</span></code> activity.</p></li>
@@ -1304,20 +1313,20 @@ $<span class="math notranslate nohighlight">\(G(s) = \frac{X(s)}{U(s)} = \frac{1
 </ul>
 </section>
 <section id="further-exploration">
-<h2>Further exploration<a class="headerlink" href="#further-exploration" title="Permalink to this heading">#</a></h2>
+<h2>Further exploration<a class="headerlink" href="#further-exploration" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>You can interactively explore transfer functions, their poles, time-domain response, and more using the <a class="reference external" href="https://www.mathworks.com/help/control/ref/controlsystemdesigner-app.html">Control System Designer</a> app<a class="footnote-reference brackets" href="#eg-243" id="id10">1</a>.</p></li>
+<li><p>You can interactively explore transfer functions, their poles, time-domain response, and more using the <a class="reference external" href="https://www.mathworks.com/help/control/ref/controlsystemdesigner-app.html">Control System Designer</a> app<a class="footnote-reference brackets" href="#eg-243" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p></li>
 </ul>
 </section>
 <section id="footnotes">
-<h2>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this heading">#</a></h2>
+<h2>Footnotes<a class="headerlink" href="#footnotes" title="Link to this heading">#</a></h2>
 <hr class="footnotes docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="eg-243"><span class="brackets"><a class="fn-backref" href="#id10">1</a></span></dt>
-<dd><p>This will provide additional insights useful for EG-243 Control Systems.
-$$</p>
-</dd>
-</dl>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="eg-243" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">1</a><span class="fn-bracket">]</span></span>
+<p>This will provide additional insights useful for EG-243 Control Systems.</p>
+</aside>
+</aside>
 </section>
 </section>
 
@@ -1330,16 +1339,16 @@ $$</p>
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "mkernel"
+            mode: "matlab"
         },
         kernelOptions: {
-            name: "mkernel",
+            name: "matlab",
             path: "./transfer_functions/3"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'mkernel'</script>
+    <script>kernelName = 'matlab'</script>
 
                 </article>
               
@@ -1348,7 +1357,7 @@ $$</p>
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1376,7 +1385,9 @@ $$</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1524,8 +1535,8 @@ for
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

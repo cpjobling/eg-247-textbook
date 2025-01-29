@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Unit 5.3: The Inverse Z-Transform &#8212; EG-247 Digital Signal Processing</title>
   
@@ -15,55 +14,54 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystyles.css?v=7235edc5" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'dt_systems/3/i_z_transform';</script>
@@ -74,6 +72,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Unit 5.2: Discrete-Time Systems and the Z-Transform" href="../2/z_transform.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -81,32 +80,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -114,7 +97,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -122,16 +104,25 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -146,6 +137,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../../introduction/index.html">
   
@@ -157,7 +150,14 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">EG-247 Digital Signal Processing</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -169,48 +169,48 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Online notes</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../transfer_functions/index.html">Transfer Function Analysis of Dynamic Systems</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../transfer_functions/index.html">Transfer Function Analysis of Dynamic Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../transfer_functions/1/concepts.html">Concept Review</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../transfer_functions/2/transfer_function_basics.html">Transfer Function Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../transfer_functions/3/pole_zero_analysis.html">Pole Zero Analysis</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_series/index.html">Fourier Series</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_series/index.html">Fourier Series</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/trig_fseries.html">Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/2/exp_fs1.html">Exponential Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/3/exp_fs2.html">Computing Line Spectra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/4/exp_fs3.html">Applications of Line Spectra</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_transform/index.html">Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_transform/index.html">Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/1/ft1.html">Defining the Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/2/ft2.html">Fourier transforms of commonly occuring signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/3/ft3.html">Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/4/ft4.html">Introduction to Filters</a></li>
 </ul>
-</li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Sampled Data Systems</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Sampled Data Systems</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../1/sampling.html">Sampling Theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2/z_transform.html">The Z-Transform</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">The Inverse Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../4/dt_models.html">Models of Discrete Time Systems</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../dft/index.html">Discrete Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dft/index.html">Discrete Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../dft/1/dft.html">The Discrete Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dft/2/fft.html">The Fast-Fourier Transform</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../filter_design/index.html">Analogue and Digital Filter Design</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../filter_design/index.html">Analogue and Digital Filter Design</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../filter_design/analogue_filters.html">Unit 7.1: Designing Analogue Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../filter_design/digital_filters.html">Unit 7.2: Designing Digital Filters in MATLAB and Simulink</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../zbib.html">Bibliography</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">In Class Worksheets</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../worksheets/index.html">Worksheets</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../worksheets/index.html">Worksheets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../introduction/worksheet1.html">Worksheet 1 Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/worksheet2.html">Worksheet 2 Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/2/worksheet3.html">Worksheet 3 Exponential Fourier Series</a></li>
@@ -225,11 +225,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../dft/1/worksheet12.html">Worksheet 12 The Discrete-time Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dft/2/worksheet13.html">Worksheet 13 The Fast Fourier Transform</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework problems</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../homework/index.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../homework/index.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw4.html">Homework 4 Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw5.html">Homework 5 Fourier Transforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw6.html">Homework 6: Fourier Transforms</a></li>
@@ -237,7 +237,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw8.html">Homework 8 Sampling Theory and the Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw9.html">Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Answers to Selected Problems</span></p>
 <ul class="nav bd-sidenav">
@@ -255,7 +255,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../2/zt_table.html">Table of Z-Transforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../setup/polling_setup.html">Set Up In-Class Polling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../todo.html">List of Planned Enhancements</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup/index.html">Setting up your own version of this book</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup/index.html">Setting up your own version of this book</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../transfer_functions/1/LICENSE.html">MathWorks License</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter.html">About Jupyter notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../setup/python.html">Installing Python</a></li>
@@ -264,7 +264,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../setup/advanced-setup.html">Quick Start - For Experienced Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter-book.html">Setting up jupyter-book</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 
     </div>
@@ -273,14 +273,19 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -289,14 +294,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -336,7 +341,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/cpjobling/eg-247-textbook/edit/master/dt_systems/3/i_z_transform.md" target="_blank"
+      <li><a href="https://github.com/cpjobling/eg-247-textbook/edit/master/dt_systems/3/i_z_transform.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -383,7 +388,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/dt_systems/3/i_z_transform.md" target="_blank"
+      <li><a href="../../_sources/dt_systems/3/i_z_transform.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -393,7 +398,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -436,27 +441,19 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -541,12 +538,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="unit-5-3-the-inverse-z-transform">
-<span id="unit5-3"></span><h1>Unit 5.3: The Inverse Z-Transform<a class="headerlink" href="#unit-5-3-the-inverse-z-transform" title="Permalink to this heading">#</a></h1>
+<span id="unit5-3"></span><h1>Unit 5.3: The Inverse Z-Transform<a class="headerlink" href="#unit-5-3-the-inverse-z-transform" title="Link to this heading">#</a></h1>
 <section id="colophon">
-<h2>Colophon<a class="headerlink" href="#colophon" title="Permalink to this heading">#</a></h2>
+<h2>Colophon<a class="headerlink" href="#colophon" title="Link to this heading">#</a></h2>
 <p>An annotatable worksheet for this presentation is available as <a class="reference internal" href="worksheet10.html"><span class="doc std std-doc"><strong>Worksheet 10</strong></span></a>.</p>
 <ul class="simple">
 <li><p>The source code for this page is <a class="reference external" href="https://github.com/cpjobling/eg-247-textbook/blob/master/dt_systems/3/i_z_transform.ipynb">dt_systems/3/i_z_transform.ipynb</a>.</p></li>
@@ -555,12 +552,12 @@ document.write(`
 </ul>
 </section>
 <section id="scope-and-background-reading">
-<h2>Scope and Background Reading<a class="headerlink" href="#scope-and-background-reading" title="Permalink to this heading">#</a></h2>
+<h2>Scope and Background Reading<a class="headerlink" href="#scope-and-background-reading" title="Link to this heading">#</a></h2>
 <p>This session we will talk about the Inverse Z-Transform and illustrate its use through an examples class.</p>
-<p>The material in this presentation and notes is based on Chapter 9 (Starting at <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853&amp;ppg=351">Section 9.6</a>) of <span id="id1">[<a class="reference internal" href="../../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., fifth edition, 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3384197&amp;pq-origsite=primo.">Karris, 2012</a>]</span>.</p>
+<p>The material in this presentation and notes is based on Chapter 9 (Starting at <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=44853&amp;amp;ppg=351">Section 9.6</a>) of <span id="id1">[<a class="reference internal" href="../../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., fifth edition, 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3384197&amp;pq-origsite=primo.">Karris, 2012</a>]</span>.</p>
 </section>
 <section id="agenda">
-<h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this heading">#</a></h2>
+<h2>Agenda<a class="headerlink" href="#agenda" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Inverse Z-Transform</p></li>
 </ul>
@@ -575,7 +572,7 @@ document.write(`
 </ul>
 </section>
 <section id="performing-the-inverse-z-transform">
-<h2>Performing the Inverse Z-Transform<a class="headerlink" href="#performing-the-inverse-z-transform" title="Permalink to this heading">#</a></h2>
+<h2>Performing the Inverse Z-Transform<a class="headerlink" href="#performing-the-inverse-z-transform" title="Link to this heading">#</a></h2>
 <p>The inverse Z-Transform enables us to extract a sequence <span class="math notranslate nohighlight">\(f[n]\)</span> from <span class="math notranslate nohighlight">\(F(z)\)</span>. It can be found by any of the following methods:</p>
 <ul class="simple">
 <li><p>Partial fraction expansion</p></li>
@@ -583,7 +580,7 @@ document.write(`
 <li><p>Long division of polynomials</p></li>
 </ul>
 <section id="partial-fraction-expansion">
-<h3>Partial fraction expansion<a class="headerlink" href="#partial-fraction-expansion" title="Permalink to this heading">#</a></h3>
+<h3>Partial fraction expansion<a class="headerlink" href="#partial-fraction-expansion" title="Link to this heading">#</a></h3>
 <p>We expand <span class="math notranslate nohighlight">\(F(z)\)</span> into a summation of terms whose inverse is known. These terms have the form:</p>
 <div class="math notranslate nohighlight">
 \[k,\;\frac{r_1 z}{z - p_1},\;\frac{r_1 z}{(z - p_1)^2},\;\frac{r_3 z}{z - p_2},\ldots\]</div>
@@ -596,7 +593,7 @@ document.write(`
 \[\frac{r_{i} z}{z - p_i} + \frac{r_{i}^* z}{z - p_i^*}\]</div>
 </section>
 <section id="step-1-make-fractions-proper">
-<h3>Step 1: Make Fractions Proper<a class="headerlink" href="#step-1-make-fractions-proper" title="Permalink to this heading">#</a></h3>
+<h3>Step 1: Make Fractions Proper<a class="headerlink" href="#step-1-make-fractions-proper" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Before we expand <span class="math notranslate nohighlight">\(F(z)\)</span> into partial fraction expansions, we must first express it as a <em>proper</em> rational function.</p></li>
 <li><p>This is done by expanding <span class="math notranslate nohighlight">\(F(z)/z\)</span> instead of <span class="math notranslate nohighlight">\(F(z)\)</span></p></li>
@@ -606,7 +603,7 @@ document.write(`
 \[\frac{F(z)}{z} = \frac{k}{z} + \frac{r_1}{z-p_1} + \frac{r_2}{z-p_2} + \cdots\]</div>
 </section>
 <section id="step-2-find-residues">
-<h3>Step 2: Find residues<a class="headerlink" href="#step-2-find-residues" title="Permalink to this heading">#</a></h3>
+<h3>Step 2: Find residues<a class="headerlink" href="#step-2-find-residues" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Find residues from</p></li>
 </ul>
@@ -614,7 +611,7 @@ document.write(`
 \[r_k = \lim_{z\to p_k}(z - p_k)\frac{F(z)}{z} = (z - p_k)\left.\frac{F(z)}{z}\right|_{z=p_k}\]</div>
 </section>
 <section id="step-3-map-back-to-transform-tables-form">
-<h3>Step 3: Map back to transform tables form<a class="headerlink" href="#step-3-map-back-to-transform-tables-form" title="Permalink to this heading">#</a></h3>
+<h3>Step 3: Map back to transform tables form<a class="headerlink" href="#step-3-map-back-to-transform-tables-form" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Rewrite <span class="math notranslate nohighlight">\(F(z)/z\)</span>:</p></li>
 </ul>
@@ -624,7 +621,7 @@ document.write(`
 <p>[Skip next slide in Pre-Lecture]</p>
 </section>
 <section id="example-1">
-<h3>Example 1<a class="headerlink" href="#example-1" title="Permalink to this heading">#</a></h3>
+<h3>Example 1<a class="headerlink" href="#example-1" title="Link to this heading">#</a></h3>
 <p>Karris Example 9.4: use the partial fraction expansion to compute the inverse z-transform of</p>
 <div class="math notranslate nohighlight">
 \[F(z) = \frac{1}{(1 - 0.5z^{-1})(1 - 0.75z^{-1})(1 - z^{-1})}\]</div>
@@ -650,8 +647,8 @@ document.write(`
 
 </pre></section>
 <section id="matlab-solution-for-example-1">
-<h3>MATLAB solution for example 1<a class="headerlink" href="#matlab-solution-for-example-1" title="Permalink to this heading">#</a></h3>
-<p>See <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example1.mlx">example1.mlx</a>. (Also available as <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example1.m">example1.m</a>.)</p>
+<h3>MATLAB solution for example 1<a class="headerlink" href="#matlab-solution-for-example-1" title="Link to this heading">#</a></h3>
+<p>See <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example1.mlx">example1.mlx</a>. (Also available as  <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example1.m">example1.m</a>.)</p>
 <p>Uses MATLAB functions:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">collect</span></code> – expands a polynomial</p></li>
@@ -665,7 +662,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">clear</span><span class="w"> </span><span class="nb">all</span>
 <span class="nb">cd</span><span class="w"> </span><span class="n">matlab</span>
-<span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"> </span><span class="nb">setappdata</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MKernel_plot_format&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;svg&#39;</span><span class="p">)</span>
+<span class="nb">format</span><span class="w"> </span><span class="n">compact</span>
 </pre></div>
 </div>
 </div>
@@ -700,16 +697,10 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dz_poly =
-z^3 - (9*z^2)/4 + (13*z)/8 - 3/8
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="make-into-a-rational-polynomial">
-<h3>Make into a rational polynomial<a class="headerlink" href="#make-into-a-rational-polynomial" title="Permalink to this heading">#</a></h3>
+<h3>Make into a rational polynomial<a class="headerlink" href="#make-into-a-rational-polynomial" title="Link to this heading">#</a></h3>
 <p><span class="math notranslate nohighlight">\(z^2\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -725,16 +716,10 @@ z^3 - (9*z^2)/4 + (13*z)/8 - 3/8
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>den =
-    1.0000   -2.2500    1.6250   -0.3750
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="compute-residues-and-poles">
-<h3>Compute residues and poles<a class="headerlink" href="#compute-residues-and-poles" title="Permalink to this heading">#</a></h3>
+<h3>Compute residues and poles<a class="headerlink" href="#compute-residues-and-poles" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">residue</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">den</span><span class="p">);</span>
@@ -744,7 +729,7 @@ z^3 - (9*z^2)/4 + (13*z)/8 - 3/8
 </div>
 </section>
 <section id="print-results">
-<h3>Print results<a class="headerlink" href="#print-results" title="Permalink to this heading">#</a></h3>
+<h3>Print results<a class="headerlink" href="#print-results" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">fprintf</span></code> works like the c-language function where <code class="docutils literal notranslate"><span class="pre">&quot;%4.2f&quot;</span></code> means print a floating point number with four significant digits and 2 places of decimals.</p></li>
 </ul>
@@ -757,30 +742,17 @@ z^3 - (9*z^2)/4 + (13*z)/8 - 3/8
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>r1 = 8.00	p1 = 1.00
-r2 = -9.00	p2 = 0.75
-r3 = 2.00	p3 = 0.50
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="symbolic-proof">
-<h3>Symbolic proof<a class="headerlink" href="#symbolic-proof" title="Permalink to this heading">#</a></h3>
+<h3>Symbolic proof<a class="headerlink" href="#symbolic-proof" title="Link to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[f[n] = 2\left(\frac{1}{2}\right)^n - 9\left(\frac{3}{4}\right)^n + 8\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% z-transform</span>
-<span class="n">fn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>^<span class="n">n</span><span class="o">-</span><span class="mi">9</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>^<span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
+<span class="n">fn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">^</span><span class="n">n</span><span class="o">-</span><span class="mi">9</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="o">^</span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
 <span class="n">Fz</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ztrans</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fz =
-(8*z)/(z - 1) + (2*z)/(z - 1/2) - (9*z)/(z - 3/4)
 </pre></div>
 </div>
 </div>
@@ -792,16 +764,10 @@ r3 = 2.00	p3 = 0.50
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
-2*(1/2)^n - 9*(3/4)^n + 8
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="sequence">
-<h3>Sequence<a class="headerlink" href="#sequence" title="Permalink to this heading">#</a></h3>
+<h3>Sequence<a class="headerlink" href="#sequence" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mi">15</span><span class="p">;</span>
@@ -813,12 +779,10 @@ r3 = 2.00	p3 = 0.50
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/72aa5fd713c68c2f6fad60e7b7cf36aab023a4850a5ace68b2426213486c189e.svg" src="../../_images/72aa5fd713c68c2f6fad60e7b7cf36aab023a4850a5ace68b2426213486c189e.svg" /></div>
 </div>
 </section>
 <section id="example-2">
-<h3>Example 2<a class="headerlink" href="#example-2" title="Permalink to this heading">#</a></h3>
+<h3>Example 2<a class="headerlink" href="#example-2" title="Link to this heading">#</a></h3>
 <p>Karris example 9.5: use the partial fraction expansion method to to compute the inverse z-transform of</p>
 <div class="math notranslate nohighlight">
 \[F(z) = \frac{12z}{(z+1)(z - 1)^2}\]</div>
@@ -844,8 +808,8 @@ r3 = 2.00	p3 = 0.50
 
 </pre></section>
 <section id="matlab-solution-for-example-2">
-<h3>MATLAB solution for example 2<a class="headerlink" href="#matlab-solution-for-example-2" title="Permalink to this heading">#</a></h3>
-<p>See <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example2.mlx">example2.mlx</a>. (Also available as <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example2.m">example2.m</a>.)</p>
+<h3>MATLAB solution for example 2<a class="headerlink" href="#matlab-solution-for-example-2" title="Link to this heading">#</a></h3>
+<p>See <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example2.mlx">example2.mlx</a>. (Also available as  <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example2.m">example2.m</a>.)</p>
 <p>Uses additional MATLAB functions:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">dimpulse</span></code> – computes and plots a sequence <span class="math notranslate nohighlight">\(f[n]\)</span> for any range of values of <span class="math notranslate nohighlight">\(n\)</span></p></li>
@@ -859,19 +823,19 @@ r3 = 2.00	p3 = 0.50
 </div>
 </section>
 <section id="results-for-example-2">
-<h3>Results for example 2<a class="headerlink" href="#results-for-example-2" title="Permalink to this heading">#</a></h3>
+<h3>Results for example 2<a class="headerlink" href="#results-for-example-2" title="Link to this heading">#</a></h3>
 <section id="lollipop-plot">
-<h4>‘Lollipop’ Plot<a class="headerlink" href="#lollipop-plot" title="Permalink to this heading">#</a></h4>
+<h4>‘Lollipop’ Plot<a class="headerlink" href="#lollipop-plot" title="Link to this heading">#</a></h4>
 <p><img alt="Results for example 2 - lollipop plot" src="../../_images/example2a.png" /></p>
 </section>
 <section id="staircase-plot">
-<h4>‘Staircase’ Plot<a class="headerlink" href="#staircase-plot" title="Permalink to this heading">#</a></h4>
+<h4>‘Staircase’ Plot<a class="headerlink" href="#staircase-plot" title="Link to this heading">#</a></h4>
 <p>Simulates output of Zero-Order-Hold (ZOH) or Digital Analogue Converter (DAC)</p>
 <p><img alt="Results for example 2 - staircase plot" src="../../_images/example2b.png" /></p>
 </section>
 </section>
 <section id="example-3">
-<h3>Example 3<a class="headerlink" href="#example-3" title="Permalink to this heading">#</a></h3>
+<h3>Example 3<a class="headerlink" href="#example-3" title="Link to this heading">#</a></h3>
 <p>Karris example 9.6: use the partial fraction expansion method to to compute the inverse z-transform of</p>
 <div class="math notranslate nohighlight">
 \[F(z) = \frac{z + 1}{(z-1)(z^2 + 2z + 2)}\]</div>
@@ -897,7 +861,7 @@ r3 = 2.00	p3 = 0.50
 
 </pre></section>
 <section id="matlab-solution-for-example-3">
-<h3>MATLAB solution for example 3<a class="headerlink" href="#matlab-solution-for-example-3" title="Permalink to this heading">#</a></h3>
+<h3>MATLAB solution for example 3<a class="headerlink" href="#matlab-solution-for-example-3" title="Link to this heading">#</a></h3>
 <p>See <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example3.mlx">example3.mlx</a>. (Also available as <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example3.m">example3.m</a>.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -908,18 +872,18 @@ r3 = 2.00	p3 = 0.50
 </div>
 </section>
 <section id="results-for-example-3">
-<h3>Results for example 3<a class="headerlink" href="#results-for-example-3" title="Permalink to this heading">#</a></h3>
+<h3>Results for example 3<a class="headerlink" href="#results-for-example-3" title="Link to this heading">#</a></h3>
 <section id="id2">
-<h4>Lollipop Plot<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
+<h4>Lollipop Plot<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
 <p><img alt="Results for example 3 - lollipop plot" src="../../_images/example3a.png" /></p>
 </section>
 <section id="id3">
-<h4>Staircase Plot<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
+<h4>Staircase Plot<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
 <p><img alt="Results for example 3 - staircase plot" src="../../_images/example3b.png" /></p>
 </section>
 </section>
 <section id="inverse-z-transform-by-the-inversion-integral">
-<h3>Inverse Z-Transform by the Inversion Integral<a class="headerlink" href="#inverse-z-transform-by-the-inversion-integral" title="Permalink to this heading">#</a></h3>
+<h3>Inverse Z-Transform by the Inversion Integral<a class="headerlink" href="#inverse-z-transform-by-the-inversion-integral" title="Link to this heading">#</a></h3>
 <p>The inversion integral states that:</p>
 <div class="math notranslate nohighlight">
 \[f[n] = \frac{1}{j2\pi}\oint_C {F(z){z^{n - 1}}\,dz} \]</div>
@@ -929,13 +893,13 @@ r3 = 2.00	p3 = 0.50
 <p>See Karris Section 9.6.2 (pp 9-29—9-33) if you want to find out more.</p>
 </section>
 <section id="inverse-z-transform-by-the-long-division">
-<h3>Inverse Z-Transform by the Long Division<a class="headerlink" href="#inverse-z-transform-by-the-long-division" title="Permalink to this heading">#</a></h3>
+<h3>Inverse Z-Transform by the Long Division<a class="headerlink" href="#inverse-z-transform-by-the-long-division" title="Link to this heading">#</a></h3>
 <p>To apply this method, <span class="math notranslate nohighlight">\(F(z)\)</span> must be a rational polynomial function, and the numerator and denominator must be polynomials arranged in descending powers of <span class="math notranslate nohighlight">\(z\)</span>.</p>
 <p>We will work through an example in class.</p>
 <p>[Skip next slide in Pre-Lecture]</p>
 </section>
 <section id="example-4">
-<h3>Example 4<a class="headerlink" href="#example-4" title="Permalink to this heading">#</a></h3>
+<h3>Example 4<a class="headerlink" href="#example-4" title="Link to this heading">#</a></h3>
 <p>Karris example 9.9: use the long division method to determine <span class="math notranslate nohighlight">\(f[n]\)</span> for <span class="math notranslate nohighlight">\(n = 0,\,1,\,\mathrm{and}\,2\)</span>, given that</p>
 <div class="math notranslate nohighlight">
 \[F(z) = \frac{1 + z^{-1} + 2z^{-2} + 3z^{-3}}{(1 - 0.25z^{-1})(1 - 0.5z^{-1})(1 - 0.75z^{-1})}\]</div>
@@ -961,7 +925,7 @@ r3 = 2.00	p3 = 0.50
 
 </pre></section>
 <section id="matlab-solution-for-example-4">
-<h3>MATLAB solution for example 4<a class="headerlink" href="#matlab-solution-for-example-4" title="Permalink to this heading">#</a></h3>
+<h3>MATLAB solution for example 4<a class="headerlink" href="#matlab-solution-for-example-4" title="Link to this heading">#</a></h3>
 <p>See <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example4.mlx">example4.mlx</a>. (also available as <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/3/matlab/example4.m">example4.m</a>.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -972,11 +936,11 @@ r3 = 2.00	p3 = 0.50
 </div>
 </section>
 <section id="results-for-example-4">
-<h3>Results for example 4<a class="headerlink" href="#results-for-example-4" title="Permalink to this heading">#</a></h3>
+<h3>Results for example 4<a class="headerlink" href="#results-for-example-4" title="Link to this heading">#</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sym_den</span> <span class="o">=</span>
-
+ 
 <span class="n">z</span><span class="o">^</span><span class="mi">3</span> <span class="o">-</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">z</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">11</span><span class="o">*</span><span class="n">z</span><span class="p">)</span><span class="o">/</span><span class="mi">16</span> <span class="o">-</span> <span class="mi">3</span><span class="o">/</span><span class="mi">32</span>
-
+ 
 
 <span class="n">fn</span> <span class="o">=</span>
 
@@ -987,15 +951,15 @@ r3 = 2.00	p3 = 0.50
 </pre></div>
 </div>
 <section id="combined-staircase-lollipop-plot">
-<h4>Combined Staircase/Lollipop Plot<a class="headerlink" href="#combined-staircase-lollipop-plot" title="Permalink to this heading">#</a></h4>
+<h4>Combined Staircase/Lollipop Plot<a class="headerlink" href="#combined-staircase-lollipop-plot" title="Link to this heading">#</a></h4>
 <p><img alt="Combined Staircase/Lollipop Plot" src="../../_images/example4.png" /></p>
 </section>
 </section>
 </section>
 <section id="methods-of-evaluation-of-the-inverse-z-transform">
-<h2>Methods of Evaluation of the Inverse Z-Transform<a class="headerlink" href="#methods-of-evaluation-of-the-inverse-z-transform" title="Permalink to this heading">#</a></h2>
+<h2>Methods of Evaluation of the Inverse Z-Transform<a class="headerlink" href="#methods-of-evaluation-of-the-inverse-z-transform" title="Link to this heading">#</a></h2>
 <section id="id4">
-<h3>Partial Fraction Expansion<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3>Partial Fraction Expansion<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p><em>Advantages</em></p>
 <ul class="simple">
 <li><p>Most familiar.</p></li>
@@ -1007,7 +971,7 @@ r3 = 2.00	p3 = 0.50
 </ul>
 </section>
 <section id="inversion-integral">
-<h3>Inversion Integral<a class="headerlink" href="#inversion-integral" title="Permalink to this heading">#</a></h3>
+<h3>Inversion Integral<a class="headerlink" href="#inversion-integral" title="Link to this heading">#</a></h3>
 <p><em>Advantage</em></p>
 <ul class="simple">
 <li><p>Can be used whether <span class="math notranslate nohighlight">\(F(z)\)</span> is rational or not</p></li>
@@ -1018,7 +982,7 @@ r3 = 2.00	p3 = 0.50
 </ul>
 </section>
 <section id="long-division">
-<h3>Long Division<a class="headerlink" href="#long-division" title="Permalink to this heading">#</a></h3>
+<h3>Long Division<a class="headerlink" href="#long-division" title="Link to this heading">#</a></h3>
 <p><em>Advantages</em></p>
 <ul class="simple">
 <li><p>Practical when only a small sequence of numbers is desired.</p></li>
@@ -1033,7 +997,7 @@ r3 = 2.00	p3 = 0.50
 </section>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Inverse Z-Transform</p></li>
 <li><p>Examples using PFE</p></li>
@@ -1046,33 +1010,33 @@ r3 = 2.00	p3 = 0.50
 </ul>
 </section>
 <section id="reference">
-<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this heading">#</a></h2>
+<h2>Reference<a class="headerlink" href="#reference" title="Link to this heading">#</a></h2>
 <p>See <a class="reference internal" href="../../zbib.html"><span class="doc std std-doc">Bibliography</span></a>.</p>
 </section>
 <section id="answers-to-examples">
-<h2>Answers to Examples<a class="headerlink" href="#answers-to-examples" title="Permalink to this heading">#</a></h2>
+<h2>Answers to Examples<a class="headerlink" href="#answers-to-examples" title="Link to this heading">#</a></h2>
 <section id="answer-to-example-1">
-<h3>Answer to Example 1<a class="headerlink" href="#answer-to-example-1" title="Permalink to this heading">#</a></h3>
+<h3>Answer to Example 1<a class="headerlink" href="#answer-to-example-1" title="Link to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[f[n] = 2\left(\frac{1}{2}\right)^n - 9\left(\frac{3}{4}\right)^n + 8\]</div>
 </section>
 <section id="answer-to-example-2">
-<h3>Answer to Example 2<a class="headerlink" href="#answer-to-example-2" title="Permalink to this heading">#</a></h3>
+<h3>Answer to Example 2<a class="headerlink" href="#answer-to-example-2" title="Link to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[f[n] = 3(-1)^n + 6n - 3\]</div>
 </section>
 <section id="answer-to-example-3">
-<h3>Answer to Example 3<a class="headerlink" href="#answer-to-example-3" title="Permalink to this heading">#</a></h3>
+<h3>Answer to Example 3<a class="headerlink" href="#answer-to-example-3" title="Link to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[f[n] = -0.5\delta[n] + 0.4 + \frac{(\sqrt{2})^n}{10}\cos \left(\frac{3n\pi}{4}\right) - \frac{3(\sqrt{2})^n}{10}\sin\left( \frac{3n\pi}{4}\right)\]</div>
 </section>
 <section id="answer-to-example-4">
-<h3>Answer to Example 4<a class="headerlink" href="#answer-to-example-4" title="Permalink to this heading">#</a></h3>
+<h3>Answer to Example 4<a class="headerlink" href="#answer-to-example-4" title="Link to this heading">#</a></h3>
 <p><span class="math notranslate nohighlight">\(f[0] = 1\)</span>, <span class="math notranslate nohighlight">\(f[1] = 5/2\)</span>, <span class="math notranslate nohighlight">\(f[2] = 81/16\)</span>, ….</p>
 </section>
 </section>
 <section id="worked-solutions">
-<h2>Worked solutions<a class="headerlink" href="#worked-solutions" title="Permalink to this heading">#</a></h2>
+<h2>Worked solutions<a class="headerlink" href="#worked-solutions" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Solution to <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example1.pdf">example1.pdf</a></p></li>
 <li><p>Solution to <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/dt_systems/solutions/example2.pdf">example2.pdf</a></p></li>
@@ -1091,16 +1055,16 @@ r3 = 2.00	p3 = 0.50
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "mkernel"
+            mode: "matlab"
         },
         kernelOptions: {
-            name: "mkernel",
+            name: "matlab",
             path: "./dt_systems/3"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'mkernel'</script>
+    <script>kernelName = 'matlab'</script>
 
                 </article>
               
@@ -1109,7 +1073,7 @@ r3 = 2.00	p3 = 0.50
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1137,7 +1101,9 @@ r3 = 2.00	p3 = 0.50
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1259,8 +1225,8 @@ for
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

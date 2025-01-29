@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Lab 3: Laplace transforms and transfer functions for circuit analysis &#8212; EG-247 Digital Signal Processing</title>
   
@@ -15,55 +14,54 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystyles.css?v=7235edc5" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'labs/lab03/index';</script>
@@ -72,6 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="search" title="Search" href="../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -79,32 +78,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -112,7 +95,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -120,16 +102,27 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -144,6 +137,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../../introduction/index.html">
   
@@ -155,7 +150,14 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">EG-247 Digital Signal Processing</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -167,48 +169,48 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Online notes</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../transfer_functions/index.html">Transfer Function Analysis of Dynamic Systems</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../transfer_functions/index.html">Transfer Function Analysis of Dynamic Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../transfer_functions/1/concepts.html">Concept Review</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../transfer_functions/2/transfer_function_basics.html">Transfer Function Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../transfer_functions/3/pole_zero_analysis.html">Pole Zero Analysis</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_series/index.html">Fourier Series</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_series/index.html">Fourier Series</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/trig_fseries.html">Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/2/exp_fs1.html">Exponential Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/3/exp_fs2.html">Computing Line Spectra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/4/exp_fs3.html">Applications of Line Spectra</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_transform/index.html">Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_transform/index.html">Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/1/ft1.html">Defining the Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/2/ft2.html">Fourier transforms of commonly occuring signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/3/ft3.html">Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/4/ft4.html">Introduction to Filters</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../dt_systems/index.html">Sampled Data Systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dt_systems/index.html">Sampled Data Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/1/sampling.html">Sampling Theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/2/z_transform.html">The Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/3/i_z_transform.html">The Inverse Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/4/dt_models.html">Models of Discrete Time Systems</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../dft/index.html">Discrete Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dft/index.html">Discrete Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../dft/1/dft.html">The Discrete Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dft/2/fft.html">The Fast-Fourier Transform</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../filter_design/index.html">Analogue and Digital Filter Design</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../filter_design/index.html">Analogue and Digital Filter Design</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../filter_design/analogue_filters.html">Unit 7.1: Designing Analogue Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../filter_design/digital_filters.html">Unit 7.2: Designing Digital Filters in MATLAB and Simulink</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../zbib.html">Bibliography</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">In Class Worksheets</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../worksheets/index.html">Worksheets</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../worksheets/index.html">Worksheets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../introduction/worksheet1.html">Worksheet 1 Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/worksheet2.html">Worksheet 2 Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/2/worksheet3.html">Worksheet 3 Exponential Fourier Series</a></li>
@@ -223,11 +225,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../dft/1/worksheet12.html">Worksheet 12 The Discrete-time Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dft/2/worksheet13.html">Worksheet 13 The Fast Fourier Transform</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework problems</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../homework/index.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../homework/index.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw4.html">Homework 4 Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw5.html">Homework 5 Fourier Transforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw6.html">Homework 6: Fourier Transforms</a></li>
@@ -235,7 +237,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw8.html">Homework 8 Sampling Theory and the Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw9.html">Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Answers to Selected Problems</span></p>
 <ul class="nav bd-sidenav">
@@ -253,7 +255,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../dt_systems/2/zt_table.html">Table of Z-Transforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../setup/polling_setup.html">Set Up In-Class Polling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../todo.html">List of Planned Enhancements</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup/index.html">Setting up your own version of this book</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup/index.html">Setting up your own version of this book</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../transfer_functions/1/LICENSE.html">MathWorks License</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter.html">About Jupyter notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../setup/python.html">Installing Python</a></li>
@@ -262,7 +264,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../setup/advanced-setup.html">Quick Start - For Experienced Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter-book.html">Setting up jupyter-book</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 
     </div>
@@ -271,14 +273,19 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -287,14 +294,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -434,27 +441,19 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -518,32 +517,32 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-3-laplace-transforms-and-transfer-functions-for-circuit-analysis">
-<h1>Lab 3: Laplace transforms and transfer functions for circuit analysis<a class="headerlink" href="#lab-3-laplace-transforms-and-transfer-functions-for-circuit-analysis" title="Permalink to this heading">#</a></h1>
+<h1>Lab 3: Laplace transforms and transfer functions for circuit analysis<a class="headerlink" href="#lab-3-laplace-transforms-and-transfer-functions-for-circuit-analysis" title="Link to this heading">#</a></h1>
 <section id="preamble">
-<h2>Preamble<a class="headerlink" href="#preamble" title="Permalink to this heading">#</a></h2>
+<h2>Preamble<a class="headerlink" href="#preamble" title="Link to this heading">#</a></h2>
 <section id="associated-class-notes">
-<h3>Associated Class Notes<a class="headerlink" href="#associated-class-notes" title="Permalink to this heading">#</a></h3>
-<p>This lab supports the materials covered in <span class="xref myst">Chapter 3.3</span> and <span class="xref myst">Chapter 3.4</span> of the course notes. You may wish to refer to the Worksheets <span class="xref myst">worksheet 6</span> and <span class="xref myst">worksheet 7</span> for additional examples to try.</p>
+<h3>Associated Class Notes<a class="headerlink" href="#associated-class-notes" title="Link to this heading">#</a></h3>
+<p>This lab supports the materials covered in <a class="reference internal" href="#../../laplace_transform/3/circuit_analysis"><span class="xref myst">Chapter 3.3</span></a> and <a class="reference internal" href="#../../laplace_transform/4/transfer_functions"><span class="xref myst">Chapter 3.4</span></a> of the course notes. You may wish to refer to the Worksheets <a class="reference internal" href="#../../laplace_transform/3/worksheet6"><span class="xref myst">worksheet 6</span></a> and <a class="reference internal" href="#../../laplace_transform/4/worksheet7"><span class="xref myst">worksheet 7</span></a> for additional examples to try.</p>
 </section>
 <section id="other-formats">
-<h3>Other formats<a class="headerlink" href="#other-formats" title="Permalink to this heading">#</a></h3>
+<h3>Other formats<a class="headerlink" href="#other-formats" title="Link to this heading">#</a></h3>
 <p>This document is available in <a class="reference internal" href="#"><span class="doc std std-doc">HTML</span></a> format for online viewing <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/labs/lab03/lab03.pdf">PDF</a> for printing.</p>
 </section>
 <section id="acknowledgements">
-<h3>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this heading">#</a></h3>
+<h3>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Link to this heading">#</a></h3>
 <p>These examples have been adapted from <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197#ppg=101">Chapter 4</a> of <span id="id1">[<a class="reference internal" href="../../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., fifth edition, 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3384197&amp;pq-origsite=primo.">Karris, 2012</a>]</span>.</p>
 </section>
 </section>
 <section id="aims">
-<h2>Aims<a class="headerlink" href="#aims" title="Permalink to this heading">#</a></h2>
+<h2>Aims<a class="headerlink" href="#aims" title="Link to this heading">#</a></h2>
 <p>The purpose of this laboratory is to explore the use of MATLAB for circuit analysis and Simulink for circuit modelling using transfer functions.</p>
 <p>It also encourages you to make full use of the documentation features afforded by the Live Script format.</p>
 </section>
 <section id="assessment-criteria">
-<h2>Assessment criteria<a class="headerlink" href="#assessment-criteria" title="Permalink to this heading">#</a></h2>
+<h2>Assessment criteria<a class="headerlink" href="#assessment-criteria" title="Link to this heading">#</a></h2>
 <p>Marks can be claimed according to how many of the parts of Lab Exercises 4 to 6 and Mini-project 2 and have been completed.</p>
 <p>You can take nadvantage of a number of MATLAB Graded assessments that will provide guidance and feedback enabling you to complete exercises 4, 5 and 6. See <a class="reference external" href="https://canvas.swansea.ac.uk/courses/36921/pages/using-matlab-grader-for-lab-3?module_item_id=1964755">Using MATLAB Grader for Lab 3</a> for details.</p>
 <p>The mini project should be completed with a Live Script and a Simulink file.</p>
@@ -551,9 +550,9 @@ document.write(`
 <p>Detailed marking criteria for this and the other labs and the project are given in the linked <a class="reference external" href="https://docs.google.com/spreadsheets/d/1m5ttr8WNoXa_yhXRESI4f7fKKmhK9HsTJjRViqP4i2o/edit?usp=sharing">Assessment Criteria</a> [Google sheet].</p>
 </section>
 <section id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
+<h2>Setup<a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
 <section id="before-you-start">
-<h3>Before you start<a class="headerlink" href="#before-you-start" title="Permalink to this heading">#</a></h3>
+<h3>Before you start<a class="headerlink" href="#before-you-start" title="Link to this heading">#</a></h3>
 <p>If you haven’t already, create a suitable folder structure on your file-store for your labs.</p>
 <p>I suggest</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">OneDrive</span>\<span class="n">workspace</span>
@@ -567,27 +566,27 @@ document.write(`
 <p>Use folder <code class="docutils literal notranslate"><span class="pre">OneDrive\workspace\signals-and-systems-lab\lab03</span></code> for this lab.</p>
 </section>
 <section id="tutorial-defining-transfer-functions-in-matlab-not-assessed">
-<h3>Tutorial: Defining Transfer Functions in MATLAB (not assessed)<a class="headerlink" href="#tutorial-defining-transfer-functions-in-matlab-not-assessed" title="Permalink to this heading">#</a></h3>
+<h3>Tutorial: Defining Transfer Functions in MATLAB (not assessed)<a class="headerlink" href="#tutorial-defining-transfer-functions-in-matlab-not-assessed" title="Link to this heading">#</a></h3>
 <p>The linked m-File is a short tutorial introduction to the definition of transfer functions in MATLAB. It introduces the Linear Time Invariant (LTI) block and shows how it can be used in analysis. Download, open as a Live Script file, run all the code and read the file. Save and use the Live Script file as a reference for later labs.</p>
 <p>Linked m-file: <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/labs/lab03/tf_matlab.m">tf_matlab.m</a>.</p>
 </section>
 </section>
 <section id="lab-exercises">
-<h2>Lab Exercises<a class="headerlink" href="#lab-exercises" title="Permalink to this heading">#</a></h2>
+<h2>Lab Exercises<a class="headerlink" href="#lab-exercises" title="Link to this heading">#</a></h2>
 <p>As an experiment in course development for this laboratory you have the option to complete Lab Exercises 4, 5 and 6 using the instructions below or by guided assessment using MATLAB Grader.</p>
 <p>In all these exercises you should add sections, headings and explanatory text to document your Live Script files so and help your peer assessor understand your solutions.</p>
 <section id="lab-exercise-4">
-<h3>Lab Exercise 4<a class="headerlink" href="#lab-exercise-4" title="Permalink to this heading">#</a></h3>
+<h3>Lab Exercise 4<a class="headerlink" href="#lab-exercise-4" title="Link to this heading">#</a></h3>
 <p>Download the linked script file <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/labs/lab03/solution3.m">solution3.m</a> for the Solution for Example 3 from Week 3. Open it as a Live Script file and run all the code. Study the file which presents part of the solution to Textbook Example 4.3.</p>
 <section id="step-1">
-<h4>Step 1<a class="headerlink" href="#step-1" title="Permalink to this heading">#</a></h4>
+<h4>Step 1<a class="headerlink" href="#step-1" title="Link to this heading">#</a></h4>
 <p>Save the Live Script file then save it as <code class="docutils literal notranslate"><span class="pre">ex4.mlx</span></code>.</p>
 <p>At the line that which says</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% ADD NEW CODE HERE (1)</span>
 </pre></div>
 </div>
 <p>We want you to add code that completes the derivation of the transfer function.</p>
-<p>So, starting from the simplified circuit (<a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;ppg=101#ppg=101">Fig. 4.9</a> from Karris<span id="id2">[<a class="reference internal" href="../../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., fifth edition, 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3384197&amp;pq-origsite=primo.">Karris, 2012</a>]</span>: p4-5):</p>
+<p>So, starting from the simplified circuit (<a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;amp;ppg=101#ppg=101">Fig. 4.9</a> from Karris<span id="id2">[<a class="reference internal" href="../../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., fifth edition, 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3384197&amp;pq-origsite=primo.">Karris, 2012</a>]</span>: p4-5):</p>
 <p><img alt="Transformed circuit of Example 4.3" src="labs/lab03/fig4_9.png" /></p>
 <p>Add explanatory text and MATLAB commands to do the following:</p>
 <p>Define equation 4.5 in MATLAB:</p>
@@ -599,37 +598,37 @@ document.write(`
 \[V_{\mathrm out}(s) = \frac{2s(s+3)}{s^3+8s^2+10s+4}.\]</div>
 </section>
 <section id="step-2">
-<h4>Step 2<a class="headerlink" href="#step-2" title="Permalink to this heading">#</a></h4>
+<h4>Step 2<a class="headerlink" href="#step-2" title="Link to this heading">#</a></h4>
 <p>The provided code uses <code class="docutils literal notranslate"><span class="pre">roots</span></code> to find the factors of the denominator</p>
 <div class="math notranslate nohighlight">
 \[s^3+8s^2+10s+4\]</div>
 <p>and expands the terms with complex roots to find the quadratic factor.</p>
 </section>
 <section id="step-3">
-<h4>Step 3<a class="headerlink" href="#step-3" title="Permalink to this heading">#</a></h4>
+<h4>Step 3<a class="headerlink" href="#step-3" title="Link to this heading">#</a></h4>
 <p>Use the inverse Laplace Transform on the rational polynomial with real and quadratic factors to determine the symbolic expression <code class="docutils literal notranslate"><span class="pre">vout</span></code> as a function of time.</p>
 </section>
 <section id="step-4">
-<h4>Step 4<a class="headerlink" href="#step-4" title="Permalink to this heading">#</a></h4>
+<h4>Step 4<a class="headerlink" href="#step-4" title="Link to this heading">#</a></h4>
 <p>Verify that the response is</p>
 <div class="math notranslate nohighlight">
 \[v_{\mathrm out}(t) = \left(1.36e^{-6.57t}+0.64e^{-0.715t}\cos 0.316t -1.84e^{-0.715t}\sin 0.316t\right)u_0(t)\]</div>
 <p>Use <code class="docutils literal notranslate"><span class="pre">fplot</span></code> to plot this result.</p>
 </section>
 <section id="step-5">
-<h4>Step 5<a class="headerlink" href="#step-5" title="Permalink to this heading">#</a></h4>
+<h4>Step 5<a class="headerlink" href="#step-5" title="Link to this heading">#</a></h4>
 <p>Compare your answer with the numerical solution computed in the script at section <strong>Plot the result</strong>.</p>
 <p>Save your solution <code class="docutils literal notranslate"><span class="pre">ex4.mlx</span></code> for upload to Canvas.</p>
 <p>Alternatively, take the code you developed and paste it into Exercise 4 of Lab 3 in the MATLAB Grader for parts 4.1 to 4.4 and instant grading and feedback.</p>
 </section>
 </section>
 <section id="lab-exercise-5-problem-solving-in-matlab">
-<h3>Lab Exercise 5: Problem Solving in MATLAB<a class="headerlink" href="#lab-exercise-5-problem-solving-in-matlab" title="Permalink to this heading">#</a></h3>
+<h3>Lab Exercise 5: Problem Solving in MATLAB<a class="headerlink" href="#lab-exercise-5-problem-solving-in-matlab" title="Link to this heading">#</a></h3>
 <p>Choose one of the Problems Q1-Q3 from <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197#ppg=121">Section 4.7</a> of <span id="id3">[<a class="reference internal" href="../../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., fifth edition, 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3384197&amp;pq-origsite=primo.">Karris, 2012</a>]</span> (page 4-21) and use MATLAB to adapt the methods used to solve the problem in <strong>Lab Exercise 4</strong> to determine the required solution.</p>
 <p>Save your chosen solution as a Live Script file with the name <code class="docutils literal notranslate"><span class="pre">ex5.mlx</span></code> for upload to Canvas.</p>
 </section>
 <section id="lab-exercise-6-complex-impedance-and-admittance">
-<h3>Lab Exercise 6: Complex Impedance and Admittance<a class="headerlink" href="#lab-exercise-6-complex-impedance-and-admittance" title="Permalink to this heading">#</a></h3>
+<h3>Lab Exercise 6: Complex Impedance and Admittance<a class="headerlink" href="#lab-exercise-6-complex-impedance-and-admittance" title="Link to this heading">#</a></h3>
 <p>The linked file solves Example 4.5 from Karris 2012 (Example 5 in the notes). The solution concerns the calculation of the Complex Impedance and Admittance of the Circuit shown in Figure 4.16.</p>
 <p>Linked file: <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/labs/lab03/solution5.m">solution5.m</a>.</p>
 <p><img alt="Circuit for Example 4.5" src="labs/lab03/4_16.png" /></p>
@@ -638,7 +637,7 @@ document.write(`
 <p>Save your solution to a Live Script file with the name <code class="docutils literal notranslate"><span class="pre">ex6.mlx</span></code> for upload to Canvas.</p>
 </section>
 <section id="mini-project-2-transfer-functions">
-<h3>Mini Project 2: Transfer Functions<a class="headerlink" href="#mini-project-2-transfer-functions" title="Permalink to this heading">#</a></h3>
+<h3>Mini Project 2: Transfer Functions<a class="headerlink" href="#mini-project-2-transfer-functions" title="Link to this heading">#</a></h3>
 <p>Download the linked MATLAB script which computes the solution to <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197">Example 4.7</a>
 from <span id="id4">[<a class="reference internal" href="../../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., fifth edition, 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3384197&amp;pq-origsite=primo.">Karris, 2012</a>]</span> (<a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/laplace_transform/4/transfer_functions.html#example-7">Example 7</a> from the notes). This script computes the
 transfer function of the Op-Amp circuit shown below:</p>
@@ -674,14 +673,14 @@ You may find <code class="docutils literal notranslate"><span class="pre">doc</s
 </section>
 </section>
 <section id="what-to-hand-in">
-<h2>What to hand in<a class="headerlink" href="#what-to-hand-in" title="Permalink to this heading">#</a></h2>
+<h2>What to hand in<a class="headerlink" href="#what-to-hand-in" title="Link to this heading">#</a></h2>
 <section id="claim">
-<h3>Claim<a class="headerlink" href="#claim" title="Permalink to this heading">#</a></h3>
+<h3>Claim<a class="headerlink" href="#claim" title="Link to this heading">#</a></h3>
 <p>Up to 3 marks can be claimed for the mini project and up to 2 marks more depending on how much of Exercises 4-6 you have completed.</p>
 <p>Make your claim by downloading and editing the labwork claim form and declaration: <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/labs/lab03/lab03-claim.docx">lab03-claim.docx</a> [Word].</p>
 </section>
 <section id="submission">
-<h3>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h3>
+<h3>Submission<a class="headerlink" href="#submission" title="Link to this heading">#</a></h3>
 <p>You should submit the following to the <strong>Lab 03: Laplace transforms and transfer functions for circuit analysis</strong> Assignment on Canvas.</p>
 <ol class="arabic simple">
 <li><p>The completed labwork claim form and declaration.</p></li>
@@ -691,18 +690,18 @@ You may find <code class="docutils literal notranslate"><span class="pre">doc</s
 </ol>
 </section>
 <section id="deadline">
-<h3>Deadline<a class="headerlink" href="#deadline" title="Permalink to this heading">#</a></h3>
+<h3>Deadline<a class="headerlink" href="#deadline" title="Link to this heading">#</a></h3>
 <p>The deadline for claims and submission is:</p>
 <p><strong>4:00pm, 13th March 2023</strong>.</p>
 </section>
 </section>
 <section id="peer-assessment-procedure-for-this-lab">
-<h2>Peer assessment procedure for this lab<a class="headerlink" href="#peer-assessment-procedure-for-this-lab" title="Permalink to this heading">#</a></h2>
+<h2>Peer assessment procedure for this lab<a class="headerlink" href="#peer-assessment-procedure-for-this-lab" title="Link to this heading">#</a></h2>
 <p>On Monday 6th March, you should receive notification that the submission from one of your colleagues is available for peer assessment. This notification will arrive by email (if you have your Canvas notifications turned on) or via the inbox on Canvas or the Canvas Student App.</p>
 <p>This is the procedure you should follow:</p>
 <ol class="arabic simple">
 <li><p>Carefully read the document on <a class="reference internal" href="../peer-assessment.html"><span class="doc std std-doc">Peer Assessment</span></a> (<a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/labs/peer-assessment.pdf">PDF</a>) before starting your assessment.</p></li>
-<li><p>Check that the files are downloaded and named correctly as per the note on <span class="xref myst">Filenaming Conventions</span> in the peer-assessment document.</p></li>
+<li><p>Check that the files are downloaded and named correctly as per the note on <a class="reference internal" href="#../peer-assessment#important-note-about-file-names"><span class="xref myst">Filenaming Conventions</span></a> in the peer-assessment document.</p></li>
 <li><p>Open the Live Script file <code class="docutils literal notranslate"><span class="pre">proj2.mlx</span></code> and execute <strong>run all</strong>. Check that the results are all present and that there are no errors. Review the formatting of the file and think about how readable and understandable the script is as a record of the experiment.</p></li>
 <li><p>Open the Simulink model <code class="docutils literal notranslate"><span class="pre">proj2.slx</span></code>. Review the transfer function block and confirm that it matches the values computed in <code class="docutils literal notranslate"><span class="pre">proj2.mlx</span></code>. Run the simulation and check the results.</p></li>
 <li><p>Review the live Script files <code class="docutils literal notranslate"><span class="pre">ex4.mlx</span></code>, <code class="docutils literal notranslate"><span class="pre">ex5.mlx</span></code> and <code class="docutils literal notranslate"><span class="pre">ex6.mlx</span></code> in the same way that you did for <code class="docutils literal notranslate"><span class="pre">proj2.mlx</span></code>. Comment on your findings.</p></li>
@@ -737,7 +736,7 @@ You may find <code class="docutils literal notranslate"><span class="pre">doc</s
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
 </div>
@@ -747,7 +746,9 @@ You may find <code class="docutils literal notranslate"><span class="pre">doc</s
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -848,8 +849,8 @@ for
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Unit 2.1 Laplace transforms and LTI systems &#8212; EG-247 Digital Signal Processing</title>
   
@@ -15,55 +14,54 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystyles.css?v=7235edc5" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'transfer_functions/1/concepts';</script>
@@ -71,9 +69,10 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Unit 2.2: Transfer Function Basics" href="../2/transfer_function_basics.html" />
-    <link rel="prev" title="Unit 2: Transfer Function Analysis of Dynamic Systems" href="../index.html" />
+    <link rel="prev" title="Unit 3: Laplace Transforms and their Applications" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -81,32 +80,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -114,7 +97,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -122,16 +104,25 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -146,6 +137,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../../introduction/index.html">
   
@@ -157,7 +150,14 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">EG-247 Digital Signal Processing</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -169,48 +169,48 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Online notes</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Transfer Function Analysis of Dynamic Systems</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Transfer Function Analysis of Dynamic Systems</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Concept Review</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2/transfer_function_basics.html">Transfer Function Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3/pole_zero_analysis.html">Pole Zero Analysis</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_series/index.html">Fourier Series</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_series/index.html">Fourier Series</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/trig_fseries.html">Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/2/exp_fs1.html">Exponential Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/3/exp_fs2.html">Computing Line Spectra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/4/exp_fs3.html">Applications of Line Spectra</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_transform/index.html">Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fourier_transform/index.html">Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/1/ft1.html">Defining the Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/2/ft2.html">Fourier transforms of commonly occuring signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/3/ft3.html">Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_transform/4/ft4.html">Introduction to Filters</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../dt_systems/index.html">Sampled Data Systems</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dt_systems/index.html">Sampled Data Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/1/sampling.html">Sampling Theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/2/z_transform.html">The Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/3/i_z_transform.html">The Inverse Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dt_systems/4/dt_models.html">Models of Discrete Time Systems</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../dft/index.html">Discrete Fourier Transform</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dft/index.html">Discrete Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../dft/1/dft.html">The Discrete Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dft/2/fft.html">The Fast-Fourier Transform</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../filter_design/index.html">Analogue and Digital Filter Design</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../filter_design/index.html">Analogue and Digital Filter Design</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../filter_design/analogue_filters.html">Unit 7.1: Designing Analogue Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../filter_design/digital_filters.html">Unit 7.2: Designing Digital Filters in MATLAB and Simulink</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../zbib.html">Bibliography</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">In Class Worksheets</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../worksheets/index.html">Worksheets</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../worksheets/index.html">Worksheets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../introduction/worksheet1.html">Worksheet 1 Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/1/worksheet2.html">Worksheet 2 Trigonometric Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/2/worksheet3.html">Worksheet 3 Exponential Fourier Series</a></li>
@@ -225,11 +225,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../dft/1/worksheet12.html">Worksheet 12 The Discrete-time Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../dft/2/worksheet13.html">Worksheet 13 The Fast Fourier Transform</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework problems</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../homework/index.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../homework/index.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw4.html">Homework 4 Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw5.html">Homework 5 Fourier Transforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw6.html">Homework 6: Fourier Transforms</a></li>
@@ -237,7 +237,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw8.html">Homework 8 Sampling Theory and the Z-Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework/hw9.html">Homework 9 Inverse Z-Transform and Models of Discrete-Time Systems</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Answers to Selected Problems</span></p>
 <ul class="nav bd-sidenav">
@@ -255,7 +255,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../dt_systems/2/zt_table.html">Table of Z-Transforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../setup/polling_setup.html">Set Up In-Class Polling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../todo.html">List of Planned Enhancements</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup/index.html">Setting up your own version of this book</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup/index.html">Setting up your own version of this book</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="LICENSE.html">MathWorks License</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter.html">About Jupyter notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../setup/python.html">Installing Python</a></li>
@@ -264,7 +264,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../setup/advanced-setup.html">Quick Start - For Experienced Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../setup/jupyter-book.html">Setting up jupyter-book</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 
     </div>
@@ -273,14 +273,19 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -289,14 +294,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -336,7 +341,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/cpjobling/eg-247-textbook/edit/master/transfer_functions/1/concepts.md" target="_blank"
+      <li><a href="https://github.com/cpjobling/eg-247-textbook/edit/master/transfer_functions/1/concepts.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -383,7 +388,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/transfer_functions/1/concepts.md" target="_blank"
+      <li><a href="../../_sources/transfer_functions/1/concepts.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -393,7 +398,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -436,27 +441,19 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -552,12 +549,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="unit-2-1-laplace-transforms-and-lti-systems">
-<span id="tf-concepts"></span><h1>Unit 2.1 Laplace transforms and LTI systems<a class="headerlink" href="#unit-2-1-laplace-transforms-and-lti-systems" title="Permalink to this heading">#</a></h1>
+<span id="tf-concepts"></span><h1>Unit 2.1 Laplace transforms and LTI systems<a class="headerlink" href="#unit-2-1-laplace-transforms-and-lti-systems" title="Link to this heading">#</a></h1>
 <section id="learning-outcomes">
-<h2>Learning Outcomes<a class="headerlink" href="#learning-outcomes" title="Permalink to this heading">#</a></h2>
+<h2>Learning Outcomes<a class="headerlink" href="#learning-outcomes" title="Link to this heading">#</a></h2>
 <p>In this unit, you will…</p>
 <ul class="simple">
 <li><p>Compute Laplace transforms by hand and using symbolic math.</p></li>
@@ -589,13 +586,13 @@ document.write(`
 </div>
 </section>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>Transfer functions are derived by computing the <strong>Laplace transform</strong> of <strong>linear time-invariant (LTI)</strong> dynamic systems. In these notes, the basics of Laplace transforms and LTI systems are reviewed.</p>
 </section>
 <section id="the-laplace-transform">
-<span id="laplace-xform"></span><h2>The Laplace Transform<a class="headerlink" href="#the-laplace-transform" title="Permalink to this heading">#</a></h2>
+<span id="laplace-xform"></span><h2>The Laplace Transform<a class="headerlink" href="#the-laplace-transform" title="Link to this heading">#</a></h2>
 <section id="definition">
-<h3>Definition<a class="headerlink" href="#definition" title="Permalink to this heading">#</a></h3>
+<h3>Definition<a class="headerlink" href="#definition" title="Link to this heading">#</a></h3>
 <p>The Laplace transform of a locally integrable function <span class="math notranslate nohighlight">\(f\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[F(s) = \mathcal{L}\{f(t)\} =\int_{0}^{\infty} f(t) e^{-st} \ dt\]</div>
@@ -604,13 +601,13 @@ document.write(`
 \[f(t) = \mathcal{L}^{-1} \{ F(s) \}\]</div>
 <p>Inverse Laplace transforms (and forward Laplace transforms, for that matter) are usually found by appealing to a transform table. The formal definition of the inverse Laplace transform is rarely used and so is not discussed here.</p>
 <section id="example-1">
-<h4>Example 1<a class="headerlink" href="#example-1" title="Permalink to this heading">#</a></h4>
+<h4>Example 1<a class="headerlink" href="#example-1" title="Link to this heading">#</a></h4>
 <p><img alt="example" src="../../_images/write.png" /></p>
 <p>(a) Compute the Laplace transform of <span class="math notranslate nohighlight">\(f(t) = u_0(t - a)\)</span> by hand, where <span class="math notranslate nohighlight">\(u_o(t)\)</span> is the Heaviside step function with <span class="math notranslate nohighlight">\(a &gt; 0\)</span>.</p>
 <p>(b) Compute the analytic Laplace transform of <span class="math notranslate nohighlight">\(f\)</span> using the <a class="reference external" href="https://www.mathworks.com/products/symbolic.html">Symbolic Math Toolbox</a>.</p>
 </section>
 <section id="solution">
-<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h4>
+<h4>Solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h4>
 <p>(a)</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -670,10 +667,10 @@ exp(-a*s)/s
 </div>
 </section>
 <section id="exercise-1">
-<h4>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h4>
+<h4>Exercise 1<a class="headerlink" href="#exercise-1" title="Link to this heading">#</a></h4>
 <p><img alt="example" src="../../_images/write.png" /></p>
 <ol class="arabic simple">
-<li><p>Compute the Laplace transform of some standard functions listed below on paper<a class="footnote-reference brackets" href="#examples" id="id1">1</a>. Assume <span class="math notranslate nohighlight">\(a\)</span> is real and <span class="math notranslate nohighlight">\(a &gt; 0\)</span></p></li>
+<li><p>Compute the Laplace transform of some standard functions listed below on paper<a class="footnote-reference brackets" href="#examples" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. Assume <span class="math notranslate nohighlight">\(a\)</span> is real and <span class="math notranslate nohighlight">\(a &gt; 0\)</span></p></li>
 </ol>
 <p><strong>a.</strong> <span class="math notranslate nohighlight">\(f(t) = 1\)</span> <strong>b.</strong> <span class="math notranslate nohighlight">\(f(t) = e^{-at}\)</span> <strong>c.</strong> <span class="math notranslate nohighlight">\(f(t) = t\)</span> <strong>d.</strong> <span class="math notranslate nohighlight">\(f(t) = \delta(t - a)\)</span></p>
 <p><strong>e.</strong> <span class="math notranslate nohighlight">\(f(t) = \cos(t)\)</span> <strong>f.</strong> <span class="math notranslate nohighlight">\(f(t) = t^2 e^{-at}\)</span> <strong>g.</strong> <span class="math notranslate nohighlight">\(f(t) = e^{-at}\sin(t)\)</span></p>
@@ -691,7 +688,7 @@ exp(-a*s)/s
 </div>
 </div>
 <section id="solution-1-a">
-<h5>Solution 1 (a).<a class="headerlink" href="#solution-1-a" title="Permalink to this heading">#</a></h5>
+<h5>Solution 1 (a).<a class="headerlink" href="#solution-1-a" title="Link to this heading">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span>
@@ -710,7 +707,7 @@ Fs =
 </div>
 </section>
 <section id="solution-1-b">
-<h5>Solution 1 (b).<a class="headerlink" href="#solution-1-b" title="Permalink to this heading">#</a></h5>
+<h5>Solution 1 (b).<a class="headerlink" href="#solution-1-b" title="Link to this heading">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
@@ -729,7 +726,7 @@ Fs =
 </div>
 </section>
 <section id="solution-1-c">
-<h5>Solution 1 (c).<a class="headerlink" href="#solution-1-c" title="Permalink to this heading">#</a></h5>
+<h5>Solution 1 (c).<a class="headerlink" href="#solution-1-c" title="Link to this heading">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">t</span>
@@ -748,7 +745,7 @@ Fs =
 </div>
 </section>
 <section id="solution-1-d">
-<h5>Solution 1 (d).<a class="headerlink" href="#solution-1-d" title="Permalink to this heading">#</a></h5>
+<h5>Solution 1 (d).<a class="headerlink" href="#solution-1-d" title="Link to this heading">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">dirac</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="p">)</span>
@@ -767,7 +764,7 @@ exp(-a*s)
 </div>
 </section>
 <section id="solution-1-e">
-<h5>Solution 1 (e).<a class="headerlink" href="#solution-1-e" title="Permalink to this heading">#</a></h5>
+<h5>Solution 1 (e).<a class="headerlink" href="#solution-1-e" title="Link to this heading">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
@@ -786,10 +783,10 @@ s/(s^2 + 1)
 </div>
 </section>
 <section id="solution-1-f">
-<h5>Solution 1 (f).<a class="headerlink" href="#solution-1-f" title="Permalink to this heading">#</a></h5>
+<h5>Solution 1 (f).<a class="headerlink" href="#solution-1-f" title="Link to this heading">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">t</span>^<span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">t</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
 <span class="n">Fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">laplace</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -805,7 +802,7 @@ Fs =
 </div>
 </section>
 <section id="solution-1-g">
-<h5>Solution 1 (g).<a class="headerlink" href="#solution-1-g" title="Permalink to this heading">#</a></h5>
+<h5>Solution 1 (g).<a class="headerlink" href="#solution-1-g" title="Link to this heading">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
@@ -826,7 +823,7 @@ Fs =
 </section>
 </section>
 <section id="visualize-laplace-transforms">
-<h3>Visualize Laplace transforms<a class="headerlink" href="#visualize-laplace-transforms" title="Permalink to this heading">#</a></h3>
+<h3>Visualize Laplace transforms<a class="headerlink" href="#visualize-laplace-transforms" title="Link to this heading">#</a></h3>
 <p><img alt="Try" src="../../_images/try.png" /></p>
 <p>See the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">ConceptReview.mlx</span></code>.</p>
 <div class="cell docutils container">
@@ -837,7 +834,7 @@ Fs =
 </div>
 </div>
 <section id="reflect">
-<h4>Reflect<a class="headerlink" href="#reflect" title="Permalink to this heading">#</a></h4>
+<h4>Reflect<a class="headerlink" href="#reflect" title="Link to this heading">#</a></h4>
 <p><img alt="reflect" src="../../_images/reflect.png" /></p>
 <ul class="simple">
 <li><p>What class of functions is most commonly observed in the Laplace transform?</p></li>
@@ -848,7 +845,7 @@ Fs =
 </section>
 </section>
 <section id="laplace-transform-properties">
-<span id="ltp"></span><h3>Laplace transform properties<a class="headerlink" href="#laplace-transform-properties" title="Permalink to this heading">#</a></h3>
+<span id="ltp"></span><h3>Laplace transform properties<a class="headerlink" href="#laplace-transform-properties" title="Link to this heading">#</a></h3>
 <p>Laplace transforms have several important properties that can be derived from the definition. A few essential properties are reviewed below.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -883,7 +880,7 @@ Fs =
 \end{array}
 \end{split}\]</div>
 <section id="try-this">
-<h4>Try this<a class="headerlink" href="#try-this" title="Permalink to this heading">#</a></h4>
+<h4>Try this<a class="headerlink" href="#try-this" title="Link to this heading">#</a></h4>
 <p><img alt="try" src="../../_images/try.png" /></p>
 <p>The symbolic derivative of <span class="math notranslate nohighlight">\(f\)</span> is defined below by declaring a symbolic function using the syntax</p>
 <div class="cell docutils container">
@@ -901,12 +898,6 @@ Fs =
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dfdt(t) =
-diff(f(t), t)
-</pre></div>
-</div>
-</div>
 </div>
 <p>Use the <a class="reference external" href="https://uk.mathworks.com/help/symbolic/sym.laplace.html">laplace</a> function to compute the Laplace transform of <code class="docutils literal notranslate"><span class="pre">dfdt</span></code> in the space below.</p>
 <div class="cell docutils container">
@@ -915,43 +906,31 @@ diff(f(t), t)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fs =
-s*laplace(f(t), t, s) - f(0)
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="exercise-2">
-<h4>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h4>
+<h4>Exercise 2<a class="headerlink" href="#exercise-2" title="Link to this heading">#</a></h4>
 <p><img alt="exercise" src="../../_images/write.png" /></p>
 <section id="a">
-<h5>2 (a).<a class="headerlink" href="#a" title="Permalink to this heading">#</a></h5>
-<p>Find the formula for the Laplace transform of the second time derivative <span class="math notranslate nohighlight">\(\ddot{f}(t)\)</span> by hand<a class="footnote-reference brackets" href="#examples" id="id2">1</a>.</p>
+<h5>2 (a).<a class="headerlink" href="#a" title="Link to this heading">#</a></h5>
+<p>Find the formula for the Laplace transform of the second time derivative <span class="math notranslate nohighlight">\(\ddot{f}(t)\)</span> by hand<a class="footnote-reference brackets" href="#examples" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
 </section>
 <section id="b">
-<h5>2(b).<a class="headerlink" href="#b" title="Permalink to this heading">#</a></h5>
+<h5>2(b).<a class="headerlink" href="#b" title="Link to this heading">#</a></h5>
 <p>Verify your answer by computing the Laplace transform using symbolic math.</p>
 </section>
 <section id="pro-tip">
-<h5>Pro-tip:<a class="headerlink" href="#pro-tip" title="Permalink to this heading">#</a></h5>
+<h5>Pro-tip:<a class="headerlink" href="#pro-tip" title="Link to this heading">#</a></h5>
 <p><img alt="pro-tip" src="../../_images/pro-tip.png" /></p>
 <p>To compute the second derivative, use the <a class="reference external" href="https://uk.mathworks.com/help/matlab/ref/diff.html">diff</a> function with the syntax: <code class="docutils literal notranslate"><span class="pre">diff(f,n)</span></code>, where <code class="docutils literal notranslate"><span class="pre">n</span></code> is the order of the derivative.</p>
 </section>
 <section id="solution-2-b">
-<h5>Solution 2(b)<a class="headerlink" href="#solution-2-b" title="Permalink to this heading">#</a></h5>
+<h5>Solution 2(b)<a class="headerlink" href="#solution-2-b" title="Link to this heading">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">f(t)</span><span class="w"> </span><span class="s">%</span><span class="w"> </span><span class="s">Definitions</span><span class="w"> </span><span class="s">of</span><span class="w"> </span><span class="s">the</span><span class="w"> </span><span class="s">symbolic</span><span class="w"> </span><span class="s">variables</span>
 <span class="c">% Perform your symbolic computations here</span>
 <span class="n">d2fdt2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">diff</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>d2fdt2(t) =
-diff(f(t), t, t)
 </pre></div>
 </div>
 </div>
@@ -962,23 +941,17 @@ diff(f(t), t, t)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fs =
-s^2*laplace(f(t), t, s) - subs(diff(f(t), t), t, 0) - s*f(0)
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 </section>
 </section>
 <section id="visualize-laplace-transform-properties">
-<h3>Visualize Laplace transform properties<a class="headerlink" href="#visualize-laplace-transform-properties" title="Permalink to this heading">#</a></h3>
+<h3>Visualize Laplace transform properties<a class="headerlink" href="#visualize-laplace-transform-properties" title="Link to this heading">#</a></h3>
 <p><img alt="try" src="../../_images/try.png" /></p>
 <p>See the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">ConceptReview.mlx</span></code></p>
 </section>
 <section id="solving-differential-equations-using-the-laplace-transform">
-<h3>Solving differential equations using the Laplace transform<a class="headerlink" href="#solving-differential-equations-using-the-laplace-transform" title="Permalink to this heading">#</a></h3>
+<h3>Solving differential equations using the Laplace transform<a class="headerlink" href="#solving-differential-equations-using-the-laplace-transform" title="Link to this heading">#</a></h3>
 <p>You can solve initial value problems analytically using Laplace transforms. In general, this is accomplished by:</p>
 <ol class="arabic simple">
 <li><p>taking the Laplace transform,</p></li>
@@ -986,7 +959,7 @@ s^2*laplace(f(t), t, s) - subs(diff(f(t), t), t, 0) - s*f(0)
 <li><p>taking the inverse Laplace transform by referring to a Laplace transform table.</p></li>
 </ol>
 <section id="example-3">
-<h4>Example 3<a class="headerlink" href="#example-3" title="Permalink to this heading">#</a></h4>
+<h4>Example 3<a class="headerlink" href="#example-3" title="Link to this heading">#</a></h4>
 <p><img alt="example" src="../../_images/write.png" /></p>
 <p>Use the Laplace transform to solve for the dynamics of the mass-spring-damper with</p>
 <ul class="simple">
@@ -997,14 +970,14 @@ s^2*laplace(f(t), t, s) - subs(diff(f(t), t), t, 0) - s*f(0)
 <p><img alt="A spring mass-damper-system" src="../../_images/smd.png" /></p>
 </section>
 <section id="id3">
-<h4>Solution<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
 <section id="derive-the-equations-of-motion">
-<h5>1. Derive the equations of motion.<a class="headerlink" href="#derive-the-equations-of-motion" title="Permalink to this heading">#</a></h5>
+<h5>1. Derive the equations of motion.<a class="headerlink" href="#derive-the-equations-of-motion" title="Link to this heading">#</a></h5>
 <p>You can draw a free body diagram and apply Newton’s second law to derive the equations of motion.</p>
 <p><img alt="Free Body Diagram of Spring-Mass-Damper signal" src="../../_images/fbd.png" /></p>
 </section>
 <section id="compute-the-laplace-transform-of-the-dynamic-system-ode-and-solve-for-x">
-<h5>2. Compute the Laplace transform of the dynamic system ODE and solve for <span class="math notranslate nohighlight">\(X\)</span><a class="headerlink" href="#compute-the-laplace-transform-of-the-dynamic-system-ode-and-solve-for-x" title="Permalink to this heading">#</a></h5>
+<h5>2. Compute the Laplace transform of the dynamic system ODE and solve for <span class="math notranslate nohighlight">\(X\)</span><a class="headerlink" href="#compute-the-laplace-transform-of-the-dynamic-system-ode-and-solve-for-x" title="Link to this heading">#</a></h5>
 <p>Note <span class="math notranslate nohighlight">\(\mathcal{L}\{x(t)\} = X(s)\)</span></p>
 <div class="math notranslate nohighlight">
 \[\mathcal{L} \left\{ m \ddot{x} + c\dot{x} + kx = F \right\} \rightarrow\]</div>
@@ -1018,19 +991,13 @@ s^2*laplace(f(t), t, s) - subs(diff(f(t), t), t, 0) - s*f(0)
 \[X = \frac{10}{s^3 + 2  s^2   + 10s }\]</div>
 </section>
 <section id="use-partial-fraction-decomposition-to-separate-the-expression-for-x-s-into-terms-where-the-inverse-laplace-transform-x-is-known">
-<h5>3. Use partial fraction decomposition to separate the expression for <span class="math notranslate nohighlight">\(X(s)\)</span> into terms where the inverse Laplace transform <span class="math notranslate nohighlight">\(X\)</span> is known<a class="headerlink" href="#use-partial-fraction-decomposition-to-separate-the-expression-for-x-s-into-terms-where-the-inverse-laplace-transform-x-is-known" title="Permalink to this heading">#</a></h5>
+<h5>3. Use partial fraction decomposition to separate the expression for <span class="math notranslate nohighlight">\(X(s)\)</span> into terms where the inverse Laplace transform <span class="math notranslate nohighlight">\(X\)</span> is known<a class="headerlink" href="#use-partial-fraction-decomposition-to-separate-the-expression-for-x-s-into-terms-where-the-inverse-laplace-transform-x-is-known" title="Link to this heading">#</a></h5>
 <p>Try performing the partial fraction decomposition on paper and comparing your result to the symbolic solution found below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define X(s)</span>
 <span class="n">syms</span><span class="w"> </span><span class="s">s</span>
-<span class="n">X</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">10</span><span class="o">/</span><span class="p">(</span><span class="n">s</span>^<span class="mi">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">10</span><span class="o">*</span><span class="n">s</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X =
-10/(s^3 + 2*s^2 + 10*s)
+<span class="n">X</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">10</span><span class="o">/</span><span class="p">(</span><span class="n">s</span><span class="o">^</span><span class="mi">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">10</span><span class="o">*</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1042,16 +1009,10 @@ s^2*laplace(f(t), t, s) - subs(diff(f(t), t), t, 0) - s*f(0)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Xdecomp =
-1/s - (s + 2)/(s^2 + 2*s + 10)
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="take-the-inverse-laplace-transform">
-<h5>4. Take the inverse Laplace transform<a class="headerlink" href="#take-the-inverse-laplace-transform" title="Permalink to this heading">#</a></h5>
+<h5>4. Take the inverse Laplace transform<a class="headerlink" href="#take-the-inverse-laplace-transform" title="Link to this heading">#</a></h5>
 <p>You can take the inverse Laplace transform by rewriting as a sum of terms in forms found on a <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_Laplace_transforms#Table">transform table</a>.</p>
 <div class="math notranslate nohighlight">
 \[X(s) = \frac{1}{s}-\frac{s+2}{s^2 +2 \ s+10} =  \frac{1}{s}-\frac{s+2}{(s + 1)^2 + 9}  =  \frac{1}{s}-\frac{s+1}{(s + 1)^2 + 3^2}  -\frac{1}{3}\frac{3}{(s + 1)^2 + 3^2}\]</div>
@@ -1074,16 +1035,10 @@ x(t) &amp;= \displaystyle{\mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x =
-1 - exp(-t)*(cos(3*t) + sin(3*t)/3)
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="plot-the-solution">
-<h5>5. Plot the solution<a class="headerlink" href="#plot-the-solution" title="Permalink to this heading">#</a></h5>
+<h5>5. Plot the solution<a class="headerlink" href="#plot-the-solution" title="Link to this heading">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Create solution array</span>
@@ -1093,8 +1048,6 @@ x(t) &amp;= \displaystyle{\mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/3ad52938f06db59b2bc3d555bff8dc19b65f4f009004b4f5d5e45653eb5d67f4.svg" src="../../_images/3ad52938f06db59b2bc3d555bff8dc19b65f4f009004b4f5d5e45653eb5d67f4.svg" /></div>
 </div>
 <p>There is an animated version of the solution to this spring-mass-damper system in the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">ConceptReview.mlx</span></code>.</p>
 <div class="cell docutils container">
@@ -1107,18 +1060,18 @@ x(t) &amp;= \displaystyle{\mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1
 </section>
 </section>
 <section id="exercise-4">
-<h4>Exercise 4<a class="headerlink" href="#exercise-4" title="Permalink to this heading">#</a></h4>
+<h4>Exercise 4<a class="headerlink" href="#exercise-4" title="Link to this heading">#</a></h4>
 <p><img alt="exercise" src="../../_images/write.png" /></p>
 <p>In this exercise, you will solve for the dynamics of the simple pendulum using the Laplace transform.</p>
 <p><img alt="A simple pendulum" src="../../_images/pendulum.png" /></p>
 <section id="id4">
-<h5>4(a)<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h5>
+<h5>4(a)<a class="headerlink" href="#id4" title="Link to this heading">#</a></h5>
 <p>Draw a free-body diagram for the simple pendulum shown above and derive the equation of motion for a pendulum with length <span class="math notranslate nohighlight">\(l = 0.5\)</span> m and a gravitational constant of 9.8 m/s. Linearize the equation near <span class="math notranslate nohighlight">\(\theta = 0\)</span> and show that it is equivalent to</p>
 <div class="math notranslate nohighlight">
 \[\ddot \theta + 19.6 \theta = 0\]</div>
 </section>
 <section id="id5">
-<h5>4(b)<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h5>
+<h5>4(b)<a class="headerlink" href="#id5" title="Link to this heading">#</a></h5>
 <p>Use the Laplace transform to solve the linearized equations of motion:</p>
 <div class="math notranslate nohighlight">
 \[\ddot \theta + 19.6 \theta = 0\]</div>
@@ -1128,14 +1081,8 @@ x(t) &amp;= \displaystyle{\mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">s</span>
 <span class="c">% Replace NaN with your symbolic solution and run the section</span>
-<span class="n">Theta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="nb">pi</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span><span class="o">*</span><span class="n">s</span><span class="o">/</span><span class="p">(</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">19.6</span><span class="p">);</span>
+<span class="n">Theta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="nb">pi</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span><span class="o">*</span><span class="n">s</span><span class="o">/</span><span class="p">(</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">19.6</span><span class="p">);</span>
 <span class="n">theta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ilaplace</span><span class="p">(</span><span class="n">Theta</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>theta =
-(pi*cos((7*2^(1/2)*5^(1/2)*t)/5))/6
 </pre></div>
 </div>
 </div>
@@ -1153,12 +1100,12 @@ x(t) &amp;= \displaystyle{\mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1
 </section>
 </section>
 <section id="linear-time-invariant-systems">
-<h2>Linear Time-invariant Systems<a class="headerlink" href="#linear-time-invariant-systems" title="Permalink to this heading">#</a></h2>
+<h2>Linear Time-invariant Systems<a class="headerlink" href="#linear-time-invariant-systems" title="Link to this heading">#</a></h2>
 <p>Linear time-invariant (LTI) systems are characterized by the two properties stated in the name: linearity and time-invariance.</p>
 <p><img alt="Block diagram of a system" src="../../_images/system.png" /></p>
 <p>Consider an operator <span class="math notranslate nohighlight">\(g\)</span> that maps an input <span class="math notranslate nohighlight">\(u(t)\)</span> to an output <span class="math notranslate nohighlight">\(y(t)\)</span>.</p>
 <section id="linearity">
-<h3>1. Linearity<a class="headerlink" href="#linearity" title="Permalink to this heading">#</a></h3>
+<h3>1. Linearity<a class="headerlink" href="#linearity" title="Link to this heading">#</a></h3>
 <p>The operator <span class="math notranslate nohighlight">\(g\)</span> is linear if it has two properties:</p>
 <ul class="simple">
 <li><p>Superposition: <span class="math notranslate nohighlight">\(g[u_1(t) + u_2(t)]\)</span> = <span class="math notranslate nohighlight">\(y_1(t)\)</span> + <span class="math notranslate nohighlight">\(y_2(t)\)</span></p></li>
@@ -1169,13 +1116,13 @@ x(t) &amp;= \displaystyle{\mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1
 \[g[a u_1(t) + bu_2(t)] = ay_1(t) + by_2(t)\]</div>
 </section>
 <section id="time-invariance">
-<h3>2. Time invariance<a class="headerlink" href="#time-invariance" title="Permalink to this heading">#</a></h3>
+<h3>2. Time invariance<a class="headerlink" href="#time-invariance" title="Link to this heading">#</a></h3>
 <p>The operator <span class="math notranslate nohighlight">\(g\)</span> is time-invariant if a time-shifted input produces an output with the same time shift:</p>
 <div class="math notranslate nohighlight">
 \[g[u(t - \tau)]= y(t - \tau)\]</div>
 </section>
 <section id="exercise-5">
-<h3>Exercise 5.<a class="headerlink" href="#exercise-5" title="Permalink to this heading">#</a></h3>
+<h3>Exercise 5.<a class="headerlink" href="#exercise-5" title="Link to this heading">#</a></h3>
 <p><img alt="reflect" src="../../_images/reflect.png" /></p>
 <p>Consider the simple operators listed below. Which operators are linear? Which are time-invariant?</p>
 <p>Use the interactive tool in the MATLAB LiveScript <code class="docutils literal notranslate"><span class="pre">ConceptReview.mlx</span></code> to explore these and reflect on the results.</p>
@@ -1195,17 +1142,17 @@ x(t) &amp;= \displaystyle{\mathcal{L}^{-1} \left\{ \frac{1}{s}-\frac{s+1}{(s + 1
 </section>
 </section>
 <section id="homework-1-laplace-transform-and-lti-systems">
-<span id="homework1"></span><h2>Homework 1: Laplace Transform and LTI Systems<a class="headerlink" href="#homework-1-laplace-transform-and-lti-systems" title="Permalink to this heading">#</a></h2>
+<span id="homework1"></span><h2>Homework 1: Laplace Transform and LTI Systems<a class="headerlink" href="#homework-1-laplace-transform-and-lti-systems" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Register with the MathWorks (if you haven’t already) using your Swansea University email and install your own copy of the curriculum module <a class="reference external" href="https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems">Transfer Function Analysis of Dynamic Systems</a> into the online MATLAB version<a class="footnote-reference brackets" href="#installation" id="id6">2</a>.</p></li>
+<li><p>Register with the MathWorks (if you haven’t already) using your Swansea University email and install your own copy of the curriculum module <a class="reference external" href="https://github.com/MathWorks-Teaching-Resources/Transfer-Function-Analysis-of-Dynamic-Systems">Transfer Function Analysis of Dynamic Systems</a> into the online MATLAB version<a class="footnote-reference brackets" href="#installation" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</p></li>
 <li><p>Open the <code class="docutils literal notranslate"><span class="pre">ConceptsReview.mlx</span></code> activity.</p></li>
 <li><p>Complete the Exercises and Activities and add your own notes to the LiveScript file in response to the Reflection prompts given above.</p></li>
 </ol>
 </section>
 <section id="solutions-to-selected-exercises">
-<h2>Solutions to Selected Exercises<a class="headerlink" href="#solutions-to-selected-exercises" title="Permalink to this heading">#</a></h2>
+<h2>Solutions to Selected Exercises<a class="headerlink" href="#solutions-to-selected-exercises" title="Link to this heading">#</a></h2>
 <section id="solution-to-exercise-1">
-<h3>Solution to Exercise 1<a class="headerlink" href="#solution-to-exercise-1" title="Permalink to this heading">#</a></h3>
+<h3>Solution to Exercise 1<a class="headerlink" href="#solution-to-exercise-1" title="Link to this heading">#</a></h3>
 <p>We have made use of the resource <a class="reference external" href="https://www.lboro.ac.uk/departments/mlsc/student-resources/helm-workbooks/">Laplace Transforms</a> from the <a class="reference external" href="https://www.lboro.ac.uk/media/media/schoolanddepartments/mlsc/downloads/HELM%20Workbook%2020%20Laplace%20Transforms.pdf">HELM project</a> <span id="id7">[<a class="reference internal" href="../../zbib.html#id16" title="Loughborough University. Helping engineers learn mathematics workbooks (helm). 2008. URL: https://www.lboro.ac.uk/departments/mlsc/student-resources/helm-workbooks/ (visited on 2024-08-02).">University, 2008</a>, <a class="reference internal" href="../../zbib.html#id17" title="Loughborough University. Laplace transforms (helm). 2008. URL: https://www.lboro.ac.uk/media/media/schoolanddepartments/mlsc/downloads/HELM%20Workbook%2020%20Laplace%20Transforms.pdf (visited on 2024-08-02).">University, 2008</a>]</span> hosted at Loughborough University. We have made the <a class="reference external" href="https://canvas.swansea.ac.uk/courses/53137/modules/items/2565502">HELM resource available in the Canvas site</a> for this module.</p>
 <p>Compute the Laplace transform of some standard functions listed below:</p>
 <p><strong>a.</strong> <span class="math notranslate nohighlight">\(f(t) = 1\)</span></p>
@@ -1322,32 +1269,38 @@ F(s) &amp;= \int_0^\infty e^{-st}\delta(t-a)\,dt\\
 </section>
 </section>
 <section id="references-for-this-unit">
-<h2>References for this Unit<a class="headerlink" href="#references-for-this-unit" title="Permalink to this heading">#</a></h2>
+<h2>References for this Unit<a class="headerlink" href="#references-for-this-unit" title="Link to this heading">#</a></h2>
 <div class="docutils container" id="id9">
-<dl class="citation">
-<dt class="label" id="id23"><span class="brackets"><a class="fn-backref" href="#id8">Job24</a></span></dt>
-<dd><p>Christopher P. Jobling. <em>EG-150: Signals and Systems</em>. Swansea University, 2024. URL: <a class="reference external" href="https://cpjobling.github.io/eg-150-textbook">https://cpjobling.github.io/eg-150-textbook</a>.</p>
-</dd>
-<dt class="label" id="id24"><span class="brackets"><a class="fn-backref" href="#id7">Uni08a</a></span></dt>
-<dd><p>Loughborough University. Helping engineers learn mathematics workbooks (helm). 2008. URL: <a class="reference external" href="https://www.lboro.ac.uk/departments/mlsc/student-resources/helm-workbooks/">https://www.lboro.ac.uk/departments/mlsc/student-resources/helm-workbooks/</a> (visited on 2024-08-02).</p>
-</dd>
-<dt class="label" id="id25"><span class="brackets"><a class="fn-backref" href="#id7">Uni08b</a></span></dt>
-<dd><p>Loughborough University. Laplace transforms (helm). 2008. URL: <a class="reference external" href="https://www.lboro.ac.uk/media/media/schoolanddepartments/mlsc/downloads/HELM%20Workbook%2020%20Laplace%20Transforms.pdf">https://www.lboro.ac.uk/media/media/schoolanddepartments/mlsc/downloads/HELM%20Workbook%2020%20Laplace%20Transforms.pdf</a> (visited on 2024-08-02).</p>
-</dd>
-</dl>
+<div role="list" class="citation-list">
+<div class="citation" id="id23" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">Job24</a><span class="fn-bracket">]</span></span>
+<p>Christopher P. Jobling. <em>EG-150: Signals and Systems</em>. Swansea University, 2024. URL: <a class="reference external" href="https://cpjobling.github.io/eg-150-textbook">https://cpjobling.github.io/eg-150-textbook</a>.</p>
+</div>
+<div class="citation" id="id24" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">Uni08a</a><span class="fn-bracket">]</span></span>
+<p>Loughborough University. Helping engineers learn mathematics workbooks (helm). 2008. URL: <a class="reference external" href="https://www.lboro.ac.uk/departments/mlsc/student-resources/helm-workbooks/">https://www.lboro.ac.uk/departments/mlsc/student-resources/helm-workbooks/</a> (visited on 2024-08-02).</p>
+</div>
+<div class="citation" id="id25" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">Uni08b</a><span class="fn-bracket">]</span></span>
+<p>Loughborough University. Laplace transforms (helm). 2008. URL: <a class="reference external" href="https://www.lboro.ac.uk/media/media/schoolanddepartments/mlsc/downloads/HELM%20Workbook%2020%20Laplace%20Transforms.pdf">https://www.lboro.ac.uk/media/media/schoolanddepartments/mlsc/downloads/HELM%20Workbook%2020%20Laplace%20Transforms.pdf</a> (visited on 2024-08-02).</p>
+</div>
+</div>
 </div>
 </section>
 <section id="footnotes">
-<h2>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this heading">#</a></h2>
+<h2>Footnotes<a class="headerlink" href="#footnotes" title="Link to this heading">#</a></h2>
 <hr class="footnotes docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="examples"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
-<dd><p>We will tackle some of the paper-based exercises in the examples class.</p>
-</dd>
-<dt class="label" id="installation"><span class="brackets"><a class="fn-backref" href="#id6">2</a></span></dt>
-<dd><p>Installation details are given in Canvas here: <a class="reference external" href="https://canvas.swansea.ac.uk/courses/53137/pages/prepare-the-matlab-curriculum-module-used-in-unit-2-and-lab-2">Prepare the MATLAB Curriculum Module used in Unit 2 and Lab 2</a>.</p>
-</dd>
-</dl>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="examples" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>)</span>
+<p>We will tackle some of the paper-based exercises in the examples class.</p>
+</aside>
+<aside class="footnote brackets" id="installation" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">2</a><span class="fn-bracket">]</span></span>
+<p>Installation details are given in Canvas here: <a class="reference external" href="https://canvas.swansea.ac.uk/courses/53137/pages/prepare-the-matlab-curriculum-module-used-in-unit-2-and-lab-2">Prepare the MATLAB Curriculum Module used in Unit 2 and Lab 2</a>.</p>
+</aside>
+</aside>
 </section>
 </section>
 
@@ -1378,7 +1331,7 @@ F(s) &amp;= \int_0^\infty e^{-st}\delta(t-a)\,dt\\
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1387,7 +1340,7 @@ F(s) &amp;= \int_0^\infty e^{-st}\delta(t-a)\,dt\\
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Unit 2: Transfer Function Analysis of Dynamic Systems</p>
+        <p class="prev-next-title">Unit 3: Laplace Transforms and their Applications</p>
       </div>
     </a>
     <a class="right-next"
@@ -1406,7 +1359,9 @@ F(s) &amp;= \int_0^\infty e^{-st}\delta(t-a)\,dt\\
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1539,8 +1494,8 @@ for
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
