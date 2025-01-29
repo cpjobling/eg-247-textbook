@@ -5,7 +5,7 @@ jupyter:
       extension: .md
       format_name: markdown
       format_version: '1.3'
-      jupytext_version: 1.15.2
+      jupytext_version: 1.16.6
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python
@@ -176,7 +176,7 @@ test_pytest()
 If any of the tests fails, the missing packages can be installed using the following command
 
 ```python
-%conda install -c conda-forge numpy scipy matplotlib sympy pytest
+%uv add install numpy scipy matplotlib sympy pytest
 ```
 
 The remaining installation instructions are adapted from [2].
@@ -209,14 +209,14 @@ matlabroot='/Applications/MATLAB_R2024b.app'
 ### Ubuntu running in Windows using WSL
 
 ```python
-matlabroot='/mnt/c/Program\ Files/MATLAB/R2022b'
+matlabroot='/mnt/c/Program\ Files/MATLAB/R2024b'
 %cd {matlabroot}/extern/engines/python
 ```
 
 ### Windows
 
 ```python
-matlabroot='C:\Program Files\MATLAB\R2022b'
+matlabroot='C:\Program Files\MATLAB\R2024b'
 %cd {matlabroot}\extern\engines\python
 ```
 

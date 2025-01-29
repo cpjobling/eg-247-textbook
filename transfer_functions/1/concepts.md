@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.2
+    jupytext_version: 1.16.6
 kernelspec:
   display_name: MKernel
   language: matlab
@@ -110,10 +110,10 @@ Inverse Laplace transforms (and forward Laplace transforms, for that matter) are
 
 $$
 \begin{array}{rl}
-F(s) &= \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
- &= \int_{a}^{\infty}  e^{-st} \ dt \\
-&= \left. -\frac{1}{s} e^{-st} \ \right\vert_a^\infty \\
-&= \frac{1}{s} e^{-as} \\
+F(s) &= \displaystyle \int_{0}^{\infty}  u_0(t-a) e^{-st} \ dt \\
+ &= \displaystyle \int_{a}^{\infty}  e^{-st} \ dt \\
+&= \displaystyle\left. -\frac{1}{s} e^{-st} \ \right\vert_a^\infty \\
+&= \displaystyle\frac{1}{s} e^{-as} \\
 \end{array}
 $$
 
@@ -352,9 +352,9 @@ For example, the Laplace transform of a time derivative can be computed through 
 
 $$
 \begin{array}{rl}
-\mathcal{L}\{f'(t)\} &= \int_{0}^{\infty} \dot{f}(t) e^{-st} \ dt
+\mathcal{L}\{f'(t)\} &= \displaystyle \int_{0}^{\infty} \dot{f}(t) e^{-st} \ dt
 \\
-&= \left. f(t) e^{-st} \ \right\vert_0^\infty - \int_{0}^{\infty}  f(t) \left( -s  e^{-st}\right) \ dt
+&= \displaystyle \left. f(t) e^{-st} \ \right\vert_0^\infty - \int_{0}^{\infty}  f(t) \left( -s  e^{-st}\right) \ dt
 \\
 &= - f(0) + sF(s)
 \end{array}
@@ -700,10 +700,10 @@ Consider the simple operators listed below. Which operators are linear? Which ar
 
 Use the interactive tool in the MATLAB LiveScript `ConceptReview.mlx` to explore these and reflect on the results.
 
-- $g$: $y(t) = g[u(t)]$ with $g = \frac{d}{dt}  + \frac{d^2}{dt^2}$
-- $h$: $y(t) = 4\sin^2[u(t)]$
-- $i$: $y(t) = \int_{t - 1}^{t + 1} 3u(\tau) d\tau$
-- $j$: $y(t) = t \frac{d}{dt} u(t)$
+- $g$: $y(t) =  g[u(t)]$ with $g = \displaystyle\frac{d}{dt}  + \frac{d^2}{dt^2}$
+- $h$: $y(t) = \displaystyle 4\sin^2[u(t)]$
+- $i$: $y(t) = \displaystyle \int_{t - 1}^{t + 1} 3u(\tau) d\tau$
+- $j$: $y(t) = \displaystyle t \frac{d}{dt} u(t)$
 
 ```{code-cell}
 ---

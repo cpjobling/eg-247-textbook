@@ -28,16 +28,40 @@ I am using [GitHub pages](https://pages.github.com/) to maintain the course slid
 The notes are being maintained using [jupyter notebooks](http://jupytor.org).
 To directly access or modify the notes, checkout the `master` branch of this repo. The notes are organized in folders, one per week. The source code for the notes slides and web pages is contained in the [Markdown](http://daringfireball.net/projects/markdown/syntax) files which end in `.md`.
 
-To rebuild the notes, slides and web pages from source you will need to install [Python](https://www.python.org/) and [Pandoc](http://johnmacfarlane.net/pandoc/). If there is demand, I'll add more details to the `README.md` file in the `gh-pages` branch.
+To rebuild the notes, slides and web pages from source you will need to install the
+uv python package manager [uv](https://docs.astral.sh/uv/).
 
-To access the notebooks for editing and/or execution you will need to install Anaconda using the instructions provided by [Hans Fangohr at Southampton University](http://fangohr.github.io/blog/installation-of-python-spyder-numpy-sympy-scipy-pytest-matplotlib-via-anaconda.html).
+Simply run
 
-Once you have installed the necessary files, use this code to set yourself up for interactive execution of the files.
+```bash
+uv sync
+source .venv/bin/activate
+```
 
-    cd ~/dev/eg-247-textbook
-    git co master
-    conda env create -f environment.yml
-    source activate eg-247-textbook
-    jupyter notebook   
+YOu can use jupyter lab, or jupyter notebook to edit the source files.
 
-The interactive Jupyter notebooks are those with _*.ipynb_ extensions.
+You will need to use or switch to *nbclassic* to run the 
+slide show version of the notes.
+
+We are using [jupytext](https://jupytext.readthedocs.io/en/latest/index.html) so the executables are markdown (.md) files.
+
+Open setup.md to test the set up.
+
+```bash
+jupyter nbclassic setup/setup.md
+```
+
+If the MATLAB jkerbel is working
+
+```bash
+jupyter nbclassic setup/matlab_kernel.md
+```
+
+can be used to test it.
+
+To build the documentation run
+
+```bash
+make site
+```
+
