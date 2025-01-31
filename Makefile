@@ -11,13 +11,13 @@ help:
 	@echo "  site 		 to build the site HTML, store in _site/, and serve with Jekyll"
 
 runall:
-	jupyter-book build . --all --keep-going
+	uv run jupyter-book build . --all --keep-going
 
 realclean:
-	jupyter-book clean . --all
+	uv run jupyter-book clean . --all
 
 linkcheck:
-	jupyter-book build . --builder linkcheck
+	uv run jupyter-book build . --builder linkcheck
 
 rebuild:
 	make clean
@@ -37,19 +37,19 @@ clean:
 	#find ./worksheets -name '*.ipynb' -exec rm {} \;
 	#find ./introduction -name '*.ipynb' -exec rm {} \;
 	#find ./laplace_transform -name '*.ipynb' -exec rm {} \;
-	jupyter-book clean .
+	uv run jupyter-book clean .
 
 build:  
 	make assets
-	jupyter-book build --keep-going .
+	uv run jupyter-book build --keep-going .
 
 site:   
 	make clean
 	make assets
-	jupyter book build --keep-going .
+	uv run jupyter book build --keep-going .
 	make portfolio
 	touch _build/html/.nojekyll
-	ghp-import --no-jekyll -p -f ./_build/html
+	uv run ghp-import --no-jekyll -p -f ./_build/html
 
 portfolio: FORCE
 	rsync -a --delete labs/ portfolio
