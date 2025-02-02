@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.2
+    jupytext_version: 1.16.6
 kernelspec:
   display_name: MKernel
   language: matlab
@@ -124,9 +124,7 @@ In the absence of other applied torques, the equation of motion can be derived b
 
 
 $$
-
 J \ddot{\theta} = T - B \dot{\theta}
-
 $$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -135,9 +133,7 @@ Using the linear relationship between torque and current, this is equivalent to:
 
 
 $$
-
 J \ddot{\theta} + B \dot{\theta} = k_m i
-
 $$
 (eq2)
 
@@ -180,12 +176,11 @@ linearEq = y == m*x + b
 slideshow:
   slide_type: subslide
 ---
-format compact; setappdata(0, "MKernel_plot_format", 'svg')
 % Use these symbolic variables
 syms L R k_e J B k_m    % Constants
 syms Theta I s V        % Laplace domain variables
 % Write your laplace transform equation here
-eqn1 = R*I + L*s*I + s*k_e*Theta == V
+eqn1 = I*R + I*L*s + Theta*k_e*s == V
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -201,7 +196,7 @@ slideshow:
   slide_type: subslide
 ---
 % Write your laplace transform equation here
-eqn2 = J*s^2*Theta + B*s*Theta == k_m*I
+eqn2 = J*Theta*s^2 + B*Theta*s == I*k_m
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -255,9 +250,7 @@ You can gain insight into the characteristics of a dynamic system without actual
 
 
 $$
-
 G(s) = K \frac{ (s-z_1)(s-z_2) \ldots (s-z_m) }{ (s-p_1)(s-p_2) \ldots (s-p_n)}
-
 $$
 
 The poles are $p_1$, $p_2$, $\ldots$, $p_n$.
@@ -405,7 +398,6 @@ G = tf([0 0 g],[1 b c])
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-
 ##### Homework Exercise 1(b)
 
 Is the system stable? You can plot the poles in the s-plane using the [`pzmap`](https://www.mathworks.com/help/control/ref/lti.pzmap.html) function. For example, to plot the poles of a transfer function G, use:
@@ -423,7 +415,6 @@ pzmap(G)
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
-
 
 ##### Homework Exercise 1(c)
 What are the poles of the transfer function? You can use the [`pole`](https://www.mathworks.com/help/control/ref/lti.pole.html) function to compute the poles of a dynamic system in MATLAB. For example, to identify the poles of a transfer function R, use:
@@ -509,41 +500,44 @@ open('PoleZeroAnalysis.mlx')
 #### Exercise 2
 
 A specific example of the DC motor angular velocity transfer function is
-```matlab
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
 G = tf([0 0 60],[1 2.3 11])
 ```
-##### Exercise 2(a)
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+##### Poll Exercise 2(a)
 
 Compute the poles of the system and then use the poles to compute the system's natural frequencies in rad/s.
 
 ```{code-cell}
 ---
 slideshow:
-  slide_type: subslide
+  slide_type: '-'
 ---
 % Write your code here
-G = tf([0 0 60],[1 2.3 11])
-p = pole(G)
-wn = abs(p) % rad/s
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-
-##### Exercise 2(b)
+##### Poll Exercise 2(b)
 
 You can also use the `damp` function to analyze the natural frequencies of the system. Validate your solution in (a) by calling the `damp` function.
 
 ```{code-cell}
 ---
 slideshow:
-  slide_type: subslide
+  slide_type: '-'
 ---
 % Write your code here
-damp(G)
 ```
 
-+++ {"slideshow": {"slide_type": "notes"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 ##### Reflect
 
@@ -864,7 +858,6 @@ slideshow:
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
-
 
 #### Homework Exercise 3(c)
 Using the analytic form of the transfer function, compute the limit of the function as $t \to \infty$.

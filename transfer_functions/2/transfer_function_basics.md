@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.2
+    jupytext_version: 1.16.6
 kernelspec:
   display_name: MKernel
   language: matlab
@@ -174,17 +174,18 @@ G(s) &= \frac{\Theta(s)}{U(s)}\\
 \end{align}
 $$
 
++++ {"slideshow": {"slide_type": "fragment"}}
+
 We can now enter this result into the code below.
 
 ```{code-cell}
 ---
 slideshow:
-  slide_type: subslide
+  slide_type: '-'
 ---
-format compact; setappdata(0, "MKernel_plot_format", 'svg') % remove extra white space
 syms g l s
 % Record your answer in pendulumTF
-pendulumTF = 1/(s^2 + (g/l));
+pendulumTF = NaN;
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -311,14 +312,22 @@ Then the transfer function is
 
 $$G(s) = \frac{V(s)}{F(s)} = \frac{1}{ms + k}$$
 
++++ {"slideshow": {"slide_type": "fragment"}}
+
+##### Poll Exercise 2
+
++++
+
+Write a MATLAB symbolic expression `Vtf` for this transfer function in terms of the symbolic variables `s`, `m`, and `k`
+
 ```{code-cell}
 ---
 slideshow:
-  slide_type: subslide
+  slide_type: '-'
 ---
 syms m s k % Symbolic variable declarations
-% Record your answer here
-Vtf = 1/(m*s + k);
+% Record the symbolic transfer function here
+Vtf = NaN;
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -457,18 +466,40 @@ Plot the impulse response of for the first 100 seconds using MATLAB commands by
 ```{code-cell}
 ---
 slideshow:
-  slide_type: notes
+  slide_type: subslide
 ---
 % Parameters
-m = 1300;     % kg
-k = 100;      % N.s/m
-Tfinal = 100; % seconds
+m = 1300;      % kg
+k = 100;       % N.s/m
+Tfinal = 100;  % seconds
+
 % Transfer function
 num = 1;
 den = [m, k, 0];
-G = tf(num,den);
-% Impulse response
-impulse(G, Tfinal),ylabel('x(t) [metres]'),grid
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+##### Poll exercise 4
+
+```{code-cell}
+---
+slideshow:
+  slide_type: '-'
+---
+% Define trasnsfer function G
+G = NaN;
+```
+
+```{code-cell}
+---
+slideshow:
+  slide_type: '-'
+---
+% Plot impulse response
+
+% Label y axis
+ylabel('x(t) [metres]'),grid
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}
@@ -541,16 +572,37 @@ where `sys` is a dynamic system (here, that's the transfer function `G`) and `Tf
 slideshow:
   slide_type: subslide
 ---
-% parameters
+% parametershttp://localhost:8888/nbclassic/notebooks/2/transfer_function_basics.md#
 m = 1300;    % kg
 k = 100;     % N.s/m
 Tfinal = 30; % seconds
+
 % transfer function
 num = 1;
 den = [m, k, 0];
-G = tf(num,den);
+```
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+##### Poll exercise 4
+
+```{code-cell}
+---
+slideshow:
+  slide_type: '-'
+---
+G = NaN;
+```
+
+```{code-cell}
+---
+slideshow:
+  slide_type: '-'
+---
 % step response
-step(G, Tfinal),ylabel('x(t) [metres]'),grid
+
+% label graph
+ylabel('x(t) [metres]'),grid
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}
