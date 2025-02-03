@@ -504,8 +504,8 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-2">Activity 2</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Reflect</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-a">Exercise 2(a)</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-b">Exercise 2(b)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#poll-exercise-2-a">Poll Exercise 2(a)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#poll-exercise-2-b">Poll Exercise 2(b)</a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Reflect</a></li>
 </ul>
 </li>
@@ -594,7 +594,7 @@
 <span class="c">% Setup MATLAB to use the PoleZeroAnalysis.mlx LiveScript and the polesApp.mlapp app in class.</span>
 <span class="c">% I am assuming that this is on the MATLAB Drive</span>
 
-<span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="w"> </span>
+<span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"> </span><span class="nb">setappdata</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MKernel_plot_format&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;svg&#39;</span><span class="p">)</span>
 <span class="c">% Change this to local set up where this Jupyter book is run</span>
 <span class="nb">cd</span><span class="w"> </span><span class="s">&#39;/Users/eechris/MATLAB-Drive/Repositories/Transfer-Function-Analysis-of-Dynamic-Systems&#39;</span>
 <span class="nb">open</span><span class="p">(</span><span class="s">&#39;TransferFunctions.prj&#39;</span><span class="p">)</span>
@@ -633,13 +633,14 @@ iR + L \frac{di}{dt} + k_e \dot{\theta} = v
 <p>In the absence of other applied torques, the equation of motion can be derived by balancing the inertia of the motor shaft (<span class="math notranslate nohighlight">\(J \ddot{\theta}\)</span>) with the applied torque (<span class="math notranslate nohighlight">\(T\)</span>) and frictional resistance (<span class="math notranslate nohighlight">\(B \dot{\theta}\)</span>).</p>
 <div class="math notranslate nohighlight">
 \[
-J \ddot{\theta}  = T - B \dot{\theta}
+J \ddot{\theta} = T - B \dot{\theta}
 \]</div>
 <p>Using the linear relationship between torque and current, this is equivalent to:</p>
-<div class="math notranslate nohighlight" id="equation-eq2">
-<span class="eqno">(2)<a class="headerlink" href="#equation-eq2" title="Link to this equation">#</a></span>\[
-J \ddot{\theta} + B \dot{\theta}  = k_m i
+<div class="math notranslate nohighlight">
+\[
+J \ddot{\theta} + B \dot{\theta} = k_m i
 \]</div>
+<p>(eq2)</p>
 </section>
 <section id="exercise-1">
 <h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Link to this heading">#</a></h3>
@@ -663,18 +664,11 @@ J \ddot{\theta} + B \dot{\theta}  = k_m i
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span>
-<span class="c">% Use these symbolic variables</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Use these symbolic variables</span>
 <span class="n">syms</span><span class="w"> </span><span class="s">L</span><span class="w"> </span><span class="s">R</span><span class="w"> </span><span class="s">k_e</span><span class="w"> </span><span class="s">J</span><span class="w"> </span><span class="s">B</span><span class="w"> </span><span class="s">k_m</span><span class="w">    </span><span class="s">%</span><span class="w"> </span><span class="s">Constants</span>
 <span class="n">syms</span><span class="w"> </span><span class="s">Theta</span><span class="w"> </span><span class="s">I</span><span class="w"> </span><span class="s">s</span><span class="w"> </span><span class="s">V</span><span class="w">        </span><span class="s">%</span><span class="w"> </span><span class="s">Laplace</span><span class="w"> </span><span class="s">domain</span><span class="w"> </span><span class="s">variables</span>
 <span class="c">% Write your laplace transform equation here</span>
-<span class="n">eqn1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">R</span><span class="o">*</span><span class="n">I</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">L</span><span class="o">*</span><span class="n">s</span><span class="o">*</span><span class="n">I</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="o">*</span><span class="n">k_e</span><span class="o">*</span><span class="n">Theta</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">V</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eqn1 =
-I*R + I*L*s + Theta*k_e*s == V
+<span class="n">eqn1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">I</span><span class="o">*</span><span class="n">R</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">I</span><span class="o">*</span><span class="n">L</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Theta</span><span class="o">*</span><span class="n">k_e</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">V</span>
 </pre></div>
 </div>
 </div>
@@ -682,17 +676,11 @@ I*R + I*L*s + Theta*k_e*s == V
 </section>
 <section id="b">
 <span id="ex1b"></span><h4>1(b)<a class="headerlink" href="#b" title="Link to this heading">#</a></h4>
-<p>Compute the Laplace transform of the equation of motion <a class="reference internal" href="#equation-eq2">(2)</a> and apply the initial conditions. Type your answer below in terms of the defined symbolic variables.</p>
+<p>Compute the Laplace transform of the equation of motion <code class="xref eq docutils literal notranslate"><span class="pre">eq2</span></code> and apply the initial conditions. Type your answer below in terms of the defined symbolic variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your laplace transform equation here</span>
-<span class="n">eqn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">J</span><span class="o">*</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span><span class="o">*</span><span class="n">Theta</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="o">*</span><span class="n">s</span><span class="o">*</span><span class="n">Theta</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">k_m</span><span class="o">*</span><span class="n">I</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eqn2 =
-J*Theta*s^2 + B*Theta*s == I*k_m
+<span class="n">eqn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">J</span><span class="o">*</span><span class="n">Theta</span><span class="o">*</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="o">*</span><span class="n">Theta</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">I</span><span class="o">*</span><span class="n">k_m</span>
 </pre></div>
 </div>
 </div>
@@ -711,12 +699,6 @@ J*Theta*s^2 + B*Theta*s == I*k_m
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ThetaOverV =
-k_m/(s*(J*L*s^2 + (B*L + J*R)*s + k_e*k_m + B*R))
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="d">
@@ -729,12 +711,6 @@ k_m/(s*(J*L*s^2 + (B*L + J*R)*s + k_e*k_m + B*R))
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your transfer function here</span>
 <span class="n">OmegaOverV</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">k_m</span><span class="o">/</span><span class="p">(</span><span class="n">L</span><span class="o">*</span><span class="n">J</span><span class="o">*</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">J</span><span class="o">+</span><span class="n">L</span><span class="o">*</span><span class="n">B</span><span class="p">)</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="o">*</span><span class="n">R</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k_m</span><span class="o">*</span><span class="n">k_e</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OmegaOverV =
-k_m/(J*L*s^2 + (B*L + J*R)*s + k_e*k_m + B*R)
 </pre></div>
 </div>
 </div>
@@ -797,8 +773,8 @@ Impulse responses characterized by the position of poles in the complex s-plane.
 <ol class="arabic">
 <li><p>You can change the transfer function by adjusting the number and location of the poles and zeros. Set the number of poles to two and change the location of the poles to <span class="math notranslate nohighlight">\(p = -1, -2\)</span>. The transfer function should be <span class="math notranslate nohighlight">\(F(s) = 1/[(s+1)(s+2)]\)</span>. Is the system stable or unstable?</p></li>
 <li><p>Adjust the number of poles and their locations to reproduce the transfer functions shown below.</p>
-<p>a. <span class="math notranslate nohighlight">\(F(s) = \frac{1}{s^2 + 1}\)</span><br />
-b. <span class="math notranslate nohighlight">\(F(s) = \frac{1}{(s-1)(s^2+2s+2)}\)</span><br />
+<p>a. <span class="math notranslate nohighlight">\(F(s) = \frac{1}{s^2 + 1}\)</span>
+b. <span class="math notranslate nohighlight">\(F(s) = \frac{1}{(s-1)(s^2+2s+2)}\)</span>
 c.  <span class="math notranslate nohighlight">\(F(s) = \frac{1}{(s-1)(s+2)(s^2+4s+8)}\)</span></p>
 </li>
 <li><p>Which of the transfer functions are stable? Which are unstable?</p></li>
@@ -846,17 +822,6 @@ c.  <span class="math notranslate nohighlight">\(F(s) = \frac{1}{(s-1)(s+2)(s^2+
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>G =
- 
-         60
-  ----------------
-  s^2 + 2.3 s + 11
- 
-Continuous-time transfer function.
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="homework-exercise-1-b">
@@ -872,9 +837,6 @@ Continuous-time transfer function.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/3d9c42bc76a38d8d9b229e5dfc0cdefdd1e94ec24c07a428fcfe28bd9e407b73.png" src="../../_images/3d9c42bc76a38d8d9b229e5dfc0cdefdd1e94ec24c07a428fcfe28bd9e407b73.png" />
-</div>
 </div>
 </section>
 <section id="homework-exercise-1-c">
@@ -887,13 +849,6 @@ Continuous-time transfer function.
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
 <span class="n">pole</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
-  -1.1500 + 3.1109i
-  -1.1500 - 3.1109i
 </pre></div>
 </div>
 </div>
@@ -953,57 +908,30 @@ Phase <span class="math notranslate nohighlight">\(\phi\)</span> and magnitude <
 <section id="exercise-2">
 <h4>Exercise 2<a class="headerlink" href="#exercise-2" title="Link to this heading">#</a></h4>
 <p>A specific example of the DC motor angular velocity transfer function is</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">60</span><span class="p">],[</span><span class="mi">1</span><span class="w"> </span><span class="mf">2.3</span><span class="w"> </span><span class="mi">11</span><span class="p">])</span>
 </pre></div>
 </div>
-<section id="exercise-2-a">
-<h5>Exercise 2(a)<a class="headerlink" href="#exercise-2-a" title="Link to this heading">#</a></h5>
+</div>
+</div>
+<section id="poll-exercise-2-a">
+<h5>Poll Exercise 2(a)<a class="headerlink" href="#poll-exercise-2-a" title="Link to this heading">#</a></h5>
 <p>Compute the poles of the system and then use the poles to compute the system’s natural frequencies in rad/s.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
-<span class="n">G</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">60</span><span class="p">],[</span><span class="mi">1</span><span class="w"> </span><span class="mf">2.3</span><span class="w"> </span><span class="mi">11</span><span class="p">])</span>
-<span class="n">p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">pole</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-<span class="n">wn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="c">% rad/s</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>G =
- 
-         60
-  ----------------
-  s^2 + 2.3 s + 11
- 
-Continuous-time transfer function.
-p =
-  -1.1500 + 3.1109i
-  -1.1500 - 3.1109i
-wn =
-    3.3166
-    3.3166
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="exercise-2-b">
-<h5>Exercise 2(b)<a class="headerlink" href="#exercise-2-b" title="Link to this heading">#</a></h5>
+<section id="poll-exercise-2-b">
+<h5>Poll Exercise 2(b)<a class="headerlink" href="#poll-exercise-2-b" title="Link to this heading">#</a></h5>
 <p>You can also use the <code class="docutils literal notranslate"><span class="pre">damp</span></code> function to analyze the natural frequencies of the system. Validate your solution in (a) by calling the <code class="docutils literal notranslate"><span class="pre">damp</span></code> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
-<span class="n">damp</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                       
-         Pole              Damping       Frequency      Time Constant  
-                                       (rad/seconds)      (seconds)    
-                                                                       
- -1.15e+00 + 3.11e+00i     3.47e-01       3.32e+00         8.70e-01    
- -1.15e+00 - 3.11e+00i     3.47e-01       3.32e+00         8.70e-01    
 </pre></div>
 </div>
 </div>
@@ -1040,7 +968,7 @@ wn =
 <div class="math notranslate nohighlight">
 \[p = - \zeta \omega_n \pm j \omega_n \sqrt{1 - \zeta^2}\]</div>
 <p>As stated above, the natural frequency is defined as the magnitude of the pole. The magnitude is computed as <span class="math notranslate nohighlight">\(\sqrt{ Re^2 + Im^2}\)</span>:</p>
-<p>\begin{array}{rl} |p|  &amp;= \sqrt{ (-\zeta \omega_n)^2 + ( \pm \omega_n \sqrt{1-\zeta^2})^2 } \   &amp;= \sqrt{ \zeta^2 \omega_n^2 + \omega_n^2 (1-\zeta^2) } \   &amp;= |\omega_n|\ 
+<p>\begin{array}{rl} |p|  &amp;= \sqrt{ (-\zeta \omega_n)^2 + ( \pm \omega_n \sqrt{1-\zeta^2})^2 } \   &amp;= \sqrt{ \zeta^2 \omega_n^2 + \omega_n^2 (1-\zeta^2) } \   &amp;= |\omega_n|<br />
 \end{array}</p>
 <section id="natural-frequency-omega-n">
 <h5>Natural frequency <span class="math notranslate nohighlight">\(\omega_n\)</span><a class="headerlink" href="#natural-frequency-omega-n" title="Link to this heading">#</a></h5>
@@ -1066,16 +994,8 @@ wn =
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">s</span><span class="w"> </span><span class="s">zeta</span><span class="w"> </span><span class="s">omega_n</span><span class="w"> </span><span class="s">K</span><span class="w"> </span><span class="s">X(s)</span><span class="w"> </span><span class="s">x(t)</span>
-<span class="n">X</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">K</span><span class="o">/</span><span class="p">(</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">zeta</span><span class="o">*</span><span class="n">omega_n</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">omega_n</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span>
+<span class="n">X</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">K</span><span class="o">/</span><span class="p">(</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">zeta</span><span class="o">*</span><span class="n">omega_n</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">omega_n</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ilaplace</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="w"> </span><span class="c">% The impulse response in the time domain</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X(s) =
-K/(omega_n^2 + 2*zeta*omega_n*s + s^2)
-x(t) =
-(K*exp(-omega_n*t*zeta)*sin(omega_n*t*(1 - zeta^2)^(1/2)))/(omega_n*(1 - zeta^2)^(1/2))
 </pre></div>
 </div>
 </div>
@@ -1245,15 +1165,9 @@ $<span class="math notranslate nohighlight">\(G(s) = \frac{X(s)}{U(s)} = \frac{1
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Use these symbolic variables</span>
-<span class="n">syms</span><span class="w"> </span><span class="s">s</span><span class="w"> </span><span class="s">z_0</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">positive</span><span class="w"> </span>
+<span class="n">syms</span><span class="w"> </span><span class="s">s</span><span class="w"> </span><span class="s">z_0</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">positive</span>
 <span class="c">% Write your solution here</span>
 <span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x =
-   NaN
 </pre></div>
 </div>
 </div>
@@ -1277,12 +1191,6 @@ $<span class="math notranslate nohighlight">\(G(s) = \frac{X(s)}{U(s)} = \frac{1
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your solution here</span>
 <span class="n">tlim</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tlim =
-   NaN
 </pre></div>
 </div>
 </div>
@@ -1324,7 +1232,8 @@ $<span class="math notranslate nohighlight">\(G(s) = \frac{X(s)}{U(s)} = \frac{1
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="eg-243" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">1</a><span class="fn-bracket">]</span></span>
-<p>This will provide additional insights useful for EG-243 Control Systems.</p>
+<p>This will provide additional insights useful for EG-243 Control Systems.
+$$</p>
 </aside>
 </aside>
 </section>
@@ -1339,16 +1248,16 @@ $<span class="math notranslate nohighlight">\(G(s) = \frac{X(s)}{U(s)} = \frac{1
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "matlab"
+            mode: "mkernel"
         },
         kernelOptions: {
-            name: "matlab",
+            name: "mkernel",
             path: "./transfer_functions/3"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'matlab'</script>
+    <script>kernelName = 'mkernel'</script>
 
                 </article>
               
@@ -1425,8 +1334,8 @@ $<span class="math notranslate nohighlight">\(G(s) = \frac{X(s)}{U(s)} = \frac{1
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-2">Activity 2</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Reflect</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-a">Exercise 2(a)</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-b">Exercise 2(b)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#poll-exercise-2-a">Poll Exercise 2(a)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#poll-exercise-2-b">Poll Exercise 2(b)</a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Reflect</a></li>
 </ul>
 </li>

@@ -339,7 +339,7 @@
       
       
       
-      <li><a href="https://github.com/cpjobling/eg-247-textbook/edit/master/setup/setup.md" target="_blank"
+      <li><a href="https://github.com/cpjobling/eg-247-textbook/edit/master/setup/setup.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -386,7 +386,7 @@
       
       
       
-      <li><a href="../_sources/setup/setup.md" target="_blank"
+      <li><a href="../_sources/setup/setup.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -396,7 +396,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -535,7 +535,9 @@
 <h2>Test Base Setup<a class="headerlink" href="#test-base-setup" title="Link to this heading">#</a></h2>
 <p>The following Python code (adapted from the script <a class="reference external" href="https://fangohr.github.io/blog/code/python/soton-test-python-installation.py">soton-test-python-installation.py</a> [1]) can be executed to report whether particular python packages are available on the system.</p>
 <p>First we define some tests.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 
@@ -636,8 +638,12 @@
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Testing pytest        -&gt; pytest OK&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
 <p>The we run the tests to test that we have all the packages we need. If we have installed Anaconda 3 correctly, there should be no errors.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Running using Python </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">))</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Running using Python </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">))</span>
 <span class="n">test_is_python_35</span><span class="p">()</span>
 <span class="n">test_numpy</span><span class="p">()</span>
 <span class="n">test_scipy</span><span class="p">()</span>
@@ -646,9 +652,27 @@
 <span class="n">test_pytest</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>If any of the tests fails, the missing packages can be installed using the following command</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">uv</span> <span class="n">add</span> <span class="n">install</span> <span class="n">numpy</span> <span class="n">scipy</span> <span class="n">matplotlib</span> <span class="n">sympy</span> <span class="n">pytest</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running using Python 3.12.8 (main, Jan 14 2025, 23:36:58) [Clang 19.1.6 ]
+Testing Python version-&gt; py3.12 OK
+Testing numpy...      -&gt; numpy OK
+Testing scipy ...     -&gt; scipy OK
+Testing matplotlib... -&gt; pylab OK
+Testing sympy         -&gt; sympy OK
+Testing pytest        -&gt; pytest OK
 </pre></div>
+</div>
+<img alt="../_images/3dbc5baae55d1ee9c202dcace86e86ae216f61e47453c3dbea413f1f9e1f0b2d.png" src="../_images/3dbc5baae55d1ee9c202dcace86e86ae216f61e47453c3dbea413f1f9e1f0b2d.png" />
+</div>
+</div>
+<p>If any of the tests fails, the missing packages can be installed using the following command</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">uv</span> add install numpy scipy matplotlib sympy pytest
+</pre></div>
+</div>
+</div>
 </div>
 <p>The remaining installation instructions are adapted from [2].</p>
 </section>
@@ -661,28 +685,53 @@
 <section id="mac-os">
 <h3>Mac OS:<a class="headerlink" href="#mac-os" title="Link to this heading">#</a></h3>
 <p>If you have an M1 or later processor, you should install the Silicon version of MATLAB (see <a class="reference external" href="https://uk.mathworks.com/support/requirements/apple-silicon.html">MATLAB on Apple Silicon Macs</a>)</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matlabroot</span><span class="o">=</span><span class="s1">&#39;/Applications/MATLAB_R2024b.app&#39;</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matlabroot</span><span class="o">=</span><span class="s1">&#39;/Applications/MATLAB_R2024b.app&#39;</span>
 </pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="unix">
 <h3>Unix<a class="headerlink" href="#unix" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">cd</span> <span class="p">{</span><span class="n">matlabroot</span><span class="p">}</span><span class="o">/</span><span class="n">extern</span><span class="o">/</span><span class="n">engines</span><span class="o">/</span><span class="n">python</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">cd</span> {matlabroot}/extern/engines/python
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Applications/MATLAB_R2024b.app/extern/engines/python
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/eechris/code/src/github.com/cpjobling/eg-247-textbook/.venv/lib/python3.12/site-packages/IPython/core/magics/osm.py:417: UserWarning: This is now an optional IPython functionality, setting dhist requires you to install the `pickleshare` library.
+  self.shell.db[&#39;dhist&#39;] = compress_dhist(dhist)[-100:]
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="ubuntu-running-in-windows-using-wsl">
 <h3>Ubuntu running in Windows using WSL<a class="headerlink" href="#ubuntu-running-in-windows-using-wsl" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matlabroot</span><span class="o">=</span><span class="s1">&#39;/mnt/c/Program\ Files/MATLAB/R2024b&#39;</span>
-<span class="o">%</span><span class="n">cd</span> <span class="p">{</span><span class="n">matlabroot</span><span class="p">}</span><span class="o">/</span><span class="n">extern</span><span class="o">/</span><span class="n">engines</span><span class="o">/</span><span class="n">python</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matlabroot</span><span class="o">=</span><span class="s1">&#39;/mnt/c/Program\ Files/MATLAB/R2024b&#39;</span>
+<span class="o">%</span><span class="k">cd</span> {matlabroot}/extern/engines/python
 </pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="windows">
 <h3>Windows<a class="headerlink" href="#windows" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matlabroot</span><span class="o">=</span><span class="s1">&#39;C:\Program Files\MATLAB\R2024b&#39;</span>
-<span class="o">%</span><span class="n">cd</span> <span class="p">{</span><span class="n">matlabroot</span><span class="p">}</span>\<span class="n">extern</span>\<span class="n">engines</span>\<span class="n">python</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matlabroot</span><span class="o">=</span><span class="s1">&#39;C:\Program Files\MATLAB\R2024b&#39;</span>
+<span class="o">%</span><span class="k">cd</span> {matlabroot}\extern\engines\python
 </pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="install-matlab-engine">
@@ -699,46 +748,187 @@
 </li>
 <li><p>If your MATLAB is 2016b, or older, you may need to install an earlier version of Python and repeat the steps above.</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">python</span> <span class="o">--</span><span class="n">version</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python<span class="w"> </span>--version
 <span class="c1">#%shell</span>
-<span class="err">!</span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+<span class="o">!</span>python<span class="w"> </span>setup.py<span class="w"> </span>install
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python 3.12.8
+running install
+/Users/eechris/code/src/github.com/cpjobling/eg-247-textbook/.venv/lib/python3.12/site-packages/setuptools/_distutils/cmd.py:79: SetuptoolsDeprecationWarning: setup.py install is deprecated.
+!!
+
+        ********************************************************************************
+        Please avoid running ``setup.py`` directly.
+        Instead, use pypa/build, pypa/installer or other
+        standards-based tools.
+
+        See https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html for details.
+        ********************************************************************************
+
+!!
+  self.initialize_options()
+/Users/eechris/code/src/github.com/cpjobling/eg-247-textbook/.venv/lib/python3.12/site-packages/setuptools/_distutils/cmd.py:79: EasyInstallDeprecationWarning: easy_install command is deprecated.
+!!
+
+        ********************************************************************************
+        Please avoid running ``setup.py`` and ``easy_install``.
+        Instead, use pypa/build, pypa/installer or other
+        standards-based tools.
+
+        See https://github.com/pypa/setuptools/issues/917 for details.
+        ********************************************************************************
+
+!!
+  self.initialize_options()
+running bdist_egg
+running egg_info
+writing dist/matlabengine.egg-info/PKG-INFO
+writing dependency_links to dist/matlabengine.egg-info/dependency_links.txt
+writing top-level names to dist/matlabengine.egg-info/top_level.txt
+reading manifest file &#39;dist/matlabengine.egg-info/SOURCES.txt&#39;
+writing manifest file &#39;dist/matlabengine.egg-info/SOURCES.txt&#39;
+installing library code to build/bdist.macosx-11.0-arm64/egg
+running install_lib
+running build_py
+creating build/bdist.macosx-11.0-arm64/egg
+creating build/bdist.macosx-11.0-arm64/egg/matlab
+copying build/lib/matlab/__init__.py -&gt; build/bdist.macosx-11.0-arm64/egg/matlab
+creating build/bdist.macosx-11.0-arm64/egg/matlab/engine
+copying build/lib/matlab/engine/fevalfuture.py -&gt; build/bdist.macosx-11.0-arm64/egg/matlab/engine
+copying build/lib/matlab/engine/matlabengine.py -&gt; build/bdist.macosx-11.0-arm64/egg/matlab/engine
+copying build/lib/matlab/engine/basefuture.py -&gt; build/bdist.macosx-11.0-arm64/egg/matlab/engine
+copying build/lib/matlab/engine/__init__.py -&gt; build/bdist.macosx-11.0-arm64/egg/matlab/engine
+copying build/lib/matlab/engine/matlabfuture.py -&gt; build/bdist.macosx-11.0-arm64/egg/matlab/engine
+copying build/lib/matlab/engine/_arch.txt -&gt; build/bdist.macosx-11.0-arm64/egg/matlab/engine
+copying build/lib/matlab/engine/futureresult.py -&gt; build/bdist.macosx-11.0-arm64/egg/matlab/engine
+copying build/lib/matlab/engine/enginehelper.py -&gt; build/bdist.macosx-11.0-arm64/egg/matlab/engine
+copying build/lib/matlab/engine/engineerror.py -&gt; build/bdist.macosx-11.0-arm64/egg/matlab/engine
+copying build/lib/matlab/engine/enginesession.py -&gt; build/bdist.macosx-11.0-arm64/egg/matlab/engine
+byte-compiling build/bdist.macosx-11.0-arm64/egg/matlab/__init__.py to __init__.cpython-312.pyc
+byte-compiling build/bdist.macosx-11.0-arm64/egg/matlab/engine/fevalfuture.py to fevalfuture.cpython-312.pyc
+byte-compiling build/bdist.macosx-11.0-arm64/egg/matlab/engine/matlabengine.py to matlabengine.cpython-312.pyc
+byte-compiling build/bdist.macosx-11.0-arm64/egg/matlab/engine/basefuture.py to basefuture.cpython-312.pyc
+byte-compiling build/bdist.macosx-11.0-arm64/egg/matlab/engine/__init__.py to __init__.cpython-312.pyc
+byte-compiling build/bdist.macosx-11.0-arm64/egg/matlab/engine/matlabfuture.py to matlabfuture.cpython-312.pyc
+byte-compiling build/bdist.macosx-11.0-arm64/egg/matlab/engine/futureresult.py to futureresult.cpython-312.pyc
+byte-compiling build/bdist.macosx-11.0-arm64/egg/matlab/engine/enginehelper.py to enginehelper.cpython-312.pyc
+byte-compiling build/bdist.macosx-11.0-arm64/egg/matlab/engine/engineerror.py to engineerror.cpython-312.pyc
+byte-compiling build/bdist.macosx-11.0-arm64/egg/matlab/engine/enginesession.py to enginesession.cpython-312.pyc
+creating build/bdist.macosx-11.0-arm64/egg/EGG-INFO
+copying dist/matlabengine.egg-info/PKG-INFO -&gt; build/bdist.macosx-11.0-arm64/egg/EGG-INFO
+copying dist/matlabengine.egg-info/SOURCES.txt -&gt; build/bdist.macosx-11.0-arm64/egg/EGG-INFO
+copying dist/matlabengine.egg-info/dependency_links.txt -&gt; build/bdist.macosx-11.0-arm64/egg/EGG-INFO
+copying dist/matlabengine.egg-info/top_level.txt -&gt; build/bdist.macosx-11.0-arm64/egg/EGG-INFO
+zip_safe flag not set; analyzing archive contents...
+matlab.__pycache__.__init__.cpython-312: module references __file__
+matlab.__pycache__.__init__.cpython-312: module references __path__
+matlab.engine.__pycache__.__init__.cpython-312: module references __file__
+creating &#39;dist/matlabengine-24.2-py3.12.egg&#39; and adding &#39;build/bdist.macosx-11.0-arm64/egg&#39; to it
+removing &#39;build/bdist.macosx-11.0-arm64/egg&#39; (and everything under it)
+Processing matlabengine-24.2-py3.12.egg
+removing &#39;/Users/eechris/code/src/github.com/cpjobling/eg-247-textbook/.venv/lib/python3.12/site-packages/matlabengine-24.2-py3.12.egg&#39; (and everything under it)
+creating /Users/eechris/code/src/github.com/cpjobling/eg-247-textbook/.venv/lib/python3.12/site-packages/matlabengine-24.2-py3.12.egg
+Extracting matlabengine-24.2-py3.12.egg to /Users/eechris/code/src/github.com/cpjobling/eg-247-textbook/.venv/lib/python3.12/site-packages
+Adding matlabengine 24.2 to easy-install.pth file
+
+Installed /Users/eechris/code/src/github.com/cpjobling/eg-247-textbook/.venv/lib/python3.12/site-packages/matlabengine-24.2-py3.12.egg
+Processing dependencies for matlabengine==24.2
+Finished processing dependencies for matlabengine==24.2
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
 <section id="test-python-can-now-communicate-with-matlab">
 <h2>Test Python can now communicate with MATLAB<a class="headerlink" href="#test-python-can-now-communicate-with-matlab" title="Link to this heading">#</a></h2>
 <p>First start a MATLAB session. You will have to restart your Python kernel first!</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matlab.engine</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matlab.engine</span>
 <span class="n">eng</span> <span class="o">=</span> <span class="n">matlab</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">start_matlab</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Then connect to the session</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">eng</span> <span class="o">=</span> <span class="n">matlab</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">connect_matlab</span><span class="p">()</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matlab.engine</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">eng</span> <span class="o">=</span> <span class="n">matlab</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">start_matlab</span><span class="p">()</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">cpjobling</span><span class="o">/</span><span class="n">eg</span><span class="o">-</span><span class="mi">247</span><span class="o">-</span><span class="n">textbook</span><span class="o">/.</span><span class="n">venv</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">matlab</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">46</span>
+<span class="g g-Whitespace">     </span><span class="mi">42</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">arch_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">root</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span>     <span class="p">[</span><span class="n">arch</span><span class="p">,</span> <span class="n">bin_folder</span><span class="p">,</span> <span class="n">engine_folder</span><span class="p">,</span> <span class="n">extern_bin</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">readlines</span><span class="p">()]</span>
+<span class="ne">---&gt; </span><span class="mi">46</span> <span class="n">add_dirs_to_path</span><span class="p">(</span><span class="n">bin_folder</span><span class="p">,</span> <span class="n">engine_folder</span><span class="p">,</span> <span class="n">extern_bin</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span> <span class="kn">from</span><span class="w"> </span><span class="nn">matlabmultidimarrayforpython</span><span class="w"> </span><span class="kn">import</span> <span class="n">double</span><span class="p">,</span> <span class="n">single</span><span class="p">,</span> <span class="n">uint8</span><span class="p">,</span> <span class="n">int8</span><span class="p">,</span> <span class="n">uint16</span><span class="p">,</span> \
+<span class="g g-Whitespace">     </span><span class="mi">49</span>     <span class="n">int16</span><span class="p">,</span> <span class="n">uint32</span><span class="p">,</span> <span class="n">int32</span><span class="p">,</span> <span class="n">uint64</span><span class="p">,</span> <span class="n">int64</span><span class="p">,</span> <span class="n">logical</span><span class="p">,</span> <span class="n">ShapeError</span><span class="p">,</span> <span class="n">SizeError</span>
+
+<span class="nn">File ~/code/src/github.com/cpjobling/eg-247-textbook/.venv/lib/python3.12/site-packages/matlab/__init__.py:19,</span> in <span class="ni">add_dirs_to_path</span><span class="nt">(bin_dir, engine_dir, extern_dir)</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;PATH&#39;</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">engine_dir</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">19</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Could not find directory: </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">engine_dir</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">extern_dir</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Could not find directory: </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">extern_dir</span><span class="p">))</span>
+
+<span class="ne">RuntimeError</span>: Could not find directory: /Applications/MATLAB_R2025a.app/extern/engines/python/dist/matlab/engine/maca64
 </pre></div>
+</div>
+</div>
+</div>
+<p>Then connect to the session</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eng</span> <span class="o">=</span> <span class="n">matlab</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">connect_matlab</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now compute something. Here’s a 10x10 magic square</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">eng</span><span class="o">.</span><span class="n">magic</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">eng</span><span class="o">.</span><span class="n">magic</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
 </div>
 <p>Close the session</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">eng</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eng</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 </pre></div>
 </div>
-<!-- #region -->
+</div>
+</div>
 </section>
 <section id="matlab-kernel-for-jupyter">
 <h2>MATLAB Kernel for Jupyter<a class="headerlink" href="#matlab-kernel-for-jupyter" title="Link to this heading">#</a></h2>
 <p>Finally we install Carsten Allefeld’s <code class="docutils literal notranslate"><span class="pre">Mkernel</span></code> (<a class="reference external" href="https://github.com/allefeld/mkernel">github.com/allefeld/mkernel</a>) using the instructions given in <span id="id1">[<a class="reference internal" href="../zbib.html#id24" title="C. Allefeld. Mkernel: a jupyter kernel for matlab (1.1.0). 2023. URL: https://github.com/allefeld/mkernel (visited on 2024-07-04).">Allefeld, 2023</a>]</span>:</p>
-<!-- #endregion -->
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">allefeld</span><span class="o">/</span><span class="n">mkernel</span><span class="o">.</span><span class="n">git</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/allefeld/mkernel.git
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">jupyter</span> <span class="n">kernelspec</span> <span class="nb">list</span>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>jupyter<span class="w"> </span>kernelspec<span class="w"> </span>list
 </pre></div>
+</div>
+</div>
 </div>
 <p>To check that the MATLAB kernel is properly installed do the following.</p>
 <ol class="arabic simple">
@@ -761,7 +951,6 @@
 <p>If all is well, you should see the Kernel indicator (top right) change to ‘Matlab’ (Fig. 2)</p>
 <p><img alt="Figure 2: Matlab kernel indicator" src="../_images/fig2.png" /></p>
 <p>Figure 2: The MATLAB kernel indicator</p>
-<!-- #region -->
 <p>You should now be able to execute the MATLAB <code class="docutils literal notranslate"><span class="pre">magic(10)</span></code> function again and get the result shown:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">magic</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 
@@ -780,9 +969,12 @@
 </pre></div>
 </div>
 <p>Go ahead and execute the next code cell.</p>
-<!-- #endregion -->
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">magic</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">magic</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
 </div>
 <p>If you wish to further test the Matlab interface, download this file from the <code class="docutils literal notranslate"><span class="pre">Calysto/matlab_kernel</span></code> repository <a class="reference external" href="https://github.com/Calysto/matlab_kernel/blob/master/matlab_kernel.ipynb">matlab_kernel.ipynb</a>, open it in Jupyter and run the whole notebook.</p>
 <p>If <em>you</em> have any problems, send me a message through the Teams page for the EG-247 Course.</p>
@@ -796,8 +988,7 @@
 <h2>For More Information on Jupyter<a class="headerlink" href="#for-more-information-on-jupyter" title="Link to this heading">#</a></h2>
 <p>To learn more about Jupyter notebooks, the key resource is the <a class="reference external" href="https://jupyter.org">Jupyter Project site</a> itself. There, under the documentation section, you will find everything you need to fully understand Jupyter. However, it’s not arranged in a way that is useful for a beginner!</p>
 <p>For a quick introduction, I particularly recommend Corey Schafer’s YouTube tutorial: <a class="reference external" href="https://youtu.be/HW29067qVWk">https://youtu.be/HW29067qVWk</a>.</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/HW29067qVWk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</section>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HW29067qVWk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></section>
 <section id="jupyter-noteboooks-versus-matlab-live-scripts">
 <h2>Jupyter Noteboooks versus MATLAB Live Scripts<a class="headerlink" href="#jupyter-noteboooks-versus-matlab-live-scripts" title="Link to this heading">#</a></h2>
 <p>Both Jupyter and MATLAB Live Script trace their origins – or at least their inspiration – to the <a href="https://en.wikipedia.org/wiki/Wolfram_Mathematica_(software)#The_Notebook_interface">Mathematica Notebook interface</a>. All allow the mixing of code with output, the running of code in sections, and the ability to add formatted text, images, and equations to tell a story and provide a repeatable record of a computation.</p>

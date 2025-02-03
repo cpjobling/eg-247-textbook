@@ -642,10 +642,10 @@
 <p>Digital filters can also be used to perform other functions, such as integration, differentiation, and estimation.</p>
 <p>The input-output <em>difference equation</em> that relates the output and input can be expressed in the discrete-time (DT) domain as a summation of the form</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-1">
-<span class="eqno">(37)<a class="headerlink" href="#equation-eq-7-2-1" title="Link to this equation">#</a></span>\[y[n] = \sum_{i=0}^{k}b_i x[n - i]-\sum_{i=0}^{k}a_i y[n - i]\]</div>
+<span class="eqno">(36)<a class="headerlink" href="#equation-eq-7-2-1" title="Link to this equation">#</a></span>\[y[n] = \sum_{i=0}^{k}b_i x[n - i]-\sum_{i=0}^{k}a_i y[n - i]\]</div>
 <p>or, as a Z-transform as</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-2">
-<span class="eqno">(38)<a class="headerlink" href="#equation-eq-7-2-2" title="Link to this equation">#</a></span>\[H(z) = \frac{Y(z)}{X(z)} = \frac{\displaystyle\sum_{i=0}^{k}b_i z^{-i}}{1 + \displaystyle\sum_{i=0}^{k}a_i z^{-i}}\]</div>
+<span class="eqno">(37)<a class="headerlink" href="#equation-eq-7-2-2" title="Link to this equation">#</a></span>\[H(z) = \frac{Y(z)}{X(z)} = \frac{\displaystyle\sum_{i=0}^{k}b_i z^{-i}}{1 + \displaystyle\sum_{i=0}^{k}a_i z^{-i}}\]</div>
 <p>Therefore, the design of a digital filter to perform a desired function, entails the determination of the coefficients <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(a_i\)</span>.</p>
 <section id="classification-of-digital-filters">
 <span id="unit7-2-classification"></span><h3>Classification of digital filters<a class="headerlink" href="#classification-of-digital-filters" title="Link to this heading">#</a></h3>
@@ -719,7 +719,7 @@
 <h4>3. The <em>bilinear transformation method</em><a class="headerlink" href="#the-bilinear-transformation-method" title="Link to this heading">#</a></h4>
 <p>This uses the transformation<a class="footnote-reference brackets" href="#u72-note-3" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-3">
-<span class="eqno">(39)<a class="headerlink" href="#equation-eq-7-2-3" title="Link to this equation">#</a></span>\[s = \frac{2}{T_s}\cdot\frac{z-1}{z+1}\]</div>
+<span class="eqno">(38)<a class="headerlink" href="#equation-eq-7-2-3" title="Link to this equation">#</a></span>\[s = \frac{2}{T_s}\cdot\frac{z-1}{z+1}\]</div>
 <p>to transform the left-half of the <span class="math notranslate nohighlight">\(s\)</span>-plane into the interior of the unit circle in the <span class="math notranslate nohighlight">\(z\)</span>-plane.</p>
 <p>In this unit, we will discuss, <em>and assess</em>, only the use of the blinear transformation.</p>
 </section>
@@ -729,21 +729,21 @@
 <span id="unit7-2-bilinear"></span><h2>The Bilinear Transformation<a class="headerlink" href="#the-bilinear-transformation" title="Link to this heading">#</a></h2>
 <p>We recall from <a class="reference internal" href="../dt_systems/2/z_transform.html#s-to-z"><span class="std std-ref">Relationship Between the Laplace and Z-Transform</span></a> that since <span class="math notranslate nohighlight">\(z = e^{sT_s}\)</span>, <span class="math notranslate nohighlight">\(s = 1/T_s \log_e z\)</span>, then a DT transfer function <span class="math notranslate nohighlight">\(H(z)\)</span> can be determined from a CT transfer function <span class="math notranslate nohighlight">\(H(s)\)</span> using the mapping:</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-4">
-<span class="eqno">(40)<a class="headerlink" href="#equation-eq-7-2-4" title="Link to this equation">#</a></span>\[H(z) = \left.H(s)\right|_{s = \frac{1}{T_s} \log_e z}\]</div>
+<span class="eqno">(39)<a class="headerlink" href="#equation-eq-7-2-4" title="Link to this equation">#</a></span>\[H(z) = \left.H(s)\right|_{s = \frac{1}{T_s} \log_e z}\]</div>
 <p>But the relation <span class="math notranslate nohighlight">\(s = 1/T_s \log_e z\)</span> is a multi-valued transformation, and as such, cannot be used to derive a rational polynomial in <span class="math notranslate nohighlight">\(z\)</span>.</p>
 <p>It can be approximated as</p>
 <div class="math notranslate nohighlight">
 \[s = \frac{1}{T_s} \log_e z = \frac{2}{T_s} \left[\frac{z-1}{z+1}  + \frac{1}{3} \left(\frac{z-1}{z+1} \right)^3 + \frac{1}{5} \left(\frac{z-1}{z+1} \right)^5 + \frac{1}{7} \left(\frac{z-1}{z+1} \right)^7 + \cdots\right]\]</div>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-5">
-<span class="eqno">(41)<a class="headerlink" href="#equation-eq-7-2-5" title="Link to this equation">#</a></span>\[s \approx \frac{2}{T_s} \cdot \frac{z-1}{z+1} \]</div>
-<p>Substitution of <a class="reference internal" href="#equation-eq-7-2-5">(41)</a> into <a class="reference internal" href="#equation-eq-7-2-4">(40)</a> yields</p>
+<span class="eqno">(40)<a class="headerlink" href="#equation-eq-7-2-5" title="Link to this equation">#</a></span>\[s \approx \frac{2}{T_s} \cdot \frac{z-1}{z+1} \]</div>
+<p>Substitution of <a class="reference internal" href="#equation-eq-7-2-5">(40)</a> into <a class="reference internal" href="#equation-eq-7-2-4">(39)</a> yields</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-6">
-<span class="eqno">(42)<a class="headerlink" href="#equation-eq-7-2-6" title="Link to this equation">#</a></span>\[H(z) = \left.G(s)\right|_{s = \frac{2}{T_s} \cdot \frac{z-1}{z+1}} \]</div>
+<span class="eqno">(41)<a class="headerlink" href="#equation-eq-7-2-6" title="Link to this equation">#</a></span>\[H(z) = \left.G(s)\right|_{s = \frac{2}{T_s} \cdot \frac{z-1}{z+1}} \]</div>
 <section id="digital-frequency-response-of-the-bilinear-transformation">
 <span id="unit7-2-freqz"></span><h3>Digital frequency response of the bilinear transformation<a class="headerlink" href="#digital-frequency-response-of-the-bilinear-transformation" title="Link to this heading">#</a></h3>
 <p>The digital frequency response (using <span class="math notranslate nohighlight">\(\omega_d\)</span> on the unit circle in the <span class="math notranslate nohighlight">\(z\)</span>-plane) is obtained by the substitution <span class="math notranslate nohighlight">\(z = e^{j\omega_d T_s}\)</span>, giving</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-7">
-<span class="eqno">(43)<a class="headerlink" href="#equation-eq-7-2-7" title="Link to this equation">#</a></span>\[H\left(e^{j\omega_d T_s}\right) = H\left(\frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s } + 1} \right) \]</div>
+<span class="eqno">(42)<a class="headerlink" href="#equation-eq-7-2-7" title="Link to this equation">#</a></span>\[H\left(e^{j\omega_d T_s}\right) = H\left(\frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s } + 1} \right) \]</div>
 <p>Since the <span class="math notranslate nohighlight">\(z\to s\)</span> transformation maps the unit circle on the <span class="math notranslate nohighlight">\(z\)</span>-plane into the <span class="math notranslate nohighlight">\(j\omega\)</span> axis on the <span class="math notranslate nohighlight">\(s\)</span>-plane, the quantity</p>
 <div class="math notranslate nohighlight">
 \[\frac{2}{T_s} \cdot \frac{e^{j\omega_d T_s } - 1}{e^{j\omega_d T_s} + 1}\]</div>
@@ -758,13 +758,13 @@
 \[\omega_a = \frac{2}{T_s} \cdot \frac{\sin\left(\omega_d T_s\right)/2}{\cos\left(\omega_d T_s\right)/2} \]</div>
 <p>or</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-8">
-<span class="eqno">(44)<a class="headerlink" href="#equation-eq-7-2-8" title="Link to this equation">#</a></span>\[\omega_a = \frac{2}{T_s} \tan\left(\frac{\omega_d T_s}{2} \right)\]</div>
+<span class="eqno">(43)<a class="headerlink" href="#equation-eq-7-2-8" title="Link to this equation">#</a></span>\[\omega_a = \frac{2}{T_s} \tan\left(\frac{\omega_d T_s}{2} \right)\]</div>
 </section>
 <section id="frequency-warping-of-the-bilinear-transformation">
 <span id="u72-warping"></span><h3>Frequency warping of the bilinear transformation<a class="headerlink" href="#frequency-warping-of-the-bilinear-transformation" title="Link to this heading">#</a></h3>
 <p>We see that the analogue frequency to digital frequency transformation results in a non-linear mapping; this condition is know as <em>warping</em>.</p>
 <p>For instance, the frequency range <span class="math notranslate nohighlight">\(0 \lt \omega_a \le \infty\)</span> the analogue frequency is warped into the range <span class="math notranslate nohighlight">\(0 \le \omega_d \le \pi/T_s\)</span> in digital frequency.</p>
-<p>To express <span class="math notranslate nohighlight">\(\omega_d\)</span> in terms of <span class="math notranslate nohighlight">\(\omega_a\)</span>, we rewrite <a class="reference internal" href="#equation-eq-7-2-8">(44)</a> as</p>
+<p>To express <span class="math notranslate nohighlight">\(\omega_d\)</span> in terms of <span class="math notranslate nohighlight">\(\omega_a\)</span>, we rewrite <a class="reference internal" href="#equation-eq-7-2-8">(43)</a> as</p>
 <div class="math notranslate nohighlight">
 \[\tan\left(\frac{\omega_d T_s}{2} \right) = \frac{\omega_a T_s}{2} \]</div>
 <p>Then,</p>
@@ -775,17 +775,17 @@
 \[\tan^{-1}\left(\frac{\omega_a T_s}{2}\right) \approx \frac{\omega_a T_s}{2}\]</div>
 <p>Therefore,</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-9">
-<span class="eqno">(45)<a class="headerlink" href="#equation-eq-7-2-9" title="Link to this equation">#</a></span>\[\omega_d T_s \approx 2 \left(\frac{\omega_a T_s}{2}\right) \approx \omega_a T_s\]</div>
+<span class="eqno">(44)<a class="headerlink" href="#equation-eq-7-2-9" title="Link to this equation">#</a></span>\[\omega_d T_s \approx 2 \left(\frac{\omega_a T_s}{2}\right) \approx \omega_a T_s\]</div>
 <p>that is, for small frequencies,</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-10">
-<span class="eqno">(46)<a class="headerlink" href="#equation-eq-7-2-10" title="Link to this equation">#</a></span>\[\omega_d \approx \omega_a\]</div>
-<p>In MATLAB, <span class="math notranslate nohighlight">\(z\)</span> is a function of normalized frequency and thus the range of frequencies in <span class="math notranslate nohighlight">\(H(z)\)</span> is from <span class="math notranslate nohighlight">\(0 \to \pi\)</span>. Then <a class="reference internal" href="#equation-eq-7-2-9">(45)</a>, when used with MATLAB, becomes</p>
+<span class="eqno">(45)<a class="headerlink" href="#equation-eq-7-2-10" title="Link to this equation">#</a></span>\[\omega_d \approx \omega_a\]</div>
+<p>In MATLAB, <span class="math notranslate nohighlight">\(z\)</span> is a function of normalized frequency and thus the range of frequencies in <span class="math notranslate nohighlight">\(H(z)\)</span> is from <span class="math notranslate nohighlight">\(0 \to \pi\)</span>. Then <a class="reference internal" href="#equation-eq-7-2-9">(44)</a>, when used with MATLAB, becomes</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-11">
-<span class="eqno">(47)<a class="headerlink" href="#equation-eq-7-2-11" title="Link to this equation">#</a></span>\[\omega_d \approx \frac{\omega_a T_s}{\pi} \]</div>
+<span class="eqno">(46)<a class="headerlink" href="#equation-eq-7-2-11" title="Link to this equation">#</a></span>\[\omega_d \approx \frac{\omega_a T_s}{\pi} \]</div>
 </section>
 <section id="pre-warping">
 <span id="u72-pre-warping"></span><h3>Pre-warping<a class="headerlink" href="#pre-warping" title="Link to this heading">#</a></h3>
-<p>The effect of warping can be eliminated by <em>pre-warping</em> the analogue filter prior to the application of the bilinear transformation. This is acomplished with the use of <a class="reference internal" href="#equation-eq-7-2-8">(44)</a>.</p>
+<p>The effect of warping can be eliminated by <em>pre-warping</em> the analogue filter prior to the application of the bilinear transformation. This is acomplished with the use of <a class="reference internal" href="#equation-eq-7-2-8">(43)</a>.</p>
 <section id="example-12">
 <span id="u72-ex-12"></span><h4>Example 12<a class="headerlink" href="#example-12" title="Link to this heading">#</a></h4>
 <p>Compute the transfer function <span class="math notranslate nohighlight">\(H(z)\)</span> of a low-pass filter with <span class="math notranslate nohighlight">\(3\)</span> dB cutoff frequency at <span class="math notranslate nohighlight">\(20\)</span> Hz, and attenuation of at least <span class="math notranslate nohighlight">\(10\)</span> dB for frequencies greater than <span class="math notranslate nohighlight">\(40\)</span> Hz. The sampling frequency <span class="math notranslate nohighlight">\(f_s = 200\)</span> Hz. Compare the magnitude plot with that obtained by a low-pass analogue filter with the same specifications.</p>
@@ -810,9 +810,9 @@ a =
 </div>
 <p>Thus, the transfer function with noramlized frequency, denoted as <span class="math notranslate nohighlight">\(H_n(s)\)</span>, is</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-12">
-<span class="eqno">(49)<a class="headerlink" href="#equation-eq-7-2-12" title="Link to this equation">#</a></span>\[H_n(s) = \frac{1}{s^2 + 1.414 s + 1} \]</div>
+<span class="eqno">(48)<a class="headerlink" href="#equation-eq-7-2-12" title="Link to this equation">#</a></span>\[H_n(s) = \frac{1}{s^2 + 1.414 s + 1} \]</div>
 <p>Now, we must transform this transfer function to another with actual cutoff frequency at <span class="math notranslate nohighlight">\(20\)</span> Hz. We donote it as <span class="math notranslate nohighlight">\(H_a(s)\)</span>.</p>
-<p>We will first pre-warp the analogue frequency which by relation <a class="reference internal" href="#equation-eq-7-2-8">(44)</a>, us related to the digital frequency as</p>
+<p>We will first pre-warp the analogue frequency which by relation <a class="reference internal" href="#equation-eq-7-2-8">(43)</a>, us related to the digital frequency as</p>
 <div class="math notranslate nohighlight">
 \[\omega_a = \frac{2}{T_s}\tan\left(\frac{\omega_d T_s}{2} \right)\]</div>
 <p>where</p>
@@ -824,11 +824,11 @@ a =
 <p>or</p>
 <div class="math notranslate nohighlight">
 \[f_{ac} = \frac{130}{2\pi} \approx 20.69\,\mathrm{Hz}.\]</div>
-<p>As expected from relation <a class="reference internal" href="#equation-eq-7-2-10">(46)</a>, this frequency is very close to the discrete-time frequency <span class="math notranslate nohighlight">\(f_{dc} = 20\)</span> Hz, and thus from <a class="reference internal" href="#equation-eq-7-2-12">(49)</a>,</p>
+<p>As expected from relation <a class="reference internal" href="#equation-eq-7-2-10">(45)</a>, this frequency is very close to the discrete-time frequency <span class="math notranslate nohighlight">\(f_{dc} = 20\)</span> Hz, and thus from <a class="reference internal" href="#equation-eq-7-2-12">(48)</a>,</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-12">
-<span class="eqno">(49)<a class="headerlink" href="#equation-eq-7-2-12" title="Link to this equation">#</a></span>\[H_a(s) \approx H_n(s) = \frac{1}{s^2 + 1.414 s + 1} \]</div>
-<p>Relation <a class="reference internal" href="#equation-eq-7-2-12">(49)</a> applies only when the cutoff frequency is normalized to <span class="math notranslate nohighlight">\(\omega_c = 1\)</span> rad/s.</p>
-<p>If <span class="math notranslate nohighlight">\(\omega_c \ne 1\)</span>, we must scale the transfer function in accordance with relation <a class="reference internal" href="analogue_filters.html#equation-eq-7-1-15">(33)</a>, that is,</p>
+<span class="eqno">(48)<a class="headerlink" href="#equation-eq-7-2-12" title="Link to this equation">#</a></span>\[H_a(s) \approx H_n(s) = \frac{1}{s^2 + 1.414 s + 1} \]</div>
+<p>Relation <a class="reference internal" href="#equation-eq-7-2-12">(48)</a> applies only when the cutoff frequency is normalized to <span class="math notranslate nohighlight">\(\omega_c = 1\)</span> rad/s.</p>
+<p>If <span class="math notranslate nohighlight">\(\omega_c \ne 1\)</span>, we must scale the transfer function in accordance with relation <a class="reference internal" href="analogue_filters.html#equation-eq-7-1-15">(32)</a>, that is,</p>
 <div class="math notranslate nohighlight">
 \[H(s)_\mathrm{actual} = H\left(\frac{s}{\omega_\mathrm{actual}} \right) \]</div>
 <p>For this example, <span class="math notranslate nohighlight">\(\omega_\mathrm{actual} = 130\)</span> rad/s, and thus we replace <span class="math notranslate nohighlight">\(s\)</span> with <span class="math notranslate nohighlight">\(s/130\)</span> and we obtain</p>
@@ -856,7 +856,7 @@ ans =
 </div>
 <p>Then,</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-13">
-<span class="eqno">(50)<a class="headerlink" href="#equation-eq-7-2-13" title="Link to this equation">#</a></span>\[H_a(s) = \frac{845000}{50s^2 + 9191s + 845000} = \frac{16900}{s^2 + 183.82s + 16900} \]</div>
+<span class="eqno">(49)<a class="headerlink" href="#equation-eq-7-2-13" title="Link to this equation">#</a></span>\[H_a(s) = \frac{845000}{50s^2 + 9191s + 845000} = \frac{16900}{s^2 + 183.82s + 16900} \]</div>
 <p>and making the substitution of <span class="math notranslate nohighlight">\(s = (2/T_s)(z -1)/(z + 1) = 400(z-1)/(z + 1)\)</span> we obtain</p>
 <div class="math notranslate nohighlight">
 \[H(z) = \frac{16900}{\left(400\cdot \frac{z-1}{z + 1}\right)^2 + \frac{183.82\times 400(z-1)}{(z + 1)} + 16900} \]</div>
@@ -889,11 +889,11 @@ ans =
 </div>
 <p>and thus</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-14">
-<span class="eqno">(51)<a class="headerlink" href="#equation-eq-7-2-14" title="Link to this equation">#</a></span>\[H(z) = \frac{4225z^2 + 8450z + 4225}{62607z^2 - 71550z + 25843} \]</div>
+<span class="eqno">(50)<a class="headerlink" href="#equation-eq-7-2-14" title="Link to this equation">#</a></span>\[H(z) = \frac{4225z^2 + 8450z + 4225}{62607z^2 - 71550z + 25843} \]</div>
 <p>We will used the MATLAB <a class="reference external" href="https://uk.mathworks.com/help/signal/ref/freqz.html"><code class="docutils literal notranslate"><span class="pre">freqz</span></code></a> function to plot the magnitude of <span class="math notranslate nohighlight">\(H(z)\)</span>, but we must first express it in negative powers of <span class="math notranslate nohighlight">\(z\)</span>.</p>
-<p>Dividing each term of <a class="reference internal" href="#equation-eq-7-2-14">(51)</a> by <span class="math notranslate nohighlight">\(62607z^2\)</span>, we obtain</p>
+<p>Dividing each term of <a class="reference internal" href="#equation-eq-7-2-14">(50)</a> by <span class="math notranslate nohighlight">\(62607z^2\)</span>, we obtain</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-15">
-<span class="eqno">(52)<a class="headerlink" href="#equation-eq-7-2-15" title="Link to this equation">#</a></span>\[\frac{0.0675 + 0.1350z^{-1} + 0.0675z^{-2}}{1 - 1.1428z^{-1} + 0.4128 z^{-2}}\]</div>
+<span class="eqno">(51)<a class="headerlink" href="#equation-eq-7-2-15" title="Link to this equation">#</a></span>\[\frac{0.0675 + 0.1350z^{-1} + 0.0675z^{-2}}{1 - 1.1428z^{-1} + 0.4128 z^{-2}}\]</div>
 <p>The MATLAB script below will generate <span class="math notranslate nohighlight">\(H(z)\)</span> and will plot the magnitude of this transfer function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -955,7 +955,7 @@ dend =
 </div>
 <p>Therefore, the transfer function <span class="math notranslate nohighlight">\(H(z)\)</span> for this filter is</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-16">
-<span class="eqno">(53)<a class="headerlink" href="#equation-eq-7-2-16" title="Link to this equation">#</a></span>\[H(z) = \frac{0.0640 z^2  +  0.1279 z +   0.0640}{z^2   -1.1683 z +    0.4241} = \frac{0.0640  +  0.1279 z^{-1} +   0.0640 z^{-2}}{1   -1.1683 z^{-1} +    0.4241 z^{-2}}\]</div>
+<span class="eqno">(52)<a class="headerlink" href="#equation-eq-7-2-16" title="Link to this equation">#</a></span>\[H(z) = \frac{0.0640 z^2  +  0.1279 z +   0.0640}{z^2   -1.1683 z +    0.4241} = \frac{0.0640  +  0.1279 z^{-1} +   0.0640 z^{-2}}{1   -1.1683 z^{-1} +    0.4241 z^{-2}}\]</div>
 </section>
 </section>
 </section>
@@ -1009,30 +1009,30 @@ dend =
 </div>
 <section id="id7">
 <span id="id8"></span><h4>Example 13<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
-<p>The transfer functions <a class="reference internal" href="#equation-eq-7-2-16">(53)</a> through <a class="reference internal" href="#equation-eq-7-2-19">(56)</a>, describe different types of digital filters. Use the MATLAB <code class="docutils literal notranslate"><span class="pre">freqz</span></code> commmand to plot the magnitude versus radian frequency. What types of filter does each transfer function represent? What classes of filter are they?</p>
+<p>The transfer functions <a class="reference internal" href="#equation-eq-7-2-16">(52)</a> through <a class="reference internal" href="#equation-eq-7-2-19">(55)</a>, describe different types of digital filters. Use the MATLAB <code class="docutils literal notranslate"><span class="pre">freqz</span></code> commmand to plot the magnitude versus radian frequency. What types of filter does each transfer function represent? What classes of filter are they?</p>
 <section id="a">
 <h5>13(a)<a class="headerlink" href="#a" title="Link to this heading">#</a></h5>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-17">
-<span class="eqno">(54)<a class="headerlink" href="#equation-eq-7-2-17" title="Link to this equation">#</a></span>\[H_1(z) = \frac{\left(2.8982 + 8.6946z^{-1} + 8.6946z^{-2} + 2.8982z^{-3}\right)\cdot 10^{-3}}{1 - 2.3741z^{-1} + 1.9294z^{-2} - 0.5321z^{-3}} \]</div>
+<span class="eqno">(53)<a class="headerlink" href="#equation-eq-7-2-17" title="Link to this equation">#</a></span>\[H_1(z) = \frac{\left(2.8982 + 8.6946z^{-1} + 8.6946z^{-2} + 2.8982z^{-3}\right)\cdot 10^{-3}}{1 - 2.3741z^{-1} + 1.9294z^{-2} - 0.5321z^{-3}} \]</div>
 </section>
 <section id="b">
 <h5>13(b)<a class="headerlink" href="#b" title="Link to this heading">#</a></h5>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-18">
-<span class="eqno">(55)<a class="headerlink" href="#equation-eq-7-2-18" title="Link to this equation">#</a></span>\[H_2(z) = \frac{0.5276 - 1.5828z^{-1} + 1.5828z^{-2} - 0.5276z^{-3}}{1 - 1.7600z^{-1} + 1.1829z^{-2} - 0.2781z^{-3}} \]</div>
+<span class="eqno">(54)<a class="headerlink" href="#equation-eq-7-2-18" title="Link to this equation">#</a></span>\[H_2(z) = \frac{0.5276 - 1.5828z^{-1} + 1.5828z^{-2} - 0.5276z^{-3}}{1 - 1.7600z^{-1} + 1.1829z^{-2} - 0.2781z^{-3}} \]</div>
 </section>
 <section id="c">
 <h5>13(c)<a class="headerlink" href="#c" title="Link to this heading">#</a></h5>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-19">
-<span class="eqno">(56)<a class="headerlink" href="#equation-eq-7-2-19" title="Link to this equation">#</a></span>\[H_3(z) = \frac{\left(6.8482 - 13.6964z^{-2} + 6.8482z^{-4}\right)\cdot 10^{-4}}{1 + 3.3033z^{-1} + 4.5244z^{-2} + 3.1390z^{-3} + 0.9603z^{-4}}\]</div>
+<span class="eqno">(55)<a class="headerlink" href="#equation-eq-7-2-19" title="Link to this equation">#</a></span>\[H_3(z) = \frac{\left(6.8482 - 13.6964z^{-2} + 6.8482z^{-4}\right)\cdot 10^{-4}}{1 + 3.3033z^{-1} + 4.5244z^{-2} + 3.1390z^{-3} + 0.9603z^{-4}}\]</div>
 </section>
 <section id="d">
 <h5>13(d)<a class="headerlink" href="#d" title="Link to this heading">#</a></h5>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-20">
-<span class="eqno">(57)<a class="headerlink" href="#equation-eq-7-2-20" title="Link to this equation">#</a></span>\[H_4(z) = \frac{0.9270-1.2079z^{-1}+0.9270z^{-2}}{1-1.2079z^{-1}+0.8541z^{-2}} \]</div>
+<span class="eqno">(56)<a class="headerlink" href="#equation-eq-7-2-20" title="Link to this equation">#</a></span>\[H_4(z) = \frac{0.9270-1.2079z^{-1}+0.9270z^{-2}}{1-1.2079z^{-1}+0.8541z^{-2}} \]</div>
 </section>
 <section id="id9">
 <h5>Solution<a class="headerlink" href="#id9" title="Link to this heading">#</a></h5>
-<p>The MATLAB script to plot each of the transfer functions of <a class="reference internal" href="#equation-eq-7-2-16">(53)</a> through <a class="reference internal" href="#equation-eq-7-2-19">(56)</a>, is given below where N = 512, i.e. the default value.</p>
+<p>The MATLAB script to plot each of the transfer functions of <a class="reference internal" href="#equation-eq-7-2-16">(52)</a> through <a class="reference internal" href="#equation-eq-7-2-19">(55)</a>, is given below where N = 512, i.e. the default value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">b1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mf">2.8982</span><span class="p">,</span><span class="w"> </span><span class="mf">8.6946</span><span class="p">,</span><span class="w"> </span><span class="mf">8.6946</span><span class="p">,</span><span class="w"> </span><span class="mf">2.8982</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span><span class="o">^</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span><span class="w"> </span><span class="n">a1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">2.3741</span><span class="p">,</span><span class="w"> </span><span class="mf">1.9294</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.5321</span><span class="p">];</span>
@@ -1120,7 +1120,7 @@ dend =
 \[X(z)\left(b_0 + b_1z^{-1} + b_2z^{-2}\right) = Y(s)\left(1 + a_1z^{-1} + a_2z^{-2}\right)\]</div>
 <p>And thus, the transfer function of the Direct Form I Realization of the second-order digital filter of <a class="reference internal" href="#fig-u72-3"><span class="std std-numref">Fig. 17</span></a> is</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-21">
-<span class="eqno">(58)<a class="headerlink" href="#equation-eq-7-2-21" title="Link to this equation">#</a></span>\[H(z) = \frac{Y(z)}{X(z)} = \frac{b_0 + b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}} \]</div>
+<span class="eqno">(57)<a class="headerlink" href="#equation-eq-7-2-21" title="Link to this equation">#</a></span>\[H(z) = \frac{Y(z)}{X(z)} = \frac{b_0 + b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}} \]</div>
 <p>A disadvantage of the Direct Form I Realization digital filter is that it requires <span class="math notranslate nohighlight">\(2k\)</span> registers where <span class="math notranslate nohighlight">\(k\)</span> represents the order of the filter. We observe that the second-order (<span class="math notranslate nohighlight">\(k=2\)</span>) digital filter of <a class="reference internal" href="#fig-u72-3"><span class="std std-numref">Fig. 17</span></a> requires 4 delay (register) elements denoted as <span class="math notranslate nohighlight">\(z^{-1}\)</span>. However, this form of realization has the advantage that there is no possibility of internal filter overflow<a class="footnote-reference brackets" href="#u72-notes-5" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>.</p>
 </section>
 <section id="the-direct-form-ii-realization-of-a-digital-filter">
@@ -1142,13 +1142,13 @@ dend =
 <p>Download this model as <a class="reference download internal" download="" href="../_downloads/6da708592d4381f1d785541440f3e765/dfiir_df.slx"><span class="xref download myst">dfiir_df.slx</span></a>.</p>
 <p>The transfer function for the Direct Form-II second-order digital filter of <a class="reference internal" href="#fig-u72-4"><span class="std std-numref">Fig. 18</span></a> is the same as for a Direct Form-I second-order filter of <a class="reference internal" href="#fig-u72-3"><span class="std std-numref">Fig. 17</span></a>, that is,</p>
 <div class="math notranslate nohighlight" id="equation-eq-7-2-22">
-<span class="eqno">(59)<a class="headerlink" href="#equation-eq-7-2-22" title="Link to this equation">#</a></span>\[H(z) = \frac{b_0 + b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}} \]</div>
-<p>A comparison of <a class="reference internal" href="#equation-eq-7-2-21">(58)</a> and <a class="reference internal" href="#equation-eq-7-2-22">(59)</a> shows that whereas a Direct Form-I second-order digital filter requires <span class="math notranslate nohighlight">\(2k\)</span> registers, where <span class="math notranslate nohighlight">\(k\)</span> represents the order of the filter, a Direct Type-II second-order digital filter requires only <span class="math notranslate nohighlight">\(k\)</span> register elements denoted as <span class="math notranslate nohighlight">\(z^{-1}\)</span>. This is because the register (<span class="math notranslate nohighlight">\(z^{-1}\)</span>) elements of the Direct Form-II realization are shared between the zeros section and the poles section.</p>
+<span class="eqno">(58)<a class="headerlink" href="#equation-eq-7-2-22" title="Link to this equation">#</a></span>\[H(z) = \frac{b_0 + b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}} \]</div>
+<p>A comparison of <a class="reference internal" href="#equation-eq-7-2-21">(57)</a> and <a class="reference internal" href="#equation-eq-7-2-22">(58)</a> shows that whereas a Direct Form-I second-order digital filter requires <span class="math notranslate nohighlight">\(2k\)</span> registers, where <span class="math notranslate nohighlight">\(k\)</span> represents the order of the filter, a Direct Type-II second-order digital filter requires only <span class="math notranslate nohighlight">\(k\)</span> register elements denoted as <span class="math notranslate nohighlight">\(z^{-1}\)</span>. This is because the register (<span class="math notranslate nohighlight">\(z^{-1}\)</span>) elements of the Direct Form-II realization are shared between the zeros section and the poles section.</p>
 <section id="example-14">
 <span id="u72-ex-14"></span><h4>Example 14<a class="headerlink" href="#example-14" title="Link to this heading">#</a></h4>
 <p><a class="reference internal" href="#fig-u72-5"><span class="std std-numref">Fig. 19</span></a> shows a Direct Form-II second-order digital filter whose transfer function is</p>
 <div class="math notranslate nohighlight" id="equation-eq-u72-23">
-<span class="eqno">(60)<a class="headerlink" href="#equation-eq-u72-23" title="Link to this equation">#</a></span>\[H(z) = \frac{1+1.5z^{-1}+1.02z^{-2}}{1 - 0.25 z^{-1} -0.75 z^{-2}} \]</div>
+<span class="eqno">(59)<a class="headerlink" href="#equation-eq-u72-23" title="Link to this equation">#</a></span>\[H(z) = \frac{1+1.5z^{-1}+1.02z^{-2}}{1 - 0.25 z^{-1} -0.75 z^{-2}} \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ex14</span>
@@ -1167,10 +1167,10 @@ dend =
 </section>
 <section id="the-series-form-realization-of-a-digital-filter">
 <span id="u72-fd-series"></span><h3>The Series Form Realization of a Digital Filter<a class="headerlink" href="#the-series-form-realization-of-a-digital-filter" title="Link to this heading">#</a></h3>
-<p>For the Series Form Realization, the transfer function is expressed as a product of first-order and second-orer transefer functions as shown in <a class="reference internal" href="#equation-eq-u72-24">(61)</a> below.</p>
+<p>For the Series Form Realization, the transfer function is expressed as a product of first-order and second-orer transefer functions as shown in <a class="reference internal" href="#equation-eq-u72-24">(60)</a> below.</p>
 <div class="math notranslate nohighlight" id="equation-eq-u72-24">
-<span class="eqno">(61)<a class="headerlink" href="#equation-eq-u72-24" title="Link to this equation">#</a></span>\[H(z) = H_1(z)\cdot H_2(z)\cdots H_R(z)\]</div>
-<p>Relation <a class="reference internal" href="#equation-eq-u72-24">(61)</a> is implemented as the cascaded blocks shown in <a class="reference internal" href="#fig-u72-6"><span class="std std-numref">Fig. 20</span></a>.</p>
+<span class="eqno">(60)<a class="headerlink" href="#equation-eq-u72-24" title="Link to this equation">#</a></span>\[H(z) = H_1(z)\cdot H_2(z)\cdots H_R(z)\]</div>
+<p>Relation <a class="reference internal" href="#equation-eq-u72-24">(60)</a> is implemented as the cascaded blocks shown in <a class="reference internal" href="#fig-u72-6"><span class="std std-numref">Fig. 20</span></a>.</p>
 <figure class="align-default" id="fig-u72-6">
 <a class="reference internal image-reference" href="../_images/series.png"><img alt="../_images/series.png" src="../_images/series.png" style="width: 100%;" /></a>
 <figcaption>
@@ -1199,7 +1199,7 @@ dend =
 \[H(z) = \frac{0.5\left(1-0.36z^{-2}\right)}{1 + 0.1 z^{-1} - 0.72 z^{-2}} \]</div>
 <p>To implement this filter, we factor the numerator and denominator polynomials as<a class="footnote-reference brackets" href="#u72-note-7" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a></p>
 <div class="math notranslate nohighlight" id="equation-eq-u72-25">
-<span class="eqno">(62)<a class="headerlink" href="#equation-eq-u72-25" title="Link to this equation">#</a></span>\[H(z) = \frac{0.5\left(1+0.6z^{-1}\right)\left(1-0.6z^{-1}\right)}{\left(1+0.9z^{-1}\right)\left(1-0.8z^{-1}\right)} \]</div>
+<span class="eqno">(61)<a class="headerlink" href="#equation-eq-u72-25" title="Link to this equation">#</a></span>\[H(z) = \frac{0.5\left(1+0.6z^{-1}\right)\left(1-0.6z^{-1}\right)}{\left(1+0.9z^{-1}\right)\left(1-0.8z^{-1}\right)} \]</div>
 <p>The Simulink model and the input and output waveforms are shown in <a class="reference internal" href="#fig-u72-7"><span class="std std-numref">Fig. 22</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1221,8 +1221,8 @@ dend =
 <span id="u72-fd-parallel"></span><h3>The Parallel Form Realization of a Digital Filter<a class="headerlink" href="#the-parallel-form-realization-of-a-digital-filter" title="Link to this heading">#</a></h3>
 <p>The general form of the transfer function of a Parallel Form Realization is</p>
 <div class="math notranslate nohighlight" id="equation-eq-u72-26">
-<span class="eqno">(63)<a class="headerlink" href="#equation-eq-u72-26" title="Link to this equation">#</a></span>\[H(z) = K + H_1(z) + H_2(z) + \cdots + H_R(z)\]</div>
-<p>Relation <a class="reference internal" href="#equation-eq-u72-26">(63)</a> is implemented as the parallel blocks shown in <a class="reference internal" href="#fig-u72-8"><span class="std std-numref">Fig. 23</span></a>.</p>
+<span class="eqno">(62)<a class="headerlink" href="#equation-eq-u72-26" title="Link to this equation">#</a></span>\[H(z) = K + H_1(z) + H_2(z) + \cdots + H_R(z)\]</div>
+<p>Relation <a class="reference internal" href="#equation-eq-u72-26">(62)</a> is implemented as the parallel blocks shown in <a class="reference internal" href="#fig-u72-8"><span class="std std-numref">Fig. 23</span></a>.</p>
 <figure class="align-default" id="fig-u72-8">
 <a class="reference internal image-reference" href="../_images/parallel.png"><img alt="../_images/parallel.png" src="../_images/parallel.png" style="width: 50%;" /></a>
 <figcaption>
@@ -1253,7 +1253,7 @@ dend =
 <div class="math notranslate nohighlight">
 \[H(z) = 0.25 + \frac{0.147z}{z+0.9} + \frac{0.103z}{z-0.8}\]</div>
 <div class="math notranslate nohighlight" id="equation-eq-u72-27">
-<span class="eqno">(64)<a class="headerlink" href="#equation-eq-u72-27" title="Link to this equation">#</a></span>\[H(z) = 0.25 + \frac{0.147}{1+0.9z^{-1}} + \frac{0.103}{1-0.8z^{-1}}\]</div>
+<span class="eqno">(63)<a class="headerlink" href="#equation-eq-u72-27" title="Link to this equation">#</a></span>\[H(z) = 0.25 + \frac{0.147}{1+0.9z^{-1}} + \frac{0.103}{1-0.8z^{-1}}\]</div>
 <p>The model and input and output waveforms are shown in <a class="reference internal" href="#fig-u72-9"><span class="std std-numref">Fig. 24</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1312,13 +1312,13 @@ dend =
 <section id="exercise-7-2-1">
 <span id="u72-ex-1"></span><h3>Exercise 7.2.1<a class="headerlink" href="#exercise-7-2-1" title="Link to this heading">#</a></h3>
 <p><strong>Exam Preparation</strong></p>
-<p>Use the block diagram shown in <a class="reference internal" href="#fig-u72-1"><span class="std std-numref">Fig. 15</span></a> to validate <a class="reference internal" href="#equation-eq-7-2-2">(38)</a> and <a class="reference internal" href="#equation-eq-7-2-1">(37)</a>.</p>
+<p>Use the block diagram shown in <a class="reference internal" href="#fig-u72-1"><span class="std std-numref">Fig. 15</span></a> to validate <a class="reference internal" href="#equation-eq-7-2-2">(37)</a> and <a class="reference internal" href="#equation-eq-7-2-1">(36)</a>.</p>
 <p><a class="reference internal" href="answers.html#sol-ex7-2-1"><span class="std std-ref">Solution to Exercise 7.2.1</span></a></p>
 <p id="u72-ex-2"><strong>Exam Preparation</strong></p>
 </section>
 <section id="exercise-7-2-2">
 <h3>Exercise 7.2.2<a class="headerlink" href="#exercise-7-2-2" title="Link to this heading">#</a></h3>
-<p>Use the block diagram shown in <a class="reference internal" href="#fig-u72-4"><span class="std std-numref">Fig. 18</span></a> to validate <a class="reference internal" href="#equation-eq-7-2-18">(55)</a>. Write down the equivalent difference equation.</p>
+<p>Use the block diagram shown in <a class="reference internal" href="#fig-u72-4"><span class="std std-numref">Fig. 18</span></a> to validate <a class="reference internal" href="#equation-eq-7-2-18">(54)</a>. Write down the equivalent difference equation.</p>
 <p><a class="reference internal" href="answers.html#sol-ex7-2-2"><span class="std std-ref">Solution to Exercise 7.2.2</span></a></p>
 </section>
 <section id="exercise-7-2-3">
@@ -1358,7 +1358,7 @@ dend =
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="u72-note-1" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
-<p>Note that the block labelled <span class="math notranslate nohighlight">\(z^{-1}\)</span> is a one unit delay <span class="math notranslate nohighlight">\(y[n] = x[n - 1]\)</span>; the triangular blocks are gains <span class="math notranslate nohighlight">\(y[n] = k x[n]\)</span>; and the circular blocks are summing points. Following the equations we have <span class="math notranslate nohighlight">\(w[n] = x[n] - a_1 w[n-1] - a_2 w[n-2] - a_3 w[n-3]\)</span> and <span class="math notranslate nohighlight">\(y[n] = b_0 w[n] + b_1 w[n-1] + b_2 w[n-2] + b_3 w[n-3]\)</span>. It is left as an exercise for the reader to show that combining these two equations, taking Z-transforms, and eliminating <span class="math notranslate nohighlight">\(W(z)\)</span>, results in the transfer function <span class="math notranslate nohighlight">\(H(z) = Y(z)/X(z)\)</span> given in <a class="reference internal" href="#equation-eq-7-2-2">(38)</a> and hence the difference equation of <a class="reference internal" href="#equation-eq-7-2-1">(37)</a>.</p>
+<p>Note that the block labelled <span class="math notranslate nohighlight">\(z^{-1}\)</span> is a one unit delay <span class="math notranslate nohighlight">\(y[n] = x[n - 1]\)</span>; the triangular blocks are gains <span class="math notranslate nohighlight">\(y[n] = k x[n]\)</span>; and the circular blocks are summing points. Following the equations we have <span class="math notranslate nohighlight">\(w[n] = x[n] - a_1 w[n-1] - a_2 w[n-2] - a_3 w[n-3]\)</span> and <span class="math notranslate nohighlight">\(y[n] = b_0 w[n] + b_1 w[n-1] + b_2 w[n-2] + b_3 w[n-3]\)</span>. It is left as an exercise for the reader to show that combining these two equations, taking Z-transforms, and eliminating <span class="math notranslate nohighlight">\(W(z)\)</span>, results in the transfer function <span class="math notranslate nohighlight">\(H(z) = Y(z)/X(z)\)</span> given in <a class="reference internal" href="#equation-eq-7-2-2">(37)</a> and hence the difference equation of <a class="reference internal" href="#equation-eq-7-2-1">(36)</a>.</p>
 </aside>
 <aside class="footnote brackets" id="u72-note-2" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
