@@ -30,6 +30,12 @@ In this unit, students will...
 - Analytically derive the step and forced responses of a system.
 - Explain the physical significance of time responses.
 
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Slido Poll 
+
+[EG-247 Week 2: Lecture 3](https://app.sli.do/event/5evuttyBJtysomqzzQbMc9)
+
 +++ {"slideshow": {"slide_type": "notes"}}
 
 :::{note}
@@ -50,7 +56,8 @@ slideshow:
 % Setup MATLAB to use the TransferFunctionBasics.mlx LiveScript in class.
 % I am assuming that this is on the MATLAB Drive
 
-format compact; setappdata(0, "MKernel_plot_format", 'svg')
+format compact; 
+setappdata(0, "MKernel_plot_format", 'svg')
 % Change this to local set up where this Jupyter book is run
 cd '/Users/eechris/MATLAB-Drive/Repositories/Transfer-Function-Analysis-of-Dynamic-Systems'
 open('TransferFunctions.prj')
@@ -67,6 +74,12 @@ Essential components of an electric vehicle
 +++ {"slideshow": {"slide_type": "subslide"}}
 
 Electric vehicles (EV) may well be the future of environmentally sustainable travel. But what makes it possible for an EV to be more efficient than a gas vehicle while still providing enough power to accelerate to and maintain high speeds? The answer lies in efficient power electronics. In this unit, you will learn about transfer functions and use them to analyze the dynamics of several essential components of an electric vehicle.
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+### Slido poll
+
+What is a transfer function?
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -185,7 +198,7 @@ slideshow:
 ---
 syms g l s
 % Record your answer in pendulumTF
-pendulumTF = NaN;
+pendulumTF = 1/(s^2 + g/l);
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -327,7 +340,7 @@ slideshow:
 ---
 syms m s k % Symbolic variable declarations
 % Record the symbolic transfer function here
-Vtf = NaN;
+Vtf = 1/(m*s+ k);
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -488,7 +501,7 @@ slideshow:
   slide_type: '-'
 ---
 % Define trasnsfer function G
-G = NaN;
+G = tf(num,den)
 ```
 
 ```{code-cell}
@@ -497,7 +510,7 @@ slideshow:
   slide_type: '-'
 ---
 % Plot impulse response
-
+impulse(G, Tfinal)
 % Label y axis
 ylabel('x(t) [metres]'),grid
 ```
@@ -591,7 +604,7 @@ den = [m, k, 0];
 slideshow:
   slide_type: '-'
 ---
-G = NaN;
+G = tf(num,den);
 ```
 
 ```{code-cell}
@@ -600,7 +613,7 @@ slideshow:
   slide_type: '-'
 ---
 % step response
-
+step(G, Tfinal)
 % label graph
 ylabel('x(t) [metres]'),grid
 ```

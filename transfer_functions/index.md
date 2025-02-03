@@ -16,4 +16,4 @@ The notes and the lab that follow are based on this project and some of the exer
 * {ref}`tf_concepts`
 * {ref}`tf_basics`
 * {ref}`pz_analysis`
-* [Lab 2: Frequency Domain Analysis]()
+* [Lab 2: Frequency Domain Analysis](https://canvas.swansea.ac.uk/courses/53137/modules/397871)
