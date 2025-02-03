@@ -594,7 +594,9 @@
 <span class="c">% Setup MATLAB to use the PoleZeroAnalysis.mlx LiveScript and the polesApp.mlapp app in class.</span>
 <span class="c">% I am assuming that this is on the MATLAB Drive</span>
 
-<span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"> </span><span class="nb">setappdata</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MKernel_plot_format&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;svg&#39;</span><span class="p">)</span>
+<span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"> </span>
+<span class="nb">setappdata</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MKernel_plot_format&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;svg&#39;</span><span class="p">)</span>
+
 <span class="c">% Change this to local set up where this Jupyter book is run</span>
 <span class="nb">cd</span><span class="w"> </span><span class="s">&#39;/Users/eechris/MATLAB-Drive/Repositories/Transfer-Function-Analysis-of-Dynamic-Systems&#39;</span>
 <span class="nb">open</span><span class="p">(</span><span class="s">&#39;TransferFunctions.prj&#39;</span><span class="p">)</span>
@@ -672,6 +674,12 @@ J \ddot{\theta} + B \dot{\theta} = k_m i
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eqn1 =
+I*R + I*L*s + Theta*k_e*s == V
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="b">
@@ -681,6 +689,12 @@ J \ddot{\theta} + B \dot{\theta} = k_m i
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your laplace transform equation here</span>
 <span class="n">eqn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">J</span><span class="o">*</span><span class="n">Theta</span><span class="o">*</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="o">*</span><span class="n">Theta</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">I</span><span class="o">*</span><span class="n">k_m</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eqn2 =
+J*Theta*s^2 + B*Theta*s == I*k_m
 </pre></div>
 </div>
 </div>
@@ -699,6 +713,12 @@ J \ddot{\theta} + B \dot{\theta} = k_m i
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ThetaOverV =
+k_m/(s*(J*L*s^2 + (B*L + J*R)*s + k_e*k_m + B*R))
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="d">
@@ -711,6 +731,12 @@ J \ddot{\theta} + B \dot{\theta} = k_m i
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your transfer function here</span>
 <span class="n">OmegaOverV</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">k_m</span><span class="o">/</span><span class="p">(</span><span class="n">L</span><span class="o">*</span><span class="n">J</span><span class="o">*</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">J</span><span class="o">+</span><span class="n">L</span><span class="o">*</span><span class="n">B</span><span class="p">)</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="o">*</span><span class="n">R</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k_m</span><span class="o">*</span><span class="n">k_e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OmegaOverV =
+k_m/(J*L*s^2 + (B*L + J*R)*s + k_e*k_m + B*R)
 </pre></div>
 </div>
 </div>
@@ -817,8 +843,6 @@ c.  <span class="math notranslate nohighlight">\(F(s) = \frac{1}{(s-1)(s+2)(s^2+
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
-<span class="n">g</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">2.3</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">11</span><span class="p">;</span>
-<span class="n">G</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="n">g</span><span class="p">],[</span><span class="mi">1</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">c</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -833,7 +857,6 @@ c.  <span class="math notranslate nohighlight">\(F(s) = \frac{1}{(s-1)(s+2)(s^2+
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
-<span class="n">pzmap</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -848,7 +871,13 @@ c.  <span class="math notranslate nohighlight">\(F(s) = \frac{1}{(s-1)(s+2)(s^2+
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
-<span class="n">pole</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+  -1.1500 + 3.1109i
+  -1.1500 - 3.1109i
 </pre></div>
 </div>
 </div>
@@ -914,6 +943,17 @@ Phase <span class="math notranslate nohighlight">\(\phi\)</span> and magnitude <
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>G =
+ 
+         60
+  ----------------
+  s^2 + 2.3 s + 11
+ 
+Continuous-time transfer function.
+</pre></div>
+</div>
+</div>
 </div>
 <section id="poll-exercise-2-a">
 <h5>Poll Exercise 2(a)<a class="headerlink" href="#poll-exercise-2-a" title="Link to this heading">#</a></h5>
@@ -921,6 +961,18 @@ Phase <span class="math notranslate nohighlight">\(\phi\)</span> and magnitude <
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
+<span class="n">p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">pole</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="n">wn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="c">% rad/s</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p =
+  -1.1500 + 3.1109i
+  -1.1500 - 3.1109i
+wn =
+    3.3166
+    3.3166
 </pre></div>
 </div>
 </div>
@@ -932,6 +984,17 @@ Phase <span class="math notranslate nohighlight">\(\phi\)</span> and magnitude <
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your code here</span>
+<span class="n">damp</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                       
+         Pole              Damping       Frequency      Time Constant  
+                                       (rad/seconds)      (seconds)    
+                                                                       
+ -1.15e+00 + 3.11e+00i     3.47e-01       3.32e+00         8.70e-01    
+ -1.15e+00 - 3.11e+00i     3.47e-01       3.32e+00         8.70e-01    
 </pre></div>
 </div>
 </div>
@@ -999,6 +1062,14 @@ Phase <span class="math notranslate nohighlight">\(\phi\)</span> and magnitude <
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X(s) =
+K/(omega_n^2 + 2*zeta*omega_n*s + s^2)
+x(t) =
+(K*exp(-omega_n*t*zeta)*sin(omega_n*t*(1 - zeta^2)^(1/2)))/(omega_n*(1 - zeta^2)^(1/2))
+</pre></div>
+</div>
+</div>
 </div>
 <p>Notice that the impulse response is a product of an exponential and sine function. From these functions observe that:</p>
 <ul class="simple">
@@ -1062,8 +1133,19 @@ $<span class="math notranslate nohighlight">\(G(s) = \frac{X(s)}{U(s)} = \frac{1
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your answers here</span>
 <span class="n">poles</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span><span class="p">;</span>
-<span class="n">pplus</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span><span class="p">;</span>
-<span class="n">pminus</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span><span class="p">;</span>
+<span class="n">pplus</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span>
+<span class="n">pminus</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: Solutions are only valid under certain conditions. To include parameters and conditions in the solution, specify the &#39;ReturnConditions&#39; value as &#39;true&#39;.
+&gt; In sym/solve&gt;warnIfParams (line 487)
+In sym/solve (line 366)
+pplus =
+-(c - (c^2 - 4*k*m)^(1/2))/(2*m)
+pminus =
+-(c + (c^2 - 4*k*m)^(1/2))/(2*m)
 </pre></div>
 </div>
 </div>
@@ -1171,6 +1253,12 @@ $<span class="math notranslate nohighlight">\(G(s) = \frac{X(s)}{U(s)} = \frac{1
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x =
+   NaN
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="homework-exercise-3-b">
@@ -1191,6 +1279,12 @@ $<span class="math notranslate nohighlight">\(G(s) = \frac{X(s)}{U(s)} = \frac{1
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Write your solution here</span>
 <span class="n">tlim</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tlim =
+   NaN
 </pre></div>
 </div>
 </div>
