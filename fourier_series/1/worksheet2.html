@@ -551,10 +551,12 @@
 <h2>The Trigonometric Fourier Series<a class="headerlink" href="#the-trigonometric-fourier-series" title="Link to this heading">#</a></h2>
 <p>Any periodic waveform <span class="math notranslate nohighlight">\(f(t)\)</span> can be represented as</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{eqnarray*}
-  f(t) &amp;=&amp; \frac{1}{2}{a_0} + {a_1}\cos \Omega_0 t + {a_2}\cos 2\Omega_0 t + {a_3}\cos 3\Omega_0 t +  \cdots  + {a_n}\cos n\Omega_0 t +  \cdots  \\ 
-   &amp;+&amp; {b_1}\sin \Omega_0 t + {b_2}\sin 2\Omega_0 t + {b_3}\sin 3\Omega_0 t +  \cdots  + {b_n}\sin n\Omega_0 t +  \cdots  \\ 
-\end{eqnarray*} \end{split}\]</div>
+\[\begin{split}
+\begin{eqnarray*}
+  f(t) &amp;=&amp; \frac{1}{2}{a_0} + {a_1}\cos \Omega_0 t + {a_2}\cos 2\Omega_0 t + {a_3}\cos 3\Omega_0 t +  \cdots  + {a_n}\cos n\Omega_0 t +  \cdots  \\
+   &amp;+&amp; {b_1}\sin \Omega_0 t + {b_2}\sin 2\Omega_0 t + {b_3}\sin 3\Omega_0 t +  \cdots  + {b_n}\sin n\Omega_0 t +  \cdots  \\
+\end{eqnarray*}
+\end{split}\]</div>
 <p>or equivalently (if more confusingly)</p>
 <div class="math notranslate nohighlight">
 \[f(t) = \frac{1}{2}{a_0} + \sum\limits_{n = 1}^\infty  {({a_n}\cos n\Omega_0 t + {b_n}\sin n\Omega_0 t)} \]</div>
@@ -577,7 +579,7 @@
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Setup working directory</span>
 <span class="nb">clear</span><span class="w"> </span><span class="n">vars</span>
 <span class="nb">cd</span><span class="w"> </span><span class="p">.</span><span class="o">./</span><span class="n">matlab</span>
-<span class="nb">format</span><span class="w"> </span><span class="n">compact</span>
+<span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"> </span><span class="nb">setappdata</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MKernel_plot_format&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;svg&#39;</span><span class="p">)</span>
 <span class="c">% Add install directory to path</span>
 <span class="nb">path</span><span class="p">(</span><span class="s">&#39;/Users/eechris/MATLAB-Drive/EG-247-Examples/fseriesdemo&#39;</span><span class="p">,</span><span class="nb">path</span><span class="p">)</span>
 <span class="c">% Run demo</span>
@@ -743,7 +745,7 @@
 <li><p><span class="math notranslate nohighlight">\(b_i = 0\)</span>: for <span class="math notranslate nohighlight">\(i\)</span> even - half-wave symmetry</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ft</span> <span class="o">=</span>
- 
+
 <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="n">pi</span> <span class="o">+</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">7</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">7</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">9</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">9</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">11</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">11</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -768,7 +770,7 @@
 </ul>
 <p>See <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_series/matlab/shifted_sq_ftrig.mlx">shifted_sq_ftrig.mlx</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ft</span> <span class="o">=</span>
- 
+
 <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="n">pi</span> <span class="o">-</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="mi">7</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">7</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="mi">9</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">9</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="mi">11</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">11</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -795,16 +797,16 @@
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "matlab"
+            mode: "mkernel"
         },
         kernelOptions: {
-            name: "matlab",
+            name: "mkernel",
             path: "./fourier_series/1"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'matlab'</script>
+    <script>kernelName = 'mkernel'</script>
 
                 </article>
               
