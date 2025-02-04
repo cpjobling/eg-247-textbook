@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.2
+    jupytext_version: 1.16.6
 kernelspec:
   display_name: MKernel
   language: matlab
@@ -127,23 +127,29 @@ Give the following:
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-<pre style="border: 2px solid blue">
+##### Solution
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
+<table>
+    <tr>
+        <th>Angle $\theta = \omega t$</th><th>Value of $e^{j\theta}$</th>
+    </tr>
+    <tr>
+        <td>$$\omega t = 0$$</td><td>$$e^{j0} = 1 + j0$$</td>
+    </tr>
+    <tr>
+        <td>$$\omega t = \pi/2$$</td><td>$$e^{j\pi/2} = 0+j1$$</td>
+    </tr>
+    <tr>
+        <td>$$\omega t = \pi$$</td><td>$$e^{j\pi} = -1+j0$$</td>
+    </tr>
+        <tr>
+        <td>$$\omega t = 3\pi/2$$</td><td>$$e^{j3\pi/2} = 0-j1$$</td>
+    </tr>
+        <tr>
+        <td>$$\omega t = 2\pi$$</td><td>$$e^{j2\pi} = 1+j0$$</td>
+    </tr>
+</table>
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -194,7 +200,7 @@ $$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-If we replace the $\cos$ and $\sin$ terms with their imaginary exponential equivalents:
+Let us replace the $\cos$ and $\sin$ terms with their imaginary exponential equivalents:
 
 $$
 \begin{gathered}
@@ -243,9 +249,9 @@ $$C_{-k} = C_k^*$$
 
 ### Evaluation of the complex coefficients
 
-The coefficients are obtained from the following expressions<sup>\*</sup>:
+The coefficients are obtained from the following expressions:
 
-$$C_k = \frac{1}{2\pi}\int_{0}^{2\pi}f(\Omega_0 t)e^{-jk(\Omega_0 t)}\,d(\Omega_0 t)$$
+$$C_k = \frac{1}{2\pi}\int_{0}^{2\pi}f(\Omega_0 t)e^{-jk(\Omega_0 t)}\,d(\Omega_0 t) = \frac{1}{2\pi}\int_{0}^{2\pi}f(\theta)e^{-jk\theta}\,d\theta$$
 
 or
 
@@ -279,7 +285,7 @@ so
 
 $$b_k = j\left(C_k - C_{-k}\right)$$
 
-Thus we can easily go back to the trigonometric Fourier series if we need to.
+Thus, we can easily go back to the trigonometric Fourier series if we need to.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 

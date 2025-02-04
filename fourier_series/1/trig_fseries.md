@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.2
+    jupytext_version: 1.16.6
 kernelspec:
   display_name: MKernel
   language: matlab
@@ -62,7 +62,7 @@ An annotatable worksheet for this presentation is available as {ref}`ws2`.
 
 This [Fourier Series demo](http://dspfirst.gatech.edu/matlab/#fseriesdemo), developed by Members of the Center for Signal and Image Processing (CSIP) at the [School of Electrical and Computer Engineering](https://www.ece.gatech.edu/) at the [Georgia Institute of Technology](https://www.gatech.edu/), shows how periodic signals can be synthesised by a sum of sinusoidal signals.
 
-It is here used as a motivational example in our introduction to [Fourier Series](https://en.wikipedia.org/wiki/Fourier_series). (See also [Fourier Series](https://mathworld.wolfram.com/FourierSeries.html) from Wolfram MathWorld referenced in the **Quick Reference** on Blackboard.)
+It is here used as a motivational example in our introduction to [Fourier Series](https://en.wikipedia.org/wiki/Fourier_series). (See also [Fourier Series](https://mathworld.wolfram.com/FourierSeries.html) from Wolfram MathWorld referenced in the **Quick Reference** on Canvas.)
 
 To install this example, download the [zip file](http://dspfirst.gatech.edu/matlab/ZipFiles/fseriesdemo-v144.zip) and unpack it somewhere on your MATLAB path.
 
@@ -72,7 +72,7 @@ To install this example, download the [zip file](http://dspfirst.gatech.edu/matl
 
 - [Jean Baptiste Joseph Fourier](https://en.wikipedia.org/wiki/Joseph_Fourier) (21 March 1768 – 16 May 1830) discovered that any _**periodic**_ signal could be represented as a series of _harmonically related_ sinusoids.
 
-- An _harmonic_ is a frequency whose value is an integer multiple of some _fundamental frequency_
+- An _harmonic_ is a frequency whose value is an integer multiple of some _fundamental frequency_.
 
 - For example, the frequencies 2 MHz, 3 Mhz, 4 MHz are the second, third and fourth harmonics of a sinusoid with fundamental frequency 1 Mhz.
 
@@ -101,7 +101,7 @@ where $\Omega_0$ rad/s is the _fundamental frequency_.
 
 ### Notation
 
-- The first term $a_o/2$ is a constant and represents the DC (average) component of the signal $f(t)$
+- The first term $a_o/2$ is a constant and represents the DC (average) component of the signal $f(t)$.
 - The terms with coefficients $a_1$ and $b_1$ together represent the fundamental frequency component of $f(t)$ at frequency $\Omega_0$.
 - The terms with coefficients $a_2$ and $b_2$ together represent the second harmonic frequency component of $f(t)$ at frequency $2\Omega_0$.
 
@@ -157,7 +157,7 @@ There are simplifications we can make if the original periodic properties has ce
 
 - If $f(t)$ is odd, $a_0=0$ and there will be no cosine terms so ${a_n} = 0\; \forall n > 0$
 - If $f(t)$ is even, there will be no sine terms and ${b_n} = 0\; \forall n > 0$. The DC may or may not be zero.
-- If $f(t)$ has _half-wave symmetry_ only the odd harmonics will be present. That is $a_n$ and $b_n$ is zero for all even values of $n$ (0, 2, 4, ...)
+- If $f(t)$ has _half-wave symmetry_ only the _odd_ harmonics will be present. That is $a_n$ and $b_n$ is zero for all even values of $n$ (0, 2, 4, ...)
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
@@ -273,7 +273,8 @@ slideshow:
 ---
 clear all
 cd ../matlab
-format compact; setappdata(0, "MKernel_plot_format", 'svg')
+format compact; 
+setappdata(0, "MKernel_plot_format", 'svg')
 ```
 
 ```{code-cell}
