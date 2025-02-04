@@ -54,7 +54,9 @@ slideshow:
 % Setup MATLAB to use the PoleZeroAnalysis.mlx LiveScript and the polesApp.mlapp app in class.
 % I am assuming that this is on the MATLAB Drive
 
-format compact; setappdata(0, "MKernel_plot_format", 'svg')
+format compact; 
+setappdata(0, "MKernel_plot_format", 'svg')
+
 % Change this to local set up where this Jupyter book is run
 cd '/Users/eechris/MATLAB-Drive/Repositories/Transfer-Function-Analysis-of-Dynamic-Systems'
 open('TransferFunctions.prj')
@@ -179,6 +181,7 @@ slideshow:
 % Use these symbolic variables
 syms L R k_e J B k_m    % Constants
 syms Theta I s V        % Laplace domain variables
+
 % Write your laplace transform equation here
 eqn1 = I*R + I*L*s + Theta*k_e*s == V
 ```
@@ -392,8 +395,12 @@ slideshow:
   slide_type: subslide
 ---
 % Write your code here
+% Paramemeters
 g = 60; b = 2.3; c = 11;
-G = tf([0 0 g],[1 b c])
+num = g;
+den = [1 b c];
+
+G = tf(num,den)
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -411,7 +418,7 @@ slideshow:
   slide_type: subslide
 ---
 % Write your code here
-pzmap(G)
+pzmap(G),sgrid
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -506,7 +513,7 @@ A specific example of the DC motor angular velocity transfer function is
 slideshow:
   slide_type: fragment
 ---
-G = tf([0 0 60],[1 2.3 11])
+G = tf(num,den)
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -518,9 +525,11 @@ Compute the poles of the system and then use the poles to compute the system's n
 ```{code-cell}
 ---
 slideshow:
-  slide_type: '-'
+  slide_type: fragment
 ---
 % Write your code here
+p = pole(G);
+wn = abs(p) % rad/s
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -532,9 +541,10 @@ You can also use the `damp` function to analyze the natural frequencies of the s
 ```{code-cell}
 ---
 slideshow:
-  slide_type: '-'
+  slide_type: fragment
 ---
 % Write your code here
+damp(G)
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -620,10 +630,17 @@ because the impulse $u(t) = \delta(t)$ has a Laplace transform $U(s) = 1$. You c
 ```{code-cell}
 ---
 slideshow:
-  slide_type: subslide
+  slide_type: fragment
 ---
 syms s zeta omega_n K X(s) x(t)
 X(s) = K/(s^2 + 2*zeta*omega_n*s + omega_n^2)
+```
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
 x(t) = ilaplace(X) % The impulse response in the time domain
 ```
 
@@ -696,9 +713,23 @@ slideshow:
 % Use these symbolic variables
 syms m c k
 % Replace the NaNs with your expressions
-K = NaN;
-omega_n = NaN;
-zeta = NaN;
+K = 1/m
+```
+
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
+omega_n = sqrt(k/m)
+```
+
+```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
+zeta = (c/m)/(2*sqrt(m*k))
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -713,9 +744,10 @@ slideshow:
   slide_type: subslide
 ---
 % Write your answers here
-poles = NaN;
-pplus = NaN;
-pminus = NaN;
+
+poles = solve(m*s^2 + c*s + k == 0);
+pplus = poles(1)
+pminus = poles(2)
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -840,7 +872,10 @@ slideshow:
 % Use these symbolic variables
 syms s z_0 t positive
 % Write your solution here
-x = NaN
+G = (s - z_0)/(s^2 + 2*s +2);
+U = 1/s;
+GU = G*U;
+x = ilaplace(GU)
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -855,6 +890,13 @@ slideshow:
   slide_type: subslide
 ---
 % Create your plot here
+figure
+z0 = -1;
+xf = matlabFunction(x);
+tvec = linspace(0,10);
+plot(tvec,xf(tvec,z0));
+xlabel("t")
+ylabel("x")
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -868,7 +910,7 @@ slideshow:
   slide_type: subslide
 ---
 % Write your solution here
-tlim = NaN
+tlim = -z_0/2;
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -905,4 +947,3 @@ tlim = NaN
 ## Footnotes
 
 [^eg-243]: This will provide additional insights useful for EG-243 Control Systems.
-$$
