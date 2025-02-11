@@ -62,7 +62,8 @@ slideshow:
 ---
 clear all
 cd ../matlab
-format compact; setappdata(0, "MKernel_plot_format", 'svg')
+format compact; 
+setappdata(0, "MKernel_plot_format", 'svg')
 ```
 
 +++ {"slideshow": {"slide_type": "notes"}}

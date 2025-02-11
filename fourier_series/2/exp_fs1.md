@@ -69,6 +69,7 @@ slideshow:
   slide_type: subslide
 ---
 clear all
+setappdata(0, "MKernel_plot_format", 'svg')
 ```
 
 ```{code-cell}
@@ -124,32 +125,6 @@ Give the following:
 - $e^{j\omega t}$ when $\omega t = \pi$
 - $e^{j\omega t}$ when $\omega t = 3\pi/2$
 - $e^{j\omega t}$ when $\omega t = 2\pi$
-
-+++ {"slideshow": {"slide_type": "notes"}}
-
-##### Solution
-
-
-<table>
-    <tr>
-        <th>Angle $\theta = \omega t$</th><th>Value of $e^{j\theta}$</th>
-    </tr>
-    <tr>
-        <td>$$\omega t = 0$$</td><td>$$e^{j0} = 1 + j0$$</td>
-    </tr>
-    <tr>
-        <td>$$\omega t = \pi/2$$</td><td>$$e^{j\pi/2} = 0+j1$$</td>
-    </tr>
-    <tr>
-        <td>$$\omega t = \pi$$</td><td>$$e^{j\pi} = -1+j0$$</td>
-    </tr>
-        <tr>
-        <td>$$\omega t = 3\pi/2$$</td><td>$$e^{j3\pi/2} = 0-j1$$</td>
-    </tr>
-        <tr>
-        <td>$$\omega t = 2\pi$$</td><td>$$e^{j2\pi} = 1+j0$$</td>
-    </tr>
-</table>
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -442,7 +417,7 @@ $$
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
-(fs2:matlab=
+(fs2:matlab)=
 
 ## Computing coefficients of Exponential Fourier Series in MATLAB
 
@@ -470,7 +445,8 @@ slideshow:
   slide_type: subslide
 ---
 cd ../matlab
-format compact; setappdata(0, "MKernel_plot_format", 'svg')
+format compact; 
+setappdata(0, "MKernel_plot_format", 'svg')
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
