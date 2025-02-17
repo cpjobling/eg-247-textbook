@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.2
+    jupytext_version: 1.16.6
 kernelspec:
   display_name: MKernel
   language: matlab
@@ -303,15 +303,14 @@ slideshow:
 ---
 clear all
 cd ../matlab
-format compact; setappdata(0, "MKernel_plot_format", 'svg')
+format compact; 
+setappdata(0, "MKernel_plot_format", 'svg')
 ```
 
-```{code-cell}
----
-slideshow:
-  slide_type: notes
----
-%%file ../matlab/pulse_fs.m
++++ {"slideshow": {"slide_type": "notes"}}
+
+Copy the following text and save it in an m-file called [pulse_fs.m](pulse_fs.m)
+```matlab
 function [f,omega] = pulse_fs(A,w,range)
 % PULSE_FS compute fourier series spectrum in range
 % -range:range for pulse with
@@ -326,6 +325,10 @@ for mm = 1:length(omega)
     end
 end
 return
+```
+
+```{code-cell}
+edit pulse_fs
 ```
 
 +++ {"slideshow": {"slide_type": "subslide"}}
@@ -360,7 +363,7 @@ stem(omega,f)
 title('Line Spectra for pulse with w=2')
 hold on
 om = linspace(-15,15,1000);
-xlabel('\Omega_0 [rad/s]')
+xlabel('k Omega_0 [rad/s]')
 xc = om.*pi./w;
 
 plot(om,(A/w)*sin(xc)./(xc),'r:')
@@ -379,7 +382,7 @@ stem(omega,f)
 title('Line Spectra for pulse with w=5')
 hold on
 om = linspace(-15,15,1000);
-xlabel('\Omega_0 [rad/s]')
+xlabel('k Omega_0 [rad/s]')
 xc = om.*pi./w;
 plot(om,(A/w)*sin(xc)./(xc),'r:')
 hold off
@@ -401,7 +404,7 @@ stem(omega,f)
 title('Line Spectra for pulse with w=10')
 hold on
 om = linspace(-15,15,1000);
-xlabel('\Omega_0 [rad/s]')
+xlabel('k Omega_0 [rad/s]')
 xc = om.*pi./w;
 plot(om,(A/w)*sin(xc)./(xc),'r:')
 hold off
