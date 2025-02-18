@@ -130,7 +130,7 @@ setappdata(0, "MKernel_plot_format", 'svg')
 slideshow:
   slide_type: subslide
 ---
-A = 1; w = 2;
+A = 1; w = 10;
 [f,omega] = pulse_fs(A,w,15);
 ```
 
