@@ -532,7 +532,7 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="unit-3-4-applications-of-line-spectra">
 <span id="unit3-4"></span><h1>Unit 3.4: Applications of Line Spectra<a class="headerlink" href="#unit-3-4-applications-of-line-spectra" title="Link to this heading">#</a></h1>
-<p>The preparatory reading for this section is <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;amp;ppg=247">Chapter 7.10</a> of  <span id="id1">[<a class="reference internal" href="../../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., fifth edition, 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3384197&amp;pq-origsite=primo.">Karris, 2012</a>]</span>.</p>
+<p>The preparatory reading for this section is <a class="reference external" href="https://ebookcentral.proquest.com/lib/swansea-ebooks/reader.action?docID=3384197&amp;amp;ppg=247">Chapter 7.10</a> of <span id="id1">[<a class="reference internal" href="../../zbib.html#id7" title="Steven T. Karris. Signals and systems with MATLAB computing and Simulink modeling. Orchard Publishing, Fremont, CA., fifth edition, 2012. ISBN 9781934404232. Library call number: TK5102.9 K37 2012 LOCATE. URL: https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3384197&amp;pq-origsite=primo.">Karris, 2012</a>]</span>.</p>
 <p>This section concludes our introduction to Fourier Series.</p>
 <p>In <a class="reference internal" href="../3/exp_fs2.html#exp-fs2"><span class="std std-ref">Unit 3.3: Computing Line Spectra</span></a> we saw that we could represent continuous-time periodic waveforms as line spectra in the frequency domain.</p>
 <p>In this section we discuss how we can use these line spectra for the calculation of power for signals with harmonics, computation of total harmanic distortion and we conclude with an introduction to filters.</p>
@@ -663,10 +663,12 @@
 <p>Let us say that we wish to compute the attenuation and phase of this filter at <span class="math notranslate nohighlight">\(\omega = \Omega_0\)</span>.</p>
 <p>To compute the <em>magnitude</em>:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{eqnarray*}
+\[\begin{split}
+\begin{eqnarray*}
 \left|H(j\Omega_0)\right| &amp;=&amp; \left|\frac{\omega_c}{j\Omega_0 + \omega_c}\right| \\
 &amp; = &amp; \frac{\omega_c}{\sqrt{\Omega_0^2 + \omega_c^2}}
-\end{eqnarray*}\end{split}\]</div>
+\end{eqnarray*}
+\end{split}\]</div>
 <p>We note that is <span class="math notranslate nohighlight">\(\left|H(j\Omega_0\right| \lt 1\)</span> so the filter will <em>attenuate</em> the incoming harmonic frequency. This will be true for all harmonics, so in general, for a LP filter:</p>
 <div class="math notranslate nohighlight">
 \[D_k = C_k\left|H(jk\Omega_0)\right|   &lt; C_k.\]</div>
@@ -675,10 +677,11 @@
 \[\phi = \angle H(j\omega) = \tan^{-1}\left(\frac{\Im \left( H(j\omega)\right)}{\Re \left(H(j(\omega)\right)}\right)\]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{eqnarray*}
+\[\begin{split}
+\begin{eqnarray*}
 H(jk\Omega_0) &amp;=&amp; \frac{\omega_c^2}{(k\Omega_0)^2 + \omega_c^2} - j\frac{k\Omega_0\omega_c}{(k\Omega_0)^2 + \omega_c^2}\\
 \phi_k &amp;=&amp; \tan^{-1}\left(-\frac{K\Omega_0\omega_c}{\omega_c^2}\right) \\
-&amp;=&amp; \tan^{-1}\left(-\frac{k\Omega_0}{\omega_c}\right) 
+&amp;=&amp; \tan^{-1}\left(-\frac{k\Omega_0}{\omega_c}\right)
 \end{eqnarray*}
 \end{split}\]</div>
 <p>Phases are additive so</p>
@@ -694,7 +697,7 @@ H(jk\Omega_0) &amp;=&amp; \frac{\omega_c^2}{(k\Omega_0)^2 + \omega_c^2} - j\frac
 <span id="ex-19-1"></span><h3>Example 6: Average Power<a class="headerlink" href="#example-6-average-power" title="Link to this heading">#</a></h3>
 <p>Compute the average power of a pulse train for which the pulse width is <span class="math notranslate nohighlight">\(T/2\)</span> (duty cycle 50%). Use the result:</p>
 <div class="math notranslate nohighlight">
-\[C_k = \frac{A}{w}.\frac{\sin(k\pi/w)}{k\pi/w}\]</div>
+\[C_k = \frac{A}{w}.\frac{\sin(k\pi/w)}{k\pi/w} = \frac{A}{w} \mathop{\rm sinc}\,(k/w)\]</div>
 <p>as your starting point.</p>
 <pre style="border: 2px solid blue">
 
@@ -720,7 +723,7 @@ H(jk\Omega_0) &amp;=&amp; \frac{\omega_c^2}{(k\Omega_0)^2 + \omega_c^2} - j\frac
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">clear</span><span class="w"> </span><span class="nb">all</span>
 <span class="nb">cd</span><span class="w"> </span><span class="p">.</span><span class="o">./</span><span class="n">matlab</span>
-<span class="nb">format</span><span class="w"> </span><span class="n">compact</span>
+<span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"> </span><span class="nb">setappdata</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MKernel_plot_format&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;svg&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -908,19 +911,19 @@ result can be used to determine the filtering affect of any continuous-time LTI 
 <span id="sol-ex-19-1"></span><h3>Solution to Example 1<a class="headerlink" href="#solution-to-example-1" title="Link to this heading">#</a></h3>
 <p><span class="math notranslate nohighlight">\(w = 2\)</span> so:</p>
 <div class="math notranslate nohighlight">
-\[C_n = \frac{A}{2}.\frac{\sin(k\pi/2)}{k\pi/2}\]</div>
+\[C_n = \frac{A}{2}.\frac{\sin(k\pi/2)}{k\pi/2} = \frac{A}{2}\mathop{\rm sinc}\left(\frac{k}{2}\right)\]</div>
 <p>Write down an expression for <span class="math notranslate nohighlight">\(P\)</span> using Parseval’s Theorem</p>
 </section>
 <section id="p">
 <h3>P<a class="headerlink" href="#p" title="Link to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
-\[P = \sum\limits_{k =  - \infty }^\infty  \left| C_k \right|^2  = \sum\limits_{k =  - \infty }^\infty  \left| \frac{A}{2}{\mathop{\rm sinc}\nolimits} \frac{k\pi }{2} \right|^2  = {A^2}\left( \frac{1}{4} + 2\sum\limits_{k = 1}^\infty  \left| \frac{1}{4}\mathop{\rm sinc}\nolimits \frac{k\pi }{2} \right|^2  \right)\]</div>
+\[P = \sum\limits_{k =  - \infty }^\infty  \left| C_k \right|^2  = \sum\limits_{k =  - \infty }^\infty  \left| \frac{A}{2}{\mathop{\rm sinc}\nolimits} \left(\frac{k }{2}\right) \right|^2  = {A^2}\left( \frac{1}{4} + 2\sum\limits_{k = 1}^\infty  \left| \frac{1}{4}\mathop{\rm sinc}\nolimits \left(\frac{k }{2}\right) \right|^2  \right)\]</div>
 <p>sinc<span class="math notranslate nohighlight">\((k\pi/2) = 0\)</span> for <span class="math notranslate nohighlight">\(k\)</span> even (<span class="math notranslate nohighlight">\(k=0,2,4,6,\ldots\)</span>) so…?</p>
 </section>
 <section id="p-for-k-odd">
 <h3>P for k odd<a class="headerlink" href="#p-for-k-odd" title="Link to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
-\[P = A^2\left( \frac{1}{4} + \frac{1}{2}\sum\limits_{k = 1,3,5, \ldots }^\infty  \left| \rm{sinc}\frac{k\pi }{2} \right| ^2 \right) = A^2\left( \frac{1}{4} + \frac{1}{2}\sum\limits_{k = 1,3,5, \ldots }^\infty  \left| \frac{\sin \left( \frac{k\pi }{2} \right)}{\frac{k\pi }{2}} \right|^2  \right)\]</div>
+\[P = A^2\left( \frac{1}{4} + \frac{1}{2}\sum\limits_{k = 1,3,5, \ldots }^\infty  \left| \rm{sinc}\left(\frac{k}{2}\right) \right| ^2 \right) = A^2\left( \frac{1}{4} + \frac{1}{2}\sum\limits_{k = 1,3,5, \ldots }^\infty  \left| \frac{\sin \left( \frac{k\pi }{2} \right)}{\frac{k\pi }{2}} \right|^2  \right)\]</div>
 <p><span class="math notranslate nohighlight">\(\sin(k\pi/2) = 1\)</span> for <span class="math notranslate nohighlight">\(k\)</span> odd (<span class="math notranslate nohighlight">\(k=1,3,5,7,\ldots\)</span>) so…?</p>
 </section>
 <section id="p-after-eliminating-sine">

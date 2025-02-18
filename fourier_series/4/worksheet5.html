@@ -561,7 +561,7 @@
 <span id="ex-ws-19-1"></span><h3>Example 6<a class="headerlink" href="#example-6" title="Link to this heading">#</a></h3>
 <p>Compute the average power of a pulse train for which the pulse width is <span class="math notranslate nohighlight">\(T/2\)</span> (duty cycle 50%). Use the result:</p>
 <div class="math notranslate nohighlight">
-\[C_k = \frac{A}{w}.\frac{\sin(k\pi/w)}{k\pi/w}\]</div>
+\[C_k = \frac{A}{w}.\frac{\sin(k\pi/w)}{k\pi/w} = \frac{A}{2}\mathop{\rm sinc}\left(\frac{k}{w}\right)\]</div>
 <p>as your starting point.</p>
 </section>
 <section id="solution">
@@ -590,14 +590,15 @@
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">clear</span><span class="w"> </span><span class="nb">all</span>
 <span class="nb">cd</span><span class="w"> </span><span class="p">.</span><span class="o">./</span><span class="n">matlab</span>
-<span class="nb">format</span><span class="w"> </span><span class="n">compact</span>
+<span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"> </span>
+<span class="nb">setappdata</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MKernel_plot_format&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;svg&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
 <span class="p">[</span><span class="n">f</span><span class="p">,</span><span class="n">omega</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">pulse_fs</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="mi">15</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -713,25 +714,32 @@
 <div class="math notranslate nohighlight">
 \[H(j\omega) = \frac{\omega_c}{j\omega + \omega_c}.\]</div>
 <p>Let us say that we wish to compute the attenuation and phase of this filter at <span class="math notranslate nohighlight">\(\omega = \Omega_0\)</span>.</p>
-<p>To compute the <em>magnitude</em>:
-$<span class="math notranslate nohighlight">\(\begin{eqnarray*}
+<p>To compute the <em>magnitude</em>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray*}
 \left|H(j\Omega_0)\right| &amp;=&amp; \left|\frac{\omega_c}{j\Omega_0 + \omega_c}\right| \\
 &amp; = &amp; \frac{\omega_c}{\sqrt{\Omega_0^2 + \omega_c^2}}
-\end{eqnarray*}\)</span>$</p>
+\end{eqnarray*}
+\end{split}\]</div>
 <p>We note that is <span class="math notranslate nohighlight">\(\left|H(j\Omega_0\right| \lt 1\)</span> so the filter will <em>attenuate</em> the incoming harmonic frequency. This will be true for all harmonics, so in general, for a LP filter:</p>
 <div class="math notranslate nohighlight">
 \[D_k = C_k\left|H(jk\Omega_0)\right|   &lt; C_k.\]</div>
-<p>The phase will be given by
-$<span class="math notranslate nohighlight">\(\phi = \angle H(j\omega) = \tan^{-1}\left(\frac{\Im \left( H(j\omega)\right)}{\Re \left(H(j(\omega)\right)}\right)\)</span><span class="math notranslate nohighlight">\(
-where
-\)</span><span class="math notranslate nohighlight">\(\begin{eqnarray*}
+<p>The phase will be given by</p>
+<div class="math notranslate nohighlight">
+\[\phi = \angle H(j\omega) = \tan^{-1}\left(\frac{\Im \left( H(j\omega)\right)}{\Re \left(H(j(\omega)\right)}\right)\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray*}
 H(jk\Omega_0) &amp;=&amp; \frac{\omega_c^2}{(k\Omega_0)^2 + \omega_c^2} - j\frac{k\Omega_0\omega_c}{(k\Omega_0)^2 + \omega_c^2}\\
 \phi_k &amp;=&amp; \tan^{-1}\left(-\frac{K\Omega_0\omega_c}{\omega_c^2}\right) \\
-&amp;=&amp; \tan^{-1}\left(-\frac{k\Omega_0}{\omega_c}\right) 
+&amp;=&amp; \tan^{-1}\left(-\frac{k\Omega_0}{\omega_c}\right)
 \end{eqnarray*}
-\)</span>$</p>
-<p>Phases are additive so
-$<span class="math notranslate nohighlight">\(\angle D_k = \angle C_k + \phi_k.\)</span>$</p>
+\end{split}\]</div>
+<p>Phases are additive so</p>
+<div class="math notranslate nohighlight">
+\[\angle D_k = \angle C_k + \phi_k.\]</div>
 <p>By doing such analysis, we can examine the effect of a filter on a periodic signal, just by considering how the coefficients of the harmonic terms are changed (attenuated in magnitude and shifted in phase) by the filter.</p>
 </section>
 <section id="example-10-low-pass-filter">
@@ -928,10 +936,16 @@ $<span class="math notranslate nohighlight">\(\angle D_k = \angle C_k + \phi_k.\
 <span class="n">R</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">8.2e3</span><span class="p">;</span><span class="w"> </span><span class="c">% 8.2 kOhm</span>
 <span class="n">C</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">10e-9</span><span class="p">;</span><span class="w"> </span><span class="c">% 10 nF</span>
 <span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">C</span><span class="p">));</span><span class="w"> </span><span class="c">% filter coefficient</span>
-<span class="n">K</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c">% replace wthis value with the value computed in Exercise 10(b)(iv)</span>
+<span class="n">K</span><span class="w"> </span><span class="p">=</span><span class="w">  </span><span class="mi">1</span><span class="w"> </span><span class="c">% replace wthis value with the value computed in Exercise 10(b)(iv)</span>
 <span class="n">Hs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">a</span><span class="o">^</span><span class="mi">2</span><span class="p">,[</span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="o">*</span><span class="n">a</span><span class="w"> </span><span class="n">a</span><span class="o">^</span><span class="mi">2</span><span class="p">])</span>
 <span class="n">bode</span><span class="p">(</span><span class="n">Hs</span><span class="p">),</span><span class="nb">grid</span>
-<span class="n">ex19_5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ex19_5</span>
 </pre></div>
 </div>
 </div>
@@ -949,16 +963,16 @@ $<span class="math notranslate nohighlight">\(\angle D_k = \angle C_k + \phi_k.\
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "matlab"
+            mode: "mkernel"
         },
         kernelOptions: {
-            name: "matlab",
+            name: "mkernel",
             path: "./fourier_series/4"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'matlab'</script>
+    <script>kernelName = 'mkernel'</script>
 
                 </article>
               
