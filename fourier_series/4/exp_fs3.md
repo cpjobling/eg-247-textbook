@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.2
+    jupytext_version: 1.16.6
 kernelspec:
   display_name: MKernel
   language: matlab
@@ -285,7 +285,7 @@ The recurrent rectangular pulse is used extensively in digital communication sys
 
 Compute the average power of a pulse train for which the pulse width is $T/2$ (duty cycle 50%). Use the result:
 
-$$C_k = \frac{A}{w}.\frac{\sin(k\pi/w)}{k\pi/w}$$
+$$C_k = \frac{A}{w}.\frac{\sin(k\pi/w)}{k\pi/w} = \frac{A}{w} \mathop{\rm sinc}\,(k/w)$$
 
 as your starting point.
 
@@ -520,7 +520,7 @@ We will continue our study of signals and system by introducing the Fourier Tran
 
 $w = 2$ so:
 
-$$C_n = \frac{A}{2}.\frac{\sin(k\pi/2)}{k\pi/2}$$
+$$C_n = \frac{A}{2}.\frac{\sin(k\pi/2)}{k\pi/2} = \frac{A}{2}\mathop{\rm sinc}\left(\frac{k}{2}\right)$$
 
 Write down an expression for $P$ using Parseval's Theorem
 
@@ -528,7 +528,7 @@ Write down an expression for $P$ using Parseval's Theorem
 
 ### P
 
-$$P = \sum\limits_{k =  - \infty }^\infty  \left| C_k \right|^2  = \sum\limits_{k =  - \infty }^\infty  \left| \frac{A}{2}{\mathop{\rm sinc}\nolimits} \frac{k\pi }{2} \right|^2  = {A^2}\left( \frac{1}{4} + 2\sum\limits_{k = 1}^\infty  \left| \frac{1}{4}\mathop{\rm sinc}\nolimits \frac{k\pi }{2} \right|^2  \right)$$
+$$P = \sum\limits_{k =  - \infty }^\infty  \left| C_k \right|^2  = \sum\limits_{k =  - \infty }^\infty  \left| \frac{A}{2}{\mathop{\rm sinc}\nolimits} \left(\frac{k }{2}\right) \right|^2  = {A^2}\left( \frac{1}{4} + 2\sum\limits_{k = 1}^\infty  \left| \frac{1}{4}\mathop{\rm sinc}\nolimits \left(\frac{k }{2}\right) \right|^2  \right)$$
 
 sinc$(k\pi/2) = 0$ for $k$ even ($k=0,2,4,6,\ldots$) so...?
 
@@ -536,7 +536,7 @@ sinc$(k\pi/2) = 0$ for $k$ even ($k=0,2,4,6,\ldots$) so...?
 
 ### P for k odd
 
-$$P = A^2\left( \frac{1}{4} + \frac{1}{2}\sum\limits_{k = 1,3,5, \ldots }^\infty  \left| \rm{sinc}\frac{k\pi }{2} \right| ^2 \right) = A^2\left( \frac{1}{4} + \frac{1}{2}\sum\limits_{k = 1,3,5, \ldots }^\infty  \left| \frac{\sin \left( \frac{k\pi }{2} \right)}{\frac{k\pi }{2}} \right|^2  \right)$$
+$$P = A^2\left( \frac{1}{4} + \frac{1}{2}\sum\limits_{k = 1,3,5, \ldots }^\infty  \left| \rm{sinc}\left(\frac{k}{2}\right) \right| ^2 \right) = A^2\left( \frac{1}{4} + \frac{1}{2}\sum\limits_{k = 1,3,5, \ldots }^\infty  \left| \frac{\sin \left( \frac{k\pi }{2} \right)}{\frac{k\pi }{2}} \right|^2  \right)$$
 
 $\sin(k\pi/2) = 1$ for $k$ odd ($k=1,3,5,7,\ldots$) so...?
 

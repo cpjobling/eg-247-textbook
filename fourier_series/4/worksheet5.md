@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.2
+    jupytext_version: 1.16.6
 kernelspec:
   display_name: MKernel
   language: matlab
@@ -84,7 +84,7 @@ $$P_{\mathrm{RMS}} = \sqrt{\frac{1}{T}\int_0^T \left|f(t)\right|^2\,dt} = \sqrt{
 
 Compute the average power of a pulse train for which the pulse width is $T/2$ (duty cycle 50%). Use the result:
 
-$$C_k = \frac{A}{w}.\frac{\sin(k\pi/w)}{k\pi/w}$$
+$$C_k = \frac{A}{w}.\frac{\sin(k\pi/w)}{k\pi/w} = \frac{A}{2}\mathop{\rm sinc}\left(\frac{k}{w}\right)$$
 
 as your starting point.
 
@@ -121,7 +121,8 @@ Compute and display the power spectrum for the signal of {ref}`ex:ws:19.1`.
 ```{code-cell}
 clear all
 cd ../matlab
-format compact; setappdata(0, "MKernel_plot_format", 'svg')
+format compact; 
+setappdata(0, "MKernel_plot_format", 'svg')
 ```
 
 ```{code-cell}
@@ -133,9 +134,15 @@ A = 1; w = 2;
 [f,omega] = pulse_fs(A,w,15);
 ```
 
++++ {"slideshow": {"slide_type": "subslide"}}
+
 Power spectrum
 
 ```{code-cell}
+---
+slideshow:
+  slide_type: subslide
+---
 stem(omega,abs(f).^2)
 title('Power Spectrum for pulse width T/2')
 ylabel('|C_k|^2')
@@ -312,7 +319,9 @@ We note that is $\left|H(j\Omega_0\right| \lt 1$ so the filter will _attenuate_ 
 $$D_k = C_k\left|H(jk\Omega_0)\right|   < C_k.$$
 
 The phase will be given by
+
 $$\phi = \angle H(j\omega) = \tan^{-1}\left(\frac{\Im \left( H(j\omega)\right)}{\Re \left(H(j(\omega)\right)}\right)$$
+
 where
 
 $$
@@ -324,6 +333,7 @@ H(jk\Omega_0) &=& \frac{\omega_c^2}{(k\Omega_0)^2 + \omega_c^2} - j\frac{k\Omega
 $$
 
 Phases are additive so
+
 $$\angle D_k = \angle C_k + \phi_k.$$
 
 By doing such analysis, we can examine the effect of a filter on a periodic signal, just by considering how the coefficients of the harmonic terms are changed (attenuated in magnitude and shifted in phase) by the filter.
@@ -574,13 +584,24 @@ v) Use these results to determine the THD (in dB) of the filtered waveform.
 vi) Use the attached Simulink model ([ex19_5.slx](../matlab/ex19_5.slx)) of the the filter to validate the results. Comment on the quality of the design.
 
 ```{code-cell}
+---
+slideshow:
+  slide_type: notes
+---
 cd ../matlab
 % For Simulink model
 R = 8.2e3; % 8.2 kOhm
 C = 10e-9; % 10 nF
 a = (1/(R*C)); % filter coefficient
-K = 1 % replace wthis value with the value computed in Exercise 10(b)(iv)
+K =  1 % replace wthis value with the value computed in Exercise 10(b)(iv)
 Hs = tf(a^2,[1 3*a a^2])
 bode(Hs),grid
+```
+
+```{code-cell}
+---
+slideshow:
+  slide_type: notes
+---
 ex19_5
 ```
