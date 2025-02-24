@@ -183,7 +183,8 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Fourier Transform</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../1/ft1.html">Defining the Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1/ft1.html">Unit 4.1: Defining the Fourier Transform</a></li>
+
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Fourier transforms of commonly occuring signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3/ft3.html">Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../4/ft4.html">Introduction to Filters</a></li>
@@ -216,7 +217,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/2/worksheet3.html">Worksheet 3 Exponential Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/3/worksheet4.html">Worksheet 4 Computing Line Spectra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/4/worksheet5.html">Worksheet 5 Applications of Line Spectra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../1/worksheet6.html">Worksheet 6 Defining the Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1/worksheet6.html">Worksheet 6</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="worksheet7.html">Worksheet 7 Fourier transforms of commonly occuring signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3/worksheet8.html">Worksheet 8 Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../4/worksheet9.html">Worksheet 9 Introduction to Filters</a></li>
@@ -510,7 +512,7 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-to-example-8">Solution to example 8</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-complex-pole-pair-cos-term">Example 9: Complex Pole Pair  cos term</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-complex-pole-pair-cos-term">Example 9: Complex Pole Pair cos term</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-to-example-9">Solution to example 9</a></li>
 </ul>
 </li>
@@ -690,7 +692,7 @@
 <p><em>Matlab</em>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"> </span><span class="nb">setappdata</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MKernel_plot_format&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;svg&#39;</span><span class="p">)</span>
 <span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="p">;</span>
 <span class="n">fourier</span><span class="p">(</span><span class="n">dirac</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
 </pre></div>
@@ -756,11 +758,13 @@ ans =
 <h3>Signum (Sign)<a class="headerlink" href="#signum-sign" title="Link to this heading">#</a></h3>
 <p>The signum function is a function whose value is equal to</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\operatorname{sgn} t = \left\{ {\begin{array}{*{20}{c}}
-  { - 1\;t &lt; 0} \\ 
-  {0\;x = 0} \\ 
-  { + 1\;t &gt; 0} 
-\end{array}} \right.\end{split}\]</div>
+\[\begin{split}
+\operatorname{sgn} t = \left\{ {\begin{array}{*{20}{c}}
+  { - 1\;t &lt; 0} \\
+  {0\;x = 0} \\
+  { + 1\;t &gt; 0}
+\end{array}} \right.
+\end{split}\]</div>
 <p>The transform is:</p>
 <div class="math notranslate nohighlight">
 \[\operatorname{sgn} t = u_0(t) - u_0(-t) = \frac{2}{j\omega}\]</div>
@@ -813,7 +817,7 @@ ans =
 <h3>Example 6<a class="headerlink" href="#example-6" title="Link to this heading">#</a></h3>
 <p>Use the results derived so far to show that</p>
 <div class="math notranslate nohighlight">
-\[\sin \omega_0 t\; u_0(t)\Leftrightarrow \frac{\pi}{j2}\left[\delta(\omega-\omega_0)-\delta(\omega+\omega_0)\right] + \frac{\omega_0}{\omega_0^2 - \omega^2}\]</div>
+\[\sin \omega_0 t\; u_0(t)\Leftrightarrow \frac{\pi}{j2}\left[\delta(\omega+\omega_0)-\delta(\omega-\omega_0)\right] + \frac{\omega_0}{\omega_0^2 - \omega^2}\]</div>
 <p>Hint: Euler’s formula plus solution to example 2.</p>
 <p><strong>Important note</strong>: the equivalent example in Karris (Section 8.4.9 Eq. 8.75 pp 8-23—8-24) is wrong!</p>
 <p>See <a class="reference external" href="https://cpjobling.github.io/eg-247-textbook/fourier_transform/solutions/ft2-ex3.pdf">worked solution</a> for the corrected proof.</p>
@@ -847,7 +851,7 @@ ans =
 </section>
 </section>
 <section id="example-9-complex-pole-pair-cos-term">
-<h3>Example 9: Complex Pole Pair  cos term<a class="headerlink" href="#example-9-complex-pole-pair-cos-term" title="Link to this heading">#</a></h3>
+<h3>Example 9: Complex Pole Pair cos term<a class="headerlink" href="#example-9-complex-pole-pair-cos-term" title="Link to this heading">#</a></h3>
 <p>Given that</p>
 <div class="math notranslate nohighlight">
 \[\mathcal{L}\left\{e^{-at}\cos\omega_0 t\;u_0(t)\right\} = \frac{s+a}{(s + a)^2+\omega_0^2}\]</div>
@@ -911,16 +915,16 @@ ans =
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "matlab"
+            mode: "mkernel"
         },
         kernelOptions: {
-            name: "matlab",
+            name: "mkernel",
             path: "./fourier_transform/2"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'matlab'</script>
+    <script>kernelName = 'mkernel'</script>
 
                 </article>
               
@@ -1003,7 +1007,7 @@ ans =
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-to-example-8">Solution to example 8</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-complex-pole-pair-cos-term">Example 9: Complex Pole Pair  cos term</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-complex-pole-pair-cos-term">Example 9: Complex Pole Pair cos term</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-to-example-9">Solution to example 9</a></li>
 </ul>
 </li>

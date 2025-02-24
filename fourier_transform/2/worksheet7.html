@@ -183,7 +183,8 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../index.html">Fourier Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../1/ft1.html">Defining the Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1/ft1.html">Unit 4.1: Defining the Fourier Transform</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="ft2.html">Fourier transforms of commonly occuring signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3/ft3.html">Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../4/ft4.html">Introduction to Filters</a></li>
@@ -216,7 +217,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/2/worksheet3.html">Worksheet 3 Exponential Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/3/worksheet4.html">Worksheet 4 Computing Line Spectra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fourier_series/4/worksheet5.html">Worksheet 5 Applications of Line Spectra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../1/worksheet6.html">Worksheet 6 Defining the Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1/worksheet6.html">Worksheet 6</a></li>
+
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Worksheet 7 Fourier transforms of commonly occuring signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3/worksheet8.html">Worksheet 8 Fourier Transforms for Circuit and LTI Systems Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../4/worksheet9.html">Worksheet 9 Introduction to Filters</a></li>
@@ -502,7 +504,7 @@
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-fourier-transform-from-the-laplace-transform">Derivation of the Fourier Transform from the Laplace Transform</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-8-single-pole-filter">Example 8: Single Pole Filter</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-complex-pole-pair-cos-term">Example 9: Complex Pole Pair  cos term</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-complex-pole-pair-cos-term">Example 9: Complex Pole Pair cos term</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-transforms-of-common-signals">Fourier Transforms of Common Signals</a></li>
@@ -642,7 +644,7 @@
 <p><em>MATLAB</em>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="w"> </span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"> </span><span class="nb">setappdata</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MKernel_plot_format&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;svg&#39;</span><span class="p">)</span>
 <span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">omega</span><span class="w"> </span><span class="s">omega_0</span><span class="w"> </span><span class="s">t0</span><span class="p">;</span>
 <span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">);</span><span class="w"> </span><span class="c">% useful utility function</span>
 <span class="n">fourier</span><span class="p">(</span><span class="n">dirac</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
@@ -743,11 +745,13 @@ pi*(dirac(omega - omega_0) + dirac(omega + omega_0))
 <h3>Signum (Sign)<a class="headerlink" href="#signum-sign" title="Link to this heading">#</a></h3>
 <p>The signum function is a function whose value is equal to</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\operatorname{sgn} t = \left\{ {\begin{array}{*{20}{c}}
-  { - 1\;t &lt; 0} \\ 
-  {0\;x = 0} \\ 
-  { + 1\;t &gt; 0} 
-\end{array}} \right.\end{split}\]</div>
+\[\begin{split}
+\operatorname{sgn} t = \left\{ {\begin{array}{*{20}{c}}
+  { - 1\;t &lt; 0} \\
+  {0\;x = 0} \\
+  { + 1\;t &gt; 0}
+\end{array}} \right.
+\end{split}\]</div>
 <p><em>MATLAB</em>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -917,7 +921,7 @@ pi*dirac(omega) - 1i/omega
 
 </pre></section>
 <section id="example-9-complex-pole-pair-cos-term">
-<h3>Example 9: Complex Pole Pair  cos term<a class="headerlink" href="#example-9-complex-pole-pair-cos-term" title="Link to this heading">#</a></h3>
+<h3>Example 9: Complex Pole Pair cos term<a class="headerlink" href="#example-9-complex-pole-pair-cos-term" title="Link to this heading">#</a></h3>
 <p>Given that</p>
 <div class="math notranslate nohighlight">
 \[\mathcal{L}\left\{e^{-at}\cos\omega_0 t\;u_0(t)\right\} = \frac{s+a}{(s + a)^2+\omega_0^2}\]</div>
@@ -963,16 +967,16 @@ pi*dirac(omega) - 1i/omega
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "matlab"
+            mode: "mkernel"
         },
         kernelOptions: {
-            name: "matlab",
+            name: "mkernel",
             path: "./fourier_transform/2"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'matlab'</script>
+    <script>kernelName = 'mkernel'</script>
 
                 </article>
               
@@ -1047,7 +1051,7 @@ pi*dirac(omega) - 1i/omega
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-fourier-transform-from-the-laplace-transform">Derivation of the Fourier Transform from the Laplace Transform</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-8-single-pole-filter">Example 8: Single Pole Filter</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-complex-pole-pair-cos-term">Example 9: Complex Pole Pair  cos term</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-complex-pole-pair-cos-term">Example 9: Complex Pole Pair cos term</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-transforms-of-common-signals">Fourier Transforms of Common Signals</a></li>
