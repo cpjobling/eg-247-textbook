@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.2
+    jupytext_version: 1.16.6
 kernelspec:
   display_name: MKernel
   language: matlab
@@ -304,7 +304,7 @@ Hint: linearity plus frequency shift property.
 
 Use the results derived so far to show that
 
-$$\sin \omega_0 t\; u_0(t)\Leftrightarrow \frac{\pi}{j2}\left[\delta(\omega-\omega_0)-\delta(\omega+\omega_0)\right] + \frac{\omega_0}{\omega_0^2 - \omega^2}$$
+$$\sin \omega_0 t\; u_0(t)\Leftrightarrow \frac{\pi}{j2}\left[\delta(\omega+\omega_0)-\delta(\omega-\omega_0)\right] + \frac{\omega_0}{\omega_0^2 - \omega^2}$$
 
 Hint: Euler's formula plus solution to example 2.
 
