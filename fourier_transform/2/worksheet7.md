@@ -96,9 +96,15 @@ This table is adapted from Table 8.9 of Karris. See also: [Wikibooks: Engineerin
 
 $$\delta(t) \Leftrightarrow 1$$
 
-![Fourier transform of the Dirac delta](./pictures/ft_delta.png)
++++ {"slideshow": {"slide_type": "fragment"}}
 
 _Proof_: uses sampling and sifting properties of $\delta(t)$.
+
+See OneNote
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+![Fourier transform of the Dirac delta](./pictures/ft_delta.png)
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -107,11 +113,26 @@ _MATLAB_:
 ```{code-cell}
 ---
 slideshow:
+  slide_type: skip
+---
+format compact; 
+setappdata(0, "MKernel_plot_format", 'svg')
+```
+
+```{code-cell}
+---
+slideshow:
   slide_type: fragment
 ---
-format compact; setappdata(0, "MKernel_plot_format", 'svg')
 syms t omega omega_0 t0;
 u0(t) = heaviside(t); % useful utility function
+```
+
+```{code-cell}
+---
+slideshow:
+  slide_type: fragment
+---
 fourier(dirac(t))
 ```
 
@@ -134,6 +155,8 @@ fourier(dirac(t - t0),omega)
 ### DC
 
 $$1 \Leftrightarrow 2\pi\delta(\omega)$$
+
++++ {"slideshow": {"slide_type": "fragment"}}
 
 ![Fourier transform of a constant (model of DC)](./pictures/ft_dc.png)
 
@@ -250,11 +273,15 @@ $$
 
 #### Clue
 
++++ {"slideshow": {"slide_type": "fragment"}}
+
 Define
 
 $$\operatorname{sgn} t = 2 u_0(t) - 1$$
 
 ![sgn(t) = 2 u_0(t) - 1](./pictures/u_as_sign.png)
+
++++ {"slideshow": {"slide_type": "fragment"}}
 
 _Does that help?_
 
@@ -468,3 +495,5 @@ We shall conclude this session by computing as many of the the Fourier transform
 - triangular pulse
 - periodic time function
 - unit impulse train (model of regular sampling)
+
+I have created some worked examples to help with revision: see Canvas [Worked Solutions to Selected Week 5 Problems](https://canvas.swansea.ac.uk/courses/53137/pages/worked-solutions-to-selected-week-5-problems-2?module_item_id=3054766) and the OneNote class notebook [Fourier Transforms of Common Signals](https://swanseauniversity-my.sharepoint.com/personal/c_p_jobling_swansea_ac_uk/_layouts/OneNote.aspx?id=%2Fpersonal%2Fc_p_jobling_swansea_ac_uk%2FDocuments%2FClass%20Notebooks%2F2425_EG-247_Digital%20Signal%20Processing&wd=target%28_Content%20Library%2FWeek%205.one%7C37FAA438-696E-4BBA-9FBE-FD4979D16C47%2FUnit%204.2%20Fourier%20transforms%20of%20commonly%20occurring%20signals%7C3F29C8AF-722B-4853-8635-32874DD5043E%2F%29)).
