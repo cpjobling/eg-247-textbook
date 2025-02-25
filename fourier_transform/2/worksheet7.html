@@ -639,21 +639,29 @@
 <h3>The Dirac Delta<a class="headerlink" href="#the-dirac-delta" title="Link to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\delta(t) \Leftrightarrow 1\]</div>
-<p><img alt="Fourier transform of the Dirac delta" src="../../_images/ft_delta.png" /></p>
 <p><em>Proof</em>: uses sampling and sifting properties of <span class="math notranslate nohighlight">\(\delta(t)\)</span>.</p>
+<p>See OneNote</p>
+<p><img alt="Fourier transform of the Dirac delta" src="../../_images/ft_delta.png" /></p>
 <p><em>MATLAB</em>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"> </span><span class="nb">setappdata</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MKernel_plot_format&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;svg&#39;</span><span class="p">)</span>
-<span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">omega</span><span class="w"> </span><span class="s">omega_0</span><span class="w"> </span><span class="s">t0</span><span class="p">;</span>
-<span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">);</span><span class="w"> </span><span class="c">% useful utility function</span>
-<span class="n">fourier</span><span class="p">(</span><span class="n">dirac</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"> </span>
+<span class="nb">setappdata</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MKernel_plot_format&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;svg&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
-1
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">omega</span><span class="w"> </span><span class="s">omega_0</span><span class="w"> </span><span class="s">t0</span><span class="p">;</span>
+<span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">);</span><span class="w"> </span><span class="c">% useful utility function</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">fourier</span><span class="p">(</span><span class="n">dirac</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -664,12 +672,6 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">fourier</span><span class="p">(</span><span class="n">dirac</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">t0</span><span class="p">),</span><span class="n">omega</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
-exp(-omega*t0*1i)
 </pre></div>
 </div>
 </div>
@@ -685,12 +687,6 @@ exp(-omega*t0*1i)
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sym</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c">% take one to be a symbol</span>
 <span class="n">fourier</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">omega</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
-2*pi*dirac(omega)
 </pre></div>
 </div>
 </div>
@@ -712,12 +708,6 @@ exp(-omega*t0*1i)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
-pi*(dirac(omega - omega_0) + dirac(omega + omega_0))
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="sinewave">
@@ -730,12 +720,6 @@ pi*(dirac(omega - omega_0) + dirac(omega + omega_0))
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">fourier</span><span class="p">(</span><span class="nb">sin</span><span class="p">(</span><span class="n">omega_0</span><span class="o">*</span><span class="n">t</span><span class="p">),</span><span class="n">omega</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
--pi*(dirac(omega - omega_0) - dirac(omega + omega_0))*1i
 </pre></div>
 </div>
 </div>
@@ -756,12 +740,6 @@ pi*(dirac(omega - omega_0) + dirac(omega + omega_0))
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">fourier</span><span class="p">(</span><span class="nb">sign</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">omega</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
--2i/omega
 </pre></div>
 </div>
 </div>
@@ -806,12 +784,6 @@ pi*(dirac(omega - omega_0) + dirac(omega + omega_0))
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">fourier</span><span class="p">(</span><span class="n">u0</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">omega</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
-pi*dirac(omega) - 1i/omega
 </pre></div>
 </div>
 </div>
@@ -955,6 +927,7 @@ pi*dirac(omega) - 1i/omega
 <li><p>periodic time function</p></li>
 <li><p>unit impulse train (model of regular sampling)</p></li>
 </ul>
+<p>I have created some worked examples to help with revision: see Canvas <a class="reference external" href="https://canvas.swansea.ac.uk/courses/53137/pages/worked-solutions-to-selected-week-5-problems-2?module_item_id=3054766">Worked Solutions to Selected Week 5 Problems</a> and the OneNote class notebook <a class="reference external" href="https://swanseauniversity-my.sharepoint.com/personal/c_p_jobling_swansea_ac_uk/_layouts/OneNote.aspx?id=%2Fpersonal%2Fc_p_jobling_swansea_ac_uk%2FDocuments%2FClass%20Notebooks%2F2425_EG-247_Digital%20Signal%20Processing&amp;amp;wd=target%28_Content%20Library%2FWeek%205.one%7C37FAA438-696E-4BBA-9FBE-FD4979D16C47%2FUnit%204.2%20Fourier%20transforms%20of%20commonly%20occurring%20signals%7C3F29C8AF-722B-4853-8635-32874DD5043E%2F%29">Fourier Transforms of Common Signals</a>).</p>
 </section>
 </section>
 
